@@ -1,0 +1,19 @@
+{
+  "content": [
+    {
+      "usageData": [
+        {
+          "completedCount": 10,
+          "totalCount": 10,
+          "assessmentId": "d0473a22-0de4-4d18-9e47-8d79823ee5cb",
+          "scoreInPercentage": 100,
+          "timeSpent": 2349605,
+          "attempts": 1
+        }
+      ],
+      "userUid": "2687c2e3-9644-4efb-9ecb-70f67bbaa5b9"
+    }
+  ],
+  "message":null,
+  "paginate":null
+}

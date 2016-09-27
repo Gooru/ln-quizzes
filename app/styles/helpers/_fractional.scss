@@ -1,0 +1,11 @@
+.fractional{
+  display: inline-block;
+  text-align: center;
+  .top, .bottom {
+    padding: 0 5px;
+  }
+  .bottom{
+    border-top: 1px solid #000;
+    display: block;
+  }
+}

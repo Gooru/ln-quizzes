@@ -1,0 +1,22 @@
+.content.assessments.edit {
+  .tags {
+    margin: 10px 0px;
+  }
+  .gru-image {
+    margin-top: 35px;
+    max-height: 150px;
+    max-width: 125px;
+    &.picker-error {
+      margin-bottom: 70px;
+    }
+    .validation {
+      bottom: -55px;
+    }
+    img {
+      margin: 0px 5px;
+      padding: 5px 0px;
+      width: calc(100% - 10px);
+      max-height: 150px;
+    }
+  }
+}

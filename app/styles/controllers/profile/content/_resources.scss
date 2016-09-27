@@ -1,0 +1,15 @@
+.controller.content-resources {
+  padding: 20px 0px;
+  .resources {
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+    .card {
+      margin:0 12px;
+    }
+  }
+
+  .show-more-results {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "content": [
+    {
+      "usageData": [
+        {
+          "lessonId": "ef348fe8-3db3-4d94-85e4-bf8c0719b05f",
+          "completedCount": 1,
+          "totalCount": 10,
+          "scoreInPercentage": 17,
+          "timeSpent": 49605,
+          "attempts": 1
+        }
+      ],
+      "userUid": "2687c2e3-9644-4efb-9ecb-70f67bbaa5b9"
+    }
+  ],
+  "message":null,
+  "paginate":null
+}

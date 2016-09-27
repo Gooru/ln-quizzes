@@ -1,0 +1,37 @@
+{
+  "framework": "qunit",
+  "test_page": "tests/index.html?hidepassed",
+  "report_file": "report-xunit.xml",
+  "disable_watching": true,
+  "launch_in_ci": [
+    "PhantomJS"
+  ],
+  "launch_in_dev": [
+    "PhantomJS",
+    "Chrome"
+  ],
+
+  "proxies": {
+    "/gooruapi": {
+      "target": "http://localhost:8882"
+    },
+    "/gooru-search": {
+      "target": "http://localhost:8882"
+    },
+    "/insights": {
+      "target": "http://localhost:8882"
+    },
+    "/mocked-api": {
+      "target": "http://localhost:8882"
+    },
+    "/nucleus/realtime": {
+      "target": "http://localhost:8882"
+    },
+    "/ws/realtime": {
+      "target": "http://localhost:8882"
+    },
+    "/api": {
+      "target": "http://localhost:8882"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{{#each visibleMetrics as |metric|}}
+  {{#if metric.visible}}
+    <div class="metrics-sub-header table-cell">
+      <a class="metric-sub-header {{metric.value}}" {{action 'sort' metric}}>
+        {{t (concat 'gru-metrics-sub-header.' metric.value) }}
+        {{#if metric.sorted}}
+          {{#if metric.isAsc}}
+              <span>{{gru-icon name='arrow_upward'}}</span>
+          {{else}}
+              <span>{{gru-icon name='arrow_downward'}}</span>
+          {{/if}}
+        {{else}}
+            <span>{{gru-icon name='swap_vert'}}</span>
+        {{/if}}
+      </a>
+    </div>
+  {{/if}}
+{{/each}}

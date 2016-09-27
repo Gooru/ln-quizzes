@@ -1,0 +1,44 @@
+{
+  "content": [
+    {
+      "resources": [
+        {
+          "score": 0,
+          "questionType": "HT_RO",
+          "gooruOId": "083df394-53b9-4224-be30-64d8e297c378",
+          "reaction": 0,
+          "timeSpent": 648,
+          "answerObject": [],
+          "sessionId": "B9BB8666-6D26-4A84-81F1-D74F14FAA21D",
+          "collectionItemId": "NA",
+          "views": 3,
+          "resourceType": "question",
+          "attempts": 3
+        },
+        {
+          "score": 0,
+          "questionType": "MC",
+          "gooruOId": "195f5685-36f6-4f3a-a633-f8c3f3745246",
+          "reaction": 0,
+          "timeSpent": 24116,
+          "answerObject": [],
+          "sessionId": "B9BB8666-6D26-4A84-81F1-D74F14FAA21D",
+          "collectionItemId": "NA",
+          "views": 2,
+          "resourceType": null,
+          "attempts": 2
+        }
+      ],
+      "collection": {
+        "score": 1,
+        "gooruOId": "collection1",
+        "timeSpent": 1234,
+        "sessionId": "session1",
+        "views": 1,
+        "resourceType": "collection"
+      }
+    }
+  ],
+  "message": null,
+  "paginate": null
+}

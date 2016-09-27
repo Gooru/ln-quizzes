@@ -1,0 +1,14 @@
+<div class="gooru">
+  {{gru-header
+    term=term
+    onLogout="logout"
+    onSearch="searchTerm"
+    isInvalidSearchTerm=isInvalidSearchTerm
+    classes=myClasses.classes}}
+    <div class="container-fluid app-container">
+      {{outlet}}
+    </div>
+  {{gru-footer}}
+</div>
+
+{{gru-modal}}

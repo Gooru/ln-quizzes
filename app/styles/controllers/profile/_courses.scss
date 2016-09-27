@@ -1,0 +1,31 @@
+.profile-courses {
+  .category-menu {
+    padding: 0;
+  }
+
+  .btn-category {
+    @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(flex-start);
+
+    .active {
+      -webkit-box-shadow: inset 0 -3px 0 $green-400;
+      box-shadow: inset 0 -3px 0 $green-400;
+    }
+
+    span {
+      color: $green-400;
+    }
+  }
+
+  .course-content {
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+
+    .cards {
+      margin: 5px;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+.gru-accordion {
+  $locate-icon: 18px;
+  $locate-icon-xs: 10px;
+  $icon-side: $locate-icon + 10px;
+  $icon-side-xs: $locate-icon-xs + 8px;
+
+  ol .panel {
+    position: relative;
+  }
+
+  ol, .panel-group {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .panel {
+
+      & + .panel {
+        margin-top: 0;
+      }
+
+      &.selected {
+        .location-marker {
+          display: block;
+        }
+      }
+
+      .panel-heading {
+        padding: 15px 0 0 0;
+        margin: 0 0 15px 0;
+        background-color: transparent;
+        border: 0 none;
+
+        .panel-title {
+          > a:link, a:active {
+            text-decoration: none;
+          }
+        }
+      }
+
+      .panel-collapse {
+
+        .panel-body {
+          border-top: 0 none;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .location-marker {
+    display: none;
+    position: absolute;
+    left: -25px;
+    top: 15px;
+    padding-right: 6px;
+
+    @media (min-width: $screen-sm) {
+      top: 18px;
+      left: -45px;
+      padding-right: 10px;
+    }
+
+    > .icon-wrapper {
+      background-color: $dark-300;
+      line-height: 1;
+      width: $icon-side-xs;
+      height: $icon-side-xs;
+      border-radius: 3px;
+
+      @media (min-width: $screen-sm) {
+        width: $icon-side;
+        height: $icon-side;
+      }
+
+      i {
+        color: $white;
+        font-size: $locate-icon-xs;
+        line-height: $icon-side-xs;
+        margin-left: 4px;
+
+        @media (min-width: $screen-sm) {
+          font-size: $locate-icon;
+          line-height: $icon-side;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    > .arrow-right {
+      width: 0;
+      height: 0;
+      border-top: 0.3rem solid transparent;
+      border-bottom: 0.3rem solid transparent;
+      border-left: 0.5rem solid $dark-300;
+      position: absolute;
+      right: 0;
+      top: 36%;
+
+      @media (min-width: $screen-sm) {
+        border-top-width: 0.4rem;
+        border-bottom-width: 0.4rem;
+        border-left-width: 0.8rem;
+        top: 34%;
+      }
+    }
+  }
+}

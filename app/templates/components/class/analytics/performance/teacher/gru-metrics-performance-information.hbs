@@ -1,0 +1,30 @@
+{{#if performanceData}}
+  {{#if showScore}}
+    <div class="table-cell">
+      <div class="box score"
+           style="background-color: {{gradeColor (if performanceData.hasStarted performanceData.score 'NA')}}">
+        {{{if performanceData.hasStarted performanceData.score '--'}}}%
+      </div>
+    </div>
+  {{/if}}
+  {{#if showCompletion}}
+    <div class="table-cell">
+      {{ charts/gru-completion-chart
+      completed=performanceData.completionDone
+      total=performanceData.completionTotal }}
+  </div>
+  {{/if}}
+  {{#if showStudyTime}}
+    <div class="table-cell study-time">{{{performanceData.timeSpent}}}</div>
+  {{/if}}
+{{else}}
+  {{#if showScore}}
+      <div class="table-cell score"></div>
+  {{/if}}
+  {{#if showCompletion}}
+    <div class="table-cell completion"></div>
+  {{/if}}
+  {{#if showStudyTime}}
+    <div class="table-cell study-time"></div>
+  {{/if}}
+{{/if}}

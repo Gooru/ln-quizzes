@@ -1,0 +1,346 @@
+.class_overview {
+  .controller.class .content {
+    @media (max-width: $screen-sm-max) {
+      padding: 0;
+    }
+  }
+}
+
+.controller.overview {
+  $collection-icon-size: 48px;
+  $on-air-icon: 35px;
+
+  .fixed {
+    padding: 0 20px;
+    @media (min-width: $screen-sm) {
+      padding: 0 60px;
+    }
+  }
+
+  .locate,
+  .edit-content {
+    margin-left: 15px;
+
+    .gru-icon {
+      display: none;
+
+      @media (min-width: $screen-sm) {
+        display: inline;
+        padding: 0 5px 0 0;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .overview-header {
+    @include flexbox;
+    @include justify-content(space-between);
+    border-bottom: 1px solid $gray-light;
+
+    >div {
+      @include flexbox;
+      @include align-items(center);
+    }
+
+    .title {
+      h3 {
+        display: inline-block;
+        margin-left: -20px;
+        padding: 11px 20px;
+      }
+
+      i {
+        color: $gray-light;
+        font-size: $font-size-lead;
+      }
+
+      div {
+        margin-bottom: 15px; 
+      }
+    }
+
+    .trophy {
+      @include inline-flex;
+
+      .icon {
+        background: url('gooru/images/gray-trophy.svg');
+        background-size: 24px 24px;
+        display: inline-block;
+        height: 24px;
+        margin: 0 5px 0 0;
+        width: 24px;
+      }
+      @media (max-width: $screen-xs-max) {
+        display: none;
+      }
+    }
+  }
+
+  //This should NOT be here, if specificity was required for this element, it should have been added to this components stylesheet, I know we are not doing Object Oriented CSS, but lets at least stay true to the modularity concept that comes with components
+  .gru-accordion-course {
+    padding: 0 20px;
+    @media (min-width: $screen-sm) {
+      padding: 15px 60px 50px;
+    }
+
+    .panel {
+      background-color: transparent;
+      border: 0 none;
+      border-radius: 0;
+      box-shadow: none;
+
+      & + .panel {
+        margin-top: 10px;
+      }
+    }
+
+    .panel-heading {
+      position: relative;
+
+      .panel-title {
+        > a {
+          display: inline-block;
+          max-width: 54%;
+          @media (min-width: $screen-sm) {
+            max-width: 62%;
+          }
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          &.disabled {
+            font-style: italic;
+            color: $dark-100;
+          }
+        }
+      }
+    }
+
+    .gru-user-icons {
+      float: right;
+
+      &.visible-xs {
+        margin-top: 8px;
+      }
+    }
+
+    .gru-accordion-unit {
+      padding: 40px 0 0;
+
+      .unit {
+        border-bottom: 1px solid $hr-border;
+        padding-bottom: 10px;
+        padding-right: 20px;
+
+        > .panel-title {
+          font-size: $font-size-h4;
+          font-weight: normal;
+
+          > a {
+            @include text-overflow;
+            display: inline-block;
+            line-height: 1.2;
+            max-width: 80%;
+
+            @media (min-width: $screen-sm) {
+              border-right: 1px solid $hr-border;
+              padding-right: 15px;
+            }
+          }
+
+          > span {
+            display: none;
+            font-size: $font-size-base;
+            padding-left: 15px;
+            vertical-align: 6px;
+
+            @media (min-width: $screen-sm) {
+              display: inline;
+            }
+          }
+        }
+
+        .gru-user-icons {
+          margin-top: 5px;
+        }
+
+        + .collapse {
+          > .panel-body {
+            padding: 0;
+          }
+        }
+      }
+
+      .gru-accordion-lesson {
+
+        > .panel-heading {
+          padding: 15px 20px;
+          margin: 30px 0 20px 0;
+          background-color: $white;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
+          border-radius: 5px;
+
+          > .gru-completion-chart {
+            display: inline-block;
+            vertical-align: middle;
+          }
+
+          > .panel-title .title {
+            font-size: $font-size-large;
+            color: $text-color;
+            vertical-align: middle;
+            margin-left: 20px;
+          }
+        }
+
+        .collections {
+          padding-left: 14%;
+
+          > .panel {
+            > button.on-air {
+              display: none;
+              position: absolute;
+              top: 9px;
+
+              display: inline-block;
+              margin: 0 5px 0 15px;
+              width: $on-air-icon;
+              height: $on-air-icon;
+              vertical-align: middle;
+              background-image: url('gooru/images/on-air-icon.svg');
+              background-size: $on-air-icon $on-air-icon;
+              @include text-hide();
+              cursor: pointer;
+              @media (min-width: $screen-sm) {
+                left: -85px;
+                display: inline-block;
+              }
+              @media (min-width: $screen-md) {
+                left: -116px;
+              }
+            }
+
+            &.collection {
+              line-height: 2.6;
+
+              &.submitted {
+                > .panel-heading i {
+                  color: $blue-400;
+                }
+              }
+            }
+
+            &.assessment {
+              .panel-heading .panel-title {
+                vertical-align: -8px;
+              }
+            }
+
+            &.on-air {
+              > button.on-air {
+                display: none;
+              }
+
+              // on-air icon
+              .panel-heading > .icon-container > .score + i {
+                display: none;
+
+                @media (min-width: $screen-sm) {
+                  display: inline-block;
+                }
+              }
+            }
+
+            &:last-child {
+              .panel-heading {
+                border-bottom: 0 none;
+              }
+            }
+          }
+
+          .panel-heading {
+            border-bottom: 1px solid $gray-lighter;
+            padding: 0 20px 5px 0;
+            margin: 0;
+
+            @media (min-width: $screen-sm) {
+              padding-right: 8px;
+            }
+
+            > .icon-container {
+              display: inline-block;
+              width: 60px;
+
+              @media (min-width: $screen-sm) {
+                width: 95px;
+              }
+
+              > i {
+                font-size: $collection-icon-size;
+                vertical-align: bottom;
+              }
+              > .score {
+                margin: 5px 0 10px 0;
+
+                + i {
+                  display: none;
+                  width: $on-air-icon;
+                  height: $on-air-icon;
+                  vertical-align: middle;
+                  margin-left: 15px;
+                  background-image: url('gooru/images/on-air-icon.svg');
+                  background-size: $on-air-icon $on-air-icon;
+                  @include text-hide();
+                }
+              }
+
+              > a.score {
+                padding: 0;
+
+                > button {
+                  border: 0 none;
+
+                  .icon {
+                    background: url("gooru/images/trophy.svg");
+                    background-size: 24px 24px;
+                    height: 24px;
+                    width: 24px;
+                    display: block;
+                  }
+                }
+              }
+            }
+
+            .panel-title {
+              font-size: $font-size-large;
+
+              > a {
+                @media (min-width: $screen-sm) {
+                  max-width: 23%;
+                }
+                @media (min-width: $screen-md) {
+                  max-width: 26%;
+                }
+              }
+            }
+
+            .gru-user-icons .first-view.clickable {
+              .item:last-child {
+                margin-right: 17px;
+              }
+            }
+          }
+        }
+      }
+
+
+      .gru-accordion-lesson .panel-heading .score,
+      .gru-accordion-lesson .panel-heading a.score > button {
+        padding: 0.5em 0.8em;
+        border-radius: 5px;
+        color: $white;
+        display: inline-block;
+      }
+    }
+  }
+}

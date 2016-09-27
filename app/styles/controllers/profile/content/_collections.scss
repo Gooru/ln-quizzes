@@ -1,0 +1,14 @@
+.controller.content-collections{
+  padding: 20px 0px;
+
+  .collections {
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+
+    .card {
+      margin: 0 12px;
+      float: left;
+    }
+  }
+}

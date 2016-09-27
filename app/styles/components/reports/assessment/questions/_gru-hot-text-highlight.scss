@@ -1,0 +1,30 @@
+.gru-hot-text-highlight p {
+  line-height: 32px;
+  span {
+    p {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+    }
+    &.correct,
+    &.incorrect,
+    &.anonymous {
+      padding: 6px;
+      border-radius: 4px;
+      color: $white
+    }
+    &.correct {
+      background-color: $brand-success;
+    }
+    &.incorrect {
+      background-color: $brand-incorrect;
+    }
+    &.anonymous,
+    &.anonymous {
+      background-color: $brand-anonymous;
+    }
+  }
+
+
+
+}

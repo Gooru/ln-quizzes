@@ -1,0 +1,121 @@
+.gru-two-tier-header-table {
+  $table-cell-width: 90px;
+
+  table {
+    font-size: $font-size-h6;
+    background: $white;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.07);
+    border-top: 47px solid $dark-400;
+    border-radius: 5px;
+    border-collapse: inherit;
+
+    th, td {
+      border: none;
+      padding: 10px 20px;
+      font-weight: normal;
+    }
+
+    .first-tier, .second-tier {
+      th, td {
+        background-color: $dark-300;
+        color: $white;
+        border-color: $dark-400;
+      }
+    }
+
+    > .first-tier {
+      height: 42px;
+      td, th {
+        border-bottom: 1px solid $dark-200;
+      }
+      th {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    > .second-tier {
+      height: 47px;
+
+      th {
+        line-height: 23px;
+        > span {
+          display: block;
+          font-weight: normal;
+          opacity: 0.6;
+          min-width: $table-cell-width;
+        }
+
+        i.gru-icon {
+          font-size: 13px;
+        }
+        i.gru-icon.arrow_upward, i.gru-icon.arrow_downward {
+          display: none;
+        }
+
+        &.row-header {
+          width: auto;
+          text-align: left;
+
+          > span {
+            width: auto;
+          }
+        }
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.ascending {
+          i.gru-icon.arrow_upward {
+            display: inline-block;
+          }
+          i.gru-icon.arrow_downward, i.gru-icon.swap_vert {
+            display: none;
+          }
+        }
+        &.descending {
+          i.gru-icon.arrow_downward {
+            display: inline-block;
+          }
+          i.gru-icon.arrow_upward, i.gru-icon.swap_vert {
+            display: none;
+          }
+        }
+      }
+
+      + .data {
+        th, td {
+          padding-top: 20px;
+        }
+      }
+    }
+
+    > .data {
+
+      th {
+        border-left: 0;
+        border-bottom: 1px solid $gray-lighter;
+        font-weight: normal;
+        &:hover {
+          cursor: pointer;
+        }
+        &:first-child {
+          padding-top: 20px;
+        }
+      }
+      td {
+        border-width: 0 0 1px 0;
+        border-color: $gray-lighter;
+        border-style: solid;
+        width: $table-cell-width;
+      }
+
+      &:last-child {
+        th, td {
+          padding-bottom: 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.featured {
+  & .controller {
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+  }
+
+  >.header {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+
+    @media (min-width: $screen-sm) {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+  }
+}

@@ -1,0 +1,148 @@
+<div class="panel-heading" role="tab" id="{{elementId}}-heading">
+  {{#if isTeacher}}
+    <span class="score" style="background-color: {{ gradeColor (if model.performance.hasStarted model.performance.score 'NA') }}">
+      {{if model.performance.hasStarted model.performance.score '--'}}%
+    </span>
+  {{else}}
+    {{charts/gru-completion-chart
+      completed=model.performance.completionDone
+      total=model.performance.completionTotal }}
+  {{/if}}
+
+  <span class="panel-title">
+    <a class="title collapsed"
+       role="button"
+       data-toggle="collapse"
+       href="#{{elementId}}-content"
+       aria-expanded="false"
+       aria-controls="{{elementId}}-content"
+      {{action "selectLesson" model.id}}>
+        {{course-sections-prefix  index=index type='lesson' longName=true}}&period;&nbsp;&nbsp;{{model.title}}
+    </a>
+    {{gru-user-icons
+      showOnlyNumbers=true
+      membersCount=model.membersCount
+      users=model.users
+      viewThreshold=3
+      viewMoreIn='modal' }}
+  </span>
+</div>
+
+<div id="{{elementId}}-content"
+     data-index="{{componentIndex}}"
+     class="panel-collapse collapse"
+     role="tabpanel"
+     aria-labelledby="{{elementId}}-heading">
+
+  <div class="panel-body">
+    <ol class="collections {{if isTeacher 'teacher'}}">
+
+    {{#if loading}}
+      {{three-bounce-spinner}}
+    {{else}}
+
+      {{#each items as |item index|}}
+        <li class="panel {{if item.isAssessment 'assessment' 'collection'}}
+          {{if item.isSubmitted 'submitted'}}
+          {{set-if-equal 'selected' item.id currentResource}}
+          {{if item.isOnAir 'on-air'}}">
+
+          {{#if isTeacher}}
+
+            {{#if item.isAssessment}}
+              {{#unless item.isExternalAssessment}}
+                   <button {{action "setOnAir" item.id}}
+                  data-toggle="tooltip" data-html="true" data-placement="bottom"
+                  title="{{t "common.launch-on-air"}}"
+                  class="on-air">{{t "common.launch-on-air"}}</button>
+              {{/unless}}
+            {{/if}}
+
+          {{else}}
+            <div class="location-marker">
+              <div class="icon-wrapper">
+                  {{gru-icon name='near_me'}}
+              </div>
+              <div class="arrow-right"></div>
+            </div>
+          {{/if}}
+
+          <div class="panel-heading">
+
+            <div class="icon-container">
+              {{#if item.isAssessment}}
+
+                {{#if item.performance.hasStarted }}
+                  {{#link-to 'class.analytics.performance.teacher.collection'
+                      currentClass.id
+                      unitId
+                      model.id
+                      item.id
+                      class="score" }}
+                    <button style="background-color: {{gradeColor item.performance.score}}" class="{{if item.performance.hasTrophy 'trophy'}}">
+                    {{#if item.performance.hasTrophy }}
+                      <span class="icon"></span>
+                    {{else}}
+                      {{item.performance.score}}%
+                    {{/if}}
+                    </button>
+                  {{/link-to}}
+                {{else}}
+                  <span class="score" style="background-color: {{ gradeColor 'NA' }}">--%</span>
+                {{/if}}
+                <i class="on-air">{{t 'common.launch-on-air'}}</i>
+
+              {{ else }}
+                {{gru-icon name='apps'}}
+              {{/if}}
+            </div>
+
+            <span class="panel-title">
+              {{#if item.performance.isDisabled}}
+                <a class="title disabled"
+                   data-toggle="tooltip" data-html="true" data-placement="top"
+                   title="{{t "common.assessment-disabled"}}">
+                    {{plus-one index}}&period;&nbsp;&nbsp;{{item.title}}
+                </a>
+              {{else}}
+                {{#if item.performance.noMoreAttempts}}
+                  <a class="title disabled"
+                     data-toggle="tooltip" data-html="true" data-placement="top"
+                     title="{{t "common.no-more-attempts"}}">
+                      {{plus-one index}}&period;&nbsp;&nbsp;{{item.title}}
+                  </a>
+               {{else}}
+                 <a class="title" {{action "selectResource" item}}>
+                     {{plus-one index}}&period;&nbsp;&nbsp;{{item.title}}
+                 </a>
+               {{/if}}
+              {{/if}}
+            </span>
+            {{!-- Show only for xs --}}
+            {{gru-user-icons
+              class="visible-xs"
+              showOnlyNumbers=true
+              membersCount=item.members.length
+              users=item.members
+              viewThreshold=2
+              viewMoreIn='modal'}}
+
+            {{!-- Show for all other screen sizes --}}
+            {{gru-user-icons
+              class="hidden-xs"
+              membersCount=item.membersCount
+              users=item.members
+              viewThreshold=5
+              viewMoreIn='modal'}}
+
+          </div>
+        </li>
+      {{else}}
+        <li>{{t "common.contentUnavailable"}}</li>
+      {{/each}}
+
+    {{/if}}
+    </ol>
+
+  </div>
+</div>

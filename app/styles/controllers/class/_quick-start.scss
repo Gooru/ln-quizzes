@@ -1,0 +1,32 @@
+.quick-start {
+  margin: 30px 10px 0;
+
+  .header {
+    border-bottom: solid 2px $light-200;
+    padding-bottom: 28px;
+
+    >* {
+      display: inline-block;
+    }
+
+    h3 {
+      margin: 0 15px 0 0;
+    }
+  }
+
+  .quick-start-options {
+    margin-top: 10px;
+  }
+
+  .actions {
+    line-height: 39px;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .lead {
+    margin-bottom: 20px;
+  }
+}

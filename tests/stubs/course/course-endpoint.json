@@ -1,0 +1,74 @@
+[
+  {
+    "description": "Gets course data for a specific ID",
+    "request": {
+      "url": "^/gooruapi/rest/v1/course/(.+)$",
+      "method": "GET",
+      "headers": {
+        "gooru-session-token": "(.+)"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "File not found!",
+      "file": "get-course-response.json"
+    }
+  },
+
+  {
+    "description": "Fetch user classes",
+    "request": {
+      "url": "^/api/nucleus/v1/courses/course-123$",
+      "method": "GET",
+      "headers": {
+        "authorization": "Token (.+)"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "File not found!",
+      "file": "fetch-course-200-response.json"
+    }
+  },
+  {
+    "description": "Update course with a specific ID",
+    "request": {
+      "url": "^/api/nucleus/v1/courses/(.+)$",
+      "method": "PUT",
+      "headers": {
+        "authorization": "Token (.+)"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "",
+      "file": "fetch-course-200-response.json"
+    }
+  },
+  {
+    "description": "Create course",
+    "request": {
+      "url": "^/api/nucleus/v1/courses",
+      "method": "POST",
+      "headers": {
+        "authorization": "Token (.+)"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json",
+        "Location": "123"
+      }
+    }
+  }
+]

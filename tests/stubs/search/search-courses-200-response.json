@@ -1,0 +1,30 @@
+{
+  "searchResults": [
+    {
+      "sequence": 1,
+      "title": "title-1",
+      "description": "description-1",
+      "thumbnail": "thumbnail-url-1",
+      "owner": {
+        "emailId": "",
+        "firstName": "",
+        "gooruUId": "owner-id-1",
+        "lastName": "",
+        "usernameDisplay": ""
+      }
+    },
+    {
+      "sequence": 2,
+      "title": "title-2",
+      "description": "description-2",
+      "thumbnail": "thumbnail-url-2",
+      "owner": {
+        "emailId": "",
+        "firstName": "",
+        "gooruUId": "owner-id-2",
+        "lastName": "",
+        "usernameDisplay": ""
+      }
+    }
+  ]
+}

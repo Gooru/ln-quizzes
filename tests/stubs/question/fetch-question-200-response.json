@@ -1,0 +1,22 @@
+{
+  "id":"77208c16-17e8-46e7-82a3-e26a13bd5d8d",
+  "title":"HS-Image",
+  "publish_date":null,
+  "description":"Enter question text here",
+  "answer":
+  [{"sequence":1,
+    "is_correct":0,
+    "answer_text":"//dev-content-gooru-org.s3-us-west-1.amazonaws.com/728f1f72-61a2-4fba-8351-225eb45e05fb.jpg",
+    "answer_type":"text"},
+    {"sequence":2,"is_correct":0,"answer_text":"//dev-content-gooru-org.s3-us-west-1.amazonaws.com/475b1c7f-ec59-42d5-b172-03c8060058fb.jpg","answer_type":"text"},
+    {"sequence":3,"is_correct":1,"answer_text":"//dev-content-gooru-org.s3-us-west-1.amazonaws.com/a5761c93-bdf0-4d81-92bf-7788db22a0c4.jpg","answer_type":"text"}
+  ],
+  "metadata":null,
+  "taxonomy":null,
+  "hint_explanation_detail":null,
+  "thumbnail":null,
+  "license":261,
+  "creator_id":"1f1114e0-2daa-4034-995a-8b3c1db029d7",
+  "content_subformat":"hot_spot_image_question",
+  "visible_on_profile":true
+}

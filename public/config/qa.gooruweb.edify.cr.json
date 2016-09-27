@@ -1,0 +1,17 @@
+{
+  "endpoint" : {
+    "url": "https://nucleus-qa.gooru.org",
+    "secureUrl": "https://nucleus-qa.gooru.org"
+  },
+
+  "realTime": {
+    "webServiceUrl": "https://goorurt.qa.gooruweb.edify.cr",
+    "webServiceUri": "/nucleus/realtime",
+    "webSocketUrl": "https://goorurt.qa.gooruweb.edify.cr",
+    "webSocketUri": "/ws/realtime"
+  },
+
+  "teams": {
+    "url": "http://teams-qa.gooru.org"
+  }
+}

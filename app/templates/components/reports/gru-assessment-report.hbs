@@ -1,0 +1,30 @@
+{{reports.assessment.gru-summary
+  assessmentResult=assessmentResult
+  areQuestionLinksHidden=areAnswersHidden
+  onSelectAttempt='selectAttempt'
+  onBubbleSelect='bubbleSelect'
+  isRealTime=isRealTime
+  showAttempts=showAttempts}}
+
+{{#if areAnswersHidden}}
+
+  <div class="hidden-report">
+    <span>{{t "gru-assessment-report.hidden-report"}}</span>
+  </div>
+
+{{else}}
+
+  {{#if assessmentResult.hasMastery}}
+    {{reports.assessment.gru-mastery
+    learningTargets=assessmentResult.mastery
+    assessmentResult=assessmentResult
+    onBubbleSelect='bubbleSelect'}}
+  {{/if}}
+
+  {{#if orderedQuestions.length}}
+    {{reports.assessment.gru-questions
+      isAnswerKeyHidden=isAnswerKeyHidden
+      results=orderedQuestions}}
+  {{/if}}
+
+{{/if}}

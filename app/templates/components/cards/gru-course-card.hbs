@@ -1,0 +1,98 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="card-header">
+      <div class="image-container">
+        {{#if isOwner}}
+          {{#if isEditEnabled}}
+            {{#link-to "content.courses.edit" course.id class="course-image"}}
+                <img class="img-responsive" src="{{course.thumbnailUrl}}"/>
+            {{/link-to}}
+          {{/if}}
+        {{else}}
+          {{#link-to "content.courses.play" course.id class="course-image"}}
+              <img class="img-responsive" src="{{course.thumbnailUrl}}"/>
+          {{/link-to}}
+        {{/if}}
+      </div>
+      <div class="header-content">
+        <div>
+            {{#if isOwner}}
+                {{#if isEditEnabled}}
+                  {{#link-to "content.courses.edit" course.id class="course-title pointer truncate" tagName="h3"}}
+                     {{course.title}}
+                  {{/link-to}}
+                {{/if}}
+            {{else}}
+              {{#link-to "content.courses.play" course.id class="course-title pointer truncate" tagName="h3"}}
+                {{course.title}}
+              {{/link-to}}
+            {{/if}}
+        </div>
+        <p class="subject truncate">
+            {{#if course.unitCount}}
+              <span class="bars"></span><span class="total-units">{{t "cards.gru-course-card.units" count=course.unitCount}}</span>
+            {{else}}
+                <span class="bars"></span><span class="total-units">{{t "cards.gru-course-card.units" count=0}}</span>
+            {{/if}}
+          {{#if subjects}}
+            <span class="bars"></span>{{subjects}}
+          {{/if}}
+        </p>
+        {{#unless isSmall}}
+          {{#if users}}
+            <div class="remixed-users">
+              {{#if course.isRemixed}}
+                <span class="remixed">{{t "common.remixed-by"}}&nbsp;</span>
+              {{else}}
+                <span class="created">{{t "common.created-by"}}&nbsp;</span>
+              {{/if}}
+              <span class="users-teaser truncate ellipsis">{{gru-user-teaser users=users}}</span>
+            </div>
+          {{/if}}
+          {{#if course.isPublished}}
+              <i class="icon public" data-toggle="tooltip" data-placement="auto" title="{{t 'common.published-tooltip'}}"></i>
+          {{/if}}
+        {{/unless}}
+      </div>
+    </div>
+    {{#unless isSmall}}
+      <div class="card-content">
+        <div class="taxonomy-standards">
+          {{#if tags.length}}
+             {{taxonomy.gru-taxonomy-tag-list tags=tags tagsVisible=2 isInCard=true hasTooltips=false}}
+           {{/if}}
+        </div>
+        <div class="course-description">
+          {{#if course.description}}
+            {{truncate text=(noTags text=course.description) type='large'}}
+          {{/if}}
+        </div>
+        <div class="actions">
+          {{#if isOwner}}
+            {{#if isEditEnabled}}
+              <div class="edit-button">
+                  <button class="btn btn-sm btn-success" {{action 'editCourse'}}>{{t "common.edit"}}</button>
+              </div>
+                <div class="play-button">
+                    <button class="btn btn-sm btn-success" {{action 'playCourse'}}>{{t "common.play"}}</button>
+                </div>
+            {{/if}}
+          {{else}}
+            {{#if (and course.isPublished isRemixEnabled)}}
+              <div class="remix-button">
+                  <button class="btn btn-sm btn-success" {{action 'remixCourse'}}>{{t "common.remix"}}</button>
+              </div>
+            {{/if}}
+          {{/if}}
+        </div>
+        {{#if isEyeVisible}}
+          {{#unless course.isVisibleOnProfile }}
+            <div class="visibility" title="{{t 'common.visibility-tooltip'}}" data-toggle="tooltip" data-placement="auto">
+                {{gru-icon name="visibility_off"}}
+            </div>
+          {{/unless}}
+        {{/if}}
+      </div>
+    {{/unless}}
+  </div>
+</div>

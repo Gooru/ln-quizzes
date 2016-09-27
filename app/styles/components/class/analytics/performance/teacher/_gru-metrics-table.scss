@@ -1,0 +1,111 @@
+.gru-metrics-table {
+  margin: 10px 0;
+  width: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  .table {
+    margin: 0;
+    width: auto;
+    font-size: $font-size-h6;
+    background: $white;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.07);
+    border-top: 47px solid $dark-400;
+    border-radius: 5px;
+    border-collapse: inherit;
+    display: table-cell;
+
+    thead, tbody
+    {
+      display: block;
+    }
+
+    thead {
+      tr {
+        th, td {
+          background-color: $dark-300;
+          color: $white;
+          border-right: 1px solid $dark-200;
+          &:first-child {
+            border-right: 0;
+          }
+        }
+      }
+      .headers {
+        td, th {
+          border-bottom: 1px solid $dark-200;
+        }
+        > td {
+          width: 160px;
+        }
+        .header-title {
+          text-align: left;
+          width: inherit;
+          .title {
+            width: inherit;
+            @include text-overflow();
+          }
+        }
+      }
+      .headers,
+      .sub-header {
+        th, td {
+          height: 42px;
+          padding: 0 0 0 20px;
+        }
+      }
+    }
+    tbody
+    {
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: 545px;
+      th {
+        width: 140px;
+        border: 0;
+        span {
+          display: block;
+          width: inherit;
+          @include text-overflow();
+        }
+      }
+    }
+    td, th {
+      width: 100px;
+      min-width: 100px;
+      height: 70px;
+      vertical-align: middle;
+      font-weight: normal;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border: 0;
+      border-right: 1px solid $light-300;
+      padding: 5px 0 5px 20px;
+      div:last-child {
+        border: 0;
+      }
+    }
+    .table-cell {
+      width: 100px;
+      min-width: 100px;
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .performance-information {
+      .box {
+        border-radius: 4px;
+        text-align: center;
+        width: 68px;
+        height: 43px;
+        display: block;
+        color: $white;
+        padding: 7px;
+        &.completion {
+          background-color: $blue-400;
+        }
+      }
+    }
+  }
+}
+

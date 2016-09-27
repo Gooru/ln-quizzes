@@ -1,0 +1,67 @@
+.gru-user-sign-up {
+
+  .wrapper {
+
+    > .main {
+      padding: 10px 60px;
+
+      .btn-sign-up {
+        margin-top: 15px;
+      }
+
+      .row {
+        margin-top: 15px;
+
+        .col-xs-11 {
+
+        }
+
+        &.error-messages {
+          margin-top: 0;
+
+          div {
+            line-height: 1;
+
+            & + div {
+              padding-left: 3px;
+            }
+          }
+        }
+      }
+
+      form {
+        > .intro,
+        .accept-terms span {
+          font-size: $font-size-small;
+        }
+
+        > .intro {
+          margin: 0 0 20px 0;
+          color: #515151;
+          text-align: center;
+        }
+
+        > .content {
+          background-color: #f0f0f0;
+          border: 1px solid #ddd;
+          padding: 10px 25px;
+          display: inline-block;
+          .img-question {
+            margin: 10px 0 0 -5px;
+          }
+        }
+
+        > .accept-terms {
+          text-align: center;
+          padding: 0 10px;
+          clear: both;
+        }
+
+        .tooltip-inner {
+          width: 180px;
+        }
+      }
+    }
+  }
+}
+

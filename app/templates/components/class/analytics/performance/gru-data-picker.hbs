@@ -1,0 +1,16 @@
+<div class="option-picker">
+    <ul class="list-inline">
+      {{#each options as |option|}}
+          <li>
+              <div class="checkbox {{option.value}}">
+                {{#if option.selected}}
+                    <input id='{{option.value}}' type="checkbox" disabled={{option.readOnly}} value="{{option.value}}" checked {{action 'setOption' option}}/>
+                {{else}}
+                    <input id='{{option.value}}' type="checkbox" disabled={{option.readOnly}} value="{{option.value}}" {{action 'setOption' option}}/>
+                {{/if}}
+                  <label for='{{option.value}}'>{{t (concat 'gru-data-picker.' option.value) }}</label>
+              </div>
+          </li>
+      {{/each}}
+    </ul>
+</div>

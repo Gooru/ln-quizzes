@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-import { correctPercentage } from 'gooru-web/utils/question-result';
+import { correctPercentage } from 'quizzes/utils/question-result';
 
 /**
  * Learning Target Component

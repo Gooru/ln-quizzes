@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import QuestionMixin from 'gooru-web/mixins/reports/assessment/questions/question';
+import QuestionMixin from 'quizzes/mixins/reports/assessment/questions/question';
 
 /**
  * Multiple choice

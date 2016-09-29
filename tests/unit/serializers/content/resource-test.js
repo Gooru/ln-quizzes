@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 import Ember from 'ember';
-import ResourceModel from 'gooru-web/models/content/resource';
+import ResourceModel from 'quizzes/models/content/resource';
 
 moduleFor('serializer:content/resource', 'Unit | Serializer | content/resource');
 

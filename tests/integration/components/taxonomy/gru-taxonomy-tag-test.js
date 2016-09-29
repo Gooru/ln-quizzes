@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
 
 moduleForComponent('taxonomy/gru-taxonomy-tag', 'Integration | Component | taxonomy/gru taxonomy tag', {
   integration: true

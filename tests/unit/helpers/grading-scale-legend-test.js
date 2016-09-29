@@ -1,6 +1,6 @@
 import { gradingScaleLegend } from '../../../helpers/grading-scale-legend';
 import { module, test } from 'qunit';
-import { GRADING_SCALE } from 'gooru-web/config/config';
+import { GRADING_SCALE } from 'quizzes/config/config';
 
 module('Unit | Helper | grading scale legend');
 

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import BuilderMixin from 'gooru-web/mixins/content/builder';
+import BuilderMixin from 'quizzes/mixins/content/builder';
 
 /**
  * Course content viewer: Accordion Lesson

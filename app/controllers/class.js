@@ -1,5 +1,5 @@
 import Ember from "ember";
-import {KEY_CODES} from "gooru-web/config/config";
+import {KEY_CODES} from "quizzes/config/config";
 
 export default Ember.Controller.extend({
 

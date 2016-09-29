@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import Course from 'gooru-web/models/content/course';
+import Course from 'quizzes/models/content/course';
 
 moduleForComponent('content/courses/gru-course-play', 'Integration | Component | content/courses/gru course play', {
   integration: true
@@ -73,7 +73,7 @@ test('it renders the course information in the side panel', function (assert) {
       id: 'remix-1',
       firstName: 'Russell',
       fullName: 'Russell Owner1',
-      avatarUrl: '/assets/gooru/profile.png'
+      avatarUrl: '/assets/quizzes/profile.png'
     }
   ];
 
@@ -82,7 +82,7 @@ test('it renders the course information in the side panel', function (assert) {
       id: 'owner-1',
       firstName: 'Shawn',
       fullName: 'Shawn Collaborator1',
-      avatarUrl: '/assets/gooru/profile.png'
+      avatarUrl: '/assets/quizzes/profile.png'
     }
   ];
 

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import SessionMixin from 'gooru-web/mixins/session';
+import SessionMixin from 'quizzes/mixins/session';
 
 export default Ember.Object.extend(SessionMixin, {
 

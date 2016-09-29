@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import { TAXONOMY_CATEGORIES } from 'gooru-web/config/config';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
+import { TAXONOMY_CATEGORIES } from 'quizzes/config/config';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
 
 /**
  * Taxonomy selector component

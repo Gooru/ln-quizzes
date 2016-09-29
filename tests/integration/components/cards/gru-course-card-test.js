@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 
 moduleForComponent('cards/gru-course-card', 'Integration | Component | cards/gru course card', {
@@ -15,7 +15,7 @@ test('Course Card Layout', function(assert) {
     'title': 'Water cycle',
     'totalUnits': 8,
     'subjects': ['Science'],
-    'imageUrl': '/assets/gooru/profile.png',
+    'imageUrl': '/assets/quizzes/profile.png',
     'isPublished':true,
     'isVisibleOnProfile':false,
     'originalCreatorId':'some-id',
@@ -28,7 +28,7 @@ test('Course Card Layout', function(assert) {
       'fullName': 'lastname-1 firstname-1',
       'id': 'id-1',
       'lastName': 'lastname-1',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-1'
     }),Ember.Object.create({
       'email': 'user_2@test.com',
@@ -36,7 +36,7 @@ test('Course Card Layout', function(assert) {
       'fullName': 'lastname-2 firstname-2',
       'id': 'id-2',
       'lastName': 'lastname-2',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-2'
     }),Ember.Object.create({
       'email': 'user_3@test.com',
@@ -44,7 +44,7 @@ test('Course Card Layout', function(assert) {
       'fullName': 'lastname-3 firstname-3',
       'id': 'id-1',
       'lastName': 'lastname-3',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-3'
     })])
   });
@@ -73,7 +73,7 @@ test('Course Card Private', function(assert) {
     'title': 'Water cycle',
     'totalUnits': 8,
     'subjects': ['Science'],
-    'imageUrl': '/assets/gooru/profile.png',
+    'imageUrl': '/assets/quizzes/profile.png',
     'isPublished':false,
     'isVisibleOnProfile':false,
     'remixedBy':  Ember.A([Ember.Object.create({
@@ -82,7 +82,7 @@ test('Course Card Private', function(assert) {
       'fullName': 'lastname-1 firstname-1',
       'id': 'id-1',
       'lastName': 'lastname-1',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-1'
     }),Ember.Object.create({
       'email': 'user_2@test.com',
@@ -90,7 +90,7 @@ test('Course Card Private', function(assert) {
       'fullName': 'lastname-2 firstname-2',
       'id': 'id-2',
       'lastName': 'lastname-2',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-2'
     }),Ember.Object.create({
       'email': 'user_1@test.com',
@@ -98,7 +98,7 @@ test('Course Card Private', function(assert) {
       'fullName': 'lastname-3 firstname-3',
       'id': 'id-1',
       'lastName': 'lastname-3',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-3'
     })])
   });
@@ -118,7 +118,7 @@ test('Course Card Layout Owner and Public', function(assert) {
     'title': 'Water cycle',
     'totalUnits': 8,
     'subjects': ['Science'],
-    'imageUrl': '/assets/gooru/profile.png',
+    'imageUrl': '/assets/quizzes/profile.png',
     'isPublished':true,
     'isVisibleOnProfile':false,
     'originalCreatorId':'some-id',
@@ -132,7 +132,7 @@ test('Course Card Layout Owner and Public', function(assert) {
       'fullName': 'lastname-1 firstname-1',
       'id': 'id-1',
       'lastName': 'lastname-1',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-1'
     }),Ember.Object.create({
       'email': 'user_2@test.com',
@@ -140,7 +140,7 @@ test('Course Card Layout Owner and Public', function(assert) {
       'fullName': 'lastname-2 firstname-2',
       'id': 'id-2',
       'lastName': 'lastname-2',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-2'
     }),Ember.Object.create({
       'email': 'user_1@test.com',
@@ -148,7 +148,7 @@ test('Course Card Layout Owner and Public', function(assert) {
       'fullName': 'lastname-3 firstname-3',
       'id': 'id-1',
       'lastName': 'lastname-3',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-3'
     })])
   });
@@ -175,7 +175,7 @@ test('Course Card Layout Owner and Private', function(assert) {
     'title': 'Water cycle',
     'totalUnits': 8,
     'subjects': ['Science'],
-    'imageUrl': '/assets/gooru/profile.png',
+    'imageUrl': '/assets/quizzes/profile.png',
     'isPublished':false,
     'isVisibleOnProfile':true,
     'remixedBy':  Ember.A([Ember.Object.create({
@@ -184,7 +184,7 @@ test('Course Card Layout Owner and Private', function(assert) {
       'fullName': 'lastname-1 firstname-1',
       'id': 'id-1',
       'lastName': 'lastname-1',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-1'
     }),Ember.Object.create({
       'email': 'user_2@test.com',
@@ -192,7 +192,7 @@ test('Course Card Layout Owner and Private', function(assert) {
       'fullName': 'lastname-2 firstname-2',
       'id': 'id-2',
       'lastName': 'lastname-2',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-2'
     }),Ember.Object.create({
       'email': 'user_1@test.com',
@@ -200,7 +200,7 @@ test('Course Card Layout Owner and Private', function(assert) {
       'fullName': 'lastname-3 firstname-3',
       'id': 'id-1',
       'lastName': 'lastname-3',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-3'
     })])
   });
@@ -227,7 +227,7 @@ test('Click Edit', function(assert) {
     'title': 'Water cycle',
     'totalUnits': 8,
     'subjects': ['Science'],
-    'imageUrl': '/assets/gooru/profile.png',
+    'imageUrl': '/assets/quizzes/profile.png',
     'isPublished':true,
     'isVisibleOnProfile':false,
     'remixedBy':  Ember.A([Ember.Object.create({
@@ -236,7 +236,7 @@ test('Click Edit', function(assert) {
       'fullName': 'lastname-1 firstname-1',
       'id': 'id-1',
       'lastName': 'lastname-1',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-1'
     }),Ember.Object.create({
       'email': 'user_2@test.com',
@@ -244,7 +244,7 @@ test('Click Edit', function(assert) {
       'fullName': 'lastname-2 firstname-2',
       'id': 'id-2',
       'lastName': 'lastname-2',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-2'
     }),Ember.Object.create({
       'email': 'user_1@test.com',
@@ -252,7 +252,7 @@ test('Click Edit', function(assert) {
       'fullName': 'lastname-3 firstname-3',
       'id': 'id-1',
       'lastName': 'lastname-3',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-3'
     })])
   });
@@ -276,7 +276,7 @@ test('Click Play', function(assert) {
     'title': 'Water cycle',
     'totalUnits': 8,
     'subjects': ['Science'],
-    'imageUrl': '/assets/gooru/profile.png',
+    'imageUrl': '/assets/quizzes/profile.png',
     'isPublished':true,
     'isVisibleOnProfile':false,
     'remixedBy':  Ember.A([Ember.Object.create({
@@ -285,7 +285,7 @@ test('Click Play', function(assert) {
       'fullName': 'lastname-1 firstname-1',
       'id': 'id-1',
       'lastName': 'lastname-1',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-1'
     }),Ember.Object.create({
       'email': 'user_2@test.com',
@@ -293,7 +293,7 @@ test('Click Play', function(assert) {
       'fullName': 'lastname-2 firstname-2',
       'id': 'id-2',
       'lastName': 'lastname-2',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-2'
     }),Ember.Object.create({
       'email': 'user_1@test.com',
@@ -301,7 +301,7 @@ test('Click Play', function(assert) {
       'fullName': 'lastname-3 firstname-3',
       'id': 'id-1',
       'lastName': 'lastname-3',
-      'avatarUrl': '/assets/gooru/profile.png',
+      'avatarUrl': '/assets/quizzes/profile.png',
       'username': 'username-3'
     })])
   });
@@ -325,7 +325,7 @@ test('Course Card Unit Count with total 1', function(assert) {
     'title': 'Water cycle',
     'unitCount': 1,
     'subjects': ['Science'],
-    'imageUrl': '/assets/gooru/profile.png',
+    'imageUrl': '/assets/quizzes/profile.png',
     'isPublished':true,
     'isVisibleOnProfile':false
   });
@@ -345,7 +345,7 @@ test('Course Card Unit Count more than one', function(assert) {
     'title': 'Water cycle',
     'unitCount': 2,
     'subjects': ['Science'],
-    'imageUrl': '/assets/gooru/profile.png',
+    'imageUrl': '/assets/quizzes/profile.png',
     'isPublished':true,
     'isVisibleOnProfile':false
   });
@@ -365,7 +365,7 @@ test('Course Card Unit Count zero', function(assert) {
     'title': 'Water cycle',
     'unitCount':null,
     'subjects': ['Science'],
-    'imageUrl': '/assets/gooru/profile.png',
+    'imageUrl': '/assets/quizzes/profile.png',
     'isPublished':true,
     'isVisibleOnProfile':false
   });

@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import User from 'gooru-web/models/sign-in/sign-in';
-import Env from 'gooru-web/config/environment';
+import User from 'quizzes/models/sign-in/sign-in';
+import Env from 'quizzes/config/environment';
 
 export default Ember.Controller.extend({
 

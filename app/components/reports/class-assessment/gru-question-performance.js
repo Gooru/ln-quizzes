@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import { getQuestionUtil } from 'gooru-web/config/question';
-import { stats, userAnswers } from 'gooru-web/utils/question-result';
-import { CORRECT_COLOR, INCORRECT_COLOR, ANONYMOUS_COLOR } from 'gooru-web/config/config';
+import { getQuestionUtil } from 'quizzes/config/question';
+import { stats, userAnswers } from 'quizzes/utils/question-result';
+import { CORRECT_COLOR, INCORRECT_COLOR, ANONYMOUS_COLOR } from 'quizzes/config/config';
 
 /**
  * Question Performance Component

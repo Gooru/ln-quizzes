@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
-import { TAXONOMY_LEVELS } from 'gooru-web/config/config';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
+import { TAXONOMY_LEVELS } from 'quizzes/config/config';
 
 /**
  * subject course picker component

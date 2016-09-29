@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import QuestionModel from 'gooru-web/models/content/question';
-import AnswerModel from 'gooru-web/models/content/answer';
+import QuestionModel from 'quizzes/models/content/question';
+import AnswerModel from 'quizzes/models/content/answer';
 
 moduleFor('serializer:content/question', 'Unit | Serializer | content/question');
 

@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import ResourceModel from 'gooru-web/models/content/resource';
-import QuestionModel from 'gooru-web/models/content/question';
-import {DEFAULT_SEARCH_PAGE_SIZE} from 'gooru-web/config/config';
+import ResourceModel from 'quizzes/models/content/resource';
+import QuestionModel from 'quizzes/models/content/question';
+import {DEFAULT_SEARCH_PAGE_SIZE} from 'quizzes/config/config';
 
 /**
  * Adapter to support the Search for Collections, Assessments, Resources and Questions

@@ -1,6 +1,6 @@
 import Ember from "ember";
-import { toLocal } from 'gooru-web/utils/utils';
-import { ASSESSMENT_SHOW_VALUES } from "gooru-web/config/config";
+import { toLocal } from 'quizzes/utils/utils';
+import { ASSESSMENT_SHOW_VALUES } from "quizzes/config/config";
 
 /**
  *

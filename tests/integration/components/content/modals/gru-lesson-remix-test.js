@@ -3,7 +3,7 @@ import hbs from 'htmlbars-inline-precompile';
 import wait from 'ember-test-helpers/wait';
 import Ember from 'ember';
 import DS from 'ember-data';
-import LessonModel from 'gooru-web/models/content/lesson';
+import LessonModel from 'quizzes/models/content/lesson';
 
 const lessonServiceStub = Ember.Service.extend({
 
@@ -122,7 +122,7 @@ test('it shows toast and perform event after copying a lesson', function (assert
     setOptions(options) {
 
       assert.equal(options.positionClass, 'toast-top-full-width', "Toast value for positionClass.");
-      assert.equal(options.toastClass, 'gooru-toast', "Toast value for toastClass.");
+      assert.equal(options.toastClass, 'quizzes-toast', "Toast value for toastClass.");
     }
   }));
   this.inject.service('notifications');

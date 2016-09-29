@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import DropdownItem from '../../../utils/dropdown-item';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 
 moduleForComponent('app-dropdown', 'Integration | Component | app dropdown', {
   integration: true

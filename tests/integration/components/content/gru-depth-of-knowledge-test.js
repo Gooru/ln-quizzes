@@ -2,7 +2,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import DS from 'ember-data';
 import Ember from 'ember';
-import KnowledgeModel from 'gooru-web/models/depth-of-knowledge';
+import KnowledgeModel from 'quizzes/models/depth-of-knowledge';
 import wait from 'ember-test-helpers/wait';
 
 const lookupServiceStub = Ember.Service.extend({

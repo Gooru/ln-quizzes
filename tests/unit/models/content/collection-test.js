@@ -1,6 +1,6 @@
 import Ember from "ember";
-import Resource from 'gooru-web/models/content/resource';
-import Question from 'gooru-web/models/content/question';
+import Resource from 'quizzes/models/content/resource';
+import Question from 'quizzes/models/content/question';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:content/collection', 'Unit | Model | content/collection', {

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { formatTime as formatMilliseconds } from 'gooru-web/utils/utils';
+import { formatTime as formatMilliseconds } from 'quizzes/utils/utils';
 
 export function formatTime(value /*, hash*/) {
   var time = value[0];

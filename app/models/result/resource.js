@@ -1,5 +1,5 @@
 import Ember from "ember";
-import Serializable from 'gooru-web/mixins/serializable';
+import Serializable from 'quizzes/mixins/serializable';
 
 /**
  * Model for the status of a resource after it has been viewed by a user.

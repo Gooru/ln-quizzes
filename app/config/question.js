@@ -1,13 +1,13 @@
 import Ember from 'ember';
-import MultipleChoiceUtil from 'gooru-web/utils/question/multiple-choice';
-import MultipleAnswerUtil from 'gooru-web/utils/question/multiple-answer';
-import TrueFalseUtil from 'gooru-web/utils/question/true-false';
-import OpenEndedUtil from 'gooru-web/utils/question/open-ended';
-import FillInTheBlankUtil from 'gooru-web/utils/question/fill-in-the-blank';
-import ReorderUtil from 'gooru-web/utils/question/reorder';
-import HotSpotImageUtil from 'gooru-web/utils/question/hot-spot-image';
-import HotSpotTextUtil from 'gooru-web/utils/question/hot-spot-text';
-import HotTextHighlightUtil from 'gooru-web/utils/question/hot-text-highlight';
+import MultipleChoiceUtil from 'quizzes/utils/question/multiple-choice';
+import MultipleAnswerUtil from 'quizzes/utils/question/multiple-answer';
+import TrueFalseUtil from 'quizzes/utils/question/true-false';
+import OpenEndedUtil from 'quizzes/utils/question/open-ended';
+import FillInTheBlankUtil from 'quizzes/utils/question/fill-in-the-blank';
+import ReorderUtil from 'quizzes/utils/question/reorder';
+import HotSpotImageUtil from 'quizzes/utils/question/hot-spot-image';
+import HotSpotTextUtil from 'quizzes/utils/question/hot-spot-text';
+import HotTextHighlightUtil from 'quizzes/utils/question/hot-text-highlight';
 
 
 //Question Types

@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import QuestionSerializer from 'gooru-web/serializers/content/question';
-import QuestionAdapter from 'gooru-web/adapters/content/question';
+import QuestionSerializer from 'quizzes/serializers/content/question';
+import QuestionAdapter from 'quizzes/adapters/content/question';
 
 
 /**

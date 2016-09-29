@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import AnswerObject from 'gooru-web/utils/question/answer-object';
-import MultipleAnswerUtil from 'gooru-web/utils/question/multiple-answer';
+import AnswerObject from 'quizzes/utils/question/answer-object';
+import MultipleAnswerUtil from 'quizzes/utils/question/multiple-answer';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | multiple answer');

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
-import AssessmentModel from 'gooru-web/models/content/assessment';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import AssessmentModel from 'quizzes/models/content/assessment';
 
 moduleForService('service:api-sdk/assessment', 'Unit | Service | api-sdk/assessment', {
 

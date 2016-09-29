@@ -1,6 +1,6 @@
-import TaxonomyItem from 'gooru-web/models/taxonomy/taxonomy-item';
-import BrowseItem from 'gooru-web/models/taxonomy/browse-item';
-import { TAXONOMY_CATEGORIES } from 'gooru-web/config/config';
+import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
+import BrowseItem from 'quizzes/models/taxonomy/browse-item';
+import { TAXONOMY_CATEGORIES } from 'quizzes/config/config';
 
 /**
  * Generates a taxonomy tree data structure for testing

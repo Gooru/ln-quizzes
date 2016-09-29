@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import AssessmentResult from 'gooru-web/models/result/assessment';
-import Context from 'gooru-web/models/result/context';
-import {generateUUID} from 'gooru-web/utils/utils';
-import ModalMixin from 'gooru-web/mixins/modal';
+import AssessmentResult from 'quizzes/models/result/assessment';
+import Context from 'quizzes/models/result/context';
+import {generateUUID} from 'quizzes/utils/utils';
+import ModalMixin from 'quizzes/mixins/modal';
 
 /**
  * @typedef { Ember.Route } PlayerRoute

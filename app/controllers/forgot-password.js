@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import User from 'gooru-web/models/forgot-password';
+import User from 'quizzes/models/forgot-password';
 
 export default Ember.Controller.extend({
 

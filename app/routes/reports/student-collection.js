@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import Context from 'gooru-web/models/result/context';
-import PrivateRouteMixin from "gooru-web/mixins/private-route-mixin";
+import Context from 'quizzes/models/result/context';
+import PrivateRouteMixin from "quizzes/mixins/private-route-mixin";
 /**
  *
  * Analytics data for a student related to a collection of resources

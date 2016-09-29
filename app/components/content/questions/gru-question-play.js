@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import QuestionResult from 'gooru-web/models/result/question';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
+import QuestionResult from 'quizzes/models/result/question';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
 
 export default Ember.Component.extend({
 

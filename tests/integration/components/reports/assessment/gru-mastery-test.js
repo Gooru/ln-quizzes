@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
-import LearningTargetResult from 'gooru-web/models/result/learning-target';
+import T from 'quizzes/tests/helpers/assert';
+import LearningTargetResult from 'quizzes/models/result/learning-target';
 import Ember from 'ember';
 
 moduleForComponent('reports/assessment/gru-mastery', 'Integration | Component | reports/assessment/gru mastery', {

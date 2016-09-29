@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
-import { ENTITY_TYPE } from 'gooru-web/config/config';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import { ENTITY_TYPE } from 'quizzes/config/config';
 
 moduleForService('service:api-sdk/media', 'Unit | Service | api-sdk/media', {
   needs: ['adapter:media']

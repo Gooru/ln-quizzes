@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { ANONYMOUS_COLOR } from 'gooru-web/config/config';
+import { ANONYMOUS_COLOR } from 'quizzes/config/config';
 
 /**
  * Completion Chart

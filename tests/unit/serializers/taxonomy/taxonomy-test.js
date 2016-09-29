@@ -1,5 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
 
 moduleFor('serializer:taxonomy/taxonomy', 'Unit | Serializer | taxonomy/taxonomy');
 

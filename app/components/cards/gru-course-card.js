@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import ModalMixin from 'gooru-web/mixins/modal';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
+import ModalMixin from 'quizzes/mixins/modal';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
 
 /**
  * Course card

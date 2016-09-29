@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import RemixBaseModal from 'gooru-web/components/content/modals/gru-base-remix';
+import RemixBaseModal from 'quizzes/components/content/modals/gru-base-remix';
 
 export default RemixBaseModal.extend({
 

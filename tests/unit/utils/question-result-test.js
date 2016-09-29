@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import { averageReaction, answeredResults, correctAnswers, correctPercentage,
   totalTimeSpent, stats , completedResults, sortResults, userAnswers}
-  from 'gooru-web/utils/question-result';
-import QuestionResult from 'gooru-web/models/result/question';
+  from 'quizzes/utils/question-result';
+import QuestionResult from 'quizzes/models/result/question';
 import { module, test } from 'qunit';
 
 

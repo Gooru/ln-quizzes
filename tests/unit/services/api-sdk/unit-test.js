@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
-import UnitModel from 'gooru-web/models/content/unit';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import UnitModel from 'quizzes/models/content/unit';
 
 moduleForService('service:api-sdk/unit', 'Unit | Service | api-sdk/unit', {
   needs: ['serializer:unit/unit', 'model:unit/unit', 'adapter:unit/unit']

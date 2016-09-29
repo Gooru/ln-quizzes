@@ -1,12 +1,12 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import Question from 'gooru-web/models/content/question';
-import Resource from 'gooru-web/models/content/resource';
-import { RESOURCE_TYPES } from 'gooru-web/config/config';
-import { QUESTION_CONFIG } from 'gooru-web/config/question';
+import Question from 'quizzes/models/content/question';
+import Resource from 'quizzes/models/content/resource';
+import { RESOURCE_TYPES } from 'quizzes/config/config';
+import { QUESTION_CONFIG } from 'quizzes/config/question';
 import wait from 'ember-test-helpers/wait';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 
 moduleForComponent('content/collections/gru-collection-list-item', 'Integration | Component | content/collections/gru collection list item', {
   integration: true,

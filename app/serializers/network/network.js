@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import NetworkModel from 'gooru-web/models/network/network';
+import NetworkModel from 'quizzes/models/network/network';
 
 /**
  * Serializer to support the Network CRUD operations for API 3.0

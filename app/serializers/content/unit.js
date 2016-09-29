@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import Lesson from 'gooru-web/models/content/lesson';
-import Unit from 'gooru-web/models/content/unit';
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
-import { TAXONOMY_LEVELS } from 'gooru-web/config/config';
+import Lesson from 'quizzes/models/content/lesson';
+import Unit from 'quizzes/models/content/unit';
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
+import { TAXONOMY_LEVELS } from 'quizzes/config/config';
 
 /**
  * Serializer to support the Unit CRUD operations

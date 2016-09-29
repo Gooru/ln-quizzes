@@ -1,10 +1,10 @@
 import Ember from 'ember';
-import { cleanFilename } from 'gooru-web/utils/utils';
-import CourseModel from 'gooru-web/models/content/course';
-import UnitSerializer from 'gooru-web/serializers/content/unit';
-import ProfileSerializer from 'gooru-web/serializers/profile/profile';
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
-import { DEFAULT_IMAGES, TAXONOMY_LEVELS } from "gooru-web/config/config";
+import { cleanFilename } from 'quizzes/utils/utils';
+import CourseModel from 'quizzes/models/content/course';
+import UnitSerializer from 'quizzes/serializers/content/unit';
+import ProfileSerializer from 'quizzes/serializers/profile/profile';
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
+import { DEFAULT_IMAGES, TAXONOMY_LEVELS } from "quizzes/config/config";
 
 /**
  * Serializer to support the Course CRUD operations for API 3.0

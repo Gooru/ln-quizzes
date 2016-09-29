@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import GruInput from 'gooru-web/components/validation/gru-input';
+import GruInput from 'quizzes/components/validation/gru-input';
 const {
   computed,
   defineProperty

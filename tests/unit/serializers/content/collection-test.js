@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import CollectionModel from 'gooru-web/models/content/collection';
+import CollectionModel from 'quizzes/models/content/collection';
 
 moduleFor('serializer:content/collection', 'Unit | Serializer | content/collection');
 

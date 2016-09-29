@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import Env from 'gooru-web/config/environment';
-import EndPointsConfig from 'gooru-web/utils/endpoint-config';
+import Env from 'quizzes/config/environment';
+import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
 /**
  * Adapter for the Authentication (Login) with API 3.0

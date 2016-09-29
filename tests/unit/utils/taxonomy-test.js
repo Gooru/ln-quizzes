@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
-import { generateTaxonomyTestTree } from 'gooru-web/utils/taxonomy';
-import TaxonomyItem from 'gooru-web/models/taxonomy/taxonomy-item';
+import { generateTaxonomyTestTree } from 'quizzes/utils/taxonomy';
+import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
 
 module('Unit | Utility | taxonomy');
 

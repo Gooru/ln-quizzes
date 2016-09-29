@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import Collection from 'gooru-web/models/content/collection';
-import BuilderMixin from 'gooru-web/mixins/content/builder';
-import ModalMixin from 'gooru-web/mixins/modal';
+import Collection from 'quizzes/models/content/collection';
+import BuilderMixin from 'quizzes/mixins/content/builder';
+import ModalMixin from 'quizzes/mixins/modal';
 
 /**
  * Collection List

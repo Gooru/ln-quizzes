@@ -1,8 +1,7 @@
 import { test } from 'qunit';
-import moduleForAcceptance from 'gooru-web/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'gooru-web/tests/helpers/ember-simple-auth';
-//import T from 'gooru-web/tests/helpers/assert';
-import {KEY_CODES} from "gooru-web/config/config";
+import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
+import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
+import {KEY_CODES} from "quizzes/config/config";
 
 moduleForAcceptance('Acceptance | Edit Course', {
   beforeEach: function () {

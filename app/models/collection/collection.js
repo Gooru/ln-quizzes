@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { ASSESSMENT_SHOW_VALUES } from 'gooru-web/config/config';
+import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
 
 /**
  * @typedef {Object} Collection

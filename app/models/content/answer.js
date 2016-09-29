@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { validator, buildValidations } from 'ember-cp-validations';
-import ResourceAnswer from 'gooru-web/models/resource/answer';
+import ResourceAnswer from 'quizzes/models/resource/answer';
 
 const Validations = buildValidations({
   text: {

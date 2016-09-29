@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import Profile from 'gooru-web/models/profile/profile';
-import { COUNTRY_CODES } from "gooru-web/config/config";
+import Profile from 'quizzes/models/profile/profile';
+import { COUNTRY_CODES } from "quizzes/config/config";
 
 export default Ember.Controller.extend({
 

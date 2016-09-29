@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import { validator, buildValidations } from 'ember-cp-validations';
-import {getQuestionApiType, getQuestionTypeByApiType, QUESTION_TYPES} from 'gooru-web/config/question';
-import PlayerResource from 'gooru-web/models/resource/resource';
-import { TAXONOMY_CATEGORIES } from 'gooru-web/config/config';
-import FillInTheBlank from 'gooru-web/utils/question/fill-in-the-blank';
+import {getQuestionApiType, getQuestionTypeByApiType, QUESTION_TYPES} from 'quizzes/config/question';
+import PlayerResource from 'quizzes/models/resource/resource';
+import { TAXONOMY_CATEGORIES } from 'quizzes/config/config';
+import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
 
 const Validations = buildValidations({
   title: {

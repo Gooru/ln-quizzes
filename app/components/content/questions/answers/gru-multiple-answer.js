@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Answer from 'gooru-web/models/content/answer';
+import Answer from 'quizzes/models/content/answer';
 
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------

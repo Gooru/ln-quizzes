@@ -1,10 +1,10 @@
 import Ember from 'ember';
-import { cleanFilename } from 'gooru-web/utils/utils';
-import CollectionModel from 'gooru-web/models/content/collection';
-import ResourceSerializer from 'gooru-web/serializers/content/resource';
-import QuestionSerializer from 'gooru-web/serializers/content/question';
-import { DEFAULT_IMAGES } from "gooru-web/config/config";
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
+import { cleanFilename } from 'quizzes/utils/utils';
+import CollectionModel from 'quizzes/models/content/collection';
+import ResourceSerializer from 'quizzes/serializers/content/resource';
+import QuestionSerializer from 'quizzes/serializers/content/question';
+import { DEFAULT_IMAGES } from "quizzes/config/config";
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
 
 /**
  * Serializer to support the Collection CRUD operations for API 3.0

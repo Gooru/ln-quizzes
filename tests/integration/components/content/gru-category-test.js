@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { TAXONOMY_CATEGORIES } from 'gooru-web/config/config';
+import { TAXONOMY_CATEGORIES } from 'quizzes/config/config';
 
 moduleForComponent('content/gru-category', 'Integration | Component | content/gru category', {
   integration: true,

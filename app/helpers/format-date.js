@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { formatDate as formatDateTo } from 'gooru-web/utils/utils';
+import { formatDate as formatDateTo } from 'quizzes/utils/utils';
 
 export function formatDate(value /*, hash*/) {
   const date = value[0];

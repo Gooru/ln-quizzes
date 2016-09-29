@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
-import LessonModel from 'gooru-web/models/content/lesson';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import LessonModel from 'quizzes/models/content/lesson';
 
 moduleForService('service:api-sdk/lesson', 'Unit | Service | api-sdk/lesson', {
   needs: ['serializer:lesson/lesson', 'model:lesson/lesson', 'adapter:lesson/lesson']

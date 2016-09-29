@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
-import TaxonomyRoot from 'gooru-web/models/taxonomy/taxonomy-root';
-import TaxonomyItem from 'gooru-web/models/taxonomy/taxonomy-item';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import TaxonomyRoot from 'quizzes/models/taxonomy/taxonomy-root';
+import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
 
 moduleForService('service:taxonomy', 'Unit | Service | taxonomy', {
   beforeEach: function() {

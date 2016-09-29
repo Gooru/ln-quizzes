@@ -2,15 +2,15 @@
 
 module.exports = function (environment) {
 
-  var isEmbedded = process.env.GOORU_EMBEDDED === 'true';
+  var isEmbedded = process.env.QUIZZES_EMBEDDED === 'true';
 
   var ENV = {
-    modulePrefix: 'gooru-web',
+    modulePrefix: 'quizzes',
     rootElement: "#gooru-application-container",
     environment: environment,
     baseURL: isEmbedded ? undefined : '/',
     locationType: isEmbedded ? 'none' : 'auto',
-    exportApplicationGlobal: "GooruWebApp",
+    exportApplicationGlobal: "QuizzesWebApp",
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

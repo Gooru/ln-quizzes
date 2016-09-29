@@ -1,4 +1,4 @@
-import QuestionResult from 'gooru-web/models/result/question';
+import QuestionResult from 'quizzes/models/result/question';
 import { module, test } from 'qunit';
 
 module('Unit | Model | result/question');

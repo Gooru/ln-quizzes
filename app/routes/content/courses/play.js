@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import BuilderItem from 'gooru-web/models/content/builder/item';
+import BuilderItem from 'quizzes/models/content/builder/item';
 
 export default Ember.Route.extend({
 

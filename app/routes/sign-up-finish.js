@@ -1,5 +1,5 @@
 import Ember from "ember";
-import { COUNTRY_CODES } from "gooru-web/config/config";
+import { COUNTRY_CODES } from "quizzes/config/config";
 
 export default Ember.Route.extend({
 

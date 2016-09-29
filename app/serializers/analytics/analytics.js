@@ -1,12 +1,12 @@
 import Ember from 'ember';
 
-import UserResourcesResult from 'gooru-web/models/result/user-resources';
-import ResourceResult from 'gooru-web/models/result/resource';
-import QuestionResult from 'gooru-web/models/result/question';
-import AnswerObject from 'gooru-web/utils/question/answer-object';
-import LearningTarget from 'gooru-web/models/result/learning-target';
-import { getQuestionUtil } from 'gooru-web/config/question';
-import { toLocal } from 'gooru-web/utils/utils';
+import UserResourcesResult from 'quizzes/models/result/user-resources';
+import ResourceResult from 'quizzes/models/result/resource';
+import QuestionResult from 'quizzes/models/result/question';
+import AnswerObject from 'quizzes/utils/question/answer-object';
+import LearningTarget from 'quizzes/models/result/learning-target';
+import { getQuestionUtil } from 'quizzes/config/question';
+import { toLocal } from 'quizzes/utils/utils';
 
 export default Ember.Object.extend({
 
@@ -89,7 +89,7 @@ export default Ember.Object.extend({
 
   /**
    * Answer object information
-   * @see gooru-web/utils/question/*
+   * @see quizzes/utils/question/*
    *
    * @param {string|[]} answerObjects
    * @returns {AnswerObject[]}

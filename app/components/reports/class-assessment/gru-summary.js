@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import { getGradeColor } from 'gooru-web/utils/utils';
-import { GRADING_SCALE } from 'gooru-web/config/config';
-import { average } from 'gooru-web/utils/math';
+import { getGradeColor } from 'quizzes/utils/utils';
+import { GRADING_SCALE } from 'quizzes/config/config';
+import { average } from 'quizzes/utils/math';
 
 /**
  * Class assessment summary

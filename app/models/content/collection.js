@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import CollectionBase from 'gooru-web/models/content/collection-base';
+import CollectionBase from 'quizzes/models/content/collection-base';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({

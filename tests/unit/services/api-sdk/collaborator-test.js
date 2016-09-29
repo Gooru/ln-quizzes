@@ -1,5 +1,5 @@
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
 
 moduleForService('service:api-sdk/collaborator', 'Unit | Service | api-sdk/collaborator', {
 

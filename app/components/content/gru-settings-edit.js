@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { ASSESSMENT_SHOW_VALUES, MAX_ATTEMPTS } from "gooru-web/config/config";
+import { ASSESSMENT_SHOW_VALUES, MAX_ATTEMPTS } from "quizzes/config/config";
 
 export default Ember.Component.extend({
 

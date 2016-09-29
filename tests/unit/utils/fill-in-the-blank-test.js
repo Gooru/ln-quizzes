@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import AnswerObject from 'gooru-web/utils/question/answer-object';
-import FillInTheBlankUtil from 'gooru-web/utils/question/fill-in-the-blank';
+import AnswerObject from 'quizzes/utils/question/answer-object';
+import FillInTheBlankUtil from 'quizzes/utils/question/fill-in-the-blank';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | fill in the blank');

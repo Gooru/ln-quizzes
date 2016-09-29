@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { COUNTRY_CODES, DEFAULT_IMAGES } from 'gooru-web/config/config';
+import { COUNTRY_CODES, DEFAULT_IMAGES } from 'quizzes/config/config';
 
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------

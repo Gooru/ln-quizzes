@@ -1,5 +1,5 @@
-import Answer from 'gooru-web/models/content/answer';
-import {QUESTION_TYPES} from 'gooru-web/config/question';
+import Answer from 'quizzes/models/content/answer';
+import {QUESTION_TYPES} from 'quizzes/config/question';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:content/question', 'Unit | Model | content/question', {

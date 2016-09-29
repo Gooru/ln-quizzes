@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { CONTENT_TYPES } from "gooru-web/config/config";
+import { CONTENT_TYPES } from "quizzes/config/config";
 
 /**
  * Builder lesson item

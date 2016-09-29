@@ -1,6 +1,6 @@
 import { test } from 'qunit';
-import moduleForAcceptance from 'gooru-web/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'gooru-web/tests/helpers/ember-simple-auth';
+import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
+import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 
 moduleForAcceptance('Acceptance | SignUp', {
   beforeEach: function () {

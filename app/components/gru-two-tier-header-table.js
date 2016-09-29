@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { numberSort } from 'gooru-web/utils/utils';
+import { numberSort } from 'quizzes/utils/utils';
 
 /**
  * Two-tier header table

@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import Collection from 'gooru-web/models/content/collection';
-import Lesson from 'gooru-web/models/content/lesson';
-import Unit from 'gooru-web/models/content/unit';
-import Course from 'gooru-web/models/content/course';
+import Collection from 'quizzes/models/content/collection';
+import Lesson from 'quizzes/models/content/lesson';
+import Unit from 'quizzes/models/content/unit';
+import Course from 'quizzes/models/content/course';
 
 export default Ember.Component.extend({
 

@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import LessonItem from 'gooru-web/models/content/lessonItem';
+import LessonItem from 'quizzes/models/content/lessonItem';
 import Ember from 'ember';
 
 moduleForComponent('content/courses/edit/gru-accordion-lesson-item', 'Integration | Component | content/courses/edit/gru accordion lesson item', {

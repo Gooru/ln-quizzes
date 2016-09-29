@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { TAXONOMY_CATEGORIES } from 'gooru-web/config/config';
+import { TAXONOMY_CATEGORIES } from 'quizzes/config/config';
 
 /**
  * Category component

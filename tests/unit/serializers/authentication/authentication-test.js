@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
-import Env from 'gooru-web/config/environment';
-import { DEFAULT_IMAGES } from 'gooru-web/config/config';
+import Env from 'quizzes/config/environment';
+import { DEFAULT_IMAGES } from 'quizzes/config/config';
 
 moduleFor('serializer:authentication/authentication', 'Unit | Serializer | authentication/authentication');
 

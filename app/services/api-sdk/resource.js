@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import ResourceSerializer from 'gooru-web/serializers/content/resource';
-import ResourceAdapter from 'gooru-web/adapters/content/resource';
+import ResourceSerializer from 'quizzes/serializers/content/resource';
+import ResourceAdapter from 'quizzes/adapters/content/resource';
 
 
 /**

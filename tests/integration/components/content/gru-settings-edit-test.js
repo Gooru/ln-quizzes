@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import { ASSESSMENT_SHOW_VALUES } from "gooru-web/config/config";
+import { ASSESSMENT_SHOW_VALUES } from "quizzes/config/config";
 
 moduleForComponent('content/gru-settings-edit', 'Integration | Component | gru settings edit', {
   integration: true,

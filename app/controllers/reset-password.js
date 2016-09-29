@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import Profile from 'gooru-web/models/profile/profile';
-import ResetPasswordValidations from 'gooru-web/validations/reset-password';
-import Env from 'gooru-web/config/environment';
+import Profile from 'quizzes/models/profile/profile';
+import ResetPasswordValidations from 'quizzes/validations/reset-password';
+import Env from 'quizzes/config/environment';
 
 export default Ember.Controller.extend({
 

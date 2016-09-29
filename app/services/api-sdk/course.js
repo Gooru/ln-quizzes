@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import StoreMixin from '../../mixins/store';
-import CourseSerializer from 'gooru-web/serializers/content/course';
-import CourseAdapter from 'gooru-web/adapters/content/course';
+import CourseSerializer from 'quizzes/serializers/content/course';
+import CourseAdapter from 'quizzes/adapters/content/course';
 
 
 /**

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {noTags as cleanTags } from 'gooru-web/utils/utils';
+import {noTags as cleanTags } from 'quizzes/utils/utils';
 
 export function noTags(params, hash) {
   return cleanTags(hash.text);

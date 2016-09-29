@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import { getQuestionUtil } from  'gooru-web/config/question';
+import { getQuestionUtil } from  'quizzes/config/question';
 
 /**
- * Gooru question base component
+ * Quizzes question base component
  *
  * This component contains convenience methods, properties and functionality to share across
  * all question type components
@@ -79,7 +79,7 @@ export default Ember.Component.extend({
 
   /**
    * @property {string} user answer
-   * @see gooru-web/utils/question/multiplce-choice.js
+   * @see quizzes/utils/question/multiplce-choice.js
    */
   userAnswer: null,
   /**

@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import Resource from 'gooru-web/models/content/resource';
-import { RESOURCE_TYPES, UPLOADABLE_TYPES } from 'gooru-web/config/config';
-import ResourceValidations from 'gooru-web/validations/resource';
+import Resource from 'quizzes/models/content/resource';
+import { RESOURCE_TYPES, UPLOADABLE_TYPES } from 'quizzes/config/config';
+import ResourceValidations from 'quizzes/validations/resource';
 
 export default Ember.Component.extend({
 
@@ -195,7 +195,7 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * @type {String} list of all valid extension per gooru-web/config/config#UPLOAD_TYPES
+   * @type {String} list of all valid extension per quizzes/config/config#UPLOAD_TYPES
    */
   allValidExtensions: Ember.computed(function() {
     var extensions = UPLOADABLE_TYPES.map(function(typeObject) {
@@ -272,7 +272,7 @@ export default Ember.Component.extend({
   // Methods
 
   /**
-   * Determine the upload type object (@see gooru-web/config/config#UPLOAD_TYPES) based on a file name extension.
+   * Determine the upload type object (@see quizzes/config/config#UPLOAD_TYPES) based on a file name extension.
    * @param {String} filename -Complete file name (including the extension)
    * @param {Object[]} uploadTypes
    * @return {Object}

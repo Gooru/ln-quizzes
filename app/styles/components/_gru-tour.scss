@@ -58,7 +58,7 @@
       min-width: 185px;
 
       .real-time-icon {
-        background-image: url('gooru/images/on-air-icon.svg');
+        background-image: url('quizzes/images/on-air-icon.svg');
         display: block;
         height: 42px;
         margin: 0 auto;
@@ -68,7 +68,7 @@
 
     .overview-tour-image {
       @include flex-shrink(0);
-      background-image: url('gooru/go-live-tooltip.png');
+      background-image: url('quizzes/go-live-tooltip.png');
       height: 300px;
       margin-right: 20px;
       width: 380px;

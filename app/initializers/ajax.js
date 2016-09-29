@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import EndPointsConfig from 'gooru-web/utils/endpoint-config';
+import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
 export default {
   name: 'ajax',

@@ -1,6 +1,6 @@
 import Ember from "ember";
-import { REAL_TIME_CLIENT } from 'gooru-web/config/config';
-import EndPointsConfig from 'gooru-web/utils/endpoint-config';
+import { REAL_TIME_CLIENT } from 'quizzes/config/config';
+import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
 /**
  *

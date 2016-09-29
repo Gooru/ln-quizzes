@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
-import ClassModel from 'gooru-web/models/content/class';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import ClassModel from 'quizzes/models/content/class';
 
 moduleForService('service:api-sdk/class', 'Unit | Service | api-sdk/class', {
   needs: [

@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import QuestionResult from 'gooru-web/models/result/question';
-import Assessment from 'gooru-web/models/content/assessment';
-import T from 'gooru-web/tests/helpers/assert';
-import { ASSESSMENT_SHOW_VALUES } from 'gooru-web/config/config';
+import QuestionResult from 'quizzes/models/result/question';
+import Assessment from 'quizzes/models/content/assessment';
+import T from 'quizzes/tests/helpers/assert';
+import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
 
 moduleForComponent('player/gru-question-viewer', 'Integration | Component | player/gru question viewer', {
   integration: true,

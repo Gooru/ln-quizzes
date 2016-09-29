@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getReactionIcon } from 'gooru-web/utils/utils';
+import { getReactionIcon } from 'quizzes/utils/utils';
 
 /**
  * Get an icon depending on a emotion value (@see /app/config/config.js#L33)

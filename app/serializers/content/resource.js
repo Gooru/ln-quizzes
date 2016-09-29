@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import ResourceModel from 'gooru-web/models/content/resource';
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
+import ResourceModel from 'quizzes/models/content/resource';
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
 
 /**
  * Serializer to support the Resource CRUD operations for API 3.0

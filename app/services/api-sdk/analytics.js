@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import PeerAdapter from 'gooru-web/adapters/analytics/peer';
-import PeerSerializer from 'gooru-web/serializers/analytics/peer';
-import CurrentLocationAdapter from 'gooru-web/adapters/analytics/current-location';
-import CurrentLocationSerializer from 'gooru-web/serializers/analytics/current-location';
+import PeerAdapter from 'quizzes/adapters/analytics/peer';
+import PeerSerializer from 'quizzes/serializers/analytics/peer';
+import CurrentLocationAdapter from 'quizzes/adapters/analytics/current-location';
+import CurrentLocationSerializer from 'quizzes/serializers/analytics/current-location';
 
 export default Ember.Service.extend({
 

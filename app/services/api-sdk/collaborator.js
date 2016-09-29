@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import CollaboratorAdapter from 'gooru-web/adapters/collaborator/collaborator';
+import CollaboratorAdapter from 'quizzes/adapters/collaborator/collaborator';
 
 export default Ember.Service.extend({
 

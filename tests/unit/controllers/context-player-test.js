@@ -1,12 +1,12 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import Assessment from 'gooru-web/models/content/assessment';
-import Collection from 'gooru-web/models/content/collection';
-import Question from 'gooru-web/models/content/question';
-import Context from 'gooru-web/models/result/context';
-import AssessmentResult from 'gooru-web/models/result/assessment';
-import QuestionResult from 'gooru-web/models/result/question';
-import ResourceResult from 'gooru-web/models/result/resource';
+import Assessment from 'quizzes/models/content/assessment';
+import Collection from 'quizzes/models/content/collection';
+import Question from 'quizzes/models/content/question';
+import Context from 'quizzes/models/result/context';
+import AssessmentResult from 'quizzes/models/result/assessment';
+import QuestionResult from 'quizzes/models/result/question';
+import ResourceResult from 'quizzes/models/result/resource';
 
 moduleFor('controller:context-player', 'Unit | Controller | context player', {
 });

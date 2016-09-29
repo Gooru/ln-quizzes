@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
 
 moduleForService('service:configuration', 'Unit | Service | configuration', {
   // Specify the other units that are required for this test.

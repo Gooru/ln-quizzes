@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { TOKEN_EXPIRATION_TIME } from 'gooru-web/config/config';
+import { TOKEN_EXPIRATION_TIME } from 'quizzes/config/config';
 
 export default Ember.Service.extend({
 

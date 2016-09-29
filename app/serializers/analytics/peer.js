@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import PeerModel from 'gooru-web/models/analytics/peer';
+import PeerModel from 'quizzes/models/analytics/peer';
 
 /**
  * Peer's Serializer

@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import TaxonomyRoot from 'gooru-web/models/taxonomy/taxonomy-root';
-import TaxonomyItem from 'gooru-web/models/taxonomy/taxonomy-item';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
-import { TAXONOMY_LEVELS } from 'gooru-web/config/config';
+import TaxonomyRoot from 'quizzes/models/taxonomy/taxonomy-root';
+import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
+import { TAXONOMY_LEVELS } from 'quizzes/config/config';
 
 /**
  * Serializer for Taxonomy endpoints

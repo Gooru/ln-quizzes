@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import { ASSESSMENT_SHOW_VALUES } from "gooru-web/config/config";
-import AssessmentModel from 'gooru-web/models/content/assessment';
+import { ASSESSMENT_SHOW_VALUES } from "quizzes/config/config";
+import AssessmentModel from 'quizzes/models/content/assessment';
 
 moduleFor('serializer:content/assessment', 'Unit | Serializer | content/assessment');
 

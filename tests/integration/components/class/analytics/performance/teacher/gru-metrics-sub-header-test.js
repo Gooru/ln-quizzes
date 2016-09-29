@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import Ember from "ember";
 
 moduleForComponent('/class/analytics/performance/teacher/gru-metrics-sub-header', 'Integration | Component | /class/analytics/performance/teacher/gru-metrics-sub-header', {

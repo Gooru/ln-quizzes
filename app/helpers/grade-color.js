@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getGradeColor } from 'gooru-web/utils/utils';
+import { getGradeColor } from 'quizzes/utils/utils';
 
 /**
  * Get the color for the grade bracket that a score falls under per the app's grading scale (@see /app/config/config.js#GRADING_SCALE)

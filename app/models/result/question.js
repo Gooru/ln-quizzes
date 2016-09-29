@@ -1,6 +1,6 @@
 import Ember from "ember";
-import ResourceResult from 'gooru-web/models/result/resource';
-import { getQuestionUtil } from 'gooru-web/config/question';
+import ResourceResult from 'quizzes/models/result/resource';
+import { getQuestionUtil } from 'quizzes/config/question';
 
 /**
  * Model for a brief summary of the status of a question after it was answered by a user.

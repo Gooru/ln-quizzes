@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import AnswerObject from 'gooru-web/utils/question/answer-object';
-import ReorderUtil from 'gooru-web/utils/question/reorder';
+import AnswerObject from 'quizzes/utils/question/answer-object';
+import ReorderUtil from 'quizzes/utils/question/reorder';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | reorder');

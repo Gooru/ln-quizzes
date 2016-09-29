@@ -11,7 +11,7 @@ test('thumbnailUrl with no thumbnail', function(assert) {
     "resourceFormat": "image"
   });
 
-  assert.equal(model.get("thumbnailUrl"), "/assets/gooru/default-image.png", "Wrong url");
+  assert.equal(model.get("thumbnailUrl"), "/assets/quizzes/default-image.png", "Wrong url");
 });
 
 test('thumbnailUrl with thumbnail', function(assert) {

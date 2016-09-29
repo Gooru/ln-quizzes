@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { correctPercentage, totalCompleted,totalNotStarted } from 'gooru-web/utils/question-result';
+import { correctPercentage, totalCompleted,totalNotStarted } from 'quizzes/utils/question-result';
 
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------

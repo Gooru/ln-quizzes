@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import AuthenticationSerializer from 'gooru-web/serializers/authentication/authentication';
-import AuthenticationAdapter from 'gooru-web/adapters/authentication/authentication';
-import ProfileAdapter from 'gooru-web/adapters/profile/profile';
+import AuthenticationSerializer from 'quizzes/serializers/authentication/authentication';
+import AuthenticationAdapter from 'quizzes/adapters/authentication/authentication';
+import ProfileAdapter from 'quizzes/adapters/profile/profile';
 
 /**
  * Service for the Authentication (Login) with API 3.0

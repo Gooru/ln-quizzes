@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import T from 'gooru-web/tests/helpers/assert';
-import QuestionResult from 'gooru-web/models/result/question';
+import T from 'quizzes/tests/helpers/assert';
+import QuestionResult from 'quizzes/models/result/question';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('player/gru-navigator', 'Integration | Component | player/gru navigator', {

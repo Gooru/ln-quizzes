@@ -1,6 +1,6 @@
 import { test } from 'ember-qunit';
 import Ember from 'ember';
-import moduleForAdapter from 'gooru-web/tests/helpers/module-for-adapter';
+import moduleForAdapter from 'quizzes/tests/helpers/module-for-adapter';
 
 moduleForAdapter('adapter:collaborator/collaborator', 'Unit | Adapter | collaborator/collaborator', {
   // needs: []

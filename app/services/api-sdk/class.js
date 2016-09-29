@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import ClassSerializer from 'gooru-web/serializers/content/class';
-import ClassAdapter from 'gooru-web/adapters/content/class';
+import ClassSerializer from 'quizzes/serializers/content/class';
+import ClassAdapter from 'quizzes/adapters/content/class';
 
 /**
  * @typedef {Object} ClassService

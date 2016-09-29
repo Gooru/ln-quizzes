@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
-import Env from 'gooru-web/config/environment';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import Env from 'quizzes/config/environment';
 
 const ConfigEvent = Env['events'] || {};
 

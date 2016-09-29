@@ -1,4 +1,4 @@
 import Ember from 'ember';
-import ContentEditMixin from 'gooru-web/mixins/content/edit';
+import ContentEditMixin from 'quizzes/mixins/content/edit';
 
 export default Ember.Controller.extend(ContentEditMixin, {});

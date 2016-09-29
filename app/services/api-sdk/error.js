@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import ErrorSerializer from 'gooru-web/serializers/error/error';
-import ErrorAdapter from 'gooru-web/adapters/error/error';
+import ErrorSerializer from 'quizzes/serializers/error/error';
+import ErrorAdapter from 'quizzes/adapters/error/error';
 
 
 export default Ember.Service.extend({

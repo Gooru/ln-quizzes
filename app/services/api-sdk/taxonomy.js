@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
-import TaxonomyAdapter from 'gooru-web/adapters/taxonomy/taxonomy';
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
+import TaxonomyAdapter from 'quizzes/adapters/taxonomy/taxonomy';
 
 /**
  * API-SDK Service for the Taxonomies back-end endpoints

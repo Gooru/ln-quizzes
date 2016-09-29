@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-import { createDataMatrix } from 'gooru-web/utils/performance-data';
+import { createDataMatrix } from 'quizzes/utils/performance-data';
 
 /**
  * Teacher Analytics Performance Controller - Course Level

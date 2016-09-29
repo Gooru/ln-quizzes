@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { average, roundFloat } from "gooru-web/utils/math";
+import { average, roundFloat } from "quizzes/utils/math";
 
 /**
  * Utility methods to handle stats for QuestionResult instances

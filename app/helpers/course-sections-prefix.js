@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { courseSectionsPrefix } from 'gooru-web/utils/utils';
+import { courseSectionsPrefix } from 'quizzes/utils/utils';
 
 /**Show the Unit, Lesson, Assessment and Collection label correctly,
  *  this is showing the letter and number prior the name.

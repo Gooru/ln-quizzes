@@ -17,7 +17,7 @@ import {
   cleanFilename,
   getFileNameFromInvalidUrl,
   replaceMathExpression
-  } from 'gooru-web/utils/utils';
+  } from 'quizzes/utils/utils';
 
 import { module, test } from 'qunit';
 

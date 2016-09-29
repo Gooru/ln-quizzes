@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import BrowseItem from 'gooru-web/models/taxonomy/browse-item';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
+import BrowseItem from 'quizzes/models/taxonomy/browse-item';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
 
 /**
  * Taxonomy Picker

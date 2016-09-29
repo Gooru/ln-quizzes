@@ -1,9 +1,9 @@
 import Ember from "ember";
 import GruTheme from '../utils/gru-theme';
 import Env from '../config/environment';
-import PublicRouteMixin from "gooru-web/mixins/public-route-mixin";
-import GooruLegacyUrl from 'gooru-web/utils/gooru-legacy-url';
-import Error from 'gooru-web/models/error';
+import PublicRouteMixin from "quizzes/mixins/public-route-mixin";
+import GooruLegacyUrl from 'quizzes/utils/gooru-legacy-url';
+import Error from 'quizzes/models/error';
 
 /**
  * @typedef {object} ApplicationRoute

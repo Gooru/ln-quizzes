@@ -1,10 +1,10 @@
 import Ember from 'ember';
-import CountryModel from 'gooru-web/models/country';
-import StateModel from 'gooru-web/models/state';
-import DistrictModel from 'gooru-web/models/district';
-import AudienceModel from 'gooru-web/models/audience';
-import DepthOfKnowledgeModel from 'gooru-web/models/depth-of-knowledge';
-import LicenseModel from 'gooru-web/models/license';
+import CountryModel from 'quizzes/models/country';
+import StateModel from 'quizzes/models/state';
+import DistrictModel from 'quizzes/models/district';
+import AudienceModel from 'quizzes/models/audience';
+import DepthOfKnowledgeModel from 'quizzes/models/depth-of-knowledge';
+import LicenseModel from 'quizzes/models/license';
 
 /**
  * Serializer to support the Profile CRUD operations for API 3.0

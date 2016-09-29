@@ -1,5 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
-import NetworkModel from 'gooru-web/models/network/network';
+import NetworkModel from 'quizzes/models/network/network';
 
 moduleFor('serializer:network/network', 'Unit | Serializer | network/network');
 

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import utils from 'gooru-web/utils/utils';
+import utils from 'quizzes/utils/utils';
 import Env from '../config/environment';
 const ConfigEvent = Env['events'] || {};
 

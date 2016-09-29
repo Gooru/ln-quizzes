@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import CollectionSerializer from 'gooru-web/serializers/content/collection';
-import CollectionAdapter from 'gooru-web/adapters/content/collection';
+import CollectionSerializer from 'quizzes/serializers/content/collection';
+import CollectionAdapter from 'quizzes/adapters/content/collection';
 
 
 /**

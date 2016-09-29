@@ -1,9 +1,9 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import Collection from 'gooru-web/models/content/collection';
-import Question from 'gooru-web/models/content/question';
-import Resource from 'gooru-web/models/content/resource';
+import Collection from 'quizzes/models/content/collection';
+import Question from 'quizzes/models/content/question';
+import Resource from 'quizzes/models/content/resource';
 
 moduleForComponent('content/collections/gru-collection-list', 'Integration | Component | content/collections/gru collection list', {
   integration: true,

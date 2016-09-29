@@ -2,10 +2,10 @@ import { moduleForComponent, test } from 'ember-qunit';
 import wait from 'ember-test-helpers/wait';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import T from 'gooru-web/tests/helpers/assert';
-import TaxonomyRoot from 'gooru-web/models/taxonomy/taxonomy-root';
-import TaxonomyItem from 'gooru-web/models/taxonomy/taxonomy-item';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
+import T from 'quizzes/tests/helpers/assert';
+import TaxonomyRoot from 'quizzes/models/taxonomy/taxonomy-root';
+import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
 
 
 const taxonomyServiceStub = Ember.Service.extend({

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Env from 'gooru-web/config/environment';
+import Env from 'quizzes/config/environment';
 
 export default Ember.Controller.extend({
 

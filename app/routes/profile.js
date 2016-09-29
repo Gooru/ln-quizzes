@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import Profile from 'gooru-web/models/profile/profile';
-import EditProfileValidations from 'gooru-web/validations/edit-profile';
+import Profile from 'quizzes/models/profile/profile';
+import EditProfileValidations from 'quizzes/validations/edit-profile';
 
 export default Ember.Route.extend({
   // -------------------------------------------------------------------------

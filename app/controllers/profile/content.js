@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import ModalMixin from 'gooru-web/mixins/modal';
-import ContentSearch from 'gooru-web/models/search/content-search';
+import ModalMixin from 'quizzes/mixins/modal';
+import ContentSearch from 'quizzes/models/search/content-search';
 
 export default Ember.Controller.extend(ModalMixin, {
   queryParams: ['term','sortOn','order'],

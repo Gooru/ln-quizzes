@@ -2,10 +2,10 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import wait from 'ember-test-helpers/wait';
 import Ember from 'ember';
-import Resource from 'gooru-web/models/content/resource';
-import Collection from 'gooru-web/models/content/collection';
-import EditResourceValidations from 'gooru-web/validations/edit-resource';
-import CreateResourceValidations from 'gooru-web/validations/create-resource';
+import Resource from 'quizzes/models/content/resource';
+import Collection from 'quizzes/models/content/collection';
+import EditResourceValidations from 'quizzes/validations/edit-resource';
+import CreateResourceValidations from 'quizzes/validations/create-resource';
 
 const taxonomyServiceStub = Ember.Service.extend({
 

@@ -1,12 +1,12 @@
 import Ember from 'ember';
-import ContentEditMixin from 'gooru-web/mixins/content/edit';
-import {QUESTION_CONFIG} from 'gooru-web/config/question';
-import {CONTENT_TYPES, K12_CATEGORY} from 'gooru-web/config/config';
-import ModalMixin from 'gooru-web/mixins/modal';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
-import FillInTheBlank from 'gooru-web/utils/question/fill-in-the-blank';
-import { replaceMathExpression, removeHtmlTags } from 'gooru-web/utils/utils';
+import ContentEditMixin from 'quizzes/mixins/content/edit';
+import {QUESTION_CONFIG} from 'quizzes/config/question';
+import {CONTENT_TYPES, K12_CATEGORY} from 'quizzes/config/config';
+import ModalMixin from 'quizzes/mixins/modal';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
+import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
+import { replaceMathExpression, removeHtmlTags } from 'quizzes/utils/utils';
 
 
 export default Ember.Component.extend(ContentEditMixin,ModalMixin,{

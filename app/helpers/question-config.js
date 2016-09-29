@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getQuestionConfig } from "gooru-web/config/question";
+import { getQuestionConfig } from "quizzes/config/question";
 
 export function questionConfig(value /*, options*/) {
   const questionType = value[0];

@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 
 moduleForComponent('cards/gru-class-card', 'Integration | Component | cards/gru class card', {

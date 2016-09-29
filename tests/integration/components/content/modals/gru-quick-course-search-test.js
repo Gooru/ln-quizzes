@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import CourseModel from 'gooru-web/models/content/course';
+import CourseModel from 'quizzes/models/content/course';
 
 import Ember from 'ember';
 

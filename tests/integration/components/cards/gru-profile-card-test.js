@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import wait from 'ember-test-helpers/wait';
-import ProfileModel from 'gooru-web/models/profile/profile';
+import ProfileModel from 'quizzes/models/profile/profile';
 
 moduleForComponent('cards/gru-profile-card', 'Integration | Component | cards/gru profile card', {
   integration: true,
@@ -15,7 +15,7 @@ test('it renders', function (assert) {
   assert.expect(5);
 
   const mockProfile = ProfileModel.create({
-    avatarUrl: "/assets/gooru/profile.png",
+    avatarUrl: "/assets/quizzes/profile.png",
     firstName: "John",
     lastName: "Doe",
     username: "JohnDoe",
@@ -38,7 +38,7 @@ test('it renders', function (assert) {
 
   return wait().then(function () {
     const $image = $component.find('> div > span > img');
-    assert.equal($image.attr('src'), '/assets/gooru/profile.png');
+    assert.equal($image.attr('src'), '/assets/quizzes/profile.png');
 
     const $name = $component.find('> div > strong');
     assert.equal($name.text(), 'JohnDoe');

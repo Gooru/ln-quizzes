@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import { ENTITY_TYPE } from 'gooru-web/config/config';
-import MediaAdapter from 'gooru-web/adapters/media';
+import { ENTITY_TYPE } from 'quizzes/config/config';
+import MediaAdapter from 'quizzes/adapters/media';
 
 /**
  * @typedef {Object} MediaService

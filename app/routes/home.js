@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import PrivateRouteMixin from "gooru-web/mixins/private-route-mixin";
-import ClassesModel from 'gooru-web/models/content/classes';
+import PrivateRouteMixin from "quizzes/mixins/private-route-mixin";
+import ClassesModel from 'quizzes/models/content/classes';
 
 /**
  * Home route

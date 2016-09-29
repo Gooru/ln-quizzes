@@ -1,4 +1,4 @@
-import ConfigurationService from 'gooru-web/services/configuration';
+import ConfigurationService from 'quizzes/services/configuration';
 
 export function getEndpointUrl() {
   const configuration = ConfigurationService.configuration;

@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import BuilderItem from 'gooru-web/models/content/builder/item';
-import BuilderMixin from 'gooru-web/mixins/content/builder';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
+import BuilderItem from 'quizzes/models/content/builder/item';
+import BuilderMixin from 'quizzes/mixins/content/builder';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
 
 /**
  * Course content viewer: Accordion Unit

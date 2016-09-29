@@ -119,7 +119,7 @@ export default Ember.Service.extend(StoreMixin, {
         fullName: 'lastname-' + index + ', firstname-' + index,
         email: 'user_' + index + '@test.com',
         username: 'username-' + index,
-        avatarUrl: '/assets/gooru/profile.png'
+        avatarUrl: '/assets/quizzes/profile.png'
       })
     });
   },

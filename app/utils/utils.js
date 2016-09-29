@@ -3,7 +3,7 @@ import { isNumeric } from './math';
 import {
   DEFAULT_IMAGES,
   EMOTION_VALUES,
-  GRADING_SCALE } from 'gooru-web/config/config';
+  GRADING_SCALE } from 'quizzes/config/config';
 /**
  * Function for sorting strings alphabetically in ascending order
  * @param {string} a
@@ -182,7 +182,7 @@ export function getReactionIcon(reactionValue) {
 
 /**
  * Find the color corresponding to the grade bracket that a specific grade belongs to
- * @see gooru-web/config/config#GRADING_SCALE
+ * @see quizzes/config/config#GRADING_SCALE
  * @param grade
  * @returns {String} - Hex color value
  */

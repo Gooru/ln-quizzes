@@ -5,11 +5,11 @@ import {
   getAnswerResultIcon,
   getScoreString,
   getReactionIcon
-  } from 'gooru-web/utils/utils';
+  } from 'quizzes/utils/utils';
 import {
   averageReaction,
   correctPercentage,
-  totalTimeSpent } from 'gooru-web/utils/question-result';
+  totalTimeSpent } from 'quizzes/utils/question-result';
 
 /**
  * Class assessment table view

@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import QuestionMixin from 'gooru-web/mixins/reports/assessment/questions/question';
-import FillInTheBlank from 'gooru-web/utils/question/fill-in-the-blank';
+import QuestionMixin from 'quizzes/mixins/reports/assessment/questions/question';
+import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
 
 /**
  * Fill in the blank

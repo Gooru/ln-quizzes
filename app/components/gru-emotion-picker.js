@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { EMOTION_VALUES } from "gooru-web/config/config";
+import { EMOTION_VALUES } from "quizzes/config/config";
 
 /**
  * Emotion picker

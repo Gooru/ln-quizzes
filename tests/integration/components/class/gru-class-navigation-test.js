@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('class/gru-class-navigation', 'Integration | Component | class/gru class navigation', {

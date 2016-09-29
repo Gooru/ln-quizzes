@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import ModalMixin from 'gooru-web/mixins/modal';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
+import ModalMixin from 'quizzes/mixins/modal';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
 /**
  * Collection and Assessment card
  *

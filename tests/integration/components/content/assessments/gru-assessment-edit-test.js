@@ -1,8 +1,8 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import Assessment from 'gooru-web/models/content/assessment';
-import Course from 'gooru-web/models/content/course';
+import Assessment from 'quizzes/models/content/assessment';
+import Course from 'quizzes/models/content/course';
 
 const taxonomyServiceStub = Ember.Service.extend({
 

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ReportData from 'gooru-web/models/result/report-data';
+import ReportData from 'quizzes/models/result/report-data';
 /**
  * Teacher Analytics Collection Report
  *

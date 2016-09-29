@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import QuestionMixin from 'gooru-web/mixins/reports/assessment/questions/question';
+import QuestionMixin from 'quizzes/mixins/reports/assessment/questions/question';
 
 // constants
-import {DEFAULT_IMAGES} from 'gooru-web/config/config';
+import {DEFAULT_IMAGES} from 'quizzes/config/config';
 
 /**
  * Hot spot image

@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import { cleanFilename } from 'gooru-web/utils/utils';
-import QuestionModel from 'gooru-web/models/content/question';
-import AnswerModel from 'gooru-web/models/content/answer';
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
+import { cleanFilename } from 'quizzes/utils/utils';
+import QuestionModel from 'quizzes/models/content/question';
+import AnswerModel from 'quizzes/models/content/answer';
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
 
 /**
  * Serializer to support the Question CRUD operations for API 3.0

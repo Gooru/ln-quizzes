@@ -1,5 +1,5 @@
 import BaseValidator from 'ember-cp-validations/validators/base';
-import {RESERVED_WORDS} from 'gooru-web/config/config';
+import {RESERVED_WORDS} from 'quizzes/config/config';
 import Ember from 'ember';
 
 export default BaseValidator.extend({

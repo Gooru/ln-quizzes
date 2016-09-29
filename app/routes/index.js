@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import Env from '../config/environment';
-import PublicRouteMixin from "gooru-web/mixins/public-route-mixin";
+import PublicRouteMixin from "quizzes/mixins/public-route-mixin";
 
 /**
  * @typedef {object} Index Route

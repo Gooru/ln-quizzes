@@ -1,6 +1,6 @@
-import AnswerObject from 'gooru-web/utils/question/answer-object';
+import AnswerObject from 'quizzes/utils/question/answer-object';
 import QuestionUtil from './question';
-import Answer from 'gooru-web/models/content/answer';
+import Answer from 'quizzes/models/content/answer';
 
 /**
  * It contains convenience methods for grading and retrieving useful information

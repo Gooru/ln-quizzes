@@ -27,7 +27,7 @@ export default DS.JSONAPISerializer.extend({
       title: payload.title,
       subjects: this.normalizeSubjects(payload.taxonomyCourse),
       // This property is not provided by back-end
-      imageUrl: (payload.imageUrl ? payload.imageUrl : '/assets/gooru/profile.png'),
+      imageUrl: (payload.imageUrl ? payload.imageUrl : '/assets/quizzes/profile.png'),
       totalUnits: (payload.summary && payload.summary.unitCount ? payload.summary.unitCount : 0),
       isPublic: (payload.sharing === 'public')
     };
@@ -54,7 +54,7 @@ export default DS.JSONAPISerializer.extend({
         type: 'user/user',
         attributes: {
           username: user.username,
-          profileImageUrl: (user.profileImageUrl ? user.profileImageUrl : '/assets/gooru/profile.png')
+          profileImageUrl: (user.profileImageUrl ? user.profileImageUrl : '/assets/quizzes/profile.png')
         }
       });
     });

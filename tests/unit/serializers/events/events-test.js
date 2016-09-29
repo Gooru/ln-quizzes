@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import Context from 'gooru-web/models/result/context';
-import QuestionResult from 'gooru-web/models/result/question';
+import Context from 'quizzes/models/result/context';
+import QuestionResult from 'quizzes/models/result/question';
 
 moduleFor('serializer:events/events', 'Unit | Serializer | events/events');
 

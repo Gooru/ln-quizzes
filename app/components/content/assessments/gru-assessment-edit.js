@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import CollectionEdit from 'gooru-web/components/content/collections/gru-collection-edit';
-import { CONTENT_TYPES } from 'gooru-web/config/config';
+import CollectionEdit from 'quizzes/components/content/collections/gru-collection-edit';
+import { CONTENT_TYPES } from 'quizzes/config/config';
 
 export default CollectionEdit.extend({
 

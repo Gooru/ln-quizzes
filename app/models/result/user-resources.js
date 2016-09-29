@@ -1,5 +1,5 @@
 import Ember from "ember";
-import QuestionResult from 'gooru-web/models/result/question';
+import QuestionResult from 'quizzes/models/result/question';
 
 /**
  * User resource results

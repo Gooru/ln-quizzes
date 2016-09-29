@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import ModalMixin from 'gooru-web/mixins/modal';
-import {VIEW_LAYOUT_PICKER_OPTIONS} from "gooru-web/config/config";
-import AssessmentResult from 'gooru-web/models/result/assessment';
+import ModalMixin from 'quizzes/mixins/modal';
+import {VIEW_LAYOUT_PICKER_OPTIONS} from "quizzes/config/config";
+import AssessmentResult from 'quizzes/models/result/assessment';
 // Private variables
 
 

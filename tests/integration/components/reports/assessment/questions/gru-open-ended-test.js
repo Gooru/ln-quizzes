@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 
 moduleForComponent('reports/assessment/questions/gru-open-ended', 'Integration | Component | reports/assessment/questions/gru-open-ended', {
   integration: true,

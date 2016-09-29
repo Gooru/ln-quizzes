@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForAdapter from 'gooru-web/tests/helpers/module-for-adapter';
+import moduleForAdapter from 'quizzes/tests/helpers/module-for-adapter';
 
 moduleForAdapter('adapter:network/network', 'Unit | Adapter | network/network', {
   // needs: []

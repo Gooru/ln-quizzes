@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import { LATEX_EXPRESSIONS } from 'gooru-web/config/question';
-import { removeHtmlTags, generateUUID } from 'gooru-web/utils/utils';
+import { LATEX_EXPRESSIONS } from 'quizzes/config/question';
+import { removeHtmlTags, generateUUID } from 'quizzes/utils/utils';
 
 /**
  * Rich text editor component

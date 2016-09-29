@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { TAXONOMY_CATEGORIES, GOORU_DEFAULT_STANDARD } from 'gooru-web/config/config';
+import { TAXONOMY_CATEGORIES, GOORU_DEFAULT_STANDARD } from 'quizzes/config/config';
 
 /**
  * Taxonomy Root

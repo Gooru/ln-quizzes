@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import BuilderItem from 'gooru-web/models/content/builder/item';
-import PrivateRouteMixin from "gooru-web/mixins/private-route-mixin";
+import BuilderItem from 'quizzes/models/content/builder/item';
+import PrivateRouteMixin from "quizzes/mixins/private-route-mixin";
 
 export default Ember.Route.extend(PrivateRouteMixin, {
 

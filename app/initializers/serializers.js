@@ -1,8 +1,8 @@
-import AnalyticsSerializer from 'gooru-web/serializers/analytics/analytics';
-import EventsSerializer from 'gooru-web/serializers/events/events';
-import RealTimeSerializer from 'gooru-web/serializers/real-time/real-time';
-import StudentCollectionPerformanceSerializer from 'gooru-web/serializers/performance/student-collection-performance';
-import UserSessionSerializer from 'gooru-web/serializers/user-session';
+import AnalyticsSerializer from 'quizzes/serializers/analytics/analytics';
+import EventsSerializer from 'quizzes/serializers/events/events';
+import RealTimeSerializer from 'quizzes/serializers/real-time/real-time';
+import StudentCollectionPerformanceSerializer from 'quizzes/serializers/performance/student-collection-performance';
+import UserSessionSerializer from 'quizzes/serializers/user-session';
 
 export default {
   name: 'serializers',

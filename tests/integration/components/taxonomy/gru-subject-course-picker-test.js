@@ -1,9 +1,9 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import TaxonomyRoot from 'gooru-web/models/taxonomy/taxonomy-root';
-import TaxonomyItem from 'gooru-web/models/taxonomy/taxonomy-item';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
+import TaxonomyRoot from 'quizzes/models/taxonomy/taxonomy-root';
+import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
 
 moduleForComponent('gru-subject-course-picker', 'Integration | Component | taxonomy/gru subject course picker', {
   integration: true,

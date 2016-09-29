@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import BuilderMixin from 'gooru-web/mixins/content/builder';
-import {CONTENT_TYPES} from 'gooru-web/config/config';
-import ModalMixin from 'gooru-web/mixins/modal';
-import FillInTheBlank from 'gooru-web/utils/question/fill-in-the-blank';
-import { replaceMathExpression, removeHtmlTags } from 'gooru-web/utils/utils';
+import BuilderMixin from 'quizzes/mixins/content/builder';
+import {CONTENT_TYPES} from 'quizzes/config/config';
+import ModalMixin from 'quizzes/mixins/modal';
+import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
+import { replaceMathExpression, removeHtmlTags } from 'quizzes/utils/utils';
 
 /**
  * Collection List

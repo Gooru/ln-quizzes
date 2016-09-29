@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import GruImagePicker from 'gooru-web/components/gru-image-picker';
+import GruImagePicker from 'quizzes/components/gru-image-picker';
 
 /**
  * Image picker for content authoring

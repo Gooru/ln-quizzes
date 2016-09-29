@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 
       'build-dev': 'ember build',
       'build-prod': 'ember build --environment=production',
-      'build-prod-bamboo': 'ember build --environment=production --output-path gooru-web'
+      'build-prod-bamboo': 'ember build --environment=production --output-path quizzes'
     },
 
     stubby: {

@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import ContentEditMixin from 'gooru-web/mixins/content/edit';
-import { RESOURCE_COMPONENT_MAP, RESOURCE_TYPES,CONTENT_TYPES, K12_CATEGORY } from "gooru-web/config/config";
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
-import ModalMixin from 'gooru-web/mixins/modal';
+import ContentEditMixin from 'quizzes/mixins/content/edit';
+import { RESOURCE_COMPONENT_MAP, RESOURCE_TYPES,CONTENT_TYPES, K12_CATEGORY } from "quizzes/config/config";
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
+import ModalMixin from 'quizzes/mixins/modal';
 
 export default Ember.Component.extend(ContentEditMixin, ModalMixin,{
   // -------------------------------------------------------------------------

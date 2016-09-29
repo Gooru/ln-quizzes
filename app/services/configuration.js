@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import ConfigurationAdapter from 'gooru-web/adapters/configuration';
-import Env from 'gooru-web/config/environment';
-import DevelopmentConfiguration from 'gooru-web/config/env/development';
-import TestConfiguration from 'gooru-web/config/env/test';
-import ProductionConfiguration from 'gooru-web/config/env/production';
+import ConfigurationAdapter from 'quizzes/adapters/configuration';
+import Env from 'quizzes/config/environment';
+import DevelopmentConfiguration from 'quizzes/config/env/development';
+import TestConfiguration from 'quizzes/config/env/test';
+import ProductionConfiguration from 'quizzes/config/env/production';
 
 const ConfigurationService = Ember.Service.extend({
 

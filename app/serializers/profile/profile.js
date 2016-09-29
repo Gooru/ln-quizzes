@@ -1,13 +1,13 @@
 import Ember from 'ember';
-import ProfileModel from 'gooru-web/models/profile/profile';
-import Env from 'gooru-web/config/environment';
-import ResourceModel from 'gooru-web/models/content/resource';
-import AssessmentModel from 'gooru-web/models/content/assessment';
-import QuestionModel from 'gooru-web/models/content/question';
-import CollectionModel from 'gooru-web/models/content/collection';
-import { NETWORK_TYPE, DEFAULT_IMAGES } from 'gooru-web/config/config';
-import { cleanFilename } from 'gooru-web/utils/utils';
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
+import ProfileModel from 'quizzes/models/profile/profile';
+import Env from 'quizzes/config/environment';
+import ResourceModel from 'quizzes/models/content/resource';
+import AssessmentModel from 'quizzes/models/content/assessment';
+import QuestionModel from 'quizzes/models/content/question';
+import CollectionModel from 'quizzes/models/content/collection';
+import { NETWORK_TYPE, DEFAULT_IMAGES } from 'quizzes/config/config';
+import { cleanFilename } from 'quizzes/utils/utils';
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
 
 /**
  * Serializer to support the Profile CRUD operations for API 3.0

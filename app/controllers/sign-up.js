@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import Profile from 'gooru-web/models/profile/profile';
-import Env from 'gooru-web/config/environment';
-import signUpValidations from 'gooru-web/validations/sign-up';
+import Profile from 'quizzes/models/profile/profile';
+import Env from 'quizzes/config/environment';
+import signUpValidations from 'quizzes/validations/sign-up';
 
 export default Ember.Controller.extend({
 

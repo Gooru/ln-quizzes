@@ -2,7 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import Env from '../config/environment';
 import SessionMixin from '../mixins/session';
-import EndPointsConfig from 'gooru-web/utils/endpoint-config';
+import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
 const Config = Env['simple-auth-custom'] || {};
 

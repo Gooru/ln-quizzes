@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import ProfileModel from 'gooru-web/models/profile/profile';
-import Env from 'gooru-web/config/environment';
-import { NETWORK_TYPE, DEFAULT_IMAGES } from 'gooru-web/config/config';
+import ProfileModel from 'quizzes/models/profile/profile';
+import Env from 'quizzes/config/environment';
+import { NETWORK_TYPE, DEFAULT_IMAGES } from 'quizzes/config/config';
 
 
 moduleFor('serializer:profile/profile', 'Unit | Serializer | profile/profile');

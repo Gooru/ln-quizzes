@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import AddToModal from 'gooru-web/components/content/modals/gru-add-to';
-import CollectionSearch from 'gooru-web/models/search/content-search';
-import {DEFAULT_PAGE_SIZE} from 'gooru-web/config/config';
+import AddToModal from 'quizzes/components/content/modals/gru-add-to';
+import CollectionSearch from 'quizzes/models/search/content-search';
+import {DEFAULT_PAGE_SIZE} from 'quizzes/config/config';
 
 export default AddToModal.extend({
 
@@ -71,7 +71,7 @@ export default AddToModal.extend({
     this.triggerAction({ action: 'closeModal' });
     this.get('notifications').setOptions({
       positionClass: 'toast-top-full-width',
-      toastClass: 'gooru-toast'
+      toastClass: 'quizzes-toast'
     });
     var editRoute = this.get('isCollection') ? 'content.collections.edit' : 'content.assessments.edit';
     var contentEditUrl = this.get('router').generate(editRoute, this.get('selectedCollection.id'));

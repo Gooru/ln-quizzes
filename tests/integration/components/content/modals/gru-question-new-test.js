@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
-import Collection from 'gooru-web/models/content/collection';
+import Collection from 'quizzes/models/content/collection';
 import wait from 'ember-test-helpers/wait';
 
 const collectionServiceMock = Ember.Service.extend({

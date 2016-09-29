@@ -84,7 +84,7 @@ export default Ember.Component.extend({
     const component = this;
     component.get('notifications').setOptions({
       positionClass: 'toast-top-full-width',
-      toastClass: 'gooru-toast'
+      toastClass: 'quizzes-toast'
     });
     if(component.get('onRemix')) {
       component.get('onRemix')(contentModel);

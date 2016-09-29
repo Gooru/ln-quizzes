@@ -32,7 +32,7 @@ test('normalizeFindRecordResponse', function(assert) {
       'attributes': {
         'title': 'Indian History',
         'subjects': ['Earth Science'],
-        'imageUrl': '/assets/gooru/profile.png',
+        'imageUrl': '/assets/quizzes/profile.png',
         'totalUnits': 1,
         'isPublic': false
       },

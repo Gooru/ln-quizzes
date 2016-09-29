@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 
 moduleForComponent('cards/gru-user-card', 'Integration | Component | cards/gru user card', {
@@ -15,7 +15,7 @@ test('Profile Card Layout', function(assert) {
   const user = Ember.Object.create(
     {
       "id": 10,
-      "avatarUrl": "assets/gooru/profile.png",
+      "avatarUrl": "assets/quizzes/profile.png",
       "username":"John"
     });
   this.set('user', user);
@@ -41,7 +41,7 @@ test('Remove button', function(assert) {
   const user = Ember.Object.create(
     {
       "id": 10,
-      "avatarUrl": "assets/gooru/profile.png",
+      "avatarUrl": "assets/quizzes/profile.png",
       "username":"John"
     });
   this.set('user', user);

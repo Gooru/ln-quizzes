@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import QuestionUtil from './question';
-import AnswerObject from 'gooru-web/utils/question/answer-object';
+import AnswerObject from 'quizzes/utils/question/answer-object';
 /**
  * It contains convenience methods for grading and retrieving useful information
  * for MC questions

@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 
 moduleForComponent('reports/assessment/questions/gru-hot-text-highlight', 'Integration | Component | reports/assessment/questions/gru-hot-text-highlight', {

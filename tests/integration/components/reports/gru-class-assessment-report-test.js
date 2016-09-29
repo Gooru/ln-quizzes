@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
-import UserResourcesResult from 'gooru-web/models/result/user-resources';
-import QuestionResult from 'gooru-web/models/result/question';
-import ReportData from 'gooru-web/models/result/report-data';
+import T from 'quizzes/tests/helpers/assert';
+import UserResourcesResult from 'quizzes/models/result/user-resources';
+import QuestionResult from 'quizzes/models/result/question';
+import ReportData from 'quizzes/models/result/report-data';
 
 
 moduleForComponent('reports/gru-class-assessment-report', 'Integration | Component | reports/gru class assessment report', {

@@ -1,11 +1,11 @@
 import Ember from 'ember';
-import BuilderItem from 'gooru-web/models/content/builder/item';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
-import Lesson from 'gooru-web/models/content/lesson';
-import PlayerAccordionUnit from 'gooru-web/components/content/courses/play/gru-accordion-unit';
-import ModalMixin from 'gooru-web/mixins/modal';
-import {CONTENT_TYPES} from 'gooru-web/config/config';
+import BuilderItem from 'quizzes/models/content/builder/item';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
+import Lesson from 'quizzes/models/content/lesson';
+import PlayerAccordionUnit from 'quizzes/components/content/courses/play/gru-accordion-unit';
+import ModalMixin from 'quizzes/mixins/modal';
+import {CONTENT_TYPES} from 'quizzes/config/config';
 
 /**
  * Content Builder: Accordion Unit

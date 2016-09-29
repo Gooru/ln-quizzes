@@ -1,5 +1,5 @@
 import Ember from "ember";
-import { KEY_CODES, ASSESSMENT_SHOW_VALUES, FEEDBACK_EMOTION_VALUES } from 'gooru-web/config/config';
+import { KEY_CODES, ASSESSMENT_SHOW_VALUES, FEEDBACK_EMOTION_VALUES } from 'quizzes/config/config';
 
 /**
  * Player question viewer

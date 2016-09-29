@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Resource from 'gooru-web/models/content/resource';
+import Resource from 'quizzes/models/content/resource';
 import Ember from 'ember';
 
 moduleForComponent('content/resources/gru-resource-play', 'Integration | Component | content/resources/gru resource play', {

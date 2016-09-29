@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import AnswerObject from 'gooru-web/utils/question/answer-object';
-import OpenEndedUtil from 'gooru-web/utils/question/open-ended';
+import AnswerObject from 'quizzes/utils/question/answer-object';
+import OpenEndedUtil from 'quizzes/utils/question/open-ended';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | open ended');

@@ -1,5 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
-import ClassModel from 'gooru-web/models/content/class';
+import ClassModel from 'quizzes/models/content/class';
 
 moduleFor('serializer:content/class', 'Unit | Serializer | content/class');
 

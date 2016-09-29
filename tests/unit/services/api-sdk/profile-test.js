@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
-import { NETWORK_TYPE } from 'gooru-web/config/config';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import { NETWORK_TYPE } from 'quizzes/config/config';
 
 moduleForService('service:api-sdk/profile', 'Unit | Service | api-sdk/profile', {
   // Specify the other units that are required for this test.

@@ -1,5 +1,5 @@
 import DS from "ember-data";
-import { DEFAULT_IMAGES } from "gooru-web/config/config";
+import { DEFAULT_IMAGES } from "quizzes/config/config";
 
 export default DS.JSONAPISerializer.extend({
 

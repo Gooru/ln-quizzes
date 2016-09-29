@@ -1,9 +1,9 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import BuilderItem from 'gooru-web/models/content/builder/item';
-import Course from 'gooru-web/models/content/course';
-import Lesson from 'gooru-web/models/content/lesson';
-import LessonItem from 'gooru-web/models/content/lessonItem';
+import BuilderItem from 'quizzes/models/content/builder/item';
+import Course from 'quizzes/models/content/course';
+import Lesson from 'quizzes/models/content/lesson';
+import LessonItem from 'quizzes/models/content/lessonItem';
 import Ember from 'ember';
 
 const lessonServiceStub = Ember.Service.extend({

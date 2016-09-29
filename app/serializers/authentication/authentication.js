@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import Env from 'gooru-web/config/environment';
-import { DEFAULT_IMAGES } from 'gooru-web/config/config';
+import Env from 'quizzes/config/environment';
+import { DEFAULT_IMAGES } from 'quizzes/config/config';
 
 /**
  * Serializer for the Authentication (Login) with API 3.0

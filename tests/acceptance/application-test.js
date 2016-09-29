@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import { test } from 'qunit';
-import moduleForAcceptance from 'gooru-web/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'gooru-web/tests/helpers/ember-simple-auth';
-import T from 'gooru-web/tests/helpers/assert';
+import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
+import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
+import T from 'quizzes/tests/helpers/assert';
 
 moduleForAcceptance('Acceptance | application', {
   beforeEach: function() {

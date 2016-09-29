@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import ProfileModel from 'gooru-web/models/profile/profile';
-import ClassesModel from 'gooru-web/models/content/classes';
-import ClassModel from 'gooru-web/models/content/class';
-import ProfileSerializer from 'gooru-web/serializers/profile/profile';
+import ProfileModel from 'quizzes/models/profile/profile';
+import ClassesModel from 'quizzes/models/content/classes';
+import ClassModel from 'quizzes/models/content/class';
+import ProfileSerializer from 'quizzes/serializers/profile/profile';
 
 /**
  * Serializer to support the Class CRUD operations for API 3.0

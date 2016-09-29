@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import AssessmentSerializer from 'gooru-web/serializers/content/assessment';
-import AssessmentAdapter from 'gooru-web/adapters/content/assessment';
+import AssessmentSerializer from 'quizzes/serializers/content/assessment';
+import AssessmentAdapter from 'quizzes/adapters/content/assessment';
 
 
 /**

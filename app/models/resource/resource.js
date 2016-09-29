@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import {QUESTION_TYPES} from 'gooru-web/config/question';
-import FillInTheBlank from 'gooru-web/utils/question/fill-in-the-blank';
+import {QUESTION_TYPES} from 'quizzes/config/question';
+import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
 /**
  * Resource Model
  *
@@ -127,7 +127,7 @@ export default Ember.Object.extend({
    * @property {string} thumbnail url
    */
   thumbnailUrl: Ember.computed('thumbnail', function() {
-    const defaultThumbnailUrl = '/assets/gooru/default-' + this.get('resourceFormat') + '.png';
+    const defaultThumbnailUrl = '/assets/quizzes/default-' + this.get('resourceFormat') + '.png';
     return (this.get('thumbnail') ? this.get('thumbnail') : defaultThumbnailUrl);
   }),
 

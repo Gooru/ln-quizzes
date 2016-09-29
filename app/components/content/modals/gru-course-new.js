@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import CourseModel from 'gooru-web/models/content/course';
-import { TAXONOMY_CATEGORIES } from 'gooru-web/config/config';
+import CourseModel from 'quizzes/models/content/course';
+import { TAXONOMY_CATEGORIES } from 'quizzes/config/config';
 
 export default Ember.Component.extend({
 

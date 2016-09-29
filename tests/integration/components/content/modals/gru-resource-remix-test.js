@@ -3,8 +3,8 @@ import hbs from 'htmlbars-inline-precompile';
 import wait from 'ember-test-helpers/wait';
 import Ember from 'ember';
 import DS from 'ember-data';
-import ResourceModel from 'gooru-web/models/content/resource';
-import createResourceValidations from 'gooru-web/validations/create-resource';
+import ResourceModel from 'quizzes/models/content/resource';
+import createResourceValidations from 'quizzes/validations/create-resource';
 const resourceServiceStub = Ember.Service.extend({
 
   updateResource(resourceId, resource) {
@@ -47,7 +47,7 @@ test('it renders', function (assert) {
       title: 'resource-title',
       standards: [],
       format: "resource",
-      url: "http://gooruweb.org/test.html"
+      url: "/test.html"
     })
   });
 
@@ -80,7 +80,7 @@ test('it shows an error message if the resource title field is left blank', func
       title: 'resource-title',
       standards: [],
       format: "resource",
-      url: "http://gooruweb.org/test.html"
+      url: "/test.html"
     })
   });
 
@@ -126,7 +126,7 @@ test('it shows toast and transitions after copying a resource', function (assert
     setOptions(options) {
 
       assert.equal(options.positionClass, 'toast-top-full-width', "Toast value for positionClass.");
-      assert.equal(options.toastClass, 'gooru-toast', "Toast value for toastClass.");
+      assert.equal(options.toastClass, 'quizzes-toast', "Toast value for toastClass.");
     }
   }));
   this.inject.service('notifications');
@@ -151,7 +151,7 @@ test('it shows toast and transitions after copying a resource', function (assert
       title: 'resource-title',
       standards: [],
       format: "resource",
-      url: "http://gooruweb.org/test.html"
+      url: "/test.html"
     })
   });
 
@@ -188,7 +188,7 @@ test('it shows toast and transitions after copying a resource with parent collec
     setOptions(options) {
 
       assert.equal(options.positionClass, 'toast-top-full-width', "Toast value for positionClass.");
-      assert.equal(options.toastClass, 'gooru-toast', "Toast value for toastClass.");
+      assert.equal(options.toastClass, 'quizzes-toast', "Toast value for toastClass.");
     }
   }));
   this.inject.service('notifications');
@@ -220,7 +220,7 @@ test('it shows toast and transitions after copying a resource with parent collec
       title: 'resource-title',
       standards: [],
       format: "resource",
-      url: "http://gooruweb.org/test.html"
+      url: "/test.html"
     }),
     collectionId: 'collection-id',
     isCollection: true
@@ -263,7 +263,7 @@ test('it displays a notification if the resource cannot be created', function (a
       title: 'resource-title',
       standards: [],
       format: "resource",
-      url: "http://gooruweb.org/test.html"
+      url: "/test.html"
     })
   });
 
@@ -289,7 +289,7 @@ test('Validate if the resource Title field has only whitespaces', function (asse
       title: 'resource-title',
       standards: [],
       format: "resource",
-      url: "http://gooruweb.org/test.html"
+      url: "/test.html"
     })
   });
 
@@ -328,7 +328,7 @@ test('Validate the character limit in the resource title field', function (asser
       title: 'resource-title',
       standards: [],
       format: "resource",
-      url: "http://gooruweb.org/test.html"
+      url: "/test.html"
     })
   });
   this.render(hbs`{{content/modals/gru-resource-remix model=resource}}`);

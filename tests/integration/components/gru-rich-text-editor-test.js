@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import wait from 'ember-test-helpers/wait';
-import Question from 'gooru-web/models/content/question';
+import Question from 'quizzes/models/content/question';
 
 moduleForComponent('gru-rich-text-editor', 'Integration | Component | gru rich text editor', {
   integration: true,

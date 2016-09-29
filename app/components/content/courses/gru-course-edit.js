@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import ContentEditMixin from 'gooru-web/mixins/content/edit';
-import ModalMixin from 'gooru-web/mixins/modal';
-import {CONTENT_TYPES} from 'gooru-web/config/config';
+import ContentEditMixin from 'quizzes/mixins/content/edit';
+import ModalMixin from 'quizzes/mixins/modal';
+import {CONTENT_TYPES} from 'quizzes/config/config';
 
 export default Ember.Component.extend(ContentEditMixin,ModalMixin, {
 

@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import Answer from 'gooru-web/models/content/answer';
-import {QUESTION_CONFIG, QUESTION_TYPES} from 'gooru-web/config/question';
+import Answer from 'quizzes/models/content/answer';
+import {QUESTION_CONFIG, QUESTION_TYPES} from 'quizzes/config/question';
 
 export default Ember.Component.extend({
 

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import StoreMixin from '../../mixins/store';
-import UnitSerializer from 'gooru-web/serializers/content/unit';
-import UnitAdapter from 'gooru-web/adapters/content/unit';
+import UnitSerializer from 'quizzes/serializers/content/unit';
+import UnitAdapter from 'quizzes/adapters/content/unit';
 
 /**
  * Unit Service

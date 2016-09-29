@@ -1,6 +1,6 @@
-import PlayerAccordionLessonItem from 'gooru-web/components/content/courses/play/gru-accordion-lesson-item';
-import {CONTENT_TYPES} from 'gooru-web/config/config';
-import ModalMixin from 'gooru-web/mixins/modal';
+import PlayerAccordionLessonItem from 'quizzes/components/content/courses/play/gru-accordion-lesson-item';
+import {CONTENT_TYPES} from 'quizzes/config/config';
+import ModalMixin from 'quizzes/mixins/modal';
 import Ember from 'ember';
 
 /**

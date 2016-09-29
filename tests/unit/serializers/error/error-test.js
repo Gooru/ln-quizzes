@@ -1,5 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
-import Error from 'gooru-web/models/error';
+import Error from 'quizzes/models/error';
 
 moduleFor('serializer:error/error', 'Unit | Serializer | error/error');
 

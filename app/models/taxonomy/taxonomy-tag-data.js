@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { TAXONOMY_LEVELS } from 'gooru-web/config/config';
+import { TAXONOMY_LEVELS } from 'quizzes/config/config';
 
 /**
  * Taxonomy Tag Data

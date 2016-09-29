@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import { cleanFilename } from 'gooru-web/utils/utils';
-import AssessmentModel from 'gooru-web/models/content/assessment';
-import QuestionSerializer from 'gooru-web/serializers/content/question';
-import { DEFAULT_IMAGES, ASSESSMENT_SHOW_VALUES } from "gooru-web/config/config";
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
+import { cleanFilename } from 'quizzes/utils/utils';
+import AssessmentModel from 'quizzes/models/content/assessment';
+import QuestionSerializer from 'quizzes/serializers/content/question';
+import { DEFAULT_IMAGES, ASSESSMENT_SHOW_VALUES } from "quizzes/config/config";
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
 
 /**
  * Serializer to support the Assessment CRUD operations for API 3.0

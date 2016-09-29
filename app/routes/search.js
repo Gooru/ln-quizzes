@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import {K12_CATEGORY} from 'gooru-web/config/config';
-import PublicRouteMixin from "gooru-web/mixins/public-route-mixin";
-import TaxonomyTagData from 'gooru-web/models/taxonomy/taxonomy-tag-data';
+import {K12_CATEGORY} from 'quizzes/config/config';
+import PublicRouteMixin from "quizzes/mixins/public-route-mixin";
+import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
 
 /**
  * @typedef {object} SearchCollectionsController

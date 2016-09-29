@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import QuestionResult from 'gooru-web/models/result/question';
-import UserResourcesResult from 'gooru-web/models/result/user-resources';
-import ReportData from 'gooru-web/models/result/report-data';
+import QuestionResult from 'quizzes/models/result/question';
+import UserResourcesResult from 'quizzes/models/result/user-resources';
+import ReportData from 'quizzes/models/result/report-data';
 import { module, test } from 'qunit';
 
 module('Unit | Model | result/report data');

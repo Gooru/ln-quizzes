@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import MultipleChoiceUtil from './multiple-choice';
-import AnswerObject from 'gooru-web/utils/question/answer-object';
+import AnswerObject from 'quizzes/utils/question/answer-object';
 /**
  * It contains convenience methods for grading and retrieving useful information
  * from True False questions

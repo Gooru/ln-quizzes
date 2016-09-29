@@ -1,11 +1,11 @@
 import Ember from 'ember';
-import ProfileSerializer from 'gooru-web/serializers/profile/profile';
-import CourseSerializer from 'gooru-web/serializers/content/course';
-import AuthenticationSerializer from 'gooru-web/serializers/authentication/authentication';
-import ProfileAdapter from 'gooru-web/adapters/profile/profile';
-import ProfileCoursesAdapter from 'gooru-web/adapters/profile/courses';
-import AvailabilityAdapter from 'gooru-web/adapters/profile/availability';
-import { NETWORK_TYPE } from 'gooru-web/config/config';
+import ProfileSerializer from 'quizzes/serializers/profile/profile';
+import CourseSerializer from 'quizzes/serializers/content/course';
+import AuthenticationSerializer from 'quizzes/serializers/authentication/authentication';
+import ProfileAdapter from 'quizzes/adapters/profile/profile';
+import ProfileCoursesAdapter from 'quizzes/adapters/profile/courses';
+import AvailabilityAdapter from 'quizzes/adapters/profile/availability';
+import { NETWORK_TYPE } from 'quizzes/config/config';
 
 /**
  * Service to support the Profile CRUD operations

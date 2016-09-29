@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import {DEFAULT_PAGE_SIZE} from 'gooru-web/config/config';
-import EndPointsConfig from 'gooru-web/utils/endpoint-config';
+import {DEFAULT_PAGE_SIZE} from 'quizzes/config/config';
+import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
 /**
  * Adapter to support the Profile CRUD operations in the API 3.0

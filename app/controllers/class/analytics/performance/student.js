@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {download} from 'gooru-web/utils/csv';
+import {download} from 'quizzes/utils/csv';
 
 /**
  * Student Analytics Performance Controller

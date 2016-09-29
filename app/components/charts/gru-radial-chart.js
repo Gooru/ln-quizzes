@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { radialProgress } from 'gooru-web/utils/d3/radial-progress';
+import { radialProgress } from 'quizzes/utils/d3/radial-progress';
 
 /**
  * Completion Information Chart

@@ -1,5 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
-import Lesson from 'gooru-web/models/content/lesson';
+import Lesson from 'quizzes/models/content/lesson';
 
 moduleFor('serializer:content/lesson', 'Unit | Serializer | content/lesson');
 
@@ -82,7 +82,7 @@ test('normalizeLesson', function (assert) {
   assert.equal(child.get("url"), "any", 'Wrong url');
   assert.equal(child.get("questionCount"), 10, 'Wrong question count');
   assert.equal(child.get("resourceCount"), 0, 'Wrong resource count');
-  assert.equal(child.get("thumbnailUrl"), '/assets/gooru/assessment-default.png', 'Wrong thumbnailUrl');
+  assert.equal(child.get("thumbnailUrl"), '/assets/quizzes/assessment-default.png', 'Wrong thumbnailUrl');
 
 });
 test('serializeReorderLesson', function(assert) {

@@ -1,8 +1,8 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
-import {DEFAULT_IMAGES} from 'gooru-web/config/config';
+import {DEFAULT_IMAGES} from 'quizzes/config/config';
 
 moduleForComponent('reports/assessment/questions/gru-hs-image', 'Integration | Component | reports/assessment/questions/gru hs image', {
   integration: true

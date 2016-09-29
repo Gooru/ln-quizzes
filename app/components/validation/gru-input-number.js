@@ -1,4 +1,4 @@
-import GruInput from 'gooru-web/components/validation/gru-input';
+import GruInput from 'quizzes/components/validation/gru-input';
 
 /**
  * Number field with validation (It only accepts integers)

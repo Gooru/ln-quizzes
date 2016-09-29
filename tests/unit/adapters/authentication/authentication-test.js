@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 import Pretender from 'pretender';
-import EndPointsConfig from 'gooru-web/utils/endpoint-config';
+import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
 
 moduleFor('adapter:authentication/authentication', 'Unit | Adapter | authentication/authentication', {

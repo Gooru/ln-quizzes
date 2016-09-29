@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import { GRADING_SCALE } from 'gooru-web/config/config';
-import {roundFloat} from 'gooru-web/utils/math';
+import { GRADING_SCALE } from 'quizzes/config/config';
+import {roundFloat} from 'quizzes/utils/math';
 
 /**
  * Questions summary component

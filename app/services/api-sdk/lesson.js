@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import StoreMixin from '../../mixins/store';
-import LessonSerializer from 'gooru-web/serializers/content/lesson';
-import LessonAdapter from 'gooru-web/adapters/content/lesson';
-import { CONTENT_TYPES } from "gooru-web/config/config";
+import LessonSerializer from 'quizzes/serializers/content/lesson';
+import LessonAdapter from 'quizzes/adapters/content/lesson';
+import { CONTENT_TYPES } from "quizzes/config/config";
 
 /**
  * Lesson Service

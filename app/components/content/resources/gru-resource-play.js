@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import { RESOURCE_COMPONENT_MAP } from 'gooru-web/config/config';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
+import { RESOURCE_COMPONENT_MAP } from 'quizzes/config/config';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
 
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------

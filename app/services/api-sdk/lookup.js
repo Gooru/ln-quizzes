@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import LookupSerializer from 'gooru-web/serializers/lookup/lookup';
-import LookupAdapter from 'gooru-web/adapters/lookup/lookup';
+import LookupSerializer from 'quizzes/serializers/lookup/lookup';
+import LookupAdapter from 'quizzes/adapters/lookup/lookup';
 
 /**
  * Service to support the Lookup entities

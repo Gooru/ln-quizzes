@@ -1,11 +1,11 @@
 import { moduleForComponent, test } from 'ember-qunit';
-import { QUESTION_TYPES } from 'gooru-web/config/question';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 import hbs from 'htmlbars-inline-precompile';
 import wait from 'ember-test-helpers/wait';
-import Question from 'gooru-web/models/content/question';
-import Answer from 'gooru-web/models/content/answer';
-import Assessment from 'gooru-web/models/content/assessment';
-import Collection from 'gooru-web/models/content/collection';
+import Question from 'quizzes/models/content/question';
+import Answer from 'quizzes/models/content/answer';
+import Assessment from 'quizzes/models/content/assessment';
+import Collection from 'quizzes/models/content/collection';
 import Ember from 'ember';
 
 const questionServiceStub = Ember.Service.extend({
@@ -141,7 +141,7 @@ test('Header return to an assessment', function (assert) {
 
 test('Update Question Information', function (assert) {
   assert.expect(1);
-  var newTitle ='Question for testing gooru';
+  var newTitle ='Question for testing quizzes';
   var question = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text: "Question description",

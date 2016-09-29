@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {DEFAULT_SEARCH_PAGE_SIZE} from 'gooru-web/config/config';
+import {DEFAULT_SEARCH_PAGE_SIZE} from 'quizzes/config/config';
 
 /**
  * Search Base Controller

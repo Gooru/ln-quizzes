@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import TaxonomyItem from 'gooru-web/models/taxonomy/taxonomy-item';
+import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
 
 /**
  * Browse Item

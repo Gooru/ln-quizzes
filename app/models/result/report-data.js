@@ -1,6 +1,6 @@
 import Ember from "ember";
-import QuestionResult from 'gooru-web/models/result/question';
-import { getQuestionUtil } from 'gooru-web/config/question';
+import QuestionResult from 'quizzes/models/result/question';
+import { getQuestionUtil } from 'quizzes/config/question';
 
 /**
  * Report data model for class assessment report

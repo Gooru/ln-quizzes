@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import NewCollectionModal from 'gooru-web/components/content/modals/gru-collection-new';
-import Assessment from 'gooru-web/models/content/assessment';
+import NewCollectionModal from 'quizzes/components/content/modals/gru-collection-new';
+import Assessment from 'quizzes/models/content/assessment';
 
 export default NewCollectionModal.extend({
 

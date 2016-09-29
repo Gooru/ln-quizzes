@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import wait from 'ember-test-helpers/wait';
-import ClassModel from 'gooru-web/models/content/class';
+import ClassModel from 'quizzes/models/content/class';
 
 moduleForComponent('gru-header', 'Integration | Component | Header', {
   integration: true,

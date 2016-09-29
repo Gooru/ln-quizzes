@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import QuestionComponent from './gru-question';
-import FillInTheBlank from 'gooru-web/utils/question/fill-in-the-blank';
+import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
 
 /**
  * Fill in the blank

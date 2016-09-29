@@ -1,5 +1,5 @@
 import Ember from "ember";
-import ModalMixin from 'gooru-web/mixins/modal';
+import ModalMixin from 'quizzes/mixins/modal';
 
 /**
  * Player navigator

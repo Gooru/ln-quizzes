@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import SearchSerializer from 'gooru-web/serializers/search/search';
-import SearchAdapter from 'gooru-web/adapters/search/search';
+import SearchSerializer from 'quizzes/serializers/search/search';
+import SearchAdapter from 'quizzes/adapters/search/search';
 
 /**
  * Service to support the Search of Collections and Resources

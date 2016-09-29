@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import NetworkSerializer from 'gooru-web/serializers/network/network';
-import NetworkAdapter from 'gooru-web/adapters/network/network';
+import NetworkSerializer from 'quizzes/serializers/network/network';
+import NetworkAdapter from 'quizzes/adapters/network/network';
 
 /**
  * Service to support the Profile CRUD operations

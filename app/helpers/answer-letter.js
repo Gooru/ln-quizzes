@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getLetter } from 'gooru-web/utils/utils';
+import { getLetter } from 'quizzes/utils/utils';
 
 export function answerLetter(value) {
   return getLetter(parseInt(value[0]));

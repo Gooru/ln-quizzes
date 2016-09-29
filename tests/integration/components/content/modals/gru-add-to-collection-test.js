@@ -1,10 +1,10 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import CollectionModel from 'gooru-web/models/content/collection';
-import ResourceModel from 'gooru-web/models/content/resource';
+import CollectionModel from 'quizzes/models/content/collection';
+import ResourceModel from 'quizzes/models/content/resource';
 import Ember from 'ember';
 import wait from 'ember-test-helpers/wait';
-import {DEFAULT_PAGE_SIZE} from 'gooru-web/config/config';
+import {DEFAULT_PAGE_SIZE} from 'quizzes/config/config';
 
 const profileServiceStub = Ember.Service.extend({
 

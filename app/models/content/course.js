@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { validator, buildValidations } from 'ember-cp-validations';
-import TaxonomyTag from 'gooru-web/models/taxonomy/taxonomy-tag';
+import TaxonomyTag from 'quizzes/models/taxonomy/taxonomy-tag';
 
 const Validations = buildValidations({
   title: {

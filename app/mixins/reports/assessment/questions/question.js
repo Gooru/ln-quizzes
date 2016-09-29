@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getQuestionUtil } from 'gooru-web/config/question';
+import { getQuestionUtil } from 'quizzes/config/question';
 
 /**
  * This mixin is only used by the assessment report question components

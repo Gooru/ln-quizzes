@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import CurrentLocationModel from 'gooru-web/models/analytics/current-location';
+import CurrentLocationModel from 'quizzes/models/analytics/current-location';
 
 /**
  * CurrentLocation's Serializer

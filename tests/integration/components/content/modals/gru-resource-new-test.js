@@ -2,8 +2,8 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import wait from 'ember-test-helpers/wait';
-import Resource from 'gooru-web/models/content/resource';
-import Collection from 'gooru-web/models/content/collection';
+import Resource from 'quizzes/models/content/resource';
+import Collection from 'quizzes/models/content/collection';
 
 const collectionServiceMock = Ember.Service.extend({
   addResource: function(collectionId, resourceId) {

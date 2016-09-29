@@ -1,9 +1,9 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'gooru-web/tests/helpers/assert';
+import T from 'quizzes/tests/helpers/assert';
 import wait from 'ember-test-helpers/wait';
-import SearchModel from 'gooru-web/models/search/content-search';
+import SearchModel from 'quizzes/models/search/content-search';
 
 moduleForComponent('gru-input', 'Integration | Component | gru input', {
   integration: true

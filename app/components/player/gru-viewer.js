@@ -1,5 +1,5 @@
 import Ember from "ember";
-import { ASSESSMENT_SHOW_VALUES, RESOURCE_COMPONENT_MAP } from 'gooru-web/config/config';
+import { ASSESSMENT_SHOW_VALUES, RESOURCE_COMPONENT_MAP } from 'quizzes/config/config';
 /**
  * Player viewer
  *

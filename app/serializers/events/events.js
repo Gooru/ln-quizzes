@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import {getQuestionUtil} from 'gooru-web/config/question';
-import {toTimestamp} from 'gooru-web/utils/utils';
+import {getQuestionUtil} from 'quizzes/config/question';
+import {toTimestamp} from 'quizzes/utils/utils';
 import Env from '../../config/environment';
 const ConfigEvent = Env['events'] || {};
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
 
 export default Ember.Object.extend({
 

@@ -1,4 +1,4 @@
-import MultipleChoiceComponent from 'gooru-web/components/reports/assessment/questions/gru-multiple-choice';
+import MultipleChoiceComponent from 'quizzes/components/reports/assessment/questions/gru-multiple-choice';
 
 /**
  * True/False

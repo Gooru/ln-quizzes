@@ -39,10 +39,10 @@ This project is built on top of EmberJS 2.x and Ember CLI
 This project follows the project structure suggested by Ember CLI
 
 #### Communication Layer - Custom Adapters and Serializers
-EmberJS 2.x implements by default json:api specification for REST communication, custom EmberJS adapters and serializers are necessary to communitate and match the current Gooru's API end points convention. 
+EmberJS 2.x implements by default json:api specification for REST communication, custom EmberJS adapters and serializers are necessary to communitate and match the current Quizzes' API end points convention. 
 
 #### API-SDK Layer
-The SDK layer is defined with intention to create an abstraction layer or abstraction level to hide the implementation details of the use of Ember Data. As part of this idea is to encapsulate the use of Ember Data in order to avoid as much as possible the use of Ember Data everywhere in code, so we can have a single entrance point to communicate with Gooru's API end-points.
+The SDK layer is defined with intention to create an abstraction layer or abstraction level to hide the implementation details.
 
 #### Authentication and Authorization
 The library ember-simple-auth is used for authentication and authorization, it also track the user client session. See [Ember Simple Auth](http://ember-simple-auth.com/)
@@ -169,12 +169,12 @@ The quizzes application can run as a normal ember application or it could be emb
 #### Build it as embedded 
 To build the application as a embedded app do
 
-* `GOORU_EMBEDDED=true ember build --environment=development` an environment variable controls when the package should be build as embedded app
+* `QUIZZES_EMBEDDED=true ember build --environment=development` an environment variable controls when the package should be build as embedded app
 
 #### Run as embedded
 You could do the same to run the application embedded
 
-* `GOORU_EMBEDDED=true grunt run` this will run the application embedded, you should access /embedded.html
+* `QUIZZES_EMBEDDED=true grunt run` this will run the application embedded, you should access /embedded.html
 
 #### Configuring the embedded application
 When embedding the application you can pass several options
@@ -202,7 +202,7 @@ At this point develop branch is deployed by Bamboo to the configured QA servers
 Release candidates, hot fixes and master build are deployed by Bamboo to Nucleus QA
 
 *Production deployment*
-The production package is archived at [Edify Artifactory](edify.artifactoryonline.com/edify/webapp/#/artifacts/browse/tree/General/gooruweb-releases-local), 
+The production package is archived at [Edify Artifactory](edify.artifactoryonline.com/edify/webapp/#/artifacts/browse/tree/General/quizzes-releases-local), 
 it is also sent to Gooru Netops, they deploy it to production environment
 
 

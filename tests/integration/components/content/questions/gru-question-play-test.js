@@ -1,8 +1,8 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Question from 'gooru-web/models/content/question';
+import Question from 'quizzes/models/content/question';
 import Ember from 'ember';
-import { QUESTION_TYPES } from 'gooru-web/config/question';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('content/questions/gru-question-play', 'Integration | Component | content/questions/gru question play', {
   integration: true,

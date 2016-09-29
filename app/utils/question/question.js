@@ -126,7 +126,7 @@ export default Ember.Object.extend({
 
   /**
    * Converts the model user answer into an answerObject format
-   * @see gooru-web/utils/question/*
+   * @see quizzes/utils/question/*
    * @param {*} userAnswer
    * @return {*[]}
    */

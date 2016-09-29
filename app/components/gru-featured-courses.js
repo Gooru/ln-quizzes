@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { sortFeaturedCourses,getSubjects } from 'gooru-web/utils/sort-featured-courses';
+import { sortFeaturedCourses,getSubjects } from 'quizzes/utils/sort-featured-courses';
 
 
 /**

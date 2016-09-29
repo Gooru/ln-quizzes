@@ -56,37 +56,37 @@
       }
       .collections {
         .icon {
-          background: url("gooru/images/navigation_collection.svg");
+          background: url("quizzes/images/navigation_collection.svg");
           width: 20px;
           height: 15px;
         }
         &.selected {
           .icon {
-            background: url("gooru/images/navigation_collection_selected.svg");
+            background: url("quizzes/images/navigation_collection_selected.svg");
           }
         }
       }
       .assessments {
         .icon {
-          background: url("gooru/images/navigation_assessment.svg");
+          background: url("quizzes/images/navigation_assessment.svg");
           width: 20px;
           height: 15px;
         }
         &.selected {
           .icon {
-            background: url("gooru/images/navigation_assessment_selected.svg");
+            background: url("quizzes/images/navigation_assessment_selected.svg");
           }
         }
       }
       .resources {
         .icon {
-          background: url("gooru/images/navigation_resource.svg");
+          background: url("quizzes/images/navigation_resource.svg");
           width: 23px;
           height: 21px;
         }
         &.selected {
           .icon {
-            background: url("gooru/images/navigation_resource_selected.svg");
+            background: url("quizzes/images/navigation_resource_selected.svg");
           }
         }
       }

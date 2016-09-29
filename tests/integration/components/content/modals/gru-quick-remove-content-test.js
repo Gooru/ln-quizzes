@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import { CONTENT_TYPES } from 'gooru-web/config/config';
+import { CONTENT_TYPES } from 'quizzes/config/config';
 import wait from 'ember-test-helpers/wait';
 
 moduleForComponent('content/modals/gru-quick-remove-content', 'Integration | Component | content/modals/gru quick remove content', {

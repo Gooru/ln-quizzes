@@ -1,5 +1,5 @@
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
 
 moduleForService('service:api-sdk/user', 'Unit | Service | api-sdk/user', {
   needs: ['serializer:user/user', 'model:user/user', 'adapter:user/user']

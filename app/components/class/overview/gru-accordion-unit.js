@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import AccordionMixin from 'gooru-web/mixins/gru-accordion';
+import AccordionMixin from 'quizzes/mixins/gru-accordion';
 // Whenever the observer 'parsedLocationChanged' is running, this flag is set so
 // clicking on the units should not update the location
 var isUpdatingLocation = false;

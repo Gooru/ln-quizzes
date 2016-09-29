@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { sortCoursesBySubject } from 'gooru-web/utils/sort-featured-courses';
+import { sortCoursesBySubject } from 'quizzes/utils/sort-featured-courses';
 
 export default Ember.Component.extend({
 

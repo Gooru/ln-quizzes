@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import Utils from 'gooru-web/utils/math';
+import Utils from 'quizzes/utils/math';
 
 /**
  * Model that contains a class performance data.

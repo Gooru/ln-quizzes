@@ -1,9 +1,9 @@
-import AnalyticsAdapter from 'gooru-web/adapters/analytics/analytics';
-import CollectionResourceAdapter from 'gooru-web/adapters/events/collection-resource-play';
-import CollectionPlayAdapter from 'gooru-web/adapters/events/collection-play';
-import RealTimeAdapter from 'gooru-web/adapters/real-time/real-time';
-import StudentCollectionPerformanceAdapter from 'gooru-web/adapters/performance/student-collection-performance';
-import UserSessionAdapter from 'gooru-web/adapters/user-session';
+import AnalyticsAdapter from 'quizzes/adapters/analytics/analytics';
+import CollectionResourceAdapter from 'quizzes/adapters/events/collection-resource-play';
+import CollectionPlayAdapter from 'quizzes/adapters/events/collection-play';
+import RealTimeAdapter from 'quizzes/adapters/real-time/real-time';
+import StudentCollectionPerformanceAdapter from 'quizzes/adapters/performance/student-collection-performance';
+import UserSessionAdapter from 'quizzes/adapters/user-session';
 
 export default {
   name: 'adapters',

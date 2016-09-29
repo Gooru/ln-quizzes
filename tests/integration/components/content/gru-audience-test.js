@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import AudienceModel from 'gooru-web/models/audience';
+import AudienceModel from 'quizzes/models/audience';
 import wait from 'ember-test-helpers/wait';
 import DS from 'ember-data';
 

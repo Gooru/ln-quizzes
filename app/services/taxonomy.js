@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import APITaxonomyService from 'gooru-web/services/api-sdk/taxonomy';
-import TaxonomyItem from 'gooru-web/models/taxonomy/taxonomy-item';
-import { TAXONOMY_CATEGORIES, CODE_TYPES } from 'gooru-web/config/config';
-import { getCategoryFromSubjectId } from 'gooru-web/utils/taxonomy';
+import APITaxonomyService from 'quizzes/services/api-sdk/taxonomy';
+import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
+import { TAXONOMY_CATEGORIES, CODE_TYPES } from 'quizzes/config/config';
+import { getCategoryFromSubjectId } from 'quizzes/utils/taxonomy';
 
 /**
  * Service for the Taxonomy Singleton elements container

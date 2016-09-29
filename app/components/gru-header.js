@@ -1,8 +1,8 @@
 import Ember from "ember";
 import SessionMixin from '../mixins/session';
 import ModalMixin from '../mixins/modal';
-import {KEY_CODES} from "gooru-web/config/config";
-import Env from 'gooru-web/config/environment';
+import {KEY_CODES} from "quizzes/config/config";
+import Env from 'quizzes/config/environment';
 
 /**
  * Application header component

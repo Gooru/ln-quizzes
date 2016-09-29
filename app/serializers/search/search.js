@@ -1,13 +1,13 @@
 import Ember from 'ember';
 
-import ResourceModel from 'gooru-web/models/content/resource';
-import QuestionModel from 'gooru-web/models/content/question';
-import AssessmentModel from 'gooru-web/models/content/assessment';
-import CollectionModel from 'gooru-web/models/content/collection';
-import CourseModel from 'gooru-web/models/content/course';
-import ProfileModel from 'gooru-web/models/profile/profile';
-import { DEFAULT_IMAGES, TAXONOMY_LEVELS } from 'gooru-web/config/config';
-import TaxonomySerializer from 'gooru-web/serializers/taxonomy/taxonomy';
+import ResourceModel from 'quizzes/models/content/resource';
+import QuestionModel from 'quizzes/models/content/question';
+import AssessmentModel from 'quizzes/models/content/assessment';
+import CollectionModel from 'quizzes/models/content/collection';
+import CourseModel from 'quizzes/models/content/course';
+import ProfileModel from 'quizzes/models/profile/profile';
+import { DEFAULT_IMAGES, TAXONOMY_LEVELS } from 'quizzes/config/config';
+import TaxonomySerializer from 'quizzes/serializers/taxonomy/taxonomy';
 
 /**
  * Serializer to support Search functionality

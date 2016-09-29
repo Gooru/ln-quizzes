@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import ModalMixin from 'gooru-web/mixins/modal';
-import PlayerAccordionLesson from 'gooru-web/components/content/courses/play/gru-accordion-lesson';
-import { CONTENT_TYPES } from 'gooru-web/config/config';
+import ModalMixin from 'quizzes/mixins/modal';
+import PlayerAccordionLesson from 'quizzes/components/content/courses/play/gru-accordion-lesson';
+import { CONTENT_TYPES } from 'quizzes/config/config';
 
 /**
  * Content Builder: Accordion Lesson

@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 import Ember from 'ember';
-import TaxonomyItem from 'gooru-web/models/taxonomy/taxonomy-item';
+import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
 
 moduleFor('model:taxonomy/taxonomy-item', 'Unit | Model | taxonomy/taxonomy-item', {
   unit: true

@@ -1,5 +1,5 @@
 import Ember from "ember";
-import ConfigurationService from 'gooru-web/services/configuration';
+import ConfigurationService from 'quizzes/services/configuration';
 /**
  * Class navigation
  *

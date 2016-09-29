@@ -7,7 +7,7 @@ export default function(name, moduleName, options = {}) {
     needs: options.needs,
     beforeEach() {
       /**
-       * Most of GooruWeb services uses the session service, if you need to mock
+       * Most of Quizzes services uses the session service, if you need to mock
        * the session service differently you can do it by registering again in your test
        * beforeEach method
        */

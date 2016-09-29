@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 import PerformanceSerializer from './performance';
-import Utils from 'gooru-web/utils/utils';
+import Utils from 'quizzes/utils/utils';
 
 /**
  * Serializer for Class Performance model

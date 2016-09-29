@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {DEFAULT_PAGE_SIZE} from 'gooru-web/config/config';
+import {DEFAULT_PAGE_SIZE} from 'quizzes/config/config';
 
 /**
  * Adapter to get the list of courses created by a Profile

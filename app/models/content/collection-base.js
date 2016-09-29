@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import Resource from 'gooru-web/models/content/resource';
-import Question from 'gooru-web/models/content/question';
-import PlayerCollection from 'gooru-web/models/collection/collection';
-import { TAXONOMY_CATEGORIES } from 'gooru-web/config/config';
+import Resource from 'quizzes/models/content/resource';
+import Question from 'quizzes/models/content/question';
+import PlayerCollection from 'quizzes/models/collection/collection';
+import { TAXONOMY_CATEGORIES } from 'quizzes/config/config';
 
 /**
  * Object with all of the properties in a collection

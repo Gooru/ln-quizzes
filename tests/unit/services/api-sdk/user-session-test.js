@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
-import moduleForService from 'gooru-web/tests/helpers/module-for-service';
-import Context from 'gooru-web/models/result/context';
+import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import Context from 'quizzes/models/result/context';
 
 moduleForService('service:api-sdk/user-session', 'Unit | Service | api-sdk/user-session', {
   needs: ['serializer:user-session', 'model:result/context', 'adapter:user-session']

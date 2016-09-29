@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import BuilderItem from 'gooru-web/models/content/builder/item';
-import Unit from 'gooru-web/models/content/unit';
-import PlayerAccordionCourse from 'gooru-web/components/content/courses/play/gru-accordion-course';
+import BuilderItem from 'quizzes/models/content/builder/item';
+import Unit from 'quizzes/models/content/unit';
+import PlayerAccordionCourse from 'quizzes/components/content/courses/play/gru-accordion-course';
 
 /**
  * Content Builder: Accordion Course

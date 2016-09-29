@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import PlayerController from 'gooru-web/controllers/player';
-import {truncate} from 'gooru-web/utils/utils';
+import PlayerController from 'quizzes/controllers/player';
+import {truncate} from 'quizzes/utils/utils';
 
 /**
  * Context Player Controller

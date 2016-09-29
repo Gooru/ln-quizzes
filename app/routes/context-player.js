@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import PlayerRoute from 'gooru-web/routes/player';
-import Context from 'gooru-web/models/result/context';
-import {generateUUID} from 'gooru-web/utils/utils';
-import PrivateRouteMixin from "gooru-web/mixins/private-route-mixin";
+import PlayerRoute from 'quizzes/routes/player';
+import Context from 'quizzes/models/result/context';
+import {generateUUID} from 'quizzes/utils/utils';
+import PrivateRouteMixin from "quizzes/mixins/private-route-mixin";
 
 /**
  * Context Player Route

@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Answer from 'gooru-web/models/content/answer';
-import Question from 'gooru-web/models/content/question';
+import Answer from 'quizzes/models/content/answer';
+import Question from 'quizzes/models/content/question';
 import wait from 'ember-test-helpers/wait';
 import Ember from 'ember';
 

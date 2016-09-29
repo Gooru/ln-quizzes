@@ -30,7 +30,7 @@ This project is built on top of EmberJS 2.x and Ember CLI
 * Ember i18n
 * Handlebars
 * SASS
-* Boostrap
+* Bootstrap
 * jQuery
 * Grunt
 * Stubby

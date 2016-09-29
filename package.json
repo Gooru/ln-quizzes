@@ -1,7 +1,7 @@
 {
-  "name": "gooru-web",
+  "name": "quizzes",
   "version": "0.0.0",
-  "description": "Small description for gooru-web goes here",
+  "description": "Small description for quizzes goes here",
   "private": true,
   "directories": {
     "doc": "doc",

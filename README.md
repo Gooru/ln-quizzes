@@ -1,10 +1,11 @@
-Gooru Web
-=============
-Introducing Gooru Web  - a solution to help teachers faciliate personalized learning for students.
+Quizzes
+=======
+Quizzes is a tool for teachers to create assessments and for students to play those assessments and get a score.
 
 ## Introduction
-Gooru Web is the front-end of the Gooru application. Gooru’s free solution enables teachers to create, curate, and share collections of web resources on any K-12 topic. With millions of multimedia resources and quiz questions, Gooru makes it easy to discover topic-relevant and standards-aligned content to address specific students’ needs.  At Gooru, we believe education is a human right.  Now, with access to this Git repository, open-sourced under the MIT license, you can build along side us to support this mission and help students around the world reach their full potential.
- 
+Quizzes is not a replacement for Gooru or any other LMS, it is a tool that will provide new functionality and in other cases, will increase the capabilities of existing functionality. Quizzes is not intended to manage school, classroom or student information and it does not depend on a specific LMS context to work.
+
+
 ## Prerequisites
 
 See [Environment Setup](./docs/environment-setup.md)
@@ -60,7 +61,7 @@ See [ember-i18n](https://github.com/jamesarosen/ember-i18n/wiki)
 
 ## Installation
 
-* `git clone https://github.com/Gooru/Gooru-FE.git` this repository 
+* `git clone https://github.com/Gooru/quizzes.git` this repository 
 * Install dependencies `npm install` and `bower install` 
 
 ## Running / Development
@@ -95,13 +96,10 @@ It's required to run a grunt task that builds the SVG Sprite Sheets that the app
 * `grunt run` or `grunt run:nginx` to run it proxying to the nginx server.
 
 ### Coding standards
-This application follows [Ember CLI standards and conventions](http://www.ember-cli.com/user-guide/#naming-conventions) and it also uses JSHint (http://jshint.com/) _"JSHint is a program that flags suspicious usage in programs written in JavaScript."_
+This application follows [Ember CLI standards and conventions](http://www.ember-cli.com/user-guide/#naming-conventions) and it also uses ESLint (http://eslint.org/) _"ESLint is a program that flags suspicious usage in programs written in JavaScript."_
 
 See 
-* [JSHint Options](http://jshint.com/docs/options/). 
-* A new project has been started [JSCS](http://jscs.info/rules) for javascript code style validations, this project would move to it once it is fully integrated with ember cli
-
-JSHint rules will be enforced while running application tests.
+* [ESLint Rules](http://eslint.org/docs/rules/)
 
 ### Code Documentation
 Code should be really well documented, please use [jsDoc](http://usejsdoc.org/)
@@ -166,8 +164,7 @@ It is possible to proxy a server so you can connect to a different environment
 * `grunt build:prod` (production)
 
 ### Embedded application
-The gooru application can run as a normal ember application or it could be embedded into a 3rd party application. 
-This was made with the intention of sharing some screens/functionality with Gooru partners
+The quizzes application can run as a normal ember application or it could be embedded into a 3rd party application.
 
 #### Build it as embedded 
 To build the application as a embedded app do
@@ -182,7 +179,7 @@ You could do the same to run the application embedded
 #### Configuring the embedded application
 When embedding the application you can pass several options
 
-* token, it should be a valid gooru token, when present the application would try to authentication using that token, otherwise it will authenticated anonymously 
+* token, it should be a valid token, when present the application would try to authentication using that token, otherwise it will be authenticated anonymously 
 * transition, it is use to tell the application to navigate to a specific page, you need to provide the parameters matching the ember route, see public/embedded.html for an example
 
 ### Continuous Integration

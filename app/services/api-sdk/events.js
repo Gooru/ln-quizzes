@@ -1,55 +1,59 @@
 import Ember from 'ember';
-import Env from '../../config/environment';
-const ConfigEvent = Env['events'] || {};
+import EventsSerializer from 'quizzes/serializers/events/events';
+import EventsAdapter from 'quizzes/adapters/events/events';
 
 export default Ember.Service.extend({
 
-  saveResourceResult: function(resourceResult, context) {
+  init: function () {
+    this._super(...arguments);
+    this.set('eventsAdapter', EventsAdapter.create(Ember.getOwner(this).ownerInjection()));
+    this.set('eventsSerializer', EventsSerializer.create(Ember.getOwner(this).ownerInjection()));
+  },
+
+  // -------------------------------------------------------------------------
+  // Properties
+
+  /**
+   * @property {EventsAdapter} adapter
+   */
+  eventsAdapter: null,
+
+  /**
+   * @property {EventsSerializer} serializer
+   */
+  eventsSerializer: null,
+
+  /**
+   * @type {SessionService} session Service to retrieve session information
+   */
+  session: Ember.inject.service(),
+
+  // -------------------------------------------------------------------------
+  // Methods
+
+  startContext: function(contextId) {
     var service = this;
-    var apiKey = ConfigEvent.eventAPIKey;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      const eventContent = service.get('eventsSerializer').serializeResource(resourceResult, context, apiKey);
-      service.get('collectionResourceAdapter').postData({
-        body: eventContent,
-        query: {
-          apiKey: apiKey
-        }
-      }).then(function() {
-        resolve();
-      }, function(error) {
-        reject(error);
-      });
+      service.get('eventsAdapter').sendStartContextEvent(contextId)
+        .then(response => service.get('eventsSerializer').normalizeAssessmentResult(response))
+        .then(resolve, reject);
     });
   },
 
-  saveCollectionResult: function(assessment, context) {
-    const service = this;
-    const apiKey = ConfigEvent.eventAPIKey;
+  endContext: function(contextId) {
+    var service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      const eventContent = service.get('eventsSerializer').serializeCollection(assessment, context, apiKey);
-      service.get('collectionPlayAdapter').postData({
-        body: eventContent,
-        query: {
-          apiKey: apiKey
-        }
-      }).then(function() {
-        resolve();
-      }, function(error) {
-        reject(error);
-      });
+      service.get('eventsAdapter').sendEndContextEvent(contextId)
+        .then(resolve, reject);
     });
   },
 
-  saveReaction: function(resourceResult, context) {
+  moveToResource: function(resourceId, contextId, previousResult) {
     var service = this;
-    var apiKey = ConfigEvent.eventAPIKey;
-    var reactionContent = service.get('eventsSerializer').serializeReaction(resourceResult, context, apiKey);
-    return service.get('collectionResourceAdapter').postData({
-      body: reactionContent,
-      query: {
-        apiKey: apiKey
-      }
+    var serializedPreviousResult = this.get('eventsSerializer').serializeResourceResult(previousResult);
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service.get('eventsAdapter').moveToResource(resourceId, contextId, serializedPreviousResult)
+        .then(resolve, reject);
     });
   }
-
 });

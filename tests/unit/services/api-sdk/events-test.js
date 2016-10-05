@@ -1,49 +1,96 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
 import moduleForService from 'quizzes/tests/helpers/module-for-service';
-import Env from 'quizzes/config/environment';
-
-const ConfigEvent = Env['events'] || {};
 
 moduleForService('service:api-sdk/events', 'Unit | Service | api-sdk/events', {
-  // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
+
 });
 
-test('saveReaction', function(assert) {
+test('startContext', function(assert) {
   const service = this.subject();
-  const resourceResultObj = {};
-  const contextObj = {};
-  const reactionContentObj = {};
-  const apiKeyConfigValue = ConfigEvent.eventAPIKey;
+  const expectedContextId = 'context-id';
+  const assessmentResult = {
+    id: 'result-id'
+  };
 
-  assert.expect(4);
+  assert.expect(3);
 
-  service.set('collectionResourceAdapter', Ember.Object.create({
-    postData: function(data) {
-      assert.deepEqual({
-        body: reactionContentObj,
-        query: {
-          apiKey: apiKeyConfigValue
-        }
-      }, data);
-      return Ember.RSVP.resolve();
+  service.set('eventsAdapter', Ember.Object.create({
+    sendStartContextEvent: function(contextId) {
+      assert.deepEqual(contextId, expectedContextId, 'The context id should match');
+      return Ember.RSVP.resolve(assessmentResult);
     }
   }));
 
   service.set('eventsSerializer', Ember.Object.create({
-    serializeReaction: function(resourceResult, context, apiKey) {
-      assert.deepEqual(resourceResultObj, resourceResult);
-      assert.deepEqual(contextObj, context);
-      assert.deepEqual(apiKeyConfigValue, apiKey);
-      return reactionContentObj;
+    normalizeAssessmentResult: function(response) {
+      assert.deepEqual(response, assessmentResult, 'The assessment result should match');
+      return assessmentResult;
     }
   }));
 
   var done = assert.async();
-  service.saveReaction(resourceResultObj, contextObj)
-    .then(function() {
+  service.startContext(expectedContextId)
+    .then(function(result) {
+      assert.deepEqual(result, assessmentResult, 'The result should match');
       done();
     });
 });
 
+test('endContext', function(assert) {
+  const service = this.subject();
+  const expectedContextId = 'context-id';
+  const assessmentResult = {
+    id: 'result-id'
+  };
+
+  assert.expect(2);
+
+  service.set('eventsAdapter', Ember.Object.create({
+    sendEndContextEvent: function(contextId) {
+      assert.deepEqual(contextId, expectedContextId, 'The context id should match');
+      return Ember.RSVP.resolve(assessmentResult);
+    }
+  }));
+
+  var done = assert.async();
+  service.endContext(expectedContextId)
+    .then(function(result) {
+      assert.deepEqual(result, assessmentResult, 'The result should match');
+      done();
+    });
+});
+
+test('moveToResource', function(assert) {
+  const service = this.subject();
+  const expectedContextId = 'context-id';
+  const expectedResourceId = 'resource-id';
+  const previousResult =  {
+    id: 'result-id'
+  };
+
+  assert.expect(5);
+
+  service.set('eventsAdapter', Ember.Object.create({
+    moveToResource: function(resourceId, contextId, previous) {
+      assert.deepEqual(resourceId, expectedResourceId, 'The resource id should match');
+      assert.deepEqual(contextId, expectedContextId, 'The context id should match');
+      assert.deepEqual(previous, previousResult, 'The previous result should match');
+      return Ember.RSVP.resolve(previousResult);
+    }
+  }));
+
+  service.set('eventsSerializer', Ember.Object.create({
+    serializeResourceResult: function(result) {
+      assert.deepEqual(result, previousResult, 'The resource result should match');
+      return previousResult;
+    }
+  }));
+
+  var done = assert.async();
+  service.moveToResource(expectedResourceId, expectedContextId, previousResult)
+    .then(function(result) {
+      assert.deepEqual(result, previousResult, 'The result should match');
+      done();
+    });
+});

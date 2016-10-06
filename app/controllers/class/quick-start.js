@@ -13,7 +13,6 @@ export default Ember.Controller.extend(ModalMixin,{
 
   classService: Ember.inject.service('api-sdk/class'),
 
-  searchService: Ember.inject.service('api-sdk/search'),
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -21,17 +20,6 @@ export default Ember.Controller.extend(ModalMixin,{
 
   // -------------------------------------------------------------------------
   // Actions
-  actions: {
-    loadFeaturedCourses: function() {
-      var controller = this;
-      controller.get('searchService').searchFeaturedCourses('*')
-        .then(function(featuredCourses) {
-          controller.set('featuredCourses', featuredCourses);
-          controller.send('showModal', "content.modals.gru-quick-course-search",
-            controller.get('modelForFeaturedCoursesModal'), null, "quick-course-search");
-        });
-    }
-  },
 
   // -------------------------------------------------------------------------
   // Events

@@ -68,7 +68,6 @@ test('header layout with user', function(assert) {
   const $navMenu = $component.find(".menu-navbar");
   T.notExists(assert, $component.find(".sign-in-button"), "Missing sign-in-btn button");
   T.exists(assert, $navMenu.find("li.my-classes"), "My classes dropdown must be present");
-  assert.equal($navMenu.find("li.my-classes ul li").length, 3, "Two classes must be present on classes list and link to create class");
   T.exists(assert, $navMenu.find(".profile .username"), "User info should not be present");
   assert.equal(T.text($navMenu.find(".profile .username")), "jperez", "Wrong username");
 

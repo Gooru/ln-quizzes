@@ -87,7 +87,8 @@ test('Click share button and check clipboard functionality', function (assert) {
   });
 });
 
-test('Click preview button', function (assert) {
+// TODO: Fix test when functionality is made available in quizzes
+/*test('Click preview button', function (assert) {
   visit('/content/assessments/edit/all-question-types-assessment-id');
 
   andThen(function () {
@@ -99,7 +100,7 @@ test('Click preview button', function (assert) {
       assert.equal(currentURL(), '/player/all-question-types-assessment-id?resourceId=multiple-choice-question-id&type=assessment', "Wrong url");
     });
   });
-});
+});*/
 
 test('Delete Assessment', function (assert) {
   visit('/content/assessments/edit/all-question-types-assessment-id');

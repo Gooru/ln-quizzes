@@ -5,10 +5,6 @@ export default Ember.Route.extend(ModalMixin, {
 
   // -------------------------------------------------------------------------
   // Dependencies
-  /**
-   * @type {ProfileService} Search service object
-   */
-   searchService: Ember.inject.service('api-sdk/search'),
 
   // -------------------------------------------------------------------------
   // Actions
@@ -29,17 +25,8 @@ export default Ember.Route.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Methods
 
-  model: function() {
-    let route = this;
-    return route.get('searchService').searchFeaturedCourses("*").then(function(result){
-      return Ember.RSVP.hash({
-        courses:result
-      });
-    });
-  },
-
-  setupController: function (controller, model) {
-    controller.set('courses', model.courses);
+  setupController: function (controller) {
+    controller.set('courses', []);
   }
 
 });

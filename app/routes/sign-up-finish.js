@@ -58,14 +58,8 @@ export default Ember.Route.extend({
     /**
      * Action triggered when submitting the sign up finish form
      */
-    signUpFinish: function (role) {
-      if (role === 'teacher') {
-        this.transitionTo("content.classes.create");
-      } else if (role === 'student') {
-        this.transitionTo("content.classes.join");
-      } else {
-        this.transitionTo("index");
-      }
+    signUpFinish: function () {
+      this.transitionTo("index");
     }
   }
 });

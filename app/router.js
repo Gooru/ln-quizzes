@@ -9,13 +9,6 @@ var Router = Ember.Router.extend(googlePageview, {
 Router.map(function() {
   this.route('index', {path: '/'});
 
-  this.route('search', function() {
-    this.route('collections');
-    this.route('assessments');
-    this.route('questions');
-    this.route('resources');
-  });
-
   this.route('sign-in');
   this.route('forgot-password');
   this.route('reset-password');
@@ -36,11 +29,6 @@ Router.map(function() {
     this.route('courses', function () {
       this.route('edit', {path: '/edit/:courseId'});
       this.route('play', {path: '/play/:courseId'});
-    });
-
-    this.route('classes', function() {
-      this.route('create');
-      this.route('join');
     });
 
     this.route('resources', function () {
@@ -118,7 +106,6 @@ Router.map(function() {
    * IMPORTANT! the profile route should be the last one at this file, so we can handle the app urls
    * and the vanity urls for profiles like www.gooru.org/javier-perez
    */
-
 });
 
 export default Router;

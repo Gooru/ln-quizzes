@@ -42,8 +42,5 @@ test('Student Layout', function(assert) {
     const $remixCourseContainer = find(".remix-course-container");
     T.exists(assert, $remixCourseContainer.find(".lead"), "Missing header for remix course");
     T.exists(assert, $remixCourseContainer.find(".description"), "Missing description for remix course");
-
-    T.exists(assert, $remixCourseContainer.find(".actions button.remix"), "Missing new collection button for remix course");
-
   });
 });

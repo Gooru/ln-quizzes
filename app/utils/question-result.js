@@ -5,6 +5,54 @@ import { average, roundFloat } from "quizzes/utils/math";
  * Utility methods to handle stats for QuestionResult instances
  */
 
+ /**
+  * Returns stats for a set of question results
+  * @param {QuestionResult[]} questionResults
+  * @returns {{ total: number, correct: number, incorrect: number, skipped: number, notStarted: number}}
+  */
+ export function stats(questionResults){
+   let total = questionResults.length;
+   let correct = 0;
+   let incorrect = 0;
+   let skipped = 0;
+   let started = 0;
+   let timeSpent = 0;
+   let reactions = [];
+
+   questionResults.forEach(function(item){
+     correct += item.get("correct") ? 1 : 0;
+     incorrect += item.get("incorrect") ? 1 : 0;
+     skipped += item.get("skipped") ? 1 : 0;
+     started += item.get("started") ? 1 : 0;
+     timeSpent += item.get("timeSpent");
+
+     if (item.get('reaction')) {
+       reactions.push(item.get("reaction"));
+     }
+   });
+
+   let notStarted = total - started;
+   let completed = correct + incorrect; //incorrect should include skipped ones
+
+   return Ember.Object.create({
+     total: total,
+     totalCorrect: correct,
+     correctPercentage: completed ? roundFloat(correct / completed * 100) : null,
+     correctPercentageFromTotal: roundFloat(correct / total * 100, 1), //percentage including not started
+     totalIncorrect: incorrect,
+     incorrectPercentage: completed ? roundFloat(incorrect / completed * 100) : null,
+     incorrectPercentageFromTotal: roundFloat(incorrect / total * 100, 1), //percentage including not started
+     totalSkipped: skipped,
+     skippedPercentage: roundFloat(skipped / total * 100),
+     totalNotStarted: notStarted,
+     notStartedPercentage: roundFloat(notStarted / total * 100),
+     totalCompleted: completed,
+     completedPercentage: roundFloat(completed / total * 100),
+     averageReaction: reactions.length ? roundFloat(average(reactions)) : null,
+     totalTimeSpent: timeSpent
+   });
+ }
+
 /**
  * Average user reaction to the questions in the assessment
  * @param {QuestionResult[]} questionsResults
@@ -66,54 +114,6 @@ export function totalNotStarted(questionsResults) {
 }
 
 /**
- * Returns stats for a set of question results
- * @param {QuestionResult[]} questionResults
- * @returns {{ total: number, correct: number, incorrect: number, skipped: number, notStarted: number}}
- */
-export function stats(questionResults){
-  let total = questionResults.length;
-  let correct = 0;
-  let incorrect = 0;
-  let skipped = 0;
-  let started = 0;
-  let timeSpent = 0;
-  let reactions = [];
-
-  questionResults.forEach(function(item){
-    correct += item.get("correct") ? 1 : 0;
-    incorrect += item.get("incorrect") ? 1 : 0;
-    skipped += item.get("skipped") ? 1 : 0;
-    started += item.get("started") ? 1 : 0;
-    timeSpent += item.get("timeSpent");
-
-    if (item.get('reaction')) {
-      reactions.push(item.get("reaction"));
-    }
-  });
-
-  let notStarted = total - started;
-  let completed = correct + incorrect; //incorrect should include skipped ones
-
-  return Ember.Object.create({
-    total: total,
-    totalCorrect: correct,
-    correctPercentage: completed ? roundFloat(correct / completed * 100) : null,
-    correctPercentageFromTotal: roundFloat(correct / total * 100, 1), //percentage including not started
-    totalIncorrect: incorrect,
-    incorrectPercentage: completed ? roundFloat(incorrect / completed * 100) : null,
-    incorrectPercentageFromTotal: roundFloat(incorrect / total * 100, 1), //percentage including not started
-    totalSkipped: skipped,
-    skippedPercentage: roundFloat(skipped / total * 100),
-    totalNotStarted: notStarted,
-    notStartedPercentage: roundFloat(notStarted / total * 100),
-    totalCompleted: completed,
-    completedPercentage: roundFloat(completed / total * 100),
-    averageReaction: reactions.length ? roundFloat(average(reactions)) : null,
-    totalTimeSpent: timeSpent
-  });
-}
-
-/**
  * Returns only completed results
  * @param {QuestionResult[]} questionsResults
  * @prop {QuestionResult[]}
@@ -156,7 +156,3 @@ export function userAnswers(questionResults){
     return questionResult.get("userAnswer");
   });
 }
-
-
-
-

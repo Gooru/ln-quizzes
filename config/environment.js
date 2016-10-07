@@ -6,7 +6,7 @@ module.exports = function (environment) {
 
   var ENV = {
     modulePrefix: 'quizzes',
-    rootElement: "#gooru-application-container",
+    rootElement: "#quizzes-application-container",
     environment: environment,
     baseURL: isEmbedded ? undefined : '/',
     locationType: isEmbedded ? 'none' : 'auto',

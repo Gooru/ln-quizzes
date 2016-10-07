@@ -25,11 +25,6 @@ export default Ember.Controller.extend({
   analyticsService: Ember.inject.service("api-sdk/analytics"),
 
   /**
-   * @property {Ember.Service} Service to search for resources
-   */
-  searchService: Ember.inject.service("api-sdk/search"),
-
-  /**
    * @property {Ember.Service} Service to get the Taxonomy data
    */
   taxonomyService: Ember.inject.service("api-sdk/taxonomy"),
@@ -170,20 +165,6 @@ export default Ember.Controller.extend({
                       if (taxonomyStandard) {
                         standardSummary.set('description', taxonomyStandard.title);
                       }
-                      controller.get('searchService')
-                        .searchResources('*', {
-                          courseId: controller.get('courseId'),
-                          taxonomies: [standardSummary.get('id')],
-                          publishStatus: 'unpublished'  // TODO this parameter needs to be removed once we go to Production
-                        })
-                        .then(function (resources) {
-                          const suggestedResources = resources.map(function (resource) {
-                            return {
-                              resource: resource.toPlayerResource()
-                            };
-                          });
-                          standardSummary.set('suggestedResources', suggestedResources);
-                        });
                     });
                   });
               }

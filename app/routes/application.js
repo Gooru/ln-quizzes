@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import Ember from "ember";
 import GruTheme from '../utils/gru-theme';
 import Env from '../config/environment';
-import PublicRouteMixin from 'quizzes/mixins/public-route-mixin';
+import PublicRouteMixin from "quizzes/mixins/public-route-mixin";
+import GooruLegacyUrl from 'quizzes/utils/gooru-legacy-url';
 import Error from 'quizzes/models/error';
 
 /**
@@ -13,6 +14,11 @@ export default Ember.Route.extend(PublicRouteMixin, {
   // Dependencies
 
   i18n: Ember.inject.service(),
+
+  /**
+   * @type {ClassService} Service to retrieve user information
+   */
+  classService: Ember.inject.service("api-sdk/class"),
 
   /**
    * Authentication (api-sdk/session) service.
@@ -31,7 +37,7 @@ export default Ember.Route.extend(PublicRouteMixin, {
   /**
    * @requires service:api-sdk/log
    */
-  errorService: Ember.inject.service('api-sdk/error'),
+  errorService: Ember.inject.service("api-sdk/error"),
 
 
   // -------------------------------------------------------------------------
@@ -68,28 +74,42 @@ export default Ember.Route.extend(PublicRouteMixin, {
 
   model: function(params) {
     const route = this;
-    const currentSession = route.get('session.data.authenticated');
-    const themeConfig = Env.themes || {};
-    const themeId = params.themeId || Env.themes.default;
+    const currentSession = route.get("session.data.authenticated");
+    const themeConfig = Env['themes'] || {};
+    const themeId = params.themeId || Env['themes'].default;
+    let myClasses = null;
 
     var theme = null;
     if (themeId && themeConfig[themeId]){
       theme = GruTheme.create(themeConfig[themeId]);
-      theme.set('id', themeId);
+      theme.set("id", themeId);
+    }
+
+    if (!currentSession.isAnonymous) {
+      myClasses = route.get('classService').findMyClasses();
     }
 
     return Ember.RSVP.hash({
       currentSession: currentSession,
       theme: theme,
-      translations: theme ? theme.loadTranslations() : null
+      translations: theme ? theme.loadTranslations() : null,
+      myClasses: myClasses
     });
+  },
+
+  afterModel: function(){
+    this.handleLegacyUrlIfNecessary();
   },
 
   setupController: function(controller, model) {
     const theme = model.theme;
     if (theme){
-      controller.set('theme', theme);
+      controller.set("theme", theme);
       this.setupTheme(theme, model.translations);
+    }
+
+    if (model.myClasses) {
+      controller.set('myClasses', model.myClasses);
     }
   },
 
@@ -100,7 +120,7 @@ export default Ember.Route.extend(PublicRouteMixin, {
    */
   setupTheme: function(theme, translations){
     this.setupThemeStyles(theme);
-    this.setupThemeTranslations(theme.get('translations.locale'), translations);
+    this.setupThemeTranslations(theme.get("translations.locale"), translations);
   },
 
   /**
@@ -109,9 +129,9 @@ export default Ember.Route.extend(PublicRouteMixin, {
    * @param {{}} translations theme translations
    */
   setupThemeTranslations: function(locale, translations){
-    const i18n = this.get('i18n');
+    const i18n = this.get("i18n");
     //sets the theme locale
-    i18n.set('locale', locale);
+    i18n.set("locale", locale);
 
     //Add the translations
     Object.keys(translations).forEach((locale) => {
@@ -125,11 +145,28 @@ export default Ember.Route.extend(PublicRouteMixin, {
    */
   setupThemeStyles: function(theme){
     //setting theme id at html tag
-    Ember.$('html').attr('id', theme.get('id'));
+    Ember.$('html').attr("id", theme.get("id"));
     //adding theme styles to head tag
-    const themeStylesUrl = theme.get('styles.url');
+    const themeStylesUrl = theme.get("styles.url");
     if (themeStylesUrl){
-      Ember.$('head').append(`<link id='theme-style-link' rel='stylesheet' type='text/css' href='${themeStylesUrl}'>`);
+      Ember.$('head').append(`<link id="theme-style-link" rel="stylesheet" type="text/css" href="${themeStylesUrl}">`);
+    }
+  },
+
+  /**
+   * Handles a url when necessary
+   */
+  handleLegacyUrlIfNecessary: function() {
+    const route = this;
+    const legacyUrl = GooruLegacyUrl.create({
+      url: route.get("router.url")
+    });
+
+    if (legacyUrl.get("isLegacyUrl")) { //checking for a legacy legacyUrl
+      const routeParams = legacyUrl.get("routeParams");
+      if (routeParams) {
+        route.transitionTo.apply(route, routeParams);
+      }
     }
   },
 
@@ -150,27 +187,27 @@ export default Ember.Route.extend(PublicRouteMixin, {
     const targetElement = event.currentTarget && event.currentTarget.activeElement ?
       event.currentTarget.activeElement : false;
     const model = Error.create({
-      'type': 'url',
-      'timestamp': new Date().getTime(),
-      'userId': (route.get('session.isAnonymous') ? 'anonymous' : route.get('session.userId')),
-      'details': {
-        'route': route.get('router.url'),
-        'userAgent': navigator.userAgent,
-        'element-selector': (targetElement ? targetElement.className: null),
-        'endpoint': {
-          'url': settings.url,
-          'response': jqXHR.responseText,
-          'status': jqXHR.status,
-          'headers': settings.headers,
-          'responseHeaders': jqXHR.getAllResponseHeaders(),
-          'method': settings.type,
-          'data': settings.data
+      "type": "url",
+      "timestamp": new Date().getTime(),
+      "userId": (route.get("session.isAnonymous") ? "anonymous" : route.get("session.userId")),
+      "details": {
+        "route": route.get("router.url"),
+        "userAgent": navigator.userAgent,
+        "element-selector": (targetElement ? targetElement.className: null),
+        "endpoint": {
+          "url": settings.url,
+          "response": jqXHR.responseText,
+          "status": jqXHR.status,
+          "headers": settings.headers,
+          "responseHeaders": jqXHR.getAllResponseHeaders(),
+          "method": settings.type,
+          "data": settings.data
         }
       },
-      'description': 'Endpoint error'
+      "description": "Endpoint error"
     });
 
-    route.get('errorService').createError(model);
+    route.get("errorService").createError(model);
   },
 
   /**
@@ -186,23 +223,23 @@ export default Ember.Route.extend(PublicRouteMixin, {
     }
 
     const model = Error.create({
-      'type': 'page',
-      'timestamp': new Date().getTime(),
-      'userId': (route.get('session.isAnonymous') ? 'anonymous' : route.get('session.userId')),
-      'details': {
-        'route': route.get('router.url'),
-        'userAgent': navigator.userAgent,
-        'stack': error.stack
+      "type": "page",
+      "timestamp": new Date().getTime(),
+      "userId": (route.get("session.isAnonymous") ? "anonymous" : route.get("session.userId")),
+      "details": {
+        "route": route.get("router.url"),
+        "userAgent": navigator.userAgent,
+        "stack": error.stack
       },
-      'description': JSON.stringify(error)
+      "description": JSON.stringify(error)
     });
 
     Ember.Logger.error(error);
-    route.get('errorService').createError(model);
+    route.get("errorService").createError(model);
   },
 
   deactivate: function () {
-    Ember.$(document).off('ajaxError');
+    Ember.$(document).off("ajaxError");
   },
 
   /**
@@ -213,7 +250,7 @@ export default Ember.Route.extend(PublicRouteMixin, {
     const route = this;
     const transition = Env.APP.transition;
     const token = Env.APP.token;
-    const authService = this.get('authService');
+    const authService = this.get("authService");
     const authPromise = token ?
       authService.signInWithToken(token) :
       authService.get('session').authenticateAsAnonymous();
@@ -227,6 +264,58 @@ export default Ember.Route.extend(PublicRouteMixin, {
         route.transitionTo(routeName);
       }
     });
+  },
+
+
+// -------------------------------------------------------------------------
+  // Actions - only transition actions should be placed at the route
+  actions: {
+    /**
+     * Action triggered when submitting the login form
+     * @see application.hbs
+     * @see gru-header.hbs
+     */
+    signIn: function () {
+      const route = this;
+      route.actions.updateUserClasses.call(this).then( // Required to get list of classes after login
+        function() {
+          route.transitionTo("home");
+        }
+      );
+    },
+
+    /**
+     * Action triggered when login out
+     */
+    logout: function () {
+      this.transitionTo("logout");
+    },
+
+    /**
+     * Action triggered when the user search for collections
+     * @see application.hbs
+     * @see gru-header.js
+     */
+    searchTerm: function (term) {
+      const routeName = this.get('controller.currentRouteName');
+      if (routeName.indexOf("search") >= 0) {
+        this.set("controller.term", term);
+      }
+      else {
+        var termParam = '?term=' + term;
+        this.transitionTo('/search/collections' + termParam);
+      }
+    },
+
+    /**
+     * Gets a refreshed list of user classes
+     * @see create.js
+     * @see join.js
+     */
+    updateUserClasses: function() {
+      const route = this;
+      return route.get('controller').loadUserClasses();
+    }
   }
 
 });

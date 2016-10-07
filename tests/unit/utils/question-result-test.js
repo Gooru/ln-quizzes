@@ -1,5 +1,6 @@
 import Ember from 'ember';
-import { averageReaction, correctAnswers, correctPercentage, totalTimeSpent}
+import { averageReaction, answeredResults, correctAnswers, correctPercentage,
+  totalTimeSpent, stats , completedResults, sortResults, userAnswers}
   from 'quizzes/utils/question-result';
 import QuestionResult from 'quizzes/models/result/question';
 import { module, test } from 'qunit';
@@ -11,17 +12,17 @@ test('Average Reaction', function (assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},
-      score: 100,
+      correct: true,
       timeSpent: 10, //seconds
       reaction: 5,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 2,
-      answer: 1
+      userAnswer: 1
     })
   ]);
   assert.equal(averageReaction(questions), 4, 'Average reaction should be 4');
@@ -31,17 +32,17 @@ test('Correct Answers', function (assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},
-      score: 100,
+      correct: true,
       timeSpent: 10, //seconds
       reaction: 5,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 2,
-      answer: 1
+      userAnswer: 1
     })
   ]);
   assert.equal(correctAnswers(questions), 1, 'Correct answer should be 1');
@@ -51,25 +52,26 @@ test('Correct Percentage', function (assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},
-      score: 100, //correct
+      correct: true, //correct
       timeSpent: 10,
       reaction: 5,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0, //incorrect
+      correct: false, //incorrect
       timeSpent: 25,
       reaction: 2,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0, //incorrect
+      correct: false, //incorrect
       timeSpent: 25,
       reaction: 2,
-      answer: null //skipped
-    })
+      userAnswer: null //skipped
+    }),
+    QuestionResult.create({})
   ]);
   assert.equal(correctPercentage(questions), 33, 'Correct Percentage should be 75');
 });
@@ -78,52 +80,51 @@ test('Total Time Spent', function (assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},
-      score: 100,
+      correct: true,
       timeSpent: 10, //seconds
       reaction: 5,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 2,
-      answer: 1
+      userAnswer: 1
     })
   ]);
   assert.equal(totalTimeSpent(questions), 35, 'Total time spent should be 35');
 });
 
-// TODO fix when working on how to represent not started, dates and attempts
-/*test('Stats having not started, not started should be ignored', function (assert) {
+test('Stats having not started, not started should be ignored', function (assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},
-      score: 100,
+      correct: true,
       timeSpent: 10, //seconds
       reaction: 5,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 5,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create(), //not started
     QuestionResult.create()
@@ -151,38 +152,38 @@ test('Stats when all completed', function (assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},
-      score: 100,
+      correct: true,
       timeSpent: 10, //seconds
       reaction: 5,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 5,
-      answer: null //skipped
+      userAnswer: null //skipped
     }),
     QuestionResult.create({
       question: {},
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 5,
-      answer: null //skipped
+      userAnswer: null //skipped
     })
   ]);
   let totals = stats(questions);
@@ -207,28 +208,28 @@ test('Stats when all completed', function (assert) {
 test('completedResults', function (assert) {
   const questions = Ember.A([
     QuestionResult.create({
-      score: 100,
+      correct: true,
       timeSpent: 10, //seconds
       reaction: 5,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 5,
-      answer: null //skipped
+      userAnswer: null //skipped
     }),
     QuestionResult.create(),
     QuestionResult.create()
@@ -241,28 +242,28 @@ test('completedResults', function (assert) {
 test('answeredResults', function (assert) {
   const questions = Ember.A([
     QuestionResult.create({
-      score: 100,
+      correct: true,
       timeSpent: 10, //seconds
       reaction: 5,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1
+      userAnswer: 1
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 5,
-      answer: null //skipped
+      userAnswer: null //skipped
     }),
     QuestionResult.create(),
     QuestionResult.create()
@@ -272,34 +273,36 @@ test('answeredResults', function (assert) {
   assert.equal(answered.get("length"), 3, 'Wrong total. 1 correct + 2 incorrect');
 });
 
+
+
 test('sortResults', function (assert) {
   const questions = Ember.A([
     QuestionResult.create({
-      score: 100,
+      correct: true,
       timeSpent: 10, //seconds
       reaction: 5,
-      answer: 1,
+      userAnswer: 1,
       submittedAt: new Date("October 13, 2014 11:40:00")
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1,
+      userAnswer: 1,
       submittedAt: new Date("October 13, 2014 11:20:00")
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 1,
+      userAnswer: 1,
       submittedAt: new Date("October 13, 2014 11:10:00")
     }),
     QuestionResult.create({
-      score: 0,
+      correct: null, //skipped
       timeSpent: 25, //seconds
       reaction: 5,
-      answer: 1,
+      userAnswer: 1,
       submittedAt: new Date("October 13, 2014 11:50:00")
     }),
     QuestionResult.create(),
@@ -318,36 +321,38 @@ test('sortResults', function (assert) {
     new Date("October 13, 2014 11:40:00"),
     new Date("October 13, 2014 11:50:00")
   ], 'Wrong dates');
+
+
 });
 
 test('userAnswers', function (assert) {
   const results = Ember.A([
     QuestionResult.create({
-      score: 100,
+      correct: true,
       timeSpent: 10, //seconds
       reaction: 5,
-      answer: 1,
+      userAnswer: 1,
       submittedAt: new Date("October 13, 2014 11:40:00")
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 2,
+      userAnswer: 2,
       submittedAt: new Date("October 13, 2014 11:20:00")
     }),
     QuestionResult.create({
-      score: 0,
+      correct: false,
       timeSpent: 25, //seconds
       reaction: 4,
-      answer: 3,
+      userAnswer: 3,
       submittedAt: new Date("October 13, 2014 11:10:00")
     }),
     QuestionResult.create({
-      score: 100,
+      correct: true, //skipped
       timeSpent: 0, //seconds
       reaction: 0,
-      answer: null,  //skipped
+      userAnswer: null,  //skipped
       submittedAt: new Date("October 13, 2014 11:50:00")
     }),
     QuestionResult.create(),
@@ -360,10 +365,10 @@ test('userAnswers', function (assert) {
 
 test('attemptStatus', function (assert) {
   let correct = QuestionResult.create({
-    score: 100,
+    correct: true,
     timeSpent: 10, //seconds
     reaction: 5,
-    answer: 1,
+    userAnswer: 1,
     startedAt: new Date("October 13, 2014 11:40:00"),
     submittedAt: new Date("October 13, 2014 11:40:00")
   });
@@ -371,32 +376,32 @@ test('attemptStatus', function (assert) {
 
 
   let incorrect = QuestionResult.create({
-    score: 0,
+    correct: false,
     timeSpent: 25, //seconds
     reaction: 4,
-    answer: 2,
+    userAnswer: 2,
     startedAt: new Date("October 13, 2014 11:40:00"),
     submittedAt: new Date("October 13, 2014 11:20:00")
   });
   assert.equal(incorrect.get("attemptStatus"), "incorrect", "Wrong status for incorrect");
 
   let skipped = QuestionResult.create({
-    score: 0,
+    correct: false, //skipped
     timeSpent: 0, //seconds
     reaction: 0,
-    answer: null,  //skipped
+    userAnswer: null,  //skipped
     startedAt: new Date("October 13, 2014 11:40:00"),
     submittedAt: new Date("October 13, 2014 11:50:00")
   });
   assert.equal(skipped.get("attemptStatus"), "skipped", "Wrong status for skipped");
 
   let pending = QuestionResult.create({
-    score: 0,
+    correct: false, //pending
     timeSpent: 0, //seconds
     reaction: 0,
-    answer: null,  //skipped
+    userAnswer: null,  //skipped
     startedAt: new Date("October 13, 2014 11:40:00"),
     submittedAt: null
   });
   assert.equal(pending.get("attemptStatus"), "skipped", "Wrong status for pending");
-});*/
+});

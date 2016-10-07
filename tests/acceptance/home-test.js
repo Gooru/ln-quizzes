@@ -30,6 +30,10 @@ test('Layout', function(assert) {
     const $navigatorContainer = $userContainer.find(".home-navigator");
     T.exists(assert, $navigatorContainer, "Missing user navigator");
 
+    T.exists(assert, $navigatorContainer.find(".actions .create-class-cta"), "Missing create class button");
+
+    T.exists(assert, $navigatorContainer.find(".actions .join-class-cta"), "Missing join class button");
+
     T.exists(assert, $userContainer.find(".content"), "Missing user content");
   });
 });

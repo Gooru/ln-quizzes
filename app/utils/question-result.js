@@ -1,9 +1,57 @@
 import Ember from 'ember';
-import { average, roundFloat } from "quizzes/utils/math";
+import { average, roundFloat } from 'quizzes/utils/math';
 
 /**
  * Utility methods to handle stats for QuestionResult instances
  */
+
+ /**
+  * Returns stats for a set of question results
+  * @param {QuestionResult[]} questionResults
+  * @returns {{ total: number, correct: number, incorrect: number, skipped: number, notStarted: number}}
+  */
+ export function stats(questionResults) {
+   let total = questionResults.length;
+   let correct = 0;
+   let incorrect = 0;
+   let skipped = 0;
+   let started = 0;
+   let timeSpent = 0;
+   let reactions = [];
+
+   questionResults.forEach(function(item){
+     correct += item.get('correct') ? 1 : 0;
+     incorrect += item.get('incorrect') ? 1 : 0;
+     skipped += item.get('skipped') ? 1 : 0;
+     started += item.get('started') ? 1 : 0;
+     timeSpent += item.get('timeSpent');
+
+     if (item.get('reaction')) {
+       reactions.push(item.get('reaction'));
+     }
+   });
+
+   let notStarted = total - started;
+   let completed = correct + incorrect; //incorrect should include skipped ones
+
+   return Ember.Object.create({
+     total: total,
+     totalCorrect: correct,
+     correctPercentage: completed ? roundFloat(correct / completed * 100) : null,
+     correctPercentageFromTotal: roundFloat(correct / total * 100, 1), //percentage including not started
+     totalIncorrect: incorrect,
+     incorrectPercentage: completed ? roundFloat(incorrect / completed * 100) : null,
+     incorrectPercentageFromTotal: roundFloat(incorrect / total * 100, 1), //percentage including not started
+     totalSkipped: skipped,
+     skippedPercentage: roundFloat(skipped / total * 100),
+     totalNotStarted: notStarted,
+     notStartedPercentage: roundFloat(notStarted / total * 100),
+     totalCompleted: completed,
+     completedPercentage: roundFloat(completed / total * 100),
+     averageReaction: reactions.length ? roundFloat(average(reactions)) : null,
+     totalTimeSpent: timeSpent
+   });
+ }
 
 /**
  * Average user reaction to the questions in the assessment
@@ -12,7 +60,7 @@ import { average, roundFloat } from "quizzes/utils/math";
  */
 export function averageReaction(questionsResults) {
   let totals = stats(questionsResults);
-  return totals.get("averageReaction");
+  return totals.get('averageReaction');
 }
 
 /**
@@ -22,7 +70,7 @@ export function averageReaction(questionsResults) {
  */
 export function correctAnswers(questionsResults) {
   let totals = stats(questionsResults);
-  return totals.get("totalCorrect");
+  return totals.get('totalCorrect');
 }
 
 /**
@@ -33,7 +81,7 @@ export function correctAnswers(questionsResults) {
  */
 export function correctPercentage(questionsResults, includeAll = false) {
   let totals = stats(questionsResults);
-  return (includeAll) ? totals.get("correctPercentageFromTotal") : totals.get("correctPercentage");
+  return (includeAll) ? totals.get('correctPercentageFromTotal') : totals.get('correctPercentage');
 }
 /**
  * Total number of seconds spent completing the current attempt
@@ -42,7 +90,7 @@ export function correctPercentage(questionsResults, includeAll = false) {
  */
 export function totalTimeSpent(questionsResults) {
   let totals = stats(questionsResults);
-  return totals.get("totalTimeSpent");
+  return totals.get('totalTimeSpent');
 }
 
 /**
@@ -52,7 +100,7 @@ export function totalTimeSpent(questionsResults) {
  */
 export function totalCompleted(questionsResults) {
   let totals = stats(questionsResults);
-  return totals.get("totalCompleted");
+  return totals.get('totalCompleted');
 }
 
 /**
@@ -62,55 +110,7 @@ export function totalCompleted(questionsResults) {
  */
 export function totalNotStarted(questionsResults) {
   let totals = stats(questionsResults);
-  return totals.get("totalNotStarted");
-}
-
-/**
- * Returns stats for a set of question results
- * @param {QuestionResult[]} questionResults
- * @returns {{ total: number, correct: number, incorrect: number, skipped: number, notStarted: number}}
- */
-export function stats(questionResults){
-  let total = questionResults.length;
-  let correct = 0;
-  let incorrect = 0;
-  let skipped = 0;
-  let started = 0;
-  let timeSpent = 0;
-  let reactions = [];
-
-  questionResults.forEach(function(item){
-    correct += item.get("correct") ? 1 : 0;
-    incorrect += item.get("incorrect") ? 1 : 0;
-    skipped += item.get("skipped") ? 1 : 0;
-    started += item.get("started") ? 1 : 0;
-    timeSpent += item.get("timeSpent");
-
-    if (item.get('reaction')) {
-      reactions.push(item.get("reaction"));
-    }
-  });
-
-  let notStarted = total - started;
-  let completed = correct + incorrect; //incorrect should include skipped ones
-
-  return Ember.Object.create({
-    total: total,
-    totalCorrect: correct,
-    correctPercentage: completed ? roundFloat(correct / completed * 100) : null,
-    correctPercentageFromTotal: roundFloat(correct / total * 100, 1), //percentage including not started
-    totalIncorrect: incorrect,
-    incorrectPercentage: completed ? roundFloat(incorrect / completed * 100) : null,
-    incorrectPercentageFromTotal: roundFloat(incorrect / total * 100, 1), //percentage including not started
-    totalSkipped: skipped,
-    skippedPercentage: roundFloat(skipped / total * 100),
-    totalNotStarted: notStarted,
-    notStartedPercentage: roundFloat(notStarted / total * 100),
-    totalCompleted: completed,
-    completedPercentage: roundFloat(completed / total * 100),
-    averageReaction: reactions.length ? roundFloat(average(reactions)) : null,
-    totalTimeSpent: timeSpent
-  });
+  return totals.get('totalNotStarted');
 }
 
 /**
@@ -120,7 +120,7 @@ export function stats(questionResults){
  */
 export function completedResults(questionsResults) {
   return questionsResults.filter(function (questionResult) {
-      return questionResult.get("completed");
+      return questionResult.get('completed');
     });
 }
 
@@ -131,7 +131,7 @@ export function completedResults(questionsResults) {
  */
 export function answeredResults(questionsResults) {
   return questionsResults.filter(function (questionResult) {
-      return questionResult.get("answered");
+      return questionResult.get('answered');
     });
 }
 
@@ -141,7 +141,7 @@ export function answeredResults(questionsResults) {
  * @prop {QuestionResult[]}
  */
 export function sortResults(questionsResults) {
-  return questionsResults.sortBy("submittedAt");
+  return questionsResults.sortBy('submittedAt');
 }
 
 /**
@@ -153,10 +153,6 @@ export function userAnswers(questionResults){
   let answered = answeredResults(questionResults);
   let sorted = sortResults(answered); //sort results by submitted at
   return sorted.map(function(questionResult){
-    return questionResult.get("userAnswer");
+    return questionResult.get('userAnswer');
   });
 }
-
-
-
-

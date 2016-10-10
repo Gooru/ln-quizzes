@@ -20,6 +20,11 @@ export default ResourceResult.extend({
     correct: Ember.computed.equal('score', 100),
 
     /**
+     * @property {boolean} incorrect - Was the answer provided for this question incorrect?
+     */
+    incorrect: Ember.computed.not('correct'),
+
+    /**
      * @property {number} isQuestion
      */
     isQuestion: true,

@@ -54,7 +54,7 @@ Router.map(function() {
     });
   });
 
-  this.route('player', { path: '/player/:collectionId'});
+  this.route('player', { path: '/player/:contextId'});
 
   this.route('context-player', {path: '/player/class/:classId/course/:courseId/unit/:unitId/lesson/:lessonId/collection/:collectionId'});
 
@@ -114,11 +114,6 @@ Router.map(function() {
       this.route('followers');
     });
   });
-  /**
-   * IMPORTANT! the profile route should be the last one at this file, so we can handle the app urls
-   * and the vanity urls for profiles like www.gooru.org/javier-perez
-   */
-
 });
 
 export default Router;

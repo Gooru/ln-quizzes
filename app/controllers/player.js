@@ -8,7 +8,7 @@ import {generateUUID} from 'quizzes/utils/utils';
  *
  * @augments Ember/Controller
  */
-export default Ember.Controller.extend(SessionMixin, ModalMixin, {
+export default Ember.Controller.extend({
 
   // -------------------------------------------------------------------------
   // Dependencies

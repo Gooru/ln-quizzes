@@ -42,7 +42,7 @@
     "ember-cli-sri": "^2.1.1",
     "ember-cli-uglify": "^1.2.0",
     "ember-composable-helpers": "^1.1.2",
-    "ember-cp-validations": "^3.1.0",
+    "ember-cp-validations": "^2.9.7",
     "ember-i18n": "^4.3.2",
     "ember-i18n-cp-validations": "^2.7.1",
     "ember-simple-auth": "^1.1.0",

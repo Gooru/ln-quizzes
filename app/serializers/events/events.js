@@ -48,6 +48,7 @@ export default Ember.Object.extend({
    */
   normalizeResourceResults: function (payload) {
     const serializer = this;
+    payload = payload || [];
     return payload.map(function(resourceResult) {
       return QuestionResult.create(Ember.getOwner(serializer).ownerInjection(), {
         resourceId: resourceResult.resourceId,

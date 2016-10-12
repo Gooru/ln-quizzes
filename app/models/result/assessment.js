@@ -56,6 +56,11 @@ export default Ember.Object.extend({
   }),
 
   /**
+   * @property {boolean} submitted if the assessment has already been submitted
+   */
+  submitted: false,
+
+  /**
    * @property {number} totalResources
    */
   totalResources: Ember.computed.alias('resourceResults.length'),

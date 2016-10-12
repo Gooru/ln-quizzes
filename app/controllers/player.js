@@ -34,6 +34,25 @@ export default Ember.Controller.extend({
   actions: {
 
     /**
+     * Triggered when an resource emotion is selected
+     * @param {string} emotionScore
+     */
+    changeEmotion: function(emotionScore) {
+      let resourceResult = this.get('resourceResult');
+      resourceResult.set('reaction', emotionScore);
+    },
+
+    /**
+     * Action triggered when the user close de navigator panel
+     */
+    closeNavigator:function(){
+      const $appContainer = Ember.$( '.app-container' );
+      if ($appContainer.hasClass( 'navigator-on' )){
+        $appContainer.removeClass( 'navigator-on' );
+      }
+    },
+
+    /**
      * When clicking at submit all or end
      */
     finishCollection: function() {
@@ -49,14 +68,10 @@ export default Ember.Controller.extend({
     },
 
     /**
-     * Handle onSubmitQuestion event from gru-question-viewer
-     * @see components/player/gru-question-viewer.js
-     * @param {Resource} question
-     * @param {QuestionResult} questionResult
+     * Action triggered when the user open de navigator panel
      */
-    submitQuestion: function(question){
-      const controller = this;
-      controller.moveOrFinish(question);
+    openNavigator: function(){
+      Ember.$( '.app-container' ).addClass( 'navigator-on' );
     },
 
     /**
@@ -69,29 +84,14 @@ export default Ember.Controller.extend({
     },
 
     /**
-     * Action triggered when the user open de navigator panel
+     * Handle onSubmitQuestion event from gru-question-viewer
+     * @see components/player/gru-question-viewer.js
+     * @param {Resource} question
+     * @param {QuestionResult} questionResult
      */
-    openNavigator: function(){
-      Ember.$( '.app-container' ).addClass( 'navigator-on' );
-    },
-
-    /**
-     * Action triggered when the user close de navigator panel
-     */
-    closeNavigator:function(){
-      const $appContainer = Ember.$( '.app-container' );
-      if ($appContainer.hasClass( 'navigator-on' )){
-        $appContainer.removeClass( 'navigator-on' );
-      }
-    },
-
-    /**
-     * Triggered when an resource emotion is selected
-     * @param {string} emotionScore
-     */
-    changeEmotion: function(emotionScore) {
-      let resourceResult = this.get('resourceResult');
-      resourceResult.set('reaction', emotionScore);
+    submitQuestion: function(question){
+      const controller = this;
+      controller.moveOrFinish(question);
     }
   },
 
@@ -123,7 +123,7 @@ export default Ember.Controller.extend({
    * Should resource navigation in the player be disabled?
    * @property {Lesson}
    */
-  isNavigationDisabled: true,
+  isNavigationDisabled: false,
 
   /**
    * Indicates if the current resource type is resource
@@ -168,12 +168,6 @@ export default Ember.Controller.extend({
   resourceId: null,
 
   /**
-   * The resource result playing
-   * @property {ResourceResult}
-   */
-  resourceResult: null,
-
-  /**
    * Return the list of resources available to show on the player
    * @property {ResourceResult[]}
    */
@@ -183,6 +177,12 @@ export default Ember.Controller.extend({
        return availableResources.contains(item.resourceId);
     });
   }),
+
+  /**
+   * The resource result playing
+   * @property {ResourceResult}
+   */
+  resourceResult: null,
 
   /**
    * Indicates the user's role, could be 'student', 'teacher' or null
@@ -210,6 +210,30 @@ export default Ember.Controller.extend({
 
   // -------------------------------------------------------------------------
   // Methods
+
+  /**
+   * Saves an assessment result
+   * @param {AssessmentResult} assessmentResult
+   */
+  finishCollection: function() {
+    const controller = this;
+    let assessmentResult = controller.get('assessmentResult');
+    return controller.get('saveEnabled') ?
+      controller.get('eventsService').endContext(assessmentResult.get('contextId')) :
+      Ember.RSVP.resolve();
+  },
+
+  /**
+   * Opens the confirmation dialog to finish the assessment
+   */
+  finishConfirm: function() {
+    const controller = this;
+    controller.actions.showModal.call(this,
+      'content.modals.gru-submit-confirmation',
+      {
+        onConfirm: controller.finishCollection.bind(controller)
+      });
+  },
 
   /**
    * Moves to the next resource or finishes the collection
@@ -252,6 +276,17 @@ export default Ember.Controller.extend({
   },
 
   /**
+   * Reset all values to default
+   */
+  resetValues: function() {
+    this.set('resourceId', null);
+    this.set('resource', null);
+    this.set('resourceResult', null);
+    this.set('role', null);
+    this.set('showContent',false);
+  },
+
+  /**
    * Saves the resource result and moves to the next
    * @param resourceId
    * @param assessmentResult
@@ -268,18 +303,6 @@ export default Ember.Controller.extend({
         .moveToResource(resourceId, contextId, resourceResult);
     }
     return promise;
-  },
-
-  /**
-   * Opens the confirmation dialog to finish the assessment
-   */
-  finishConfirm: function() {
-    const controller = this;
-    controller.actions.showModal.call(this,
-      'content.modals.gru-submit-confirmation',
-      {
-        onConfirm: controller.finishCollection.bind(controller)
-      });
   },
 
   /**
@@ -302,26 +325,6 @@ export default Ember.Controller.extend({
     if(resource) {
       controller.moveToResource(resource);
     }
-  },
-
-  /**
-   * Saves an assessment result
-   * @param {AssessmentResult} assessmentResult
-   */
-  finishCollection: function() {
-    const controller = this;
-    let assessmentResult = controller.get('assessmentResult');
-    return controller.get('saveEnabled') ?
-      controller.get('eventsService').endContext(assessmentResult.get('contextId')) :
-      Ember.RSVP.resolve();
-  },
-
-  resetValues: function() {
-    this.set('resourceId', null);
-    this.set('resource', null);
-    this.set('resourceResult', null);
-    this.set('role', null);
-    this.set('showContent',false);
   }
 
 });

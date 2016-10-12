@@ -15,7 +15,7 @@ export default Ember.Route.extend({
    */
   model(params) {
     const route = this;
-    const data = {
+    /*const data = {
       collectionId: params.collectionId,
       context: {
         classId: params.classId,
@@ -24,7 +24,7 @@ export default Ember.Route.extend({
         lessonId: params.lessonId
       }
     };
-    const url = 'http://mockbin.org/bin/f812616f-7d6b-411e-b229-a24a645759b7';
+    const url = '';
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
@@ -34,6 +34,7 @@ export default Ember.Route.extend({
     };
     return Ember.$.ajax(url, options).then(function(response){
       route.transitionTo('player', JSON.parse(response).contextId, params.collectionId);
-    });
+    });*/
+    route.transitionTo('player', 1, params.collectionId);
   }
 });

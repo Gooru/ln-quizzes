@@ -75,8 +75,8 @@ export default Ember.Route.extend(PublicRouteMixin, {
   model: function(params) {
     const route = this;
     const currentSession = route.get("session.data.authenticated");
-    const themeConfig = Env['themes'] || {};
-    const themeId = params.themeId || Env['themes'].default;
+    const themeConfig = Env.themes || {};
+    const themeId = params.themeId || Env.themes.default;
     let myClasses = null;
 
     var theme = null;
@@ -302,8 +302,7 @@ export default Ember.Route.extend(PublicRouteMixin, {
         this.set("controller.term", term);
       }
       else {
-        var termParam = '?term=' + term;
-        this.transitionTo('/search/collections' + termParam);
+        this.transitionTo(`/search/collections?term=${term}`);
       }
     },
 

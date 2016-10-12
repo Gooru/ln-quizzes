@@ -48,7 +48,7 @@ export default Ember.Route.extend({
       return Ember.RSVP.hash({
         assessmentResult: route.get('eventsService').startContext(contextId),
         collection: collection.toPlayerCollection()
-      })
+      });
     });
   },
 

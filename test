@@ -1,0 +1,811 @@
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/authentication/authentication.js
+  45:26  warning  Unexpected string concatenation  prefer-template
+  45:42  warning  Unexpected string concatenation  prefer-template
+  61:27  warning  Unexpected string concatenation  prefer-template
+  78:27  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/collaborator/collaborator.js
+  12:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/content/assessment.js
+  189:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/content/class.js
+  218:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/content/collection.js
+  190:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/content/course.js
+   52:17  warning  Unexpected string concatenation  prefer-template
+   79:17  warning  Unexpected string concatenation  prefer-template
+  163:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/content/lesson.js
+  230:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/content/question.js
+  120:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/content/resource.js
+  120:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/content/unit.js
+  177:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/error/error.js
+  35:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/lookup/lookup.js
+  139:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/media.js
+  42:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/network/network.js
+  53:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/profile/availability.js
+  46:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/profile/courses.js
+  49:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/profile/profile.js
+  384:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/sign-in.js
+  20:23  warning  Unexpected string concatenation  prefer-template
+  21:12  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/adapters/taxonomy/taxonomy.js
+  121:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/authenticators/custom.js
+  27:15  warning  Unexpected string concatenation  prefer-template
+  48:15  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/charts/gru-pie-chart.js
+  106:25  warning  Unexpected string concatenation  prefer-template
+  111:26  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/charts/gru-radial-chart.js
+  45:33  warning  Unexpected string concatenation  prefer-template
+  92:33  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/charts/gru-x-bar-chart.js
+  47:36  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/class/analytics/performance/teacher/gru-metrics-sub-header.js
+  93:27  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/class/gru-class-navigation.js
+  112:25  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/collection-results-standards.js
+  44:22  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/content/modals/gru-delete-content.js
+  75:45  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/content/modals/gru-quick-course-search.js
+  38:9  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/content/questions/answers/gru-hot-text-highlight.js
+  69:29  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/gru-emotion-picker.js
+  113:14  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/gru-rich-text-editor.js
+   28:25  warning  Unexpected string concatenation          prefer-template
+   32:20  warning  Unexpected string concatenation          prefer-template
+   51:25  warning  Unexpected string concatenation          prefer-template
+   75:20  warning  Unexpected string concatenation          prefer-template
+   76:23  warning  Unexpected string concatenation          prefer-template
+   77:21  warning  Unexpected string concatenation          prefer-template
+   78:19  warning  Unexpected string concatenation          prefer-template
+   79:26  warning  Unexpected string concatenation          prefer-template
+   98:23  warning  'onLoad' was used before it was defined  no-use-before-define
+  100:5   warning  Missing JSDoc comment                    require-jsdoc
+  158:23  warning  Unexpected string concatenation          prefer-template
+  159:19  warning  Unexpected string concatenation          prefer-template
+  298:20  warning  Unexpected string concatenation          prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/gru-select-date-picker.js
+  97:23  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/gru-share-pop-over.js
+  53:11  warning  Unexpected string concatenation  prefer-template
+  54:29  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/gru-two-tier-header-table.js
+  222:49  warning  Unexpected string concatenation  prefer-template
+  224:24  warning  Unexpected string concatenation  prefer-template
+  225:24  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/gru-user-icons.js
+   34:38  warning  Unexpected string concatenation  prefer-template
+  165:22  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/player/resources/gru-vimeo-resource.js
+  42:30  warning  ["player"] is better written in dot notation  dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/player/resources/gru-youtube-resource.js
+  45:24  warning  ["player"] is better written in dot notation  dot-notation
+  46:12  warning  Unexpected string concatenation               prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/profile/gru-navigation.js
+  93:12  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/reports/class-assessment/gru-student-performance-box.js
+  23:26  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/reports/gru-assessment-report.js
+  17:31  warning  Unexpected string concatenation  prefer-template
+  20:30  warning  Unexpected string concatenation  prefer-template
+  42:30  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/reports/gru-class-assessment-report.js
+  37:26  warning  Unexpected string concatenation  prefer-template
+  56:26  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/validation/gru-datepicker.js
+  44:16  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/validation/gru-input-mixed-validation.js
+  51:27  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/components/validation/gru-radio.js
+  43:16  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/controllers/index.js
+  108:40  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/controllers/reports/collection.js
+   43:45  warning  Unexpected string concatenation  prefer-template
+  140:27  warning  Unexpected string concatenation  prefer-template
+  143:37  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/controllers/sign-up.js
+  209:22  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/answer-letter.js
+  4:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/clean-file-name.js
+  4:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/format-date.js
+  4:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/format-time.js
+  4:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/fractional.js
+  28:32  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/grade-color.js
+  19:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/grading-scale-legend.js
+  28:20  warning  Unexpected string concatenation  prefer-template
+  40:20  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/is-teacher.js
+  3:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/item-initial.js
+  6:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/no-tags.js
+  4:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/plus-one.js
+  3:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/question-config.js
+  4:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/reaction-icon.js
+  11:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/round-number.js
+  4:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/set-if-equal.js
+  13:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/helpers/three-bounce-spinner.js
+  6:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/initializers/gooru-configuration.js
+  2:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/initializers/route.js
+  5:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/initializers/router-inject.js
+  1:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/instance-initializers/gooru-session-events.js
+  1:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/instance-initializers/gooru-session-service.js
+   3:8   warning  Missing JSDoc comment                              require-jsdoc
+  32:35  warning  ["gooruUId"] is better written in dot notation     dot-notation
+  39:45  warning  ["isAnonymous"] is better written in dot notation  dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/instance-initializers/gooru-session-validation.js
+  3:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/instance-initializers/gooru-session.js
+  3:8  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/models/profile/profile.js
+  149:12  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/models/resource/resource.js
+  130:33  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/models/taxonomy/browse-item.js
+   20:12  warning  Unexpected string concatenation  prefer-template
+  132:5   warning  Missing JSDoc comment            require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/models/taxonomy/taxonomy-tag-data.js
+  61:17  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/models/user/user.js
+  190:12  warning  Unexpected string concatenation  prefer-template
+  194:12  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/routes/class/analytics/performance/teacher.js
+  26:30  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/routes/class/overview.js
+  143:7  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/routes/profile.js
+  82:30  warning  Unexpected string concatenation  prefer-template
+  84:30  warning  Unexpected string concatenation  prefer-template
+  87:30  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/authentication/authentication.js
+  24:58  warning  ["access_token"] is better written in dot notation    dot-notation
+  27:27  warning  ["user_id"] is better written in dot notation         dot-notation
+  28:28  warning  ["thumbnail_path"] is better written in dot notation  dot-notation
+  29:30  warning  ["thumbnail_path"] is better written in dot notation  dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/content/class.js
+   39:15  warning  ["greeting"] is better written in dot notation            dot-notation
+   59:31  warning  ["creator_id"] is better written in dot notation          dot-notation
+   66:26  warning  ["creator_id"] is better written in dot notation          dot-notation
+   67:51  warning  ["creator_id"] is better written in dot notation          dot-notation
+   71:25  warning  ["course_id"] is better written in dot notation           dot-notation
+   74:29  warning  ["class_sharing"] is better written in dot notation       dot-notation
+   75:27  warning  ["cover_image"] is better written in dot notation         dot-notation
+   76:25  warning  ["min_score"] is better written in dot notation           dot-notation
+   76:61  warning  ["min_score"] is better written in dot notation           dot-notation
+   77:26  warning  ["created_at"] is better written in dot notation          dot-notation
+   78:24  warning  ["end_date"] is better written in dot notation            dot-notation
+   80:34  warning  ["content_visibility"] is better written in dot notation  dot-notation
+   81:27  warning  ["is_archived"] is better written in dot notation         dot-notation
+  114:28  warning  ["member_count"] is better written in dot notation        dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/content/collection.js
+  86:35  warning  ["learning_objective"] is better written in dot notation  dot-notation
+  87:42  warning  ["visible_on_profile"] is better written in dot notation  dot-notation
+  87:90  warning  ["visible_on_profile"] is better written in dot notation  dot-notation
+  89:30  warning  ["question_count"] is better written in dot notation      dot-notation
+  89:58  warning  ["question_count"] is better written in dot notation      dot-notation
+  90:30  warning  ["resource_count"] is better written in dot notation      dot-notation
+  90:58  warning  ["resource_count"] is better written in dot notation      dot-notation
+  91:25  warning  ["sequence_id"] is better written in dot notation         dot-notation
+  94:25  warning  ["course_id"] is better written in dot notation           dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/content/course.js
+   74:31  warning  ["audience"] is better written in dot notation            dot-notation
+  118:28  warning  ["publish_status"] is better written in dot notation      dot-notation
+  118:57  warning  ["publish_status"] is better written in dot notation      dot-notation
+  119:42  warning  ["visible_on_profile"] is better written in dot notation  dot-notation
+  119:90  warning  ["visible_on_profile"] is better written in dot notation  dot-notation
+  127:26  warning  ["audience"] is better written in dot notation            dot-notation
+  127:50  warning  ["audience"] is better written in dot notation            dot-notation
+  127:84  warning  ["audience"] is better written in dot notation            dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/content/question.js
+   47:33   warning  ["audience"] is better written in dot notation            dot-notation
+   48:33   warning  ["depth_of_knowledge"] is better written in dot notation  dot-notation
+   85:33   warning  ["audience"] is better written in dot notation            dot-notation
+   86:33   warning  ["depth_of_knowledge"] is better written in dot notation  dot-notation
+  106:24   warning  ["highlight_type"] is better written in dot notation      dot-notation
+  139:26   warning  ["audience"] is better written in dot notation            dot-notation
+  139:50   warning  ["audience"] is better written in dot notation            dot-notation
+  139:84   warning  ["audience"] is better written in dot notation            dot-notation
+  140:34   warning  ["depth_of_knowledge"] is better written in dot notation  dot-notation
+  140:68   warning  ["depth_of_knowledge"] is better written in dot notation  dot-notation
+  140:112  warning  ["depth_of_knowledge"] is better written in dot notation  dot-notation
+  187:29   warning  ["is_correct"] is better written in dot notation          dot-notation
+  187:63   warning  ["is_correct"] is better written in dot notation          dot-notation
+  188:24   warning  ["answer_text"] is better written in dot notation         dot-notation
+  189:24   warning  ["answer_type"] is better written in dot notation         dot-notation
+  190:33   warning  ["highlight_type"] is better written in dot notation      dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/content/resource.js
+   87:37   warning  ["is_copyright_owner"] is better written in dot notation  dot-notation
+   91:33   warning  ["display_guide"] is better written in dot notation       dot-notation
+   91:66   warning  ["display_guide"] is better written in dot notation       dot-notation
+   91:114  warning  ["display_guide"] is better written in dot notation       dot-notation
+  111:17   warning  Unexpected string concatenation                           prefer-template
+  117:42   warning  Unexpected string concatenation                           prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/content/unit.js
+  76:28   warning  ["lesson_summary"] is better written in dot notation  dot-notation
+  76:71   warning  ["lesson_summary"] is better written in dot notation  dot-notation
+  76:100  warning  ["lesson_summary"] is better written in dot notation  dot-notation
+  76:136  warning  ["lesson_count"] is better written in dot notation    dot-notation
+  76:162  warning  ["lesson_count"] is better written in dot notation    dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/performance/performance.js
+  58:25  warning  Unexpected string concatenation  prefer-template
+  86:25  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/profile.js
+  51:19  warning  Unexpected string concatenation  prefer-template
+  57:13  warning  Unexpected string concatenation  prefer-template
+  65:19  warning  Unexpected string concatenation  prefer-template
+  71:13  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/profile/profile.js
+   72:21  warning  ["state"] is better written in dot notation               dot-notation
+   76:21  warning  ["school_district"] is better written in dot notation     dot-notation
+   85:29  warning  ["access_token"] is better written in dot notation        dot-notation
+   88:27  warning  ["user_id"] is better written in dot notation             dot-notation
+  104:34  warning  ["thumbnail_path"] is better written in dot notation      dot-notation
+  105:26  warning  ["thumbnail_path"] is better written in dot notation      dot-notation
+  112:22  warning  ["email_id"] is better written in dot notation            dot-notation
+  115:28  warning  ["birth_date"] is better written in dot notation          dot-notation
+  116:21  warning  ["user_category"] is better written in dot notation       dot-notation
+  117:26  warning  ["created_at"] is better written in dot notation          dot-notation
+  118:27  warning  ["updated_at"] is better written in dot notation          dot-notation
+  119:26  warning  ["country_id"] is better written in dot notation          dot-notation
+  121:24  warning  ["state_id"] is better written in dot notation            dot-notation
+  124:33  warning  ["school_district_id"] is better written in dot notation  dot-notation
+  125:31  warning  ["school_district"] is better written in dot notation     dot-notation
+  126:24  warning  ["about_me"] is better written in dot notation            dot-notation
+  128:25  warning  ["roster_id"] is better written in dot notation           dot-notation
+  342:38  warning  ["thumbnail_path"] is better written in dot notation      dot-notation
+  343:28  warning  ["thumbnail_path"] is better written in dot notation      dot-notation
+  369:34  warning  ["thumbnail_path"] is better written in dot notation      dot-notation
+  369:77  warning  ["thumbnail_path"] is better written in dot notation      dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/resource/resource.js
+  111:13  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/search/collection-result.js
+   50:22  warning  Unexpected string concatenation  prefer-template
+   51:27  warning  Unexpected string concatenation  prefer-template
+  106:20  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/serializers/taxonomy/taxonomy.js
+   38:35  warning  ["standard_framework_id"] is better written in dot notation    dot-notation
+   60:26  warning  ["taxonomy_subject_id"] is better written in dot notation      dot-notation
+   61:35  warning  ["standard_framework_id"] is better written in dot notation    dot-notation
+  143:41  warning  ["parent_taxonomy_code_id"] is better written in dot notation  dot-notation
+  144:29  warning  ["code_type"] is better written in dot notation                dot-notation
+  217:35  warning  ["parent_title"] is better written in dot notation             dot-notation
+  219:37  warning  ["framework_code"] is better written in dot notation           dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/services/api-sdk/course-location.js
+  117:20  warning  Unexpected string concatenation  prefer-template
+  118:19  warning  Unexpected string concatenation  prefer-template
+  119:19  warning  Unexpected string concatenation  prefer-template
+  120:16  warning  Unexpected string concatenation  prefer-template
+  121:19  warning  Unexpected string concatenation  prefer-template
+  128:40  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/services/taxonomy.js
+  267:30  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/utils/csv.js
+  30:29  warning  Unexpected string concatenation  prefer-template
+  32:51  warning  Unexpected string concatenation  prefer-template
+  36:17  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/utils/d3/radial-progress.js
+   72:3   warning  Missing JSDoc comment                          require-jsdoc
+   81:7   warning  'measure' was used before it was defined       no-use-before-define
+   89:21  warning  'onMouseClick' was used before it was defined  no-use-before-define
+  100:28  warning  Unexpected string concatenation                prefer-template
+  105:28  warning  Unexpected string concatenation                prefer-template
+  108:28  warning  Unexpected string concatenation                prefer-template
+  115:28  warning  Unexpected string concatenation                prefer-template
+  122:28  warning  Unexpected string concatenation                prefer-template
+  135:18  warning  Unexpected string concatenation                prefer-template
+  137:28  warning  Unexpected string concatenation                prefer-template
+  138:21  warning  'onMouseClick' was used before it was defined  no-use-before-define
+  143:7   warning  'layout' was used before it was defined        no-use-before-define
+  145:7   warning  Missing JSDoc comment                          require-jsdoc
+  153:27  warning  'arcTween' was used before it was defined      no-use-before-define
+  158:29  warning  'arcTween2' was used before it was defined     no-use-before-define
+  163:25  warning  'labelTween' was used before it was defined    no-use-before-define
+  169:5   warning  Missing JSDoc comment                          require-jsdoc
+  176:3   warning  Missing JSDoc comment                          require-jsdoc
+  182:43  warning  Unexpected string concatenation                prefer-template
+  186:3   warning  Missing JSDoc comment                          require-jsdoc
+  195:3   warning  Missing JSDoc comment                          require-jsdoc
+  204:3   warning  Missing JSDoc comment                          require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/utils/encode-term.js
+  4:8   warning  Missing JSDoc comment            require-jsdoc
+  6:12  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/utils/endpoint-config.js
+   3:8   warning  Missing JSDoc comment                                     require-jsdoc
+   8:8   warning  Missing JSDoc comment                                     require-jsdoc
+  13:8   warning  Missing JSDoc comment                                     require-jsdoc
+  18:8   warning  Missing JSDoc comment                                     require-jsdoc
+  23:8   warning  Missing JSDoc comment                                     require-jsdoc
+  25:55  warning  'getRealTimeWebSocketUri' was used before it was defined  no-use-before-define
+  28:8   warning  Missing JSDoc comment                                     require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/utils/events.js
+    4:25  warning  ["events"] is better written in dot notation       dot-notation
+   22:3   warning  'startPlayerEvent' was used before it was defined  no-use-before-define
+   41:22  warning  'convertAnswer' was used before it was defined     no-use-before-define
+   43:3   warning  'stopPlayerEvent' was used before it was defined   no-use-before-define
+   52:1   warning  Missing JSDoc comment                              require-jsdoc
+   77:3   warning  'savePlayerEvent' was used before it was defined   no-use-before-define
+   94:3   warning  'savePlayerEvent' was used before it was defined   no-use-before-define
+  104:13  warning  Unexpected string concatenation                    prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/utils/performance-data.js
+  23:56  warning  Unexpected string concatenation                            prefer-template
+  25:46  warning  'createPerformanceObject' was used before it was defined   no-use-before-define
+  32:49  warning  'createUserAverageObject' was used before it was defined   no-use-before-define
+  42:36  warning  'createItemAverageObject' was used before it was defined   no-use-before-define
+  45:65  warning  'createClassAverageObject' was used before it was defined  no-use-before-define
+  50:1   warning  Missing JSDoc comment                                      require-jsdoc
+  62:1   warning  Missing JSDoc comment                                      require-jsdoc
+  75:1   warning  Missing JSDoc comment                                      require-jsdoc
+  88:1   warning  Missing JSDoc comment                                      require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/utils/taxonomy.js
+  25:13  warning  Unexpected string concatenation  prefer-template
+  26:15  warning  Unexpected string concatenation  prefer-template
+  27:16  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/app/utils/utils.js
+   89:16  warning  Unexpected string concatenation                 prefer-template
+   91:19  warning  Unexpected string concatenation                 prefer-template
+   95:18  warning  Unexpected string concatenation                 prefer-template
+   98:19  warning  Unexpected string concatenation                 prefer-template
+  146:22  warning  'getGradeColor' was used before it was defined  no-use-before-define
+  147:12  warning  Unexpected string concatenation                 prefer-template
+  167:14  warning  Unexpected string concatenation                 prefer-template
+  169:15  warning  Unexpected string concatenation                 prefer-template
+  203:24  warning  Unexpected string concatenation                 prefer-template
+  222:8   warning  Missing JSDoc comment                           require-jsdoc
+  277:19  warning  Unexpected string concatenation                 prefer-template
+  284:8   warning  Missing JSDoc comment                           require-jsdoc
+  363:24  warning  Unexpected string concatenation                 prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/acceptance/player-test.js
+  1:10  error  'test' is defined but never used  no-unused-vars
+  4:8   error  'T' is defined but never used     no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/helpers/destroy-app.js
+  3:16  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/helpers/module-for-acceptance.js
+  5:16  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/helpers/module-for-adapter.js
+  4:16  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/helpers/module-for-service.js
+  5:16  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/helpers/start-app.js
+  5:16  warning  Missing JSDoc comment  require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/cards/gru-profile-card-test.js
+  34:42  warning  Unexpected string concatenation  prefer-template
+  37:42  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/cards/gru-resource-card-test.js
+  35:39  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/cards/gru-resource-result-card-test.js
+   43:60  warning  Unexpected string concatenation  prefer-template
+  135:58  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/charts/gru-bubble-chart-test.js
+  22:75  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/charts/gru-x-bar-chart-test.js
+  27:81  warning  Unexpected string concatenation  prefer-template
+  28:81  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/collections/gru-collection-list-item-test.js
+   60:51  warning  Unexpected string concatenation  prefer-template
+   62:7   warning  Unexpected string concatenation  prefer-template
+   62:81  warning  Unexpected string concatenation  prefer-template
+  111:7   warning  Unexpected string concatenation  prefer-template
+  111:81  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/collections/gru-collection-list-test.js
+  96:72  warning  Unexpected string concatenation  prefer-template
+  97:72  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/courses/edit/gru-accordion-course-test.js
+  100:55  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/courses/edit/gru-accordion-lesson-item-test.js
+  43:59  warning  Unexpected string concatenation  prefer-template
+  49:74  warning  Unexpected string concatenation  prefer-template
+  58:5   warning  Unexpected string concatenation  prefer-template
+  91:74  warning  Unexpected string concatenation  prefer-template
+  99:74  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/courses/edit/gru-accordion-lesson-test.js
+   91:41  warning  Unexpected string concatenation  prefer-template
+  271:44  warning  Unexpected string concatenation  prefer-template
+  318:41  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/courses/edit/gru-accordion-unit-test.js
+  123:41  warning  Unexpected string concatenation  prefer-template
+  309:44  warning  Unexpected string concatenation  prefer-template
+  365:41  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/courses/gru-course-play-test.js
+  105:3   warning  '$column' was used before it was defined  no-use-before-define
+  106:13  warning  '$column' was used before it was defined  no-use-before-define
+  107:13  warning  '$column' was used before it was defined  no-use-before-define
+  108:13  warning  '$column' was used before it was defined  no-use-before-define
+  109:13  warning  '$column' was used before it was defined  no-use-before-define
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/courses/play/gru-accordion-lesson-item-test.js
+  44:59  warning  Unexpected string concatenation  prefer-template
+  50:74  warning  Unexpected string concatenation  prefer-template
+  59:5   warning  Unexpected string concatenation  prefer-template
+  85:74  warning  Unexpected string concatenation  prefer-template
+  93:74  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/courses/play/gru-accordion-lesson-test.js
+   71:44  warning  Unexpected string concatenation  prefer-template
+   73:62  warning  Unexpected string concatenation  prefer-template
+  151:5   warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/courses/play/gru-accordion-unit-test.js
+  90:44  warning  Unexpected string concatenation  prefer-template
+  92:56  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/modals/gru-delete-class-test.js
+  28:5  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/modals/gru-delete-content-test.js
+  38:7   warning  Unexpected string concatenation  prefer-template
+  38:77  warning  Unexpected string concatenation  prefer-template
+  42:36  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/modals/gru-remove-content-test.js
+  29:58   warning  Unexpected string concatenation  prefer-template
+  29:128  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/questions/gru-question-play-test.js
+  32:26  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/content/questions/gru-questions-edit-test.js
+  305:34  warning  Unexpected string concatenation  prefer-template
+  312:60  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/gru-emotion-picker-test.js
+  56:22  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/reports/assessment/gru-questions-test.js
+  1:30  error  'test' is defined but never used            no-unused-vars
+  2:8   error  'hbs' is defined but never used             no-unused-vars
+  3:8   error  'T' is defined but never used               no-unused-vars
+  4:8   error  'QuestionResult' is defined but never used  no-unused-vars
+  5:8   error  'Ember' is defined but never used           no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/reports/assessment/gru-summary-test.js
+  1:8   error  'Ember' is defined but never used             no-unused-vars
+  2:30  error  'test' is defined but never used              no-unused-vars
+  3:8   error  'hbs' is defined but never used               no-unused-vars
+  4:8   error  'QuestionResult' is defined but never used    no-unused-vars
+  5:8   error  'ResourceResult' is defined but never used    no-unused-vars
+  6:8   error  'AssessmentResult' is defined but never used  no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/reports/class-assessment/gru-question-performance-test.js
+  1:8   error  'Ember' is defined but never used                no-unused-vars
+  2:30  error  'test' is defined but never used                 no-unused-vars
+  3:8   error  'QuestionResult' is defined but never used       no-unused-vars
+  4:8   error  'UserResourcesResult' is defined but never used  no-unused-vars
+  5:8   error  'ReportData' is defined but never used           no-unused-vars
+  6:8   error  'hbs' is defined but never used                  no-unused-vars
+  7:8   error  'T' is defined but never used                    no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/reports/class-assessment/gru-student-performance-box-test.js
+  1:30  error  'test' is defined but never used            no-unused-vars
+  2:8   error  'hbs' is defined but never used             no-unused-vars
+  3:8   error  'QuestionResult' is defined but never used  no-unused-vars
+  4:8   error  'T' is defined but never used               no-unused-vars
+  5:8   error  'Ember' is defined but never used           no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/reports/class-assessment/gru-student-view-test.js
+  1:8   error  'Ember' is defined but never used                no-unused-vars
+  2:30  error  'test' is defined but never used                 no-unused-vars
+  3:8   error  'hbs' is defined but never used                  no-unused-vars
+  4:8   error  'QuestionResult' is defined but never used       no-unused-vars
+  5:8   error  'UserResourcesResult' is defined but never used  no-unused-vars
+  6:8   error  'ReportData' is defined but never used           no-unused-vars
+  7:8   error  'T' is defined but never used                    no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/reports/class-assessment/gru-summary-test.js
+  1:8   error  'Ember' is defined but never used                no-unused-vars
+  2:30  error  'test' is defined but never used                 no-unused-vars
+  3:8   error  'hbs' is defined but never used                  no-unused-vars
+  4:10  error  'GRADING_SCALE' is defined but never used        no-unused-vars
+  5:8   error  'QuestionResult' is defined but never used       no-unused-vars
+  6:8   error  'UserResourcesResult' is defined but never used  no-unused-vars
+  7:8   error  'ReportData' is defined but never used           no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/reports/gru-assessment-report-test.js
+  1:30  error  'test' is defined but never used                  no-unused-vars
+  2:8   error  'hbs' is defined but never used                   no-unused-vars
+  3:8   error  'Ember' is defined but never used                 no-unused-vars
+  4:8   error  'AssessmentResult' is defined but never used      no-unused-vars
+  5:8   error  'LearningTargetResult' is defined but never used  no-unused-vars
+  6:8   error  'QuestionResult' is defined but never used        no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/integration/components/taxonomy/gru-browse-selector-test.js
+   29:65  warning  Unexpected string concatenation  prefer-template
+   30:60  warning  Unexpected string concatenation  prefer-template
+   31:43  warning  Unexpected string concatenation  prefer-template
+   31:68  warning  Unexpected string concatenation  prefer-template
+   34:55  warning  Unexpected string concatenation  prefer-template
+   36:55  warning  Unexpected string concatenation  prefer-template
+   57:61  warning  Unexpected string concatenation  prefer-template
+   60:62  warning  Unexpected string concatenation  prefer-template
+   94:62  warning  Unexpected string concatenation  prefer-template
+   95:73  warning  Unexpected string concatenation  prefer-template
+  114:3   warning  Missing JSDoc comment            require-jsdoc
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/adapters/authentication/authentication-test.js
+  30:49  warning  ["grant_type"] is better written in dot notation     dot-notation
+  61:50  warning  ["grant_type"] is better written in dot notation     dot-notation
+  62:20  warning  Unexpected string concatenation                      prefer-template
+  62:74  warning  ["Authorization"] is better written in dot notation  dot-notation
+  89:20  warning  Unexpected string concatenation                      prefer-template
+  89:68  warning  ["Authorization"] is better written in dot notation  dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/adapters/profile/courses-test.js
+  12:40  warning  ["subject"] is better written in dot notation  dot-notation
+  13:40  warning  ["limit"] is better written in dot notation    dot-notation
+  14:40  warning  ["offset"] is better written in dot notation   dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/adapters/profile/profile-test.js
+  129:47  warning  ["user_id"] is better written in dot notation       dot-notation
+  177:40  warning  ["limit"] is better written in dot notation         dot-notation
+  178:40  warning  ["offset"] is better written in dot notation        dot-notation
+  202:40  warning  ["limit"] is better written in dot notation         dot-notation
+  203:40  warning  ["offset"] is better written in dot notation        dot-notation
+  228:40  warning  ["limit"] is better written in dot notation         dot-notation
+  229:40  warning  ["offset"] is better written in dot notation        dot-notation
+  253:40  warning  ["limit"] is better written in dot notation         dot-notation
+  254:40  warning  ["offset"] is better written in dot notation        dot-notation
+  302:43  warning  ["email_id"] is better written in dot notation      dot-notation
+  330:46  warning  ["new_password"] is better written in dot notation  dot-notation
+  331:43  warning  ["token"] is better written in dot notation         dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/adapters/search/search-test.js
+   16:40  warning  ["q"] is better written in dot notation       dot-notation
+   19:40  warning  ["start"] is better written in dot notation   dot-notation
+   20:40  warning  ["length"] is better written in dot notation  dot-notation
+   57:40  warning  ["q"] is better written in dot notation       dot-notation
+   60:40  warning  ["start"] is better written in dot notation   dot-notation
+   61:40  warning  ["length"] is better written in dot notation  dot-notation
+   96:40  warning  ["q"] is better written in dot notation       dot-notation
+   97:40  warning  ["start"] is better written in dot notation   dot-notation
+   98:40  warning  ["length"] is better written in dot notation  dot-notation
+  136:40  warning  ["q"] is better written in dot notation       dot-notation
+  137:40  warning  ["start"] is better written in dot notation   dot-notation
+  138:40  warning  ["length"] is better written in dot notation  dot-notation
+  156:40  warning  ["q"] is better written in dot notation       dot-notation
+  157:40  warning  ["start"] is better written in dot notation   dot-notation
+  158:40  warning  ["length"] is better written in dot notation  dot-notation
+  196:40  warning  ["q"] is better written in dot notation       dot-notation
+  197:40  warning  ["start"] is better written in dot notation   dot-notation
+  198:40  warning  ["length"] is better written in dot notation  dot-notation
+  218:40  warning  ["q"] is better written in dot notation       dot-notation
+  219:40  warning  ["start"] is better written in dot notation   dot-notation
+  220:40  warning  ["length"] is better written in dot notation  dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/controllers/player-test.js
+    6:8  error  'Context' is defined but never used         no-unused-vars
+    9:8  error  'ResourceResult' is defined but never used  no-unused-vars
+   55:7  error  'saveCounter' is defined but never used     no-unused-vars
+  108:7  error  'saveCounter' is defined but never used     no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/models/result/report-data-test.js
+  1:8   error  'Ember' is defined but never used                no-unused-vars
+  2:8   error  'QuestionResult' is defined but never used       no-unused-vars
+  3:8   error  'UserResourcesResult' is defined but never used  no-unused-vars
+  4:8   error  'ReportData' is defined but never used           no-unused-vars
+  5:18  error  'test' is defined but never used                 no-unused-vars
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/serializers/collection/collection-test.js
+   67:40  warning  Unexpected string concatenation  prefer-template
+  126:40  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/serializers/content/assessment-test.js
+  50:25  warning  ["metadata"] is better written in dot notation            dot-notation
+  50:37  warning  ["audience"] is better written in dot notation            dot-notation
+  51:25  warning  ["metadata"] is better written in dot notation            dot-notation
+  51:37  warning  ["depth_of_knowledge"] is better written in dot notation  dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/serializers/content/course-test.js
+  151:54  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/serializers/content/question-test.js
+   18:25  warning  ["title"] is better written in dot notation               dot-notation
+   19:25  warning  ["description"] is better written in dot notation         dot-notation
+   20:25  warning  ["content_subformat"] is better written in dot notation   dot-notation
+   21:25  warning  ["visible_on_profile"] is better written in dot notation  dot-notation
+   22:25  warning  ["metadata"] is better written in dot notation            dot-notation
+   22:37  warning  ["audience"] is better written in dot notation            dot-notation
+   23:25  warning  ["metadata"] is better written in dot notation            dot-notation
+   23:37  warning  ["depth_of_knowledge"] is better written in dot notation  dot-notation
+   45:25  warning  ["visible_on_profile"] is better written in dot notation  dot-notation
+   48:25  warning  ["metadata"] is better written in dot notation            dot-notation
+   48:37  warning  ["audience"] is better written in dot notation            dot-notation
+   49:25  warning  ["metadata"] is better written in dot notation            dot-notation
+   49:37  warning  ["depth_of_knowledge"] is better written in dot notation  dot-notation
+  121:25  warning  ["visible_on_profile"] is better written in dot notation  dot-notation
+  124:25  warning  ["metadata"] is better written in dot notation            dot-notation
+  124:37  warning  ["audience"] is better written in dot notation            dot-notation
+  125:25  warning  ["metadata"] is better written in dot notation            dot-notation
+  125:37  warning  ["depth_of_knowledge"] is better written in dot notation  dot-notation
+  139:25  warning  ["is_correct"] is better written in dot notation          dot-notation
+  140:25  warning  ["answer_text"] is better written in dot notation         dot-notation
+  141:25  warning  ["answer_type"] is better written in dot notation         dot-notation
+  154:25  warning  ["is_correct"] is better written in dot notation          dot-notation
+  155:25  warning  ["answer_text"] is better written in dot notation         dot-notation
+  156:25  warning  ["answer_type"] is better written in dot notation         dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/serializers/content/resource-test.js
+  18:35  warning  ["visible_on_profile"] is better written in dot notation  dot-notation
+  34:35  warning  ["content_subformat"] is better written in dot notation   dot-notation
+  35:35  warning  ["taxonomy"] is better written in dot notation            dot-notation
+  36:39  warning  ["copyright_owner"] is better written in dot notation     dot-notation
+  37:35  warning  ["is_copyright_owner"] is better written in dot notation  dot-notation
+  38:50  warning  ["display_guide"] is better written in dot notation       dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/serializers/error/error-test.js
+  24:27  warning  ["client_timestamp"] is better written in dot notation  dot-notation
+  25:27  warning  ["user_id"] is better written in dot notation           dot-notation
+  26:27  warning  ["log_type"] is better written in dot notation          dot-notation
+  27:27  warning  ["client_context"] is better written in dot notation    dot-notation
+  28:31  warning  ["client_info"] is better written in dot notation       dot-notation
+  29:27  warning  ["message"] is better written in dot notation           dot-notation
+  30:27  warning  ["api"] is better written in dot notation               dot-notation
+  31:27  warning  ["api_status"] is better written in dot notation        dot-notation
+  32:27  warning  ["api_response"] is better written in dot notation      dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/serializers/taxonomy/taxonomy-test.js
+  185:32  warning  ["framework_code"] is better written in dot notation  dot-notation
+  189:34  warning  ["parent_title"] is better written in dot notation    dot-notation
+  190:34  warning  ["framework_code"] is better written in dot notation  dot-notation
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/serializers/user/availability-test.js
+  37:40  warning  Unexpected string concatenation  prefer-template
+  71:40  warning  Unexpected string concatenation  prefer-template
+
+/home/martin/Projects/src/github.com/Gooru/quizzes/tests/unit/utils/utils-test.js
+  195:12  warning  Unexpected string concatenation  prefer-template
+
+✖ 506 problems (54 errors, 452 warnings)
+

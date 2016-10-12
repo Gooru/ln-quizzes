@@ -102,7 +102,7 @@ export default Ember.Object.extend({
       }
 
     } else {
-      Ember.Logger.error('Collection with ID: ' + collection.get('id') + ' does not have any resources. No resource results were set.');
+      Ember.Logger.error(`Collection with ID: ${collection.get('id')} does not have any resources. No resource results were set.`);
     }
 
 

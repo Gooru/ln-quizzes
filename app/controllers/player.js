@@ -1,7 +1,5 @@
 import Ember from 'ember';
-import ModalMixin from 'quizzes/mixins/modal';
-import SessionMixin from '../mixins/session';
-import {generateUUID} from 'quizzes/utils/utils';
+
 /**
  * @module
  * @typedef {Object} PlayerController

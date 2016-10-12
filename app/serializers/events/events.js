@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import AssessmentResult from 'quizzes/models/result/assessment';
 import QuestionResult from 'quizzes/models/result/question';
-import { getQuestionUtil } from 'quizzes/config/question';
+//import { getQuestionUtil } from 'quizzes/config/question';
 
 export default Ember.Object.extend({
 

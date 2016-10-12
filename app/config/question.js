@@ -118,10 +118,10 @@ export function getQuestionConfig(questionType, propertyPath){
 
   let config = QUESTION_CONFIG[questionType];
   if (!config) {
-    Ember.Logger.error('Questions of type ' + questionType + ' are currently not supported');
+    Ember.Logger.error(`Questions of type ${questionType} are currently not supported`);
   }
   else if (propertyPath && !config.get(propertyPath)){
-    Ember.Logger.error('Property not found ' + propertyPath + ' for question type ' + questionType);
+    Ember.Logger.error(`Property not found ${propertyPath} for question type ${questionType}`);
   }
   else{
     config = propertyPath ? config.get(propertyPath) : config;

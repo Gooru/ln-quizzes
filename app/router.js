@@ -54,7 +54,7 @@ Router.map(function() {
     });
   });
 
-  this.route('player', { path: '/player/:contextId'});
+  this.route('player', { path: '/player/:contextId/collection/:collectionId'});
 
   this.route('context-player', {path: '/player/class/:classId/course/:courseId/unit/:unitId/lesson/:lessonId/collection/:collectionId'});
 

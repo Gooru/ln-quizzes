@@ -1,3 +1,18 @@
 <div class="controller player">
-  {{partial 'partials/player'}}
+  {{#unless showReport}}
+    <div class="aside">
+      {{player.gru-navigator
+      isNavigationDisabled=isNavigationDisabled
+      isTeacher=isTeacher
+      submitted=assessmentResult.submitted
+      collection=collection
+      selectedResourceId=resourceId
+      resourceResults=resourcesPlayer
+      onClosePlayer="closePlayer"
+      onItemSelected="selectNavigatorItem"
+      onCloseNavigator="closeNavigator"
+      onFinishCollection="finishCollection"
+      }}
+    </div>
+  {{/unless}}
 </div>

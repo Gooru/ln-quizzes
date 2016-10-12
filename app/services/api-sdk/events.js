@@ -50,7 +50,9 @@ export default Ember.Service.extend({
 
   moveToResource: function(resourceId, contextId, previousResult) {
     var service = this;
-    var serializedPreviousResult = this.get('eventsSerializer').serializeResourceResult(previousResult);
+    var serializedPreviousResult = previousResult ?
+      this.get('eventsSerializer').serializeResourceResult(previousResult) :
+      null;
     return new Ember.RSVP.Promise(function(resolve, reject) {
       service.get('eventsAdapter').moveToResource(resourceId, contextId, serializedPreviousResult)
         .then(resolve, reject);

@@ -37,10 +37,6 @@ test('Layout', function (assert) {
 
     assert.ok($container.find('a.cancel-button').length, "Cancel button is missing");
     assert.ok($container.find('button.get-started-btn').length, "Get started button is missing");
-
-
-
-
   });
 });
 

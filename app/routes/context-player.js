@@ -23,8 +23,8 @@ export default Ember.Route.extend({
         unitId: params.unitId,
         lessonId: params.lessonId
       }
-    }
-    const url = '';
+    };
+    const url = 'http://mockbin.org/bin/f812616f-7d6b-411e-b229-a24a645759b7';
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
@@ -33,7 +33,7 @@ export default Ember.Route.extend({
       data: JSON.stringify(data)
     };
     return Ember.$.ajax(url, options).then(function(response){
-      route.transitionTo('player', JSON.parse(response).contextId);
+      route.transitionTo('player', JSON.parse(response).contextId, params.collectionId);
     });
   }
 });

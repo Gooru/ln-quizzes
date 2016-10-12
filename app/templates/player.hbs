@@ -3,26 +3,21 @@
     {{#if collection.hasResources }}
       {{player.gru-navigation
       collection=collection
-      submitted=assessmentResult.submitted
       ratingScore=resourceResult.reaction
+      readOnly=assessmentResult.submitted
       onFinishCollection="finishCollection"
       onOpenNavigator="openNavigator"
-      onChangeEmotion="changeEmotion"
-      notifyingRealTime=notifyingRealTime
-      isTeacher=isTeacher
-      hasContext=hasContext
-      }}
+      onChangeEmotion="changeEmotion"}}
 
       {{#if resource}}
         {{player.gru-viewer
-        submitted=assessmentResult.submitted
+        isNotIframeUrl=isNotIframeUrl
+        collection=collection
         resource=resource
         resourceResult=resourceResult
-        collection=collection
-        onSubmitQuestion="submitQuestion"
-        isNotIframeUrl=isNotIframeUrl
-        hasContext=hasContext
-        role=role}}
+        role=role
+        submitted=assessmentResult.submitted
+        onSubmitQuestion="submitQuestion"}}
       {{/if}}
     {{else}}
       {{! TODO add the not found component here}}

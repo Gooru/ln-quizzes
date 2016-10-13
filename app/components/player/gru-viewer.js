@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 import { ASSESSMENT_SHOW_VALUES, RESOURCE_COMPONENT_MAP } from 'quizzes/config/config';
 /**
  * Player viewer
@@ -14,7 +14,6 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -33,7 +32,7 @@ export default Ember.Component.extend({
     submitQuestion: function (question, questionResult) {
       const component = this;
       component.$('.content').scrollTop(0);
-      component.sendAction("onSubmitQuestion", question, questionResult);
+      component.sendAction('onSubmitQuestion', question, questionResult);
     }
   },
 
@@ -51,45 +50,26 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * Indicates if the student is playing the collection
-   * @property {boolean}
-   */
-  isStudent: Ember.computed.equal("role", "student"),
-
-  /**
-   * Indicates if the teacher is playing this collection
-   * @property {boolean}
-   */
-  isTeacher: Ember.computed.not("isStudent"),
-
-  /**
-   * The resource playing
-   * @property {Resource} resource
-   */
-  resource: null,
-
-  /**
-   * The resource or question result playing
-   * @property {ResourceResult}
-   */
-  resourceResult: null,
-
-  /**
-   * Indicates the user's role, could be 'student', 'teacher' or null
+   * The text for the submit button
    * @property {string}
    */
-  role: null,
-
-  /**
-   * The collection playing
-   * @property {Collection} collection
-   */
-  collection: null,
-
-  /**
-   * @property {string} on submit question action
-   */
-  onSubmitQuestion: "submitQuestion",
+  buttonTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submittedAnswer', function() {
+    let i18nKey = 'common.save-next';
+    let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
+    if(!showFeedback || this.get('isTeacher')) {
+      if (this.get('collection').isLastResource(this.get('resource'))) {
+        i18nKey = (this.get('collection').get('isAssessment')) ? 'common.save-submit' : 'common.save-finish';
+      }
+    } else {
+      if(this.get('resourceResult.submittedAnswer')) {
+        i18nKey = this.get('collection').isLastResource(this.get('resource')) ?
+          'common.finish' : 'common.next';
+      } else {
+        i18nKey = 'common.submit';
+      }
+    }
+    return i18nKey;
+  }),
 
   /** Calculated height designated for the content area of a resource
    * @see components/player/resources/gru-url-resource.js
@@ -99,16 +79,55 @@ export default Ember.Component.extend({
   calculatedResourceContentHeight: 0,
 
   /**
-   * Indicates when the player has context
-   * @property {boolean}
+   * The collection playing
+   * @property {Collection} collection
    */
-  hasContext: false,
+  collection: null,
 
   /**
-   * Indicates when the collection is already submitted
+   * The text for the action in the instructions
+   * @property {string}
+   */
+  instructionsActionTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submittedAnswer', function() {
+    let i18nKey = 'common.save-next';
+    let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
+    if(!showFeedback) {
+      if (this.get('collection').isLastResource(this.get('resource'))) {
+        return (this.get('collection').get('isAssessment')) ? 'common.save-submit' : 'common.save-finish';
+      }
+    } else {
+      i18nKey = 'common.submit';
+    }
+    return i18nKey;
+  }),
+
+  /**
    * @property {boolean}
    */
-  submitted: false,
+  isNotIframeUrl: null,
+
+  /**
+   * Indicates if the student is playing the collection
+   * @property {boolean}
+   */
+  isStudent: Ember.computed.equal('role', 'student'),
+
+  /**
+   * Indicates if the teacher is playing this collection
+   * @property {boolean}
+   */
+  isTeacher: Ember.computed.not('isStudent'),
+
+  /**
+   * @property {string} on submit question action
+   */
+  onSubmitQuestion: 'submitQuestion',
+
+  /**
+   * The resource playing
+   * @property {Resource} resource
+   */
+  resource: null,
 
   /**
    * The resource component selected
@@ -125,6 +144,25 @@ export default Ember.Component.extend({
       return component;
     }
   }),
+
+  /**
+   * The resource or question result playing
+   * @property {ResourceResult}
+   */
+  resourceResult: null,
+
+  /**
+   * Indicates the user's role, could be 'student', 'teacher' or null
+   * @property {string}
+   */
+  role: null,
+
+  /**
+   * Indicates when the collection is already submitted
+   * @property {boolean}
+   */
+  submitted: false,
+
   // -------------------------------------------------------------------------
   // Observers
   /**
@@ -132,52 +170,7 @@ export default Ember.Component.extend({
    */
   resourceObserver: function() {
     this.calculateResourceContentHeight();
-  }.observes("resource.id"),
-
-  /**
-   * The text for the submit button
-   * @property {string}
-   */
-  buttonTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submittedAnswer', function() {
-    let i18nKey = 'common.save-next';
-    let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    if(!this.get('hasContext') || !showFeedback || this.get('isTeacher')) {
-      if (this.get('collection').isLastResource(this.get('resource'))) {
-        i18nKey = (this.get('collection').get('isAssessment')) ? 'common.save-submit' : 'common.save-finish';
-      }
-    } else {
-      if(this.get('resourceResult.submittedAnswer')) {
-        i18nKey = this.get('collection').isLastResource(this.get('resource')) ?
-          'common.finish' : 'common.next';
-      } else {
-        i18nKey = 'common.submit';
-      }
-    }
-    return i18nKey;
-  }),
-
-  /**
-   * The text for the action in the instructions
-   * @property {string}
-   */
-  instructionsActionTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submittedAnswer', function() {
-    let i18nKey = 'common.save-next';
-    let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    if(!this.get('hasContext') || !showFeedback) {
-      if (this.get('collection').isLastResource(this.get('resource'))) {
-        return (this.get('collection').get('isAssessment')) ? 'common.save-submit' : 'common.save-finish';
-      }
-    } else {
-      i18nKey = 'common.submit';
-    }
-    return i18nKey;
-  }),
-
-
-  /**
-   * @property {boolean}
-   */
-  isNotIframeUrl: null,
+  }.observes('resource.id'),
 
   // -------------------------------------------------------------------------
   // Methods
@@ -187,10 +180,10 @@ export default Ember.Component.extend({
    */
   calculateResourceContentHeight: function() {
     if (this.get('resource.isUrlResource') ||
-        this.get("resource.isPDFResource") ||
-        this.get("resource.isImageResource") &&
-        this.get("isNotIframeUrl")===false) {
-      var narrationHeight = this.$(".narration").innerHeight();
+        this.get('resource.isPDFResource') ||
+        this.get('resource.isImageResource') &&
+        this.get('isNotIframeUrl')===false) {
+      var narrationHeight = this.$('.narration').innerHeight();
       var contentHeight = this.$('.content').height();
 
       // The 4 pixels subtracted are to make sure no scroll bar will appear for the content

@@ -197,6 +197,12 @@ export default Ember.Controller.extend({
   saveEnabled: true, // save only when logged in
 
   /**
+   * Indicates if content should be displayed
+   * @property {boolean} showContent
+   */
+  showContent: false,
+
+  /**
    * Indicates if the report should be displayed
    * @property {boolean} showReport
    */
@@ -283,7 +289,7 @@ export default Ember.Controller.extend({
     this.set('resource', null);
     this.set('resourceResult', null);
     this.set('role', null);
-    this.set('showContent',false);
+    this.set('showContent', false);
   },
 
   /**

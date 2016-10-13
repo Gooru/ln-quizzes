@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
 
-  tagName: "span",
+  tagName: 'span',
 
   // -------------------------------------------------------------------------
   // Events
@@ -15,10 +15,6 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Properties
-  /**
-   * Text to render
-   */
-  text: null,
 
   /**
    * Observe when the text change
@@ -26,7 +22,12 @@ export default Ember.Component.extend({
   mathRender: function() {
     var component = this;
     component.renderInMath();
-  }.observes("text"),
+  }.observes('text'),
+
+  /**
+   * Text to render
+   */
+  text: null,
 
   // -------------------------------------------------------------------------
   // Methods
@@ -41,7 +42,7 @@ export default Ember.Component.extend({
       component.$('.gru-math-text').get(0),
       {
         delimiters: [
-          {left: "$$", right: "$$", display: false}
+          {left: '$$', right: '$$', display: false}
         ]
       }
     );

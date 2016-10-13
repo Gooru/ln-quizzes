@@ -52,10 +52,10 @@
 
         <form {{action "submitQuestion" on="submit"}}>
           {{component (questionConfig question.questionType 'component.player')
-          userAnswer=questionResult.userAnswer
           instructionsActionTextKey=instructionsActionTextKey
           question=question
           readOnly=isInputDisabled
+          userAnswer=questionResult.userAnswer
           onAnswerChanged="changeAnswer"
           onAnswerCleared="clearAnswer"
           onAnswerCompleted="completeAnswer"

@@ -35,7 +35,7 @@ export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
   // Properties
   /**
-   * Replace "_______" to an input
+   * Replace '_______' to an input
    * @param question
    *
    */
@@ -49,14 +49,14 @@ export default QuestionComponent.extend({
     if (component.get('hasUserAnswer')) {
       let userAnswer = component.get('userAnswer');
       userAnswer.forEach(function(choice){
-        let input = `<input type="text" value="${choice}" ${disabled}/>`;
+        let input = `<input type='text' value='${choice}' ${disabled}/>`;
         answers = answers.replace(FillInTheBlank.LEGACY_REGEX.single, input);
       });
 
       return answers;
     }
     else {
-      let input = `<input type="text" value="" ${disabled}/>`;
+      let input = `<input type='text' value='' ${disabled}/>`;
       return answers.replace(FillInTheBlank.LEGACY_REGEX.global, input);
     }
   }),
@@ -77,7 +77,7 @@ export default QuestionComponent.extend({
         return Ember.$.trim(answer);
       }).toArray();
 
-    const answerCompleted = answers.join("").length > 0; //to check that at least 1 answer has text
+    const answerCompleted = answers.join('').length > 0; //to check that at least 1 answer has text
 
     const questionUtil = component.get('questionUtil');
     const correct = questionUtil.isCorrect(answers);

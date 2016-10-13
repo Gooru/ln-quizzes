@@ -30,15 +30,23 @@ export default Ember.Component.extend({
   // Properties
 
   /**
+   * Indicate if the question has a user answer
+   * @property {Boolean}
+   */
+  hasUserAnswer:Ember.computed('userAnswer', function () {
+    return this.get('userAnswer') && this.get('userAnswer.length');
+  }),
+
+  /**
    * Text for action in instructions
    * @property {string}
    */
   instructionsActionTextKey: 'common.save',
 
   /**
-   * @property {String|Function} onAnswerCompleted - event handler for when the question answer is completed
+   * @property {String|Function} onAnswerChanged - event handler for when the question answer is changed
    */
-  onAnswerCompleted: null,
+  onAnswerChanged: null,
 
   /**
    * @property {String|Function} onAnswerCleared - event handler for when the question answer is cleared
@@ -46,9 +54,9 @@ export default Ember.Component.extend({
   onAnswerCleared: null,
 
   /**
-   * @property {String|Function} onAnswerChanged - event handler for when the question answer is changed
+   * @property {String|Function} onAnswerCompleted - event handler for when the question answer is completed
    */
-  onAnswerChanged: null,
+  onAnswerCompleted: null,
 
   /**
    * @property {String|Function} onAnswerLoaded - event handler for when the question answer is loaded from BE
@@ -65,9 +73,9 @@ export default Ember.Component.extend({
    * Question Util based on the question type
    * @property {QuestionUtil}
    */
-  questionUtil: Ember.computed("question", function(){
-    let question = this.get("question");
-    let type = question.get("questionType");
+  questionUtil: Ember.computed('question', function(){
+    let question = this.get('question');
+    let type = question.get('questionType');
     return getQuestionUtil(type).create({ question: question });
   }),
 
@@ -82,14 +90,6 @@ export default Ember.Component.extend({
    * @see quizzes/utils/question/multiplce-choice.js
    */
   userAnswer: null,
-  /**
-   * Indicate if the question has a user answer
-   * @property {Boolean}
-   */
-  hasUserAnswer:Ember.computed("userAnswer", function () {
-    return this.get("userAnswer") && this.get("userAnswer.length");
-  }),
-
 
   // -------------------------------------------------------------------------
   // Observers
@@ -114,9 +114,9 @@ export default Ember.Component.extend({
    * @param {*} answer question answer
    * @param {boolean} correct
    */
-  notifyAnswerCompleted: function(answer, correct){
+  notifyAnswerChanged: function(answer, correct){
     const question = this.get('question');
-    this.sendAction('onAnswerCompleted', question, {
+    this.sendAction('onAnswerChanged', question, {
       answer: answer,
       correct: correct
     });
@@ -139,9 +139,9 @@ export default Ember.Component.extend({
    * @param {*} answer question answer
    * @param {boolean} correct
    */
-  notifyAnswerChanged: function(answer, correct){
+  notifyAnswerCompleted: function(answer, correct){
     const question = this.get('question');
-    this.sendAction('onAnswerChanged', question, {
+    this.sendAction('onAnswerCompleted', question, {
       answer: answer,
       correct: correct
     });

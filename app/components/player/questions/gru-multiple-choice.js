@@ -15,24 +15,21 @@ export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
   // Dependencies
 
-
   // -------------------------------------------------------------------------
   // Attributes
-
   classNames:['gru-multiple-choice'],
 
   // -------------------------------------------------------------------------
   // Actions
   actions: {
-
     /**
      * When the user changes the answer choice selection
      * @param {number} answerId
      * @param {boolean} onLoad if this was called when loading the component
      */
-    selectAnswerChoice: function(answerId, onLoad){
+    selectAnswerChoice: function(answerId, onLoad) {
       const component = this;
-      const questionUtil = component.get("questionUtil");
+      const questionUtil = component.get('questionUtil');
       const correct = questionUtil.isCorrect(answerId);
       component.notifyAnswerChanged(answerId, correct);
       if(onLoad) {
@@ -45,6 +42,7 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Events
+
   init: function() {
     this._super(...arguments);
     if(this.get('userAnswer')) {
@@ -58,7 +56,6 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods

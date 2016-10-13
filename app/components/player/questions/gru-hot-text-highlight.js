@@ -1,5 +1,5 @@
-import QuestionComponent from './gru-question';
 import Ember from 'ember';
+import QuestionComponent from './gru-question';
 
 /**
  * Hot Text Highlight
@@ -28,7 +28,7 @@ export default QuestionComponent.extend({
      * Select or unselect an item
      * @param {{index: number, text: string, selected: boolean}} item
      */
-    markItem: function (item) {
+    markItem: function(item) {
       const component = this;
       if (!component.get('readOnly')){
         item.set('selected', !item.get('selected'));
@@ -42,7 +42,7 @@ export default QuestionComponent.extend({
   /**
    * Generate items from question answer choices
    */
-  initItems: function(){
+  initItems: function() {
     const component = this;
     component.generateItems();
     if(component.get('hasUserAnswer')) {
@@ -57,23 +57,54 @@ export default QuestionComponent.extend({
    * @property {{index: number, text: string}} items
    */
   items: null,
+
   // -------------------------------------------------------------------------
   // Observers
+
   /**
    * Refresh items when the question changes
    */
-
   refreshItems: Ember.observer('question.id', function() {
     this.generateItems();
   }),
+
   // -------------------------------------------------------------------------
   // Methods
+
+  /**
+   * Generate phrase items from the first question answer text
+   * It handle word and sentence variants, and it sets the 'items' component property accordingly
+   */
+  generateItems: function() {
+    const component = this;
+    const util = component.get('questionUtil');
+    let items = util.getItems();
+
+
+    if (component.get('hasUserAnswer')) {
+      let userAnswer = component.get('userAnswer');
+      items.forEach(function(item){
+        let selected = userAnswer.findBy('index', item.get('index'));
+        item.set('selected', selected !== undefined);
+      });
+    }
+    component.set('items', items);
+  },
+
+  /**
+   * Returns those items selected by the user
+   * @returns {{index: number, text: string, selected: boolean}[]} selected items
+   */
+  getSelectedItems: function() {
+    return this.get('items').filterBy('selected', true);
+  },
+
   /**
    * Notifies events based on selected items
    * @param {{index: number, text: string, selected: boolean}} selectedItems
    * @param {boolean} onLoad if this was called when loading the component
    */
-  notifyEvents: function (selectedItems, onLoad) {
+  notifyEvents: function(selectedItems, onLoad) {
     const component = this;
     const questionUtil = component.get('questionUtil');
     const userAnswer = selectedItems.map(function(item){
@@ -92,34 +123,6 @@ export default QuestionComponent.extend({
     else {
       component.notifyAnswerCleared(userAnswer);
     }
-  },
-
-  /**
-   * Generate phrase items from the first question answer text
-   * It handle word and sentence variants, and it sets the 'items' component property accordingly
-   */
-  generateItems: function(){
-    const component = this;
-    const util = component.get('questionUtil');
-    let items = util.getItems();
-
-
-    if (component.get('hasUserAnswer')){
-      let userAnswer = component.get('userAnswer');
-      items.forEach(function(item){
-        let selected = userAnswer.findBy('index', item.get('index'));
-        item.set('selected', selected !== undefined);
-      });
-    }
-    component.set('items', items);
-  },
-
-  /**
-   * Returns those items selected by the user
-   * @returns {{index: number, text: string, selected: boolean}[]} selected items
-   */
-  getSelectedItems: function(){
-    return this.get('items').filterBy('selected', true);
   }
 
 });

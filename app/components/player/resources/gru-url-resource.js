@@ -1,4 +1,5 @@
 import Ember from 'ember';
+
 /**
  * Url resource component
  *
@@ -9,47 +10,26 @@ import Ember from 'ember';
  * @see components/player/gru-viewer.js
  * @augments Ember/Component
  **/
-
 export default Ember.Component.extend({
+
   // -------------------------------------------------------------------------
   // Dependencies
 
-
   // -------------------------------------------------------------------------
   // Attributes
+  classNames:['gru-url-resource']
 
-  classNames:['gru-url-resource'],
   // -------------------------------------------------------------------------
   // Actions
 
   // -------------------------------------------------------------------------
   // Events
 
-
   // -------------------------------------------------------------------------
   // Properties
-  /**
-   * @property {Resource} the resource
-   */
-  resource: null,
 
-  /**
-   * @property {Number} the calculated resource content height
-   */
-
-  calculatedResourceContentHeight: null,
-
-  /**
-   * @property {string} bind the height css style for the component
-   */
-  resourceHeight: Ember.computed("calculatedResourceContentHeight", function(){
-    var height = this.get('calculatedResourceContentHeight');
-    const heightString = height > 0 ? `${height}px` : '100%';
-    return new Ember.Handlebars.SafeString(`height: ${heightString}`);
-  })
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods

@@ -1,23 +1,13 @@
 import Ember from 'ember';
-import ResourceComponent from './gru-resource';
 
-/**
- * Image resource component
- *
- * Component responsible for controlling the logic and appearance of the image resource type
- *
- * @module
- * @see controllers/player.js
- * @see components/player/gru-viewer.js
- * @augments Ember/Component
- */
-export default ResourceComponent.extend({
+export default Ember.Component.extend({
+
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['gru-image-resource']
+  classNames:['gru-resource'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -28,8 +18,28 @@ export default ResourceComponent.extend({
   // -------------------------------------------------------------------------
   // Properties
 
+  /**
+   * @property {Number} the calculated resource content height
+   */
+  calculatedResourceContentHeight: null,
+
+  /**
+   * @property {Resource} the resource
+   */
+  resource: null,
+
+  /**
+   * @property {string} bind the height css style for the component
+   */
+  resourceHeight: Ember.computed('calculatedResourceContentHeight', function() {
+    var height = this.get('calculatedResourceContentHeight');
+    const heightString = height > 0 ? `${height}px` : '100%';
+    return new Ember.Handlebars.SafeString(`height: ${heightString}`);
+  })
+
   // -------------------------------------------------------------------------
   // Observers
+
 
   // -------------------------------------------------------------------------
   // Methods

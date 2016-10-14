@@ -1,4 +1,4 @@
-import { moduleForComponent, test } from 'ember-qunit';
+/*import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
 import AssessmentResult from 'quizzes/models/result/assessment';
@@ -7,7 +7,7 @@ import QuestionResult from 'quizzes/models/result/question';
 
 moduleForComponent('reports/gru-assessment-report', 'Integration | Component | reports/gru assessment report', {
   integration: true
-});
+});*/
 
 /* TODO review when player is working
 test('Layout when answer results are shown', function (assert) {

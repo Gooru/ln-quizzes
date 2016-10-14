@@ -1,10 +1,10 @@
-import Ember from 'ember';
+/*import Ember from 'ember';
 import QuestionResult from 'quizzes/models/result/question';
 import UserResourcesResult from 'quizzes/models/result/user-resources';
 import ReportData from 'quizzes/models/result/report-data';
 import { module, test } from 'qunit';
 
-module('Unit | Model | result/report data');
+module('Unit | Model | result/report data');*/
 /* TODO review when player is working
 test('merge', function (assert) {
   var resources = Ember.A([

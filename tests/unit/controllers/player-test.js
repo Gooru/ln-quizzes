@@ -3,10 +3,8 @@ import { moduleFor, test } from 'ember-qunit';
 import Assessment from 'quizzes/models/content/assessment';
 import Collection from 'quizzes/models/content/collection';
 import Question from 'quizzes/models/content/question';
-import Context from 'quizzes/models/result/context';
 import AssessmentResult from 'quizzes/models/result/assessment';
 import QuestionResult from 'quizzes/models/result/question';
-import ResourceResult from 'quizzes/models/result/resource';
 
 moduleFor('controller:player', 'Unit | Controller | player', {
 
@@ -52,7 +50,6 @@ test('finishCollection on assessment', function(assert) {
 test('submitQuestion with next question available', function(assert) {
   assert.expect(9);
   let controller = this.subject();
-  let saveCounter = 0;
   let question = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question #1'
   });
@@ -105,7 +102,6 @@ test('submitQuestion with next question available', function(assert) {
 test('submitQuestion with next question unavailable', function(assert) {
   assert.expect(5);
   let controller = this.subject();
-  let saveCounter = 0;
   let question = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question #1'
   });

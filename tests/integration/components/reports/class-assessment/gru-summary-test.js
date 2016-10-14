@@ -1,4 +1,4 @@
-import Ember from 'ember';
+/*import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { GRADING_SCALE } from 'quizzes/config/config';
@@ -11,7 +11,7 @@ moduleForComponent('reports/class-assessment/gru-summary', 'Integration | Compon
   beforeEach: function () {
     this.inject.service('i18n');
   }
-});
+});*/
 
 /* TODO review when player is working
 test('it renders', function (assert) {

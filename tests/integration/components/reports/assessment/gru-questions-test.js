@@ -1,4 +1,4 @@
-import { moduleForComponent, test } from 'ember-qunit';
+/*import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import QuestionResult from 'quizzes/models/result/question';
@@ -9,7 +9,7 @@ moduleForComponent('reports/assessment/gru-questions', 'Integration | Component 
   beforeEach: function () {
     this.container.lookup('service:i18n').set("locale", "en");
   }
-});
+});*/
 
 /* TODO review once player is working
 test('Questions Layout', function (assert) {

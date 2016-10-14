@@ -1,4 +1,4 @@
-import Ember from 'ember';
+/*import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import QuestionResult from 'quizzes/models/result/question';
 import UserResourcesResult from 'quizzes/models/result/user-resources';
@@ -8,7 +8,7 @@ import T from 'quizzes/tests/helpers/assert';
 
 moduleForComponent('reports/class-assessment/gru-question-performance', 'Integration | Component | reports/class assessment/gru question performance', {
   integration: true
-});
+});*/
 
 /* TODO review when player is working
 test('When students has no answers yet', function (assert) {

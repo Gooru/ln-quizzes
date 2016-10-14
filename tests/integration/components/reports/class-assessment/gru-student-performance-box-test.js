@@ -1,4 +1,4 @@
-import { moduleForComponent, test } from 'ember-qunit';
+/*import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import QuestionResult from 'quizzes/models/result/question';
 import T from 'quizzes/tests/helpers/assert';
@@ -6,7 +6,7 @@ import Ember from 'ember';
 
 moduleForComponent('reports/class-assessment/gru-student-performance-box', 'Integration | Component | reports/class assessment/gru student performance box', {
   integration: true
-});
+});*/
 
 /* TODO review when player is working
 test('Layout when all completed', function (assert) {

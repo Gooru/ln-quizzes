@@ -1,4 +1,4 @@
-import Ember from 'ember';
+/*import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import QuestionResult from 'quizzes/models/result/question';
@@ -8,7 +8,7 @@ import T from 'quizzes/tests/helpers/assert';
 
 moduleForComponent('reports/class-assessment/gru-student-view', 'Integration | Component | reports/class assessment/gru student view', {
   integration: true
-});
+});*/
 
 /* TODO review when player is working
 test('Layout', function (assert) {

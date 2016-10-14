@@ -46,7 +46,7 @@ module.exports = function (environment) {
   /**
    * Application themes configuration
    */
-  ENV['themes'] = {
+  ENV.themes = {
     'default': null, /* when present it is not necessary to pass a query param */
     'edify' : {
       'translations': {
@@ -59,12 +59,12 @@ module.exports = function (environment) {
     }
   };
 
-  ENV['player'] = {
+  ENV.player = {
     vimeoPlayerUrl:'//player.vimeo.com/video/',
     youtubePlayerUrl:'https://www.youtube.com/embed/'
   };
 
-  ENV['events'] = {
+  ENV.events = {
     apiVersion: '3.0',
     playerEventEndpoint: '/api/log/event',
     eventAPIKey: '33b9ad34-1a0c-43ba-bb9c-4784abe07110'

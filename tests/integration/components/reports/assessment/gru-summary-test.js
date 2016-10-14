@@ -1,4 +1,4 @@
-import Ember from 'ember';
+/*import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import QuestionResult from 'quizzes/models/result/question';
@@ -11,7 +11,7 @@ moduleForComponent('reports/assessment/gru-summary', 'Integration | Component | 
   beforeEach: function () {
     this.inject.service('i18n');
   }
-});
+});*/
 
 /* TODO review when player works
 test('it renders for assessment', function (assert) {

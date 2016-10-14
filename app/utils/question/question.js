@@ -13,18 +13,18 @@ export default Ember.Object.extend({
 
   // -------------------------------------------------------------------------
   // Properties
+
   /**
    * @property {Resource}
    */
   question: null,
 
-
   // -------------------------------------------------------------------------
   // Observers
 
-
   // -------------------------------------------------------------------------
   // Methods
+
   /**
    * Indicates if the answer is correct
    * Default implementation, it check if all answer choices are correct
@@ -32,7 +32,7 @@ export default Ember.Object.extend({
    * @param {Array} answer user answer
    * @return {boolean}
    */
-  isCorrect: function (answer) {
+  isCorrect: function(answer) {
     let utility = this;
     let correctAnswer = this.getCorrectAnswer();
     let correct = answer.get("length") === correctAnswer.get("length");
@@ -184,5 +184,3 @@ export default Ember.Object.extend({
   }
 
 });
-
-

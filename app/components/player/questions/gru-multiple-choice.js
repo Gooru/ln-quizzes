@@ -29,13 +29,11 @@ export default QuestionComponent.extend({
      */
     selectAnswerChoice: function(answerId, onLoad) {
       const component = this;
-      const questionUtil = component.get('questionUtil');
-      const correct = questionUtil.isCorrect(answerId);
-      component.notifyAnswerChanged(answerId, correct);
+      component.notifyAnswerChanged(answerId);
       if(onLoad) {
-        component.notifyAnswerLoaded(answerId, correct);
+        component.notifyAnswerLoaded(answerId);
       } else {
-        component.notifyAnswerCompleted(answerId, correct);
+        component.notifyAnswerCompleted(answerId);
       }
     }
   },

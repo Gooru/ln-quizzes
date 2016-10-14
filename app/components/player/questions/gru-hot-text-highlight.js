@@ -13,9 +13,9 @@ import QuestionComponent from './gru-question';
  * @augments Ember/Component
  */
 export default QuestionComponent.extend({
-// -------------------------------------------------------------------------
-  // Dependencies
 
+  // -------------------------------------------------------------------------
+  // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -53,6 +53,7 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Properties
+
   /**
    * @property {{index: number, text: string}} items
    */
@@ -79,8 +80,6 @@ export default QuestionComponent.extend({
     const component = this;
     const util = component.get('questionUtil');
     let items = util.getItems();
-
-
     if (component.get('hasUserAnswer')) {
       let userAnswer = component.get('userAnswer');
       items.forEach(function(item){
@@ -106,21 +105,18 @@ export default QuestionComponent.extend({
    */
   notifyEvents: function(selectedItems, onLoad) {
     const component = this;
-    const questionUtil = component.get('questionUtil');
-    const userAnswer = selectedItems.map(function(item){
+    const userAnswer = selectedItems.map(function(item) {
       return { index: item.get('index'), text: item.get('text') };
     });
 
-    const correct = questionUtil.isCorrect(userAnswer);
-    component.notifyAnswerChanged(userAnswer, correct);
+    component.notifyAnswerChanged(userAnswer);
     if (selectedItems.get('length')) {
       if(onLoad) {
-        component.notifyAnswerLoaded(userAnswer, correct);
+        component.notifyAnswerLoaded(userAnswer);
       } else {
-        component.notifyAnswerCompleted(userAnswer, correct);
+        component.notifyAnswerCompleted(userAnswer);
       }
-    }
-    else {
+    } else {
       component.notifyAnswerCleared(userAnswer);
     }
   }

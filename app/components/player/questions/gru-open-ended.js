@@ -17,7 +17,6 @@ export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
   // Dependencies
 
-
   // -------------------------------------------------------------------------
   // Attributes
   classNames:['gru-open-ended'],
@@ -82,14 +81,12 @@ export default QuestionComponent.extend({
   notify: function(onLoad) {
     const component = this,
       answer = Ember.$.trim(component.get('answer'));
-    let correct = component.get('isAnswerCompleted');
-    component.notifyAnswerChanged(answer, correct);
-
+    component.notifyAnswerChanged(answer);
     if (component.get('isAnswerCompleted')) {
       if(onLoad) {
-        component.notifyAnswerLoaded(answer, correct);
+        component.notifyAnswerLoaded(answer);
       } else {
-        component.notifyAnswerCompleted(answer, correct);
+        component.notifyAnswerCompleted(answer);
       }
     } else {
       component.notifyAnswerCleared(answer);

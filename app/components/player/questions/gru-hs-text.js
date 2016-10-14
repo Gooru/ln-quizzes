@@ -31,7 +31,7 @@ export default QuestionComponent.extend({
     this.$('li.answer').off('click');
   }),
 
-  setupInstanceProperties: Ember.on('init', function () {
+  setupInstanceProperties: Ember.on('init', function() {
     const component = this;
     component.setAnswers();
   }),
@@ -106,19 +106,16 @@ export default QuestionComponent.extend({
    */
   notify: function(onLoad) {
     const component = this;
-    const questionUtil = component.get('questionUtil');
     let selected = component.get('selectedAnswers');
     let cleared = !selected.length;
-    const correct = questionUtil.isCorrect(selected);
-
-    component.notifyAnswerChanged(selected, correct);
+    component.notifyAnswerChanged(selected);
     if (cleared) {
       component.notifyAnswerCleared(selected);
     } else {
       if(onLoad) {
-        component.notifyAnswerLoaded(selected, correct);
+        component.notifyAnswerLoaded(selected);
       } else {
-        component.notifyAnswerCompleted(selected, correct);
+        component.notifyAnswerCompleted(selected);
       }
     }
   },

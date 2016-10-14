@@ -112,17 +112,13 @@ export default QuestionComponent.extend({
    */
   notify: function(onLoad) {
     const component = this;
-    const questionUtil = component.get('questionUtil');
     let userSelection = component.get('userSelection').toArray();
-    const correct = questionUtil.isCorrect(userSelection);
-
-    component.notifyAnswerChanged(userSelection, correct);
-
+    component.notifyAnswerChanged(userSelection);
     if (component.isAnswerCompleted()) {
       if(onLoad) {
-        component.notifyAnswerLoaded(userSelection, correct);
+        component.notifyAnswerLoaded(userSelection);
       } else {
-        component.notifyAnswerCompleted(userSelection, correct);
+        component.notifyAnswerCompleted(userSelection);
       }
     }
   },

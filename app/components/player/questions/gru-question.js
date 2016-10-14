@@ -114,12 +114,9 @@ export default Ember.Component.extend({
    * @param {*} answer question answer
    * @param {boolean} correct
    */
-  notifyAnswerChanged: function(answer, correct){
+  notifyAnswerChanged: function(answer){
     const question = this.get('question');
-    this.sendAction('onAnswerChanged', question, {
-      answer: answer,
-      correct: correct
-    });
+    this.sendAction('onAnswerChanged', question, answer);
   },
 
   /**
@@ -128,10 +125,7 @@ export default Ember.Component.extend({
    */
   notifyAnswerCleared: function(answer){
     const question = this.get('question');
-    this.sendAction('onAnswerCleared', question, {
-      answer: answer,
-      correct: false
-    });
+    this.sendAction('onAnswerCleared', question, answer);
   },
 
   /**
@@ -139,23 +133,17 @@ export default Ember.Component.extend({
    * @param {*} answer question answer
    * @param {boolean} correct
    */
-  notifyAnswerCompleted: function(answer, correct){
+  notifyAnswerCompleted: function(answer){
     const question = this.get('question');
-    this.sendAction('onAnswerCompleted', question, {
-      answer: answer,
-      correct: correct
-    });
+    this.sendAction('onAnswerCompleted', question, answer);
   },
 
   /**
    * Notifies answer was loaded from BE
    */
-  notifyAnswerLoaded: function(answer, correct){
+  notifyAnswerLoaded: function(answer){
     const question = this.get('question');
-    this.sendAction('onAnswerLoaded', question, {
-      answer: answer,
-      correct: correct
-    });
+    this.sendAction('onAnswerLoaded', question, answer);
   }
 
 });

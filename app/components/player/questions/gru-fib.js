@@ -14,9 +14,9 @@ import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
  * @augments Ember/Component
  */
 export default QuestionComponent.extend({
-// -------------------------------------------------------------------------
-  // Dependencies
 
+  // -------------------------------------------------------------------------
+  // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -39,12 +39,11 @@ export default QuestionComponent.extend({
    * @param question
    *
    */
-  answers: Ember.computed('question.text', function () {
+  answers: Ember.computed('question.text', function() {
     const component = this;
     let answers = component.get('question.fibText');
     let readOnly = component.get('readOnly');
     let disabled = readOnly ? 'disabled': '';
-
 
     if (component.get('hasUserAnswer')) {
       let userAnswer = component.get('userAnswer');
@@ -60,6 +59,7 @@ export default QuestionComponent.extend({
       return answers.replace(FillInTheBlank.LEGACY_REGEX.global, input);
     }
   }),
+
   // -------------------------------------------------------------------------
   // Observers
 
@@ -78,16 +78,12 @@ export default QuestionComponent.extend({
       }).toArray();
 
     const answerCompleted = answers.join('').length > 0; //to check that at least 1 answer has text
-
-    const questionUtil = component.get('questionUtil');
-    const correct = questionUtil.isCorrect(answers);
-
-    component.notifyAnswerChanged(answers, correct);
+    component.notifyAnswerChanged(answers);
     if (answerCompleted) {
       if(onLoad) {
-        component.notifyAnswerLoaded(answers, correct);
+        component.notifyAnswerLoaded(answers);
       } else {
-        component.notifyAnswerCompleted(answers, correct);
+        component.notifyAnswerCompleted(answers);
       }
     } else {
       component.notifyAnswerCleared(answers);
@@ -98,7 +94,7 @@ export default QuestionComponent.extend({
   /**
    * Set answers
    */
-  setAnswersEvents:function(){
+  setAnswersEvents:function() {
     const component = this;
     const inputs = component.$('.fib-answers');
     if(component.get('hasUserAnswer')) {

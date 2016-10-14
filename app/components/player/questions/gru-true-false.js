@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import QuestionComponent from './gru-question';
+
 /**
  * True or false Question
  * Component responsible for controlling the logic and appearance of a true
@@ -27,13 +28,11 @@ export default QuestionComponent.extend({
      */
     selectAnswerChoice: function(answerId, onLoad) {
       const component = this;
-      const questionUtil = this.get('questionUtil');
-      const correct = questionUtil.isCorrect(answerId);
-      component.notifyAnswerChanged(answerId, correct);
+      component.notifyAnswerChanged(answerId);
       if(onLoad) {
-        component.notifyAnswerLoaded(answerId, correct);
+        component.notifyAnswerLoaded(answerId);
       } else {
-        component.notifyAnswerCompleted(answerId, correct);
+        component.notifyAnswerCompleted(answerId);
       }
     }
   },

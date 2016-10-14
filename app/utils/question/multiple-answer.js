@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import QuestionUtil from './question';
 import AnswerObject from 'quizzes/utils/question/answer-object';
+
 /**
  * It contains convenience methods for grading and retrieving useful information
  * for multple answer questions
@@ -120,7 +121,4 @@ export default QuestionUtil.extend({
         return {id: answerObject.get("answerId"), selection: answerObject.get("text") === "Yes"};
       });
   }
-
-
 });
-

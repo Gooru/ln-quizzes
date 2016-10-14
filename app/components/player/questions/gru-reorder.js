@@ -56,6 +56,7 @@ export default QuestionComponent.extend({
     }
     return answers;
   }),
+
   /**
    * Return true if the answers list are shuffled
    * @property {Boolean}
@@ -86,23 +87,20 @@ export default QuestionComponent.extend({
    */
   notify: function(onLoad) {
     const component = this;
-    const questionUtil = this.get('questionUtil');
     const $items = component.$('.sortable').find('li');
     const answers = $items.map((idx, item) => $(item).data('id')).toArray();
-
-    const correct = questionUtil.isCorrect(answers);
-    component.notifyAnswerChanged(answers, correct);
+    component.notifyAnswerChanged(answers);
     if(onLoad) {
-      component.notifyAnswerLoaded(answers, correct);
+      component.notifyAnswerLoaded(answers);
     } else {
-      component.notifyAnswerCompleted(answers, correct);
+      component.notifyAnswerCompleted(answers);
     }
   },
 
   /**
    * Set answers
    */
-  setAnswers: function(){
+  setAnswers: function() {
     const component = this;
     const sortable = this.$('.sortable');
     const readOnly = component.get('readOnly');
@@ -124,7 +122,7 @@ export default QuestionComponent.extend({
   /**
    * Take the list of items and shuffle all his members
    */
-  shuffle: function(){
+  shuffle: function() {
     const component = this;
     const $items = component.$('.sortable') ;
     return $items.each(function() {

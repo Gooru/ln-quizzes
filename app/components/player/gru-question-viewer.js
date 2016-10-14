@@ -58,11 +58,10 @@ export default Ember.Component.extend({
      * @param {Resource} question the question
      * @param { { answer: Object, correct: boolean } } stats
      */
-    completeAnswer: function(question, stats){
+    completeAnswer: function(question, answer){
       if (!this.get('submitted')) {
         let questionResult = this.get('questionResult');
-        questionResult.set('userAnswer', stats.answer);
-        questionResult.set('correct', stats.correct);
+        questionResult.set('answer', answer);
 
         this.set('question', question);
         this.set('answerCompleted', true);
@@ -74,11 +73,10 @@ export default Ember.Component.extend({
      * @param {Resource} question the question
      * @param { { answer: Object, correct: boolean } } stats
      */
-    loadedAnswer: function(question, stats){
+    loadedAnswer: function(question, answer){
       if (!this.get('submitted')) {
         let questionResult = this.get('questionResult');
-        questionResult.set('userAnswer', stats.answer);
-        questionResult.set('correct', stats.correct);
+        questionResult.set('answer', answer);
 
         this.set('question', question);
         this.set('answerCompleted', false);

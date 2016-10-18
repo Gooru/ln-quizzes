@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import QuestionComponent from './gru-question';
+
 /**
  * True or false Question
  * Component responsible for controlling the logic and appearance of a true
@@ -13,37 +14,32 @@ export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
   // Dependencies
 
-
   // -------------------------------------------------------------------------
   // Attributes
-
   classNames:['gru-true-false'],
 
   // -------------------------------------------------------------------------
   // Actions
   actions: {
-
     /**
      * When the user changes the answer choice selection
      * @param {number} answerId
      * @param {boolean} onLoad if this was called when loading the component
      */
-    selectAnswerChoice: function(answerId, onLoad){
+    selectAnswerChoice: function(answerId, onLoad) {
       const component = this;
-      const questionUtil = this.get('questionUtil');
-      const correct = questionUtil.isCorrect(answerId);
-
-      component.notifyAnswerChanged(answerId, correct);
+      component.notifyAnswerChanged(answerId);
       if(onLoad) {
-        component.notifyAnswerLoaded(answerId, correct);
+        component.notifyAnswerLoaded(answerId);
       } else {
-        component.notifyAnswerCompleted(answerId, correct);
+        component.notifyAnswerCompleted(answerId);
       }
     }
   },
 
   // -------------------------------------------------------------------------
   // Events
+
   init: function() {
     this._super(...arguments);
     if(this.get('hasUserAnswer')) {
@@ -53,29 +49,29 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Properties
+
   /**
-   * Returns the "true" answer id
+   * Returns the 'false' answer id
    */
-  trueAnswerId: Ember.computed("question.answers", function(){
-    let answers = this.get("question.answers");
-    let found = answers.filterBy("text", "True");
-    return found ? found.get("firstObject.id") : "true"; //TODO, is this a data problem?
+  falseAnswerId: Ember.computed('question.answers', function() {
+    let answers = this.get('question.answers');
+    let found = answers.filterBy('text', 'False');
+    return found ? found.get('firstObject.id') : 'true'; //TODO, is this a data problem?
   }),
 
   /**
-   * Returns the "false" answer id
+   * Returns the 'true' answer id
    */
-  falseAnswerId: Ember.computed("question.answers", function(){
-    let answers = this.get("question.answers");
-    let found = answers.filterBy("text", "False");
-    return found ? found.get("firstObject.id") : "true"; //TODO, is this a data problem?
+  trueAnswerId: Ember.computed('question.answers', function() {
+    let answers = this.get('question.answers');
+    let found = answers.filterBy('text', 'True');
+    return found ? found.get('firstObject.id') : 'true'; //TODO, is this a data problem?
   })
-
 
   // -------------------------------------------------------------------------
   // Observers
 
-
   // -------------------------------------------------------------------------
   // Methods
+
 });

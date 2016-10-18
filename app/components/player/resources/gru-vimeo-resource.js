@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import Env from '../../../config/environment';
+import ResourceComponent from './gru-resource';
+
 /**
  * Vimeo resource component
  *
@@ -10,14 +12,12 @@ import Env from '../../../config/environment';
  * @see components/player/gru-viewer.js
  * @augments Ember/Component
  **/
-export default Ember.Component.extend({
+export default ResourceComponent.extend({
   // -------------------------------------------------------------------------
   // Dependencies
 
-
   // -------------------------------------------------------------------------
   // Attributes
-
   classNames:['gru-vimeo-resource'],
 
   // -------------------------------------------------------------------------
@@ -29,19 +29,15 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Properties
-  /**
-   * @property {Resource} the resource
-   */
-  resource: null,
 
   /**
    * @property {string} full resource vimeo url
    */
-  vimeoUrl: Ember.computed("resource.url", function(){
+  vimeoUrl: Ember.computed('resource.url', function() {
     const component = this;
-    var vimeoPlayerUrl = Env['player'].vimeoPlayerUrl;
+    var vimeoPlayerUrl = Env.player.vimeoPlayerUrl;
 
-    return vimeoPlayerUrl+ component.getVimeoID(this.get("resource.url"));
+    return vimeoPlayerUrl+ component.getVimeoID(this.get('resource.url'));
   }),
 
   // -------------------------------------------------------------------------
@@ -52,11 +48,11 @@ export default Ember.Component.extend({
    * @param {string} text
    * @returns {{id: number}} id
    */
-  getVimeoID: function (text) {
+  getVimeoID: function(text) {
       const regex = /([^/.]+)$/gm;
 
     var match = regex.exec(text);
-    var id ="";
+    var id ='';
     if (match !== null) {
      id = match[0];
     }

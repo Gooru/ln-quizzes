@@ -2,7 +2,7 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
 import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 import T from 'quizzes/tests/helpers/assert';
-import {KEY_CODES} from "quizzes/config/config";
+import {KEY_CODES} from 'quizzes/config/config';
 
 moduleForAcceptance('Acceptance | Edit Collection', {
   beforeEach: function () {
@@ -26,8 +26,8 @@ moduleForAcceptance('Acceptance | Edit Collection', {
     var newTitle = 'New Collection Name';
     var newLearningObjectives = 'Learning objectives ...';
 
-    var $container = find(".controller.content.collections.edit");
-    var $headerActions = $container.find("#information .header .actions");
+    var $container = find('.controller.content.collections.edit');
+    var $headerActions = $container.find('#information .header .actions');
     var $content = $container.find('#information .content');
 
     assert.equal($content.find('.panel-body .title b').text(), 'OOP introduction', 'Title');
@@ -69,30 +69,30 @@ test('Click share button and check clipboard functionality', function (assert) {
 
   andThen(function () {
     assert.equal(currentURL(), '/content/collections/edit/all-resource-types-collection-id');
-    var $shareButton = find(".gru-share-pop-over");
+    var $shareButton = find('.gru-share-pop-over');
 
     click($shareButton);
     andThen(function () {
-      var $popOverContent = find(".gru-share-pop-over-content");
+      var $popOverContent = find('.gru-share-pop-over-content');
 
-      T.exists(assert, $popOverContent.find('p'), "Missing share description");
+      T.exists(assert, $popOverContent.find('p'), 'Missing share description');
       const $input = $popOverContent.find('.share-actions #collection-popover-input');
-      T.exists(assert, $input, "Missing readonly input");
-      assert.ok($input.val().indexOf("/player/all-question-types-assessment-id?type=collection"), "Missing input url");
+      T.exists(assert, $input, 'Missing readonly input');
+      assert.ok($input.val().indexOf('/player/all-question-types-assessment-id?type=collection'), 'Missing input url');
 
       var $copyBtn = $popOverContent.find('.share-actions .copy-btn');
-      T.exists(assert, $copyBtn, "Missing copy button");
+      T.exists(assert, $copyBtn, 'Missing copy button');
     });
   });
 });
 
-// TODO: Fix test when functionality is made available in quizzes
+// TODO reenable when player is working
 /*test('Click preview button', function (assert) {
   visit('/content/collections/edit/all-resource-types-collection-id');
 
   andThen(function () {
     assert.equal(currentURL(), '/content/collections/edit/all-resource-types-collection-id');
-    var $previewButton = find(".actions .preview");
+    var $previewButton = find('.actions .preview');
 
     click($previewButton);
     andThen(function () {
@@ -105,25 +105,25 @@ test('Delete Collection', function (assert) {
   visit('/content/collections/edit/all-resource-types-collection-id');
   andThen(function () {
     assert.equal(currentURL(), '/content/collections/edit/all-resource-types-collection-id');
-    var $deleteButton = find("header .actions .delete");
+    var $deleteButton = find('header .actions .delete');
     click($deleteButton);
     andThen(function () {
-      var $deleteContentModal = find(".gru-modal .gru-delete-content");
-      var $check1 = $deleteContentModal.find("ul li:eq(0) input");
+      var $deleteContentModal = find('.gru-modal .gru-delete-content');
+      var $check1 = $deleteContentModal.find('ul li:eq(0) input');
       click($check1);
       andThen(function () {
-        var $check2 = $deleteContentModal.find("ul li:eq(1) input");
+        var $check2 = $deleteContentModal.find('ul li:eq(1) input');
         click($check2);
         andThen(function () {
-          var $check3 = $deleteContentModal.find("ul li:eq(2) input");
+          var $check3 = $deleteContentModal.find('ul li:eq(2) input');
           click($check3);
           andThen(function () {
-            var $input = $deleteContentModal.find(".delete-input");
+            var $input = $deleteContentModal.find('.delete-input');
             $input.val('delete');
             $input.blur();
             keyEvent($input, 'keyup', KEY_CODES.ENTER);
             andThen(function () {
-              var $deleteButton = $deleteContentModal.find("button.delete");
+              var $deleteButton = $deleteContentModal.find('button.delete');
               click($deleteButton);
               andThen(function () {
                 assert.equal(currentURL(), '/id-for-pochita/content/courses');

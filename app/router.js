@@ -9,6 +9,13 @@ var Router = Ember.Router.extend(googlePageview, {
 Router.map(function() {
   this.route('index', {path: '/'});
 
+  this.route('search', function() {
+    this.route('collections');
+    this.route('assessments');
+    this.route('questions');
+    this.route('resources');
+  });
+
   this.route('sign-in');
   this.route('forgot-password');
   this.route('reset-password');
@@ -31,6 +38,11 @@ Router.map(function() {
       this.route('play', {path: '/play/:courseId'});
     });
 
+    this.route('classes', function() {
+      this.route('create');
+      this.route('join');
+    });
+
     this.route('resources', function () {
       this.route('edit', {path: '/edit/:resourceId'});
       this.route('play', {path: '/play/:resourceId'});
@@ -42,7 +54,7 @@ Router.map(function() {
     });
   });
 
-  this.route('player', { path: '/player/:collectionId'});
+  this.route('player', { path: '/player/:contextId/collection/:collectionId'});
 
   this.route('context-player', {path: '/player/class/:classId/course/:courseId/unit/:unitId/lesson/:lessonId/collection/:collectionId'});
 
@@ -102,10 +114,6 @@ Router.map(function() {
       this.route('followers');
     });
   });
-  /**
-   * IMPORTANT! the profile route should be the last one at this file, so we can handle the app urls
-   * and the vanity urls for profiles like www.gooru.org/javier-perez
-   */
 });
 
 export default Router;

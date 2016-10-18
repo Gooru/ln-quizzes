@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import AssessmentResult from 'quizzes/models/result/assessment';
 import QuestionResult from 'quizzes/models/result/question';
-import { getQuestionUtil } from 'quizzes/config/question';
+//import { getQuestionUtil } from 'quizzes/config/question';
 
 export default Ember.Object.extend({
 
@@ -48,6 +48,7 @@ export default Ember.Object.extend({
    */
   normalizeResourceResults: function (payload) {
     const serializer = this;
+    payload = payload || [];
     return payload.map(function(resourceResult) {
       return QuestionResult.create(Ember.getOwner(serializer).ownerInjection(), {
         resourceId: resourceResult.resourceId,

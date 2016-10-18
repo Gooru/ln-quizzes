@@ -25,21 +25,11 @@ export default GruHSTextComponent.extend({
   // -------------------------------------------------------------------------
   // Actions
 
-
   // -------------------------------------------------------------------------
   // Events
 
-
   // -------------------------------------------------------------------------
   // Properties
-
-  /*
-   * @prop {String} instructions - Question instructions
-   */
-  instructions: Ember.computed(function() {
-    var action = this.get('i18n').t(this.get('instructionsActionTextKey')).string;
-    return this.get('i18n').t('gru-hs-image.instructions', {action});
-  }),
 
   /*
    * @typedef answers
@@ -51,12 +41,18 @@ export default GruHSTextComponent.extend({
       id: answer.get('id'),
       content: answer.get('text')
     };
-  })
+  }),
 
+  /*
+   * @prop {String} instructions - Question instructions
+   */
+  instructions: Ember.computed(function() {
+    var action = this.get('i18n').t(this.get('instructionsActionTextKey')).string;
+    return this.get('i18n').t('gru-hs-image.instructions', {action});
+  })
 
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods

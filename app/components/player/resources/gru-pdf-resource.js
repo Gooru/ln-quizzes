@@ -1,13 +1,23 @@
 import Ember from 'ember';
+import ResourceComponent from './gru-resource';
 
-export default Ember.Component.extend({
+/**
+ * PDF resource component
+ *
+ * Component responsible for controlling the logic and appearance of the pdf resource type
+ *
+ * @module
+ * @see controllers/player.js
+ * @see components/player/gru-viewer.js
+ * @augments Ember/Component
+ **/
+export default ResourceComponent.extend({
+
   // -------------------------------------------------------------------------
   // Dependencies
 
-
   // -------------------------------------------------------------------------
   // Attributes
-
   classNames:['gru-pdf-resource'],
 
   // -------------------------------------------------------------------------
@@ -16,37 +26,15 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Events
 
-
   // -------------------------------------------------------------------------
   // Properties
-  /**
-   * @property {Resource} the resource
-   */
-  resource: null,
 
-  pdfURL:Ember.computed('resource.assetUrl',function(){
-    return this.get("resource.assetUrl");
-  }),
-
-  /**
-   * @property {Number} the calculated resource content height
-   */
-
-  calculatedResourceContentHeight: null,
-
-  /**
-   * @property {string} bind the height css style for the component
-   */
-  resourceHeight: Ember.computed("calculatedResourceContentHeight", function(){
-    var height = this.get('calculatedResourceContentHeight');
-    const heightString = height > 0 ? `${height}px` : '100%';
-    return new Ember.Handlebars.SafeString(`height: ${heightString}`);
+  pdfURL:Ember.computed('resource.assetUrl',function() {
+    return this.get('resource.assetUrl');
   })
-
 
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods

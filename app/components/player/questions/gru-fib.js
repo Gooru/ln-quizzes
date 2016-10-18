@@ -14,9 +14,9 @@ import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
  * @augments Ember/Component
  */
 export default QuestionComponent.extend({
-// -------------------------------------------------------------------------
-  // Dependencies
 
+  // -------------------------------------------------------------------------
+  // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -35,31 +35,31 @@ export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
   // Properties
   /**
-   * Replace "_______" to an input
+   * Replace '_______' to an input
    * @param question
    *
    */
-  answers: Ember.computed('question.text', function () {
+  answers: Ember.computed('question.text', function() {
     const component = this;
     let answers = component.get('question.fibText');
     let readOnly = component.get('readOnly');
     let disabled = readOnly ? 'disabled': '';
 
-
     if (component.get('hasUserAnswer')) {
       let userAnswer = component.get('userAnswer');
       userAnswer.forEach(function(choice){
-        let input = `<input type="text" value="${choice}" ${disabled}/>`;
+        let input = `<input type='text' value='${choice}' ${disabled}/>`;
         answers = answers.replace(FillInTheBlank.LEGACY_REGEX.single, input);
       });
 
       return answers;
     }
     else {
-      let input = `<input type="text" value="" ${disabled}/>`;
+      let input = `<input type='text' value='' ${disabled}/>`;
       return answers.replace(FillInTheBlank.LEGACY_REGEX.global, input);
     }
   }),
+
   // -------------------------------------------------------------------------
   // Observers
 
@@ -77,17 +77,13 @@ export default QuestionComponent.extend({
         return Ember.$.trim(answer);
       }).toArray();
 
-    const answerCompleted = answers.join("").length > 0; //to check that at least 1 answer has text
-
-    const questionUtil = component.get('questionUtil');
-    const correct = questionUtil.isCorrect(answers);
-
-    component.notifyAnswerChanged(answers, correct);
+    const answerCompleted = answers.join('').length > 0; //to check that at least 1 answer has text
+    component.notifyAnswerChanged(answers);
     if (answerCompleted) {
       if(onLoad) {
-        component.notifyAnswerLoaded(answers, correct);
+        component.notifyAnswerLoaded(answers);
       } else {
-        component.notifyAnswerCompleted(answers, correct);
+        component.notifyAnswerCompleted(answers);
       }
     } else {
       component.notifyAnswerCleared(answers);
@@ -98,7 +94,7 @@ export default QuestionComponent.extend({
   /**
    * Set answers
    */
-  setAnswersEvents:function(){
+  setAnswersEvents:function() {
     const component = this;
     const inputs = component.$('.fib-answers');
     if(component.get('hasUserAnswer')) {

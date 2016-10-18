@@ -19,21 +19,24 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Attributes
-
   classNames: ['gru-hs-text'],
 
   // -------------------------------------------------------------------------
   // Actions
 
-
   // -------------------------------------------------------------------------
   // Events
-  setupInstanceProperties: Ember.on('init', function () {
+
+  removeSubscriptions: Ember.on('willDestroyElement', function() {
+    this.$('li.answer').off('click');
+  }),
+
+  setupInstanceProperties: Ember.on('init', function() {
     const component = this;
     component.setAnswers();
   }),
 
-  setupSubscriptions: Ember.on('didInsertElement', function () {
+  setupSubscriptions: Ember.on('didInsertElement', function() {
     const component = this;
     const readOnly = component.get('readOnly');
 
@@ -43,7 +46,7 @@ export default QuestionComponent.extend({
       if(component.get('userAnswer')) {
         component.notify(true);
       }
-      this.$('li.answer').on('click', function () {
+      this.$('li.answer').on('click', function() {
         const $this = $(this);
         const answerId = $this.data('id');
 
@@ -64,36 +67,32 @@ export default QuestionComponent.extend({
 
   }),
 
-  removeSubscriptions: Ember.on('willDestroyElement', function () {
-    this.$('li.answer').off('click');
-  }),
-
   // -------------------------------------------------------------------------
   // Properties
-
-  /*
-   * @prop {Array} selectedAnswers - Array of ids for each one of the answers selected by the user
-   */
-  selectedAnswers: null,
-
-  /*
-   * @prop {String} instructions - Question instructions
-   */
-  instructions: Ember.computed(function () {
-    return this.get('i18n').t('gru-hs-text.instructions');
-  }),
 
   /*
    * @typedef answers
    * @prop {String} id - answer id
    * @prop {String} content - markup string containing the answer text
    */
-  answers: Ember.computed.map('question.answers', function (answer) {
+  answers: Ember.computed.map('question.answers', function(answer) {
     return {
       id: answer.get('id'),
       content: answer.get('text')
     };
   }),
+
+  /*
+   * @prop {String} instructions - Question instructions
+   */
+  instructions: Ember.computed(function() {
+    return this.get('i18n').t('gru-hs-text.instructions');
+  }),
+
+  /*
+   * @prop {Array} selectedAnswers - Array of ids for each one of the answers selected by the user
+   */
+  selectedAnswers: null,
 
   // -------------------------------------------------------------------------
   // Observers
@@ -107,27 +106,32 @@ export default QuestionComponent.extend({
    */
   notify: function(onLoad) {
     const component = this;
-    const questionUtil = component.get('questionUtil');
     let selected = component.get('selectedAnswers');
     let cleared = !selected.length;
-    const correct = questionUtil.isCorrect(selected);
-
-    component.notifyAnswerChanged(selected, correct);
+    component.notifyAnswerChanged(selected);
     if (cleared) {
       component.notifyAnswerCleared(selected);
-    }
-    else {
+    } else {
       if(onLoad) {
-        component.notifyAnswerLoaded(selected, correct);
+        component.notifyAnswerLoaded(selected);
       } else {
-        component.notifyAnswerCompleted(selected, correct);
+        component.notifyAnswerCompleted(selected);
       }
     }
   },
+
+  /**
+   * Set answers
+   */
+  setAnswers: function() {
+    let userAnswer = this.get('userAnswer');
+    this.set('selectedAnswers', userAnswer || []);
+  },
+
   /**
    * Set the user answer
    */
-  setUserAnswer: function(){
+  setUserAnswer: function() {
     if (this.get('hasUserAnswer')) {
       const userAnswer = this.get('userAnswer');
       userAnswer.forEach(function(answerId){
@@ -136,12 +140,5 @@ export default QuestionComponent.extend({
         $answer.toggleClass('selected');
       });
     }
-  },
-  /**
-   * Set answers
-   */
-  setAnswers: function(){
-    let userAnswer = this.get('userAnswer');
-    this.set('selectedAnswers', userAnswer || []);
   }
 });

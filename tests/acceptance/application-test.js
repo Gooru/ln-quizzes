@@ -16,6 +16,30 @@ moduleForAcceptance('Acceptance | application', {
   }
 });
 
+test('searchTerm: Search box navigation', function(assert) {
+  visit('/');
+
+  andThen(function() {
+    assert.expect(2); //making sure all asserts are called
+
+    assert.equal(currentURL(), '/');
+
+    const $appHeader = find('.gru-header');
+    const $searchInput = $appHeader.find('.search-input');
+
+    fillIn($searchInput, 'europe');
+    $searchInput.val('europe');
+    $searchInput.change();
+
+    $appHeader.find('form').submit();
+
+    andThen(function(){
+
+      assert.equal(currentURL(), '/search/collections?term=europe');
+    });
+  });
+});
+
 test('Theme support - no theme', function(assert) {
   visit('/');
 
@@ -46,5 +70,12 @@ test('Theme support - Having translations and styles url', function(assert) {
     T.exists(assert, $styleLink, 'Missing link element having theme style');
     assert.equal($styleLink.attr('href'), 'themes/edify/styles.css', 'Wrong style url');
 
+  });
+});
+
+test('Trying the google sign in url', function (assert) {
+  visit('/?access_token=google-sign-token');
+  andThen(function() {
+    assert.equal(currentURL(), '/sign-up-finish');
   });
 });

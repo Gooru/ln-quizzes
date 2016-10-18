@@ -21,6 +21,9 @@
 @import 'controllers/class/quick-start';
 @import 'controllers/class/edit';
 @import 'controllers/classes';
+@import 'controllers/content/classes/modals';
+@import 'controllers/content/classes/create';
+@import 'controllers/content/classes/join';
 
 @import 'controllers/content/courses/edit';
 @import 'controllers/content/courses/play';
@@ -42,6 +45,7 @@
 @import 'controllers/profile/network';
 @import 'controllers/reports/collection';
 @import 'controllers/reports/student-collection';
+@import 'controllers/search';
 @import 'controllers/sign-in';
 @import 'controllers/sign-up';
 @import 'controllers/home';
@@ -58,6 +62,8 @@
 @import 'components/datepicker-field';
 @import 'components/search-filter';
 @import 'components/rating-stars';
+@import 'components/collection-results';
+@import 'components/gru-resource-results';
 @import 'components/grade-dropdown';
 @import 'components/gru-breadcrumb';
 @import 'components/gru-bubbles';
@@ -189,6 +195,9 @@
 @import 'components/reports/class-assessment/gru-student-view';
 @import 'components/reports/class-assessment/gru-summary';
 @import 'components/reports/class-assessment/gru-table-view';
+
+@import 'components/search/gru-question-options';
+@import 'components/search/gru-resource-options';
 
 @import 'components/taxonomy/gru-subject-course-picker';
 @import 'components/taxonomy/gru-subject-picker';

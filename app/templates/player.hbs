@@ -1,3 +1,41 @@
 <div class="controller player">
-  {{partial 'partials/player'}}
+  <div class="main" role="main">
+    {{#if collection.hasResources }}
+      {{player.gru-navigation
+      collection=collection
+      ratingScore=resourceResult.reaction
+      readOnly=assessmentResult.submitted
+      onFinishCollection="finishCollection"
+      onOpenNavigator="openNavigator"
+      onChangeEmotion="changeEmotion"}}
+
+      {{#if resource}}
+        {{player.gru-viewer
+        isNotIframeUrl=isNotIframeUrl
+        collection=collection
+        resource=resource
+        resourceResult=resourceResult
+        role=role
+        submitted=assessmentResult.submitted
+        onSubmitQuestion="submitQuestion"}}
+      {{/if}}
+    {{else}}
+      {{! TODO add the not found component here}}
+    {{/if}}
+  </div>
+  {{#unless showReport}}
+    <div class="aside">
+      {{player.gru-navigator
+      isNavigationDisabled=isNavigationDisabled
+      isTeacher=isTeacher
+      submitted=assessmentResult.submitted
+      collection=collection
+      selectedResourceId=resourceId
+      resourceResults=resourcesPlayer
+      onItemSelected="selectNavigatorItem"
+      onCloseNavigator="closeNavigator"
+      onFinishCollection="finishCollection"
+      }}
+    </div>
+  {{/unless}}
 </div>

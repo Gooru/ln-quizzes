@@ -7,12 +7,7 @@
    <div class="reaction-bar col-xs-12">
      <div class="panel panel-default">
          <div class="panel-body">
-           {{gru-emotion-picker startEmotion=ratingScore onChangeEmotion="changeEmotion" readOnly=readOnly}}
-             <div class="indicators">
-                 <span class="context {{if hasContext 'on' 'off'}}"></span>
-                 <span class="role {{if isTeacher 'teacher' 'student'}}"></span>
-                 <span class="rt {{if notifyingRealTime 'on' 'off'}}"></span>
-             </div>
+           {{gru-emotion-picker startEmotion=ratingScore onChangeEmotion="changeEmotion" readOnly=submitted}}
          </div>
      </div>
    </div>

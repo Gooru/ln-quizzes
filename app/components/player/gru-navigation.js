@@ -15,7 +15,6 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Dependencies
 
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -58,16 +57,10 @@ export default Ember.Component.extend({
   ratingScore: 0,
 
   /**
-   * Indicates when the collection is already submitted
-   * @property {boolean}
-   */
-  submitted: false,
-
-  /**
    * Indicates if changes can be made
    * @property {boolean} readOnly
    */
-  readOnly: Ember.computed.alias("submitted"),
+  readOnly: false,
 
   /**
    * @property {Collection

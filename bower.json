@@ -19,7 +19,7 @@
     "papaparse": "~4.1.2",
     "pretender": "^0.10.0",
     "qunit": "~1.20.0",
-    "sockjs-client": "~1.0.3",
+    "sockjs-client": "~1.1.1",
     "stomp-websocket": "~2.3.4",
     "toastr": "~2.1.2",
     "bootstrap-toggle": "^2.2.1",

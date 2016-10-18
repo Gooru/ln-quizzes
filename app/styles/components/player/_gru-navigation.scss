@@ -65,36 +65,6 @@
         padding-right: 15px;
       }
 
-      .indicators{
-        text-align: right;
-        width: 16px;
-        display: inline-flex;
-        span {
-          width: 3px;
-          height: 2px;
-          margin-right: 2px;
-          display: inline-block;
-          &.context.off {
-            background-color: $brand-danger;
-          }
-          &.context.on {
-            background-color: $brand-success;
-          }
-          &.role.teacher {
-            background-color: $brand-danger;
-          }
-          &.role.student {
-            background-color: $brand-success;
-          }
-          &.rt.off {
-            background-color: $brand-danger;
-          }
-          &.rt.on {
-            background-color: $brand-success;
-          }
-        }
-      }
-
       >div >div{
         margin-bottom: 0;
         width: 100%;

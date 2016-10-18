@@ -21,9 +21,10 @@ test('loadConfiguration', function(assert) {
     assert.ok(false, `Wrong request [${verb}] url: ${path}`);
   };
 
+  const done = assert.async();
   adapter.loadConfiguration('any-environment')
     .then(function(response) {
       assert.deepEqual({ a: 1 }, response, 'Wrong response');
+      done();
     });
 });
-

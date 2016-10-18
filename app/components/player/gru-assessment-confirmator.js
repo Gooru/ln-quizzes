@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
 
-export default Ember.Component.extend(ModalMixin,{
+export default Ember.Component.extend(ModalMixin, {
 
   // -------------------------------------------------------------------------
   // Dependencies
@@ -18,31 +18,28 @@ export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
   // Actions
 
-
   // -------------------------------------------------------------------------
   // Properties
+
+  /**
+   * @property {number} Ammount of attempts left on the assessment
+   */
+  attempts: null,
+
   /**
    * @property {bool} Boolean used to determine whether you can navigate both ways on an assessment or only forward
    */
   bidirectional: null,
-  /**
-   * @property {number} Ammount of attempts left on the assessment
-   */
-  attempts:null,
 
   didInsertElement() {
     this._super(...arguments);
+    const component = this;
     var model = {
-      bidirectional: this.get('bidirectional'),
-      attempts: this.get('attempts'),
-      title: this.get('title'),
-      onStart: function() {
-        return this.sendAction('onStart');
-      }.bind(this),
-      onCancel: function() {
-        return this.sendAction('onCancel');
-      }.bind(this)
-
+      bidirectional: component.get('bidirectional'),
+      attempts: component.get('attempts'),
+      title: component.get('title'),
+      onStart: () => component.sendAction('onStart'),
+      onCancel: () => component.sendAction('onCancel')
     };
 
     this.actions.showModal.call(this,

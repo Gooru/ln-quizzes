@@ -74,11 +74,11 @@ module.exports = function (grunt) {
     var noStubby = grunt.option("no-stubby") || grunt.option("ns"),
       server = grunt.option("server") || grunt.option("s");
 
-    var command = 'ember test';
+    var command = 'ember test --silent -r xunit';
     if (server) {
       command += " --server";
     }
-    var testExecTask = 'exec:run:' + command;
+    var testExecTask = 'exec:run:' + command + ' > report-xunit.xml';
 
     var tasks = noStubby ? [testExecTask] : ['stubby:test', testExecTask];
     grunt.task.run(tasks);

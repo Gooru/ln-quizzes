@@ -1,0 +1,52 @@
+
+<div class="header">
+    <h2>{{t "common.settings"}}</h2>
+</div>
+    <div class="panel panel-default assessment-settings">
+        <div class="panel-heading">
+            <h3>{{t "gru-settings-edit.navigation-scoring"}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="setting bidirectional">
+              {{gru-icon name="swap_horizontal"}}
+                <span>{{t "gru-settings-edit.backwards"}}</span>
+              {{gru-switch switchOptions=switchOptions onOptionSwitch='onBackwardsChange' isChecked=model.bidirectional}}
+            </div>
+            <div class="setting feedback">
+              {{gru-icon name="check_circle"}}
+                <span>{{t "gru-settings-edit.feedback"}}</span>
+                <div class="feedback-options">
+                  {{#each-in feedbackItems as |key value|}}
+                    {{
+                    validation.gru-radio
+                    model=model
+                    groupValue=model.showFeedback
+                    valuePath=value
+                    name='showFeedback'
+                    translationPath=(concat 'gru-settings-edit.feedback-' value)
+                    onChange=(action 'onGenericChange')
+                    }}
+                  {{/each-in}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>{{t "gru-settings-edit.answerkey-attempts"}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="setting answer-key">
+              {{gru-icon name="spellcheck"}}
+                <span>{{t "gru-settings-edit.answer-key"}}</span>
+              {{gru-switch switchOptions=switchOptions onOptionSwitch='onAnswerKeyChange' isChecked=model.showKey}}
+            </div>
+            <div class="setting attempts">
+              {{gru-icon name="history"}}
+                <span>{{t "gru-settings-edit.attempts"}}</span>
+              {{validation.gru-select options=attemptsOptions optionSelected=model.attempts title=(t "common.select") search="true" onOptionSelect="onAttemptsChange"}}
+            </div>
+        </div>
+    </div>
+

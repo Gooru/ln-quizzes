@@ -114,6 +114,7 @@ Router.map(function() {
       this.route('followers');
     });
   });
+  this.route('assign',{ path: '/assessment/:assessmentId'});
 });
 
 export default Router;

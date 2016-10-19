@@ -32,6 +32,7 @@
 @import 'controllers/content/resources/edit';
 @import 'controllers/content/resources/play';
 
+@import 'controllers/assign';
 @import 'controllers/partials/player';
 @import 'controllers/profile';
 @import 'controllers/profile/content';
@@ -89,6 +90,7 @@
 @import 'components/gru-user-teaser';
 @import 'components/gru-view-layout-picker';
 @import 'components/gru-spinner-button';
+@import 'components/gru-assessment-settings';
 
 @import 'components/cards/gru-class-card';
 @import 'components/cards/gru-collection-card';

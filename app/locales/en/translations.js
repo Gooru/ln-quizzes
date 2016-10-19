@@ -54,6 +54,7 @@ export default {
     "assessment-title": "Assessment Title",
     "assessmentInitial": "A",
     "assessments": "Assessments",
+    "assign":"Assign",
     "assign-to-class": "Assign to Classroom",
     "assign-to-course": "Assign to Course",
     "attempt": "Attempt number",

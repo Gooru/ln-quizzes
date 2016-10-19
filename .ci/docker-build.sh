@@ -4,7 +4,7 @@ source .ci/common.sh
 
 if [ $UID -eq 0 ]; then
   info "Running as root creating builder user and dropping privileges"
-  groupadd -r -g 501 builder && useradd -m -r -g builder -u 1000 builder
+  groupadd -r -g 501 builder && useradd -m -r -g builder -u 500 builder
   curl -sL https://github.com/ncopa/su-exec/archive/v0.2.tar.gz | tar xz -C /tmp
   CURDIR=$PWD
   cd /tmp/su-exec-0.2
@@ -34,4 +34,3 @@ silent grunt eslint
 
 info "Running tests..."
 silent grunt test
-

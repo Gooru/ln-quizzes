@@ -33,4 +33,4 @@ info "Running eslint..."
 silent grunt eslint
 
 info "Running tests..."
-silent grunt test
+silent grunt bamboo-test

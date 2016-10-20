@@ -30,7 +30,7 @@ info "Installing bower dependencies..."
 silent bower install
 
 info "Running eslint..."
-silent grunt eslint
+silent grunt bamboo-eslint
 
 info "Running tests..."
-silent grunt test
+silent grunt bamboo-test

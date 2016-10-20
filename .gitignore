@@ -26,5 +26,6 @@ error.log
 *.sublime-*
 
 #tests
+linter-xunit.xml
 report-xunit.xml
 .sass-lint.yml

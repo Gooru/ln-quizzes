@@ -35,7 +35,7 @@ export default Ember.Object.extend({
   isCorrect: function(answer) {
     let utility = this;
     let correctAnswer = this.getCorrectAnswer();
-    let correct = answer.get("length") === correctAnswer.get("length");
+    let correct = answer.get('length') === correctAnswer.get('length');
     answer.forEach(function (answerChoice, index) {
       correct = correct && utility.isAnswerChoiceCorrect(answerChoice, index);
     });
@@ -48,7 +48,7 @@ export default Ember.Object.extend({
    * @param { * } answerChoice
    */
   isAnswerChoiceCorrect: function (answerChoice) {
-    Ember.Logger.warning("The method getCorrectAnswer is not implemented", answerChoice);
+    Ember.Logger.warning('The method getCorrectAnswer is not implemented', answerChoice);
   },
 
   /**
@@ -57,7 +57,7 @@ export default Ember.Object.extend({
    * @return {*} the correct answer choice id
    */
   getCorrectAnswer: function () {
-    Ember.Logger.warning("The method getCorrectAnswer is not implemented");
+    Ember.Logger.warning('The method getCorrectAnswer is not implemented');
   },
 
   /**
@@ -87,11 +87,11 @@ export default Ember.Object.extend({
         distributionMap[answerKey] = answerDistribution;
       }
       else {
-        count = answerDistribution.get("count");
+        count = answerDistribution.get('count');
       }
       count += 1;
-      answerDistribution.set("count", count);
-      answerDistribution.set("percentage", Math.round(count / total * 100));
+      answerDistribution.set('count', count);
+      answerDistribution.set('percentage', Math.round(count / total * 100));
     });
     return distribution;
   },
@@ -121,7 +121,7 @@ export default Ember.Object.extend({
    * @return {AnswerObject[]}
    */
   toAnswerObjects: function (userAnswer) {
-    Ember.Logger.warning("The method toAnswerObject is not implemented", userAnswer);
+    Ember.Logger.warning('The method toAnswerObject is not implemented', userAnswer);
   },
 
   /**
@@ -136,11 +136,11 @@ export default Ember.Object.extend({
       let answerObjects = this.toAnswerObjects(userAnswer);
       json = answerObjects.map(function (answerObject) {
         return {
-          "text": answerObject.get("text"),
-          "status": answerObject.get("status"),
-          "order": answerObject.get("order"),
-          "answerId": answerObject.get("answerId"),
-          "skip": answerObject.get("skip")
+          'text': answerObject.get('text'),
+          'status': answerObject.get('status'),
+          'order': answerObject.get('order'),
+          'answerId': answerObject.get('answerId'),
+          'skip': answerObject.get('skip')
         };
       });
     }
@@ -154,7 +154,7 @@ export default Ember.Object.extend({
    * @param {AnswerObject[]} answerObjects
    */
   toUserAnswer: function (answerObjects) {
-    Ember.Logger.warning("The method toUserAnswer is not implemented", answerObjects);
+    Ember.Logger.warning('The method toUserAnswer is not implemented', answerObjects);
   },
 
   /**
@@ -163,7 +163,7 @@ export default Ember.Object.extend({
    * @returns {Answer}
    */
   getAnswerById: function (answerId) {
-    return this.getQuestionAnswers().findBy("id", answerId);
+    return this.getQuestionAnswers().findBy('id', answerId);
   },
 
   /**
@@ -172,7 +172,7 @@ export default Ember.Object.extend({
    * @returns {Answer}
    */
   getAnswerByText: function (text) {
-    return this.getQuestionAnswers().findBy("text", text);
+    return this.getQuestionAnswers().findBy('text', text);
   },
 
   /**
@@ -180,7 +180,7 @@ export default Ember.Object.extend({
    * @returns {Answer[]}
      */
   getQuestionAnswers: function() {
-    return this.get("question.answers");
+    return this.get('question.answers');
   }
 
 });

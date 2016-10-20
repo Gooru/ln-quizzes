@@ -18,14 +18,14 @@ test('Player Navigator', function(assert) {
   const resourceMockA = Ember.Object.create({
     id: '1',
     title: '<p>Resource #1</p>',
-    resourceFormat: 'question',
+    format: 'question',
     "isQuestion": true
   });
 
   const resourceMockB = Ember.Object.create({
     id: '2',
     title: 'Resource #2',
-    resourceFormat: 'webpage',
+    format: 'webpage',
     "isQuestion": false
   });
 
@@ -40,7 +40,9 @@ test('Player Navigator', function(assert) {
     getResourceById: function(id){
       if(id === '1'){
         return resourceMockA;
-      }else if (id ==='2'){ return resourceMockB;}
+      } else if (id ==='2') {
+        return resourceMockB;
+      }
     }
   });
 

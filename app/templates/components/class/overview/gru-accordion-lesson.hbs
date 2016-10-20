@@ -50,6 +50,7 @@
           {{#if isTeacher}}
 
             {{#if item.isAssessment}}
+
               {{#unless item.isExternalAssessment}}
                    <button {{action "setOnAir" item.id}}
                   data-toggle="tooltip" data-html="true" data-placement="bottom"
@@ -68,7 +69,13 @@
           {{/if}}
 
           <div class="panel-heading">
-
+            {{#if item.isAssessment}}
+               {{#link-to 'assign' item.id}}
+                  <button class="btn btn-sm btn-default assign-to-classroom">
+                    {{t "common.assign"}}
+                  </button>
+                {{/link-to}}
+            {{/if}}
             <div class="icon-container">
               {{#if item.isAssessment}}
 

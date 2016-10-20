@@ -16,9 +16,9 @@ test('Multiple choice question layout', function (assert) {
   assert.expect(10);
   let question = Ember.Object.create({
     'id': '569906aa20b7dfae1bcd5',
-    questionType: 'MC',
-    text: 'Sample Question MC',
-    answers:  Ember.A([
+    type: 'MC',
+    body: 'Sample Question MC',
+    choices:  Ember.A([
       Ember.Object.create({
         'id': 1,
         'text': '<p>An aquifer</p>',
@@ -38,7 +38,7 @@ test('Multiple choice question layout', function (assert) {
         'sequence': 3
       })
     ]),
-    'order': 1,
+    'sequence': 1,
     'hasAnswers': true,
     'hasNarration': true
   });
@@ -82,9 +82,9 @@ test('Multiple choice question layout - read only', function (assert) {
   assert.expect(2);
   let question = Ember.Object.create({
     'id': '569906aa20b7dfae1bcd5',
-    questionType: 'MC',
-    text: 'Sample Question MC',
-    answers:  Ember.A([
+    type: 'MC',
+    body: 'Sample Question MC',
+    choices:  Ember.A([
       Ember.Object.create({
         'id': 1,
         'text': '<p>An aquifer</p>',
@@ -104,7 +104,7 @@ test('Multiple choice question layout - read only', function (assert) {
         'sequence': 3
       })
     ]),
-    'order': 1,
+    'sequence': 1,
     'hasAnswers': true,
     'hasNarration': true
   });
@@ -122,9 +122,9 @@ test('Multiple choice question with user answer', function (assert) {
   assert.expect(5);
   let question = Ember.Object.create({
     'id': '569906aa20b7dfae1bcd5',
-    questionType: 'MC',
-    text: 'Sample Question MC',
-    answers:  Ember.A([
+    type: 'MC',
+    body: 'Sample Question MC',
+    choices:  Ember.A([
       Ember.Object.create({
         'id': 1,
         'text': '<p>An aquifer</p>',
@@ -144,7 +144,7 @@ test('Multiple choice question with user answer', function (assert) {
         'sequence': 3
       })
     ]),
-    'order': 1,
+    'sequence': 1,
     'hasAnswers': true,
     'hasNarration': true
   });

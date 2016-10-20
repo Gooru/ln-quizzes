@@ -18,17 +18,14 @@ moduleForComponent('player/gru-question-viewer', 'Integration | Component | play
 
 test('Layout', function (assert) {
 
-  assert.expect(11);
+  assert.expect(10);
 
   const question = Ember.Object.create(
     {
       'id': 10,
-      'order': 2,
-      'text': 'Dummy question text',
-      'mediaUrl': 'test.jpg',
-      'questionType': 'OE',
-      'hasMedia': true,
-      'hints': []
+      'sequence': 2,
+      'body': 'Dummy question text',
+      'type': 'OE'
     });
 
   const questionResult = QuestionResult.create();
@@ -44,7 +41,6 @@ test('Layout', function (assert) {
   T.exists(assert, $questionPanel, 'Missing question panel');
   T.exists(assert, $questionPanel.find('h2'), 'Missing question header');
   T.exists(assert, $questionPanel.find('.question span'), 'Missing question text');
-  T.exists(assert, $questionPanel.find('.question img'), 'Missing question media');
 
   var $answerPanel = $component.find('.answers-panel');
   T.exists(assert, $answerPanel, 'Missing answer panel');
@@ -69,11 +65,9 @@ test('Submit button should become enabled and call action on submit', function (
   const question = Ember.Object.create(
     {
       'id': 10,
-      'order': 2,
-      'text': 'Dummy question text',
-      'mediaUrl': 'test.jpg',
-      'questionType': 'OE',
-      'hasMedia': true
+      'sequence': 2,
+      'body': 'Dummy question text',
+      'type': 'OE'
     });
 
   const questionResult = QuestionResult.create();
@@ -81,7 +75,7 @@ test('Submit button should become enabled and call action on submit', function (
   this.set('questionResult', questionResult);
   this.set('question', question);
 
-  this.on('mySubmitQuestion', function(question, questionResult){
+  this.on('mySubmitQuestion', function(question, questionResult) {
     assert.equal(question.get('id'), 10, 'Wrong id');
     assert.equal(questionResult.get('answer'), 'test', 'Wrong answer');
   });
@@ -106,36 +100,33 @@ test('Multiple Answer - Submit button should become enabled by clicking 1 radio 
 
   let question = Ember.Object.create({
     'id': '569906aa77bebed003fa6eb1',
-    questionType: 'MA',
-    text: 'Sample Question MA',
-    hints: [],
-    explanation: 'Sample explanation text',
+    type: 'MA',
+    body: 'Sample Question MA',
     answers: Ember.A([
       Ember.Object.create({
         'id': '1',
         'text': '<p>An aquifer</p>',
         'answerType': 'text',
         'isCorrect': true,
-        'sequence': 1
+        'order': 1
       }),
       Ember.Object.create({
         'id': '2',
         'text': '<p>A well</p>',
         'answerType': 'text',
         'isCorrect': false,
-        'sequence': 2
+        'order': 2
       }),
       Ember.Object.create({
         'id': '3',
         'text': '<p>A pump</p>',
         'answerType': 'text',
         'isCorrect': false,
-        'sequence': 3
+        'order': 3
       })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 5,
+    'format': 'question',
+    'sequence': 5,
     'hasAnswers': true
   });
 
@@ -171,9 +162,9 @@ test('Clicking on the "Hints" button should display a certain number of hints an
 
   const question = Ember.Object.create({
     'id': 10,
-    'order': 2,
+    'sequence': 2,
     'text': 'Dummy question text',
-    'questionType': 'OE',
+    'type': 'OE',
     'hasMedia': false,
     'hints': [
       {
@@ -214,9 +205,9 @@ test('Clicking on the "Explanation" button should display an explanation and the
 
   const question = Ember.Object.create({
     'id': 11,
-    'order': 2,
+    'sequence': 2,
     'text': 'Dummy question text',
-    'questionType': 'OE',
+    'type': 'OE',
     'hasMedia': false,
     'hints': [],
     'explanation': '<p>This is a test explanation</p>'
@@ -245,10 +236,10 @@ test('Save Button Text key', function (assert) {
   const question = Ember.Object.create(
     {
       'id': 10,
-      'order': 2,
+      'sequence': 2,
       'text': 'Dummy question text',
       'mediaUrl': 'test.jpg',
-      'questionType': 'OE',
+      'type': 'OE',
       'hasMedia': true,
       'hints': []
     });
@@ -272,10 +263,10 @@ test('Submit button disabled when submitted', function (assert) {
   const question = Ember.Object.create(
     {
       'id': 10,
-      'order': 2,
+      'sequence': 2,
       'text': 'Dummy question text',
       'mediaUrl': 'test.jpg',
-      'questionType': 'OE',
+      'type': 'OE',
       'hasMedia': true
     });
 
@@ -299,11 +290,9 @@ test('Show feedback layout', function (assert) {
   const question = Ember.Object.create(
     {
       'id': 10,
-      'order': 2,
-      'text': 'Dummy question text',
-      'mediaUrl': 'test.jpg',
-      'questionType': 'OE',
-      'hasMedia': true
+      'sequence': 2,
+      'body': 'Dummy question text',
+      'type': 'OE'
     });
 
   const assessment = Assessment.create({
@@ -342,10 +331,10 @@ test('Show feedback when submitted layout', function (assert) {
   const question = Ember.Object.create(
     {
       'id': 10,
-      'order': 2,
+      'sequence': 2,
       'text': 'Dummy question text',
       'mediaUrl': 'test.jpg',
-      'questionType': 'OE',
+      'type': 'OE',
       'hasMedia': true
     });
 
@@ -377,10 +366,10 @@ test('Question Viewer Submit by Enter', function (assert) {
   const question = Ember.Object.create(
     {
       'id': 10,
-      'order': 2,
+      'sequence': 2,
       'text': 'Dummy question text',
       'mediaUrl': 'test.jpg',
-      'questionType': 'MC',
+      'type': 'MC',
       'hasMedia': true
     });
 
@@ -407,10 +396,10 @@ test('Open ended question try submit by enter', function (assert) {
   const question = Ember.Object.create(
     {
       'id': 10,
-      'order': 2,
+      'sequence': 2,
       'text': 'Dummy question text',
       'mediaUrl': 'test.jpg',
-      'questionType': 'OE',
+      'type': 'OE',
       'isOpenEnded': true,
       'hasMedia': true
     });

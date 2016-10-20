@@ -134,7 +134,7 @@ export default Ember.Component.extend({
    * @property {string}
    */
   resourceComponentSelected: Ember.computed('resource.id', function () {
-    const resourceType = (this.get('resource.isImageResource') ? 'image' : this.get('resource.resourceType'));
+    const resourceType = (this.get('resource.isImageResource') ? 'image' : this.get('resource.type'));
     var component = RESOURCE_COMPONENT_MAP[resourceType];
 
     if (!component) {
@@ -174,6 +174,7 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Methods
+
   /**
    * Calculates the height of the content area (it will change depending on height
    * of the narration -if there is one)

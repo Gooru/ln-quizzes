@@ -50,7 +50,7 @@ module.exports = function (grunt) {
       },
       default : {
         files: {
-          'public/assets/emoji-one/emoji.svg': ['vendor/emoji-one/*.svg'],
+          'public/assets/emoji-one/emoji.svg': ['vendor/emoji-one/*.svg']
         }
       }
     },
@@ -58,9 +58,9 @@ module.exports = function (grunt) {
       options: {
         configFile: '.eslintrc',
         quiet: grunt.option('quiet')
-  		},
+      },
       target: ['app', 'config', 'tests']
-  	}
+    }
   });
 
   grunt.loadNpmTasks('grunt-stubby');
@@ -68,29 +68,35 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-svgstore');
   grunt.loadNpmTasks('grunt-eslint');
 
+  grunt.registerTask('bamboo-eslint', function() {
+    grunt.config.set('eslint.options.format', 'junit');
+    grunt.config.set('eslint.options.outputFile', 'linter-xunit.xml');
+    grunt.config.set('eslint.options.quiet', true);
+    grunt.task.run(['eslint']);
+  });
 
   grunt.registerTask('test', function (target) {
     //for development
     var noStubby = grunt.option("no-stubby") || grunt.option("ns"),
       server = grunt.option("server") || grunt.option("s");
 
-    var command = 'ember test --silent -r xunit';
+    var command = 'ember test';
     if (server) {
       command += " --server";
     }
-    var testExecTask = 'exec:run:' + command + ' > report-xunit.xml';
+    var testExecTask = 'exec:run:' + command;
 
     var tasks = noStubby ? [testExecTask] : ['stubby:test', testExecTask];
     grunt.task.run(tasks);
   });
 
-  grunt.registerTask('bamboo-test', function (target) {
+  grunt.registerTask('bamboo-test', function () {
     /*
       An issue generating the report was found when upgrading ember cli to 1.13.13
       We should give it a try when a new version become available
       grunt.task.run(['stubby:test', 'exec:run:ember test --silent --reporter xunit']);
      */
-    grunt.task.run(['stubby:test', 'exec:run:ember test']);
+    grunt.task.run(['stubby:test', 'exec:run:ember test --silent -r xunit > report-xunit.xml']);
   });
 
   grunt.registerTask('run', function (target) {

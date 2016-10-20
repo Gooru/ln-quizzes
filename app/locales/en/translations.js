@@ -257,6 +257,7 @@ export default {
     "mastery": "Mastery",
     "menu": "Menu",
     "more-details": "More Details",
+    "modify-settings":"Modify assessment settings",
     "move": "Move",
     "myContent": "My Content",
     "edit-narration": "Edit Narration",
@@ -1352,5 +1353,10 @@ export default {
         "description": "This is your Profile. Click on your profile at any time to access content you create or remix in Gooru."
       }
     }
+  },
+  "assign-students":{
+    "title":"Title:{{title}}",
+    "select-all":"Select all ({{count}})",
+    "select-students":"Select students",
   }
 };

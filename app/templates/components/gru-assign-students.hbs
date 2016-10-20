@@ -1,0 +1,19 @@
+<h5>{{t 'assign-students.title' title=assessment.title}}</h5>
+<div class="row">
+    <div class="students col-md-6 col-sm-6">
+        <span>{{t 'assign-students.select-students'}}</span>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{t 'assign-students.select-all' count=students.length}}
+            </div>
+        </div>
+        <div class="student-list list-group">
+            {{#each students as |student| }}
+                <a class="list-group-item">{{student.lastName}},{{student.firstName}}</a>
+            {{/each}}
+        </div>
+    </div>
+    <div class="assessment-settings col-md-6 col-sm-6">
+      {{gru-assessment-settings}}
+    </div>
+</div>

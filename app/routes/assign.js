@@ -4,10 +4,6 @@ export default Ember.Route.extend({
   // -------------------------------------------------------------------------
   // Methods
 
-  beforeModel: function() {
-
-  },
-
   /**
    * Get model for the controller
    */

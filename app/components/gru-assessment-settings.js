@@ -17,22 +17,23 @@ export default Ember.Component.extend({
 
   actions: {
     onBackwardsChange: function(isChecked) {
-     console.log('onBackwardsChange'+ isChecked);
+      // TODO
+      Ember.Logger.log('onBackwardsChange', isChecked);
     },
 
     onAnswerKeyChange: function(isChecked) {
-      console.log('onAnswerKeyChange'+ isChecked);
+      Ember.Logger.log('onAnswerKeyChange', isChecked);
     },
 
     onAttemptsChange: function(newValue) {
-      console.log('onAttemptsChange'+ newValue);
+      Ember.Logger.log('onAttemptsChange', newValue);
     },
 
     onGenericChange: function() {
-      console.log('onGenericChange');
+      Ember.Logger.log('onGenericChange');
     },
     onClassroomPlayEnabledChange: function(){
-      console.log('onClassroomPlayEnabledChange');
+      Ember.Logger.log('onClassroomPlayEnabledChange');
     }
   },
 

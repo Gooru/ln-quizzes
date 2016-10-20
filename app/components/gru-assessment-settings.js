@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { ASSESSMENT_SHOW_VALUES, MAX_ATTEMPTS } from "quizzes/config/config";
+import { ASSESSMENT_SHOW_VALUES, MAX_ATTEMPTS } from 'quizzes/config/config';
 
 export default Ember.Component.extend({
 
@@ -15,12 +15,10 @@ export default Ember.Component.extend({
 
   classNames: ['gru-assessment-settings'],
 
-  actions: {
-    onBackwardsChange: function(isChecked) {
-      // TODO
-      Ember.Logger.log('onBackwardsChange', isChecked);
-    },
+  // -------------------------------------------------------------------------
+  // Actions
 
+  actions: {
     onAnswerKeyChange: function(isChecked) {
       Ember.Logger.log('onAnswerKeyChange', isChecked);
     },
@@ -28,15 +26,20 @@ export default Ember.Component.extend({
     onAttemptsChange: function(newValue) {
       Ember.Logger.log('onAttemptsChange', newValue);
     },
-
-    onGenericChange: function() {
-      Ember.Logger.log('onGenericChange');
-    },
     onClassroomPlayEnabledChange: function(){
       Ember.Logger.log('onClassroomPlayEnabledChange');
+    },
+    onBackwardsChange: function(isChecked) {
+      // TODO
+      Ember.Logger.log('onBackwardsChange', isChecked);
+    },
+    onGenericChange: function() {
+      Ember.Logger.log('onGenericChange');
     }
   },
 
+  // -------------------------------------------------------------------------
+  // Properties
   /**
    * Options for attempts
    * @property {Array}
@@ -71,10 +74,10 @@ export default Ember.Component.extend({
    * @property {Ember.Array}
    */
   switchOptions: Ember.A([Ember.Object.create({
-    'label': "On",
+    'label': 'On',
     'value': true
   }),Ember.Object.create({
-    'label': "Off",
+    'label': 'Off',
     'value': false
   })])
 });

@@ -10,9 +10,7 @@ export default Ember.Route.extend({
   model: function(params) {
     let assessmentId = params.assessmentId;
 
-    return Ember.RSVP.hash({
-      assessmentId: assessmentId
-    });
+    return Ember.RSVP.hash({assessmentId});
   },
 
   /**

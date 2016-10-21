@@ -1,8 +1,10 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
+import Question from 'quizzes/models/content/question';
+import QuestionResult from 'quizzes/models/result/question';
 
 moduleForComponent('player/gru-viewer', 'Unit | Component | player/gru viewer', {
-  integration: false
+  unit: true
 });
 
 test('resourceComponentSelected for non valid resource type', function (assert) {
@@ -85,7 +87,7 @@ test('buttonTextKey when is not the last resource', function (assert) {
       type: 'resource/url'
     }),
     collection: Ember.Object.create({
-      isLastResource: function () { return false; }
+      isLastResource: () => false
     })
   });
 
@@ -101,7 +103,7 @@ test('buttonTextKey when is the last resource and assessment', function (assert)
       type: 'resource/url'
     }),
     collection: Ember.Object.create({
-      isLastResource: function () { return true; },
+      isLastResource: () => true,
       isAssessment: true
     })
   });
@@ -118,10 +120,26 @@ test('buttonTextKey when is the last resource and collection', function (assert)
       type: 'resource/url'
     }),
     collection: Ember.Object.create({
-      isLastResource: function () { return true; },
+      isLastResource: () => true,
       isAssessment: false
     })
   });
 
   assert.equal(component.get('buttonTextKey'), 'common.save-finish', 'Wrong button text key');
+});
+
+test('submitQuestion', function(assert) {
+  assert.expect(3);
+  let component = this.subject();
+  let question = Question.create(Ember.getOwner(this).ownerInjection());
+  let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
+  component.set('sendAction', function(actionName, q, result) {
+    assert.equal(actionName, 'onSubmitQuestion', 'Action sent should match');
+    assert.deepEqual(q, question, 'Question should match');
+    assert.deepEqual(result, questionResult, 'QuestionResult should match');
+  });
+  component.set('$', function() {
+    return { scrollTop: () => 0 };
+  });
+  component.send('submitQuestion', question, questionResult);
 });

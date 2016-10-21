@@ -54,7 +54,7 @@ export default Ember.Component.extend(ModalMixin, {
      * @param item
      */
     selectItem: function(item) {
-        this.selectItem(item.resource);
+      this.selectItem(item.resource);
     }
   },
 

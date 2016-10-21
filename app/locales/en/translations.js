@@ -1291,7 +1291,8 @@ export default {
     "feedback-summary": "At the end",
     "navigation-scoring": "Navigation and Scoring",
     "disable-heading": "Activate Assessment in Course Map",
-    "disable-legend": "Students can play the assessment from their course map"
+    "disable-legend": "Students can play the assessment from their course map",
+    "performance":"Students see their performance"
   },
 
   "gru-tour": {
@@ -1358,5 +1359,6 @@ export default {
     "title":"Title:{{title}}",
     "select-all":"Select all ({{count}})",
     "select-students":"Select students",
+    "selected-count":"Selected {{selected}} of {{total}}"
   }
 };

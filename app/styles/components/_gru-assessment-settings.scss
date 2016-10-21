@@ -2,15 +2,26 @@
   .swap_horizontal {
     width: 24px;
   }
+  .panel{
+    background-color:$light-100;
+
+    .panel-body{
+      padding: 10px;
+    }
+  }
   .setting {
-    @include flexbox;
-    @include align-items(center);
-    .gru-icon {
-      margin-right: 10px;
+    display: block;
+    .instructions{
+      @include flexbox;
+      .gru-icon {
+        margin-right: 10px;
+      }
+    }
+    .gru-switch{
+      margin: 10px 0 0 30px;
     }
     &:not(.attempts, .publish-to) {
       >span {
-        @include flex-shrink(0);
         width: 40%;
       }
     }
@@ -22,16 +33,24 @@
         margin-bottom: 0;
       }
     }
-    .feedback-options {
-      @include flexbox;
-      @include flex-wrap(wrap);
-      @include justify-content(space-between);
-      @include flex-grow(1);
+    &.attempts{
+      .form-group{
+        margin: 10px 0 0 30px;
+        .btn-group{
+          width: 150px;
+        }
+      }
+    }
+    .feedback{
+
       max-width: 500px;
       padding: 5px;
       .gru-radio {
-        @include flex-shrink(0);
-        padding-right: 15px;
+        margin-left: 30px;
+        display: block;
+        .form-group{
+          margin: 10px 0 0 0;
+        }
       }
     }
     .gru-select {

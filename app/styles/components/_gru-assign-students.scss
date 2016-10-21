@@ -1,0 +1,46 @@
+.gru-assign-students{
+  .list-container{
+    margin-bottom: 0px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color:$light-100;
+    max-height: 555px;
+    overflow: scroll;
+    .select-all{
+      &:hover{
+        background-color:$sky-100;
+      }
+      &.selected{
+        background-color: $sky-100;
+      }
+    }
+    .student-list{
+      .list-group-item{
+        margin-bottom: 3px;
+        .gru-icon{
+          position: absolute;
+          right: 22px;
+          color:$blue-600;
+        }
+        &.selected{
+          background-color: $sky-100;
+        }
+      }
+    }
+  }
+  .students-header{
+    margin-bottom: 12px;
+    >*{
+      display: inline-block;
+    }
+    .search-navigation{
+      input{
+        outline: none;
+      }
+      .search-icon{
+        position: absolute;
+        right: 184px;
+      }
+    }
+  }
+}

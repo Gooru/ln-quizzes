@@ -1357,6 +1357,7 @@ export default {
   },
   "assign-students":{
     "title":"Title:{{title}}",
+    "search-by-name":"Search by name",
     "select-all":"Select all ({{count}})",
     "select-students":"Select students",
     "selected-count":"Selected {{selected}} of {{total}}"

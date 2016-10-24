@@ -137,7 +137,7 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Methods
   /**
-   * Filter stundent list by student name
+   * Filter student list by name
    */
   searchStudent:function(){
     var searchTerm = $('.search-box').val().toLowerCase();

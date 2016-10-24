@@ -9,6 +9,8 @@ const ConfigurationService = Ember.Service.extend({
 
   configurationAdapter: null,
 
+  configuration: null,
+
   init: function () {
     this._super(...arguments);
     this.set('configurationAdapter', ConfigurationAdapter.create(Ember.getOwner(this).ownerInjection()));
@@ -24,6 +26,8 @@ const ConfigurationService = Ember.Service.extend({
       (isDevelopment ? DevelopmentConfiguration : TestConfiguration);
 
     const configuration = Ember.Object.create(envConfiguration);
+    service.set("configuration", configuration);
+
     //setting the configuration to the global variable
     ConfigurationService.configuration = configuration;
 
@@ -40,7 +44,10 @@ const ConfigurationService = Ember.Service.extend({
        }
        return configuration;
     });
-  }
+  },
+  //addProperties:function(){
+  //
+  //}
 });
 
 ConfigurationService.reopenClass({

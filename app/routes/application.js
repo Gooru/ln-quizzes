@@ -21,6 +21,11 @@ export default Ember.Route.extend(PublicRouteMixin, {
   classService: Ember.inject.service("api-sdk/class"),
 
   /**
+   * @type {ConfigurationService} Service to retrieve user information
+   */
+  configurationService: Ember.inject.service("configuration"),
+
+  /**
    * Authentication (api-sdk/session) service.
    * @property authService
    * @readOnly
@@ -249,6 +254,9 @@ export default Ember.Route.extend(PublicRouteMixin, {
   handleEmbeddedApplication: function () {
     const route = this;
     const transition = Env.APP.transition;
+    const configurationService = route.get("configurationService");
+    configurationService.addProperties(Env.APP.properties);
+
     const token = Env.APP.token;
     const authService = this.get("authService");
     const authPromise = token ?

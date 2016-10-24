@@ -257,6 +257,7 @@ export default {
     "mastery": "Mastery",
     "menu": "Menu",
     "more-details": "More Details",
+    "modify-settings":"Modify assessment settings",
     "move": "Move",
     "myContent": "My Content",
     "edit-narration": "Edit Narration",
@@ -1290,7 +1291,8 @@ export default {
     "feedback-summary": "At the end",
     "navigation-scoring": "Navigation and Scoring",
     "disable-heading": "Activate Assessment in Course Map",
-    "disable-legend": "Students can play the assessment from their course map"
+    "disable-legend": "Students can play the assessment from their course map",
+    "performance":"Students see their performance"
   },
 
   "gru-tour": {
@@ -1352,5 +1354,12 @@ export default {
         "description": "This is your Profile. Click on your profile at any time to access content you create or remix in Gooru."
       }
     }
+  },
+  "assign-students":{
+    "title":"Title:{{title}}",
+    "search-by-name":"Search by name",
+    "select-all":"Select all ({{count}})",
+    "select-students":"Select students",
+    "selected-count":"Selected {{selected}} of {{total}}"
   }
 };

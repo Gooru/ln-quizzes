@@ -1,0 +1,37 @@
+<h5>{{t 'assign-students.title' title=assessment.title}}</h5>
+<div class="row">
+    <div class="students col-md-6 col-sm-6">
+        <div class="students-header">
+            <span>{{t 'assign-students.select-students'}}</span>
+            <div class="search-navigation pull-right">
+                <div class="search-keyword">
+                    <span class="search-icon">
+                        {{gru-icon name='search'}}
+                    </span>
+                    <input type="text" class="search-box" placeholder={{t 'assign-students.search-by-name'}}/>
+                </div>
+            </div>
+        </div>
+       <div class="panel panel-default list-container">
+           <div class="panel panel-default select-all {{if areAllSelected 'selected'}}" {{action 'selectAll'}}>
+               <div class="panel-body">
+                 <span>{{t 'assign-students.select-all' count=students.length}}</span>
+               </div>
+           </div>
+           <div class="student-list list-group live-search-list">
+             {{#each students as |student| }}
+                 <a class="list-group-item {{if student.isSelected 'selected'}}" {{action 'selectStudent' student}}>
+                   {{student.lastName}},{{student.firstName}}
+                   {{#if student.isSelected}}
+                      {{gru-icon name='done'}}
+                   {{/if}}
+                 </a>
+             {{/each}}
+           </div>
+       </div>
+        <span class="selected-count">{{t 'assign-students.selected-count' selected=totalSelected total=students.length}}</span>
+    </div>
+    <div class="assessment-settings col-md-4 col-sm-4">
+      {{gru-assessment-settings}}
+    </div>
+</div>

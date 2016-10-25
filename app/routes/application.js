@@ -21,7 +21,7 @@ export default Ember.Route.extend(PublicRouteMixin, {
   classService: Ember.inject.service("api-sdk/class"),
 
   /**
-   * @type {ConfigurationService} Service to retrieve user information
+   * @type {ConfigurationService} Service to retrieve configuration information
    */
   configurationService: Ember.inject.service("configuration"),
 

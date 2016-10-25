@@ -20,27 +20,27 @@ const ConfigurationService = Ember.Service.extend({
   loadConfiguration: function() {
     const service = this;
     const environment = Env.environment;
-    const isProduction = environment === "production";
-    const isDevelopment = environment === "development";
+    const isProduction = environment === 'production';
+    const isDevelopment = environment === 'development';
     const envConfiguration = isProduction ? ProductionConfiguration :
       (isDevelopment ? DevelopmentConfiguration : TestConfiguration);
 
     const configuration = Ember.Object.create(envConfiguration);
-    service.set("configuration", configuration);
+    service.set('configuration', configuration);
 
     //setting the configuration to the global variable
     ConfigurationService.configuration = configuration;
 
     const hostname = window.location.hostname;
 
-    return service.get("configurationAdapter").loadConfiguration(hostname)
+    return service.get('configurationAdapter').loadConfiguration(hostname)
       .then(function(hostnameConfiguration){ //it looks for the specific domain configuration
        if (hostnameConfiguration) {
          configuration.setProperties(hostnameConfiguration);
-         Ember.Logger.info("Custom host configuration found: ", hostnameConfiguration);
+         Ember.Logger.info('Custom host configuration found: ', hostnameConfiguration);
        }
        else {
-         Ember.Logger.info("Custom host configuration not found");
+         Ember.Logger.info('Custom host configuration not found');
        }
        return configuration;
     });

@@ -13,21 +13,21 @@ export default Ember.Route.extend({
   /**
    * Get model for the controller
    */
-  model: function(params) {
-    let assessmentId = params.assessmentId;
-    //TODO GET FROM QUIZZES
+  model: function() {
+
+    //TODO GET FROM QUIZZES API
     let assignedStudents = ['assigned-1','assigned-2','student-1'];
 
-    let studentList = this.get('configurationService.configuration.properties.students');
+    let studentList =this.get('configurationService.configuration.properties.students');
     let students = studentList.map(function(student){
-        student.isSelected = assignedStudents.includes(student.id);
-        return student;
+      let studentObject = Ember.Object.create(student);
+        studentObject.set('isSelected',assignedStudents.includes(student.id));
+        return studentObject;
     });
 
     let collection = this.get('configurationService.configuration.properties.collection');
 
     return Ember.RSVP.hash({
-      assessmentId,
       students,
       collection
     });
@@ -39,7 +39,6 @@ export default Ember.Route.extend({
    * @param model
    */
   setupController: function(controller, model) {
-    controller.set('assessmentId', model.assessmentId);
     controller.set('students', model.students);
     controller.set('collection',model.collection);
   }

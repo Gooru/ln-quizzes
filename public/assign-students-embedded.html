@@ -25,12 +25,18 @@
     jQuery(document).ready(function () {
       var emberApp = window["QuizzesWebApp"];
       emberApp.start({
-        transition: [ 'assign'],
+        transition: [ 'assign',''],
         properties: {
           collection:{
             id:'assessment-id',
             title:'Assessment Embedded Title'
           },
+          teacher: {
+            id:'teacher-1',
+            firstName:'teacher-1',
+            lastName:'teacher-1',
+            username:'teacher-1'
+           },
           students: [
             {id:'student-1',
               firstName:'student-1',
@@ -76,7 +82,10 @@
               firstName:'student-11',
               lastName:'student-11',
               username:'student-11'}
-          ]
+          ],
+          context: {
+            classId:'class-id'
+          }
         }
       });
     });

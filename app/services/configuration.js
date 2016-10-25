@@ -45,9 +45,11 @@ const ConfigurationService = Ember.Service.extend({
        return configuration;
     });
   },
-  //addProperties:function(){
-  //
-  //}
+
+  addProperties:function(properties){
+    const service = this;
+    service.set('configuration.properties',properties);
+  }
 });
 
 ConfigurationService.reopenClass({

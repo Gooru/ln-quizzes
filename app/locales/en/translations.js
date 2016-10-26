@@ -1361,5 +1361,13 @@ export default {
     "select-all":"Select all ({{count}})",
     "select-students":"Select students",
     "selected-count":"Selected {{selected}} of {{total}}"
+  },
+  "assessments-view":{
+    actions:"Actions",
+    attempts:"Attempts",
+    date:"Date assigned",
+    search:"Search...",
+    standards:"Standards",
+    title:"Title"
   }
 };

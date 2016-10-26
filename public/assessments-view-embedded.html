@@ -25,7 +25,7 @@
     jQuery(document).ready(function () {
       var emberApp = window['QuizzesWebApp'];
       emberApp.start({
-        transition: [ 'assessments']
+        transition: [ 'assessments','profile-id',{queryParams:{isTeacher:true}}]
       });
     });
   })(); // call anonymous function

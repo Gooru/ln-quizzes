@@ -91,7 +91,6 @@ test('Multiple Choice - toAnswerObjects', function (assert) {
   assert.equal(answerObject.get("answerId"), 2, "Wrong answerId");
   assert.equal(answerObject.get("skip"), false, "Wrong skipped");
   assert.equal(answerObject.get("order"), 1, "Wrong order");
-  assert.equal(answerObject.get("status"), 'correct', "Wrong status");
   assert.equal(answerObject.get("text"), 'Option B', "Wrong status");
 });
 
@@ -108,5 +107,3 @@ test('Multiple Choice - toUserAnswer', function (assert) {
   let userAnswer = questionUtil.toUserAnswer(Ember.A([answerObject]));
   assert.equal(userAnswer, 1, "Wrong userAnswer");
 });
-
-

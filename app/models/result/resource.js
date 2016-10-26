@@ -15,6 +15,11 @@ export default Ember.Object.extend(Serializable, {
   reaction: 0,
 
   /**
+   * @property {number} resource - the resource
+   */
+  resource: null,
+
+  /**
    * @property {number} resourceId - ID of the resource
    */
   resourceId: null,

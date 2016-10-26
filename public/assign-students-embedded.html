@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Quizzes</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <link href='https://www.gooru.org/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link href="https://www.gooru.org/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="assets/vendor.css">
+  <link rel="stylesheet" href="assets/quizzes.css">
+
+  <base href="/" />
+</head>
+<body>
+<script src="assets/vendor.js"></script>
+<script src="assets/quizzes.js"></script>
+
+<script type="text/javascript">
+  (function () {
+    jQuery(document).ready(function () {
+      var emberApp = window['QuizzesWebApp'];
+      emberApp.start({
+        transition: [ 'assign',''],
+        properties: {
+          collection:{
+            id:'assessment-id',
+            title:'Assessment Embedded Title'
+          },
+          teacher: {
+            id:'teacher-1',
+            firstName:'teacher-1',
+            lastName:'teacher-1',
+            username:'teacher-1'
+           },
+          students: [
+            {id:'student-1',
+              firstName:'student-1',
+              lastName:'student-1',
+              username:'student-1'},
+            {id:'student-2',
+              firstName:'student-2',
+              lastName:'student-2',
+              username:'student-2'},
+            {id:'student-3',
+              firstName:'student-3',
+              lastName:'student-3',
+              username:'student-3'},
+            {id:'student-4',
+              firstName:'student-4',
+              lastName:'student-4',
+              username:'student-4'},
+            {id:'student-5',
+              firstName:'student-5',
+              lastName:'student-5',
+              username:'student-5'},
+            {id:'student-6',
+              firstName:'student-6',
+              lastName:'student-6',
+              username:'student-6'},
+            {id:'student-7',
+              firstName:'student-7',
+              lastName:'student-7',
+              username:'student-7'},
+            {id:'student-8',
+              firstName:'student-8',
+              lastName:'student-8',
+              username:'student-8'},
+            {id:'student-9',
+              firstName:'student-9',
+              lastName:'student-9',
+              username:'student-9'},
+            {id:'student-10',
+              firstName:'student-10',
+              lastName:'student-10',
+              username:'student-10'},
+            {id:'student-11',
+              firstName:'student-11',
+              lastName:'student-11',
+              username:'student-11'}
+          ],
+          context: {
+            classId:'class-id'
+          }
+        }
+      });
+    });
+  })(); // call anonymous function
+</script>
+<div id="quizzes-application-container"></div>
+</body>
+</html>

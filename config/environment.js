@@ -96,7 +96,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.contentSecurityPolicy = {
       'default-src': "'none'",
-      'script-src': "'self' http://localhost:4200 http://localhost",
+      'script-src': "'unsafe-eval' 'unsafe-inline' 'self' http://localhost:4200 http://localhost",
       'font-src': "'self' https://www.gooru.org",
       'connect-src': "'self' http://localhost:4200 ws://localhost:4200 http://localhost:8882 http://nucleus-qa.gooru.org",
       'img-src': "'self' data: http://qacdn.gooru.org http://profile-images.goorulearning.org.s3.amazonaws.com " +

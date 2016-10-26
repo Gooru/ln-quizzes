@@ -35,6 +35,11 @@ export default ResourceResult.extend({
     isQuestion: true,
 
     /**
+     * @property {number} resource - the question
+     */
+    question: Ember.computed.alias('resource'),
+
+    /**
      * @property {number} questionId - ID of the question
      */
     questionId: Ember.computed.alias('resourceId'),
@@ -47,5 +52,10 @@ export default ResourceResult.extend({
     /**
      * @property {number} score - Resource score
      */
-    score: 0
+    score: 0,
+
+    /**
+     * @property {boolean} submitted - if the question is already submitted
+     */
+    submitted: false
 });

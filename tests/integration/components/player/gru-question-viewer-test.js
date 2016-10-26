@@ -135,7 +135,7 @@ test('Multiple Answer - Submit button should become enabled by clicking 1 radio 
   this.set('question', question);
 
   const questionResult = QuestionResult.create({
-    userAnswer: userAnswer,
+    answer: userAnswer,
     question: question
   });
 
@@ -343,7 +343,7 @@ test('Show feedback when submitted layout', function (assert) {
   });
 
   const questionResult = QuestionResult.create({
-    submittedAnswer: true
+    submitted: true
   });
 
   this.set('assessment', assessment);

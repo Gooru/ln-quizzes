@@ -93,7 +93,6 @@ export default QuestionUtil.extend({
     let answer = util.getAnswerById(userAnswer);
     let answerObject = AnswerObject.create({
       'text': answer.get('text'),
-      'correct': util.isCorrect(userAnswer),
       'order': 1,
       'answerId': userAnswer,
       'skip': false

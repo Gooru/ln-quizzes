@@ -1,4 +1,4 @@
-.gru-assessments-list{
+.gru-assignments-list{
   .out-of-scope{
     display: none;
   }
@@ -37,14 +37,14 @@
       }
     }
   }
-  .assessment-list-container{
+  .assignments-list-container{
     margin-top: 20px;
     height: 1200px;
-    .assessment-list{
+    .assignments-list{
       height: inherit;
       background-color:$light-300;
     }
-    .assessment-info{
+    .assignments-info{
       height: inherit;
       background-color:$light-200;
     }

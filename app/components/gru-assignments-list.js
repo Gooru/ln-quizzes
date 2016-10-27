@@ -11,6 +11,6 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['gru-assessments-list']
+  classNames: ['gru-assignments-list']
 
 });

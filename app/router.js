@@ -115,7 +115,7 @@ Router.map(function() {
     });
   });
   this.route('assign',{ path: '/assessment/:assessmentId'});
-  this.route('assessments',{ path: '/profile/:profileId'});
+  this.route('assignments',{ path: '/profile/:profileId'});
 });
 
 export default Router;

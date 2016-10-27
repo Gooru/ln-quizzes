@@ -1362,7 +1362,7 @@ export default {
     "select-students":"Select students",
     "selected-count":"Selected {{selected}} of {{total}}"
   },
-  "assessments-view":{
+  "assignments-view":{
     actions:"Actions",
     attempts:"Attempts",
     date:"Date assigned",

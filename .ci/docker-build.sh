@@ -14,9 +14,9 @@ if [ $UID -eq 0 ]; then
   exit $?
 fi
 
-echo $PWD
 GIT_COMMIT_HASH=$(git rev-parse HEAD)
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/')
+VERSION=${GIT_BRANCH}-${GIT_COMMIT_HASH}
 
 info "Installing global npm dependencies..."
 npm config set prefix '~/.npm-packages'
@@ -34,3 +34,8 @@ silent grunt bamboo-eslint
 
 info "Running tests..."
 silent grunt bamboo-test
+
+info "Building..."
+silent grunt build:prod-bamboo
+echo $VERSION > quizzes/version.html
+tar czf quizzes.tar.gz quizzes

@@ -11,21 +11,15 @@ export default Ember.Object.extend({
 
   /**
    * List of possible answers/choices
-   * @property {Answer[]}
+   * @property {Answer[]} choices
    */
   choices: Ember.A(),
 
   /**
    * list of correct answers
-   * @property {Answer[]}
+   * @property {Answer[]} correctResponse
    */
   correctResponse: Ember.A(),
-
-  /**
-   * Indicates the resource format. i.e image, text, video, interaction, webpage, question
-   * @property {string} format
-   */
-  format: 'question',
 
   /**
    * resource id
@@ -50,13 +44,13 @@ export default Ember.Object.extend({
 
   /**
    * Number of choices that can be selected
-   * @property {boolean} shuffle
+   * @property {number} maxChoices
    */
   maxChoices: 1,
 
   /**
    * Text to show just before the answers
-   * @property {boolean} shuffle
+   * @property {string} prompt
    */
   prompt: null,
 
@@ -183,7 +177,7 @@ export default Ember.Object.extend({
   /**
    * @property {boolean} indicates if the resource is a question
    */
-  isQuestion: Ember.computed.equal('format', 'question'),
+  isQuestion: null,
 
   /**
    * @property {boolean} indicates if the question is true false type

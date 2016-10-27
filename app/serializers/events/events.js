@@ -18,10 +18,8 @@ export default Ember.Object.extend({
     };
 
     if (resourceResult.get('isQuestion')) {
-      let question = resourceResult.get('question');
-      let util = getQuestionUtil(question.get('type')).create({ question });
       let userAnswer = resourceResult.get('answer');
-      serialized.answer = util.toJSONAnswerObjects(userAnswer);
+      serialized.answer = resourceResult.get('answer');
     }
     return serialized;
   },

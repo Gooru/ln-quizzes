@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import AssessmentResult from 'quizzes/models/result/assessment';
 import QuestionResult from 'quizzes/models/result/question';
-import { getQuestionUtil } from 'quizzes/config/question';
 
 export default Ember.Object.extend({
 
@@ -18,7 +17,6 @@ export default Ember.Object.extend({
     };
 
     if (resourceResult.get('isQuestion')) {
-      let userAnswer = resourceResult.get('answer');
       serialized.answer = resourceResult.get('answer');
     }
     return serialized;

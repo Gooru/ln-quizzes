@@ -14,6 +14,15 @@ test('isQuestion', function(assert) {
   assert.ok(model.get('isQuestion'), 'It should be question');
 });
 
+test('format', function(assert) {
+  assert.expect(1);
+  let model = this.subject({
+    'isQuestion': true
+  });
+
+  assert.ok(model.get('format'), 'question');
+});
+
 test('isMultipleChoice', function(assert) {
   assert.expect(1);
   let model = this.subject({

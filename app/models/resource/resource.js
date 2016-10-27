@@ -28,16 +28,6 @@ export default Ember.Object.extend({
   id: null,
 
   /**
-   * @property {string} owner
-   */
-  owner: null,
-
-  /**
-   * @property {number} sequence
-   */
-  sequence: null,
-
-  /**
    * @property {string} text
    */
   body: null,
@@ -49,10 +39,20 @@ export default Ember.Object.extend({
   maxChoices: 1,
 
   /**
+   * @property {string} owner
+   */
+  owner: null,
+
+  /**
    * Text to show just before the answers
    * @property {string} prompt
    */
   prompt: null,
+
+  /**
+   * @property {number} sequence
+   */
+  sequence: null,
 
   /**
    * If the answers should be shuffled
@@ -78,8 +78,16 @@ export default Ember.Object.extend({
    * Returns the FIB text
    * @property {string}
    */
-  fibText: Ember.computed('body', function(){
+  fibText: Ember.computed('body', function() {
     return FillInTheBlank.toFibText(this.get('body'));
+  }),
+
+  /**
+   * Returns 'question' or 'resource' depending on the resource type
+   * @property {string} format
+   */
+  format: Ember.computed('isQuestion', function() {
+    return this.get('isQuestion') ? 'question' : 'resource';
   }),
 
   /**

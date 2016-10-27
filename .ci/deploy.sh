@@ -42,7 +42,7 @@ VERSION=$(cat quizzes/version.html)
 info "Deploying version $VERSION to S3..."
 
 cd quizzes
-aws s3 sync --acl public-read --delete . s3://${S3_BUCKET}/
+aws s3 sync --delete . s3://${S3_BUCKET}/
 
 info "Done deploying."
 

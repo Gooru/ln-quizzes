@@ -21,7 +21,7 @@ VERSION=${GIT_BRANCH}-${GIT_COMMIT_HASH}
 info "Installing global npm dependencies..."
 npm config set prefix '~/.npm-packages'
 export PATH=~/.npm-packages/bin:$PATH
-silent npm -q install -g ember-cli@2.5.1 bower@1.7.9 phantomjs-prebuilt@2.1.3 stubby@0.3.1 grunt-cli@1.2.0
+silent npm -q install -g ember-cli@2.5.1 bower@1.7.9 phantomjs-prebuilt@2.1.3 stubby@0.3.1 grunt-cli@1.2.0 npm@latest
 
 info "Installing npm dependencies..."
 silent npm -q install

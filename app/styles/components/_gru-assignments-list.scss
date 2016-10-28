@@ -1,0 +1,52 @@
+.gru-assignments-list{
+  .out-of-scope{
+    display: none;
+  }
+  .header{
+    .search{
+      .search-navigation{
+        margin: 10px 32px;
+        input{
+          outline: none;
+          width: 315px;
+        }
+        .search-icon{
+          position: absolute;
+          left: 17px;
+        }
+      }
+    }
+    .views{
+      button{
+        margin-top: 10px;
+
+        &.standards-btn{
+          padding: 7px 16px;
+        }
+      }
+      .options{
+
+        @media (min-width: $screen-sm) {
+          float: right;
+        }
+        .btn-group{
+          i{
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+  .assignments-list-container{
+    margin-top: 20px;
+    height: 1200px;
+    .assignments-list{
+      height: inherit;
+      background-color:$light-300;
+    }
+    .assignments-info{
+      height: inherit;
+      background-color:$light-200;
+    }
+  }
+}

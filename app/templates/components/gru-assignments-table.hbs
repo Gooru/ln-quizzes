@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     {{#each assignments as |assignment index|}}
-        <tr>
+        <tr class="{{if assignment.selected 'selected'}}" {{action 'selectAssignment' assignment}}>
             <td class="num">
                {{plus-one index}}
             </td>

@@ -1,0 +1,20 @@
+.gru-assignments-detail{
+  .assignment-detail{
+    .panel-heading{
+      text-align: right;
+    }
+    .panel-body{
+      height: 500px;
+
+      span.score{
+        width: 46px;
+        height: 36px;
+        text-align: center;
+        line-height: 36px;
+        border-radius: 5px;
+        color: #fff;
+        display: inline-block;
+      }
+    }
+  }
+}

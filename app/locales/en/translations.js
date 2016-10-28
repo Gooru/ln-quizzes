@@ -1370,5 +1370,9 @@ export default {
     search:"Search...",
     standards:"Standards",
     title:"Title"
+  },
+  "assignment-details":{
+    "attempts-left":"<b>Attempts left:</b> {{attempts}} of {{count}}",
+    "lastAttempt":"<b>Last Attempt:</b>"
   }
 };

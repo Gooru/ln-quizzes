@@ -12,6 +12,13 @@ export default Ember.Component.extend({
   // Attributes
 
   classNames: ['gru-assignments-list'],
+  // -------------------------------------------------------------------------
+  // Actions
+  actions:{
+    selectAssignment:function(assignment){
+      this.set('selectedAssignment',assignment);
+    }
+  },
 
   // -------------------------------------------------------------------------
   // Events
@@ -28,6 +35,10 @@ export default Ember.Component.extend({
       component.searchAssignment();
     });
   },
+  // -------------------------------------------------------------------------
+  // Properties
+  selectedAssignment:null,
+
   // -------------------------------------------------------------------------
   // Methods
   /**

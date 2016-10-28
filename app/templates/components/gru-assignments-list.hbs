@@ -23,9 +23,9 @@
 </div>
 <div class="row assignments-list-container">
     <div class="col-md-8 col-sm-8 col-xs-12 assignments-list">
-      {{gru-assignments-table assignments=assignments}}
+      {{gru-assignments-table assignments=assignments onSelectAssignment='selectAssignment'}}
     </div>
     <div class="col-md-4 col-sm-4 col-xs-12 assignments-info">
-
+      {{gru-assignments-detail assignment=selectedAssignment}}
     </div>
 </div>

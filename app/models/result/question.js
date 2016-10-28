@@ -20,6 +20,11 @@ export default ResourceResult.extend({
     correct: Ember.computed.equal('score', 100),
 
     /**
+     * @property {boolean} hasAnswer - if the question has an answer
+     */
+    hasAnswer: Ember.computed.bool('answer'),
+
+    /**
      * @property {boolean} incorrect - Was the answer provided for this question incorrect?
      */
     incorrect: Ember.computed.not('correct'),
@@ -28,6 +33,11 @@ export default ResourceResult.extend({
      * @property {number} isQuestion
      */
     isQuestion: true,
+
+    /**
+     * @property {number} resource - the question
+     */
+    question: Ember.computed.alias('resource'),
 
     /**
      * @property {number} questionId - ID of the question
@@ -42,5 +52,10 @@ export default ResourceResult.extend({
     /**
      * @property {number} score - Resource score
      */
-    score: 0
+    score: 0,
+
+    /**
+     * @property {boolean} submitted - if the question is already submitted
+     */
+    submitted: false
 });

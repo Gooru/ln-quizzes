@@ -53,7 +53,7 @@ export default Ember.Component.extend({
    * The text for the submit button
    * @property {string}
    */
-  buttonTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submittedAnswer', function() {
+  buttonTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submitted', function() {
     let i18nKey = 'common.save-next';
     let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
     if(!showFeedback || this.get('isTeacher')) {
@@ -61,7 +61,7 @@ export default Ember.Component.extend({
         i18nKey = (this.get('collection').get('isAssessment')) ? 'common.save-submit' : 'common.save-finish';
       }
     } else {
-      if(this.get('resourceResult.submittedAnswer')) {
+      if(this.get('resourceResult.submitted')) {
         i18nKey = this.get('collection').isLastResource(this.get('resource')) ?
           'common.finish' : 'common.next';
       } else {
@@ -88,7 +88,7 @@ export default Ember.Component.extend({
    * The text for the action in the instructions
    * @property {string}
    */
-  instructionsActionTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submittedAnswer', function() {
+  instructionsActionTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submitted', function() {
     let i18nKey = 'common.save-next';
     let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
     if(!showFeedback) {
@@ -134,7 +134,7 @@ export default Ember.Component.extend({
    * @property {string}
    */
   resourceComponentSelected: Ember.computed('resource.id', function () {
-    const resourceType = (this.get('resource.isImageResource') ? 'image' : this.get('resource.resourceType'));
+    const resourceType = (this.get('resource.isImageResource') ? 'image' : this.get('resource.type'));
     var component = RESOURCE_COMPONENT_MAP[resourceType];
 
     if (!component) {
@@ -174,6 +174,7 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Methods
+
   /**
    * Calculates the height of the content area (it will change depending on height
    * of the narration -if there is one)

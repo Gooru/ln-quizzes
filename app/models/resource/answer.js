@@ -6,27 +6,21 @@ import Ember from 'ember';
 export default Ember.Object.extend({
 
   /**
-   * @property {string}
+   * if the value should not be shuffled
+   * @property {boolean} fixed
    */
-  id: null,
+  fixed: null,
 
   /**
-   * @property {string}
+   * Text to show when showing the question
+   * @property {string} text
    */
   text: null,
 
   /**
-   * @property {string}
+   * Value to check with the correct response
+   * @property {string} value
    */
-  answerType: null,
+  value: null
 
-  /**
-   * @property {string}
-   */
-  order: null,
-
-  /**
-   * @property {string}
-   */
-  isCorrect: null
 });

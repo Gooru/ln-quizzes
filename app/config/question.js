@@ -12,15 +12,15 @@ import HotTextHighlightUtil from 'quizzes/utils/question/hot-text-highlight';
 
 //Question Types
 export const QUESTION_TYPES = {
-  multipleChoice: "MC",
-  multipleAnswer: "MA",
-  trueFalse: "T/F",
-  openEnded: "OE",
-  fib: "FIB",
-  hotSpotText: "HS_TXT",
-  hotSpotImage: "HS_IMG",
-  hotTextReorder: "HT_RO",
-  hotTextHighlight: "HT_HL"
+  multipleChoice: 'MC',
+  multipleAnswer: 'MA',
+  trueFalse: 'T/F',
+  openEnded: 'OE',
+  fib: 'FIB',
+  hotSpotText: 'HS_TXT',
+  hotSpotImage: 'HS_IMG',
+  hotTextReorder: 'HT_RO',
+  hotTextHighlight: 'HT_HL'
 };
 
 //Question type configuration
@@ -114,8 +114,7 @@ export const QUESTION_CONFIG = {
  * @param {string} questionType
  * @param {string} propertyPath a valid property path inside the question config object
  */
-export function getQuestionConfig(questionType, propertyPath){
-
+export function getQuestionConfig(questionType, propertyPath) {
   let config = QUESTION_CONFIG[questionType];
   if (!config) {
     Ember.Logger.error(`Questions of type ${questionType} are currently not supported`);
@@ -167,47 +166,47 @@ export function getQuestionApiType(questionType){
 
 // LaTeX expressions used in rich text editor
 export const LATEX_EXPRESSIONS = {
-  fraction: "\\frac{}{}",
-  sqrt: "\\sqrt{}",
-  sqrtn: "\\sqrt[{}]{}",
-  overline: "\\overline{}",
-  angles: "\\langle{}",
-  sum: "\\sum{}",
-  sin: "\\sin\\left({}\\right)",
-  cos: "\\cos\\left({}\\right)",
-  tan: "\\tan\\left({}\\right)",
-  in: "\\in",
-  notin: "\\notin",
-  exists: "\\exists",
-  nexists: "\\nexists",
-  ge: "\\ge",
-  gt: "\\gt",
-  lambda: "\\Lambda",
-  omega: "\\Omega",
-  infinity: "\\infty",
-  subscript:"{}_{}",
-  superscript:"{}^{}",
-  "over-left-arrow":"\\overleftarrow{}",
-  "over-right-arrow":"\\overrightarrow{}",
-  div:"\\div",
-  plus:"\\+",
-  minus:"\\-",
-  mult:"\\times",
-  cdot:"\\cdot",
-  "not-equal":"\\neq",
-  lt:"\\lt",
-  le:"\\le",
-  sim:"\\sim",
-  approx:"\\approx",
-  alpha:"\\alpha",
-  pmatrix:"\\left({}\\right)",
-  Bmatrix:"\\left\\{{} \\right\\}",
-  vmatrix:"\\left|{} \\right|",
-  angle:"\\angle",
-  measuredangle:"\\measuredangle",
-  bot:"\\bot",
-  parallel:"\\parallel",
-  sigma:"\\Sigma",
-  theta:"\\Theta",
-  pi:"\\pi"
+  fraction: '\\frac{}{}',
+  sqrt: '\\sqrt{}',
+  sqrtn: '\\sqrt[{}]{}',
+  overline: '\\overline{}',
+  angles: '\\langle{}',
+  sum: '\\sum{}',
+  sin: '\\sin\\left({}\\right)',
+  cos: '\\cos\\left({}\\right)',
+  tan: '\\tan\\left({}\\right)',
+  in: '\\in',
+  notin: '\\notin',
+  exists: '\\exists',
+  nexists: '\\nexists',
+  ge: '\\ge',
+  gt: '\\gt',
+  lambda: '\\Lambda',
+  omega: '\\Omega',
+  infinity: '\\infty',
+  subscript:'{}_{}',
+  superscript:'{}^{}',
+  'over-left-arrow':'\\overleftarrow{}',
+  'over-right-arrow':'\\overrightarrow{}',
+  div:'\\div',
+  plus:'\\+',
+  minus:'\\-',
+  mult:'\\times',
+  cdot:'\\cdot',
+  'not-equal':'\\neq',
+  lt:'\\lt',
+  le:'\\le',
+  sim:'\\sim',
+  approx:'\\approx',
+  alpha:'\\alpha',
+  pmatrix:'\\left({}\\right)',
+  Bmatrix:'\\left\\{{} \\right\\}',
+  vmatrix:'\\left|{} \\right|',
+  angle:'\\angle',
+  measuredangle:'\\measuredangle',
+  bot:'\\bot',
+  parallel:'\\parallel',
+  sigma:'\\Sigma',
+  theta:'\\Theta',
+  pi:'\\pi'
 };

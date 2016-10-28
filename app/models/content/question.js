@@ -311,18 +311,14 @@ const Question = Ember.Object.extend(Validations, {
     const model = this;
     return PlayerResource.create({
       id: model.get("id"),
-      order: model.get("order"),
+      sequence: model.get("order"),
       title: model.get("title"),
-      resourceFormat: model.get("format"),
-      questionType: model.get("type"),
-      text: model.get("text"),
+      type: model.get("type"),
+      body: model.get("text"),
       mediaUrl: model.get("thumbnail"),
-      hints: null, //TODO
-      explanation: null, //TODO
-      answers: model.get("answers").map(function (answer) {
+      choices: model.get("answers").map(function (answer) {
         return answer.toPlayerAnswer();
-      }),
-      taxonomy: model.get('standards')
+      })
     });
   },
 

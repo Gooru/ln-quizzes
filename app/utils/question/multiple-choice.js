@@ -15,7 +15,7 @@ import AnswerObject from 'quizzes/utils/question/answer-object';
  *   answerId corresponds to the answer choice id selected
  *   skip is always false
  *
- * [{"text":"Apple","status":"correct","order":1,"answerId":1234,"skip":false}]
+ * [{'text':'Apple','status':'correct','order':1,'answerId':1234,'skip':false}]
  *
  * # User answer (structure used by the FE)
  *
@@ -62,9 +62,9 @@ export default QuestionUtil.extend({
    * @see '# User Answer' section at class comment
    */
   getCorrectAnswer: function () {
-    const answers = this.get("question.answers");
-    const correctAnswer = answers.filterBy("isCorrect", true);
-    return correctAnswer.get("length") ? correctAnswer.get("firstObject.id") : undefined;
+    const answers = this.get('question.answers');
+    const correctAnswer = answers.filterBy('isCorrect', true);
+    return correctAnswer.get('length') ? correctAnswer.get('firstObject.id') : undefined;
   },
 
   /**
@@ -92,11 +92,10 @@ export default QuestionUtil.extend({
     let util = this;
     let answer = util.getAnswerById(userAnswer);
     let answerObject = AnswerObject.create({
-      "text": answer.get("text"),
-      "correct": util.isCorrect(userAnswer),
-      "order": 1,
-      "answerId": userAnswer,
-      "skip": false
+      'text': answer.get('text'),
+      'order': 1,
+      'answerId': userAnswer,
+      'skip': false
     });
     return Ember.A([answerObject]);
   },
@@ -112,9 +111,9 @@ export default QuestionUtil.extend({
    */
   toUserAnswer: function (answerObjects) {
     let userAnswer = null;
-    if (answerObjects.get("length")) {
-      let answerObject = answerObjects.get("firstObject");
-      userAnswer = answerObject.get("answerId");
+    if (answerObjects.get('length')) {
+      let answerObject = answerObjects.get('firstObject');
+      userAnswer = answerObject.get('answerId');
     }
 
     return userAnswer;

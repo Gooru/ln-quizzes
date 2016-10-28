@@ -222,9 +222,9 @@ export default Ember.Component.extend({
   /**
    * @property {boolean} indicates when the inputs are enabled
    */
-  isInputDisabled: Ember.computed('questionResult.submittedAnswer', 'collection.showFeedback', function(){
+  isInputDisabled: Ember.computed('questionResult.submitted', 'collection.showFeedback', function(){
     let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    return (showFeedback && this.get('isStudent') && this.get('questionResult.submittedAnswer')) || this.get('submitted');
+    return (showFeedback && this.get('isStudent') && this.get('questionResult.submitted')) || this.get('submitted');
   }),
 
   /**
@@ -236,9 +236,9 @@ export default Ember.Component.extend({
   /**
    * @property {boolean} indicates when the submit functionality is enabled
    */
-  isSubmitDisabled: Ember.computed('answerCompleted', 'submitted', 'questionResult.submittedAnswer', 'collection.showFeedback', function() {
+  isSubmitDisabled: Ember.computed('answerCompleted', 'submitted', 'questionResult.submitted', 'collection.showFeedback', function() {
     let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    if(!showFeedback || this.get('isTeacher') || !this.get('questionResult.submittedAnswer')) {
+    if(!showFeedback || this.get('isTeacher') || !this.get('questionResult.submitted')) {
       return this.get('submitted') || !this.get('answerCompleted');
     }
     return false;
@@ -277,9 +277,9 @@ export default Ember.Component.extend({
    * Indicates if feedback should be shown
    * @property {boolean}
    */
-  showFeedback: Ember.computed('collection.showFeedback', 'questionResult.submittedAnswer', function() {
+  showFeedback: Ember.computed('collection.showFeedback', 'questionResult.submitted', function() {
     let feedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    return feedback && this.get('isStudent') && this.get('questionResult.submittedAnswer');
+    return feedback && this.get('isStudent') && this.get('questionResult.submitted');
   }),
 
   /**

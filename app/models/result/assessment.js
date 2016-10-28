@@ -52,7 +52,7 @@ export default Ember.Object.extend({
    * @property {QuestionResult[]} questionResults
    */
   sortedResourceResults: Ember.computed('resourceResults.[]', function(){
-    return this.get('resourceResults').sortBy('resource.order');
+    return this.get('resourceResults').sortBy('resource.sequence');
   }),
 
   /**

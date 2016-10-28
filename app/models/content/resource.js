@@ -278,20 +278,12 @@ const ResourceModel = Ember.Object.extend({
     const model = this;
     return PlayerResource.create({
       id: model.get("id"),
-      order: model.get("order"),
+      sequence: model.get("order"),
       owner:model.get("owner"),
       title: model.get("title"),
-      resourceType: model.get("resourceType"),
-      resourceFormat: model.get("format"),
-      format:model.get("format"),
-      description: model.get("description"),
-      thumbnail: model.get("thumbnailUrl"),
-      assetUrl: model.get("assetUrl"),
-      url: model.get("url"),
-      displayGuide: model.get("displayGuide"),
-      narration: model.get("narration"), //TODO missing
-      options: null, //TODO missing
-      taxonomy: model.get('standards')
+      type: model.get("resourceType"),
+      format: model.get("format"),
+      body: model.get("description")
     });
   },
 

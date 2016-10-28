@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
 
 /**
@@ -31,21 +31,21 @@ export default Ember.Component.extend(ModalMixin, {
      * Action triggered when the user close de navigator panel
      */
     closeNavigator: function() {
-      this.sendAction("onCloseNavigator");
+      this.sendAction('onCloseNavigator');
     },
 
     /**
      * Action triggered when the user wants to finish the collection
      */
     finishCollection: function() {
-      this.sendAction("onFinishCollection");
+      this.sendAction('onFinishCollection');
     },
 
     /**
      * Action triggered when the user clicks at see usage report
      */
     seeUsageReport: function() {
-      this.sendAction("onFinishCollection");
+      this.sendAction('onFinishCollection');
     },
 
     /**
@@ -54,7 +54,7 @@ export default Ember.Component.extend(ModalMixin, {
      * @param item
      */
     selectItem: function(item) {
-        this.selectItem(item.resource);
+      this.selectItem(item.resource);
     }
   },
 
@@ -88,16 +88,16 @@ export default Ember.Component.extend(ModalMixin, {
    * A convenient structure to render the menu
    * @property
    */
-  resourceItems: Ember.computed("collection", "resourceResults.[]", "selectedResourceId", function(){
+  resourceItems: Ember.computed('collection', 'resourceResults.[]', 'selectedResourceId', function(){
     let component = this;
-    let collection = component.get("collection");
-    let resourceResults = component.get("resourceResults");
+    let collection = component.get('collection');
+    let resourceResults = component.get('resourceResults');
     let items = resourceResults.map(function(resourceResult){
-      let resourceId = resourceResult.get("resource.id");
+      let resourceId = resourceResult.get('resource.id');
       return {
         resource: collection.getResourceById(resourceId),
-        started: resourceResult.get("started"),
-        selected: resourceId === component.get("selectedResourceId")
+        started: resourceResult.get('started'),
+        selected: resourceId === component.get('selectedResourceId')
       };
     });
     return items;
@@ -133,10 +133,10 @@ export default Ember.Component.extend(ModalMixin, {
    */
   selectItem: function(resource) {
     if (resource && !this.get('isNavigationDisabled')) {
-      if (this.get("onItemSelected")){
-        this.sendAction("onItemSelected", resource);
+      if (this.get('onItemSelected')){
+        this.sendAction('onItemSelected', resource);
       }
-      this.sendAction("onCloseNavigator");
+      this.sendAction('onCloseNavigator');
     }
   }
 });

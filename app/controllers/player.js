@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
 
   // -------------------------------------------------------------------------
   // Dependencies
+
   queryParams: ['resourceId', 'role', 'type'],
 
   session: Ember.inject.service('session'),
@@ -321,7 +322,7 @@ export default Ember.Controller.extend({
     const hasResources = collection.get('hasResources');
     let resource = null;
 
-    controller.set('showContent',true);
+    controller.set('showContent', true);
     if(hasResources) {
       resource = assessmentResult.get('currentResource');
       if(controller.get('resourceId')) { //if has a resource id as query param

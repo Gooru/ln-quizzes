@@ -8,10 +8,19 @@ moduleFor('model:resource/resource', 'Unit | Model | resource/resource', {
 test('isQuestion', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'format': 'question'
+    'isQuestion': true
   });
 
   assert.ok(model.get('isQuestion'), 'It should be question');
+});
+
+test('format', function(assert) {
+  assert.expect(1);
+  let model = this.subject({
+    'isQuestion': true
+  });
+
+  assert.ok(model.get('format'), 'question');
 });
 
 test('isMultipleChoice', function(assert) {

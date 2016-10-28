@@ -1364,8 +1364,9 @@ export default {
   },
   "assignments-view":{
     actions:"Actions",
-    attempts:"Attempts",
+    attempts:"Attempts left",
     date:"Date assigned",
+    dueDate:"Due Date",
     search:"Search...",
     standards:"Standards",
     title:"Title"

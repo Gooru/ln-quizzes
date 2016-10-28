@@ -1,0 +1,30 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th class="num-header"><span>{{gru-icon name='swap_vert'}}</span></th>
+        <th class="score-header">{{t 'common.score'}} <span>{{gru-icon name='swap_vert'}}</span></th>
+        <th class="title-header">{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></th>
+        <th class="standards-header">{{t 'assignments-view.standards'}}</th>
+        <th class="date-header">{{t 'assignments-view.dueDate'}}<span>{{gru-icon name='swap_vert'}}</span></th>
+        <th class="attempts-header">{{t 'assignments-view.attempts'}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each assignments as |assignment index|}}
+        <tr>
+            <td class="num">
+               {{plus-one index}}
+            </td>
+            <td class="score">
+               <span class="score" style="background-color: {{ gradeColor (if assignment.hasStarted assignment.score 'NA') }}">
+                  {{if assignment.hasStarted assignment.score '--'}}%
+                </span>
+              </td>
+            <td class="title">{{assignment.title}}</td>
+            <td class="standards">{{assignment.standards}}</td>
+            <td class="due-date">{{assignment.dueDate}}</td>
+            <td class="attempts">{{assignment.attempts}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

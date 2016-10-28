@@ -39,10 +39,11 @@
   }
   .assignments-list-container{
     margin-top: 20px;
-    height: 1200px;
+    height:555px;
     .assignments-list{
-      height: inherit;
-      background-color:$light-300;
+      padding-right: 0px;
+      max-height:555px;
+      overflow: scroll;
     }
     .assignments-info{
       height: inherit;

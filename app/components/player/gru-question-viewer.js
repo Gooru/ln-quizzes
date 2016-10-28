@@ -61,7 +61,7 @@ export default Ember.Component.extend({
     completeAnswer: function(question, answer){
       if (!this.get('submitted')) {
         let questionResult = this.get('questionResult');
-        questionResult.set('userAnnswer', answer);
+        questionResult.set('answer', answer);
 
         this.set('question', question);
         this.set('answerCompleted', true);

@@ -22,7 +22,7 @@ export default Ember.Route.extend({
         title:'Assessment 1',
         standards:'',
         assignedDate:1474072003426,
-        dueDate:1474072003426,
+        dueDate:1477021500,
         totalAttempts:15,
         attempts:2,
         lastAttempt:{
@@ -58,7 +58,7 @@ export default Ember.Route.extend({
           }),
       Ember.Object.create({
         hasStarted:false,
-        score:null,
+        score:0,
         title:'Assessment 3 Not Started',
         standards:'',
         assignedDate:1474072003426,
@@ -78,7 +78,7 @@ export default Ember.Route.extend({
       }),
       Ember.Object.create({
         hasStarted:true,
-        score:'70',
+        score:70,
         title:'Assessment 4',
         standards:'',
         assignedDate:1474072003426,
@@ -98,7 +98,7 @@ export default Ember.Route.extend({
       }),
       Ember.Object.create({
         hasStarted:true,
-        score:'70',
+        score:70,
         title:'Assessment 5 No more attempts',
         standards:'',
         assignedDate:1474072003426,
@@ -118,7 +118,7 @@ export default Ember.Route.extend({
       }),
       Ember.Object.create({
         hasStarted:true,
-        score:'70',
+        score:70,
         title:'Assessment 6',
         standards:'',
         assignedDate:1474072003426,
@@ -138,7 +138,7 @@ export default Ember.Route.extend({
       }),
       Ember.Object.create({
         hasStarted:true,
-        score:'100',
+        score:100,
         title:'Assessment 7',
         standards:'',
         assignedDate:1474072003426,
@@ -158,7 +158,7 @@ export default Ember.Route.extend({
       }),
       Ember.Object.create({
         hasStarted:true,
-        score:'70',
+        score:70,
         title:'Assessment 8',
         standards:'',
         assignedDate:1474072003426,
@@ -178,7 +178,7 @@ export default Ember.Route.extend({
       }),
       Ember.Object.create({
         hasStarted:true,
-        score:'70',
+        score:70,
         title:'Assessment 9',
         standards:'',
         assignedDate:1474072003426,
@@ -197,10 +197,10 @@ export default Ember.Route.extend({
         }
       }),Ember.Object.create({
         hasStarted:true,
-        score:'70',
-        title:'Assessment 10',
+        score:70,
+        title:'Assessment 10 first assigned',
         standards:'',
-        assignedDate:1474072003426,
+        assignedDate:1477021500,
         dueDate:1474072003426,
         totalAttempts:15,
         attempts:2,
@@ -217,8 +217,8 @@ export default Ember.Route.extend({
       }),
       Ember.Object.create({
         hasStarted:true,
-        score:'40',
-        title:'Assessment 11',
+        score:40,
+        title:'Assessment AAAAA',
         standards:'',
         assignedDate:1474072003426,
         dueDate:1474072003426,

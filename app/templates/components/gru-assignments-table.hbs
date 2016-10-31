@@ -2,8 +2,8 @@
     <thead>
     <tr>
         <th class="num-header"><span>{{gru-icon name='swap_vert'}}</span></th>
-        <th class="score-header">{{t 'common.score'}} <span>{{gru-icon name='swap_vert'}}</span></th>
-        <th class="title-header">{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></th>
+        <th class="score-header"><a {{action 'sortBy' 'score'}}>{{t 'common.score'}} <span>{{gru-icon name='swap_vert'}}</span></a></th>
+        <th class="title-header"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
         <th class="standards-header">{{t 'assignments-view.standards'}}</th>
         <th class="date-header">{{t 'assignments-view.dueDate'}}<span>{{gru-icon name='swap_vert'}}</span></th>
         <th class="attempts-header">{{t 'assignments-view.attempts'}}</th>

@@ -45,10 +45,35 @@ export default Ember.Component.extend({
    */
   selectedAssignment:null,
 
+  /**
+   * Assignments List
+   */
+  assignments:null,
+  /**
+   * Sort order
+   */
+  reverseSort: false, // default sort in ascending order
+  /**
+   * Sort criteria
+   */
+  sortBy: 'assignedDate', // default sort by assigned date
+  /**
+   * Assignments sorted by criteria
+   */
+  sortedAssignments: Ember.computed.sort('assignments', 'sortDefinition'),
+
+  /**
+   * Sort definition
+   */
+  sortDefinition: Ember.computed('sortBy','reverseSort', function() {
+    let sortOrder = this.get('reverseSort') ? 'desc' : 'asc';
+    return [ `${this.get('sortBy')}:${sortOrder}` ];
+  }),
+
   // -------------------------------------------------------------------------
   // Methods
   /**
-   * Filter assigment by title
+   * Filter assignment by title
    */
   searchAssignment:function(){
     var searchTerm = $('.search-box').val().toLowerCase();

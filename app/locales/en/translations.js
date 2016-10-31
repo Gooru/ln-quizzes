@@ -1372,7 +1372,18 @@ export default {
     title:"Title"
   },
   "assignment-details":{
+    "answer-key":"Answer Key",
+    "attempts":"Attempts",
     "attempts-left":"<b>Attempts left:</b> {{attempts}} of {{count}}",
-    "lastAttempt":"<b>Last Attempt:</b>"
+    "lastAttempt":"<b>Last Attempt:</b>",
+    "learningObjective":"Learning Objective",
+    "navigation":"Navigation",
+    "no-attempts":"No attempts left",
+    "off":"Off",
+    "on":"On",
+    "questions":"Questions",
+    "redo":"Redo",
+    "show-score":"Show Score",
+    "view-report":"View Report"
   }
 };

@@ -3,27 +3,58 @@
         <div class="panel-heading">
             <div class="actions">
               {{#if assignment.hasStarted}}
-                  <button class="btn btn-info">view report</button>
+                  <button class="btn btn-info view-report">{{t 'assignment-details.view-report'}}</button>
                 {{#if hasAttempts}}
-                    <button class="btn btn-info">Redo</button>
+                    <button class="btn btn-info redo">{{t 'assignment-details.redo'}}</button>
+                  {{else}}
+                    <span class="no-attempts">{{t 'assignment-details.no-attempts'}}</span>
                 {{/if}}
               {{else}}
-                  <button class="btn btn-info">{{t 'common.play'}}</button>
+                  <button class="btn btn-info play">{{t 'common.play'}}</button>
               {{/if}}
             </div>
         </div>
         <div class="panel-body">
-           <div class="row">
-               <div class="col-md-6 col-sm-6">
+           <div class="attempts-container">
+               <div class="attempts-left">
                    <span>{{t 'assignment-details.attempts-left' attempts=assignment.attempts count=assignment.totalAttempts}}</span>
                </div>
-               <div class="col-md-6 col-sm-6">
+               <div class="last-attempt">
                    <span>{{t 'assignment-details.lastAttempt'}}</span>
                    <span class="score" style="background-color: {{ gradeColor (if assignment.score assignment.score 'NA') }}">
                     {{if assignment.score assignment.score '--'}}%
                   </span>
                </div>
            </div>
+            <div class="title">
+                <span><b>{{t 'assignments-view.title'}}: </b>{{assignment.title}}</span>
+            </div>
+            <div class="questions-container">
+                <div class="questions">
+                    <span><b>{{t 'assignment-details.questions'}}:</b> {{assignment.questions.length}}</span>
+                </div>
+                <div class="date-assigned">
+                    <span><b>{{t 'assignments-view.date'}}: </b> {{assignment.assignedDate}}</span>
+                </div>
+            </div>
+            <div class="learning-objective">
+                <span><b>{{t 'assignment-details.learningObjective'}}: </b>{{assignment.learningObjective}}</span>
+            </div>
+            <div class="standards">
+                <span><b>{{t 'assignments-view.standards'}}: </b></span>
+            </div>
+            <div class="navigation">
+                <span><b>{{t 'assignment-details.navigation'}}: </b>{{assignment.settings.navigation}}</span>
+            </div>
+            <div class="attempts">
+                <span><b>{{t 'assignment-details.attempts'}}: </b>{{assignment.totalAttempts}}</span>
+            </div>
+            <div class="show-score">
+                <span><b>{{t 'assignment-details.show-score'}}: </b>{{assignment.settings.showScore}}</span>
+            </div>
+            <div class="answer-key">
+                <span><b>{{t 'assignment-details.answer-key'}}: </b>{{if assignment.settings.answerKey (t 'assignment-details.on') (t 'assignment-details.off')}}</span>
+            </div>
         </div>
     </div>
 {{/if}}

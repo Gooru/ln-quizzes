@@ -33,7 +33,7 @@ export default Ember.Route.extend({
         settings:{
           navigation:'Forward only',
           showScore:'Per question',
-          answerKey:false
+          answerKey:true
         }
       }),
         Ember.Object.create({
@@ -59,7 +59,7 @@ export default Ember.Route.extend({
       Ember.Object.create({
         hasStarted:false,
         score:null,
-        title:'Assessment 3',
+        title:'Assessment 3 Not Started',
         standards:'',
         assignedDate:'27/10/2016',
         dueDate:'4/11,2016',

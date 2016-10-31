@@ -40,12 +40,16 @@
   .assignments-list-container{
     margin-top: 20px;
     height:555px;
+    @include flexbox;
     .assignments-list{
       padding-right: 0px;
       max-height:555px;
-      overflow: scroll;
+      overflow-y: scroll;
+      width: 100%;
     }
     .assignments-info{
+      margin-left: 10px;
+      width: 40%;
       height: inherit;
     }
   }

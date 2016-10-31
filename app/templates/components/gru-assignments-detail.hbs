@@ -34,7 +34,7 @@
                     <span><b>{{t 'assignment-details.questions'}}:</b> {{assignment.questions.length}}</span>
                 </div>
                 <div class="date-assigned">
-                    <span><b>{{t 'assignments-view.date'}}: </b> {{assignment.assignedDate}}</span>
+                    <span><b>{{t 'assignments-view.date'}}: </b> {{formatDate assignment.assignedDate 'h:mm a MM/DD/YYYY'}}</span>
                 </div>
             </div>
             <div class="learning-objective">

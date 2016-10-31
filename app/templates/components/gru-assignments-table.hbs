@@ -22,7 +22,7 @@
               </td>
             <td class="title">{{assignment.title}}</td>
             <td class="standards">{{assignment.standards}}</td>
-            <td class="due-date">{{assignment.dueDate}}</td>
+            <td class="due-date">{{formatDate assignment.dueDate 'h:mm a MM/DD/YYYY'}}</td>
             <td class="attempts">{{assignment.attempts}}</td>
         </tr>
     {{/each}}

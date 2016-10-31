@@ -19,7 +19,7 @@ export default Ember.Component.extend({
 
   actions: {
     /***
-     * Search student
+     * Search assignment
      */
     selectAssignment: function (assignment) {
       this.selectAssignment(assignment);
@@ -28,11 +28,16 @@ export default Ember.Component.extend({
   },
   // -------------------------------------------------------------------------
   // Methods
+  /**
+   * Set assignment as selected
+   */
   selectAssignment:function(assignment){
     this.unSelectAssignment();
     assignment.set('selected',true);
   },
-
+  /**
+   * Unselected assignment
+   */
   unSelectAssignment:function(){
     var selectedAssignment = this.get('assignments').findBy('selected',true);
     if(selectedAssignment){

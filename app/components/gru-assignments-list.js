@@ -15,6 +15,9 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Actions
   actions:{
+    /**
+     * Select assignment
+     */
     selectAssignment:function(assignment){
       this.set('selectedAssignment',assignment);
     }
@@ -37,6 +40,9 @@ export default Ember.Component.extend({
   },
   // -------------------------------------------------------------------------
   // Properties
+  /**
+   * Selected assignment
+   */
   selectedAssignment:null,
 
   // -------------------------------------------------------------------------

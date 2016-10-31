@@ -16,8 +16,13 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Properties
 
+  /**
+   * Assignment to show
+   */
   assignment:null,
-
+  /**
+   *Indicate if the assignment has attempts left
+   */
   hasAttempts:Ember.computed('assignment.attempts','assignment.totalAttempts',function(){
     return this.get('assignment.totalAttempts') - this.get('assignment.attempts') > 0;
   })

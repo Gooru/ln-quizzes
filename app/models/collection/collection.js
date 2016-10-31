@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
 
 /**
  * @typedef {Object} Collection
@@ -13,141 +12,34 @@ export default Ember.Object.extend({
   id: null,
 
   /**
-   * @property {string} Collection's type
+   * @property {boolean} hasResources
    */
-  collectionType: null,
+  hasResources: Ember.computed.bool('resources.length'),
 
   /**
-   * @property {string} Collection's title
+   * @property {boolean} Returnn true if the collection is an assessment
    */
-  title: null,
-  /**
-   * @property {string} Collection's remixes
-   */
-  remixes: null,
-  /**
-   * @property {string} Collection's views
-   */
-  views: null,
-  /**
-   * @property {string} Collection's image url
-   */
-  imageUrl: null,
-  /**
-   * @property {string} Collection's url
-   */
-  url: null,
-  /**
-   * @property {string} Collection's author
-   */
-  author: null,
-  /**
-   * @property {string} Collection's author id
-   */
-  authorId: null,
-  /**
-   * @property {Array} List of Collection's Remixed by
-   */
-  remixedBy: Ember.A(),
-  /**
-   * @property {string} Collection's Course
-   */
-  course: null,
+  isAssessment: Ember.computed.not('isCollection'),
 
   /**
-   * @property {string} Author's avatar
+   * @property {boolean} Returns true if the collection type is collection
    */
-  avatarUrl: null,
-  /**
-   * @property {string} Author's profile page url
-   */
-  profilePageUrl: null,
-  /**
-   * @property {string} Collection's description
-   */
-  description: null,
+  isCollection: null,
+
   /**
    * @property {number} Total of resources in the collection
    */
-  resourceCount: null,
-  /**
-   * @property {number} Total of questions in the collection
-   */
-  questionCount: null,
-  /**
-   * @property {boolean} It says if collection's owner has a team
-   */
-  hasTeam: null,
-  /**
-   * @property {boolean} It says if collection's is visible or not
-   */
-  visibility: null,
-  /**
-   * @property {Array} List of libraries
-   */
-  libraries: Ember.A(),
+  resourceCount: Ember.computed.readOnly('resources.length'),
+
   /**
    * @property {Array} List of resources associated to the collection
    */
   resources: Ember.A(),
 
   /**
-   * @property {Array} List of standards associated to the collection
+   * @property {string} Collection's title
    */
-  standards: Ember.A(),
-
-  /**
-   * @property {boolean} hasResources
-   */
-  hasResources: Ember.computed.bool("resources.length"),
-
-  /**
-   * @property {boolean} Returnn true is the collection is an assessment
-   */
-  isAssessment: Ember.computed.equal('collectionType', 'assessment'),
-
-  /**
-   * @property {boolean} Returns true is the collection type is collection
-   */
-  isCollection: Ember.computed.not('isAssessment'),
-
-  isExternalAssessment: Ember.computed("isAssessment", function(){
-    return this.get("isAssessment") && this.get("format") === "assessment-external";
-  }),
-
-  /**
-   * Number of attempts for an assessment
-   * @property {integer}
-   */
-  attempts: -1,
-
-  /**
-   * Indicates if the number of attempts for an assessment is unlimited
-   * @property {boolean}
-   */
-  hasUnlimitedAttempts: Ember.computed.equal("attempts", -1),
-
-  /**
-   * Is bidirectional navigation enabled for collection/assessment
-   * @property {boolean}
-   */
-  bidirectional: true,
-
-  /**
-   * When should feedback be shown for a question in an assessment
-   * @property {string}
-   */
-  showFeedback: null,
-
-  immediateFeedback: Ember.computed("showFeedback", function(){
-    return this.get('showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-  }),
-
-  /**
-   * When should the answer key be shown for a question in an assessment
-   * @property {string}
-   */
-  showKey: null,
+  title: null,
 
   /**
    * Gets the next resource based on the resource provided
@@ -156,8 +48,8 @@ export default Ember.Object.extend({
    */
   nextResource: function(resource){
     var next;
-    if (this.get("hasResources")){
-      const resources = this.get("resources"),
+    if (this.get('hasResources')){
+      const resources = this.get('resources'),
         index = resources.indexOf(resource);
       next = resources.objectAt(index + 1);
     }
@@ -171,8 +63,8 @@ export default Ember.Object.extend({
    */
   prevResource: function(resource){
     var next;
-    if (this.get("hasResources")){
-      const resources = this.get("resources"),
+    if (this.get('hasResources')){
+      const resources = this.get('resources'),
         index = resources.indexOf(resource);
       next = resources.objectAt(index - 1);
     }
@@ -186,10 +78,10 @@ export default Ember.Object.extend({
    */
   getResourceById: function(resourceId){
     var resource;
-    if (this.get("hasResources")){
-      const resources = this.get("resources").filterBy("id", resourceId);
-      if (resources.get("length")){
-        resource = resources.get("firstObject");
+    if (this.get('hasResources')){
+      const resources = this.get('resources').filterBy('id', resourceId);
+      if (resources.get('length')){
+        resource = resources.get('firstObject');
       }
     }
     return resource;
@@ -201,9 +93,9 @@ export default Ember.Object.extend({
    * @returns {Resource|undefined}
    */
   isLastResource: function(resource) {
-    const resources = this.get("resources");
+    const resources = this.get('resources');
     var index = resources.indexOf(resource);
-    var collectionLength = resources.get('length');
+    var collectionLength = this.get('resourceCount');
     return ((index + 1) === collectionLength);
   }
 

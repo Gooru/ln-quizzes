@@ -332,7 +332,7 @@ export function cleanFilename(url, cdnUrls) {
       url = url.replace(cdnUrls.user, '');
     }
   }
-  return (url && defaultImages.indexOf(url) < 0) ? /([^\/]*\/\/[^\/]+\/)?(.+)/.exec(url)[2] : '';
+  return (url && defaultImages.indexOf(url) < 0) ? /([^/]*\/\/[^/]+\/)?(.+)/.exec(url)[2] : '';
 }
 
 /**
@@ -341,7 +341,7 @@ export function cleanFilename(url, cdnUrls) {
  */
 export function getFileNameFromInvalidUrl(url) {
   const regex = /\w+(?:\.\w+)*$/;
-  const validURL=/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
+  const validURL=/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[\w]*))?)/;
   var match;
   if((validURL).exec(url)){
     match = url;

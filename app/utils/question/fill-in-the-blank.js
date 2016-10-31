@@ -139,7 +139,7 @@ FillInTheBlankUtil.reopenClass({
   FIB_REGEX : {
     //this regex looks for all text in [], it has 2 groups, the first one to get the 4 letters before if any,
     // the second one the word in [], @see getCorrectAnswers
-    global: /(.{4})?(\[[^\[\]]+\])/gi  /* negative look behind is not supported in js :( /(?<!sqrt)(\[[^\[\]]+\])+/gi */
+    global: /(.{4})?(\[[^[\]]+])/gi  /* negative look behind is not supported in js :( /(?<!sqrt)(\[[^\[\]]+\])+/gi */
   },
 
   /**

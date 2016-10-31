@@ -32,6 +32,11 @@
           display: inline-block;
         }
       }
+      &.selected{
+        td{
+          background-color:$sky-100;
+        }
+      }
     }
   }
 }

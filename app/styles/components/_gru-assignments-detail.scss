@@ -1,0 +1,38 @@
+.gru-assignments-detail{
+  .assignment-detail{
+    .panel-heading{
+      text-align: right;
+      .actions{
+        .no-attempts{
+          font-style: italic;
+          margin-left: 10px;
+        }
+      }
+    }
+    .panel-body{
+      height: 500px;
+
+      span.score{
+        width: 46px;
+        height: 36px;
+        text-align: center;
+        line-height: 36px;
+        border-radius: 5px;
+        color: #fff;
+        display: inline-block;
+      }
+      > * {
+        margin: 10px 0;
+      }
+      .attempts-container, .questions-container{
+        @include flexbox;
+        > * {
+          align-self: center;
+        }
+        .last-attempt,.date-assigned{
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

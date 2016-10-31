@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Env from '../config/environment';
 import PublicRouteMixin from "quizzes/mixins/public-route-mixin";
 
 /**

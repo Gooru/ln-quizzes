@@ -64,7 +64,7 @@ export default BaseValidator.extend({
    */
   validateSelections(string, type) {
     var isValid = true;
-    const regExp = /\[(.*?)\]/gi;
+    const regExp = /\[(.*?)]/gi;
     const matchedAnswers = string.match(regExp);
     for (var i = 0; i < matchedAnswers.length; i++) {
       let selection = matchedAnswers[i].substring(1, matchedAnswers[i].length - 1).trim();

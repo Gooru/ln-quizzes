@@ -81,7 +81,7 @@ export default ResourceComponent.extend({
    * @returns {*}
    */
   getYoutubeIdFromUrl: function(url) {
-    const regexp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&\?]*).*/;
+    const regexp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     var match = url.match(regexp);
     if (match && match[2].length === 11) {
       return match[2];

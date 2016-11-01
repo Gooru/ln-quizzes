@@ -1,63 +1,46 @@
-import DS from 'ember-data';
-import ResourceSerializer from '../resource/resource';
+import ResourceSerializer from 'quizzes/serializers/resource/resource';
+import CollectionModel from 'quizzes/models/content/collection';
 
-export default DS.JSONAPISerializer.extend({
+/**
+ * Serializer for Collection
+ *
+ * @typedef {Object} CollectionSerializer
+ */
+export default Ember.Object.extend({
 
-  normalizeSingleResponse: function(store, primaryModelClass, payload) {
-    var serializer = this;
-    var collectionModel = {
-      data: serializer.normalizeCollectionData(payload),
-      included: []
-    };
-    this.normalizeResources(payload.collectionItems, collectionModel.data.relationships.resources.data, collectionModel);
-    return collectionModel;
+  /**
+   * @property {ResourceSerializer} resourceSerializer
+   */
+  resourceSerializer: null,
+
+  init: function () {
+    this._super(...arguments);
+    this.set('resourceSerializer', ResourceSerializer.create(Ember.getOwner(this).ownerInjection()));
   },
 
-  normalizeQueryRecordResponse: function(store, primaryModelClass, payload){
-    var serializer = this;
-    var collectionModel = { data: [] };
-
-    payload.forEach(function(collection) {
-      this.push(serializer.normalizeCollectionData(collection));
-    }, collectionModel.data);
-    return collectionModel;
+  /**
+   * Normalize the Collection data into a Collection object
+   * @param payload
+   * @returns {Question}
+   */
+  normalizeReadCollection: function(payload) {
+    const serializer = this;
+    return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
+      id: payload.id,
+      isCollection: payload.isCollection,
+      title: payload.title,
+      resources: serializer.normalizeResources(payload.resources)
+    });
   },
 
-  normalizeCollectionData: function(payload) {
-    return {
-      type: 'collection/collection',
-      id: payload.gooruOid,
-      attributes: {
-        collectionType: payload.collectionType,
-        title: payload.title,
-        description: payload.description ? payload.description : '',
-        imageUrl: payload.thumbnails ? payload.thumbnails.url : '',
-        resourceCount: payload.summary ? payload.summary.resourceCount : 0,
-        questionCount: payload.summary ? payload.summary.questionCount : 0,
-        visibility: payload.visibility ? payload.visibility : false
-      },
-      relationships: {
-        resources: { data: [] }
-      }
-    };
-  },
-  normalizeResources: function(collectionItems, resourceRelationships, collectionModel) {
-    const resourceSerializer = ResourceSerializer.create();
-    for(var i = 0; i < collectionItems.length; i++) {
-      var collectionItem = collectionItems[i];
-      var resource = resourceSerializer.normalizeResource(collectionItem);
-      collectionModel.included.push(resource);
-
-      var resourceRelationship = {
-        type: resource.type,
-        id: resource.id
-      };
-      resourceRelationships.push(resourceRelationship);
-
-      if (collectionItem.resourceFormat.value === 'question') {
-        resourceSerializer.normalizeQuestionAnswers(collectionItem.answers, resource, collectionModel);
-      }
-
-    }
+  /**
+   * Normalize the resources from a collection
+   * @param payload
+   * @returns {Resource}
+   */
+  normalizeResources: function(payload) {
+    return Ember.isArray(payload)
+      ? payload.map(this.get('resourceSerializer').normalizeReadQuestion)
+      : [];
   }
 });

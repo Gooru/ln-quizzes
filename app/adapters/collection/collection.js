@@ -5,41 +5,23 @@ export default ApplicationAdapter.extend({
   /**
    * @property {string} End-point URI
    */
-  namespace: '/gooruapi/rest/v3',
+  namespace: '/quizzes/api/v1/collection',
 
   /**
-   * Builds the end-point URL for the findRecord queryParam, params are optional
-   * @param modelName
-   * @param id
-   * @param snapshot
-   * @returns {string}
+   * Reads a Collection by id
+   *
+   * @param {string} collectionId
+   * @returns {Promise}
    */
-  urlForFindRecord: function(id){
-    let namespace = this.get('namespace');
-    let includeItemParam = 'includeItems=true';
-    let includeLastModifiedUserParam = 'includeLastModifiedUser=true';
-
-    return `${namespace}/collection/${id}?${includeItemParam}&${includeLastModifiedUserParam}`;
-  },
-  /**
-   * Builds the end-point URL for the queryRecord queryParam
-   * @param query
-   * @returns {string}
-   */
-  urlForQueryRecord: function(query) {
-    let namespace = this.get('namespace');
-    let classId = query.classId;
-    let courseId = query.courseId;
-    let unitId = query.unitId;
-    let lessonId = query.lessonId;
-
-    delete query.classId;
-    delete query.courseId;
-    delete query.unitId;
-    delete query.lessonId;
-
-    return `${namespace}/class/${classId}/course/${courseId}/unit/${unitId}/lesson/${lessonId}`;
-
+  readCollection: function(collectionId) {
+    const adapter = this;
+    const namespace = adapter.get('namespace');
+    const url = `${namespace}/${collectionId}`;
+    const options = {
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8'
+    };
+    return Ember.$.ajax(url, options);
   }
 
 });

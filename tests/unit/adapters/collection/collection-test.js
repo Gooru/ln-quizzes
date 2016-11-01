@@ -1,29 +1,16 @@
-import { moduleFor, test } from 'ember-qunit';
+import { test } from 'ember-qunit';
+import moduleForAdapter from 'quizzes/tests/helpers/module-for-adapter';
 
-moduleFor('adapter:collection/collection', 'Unit | Adapter | collection/collection', {
+moduleForAdapter('adapter:collection/collection', 'Unit | Adapter | collection/collection', {
 });
 
-test('urlForFindRecord querying for a single collection', function (assert) {
-  let adapter = this.subject();
-
-  const
-    id = 'any1D',
-    url = adapter.urlForFindRecord(id);
-
-  assert.equal(url, "/gooruapi/rest/v3/collection/any1D?includeItems=true&includeLastModifiedUser=true", "Wrong url");
-});
-
-test('urlForQueryRecord querying for collections that belong to a specific lesson, unit, course and class', function (assert) {
-  let adapter = this.subject();
-
-  const
-    query = {
-      classId : 'any1D',
-      courseId:'any2D',
-      unitId:'any3D',
-      lessonId:'any4D'
-    },
-    url = adapter.urlForQueryRecord(query);
-
-  assert.equal(url, "/gooruapi/rest/v3/class/any1D/course/any2D/unit/any3D/lesson/any4D", "Wrong url");
+test('readCollection', function(assert) {
+  const adapter = this.subject();
+  this.pretender.map(function() {
+    this.get('/quizzes/api/v1/collection/collection-id', function() {
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
+    }, false);
+  });
+  adapter.readCollection('collection-id')
+    .then(response => assert.deepEqual({}, response, 'Wrong response'));
 });

@@ -44,4 +44,11 @@
       }
     }
   }
+  .actions{
+    display: inline-block;
+    margin-bottom: 15px;
+    .cancel-btn{
+      border: 1px solid $gray-light;
+    }
+  }
 }

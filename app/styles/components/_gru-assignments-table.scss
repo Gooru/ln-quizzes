@@ -4,7 +4,9 @@
       th{
         text-align: center;
         background-color: $dark-400;
-        color:$dark-200;
+        a{
+          color:$dark-200;
+        }
         &.title-header{
           text-align: left;
         }

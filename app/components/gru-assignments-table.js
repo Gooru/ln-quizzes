@@ -24,6 +24,17 @@ export default Ember.Component.extend({
     selectAssignment: function (assignment) {
       this.selectAssignment(assignment);
       this.sendAction('onSelectAssignment',assignment);
+    },
+    /**
+     * Sort assignment list
+     */
+    sortBy:function(criteria){
+      if(criteria===this.get('sortBy')){
+        this.set('reverseSort',!this.get('reverseSort'));
+      }else{
+        this.set('sortBy',criteria);
+        this.set('reverseSort',false);
+      }
     }
   },
   // -------------------------------------------------------------------------

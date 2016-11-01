@@ -15,7 +15,7 @@
     "jquery-ui": "1.11.4",
     "jqueryui-touch-punch": "*",
     "loader.js": "ember-cli/loader.js#3.4.0",
-    "moment": "~2.11.1",
+    "moment": "^2.15.2",
     "papaparse": "~4.1.2",
     "pretender": "^0.10.0",
     "qunit": "~1.20.0",

@@ -121,7 +121,7 @@ module.exports = function (environment) {
     ENV.embedded = false;
   }
 
-  if (environment === 'production') {
+  if (environment === 'production' && !isEmbedded) {
     ENV.googleAnalytics = {
       webPropertyId: 'UA-79540131-1',
       tracker: "analytics.js",

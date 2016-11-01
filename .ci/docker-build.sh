@@ -36,6 +36,7 @@ info "Running tests..."
 silent grunt bamboo-test
 
 info "Building..."
+QUIZZES_EMBEDDED=true
 silent grunt build:prod-bamboo
 echo $VERSION > quizzes/version.html
 tar czf quizzes.tar.gz quizzes

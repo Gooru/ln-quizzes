@@ -38,7 +38,8 @@ test('Assign students Layout', function(assert) {
   assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item').length,3, 'Should have 3 students');
   assert.ok($assignStudentsComponent.find('.gru-assign-students .selected-count').length, 'Missing selected count');
   assert.ok($assignStudentsComponent.find('.gru-assign-students .assessment-settings').length, 'Missing assessment settings');
-
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .actions .cancel').length, 'Missing cancel button');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .actions .assign').length, 'Missing assign button');
 });
 test('Filter by name', function(assert) {
   var students = Ember.A([

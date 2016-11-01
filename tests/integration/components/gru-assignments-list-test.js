@@ -87,3 +87,180 @@ test('Select assignment', function(assert) {
     assert.ok($assignmentsListComponent.find($assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table tbody tr:eq(1)')).hasClass("selected"), 'Assignment row should be selected');
   });
 });
+test('Default sort: Sort by assigned date', function(assert) {
+  var assignments = Ember.A([
+    Ember.Object.create({
+      hasStarted:true,
+      score:60,
+      title:'Assessment B 2',
+      standards:'',
+      assignedDate:1463807150,
+      dueDate:1465516800,
+      totalAttempts:15,
+      attempts:2
+    }),
+    Ember.Object.create({
+      hasStarted:true,
+      score:10,
+      title:'',
+      standards:'Assessment A 1',
+      assignedDate:1465516800,
+      dueDate:1467259800,
+      totalAttempts:15,
+      attempts:2
+    })]);
+  this.set('assignments',assignments);
+
+  this.render(hbs`{{gru-assignments-list assignments=assignments}}`);
+  var $assignmentsListComponent = this.$();
+  var $table = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table');
+  assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment B 2', 'Assessment B is the most recent assigned');
+});
+test('Sort by title', function(assert) {
+  var assignments = Ember.A([
+    Ember.Object.create({
+      hasStarted:true,
+      score:60,
+      title:'Collection',
+      standards:'',
+      assignedDate:1463807150,
+      dueDate:1465516800,
+      totalAttempts:15,
+      attempts:2
+    }),
+    Ember.Object.create({
+      hasStarted:true,
+      score:10,
+      title:'Assessment',
+      standards:'',
+      assignedDate:1465516800,
+      dueDate:1467259800,
+      totalAttempts:15,
+      attempts:2
+    })]);
+  this.set('assignments',assignments);
+
+  this.render(hbs`{{gru-assignments-list assignments=assignments}}`);
+  var $assignmentsListComponent = this.$();
+  var $table = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table');
+  var $titleHeader = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table thead .title-header a');
+  $titleHeader.click();
+  return wait().then(function () {
+    assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment', 'The first sorted by title should be Assessment');
+    $titleHeader.click();
+    return wait().then(function () {
+      assert.equal($table.find('tbody tr:eq(0) .title').text(),'Collection', 'The first sorted by title should be Collection');
+    });
+  });
+});
+test('Sort by score', function(assert) {
+  var assignments = Ember.A([
+    Ember.Object.create({
+      hasStarted:true,
+      score:60,
+      title:'Assessment 1',
+      standards:'',
+      assignedDate:1463807150,
+      dueDate:1465516800,
+      totalAttempts:15,
+      attempts:2
+    }),
+    Ember.Object.create({
+      hasStarted:true,
+      score:10,
+      title:'Assessment 2',
+      standards:'',
+      assignedDate:1465516800,
+      dueDate:1467259800,
+      totalAttempts:15,
+      attempts:2
+    })]);
+  this.set('assignments',assignments);
+
+  this.render(hbs`{{gru-assignments-list assignments=assignments}}`);
+  var $assignmentsListComponent = this.$();
+  var $table = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table');
+  var $scoreHeader = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table thead .score-header a');
+  $scoreHeader.click();
+  return wait().then(function () {
+    assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment 2', 'The first sorted by score should be Assessment 2');
+    $scoreHeader.click();
+    return wait().then(function () {
+      assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment 1', 'The first sorted by score should be Assessment 1');
+    });
+  });
+});
+test('Sort by Due Date', function(assert) {
+  var assignments = Ember.A([
+    Ember.Object.create({
+      hasStarted:true,
+      score:60,
+      title:'Assessment 1',
+      standards:'',
+      assignedDate:1463807150,
+      dueDate:1465516800,
+      totalAttempts:15,
+      attempts:2
+    }),
+    Ember.Object.create({
+      hasStarted:true,
+      score:10,
+      title:'Assessment 2',
+      standards:'',
+      assignedDate:1465516800,
+      dueDate:1463807150,
+      totalAttempts:15,
+      attempts:2
+    })]);
+  this.set('assignments',assignments);
+
+  this.render(hbs`{{gru-assignments-list assignments=assignments}}`);
+  var $assignmentsListComponent = this.$();
+  var $table = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table');
+  var $scoreHeader = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table thead .date-header a');
+  $scoreHeader.click();
+  return wait().then(function () {
+    assert.equal($table.find('tbody tr:eq(0) .due-date').text(),'4:36 pm 01/17/1970', 'The first sorted by due date should be 4:36 pm 01/17/1970');
+    $scoreHeader.click();
+    return wait().then(function () {
+      assert.equal($table.find('tbody tr:eq(0) .due-date').text(),'5:05 pm 01/17/1970', 'The first sorted by due date should be 5:05 pm 01/17/1970');
+    });
+  });
+});
+test('Sort by Assigned Date', function(assert) {
+  var assignments = Ember.A([
+    Ember.Object.create({
+      hasStarted:true,
+      score:60,
+      title:'Assessment 1',
+      standards:'',
+      assignedDate:1463807150,
+      dueDate:1465516800,
+      totalAttempts:15,
+      attempts:2
+    }),
+    Ember.Object.create({
+      hasStarted:true,
+      score:10,
+      title:'Assessment 2',
+      standards:'',
+      assignedDate:1465516800,
+      dueDate:1463807150,
+      totalAttempts:15,
+      attempts:2
+    })]);
+  this.set('assignments',assignments);
+
+  this.render(hbs`{{gru-assignments-list assignments=assignments}}`);
+  var $assignmentsListComponent = this.$();
+  var $table = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table');
+  var $scoreHeader = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table thead .num-header a');
+  $scoreHeader.click();
+  return wait().then(function () {
+    assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment 2', 'The first sorted by assigned date should be Assessment 2');
+    $scoreHeader.click();
+    return wait().then(function () {
+      assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment 1', 'The first sorted by assigned date should be Assessment 1');
+    });
+  });
+});

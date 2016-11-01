@@ -1,7 +1,6 @@
 .assign{
-  background-color: $white;
   .settings{
-    width: 73%;
+    width: inherit;
     margin: 0 auto;
 
     h2{
@@ -17,7 +16,6 @@
     .panel-heading{
       border-top-right-radius: 6px;
       border-top-left-radius: 6px;
-      background-color: $white;
       padding-top: 10px;
       padding-bottom: 0;
 

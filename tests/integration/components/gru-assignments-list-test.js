@@ -258,10 +258,10 @@ test('Sort by Due Date', function(assert) {
   var $dueDateHeader = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table thead .date-header a');
   $dueDateHeader.click();
   return wait().then(function () {
-    assert.equal($table.find('tbody tr:eq(0) .due-date').text(),'4:36 pm 01/17/1970', 'The first sorted by due date should be 4:36 pm 01/17/1970');
+    assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment 2', 'The first sorted by due date should be Assessment 2');
     $dueDateHeader.click();
     return wait().then(function () {
-      assert.equal($table.find('tbody tr:eq(0) .due-date').text(),'5:05 pm 01/17/1970', 'The first sorted by due date should be 5:05 pm 01/17/1970');
+      assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment 1', 'The first sorted by due date should be Assessment 1');
     });
   });
 });

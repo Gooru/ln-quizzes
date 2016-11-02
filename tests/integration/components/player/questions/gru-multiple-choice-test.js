@@ -18,7 +18,7 @@ test('Multiple choice question layout', function (assert) {
     'id': '569906aa20b7dfae1bcd5',
     type: 'MC',
     body: 'Sample Question MC',
-    choices:  Ember.A([
+    answers:  Ember.A([
       Ember.Object.create({
         'id': 1,
         'text': '<p>An aquifer</p>',
@@ -84,7 +84,7 @@ test('Multiple choice question layout - read only', function (assert) {
     'id': '569906aa20b7dfae1bcd5',
     type: 'MC',
     body: 'Sample Question MC',
-    choices:  Ember.A([
+    answers:  Ember.A([
       Ember.Object.create({
         'id': 1,
         'text': '<p>An aquifer</p>',
@@ -124,7 +124,7 @@ test('Multiple choice question with user answer', function (assert) {
     'id': '569906aa20b7dfae1bcd5',
     type: 'MC',
     body: 'Sample Question MC',
-    choices:  Ember.A([
+    answers:  Ember.A([
       Ember.Object.create({
         'id': 1,
         'text': '<p>An aquifer</p>',

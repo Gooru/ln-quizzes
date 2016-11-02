@@ -6,7 +6,6 @@
 
   .taxonomy.modals.gru-domain-picker,
   .taxonomy.modals.gru-standard-picker {
-    @extend .content.modals.gru-course-new;
 
     max-width: 100%;
 
@@ -251,5 +250,3 @@
     width: 86%;
   }
 }
-
-

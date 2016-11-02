@@ -3,7 +3,7 @@
 </p>
 
 <div class="answer-choices">
-    {{#each question.choices as |answer index|}}
+    {{#each question.answers as |answer index|}}
       <div class="radio {{if readOnly 'disabled'}}">
         {{#radio-button
             value=answer.id

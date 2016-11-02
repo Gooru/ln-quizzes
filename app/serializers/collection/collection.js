@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import ResourceSerializer from 'quizzes/serializers/resource/resource';
 import CollectionModel from 'quizzes/models/content/collection';
 

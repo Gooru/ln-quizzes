@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
 import moduleForService from 'quizzes/tests/helpers/module-for-service';
-import CollectionModel from 'quizzes/models/content/collection';
 
 moduleForService('service:api-sdk/collection', 'Unit | Service | api-sdk/collection', {
   needs: ['serializer:collection/collection', 'model:collection/collection',

@@ -42,6 +42,29 @@ VERSION=$(cat quizzes/version.html)
 info "Deploying version $VERSION to S3..."
 
 cd quizzes
+if [ ! -z "$ENV_HOSTNAME" ]; then
+  info "Creating config file for ${ENV_HOSTNAME}"
+
+  cat >config/${ENV_HOSTNAME}.json <<EOF
+{
+  "endpoint" : {
+    "url": "http://${ENDPOINT_HOSTNAME}",
+    "secureUrl": "https://${ENDPOINT_HOSTNAME}"
+  },
+
+  "realTime": {
+    "webServiceUrl": "http://${REALTIME_HOSTNAME}",
+    "webServiceUri": "/nucleus/realtime",
+    "webSocketUrl": "https://${REALTIME_HOSTNAME}",
+    "webSocketUri": "/ws/realtime"
+  },
+  "teams": {
+    "url": "http://${TEAMS_HOSTNAME}"
+  }
+}
+EOF
+
+fi
 aws s3 sync --delete . s3://${S3_BUCKET}/
 
 info "Done deploying."

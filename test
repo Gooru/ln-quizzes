@@ -1,0 +1,1097 @@
+[4mRunning "test" task[24m
+
+[4mRunning "stubby:test" (stubby) task[24m
+Stubby HTTP server listening on port 8882
+Stubby HTTPS server listening on port 7443
+Admin server listening on port 8889
+
+[4mRunning "exec:run:ember test" (exec) task[24m
+WARNING: WARNING: Node v6.7.0 has currently not been tested against Ember CLI and may result in unexpected behaviour.
+Built project successfully. Stored in "/Users/mmendez/Projects/quizzes/tmp/class-tests_dist-XqU5olVM.tmp".
+ok 1 PhantomJS 2.1 - Acceptance | account-settings: Layout
+    ---
+        Log: |
+            { type: 'warn',
+              text: '\'Deprecation warning: moment construction falls back to js Date. This is discouraged and will be removed in upcoming major release. Please refer to https://github.com/moment/moment/issues/1407 for more info.\\nArguments: [object Object]\\nundefined\'\n' }
+    ...
+ok 2 PhantomJS 2.1 - Acceptance | application: searchTerm: Search box navigation
+ok 3 PhantomJS 2.1 - Acceptance | application: Theme support - no theme
+ok 4 PhantomJS 2.1 - Acceptance | application: Theme support - Having translations and styles url
+ok 5 PhantomJS 2.1 - Acceptance | application: Trying the google sign in url
+ok 6 PhantomJS 2.1 - Acceptance | forgot-password: Layout
+ok 7 PhantomJS 2.1 - Acceptance | forgot-password: it shows an error message if the email field is left blank
+ok 8 PhantomJS 2.1 - Acceptance | forgot-password: it shows an error message if the email is wrong
+ok 9 PhantomJS 2.1 - Acceptance | index: load: Layout
+ok 10 PhantomJS 2.1 - Acceptance | reset-password: Layout
+ok 11 PhantomJS 2.1 - Acceptance | reset-password: it shows an error message if the password field is left blank
+ok 12 PhantomJS 2.1 - Acceptance | reset-password: it shows an error message if the confirm password field is different than password
+ok 13 PhantomJS 2.1 - Acceptance | reset-password: it shows an error message if the password and confirm password field has only blank spaces
+ok 14 PhantomJS 2.1 - Acceptance | search/assessments: Layout
+ok 15 PhantomJS 2.1 - Acceptance | search/assessments: Changing term should filter the current result without changing the root url
+ok 16 PhantomJS 2.1 - Acceptance | search/assessments: Apply taxonomy filter
+ok 17 PhantomJS 2.1 - Acceptance | search/assessments: Apply taxonomy filter - Removing taxonomy tag
+ok 18 PhantomJS 2.1 - Acceptance | search/collections: Layout
+ok 19 PhantomJS 2.1 - Acceptance | search/collections: Changing term should filter the current result without changing the root url
+ok 20 PhantomJS 2.1 - Acceptance | search/collections: No results found
+ok 21 PhantomJS 2.1 - Acceptance | search/collections: Apply taxonomy filter
+ok 22 PhantomJS 2.1 - Acceptance | search/collections: Apply taxonomy filter - Removing taxonomy tag
+ok 23 PhantomJS 2.1 - Acceptance | search/questions: Layout
+ok 24 PhantomJS 2.1 - Acceptance | search/questions: Apply filters
+ok 25 PhantomJS 2.1 - Acceptance | search/questions: Changing term should filter the current result without changing the root url
+ok 26 PhantomJS 2.1 - Acceptance | search/questions: Apply taxonomy filter
+ok 27 PhantomJS 2.1 - Acceptance | search/questions: Apply taxonomy filter - Removing taxonomy tag
+ok 28 PhantomJS 2.1 - Acceptance | search/resources: Layout
+ok 29 PhantomJS 2.1 - Acceptance | search/resources: Apply filters
+ok 30 PhantomJS 2.1 - Acceptance | search/resources: Changing term should filter the current result without changing the root url
+ok 31 PhantomJS 2.1 - Acceptance | search/resources: Apply taxonomy filter
+ok 32 PhantomJS 2.1 - Acceptance | search/resources: Apply taxonomy filter - Removing taxonomy tag
+ok 33 PhantomJS 2.1 - Acceptance | sign-in: Layout
+ok 34 PhantomJS 2.1 - Acceptance | sign-in: it shows an error message if the username field is left blank
+ok 35 PhantomJS 2.1 - Acceptance | sign-in: it shows an error message if the password field is left blank
+ok 36 PhantomJS 2.1 - Acceptance | sign-in: it shows an error message if the password and username field has only blank spaces
+ok 37 PhantomJS 2.1 - Acceptance | sign-in: Sign in after try with wrong credentials when press key Enter
+ok 38 PhantomJS 2.1 - Acceptance | sign-up-finish: Layout
+ok 39 PhantomJS 2.1 - Acceptance | sign-up-finish: it shows error messages if the all fields are left blank
+ok 40 PhantomJS 2.1 - Acceptance | sign-up: Layout
+ok 41 PhantomJS 2.1 - Acceptance | sign-up: it shows error messages if the all fields are left blank
+ok 42 PhantomJS 2.1 - Acceptance | sign-up: it shows an error message if the first name field is left blank
+ok 43 PhantomJS 2.1 - Acceptance | sign-up: it shows an error message if the last name field has less than 2 characters
+ok 44 PhantomJS 2.1 - Acceptance | sign-up: it shows an error message if the email has incorrect format
+ok 45 PhantomJS 2.1 - Acceptance | sign-up: it shows an error message if the password and rePassword fields do not match
+ok 46 PhantomJS 2.1 - Acceptance | sign-up: it shows an error message if the first name field has blanks
+ok 47 PhantomJS 2.1 - Acceptance | sign-up: it shows an error message if the last name field has invalid characters
+ok 48 PhantomJS 2.1 - Acceptance | sign-up: it shows an error message if the username has reserved words
+ok 49 PhantomJS 2.1 - Acceptance | SignUp: it shows error messages if username or email are taken
+ok 50 PhantomJS 2.1 - Integration | Component | app dropdown: Layout using defaults
+ok 51 PhantomJS 2.1 - Integration | Component | app dropdown: Layout with options
+ok 52 PhantomJS 2.1 - Integration | Component | app dropdown: Disabled/selected items by default
+ok 53 PhantomJS 2.1 - Integration | Component | app dropdown: Single select interaction
+ok 54 PhantomJS 2.1 - Integration | Component | app dropdown: Multiple select interaction
+ok 55 PhantomJS 2.1 - Integration | Component | app dropdown: Multiple select interaction - unselect
+ok 56 PhantomJS 2.1 - Integration | Component | cards/gru class card: Class Card Layout
+ok 57 PhantomJS 2.1 - Integration | Component | cards/gru class card: Student class card
+ok 58 PhantomJS 2.1 - Integration | Component | cards/gru class card: Class with just one collaborator
+ok 59 PhantomJS 2.1 - Integration | Component | cards/gru class card: Class Card Layout for archived class, report available
+ok 60 PhantomJS 2.1 - Integration | Component | cards/gru class card: Class Card Layout for archived class, report in progress
+ok 61 PhantomJS 2.1 - Integration | Component | cards/gru class card: Class Card Layout for archived class, request report
+ok 62 PhantomJS 2.1 - Integration | Component | cards/gru class card: Class Card Layout for archived class, not available
+ok 63 PhantomJS 2.1 - Integration | Component | cards/gru collection card: Collection Card Layout
+ok 64 PhantomJS 2.1 - Integration | Component | cards/gru collection card: Collection Card Published
+ok 65 PhantomJS 2.1 - Integration | Component | cards/gru collection card: Assessment Card Layout
+ok 66 PhantomJS 2.1 - Integration | Component | cards/gru collection card: Collection card trying buttons
+ok 67 PhantomJS 2.1 - Integration | Component | cards/gru collection card: Collection Small Card Layout
+ok 68 PhantomJS 2.1 - Integration | Component | cards/gru course card: Course Card Layout
+ok 69 PhantomJS 2.1 - Integration | Component | cards/gru course card: Course Card Private
+ok 70 PhantomJS 2.1 - Integration | Component | cards/gru course card: Course Card Layout Owner and Public
+ok 71 PhantomJS 2.1 - Integration | Component | cards/gru course card: Course Card Layout Owner and Private
+ok 72 PhantomJS 2.1 - Integration | Component | cards/gru course card: Click Edit
+ok 73 PhantomJS 2.1 - Integration | Component | cards/gru course card: Click Play
+ok 74 PhantomJS 2.1 - Integration | Component | cards/gru course card: Course Card Unit Count with total 1
+ok 75 PhantomJS 2.1 - Integration | Component | cards/gru course card: Course Card Unit Count more than one
+ok 76 PhantomJS 2.1 - Integration | Component | cards/gru course card: Course Card Unit Count zero
+ok 77 PhantomJS 2.1 - Integration | Component | cards/gru profile card: it renders
+ok 78 PhantomJS 2.1 - Integration | Component | cards/gru resource card: Resource Card Layout
+ok 79 PhantomJS 2.1 - Integration | Component | cards/gru resource card: Question Card Layout
+ok 80 PhantomJS 2.1 - Integration | Component | cards/gru resource card: Resource card trying buttons
+ok 81 PhantomJS 2.1 - Integration | Component | cards/gru resource card: Resource Card with publisher
+ok 82 PhantomJS 2.1 - Integration | Component | cards/gru resource result card: Resource card that is not a question and it has not been started
+ok 83 PhantomJS 2.1 - Integration | Component | cards/gru resource result card: Resource card that is not a question and it has been viewed but not reacted to
+ok 84 PhantomJS 2.1 - Integration | Component | cards/gru resource result card: Resource card that is not a question and it has been viewed but reacted to
+ok 85 PhantomJS 2.1 - Integration | Component | cards/gru resource result card: Resource card that is a question
+ok 86 PhantomJS 2.1 - Integration | Component | cards/gru user card: Profile Card Layout
+ok 87 PhantomJS 2.1 - Integration | Component | cards/gru user card: Remove button
+ok 88 PhantomJS 2.1 - Integration | Component | charts/gru bubble chart: Bubble Chart Layout
+ok 89 PhantomJS 2.1 - Integration | Component | charts/gru completion chart: it renders
+ok 90 PhantomJS 2.1 - Integration | Component | charts/gru completion chart: it renders correctly when the total value is zero
+ok 91 PhantomJS 2.1 - Integration | Component | charts/gru pie chart: Pie Chart Layout
+ok 92 PhantomJS 2.1 - Integration | Component | charts/gru-radial-chart: Information Chart Layout
+ok 93 PhantomJS 2.1 - Integration | Component | charts/gru x bar chart: Stacked horizontal bar chart layout
+ok 94 PhantomJS 2.1 - Integration | Component | charts/gru x bar chart: Full bar segment layout
+ok 95 PhantomJS 2.1 - Integration | Component | collection results resources: collection results resources layout
+ok 96 PhantomJS 2.1 - Integration | Component | collection results standards: collection results standards layout
+ok 97 PhantomJS 2.1 - Integration | Component | collection results: collections layout
+ok 98 PhantomJS 2.1 - Integration | Component | datepicker field: renders datepicker
+ok 99 PhantomJS 2.1 - Integration | Component | grade dropdown: Layout using defaults
+ok 100 PhantomJS 2.1 - Integration | Component | grade dropdown: Interaction - notify change event
+ok 101 PhantomJS 2.1 - Integration | Component | grade dropdown: Interaction select/unselect items
+ok 102 PhantomJS 2.1 - Integration | Component | gru assessment settings: Layout
+ok 103 PhantomJS 2.1 - Integration | Component | gru assign students: Assign students Layout
+ok 104 PhantomJS 2.1 - Integration | Component | gru assign students: Filter by name
+ok 105 PhantomJS 2.1 - Integration | Component | gru assign students: Select All Students
+ok 106 PhantomJS 2.1 - Integration | Component | gru assign students: Selected and Unselected Student
+ok 107 PhantomJS 2.1 - Integration | Component | gru assignments detail: Layout
+ok 108 PhantomJS 2.1 - Integration | Component | gru assignments detail: Actions when the assessment has not started
+ok 109 PhantomJS 2.1 - Integration | Component | gru assignments detail: Actions when the assessment has started and have attempts left
+ok 110 PhantomJS 2.1 - Integration | Component | gru assignments detail: Actions when the assessment has started and have not attempts
+ok 111 PhantomJS 2.1 - Integration | Component | gru assignments list: Layout
+ok 112 PhantomJS 2.1 - Integration | Component | gru assignments list: Filter by term
+ok 113 PhantomJS 2.1 - Integration | Component | gru assignments list: Select assignment
+ok 114 PhantomJS 2.1 - Integration | Component | gru assignments table: it renders
+ok 115 PhantomJS 2.1 - Integration | Component | gru breadcrumb: Layout and click
+ok 116 PhantomJS 2.1 - Integration | Component | gru bubbles: Bubbles Layout
+ok 117 PhantomJS 2.1 - Integration | Component | gru bubbles: Select bubble
+ok 118 PhantomJS 2.1 - Integration | Component | gru category panel: it renders
+ok 119 PhantomJS 2.1 - Integration | Component | gru category panel textfield: it renders
+ok 120 PhantomJS 2.1 - Integration | Component | gru emotion picker: Emotion Picker
+ok 121 PhantomJS 2.1 - Integration | Component | gru emotion picker: Click emotion
+ok 122 PhantomJS 2.1 - Integration | Component | gru emotion picker: Verify selected emotion
+ok 123 PhantomJS 2.1 - Integration | Component | gru emotion picker: Click emotion in readOnly
+ok 124 PhantomJS 2.1 - Integration | Component | gru featured courses: Test for featured courses templates
+ok 125 PhantomJS 2.1 - Integration | Component | Footer: footer layout
+ok 126 PhantomJS 2.1 - Integration | Component | Header: header layout
+ok 127 PhantomJS 2.1 - Integration | Component | Header: header layout with user
+ok 128 PhantomJS 2.1 - Integration | Component | Header: Do search by clicking search button
+ok 129 PhantomJS 2.1 - Integration | Component | Header: Do search by hitting Enter
+ok 130 PhantomJS 2.1 - Integration | Component | Header: Do search with a blank space
+ok 131 PhantomJS 2.1 - Integration | Component | Header: Search terms under 3 letters
+ok 132 PhantomJS 2.1 - Integration | Component | gru icon: Layout
+ok 133 PhantomJS 2.1 - Integration | Component | gru image picker: it renders
+ok 134 PhantomJS 2.1 - Integration | Component | gru image picker: it renders submit and reset (cancel) buttons when an image has been selected
+ok 135 PhantomJS 2.1 - Integration | Component | gru math text: Render math expression on katex
+ok 136 PhantomJS 2.1 - Integration | Component | gru rich text editor: Layout
+ok 137 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select fraction
+ok 138 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select sqrt
+ok 139 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select sqrtn
+ok 140 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select subscript
+ok 141 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select superscript
+ok 142 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select overline
+ok 143 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select sum
+ok 144 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select plus
+ok 145 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select minus
+ok 146 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select div
+ok 147 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select cdot
+ok 148 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select not equal
+ok 149 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select less
+ok 150 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select greater
+ok 151 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select less-equal
+ok 152 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select greater-equal
+ok 153 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select sim
+ok 154 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select approx
+ok 155 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select alpha
+ok 156 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select ()
+ok 157 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select {}
+ok 158 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select ||
+ok 159 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select angle
+ok 160 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select measured angle
+ok 161 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select infinity
+ok 162 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select perpendicular
+ok 163 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select parallel
+ok 164 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select sigma
+ok 165 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select theta
+ok 166 PhantomJS 2.1 - Integration | Component | gru rich text editor: Select pi
+ok 167 PhantomJS 2.1 - Integration | Component | gru rich text editor: Show editor toolbar
+ok 168 PhantomJS 2.1 - Integration | Component | gru rich text editor: Hide editor toolbar
+ok 169 PhantomJS 2.1 - Integration | Component | gru select date picker: Layout
+ok 170 PhantomJS 2.1 - Integration | Component | gru share pop over: it renders for course
+ok 171 PhantomJS 2.1 - Integration | Component | gru share pop over: it renders for resources
+ok 172 PhantomJS 2.1 - Integration | Component | gru share pop over: it renders for questions
+ok 173 PhantomJS 2.1 - Integration | Component | gru share pop over: it renders for collections
+ok 174 PhantomJS 2.1 - Integration | Component | gru share pop over: it renders for assessments
+ok 175 PhantomJS 2.1 - Integration | Component | gru spinner button: Layout
+ok 176 PhantomJS 2.1 - Integration | Component | gru switch: Switch Layout
+ok 177 PhantomJS 2.1 - Integration | Component | gru switch: Switch
+ok 178 PhantomJS 2.1 - Integration | Component | gru user icons: it renders all users when the number of users is less than the view threshold
+ok 179 PhantomJS 2.1 - Integration | Component | gru user icons: it renders all users when the number of users is equal to the view threshold
+ok 180 PhantomJS 2.1 - Integration | Component | gru user icons: it renders all users when the number of users is greater than the view threshold
+ok 181 PhantomJS 2.1 - Integration | Component | gru user icons: it opens/closes a modal to view more users when the number of users exceeds the view threshold
+ok 182 PhantomJS 2.1 - Integration | Component | gru user registration: User Registration
+ok 183 PhantomJS 2.1 - Integration | Component | gru user sign up cancel: Cancel Signup Confirmation
+ok 184 PhantomJS 2.1 - Integration | Component | user sign up: it renders
+ok 185 PhantomJS 2.1 - Integration | Component | gru user teaser: User Tease Layout
+ok 186 PhantomJS 2.1 - Integration | Component | gru user teaser: User Tease with only 1 user
+ok 187 PhantomJS 2.1 - Integration | Component | gru view layout picker: View-Layout-Picker Layout
+ok 188 PhantomJS 2.1 - Integration | Component | gru view layout picker: Select option
+ok 189 PhantomJS 2.1 - Integration | Component | gru view layout picker: Select option again
+ok 190 PhantomJS 2.1 - Integration | Component | gru view layout picker: Select another option
+ok 191 PhantomJS 2.1 - Integration | Component | player/gru navigation: Not submitted layout
+ok 192 PhantomJS 2.1 - Integration | Component | player/gru navigation: Submitted layout
+ok 193 PhantomJS 2.1 - Integration | Component | player/gru navigation: Layout when navigator is opened
+ok 194 PhantomJS 2.1 - Integration | Component | player/gru navigator: Player Navigator
+ok 195 PhantomJS 2.1 - Integration | Component | player/gru navigator: Layout when navigator is closed
+ok 196 PhantomJS 2.1 - Integration | Component | player/gru navigator: it allows navigation between resource links -by default
+ok 197 PhantomJS 2.1 - Integration | Component | player/gru navigator: resource link navigation is disabled
+ok 198 PhantomJS 2.1 - Integration | Component | player/gru navigator: See usage report
+ok 199 PhantomJS 2.1 - Integration | Component | player/gru navigator: Finish collection
+ok 200 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Layout
+ok 201 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Submit button should become enabled and call action on submit
+ok 202 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Multiple Answer - Submit button should become enabled by clicking 1 radio button when user answer if provided
+ok 203 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Clicking on the "Hints" button should display a certain number of hints and then become disabled
+ok 204 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Clicking on the "Explanation" button should display an explanation and then it should become disabled
+ok 205 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Save Button Text key
+ok 206 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Submit button disabled when submitted
+ok 207 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Show feedback layout
+ok 208 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Show feedback when submitted layout
+ok 209 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Question Viewer Submit by Enter
+ok 210 PhantomJS 2.1 - Integration | Component | player/gru question viewer: Open ended question try submit by enter
+ok 211 PhantomJS 2.1 - Integration | Component | player/gru viewer: On question submit
+ok 212 PhantomJS 2.1 - Integration | Component | player/gru viewer: Narration
+ok 213 PhantomJS 2.1 - Integration | Component | player/gru viewer: Layout when a resource url cannot be showed in an iframe
+ok 214 PhantomJS 2.1 - Integration | Component | player/questions/gru fib: Fill in the blanks layout
+ok 215 PhantomJS 2.1 - Integration | Component | player/questions/gru fib: Fill in the blanks events
+ok 216 PhantomJS 2.1 - Integration | Component | player/questions/gru fib: Fill in the blanks layout - read only
+ok 217 PhantomJS 2.1 - Integration | Component | player/questions/gru fib: Fill in the blanks layout - with user answer
+ok 218 PhantomJS 2.1 - Integration | Component | player/questions/gru fib: Set two questions
+ok 219 PhantomJS 2.1 - Integration | Component | player/questions/gru hot text highlight: Layout
+ok 220 PhantomJS 2.1 - Integration | Component | player/questions/gru hot text highlight: markItem
+ok 221 PhantomJS 2.1 - Integration | Component | player/questions/gru hot text highlight: Layout - read only
+ok 222 PhantomJS 2.1 - Integration | Component | player/questions/gru hot text highlight: Layout - with user answer
+ok 223 PhantomJS 2.1 - Integration | Component | player/questions/gru hot text highlight: Set two questions
+ok 224 PhantomJS 2.1 - Integration | Component | player/questions/gru hs image: Layout
+ok 225 PhantomJS 2.1 - Integration | Component | player/questions/gru hs image: Selecting answers
+ok 226 PhantomJS 2.1 - Integration | Component | player/questions/gru hs image: Notifications work after selecting questions
+ok 227 PhantomJS 2.1 - Integration | Component | player/questions/gru hs image: Layout - read only
+ok 228 PhantomJS 2.1 - Integration | Component | player/questions/gru hs image: Layout - with user answer
+ok 229 PhantomJS 2.1 - Integration | Component | player/questions/gru hs image: Set two questions
+ok 230 PhantomJS 2.1 - Integration | Component | player/questions/gru hs text: Layout
+ok 231 PhantomJS 2.1 - Integration | Component | player/questions/gru hs text: Selecting answers
+ok 232 PhantomJS 2.1 - Integration | Component | player/questions/gru hs text: Notifications work after selecting questions
+ok 233 PhantomJS 2.1 - Integration | Component | player/questions/gru hs text: Layout - read only
+ok 234 PhantomJS 2.1 - Integration | Component | player/questions/gru hs text: Layout - with user answer
+ok 235 PhantomJS 2.1 - Integration | Component | player/questions/gru hs text: Set two questions
+ok 236 PhantomJS 2.1 - Integration | Component | player/questions/gru multiple answer: Multiple answer question layout
+ok 237 PhantomJS 2.1 - Integration | Component | player/questions/gru multiple answer: Multiple answer question events
+ok 238 PhantomJS 2.1 - Integration | Component | player/questions/gru multiple answer: Multiple answer question layout - read only
+ok 239 PhantomJS 2.1 - Integration | Component | player/questions/gru multiple answer: Multiple answer question layout - with user answer
+ok 240 PhantomJS 2.1 - Integration | Component | player/questions/gru multiple choice: Multiple choice question layout
+ok 241 PhantomJS 2.1 - Integration | Component | player/questions/gru multiple choice: Multiple choice question layout - read only
+ok 242 PhantomJS 2.1 - Integration | Component | player/questions/gru multiple choice: Multiple choice question with user answer
+ok 243 PhantomJS 2.1 - Integration | Component | player/questions/gru open ended: Open ended layout
+ok 244 PhantomJS 2.1 - Integration | Component | player/questions/gru open ended: Open ended enter response
+ok 245 PhantomJS 2.1 - Integration | Component | player/questions/gru open ended: Open ended layout - read only
+ok 246 PhantomJS 2.1 - Integration | Component | player/questions/gru open ended: Open ended layout - with user answer
+ok 247 PhantomJS 2.1 - Integration | Component | player/questions/gru reorder: Reorder question layout
+ok 248 PhantomJS 2.1 - Integration | Component | player/questions/gru reorder: Notifications work after reordering questions
+ok 249 PhantomJS 2.1 - Integration | Component | player/questions/gru reorder: Reorder question layout - read only
+ok 250 PhantomJS 2.1 - Integration | Component | player/questions/gru reorder: Reorder question layout - with user answer
+ok 251 PhantomJS 2.1 - Integration | Component | player/questions/gru reorder: Set two questions
+ok 252 PhantomJS 2.1 - Integration | Component | player/questions/gru true false: True or false question layout
+ok 253 PhantomJS 2.1 - Integration | Component | player/questions/gru true false: True or false question layout - read only
+ok 254 PhantomJS 2.1 - Integration | Component | player/questions/gru true false: True or false question layout - with user answer
+ok 255 PhantomJS 2.1 - Integration | Component | player/questions/gru true false: True or false question layout - False as correct answer
+ok 256 PhantomJS 2.1 - Integration | Component | player/resources/gru image resource: True or false question layout
+ok 257 PhantomJS 2.1 - Integration | Component |  player/resources/gru pdf resource: PDF player layout
+ok 258 PhantomJS 2.1 - Integration | Component | player/resources/gru url resource: Url resource layout
+ok 259 PhantomJS 2.1 - Integration | Component | player/resources/gru vimeo resource: Vimeo resource layout
+ok 260 PhantomJS 2.1 - Integration | Component | player/resources/gru youtube resource: Youtube player layout
+ok 261 PhantomJS 2.1 - Integration | Component | rating stars: rating-stars-default
+ok 262 PhantomJS 2.1 - Integration | Component | rating stars: rating-stars-selected
+ok 263 PhantomJS 2.1 - Integration | Component | rating stars: rating-stars-small
+ok 264 PhantomJS 2.1 - Integration | Component | reports/assessment/gru learning target: Learning Target Layout
+ok 265 PhantomJS 2.1 - Integration | Component | reports/assessment/gru mastery: Mastery Layout
+ok 266 PhantomJS 2.1 - Integration | Component | reports/assessment/gru questions xs: Questions Details Mobile Layout
+ok 267 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-fib: Fill in the blank Correct Answer
+ok 268 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-fib: Fill in the blank Your Answer Incorrect
+ok 269 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-fib: Fill in the blank Your Answer Correct
+ok 270 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-fib: Fill in the blank anonymous
+ok 271 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-hot-text-highlight: Hot Text Highlight User Answer
+ok 272 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-hot-text-highlight: Hot Text Highlight Correct Answer
+ok 273 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-hot-text-highlight: Hot Text Highlight Anonymous
+ok 274 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru hs image: Hot Spot Image Correct Answer
+ok 275 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru hs image: Hot Spot Image Your Answer Incorrect
+ok 276 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru hs image: Hot Spot Image Your Answer Correct
+ok 277 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru hs image: Hot Spot Image anonymous
+ok 278 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru hs text: Hot Spot Text Correct Answer
+ok 279 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru hs text: Hot Spot Text Your Answer Incorrect
+ok 280 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru hs text: Hot Spot Text Your Answer Correct
+ok 281 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru hs text: Hot Spot Text Anonymous
+ok 282 PhantomJS 2.1 - Integration | Component | /reports/assessment/questions/gru multiple answer: Multiple Answer Correct Answer
+ok 283 PhantomJS 2.1 - Integration | Component | /reports/assessment/questions/gru multiple answer: Multiple Answer Your Answer Incorrect
+ok 284 PhantomJS 2.1 - Integration | Component | /reports/assessment/questions/gru multiple answer: Multiple Answer Your Answer Correct
+ok 285 PhantomJS 2.1 - Integration | Component | /reports/assessment/questions/gru multiple answer: Multiple Answer anonymous
+ok 286 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru multiple choice: Multiple Choice Correct Answer
+ok 287 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru multiple choice: Multiple Choice Your Answer Incorrect
+ok 288 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru multiple choice: Multiple Choice Your Answer Correct
+ok 289 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru multiple choice: Multiple Choice anonymous
+ok 290 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-open-ended: Open ended Layout showing correct answer
+ok 291 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-open-ended: Open ended Layout showing user answer
+ok 292 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru-open-ended: Open ended Layout when no answer provided
+ok 293 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru reorder: Reoder Question - Show Correct Answer
+ok 294 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru reorder: Reoder Question - User answer correct
+ok 295 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru reorder: Reoder Question - User answer all incorrect
+ok 296 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru reorder: Reoder Question - User answer some incorrect
+ok 297 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru true false: True False Correct Answer
+ok 298 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru true false: True False Your Answer Incorrect
+ok 299 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru true false: True False Your Answer Correct
+ok 300 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru true false: True False anonymous
+ok 301 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question information: Question Information With Narration Hints Explanation Media
+ok 302 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question information: Question Information Without Narration Hints Explanation Media
+ok 303 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question information: Question Information Anonymous
+ok 304 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions detail: Layout
+ok 305 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions detail: Layout Anonymous
+ok 306 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions detail: Layout Anonymous and Show Results
+ok 307 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it renders all questions
+ok 308 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it renders the question charts correctly
+ok 309 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it renders some of the questions and a 'view more' button if the container is not wide enough to show all questions
+ok 310 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it can be forced to show all questions even if the container is not wide enough to show all of them
+ok 311 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it calls an external action when any of the questions is clicked
+ok 312 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru table view: it renders
+ok 313 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru table view: it triggers event when clicking on questions
+ok 314 PhantomJS 2.1 - Integration | Component | reports/gru class assessment report: Default Layout
+ok 315 PhantomJS 2.1 - Integration | Component | role radio button: renders role radio button
+ok 316 PhantomJS 2.1 - Integration | Component | search filter: search-filter-default
+ok 317 PhantomJS 2.1 - Integration | Component | search filter: search-filter-onCollectionFilterClick
+ok 318 PhantomJS 2.1 - Integration | Component | search filter: search-filter-onAssessmentFilterClick
+ok 319 PhantomJS 2.1 - Integration | Component | question options: gru-question-options-default
+ok 320 PhantomJS 2.1 - Integration | Component | question options: search-filter-onMultipleChoiceClick
+ok 321 PhantomJS 2.1 - Integration | Component | resource options: gru-question-options-default
+ok 322 PhantomJS 2.1 - Integration | Component | resource options: search-filter-onAudioClick
+ok 323 PhantomJS 2.1 - Integration | Component | standard dropdown: Layout and interaction
+ok 324 PhantomJS 2.1 - Integration | Component | standards popup: gru-standards-popup
+ok 325 PhantomJS 2.1 - Integration | Component | subject dropdown: Layout using defaults
+ok 326 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it renders the browse panels
+ok 327 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it can populate the browse panels per a specific item path
+ok 328 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it calls an external action when clicking an item that is not in the last browse panel
+ok 329 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it loads sub-level items async
+ok 330 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it keeps track of checked items
+ok 331 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it displays exceeding levels of data as accordions in the last browse panel (if there are more than 2 browse panels in the browse selector)
+ok 332 PhantomJS 2.1 - Integration | Component | taxonomy/gru subject course picker: Show courses - no selection
+ok 333 PhantomJS 2.1 - Integration | Component | taxonomy/gru subject course picker: Show courses - with selection
+ok 334 PhantomJS 2.1 - Integration | Component | taxonomy/gru subject picker: Show subjects - no selection
+ok 335 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it renders a shortcut list of taxonomy tags, a browse selector and a list of selected taxonomy tags
+ok 336 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it opens the browse selector to the location of the first selected tag by default
+ok 337 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it opens the browse selector to a specific location after clicking on a shortcut tag
+ok 338 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it adds/removes a tag from the selected tags after it has been checked/unchecked in the browse selector
+ok 339 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it unchecks a tag in the browse selector after its tags are removed from the selected tags
+ok 340 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it calls an external action when the save button is clicked
+ok 341 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: View mode it renders when no selection is made
+ok 342 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: View mode it renders - no show categories
+ok 343 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: Edit mode it renders when no selection is made
+ok 344 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: Edit mode category selection
+ok 345 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: View mode with selection
+ok 346 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag list: it renders all tags correctly
+ok 347 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag list: it renders max allowed tags correctly
+ok 348 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag: it renders a taxonomy tag correctly
+ok 349 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag: if it is not read-only, it calls an external action when the tag is clicked
+ok 350 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag: it calls an external action when its remove button is clicked
+ok 351 PhantomJS 2.1 - Integration | Component | gru input number: number input invalid
+ok 352 PhantomJS 2.1 - Integration | Component | gru input number: number input range
+ok 353 PhantomJS 2.1 - Integration | Component | gru input: Layout and clear functionality
+ok 354 PhantomJS 2.1 - Unit | Adapter | analytics/analytics: queryRecord
+ok 355 PhantomJS 2.1 - Unit | Adapter | application: it exists
+ok 356 PhantomJS 2.1 - Unit | Adapter | authentication/authentication: postAuthentication for anonymous account
+ok 357 PhantomJS 2.1 - Unit | Adapter | authentication/authentication: postAuthentication for normal account
+ok 358 PhantomJS 2.1 - Unit | Adapter | authentication/authentication: postAuthenticationWithToken
+ok 359 PhantomJS 2.1 - Unit | Adapter | class/class: urlForQueryRecord querying for classes as student
+ok 360 PhantomJS 2.1 - Unit | Adapter | class/class: urlForQueryRecord querying for classes as teacher
+ok 361 PhantomJS 2.1 - Unit | Adapter | collaborator/collaborator: updateCollaborators
+ok 362 PhantomJS 2.1 - Unit | Adapter | collection/collection: readCollection
+ok 363 PhantomJS 2.1 - Unit | Adapter | configuration: loadConfiguration
+ok 364 PhantomJS 2.1 - Unit | Adapter | content/assessment: createAssessment
+ok 365 PhantomJS 2.1 - Unit | Adapter | content/assessment: readAssessment
+ok 366 PhantomJS 2.1 - Unit | Adapter | content/assessment: updateAssessment
+ok 367 PhantomJS 2.1 - Unit | Adapter | content/assessment: addQuestion
+ok 368 PhantomJS 2.1 - Unit | Adapter | content/assessment: deleteAssessment
+ok 369 PhantomJS 2.1 - Unit | Adapter | content/assessment: deleteExternalAssessment
+ok 370 PhantomJS 2.1 - Unit | Adapter | content/assessment: copyAssessment
+ok 371 PhantomJS 2.1 - Unit | Adapter | content/assessment: reorderAssessment
+ok 372 PhantomJS 2.1 - Unit | Adapter | content/class: createClass
+ok 373 PhantomJS 2.1 - Unit | Adapter | content/class: Update class
+ok 374 PhantomJS 2.1 - Unit | Adapter | content/class: deleteClass
+ok 375 PhantomJS 2.1 - Unit | Adapter | content/class: removeStudentFromClass
+ok 376 PhantomJS 2.1 - Unit | Adapter | content/class: joinClass
+ok 377 PhantomJS 2.1 - Unit | Adapter | content/class: getMyClasses
+ok 378 PhantomJS 2.1 - Unit | Adapter | content/class: readClassInfo
+ok 379 PhantomJS 2.1 - Unit | Adapter | content/class: readClassMembers
+ok 380 PhantomJS 2.1 - Unit | Adapter | content/class: associateCourseToClass
+ok 381 PhantomJS 2.1 - Unit | Adapter | content/class: readClassReportStatus
+ok 382 PhantomJS 2.1 - Unit | Adapter | content/collection: createCollection
+ok 383 PhantomJS 2.1 - Unit | Adapter | content/collection: readCollection
+ok 384 PhantomJS 2.1 - Unit | Adapter | content/collection: updateCollection
+ok 385 PhantomJS 2.1 - Unit | Adapter | content/collection: reorderCollection
+ok 386 PhantomJS 2.1 - Unit | Adapter | content/collection: addResource
+ok 387 PhantomJS 2.1 - Unit | Adapter | content/collection: addQuestion
+ok 388 PhantomJS 2.1 - Unit | Adapter | content/collection: deleteCollection
+ok 389 PhantomJS 2.1 - Unit | Adapter | content/collection: copyCollection
+ok 390 PhantomJS 2.1 - Unit | Adapter | content/course: Course creation, success
+ok 391 PhantomJS 2.1 - Unit | Adapter | content/course: Get course by ID
+ok 392 PhantomJS 2.1 - Unit | Adapter | content/course: Update course, success
+ok 393 PhantomJS 2.1 - Unit | Adapter | content/course: deleteCourse
+ok 394 PhantomJS 2.1 - Unit | Adapter | content/course: copyCourse
+ok 395 PhantomJS 2.1 - Unit | Adapter | content/course: reorderCourse
+ok 396 PhantomJS 2.1 - Unit | Adapter | content/lesson: Lesson creation, success
+ok 397 PhantomJS 2.1 - Unit | Adapter | content/lesson: Lesson creation, failure
+ok 398 PhantomJS 2.1 - Unit | Adapter | content/lesson: Get lesson by ID
+ok 399 PhantomJS 2.1 - Unit | Adapter | content/lesson: associateAssessmentOrCollectionToLesson
+ok 400 PhantomJS 2.1 - Unit | Adapter | content/lesson: disassociateAssessmentOrCollectionToLesson
+ok 401 PhantomJS 2.1 - Unit | Adapter | content/lesson: Delete Lesson
+ok 402 PhantomJS 2.1 - Unit | Adapter | content/lesson: Copy Lesson
+ok 403 PhantomJS 2.1 - Unit | Adapter | content/lesson: reorderLesson
+ok 404 PhantomJS 2.1 - Unit | Adapter | content/question: createQuestion
+ok 405 PhantomJS 2.1 - Unit | Adapter | content/question: readQuestion
+ok 406 PhantomJS 2.1 - Unit | Adapter | content/question: updateQuestion
+ok 407 PhantomJS 2.1 - Unit | Adapter | content/question: deleteQuestion
+ok 408 PhantomJS 2.1 - Unit | Adapter | content/question: copyQuestion
+ok 409 PhantomJS 2.1 - Unit | Adapter | content/resource: createResource
+ok 410 PhantomJS 2.1 - Unit | Adapter | content/resource: readResource
+ok 411 PhantomJS 2.1 - Unit | Adapter | content/resource: updateResource
+ok 412 PhantomJS 2.1 - Unit | Adapter | content/resource: copyResource
+ok 413 PhantomJS 2.1 - Unit | Adapter | content/resource: deleteResource
+ok 414 PhantomJS 2.1 - Unit | Adapter | content/unit: Unit creation, success
+ok 415 PhantomJS 2.1 - Unit | Adapter | content/unit: Unit creation, failure
+ok 416 PhantomJS 2.1 - Unit | Adapter | content/unit: Unit update, success
+ok 417 PhantomJS 2.1 - Unit | Adapter | content/unit: Get unit by ID
+ok 418 PhantomJS 2.1 - Unit | Adapter | content/unit: Delete Unit
+ok 419 PhantomJS 2.1 - Unit | Adapter | content/unit: Copy Unit
+ok 420 PhantomJS 2.1 - Unit | Adapter | content/unit: reorderUnit
+ok 421 PhantomJS 2.1 - Unit | Adapter | error: createError
+ok 422 PhantomJS 2.1 - Unit | Adapter | events/collection-play: postData
+ok 423 PhantomJS 2.1 - Unit | Adapter | events/events: sendStartContextEvent
+ok 424 PhantomJS 2.1 - Unit | Adapter | events/events: sendEndContextEvent
+ok 425 PhantomJS 2.1 - Unit | Adapter | events/events: moveToResource
+ok 426 PhantomJS 2.1 - Lesson | Adapter | lesson/lesson: UrlForQueryRecord for one specific lesson
+ok 427 PhantomJS 2.1 - Lesson | Adapter | lesson/lesson: UrlForQueryRecord for many lessons
+ok 428 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readAudiences
+ok 429 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readLicenses
+ok 430 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readDepthOfKnowledgeItems
+ok 431 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readCountries
+ok 432 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readStates
+ok 433 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readDistricts
+ok 434 PhantomJS 2.1 - Unit | Adapter | media: uploadFile
+ok 435 PhantomJS 2.1 - Unit | Adapter | network/network: readMyNetwork
+ok 436 PhantomJS 2.1 - Unit | Adapter | performance/class-collection-performance: urlForQueryRecord method for collection class performance
+ok 437 PhantomJS 2.1 - Unit | Adapter | performance/class-lesson-performance: urlForQueryRecord method for lesson class performance
+ok 438 PhantomJS 2.1 - Unit | Adapter | performance/collection-performance: urlForQueryRecord method for collection performance
+ok 439 PhantomJS 2.1 - Unit | Adapter | performance/lesson-performance: urlForQueryRecord method for lesson performance
+ok 440 PhantomJS 2.1 - Unit | Adapter | performance/unit-performance: urlForQueryRecord method for unit performance
+ok 441 PhantomJS 2.1 - Unit | Adapter | profile/availability: verifyUsername
+ok 442 PhantomJS 2.1 - Unit | Adapter | profile/availability: verifyEmail
+ok 443 PhantomJS 2.1 - Unit | Adapter | profile/courses: getCourses
+ok 444 PhantomJS 2.1 - Unit | Adapter | profile/profile: createProfile
+ok 445 PhantomJS 2.1 - Unit | Adapter | profile/profile: updateMyProfile
+ok 446 PhantomJS 2.1 - Unit | Adapter | profile/profile: readUserProfile
+ok 447 PhantomJS 2.1 - Unit | Adapter | profile/profile: readUserProfileByUsername
+ok 448 PhantomJS 2.1 - Unit | Adapter | profile/profile: followUserProfile
+ok 449 PhantomJS 2.1 - Unit | Adapter | profile/profile: unfollowUserProfile
+ok 450 PhantomJS 2.1 - Unit | Adapter | profile/profile: readResources
+ok 451 PhantomJS 2.1 - Unit | Adapter | profile/profile: readQuestions
+ok 452 PhantomJS 2.1 - Unit | Adapter | profile/profile: readCollections
+ok 453 PhantomJS 2.1 - Unit | Adapter | profile/profile: readAssessments
+ok 454 PhantomJS 2.1 - Unit | Adapter | profile/profile: readNetwork
+ok 455 PhantomJS 2.1 - Unit | Adapter | profile/profile: forgotPassword
+ok 456 PhantomJS 2.1 - Unit | Adapter | profile/profile: resetPassword
+ok 457 PhantomJS 2.1 - Unit | Adapter | rating/rating: urlForFindRecord querying for a single rating
+ok 458 PhantomJS 2.1 - Unit | Adapter | rating/rating: urlForCreateRecord querying for creation of a rating
+ok 459 PhantomJS 2.1 - Unit | Adapter | real-time/real-time: postData
+ok 460 PhantomJS 2.1 - Unit | Adapter | real-time/real-time: getData
+ok 461 PhantomJS 2.1 - Unit | Adapter | real-time/real-time: postAttempt
+ok 462 PhantomJS 2.1 - Unit | Adapter | real-time/real-time: deleteAttempt
+ok 463 PhantomJS 2.1 - Unit | Adapter | real-time/real-time: postOnAir
+ok 464 PhantomJS 2.1 - Unit | Adapter | real-time/real-time: deleteOnAir
+ok 465 PhantomJS 2.1 - Unit | Adapter | real-time/real-time: isOnAir
+ok 466 PhantomJS 2.1 - Unit | Adapter | search/search: searchCollections
+ok 467 PhantomJS 2.1 - Unit | Adapter | search/search: searchCollections 400
+ok 468 PhantomJS 2.1 - Unit | Adapter | search/search: searchAssessments
+ok 469 PhantomJS 2.1 - Unit | Adapter | search/search: searchAssessments 400
+ok 470 PhantomJS 2.1 - Unit | Adapter | search/search: searchResources for all resource types
+ok 471 PhantomJS 2.1 - Unit | Adapter | search/search: searchResources for all resource types 404
+ok 472 PhantomJS 2.1 - Unit | Adapter | search/search: searchResources for some resource types
+ok 473 PhantomJS 2.1 - Unit | Adapter | search/search: searchQuestions for all types
+ok 474 PhantomJS 2.1 - Unit | Adapter | search/search: searchQuestions for all types 404
+ok 475 PhantomJS 2.1 - Unit | Adapter | search/search: searchQuestions for some types and standards
+ok 476 PhantomJS 2.1 - Unit | Adapter | search/search: searchFeaturedCourses
+ok 477 PhantomJS 2.1 - Unit | Adapter | sign in: it exists
+ok 478 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Subjects for K-12
+ok 479 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Subjects for Higher Education
+ok 480 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Subjects for Professional Learning
+ok 481 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Courses
+ok 482 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Domains
+ok 483 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Codes
+ok 484 PhantomJS 2.1 - Unit | Adapter | unit/unit: UrlForQueryRecord for one specific unit
+ok 485 PhantomJS 2.1 - Unit | Adapter | unit/unit: UrlForQueryRecord for many units
+ok 486 PhantomJS 2.1 - Unit | Adapter | user-session: queryRecord method for user session
+ok 487 PhantomJS 2.1 - Unit | Adapter | user/availability: urlForQueryRecord querying email availability
+ok 488 PhantomJS 2.1 - Unit | Adapter | user/availability: urlForQueryRecord querying username availability
+ok 489 PhantomJS 2.1 - Unit | Adapter | user/user: urlForQueryRecord querying for users
+ok 490 PhantomJS 2.1 - Unit | Component | player/gru navigation: changeEmotion
+ok 491 PhantomJS 2.1 - Unit | Component | player/gru navigation: openNavigator
+ok 492 PhantomJS 2.1 - Unit | Component | player/gru navigator: closeNavigator
+ok 493 PhantomJS 2.1 - Unit | Component | player/gru navigator: finishCollection
+ok 494 PhantomJS 2.1 - Unit | Component | player/gru navigator: seeUsageReport
+ok 495 PhantomJS 2.1 - Unit | Component | player/gru navigator: selectItem navigation disabled
+ok 496 PhantomJS 2.1 - Unit | Component | player/gru navigator: selectItem no resource
+ok 497 PhantomJS 2.1 - Unit | Component | player/gru navigator: selectItem with item selected
+ok 498 PhantomJS 2.1 - Unit | Component | player/gru navigator: selectItem with no item selected
+ok 499 PhantomJS 2.1 - Unit | Component | player/gru question viewer: changeAnswer
+ok 500 PhantomJS 2.1 - Unit | Component | player/gru question viewer: clearAnswer
+ok 501 PhantomJS 2.1 - Unit | Component | player/gru question viewer: completeAnswer
+ok 502 PhantomJS 2.1 - Unit | Component | player/gru question viewer: loadedAnswer
+ok 503 PhantomJS 2.1 - Unit | Component | player/gru question viewer: showExplanation
+ok 504 PhantomJS 2.1 - Unit | Component | player/gru question viewer: showHint
+ok 505 PhantomJS 2.1 - Unit | Component | player/gru question viewer: submitQuestion
+ok 506 PhantomJS 2.1 - Unit | Component | player/gru question viewer: reloadQuestion
+ok 507 PhantomJS 2.1 - Unit | Component | player/gru viewer: resourceComponentSelected for non valid resource type
+ok 508 PhantomJS 2.1 - Unit | Component | player/gru viewer: resourceComponentSelected for image resource type
+ok 509 PhantomJS 2.1 - Unit | Component | player/gru viewer: resourceComponentSelected for text/pdf resource type
+ok 510 PhantomJS 2.1 - Unit | Component | player/gru viewer: resourceComponentSelected for youtube resource type
+ok 511 PhantomJS 2.1 - Unit | Component | player/gru viewer: resourceComponentSelected for vimeo resource type
+ok 512 PhantomJS 2.1 - Unit | Component | player/gru viewer: resourceComponentSelected for youtube resource type
+ok 513 PhantomJS 2.1 - Unit | Component | player/gru viewer: buttonTextKey when is not the last resource
+ok 514 PhantomJS 2.1 - Unit | Component | player/gru viewer: buttonTextKey when is the last resource and assessment
+ok 515 PhantomJS 2.1 - Unit | Component | player/gru viewer: buttonTextKey when is the last resource and collection
+ok 516 PhantomJS 2.1 - Unit | Component | player/gru viewer: submitQuestion
+ok 517 PhantomJS 2.1 - Unit | Component | player/questions/gru multiple choice: selectAnswerChoice on load
+ok 518 PhantomJS 2.1 - Unit | Component | player/questions/gru question: hasUserAnswer
+ok 519 PhantomJS 2.1 - Unit | Component | player/questions/gru question: notifyAnswerChanged
+ok 520 PhantomJS 2.1 - Unit | Component | player/questions/gru question: notifyAnswerCleared
+ok 521 PhantomJS 2.1 - Unit | Component | player/questions/gru question: notifyAnswerCompleted
+ok 522 PhantomJS 2.1 - Unit | Component | player/questions/gru question: notifyAnswerLoaded
+ok 523 PhantomJS 2.1 - Unit | Component | player/resources/ gru vimeo resource: getVimeoID default url
+ok 524 PhantomJS 2.1 - Unit | Component | player/resources/ gru vimeo resource: getVimeoID non default vimeo url
+ok 525 PhantomJS 2.1 - Unit | Component | player/resources/ gru vimeo resource: getVimeoID vimeo url with numbers
+ok 526 PhantomJS 2.1 - Unit | Component | player/resources/ gru vimeo resource: getVimeoID when no id provided
+ok 527 PhantomJS 2.1 - Unit | Component | player/resources/ gru youtube resource: getYoutubeIdFromUrl
+ok 528 PhantomJS 2.1 - Unit | Component | reports/assessment/questions/gru-fib: mergeArrays
+ok 529 PhantomJS 2.1 - Unit | Controller | player: finishCollection on collection
+ok 530 PhantomJS 2.1 - Unit | Controller | player: finishCollection on assessment
+ok 531 PhantomJS 2.1 - Unit | Controller | player: submitQuestion with next question available
+ok 532 PhantomJS 2.1 - Unit | Controller | player: submitQuestion with next question unavailable
+ok 533 PhantomJS 2.1 - Unit | Controller | player: selectNavigatorItem
+ok 534 PhantomJS 2.1 - Unit | Controller | player: changeEmotion
+ok 535 PhantomJS 2.1 - Unit | Helper | fractional: Fractional Helper
+ok 536 PhantomJS 2.1 - Unit | Helper | fractional: Fractional Helper With Expression
+ok 537 PhantomJS 2.1 - Unit | Helper | grading scale legend: it works without named arguments
+ok 538 PhantomJS 2.1 - Unit | Helper | grading scale legend: it works with the argument 'notStarted'
+ok 539 PhantomJS 2.1 - Unit | Helper | no tags: Sanitize tag text default behavior
+ok 540 PhantomJS 2.1 - Unit | Helper | no tags: Sanitize tag text default behavior
+ok 541 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text default behavior
+ok 542 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text passing maxLength
+ok 543 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text no suffix
+ok 544 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text passing a valid type
+ok 545 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text passing a valid type and max length
+ok 546 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text when not needed
+ok 547 PhantomJS 2.1 - Unit | Initializer | route: it works
+ok 548 PhantomJS 2.1 - Unit | Mixin | modal: it works
+ok 549 PhantomJS 2.1 - Unit | Model | class/class: isTeacher, empty list
+ok 550 PhantomJS 2.1 - Unit | Model | class/class: isTeacher, not in list
+ok 551 PhantomJS 2.1 - Unit | Model | class/class: isTeacher, in list
+ok 552 PhantomJS 2.1 - Unit | Model | class/class: isStudent, empty list
+ok 553 PhantomJS 2.1 - Unit | Model | class/class: isStudent, not in teacher's list
+ok 554 PhantomJS 2.1 - Unit | Model | class/class: isStudent, in teacher's list
+ok 555 PhantomJS 2.1 - Unit | Model | collection/collection: isAssessment
+ok 556 PhantomJS 2.1 - Unit | Model | collection/collection: hasResources empty
+ok 557 PhantomJS 2.1 - Unit | Model | collection/collection: hasResources not empty
+ok 558 PhantomJS 2.1 - Unit | Model | collection/collection: prevResource without resources
+ok 559 PhantomJS 2.1 - Unit | Model | collection/collection: prevResource
+ok 560 PhantomJS 2.1 - Unit | Model | collection/collection: nextResource without resources
+ok 561 PhantomJS 2.1 - Unit | Model | collection/collection: nextResource
+ok 562 PhantomJS 2.1 - Unit | Model | collection/collection: getResourceById without resources
+ok 563 PhantomJS 2.1 - Unit | Model | collection/collection: getResourceById
+ok 564 PhantomJS 2.1 - Unit | Model | collection/collection: isLastResource
+ok 565 PhantomJS 2.1 - Unit | Model | performance/class-performance: Class average calculations for students and existing units
+ok 566 PhantomJS 2.1 - Unit | Model | performance/performance: isCompleted test
+ok 567 PhantomJS 2.1 - Unit | Model | performance/performance: isCompleted test on Completed unit
+ok 568 PhantomJS 2.1 - Unit | Model | performance/performance: isCollection test on collection performance
+ok 569 PhantomJS 2.1 - Unit | Model | performance/performance: isAssessment test on assesment performance
+ok 570 PhantomJS 2.1 - Unit | Model | performance/performance: isCollectionOrAssessment test on collection performance
+ok 571 PhantomJS 2.1 - Unit | Model | performance/performance: isCollectionOrAssessment test on assessment performance
+ok 572 PhantomJS 2.1 - Unit | Model | performance/performance: isCollectionOrAssessment test on non collection or assessment performance
+ok 573 PhantomJS 2.1 - Unit | Model | performance/performance: isLesson test on lesson performance
+ok 574 PhantomJS 2.1 - Unit | Model | performance/performance: isLesson test on non lesson performance
+ok 575 PhantomJS 2.1 - Unit | Model | performance/performance: isUnit test on unit performance
+ok 576 PhantomJS 2.1 - Unit | Model | performance/performance: isUnit test on non unit performance
+ok 577 PhantomJS 2.1 - Unit | Model | performance/performance: isUnitOrLesson test on lesson performance
+ok 578 PhantomJS 2.1 - Unit | Model | performance/performance: isUnitOrLesson test on lesson performance
+ok 579 PhantomJS 2.1 - Unit | Model | performance/performance: isUnitOrLesson test on non lesson or unit performance
+ok 580 PhantomJS 2.1 - Unit | Model | performance/performance: completionValue test
+ok 581 PhantomJS 2.1 - Unit | Model | performance/performance: hasStarted test
+ok 582 PhantomJS 2.1 - Unit | Model | performance/performance: hasStarted test on false
+ok 583 PhantomJS 2.1 - Unit | Model | performance/student-performance: Student average calculations for existing units
+ok 584 PhantomJS 2.1 - Unit | Model | performance/student-performance: Student average calculations for non existing units
+ok 585 PhantomJS 2.1 - Unit | Model | resource/resource: isQuestion
+ok 586 PhantomJS 2.1 - Unit | Model | resource/resource: format
+ok 587 PhantomJS 2.1 - Unit | Model | resource/resource: isMultipleChoice
+ok 588 PhantomJS 2.1 - Unit | Model | resource/resource: isMultipleAnswer
+ok 589 PhantomJS 2.1 - Unit | Model | resource/resource: isTrueFalse
+ok 590 PhantomJS 2.1 - Unit | Model | resource/resource: isOpenEnded
+ok 591 PhantomJS 2.1 - Unit | Model | resource/resource: isFIB
+ok 592 PhantomJS 2.1 - Unit | Model | resource/resource: isHotSpotText
+ok 593 PhantomJS 2.1 - Unit | Model | resource/resource: isHotSpotImage
+ok 594 PhantomJS 2.1 - Unit | Model | resource/resource: isHotTextReorder
+ok 595 PhantomJS 2.1 - Unit | Model | resource/resource: isHotTextHighlight
+ok 596 PhantomJS 2.1 - Unit | Model | resource/resource: isImageResource
+ok 597 PhantomJS 2.1 - Unit | Model | resource/resource: isYoutubeResource
+ok 598 PhantomJS 2.1 - Unit | Model | resource/resource: isPDFResource
+ok 599 PhantomJS 2.1 - Unit | Model | resource/resource: isVimeoResource
+ok 600 PhantomJS 2.1 - Unit | Model | resource/resource: isHotTextHighlightWord
+ok 601 PhantomJS 2.1 - Unit | Model | resource/resource: isHotTextHighlightSentence
+ok 602 PhantomJS 2.1 - Unit | Model | resource/resource: hasAnswers
+ok 603 PhantomJS 2.1 - Unit | Model | resource/resource: assetUrl
+ok 604 PhantomJS 2.1 - Unit | Model | resource/resource: isUrlResource
+ok 605 PhantomJS 2.1 - Unit | Model | result/assessment: questionResults
+ok 606 PhantomJS 2.1 - Unit | Model | result/assessment: totalResources
+ok 607 PhantomJS 2.1 - Unit | Model | result/assessment: currentResult
+ok 608 PhantomJS 2.1 - Unit | Model | result/assessment: getResultByResourceId
+ok 609 PhantomJS 2.1 - Unit | Model | result/question: questionId
+ok 610 PhantomJS 2.1 - Unit | Model | result/question: correct
+ok 611 PhantomJS 2.1 - Unit | Model | taxonomy/browse-item: createFromTaxonomyItem -copy up to one level
+ok 612 PhantomJS 2.1 - Unit | Model | taxonomy/browse-item: createFromTaxonomyItem -copy up to two levels
+ok 613 PhantomJS 2.1 - Unit | Model | taxonomy/browse-item: createFromTaxonomyItem -copy up to three levels
+ok 614 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-item: getPath with no ancestors
+ok 615 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-item: getPath with ancestors
+ok 616 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-item: find
+ok 617 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-item: destroyItem
+ok 618 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-tag-data: isMicroStandardId
+ok 619 PhantomJS 2.1 - Unit | Route | assign: it exists
+ok 620 PhantomJS 2.1 - Unit | Route | assignments: it exists
+ok 621 PhantomJS 2.1 - Unit | Serializer | analytics/analytics: normalizeResponse
+ok 622 PhantomJS 2.1 - Unit | Serializer | authentication/authentication: normalizeResponse for anonymous account
+ok 623 PhantomJS 2.1 - Unit | Serializer | authentication/authentication: normalizeResponse for normal account
+ok 624 PhantomJS 2.1 - Unit | Serializer | authentication/authentication: normalizeResponse for google account
+ok 625 PhantomJS 2.1 - Unit | Serializer | authentication/authentication: normalizeResponse for google account containing user category
+ok 626 PhantomJS 2.1 - Unit | Serializer | class/class: normalizeQueryRecordResponse
+ok 627 PhantomJS 2.1 - Unit | Serializer | class/class: normalizeFindRecordResponse
+ok 628 PhantomJS 2.1 - Unit | Serializer | class/class: normalizeClass
+ok 629 PhantomJS 2.1 - Unit | Serializer | class/class: normalizeTeachers
+ok 630 PhantomJS 2.1 - Unit | Serializer | collection/collection: normalizeReadCollection
+ok 631 PhantomJS 2.1 - Unit | Serializer | content/assessment: serializeCreateAssessment
+ok 632 PhantomJS 2.1 - Unit | Serializer | content/assessment: serializeUpdateAssessment
+ok 633 PhantomJS 2.1 - Unit | Serializer | content/assessment: normalizeReadAssessment
+ok 634 PhantomJS 2.1 - Unit | Serializer | content/assessment: normalizeReadAssessment with nulls
+ok 635 PhantomJS 2.1 - Unit | Serializer | content/assessment: serializeReorderAssessment
+ok 636 PhantomJS 2.1 - Unit | Serializer | content/assessment: normalizeReadAssessment - if visible_on_profile is undefined
+ok 637 PhantomJS 2.1 - Unit | Serializer | content/assessment: normalizeReadAssessment - if it is not visible on profile
+ok 638 PhantomJS 2.1 - Unit | Serializer | content/class: serializeCreateClass
+ok 639 PhantomJS 2.1 - Unit | Serializer | content/class: serializeUpdateClass
+ok 640 PhantomJS 2.1 - Unit | Serializer | content/class: normalizeClasses
+ok 641 PhantomJS 2.1 - Unit | Serializer | content/class: normalizeReadClassInfo
+ok 642 PhantomJS 2.1 - Unit | Serializer | content/class: normalizeReadClassMembers
+ok 643 PhantomJS 2.1 - Unit | Serializer | content/collection: serializeCreateCollection
+ok 644 PhantomJS 2.1 - Unit | Serializer | content/collection: serializeUpdateCollection
+ok 645 PhantomJS 2.1 - Unit | Serializer | content/collection: serializeUpdateCollection empty learning objectives
+ok 646 PhantomJS 2.1 - Unit | Serializer | content/collection: normalizeReadCollection
+ok 647 PhantomJS 2.1 - Unit | Serializer | content/collection: serializeReorderCollection
+ok 648 PhantomJS 2.1 - Unit | Serializer | content/collection: normalizeReadCollection - if visible_on_profile is undefined
+ok 649 PhantomJS 2.1 - Unit | Serializer | content/collection: normalizeReadCollection - if it is not visible on profile
+ok 650 PhantomJS 2.1 - Unit | Serializer | content/course: serializeCreateCourse
+ok 651 PhantomJS 2.1 - Unit | Serializer | content/course: serializeUpdateCourse all values
+ok 652 PhantomJS 2.1 - Unit | Serializer | content/course: serializeUpdateCourse only with title
+ok 653 PhantomJS 2.1 - Unit | Serializer | content/course: normalizeCourse
+ok 654 PhantomJS 2.1 - Unit | Serializer | content/course: normalizeGetCourses
+ok 655 PhantomJS 2.1 - Unit | Serializer | content/course: serializeReorderCourse
+ok 656 PhantomJS 2.1 - Unit | Serializer | content/course: normalizeCourse - if visible_on_profile is undefined
+ok 657 PhantomJS 2.1 - Unit | Serializer | content/course: normalizeCourse - if it is not visible on profile
+ok 658 PhantomJS 2.1 - Unit | Serializer | content/lesson: serializeCreateLesson
+ok 659 PhantomJS 2.1 - Unit | Serializer | content/lesson: normalizeLesson
+ok 660 PhantomJS 2.1 - Unit | Serializer | content/lesson: serializeReorderLesson
+ok 661 PhantomJS 2.1 - Unit | Serializer | content/question: serializeCreateQuestion
+ok 662 PhantomJS 2.1 - Unit | Serializer | content/question: serializeUpdateQuestion null values
+ok 663 PhantomJS 2.1 - Unit | Serializer | content/question: serializeUpdateQuestion for hot spot image
+ok 664 PhantomJS 2.1 - Unit | Serializer | content/question: serializeUpdateQuestion
+ok 665 PhantomJS 2.1 - Unit | Serializer | content/question: serializeAnswer
+ok 666 PhantomJS 2.1 - Unit | Serializer | content/question: serializeAnswer for image
+ok 667 PhantomJS 2.1 - Unit | Serializer | content/question: normalizeReadQuestion
+ok 668 PhantomJS 2.1 - Unit | Serializer | content/question: normalizeAnswer
+ok 669 PhantomJS 2.1 - Unit | Serializer | content/question: normalizeReadQuestion - if visible_on_profile is undefined
+ok 670 PhantomJS 2.1 - Unit | Serializer | content/question: normalizeReadQuestion - if it is not visible on profile
+ok 671 PhantomJS 2.1 - Unit | Serializer | content/resource: serializeCreateResource
+ok 672 PhantomJS 2.1 - Unit | Serializer | content/resource: serializeUpdateResource
+ok 673 PhantomJS 2.1 - Unit | Serializer | content/resource: normalizeReadResource
+ok 674 PhantomJS 2.1 - Unit | Serializer | content/resource: normalizeReadResource for image resource with relative path
+ok 675 PhantomJS 2.1 - Unit | Serializer | content/resource: normalizeReadResource for url resource with no full path
+ok 676 PhantomJS 2.1 - Unit | Serializer | content/resource: normalizeReadResource - if visible_on_profile is undefined
+ok 677 PhantomJS 2.1 - Unit | Serializer | content/resource: normalizeReadResource - if it is not visible on profile
+ok 678 PhantomJS 2.1 - Unit | Serializer | content/unit: serializeCreateUnit
+ok 679 PhantomJS 2.1 - Unit | Serializer | content/unit: serializeUpdateUnit
+ok 680 PhantomJS 2.1 - Unit | Serializer | content/unit: normalizeUnit
+ok 681 PhantomJS 2.1 - Unit | Serializer | content/unit: serializeReorderUnit
+ok 682 PhantomJS 2.1 - Unit | Serializer | course/course: normalizeFindRecordResponse
+ok 683 PhantomJS 2.1 - Unit | Serializer | error/error: serializeError
+ok 684 PhantomJS 2.1 - Unit | Serializer | events/events: serializeResourceResult with a resource
+ok 685 PhantomJS 2.1 - Unit | Serializer | events/events: serializeResourceResult with a question
+ok 686 PhantomJS 2.1 - Unit | Serializer | events/events: normalizeAssessmentResult
+ok 687 PhantomJS 2.1 - Unit | Serializer | events/events: normalizeResourceResults
+ok 688 PhantomJS 2.1 - Lesson | Serializer | lesson/lesson: NormalizeQueryRecordResponse for single result
+ok 689 PhantomJS 2.1 - Lesson | Serializer | lesson/lesson: NormalizeQueryRecordResponse for multiple results
+ok 690 PhantomJS 2.1 - Unit | Serializer | lookup/lookup: normalizeReadAudiences
+ok 691 PhantomJS 2.1 - Unit | Serializer | lookup/lookup: normalizeReadLicenses
+ok 692 PhantomJS 2.1 - Unit | Serializer | lookup/lookup: normalizeReadDepthOfKnowledgeItems
+ok 693 PhantomJS 2.1 - Unit | Serializer | lookup/lookup: normalizeReadCountries
+ok 694 PhantomJS 2.1 - Unit | Serializer | lookup/lookup: normalizeReadStates
+ok 695 PhantomJS 2.1 - Unit | Serializer | lookup/lookup: normalizeReadDistricts
+ok 696 PhantomJS 2.1 - Unit | Serializer | network/network: normalizeReadNetwork
+ok 697 PhantomJS 2.1 - Unit | Serializer | performance/class-collection-performance: normalizeQueryRecordResponse
+ok 698 PhantomJS 2.1 - Unit | Serializer | performance/class-lesson-performance: normalizeQueryRecordResponse
+ok 699 PhantomJS 2.1 - Unit | Serializer | performance/class-unit-performance: normalizeQueryRecordResponse
+ok 700 PhantomJS 2.1 - Unit | Serializer | performance/collection-performance: normalizeQueryRecordResponse
+ok 701 PhantomJS 2.1 - Unit | Serializer | performance/lesson-performance: normalizeQueryRecordResponse
+ok 702 PhantomJS 2.1 - Unit | Serializer | performance/unit-performance: normalizeQueryRecordResponse
+ok 703 PhantomJS 2.1 - Unit | Serializer | profile/profile: serializeCreateProfile
+ok 704 PhantomJS 2.1 - Unit | Serializer | profile/profile: serializeUpdateProfile
+ok 705 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeReadProfile
+ok 706 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeCreateProfile
+ok 707 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeOwners
+ok 708 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeQuestion
+ok 709 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeResource
+ok 710 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeCollection
+ok 711 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeAssessment
+ok 712 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeReadResources
+ok 713 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeReadQuestions
+ok 714 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeReadCollections
+ok 715 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeReadAssessments
+ok 716 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeReadNetwork for following
+ok 717 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeReadNetwork for followers
+ok 718 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeQuestion - if visible_on_profile is undefined
+ok 719 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeQuestion - if it is not visible on profile
+ok 720 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeResource - if visible_on_profile is undefined
+ok 721 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeResource - if it is not visible on profile
+ok 722 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeCollection - if visible_on_profile is undefined
+ok 723 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeCollection - if is not visible on profile
+ok 724 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeAssessment - if visible_on_profile is undefined
+ok 725 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeAssessment - if it not is visible on profile
+ok 726 PhantomJS 2.1 - Unit | Serializer | real-time/real-time: normalizeRealTimeEvent for event
+ok 727 PhantomJS 2.1 - Unit | Serializer | real-time/real-time: normalizeRealTimeEvent for new attempt
+ok 728 PhantomJS 2.1 - Unit | Serializer | real-time/real-time: normalizeRealTimeEvent for complete attempt
+ok 729 PhantomJS 2.1 - Unit | Serializer | search/search: normalizeCollection
+ok 730 PhantomJS 2.1 - Unit | Serializer | search/search: normalizeAssessment
+ok 731 PhantomJS 2.1 - Unit | Serializer | search/search: normalizeSearchResources
+ok 732 PhantomJS 2.1 - Unit | Serializer | search/search: normalizeSearchQuestions
+ok 733 PhantomJS 2.1 - Unit | Serializer | search/search: normalizeQuestion
+ok 734 PhantomJS 2.1 - Unit | Serializer | search/search: normalizeResource
+ok 735 PhantomJS 2.1 - Unit | Serializer | search/search: normalizeOwner
+ok 736 PhantomJS 2.1 - Unit | Serializer | search/search: normalizeSearchCourses
+ok 737 PhantomJS 2.1 - Unit | Serializer | search/search: normalizeCourse
+ok 738 PhantomJS 2.1 - Unit | Serializer | sign in: it serializes records
+ok 739 PhantomJS 2.1 - Unit | Serializer | subject: it normalize findAll response
+ok 740 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeFetchSubjects
+ok 741 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeFetchCourses
+ok 742 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeFetchDomains
+ok 743 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeFetchCodes
+ok 744 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: serializeTaxonomy
+ok 745 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeTaxonomyObject
+ok 746 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeTaxonomyArray
+ok 747 PhantomJS 2.1 - Unit | Serializer | unit/unit: NormalizeQueryRecordResponse for single result
+ok 748 PhantomJS 2.1 - Unit | Serializer | unit/unit: NormalizeQueryRecordResponse for multiple results
+ok 749 PhantomJS 2.1 - Unit | Serializer | user-session: serializeSessionAssessments
+ok 750 PhantomJS 2.1 - Unit | Serializer | user-session: serializeOpenAssessment
+ok 751 PhantomJS 2.1 - Unit | Serializer | user/availability: normalizeSingleResponse
+ok 752 PhantomJS 2.1 - Unit | Serializer | user/availability: normalizeSingleResponse on negative response
+ok 753 PhantomJS 2.1 - Unit | Serializer | user/user: normalizeSingleResponse
+ok 754 PhantomJS 2.1 - Unit | Serializer | user/user: normalizeQueryRecordResponse
+ok 755 PhantomJS 2.1 - Unit | Serializer | user/user: normalizeUser
+ok 756 PhantomJS 2.1 - Unit | Service | api-sdk/analytics: findResourcesByCollection
+ok 757 PhantomJS 2.1 - Unit | Service | api-sdk/assessment: createAssessment
+ok 758 PhantomJS 2.1 - Unit | Service | api-sdk/assessment: readAssessment
+ok 759 PhantomJS 2.1 - Unit | Service | api-sdk/assessment: updateAssessment
+ok 760 PhantomJS 2.1 - Unit | Service | api-sdk/assessment: addQuestion
+ok 761 PhantomJS 2.1 - Unit | Service | api-sdk/assessment: deleteAssessment
+ok 762 PhantomJS 2.1 - Unit | Service | api-sdk/assessment: copyAssessment
+ok 763 PhantomJS 2.1 - Unit | Service | api-sdk/assessment: reorderAssessment
+ok 764 PhantomJS 2.1 - Unit | Service | api-sdk/authentication: authenticateAsAnonymous
+ok 765 PhantomJS 2.1 - Unit | Service | api-sdk/authentication: authenticateWithCredentials
+ok 766 PhantomJS 2.1 - Unit | Service | api-sdk/authentication: authenticateWithToken
+ok 767 PhantomJS 2.1 - Unit | Service | api-sdk/class: createClass
+ok 768 PhantomJS 2.1 - Unit | Service | api-sdk/class: updateClass
+ok 769 PhantomJS 2.1 - Unit | Service | api-sdk/class: deleteClass
+ok 770 PhantomJS 2.1 - Unit | Service | api-sdk/class: removeStudentFromClass
+ok 771 PhantomJS 2.1 - Unit | Service | api-sdk/class: joinClass successful
+ok 772 PhantomJS 2.1 - Unit | Service | api-sdk/class: joinClass restricted
+ok 773 PhantomJS 2.1 - Unit | Service | api-sdk/class: joinClass not found
+ok 774 PhantomJS 2.1 - Unit | Service | api-sdk/class: findMyClasses
+ok 775 PhantomJS 2.1 - Unit | Service | api-sdk/class: readClassInfo
+ok 776 PhantomJS 2.1 - Unit | Service | api-sdk/class: readClassMembers
+ok 777 PhantomJS 2.1 - Unit | Service | api-sdk/class: findClassesIJoined
+ok 778 PhantomJS 2.1 - Unit | Service | api-sdk/class: findClassesITeach
+ok 779 PhantomJS 2.1 - Unit | Service | api-sdk/class: findById
+ok 780 PhantomJS 2.1 - Unit | Service | api-sdk/class: associateCourseToClass
+ok 781 PhantomJS 2.1 - Unit | Service | api-sdk/class: readClassReportStatus
+ok 782 PhantomJS 2.1 - Unit | Service | api-sdk/class: requestClassReport
+ok 783 PhantomJS 2.1 - Unit | Service | api-sdk/class: storeClassReportStatus
+ok 784 PhantomJS 2.1 - Unit | Service | api-sdk/class: getReportClassesStatusFromStore
+ok 785 PhantomJS 2.1 - Unit | Service | api-sdk/collaborator: updateCollaborators
+ok 786 PhantomJS 2.1 - Unit | Service | api-sdk/collaborator: updateCourseCollaborators
+ok 787 PhantomJS 2.1 - Unit | Service | api-sdk/collaborator: updateCollectionCollaborators
+ok 788 PhantomJS 2.1 - Unit | Service | api-sdk/collaborator: updateAssessmentCollaborators
+ok 789 PhantomJS 2.1 - Unit | Service | api-sdk/collection: readCollection
+ok 790 PhantomJS 2.1 - Unit | Service | api-sdk/course-location: findOneByUser
+ok 791 PhantomJS 2.1 - Unit | Service | api-sdk/course-location: findByCourse
+ok 792 PhantomJS 2.1 - Unit | Service | api-sdk/course-location: findByCourseAndUnit
+ok 793 PhantomJS 2.1 - Unit | Service | api-sdk/course-location: findByCourseAndUnitAndLesson
+ok 794 PhantomJS 2.1 - Unit | Service | api-sdk/course: findById
+ok 795 PhantomJS 2.1 - Unit | Service | api-sdk/course: createCourse
+ok 796 PhantomJS 2.1 - Unit | Service | api-sdk/course: deleteCourse
+ok 797 PhantomJS 2.1 - Unit | Service | api-sdk/course: copyCourse
+ok 798 PhantomJS 2.1 - Unit | Service | api-sdk/course: reorderCourse
+ok 799 PhantomJS 2.1 - Unit | Service | api-sdk/error: createError
+ok 800 PhantomJS 2.1 - Unit | Service | api-sdk/events: startContext
+ok 801 PhantomJS 2.1 - Unit | Service | api-sdk/events: endContext
+ok 802 PhantomJS 2.1 - Unit | Service | api-sdk/events: moveToResource
+ok 803 PhantomJS 2.1 - Unit | Service | api-sdk/lesson: findById
+ok 804 PhantomJS 2.1 - Unit | Service | api-sdk/lesson: findByClassAndCourseAndUnit
+ok 805 PhantomJS 2.1 - Unit | Service | api-sdk/lesson: createLesson
+ok 806 PhantomJS 2.1 - Unit | Service | api-sdk/lesson: updateLesson
+ok 807 PhantomJS 2.1 - Unit | Service | api-sdk/lesson: Delete Lesson
+ok 808 PhantomJS 2.1 - Unit | Service | api-sdk/lesson: Dissassociate collection from Lesson
+ok 809 PhantomJS 2.1 - Unit | Service | api-sdk/lesson: Copy Lesson
+ok 810 PhantomJS 2.1 - Unit | Service | api-sdk/lesson: reorderLesson
+ok 811 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readAudiences
+ok 812 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readLicenses
+ok 813 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readDepthOfKnowledgeItems
+ok 814 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readCountries
+ok 815 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readStates
+ok 816 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readDistricts
+ok 817 PhantomJS 2.1 - Unit | Service | api-sdk/media: Upload content file
+ok 818 PhantomJS 2.1 - Unit | Service | api-sdk/media: Upload user file
+ok 819 PhantomJS 2.1 - Unit | Service | api-sdk/network: readMyNetwork
+ok 820 PhantomJS 2.1 - Unit | Service | api-sdk/network: readUserNetwork
+ok 821 PhantomJS 2.1 - Unit | Service | api-sdk/performance: findStudentPerformanceByCourse
+ok 822 PhantomJS 2.1 - Unit | Service | api-sdk/performance: findStudentPerformanceByUnit
+ok 823 PhantomJS 2.1 - Unit | Service | api-sdk/performance: findStudentPerformanceByLesson
+ok 824 PhantomJS 2.1 - Unit | Service | api-sdk/performance: findClassPerformance
+ok 825 PhantomJS 2.1 - Unit | Service | api-sdk/performance: findClassPerformanceByUnit
+ok 826 PhantomJS 2.1 - Unit | Service | api-sdk/performance: findClassPerformanceByUnitAndLesson
+ok 827 PhantomJS 2.1 - Unit | Service | api-sdk/profile: createProfile
+ok 828 PhantomJS 2.1 - Unit | Service | api-sdk/profile: updateMyProfile
+ok 829 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readUserProfile
+ok 830 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readMultipleProfiles
+ok 831 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readUserProfileByUsername
+ok 832 PhantomJS 2.1 - Unit | Service | api-sdk/profile: followUserProfile
+ok 833 PhantomJS 2.1 - Unit | Service | api-sdk/profile: unfollowUserProfile
+ok 834 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkUsernameAvailability-User does not exist
+ok 835 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkUsernameAvailability-User already exists
+ok 836 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkEmailAvailability-Email does not exist
+ok 837 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkEmailAvailability-Email already exists
+ok 838 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkEmailExists-Email exists
+ok 839 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkEmailExists-Email does not exist
+ok 840 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkGoogleEmail-The account does not exist
+ok 841 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkGoogleEmail-Account not using google sign-in
+ok 842 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkGoogleEmail-Account using google sign-in already exists
+ok 843 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkGoogleUsername-The account does not exist
+ok 844 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkGoogleUsername-Account not using google sign-in
+ok 845 PhantomJS 2.1 - Unit | Service | api-sdk/profile: checkGoogleUsername-Account using google sign-in already exists
+ok 846 PhantomJS 2.1 - Unit | Service | api-sdk/profile: getCourses
+ok 847 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readResources
+ok 848 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readQuestions
+ok 849 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readCollections
+ok 850 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readAssessments
+ok 851 PhantomJS 2.1 - Unit | Service | api-sdk/profile: forgotPassword
+ok 852 PhantomJS 2.1 - Unit | Service | api-sdk/profile: resetPassword
+ok 853 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readFollowing
+ok 854 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readFollowers
+ok 855 PhantomJS 2.1 - Unit | Service | api-sdk/question: createQuestion
+ok 856 PhantomJS 2.1 - Unit | Service | api-sdk/question: readQuestion
+ok 857 PhantomJS 2.1 - Unit | Service | api-sdk/question: updateQuestion
+ok 858 PhantomJS 2.1 - Unit | Service | api-sdk/question: deleteQuestion
+ok 859 PhantomJS 2.1 - Unit | Service | api-sdk/question: copyQuestion
+ok 860 PhantomJS 2.1 - Unit | Service | api-sdk/real-time: notifyResourceResult
+ok 861 PhantomJS 2.1 - Unit | Service | api-sdk/real-time: findResourcesByCollection
+ok 862 PhantomJS 2.1 - Unit | Service | api-sdk/real-time: notifyAttemptStarted
+ok 863 PhantomJS 2.1 - Unit | Service | api-sdk/real-time: notifyAttemptFinished
+ok 864 PhantomJS 2.1 - Unit | Service | api-sdk/real-time: turnOnAirOn
+ok 865 PhantomJS 2.1 - Unit | Service | api-sdk/real-time: turnOnAirOff
+ok 866 PhantomJS 2.1 - Unit | Service | api-sdk/real-time: isOnAir
+ok 867 PhantomJS 2.1 - Unit | Service | api-sdk/resource: createResource
+ok 868 PhantomJS 2.1 - Unit | Service | api-sdk/resource: readResource
+ok 869 PhantomJS 2.1 - Unit | Service | api-sdk/resource: updateResource
+ok 870 PhantomJS 2.1 - Unit | Service | api-sdk/resource: copyResource
+ok 871 PhantomJS 2.1 - Unit | Service | api-sdk/resource: deleteResource
+ok 872 PhantomJS 2.1 - Unit | Service | api-sdk/search: searchCollections
+ok 873 PhantomJS 2.1 - Unit | Service | api-sdk/search: searchAssessments
+ok 874 PhantomJS 2.1 - Unit | Service | api-sdk/search: searchResources
+ok 875 PhantomJS 2.1 - Unit | Service | api-sdk/search: searchQuestions
+ok 876 PhantomJS 2.1 - Unit | Service | api-sdk/search: searchFeaturedCourses
+ok 877 PhantomJS 2.1 - Unit | Service | api-sdk/session: signInWithUser
+ok 878 PhantomJS 2.1 - Unit | Service | api-sdk/session: signInWithToken
+ok 879 PhantomJS 2.1 - Unit | Service | api-sdk/session: signUp
+ok 880 PhantomJS 2.1 - Unit | Service | api-sdk/session: updateUserData
+ok 881 PhantomJS 2.1 - Unit | Service | api-sdk/session: authorize
+ok 882 PhantomJS 2.1 - Unit | Service | api-sdk/taxonomy: fetchSubjects
+ok 883 PhantomJS 2.1 - Unit | Service | api-sdk/taxonomy: fetchCourses
+ok 884 PhantomJS 2.1 - Unit | Service | api-sdk/taxonomy: fetchDomains
+ok 885 PhantomJS 2.1 - Unit | Service | api-sdk/taxonomy: fetchCodes
+ok 886 PhantomJS 2.1 - Unit | Service | api-sdk/unit: findById
+ok 887 PhantomJS 2.1 - Unit | Service | api-sdk/unit: findByClassAndCourse
+ok 888 PhantomJS 2.1 - Unit | Service | api-sdk/unit: createUnit
+ok 889 PhantomJS 2.1 - Unit | Service | api-sdk/unit: updateUnit
+ok 890 PhantomJS 2.1 - Unit | Service | api-sdk/unit: Delete Unit
+ok 891 PhantomJS 2.1 - Unit | Service | api-sdk/unit: Copy Unit
+ok 892 PhantomJS 2.1 - Unit | Service | api-sdk/unit: reorderUnit
+ok 893 PhantomJS 2.1 - Unit | Service | api-sdk/user-session: getCompletedSessions
+ok 894 PhantomJS 2.1 - Unit | Service | api-sdk/user-session: getOpenSession
+ok 895 PhantomJS 2.1 - Unit | Service | api-sdk/user: findMembersByClass
+ok 896 PhantomJS 2.1 - Unit | Service | configuration: loadConfiguration
+ok 897 PhantomJS 2.1 - Unit | Service | taxonomy: getSubjects when taxonomy container has not been loaded
+ok 898 PhantomJS 2.1 - Unit | Service | taxonomy: getSubjects when taxonomy is already loaded
+ok 899 PhantomJS 2.1 - Unit | Service | taxonomy: getCourses when taxonomy courses does not exist for subject
+ok 900 PhantomJS 2.1 - Unit | Service | taxonomy: getCourses when taxonomy courses exist for subject
+ok 901 PhantomJS 2.1 - Unit | Service | taxonomy: findSubjectById for a loaded category and subject
+ok 902 PhantomJS 2.1 - Unit | Service | taxonomy: findSubjectById for a loaded category and non-loaded subject
+ok 903 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -all in L0
+ok 904 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -L1 with parent
+ok 905 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -L1 with/without parent
+ok 906 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -one learning target
+ok 907 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -multi-level learning targets
+ok 908 PhantomJS 2.1 - Unit | Utility | answer object: Answer Object - correct
+ok 909 PhantomJS 2.1 - Unit | Utility | dropdown item: it works
+ok 910 PhantomJS 2.1 - Unit | utils | endpoint-config: getEndpointUrl
+ok 911 PhantomJS 2.1 - Unit | utils | endpoint-config: getEndpointSecureUrl
+ok 912 PhantomJS 2.1 - Unit | utils | endpoint-config: getRealTimeWebServiceUrl
+ok 913 PhantomJS 2.1 - Unit | utils | endpoint-config: getRealTimeWebServiceUri
+ok 914 PhantomJS 2.1 - Unit | utils | endpoint-config: getRealTimeWebSocketUrl
+ok 915 PhantomJS 2.1 - Unit | utils | endpoint-config: getRealTimeWebSocketUri
+ok 916 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - getCorrectAnswer empty array
+ok 917 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - getCorrectAnswer
+ok 918 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - isAnswerChoiceCorrect
+ok 919 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - isAnswerChoiceCorrect with special character
+ok 920 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - isCorrect
+ok 921 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - distribution
+ok 922 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - answerKey
+ok 923 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - sameAnswer
+ok 924 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - toAnswerObjects when correct
+ok 925 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - toAnswerObjects when incorrect
+ok 926 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - toUserAnswer
+ok 927 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - toUserAnswer when no respond is provided
+ok 928 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - getCorrectAnswers
+ok 929 PhantomJS 2.1 - Unit | Utility | fill in the blank: FIB - toFibText
+ok 930 PhantomJS 2.1 - Unit | Utility | fill in the blank: getQuestionAnswers from text
+ok 931 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isCollectionPlayer
+ok 932 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isAssessmentPlayer
+ok 933 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isResourcePlayer
+ok 934 PhantomJS 2.1 - Unit | Utility | gooru legacy url: module
+ok 935 PhantomJS 2.1 - Unit | Utility | gooru legacy url: id
+ok 936 PhantomJS 2.1 - Unit | Utility | gooru legacy url: contentId
+ok 937 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isLegacyUrl
+ok 938 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isLegacyUrl - not so
+ok 939 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isLegacyUrl - google sign url
+ok 940 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for collection-play with no content id
+ok 941 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for collection-play with content id
+ok 942 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for collection-play with invalid content id, cid={1}
+ok 943 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for assessment-play with no content id
+ok 944 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for assessment-play with content id
+ok 945 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for assessment-play with invalid content id, cid={1}
+ok 946 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for resource-play
+ok 947 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for profile
+ok 948 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - getCorrectAnswer empty array
+ok 949 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - getCorrectAnswer
+ok 950 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - isAnswerChoiceCorrect
+ok 951 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - isCorrect
+ok 952 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - distribution
+ok 953 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - answerKey
+ok 954 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - sameAnswer
+ok 955 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - toAnswerObjects
+ok 956 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - toUserAnswer
+ok 957 PhantomJS 2.1 - Unit | Utility | hot spot image: Hot Spot Image - toUserAnswer when no respond is provided
+ok 958 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - getCorrectAnswer empty array
+ok 959 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - getCorrectAnswer
+ok 960 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - isAnswerChoiceCorrect
+ok 961 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - isCorrect
+ok 962 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - distribution
+ok 963 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - answerKey
+ok 964 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - sameAnswer
+ok 965 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - toAnswerObjects
+ok 966 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - toUserAnswer
+ok 967 PhantomJS 2.1 - Unit | Utility | hot spot text: Hot Spot Text - toUserAnswer when no respond is provided
+ok 968 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - getCorrectAnswer empty array
+ok 969 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - getCorrectAnswer
+ok 970 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - isAnswerChoiceCorrect
+ok 971 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - isCorrect
+ok 972 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - distribution
+ok 973 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - answerKey
+ok 974 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - sameAnswer
+ok 975 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - getWordItems
+ok 976 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - getSentenceItems
+ok 977 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - toItems
+ok 978 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - getItems isHotTextHighlightWord
+ok 979 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - getItems isHotTextHighlightSentence
+ok 980 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - transformText
+ok 981 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - toAnswerObjects
+ok 982 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - toUserAnswer
+ok 983 PhantomJS 2.1 - Unit | Utility | hot text highlight: Hot Text Highlight - toUserAnswer when no respond is provided
+ok 984 PhantomJS 2.1 - Unit | Utility | math: isNumeric with integer literals
+ok 985 PhantomJS 2.1 - Unit | Utility | math: isNumeric with floting-point literals
+ok 986 PhantomJS 2.1 - Unit | Utility | math: isNumeric with non-numeric values
+ok 987 PhantomJS 2.1 - Unit | Utility | math: Average on array of values
+ok 988 PhantomJS 2.1 - Unit | Utility | math: Average on non-valid values
+ok 989 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - getCorrectAnswer empty array
+ok 990 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - getCorrectAnswer
+ok 991 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - isAnswerChoiceCorrect
+ok 992 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - isCorrect
+ok 993 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - answerKey
+ok 994 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - sameAnswer
+ok 995 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - distribution
+ok 996 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - toAnswerObjects
+ok 997 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - toUserAnswer
+ok 998 PhantomJS 2.1 - Unit | Utility | multiple answer: Multiple Answer - toUserAnswer when the user didn't respond
+ok 999 PhantomJS 2.1 - Unit | Utility | multiple choice: Multiple Choice - getCorrectAnswer empty array
+ok 1000 PhantomJS 2.1 - Unit | Utility | multiple choice: Multiple Choice - getCorrectAnswer no correct answer provided
+ok 1001 PhantomJS 2.1 - Unit | Utility | multiple choice: Multiple Choice - getCorrectAnswer when correct answer is provided
+ok 1002 PhantomJS 2.1 - Unit | Utility | multiple choice: Multiple Choice - isCorrect
+ok 1003 PhantomJS 2.1 - Unit | Utility | multiple choice: Multiple Choice - distribution
+ok 1004 PhantomJS 2.1 - Unit | Utility | multiple choice: Multiple Choice - answerKey
+ok 1005 PhantomJS 2.1 - Unit | Utility | multiple choice: Multiple Choice - sameAnswer
+ok 1006 PhantomJS 2.1 - Unit | Utility | multiple choice: Multiple Choice - toAnswerObjects
+ok 1007 PhantomJS 2.1 - Unit | Utility | multiple choice: Multiple Choice - toUserAnswer
+ok 1008 PhantomJS 2.1 - Unit | Utility | open ended: Open Ended - getCorrectAnswer no correct answer provided
+ok 1009 PhantomJS 2.1 - Unit | Utility | open ended: Open Ended - isCorrect
+ok 1010 PhantomJS 2.1 - Unit | Utility | open ended: Open Ended - distribution
+ok 1011 PhantomJS 2.1 - Unit | Utility | open ended: Open Ended - answerKey
+ok 1012 PhantomJS 2.1 - Unit | Utility | open ended: Open Ended - toAnswerObjects
+ok 1013 PhantomJS 2.1 - Unit | Utility | open ended: Open Ended - toUserAnswer
+ok 1014 PhantomJS 2.1 - Unit | Utility | question-result: Average Reaction
+ok 1015 PhantomJS 2.1 - Unit | Utility | question-result: Correct Answers
+ok 1016 PhantomJS 2.1 - Unit | Utility | question-result: Correct Percentage
+ok 1017 PhantomJS 2.1 - Unit | Utility | question-result: Total Time Spent
+ok 1018 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - getCorrectAnswer empty array
+ok 1019 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - getCorrectAnswer
+ok 1020 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - isAnswerChoiceCorrect
+ok 1021 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - isCorrect
+ok 1022 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - distribution
+ok 1023 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - answerKey
+ok 1024 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - sameAnswer
+ok 1025 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - toAnswerObjects
+ok 1026 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - toUserAnswer
+ok 1027 PhantomJS 2.1 - Unit | Utility | reorder: Reorder - toUserAnswer when no respond is provided
+ok 1028 PhantomJS 2.1 - Unit | Utility | sort featured courses: getSubjects and sort Courses
+ok 1029 PhantomJS 2.1 - Unit | Utility | taxonomy: Create taxonomy test tree: one node
+ok 1030 PhantomJS 2.1 - Unit | Utility | taxonomy: Create taxonomy test tree: one node with 2 children
+ok 1031 PhantomJS 2.1 - Unit | Utility | taxonomy: Create taxonomy test tree: one node, 2 children, 3 grandchildren (per child)
+ok 1032 PhantomJS 2.1 - Unit | Utility | taxonomy: Create taxonomy test tree: two nodes with 4 children each
+ok 1033 PhantomJS 2.1 - Unit | Utility | true false: True/False - getCorrectAnswer when correct answer is provided
+ok 1034 PhantomJS 2.1 - Unit | Utility | true false: True/False - isCorrect
+ok 1035 PhantomJS 2.1 - Unit | Utility | true false: True/False - distribution
+ok 1036 PhantomJS 2.1 - Unit | Utility | true false: True/False - answerKey
+ok 1037 PhantomJS 2.1 - Unit | Utility | true false: True/False - sameAnswer
+ok 1038 PhantomJS 2.1 - Unit | Utility | true false: True/False - toAnswerObjects with answer id
+ok 1039 PhantomJS 2.1 - Unit | Utility | true false: True/False - toAnswerObjects with no answer id
+ok 1040 PhantomJS 2.1 - Unit | Utility | true false: True/False - toUserAnswer with answer id
+ok 1041 PhantomJS 2.1 - Unit | Utility | true false: True/False - toUserAnswer with no answer id
+ok 1042 PhantomJS 2.1 - Unit | Utility | utils: alphabeticalStringSort
+ok 1043 PhantomJS 2.1 - Unit | Utility | utils: checkStandards
+ok 1044 PhantomJS 2.1 - Unit | Utility | utils: courseSectionsPrefix
+ok 1045 PhantomJS 2.1 - Unit | Utility | utils: formatDate
+ok 1046 PhantomJS 2.1 - Unit | Utility | utils: formatTime
+ok 1047 PhantomJS 2.1 - Unit | Utility | utils: formatTimeInSeconds
+ok 1048 PhantomJS 2.1 - Unit | Utility | utils: getAnswerResultIcon
+ok 1049 PhantomJS 2.1 - Unit | Utility | utils: getScoreString
+ok 1050 PhantomJS 2.1 - Unit | Utility | utils: getReactionIcon
+ok 1051 PhantomJS 2.1 - Unit | Utility | utils: getGradeColor
+ok 1052 PhantomJS 2.1 - Unit | Utility | utils: getLetter
+ok 1053 PhantomJS 2.1 - Unit | Utility | utils: numberSort
+ok 1054 PhantomJS 2.1 - Unit | Utility | utils: Check Uuid format
+ok 1055 PhantomJS 2.1 - Unit | Utility | utils: Clean filename
+ok 1056 PhantomJS 2.1 - Unit | Utility | utils: Get File Name from Invalid URL
+ok 1057 PhantomJS 2.1 - Unit | Utility | utils: Replace Math Expression
+ok 1058 PhantomJS 2.1 - Unit | Validator | email-exists: Email is used in an account
+ok 1059 PhantomJS 2.1 - Unit | Validator | email-exists: Email is not used in an account
+ok 1060 PhantomJS 2.1 - Unit | Validator | email: it works
+ok 1061 PhantomJS 2.1 - Unit | Validator | google-email: Email is not used in a google account
+ok 1062 PhantomJS 2.1 - Unit | Validator | google-email: Email is used in a google account
+ok 1063 PhantomJS 2.1 - Unit | Validator | google-username: Username is not used in a google account
+ok 1064 PhantomJS 2.1 - Unit | Validator | google-username: Username is used in a google account
+ok 1065 PhantomJS 2.1 - Unit | Validator | email: it works
+ok 1066 PhantomJS 2.1 - Unit | Validator | hot-text-highlight: check if brackets are balanced using bracketsAreBalanced()
+ok 1067 PhantomJS 2.1 - Unit | Validator | hot-text-highlight: check if selections are valid using validateSelections()
+ok 1068 PhantomJS 2.1 - Unit | Validator | hot-text-highlight: check if answer is correct with words selection
+ok 1069 PhantomJS 2.1 - Unit | Validator | hot-text-highlight: check if answer is correct with sentence selection
+ok 1070 PhantomJS 2.1 - Unit | Validator | presence-html: Text is invalid
+ok 1071 PhantomJS 2.1 - Unit | Validator | presence-html: Text is valid
+ok 1072 PhantomJS 2.1 - Unit | Validator | username: it works
+
+1..1072
+# tests 1072
+# pass  1072
+# skip  0
+# fail  0
+
+# ok
+
+[32mDone, without errors.[39m

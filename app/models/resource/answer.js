@@ -6,10 +6,10 @@ import Ember from 'ember';
 export default Ember.Object.extend({
 
   /**
-   * if the value should not be shuffled
-   * @property {boolean} fixed
+   * if the answer should not be shuffled
+   * @property {boolean} isFixed
    */
-  fixed: null,
+  isFixed: null,
 
   /**
    * Text to show when showing the question

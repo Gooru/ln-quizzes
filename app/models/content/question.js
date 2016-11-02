@@ -316,7 +316,7 @@ const Question = Ember.Object.extend(Validations, {
       type: model.get("type"),
       body: model.get("text"),
       mediaUrl: model.get("thumbnail"),
-      choices: model.get("answers").map(function (answer) {
+      answers: model.get("answers").map(function (answer) {
         return answer.toPlayerAnswer();
       })
     });

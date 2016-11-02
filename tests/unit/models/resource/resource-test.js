@@ -8,16 +8,25 @@ moduleFor('model:resource/resource', 'Unit | Model | resource/resource', {
 test('isQuestion', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'isQuestion': true
+    'isResource': false
   });
 
   assert.ok(model.get('isQuestion'), 'It should be question');
 });
 
-test('format', function(assert) {
+test('format question', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'isQuestion': true
+    'isResource': false
+  });
+
+  assert.ok(model.get('format'), 'question');
+});
+
+test('format resource', function(assert) {
+  assert.expect(1);
+  let model = this.subject({
+    'isResource': true
   });
 
   assert.ok(model.get('format'), 'question');
@@ -146,7 +155,7 @@ test('isHotTextHighlightWord', function(assert) {
     answers.pushObject(Ember.Object.create({highlightType: 'word'}));
   });
   let model = this.subject({
-    choices: answers
+    answers
   });
 
   assert.ok(model.get('isHotTextHighlightWord'), 'It should be hot text word');
@@ -159,7 +168,7 @@ test('isHotTextHighlightSentence', function(assert) {
     answers.pushObject(Ember.Object.create({highlightType: 'sentence'}));
   });
   let model = this.subject({
-    choices: answers
+    answers
   });
 
   assert.ok(model.get('isHotTextHighlightSentence'), 'It should be hot text sentence');
@@ -174,7 +183,7 @@ test('hasAnswers', function(assert) {
   });
 
   let model = this.subject({
-    choices: answers
+    answers
   });
 
   assert.ok(model.get('hasAnswers'), 'It should have answers');

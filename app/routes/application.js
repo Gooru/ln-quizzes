@@ -1,14 +1,13 @@
 import Ember from 'ember';
 import GruTheme from '../utils/gru-theme';
 import Env from '../config/environment';
-import PublicRouteMixin from 'quizzes/mixins/public-route-mixin';
 import GooruLegacyUrl from 'quizzes/utils/gooru-legacy-url';
 import Error from 'quizzes/models/error';
 
 /**
  * @typedef {object} ApplicationRoute
  */
-export default Ember.Route.extend(PublicRouteMixin, {
+export default Ember.Route.extend({
 
   // -------------------------------------------------------------------------
   // Dependencies
@@ -70,11 +69,9 @@ export default Ember.Route.extend(PublicRouteMixin, {
 
   beforeModel: function() {
     const route = this;
-    return route._super(...arguments).then(function(){
-      if (Env.embedded) {
-        route.handleEmbeddedApplication();
-      }
-    });
+    if (Env.embedded) {
+      route.handleEmbeddedApplication();
+    }
   },
 
   model: function(params) {
@@ -82,7 +79,6 @@ export default Ember.Route.extend(PublicRouteMixin, {
     const currentSession = route.get('session.data.authenticated');
     const themeConfig = Env.themes || {};
     const themeId = params.themeId || Env.themes.default;
-    let myClasses = null;
 
     var theme = null;
     if (themeId && themeConfig[themeId]){
@@ -90,15 +86,10 @@ export default Ember.Route.extend(PublicRouteMixin, {
       theme.set('id', themeId);
     }
 
-    if (!currentSession.isAnonymous) {
-      myClasses = route.get('classService').findMyClasses();
-    }
-
     return Ember.RSVP.hash({
       currentSession: currentSession,
       theme: theme,
-      translations: theme ? theme.loadTranslations() : null,
-      myClasses: myClasses
+      translations: theme ? theme.loadTranslations() : null
     });
   },
 
@@ -111,10 +102,6 @@ export default Ember.Route.extend(PublicRouteMixin, {
     if (theme){
       controller.set('theme', theme);
       this.setupTheme(theme, model.translations);
-    }
-
-    if (model.myClasses) {
-      controller.set('myClasses', model.myClasses);
     }
   },
 
@@ -256,22 +243,13 @@ export default Ember.Route.extend(PublicRouteMixin, {
     const transition = Env.APP.transition;
     const configurationService = route.get('configurationService');
     configurationService.addProperties(Env.APP.properties);
-
-    const token = Env.APP.token;
-    const authService = this.get('authService');
-    const authPromise = token ?
-      authService.signInWithToken(token) :
-      authService.get('session').authenticateAsAnonymous();
-
-    return authPromise.then(function(){
-      const routeName = 'sign-in';
-      if (transition){
-        route.transitionTo.apply(route, transition);
-      }
-      else {
-        route.transitionTo(routeName);
-      }
-    });
+    const routeName = 'sign-in';
+    if (transition){
+      route.transitionTo.apply(route, transition);
+    }
+    else {
+      route.transitionTo(routeName);
+    }
   },
 
 

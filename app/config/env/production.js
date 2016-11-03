@@ -3,8 +3,8 @@
  */
 export default {
   "endpoint" : {
-    "url": "https://www.gooru.org",
-    "secureUrl": "https://www.gooru.org"
+    "url": "http://quizzes-api-qa-246519991.us-east-1.elb.amazonaws.com",
+    "secureUrl": "http://quizzes-api-qa-246519991.us-east-1.elb.amazonaws.com"
   },
 
   "realTime": {

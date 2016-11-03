@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export function initialize(application) {
-  const sessionService = application.lookup('service:session');
   const internalSession = application.lookup('session:main');
 
   internalSession.reopen({
@@ -10,12 +9,7 @@ export function initialize(application) {
      * @returns {Ember.RSVP.Promise}
      */
     restore: function () {
-      return new Ember.RSVP.Promise((resolve, reject) => {
-        this._super().then(resolve,
-          function () {
-            sessionService.authenticateAsAnonymous().then(resolve, reject);
-        });
-      });
+      return new Ember.RSVP.resolve();
     }
   });
 }

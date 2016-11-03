@@ -30,7 +30,7 @@ export default Ember.Service.extend({
     var service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
       service.get('contextAdapter').sendStartContextEvent(contextId)
-        .then(service.get('contextSerializer').normalizeAssessmentResult)
+        .then(response => service.get('contextSerializer').normalizeAssessmentResult(response))
         .then(resolve, reject);
     });
   },

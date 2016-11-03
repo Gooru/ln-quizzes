@@ -11,6 +11,16 @@ import ResourceResult from './resource';
 export default Ember.Object.extend({
 
   /**
+   * @property {Collection} collection
+   */
+  collection: null,
+
+  /**
+   * @property {string} collectionId
+   */
+  collectionId: null,
+
+  /**
    * @property {string} contextId
    */
   contextId: null,

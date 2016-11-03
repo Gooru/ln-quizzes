@@ -1,4 +1,3 @@
-
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('serializer:context/context', 'Unit | Serializer | context/context');
@@ -8,6 +7,9 @@ test('normalizeAssessmentResult', function(assert) {
   const payload = {
     contextId: 'context-id',
     currentResourceId: 'resource-id-2',
+    collection: {
+      id: 'collection-id'
+    },
     collectionStatus: [{
       resourceId: 'resource-id-1',
       timeSpent: 10000,
@@ -22,6 +24,7 @@ test('normalizeAssessmentResult', function(assert) {
   };
   const response = serializer.normalizeAssessmentResult(payload);
   assert.equal(response.get('contextId'), 'context-id', 'Wrong context id value');
+  assert.equal(response.get('collectionId'), 'collection-id', 'Wrong collection id value');
   assert.equal(response.get('currentResourceId'), 'resource-id-2', 'Wrong current resource id value');
   assert.equal(response.get('resourceResults').length, 2, 'Wrong resource results length');
   assert.equal(response.get('resourceResults')[0].get('answer'), 'answer-1', 'Wrong first answer');

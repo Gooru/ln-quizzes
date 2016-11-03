@@ -13,7 +13,7 @@ export default Ember.Route.extend({
   /**
    * @param {{ collectionId: string, resourceId: string }} params
    */
-  model(params) {
+  model() {
     const route = this;
     /*const data = {
       collectionId: params.collectionId,
@@ -35,6 +35,6 @@ export default Ember.Route.extend({
     return Ember.$.ajax(url, options).then(function(response){
       route.transitionTo('player', JSON.parse(response).contextId, params.collectionId);
     });*/
-    route.transitionTo('player', 1, params.collectionId);
+    route.transitionTo('player', '13751490-5544-4d22-a506-111c750837c4');
   }
 });

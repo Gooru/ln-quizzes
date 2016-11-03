@@ -18,11 +18,6 @@ export default Ember.Route.extend({
    */
   collectionService: Ember.inject.service('api-sdk/collection'),
 
-  /**
-   * @property {Ember.Service} Service to retrieve an asssessment
-   */
-  assessmentService: Ember.inject.service('api-sdk/assessment'),
-
   // -------------------------------------------------------------------------
   // Methods
 

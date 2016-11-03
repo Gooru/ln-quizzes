@@ -16,7 +16,7 @@ export default Ember.Object.extend({
       // TODO get real headers
       headers: {
         'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        'lms-id': 'gooru'
+        'lms-id': 'quizzes'
       }
     };
     return Ember.$.ajax(url, options);

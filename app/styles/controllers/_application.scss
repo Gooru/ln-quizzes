@@ -1,9 +1,5 @@
 .app-container {
   height: 100vh;
-  padding-top: 55px;
-  @media (min-width: $screen-md) {
-    padding-top: 63px;
-  }
 
   > .controller {
     @include flexbox;

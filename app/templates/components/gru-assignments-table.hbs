@@ -1,29 +1,29 @@
-<table class="table">
+<table class="table table-fixed">
     <thead>
     <tr>
-        <th class="num-header"><a {{action 'sortBy' 'assignedDate'}}><span>{{gru-icon name='swap_vert'}}</span></a></th>
-        <th class="score-header"><a {{action 'sortBy' 'score'}}>{{t 'common.score'}} <span>{{gru-icon name='swap_vert'}}</span></a></th>
-        <th class="title-header"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
-        <th class="standards-header hidden-sm">{{t 'assignments-view.standards'}}</th>
-        <th class="date-header hidden-sm"><a {{action 'sortBy' 'dueDate'}}>{{t 'assignments-view.dueDate'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
-        <th class="attempts-header">{{t 'assignments-view.attempts'}}</th>
+        <th class="num-header col-xs-1"><a {{action 'sortBy' 'assignedDate'}}><span>{{gru-icon name='swap_vert'}}</span></a></th>
+        <th class="score-header col-md-2 col-sm-2 col-xs-3"><a {{action 'sortBy' 'score'}}>{{t 'common.score'}} <span>{{gru-icon name='swap_vert'}}</span></a></th>
+        <th class="title-header col-md-3 col-sm-5 col-xs-8"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
+        <th class="standards-header hidden-sm hidden-xs col-md-2">{{t 'assignments-view.standards'}}</th>
+        <th class="date-header hidden-sm hidden-xs col-md-2"><a {{action 'sortBy' 'dueDate'}}>{{t 'assignments-view.dueDate'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
+        <th class="attempts-header hidden-xs col-md-2 col-sm-4"><a {{action 'sortBy' 'attempts'}}>{{t 'assignments-view.attempts'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
     </tr>
     </thead>
-    <tbody>
-    {{#each assignments as |assignment index|}}
+    <tbody style="{{tableContentHeight}}">
+   {{#each assignments as |assignment index|}}
         <tr class="{{if assignment.selected 'selected'}}" {{action 'selectAssignment' assignment}}>
-            <td class="num">
-               {{plus-one index}}
+            <td class="num col-xs-1">
+              {{plus-one index}}
             </td>
-            <td class="score">
+            <td class="score col-md-2 col-sm-2 col-xs-3">
                <span class="score" style="background-color: {{ gradeColor (if assignment.hasStarted assignment.score 'NA') }}">
                   {{if assignment.hasStarted assignment.score '--'}}%
                 </span>
-              </td>
-            <td class="title">{{assignment.title}}</td>
-            <td class="standards hidden-sm">{{assignment.standards}}</td>
-            <td class="due-date hidden-sm">{{formatDate assignment.dueDate 'h:mm a MM/DD/YYYY'}}</td>
-            <td class="attempts">{{assignment.attempts}}</td>
+            </td>
+            <td class="title col-md-3 col-sm-5 col-xs-8">{{assignment.title}}</td>
+            <td class="standards hidden-sm hidden-xs col-md-2">{{assignment.standards}}</td>
+            <td class="due-date hidden-sm hidden-xs col-md-2">{{formatDate assignment.dueDate 'h:mm a MM/DD/YYYY'}}</td>
+            <td class="attempts hidden-xs col-md-2  col-sm-4">{{assignment.attempts}}</td>
         </tr>
     {{/each}}
     </tbody>

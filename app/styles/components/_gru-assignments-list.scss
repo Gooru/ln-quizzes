@@ -40,11 +40,9 @@
   }
   .assignments-list-container{
     margin-top: 20px;
-    height:100%;
     @include flexbox;
     .assignments-list{
       padding-right: 0px;
-      overflow-y: auto;
       width: 100%;
     }
     .assignments-info{

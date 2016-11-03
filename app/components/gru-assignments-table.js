@@ -38,7 +38,45 @@ export default Ember.Component.extend({
     }
   },
   // -------------------------------------------------------------------------
+  // Events
+
+  /**
+   * DidInsertElement ember event
+   */
+  didInsertElement: function() {
+    const component = this;
+
+    component.calculateHeight();
+
+    window.onresize = function() {
+      component.calculateHeight();
+    };
+  },
+
+  // -------------------------------------------------------------------------
+  // Properties
+
+  /**
+   * @property {Number} the calculated resource content table height
+   */
+  calculatedTableContentHeight: null,
+  /**
+   *Return the table content height to print on inline styles
+   */
+  tableContentHeight: Ember.computed('calculatedTableContentHeight',function(){
+    var height = this.get('calculatedTableContentHeight');
+    const heightString = height > 0 ? `${height}px` : '100%';
+    return new Ember.Handlebars.SafeString(`max-height: ${heightString}`);
+  }),
+  // -------------------------------------------------------------------------
   // Methods
+  /**
+   *Calculate the height of the content
+   */
+  calculateHeight:function(){
+    var contentHeight = $(window).outerHeight(true);
+    this.set('calculatedTableContentHeight', contentHeight);
+  },
   /**
    * Set assignment as selected
    */

@@ -2,10 +2,11 @@
   .assignment-detail{
     .panel-heading{
       text-align: right;
-      .actions{
-        .no-attempts{
-          font-style: italic;
-          margin-left: 10px;
+      background-color: $dark-400;
+      .btn-default[disabled]{
+        &:hover{
+          color:$gray;
+          opacity: 0.65;
         }
       }
     }

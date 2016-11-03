@@ -3,10 +3,10 @@
         <div class="panel-heading">
             <div class="actions">
               {{#if assignment.hasStarted}}
-                  <button class="btn btn-info view-report">{{t 'assignment-details.view-report'}}</button>
-                  <button class="btn btn-info {{if hasAttempts 'redo' 'no-attempts'}}" disabled={{if hasAttempts false true}}>{{t 'assignment-details.redo'}}</button>
+                  <button class="btn btn-default view-report">{{t 'assignment-details.view-report'}}</button>
+                  <button class="btn btn-default {{if hasAttempts 'redo' 'no-attempts'}}" disabled={{if hasAttempts false true}}>{{t 'assignment-details.redo'}}</button>
               {{else}}
-                  <button class="btn btn-info play">{{t 'common.play'}}</button>
+                  <button class="btn btn-default play">{{t 'common.play'}}</button>
               {{/if}}
             </div>
         </div>

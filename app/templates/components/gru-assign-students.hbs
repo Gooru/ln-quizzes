@@ -21,7 +21,7 @@
            <div class="student-list list-group live-search-list">
              {{#each students as |student| }}
                  <a class="list-group-item {{if student.isSelected 'selected'}}" {{action 'selectStudent' student}}>
-                   {{student.lastName}},{{student.firstName}}
+                   {{student.lastName}}, {{student.firstName}}
                    {{#if student.isSelected}}
                       {{gru-icon name='done'}}
                    {{/if}}

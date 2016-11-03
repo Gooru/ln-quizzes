@@ -12,44 +12,15 @@
 @import 'mixins/gru-accordion';
 
 @import 'controllers/application';
-@import 'controllers/class';
-@import 'controllers/class/analytics/performance/student';
-@import 'controllers/class/analytics/performance/teacher';
-@import 'controllers/class/analytics/performance/teacher/collection';
-@import 'controllers/class/info';
-@import 'controllers/class/overview';
-@import 'controllers/class/quick-start';
-@import 'controllers/class/edit';
 @import 'controllers/classes';
-@import 'controllers/content/classes/modals';
-@import 'controllers/content/classes/create';
-@import 'controllers/content/classes/join';
-
-@import 'controllers/content/courses/edit';
-@import 'controllers/content/courses/play';
-@import 'controllers/content/questions/edit';
-@import 'controllers/content/questions/play';
-@import 'controllers/content/resources/edit';
-@import 'controllers/content/resources/play';
 
 @import 'controllers/assign';
 @import 'controllers/partials/player';
-@import 'controllers/profile';
-@import 'controllers/profile/content';
-@import 'controllers/profile/content/assessments';
-@import 'controllers/profile/content/collections';
-@import 'controllers/profile/content/questions';
-@import 'controllers/profile/content/resources';
-@import 'controllers/profile/about';
-@import 'controllers/profile/edit';
-@import 'controllers/profile/courses';
-@import 'controllers/profile/network';
 @import 'controllers/reports/collection';
 @import 'controllers/reports/student-collection';
 @import 'controllers/search';
 @import 'controllers/sign-in';
 @import 'controllers/sign-up';
-@import 'controllers/home';
 @import 'controllers/forgot-password';
 @import 'controllers/reset-password';
 @import 'controllers/featured';
@@ -100,7 +71,6 @@
 @import 'components/cards/gru-profile-card';
 @import 'components/cards/gru-resource-card';
 @import 'components/cards/gru-user-card';
-@import 'components/cards/gru-user-network-card';
 @import 'components/cards/gru-resource-result-card';
 
 @import 'components/charts/gru-bubble-chart';
@@ -118,44 +88,6 @@
 @import 'components/class/analytics/performance/student/gru-lesson-performance';
 @import 'components/class/analytics/performance/teacher/gru-metrics-table';
 @import 'components/class/analytics/performance/teacher/gru-metrics-sub-header';
-
-@import 'components/content/assessments/gru-assessment-edit';
-@import 'components/content/gru-audience';
-@import 'components/content/gru-category';
-@import 'components/content/gru-image';
-@import 'components/content/gru-settings-edit';
-@import 'components/content/gru-depth-of-knowledge';
-@import 'components/content/collections/gru-collection-edit';
-@import 'components/content/collections/gru-collection-list';
-@import 'components/content/modals';
-@import 'components/content/modals/gru-add-to';
-@import 'components/content/modals/gru-assessment-confirmation';
-@import 'components/content/modals/gru-base-remix';
-@import 'components/content/modals/gru-delete-class';
-@import 'components/content/modals/gru-delete-content';
-@import 'components/content/modals/gru-delete-resource';
-@import 'components/content/modals/gru-delete-question';
-@import 'components/content/modals/gru-login-prompt';
-@import 'components/content/modals/gru-question-new';
-@import 'components/content/modals/gru-quick-course-search';
-@import 'components/content/modals/gru-quick-delete-content';
-@import 'components/content/modals/gru-quick-remove-content';
-@import 'components/content/modals/gru-remove-content';
-@import 'components/content/modals/gru-remove-student';
-@import 'components/content/modals/gru-resource-new';
-@import 'components/content/modals/gru-submit-confirmation';
-@import 'components/content/questions/answers/gru-answers';
-@import 'components/content/questions/answers/gru-hot-text-highlight';
-@import 'components/content/questions/answers/gru-hs-image';
-@import 'components/content/questions/answers/gru-hs-text';
-@import 'components/content/questions/answers/gru-multiple-answer';
-@import 'components/content/questions/answers/gru-multiple-choice';
-@import 'components/content/questions/answers/gru-open-ended';
-@import 'components/content/questions/answers/gru-reorder';
-@import 'components/content/questions/answers/gru-true-false';
-@import 'components/content/questions/gru-question-edit';
-@import 'components/content/questions/gru-question-play';
-@import 'components/content/resources/gru-resource-edit';
 
 @import 'components/player/gru-navigation';
 @import 'components/player/gru-navigator';

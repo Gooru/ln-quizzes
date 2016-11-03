@@ -11,27 +11,33 @@ export default Ember.Object.extend({
 
   /**
    * List of possible answers/choices
-   * @property {Answer[]}
+   * @property {Answer[]} answers
    */
-  choices: Ember.A(),
+  answers: Ember.A(),
 
   /**
    * list of correct answers
    * @property {Answer[]}
    */
-  correctResponse: Ember.A(),
-
-  /**
-   * Indicates the resource format. i.e image, text, video, interaction, webpage, question
-   * @property {string} format
-   */
-  format: 'question',
+  correctAnswer: Ember.A(),
 
   /**
    * resource id
    * @property {string} id
    */
   id: null,
+
+  /**
+   * indicates if the object is a question
+   * @property {boolean} isQuestion
+   */
+  isQuestion: Ember.computed.not('isResource'),
+
+  /**
+   * indicates if the object is a resource
+   * @property {boolean} isResource
+   */
+  isResource: null,
 
   /**
    * @property {string} owner
@@ -89,10 +95,18 @@ export default Ember.Object.extend({
   }),
 
   /**
+   * Indicates the resource format. i.e image, text, video, interaction, webpage, question
+   * @property {string} format
+   */
+  format: Ember.computed('isResource', function() {
+    return this.get('isResource') ? 'resource' : 'question';
+  }),
+
+  /**
    * Indicates if the question has answers
    * @property {boolean}
    */
-  hasAnswers: Ember.computed.bool('choices.length'),
+  hasAnswers: Ember.computed.bool('answers.length'),
 
   /**
    * Indicates if the question has answers
@@ -133,12 +147,12 @@ export default Ember.Object.extend({
   /**
    * @property {boolean} indicates if the question is hot text word type
    */
-  isHotTextHighlightWord: Ember.computed.equal('choices.firstObject.highlightType', 'word'),
+  isHotTextHighlightWord: Ember.computed.equal('answers.firstObject.highlightType', 'word'),
 
   /**
    * @property {boolean} indicates if the question is hot text sentence type
    */
-  isHotTextHighlightSentence: Ember.computed.equal('choices.firstObject.highlightType', 'sentence'),
+  isHotTextHighlightSentence: Ember.computed.equal('answers.firstObject.highlightType', 'sentence'),
 
 
   /**
@@ -179,11 +193,6 @@ export default Ember.Object.extend({
    * @property {boolean}
    */
   isPDFResource: Ember.computed.equal('type', 'handouts'),
-
-  /**
-   * @property {boolean} indicates if the resource is a question
-   */
-  isQuestion: Ember.computed.equal('format', 'question'),
 
   /**
    * @property {boolean} indicates if the question is true false type

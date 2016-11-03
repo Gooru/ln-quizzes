@@ -37,6 +37,12 @@ export default Ember.Component.extend({
     $('.search-box').on('keyup', function(){
       component.searchAssignment();
     });
+
+    component.calculateHeight();
+
+    window.onresize = function() {
+      component.calculateHeight();
+    };
   },
   // -------------------------------------------------------------------------
   // Properties
@@ -63,15 +69,32 @@ export default Ember.Component.extend({
   sortedAssignments: Ember.computed.sort('assignments', 'sortDefinition'),
 
   /**
+   * @property {Number} the calculated resource content table height
+   */
+  calculatedTableContentHeight: null,
+
+  /**
    * Sort definition
    */
   sortDefinition: Ember.computed('sortBy','reverseSort', function() {
     let sortOrder = this.get('reverseSort') ? 'desc' : 'asc';
     return [ `${this.get('sortBy')}:${sortOrder}` ];
   }),
+  tableContentHeight: Ember.computed('calculatedTableContentHeight',function(){
+    var height = this.get('calculatedTableContentHeight');
+    const heightString = height > 0 ? `${height}px` : '100%';
+    return new Ember.Handlebars.SafeString(`max-height: ${heightString}`);
+  }),
 
   // -------------------------------------------------------------------------
   // Methods
+  /**
+   *Calculate the height of the content
+   */
+  calculateHeight:function(){
+    var contentHeight = $(window).outerHeight(true);
+    this.set('calculatedTableContentHeight', contentHeight);
+  },
   /**
    * Filter assignment by title
    */
@@ -86,5 +109,4 @@ export default Ember.Component.extend({
       }
     });
   }
-
 });

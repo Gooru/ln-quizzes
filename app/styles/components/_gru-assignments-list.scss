@@ -40,18 +40,20 @@
   }
   .assignments-list-container{
     margin-top: 20px;
-    height:555px;
+    height:100%;
     @include flexbox;
     .assignments-list{
       padding-right: 0px;
-      max-height:555px;
-      overflow-y: scroll;
+      overflow-y: auto;
       width: 100%;
     }
     .assignments-info{
       margin-left: 10px;
-      width: 40%;
+      width: 70%;
       height: inherit;
+      @media(min-width:  $screen-md-min) {
+        width: 40%;
+      }
     }
   }
 }

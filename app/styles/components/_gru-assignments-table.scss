@@ -1,42 +1,47 @@
 .gru-assignments-table{
-  thead{
-    tr{
-      th{
-        text-align: center;
-        background-color: $dark-400;
-        a{
-          color:$dark-200;
-        }
-        &.title-header{
-          text-align: left;
-        }
-        i{
-          vertical-align: middle;
+  table{
+    thead{
+      tr{
+        th{
+          text-align: center;
+          background-color: $dark-400;
+          a{
+            color:$dark-200;
+          }
+          &.title-header{
+            text-align: left;
+          }
+          i{
+            vertical-align: middle;
+          }
         }
       }
     }
-  }
-  tbody{
-    tr{
-      td{
-        text-align: center;
-        background-color: $white;
-        &.title{
-          text-align: left;
-        }
-        span.score{
-          width: 46px;
-          height: 36px;
-          text-align: center;
-          line-height: 36px;
-          border-radius: 5px;
-          color: #fff;
-          display: inline-block;
-        }
-      }
-      &.selected{
+    tbody{
+      tr{
         td{
-          background-color:$sky-100;
+          text-align: center;
+          background-color: $white;
+          &.title{
+            text-align: left;
+          }
+          span.score{
+            width: 46px;
+            height: 36px;
+            text-align: center;
+            line-height: 36px;
+            border-radius: 5px;
+            color: #fff;
+            display: inline-block;
+          }
+        }
+        @media(min-width:  $screen-sm-min) {
+          max-width: 32%;
+        }
+        &.selected{
+          td{
+            background-color:$sky-100;
+          }
         }
       }
     }

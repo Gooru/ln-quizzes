@@ -234,6 +234,46 @@ export default Ember.Route.extend({
           showScore:'Per question',
           answerKey:false
         }
+      }),
+      Ember.Object.create({
+        hasStarted:true,
+        score:40,
+        title:'Collection',
+        standards:'',
+        assignedDate:1474072003426,
+        dueDate:1474072003426,
+        totalAttempts:15,
+        attempts:2,
+        lastAttempt:{
+          score:60
+        },
+        questions:['question1','question2','question3'],
+        learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        settings:{
+          navigation:'Forward only',
+          showScore:'Per question',
+          answerKey:false
+        }
+      }),
+      Ember.Object.create({
+        hasStarted:true,
+        score:40,
+        title:'Collection for practice',
+        standards:'',
+        assignedDate:1474072003426,
+        dueDate:1474072003426,
+        totalAttempts:15,
+        attempts:2,
+        lastAttempt:{
+          score:60
+        },
+        questions:['question1','question2','question3'],
+        learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        settings:{
+          navigation:'Forward only',
+          showScore:'Per question',
+          answerKey:false
+        }
       })]);
 
     let isTeacher = params.isTeacher;

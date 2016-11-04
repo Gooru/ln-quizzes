@@ -23,30 +23,8 @@ export default Ember.Service.extend({
    */
   eventsSerializer: null,
 
-  /**
-   * @type {SessionService} session Service to retrieve session information
-   */
-  session: Ember.inject.service(),
-
   // -------------------------------------------------------------------------
   // Methods
-
-  startContext: function(contextId) {
-    var service = this;
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('eventsAdapter').sendStartContextEvent(contextId)
-        .then(response => service.get('eventsSerializer').normalizeAssessmentResult(response))
-        .then(resolve, reject);
-    });
-  },
-
-  endContext: function(contextId) {
-    var service = this;
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('eventsAdapter').sendEndContextEvent(contextId)
-        .then(resolve, reject);
-    });
-  },
 
   moveToResource: function(resourceId, contextId, previousResult) {
     var service = this;

@@ -20,7 +20,12 @@ export default ApplicationAdapter.extend({
     const url = `${namespace}/${collectionId}`;
     const options = {
       type: 'GET',
-      contentType: 'application/json; charset=utf-8'
+      contentType: 'application/json; charset=utf-8',
+      // TODO get real headers
+      headers: {
+        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
+        'lms-id': 'quizzes'
+      }
     };
     return Ember.$.ajax(url, options);
   }

@@ -42,7 +42,7 @@ export default Ember.Object.extend({
    */
   normalizeAnswers: function(choices) {
     return Ember.isArray(choices)
-      ? choices.map(this.normalizeAnswer.bind(this))
+      ? choices.map(answer => this.normalizeAnswer(answer))
       : [];
   },
 

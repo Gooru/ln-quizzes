@@ -1,7 +1,7 @@
 {
   "endpoint" : {
-    "url": "https://nucleus-qa.gooru.org",
-    "secureUrl": "https://nucleus-qa.gooru.org"
+    "url": "http://quizzes-api-qa-246519991.us-east-1.elb.amazonaws.com",
+    "secureUrl": "http://quizzes-api-qa-246519991.us-east-1.elb.amazonaws.com"
   },
 
   "realTime": {

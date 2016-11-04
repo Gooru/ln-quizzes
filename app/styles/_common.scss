@@ -109,12 +109,12 @@ span.validation.warning {
   padding-left: 0;
 }
 
-.app-container {
-  min-height: 400px;
-  @media (min-width: $screen-md-min) {
-    min-height: 400px;
-  }
-}
+//.app-container {
+//  min-height: 400px;
+//  @media (min-width: $screen-md-min) {
+//    min-height: 400px;
+//  }
+//}
 
 .text-white {
   color: $white;

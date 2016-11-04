@@ -124,7 +124,7 @@ export default Ember.Route.extend({
         assignedDate:1474072003426,
         dueDate:1474072003426,
         totalAttempts:15,
-        attempts:2,
+        attempts:12,
         lastAttempt:{
           score:60
         },
@@ -179,12 +179,12 @@ export default Ember.Route.extend({
       Ember.Object.create({
         hasStarted:true,
         score:70,
-        title:'Assessment 9',
+        title:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the in',
         standards:'',
         assignedDate:1474072003426,
         dueDate:1474072003426,
         totalAttempts:15,
-        attempts:2,
+        attempts:5,
         lastAttempt:{
           score:60
         },
@@ -203,7 +203,7 @@ export default Ember.Route.extend({
         assignedDate:1477021500,
         dueDate:1474072003426,
         totalAttempts:15,
-        attempts:2,
+        attempts:7,
         lastAttempt:{
           score:60
         },

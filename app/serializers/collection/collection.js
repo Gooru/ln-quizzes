@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import ResourceSerializer from 'quizzes/serializers/resource/resource';
-import CollectionModel from 'quizzes/models/content/collection';
+import CollectionModel from 'quizzes/models/collection/collection';
 
 /**
  * Serializer for Collection
@@ -41,7 +41,7 @@ export default Ember.Object.extend({
    */
   normalizeResources: function(payload) {
     return Ember.isArray(payload)
-      ? payload.map(this.get('resourceSerializer').normalizeReadQuestion)
+      ? payload.map(resource => this.get('resourceSerializer').normalizeReadResource(resource))
       : [];
   }
 });

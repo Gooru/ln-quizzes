@@ -9,19 +9,19 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   /**
-   * @type {EventsService} eventsService
-   */
-  eventsService: Ember.inject.service('api-sdk/events'),
-
-  /**
    * @property {Ember.Service} Service to retrieve a collection
    */
   collectionService: Ember.inject.service('api-sdk/collection'),
 
   /**
-   * @property {Ember.Service} Service to retrieve an asssessment
+   * @property {Ember.Service} Service to send context related events
    */
-  assessmentService: Ember.inject.service('api-sdk/assessment'),
+  contextService: Ember.inject.service('api-sdk/context'),
+
+  /**
+   * @type {EventsService} eventsService
+   */
+  eventsService: Ember.inject.service('api-sdk/events'),
 
   // -------------------------------------------------------------------------
   // Methods
@@ -32,22 +32,10 @@ export default Ember.Route.extend({
   model(params) {
     const route = this;
     const contextId = params.contextId;
-    const collectionId = params.collectionId;
-    const type = params.type;
-    const isCollection = type === 'collection';
-    const isAssessment = type === 'assessment';
-    const loadAssessment = !type || isAssessment;
-    const loadCollection = !type || isCollection;
-
-    return Ember.RSVP.hashSettled({
-      assessment: loadAssessment ? route.get('assessmentService').readAssessment(collectionId) : false,
-      collection: loadCollection ? route.get('collectionService').readCollection(collectionId) : false
-    }).then(function(hash) {
-      let collectionFound = (hash.assessment.state === 'rejected') || (hash.assessment.value === false);
-      let collection = collectionFound ? hash.collection.value : hash.assessment.value;
+    return route.get('contextService').startContext(contextId).then(function(assessmentResult){
       return Ember.RSVP.hash({
-        assessmentResult: route.get('eventsService').startContext(contextId),
-        collection: collection.toPlayerCollection()
+        assessmentResult,
+        collection: route.get('collectionService').readCollection(assessmentResult.collectionId)
       });
     });
   },
@@ -55,7 +43,6 @@ export default Ember.Route.extend({
   setupController(controller, model) {
     let assessmentResult = model.assessmentResult;
     let collection = model.collection;
-    // TODO change may be needed when quizzes endpoint to retrieve resources is ready
     assessmentResult.merge(collection);
     controller.set('assessmentResult', assessmentResult);
     controller.set('collection', collection);

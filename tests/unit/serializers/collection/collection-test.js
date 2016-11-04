@@ -19,7 +19,9 @@ test('normalizeReadCollection', function(assert) {
 
 test('normalizeReadCollection with resources', function(assert) {
   const serializer = this.subject();
-  serializer.set('resourceSerializer.normalizeReadQuestion', resource => `${resource}-normalized`);
+  serializer.set('resourceSerializer', {
+    normalizeReadResource: resource => `${resource}-normalized`
+  });
   const collectionData = {
     id: 'collection-id',
     title: 'collection-title',

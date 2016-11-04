@@ -74,7 +74,7 @@ export default Ember.Component.extend({
    *Calculate the height of the content
    */
   calculateHeight:function(){
-    var contentHeight = $(window).outerHeight(true);
+    var contentHeight = $('.ember-view').parent().outerHeight(true) - $('.table-fixed thead ').height() - $('.search').height() ;
     this.set('calculatedTableContentHeight', contentHeight);
   },
   /**

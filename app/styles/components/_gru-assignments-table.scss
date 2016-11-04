@@ -6,6 +6,8 @@
       tr{
         @include flexbox;
         th{
+          line-height: 38px;
+          height: 54px;
           text-align: center;
           background-color: $dark-400;
           color:$white;

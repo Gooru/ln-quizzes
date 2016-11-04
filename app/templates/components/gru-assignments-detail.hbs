@@ -1,5 +1,4 @@
-{{#if assignment}}
-    <div class="panel panel-default assignment-detail">
+<div class="panel panel-default assignment-detail">
         <div class="panel-heading">
             <div class="actions">
               {{#if assignment.hasStarted}}
@@ -10,7 +9,7 @@
               {{/if}}
             </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="{{contentHeight}}">
            <div class="attempts-container">
                <div class="attempts-left">
                    <span>{{t 'assignment-details.attempts-left' attempts=assignment.attempts count=assignment.totalAttempts}}</span>
@@ -52,5 +51,4 @@
                 <span><b>{{t 'assignment-details.answer-key'}}: </b>{{if assignment.settings.answerKey (t 'assignment-details.on') (t 'assignment-details.off')}}</span>
             </div>
         </div>
-    </div>
-{{/if}}
+</div>

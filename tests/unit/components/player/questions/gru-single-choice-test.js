@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 
-moduleForComponent('player/questions/gru-multiple-choice', 'Unit | Component | player/questions/gru multiple choice', {
+moduleForComponent('player/questions/gru-single-choice', 'Unit | Component | player/questions/gru single choice', {
   // Specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar'],
   unit: true

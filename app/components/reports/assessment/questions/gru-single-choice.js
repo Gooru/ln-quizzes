@@ -2,9 +2,9 @@ import Ember from 'ember';
 import QuestionMixin from 'quizzes/mixins/reports/assessment/questions/question';
 
 /**
- * Multiple choice
+ * Single choice
  *
- * Component responsible for show the multiple choice answer, what option are selected
+ * Component responsible for show the single choice answer, what option are selected
  * and the correct option.
  *
  * @module
@@ -14,7 +14,7 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['reports', 'assessment', 'questions', 'gru-multiple-choice'],
+  classNames: ['reports', 'assessment', 'questions', 'gru-single-choice'],
 
   // -------------------------------------------------------------------------
   // Actions

@@ -171,10 +171,10 @@ export default Ember.Object.extend({
   }),
 
   /**
-   * @property {boolean} indicates if the question is multiple choice type
-   * @see components/player/gru-multiple-choice.js
+   * @property {boolean} indicates if the question is single choice type
+   * @see components/player/gru-single-choice.js
    */
-  isMultipleChoice: Ember.computed.equal('type', QUESTION_TYPES.multipleChoice),
+  isSingleChoice: Ember.computed.equal('type', QUESTION_TYPES.singleChoice),
 
   /**
    * @property {boolean} indicates if the question is multiple answer type

@@ -3,7 +3,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 
-moduleForComponent('player/questions/gru-multiple-choice', 'Integration | Component | player/questions/gru multiple choice', {
+moduleForComponent('player/questions/gru-single-choice', 'Integration | Component | player/questions/gru single choice', {
   integration: true,
   beforeEach: function () {
     this.container.lookup('service:i18n').set('locale', 'en');
@@ -11,13 +11,13 @@ moduleForComponent('player/questions/gru-multiple-choice', 'Integration | Compon
   }
 });
 
-test('Multiple choice question layout', function (assert) {
+test('Single choice question layout', function (assert) {
 
   assert.expect(10);
   let question = Ember.Object.create({
     'id': '569906aa20b7dfae1bcd5',
-    type: 'MC',
-    body: 'Sample Question MC',
+    type: 'SingleChoice',
+    body: 'Sample Question SC',
     answers:  Ember.A([
       Ember.Object.create({
         'id': 1,
@@ -56,7 +56,7 @@ test('Multiple choice question layout', function (assert) {
     assert.deepEqual(answer, answers, 'Answer completed, but the answers are not correct');
   });
 
-  this.render(hbs`{{player/questions/gru-multiple-choice question=question
+  this.render(hbs`{{player/questions/gru-single-choice question=question
         onAnswerChanged='myOnAnswerChanged' onAnswerCompleted='myOnAnswerCompleted'}}`);
 
   var $component = this.$(); //component dom element
@@ -77,13 +77,13 @@ test('Multiple choice question layout', function (assert) {
 
 });
 
-test('Multiple choice question layout - read only', function (assert) {
+test('Single choice question layout - read only', function (assert) {
 
   assert.expect(2);
   let question = Ember.Object.create({
     'id': '569906aa20b7dfae1bcd5',
-    type: 'MC',
-    body: 'Sample Question MC',
+    type: 'SingleChoice',
+    body: 'Sample Question SC',
     answers:  Ember.A([
       Ember.Object.create({
         'id': 1,
@@ -110,20 +110,20 @@ test('Multiple choice question layout - read only', function (assert) {
   });
 
   this.set('question', question);
-  this.render(hbs`{{player/questions/gru-multiple-choice question=question readOnly=true}}`);
+  this.render(hbs`{{player/questions/gru-single-choice question=question readOnly=true}}`);
 
   var $component = this.$(); //component dom element
   assert.equal($component.find('.answer-choices .radio.disabled').length, 3, 'Missing answer choices');
   assert.equal($component.find('.answer-choices .radio input[disabled]').length, 3, 'Missing answer choices radio inputs');
 });
 
-test('Multiple choice question with user answer', function (assert) {
+test('Single choice question with user answer', function (assert) {
 
   assert.expect(5);
   let question = Ember.Object.create({
     'id': '569906aa20b7dfae1bcd5',
-    type: 'MC',
-    body: 'Sample Question MC',
+    type: 'SingleChoice',
+    body: 'Sample Question SC',
     answers:  Ember.A([
       Ember.Object.create({
         'id': 1,
@@ -157,7 +157,7 @@ test('Multiple choice question with user answer', function (assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
   });
   this.set('question', question);
-  this.render(hbs`{{player/questions/gru-multiple-choice question=question
+  this.render(hbs`{{player/questions/gru-single-choice question=question
                     userAnswer=2
                     onAnswerChanged='changeAnswer'
                     onAnswerLoaded='loadAnswer'}}`);

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import MultipleChoiceUtil from './multiple-choice';
+import SingleChoiceUtil from './single-choice';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 /**
  * It contains convenience methods for grading and retrieving useful information
@@ -25,7 +25,7 @@ import AnswerObject from 'quizzes/utils/question/answer-object';
  *
  * @typedef {Object} TrueFalseUtil
  */
-export default MultipleChoiceUtil.extend({
+export default SingleChoiceUtil.extend({
 
   // -------------------------------------------------------------------------
   // Observers

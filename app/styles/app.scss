@@ -94,7 +94,7 @@
 @import 'components/player/gru-viewer';
 @import 'components/player/gru-question-viewer';
 @import 'components/player/questions/gru-multiple-answer';
-@import 'components/player/questions/gru-multiple-choice';
+@import 'components/player/questions/gru-single-choice';
 @import 'components/player/questions/gru-true-false';
 @import 'components/player/questions/gru-reorder';
 @import 'components/player/questions/gru-hs-text';
@@ -113,7 +113,7 @@
 @import 'components/reports/assessment/gru-questions';
 @import 'components/reports/assessment/gru-questions-xs';
 @import 'components/reports/assessment/gru-summary';
-@import 'components/reports/assessment/questions/gru-multiple-choice';
+@import 'components/reports/assessment/questions/gru-single-choice';
 @import 'components/reports/assessment/questions/gru-multiple-answer';
 @import 'components/reports/assessment/questions/gru-true-false';
 @import 'components/reports/assessment/questions/gru-reorder';

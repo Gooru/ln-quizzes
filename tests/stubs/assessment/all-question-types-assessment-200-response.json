@@ -33,12 +33,12 @@
   "lesson_id": null,
   "question": [
     {
-      "id": "multiple-choice-question-id",
+      "id": "single-choice-question-id",
       "title": "<p>What color is this?</p>",
       "creator_id": "ff90e7e2-7788-48fb-9ce2-7b6d7a828840",
       "original_creator_id": null,
       "publish_date": null,
-      "content_subformat": "multiple_choice_question",
+      "content_subformat": "single_choice_question",
       "answer": [
         {
           "sequence": 1,

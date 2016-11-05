@@ -32,13 +32,13 @@ test('format resource', function(assert) {
   assert.ok(model.get('format'), 'question');
 });
 
-test('isMultipleChoice', function(assert) {
+test('isSingleChoice', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'MC'
+    'type': 'SingleChoice'
   });
 
-  assert.ok(model.get('isMultipleChoice'), 'It should be multiple choice');
+  assert.ok(model.get('isSingleChoice'), 'It should be single choice');
 });
 
 test('isMultipleAnswer', function(assert) {

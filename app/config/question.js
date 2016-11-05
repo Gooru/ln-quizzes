@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import MultipleChoiceUtil from 'quizzes/utils/question/multiple-choice';
+import SingleChoiceUtil from 'quizzes/utils/question/single-choice';
 import MultipleAnswerUtil from 'quizzes/utils/question/multiple-answer';
 import TrueFalseUtil from 'quizzes/utils/question/true-false';
 import OpenEndedUtil from 'quizzes/utils/question/open-ended';
@@ -12,7 +12,7 @@ import HotTextHighlightUtil from 'quizzes/utils/question/hot-text-highlight';
 
 //Question Types
 export const QUESTION_TYPES = {
-  multipleChoice: 'MC',
+  singleChoice: 'SingleChoice',
   multipleAnswer: 'MA',
   trueFalse: 'T/F',
   openEnded: 'OE',
@@ -25,13 +25,13 @@ export const QUESTION_TYPES = {
 
 //Question type configuration
 export const QUESTION_CONFIG = {
-  'MC'    : Ember.Object.create({
-    apiType: 'multiple_choice_question',
-    util: MultipleChoiceUtil,
+  'SingleChoice'    : Ember.Object.create({
+    apiType: 'single_choice_question',
+    util: SingleChoiceUtil,
     component: {
-      player: 'player.questions.gru-multiple-choice',
-      answer: 'reports.assessment.questions.gru-multiple-choice',
-      builder_answer:'content.questions.answers.gru-multiple-choice'
+      player: 'player.questions.gru-single-choice',
+      answer: 'reports.assessment.questions.gru-single-choice',
+      builder_answer:'content.questions.answers.gru-single-choice'
     }
   }),
   'MA'    : Ember.Object.create({

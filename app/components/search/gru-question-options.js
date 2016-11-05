@@ -45,14 +45,14 @@ export default Ember.Component.extend({
   selectedOptionTypes: Ember.A([]),
 
   /**
-   * True if multiple-choice option is selected
-   *  @property {boolean} multipleChoiceSelected
+   * True if single-choice option is selected
+   *  @property {boolean} singleChoiceSelected
    *
    */
 
-  multipleChoiceSelected: Ember.computed('selectedOptionTypes.[]', function() {
+  singleChoiceSelected: Ember.computed('selectedOptionTypes.[]', function() {
     const selectedOptions = this.get('selectedOptionTypes');
-    return selectedOptions.contains(QUESTION_TYPES.multipleChoice);
+    return selectedOptions.contains(QUESTION_TYPES.singleChoice);
   }),
 
   /**

@@ -1,6 +1,6 @@
 import QuestionComponent from './gru-question';
 /**
- * Multiple Choice Question
+ * Single Choice Question
  *
  * Component responsible for controlling the logic and appearance of a multiple
  * choice question inside of the {@link player/gru-question-viewer.js}
@@ -17,7 +17,7 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['gru-multiple-choice'],
+  classNames:['gru-single-choice'],
 
   // -------------------------------------------------------------------------
   // Actions

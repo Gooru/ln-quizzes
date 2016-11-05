@@ -197,12 +197,12 @@ test('searchQuestions for some types and standards', function(assert) {
       assert.equal(request.queryParams['start'], 1, 'Wrong default start');
       assert.equal(request.queryParams['length'], 20, 'Wrong default length');
       assert.equal(request.queryParams['flt.resourceFormat'], 'question', 'Wrong format filter');
-      assert.equal(request.queryParams['flt.questionType'], 'multiple_choice_question,multiple_answer_question', 'Wrong type filters');
+      assert.equal(request.queryParams['flt.questionType'], 'single_choice_question,multiple_answer_question', 'Wrong type filters');
       assert.deepEqual(request.queryParams['flt.standard'], 'a,b', 'Wrong standards');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   });
-  adapter.searchQuestions('any-term', { formats: ['MC', 'MA'], taxonomies: ['a', 'b']})
+  adapter.searchQuestions('any-term', { formats: ['SingleChoice', 'MA'], taxonomies: ['a', 'b']})
     .then(function(response) {
       assert.deepEqual({}, response, 'Wrong response');
     });

@@ -16,7 +16,7 @@ test('normalizeResponse', function(assert) {
             'reaction': 5,
             'timeSpent': 3600000,
             'resourceType': 'question',
-            'questionType': 'MC',
+            'questionType': 'SingleChoice',
             'answerObject': [
               {
                 answerId: "answer_1"
@@ -41,7 +41,7 @@ test('normalizeResponse', function(assert) {
             'reaction': 5,
             'timeSpent': 3600000,
             'resourceType': 'question',
-            'questionType': 'MC',
+            'questionType': 'SingleChoice',
             'answerObject': null
           }
         ]

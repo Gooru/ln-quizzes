@@ -241,7 +241,7 @@ export default Ember.Controller.extend(ModalMixin, {
   moveOrFinish: function(resource) {
     const controller = this;
     const next = controller.get('collection').nextResource(resource);
-    if (next){
+    if (next) {
       Ember.$(window).scrollTop(0);
       controller.moveToResource(next);
     } else {
@@ -298,6 +298,7 @@ export default Ember.Controller.extend(ModalMixin, {
     let save = controller.get('saveEnabled');
     if (save) {
       let contextId = assessmentResult.get('contextId');
+      resourceResult.set('stopTime', new Date().getTime());
       promise = controller.get('contextService')
         .moveToResource(resourceId, contextId, resourceResult);
     }

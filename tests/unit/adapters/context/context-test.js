@@ -64,6 +64,31 @@ test('moveToResource no resource', function(assert) {
     });
 });
 
+test('moveToResource no previous resource', function(assert) {
+  const adapter = this.subject();
+  const expectedContextId = 'context-id';
+  const expectedResourceId = null;
+  const expectedPreviousResource = null;
+  const expectedResponse = {};
+  const routes = function() {
+    this.post('/quizzes/api/v1/context/context-id/event/on-resource/', function(request) {
+      let requestBodyJson = JSON.parse(request.requestBody);
+      assert.notOk(requestBodyJson.previousResource, 'Wrong previous resource');
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify(expectedResponse)];
+    }, false);
+  };
+
+  this.pretender.map(routes);
+  this.pretender.unhandledRequest = function(verb, path) {
+    assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+  };
+
+  adapter.moveToResource(expectedResourceId, expectedContextId, expectedPreviousResource)
+    .then(function(response) {
+      assert.deepEqual(response, expectedResponse, 'Wrong response');
+    });
+});
+
 test('sendStartContextEvent', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';

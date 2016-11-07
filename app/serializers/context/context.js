@@ -12,7 +12,7 @@ export default Ember.Object.extend({
   normalizeAssessmentResult: function (payload) {
     let serializer = this;
     const assessmentResult = AssessmentResult.create(Ember.getOwner(this).ownerInjection(), {
-      contextId: payload.contextId,
+      contextId: payload.id,
       currentResourceId: payload.currentResourceId,
       resourceResults: serializer.normalizeResourceResults(payload.collectionStatus),
       collectionId: payload.collection.id
@@ -37,6 +37,26 @@ export default Ember.Object.extend({
         score: resourceResult.score
       });
     });
+  },
+
+  /**
+   * Serializes a ResourceResult
+   * @param {ResourceResult} resourceResult
+   * @returns {*}
+   */
+  serializeResourceResult: function (resourceResult) {
+    let serialized = {
+      reaction: resourceResult.get('reaction'),
+      resourceId: resourceResult.get('resourceId'),
+      timeSpent: resourceResult.get('timeSpent')
+    };
+
+    if (resourceResult.get('isQuestion')) {
+      serialized.answer = resourceResult.get('answer').map(function(answer) {
+        return { value: answer.value };
+      });
+    }
+    return serialized;
   }
 
 });

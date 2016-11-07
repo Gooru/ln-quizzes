@@ -29,11 +29,14 @@ export default QuestionComponent.extend({
      */
     selectAnswerChoice: function(answerId, onLoad) {
       const component = this;
-      component.notifyAnswerChanged(answerId);
+      let answer = [{
+        value: answerId
+      }];
+      component.notifyAnswerChanged(answer);
       if(onLoad) {
-        component.notifyAnswerLoaded(answerId);
+        component.notifyAnswerLoaded(answer);
       } else {
-        component.notifyAnswerCompleted(answerId);
+        component.notifyAnswerCompleted(answer);
       }
     }
   },
@@ -44,7 +47,8 @@ export default QuestionComponent.extend({
   init: function() {
     this._super(...arguments);
     if(this.get('userAnswer')) {
-      this.actions.selectAnswerChoice.call(this, this.get('userAnswer'), true);
+      this.actions.selectAnswerChoice.call(
+        this, this.get('userAnswer.firstObject.value'), true);
     }
   }
 

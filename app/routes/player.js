@@ -9,19 +9,16 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   /**
+   * @type {CollectionService} collectionService
    * @property {Ember.Service} Service to retrieve a collection
    */
   collectionService: Ember.inject.service('api-sdk/collection'),
 
   /**
+   * @type {ContextService} contextService
    * @property {Ember.Service} Service to send context related events
    */
   contextService: Ember.inject.service('api-sdk/context'),
-
-  /**
-   * @type {EventsService} eventsService
-   */
-  eventsService: Ember.inject.service('api-sdk/events'),
 
   // -------------------------------------------------------------------------
   // Methods

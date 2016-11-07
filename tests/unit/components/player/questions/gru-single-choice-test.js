@@ -8,12 +8,12 @@ moduleForComponent('player/questions/gru-single-choice', 'Unit | Component | pla
 
 test('selectAnswerChoice on load', function(assert) {
   let component = this.subject();
-  let expectedAnswerId = 'answer';
+  let expectedAnswerId = [{ value: 'answer' }];
   component.set('notifyAnswerChanged', function(answerId) {
-    assert.equal(answerId, expectedAnswerId, 'Answer should match in answer changed');
+    assert.deepEqual(answerId, expectedAnswerId, 'Answer should match in answer changed');
   });
   component.set('notifyAnswerLoaded', function(answerId) {
-    assert.equal(answerId, expectedAnswerId, 'Answer should match in answer loaded');
+    assert.deepEqual(answerId, expectedAnswerId, 'Answer should match in answer loaded');
   });
   component.set('notifyAnswerLoaded', function() {
     assert.ok(false, 'Answer completed should not be called');

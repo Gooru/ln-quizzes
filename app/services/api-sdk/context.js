@@ -26,6 +26,17 @@ export default Ember.Service.extend({
   // -------------------------------------------------------------------------
   // Methods
 
+  moveToResource: function(resourceId, contextId, previousResult) {
+    var service = this;
+    var serializedPreviousResult = previousResult ?
+      this.get('contextSerializer').serializeResourceResult(previousResult) :
+      null;
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service.get('contextAdapter').moveToResource(resourceId, contextId, serializedPreviousResult)
+        .then(resolve, reject);
+    });
+  },
+
   startContext: function(contextId) {
     var service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {

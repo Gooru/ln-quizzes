@@ -1,11 +1,53 @@
 import { moduleFor, test } from 'ember-qunit';
+import QuestionResult from 'quizzes/models/result/question';
+import ResourceResult from 'quizzes/models/result/resource';
 
 moduleFor('serializer:context/context', 'Unit | Serializer | context/context');
+
+test('serializeResourceResult with a resource', function(assert) {
+  const serializer = this.subject();
+  const resourceResult = ResourceResult.create({
+    resourceId: 'resource-id',
+    timeSpent: 10000,
+    reaction: 2
+  });
+  const response = serializer.serializeResourceResult(resourceResult);
+  const expected = {
+    resourceId: 'resource-id',
+    timeSpent: 10000,
+    reaction: 2
+  };
+
+  assert.deepEqual(expected, response, 'Wrong response');
+});
+
+test('serializeResourceResult with a question', function(assert) {
+  const serializer = this.subject();
+  const questionResult = QuestionResult.create({
+    resourceId: 'resource-id',
+    timeSpent: 10000,
+    reaction: 2,
+    answer: [{
+      value: 'answer'
+    }]
+  });
+  const response = serializer.serializeResourceResult(questionResult);
+  const expected = {
+    resourceId: 'resource-id',
+    timeSpent: 10000,
+    reaction: 2,
+    answer: [{
+      value: 'answer'
+    }]
+  };
+  assert.deepEqual(expected, response, 'Wrong response');
+});
+
 
 test('normalizeAssessmentResult', function(assert) {
   const serializer = this.subject();
   const payload = {
-    contextId: 'context-id',
+    id: 'context-id',
     currentResourceId: 'resource-id-2',
     collection: {
       id: 'collection-id'

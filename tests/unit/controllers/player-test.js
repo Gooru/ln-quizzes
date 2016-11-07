@@ -1,27 +1,27 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import Assessment from 'quizzes/models/content/assessment';
-import Collection from 'quizzes/models/content/collection';
-import Question from 'quizzes/models/content/question';
+import Collection from 'quizzes/models/collection/collection';
+import Resource from 'quizzes/models/resource/resource';
 import AssessmentResult from 'quizzes/models/result/assessment';
 import QuestionResult from 'quizzes/models/result/question';
 
 moduleFor('controller:player', 'Unit | Controller | player', {
-
+  unit: true
 });
 
 test('finishCollection on collection', function(assert) {
   assert.expect(1);
   let controller = this.subject();
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
-    title: 'Collection Title'
+    title: 'Collection Title',
+    isCollection: true
   });
   let assessmentResult = AssessmentResult.create(Ember.getOwner(this).ownerInjection(), {
     contextId: 'context'
   });
   controller.set('collection', collection);
   controller.set('assessmentResult', assessmentResult);
-  controller.set('eventsService', Ember.Object.create({
+  controller.set('contextService', Ember.Object.create({
     endContext: function(contextId) {
       assert.deepEqual(contextId, 'context', 'Wrong context id');
       return Ember.RSVP.resolve();
@@ -36,12 +36,13 @@ test('finishCollection on collection', function(assert) {
 test('finishCollection on assessment', function(assert) {
   assert.expect(1);
   let controller = this.subject();
-  let collection = Assessment.create(Ember.getOwner(this).ownerInjection(), {
-    title: 'Assessment Title'
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: false
   });
   controller.set('collection', collection);
   controller.set('actions.showModal', function(modal) {
-    assert.equal(modal, 'content.modals.gru-submit-confirmation', 'Correct modal');
+    assert.equal(modal, 'modals.gru-submit-confirmation', 'Correct modal');
   });
 
   controller.send('finishCollection');
@@ -50,10 +51,10 @@ test('finishCollection on assessment', function(assert) {
 test('submitQuestion with next question available', function(assert) {
   assert.expect(9);
   let controller = this.subject();
-  let question = Question.create(Ember.getOwner(this).ownerInjection(), {
+  let question = Resource.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question #1'
   });
-  let question2 = Question.create(Ember.getOwner(this).ownerInjection(), {
+  let question2 = Resource.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question #2',
     id: 'question-id'
   });
@@ -80,7 +81,7 @@ test('submitQuestion with next question available', function(assert) {
   controller.set('resource', question);
   controller.set('assessmentResult', assessmentResult);
   controller.set('resourceResult', questionResult);
-  controller.set('eventsService', Ember.Object.create({
+  controller.set('contextService', Ember.Object.create({
     moveToResource: function(resourceId, contextId, resourceResult) {
       assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
       assert.deepEqual(contextId, 'context', 'Wrong context id');
@@ -102,7 +103,7 @@ test('submitQuestion with next question available', function(assert) {
 test('submitQuestion with next question unavailable', function(assert) {
   assert.expect(5);
   let controller = this.subject();
-  let question = Question.create(Ember.getOwner(this).ownerInjection(), {
+  let question = Resource.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question #1'
   });
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
@@ -120,7 +121,7 @@ test('submitQuestion with next question unavailable', function(assert) {
     contextId: 'context'
   });
   controller.set('assessmentResult', assessmentResult);
-  controller.set('eventsService', Ember.Object.create({
+  controller.set('contextService', Ember.Object.create({
     moveToResource: function(resourceId, contextId, resourceResult) {
       assert.deepEqual(resourceId, null, 'Wrong resource id');
       assert.deepEqual(contextId, 'context', 'Wrong context id');
@@ -129,7 +130,7 @@ test('submitQuestion with next question unavailable', function(assert) {
     }
   }));
   controller.set('actions.showModal', function(modal) {
-    assert.equal(modal, 'content.modals.gru-submit-confirmation', 'Correct modal');
+    assert.equal(modal, 'modals.gru-submit-confirmation', 'Correct modal');
   });
 
   Ember.run(function() {
@@ -140,7 +141,7 @@ test('submitQuestion with next question unavailable', function(assert) {
 test('selectNavigatorItem', function(assert) {
   assert.expect(8);
   let controller = this.subject();
-  let question = Question.create(Ember.getOwner(this).ownerInjection(), {
+  let question = Resource.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question #2',
     id: 'question-id'
   });
@@ -155,7 +156,7 @@ test('selectNavigatorItem', function(assert) {
   });
   controller.set('assessmentResult', assessmentResult);
   controller.set('resourceResult', questionResult2);
-  controller.set('eventsService', Ember.Object.create({
+  controller.set('contextService', Ember.Object.create({
     moveToResource: function(resourceId, contextId, resourceResult) {
       assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
       assert.deepEqual(contextId, 'context', 'Wrong context id');

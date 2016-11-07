@@ -51,7 +51,7 @@ export default Ember.Component.extend({
    */
   contentHeight: Ember.computed('calculatedContentHeight',function(){
     var height = this.get('calculatedContentHeight');
-    const heightString = height > 0 ? `${height}px` : '100%';
+    const heightString = height > 0 && height >= 400 ? `${height}px` : '100%';
     return new Ember.Handlebars.SafeString(`max-height: ${heightString}`);
   }),
   // -------------------------------------------------------------------------

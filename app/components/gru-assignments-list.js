@@ -51,13 +51,19 @@ export default Ember.Component.extend({
    */
   assignments:null,
   /**
+   * Indicate if is a teacher view
+   */
+  isTeacher:false,
+  /**
    * Sort order
    */
   reverseSort: false, // default sort in ascending order
   /**
    * Sort criteria
    */
-  sortBy: 'assignedDate', // default sort by assigned date
+  sortBy: Ember.computed('isTeacher',function(){
+    return this.get('isTeacher') ? 'createdDate' : 'assignedDate';
+  }),
   /**
    * Assignments sorted by criteria
    */

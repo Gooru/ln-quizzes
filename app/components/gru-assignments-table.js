@@ -60,6 +60,12 @@ export default Ember.Component.extend({
    * @property {Number} the calculated resource content table height
    */
   calculatedTableContentHeight: null,
+
+  /**
+   * @property {Boolean} Indicate if is a teacher view
+   * @see gru-assignments-list and assignments.js route
+   */
+  isTeacher: false,
   /**
    *Return the table content height to print on inline styles
    */

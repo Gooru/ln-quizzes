@@ -1366,9 +1366,11 @@ export default {
     actions:"Actions",
     attempts:"Attempts left",
     date:"Date assigned",
+    dateModified:"Date modified",
     dueDate:"Due Date",
     search:"Search...",
     standards:"Standards",
+    studentsAssigned:"Students Assigned",
     title:"Title"
   },
   "assignment-details":{

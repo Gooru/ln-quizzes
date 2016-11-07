@@ -26,11 +26,13 @@
     tbody{
       overflow-y: auto;
       width: 100%;
+      height: auto;
       display: block;
     tr{
       cursor: pointer;
       @include flexbox;
       td{
+        line-height: 32px;
         text-align: center;
         background-color: $white;
          &.title{
@@ -45,7 +47,23 @@
             color: #fff;
             display: inline-block;
           }
+        &.actions{
+          button{
+            margin: 0 2px;
+            i{
+              font-size: 24px;
+            }
+            span.real-time-icon {
+              background-image: url('quizzes/images/on-air-gray.svg');
+              background-size: 24px 24px;
+              display: block;
+              height: 24px;
+              margin: 0 auto;
+              width: 24px;
+            }
+          }
         }
+      }
       &.selected{
         td{
             background-color:$sky-100;

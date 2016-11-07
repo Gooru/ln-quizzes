@@ -276,11 +276,73 @@ export default Ember.Route.extend({
         }
       })]);
 
-    let isTeacher = params.isTeacher;
+    let assignmentsTeacher = Ember.A([
+      Ember.Object.create({
+        title:'Assessment 1',
+        createdDate:1477021500,
+        modifiedDate:1477021500,
+        totalStudents:12,
+        totalAttempts:15,
+        attempts:2,
+        lastAttempt:{
+          score:60
+        },
+        questions:['question1','question2','question3'],
+        learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        settings:{
+          navigation:'Forward only',
+          showScore:'Per question',
+          answerKey:true
+        }
+      }),
+      Ember.Object.create({
+        hasStarted:true,
+        score:70,
+        title:'Assessment 2',
+        standards:'',
+        createdDate:1474072003426,
+        modifiedDate:1474072003426,
+        totalAttempts:15,
+        attempts:2,
+        totalStudents:15,
+        lastAttempt:{
+          score:60
+        },
+        questions:['question1','question2','question3'],
+        learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        settings:{
+          navigation:'Forward only',
+          showScore:'Per question',
+          answerKey:false
+        }
+      }),
+      Ember.Object.create({
+        hasStarted:false,
+        score:0,
+        title:'Assessment 3 Not Started',
+        standards:'',
+        createdDate:1475859664000,
+        modifiedDate:1475859664000,
+        totalStudents:20,
+        totalAttempts:15,
+        attempts:2,
+        lastAttempt:{
+          score:60
+        },
+        questions:['question1','question2','question3'],
+        learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        settings:{
+          navigation:'Forward only',
+          showScore:'Per question',
+          answerKey:false
+        }
+      })]);
+
+    let isTeacher = params.isTeacher  === 'true';
     return Ember.RSVP.hash({
       profileId,
       isTeacher,
-      assignments
+      assignments: isTeacher ? assignmentsTeacher : assignments
     });
   },
 

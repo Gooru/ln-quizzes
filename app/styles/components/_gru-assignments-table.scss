@@ -1,12 +1,18 @@
 .gru-assignments-table{
   table{
     thead{
+      width: 100%;
+      display: block;
       tr{
+        @include flexbox;
         th{
+          line-height: 38px;
+          height: 54px;
           text-align: center;
           background-color: $dark-400;
+          color:$white;
           a{
-            color:$dark-200;
+            color:$white;
           }
           &.title-header{
             text-align: left;
@@ -18,12 +24,19 @@
       }
     }
     tbody{
-      tr{
-        td{
-          text-align: center;
-          background-color: $white;
-          &.title{
-            text-align: left;
+      overflow-y: auto;
+      width: 100%;
+      height: auto;
+      display: block;
+    tr{
+      cursor: pointer;
+      @include flexbox;
+      td{
+        line-height: 32px;
+        text-align: center;
+        background-color: $white;
+         &.title{
+           text-align: left;
           }
           span.score{
             width: 46px;
@@ -34,16 +47,37 @@
             color: #fff;
             display: inline-block;
           }
-        }
-        @media(min-width:  $screen-sm-min) {
-          max-width: 32%;
-        }
-        &.selected{
-          td{
-            background-color:$sky-100;
+        &.actions{
+          button{
+            margin: 0 2px;
+            i{
+              font-size: 24px;
+            }
+            span.real-time-icon {
+              background-image: url('quizzes/images/on-air-gray.svg');
+              background-size: 24px 24px;
+              display: block;
+              height: 24px;
+              margin: 0 auto;
+              width: 24px;
+            }
           }
         }
       }
+      &.selected{
+        td{
+            background-color:$sky-100;
+        }
+      }
+      &:hover{
+        td{
+          background-color:$sky-100;
+        }
+      }
+     }
     }
+  }
+  .table-fixed tbody td, .table-fixed thead > tr> th {
+    float: left;
   }
 }

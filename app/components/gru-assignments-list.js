@@ -38,11 +38,6 @@ export default Ember.Component.extend({
       component.searchAssignment();
     });
 
-    component.calculateHeight();
-
-    window.onresize = function() {
-      component.calculateHeight();
-    };
   },
   // -------------------------------------------------------------------------
   // Properties
@@ -56,22 +51,23 @@ export default Ember.Component.extend({
    */
   assignments:null,
   /**
+   * Indicate if is a teacher view
+   */
+  isTeacher:false,
+  /**
    * Sort order
    */
   reverseSort: false, // default sort in ascending order
   /**
    * Sort criteria
    */
-  sortBy: 'assignedDate', // default sort by assigned date
+  sortBy: Ember.computed('isTeacher',function(){
+    return this.get('isTeacher') ? 'createdDate' : 'assignedDate';
+  }),
   /**
    * Assignments sorted by criteria
    */
   sortedAssignments: Ember.computed.sort('assignments', 'sortDefinition'),
-
-  /**
-   * @property {Number} the calculated resource content table height
-   */
-  calculatedTableContentHeight: null,
 
   /**
    * Sort definition
@@ -80,21 +76,10 @@ export default Ember.Component.extend({
     let sortOrder = this.get('reverseSort') ? 'desc' : 'asc';
     return [ `${this.get('sortBy')}:${sortOrder}` ];
   }),
-  tableContentHeight: Ember.computed('calculatedTableContentHeight',function(){
-    var height = this.get('calculatedTableContentHeight');
-    const heightString = height > 0 ? `${height}px` : '100%';
-    return new Ember.Handlebars.SafeString(`max-height: ${heightString}`);
-  }),
+
 
   // -------------------------------------------------------------------------
   // Methods
-  /**
-   *Calculate the height of the content
-   */
-  calculateHeight:function(){
-    var contentHeight = $(window).outerHeight(true);
-    this.set('calculatedTableContentHeight', contentHeight);
-  },
   /**
    * Filter assignment by title
    */

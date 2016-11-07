@@ -26,7 +26,7 @@
     "bootstrap-select": "^1.10.0",
     "clipboard": "^1.5.10",
     "wysihtml": "^0.5.5",
-    "mathquill": "mathquill-build#^0.11.1",
+    "mathquill": "mathquill#^0.10.1",
     "KaTeX": "katex#^0.6.0",
     "intro.js": "2.2.0"
   }

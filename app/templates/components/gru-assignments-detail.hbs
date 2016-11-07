@@ -1,16 +1,15 @@
-{{#if assignment}}
-    <div class="panel panel-default assignment-detail">
+<div class="panel panel-default assignment-detail">
         <div class="panel-heading">
             <div class="actions">
               {{#if assignment.hasStarted}}
-                  <button class="btn btn-info view-report">{{t 'assignment-details.view-report'}}</button>
-                  <button class="btn btn-info {{if hasAttempts 'redo' 'no-attempts'}}" disabled={{if hasAttempts false true}}>{{t 'assignment-details.redo'}}</button>
+                  <button class="btn btn-default view-report">{{t 'assignment-details.view-report'}}</button>
+                  <button class="btn btn-default {{if hasAttempts 'redo' 'no-attempts'}}" disabled={{if hasAttempts false true}}>{{t 'assignment-details.redo'}}</button>
               {{else}}
-                  <button class="btn btn-info play">{{t 'common.play'}}</button>
+                  <button class="btn btn-default play">{{t 'common.play'}}</button>
               {{/if}}
             </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="{{contentHeight}}">
            <div class="attempts-container">
                <div class="attempts-left">
                    <span>{{t 'assignment-details.attempts-left' attempts=assignment.attempts count=assignment.totalAttempts}}</span>
@@ -52,5 +51,4 @@
                 <span><b>{{t 'assignment-details.answer-key'}}: </b>{{if assignment.settings.answerKey (t 'assignment-details.on') (t 'assignment-details.off')}}</span>
             </div>
         </div>
-    </div>
-{{/if}}
+</div>

@@ -265,3 +265,41 @@ test('Sort by Due Date', function(assert) {
     });
   });
 });
+test('Sort by modifiedDate', function(assert) {
+  var assignments = Ember.A([
+    Ember.Object.create({
+      hasStarted:true,
+      score:60,
+      title:'Assessment 1',
+      standards:'',
+      createdDate:1463807150,
+      modifiedDate:1478538064000,
+      totalAttempts:15,
+      attempts:2
+    }),
+    Ember.Object.create({
+      hasStarted:true,
+      score:10,
+      title:'Assessment 2',
+      standards:'',
+      createdDate:1475859664000,
+      modifiedDate:1475859664000,
+      totalAttempts:15,
+      attempts:2
+    })]);
+  this.set('assignments',assignments);
+
+  this.render(hbs`{{gru-assignments-list assignments=assignments isTeacher=true}}`);
+  var $assignmentsListComponent = this.$();
+  var $table = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table');
+  var $modifiedDateHeader = $assignmentsListComponent.find('.gru-assignments-list .gru-assignments-table thead .modified-date-header a');
+  $modifiedDateHeader.click();
+  return wait().then(function () {
+    assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment 2', 'The first sorted by modified date should be Assessment 2');
+    $modifiedDateHeader.click();
+    return wait().then(function () {
+      assert.equal($table.find('tbody tr:eq(0) .title').text(),'Assessment 1', 'The first sorted by modified date should be Assessment 1');
+    });
+  });
+});
+

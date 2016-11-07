@@ -32,7 +32,6 @@ export default Ember.Object.extend({
       return QuestionResult.create(Ember.getOwner(serializer).ownerInjection(), {
         resourceId: resourceResult.resourceId,
         savedTime: resourceResult.timeSpent,
-        startTime: new Date().getTime(),
         reaction: resourceResult.reaction,
         answer: resourceResult.answer,
         score: resourceResult.score

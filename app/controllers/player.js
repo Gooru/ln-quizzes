@@ -265,11 +265,13 @@ export default Ember.Controller.extend(ModalMixin, {
     controller.saveResourceResult(resourceId, assessmentResult, resourceResult)
       .then(function() {
         Ember.run(() => controller.set('resource', null));
+        resourceResult = assessmentResult.getResultByResourceId(resourceId);
+        resourceResult.set('startTime', new Date().getTime());
         controller.setProperties({
           showReport: false,
           resourceId,
           resource,
-          resourceResult: assessmentResult.getResultByResourceId(resourceId)
+          resourceResult
         }); //saves the resource status
       });
   },
@@ -298,7 +300,9 @@ export default Ember.Controller.extend(ModalMixin, {
     let save = controller.get('saveEnabled');
     if (save) {
       let contextId = assessmentResult.get('contextId');
-      resourceResult.set('stopTime', new Date().getTime());
+      if(resourceResult) {
+        resourceResult.set('stopTime', new Date().getTime());
+      }
       promise = controller.get('contextService')
         .moveToResource(resourceId, contextId, resourceResult);
     }

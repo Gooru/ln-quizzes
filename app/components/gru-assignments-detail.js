@@ -41,12 +41,6 @@ export default Ember.Component.extend({
    */
   calculatedContentHeight: null,
   /**
-   *Indicate if the assignment has attempts left
-   */
-  hasAttempts:Ember.computed('assignment.attempts','assignment.totalAttempts',function(){
-    return this.get('assignment.totalAttempts') - this.get('assignment.attempts') > 0;
-  }),
-  /**
    *Return the table content height to print on inline styles
    */
   contentHeight: Ember.computed('calculatedContentHeight',function(){
@@ -54,6 +48,17 @@ export default Ember.Component.extend({
     const heightString = height > 0 && height >= 400 ? `${height}px` : '100%';
     return new Ember.Handlebars.SafeString(`max-height: ${heightString}`);
   }),
+  /**
+   *Indicate if the assignment has attempts left
+   */
+  hasAttempts:Ember.computed('assignment.attempts','assignment.totalAttempts',function(){
+    return this.get('assignment.totalAttempts') - this.get('assignment.attempts') > 0;
+  }),
+  /**
+   * @property {Boolean} Indicate if is a teacher view
+   * @see gru-assignments-list and assignments.js route
+   */
+  isTeacher: false,
   // -------------------------------------------------------------------------
   // Methods
   /**

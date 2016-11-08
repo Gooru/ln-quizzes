@@ -8,9 +8,9 @@
         <th class="title-header col-md-3 col-sm-5 col-xs-8"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
 
         {{#if isTeacher}}
-            <th class="modified-date-header hidden-sm hidden-xs col-md-3"><a {{action 'sortBy' 'modifiedDate'}}>{{t 'assignments-view.dateModified'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
-            <th class="students-assigned-header hidden-sm hidden-xs col-md-2">{{t 'assignments-view.studentsAssigned'}}</th>
-            <th class="actions-header hidden-sm hidden-xs col-md-3">{{t 'assignments-view.actions'}}</th>
+            <th class="modified-date-header hidden-xs col-md-3 col-sm-2"><a {{action 'sortBy' 'modifiedDate'}}>{{t 'assignments-view.dateModified'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
+            <th class="students-assigned-header hidden-xs hidden-sm col-md-2">{{t 'assignments-view.studentsAssigned'}}</th>
+            <th class="actions-header hidden-xs col-md-3 col-sm-4">{{t 'assignments-view.actions'}}</th>
         {{else}}
             <th class="standards-header hidden-sm hidden-xs col-md-2">{{t 'assignments-view.standards'}}</th>
             <th class="date-header hidden-sm hidden-xs col-md-2"><a {{action 'sortBy' 'dueDate'}}>{{t 'assignments-view.dueDate'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
@@ -33,9 +33,9 @@
           {{/unless}}
             <td class="title col-md-3 col-sm-5 col-xs-8">{{assignment.title}}</td>
           {{#if isTeacher}}
-              <td class="modified-date hidden-sm hidden-xs col-md-3">{{formatDate assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</td>
+              <td class="modified-date hidden-xs col-md-3 col-sm-2">{{formatDate assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</td>
               <td class="students-assigned hidden-sm hidden-xs col-md-2">{{assignment.totalStudents}}</td>
-              <td class="actions hidden-xs hidden-sm col-md-3  col-sm-4">
+              <td class="actions hidden-xs col-md-3  col-sm-4">
                   <button class="btn btn-default add-student">{{gru-icon name='person_add'}}</button>
                   <button class="btn btn-default real-time"><span class="real-time-icon"></span></button>
               </td>

@@ -26,6 +26,6 @@
       {{gru-assignments-table assignments=sortedAssignments onSelectAssignment='selectAssignment' sortBy=sortBy reverseSort=reverseSort isTeacher=isTeacher}}
     </div>
     <div class="assignments-info {{if selectedAssignment 'show' 'hide'}}">
-      {{gru-assignments-detail assignment=selectedAssignment}}
+      {{gru-assignments-detail assignment=selectedAssignment isTeacher=isTeacher}}
     </div>
 </div>

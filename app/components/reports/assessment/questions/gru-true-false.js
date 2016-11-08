@@ -1,4 +1,4 @@
-import MultipleChoiceComponent from 'quizzes/components/reports/assessment/questions/gru-multiple-choice';
+import SingleChoiceComponent from 'quizzes/components/reports/assessment/questions/gru-single-choice';
 
 /**
  * True/False
@@ -9,7 +9,7 @@ import MultipleChoiceComponent from 'quizzes/components/reports/assessment/quest
  * @module
  * @augments ember/Component
  */
-export default MultipleChoiceComponent.extend({
+export default SingleChoiceComponent.extend({
   // -------------------------------------------------------------------------
   // Attributes
 

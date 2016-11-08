@@ -12,10 +12,10 @@ moduleForComponent('reports/class-assessment/gru-question-performance', 'Integra
 
 /* TODO review when player is working
 test('When students has no answers yet', function (assert) {
-  const selectedQuestion = Ember.Object.create({ //Multiple Choice
+  const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "569906aa20b7dfae1bcd5262",
-    questionType: 'MC',
-    text: 'Sample Question MC',
+    questionType: 'SingleChoice',
+    text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
       Ember.Object.create({id: 2, isCorrect: false, text: "Answer 2"}),
@@ -100,10 +100,10 @@ test('When students has no answers yet', function (assert) {
 });
 
 test('Non anonymous, layout', function (assert) {
-  const selectedQuestion = Ember.Object.create({ //Multiple Choice
+  const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'MC',
-    text: 'Sample Question MC',
+    questionType: 'SingleChoice',
+    text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
       Ember.Object.create({id: 2, isCorrect: false, text: "Answer 2"}),
@@ -192,10 +192,10 @@ test('Non anonymous, layout', function (assert) {
 });
 
 test('Anonymous, layout', function (assert) {
-  const selectedQuestion = Ember.Object.create({ //Multiple Choice
+  const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'MC',
-    text: 'Sample Question MC',
+    questionType: 'SingleChoice',
+    text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
       Ember.Object.create({id: 2, isCorrect: false, text: "Answer 2"}),
@@ -281,10 +281,10 @@ test('Anonymous, layout', function (assert) {
 });
 
 test('Anonymous and Show Results', function (assert) {
-  const selectedQuestion = Ember.Object.create({ //Multiple Choice
+  const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'MC',
-    text: 'Sample Question MC',
+    questionType: 'SingleChoice',
+    text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
       Ember.Object.create({id: 2, isCorrect: false, text: "Answer 2"}),
@@ -373,11 +373,11 @@ test('Anonymous and Show Results', function (assert) {
   T.notExists(assert, $component.find(".panel .answers-wrapper .students"), 'Students should be hidden in anonymous');
 });
 
-test('Multiple choice', function (assert) {
-  const selectedQuestion = Ember.Object.create({ //Multiple Choice
+test('Single choice', function (assert) {
+  const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'MC',
-    text: 'Sample Question MC',
+    questionType: 'SingleChoice',
+    text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
       Ember.Object.create({id: 2, isCorrect: false, text: "Answer 2"}),
@@ -465,13 +465,13 @@ test('Multiple choice', function (assert) {
   assert.equal($component.find(".panel .answers-wrapper .answer").length, 3, 'Missing answers, 3 answers were given');
   assert.equal($component.find(".panel .answers-wrapper .students").length, 3, 'Missing students, 3 answers were given');
 
-  assert.equal($component.find(".panel .answers-wrapper .answer .gru-multiple-choice").length, 3, 'Missing question type components, 3 answers were given');
+  assert.equal($component.find(".panel .answers-wrapper .answer .gru-single-choice").length, 3, 'Missing question type components, 3 answers were given');
 });
 test('Anonymous and Show Results', function (assert) {
-  const selectedQuestion = Ember.Object.create({ //Multiple Choice
+  const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'MC',
-    text: 'Sample Question MC',
+    questionType: 'SingleChoice',
+    text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
       Ember.Object.create({id: 2, isCorrect: false, text: "Answer 2"}),

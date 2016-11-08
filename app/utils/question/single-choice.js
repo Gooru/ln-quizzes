@@ -23,7 +23,7 @@ import AnswerObject from 'quizzes/utils/question/answer-object';
  *
  *  ie 123020
  *
- * @typedef {Object} MultipleChoiceUtil
+ * @typedef {Object} SingleChoiceUtil
  */
 export default QuestionUtil.extend({
 
@@ -69,7 +69,7 @@ export default QuestionUtil.extend({
 
   /**
    * Returns a unique key representing the answer
-   * For multiple choice the answer id is already unique
+   * For single choice the answer id is already unique
    * @param {number} answer i.e 1
    * @returns {number} i.e 1
    *

@@ -2,8 +2,10 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
+import AnswerModel from 'quizzes/models/resource/answer';
+import ResourceModel from 'quizzes/models/resource/resource';
 
-moduleForComponent('player/questions/gru-multiple-choice', 'Integration | Component | player/questions/gru multiple choice', {
+moduleForComponent('player/questions/gru-single-choice', 'Integration | Component | player/questions/gru single choice', {
   integration: true,
   beforeEach: function () {
     this.container.lookup('service:i18n').set('locale', 'en');
@@ -11,36 +13,29 @@ moduleForComponent('player/questions/gru-multiple-choice', 'Integration | Compon
   }
 });
 
-test('Multiple choice question layout', function (assert) {
-
+test('Single choice question layout', function (assert) {
   assert.expect(10);
-  let question = Ember.Object.create({
-    'id': '569906aa20b7dfae1bcd5',
-    type: 'MC',
-    body: 'Sample Question MC',
+  let question = ResourceModel.create({
+    id: '569906aa20b7dfae1bcd5',
+    type: 'SingleChoice',
+    body: 'Sample Question SC',
     answers:  Ember.A([
-      Ember.Object.create({
-        'id': 1,
-        'text': '<p>An aquifer</p>',
-        'answerType': 'text',
-        'sequence': 1
+      AnswerModel.create({
+        value: '1',
+        text: 'An aquifer'
       }),
-      Ember.Object.create({
-        'id': 2,
-        'text': '<p>A well</p>',
-        'answerType': 'text',
-        'sequence': 2
+      AnswerModel.create({
+        value: '2',
+        text: 'A well'
       }),
-      Ember.Object.create({
-        'aid': 3,
-        'text': '<p>A pump</p>',
-        'answerType': 'text',
-        'sequence': 3
+      AnswerModel.create({
+        value: '3',
+        text: 'A pump'
       })
     ]),
-    'sequence': 1,
-    'hasAnswers': true,
-    'hasNarration': true
+    sequence: 1,
+    hasAnswers: true,
+    hasNarration: true
   });
 
   let answers = [];
@@ -56,7 +51,7 @@ test('Multiple choice question layout', function (assert) {
     assert.deepEqual(answer, answers, 'Answer completed, but the answers are not correct');
   });
 
-  this.render(hbs`{{player/questions/gru-multiple-choice question=question
+  this.render(hbs`{{player/questions/gru-single-choice question=question
         onAnswerChanged='myOnAnswerChanged' onAnswerCompleted='myOnAnswerCompleted'}}`);
 
   var $component = this.$(); //component dom element
@@ -69,87 +64,75 @@ test('Multiple choice question layout', function (assert) {
 
 
   //select a radio button
-  answers = 2;
+  answers = [{ value: '2' }];
   $component.find('.answer-choices .radio input[type=radio]:eq(1)').click();
 
-  answers = 1;
+  answers = [{ value: '1' }];
   $component.find('.answer-choices .radio input[type=radio]:eq(0)').click();
 
 });
 
-test('Multiple choice question layout - read only', function (assert) {
+test('Single choice question layout - read only', function (assert) {
 
   assert.expect(2);
-  let question = Ember.Object.create({
-    'id': '569906aa20b7dfae1bcd5',
-    type: 'MC',
-    body: 'Sample Question MC',
+  let question = ResourceModel.create({
+    id: '569906aa20b7dfae1bcd5',
+    type: 'SingleChoice',
+    body: 'Sample Question SC',
     answers:  Ember.A([
-      Ember.Object.create({
-        'id': 1,
-        'text': '<p>An aquifer</p>',
-        'answerType': 'text',
-        'sequence': 1
+      AnswerModel.create({
+        value: '1',
+        text: 'An aquifer'
       }),
-      Ember.Object.create({
-        'id': 2,
-        'text': '<p>A well</p>',
-        'answerType': 'text',
-        'sequence': 2
+      AnswerModel.create({
+        value: '2',
+        text: 'A well'
       }),
-      Ember.Object.create({
-        'aid': 3,
-        'text': '<p>A pump</p>',
-        'answerType': 'text',
-        'sequence': 3
+      AnswerModel.create({
+        value: '3',
+        text: 'A pump'
       })
     ]),
-    'sequence': 1,
-    'hasAnswers': true,
-    'hasNarration': true
+    sequence: 1,
+    hasAnswers: true,
+    hasNarration: true
   });
 
   this.set('question', question);
-  this.render(hbs`{{player/questions/gru-multiple-choice question=question readOnly=true}}`);
+  this.render(hbs`{{player/questions/gru-single-choice question=question readOnly=true}}`);
 
   var $component = this.$(); //component dom element
   assert.equal($component.find('.answer-choices .radio.disabled').length, 3, 'Missing answer choices');
   assert.equal($component.find('.answer-choices .radio input[disabled]').length, 3, 'Missing answer choices radio inputs');
 });
 
-test('Multiple choice question with user answer', function (assert) {
+test('Single choice question with user answer', function (assert) {
 
   assert.expect(5);
-  let question = Ember.Object.create({
-    'id': '569906aa20b7dfae1bcd5',
-    type: 'MC',
-    body: 'Sample Question MC',
+  let question = ResourceModel.create({
+    id: '569906aa20b7dfae1bcd5',
+    type: 'SingleChoice',
+    body: 'Sample Question SC',
     answers:  Ember.A([
-      Ember.Object.create({
-        'id': 1,
-        'text': '<p>An aquifer</p>',
-        'answerType': 'text',
-        'sequence': 1
+      AnswerModel.create({
+        value: '1',
+        text: 'An aquifer'
       }),
-      Ember.Object.create({
-        'id': 2,
-        'text': '<p>A well</p>',
-        'answerType': 'text',
-        'sequence': 2
+      AnswerModel.create({
+        value: '2',
+        text: 'A well'
       }),
-      Ember.Object.create({
-        'id': 3,
-        'text': '<p>A pump</p>',
-        'answerType': 'text',
-        'sequence': 3
+      AnswerModel.create({
+        value: '3',
+        text: 'A pump'
       })
     ]),
-    'sequence': 1,
-    'hasAnswers': true,
-    'hasNarration': true
+    sequence: 1,
+    hasAnswers: true,
+    hasNarration: true
   });
 
-  const answers = 2;
+  const answers = [{ value: '2' }];
   this.on('changeAnswer', function (question, answer) {
     assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
   });
@@ -157,8 +140,11 @@ test('Multiple choice question with user answer', function (assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
   });
   this.set('question', question);
-  this.render(hbs`{{player/questions/gru-multiple-choice question=question
-                    userAnswer=2
+  this.set('userAnswer', [{
+    value: '2'
+  }]);
+  this.render(hbs`{{player/questions/gru-single-choice question=question
+                    userAnswer=userAnswer
                     onAnswerChanged='changeAnswer'
                     onAnswerLoaded='loadAnswer'}}`);
 

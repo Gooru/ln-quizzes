@@ -181,7 +181,7 @@ export default Ember.Route.extend({
     const model = Error.create({
       type: 'url',
       timestamp: new Date().getTime(),
-      userId: (route.get('session.isAnonymous') ? 'anonymous' : route.get('session.userId')),
+      userId: 'anonymous',
       details: {
         route: route.get('router.url'),
         userAgent: navigator.userAgent,
@@ -198,8 +198,8 @@ export default Ember.Route.extend({
       },
       description: 'Endpoint error'
     });
-
-    route.get('errorService').createError(model);
+    Ember.Logger.error(model);
+    //route.get('errorService').createError(model);
   },
 
   /**
@@ -217,7 +217,7 @@ export default Ember.Route.extend({
     const model = Error.create({
       type: 'page',
       timestamp: new Date().getTime(),
-      userId: (route.get('session.isAnonymous') ? 'anonymous' : route.get('session.userId')),
+      userId: 'anonymous',
       details: {
         route: route.get('router.url'),
         userAgent: navigator.userAgent,
@@ -226,8 +226,9 @@ export default Ember.Route.extend({
       description: JSON.stringify(error)
     });
 
+    Ember.Logger.error(model);
     Ember.Logger.error(error);
-    route.get('errorService').createError(model);
+    //route.get('errorService').createError(model);
   },
 
   deactivate: function () {

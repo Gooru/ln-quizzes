@@ -1,53 +1,53 @@
 import Ember from 'ember';
 import AnswerObject from 'quizzes/utils/question/answer-object';
-import MultipleChoiceUtil from 'quizzes/utils/question/multiple-choice';
+import SingleChoiceUtil from 'quizzes/utils/question/single-choice';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | multiple choice');
+module('Unit | Utility | single choice');
 
-// --------------- Multiple Choice tests
-test('Multiple Choice - getCorrectAnswer empty array', function (assert) {
+// --------------- Single Choice tests
+test('Single Choice - getCorrectAnswer empty array', function (assert) {
   let question = Ember.Object.create({answers: Ember.A([])});
-  let questionUtil = MultipleChoiceUtil.create({question: question});
+  let questionUtil = SingleChoiceUtil.create({question: question});
   assert.ok(!questionUtil.getCorrectAnswer(), "Correct answer should not be found");
 });
 
-test('Multiple Choice - getCorrectAnswer no correct answer provided', function (assert) {
+test('Single Choice - getCorrectAnswer no correct answer provided', function (assert) {
   let answers = Ember.A([
     Ember.Object.create({id: 1, isCorrect: false})
   ]);
 
   let question = Ember.Object.create({answers: answers});
-  let questionUtil = MultipleChoiceUtil.create({question: question});
+  let questionUtil = SingleChoiceUtil.create({question: question});
   assert.ok(!questionUtil.getCorrectAnswer(), "Correct answer should not be found");
 });
 
-test('Multiple Choice - getCorrectAnswer when correct answer is provided', function (assert) {
+test('Single Choice - getCorrectAnswer when correct answer is provided', function (assert) {
   let answers = Ember.A([
     Ember.Object.create({id: 1, isCorrect: false}),
     Ember.Object.create({id: 2, isCorrect: true})
   ]);
 
   let question = Ember.Object.create({answers: answers});
-  let questionUtil = MultipleChoiceUtil.create({question: question});
+  let questionUtil = SingleChoiceUtil.create({question: question});
   assert.equal(questionUtil.getCorrectAnswer(), 2, "Incorrect answer id");
 });
 
-test('Multiple Choice - isCorrect', function (assert) {
+test('Single Choice - isCorrect', function (assert) {
   let answers = Ember.A([
     Ember.Object.create({id: 1, isCorrect: false}),
     Ember.Object.create({id: 2, isCorrect: true})
   ]);
 
   let question = Ember.Object.create({answers: answers});
-  let questionUtil = MultipleChoiceUtil.create({question: question});
+  let questionUtil = SingleChoiceUtil.create({question: question});
 
   assert.ok(!questionUtil.isCorrect(1), "Option one is not correct");
   assert.ok(questionUtil.isCorrect(2), "Option two should be correct");
 });
 
-test('Multiple Choice - distribution', function (assert) {
-  let questionUtil = MultipleChoiceUtil.create({question: null});
+test('Single Choice - distribution', function (assert) {
+  let questionUtil = SingleChoiceUtil.create({question: null});
 
   let distribution = questionUtil.distribution([1, 1, 2, 3, 4, 3, 2, 3]);
 
@@ -62,27 +62,27 @@ test('Multiple Choice - distribution', function (assert) {
   assert.deepEqual(counts, [2, 2, 3, 1], "Wrong counts");
 });
 
-test('Multiple Choice - answerKey', function (assert) {
-  let questionUtil = MultipleChoiceUtil.create({question: null});
+test('Single Choice - answerKey', function (assert) {
+  let questionUtil = SingleChoiceUtil.create({question: null});
 
   let key = questionUtil.answerKey(1);
   assert.equal(key, 1, "Wrong key");
 });
 
-test('Multiple Choice - sameAnswer', function (assert) {
-  let questionUtil = MultipleChoiceUtil.create({question: null});
+test('Single Choice - sameAnswer', function (assert) {
+  let questionUtil = SingleChoiceUtil.create({question: null});
   assert.ok(questionUtil.sameAnswer(1, 1), "Answer should be the same");
   assert.ok(!questionUtil.sameAnswer(1, 2), "Answer should not be the same");
 });
 
-test('Multiple Choice - toAnswerObjects', function (assert) {
+test('Single Choice - toAnswerObjects', function (assert) {
   let answers = Ember.A([
     Ember.Object.create({id: 1, isCorrect: false, text: "Option A"}),
     Ember.Object.create({id: 2, isCorrect: true, text: "Option B"})
   ]);
 
   let question = Ember.Object.create({answers: answers});
-  let questionUtil = MultipleChoiceUtil.create({question: question});
+  let questionUtil = SingleChoiceUtil.create({question: question});
 
   let answerObjects = questionUtil.toAnswerObjects(2);
   assert.equal(answerObjects.length, 1, "Only 1 answer object should be found");
@@ -94,14 +94,14 @@ test('Multiple Choice - toAnswerObjects', function (assert) {
   assert.equal(answerObject.get("text"), 'Option B', "Wrong status");
 });
 
-test('Multiple Choice - toUserAnswer', function (assert) {
+test('Single Choice - toUserAnswer', function (assert) {
   let answers = Ember.A([
     Ember.Object.create({id: 1, isCorrect: false, text: "Option A"}),
     Ember.Object.create({id: 2, isCorrect: true, text: "Option B"})
   ]);
 
   let question = Ember.Object.create({answers: answers});
-  let questionUtil = MultipleChoiceUtil.create({question: question});
+  let questionUtil = SingleChoiceUtil.create({question: question});
 
   let answerObject = AnswerObject.create({ answerId: 1 });
   let userAnswer = questionUtil.toUserAnswer(Ember.A([answerObject]));

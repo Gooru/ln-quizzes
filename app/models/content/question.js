@@ -169,10 +169,10 @@ const Question = Ember.Object.extend(Validations, {
   subject: '',
 
   /**
-   * @property {boolean} indicates if the question is multiple choice type
-   * @see components/player/gru-multiple-choice.js
+   * @property {boolean} indicates if the question is single choice type
+   * @see components/player/gru-single-choice.js
    */
-  isMultipleChoice: Ember.computed.equal('questionType', QUESTION_TYPES.multipleChoice),
+  isSingleChoice: Ember.computed.equal('questionType', QUESTION_TYPES.singleChoice),
 
   /**
    * @property {boolean} indicates if the question is multiple answer type
@@ -246,8 +246,8 @@ const Question = Ember.Object.extend(Validations, {
    * Indicates if the question supports answer choices
    * @property {boolean}
    */
-  supportAnswerChoices: Ember.computed("isMultipleChoice", "isMultipleAnswer", "isHotTextReorder", "isHotSpotText", function () {
-    return this.get("isMultipleChoice") || this.get("isMultipleAnswer") || this.get("isHotTextReorder") || this.get("isHotSpotText");
+  supportAnswerChoices: Ember.computed("isSingleChoice", "isMultipleAnswer", "isHotTextReorder", "isHotSpotText", function () {
+    return this.get("isSingleChoice") || this.get("isMultipleAnswer") || this.get("isHotTextReorder") || this.get("isHotSpotText");
   }),
 
 

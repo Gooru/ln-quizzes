@@ -30,8 +30,28 @@ export default Ember.Object.extend(Serializable, {
   isQuestion: false,
 
   /**
+   * @property {number} savedTime - Current loaded time for the resource
+   */
+  savedTime: 0,
+
+  /**
+   * @property {number} startTime - Current start time for the resource
+   */
+  startTime: 0,
+
+  /**
+   * @property {number} stopTime - Current stop time for the resource
+   */
+  stopTime: 0,
+
+  /**
    * @property {number} timeSpent - Time spent in this resource
    */
-  timeSpent: 0
+  timeSpent: Ember.computed('startTime', 'stopTime', 'savedTime', function() {
+    let savedTime = this.get('savedTime') || 0;
+    let startTime = this.get('startTime') || 0;
+    let stopTime = this.get('stopTime') || startTime;
+    return savedTime + (stopTime - startTime);
+  })
 
 });

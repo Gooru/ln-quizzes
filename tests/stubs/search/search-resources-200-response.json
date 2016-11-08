@@ -26,7 +26,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2626/1717/4608.jpg",
       "title": "Chlorination of water refers to",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -55,7 +55,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2624/7589/5116.JPG",
       "title": "Pure water is a:",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -84,7 +84,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2626/8882/8022.jpg",
       "title": "Clouds form when water",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Chris",
@@ -113,7 +113,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2627/3479/5116.JPG",
       "title": "Pure water is a:",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -142,7 +142,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2626/8871/8022.jpg",
       "title": "Clouds form when water",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Chris",
@@ -171,7 +171,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2624/5679/8756.jpg",
       "title": "We need water to:",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -200,7 +200,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2626/8939/8022.jpg",
       "title": "Clouds form when water",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Chris",
@@ -229,7 +229,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2628/0187/8756.jpg",
       "title": "We need water to:",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -258,7 +258,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2624/7675/5116.JPG",
       "title": "Pure water is a:",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -287,7 +287,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2623/5445/8756.jpg",
       "title": "We need water to:",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -316,7 +316,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2628/0188/8757.png",
       "title": "What percentage of Earth's water is drinkable?",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -345,7 +345,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2628/0167/4655.png",
       "title": "If more water evaporates from the ocean,",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -374,7 +374,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2626/8836/4608.jpg",
       "title": "Chlorination of water refers to",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -403,7 +403,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2624/5682/8759.jpeg",
       "title": "Which of these provides unlimited water?",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -432,7 +432,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2624/5678/8762.jpeg",
       "title": "Which of the following do not conserve water?",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -461,7 +461,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2627/3340/4655.png",
       "title": "If more water evaporates from the ocean,",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -490,7 +490,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2624/5683/8758.jpeg",
       "title": "Which of these best justifies water conservation?",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -519,7 +519,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2624/7574/4655.png",
       "title": "If more water evaporates from the ocean,",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -548,7 +548,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2628/0189/8758.jpeg",
       "title": "Which of these best justifies water conservation?",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",
@@ -577,7 +577,7 @@
       "shortTitle": "",
       "thumbnail": "f000/2628/0192/8759.jpeg",
       "title": "Which of these provides unlimited water?",
-      "typeName": "multiple_choice_question",
+      "typeName": "single_choice_question",
       "user": {
         "emailId": "",
         "firstName": "Rocky",

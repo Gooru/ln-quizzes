@@ -189,7 +189,7 @@ test('normalizeSearchQuestions', function(assert) {
         },
         "thumbnail": "f000/2628/3363/6397.svg",
         "title": "Cells are organized",
-        "typeName": "multiple_choice_question",
+        "typeName": "single_choice_question",
         "user": {
           "firstName": "Rocky",
           "gooruUId": "ee410cef-2a44-46ef-878d-172511e54e07",
@@ -218,7 +218,7 @@ test('normalizeQuestion', function(assert) {
     },
     "thumbnail": "f000/2628/3363/6397.svg",
     "title": "Cells are organized",
-    "typeName": "multiple_choice_question",
+    "typeName": "single_choice_question",
     "user": {
       "firstName": "Rocky",
       "gooruUId": "ee410cef-2a44-46ef-878d-172511e54e07",
@@ -233,7 +233,7 @@ test('normalizeQuestion', function(assert) {
   //TODO assert.equal(question.get("publishStatus"), 'unpublished', 'Wrong publish status');
   assert.equal(question.get("format"), 'question', 'Wrong format');
   assert.equal(question.get("thumbnailUrl"), 'f000/2628/3363/6397.svg', 'Wrong thumbnailUrl');
-  assert.equal(question.get("type"), 'MC', 'Wrong type');
+  assert.equal(question.get("type"), 'SingleChoice', 'Wrong type');
   assert.equal(question.get("owner.id"), "ee410cef-2a44-46ef-878d-172511e54e07", 'Wrong owner id');
 });
 

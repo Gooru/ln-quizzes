@@ -12,7 +12,7 @@ moduleForComponent('gru-question-options', 'Integration | Component | question o
 
 test('gru-question-options-default', function(assert) {
 
-  const selectedOptionType = Ember.A(['multiple-choice']);
+  const selectedOptionType = Ember.A(['single-choice']);
 
   this.set('selectedOptionType', selectedOptionType);
 
@@ -22,10 +22,10 @@ test('gru-question-options-default', function(assert) {
   assert.expect(24); //making sure all asserts are called
 
   const $menuOptions =$component.find('.options');
-  const $multipleChoiceButton =$menuOptions.find('.multiple-choice');
-  T.exists(assert, $multipleChoiceButton, 'Missing multiple choice button');
-  T.exists(assert, $multipleChoiceButton.find('.icon'), 'Missing icon multiple choice button');
-  assert.equal(T.text($multipleChoiceButton.find('.text')), 'Multiple Choice', 'Incorrect multiple choice button text');
+  const $singleChoiceButton =$menuOptions.find('.single-choice');
+  T.exists(assert, $singleChoiceButton, 'Missing single choice button');
+  T.exists(assert, $singleChoiceButton.find('.icon'), 'Missing icon single choice button');
+  assert.equal(T.text($singleChoiceButton.find('.text')), 'Single Choice', 'Incorrect single choice button text');
 
   const $multipleAnswerButton =$menuOptions.find('.multiple-answer');
   T.exists(assert, $multipleAnswerButton, 'Missing multiple answer button');
@@ -64,19 +64,19 @@ test('gru-question-options-default', function(assert) {
 
 });
 
-test('search-filter-onMultipleChoiceClick', function(assert) {
+test('search-filter-onSingleChoiceClick', function(assert) {
   assert.expect(1); //making sure all asserts are called
 
   this.on('selectMenuOption', function(options) {
-    assert.equal(options[0], 'multiple-choice', 'Incorrect multiple-choice option type');
+    assert.equal(options[0], 'single-choice', 'Incorrect single-choice option type');
   });
 
   this.render(hbs`{{search/gru-question-options onSelectMenuOption='selectMenuOption'}}`);
 
   var $component = this.$(); //component dom element
 
-  const $multipleChoiceOptionButton = $component.find('.multiple-choice.btn-option');
+  const $singleChoiceOptionButton = $component.find('.single-choice.btn-option');
 
-  $multipleChoiceOptionButton.click();
-  assert.ok(!$multipleChoiceOptionButton.hasClass('selected'), 'Missing multiple choice option selected');
+  $singleChoiceOptionButton.click();
+  assert.ok(!$singleChoiceOptionButton.hasClass('selected'), 'Missing single choice option selected');
 });

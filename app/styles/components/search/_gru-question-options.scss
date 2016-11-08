@@ -77,9 +77,9 @@
           .btn-option.selected {
             border-bottom-color: $green-300;
           }
-          .multiple-choice {
+          .single-choice {
             .icon {
-              background: url("quizzes/images/navigation_multiple_choice.svg");
+              background: url("quizzes/images/navigation_single_choice.svg");
               width: 51px;
               height: 15px;
             }

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ModalMixin from 'quizzes/mixins/modal';
 
 /**
  * @module
@@ -6,32 +7,23 @@ import Ember from 'ember';
  *
  * @augments Ember/Controller
  */
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(ModalMixin, {
 
   // -------------------------------------------------------------------------
   // Dependencies
 
-  queryParams: ['resourceId', 'role', 'type'],
-
-  session: Ember.inject.service('session'),
-
   /**
-   * @dependency {Ember.Service} i18n service
+   * @type {ContextService} contextService
+   * @property {Ember.Service} Service to send context related events
    */
-  i18n: Ember.inject.service(),
-
-  /**
-   * @dependency {Ember.Service} Service to rate a resource
-   */
-  eventsService: Ember.inject.service('api-sdk/events'),
-
+  contextService: Ember.inject.service('api-sdk/context'),
 
   // -------------------------------------------------------------------------
   // Attributes
 
-
   // -------------------------------------------------------------------------
   // Actions
+
   actions: {
 
     /**
@@ -226,7 +218,7 @@ export default Ember.Controller.extend({
     const controller = this;
     let assessmentResult = controller.get('assessmentResult');
     return controller.get('saveEnabled') ?
-      controller.get('eventsService').endContext(assessmentResult.get('contextId')) :
+      controller.get('contextService').endContext(assessmentResult.get('contextId')) :
       Ember.RSVP.resolve();
   },
 
@@ -236,7 +228,7 @@ export default Ember.Controller.extend({
   finishConfirm: function() {
     const controller = this;
     controller.actions.showModal.call(this,
-      'content.modals.gru-submit-confirmation',
+      'modals.gru-submit-confirmation',
       {
         onConfirm: controller.finishCollection.bind(controller)
       });
@@ -249,7 +241,7 @@ export default Ember.Controller.extend({
   moveOrFinish: function(resource) {
     const controller = this;
     const next = controller.get('collection').nextResource(resource);
-    if (next){
+    if (next) {
       Ember.$(window).scrollTop(0);
       controller.moveToResource(next);
     } else {
@@ -273,11 +265,13 @@ export default Ember.Controller.extend({
     controller.saveResourceResult(resourceId, assessmentResult, resourceResult)
       .then(function() {
         Ember.run(() => controller.set('resource', null));
+        resourceResult = assessmentResult.getResultByResourceId(resourceId);
+        resourceResult.set('startTime', new Date().getTime());
         controller.setProperties({
           showReport: false,
           resourceId,
           resource,
-          resourceResult: assessmentResult.getResultByResourceId(resourceId)
+          resourceResult
         }); //saves the resource status
       });
   },
@@ -306,7 +300,10 @@ export default Ember.Controller.extend({
     let save = controller.get('saveEnabled');
     if (save) {
       let contextId = assessmentResult.get('contextId');
-      promise = controller.get('eventsService')
+      if(resourceResult) {
+        resourceResult.set('stopTime', new Date().getTime());
+      }
+      promise = controller.get('contextService')
         .moveToResource(resourceId, contextId, resourceResult);
     }
     return promise;

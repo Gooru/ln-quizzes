@@ -54,7 +54,7 @@
       "publish_date": null,
       "short_title": "question new",
       "content_format": "question",
-      "content_subformat": "multiple_choice_question",
+      "content_subformat": "single_choice_question",
       "answer": null,
       "metadata": null,
       "taxonomy": null,

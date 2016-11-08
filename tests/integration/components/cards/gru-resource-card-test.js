@@ -48,7 +48,7 @@ test('Question Card Layout', function(assert) {
   var question = QuestionModel.create({
     title: "Question Title",
     format:"question",
-    type:"MC",
+    type:"SingleChoice",
     text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     owner:Ember.Object.create({
       firstName:"Publisher"
@@ -69,7 +69,7 @@ test('Question Card Layout', function(assert) {
   const $resourceCard = $component.find(".gru-resource-card");
   T.exists(assert, $resourceCard.find(".panel-heading h6.title"), "Missing Title");
   T.exists(assert, $resourceCard.find(".panel-heading i.question-icon"), "Missing Question Icon");
-  assert.equal(T.text($resourceCard.find(".panel-heading .question-type span")), "Multiple Choice", "Incorrect question type");
+  assert.equal(T.text($resourceCard.find(".panel-heading .question-type span")), "Single Choice", "Incorrect question type");
   T.exists(assert, $resourceCard.find(".panel-body .gru-taxonomy-tag-list"), "Missing standards");
   T.exists(assert, $resourceCard.find(".panel-body .publisher img"), "Missing Publisher Image");
   T.exists(assert, $resourceCard.find(".panel-body .publisher .owner a"), "Missing Owner Name");

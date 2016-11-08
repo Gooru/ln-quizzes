@@ -314,7 +314,7 @@ export default {
     "question-title": "Question Title",
     "question-type": {
       "SA": "Single Answer",
-      "MC": "Multiple Choice",
+      "SingleChoice": "Single Choice",
       "FIB": "Fill In the Blank",
       "T/F": "True or False",
       "T_F": "True or False",
@@ -639,7 +639,7 @@ export default {
             "HT_HL_WD": "As you write the question, use brackets for the highlighted words. One bracket can only contain one word at a time. For example, The [big] bad wolf blew [down] the house. Character limit: 5000.",
             "HT_RO": "You can add up to ten answer choices in the correct order. The order will be scrambled for students.",
             "MA": "You can add up to ten answers, an image, an explanation, and up to five hints.",
-            "MC": "You can add up to ten answer choices and indicate one correct answer. Character Limit: 200.",
+            "SingleChoice": "You can add up to ten answer choices and indicate one correct answer. Character Limit: 200.",
             "OE": "Write the correct response. Character limit: 5000.",
             "T/F": "Select the correct answer."
           },
@@ -649,7 +649,7 @@ export default {
             "HS_IMG": "Write your question.",
             "HT_RO": "Write your question.",
             "HT_HL": "Write your question prompt.",
-            "MC": "Write your question.",
+            "SingleChoice": "Write your question.",
             "MA": "Write your question.",
             "OE": "Write your question.",
             "T/F": "Write your question."
@@ -972,7 +972,7 @@ export default {
     "assessments": "Assessments",
     "questions": "Questions",
     "question-types": {
-      "MC": "Multiple Choice",
+      "SingleChoice": "Single Choice",
       "FIB": "Fill in the Blank",
       "T/F": "True / False",
       "MA": "Multiple Answer",
@@ -1037,7 +1037,7 @@ export default {
   "gru-multiple-answer": {
     "instructions": "Please select the correct answer, and click \"{{action}}\"."
   },
-  "gru-multiple-choice": {
+  "gru-single-choice": {
     "instructions": "Please select the correct answer, and click \"{{action}}\"."
   },
 

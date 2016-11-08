@@ -2,7 +2,7 @@ import Ember from 'ember';
 import QuestionMixin from 'quizzes/mixins/reports/assessment/questions/question';
 
 /**
- * Multiple choice
+ * Single choice
  *
  * Component responsible for show the reorder, what option are selected
  * and the correct option.

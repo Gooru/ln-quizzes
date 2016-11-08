@@ -11,10 +11,10 @@ moduleForComponent('reports/class-assessment/gru-questions-detail', 'Integration
 });
 
 test('Layout', function(assert) {
-  const selectedQuestion = Ember.Object.create({ //Multiple Choice
+  const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'MC',
-    text: 'Sample Question MC',
+    questionType: 'SingleChoice',
+    text: 'Sample Question SC',
     answers:  Ember.A([
       Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
       Ember.Object.create({ id: 2, isCorrect: false,text:"Answer 2" }),
@@ -43,10 +43,10 @@ test('Layout', function(assert) {
   var assessment = Ember.Object.create({
     resources: [
       selectedQuestion,
-      Ember.Object.create({ //Multiple Choice
+      Ember.Object.create({ //Single Choice
         "id": "56a1204886b2e565e1b2c230",
-        questionType: 'MC',
-        text: 'Sample Question MC',
+        questionType: 'SingleChoice',
+        text: 'Sample Question SC',
         answers:  Ember.A([
           Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
           Ember.Object.create({ id: 2, isCorrect: false,text:"Answer 2" }),
@@ -155,10 +155,10 @@ test('Layout', function(assert) {
 });
 
 test('Layout Anonymous', function(assert) {
-  const selectedQuestion = Ember.Object.create({ //Multiple Choice
+  const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'MC',
-    text: 'Sample Question MC',
+    questionType: 'SingleChoice',
+    text: 'Sample Question SC',
     answers:  Ember.A([
       Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
       Ember.Object.create({ id: 2, isCorrect: false,text:"Answer 2" }),
@@ -187,10 +187,10 @@ test('Layout Anonymous', function(assert) {
   var assessment = Ember.Object.create({
     resources: [
       selectedQuestion,
-      Ember.Object.create({ //Multiple Choice
+      Ember.Object.create({ //Single Choice
         "id": "56a1204886b2e565e1b2c230",
-        questionType: 'MC',
-        text: 'Sample Question MC',
+        questionType: 'SingleChoice',
+        text: 'Sample Question SC',
         answers:  Ember.A([
           Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
           Ember.Object.create({ id: 2, isCorrect: false,text:"Answer 2" }),
@@ -288,10 +288,10 @@ test('Layout Anonymous', function(assert) {
   T.exists(assert, $navigation.find(".btn-results"), "Missing Show Results Button");
 });
 test('Layout Anonymous and Show Results', function(assert) {
-  const selectedQuestion = Ember.Object.create({ //Multiple Choice
+  const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'MC',
-    text: 'Sample Question MC',
+    questionType: 'SingleChoice',
+    text: 'Sample Question SC',
     answers:  Ember.A([
       Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" })
     ]),
@@ -305,10 +305,10 @@ test('Layout Anonymous and Show Results', function(assert) {
   var assessment = Ember.Object.create({
     resources: [
       selectedQuestion,
-      Ember.Object.create({ //Multiple Choice
+      Ember.Object.create({ //Single Choice
         "id": "56a1204886b2e565e1b2c230",
-        questionType: 'MC',
-        text: 'Sample Question MC',
+        questionType: 'SingleChoice',
+        text: 'Sample Question SC',
         answers:  Ember.A([
           Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
           Ember.Object.create({ id: 2, isCorrect: false,text:"Answer 2" }),

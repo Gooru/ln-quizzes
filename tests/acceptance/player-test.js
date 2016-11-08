@@ -92,8 +92,8 @@ test('Assessment - Navigate to all question types', function (assert) {
     const $playerContainer = find(".controller.player");
 
     //checking that the last visited resource is displayed
-    assert.equal(currentURL(), '/player/all-question-types-assessment-id?resourceId=multiple-choice-question-id&type=assessment');
-    T.exists(assert, $playerContainer.find('.gru-question-viewer .gru-multiple-choice'), "Missing multiple choice component");
+    assert.equal(currentURL(), '/player/all-question-types-assessment-id?resourceId=single-choice-question-id&type=assessment');
+    T.exists(assert, $playerContainer.find('.gru-question-viewer .gru-single-choice'), "Missing single choice component");
 
     click($playerContainer.find(".gru-navigator .list-group-item:eq(1)")); // navigating to multiple answer question
     andThen(function () {
@@ -149,8 +149,8 @@ test('Assessment - Open assessment without passing the type', function (assert) 
     const $playerContainer = find(".controller.player");
 
     //checking that the last visited resource is displayed
-    assert.equal(currentURL(), '/player/all-question-types-assessment-id?resourceId=multiple-choice-question-id');
-    T.exists(assert, $playerContainer.find('.gru-question-viewer .gru-multiple-choice'), "Missing multiple choice component");
+    assert.equal(currentURL(), '/player/all-question-types-assessment-id?resourceId=single-choice-question-id');
+    T.exists(assert, $playerContainer.find('.gru-question-viewer .gru-single-choice'), "Missing single choice component");
   });
 });
 

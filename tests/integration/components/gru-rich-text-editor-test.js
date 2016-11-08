@@ -691,7 +691,7 @@ test('Show editor toolbar', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "MC"
+    type: "SingleChoice"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -708,7 +708,7 @@ test('Hide editor toolbar', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "MC"
+    type: "SingleChoice"
   });
 
   this.set('tempQuestion', tempQuestion);

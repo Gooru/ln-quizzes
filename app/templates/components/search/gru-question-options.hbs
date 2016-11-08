@@ -1,9 +1,9 @@
 <section class="options">
   <ul>
     <li>
-      <button class="btn multiple-choice btn-option {{if multipleChoiceSelected 'selected'}}" {{action 'selectOption' questionTypes.multipleChoice this}}>
+      <button class="btn single-choice btn-option {{if singleChoiceSelected 'selected'}}" {{action 'selectOption' questionTypes.singleChoice this}}>
         <span class="icon"></span>
-        <span class="text">{{t "search-filter.question-types.MC"}}</span>
+        <span class="text">{{t "search-filter.question-types.SingleChoice"}}</span>
       </button>
     </li>
     <li>

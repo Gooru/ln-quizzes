@@ -4,7 +4,7 @@ import { getQuestionUtil } from 'quizzes/config/question';
 /**
  * This mixin is only used by the assessment report question components
  * It has the default definition and convenience methods for all question types
- * @see reports/assessment/questions/gru-multiple-choice.js
+ * @see reports/assessment/questions/gru-single-choice.js
  */
 export default Ember.Mixin.create({
 

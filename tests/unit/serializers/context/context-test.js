@@ -1,11 +1,56 @@
 import { moduleFor, test } from 'ember-qunit';
+import QuestionResult from 'quizzes/models/result/question';
+import ResourceResult from 'quizzes/models/result/resource';
 
 moduleFor('serializer:context/context', 'Unit | Serializer | context/context');
+
+test('serializeResourceResult with a resource', function(assert) {
+  const serializer = this.subject();
+  const resourceResult = ResourceResult.create({
+    resourceId: 'resource-id',
+    savedTime: 20,
+    startTime: 10,
+    stopTime: 20000,
+    reaction: 2
+  });
+  const response = serializer.serializeResourceResult(resourceResult);
+  const expected = {
+    resourceId: 'resource-id',
+    timeSpent: 20010,
+    reaction: 2
+  };
+
+  assert.deepEqual(expected, response, 'Wrong response');
+});
+
+test('serializeResourceResult with a question', function(assert) {
+  const serializer = this.subject();
+  const questionResult = QuestionResult.create({
+    resourceId: 'resource-id',
+    startTime: 10,
+    stopTime: 10010,
+    reaction: 2,
+    answer: [{
+      value: 'answer'
+    }]
+  });
+  const response = serializer.serializeResourceResult(questionResult);
+  const expected = {
+    resourceId: 'resource-id',
+    timeSpent: 10000,
+    reaction: 2,
+    answer: [{
+      value: 'answer'
+    }]
+  };
+  assert.deepEqual(expected, response, 'Wrong response');
+});
+
 
 test('normalizeAssessmentResult', function(assert) {
   const serializer = this.subject();
   const payload = {
-    contextId: 'context-id',
+    id: 'context-id',
     currentResourceId: 'resource-id-2',
     collection: {
       id: 'collection-id'
@@ -30,11 +75,11 @@ test('normalizeAssessmentResult', function(assert) {
   assert.equal(response.get('resourceResults')[0].get('answer'), 'answer-1', 'Wrong first answer');
   assert.equal(response.get('resourceResults')[0].get('reaction'), 1, 'Wrong first reaction');
   assert.equal(response.get('resourceResults')[0].get('resourceId'), 'resource-id-1', 'Wrong first resource id');
-  assert.equal(response.get('resourceResults')[0].get('timeSpent'), 10000, 'Wrong first time spent');
+  assert.equal(response.get('resourceResults')[0].get('savedTime'), 10000, 'Wrong first time spent');
   assert.equal(response.get('resourceResults')[1].get('answer'), 'answer-2', 'Wrong second answer');
   assert.equal(response.get('resourceResults')[1].get('reaction'), 3, 'Wrong second reaction');
   assert.equal(response.get('resourceResults')[1].get('resourceId'), 'resource-id-2', 'Wrong second resource id');
-  assert.equal(response.get('resourceResults')[1].get('timeSpent'), 20000, 'Wrong second time spent');
+  assert.equal(response.get('resourceResults')[1].get('savedTime'), 20000, 'Wrong second time spent');
 });
 
 test('normalizeResourceResults', function(assert) {
@@ -55,9 +100,9 @@ test('normalizeResourceResults', function(assert) {
   assert.equal(response[0].get('answer'), 'answer-1', 'Wrong first answer');
   assert.equal(response[0].get('reaction'), 1, 'Wrong first reaction');
   assert.equal(response[0].get('resourceId'), 'resource-id-1', 'Wrong first resource id');
-  assert.equal(response[0].get('timeSpent'), 10000, 'Wrong first time spent');
+  assert.equal(response[0].get('savedTime'), 10000, 'Wrong first time spent');
   assert.equal(response[1].get('answer'), 'answer-2', 'Wrong second answer');
   assert.equal(response[1].get('reaction'), 3, 'Wrong second reaction');
   assert.equal(response[1].get('resourceId'), 'resource-id-2', 'Wrong second resource id');
-  assert.equal(response[1].get('timeSpent'), 20000, 'Wrong second time spent');
+  assert.equal(response[1].get('savedTime'), 20000, 'Wrong second time spent');
 });

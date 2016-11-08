@@ -14,12 +14,18 @@ export default Ember.Component.extend({
 
   actions: {
 
+    /**
+     * When the submission is confirmed
+     */
     confirm: function() {
       this.get('model').onConfirm().then(
         this.get('closeModal').bind(this)
       );
     },
 
+    /**
+     * When the submission is cancelled
+     */
     cancel: function() {
       this.get('closeModal').call(this);
     }
@@ -29,6 +35,9 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Methods
 
+  /**
+   * close the confirmation modal
+   */
   closeModal: function () {
     const component = this;
     component.triggerAction({

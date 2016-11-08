@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import ModalMixin from 'quizzes/mixins/modal';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
   // Dependencies
   /**
@@ -28,6 +29,25 @@ export default Ember.Component.extend({
       component.calculateHeight();
     };
   },
+  // -------------------------------------------------------------------------
+  // Actions
+
+  actions:{
+  /**
+   * Add student
+   */
+  addStudent: function () {
+    let model ={
+      students:this.get('students'),
+      collection:this.get('assignment')
+    };
+
+    this.actions.showModal.call(this,
+      'gru-assign-student-modal',
+      model, null, null, null, false);
+    }
+  },
+
 
   // -------------------------------------------------------------------------
   // Properties
@@ -59,6 +79,10 @@ export default Ember.Component.extend({
    * @see gru-assignments-list and assignments.js route
    */
   isTeacher: false,
+  /**
+   * @property {Array} Students list
+   */
+  students:null,
   // -------------------------------------------------------------------------
   // Methods
   /**

@@ -1356,6 +1356,7 @@ export default {
     }
   },
   "assign-students":{
+    "assign-assessment-modal-title":"Assign assessments to Students",
     "title":"Title: {{title}}",
     "search-by-name":"Search by name",
     "select-all":"Select all ({{count}})",

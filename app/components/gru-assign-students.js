@@ -36,6 +36,12 @@ export default Ember.Component.extend({
      */
     selectStudent: function (student) {
       student.set('isSelected',!student.get('isSelected'));
+    },
+    /***
+     * Cancel assign student
+     */
+    cancel:function(){
+      this.sendAction('onCloseModal');
     }
   },
 

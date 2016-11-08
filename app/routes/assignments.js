@@ -5,6 +5,10 @@ export default Ember.Route.extend({
   queryParams: {
     isTeacher : {}
   },
+  // -------------------------------------------------------------------------
+  // Dependencies
+
+  configurationService: Ember.inject.service('configuration'),
 
   // -------------------------------------------------------------------------
   // Methods
@@ -337,11 +341,26 @@ export default Ember.Route.extend({
         }
       })]);
 
+    //TODO GET FROM QUIZZES API
+    let assignedStudents = ['assigned-1','assigned-2','student-1'];
+
+    let studentList =this.get('configurationService.configuration.properties.students');
+    let students;
+    if(studentList){
+       students = studentList.map(function(student){
+        let studentObject = Ember.Object.create(student);
+        studentObject.set('isSelected',assignedStudents.includes(student.id));
+        return studentObject;
+      });
+    }
     let isTeacher = params.isTeacher  === 'true';
+
+
     return Ember.RSVP.hash({
       profileId,
       isTeacher,
-      assignments: isTeacher ? assignmentsTeacher : assignments
+      assignments: isTeacher ? assignmentsTeacher : assignments,
+      students
     });
   },
 
@@ -353,6 +372,7 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('profileId',model.profileId);
     controller.set('isTeacher',model.isTeacher);
+    controller.set('students',model.students);
     controller.set('assignments',model.assignments);
   }
 });

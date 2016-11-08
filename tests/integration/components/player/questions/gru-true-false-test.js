@@ -2,11 +2,14 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
+import AnswerModel from 'quizzes/models/resource/answer';
+import ResourceModel from 'quizzes/models/resource/resource';
 
 moduleForComponent('player/questions/gru-true-false', 'Integration | Component | player/questions/gru true false', {
   integration: true,
   beforeEach: function () {
     this.container.lookup('service:i18n').set('locale', 'en');
+    this.inject.service('i18n');
   }
 });
 
@@ -14,20 +17,15 @@ test('True or false question layout', function (assert) {
 
   assert.expect(9);
 
-  let question = Ember.Object.create({ //true false
-    'id': '569906aa3ec3bb39969acbe6',
-    questionType: 'T/F',
-    text: 'True False Question',
-    hints: [],
-    explanation: 'Sample explanation text',
+  let question = ResourceModel.create({ //true false
+    id: '569906aa3ec3bb39969acbe6',
+    type: 'true_false',
+    body: 'True False Question',
     answers: Ember.A([
-      Ember.Object.create({id: '1', text: 'True'}),
-      Ember.Object.create({id: '2', text: 'False'})
+      AnswerModel.create({value: '1', text: 'True'}),
+      AnswerModel.create({value: '2', text: 'False'})
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 2,
-    'hasAnswers': true
+    sequence: 2
   });
 
   let answers = [];
@@ -53,10 +51,10 @@ test('True or false question layout', function (assert) {
   assert.equal($component.find('.answer-choices .radio:eq(1)').text().trim(), '(B)False', 'Incorrect Message');
 
   //select a radio button
-  answers = '2';
+  answers = [{ value: '2' }];
   $component.find('.answer-choices .radio input[type=radio]:eq(1)').click();
 
-  answers = '1';
+  answers = [{ value: '1' }];
   $component.find('.answer-choices .radio input[type=radio]:eq(0)').click();
 
 });
@@ -65,20 +63,15 @@ test('True or false question layout - read only', function (assert) {
 
   assert.expect(2);
 
-  let question = Ember.Object.create({ //true false
-    'id': '569906aa3ec3bb39969acbe6',
-    questionType: 'T/F',
-    text: 'True False Question',
-    hints: [],
-    explanation: 'Sample explanation text',
+  let question = ResourceModel.create({ //true false
+    id: '569906aa3ec3bb39969acbe6',
+    type: 'true_false',
+    body: 'True False Question',
     answers: Ember.A([
-      Ember.Object.create({id: '1', text: 'True'}),
-      Ember.Object.create({id: '2', text: 'False'})
+      AnswerModel.create({value: '1', text: 'True'}),
+      AnswerModel.create({value: '2', text: 'False'})
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 2,
-    'hasAnswers': true
+    sequence: 2
   });
 
   this.set('question', question);
@@ -95,22 +88,17 @@ test('True or false question layout - with user answer', function (assert) {
 
   assert.expect(4);
 
-  let question = Ember.Object.create({ //true false
-    'id': '569906aa3ec3bb39969acbe6',
-    questionType: 'T/F',
-    text: 'True False Question',
-    hints: [],
-    explanation: 'Sample explanation text',
+  let question = ResourceModel.create({ //true false
+    id: '569906aa3ec3bb39969acbe6',
+    type: 'true_false',
+    body: 'True False Question',
     answers: Ember.A([
-      Ember.Object.create({id: '1', text: 'True'}),
-      Ember.Object.create({id: '2', text: 'False'})
+      AnswerModel.create({value: '1', text: 'True'}),
+      AnswerModel.create({value: '2', text: 'False'})
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 2,
-    'hasAnswers': true
+    sequence: 2
   });
-  const answers = '2';
+  const answers = [{ value: '2' }];
   this.on('changeAnswer', function (question, answer) {
     assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
   });
@@ -118,9 +106,10 @@ test('True or false question layout - with user answer', function (assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
   });
   this.set('question', question);
+  this.set('userAnswer', [{ value: '2' }]);
 
   this.render(hbs`{{player/questions/gru-true-false question=question
-                    userAnswer='2'
+                    userAnswer=userAnswer
                     onAnswerChanged='changeAnswer'
                     onAnswerLoaded='loadAnswer'}}`);
 
@@ -133,20 +122,15 @@ test('True or false question layout - False as correct answer', function (assert
 
   assert.expect(2);
 
-  let question = Ember.Object.create({ //true false
-    'id': '569906aa3ec3bb39969acbe6',
-    questionType: 'T/F',
-    text: 'True False Question',
-    hints: [],
-    explanation: 'Sample explanation text',
+  let question = ResourceModel.create({ //true false
+    id: '569906aa3ec3bb39969acbe6',
+    type: 'true_false',
+    body: 'True False Question',
     answers: Ember.A([
-      Ember.Object.create({id: '1', text: 'True'}),
-      Ember.Object.create({id: '2', text: 'False'})
+      AnswerModel.create({value: '1', text: 'True'}),
+      AnswerModel.create({value: '2', text: 'False'})
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 2,
-    'hasAnswers': true
+    sequence: 2
   });
 
   this.set('question', question);
@@ -154,6 +138,6 @@ test('True or false question layout - False as correct answer', function (assert
   this.render(hbs`{{player/questions/gru-true-false question=question}}`);
 
   var $component = this.$(); //component dom element
-  assert.equal($component.find('.answer-choices .radio:eq(0) input[type=radio]').val(), '1', 'Incorrect id for true value');
-  assert.equal($component.find('.answer-choices .radio:eq(1) input[type=radio]').val(), '2', 'Incorrect id for false value');
+  assert.equal($component.find('.answer-choices .radio:eq(0) input[type=radio]').val(), '1', 'Incorrect value for true value');
+  assert.equal($component.find('.answer-choices .radio:eq(1) input[type=radio]').val(), '2', 'Incorrect value for false value');
 });

@@ -369,7 +369,7 @@ test('Question Viewer Submit by Enter', function (assert) {
       'sequence': 2,
       'text': 'Dummy question text',
       'mediaUrl': 'test.jpg',
-      'type': 'SingleChoice',
+      'type': 'single_choice',
       'hasMedia': true
     });
 

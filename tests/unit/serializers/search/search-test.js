@@ -233,7 +233,7 @@ test('normalizeQuestion', function(assert) {
   //TODO assert.equal(question.get("publishStatus"), 'unpublished', 'Wrong publish status');
   assert.equal(question.get("format"), 'question', 'Wrong format');
   assert.equal(question.get("thumbnailUrl"), 'f000/2628/3363/6397.svg', 'Wrong thumbnailUrl');
-  assert.equal(question.get("type"), 'SingleChoice', 'Wrong type');
+  assert.equal(question.get("type"), 'single_choice', 'Wrong type');
   assert.equal(question.get("owner.id"), "ee410cef-2a44-46ef-878d-172511e54e07", 'Wrong owner id');
 });
 

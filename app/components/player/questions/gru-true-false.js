@@ -28,11 +28,14 @@ export default QuestionComponent.extend({
      */
     selectAnswerChoice: function(answerId, onLoad) {
       const component = this;
-      component.notifyAnswerChanged(answerId);
+      let answer = [{
+        value: answerId
+      }];
+      component.notifyAnswerChanged(answer);
       if(onLoad) {
-        component.notifyAnswerLoaded(answerId);
+        component.notifyAnswerLoaded(answer);
       } else {
-        component.notifyAnswerCompleted(answerId);
+        component.notifyAnswerCompleted(answer);
       }
     }
   },
@@ -43,7 +46,8 @@ export default QuestionComponent.extend({
   init: function() {
     this._super(...arguments);
     if(this.get('hasUserAnswer')) {
-      this.actions.selectAnswerChoice.call(this, this.get('userAnswer'), true);
+      this.actions.selectAnswerChoice.call(
+        this, this.get('userAnswer.firstObject.value'), true);
     }
   },
 
@@ -51,21 +55,23 @@ export default QuestionComponent.extend({
   // Properties
 
   /**
-   * Returns the 'false' answer id
+   * Returns the 'false' answer value
    */
   falseAnswerId: Ember.computed('question.answers', function() {
     let answers = this.get('question.answers');
     let found = answers.filterBy('text', 'False');
-    return found ? found.get('firstObject.id') : 'true'; //TODO, is this a data problem?
+    return found ? found.get('firstObject.value') : 'true'; //TODO, is this a data problem?
   }),
 
   /**
-   * Returns the 'true' answer id
+   * Returns the 'true' answer value
    */
   trueAnswerId: Ember.computed('question.answers', function() {
     let answers = this.get('question.answers');
+    console.log(answers)
     let found = answers.filterBy('text', 'True');
-    return found ? found.get('firstObject.id') : 'true'; //TODO, is this a data problem?
+    console.log(found)
+    return found ? found.get('firstObject.value') : 'true'; //TODO, is this a data problem?
   })
 
   // -------------------------------------------------------------------------

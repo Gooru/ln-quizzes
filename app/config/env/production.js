@@ -3,8 +3,8 @@
  */
 export default {
   "endpoint" : {
-    "url": "http://quizzes-api-qa-246519991.us-east-1.elb.amazonaws.com",
-    "secureUrl": "http://quizzes-api-qa-246519991.us-east-1.elb.amazonaws.com"
+    "url": "https://qa.api.quizzes.edify.cr",
+    "secureUrl": "https://qa.api.quizzes.edify.cr/"
   },
 
   "realTime": {

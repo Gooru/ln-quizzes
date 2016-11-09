@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import ModalMixin from 'quizzes/mixins/modal';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
   // Dependencies
   /**
@@ -35,6 +36,18 @@ export default Ember.Component.extend({
         this.set('sortBy',criteria);
         this.set('reverseSort',false);
       }
+    },
+    /**
+     * Open add student modal
+     */
+    addStudent: function (assignment) {
+      let model ={
+        students:this.get('students'),
+        collection:assignment
+      };
+      this.actions.showModal.call(this,
+        'gru-assign-student-modal',
+        model, null, null, null, false);
     }
   },
   // -------------------------------------------------------------------------
@@ -66,6 +79,10 @@ export default Ember.Component.extend({
    * @see gru-assignments-list and assignments.js route
    */
   isTeacher: false,
+  /**
+   * @property {Array} Students list
+   */
+  students:null,
   /**
    *Return the table content height to print on inline styles
    */

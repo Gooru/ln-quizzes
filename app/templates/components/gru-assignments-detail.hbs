@@ -4,7 +4,7 @@
                 {{#if isTeacher}}
                     <button class="btn btn-default launch"><span class="real-time-icon"></span>{{t 'assignment-details.launch'}}</button>
                     <button class="btn btn-default delete">{{gru-icon name='delete'}}</button>
-                    <button class="btn btn-default add-student">{{gru-icon name='person_add'}}</button>
+                    <button class="btn btn-default add-student" {{action 'addStudent'}}>{{gru-icon name='person_add'}}</button>
                     <button class="btn btn-default preview">{{t 'assignment-details.preview'}}</button>
                   {{else}}
                     {{#if assignment.hasStarted}}

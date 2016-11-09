@@ -36,6 +36,12 @@ export default Ember.Component.extend({
      */
     selectStudent: function (student) {
       student.set('isSelected',!student.get('isSelected'));
+    },
+    /***
+     * Cancel assign student
+     */
+    cancel:function(){
+      this.sendAction('onCloseModal');
     }
   },
 
@@ -140,7 +146,7 @@ export default Ember.Component.extend({
    * Filter student list by name
    */
   searchStudent:function(){
-    var searchTerm = $('.search-box').val().toLowerCase();
+    var searchTerm = $('.gru-assign-students .search-box').val().toLowerCase();
 
     $('.live-search-list a').each(function(){
       if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {

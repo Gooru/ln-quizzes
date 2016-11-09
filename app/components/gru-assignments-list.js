@@ -84,7 +84,7 @@ export default Ember.Component.extend({
    * Filter assignment by title
    */
   searchAssignment:function(){
-    var searchTerm = $('.search-box').val().toLowerCase();
+    var searchTerm = $('.gru-assignments-list .search-box').val().toLowerCase();
 
     $('.gru-assignments-table tbody tr').each(function(){
       if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {

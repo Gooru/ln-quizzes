@@ -4,7 +4,7 @@
     "bootstrap-datepicker": "~1.4.1",
     "bootstrap-sass": "bootstrap-sass-official#~3.3.5",
     "d3": "~3.5.12",
-    "ember": "~2.6.0",
+    "ember": "~2.7.0",
     "ember-cli-shims": "0.1.1",
     "ember-load-initializers": "0.1.7",
     "ember-qunit": "0.4.16",

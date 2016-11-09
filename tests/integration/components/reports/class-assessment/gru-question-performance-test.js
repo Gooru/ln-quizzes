@@ -14,7 +14,7 @@ moduleForComponent('reports/class-assessment/gru-question-performance', 'Integra
 test('When students has no answers yet', function (assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "569906aa20b7dfae1bcd5262",
-    questionType: 'SingleChoice',
+    questionType: 'single_choice',
     text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
@@ -102,7 +102,7 @@ test('When students has no answers yet', function (assert) {
 test('Non anonymous, layout', function (assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'SingleChoice',
+    questionType: 'single_choice',
     text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
@@ -194,7 +194,7 @@ test('Non anonymous, layout', function (assert) {
 test('Anonymous, layout', function (assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'SingleChoice',
+    questionType: 'single_choice',
     text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
@@ -283,7 +283,7 @@ test('Anonymous, layout', function (assert) {
 test('Anonymous and Show Results', function (assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'SingleChoice',
+    questionType: 'single_choice',
     text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
@@ -376,7 +376,7 @@ test('Anonymous and Show Results', function (assert) {
 test('Single choice', function (assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'SingleChoice',
+    questionType: 'single_choice',
     text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),
@@ -470,7 +470,7 @@ test('Single choice', function (assert) {
 test('Anonymous and Show Results', function (assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'SingleChoice',
+    questionType: 'single_choice',
     text: 'Sample Question SC',
     answers: Ember.A([
       Ember.Object.create({id: 1, isCorrect: false, text: "Answer 1"}),

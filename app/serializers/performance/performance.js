@@ -15,7 +15,7 @@ export default DS.JSONAPISerializer.extend({
    * @param payload
    * @returns {Performance|Performance[]} returns a Performance object or Performance array
    */
-  normalizeQueryRecordResponse: function(store, primaryModelClass, payload) {
+  normalizeQueryResponse: function(store, primaryModelClass, payload) {
     const serializer = this;
     const hasResults = payload.content.length > 0;
     var model = { data: [] };

@@ -13,7 +13,7 @@ export default ApplicationAdapter.extend({
    * @param query
    * @returns {string}
    */
-  urlForQueryRecord: function(query) {
+  urlForQuery: function(query) {
     var namespace = this.get('namespace');
     var classId = query.classId;
     var courseId = query.courseId;

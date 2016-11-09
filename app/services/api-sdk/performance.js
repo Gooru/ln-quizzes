@@ -43,7 +43,7 @@ export default Ember.Service.extend({
    */
   findStudentPerformanceByCourse: function(userId, classId, courseId, units, options = {collectionType: 'assessment'}) {
     const service = this;
-    return service.get('store').queryRecord('performance/unit-performance', {
+    return service.get('store').query('performance/unit-performance', {
       userUid: userId,
       collectionType: options.collectionType,
       classId: classId,
@@ -65,7 +65,7 @@ export default Ember.Service.extend({
    */
   findStudentPerformanceByUnit: function (userId, classId, courseId, unitId, lessons, options = {collectionType: 'assessment'}) {
     const service = this;
-    return service.get('store').queryRecord('performance/lesson-performance', {
+    return service.get('store').query('performance/lesson-performance', {
       userUid: userId,
       collectionType: options.collectionType,
       classId: classId,
@@ -91,7 +91,7 @@ export default Ember.Service.extend({
                                             options = { collectionType: 'assessment' }) {
     const service = this;
     service.get('store').unloadAll('performance/collection-performance');
-    return service.get('store').queryRecord('performance/collection-performance', {
+    return service.get('store').query('performance/collection-performance', {
       userUid: userId,
       collectionType: options.collectionType,
       classId: classId,
@@ -250,7 +250,7 @@ export default Ember.Service.extend({
     const service = this;
     service.get('store').unloadAll('performance/student-performance');
     service.get('store').unloadAll('performance/class-lesson-performance');
-    return service.get('store').queryRecord('performance/class-lesson-performance', {
+    return service.get('store').query('performance/class-lesson-performance', {
       collectionType: options.collectionType,
       classId: classId,
       courseId: courseId,

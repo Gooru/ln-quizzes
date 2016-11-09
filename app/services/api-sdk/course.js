@@ -43,15 +43,6 @@ export default Ember.Service.extend(StoreMixin, {
 
   /**
    * Returns a course by id
-   * @param {string} id
-   * @returns {Promise.<Course>}
-   */
-  findById: function(id) {
-    return this.get('store').findRecord('course/course', id);
-  },
-
-  /**
-   * Returns a course by id
    * @param {string} courseId
    * @returns {Promise|Content/Course}
    */

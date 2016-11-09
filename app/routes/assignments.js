@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Profile from 'quizzes/models/profile/profile'
 
 export default Ember.Route.extend({
 
@@ -289,9 +290,6 @@ export default Ember.Route.extend({
         totalStudents:12,
         totalAttempts:15,
         attempts:2,
-        lastAttempt:{
-          score:60
-        },
         questions:['question1','question2','question3'],
         learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         settings:{
@@ -309,9 +307,6 @@ export default Ember.Route.extend({
         totalAttempts:15,
         attempts:2,
         totalStudents:15,
-        lastAttempt:{
-          score:60
-        },
         questions:['question1','question2','question3'],
         learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         settings:{
@@ -329,9 +324,6 @@ export default Ember.Route.extend({
         totalStudents:20,
         totalAttempts:15,
         attempts:2,
-        lastAttempt:{
-          score:60
-        },
         questions:['question1','question2','question3'],
         learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         settings:{
@@ -348,8 +340,8 @@ export default Ember.Route.extend({
     let students;
     if(studentList){
        students = studentList.map(function(student){
-        let studentObject = Ember.Object.create(student);
-        studentObject.set('isSelected',assignedStudents.includes(student.id));
+        let studentObject = Profile.create(student);
+        studentObject.set('isAssigned',assignedStudents.includes(student.id));
         return studentObject;
       });
     }

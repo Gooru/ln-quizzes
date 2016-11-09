@@ -20,9 +20,9 @@
            </div>
            <div class="student-list list-group live-search-list">
              {{#each students as |student| }}
-                 <a class="list-group-item {{if student.isSelected 'selected'}}" {{action 'selectStudent' student}}>
+                 <a class="list-group-item {{if student.isAssigned 'selected'}}" {{action 'selectStudent' student}}>
                    {{student.lastName}}, {{student.firstName}}
-                   {{#if student.isSelected}}
+                   {{#if student.isAssigned}}
                       {{gru-icon name='done'}}
                    {{/if}}
                  </a>

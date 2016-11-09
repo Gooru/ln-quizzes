@@ -38,6 +38,16 @@ export default Ember.Object.extend({
       });
     });
   },
+  /**
+   * Serializes a assigneesList
+   * @param {[Profile]} assigneesList
+   ** @param {*[]} payload
+   */
+  serializeAssigneesList:function(assigneesList){
+    var serializedAssigneesList = assigneesList.map(function (profile) {
+      return {};
+    });
+  },
 
   /**
    * Serializes a ResourceResult

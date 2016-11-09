@@ -25,9 +25,9 @@ export default Ember.Component.extend({
       this.set('areAllSelected',!this.get('areAllSelected'));
       this.get('students').map(function(student){
         if(content.get('areAllSelected')){
-          student.set('isSelected',true);
+          student.set('isAssigned',true);
         }else{
-          student.set('isSelected',false);
+          student.set('isAssigned',false);
         }
       });
     },
@@ -35,7 +35,7 @@ export default Ember.Component.extend({
      * Search student
      */
     selectStudent: function (student) {
-      student.set('isSelected',!student.get('isSelected'));
+      student.set('isAssigned',!student.get('isAssigned'));
     },
     /***
      * Cancel assign student
@@ -76,68 +76,12 @@ export default Ember.Component.extend({
   /**
    * Student List
    */
-  students:Ember.A([
-    Ember.Object.create({
-      firstName:'firstname-1',
-      lastName:'lastname-1',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-2',
-      lastName:'lastname-2',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-3',
-      lastName:'lastname-3',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-4',
-      lastName:'lastname-4',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-5',
-      lastName:'lastname-5',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-6',
-      lastName:'lastname-6',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-7',
-      lastName:'lastname-7',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-8',
-      lastName:'lastname-8',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-9',
-      lastName:'lastname-9',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-10',
-      lastName:'lastname-10',
-      isSelected:false
-    }),
-    Ember.Object.create({
-      firstName:'firstname-11',
-      lastName:'lastname-11',
-      isSelected:false
-    })
-    ]),
+  students:null,
   /**
    * Total student selected
    */
-  totalSelected:Ember.computed('students.@each.isSelected',function(){
-    return this.get('students').filterBy('isSelected',true).length;
+  totalSelected:Ember.computed('students.@each.isAssigned',function(){
+    return this.get('students').filterBy('isAssigned',true).length;
   }),
 
   // -------------------------------------------------------------------------

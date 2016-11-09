@@ -17,7 +17,7 @@ test('Single choice question layout', function (assert) {
   assert.expect(10);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'SingleChoice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -33,9 +33,7 @@ test('Single choice question layout', function (assert) {
         text: 'A pump'
       })
     ]),
-    sequence: 1,
-    hasAnswers: true,
-    hasNarration: true
+    sequence: 1
   });
 
   let answers = [];
@@ -77,7 +75,7 @@ test('Single choice question layout - read only', function (assert) {
   assert.expect(2);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'SingleChoice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -93,9 +91,7 @@ test('Single choice question layout - read only', function (assert) {
         text: 'A pump'
       })
     ]),
-    sequence: 1,
-    hasAnswers: true,
-    hasNarration: true
+    sequence: 1
   });
 
   this.set('question', question);
@@ -111,7 +107,7 @@ test('Single choice question with user answer', function (assert) {
   assert.expect(5);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'SingleChoice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -127,9 +123,7 @@ test('Single choice question with user answer', function (assert) {
         text: 'A pump'
       })
     ]),
-    sequence: 1,
-    hasAnswers: true,
-    hasNarration: true
+    sequence: 1
   });
 
   const answers = [{ value: '2' }];

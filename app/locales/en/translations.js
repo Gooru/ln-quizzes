@@ -314,9 +314,9 @@ export default {
     "question-title": "Question Title",
     "question-type": {
       "SA": "Single Answer",
-      "SingleChoice": "Single Choice",
+      "single_choice": "Single Choice",
       "FIB": "Fill In the Blank",
-      "T/F": "True or False",
+      "true_false": "True or False",
       "T_F": "True or False",
       "MA": "Multiple Answer",
       "OE": "Free Response",
@@ -639,9 +639,9 @@ export default {
             "HT_HL_WD": "As you write the question, use brackets for the highlighted words. One bracket can only contain one word at a time. For example, The [big] bad wolf blew [down] the house. Character limit: 5000.",
             "HT_RO": "You can add up to ten answer choices in the correct order. The order will be scrambled for students.",
             "MA": "You can add up to ten answers, an image, an explanation, and up to five hints.",
-            "SingleChoice": "You can add up to ten answer choices and indicate one correct answer. Character Limit: 200.",
+            "single_choice": "You can add up to ten answer choices and indicate one correct answer. Character Limit: 200.",
             "OE": "Write the correct response. Character limit: 5000.",
-            "T/F": "Select the correct answer."
+            "true_false": "Select the correct answer."
           },
           "question-instructions": {
             "FIB": "As you write the question, use brackets for your fill-in-the-blank answers. For example: “The big bad [wolf] blew down the [house].” You can also add an image.",
@@ -649,10 +649,10 @@ export default {
             "HS_IMG": "Write your question.",
             "HT_RO": "Write your question.",
             "HT_HL": "Write your question prompt.",
-            "SingleChoice": "Write your question.",
+            "single_choice": "Write your question.",
             "MA": "Write your question.",
             "OE": "Write your question.",
-            "T/F": "Write your question."
+            "true_false": "Write your question."
           }
         }
       }
@@ -972,9 +972,9 @@ export default {
     "assessments": "Assessments",
     "questions": "Questions",
     "question-types": {
-      "SingleChoice": "Single Choice",
+      "single_choice": "Single Choice",
       "FIB": "Fill in the Blank",
-      "T/F": "True / False",
+      "true_false": "True / False",
       "MA": "Multiple Answer",
       "HS_TXT": "Multiple Select - Text",
       "HS_IMG": "Multiple Select - Image",

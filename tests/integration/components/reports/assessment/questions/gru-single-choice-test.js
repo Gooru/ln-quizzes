@@ -14,7 +14,7 @@ moduleForComponent('reports/assessment/questions/gru-single-choice', 'Integratio
 test('Single Choice Correct Answer', function(assert) {
 
   var question = Ember.Object.create({
-    questionType: "SingleChoice",
+    questionType: "single_choice",
     answers: Ember.A([
       Ember.Object.create({ id: "1", isCorrect: false,text:"Answer 1" }),
       Ember.Object.create({ id: "2", isCorrect: false,text:"Answer 2" }),
@@ -37,7 +37,7 @@ test('Single Choice Correct Answer', function(assert) {
 test('Single Choice Your Answer Incorrect', function(assert) {
 
   var question = Ember.Object.create({
-    questionType: "SingleChoice",
+    questionType: "single_choice",
     answers: Ember.A([
       Ember.Object.create({ id: "1", isCorrect: false,text:"Answer 1" }),
       Ember.Object.create({ id: "2", isCorrect: false,text:"Answer 2" }),
@@ -60,7 +60,7 @@ test('Single Choice Your Answer Incorrect', function(assert) {
 test('Single Choice Your Answer Correct', function(assert) {
 
   var question = Ember.Object.create({
-    questionType: "SingleChoice",
+    questionType: "single_choice",
     answers: Ember.A([
       Ember.Object.create({ id: "1", isCorrect: false,text:"Answer 1" }),
       Ember.Object.create({ id: "2", isCorrect: false,text:"Answer 2" }),
@@ -83,7 +83,7 @@ test('Single Choice Your Answer Correct', function(assert) {
 test('Single Choice anonymous', function(assert) {
 
   var question = Ember.Object.create({
-    questionType: "SingleChoice",
+    questionType: "single_choice",
     answers: Ember.A([
       Ember.Object.create({ id: "1", isCorrect: false,text:"Answer 1" }),
       Ember.Object.create({ id: "2", isCorrect: false,text:"Answer 2" }),

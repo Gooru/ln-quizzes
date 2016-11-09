@@ -18,7 +18,7 @@ test('Layout', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -69,7 +69,7 @@ test('Select fraction', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -88,7 +88,7 @@ test('Select sqrt', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -107,7 +107,7 @@ test('Select sqrtn', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -128,7 +128,7 @@ test('Select subscript', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -148,7 +148,7 @@ test('Select superscript', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -192,7 +192,7 @@ test('Select overline', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -212,7 +212,7 @@ test('Select sum', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -233,7 +233,7 @@ test('Select plus', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -252,7 +252,7 @@ test('Select minus', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -271,7 +271,7 @@ test('Select div', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -290,7 +290,7 @@ test('Select cdot', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -310,7 +310,7 @@ test('Select not equal', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -329,7 +329,7 @@ test('Select less', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -348,7 +348,7 @@ test('Select greater', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -368,7 +368,7 @@ test('Select less-equal', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -388,7 +388,7 @@ test('Select greater-equal', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -407,7 +407,7 @@ test('Select sim', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -427,7 +427,7 @@ test('Select approx', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -447,7 +447,7 @@ test('Select alpha', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -467,7 +467,7 @@ test('Select ()', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -488,7 +488,7 @@ test('Select {}', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -509,7 +509,7 @@ test('Select ||', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -530,7 +530,7 @@ test('Select angle', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -550,7 +550,7 @@ test('Select measured angle', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -570,7 +570,7 @@ test('Select infinity', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -591,7 +591,7 @@ test('Select perpendicular', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -611,7 +611,7 @@ test('Select parallel', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -631,7 +631,7 @@ test('Select sigma', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -651,7 +651,7 @@ test('Select theta', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -671,7 +671,7 @@ test('Select pi', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "T/F"
+    type: "true_false"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -691,7 +691,7 @@ test('Show editor toolbar', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "SingleChoice"
+    type: "single_choice"
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -708,7 +708,7 @@ test('Hide editor toolbar', function(assert) {
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
     text:"",
-    type: "SingleChoice"
+    type: "single_choice"
   });
 
   this.set('tempQuestion', tempQuestion);

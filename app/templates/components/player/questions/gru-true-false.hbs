@@ -7,17 +7,17 @@
           {{#radio-button
             disabled=readOnly
             value=trueAnswerId
-            groupValue=userAnswer
+            groupValue=userAnswer.firstObject.value
             changed="selectAnswerChoice"
             name="answer-choice-radio"}}
-              <span>({{answer-letter 0}})</span>{{t "gru-true-false.true"}}
+            <span>({{answer-letter 0}})</span>{{t "gru-true-false.true"}}
           {{/radio-button}}
       </div>
       <div class="radio {{if readOnly 'disabled'}}">
           {{#radio-button
             disabled=readOnly
             value=falseAnswerId
-            groupValue=userAnswer
+            groupValue=userAnswer.firstObject.value
             changed="selectAnswerChoice"
             name="answer-choice-radio"}}
             <span>({{answer-letter 1}})</span>{{t "gru-true-false.false"}}

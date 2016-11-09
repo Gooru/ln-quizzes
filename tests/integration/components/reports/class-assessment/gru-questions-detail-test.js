@@ -13,7 +13,7 @@ moduleForComponent('reports/class-assessment/gru-questions-detail', 'Integration
 test('Layout', function(assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'SingleChoice',
+    questionType: 'single_choice',
     text: 'Sample Question SC',
     answers:  Ember.A([
       Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
@@ -45,7 +45,7 @@ test('Layout', function(assert) {
       selectedQuestion,
       Ember.Object.create({ //Single Choice
         "id": "56a1204886b2e565e1b2c230",
-        questionType: 'SingleChoice',
+        questionType: 'single_choice',
         text: 'Sample Question SC',
         answers:  Ember.A([
           Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
@@ -73,7 +73,7 @@ test('Layout', function(assert) {
       }),
       Ember.Object.create({ //true false
         "id": "56a12048ddee2022a741356a",
-        questionType: 'T/F',
+        questionType: 'true_false',
         text: 'True False Question',
         hints: [],
         explanation: 'Sample explanation text',
@@ -157,7 +157,7 @@ test('Layout', function(assert) {
 test('Layout Anonymous', function(assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'SingleChoice',
+    questionType: 'single_choice',
     text: 'Sample Question SC',
     answers:  Ember.A([
       Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
@@ -189,7 +189,7 @@ test('Layout Anonymous', function(assert) {
       selectedQuestion,
       Ember.Object.create({ //Single Choice
         "id": "56a1204886b2e565e1b2c230",
-        questionType: 'SingleChoice',
+        questionType: 'single_choice',
         text: 'Sample Question SC',
         answers:  Ember.A([
           Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
@@ -217,7 +217,7 @@ test('Layout Anonymous', function(assert) {
       }),
       Ember.Object.create({ //true false
         "id": "56a12048ddee2022a741356a",
-        questionType: 'T/F',
+        questionType: 'true_false',
         text: 'True False Question',
         hints: [],
         explanation: 'Sample explanation text',
@@ -290,7 +290,7 @@ test('Layout Anonymous', function(assert) {
 test('Layout Anonymous and Show Results', function(assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "56a120483b6e7b090501d3e7",
-    questionType: 'SingleChoice',
+    questionType: 'single_choice',
     text: 'Sample Question SC',
     answers:  Ember.A([
       Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" })
@@ -307,7 +307,7 @@ test('Layout Anonymous and Show Results', function(assert) {
       selectedQuestion,
       Ember.Object.create({ //Single Choice
         "id": "56a1204886b2e565e1b2c230",
-        questionType: 'SingleChoice',
+        questionType: 'single_choice',
         text: 'Sample Question SC',
         answers:  Ember.A([
           Ember.Object.create({ id: 1, isCorrect: false,text:"Answer 1" }),
@@ -322,7 +322,7 @@ test('Layout Anonymous and Show Results', function(assert) {
       }),
       Ember.Object.create({ //true false
         "id": "56a12048ddee2022a741356a",
-        questionType: 'T/F',
+        questionType: 'true_false',
         text: 'True False Question',
         hints: [],
         explanation: 'Sample explanation text',

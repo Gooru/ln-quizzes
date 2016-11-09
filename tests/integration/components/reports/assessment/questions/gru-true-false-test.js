@@ -10,7 +10,7 @@ moduleForComponent('reports/assessment/questions/gru-true-false', 'Integration |
 test('True False Correct Answer', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: "T/F",
+    questionType: "true_false",
     answers: Ember.A([
       Ember.Object.create({id: "1", isCorrect: false, text: "True"}),
       Ember.Object.create({id: "2", isCorrect: true, text: "False"})
@@ -30,7 +30,7 @@ test('True False Correct Answer', function (assert) {
 test('True False Your Answer Incorrect', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: "T/F",
+    questionType: "true_false",
     answers: Ember.A([
       Ember.Object.create({id: "1", isCorrect: false, text: "True"}),
       Ember.Object.create({id: "2", isCorrect: true, text: "False"})
@@ -49,7 +49,7 @@ test('True False Your Answer Incorrect', function (assert) {
 test('True False Your Answer Correct', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: "T/F",
+    questionType: "true_false",
     answers: Ember.A([
       Ember.Object.create({id: "1", isCorrect: false, text: "True"}),
       Ember.Object.create({id: "2", isCorrect: true, text: "False"})
@@ -68,7 +68,7 @@ test('True False Your Answer Correct', function (assert) {
 test('True False anonymous', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: "T/F",
+    questionType: "true_false",
     answers: Ember.A([
       Ember.Object.create({id: "1", isCorrect: false, text: "True"}),
       Ember.Object.create({id: "2", isCorrect: true, text: "False"})

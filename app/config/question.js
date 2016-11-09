@@ -12,9 +12,9 @@ import HotTextHighlightUtil from 'quizzes/utils/question/hot-text-highlight';
 
 //Question Types
 export const QUESTION_TYPES = {
-  singleChoice: 'SingleChoice',
+  singleChoice: 'single_choice',
   multipleAnswer: 'MA',
-  trueFalse: 'T/F',
+  trueFalse: 'true_false',
   openEnded: 'OE',
   fib: 'FIB',
   hotSpotText: 'HS_TXT',
@@ -25,7 +25,7 @@ export const QUESTION_TYPES = {
 
 //Question type configuration
 export const QUESTION_CONFIG = {
-  'SingleChoice'    : Ember.Object.create({
+  'single_choice'    : Ember.Object.create({
     apiType: 'single_choice_question',
     util: SingleChoiceUtil,
     component: {
@@ -62,7 +62,7 @@ export const QUESTION_CONFIG = {
       builder_answer:'content.questions.answers.gru-hot-text-highlight'
     }
   }),
-  'T/F'   : Ember.Object.create({
+  'true_false'   : Ember.Object.create({
     apiType: 'true_false_question',
     util: TrueFalseUtil,
     component: {

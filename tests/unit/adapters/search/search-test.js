@@ -202,7 +202,7 @@ test('searchQuestions for some types and standards', function(assert) {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   });
-  adapter.searchQuestions('any-term', { formats: ['SingleChoice', 'MA'], taxonomies: ['a', 'b']})
+  adapter.searchQuestions('any-term', { formats: ['single_choice', 'MA'], taxonomies: ['a', 'b']})
     .then(function(response) {
       assert.deepEqual({}, response, 'Wrong response');
     });

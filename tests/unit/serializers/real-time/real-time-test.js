@@ -13,7 +13,7 @@ test('normalizeRealTimeEvent for event', function(assert) {
       'reaction': 5,
       'timeSpent': 3600000,
       'resourceType': 'question',
-      'questionType': 'SingleChoice',
+      'questionType': 'single_choice',
       'answerObject': 'NA'
     }
   };

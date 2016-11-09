@@ -8,7 +8,7 @@ moduleFor('model:resource/resource', 'Unit | Model | resource/resource', {
 test('isQuestion', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'isResource': false
+    isResource: false
   });
 
   assert.ok(model.get('isQuestion'), 'It should be question');
@@ -17,7 +17,7 @@ test('isQuestion', function(assert) {
 test('format question', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'isResource': false
+    isResource: false
   });
 
   assert.ok(model.get('format'), 'question');
@@ -26,7 +26,7 @@ test('format question', function(assert) {
 test('format resource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'isResource': true
+    isResource: true
   });
 
   assert.ok(model.get('format'), 'question');
@@ -35,7 +35,7 @@ test('format resource', function(assert) {
 test('isSingleChoice', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'SingleChoice'
+    type: 'single_choice'
   });
 
   assert.ok(model.get('isSingleChoice'), 'It should be single choice');
@@ -44,7 +44,7 @@ test('isSingleChoice', function(assert) {
 test('isMultipleAnswer', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'MA'
+    type: 'MA'
   });
 
   assert.ok(model.get('isMultipleAnswer'), 'It should be multiple answer');
@@ -53,7 +53,7 @@ test('isMultipleAnswer', function(assert) {
 test('isTrueFalse', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'T/F'
+    type: 'true_false'
   });
 
   assert.ok(model.get('isTrueFalse'), 'It should be true/false');
@@ -62,7 +62,7 @@ test('isTrueFalse', function(assert) {
 test('isOpenEnded', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'OE'
+    type: 'OE'
   });
 
   assert.ok(model.get('isOpenEnded'), 'It should be open ended');

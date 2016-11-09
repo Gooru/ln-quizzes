@@ -33,9 +33,9 @@ export default Ember.Component.extend(ModalMixin,{
   // Actions
 
   actions:{
-  /**
-   * Add student
-   */
+    /**
+     * Open add student modal
+     */
   addStudent: function () {
     let model ={
       students:this.get('students'),

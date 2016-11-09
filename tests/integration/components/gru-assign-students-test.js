@@ -134,3 +134,34 @@ test('Selected and Unselected Student', function(assert) {
     });
   });
 });
+test('Cancel assign students', function(assert) {
+
+  var students = Ember.A([
+    Ember.Object.create({
+      firstName:'firstname-1',
+      lastName:'lastname-1',
+      isSelected:false
+    }),
+    Ember.Object.create({
+      firstName:'firstname-2',
+      lastName:'lastname-2',
+      isSelected:false
+    }),
+    Ember.Object.create({
+      firstName:'firstname-3',
+      lastName:'lastname-3',
+      isSelected:false
+    })
+  ]);
+
+  this.set('students',students);
+
+  this.on('parentAction', function(){
+    assert.ok(true, "Should call onCloseModal");
+  });
+  this.render(hbs`{{gru-assign-students students=students onCloseModal='parentAction'}}`);
+
+  var $component = this.$(); //component dom element
+  var $cancelButton = $component.find(".actions .cancel-btn");
+  $cancelButton.click();
+});

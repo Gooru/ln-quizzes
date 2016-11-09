@@ -37,6 +37,9 @@ export default Ember.Component.extend(ModalMixin,{
         this.set('reverseSort',false);
       }
     },
+    /**
+     * Open add student modal
+     */
     addStudent: function (assignment) {
       let model ={
         students:this.get('students'),

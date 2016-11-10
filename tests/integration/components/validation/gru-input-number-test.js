@@ -17,11 +17,11 @@ const Validations = buildValidations({
         integer: true,
         gte: 1,
         lte: 100,
-        message: 'error',
+        message: 'error'
       })
     ]
   }
-})
+});
 
 test('number input invalid', function(assert) {
   assert.expect(5); // making sure all asserts are called

@@ -52,9 +52,10 @@ export default Ember.Object.extend({
     };
 
     if (resourceResult.get('isQuestion')) {
-      serialized.answer = resourceResult.get('answer').map(function(answer) {
-        return { value: answer.value };
-      });
+      serialized.answer = resourceResult.get('answer') ?
+        resourceResult.get('answer').map(function(answer) {
+          return { value: answer.value };
+        }) : Ember.A();
     }
     return serialized;
   }

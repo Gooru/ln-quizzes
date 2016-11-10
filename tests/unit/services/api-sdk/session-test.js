@@ -1,14 +1,13 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
 import moduleForService from 'quizzes/tests/helpers/module-for-service';
-import UserModel from 'quizzes/models/profile/profile';
 
 moduleForService('service:api-sdk/session', 'Unit | Service | api-sdk/session', {});
 
 test('signInWithUser', function (assert) {
   const service = this.subject();
   const response = {};
-  const credentials = UserModel.create({
+  const credentials = Ember.Object.create({
     username: 'username',
     password: 'password'
   });

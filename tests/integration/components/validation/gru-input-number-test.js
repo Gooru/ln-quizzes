@@ -3,16 +3,30 @@ import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import wait from 'ember-test-helpers/wait';
-import ClassModel from 'quizzes/models/content/class';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 moduleForComponent('gru-input-number', 'Integration | Component | gru input number', {
   integration: true
 });
 
+const Validations = buildValidations({
+  minScore: {
+    validators: [
+      validator('number', {
+        allowBlank: true,
+        integer: true,
+        gte: 1,
+        lte: 100,
+        message: 'error'
+      })
+    ]
+  }
+});
+
 test('number input invalid', function(assert) {
   assert.expect(5); // making sure all asserts are called
-
-  this.set('model', ClassModel.create(Ember.getOwner(this).ownerInjection(), {
+  const Model = Ember.Object.extend(Validations);
+  this.set('model', Model.create(Ember.getOwner(this).ownerInjection(), {
     minScore: null
   }));
   this.render(hbs`{{validation.gru-input-number model=model valuePath='minScore' min=1 max=100 step=1}}`); // render the component
@@ -45,8 +59,8 @@ test('number input invalid', function(assert) {
 
 test('number input range', function(assert) {
   assert.expect(7); // making sure all asserts are called
-
-  this.set('model', ClassModel.create(Ember.getOwner(this).ownerInjection(), {
+  const Model = Ember.Object.extend(Validations);
+  this.set('model', Model.create(Ember.getOwner(this).ownerInjection(), {
     minScore: null
   }));
   this.render(hbs`{{validation.gru-input-number model=model valuePath='minScore' min=1 max=100 step=1}}`); // render the component

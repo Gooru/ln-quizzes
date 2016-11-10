@@ -22,8 +22,6 @@ export default Ember.Route.extend(PrivateRouteMixin, {
 
   assessmentService: Ember.inject.service('api-sdk/assessment'),
 
-  classService: Ember.inject.service("api-sdk/class"),
-
 
   // -------------------------------------------------------------------------
   // Actions
@@ -59,7 +57,7 @@ export default Ember.Route.extend(PrivateRouteMixin, {
           collectionId: collectionId
         }),
         collection: collection.toPlayerCollection(),
-        classMembers: route.get('classService').readClassMembers(classId)
+        classMembers: Ember.A()
       });
     });
   },

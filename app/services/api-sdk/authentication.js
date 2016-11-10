@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import AuthenticationSerializer from 'quizzes/serializers/authentication/authentication';
 import AuthenticationAdapter from 'quizzes/adapters/authentication/authentication';
-import ProfileAdapter from 'quizzes/adapters/profile/profile';
 
 /**
  * Service for the Authentication (Login) with API 3.0
@@ -14,13 +13,10 @@ export default Ember.Service.extend({
 
   authenticationAdapter: null,
 
-  profileAdapter: null,
-
   init: function () {
     this._super(...arguments);
     this.set('authenticationSerializer', AuthenticationSerializer.create(Ember.getOwner(this).ownerInjection()));
     this.set('authenticationAdapter', AuthenticationAdapter.create(Ember.getOwner(this).ownerInjection()));
-    this.set('profileAdapter', ProfileAdapter.create(Ember.getOwner(this).ownerInjection()));
   },
 
   /**

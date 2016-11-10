@@ -48,10 +48,3 @@ test('Theme support - Having translations and styles url', function(assert) {
 
   });
 });
-
-test('Trying the google sign in url', function (assert) {
-  visit('/?access_token=google-sign-token');
-  andThen(function() {
-    assert.equal(currentURL(), '/sign-up-finish');
-  });
-});

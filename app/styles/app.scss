@@ -18,14 +18,6 @@
 @import 'controllers/partials/player';
 @import 'controllers/reports/collection';
 @import 'controllers/reports/student-collection';
-@import 'controllers/search';
-@import 'controllers/sign-in';
-@import 'controllers/sign-up';
-@import 'controllers/forgot-password';
-@import 'controllers/reset-password';
-@import 'controllers/featured';
-@import 'controllers/account-settings';
-
 
 // TODO: update these components so they follow the naming conventions
 @import 'components/app-dropdown';
@@ -35,7 +27,6 @@
 @import 'components/search-filter';
 @import 'components/rating-stars';
 @import 'components/collection-results';
-@import 'components/gru-resource-results';
 @import 'components/grade-dropdown';
 @import 'components/gru-breadcrumb';
 @import 'components/gru-bubbles';
@@ -53,9 +44,6 @@
 @import 'components/gru-two-tier-header-table';
 @import 'components/gru-unit-tree';
 @import 'components/gru-user-icons';
-@import 'components/gru-user-registration';
-@import 'components/gru-user-sign-up';
-@import 'components/gru-user-sign-up-cancel';
 @import 'components/gru-user-teaser';
 @import 'components/gru-view-layout-picker';
 @import 'components/gru-spinner-button';
@@ -69,9 +57,7 @@
 @import 'components/cards/gru-class-card';
 @import 'components/cards/gru-collection-card';
 @import 'components/cards/gru-course-card';
-@import 'components/cards/gru-profile-card';
 @import 'components/cards/gru-resource-card';
-@import 'components/cards/gru-user-card';
 @import 'components/cards/gru-resource-result-card';
 
 @import 'components/charts/gru-bubble-chart';
@@ -79,16 +65,6 @@
 @import 'components/charts/gru-pie-chart';
 @import 'components/charts/gru-radial-chart';
 @import 'components/charts/gru-x-bar-chart';
-
-@import 'components/class/gru-class-navigation';
-@import 'components/class/analytics/performance/gru-actions-bar';
-@import 'components/class/analytics/performance/gru-data-picker';
-@import 'components/class/analytics/performance/gru-performance-summary';
-@import 'components/class/analytics/performance/student/gru-student-performance';
-@import 'components/class/analytics/performance/student/gru-unit-performance';
-@import 'components/class/analytics/performance/student/gru-lesson-performance';
-@import 'components/class/analytics/performance/teacher/gru-metrics-table';
-@import 'components/class/analytics/performance/teacher/gru-metrics-sub-header';
 
 @import 'components/modals/modals';
 @import 'components/modals/gru-submit-confirmation';
@@ -135,9 +111,6 @@
 @import 'components/reports/class-assessment/gru-student-view';
 @import 'components/reports/class-assessment/gru-summary';
 @import 'components/reports/class-assessment/gru-table-view';
-
-@import 'components/search/gru-question-options';
-@import 'components/search/gru-resource-options';
 
 @import 'components/taxonomy/gru-subject-course-picker';
 @import 'components/taxonomy/gru-subject-picker';

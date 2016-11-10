@@ -10,7 +10,7 @@ export default DS.JSONAPISerializer.extend({
    * @param payload the response from the server
    * @returns {Object}
    */
-  normalizeQueryRecordResponse: function(store, primaryModelClass, payload) {
+  normalizeQueryResponse: function(store, primaryModelClass, payload) {
     var serializer = this;
     var classModel = { data: [] };
     var results = payload.searchResult;

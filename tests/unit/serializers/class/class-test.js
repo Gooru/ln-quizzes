@@ -3,7 +3,7 @@ import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('serializer:class/class', 'Unit | Serializer | class/class');
 
-test('normalizeQueryRecordResponse', function(assert) {
+test('normalizeQueryResponse', function(assert) {
   const serializer = this.subject();
 
   const
@@ -39,7 +39,7 @@ test('normalizeQueryRecordResponse', function(assert) {
         'memberCount': 1
       }], 'totalHitCount': 2
     },
-    response = serializer.normalizeQueryRecordResponse('any store', 'class/class', payload);
+    response = serializer.normalizeQueryResponse('any store', 'class/class', payload);
 
     const expected = {
       'data': [{
@@ -208,5 +208,3 @@ test('normalizeTeachers', function(assert) {
 
   assert.deepEqual(response, expected, 'Wrong response');
 });
-
-

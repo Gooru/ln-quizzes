@@ -12,7 +12,7 @@ export default ApplicationAdapter.extend({
    * @param query
    * @returns {string}
    */
-  urlForQueryRecord: function(query) {
+  urlForQuery: function(query) {
     let namespace = this.get('namespace');
     let type = query.isStudent ? 'study' : 'teach';
 

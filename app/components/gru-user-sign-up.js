@@ -15,11 +15,6 @@ export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Dependencies
 
-  /**
-   * @property {Service} User service API SDK
-   */
-  userService: Ember.inject.service("api-sdk/user"),
-
   profileService: Ember.inject.service("api-sdk/profile"),
 
   // -------------------------------------------------------------------------
@@ -46,38 +41,6 @@ export default Ember.Component.extend(ModalMixin, {
           }, function() {
             Ember.Logger.error('Error signing up user');
           });
-
-      // TODO We need to enable validation but first we need to implement API 3.0 Availabilty integration
-      /*
-      var userModel = this.get('user');
-      userModel.validate().then(({
-        model, validations
-        }) => {
-        if (validations.get('isValid')) {
-
-          component.get("userService")
-            .save(model)
-            .then(function() {
-              this.triggerAction({
-                action: 'closeModal'
-              });
-            }.bind(this),
-              function() {
-                Ember.Logger.error('Error signing up user');
-              });
-          this.setProperties({
-            showAlert: false,
-            isRegistered: true,
-            showCode: false
-          });
-        } else {
-          this.set('showAlert', true);
-        }
-        this.set('didValidate', true);
-      }, () => {
-
-      });
-      */
     }
   },
 
@@ -90,7 +53,7 @@ export default Ember.Component.extend(ModalMixin, {
   },
 
   setupUserModel: function() {
-    var userModel = this.get("userService").newUser();
+    var userModel = this.get("profileService").newUser();
     this.set('user', userModel);
   }.on('init'),
 

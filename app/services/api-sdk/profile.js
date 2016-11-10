@@ -60,6 +60,14 @@ export default Ember.Service.extend({
   },
 
   /**
+   * Creates a new empty user model
+   * @returns {User}
+   */
+  newUser: function() {
+    return this.get('store').createRecord('user/user');
+  },
+
+  /**
    * Updates the current user Profile information
    *
    * @param profile

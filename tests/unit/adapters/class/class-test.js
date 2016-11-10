@@ -12,7 +12,7 @@ test('urlForQueryRecord querying for classes as student', function (assert) {
       query = {
         isStudent: true
       },
-      url = adapter.urlForQueryRecord(query);
+      url = adapter.urlForQuery(query);
 
   assert.equal(url, "/gooruapi/rest/v3/class/study", "Wrong url");
 });
@@ -22,7 +22,7 @@ test('urlForQueryRecord querying for classes as teacher', function (assert) {
 
   const
       query = {},
-      url = adapter.urlForQueryRecord(query);
+      url = adapter.urlForQuery(query);
 
   assert.equal(url, "/gooruapi/rest/v3/class/teach", "Wrong url");
 });

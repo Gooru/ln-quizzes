@@ -44,7 +44,7 @@ test('Theme support - Having translations and styles url', function(assert) {
 
     const $styleLink = Ember.$('#theme-style-link');
     T.exists(assert, $styleLink, 'Missing link element having theme style');
-    assert.equal($styleLink.attr('href'), 'themes/edify/styles.css', 'Wrong style url');
+    assert.equal($styleLink.attr('href'), '/themes/edify/styles.css', 'Wrong style url');
 
   });
 });

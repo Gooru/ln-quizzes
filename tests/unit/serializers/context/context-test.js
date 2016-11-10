@@ -55,7 +55,7 @@ test('normalizeAssessmentResult', function(assert) {
     collection: {
       id: 'collection-id'
     },
-    collectionStatus: [{
+    attempt: [{
       resourceId: 'resource-id-1',
       timeSpent: 10000,
       reaction: 1,

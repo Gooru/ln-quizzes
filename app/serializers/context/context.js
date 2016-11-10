@@ -14,7 +14,7 @@ export default Ember.Object.extend({
     const assessmentResult = AssessmentResult.create(Ember.getOwner(this).ownerInjection(), {
       contextId: payload.id,
       currentResourceId: payload.currentResourceId,
-      resourceResults: serializer.normalizeResourceResults(payload.collectionStatus),
+      resourceResults: serializer.normalizeResourceResults(payload.attempt),
       collectionId: payload.collection.id
     });
     return assessmentResult;

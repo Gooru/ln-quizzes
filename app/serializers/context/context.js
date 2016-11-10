@@ -39,14 +39,48 @@ export default Ember.Object.extend({
     });
   },
   /**
-   * Serializes a assigneesList
+   * Serializes an assignment
+   * @param {Assignment} assignment
+   ** @param {*[]} payload
+   */
+  serializeContext:function(assignment){
+
+    var serializedAssignment;
+    var assignees = this.serializeAssigneesList(assignment.assignees);
+    serializedAssignment = {
+      assignees:assignees,
+      contextData: {
+        metadata: {
+          title:		assignment.get('title'),
+          description:	assignment.get('description'),
+          isActive:	assignment.get('isActive'),
+          dueDate:	assignment.get('dueDate'),
+          createdDate:assignment.get('createdDate'),
+          modifiedDate:assignment.get('modifiedDate'),
+          attempts:assignment.get('attempts'),
+          questions:assignment.get('questions'),
+          learningObjective:assignment.get('learningObjective'),
+          settings:assignment.get('settings')
+        }
+      }
+    };
+    return serializedAssignment;
+  },
+  /**
+   * Serializes an assigneesList
    * @param {[Profile]} assigneesList
    ** @param {*[]} payload
    */
   serializeAssigneesList:function(assigneesList){
     var serializedAssigneesList = assigneesList.map(function (profile) {
-      return {};
+      return {
+          id:profile.get('id'),
+          firstName:profile.get('firstName'),
+          lastName:profile.get('lastName'),
+          username:profile.get('username')
+        };
     });
+    return serializedAssigneesList;
   },
 
   /**

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Profile from 'quizzes/models/profile/profile'
+import Profile from 'quizzes/models/profile/profile';
 
 export default Ember.Route.extend({
 

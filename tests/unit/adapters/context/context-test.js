@@ -128,3 +128,47 @@ test('sendEndContextEvent', function(assert) {
       assert.deepEqual(response, {}, 'Wrong response');
     });
 });
+
+test('updateContext', function(assert) {
+  const adapter = this.subject();
+  const expectedContextId = 'context-id';
+  const routes = function() {
+    this.put('/quizzes/api/v1/context/context-id', function() {
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
+    }, false);
+  };
+
+  this.pretender.map(routes);
+  this.pretender.unhandledRequest = function(verb, path) {
+    assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+  };
+  let data = {
+    "assignees": [
+      { id: 'profile-id',
+        firstName: 'user first name',
+        lastName: 'user last name',
+        username: 'username'
+      },{
+        id: 'profile-id1',
+        firstName: 'user first name1',
+        lastName: 'user last name1',
+        username: 'username1'
+      }
+    ],
+    "contextData": {
+      "contextMap": {},
+      "metadata": {}
+    },
+    "externalCollectionId": "string",
+    "owner": {
+      "firstName": "string",
+      "id": "string",
+      "lastName": "string",
+      "username": "string"
+    }
+  };
+  adapter.updateContext(data,expectedContextId)
+    .then(function(response) {
+      assert.deepEqual(response, {}, 'Wrong response');
+    });
+});

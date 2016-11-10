@@ -52,5 +52,12 @@ export default Ember.Service.extend({
       service.get('contextAdapter').sendEndContextEvent(contextId)
         .then(resolve, reject);
     });
+  },
+  updateContext: function(assignment) {
+    var service = this;
+    var serializedAssignment = this.get('contextSerializer').serializeContext(assignment);
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service.get('contextAdapter').updateContext(serializedAssignment).then(resolve, reject);
+    });
   }
 });

@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import { test } from 'ember-qunit';
 import moduleForService from 'quizzes/tests/helpers/module-for-service';
+import Context from 'quizzes/models/context/context';
+import Profile from 'quizzes/models/profile/profile';
 
 moduleForService('service:api-sdk/context', 'Unit | Service | api-sdk/context', {
 
@@ -94,4 +96,93 @@ test('endContext', function(assert) {
       assert.deepEqual(result, assessmentResult, 'The result should match');
       done();
     });
+});
+
+test('updateContext', function(assert) {
+  const service = this.subject();
+  let assignment = Context.create({
+    assignees:Ember.A([Profile.create({
+      id: 'profile-id',
+      firstName: 'user first name',
+      lastName: 'user last name',
+      username: 'username'
+    }),Profile.create({
+      id: 'profile-id1',
+      firstName: 'user first name1',
+      lastName: 'user last name1',
+      username: 'username1'
+    })]),
+    title:'title',
+    description:'description',
+    isActive:true,
+    dueDate:'12340596',
+    createdDate:'12340596',
+    modifiedDate:'12340596',
+    attempts:[{id:'attempt-1'}],
+    questions:[{id:'question-1'},{id:'question-2'}],
+    learningObjective:'learning objective',
+    settings:{
+      navigation:'Forward only',
+      showScore:'Per question',
+      answerKey:false
+    }
+  });
+  const expectedData = {
+    "assignees": [
+      { id: 'profile-id',
+        firstName: 'user first name',
+        lastName: 'user last name',
+        username: 'username'
+      },{
+        id: 'profile-id1',
+        firstName: 'user first name1',
+        lastName: 'user last name1',
+        username: 'username1'
+      }
+    ],
+    "contextData": {
+      "contextMap": {},
+      "metadata": {}
+    },
+    "externalCollectionId": "string",
+    "owner": {
+      "firstName": "string",
+      "id": "string",
+      "lastName": "string",
+      "username": "string"
+    }
+  };
+
+  assert.expect(2);
+
+  service.set('contextAdapter', Ember.Object.create({
+    updateContext: function(data) {
+      assert.equal(data, expectedData, "Wrong adapter data" );
+      return Ember.RSVP.resolve();
+    }
+  }));
+
+  let expectedAssigneesList = [
+    Profile.create({
+    id: 'profile-id',
+    firstName: 'user first name',
+    lastName: 'user last name',
+    username: 'username'
+  }),
+    Profile.create({
+    id: 'profile-id1',
+    firstName: 'user first name1',
+    lastName: 'user last name1',
+    username: 'username1'
+  })];
+
+  service.set('contextSerializer', Ember.Object.create({
+    serializeContext: function(assignment){
+      assert.deepEqual(assignment.assignees, expectedAssigneesList, 'Wrong assignees list object');
+      return expectedData;
+    }
+  }));
+
+  var done = assert.async();
+  service.updateContext(assignment).then(function() { done(); });
 });

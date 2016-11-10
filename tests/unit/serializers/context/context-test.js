@@ -1,6 +1,9 @@
+import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 import QuestionResult from 'quizzes/models/result/question';
 import ResourceResult from 'quizzes/models/result/resource';
+import Profile from 'quizzes/models/profile/profile';
+import Context from 'quizzes/models/context/context';
 
 moduleFor('serializer:context/context', 'Unit | Serializer | context/context');
 
@@ -44,6 +47,96 @@ test('serializeResourceResult with a question', function(assert) {
     }]
   };
   assert.deepEqual(expected, response, 'Wrong response');
+});
+test('serializeContext', function(assert) {
+  const serializer = this.subject();
+  const assignment = Context.create({
+    assignees:Ember.A([Profile.create({
+      id: 'profile-id',
+      firstName: 'user first name',
+      lastName: 'user last name',
+      username: 'username'
+    }),Profile.create({
+      id: 'profile-id1',
+      firstName: 'user first name1',
+      lastName: 'user last name1',
+      username: 'username1'
+    })]),
+    title:'title',
+    description:'description',
+    isActive:true,
+    dueDate:'12340596',
+    createdDate:'12340596',
+    modifiedDate:'12340596',
+    attempts:[{id:'attempt-1'}],
+    questions:[{id:'question-1'},{id:'question-2'}],
+    learningObjective:'learning objective',
+    settings:{
+      navigation:'Forward only',
+      showScore:'Per question',
+      answerKey:false
+    }
+  });
+  const response = serializer.serializeContext(assignment);
+  const expected ={
+    assignees:[{
+      id: 'profile-id',
+      firstName: 'user first name',
+      lastName: 'user last name',
+      username: 'username'
+    },{
+      id: 'profile-id1',
+      firstName: 'user first name1',
+      lastName: 'user last name1',
+      username: 'username1'
+    }],
+    contextData:{
+      metadata:{
+        title:'title',
+        description:'description',
+        isActive:true,
+        dueDate:'12340596',
+        createdDate:'12340596',
+        modifiedDate:'12340596',
+        attempts:[{id:'attempt-1'}],
+        questions:[{id:'question-1'},{id:'question-2'}],
+        learningObjective:'learning objective',
+        settings:{
+          navigation:'Forward only',
+          showScore:'Per question',
+          answerKey:false
+        }
+      }
+    }
+  };
+  assert.deepEqual(expected, response, 'serializeAssignment wrong response');
+});
+test('serializeAssigneesList ', function(assert) {
+  const serializer = this.subject();
+  const profileList = Ember.A([Profile.create({
+    id: 'profile-id',
+    firstName: 'user first name',
+    lastName: 'user last name',
+    username: 'username'
+  }),Profile.create({
+    id: 'profile-id1',
+    firstName: 'user first name1',
+    lastName: 'user last name1',
+    username: 'username1'
+  })]);
+  const response = serializer.serializeAssigneesList(profileList);
+  const expected = [{
+    id: 'profile-id',
+    firstName: 'user first name',
+    lastName: 'user last name',
+    username: 'username'
+  },{
+    id: 'profile-id1',
+    firstName: 'user first name1',
+    lastName: 'user last name1',
+    username: 'username1'
+  }];
+  assert.deepEqual(expected, response, 'serializeAssigneesList wrong response');
 });
 
 

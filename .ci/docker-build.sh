@@ -22,7 +22,7 @@ info "Installing global npm dependencies..."
 npm config set prefix '~/.npm-packages'
 export PATH=~/.npm-packages/bin:$PATH
 export PHANTOMJS_CDNURL=http://cnpmjs.org/downloads
-silent npm -q install -g ember-cli@2.5.1 bower@1.7.9 phantomjs-prebuilt@2.1.3 stubby@0.3.1 grunt-cli@1.2.0 npm@latest
+silent npm -q install -g ember-cli@2.7.0 bower@1.7.9 phantomjs-prebuilt@2.1.3 stubby@0.3.1 grunt-cli@1.2.0 npm@latest
 
 info "Installing npm dependencies..."
 silent npm -q install

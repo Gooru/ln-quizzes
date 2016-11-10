@@ -60,8 +60,7 @@ const UserValidations = buildValidations({
     validator('format', {
       type: 'email',
       message: 'Not a valid email'
-    }),
-    validator('email')
+    })
   ],
   dateOfBirth: [
     validator('presence', true)

@@ -15,21 +15,9 @@ export default Ember.Route.extend({
   i18n: Ember.inject.service(),
 
   /**
-   * @type {ClassService} Service to retrieve user information
-   */
-  classService: Ember.inject.service('api-sdk/class'),
-
-  /**
    * @type {ConfigurationService} Service to retrieve configuration information
    */
   configurationService: Ember.inject.service('configuration'),
-
-  /**
-   * Authentication (api-sdk/session) service.
-   * @property authService
-   * @readOnly
-   */
-  authService: Ember.inject.service('api-sdk/session'),
 
   session: Ember.inject.service(),
 
@@ -251,57 +239,5 @@ export default Ember.Route.extend({
     else {
       route.transitionTo(routeName);
     }
-  },
-
-
-// -------------------------------------------------------------------------
-  // Actions - only transition actions should be placed at the route
-  actions: {
-    /**
-     * Action triggered when submitting the login form
-     * @see application.hbs
-     * @see gru-header.hbs
-     */
-    signIn: function () {
-      const route = this;
-      route.actions.updateUserClasses.call(this).then( // Required to get list of classes after login
-        function() {
-          route.transitionTo('home');
-        }
-      );
-    },
-
-    /**
-     * Action triggered when login out
-     */
-    logout: function () {
-      this.transitionTo('logout');
-    },
-
-    /**
-     * Action triggered when the user search for collections
-     * @see application.hbs
-     * @see gru-header.js
-     */
-    searchTerm: function (term) {
-      const routeName = this.get('controller.currentRouteName');
-      if (routeName.indexOf('search') >= 0) {
-        this.set('controller.term', term);
-      }
-      else {
-        this.transitionTo(`/search/collections?term=${term}`);
-      }
-    },
-
-    /**
-     * Gets a refreshed list of user classes
-     * @see create.js
-     * @see join.js
-     */
-    updateUserClasses: function() {
-      const route = this;
-      return route.get('controller').loadUserClasses();
-    }
   }
-
 });

@@ -16,7 +16,7 @@ export default Ember.Object.extend({
     const assessmentResult = AssessmentResult.create(Ember.getOwner(this).ownerInjection(), {
       contextId: payload.id,
       currentResourceId: payload.currentResourceId,
-      resourceResults: serializer.normalizeResourceResults(payload.collectionStatus),
+      resourceResults: serializer.normalizeResourceResults(payload.attempt),
       collectionId: payload.collection.id
     });
     return assessmentResult;
@@ -134,9 +134,10 @@ export default Ember.Object.extend({
     };
 
     if (resourceResult.get('isQuestion')) {
-      serialized.answer = resourceResult.get('answer').map(function(answer) {
-        return { value: answer.value };
-      });
+      serialized.answer = resourceResult.get('answer') ?
+        resourceResult.get('answer').map(function(answer) {
+          return { value: answer.value };
+        }) : Ember.A();
     }
     return serialized;
   }

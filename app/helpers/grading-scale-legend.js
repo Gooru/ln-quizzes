@@ -43,7 +43,7 @@ export function gradingScaleLegend(params, hash) {
                    </li>');
   }
 
-  return new Ember.Handlebars.SafeString($el.html());
+  return Ember.String.htmlSafe($el.html());
 }
 
 export default Ember.Helper.helper(gradingScaleLegend);

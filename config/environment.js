@@ -8,13 +8,17 @@ module.exports = function (environment) {
     modulePrefix: 'quizzes',
     rootElement: "#quizzes-application-container",
     environment: environment,
-    baseURL: isEmbedded ? undefined : '/',
+    rootURL: isEmbedded ? undefined : '/',
     locationType: isEmbedded ? 'none' : 'auto',
     exportApplicationGlobal: "QuizzesWebApp",
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false
       }
     },
 
@@ -51,10 +55,10 @@ module.exports = function (environment) {
     'edify' : {
       'translations': {
         'locale': 'en-edify', /* this way it fallback to 'en' */
-        'url': 'themes/edify/translations.json'
+        'url': '/themes/edify/translations.json'
       },
       'styles': {
-        'url': 'themes/edify/styles.css'
+        'url': '/themes/edify/styles.css'
       }
     }
   };
@@ -108,7 +112,6 @@ module.exports = function (environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import ReportData from 'quizzes/models/result/report-data';
-import PrivateRouteMixin from "quizzes/mixins/private-route-mixin";
+import PublicRouteMixin from "quizzes/mixins/public-route-mixin";
 
 /**
  * Route for collection/assessment report
@@ -11,7 +11,7 @@ import PrivateRouteMixin from "quizzes/mixins/private-route-mixin";
  * @module
  * @augments ember/Route
  */
-export default Ember.Route.extend(PrivateRouteMixin, {
+export default Ember.Route.extend(PublicRouteMixin, {
 
   // -------------------------------------------------------------------------
   // Dependencies
@@ -21,8 +21,6 @@ export default Ember.Route.extend(PrivateRouteMixin, {
   collectionService: Ember.inject.service('api-sdk/collection'),
 
   assessmentService: Ember.inject.service('api-sdk/assessment'),
-
-  classService: Ember.inject.service("api-sdk/class"),
 
 
   // -------------------------------------------------------------------------
@@ -59,7 +57,7 @@ export default Ember.Route.extend(PrivateRouteMixin, {
           collectionId: collectionId
         }),
         collection: collection.toPlayerCollection(),
-        classMembers: route.get('classService').readClassMembers(classId)
+        classMembers: Ember.A()
       });
     });
   },

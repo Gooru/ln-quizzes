@@ -8,7 +8,7 @@ test('urlForQueryRecord method for unit performance', function (assert) {
     classId: 'the-class-id',
     courseId: 'the-course-id'
   };
-  const url = adapter.urlForQueryRecord(query);
+  const url = adapter.urlForQuery(query);
 
   //assert.equal(url, '/mocked-api/insights-api-v1/rest/v2/class/the-class-id/course/the-course-id/performance', 'Wrong url');
   assert.equal(url, '/api/nucleus-insights/v2/class/the-class-id/course/the-course-id/performance', 'Wrong url');

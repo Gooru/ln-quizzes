@@ -47,9 +47,13 @@ export default Ember.Object.extend({
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
       processData: false,
-      data: JSON.stringify(data)
+      data: JSON.stringify(data),
+      // TODO get real headers
+      headers: {
+        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
+        'lms-id': 'quizzes'
+      }
     };
     const url = `${namespace}/${contextId}/event/on-resource/${resourceId || ''}`;
     return Ember.$.ajax(url, options);
@@ -81,7 +85,12 @@ export default Ember.Object.extend({
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
-      data: JSON.stringify({})
+      data: JSON.stringify({}),
+      // TODO get real headers
+      headers: {
+        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
+        'lms-id': 'quizzes'
+      }
     };
     return Ember.$.ajax(url, options);
   },

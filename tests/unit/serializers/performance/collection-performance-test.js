@@ -2,7 +2,7 @@ import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('serializer:performance/collection-performance', 'Unit | Serializer | performance/collection-performance');
 
-test('normalizeQueryRecordResponse', function(assert) {
+test('normalizeQueryResponse', function(assert) {
   const serializer = this.subject();
   const payload = {
     "content":[
@@ -58,7 +58,7 @@ test('normalizeQueryRecordResponse', function(assert) {
       }
     }]
   };
-  const response = serializer.normalizeQueryRecordResponse('any store', 'performance/lesson-performance', payload);
+  const response = serializer.normalizeQueryResponse('any store', 'performance/lesson-performance', payload);
 
   assert.deepEqual(response, expected, 'Wrong response');
 });

@@ -90,7 +90,7 @@ export default Ember.Component.extend({
   /**
    * @param {Computed } didValidate - value used to check if input has been validated or not
    */
-  didValidate: computed.oneWay('targetObject.didValidate'),
+  didValidate: false,
 
   /**
    * @param {Computed } showErrorClass - computed property that defines the

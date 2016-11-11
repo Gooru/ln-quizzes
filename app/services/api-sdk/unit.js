@@ -41,35 +41,6 @@ export default Ember.Service.extend(StoreMixin, {
   // Methods
 
   /**
-   * Gets a specific unit by ID
-   * @param {string} collectionId
-   * @returns {Unit}
-   */
-  findById: function(courseId, unitId, options = {}) {
-    options.queryType = 'byId';
-    return this.get('store').queryRecord('unit/unit', {
-      courseId: courseId,
-      unitId: unitId,
-      options: options
-    });
-  },
-
-  /**
-   * Find all units by class and course allowed for the current user
-   * @param {string} classId class identifier
-   * @param {string} courseId course identifier
-   * @param {Object} options request options, like pagination, sort, etc
-   * @returns {Promise.<Unit[]>} returns an array of units
-   */
-  findByClassAndCourse: function(classId, courseId, options = {}) {
-    return this.get('store').queryRecord('unit/unit', {
-      classId: classId,
-      courseId: courseId,
-      options: options
-    });
-  },
-
-  /**
    * Create a unit for a course
    * @param {String} courseId - ID of the course the unit belongs to
    * @param {Content/Unit} unit - Unit model

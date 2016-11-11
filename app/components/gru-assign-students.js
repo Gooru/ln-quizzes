@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Context from 'quizzes/models/context/context';
 
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------
@@ -7,6 +8,11 @@ export default Ember.Component.extend({
    * @property {Service} I18N service
    */
   i18n: Ember.inject.service(),
+  /**
+   * @property {Service} context service
+   */
+
+  contextService: Ember.inject.service("api-sdk/context"),
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -42,6 +48,23 @@ export default Ember.Component.extend({
      */
     cancel:function(){
       this.sendAction('onCloseModal');
+    },
+    /***
+     * Assign students
+     */
+    assignStudents:function(){
+      let component = this;
+      let assignedStudents = component.get('students').filterBy('isAssigned',true);
+      component.set('assignment.assignees',assignedStudents);
+      if(component.get('assignment.id')){
+        component.get('contextService').updateContext(component.get('assignment')).then(function(){
+          component.sendAction('onCloseModal');
+        });
+      }else{
+        component.get('contextService').createContext(component.get('assignment')).then(function(){
+          component.sendAction('onCloseModal');
+        });
+      }
     }
   },
 
@@ -67,8 +90,7 @@ export default Ember.Component.extend({
   /**
    * Assessment
    */
-  assessment:Ember.Object.create({
-    title:'Water Cycle'
+  assignment: Context.create({
   }),
 
   areAllSelected:false,

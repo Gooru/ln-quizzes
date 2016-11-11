@@ -9,6 +9,68 @@ moduleFor('adapter:context/context', 'Unit | Adapter | context/context', {
     this.pretender.shutdown();
   }
 });
+test('createContext', function(assert) {
+  const adapter = this.subject();
+
+  const routes = function() {
+    this.post('/quizzes/api/v1/context', function() {
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify({id:'77d0c04b-b71a-485b-9573-9101cc288a0f'})];
+    }, false);
+  };
+
+  this.pretender.map(routes);
+  this.pretender.unhandledRequest = function(verb, path) {
+    assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+  };
+  let data = {
+    "assignees": [
+      { id: 'profile-id',
+        firstName: 'user first name',
+        lastName: 'user last name',
+        username: 'username'
+      },{
+        id: 'profile-id1',
+        firstName: 'user first name1',
+        lastName: 'user last name1',
+        username: 'username1'
+      }
+    ],
+    "contextData": {
+      "contextMap": {},
+      "metadata": {}
+    },
+    "externalCollectionId": "string",
+    "owner": {
+      "firstName": "string",
+      "id": "string",
+      "lastName": "string",
+      "username": "string"
+    }
+  };
+  adapter.createContext(data)
+    .then(function(response) {
+      assert.deepEqual(response.id,'77d0c04b-b71a-485b-9573-9101cc288a0f', 'Wrong response');
+    });
+});
+test('getContext', function(assert) {
+  const adapter = this.subject();
+  const context = 'context-id';
+
+  const routes = function() {
+    this.get('/quizzes/api/v1/context/context-id', function() {
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify({id:'77d0c04b-b71a-485b-9573-9101cc288a0f'})];
+    }, false);
+  };
+
+  this.pretender.map(routes);
+  this.pretender.unhandledRequest = function(verb, path) {
+    assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+  };
+  adapter.getContext(context)
+    .then(function(response) {
+      assert.deepEqual(response.id,'77d0c04b-b71a-485b-9573-9101cc288a0f', 'Wrong response');
+    });
+});
 
 test('moveToResource', function(assert) {
   const adapter = this.subject();

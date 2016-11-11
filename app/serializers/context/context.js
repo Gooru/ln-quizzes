@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import AssessmentResult from 'quizzes/models/result/assessment';
 import QuestionResult from 'quizzes/models/result/question';
+import Context from 'quizzes/models/context/context';
+import Profile from 'quizzes/models/profile/profile';
 
 export default Ember.Object.extend({
 
@@ -18,6 +20,43 @@ export default Ember.Object.extend({
       collectionId: payload.collection.id
     });
     return assessmentResult;
+  },
+  /**
+   * Normalizes assignees list
+   * @param {*[]} payload
+   * @returns {ResourceResult[]}
+   */
+  normalizeAssigneesList: function (payload) {
+    payload = payload || [];
+    return payload.map(function(assignee) {
+      return Profile.create({
+        id: assignee.id,
+        firstName: assignee.firstName,
+        lastName: assignee.lastName,
+        username: assignee.username
+      });
+    });
+  },
+  /**
+   * Serializes read assignment
+   * @param {Assignment} assignment
+   ** @param {*[]} payload
+   */
+  normalizeReadContext:function(payload){
+    var serializedAssignment = Context.create({});
+    var assignees;
+    if(payload.assignees){
+      assignees = this.normalizeAssigneesList(payload.assignees);
+    }
+    serializedAssignment.set('assignees',assignees);
+    serializedAssignment.set('title',payload.contextData.metadata.title);
+    serializedAssignment.set('description',payload.contextData.metadata.description);
+    serializedAssignment.set('isActive',payload.contextData.metadata.isActive);
+    serializedAssignment.set('dueDate',payload.contextData.metadata.dueDate);
+    serializedAssignment.set('createdDate',payload.contextData.metadata.createdDate);
+    serializedAssignment.set('modifiedDate',payload.contextData.metadata.modifiedDate);
+    serializedAssignment.set('learningObjective',payload.contextData.metadata.learningObjective);
+    return serializedAssignment;
   },
 
   /**
@@ -44,23 +83,22 @@ export default Ember.Object.extend({
    ** @param {*[]} payload
    */
   serializeContext:function(assignment){
-
     var serializedAssignment;
-    var assignees = this.serializeAssigneesList(assignment.assignees);
+    var assignees;
+    if (assignment.assignees) {
+      assignees = this.serializeAssigneesList(assignment.assignees);
+    }
     serializedAssignment = {
       assignees:assignees,
       contextData: {
         metadata: {
-          title:		assignment.get('title'),
-          description:	assignment.get('description'),
-          isActive:	assignment.get('isActive'),
-          dueDate:	assignment.get('dueDate'),
-          createdDate:assignment.get('createdDate'),
-          modifiedDate:assignment.get('modifiedDate'),
-          attempts:assignment.get('attempts'),
-          questions:assignment.get('questions'),
-          learningObjective:assignment.get('learningObjective'),
-          settings:assignment.get('settings')
+          title: assignment.get('title'),
+          description: assignment.get('description'),
+          isActive: assignment.get('isActive'),
+          dueDate: assignment.get('dueDate'),
+          createdDate: assignment.get('createdDate'),
+          modifiedDate: assignment.get('modifiedDate'),
+          learningObjective: assignment.get('learningObjective')
         }
       }
     };
@@ -75,9 +113,9 @@ export default Ember.Object.extend({
     var serializedAssigneesList = assigneesList.map(function (profile) {
       return {
           id:profile.get('id'),
-          firstName:profile.get('firstName'),
-          lastName:profile.get('lastName'),
-          username:profile.get('username')
+          firstName: profile.get('firstName'),
+          lastName: profile.get('lastName'),
+          username: profile.get('username')
         };
     });
     return serializedAssigneesList;

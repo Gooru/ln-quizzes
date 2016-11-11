@@ -7,6 +7,123 @@ import Profile from 'quizzes/models/profile/profile';
 moduleForService('service:api-sdk/context', 'Unit | Service | api-sdk/context', {
 
 });
+test('createContext', function(assert) {
+  const service = this.subject();
+  let assignment = Context.create({
+    title:'title',
+    description:'description',
+    isActive:true,
+    dueDate:'12340596',
+    createdDate:'12340596',
+    modifiedDate:'12340596',
+    attempts:[{id:'attempt-1'}],
+    learningObjective:'learning objective'
+  });
+  const expectedData = {
+    "contextData": {
+      "contextMap": {},
+      "metadata": {
+        title:'title',
+        description:'description',
+        isActive:true,
+        dueDate:'12340596',
+        createdDate:'12340596',
+        modifiedDate:'12340596',
+        attempts:[{id:'attempt-1'}],
+        learningObjective:'learning objective'
+      }
+    }
+  };
+
+  assert.expect(2);
+
+  service.set('contextAdapter', Ember.Object.create({
+    createContext: function(data) {
+      assert.equal(data, expectedData, "Wrong adapter data" );
+      return Ember.RSVP.resolve();
+    }
+  }));
+  service.set('contextSerializer', Ember.Object.create({
+    serializeContext: function(assignment){
+      assert.ok(assignment, 'Wrong assignment object');
+      return expectedData;
+    }
+  }));
+
+  var done = assert.async();
+  service.createContext(assignment).then(function() { done(); });
+});
+test('getContextAssignees', function(assert) {
+  const service = this.subject();
+  let assignment = Context.create({
+    assignees:[
+      Profile.create({
+        id: 'profile-id',
+        firstName: 'user first name',
+        lastName: 'user last name',
+        username: 'username'
+      }),
+      Profile.create({
+        id: 'profile-id1',
+        firstName: 'user first name1',
+        lastName: 'user last name1',
+        username: 'username1'
+      })],
+    title:'title',
+    description:'description',
+    isActive:true,
+    dueDate:'12340596',
+    createdDate:'12340596',
+    modifiedDate:'12340596',
+    attempts:[{id:'attempt-1'}],
+    learningObjective:'learning objective'
+  });
+  const expectedData = {
+    "assignees":[
+      { id: 'profile-id',
+        firstName: 'user first name',
+        lastName: 'user last name',
+        username: 'username'
+      },{
+        id: 'profile-id1',
+        firstName: 'user first name1',
+        lastName: 'user last name1',
+        username: 'username1'
+      }
+    ],
+    "contextData": {
+      "contextMap": {},
+      "metadata": {
+        title:'title',
+        description:'description',
+        isActive:true,
+        dueDate:'12340596',
+        createdDate:'12340596',
+        modifiedDate:'12340596',
+        attempts:[{id:'attempt-1'}],
+        learningObjective:'learning objective'
+      }
+    }
+  };
+
+  assert.expect(2);
+
+  service.set('contextAdapter', Ember.Object.create({
+    getContext: function(contextId) {
+      assert.equal(contextId, 'context-id', "Wrong adapter data" );
+      return Ember.RSVP.resolve({expectedData});
+    }
+  }));
+  service.set('contextSerializer', Ember.Object.create({
+    normalizeReadContext: function(payload){
+      assert.ok(payload, 'Wrong assignment object');
+      return assignment;
+    }
+  }));
+
+  var done = assert.async();
+  service.getContextAssignees('context-id').then(function() { done(); });
+});
 
 test('moveToResource', function(assert) {
   const service = this.subject();

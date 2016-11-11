@@ -11,6 +11,8 @@ export default Ember.Route.extend({
 
   configurationService: Ember.inject.service('configuration'),
 
+  contextService: Ember.inject.service("api-sdk/context"),
+
   // -------------------------------------------------------------------------
   // Methods
 
@@ -283,6 +285,7 @@ export default Ember.Route.extend({
 
     let assignmentsTeacher = Ember.A([
       Ember.Object.create({
+        id:'77d0c04b-b71a-485b-9573-9101cc288a0f',
         title:'Assessment 1',
         createdDate:1477021500,
         modifiedDate:1477021500,
@@ -299,6 +302,7 @@ export default Ember.Route.extend({
         }
       }),
       Ember.Object.create({
+        id:'77d0c04b-b71a-485b-9573-9101cc288a0f',
         title:'Assessment 2',
         standards:'',
         createdDate:1474072003426,
@@ -316,6 +320,7 @@ export default Ember.Route.extend({
         }
       }),
       Ember.Object.create({
+        id:'77d0c04b-b71a-485b-9573-9101cc288a0f',
         title:'Assessment 3 Not Started',
         standards:'',
         createdDate:1475859664000,
@@ -334,17 +339,11 @@ export default Ember.Route.extend({
       })]);
 
     //TODO GET FROM QUIZZES API
-    let assignedStudents = ['assigned-1','assigned-2','student-1'];
+    let studentList = this.get('configurationService.configuration.properties.students');
 
-    let studentList =this.get('configurationService.configuration.properties.students');
-    let students;
-    if(studentList){
-       students = studentList.map(function(student){
-        let studentObject = Profile.create(student);
-        studentObject.set('isAssigned',assignedStudents.includes(student.id));
-        return studentObject;
-      });
-    }
+
+    let assigned = this.get('contextService').getContextAssignees('77d0c04b-b71a-485b-9573-9101cc288a0f');
+
     let isTeacher = params.isTeacher  === 'true';
 
 
@@ -352,7 +351,8 @@ export default Ember.Route.extend({
       profileId,
       isTeacher,
       assignments: isTeacher ? assignmentsTeacher : assignments,
-      students
+      studentList,
+      assigned
     });
   },
 
@@ -362,9 +362,22 @@ export default Ember.Route.extend({
    * @param model
    */
   setupController: function(controller, model) {
+    let assignedStudents = [];
+    let students = [];
+
     controller.set('profileId',model.profileId);
     controller.set('isTeacher',model.isTeacher);
-    controller.set('students',model.students);
+    if(model.assigned){
+      assignedStudents = model.assigned.getEach('id');
+      if(model.studentList){
+        students = model.studentList.map(function(student) {
+          let studentObject = Profile.create(student);
+          studentObject.set('isAssigned',assignedStudents.includes(student.id));
+          return studentObject;
+        });
+      }
+    }
+    controller.set('students',students);
     controller.set('assignments',model.assignments);
   }
 });

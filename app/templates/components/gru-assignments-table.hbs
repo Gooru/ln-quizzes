@@ -18,7 +18,7 @@
         {{/if}}
     </tr>
     </thead>
-    <tbody style="{{tableContentHeight}}">
+    <tbody style={{tableContentHeight}}>
    {{#each assignments as |assignment index|}}
         <tr class="{{if assignment.selected 'selected'}}" {{action 'selectAssignment' assignment}}>
             <td class="num col-xs-1">
@@ -37,7 +37,7 @@
               <td class="students-assigned hidden-sm hidden-xs col-md-2">{{assignment.totalStudents}}</td>
               <td class="actions hidden-xs col-md-3  col-sm-4">
                   <button class="btn btn-default add-student" {{action 'addStudent' assignment}}>{{gru-icon name='person_add'}}</button>
-                  <button class="btn btn-default real-time"><span class="real-time-icon"></span></button>
+                  <button class="btn btn-default real-time" {{action 'openRealTime' assignment}}><span class="real-time-icon"></span></button>
               </td>
           {{else}}
               <td class="standards hidden-sm hidden-xs col-md-2">{{assignment.standards}}</td>

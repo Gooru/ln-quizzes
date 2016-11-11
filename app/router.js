@@ -10,17 +10,18 @@ const Router = Ember.Router.extend(googlePageview, {
 Router.map(function() {
   this.route('index', {path: '/'});
 
-  this.route('player', { path: '/player/:contextId'});
+  this.route('player', { path: '/player/:contextId' });
 
   this.route('reports', function () {
-    this.route('collection', {path: '/class/:classId/collection/:collectionId'});
+    this.route('collection', { path: '/class/:classId/collection/:collectionId' });
     this.route('student-collection');
+    this.route('context', { path: '/context/:contextId' });
   });
 
-  this.route('integration', { path: '/integration/:appType'});
+  this.route('integration', { path: '/integration/:appType' });
 
-  this.route('assign',{ path: '/assessment/:assessmentId'});
-  this.route('assignments',{ path: '/profile/:profileId'});
+  this.route('assign',{ path: '/assessment/:assessmentId' });
+  this.route('assignments',{ path: '/profile/:profileId' });
 });
 
 export default Router;

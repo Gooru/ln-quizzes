@@ -19,35 +19,44 @@ export default Ember.Component.extend(ModalMixin,{
   // Actions
 
   actions: {
+
+    /**
+     * Open add student modal
+     */
+    addStudent: function (assignment) {
+      let model = {
+        students: this.get('students'),
+        collection: assignment
+      };
+      this.actions.showModal.call(this, 'gru-assign-student-modal',
+        model, null, null, null, false);
+    },
+
+    /**
+     * Redirect to real time
+     */
+    openRealTime: function (assignment) {
+      this.get('router').transitionTo('reports.context', assignment.get('id'));
+    },
+
     /***
      * Search assignment
      */
     selectAssignment: function (assignment) {
       this.selectAssignment(assignment);
-      this.sendAction('onSelectAssignment',assignment);
+      this.sendAction('onSelectAssignment', assignment);
     },
+
     /**
      * Sort assignment list
      */
-    sortBy:function(criteria){
-      if(criteria===this.get('sortBy')){
-        this.set('reverseSort',!this.get('reverseSort'));
-      }else{
-        this.set('sortBy',criteria);
-        this.set('reverseSort',false);
+    sortBy: function(criteria) {
+      if(criteria === this.get('sortBy')) {
+        this.set('reverseSort', !this.get('reverseSort'));
+      } else {
+        this.set('sortBy', criteria);
+        this.set('reverseSort', false);
       }
-    },
-    /**
-     * Open add student modal
-     */
-    addStudent: function (assignment) {
-      let model ={
-        students:this.get('students'),
-        collection:assignment
-      };
-      this.actions.showModal.call(this,
-        'gru-assign-student-modal',
-        model, null, null, null, false);
     }
   },
   // -------------------------------------------------------------------------
@@ -79,38 +88,44 @@ export default Ember.Component.extend(ModalMixin,{
    * @see gru-assignments-list and assignments.js route
    */
   isTeacher: false,
+
   /**
    * @property {Array} Students list
    */
-  students:null,
+  students: null,
+
   /**
    *Return the table content height to print on inline styles
    */
-  tableContentHeight: Ember.computed('calculatedTableContentHeight',function(){
+  tableContentHeight: Ember.computed('calculatedTableContentHeight', function() {
     var height = this.get('calculatedTableContentHeight');
     const heightString = height > 0 ? `${height}px` : '100%';
-    return new Ember.Handlebars.SafeString(`max-height: ${heightString}`);
+    return Ember.String.htmlSafe(`max-height: ${heightString}`);
   }),
+
   // -------------------------------------------------------------------------
   // Methods
   /**
    *Calculate the height of the content
    */
-  calculateHeight:function(){
-    var contentHeight = $('.ember-view').parent().outerHeight(true) - $('.table-fixed thead ').height() - $('.search').height() ;
+  calculateHeight: function() {
+    var contentHeight = $('.ember-view').parent().outerHeight(true) -
+      $('.table-fixed thead ').height() - $('.search').height();
     this.set('calculatedTableContentHeight', contentHeight);
   },
+
   /**
    * Set assignment as selected
    */
-  selectAssignment:function(assignment){
+  selectAssignment: function(assignment) {
     this.unSelectAssignment();
     assignment.set('selected',true);
   },
+
   /**
    * Unselected assignment
    */
-  unSelectAssignment:function(){
+  unSelectAssignment: function() {
     var selectedAssignment = this.get('assignments').findBy('selected',true);
     if(selectedAssignment){
       selectedAssignment.set('selected',false);

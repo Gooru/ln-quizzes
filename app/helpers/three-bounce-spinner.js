@@ -9,7 +9,7 @@ export function threeBounceSpinner() {
                   <div class="bounce2"></div> \
                   <div class="bounce3"></div> \
                 </div>';
-  return new Ember.Handlebars.SafeString(html);
+  return Ember.String.htmlSafe(html);
 }
 
 export default Ember.Helper.helper(threeBounceSpinner);

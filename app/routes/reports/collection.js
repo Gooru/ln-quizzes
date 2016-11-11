@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import ReportData from 'quizzes/models/result/report-data';
-import PrivateRouteMixin from "quizzes/mixins/private-route-mixin";
+import PublicRouteMixin from "quizzes/mixins/public-route-mixin";
 
 /**
  * Route for collection/assessment report
@@ -11,7 +11,7 @@ import PrivateRouteMixin from "quizzes/mixins/private-route-mixin";
  * @module
  * @augments ember/Route
  */
-export default Ember.Route.extend(PrivateRouteMixin, {
+export default Ember.Route.extend(PublicRouteMixin, {
 
   // -------------------------------------------------------------------------
   // Dependencies

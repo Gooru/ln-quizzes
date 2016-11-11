@@ -43,6 +43,7 @@ test('Layout Student View', function(assert) {
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body .answer-key').length, 'Missing Answer Key label');
   assert.notOk($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body .teacher-question').length, 'Question Teacher label should not appear');
 });
+
 test('Actions when the assessment has not started on Student View', function(assert) {
   var assignment = {
     hasStarted:false,
@@ -76,6 +77,7 @@ test('Actions when the assessment has not started on Student View', function(ass
   assert.notOk($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-heading .actions .delete').length, 'Delete button should not appear');
   assert.notOk($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-heading .actions .preview').length, 'Preview button should not appear');
 });
+
 test('Actions when the assessment has started and have attempts left on Student View', function(assert) {
   var assignment = {
     hasStarted:true,
@@ -109,6 +111,7 @@ test('Actions when the assessment has started and have attempts left on Student 
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-heading .actions .view-report').length, 'View report button should appear');
   assert.notOk($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-heading .actions .no-attempts').length, 'No attempts label should not appear');
 });
+
 test('Actions when the assessment has started and have not attempts on Student View ', function(assert) {
   var assignment = {
     hasStarted:true,
@@ -142,6 +145,7 @@ test('Actions when the assessment has started and have not attempts on Student V
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-heading .actions .view-report').length, 'View report button should appear');
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-heading .actions .no-attempts').length, 'No attempts label should appear');
 });
+
 test('Layout Teacher View', function(assert) {
   var assignment = {
     hasStarted:false,
@@ -183,6 +187,7 @@ test('Layout Teacher View', function(assert) {
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body .show-score').length, 'Missing Show Score label');
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body .answer-key').length, 'Missing Answer Key label');
 });
+
 test('Actions Teacher View', function(assert) {
   this.render(hbs`{{gru-assignments-detail isTeacher=true}}`);
 

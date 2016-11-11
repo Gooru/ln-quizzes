@@ -150,7 +150,7 @@ export default Ember.Component.extend({
     // If expanded, all columns should be visible; otherwise,
     // restrict the visible columns to only those allowed by the component width
     return this.get('isExpanded') ? this.get('allColumns') :
-      Math.floor(this.get('width') / this.get('itemMinWidth'));
+      (Math.floor(this.get('width') / this.get('itemMinWidth')) || 1);
   }),
 
   /**

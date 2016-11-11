@@ -82,7 +82,7 @@ export default GruInput.extend({
   /**
    * @param {Computed } didValidate - value used to check if input has been validated or not
    */
-  didValidateHidden: computed.oneWay('targetObject.didValidate'),
+  didValidateHidden: false,
 
   /**
    * @param {Computed } showErrorClass - computed property that defines the

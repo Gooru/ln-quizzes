@@ -29,7 +29,7 @@ export default Ember.Component.extend({
     selectAll:function(){
       const content = this ;
       this.set('areAllSelected',!this.get('areAllSelected'));
-      this.get('students').forEach(student => student.set('isAssigned', content.get('areAllSelected')))
+      this.get('students').forEach(student => student.set('isAssigned', content.get('areAllSelected')));
     },
     /***
      * Search student

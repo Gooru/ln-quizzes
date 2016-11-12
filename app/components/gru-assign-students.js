@@ -29,13 +29,7 @@ export default Ember.Component.extend({
     selectAll:function(){
       const content = this ;
       this.set('areAllSelected',!this.get('areAllSelected'));
-      this.get('students').map(function(student){
-        if(content.get('areAllSelected')){
-          student.set('isAssigned',true);
-        }else{
-          student.set('isAssigned',false);
-        }
-      });
+      this.get('students').forEach(student => student.set('isAssigned', content.get('areAllSelected')))
     },
     /***
      * Search student

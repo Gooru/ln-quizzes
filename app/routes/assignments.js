@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import Profile from 'quizzes/models/profile/profile';
-
+import Context from 'quizzes/models/context/context';
 export default Ember.Route.extend({
 
   queryParams: {
@@ -23,7 +23,7 @@ export default Ember.Route.extend({
     let profileId = params.profileId;
     //TODO: Assignments should be get from quizzes API
     let assignments = Ember.A([
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:60,
         title:'Assessment 1',
@@ -43,7 +43,7 @@ export default Ember.Route.extend({
           answerKey:true
         }
       }),
-        Ember.Object.create({
+      Context.create({
             hasStarted:true,
             score:70,
             title:'Assessment 2',
@@ -63,7 +63,7 @@ export default Ember.Route.extend({
               answerKey:false
             }
           }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:false,
         score:0,
         title:'Assessment 3 Not Started',
@@ -83,7 +83,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 4',
@@ -103,7 +103,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 5 No more attempts',
@@ -123,7 +123,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 6',
@@ -143,7 +143,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:100,
         title:'Assessment 7',
@@ -163,7 +163,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 8',
@@ -183,7 +183,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the in',
@@ -202,7 +202,7 @@ export default Ember.Route.extend({
           showScore:'Per question',
           answerKey:false
         }
-      }),Ember.Object.create({
+      }),Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 10 first assigned',
@@ -222,7 +222,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:40,
         title:'Assessment AAAAA',
@@ -242,7 +242,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:40,
         title:'Collection',
@@ -262,7 +262,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:40,
         title:'Collection for practice',
@@ -284,7 +284,7 @@ export default Ember.Route.extend({
       })]);
 
     let assignmentsTeacher = Ember.A([
-      Ember.Object.create({
+      Context.create({
         id:'77d0c04b-b71a-485b-9573-9101cc288a0f',
         title:'Assessment 1',
         createdDate:1477021500,
@@ -301,7 +301,7 @@ export default Ember.Route.extend({
           answerKey:true
         }
       }),
-      Ember.Object.create({
+      Context.create({
         id:'77d0c04b-b71a-485b-9573-9101cc288a0f',
         title:'Assessment 2',
         standards:'',
@@ -319,7 +319,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         id:'77d0c04b-b71a-485b-9573-9101cc288a0f',
         title:'Assessment 3 Not Started',
         standards:'',

@@ -28,14 +28,13 @@ export default Ember.Object.extend({
    */
   normalizeAssigneesList: function (payload) {
     payload = payload || [];
-    return payload.map(function(assignee) {
-      return Profile.create({
+    return payload.map(assignee => Profile.create({
         id: assignee.id,
         firstName: assignee.firstName,
         lastName: assignee.lastName,
         username: assignee.username
-      });
-    });
+      })
+    );
   },
   /**
    * Serializes read assignment
@@ -48,14 +47,17 @@ export default Ember.Object.extend({
     if(payload.assignees){
       assignees = this.normalizeAssigneesList(payload.assignees);
     }
-    serializedAssignment.set('assignees',assignees);
-    serializedAssignment.set('title',payload.contextData.metadata.title);
-    serializedAssignment.set('description',payload.contextData.metadata.description);
-    serializedAssignment.set('isActive',payload.contextData.metadata.isActive);
-    serializedAssignment.set('dueDate',payload.contextData.metadata.dueDate);
-    serializedAssignment.set('createdDate',payload.contextData.metadata.createdDate);
-    serializedAssignment.set('modifiedDate',payload.contextData.metadata.modifiedDate);
-    serializedAssignment.set('learningObjective',payload.contextData.metadata.learningObjective);
+    serializedAssignment.setProperties({
+      assignees:assignees,
+      title: payload.contextData.metadata.title,
+      description: payload.contextData.metadata.description,
+      isActive: payload.contextData.metadata.isActive,
+      dueDate: payload.contextData.metadata.dueDate,
+      createdDate: payload.contextData.metadata.createdDate,
+      modifiedDate: payload.contextData.metadata.modifiedDate,
+      learningObjective: payload.contextData.metadata.learningObjective
+      });
+
     return serializedAssignment;
   },
 

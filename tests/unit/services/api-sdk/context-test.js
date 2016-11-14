@@ -124,6 +124,75 @@ test('getContextAssignees', function(assert) {
   var done = assert.async();
   service.getContextAssignees('context-id').then(function() { done(); });
 });
+test('getContextsCreated', function(assert) {
+  const service = this.subject();
+  const expectedResponse = {
+    "assignees":[
+      { id: 'profile-id',
+        firstName: 'user first name',
+        lastName: 'user last name',
+        username: 'username'
+      },{
+        id: 'profile-id1',
+        firstName: 'user first name1',
+        lastName: 'user last name1',
+        username: 'username1'
+      }
+    ],
+    "contextData": {
+      "contextMap": {},
+      "metadata": {
+        title:'title',
+        description:'description',
+        isActive:true,
+        dueDate:'12340596',
+        createdDate:'12340596',
+        modifiedDate:'12340596',
+        attempts:[{id:'attempt-1'}],
+        learningObjective:'learning objective'
+      }
+    }
+  };
+  const expectedData = [Context.create({
+    assignees:[
+      Profile.create({id: 'profile-id',
+      firstName: 'user first name',
+      lastName: 'user last name',
+      username: 'username'}),
+      Profile.create({
+      id: 'profile-id1',
+      firstName: 'user first name1',
+      lastName: 'user last name1',
+      username: 'username1'
+    })],
+      title:'title',
+      description:'description',
+      isActive:true,
+      dueDate:'12340596',
+      createdDate:'12340596',
+      modifiedDate:'12340596',
+      attempts:[{id:'attempt-1'}],
+      learningObjective:'learning objective'
+  })];
+
+  assert.expect(2);
+
+  service.set('contextAdapter', Ember.Object.create({
+    getContextsCreated: function() {
+      assert.ok(true,"Wrong adapter" );
+      return Ember.RSVP.resolve([{expectedResponse}]);
+    }
+  }));
+  service.set('contextSerializer', Ember.Object.create({
+    normalizeReadContexts: function(payload){
+      assert.ok(payload, 'Wrong assignment object');
+      return expectedData;
+    }
+  }));
+
+  var done = assert.async();
+  service.getContextsCreated().then(function() { done(); });
+});
 
 test('moveToResource', function(assert) {
   const service = this.subject();

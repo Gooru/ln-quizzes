@@ -4,6 +4,8 @@ export default Ember.Object.extend({
 
   namespace: '/quizzes/api/v1/context',
 
+  namespace_collection: '/quizzes/api/v1/contexts',
+
   createContext:function(assignment){
     const namespace = this.get('namespace');
     const url = `${namespace}`;
@@ -34,6 +36,21 @@ export default Ember.Object.extend({
       }
     };
     const url = `${namespace}/${contextId}`;
+    return Ember.$.ajax(url, options);
+  },
+  getContextsCreated:function(){
+    const namespace = this.get('namespace_collection');
+    const options = {
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      processData: false,
+      headers: {
+        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
+        'lms-id': 'quizzes'
+      }
+    };
+    const url = `${namespace}/created`;
     return Ember.$.ajax(url, options);
   },
   moveToResource: function(resourceId, contextId, previousResource) {

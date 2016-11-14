@@ -214,6 +214,42 @@ test('normalizeReadContext', function(assert) {
   assert.equal(response.get('modifiedDate'), '12340596', 'Wrong modifiedDate value');
   assert.equal(response.get('learningObjective'), 'learning objective', 'Wrong learningObjective value');
 });
+test('normalizeReadContexts', function(assert) {
+  const serializer = this.subject();
+  const payload = [{
+    assignees:[{
+      id: 'profile-id',
+      firstName: 'user first name',
+      lastName: 'user last name',
+      username: 'username'
+    },{
+      id: 'profile-id1',
+      firstName: 'user first name1',
+      lastName: 'user last name1',
+      username: 'username1'
+    }],
+    contextData:{
+      metadata:{
+        title:'title',
+        description:'description',
+        isActive:true,
+        dueDate:'12340596',
+        createdDate:'12340596',
+        modifiedDate:'12340596',
+        learningObjective:'learning objective'
+      }
+    }
+  }];
+  const response = serializer.normalizeReadContexts(payload);
+  assert.equal(response.length, 1, 'The array should have 1 context');
+  assert.equal(response[0].get('title'), 'title', 'Wrong title value');
+  assert.equal(response[0].get('description'), 'description', 'Wrong description value');
+  assert.equal(response[0].get('isActive'), true , 'Wrong isActive value');
+  assert.equal(response[0].get('dueDate'), '12340596', 'Wrong dueDate value');
+  assert.equal(response[0].get('createdDate'), '12340596', 'Wrong createdDate value');
+  assert.equal(response[0].get('modifiedDate'), '12340596', 'Wrong modifiedDate value');
+  assert.equal(response[0].get('learningObjective'), 'learning objective', 'Wrong learningObjective value');
+});
 
 test('normalizeResourceResults', function(assert) {
   const serializer = this.subject();

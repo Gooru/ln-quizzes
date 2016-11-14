@@ -38,7 +38,6 @@ export default Ember.Object.extend({
   },
   /**
    * Serializes read assignment
-   * @param {Assignment} assignment
    ** @param {*[]} payload
    */
   normalizeReadContext:function(payload){
@@ -59,6 +58,14 @@ export default Ember.Object.extend({
       });
 
     return serializedAssignment;
+  },
+  /**
+   * Serializes read assignments
+   ** @param {*[]} payload
+   */
+  normalizeReadContexts:function(payload){
+    payload = payload || [];
+    return payload.map(assignment => this.normalizeReadContext(assignment));
   },
 
   /**

@@ -71,6 +71,24 @@ test('getContext', function(assert) {
       assert.deepEqual(response.id,'77d0c04b-b71a-485b-9573-9101cc288a0f', 'Wrong response');
     });
 });
+test('getContextsCreated', function(assert) {
+  const adapter = this.subject();
+
+  const routes = function() {
+    this.get('/quizzes/api/v1/contexts/created', function() {
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify([{id:'77d0c04b-b71a-485b-9573-9101cc288a0f'}])];
+    }, false);
+  };
+
+  this.pretender.map(routes);
+  this.pretender.unhandledRequest = function(verb, path) {
+    assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+  };
+  adapter.getContextsCreated()
+    .then(function(response) {
+      assert.deepEqual(response.length,1, 'Wrong response');
+    });
+});
 
 test('moveToResource', function(assert) {
   const adapter = this.subject();

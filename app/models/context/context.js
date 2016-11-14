@@ -55,7 +55,7 @@ const Context = Ember.Object.extend( {
   /**
    * @property {[Profile]}
    */
-  assignees:null,
+  assignees:[],
   /**
    * @property {number}
    */

@@ -4,7 +4,7 @@
     margin: 10px auto;
     .gru-assign-student-modal{
       background-color: transparent;
-   
+
       margin: 0 auto;
 
       .modal-header {
@@ -26,7 +26,11 @@
         border-bottom-left-radius: $border-radius-base;
         border-bottom-right-radius: $border-radius-base;
         padding: 30px 30px 20px;
+
+        .toggle-group{
+          top: -4px;
+        }
       }
-    } 
+    }
   }
 }

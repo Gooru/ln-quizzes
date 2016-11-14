@@ -1,6 +1,9 @@
+import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 import QuestionResult from 'quizzes/models/result/question';
 import ResourceResult from 'quizzes/models/result/resource';
+import Profile from 'quizzes/models/profile/profile';
+import Context from 'quizzes/models/context/context';
 
 moduleFor('serializer:context/context', 'Unit | Serializer | context/context');
 
@@ -45,6 +48,82 @@ test('serializeResourceResult with a question', function(assert) {
   };
   assert.deepEqual(expected, response, 'Wrong response');
 });
+test('serializeContext', function(assert) {
+  const serializer = this.subject();
+  const assignment = Context.create({
+    assignees:Ember.A([Profile.create({
+      id: 'profile-id',
+      firstName: 'user first name',
+      lastName: 'user last name',
+      username: 'username'
+    }),Profile.create({
+      id: 'profile-id1',
+      firstName: 'user first name1',
+      lastName: 'user last name1',
+      username: 'username1'
+    })]),
+    title:'title',
+    description:'description',
+    isActive:true,
+    dueDate:'12340596',
+    createdDate:'12340596',
+    modifiedDate:'12340596',
+    learningObjective:'learning objective'
+  });
+  const response = serializer.serializeContext(assignment);
+  const expected ={
+    assignees:[{
+      id: 'profile-id',
+      firstName: 'user first name',
+      lastName: 'user last name',
+      username: 'username'
+    },{
+      id: 'profile-id1',
+      firstName: 'user first name1',
+      lastName: 'user last name1',
+      username: 'username1'
+    }],
+    contextData:{
+      metadata:{
+        title:'title',
+        description:'description',
+        isActive:true,
+        dueDate:'12340596',
+        createdDate:'12340596',
+        modifiedDate:'12340596',
+        learningObjective:'learning objective'
+      }
+    }
+  };
+  assert.deepEqual(expected, response, 'serializeAssignment wrong response');
+});
+test('serializeAssigneesList ', function(assert) {
+  const serializer = this.subject();
+  const profileList = Ember.A([Profile.create({
+    id: 'profile-id',
+    firstName: 'user first name',
+    lastName: 'user last name',
+    username: 'username'
+  }),Profile.create({
+    id: 'profile-id1',
+    firstName: 'user first name1',
+    lastName: 'user last name1',
+    username: 'username1'
+  })]);
+  const response = serializer.serializeAssigneesList(profileList);
+  const expected = [{
+    id: 'profile-id',
+    firstName: 'user first name',
+    lastName: 'user last name',
+    username: 'username'
+  },{
+    id: 'profile-id1',
+    firstName: 'user first name1',
+    lastName: 'user last name1',
+    username: 'username1'
+  }];
+  assert.deepEqual(expected, response, 'serializeAssigneesList wrong response');
+});
 
 
 test('normalizeAssessmentResult', function(assert) {
@@ -80,6 +159,60 @@ test('normalizeAssessmentResult', function(assert) {
   assert.equal(response.get('resourceResults')[1].get('reaction'), 3, 'Wrong second reaction');
   assert.equal(response.get('resourceResults')[1].get('resourceId'), 'resource-id-2', 'Wrong second resource id');
   assert.equal(response.get('resourceResults')[1].get('savedTime'), 20000, 'Wrong second time spent');
+});
+test('normalizeAssigneesList', function(assert) {
+  const serializer = this.subject();
+  const payload = [{
+    id:'id-1',
+    firstName:'firstname1',
+    lastName:'lastname1',
+    username:'username1'
+  },{
+    id:'id-2',
+    firstName:'firstname2',
+    lastName:'lastname2',
+    username:'username2'
+  }];
+  const response = serializer.normalizeAssigneesList(payload);
+  assert.equal(response[0].get('id'), 'id-1', 'Wrong context id value');
+  assert.equal(response[0].get('firstName'), 'firstname1', 'Wrong first name value');
+  assert.equal(response[0].get('lastName'), 'lastname1', 'Wrong last name value');
+  assert.equal(response[0].get('username'), 'username1', 'Wrong username value');
+});
+test('normalizeReadContext', function(assert) {
+  const serializer = this.subject();
+  const payload = {
+    assignees:[{
+      id: 'profile-id',
+      firstName: 'user first name',
+      lastName: 'user last name',
+      username: 'username'
+    },{
+      id: 'profile-id1',
+      firstName: 'user first name1',
+      lastName: 'user last name1',
+      username: 'username1'
+    }],
+    contextData:{
+      metadata:{
+        title:'title',
+        description:'description',
+        isActive:true,
+        dueDate:'12340596',
+        createdDate:'12340596',
+        modifiedDate:'12340596',
+        learningObjective:'learning objective'
+      }
+    }
+  };
+  const response = serializer.normalizeReadContext(payload);
+  assert.equal(response.get('title'), 'title', 'Wrong title value');
+  assert.equal(response.get('description'), 'description', 'Wrong description value');
+  assert.equal(response.get('isActive'), true , 'Wrong isActive value');
+  assert.equal(response.get('dueDate'), '12340596', 'Wrong dueDate value');
+  assert.equal(response.get('createdDate'), '12340596', 'Wrong createdDate value');
+  assert.equal(response.get('modifiedDate'), '12340596', 'Wrong modifiedDate value');
+  assert.equal(response.get('learningObjective'), 'learning objective', 'Wrong learningObjective value');
 });
 
 test('normalizeResourceResults', function(assert) {

@@ -1,5 +1,6 @@
 import Ember from 'ember';
-
+import Profile from 'quizzes/models/profile/profile';
+import Context from 'quizzes/models/context/context';
 export default Ember.Route.extend({
 
   queryParams: {
@@ -9,6 +10,8 @@ export default Ember.Route.extend({
   // Dependencies
 
   configurationService: Ember.inject.service('configuration'),
+
+  contextService: Ember.inject.service("api-sdk/context"),
 
   // -------------------------------------------------------------------------
   // Methods
@@ -20,7 +23,7 @@ export default Ember.Route.extend({
     let profileId = params.profileId;
     //TODO: Assignments should be get from quizzes API
     let assignments = Ember.A([
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:60,
         title:'Assessment 1',
@@ -40,7 +43,7 @@ export default Ember.Route.extend({
           answerKey:true
         }
       }),
-        Ember.Object.create({
+      Context.create({
             hasStarted:true,
             score:70,
             title:'Assessment 2',
@@ -60,7 +63,7 @@ export default Ember.Route.extend({
               answerKey:false
             }
           }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:false,
         score:0,
         title:'Assessment 3 Not Started',
@@ -80,7 +83,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 4',
@@ -100,7 +103,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 5 No more attempts',
@@ -120,7 +123,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 6',
@@ -140,7 +143,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:100,
         title:'Assessment 7',
@@ -160,7 +163,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 8',
@@ -180,7 +183,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:70,
         title:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the in',
@@ -199,7 +202,7 @@ export default Ember.Route.extend({
           showScore:'Per question',
           answerKey:false
         }
-      }),Ember.Object.create({
+      }),Context.create({
         hasStarted:true,
         score:70,
         title:'Assessment 10 first assigned',
@@ -219,7 +222,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:40,
         title:'Assessment AAAAA',
@@ -239,7 +242,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:40,
         title:'Collection',
@@ -259,7 +262,7 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
         hasStarted:true,
         score:40,
         title:'Collection for practice',
@@ -281,7 +284,8 @@ export default Ember.Route.extend({
       })]);
 
     let assignmentsTeacher = Ember.A([
-      Ember.Object.create({
+      Context.create({
+        id:'77d0c04b-b71a-485b-9573-9101cc288a0f',
         title:'Assessment 1',
         createdDate:1477021500,
         modifiedDate:1477021500,
@@ -289,9 +293,6 @@ export default Ember.Route.extend({
         totalStudents:12,
         totalAttempts:15,
         attempts:2,
-        lastAttempt:{
-          score:60
-        },
         questions:['question1','question2','question3'],
         learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         settings:{
@@ -300,7 +301,8 @@ export default Ember.Route.extend({
           answerKey:true
         }
       }),
-      Ember.Object.create({
+      Context.create({
+        id:'77d0c04b-b71a-485b-9573-9101cc288a0f',
         title:'Assessment 2',
         standards:'',
         createdDate:1474072003426,
@@ -309,9 +311,6 @@ export default Ember.Route.extend({
         totalAttempts:15,
         attempts:2,
         totalStudents:15,
-        lastAttempt:{
-          score:60
-        },
         questions:['question1','question2','question3'],
         learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         settings:{
@@ -320,7 +319,8 @@ export default Ember.Route.extend({
           answerKey:false
         }
       }),
-      Ember.Object.create({
+      Context.create({
+        id:'77d0c04b-b71a-485b-9573-9101cc288a0f',
         title:'Assessment 3 Not Started',
         standards:'',
         createdDate:1475859664000,
@@ -329,9 +329,6 @@ export default Ember.Route.extend({
         totalStudents:20,
         totalAttempts:15,
         attempts:2,
-        lastAttempt:{
-          score:60
-        },
         questions:['question1','question2','question3'],
         learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         settings:{
@@ -342,17 +339,11 @@ export default Ember.Route.extend({
       })]);
 
     //TODO GET FROM QUIZZES API
-    let assignedStudents = ['assigned-1','assigned-2','student-1'];
+    let studentList = this.get('configurationService.configuration.properties.students');
 
-    let studentList =this.get('configurationService.configuration.properties.students');
-    let students;
-    if(studentList){
-       students = studentList.map(function(student){
-        let studentObject = Ember.Object.create(student);
-        studentObject.set('isSelected',assignedStudents.includes(student.id));
-        return studentObject;
-      });
-    }
+
+    let assigned = this.get('contextService').getContextAssignees('77d0c04b-b71a-485b-9573-9101cc288a0f');
+
     let isTeacher = params.isTeacher  === 'true';
 
 
@@ -360,7 +351,8 @@ export default Ember.Route.extend({
       profileId,
       isTeacher,
       assignments: isTeacher ? assignmentsTeacher : assignments,
-      students
+      studentList,
+      assigned
     });
   },
 
@@ -370,9 +362,22 @@ export default Ember.Route.extend({
    * @param model
    */
   setupController: function(controller, model) {
+    let assignedStudents = [];
+    let students = [];
+
     controller.set('profileId',model.profileId);
     controller.set('isTeacher',model.isTeacher);
-    controller.set('students',model.students);
+    if(model.assigned){
+      assignedStudents = model.assigned.getEach('id');
+      if(model.studentList){
+        students = model.studentList.map(function(student) {
+          let studentObject = Profile.create(student);
+          studentObject.set('isAssigned',assignedStudents.includes(student.id));
+          return studentObject;
+        });
+      }
+    }
+    controller.set('students',students);
     controller.set('assignments',model.assignments);
   }
 });

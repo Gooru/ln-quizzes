@@ -7,6 +7,10 @@ export default Ember.Component.extend({
    * @property {Service} I18N service
    */
   i18n: Ember.inject.service(),
+  /**
+   * @property {Service} Context service
+   */
+  contextService: Ember.inject.service("api-sdk/context"),
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -49,7 +53,7 @@ export default Ember.Component.extend({
   /**
    * Assignments List
    */
-  assignments:null,
+  assignments:[],
   /**
    * Indicate if is a teacher view
    */
@@ -76,6 +80,11 @@ export default Ember.Component.extend({
     let sortOrder = this.get('reverseSort') ? 'desc' : 'asc';
     return [ `${this.get('sortBy')}:${sortOrder}` ];
   }),
+
+  /**
+   *Total students available
+   */
+  studentList:[],
 
 
   // -------------------------------------------------------------------------

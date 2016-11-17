@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
+import Profile from 'quizzes/models/profile/profile';
 
 export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
@@ -24,6 +25,21 @@ export default Ember.Component.extend(ModalMixin,{
      * Open add student modal
      */
     addStudent: function (assignment) {
+      let assigned = assignment.get('assignees');
+      let assignedStudents = [];
+      let students = [];
+      if(assigned){
+        assignedStudents = assigned.getEach('id');
+        if(this.get('studentList')){
+          students = this.get('studentList').map(function(student) {
+            let studentObject = Profile.create(student);
+            studentObject.set('isAssigned',assignedStudents.includes(student.id));
+            return studentObject;
+          });
+        }
+      }
+      this.set('students', students);
+
       let model = {
         students: this.get('students'),
         collection: assignment
@@ -92,7 +108,11 @@ export default Ember.Component.extend(ModalMixin,{
   /**
    * @property {Array} Students list
    */
-  students: null,
+  students: [],
+  /**
+   * @property {Array} Total student list
+   */
+  studentList:[],
 
   /**
    *Return the table content height to print on inline styles

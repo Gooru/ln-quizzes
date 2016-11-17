@@ -9,16 +9,21 @@ moduleForComponent('gru-assignments-table', 'Unit | Component | gru assignments 
 
 test('addStudent', function(assert) {
   let component = this.subject();
+  let assignment = Ember.Object.create({
+    id: 'id',
+    assignees:[]
+  });
   let expectedModel = {
-    students: 'students',
-    collection: 'assignment'
+    students: [],
+    collection: assignment
   };
+  component.set('students', 'students');
   component.set('students', 'students');
   component.set('actions.showModal', function(componentName, model) {
     assert.deepEqual(model, expectedModel, 'Model should match');
     assert.equal(componentName, 'gru-assign-student-modal', 'Component name should match');
   });
-  component.send('addStudent', 'assignment');
+  component.send('addStudent', assignment);
 });
 
 test('openRealTime', function(assert) {

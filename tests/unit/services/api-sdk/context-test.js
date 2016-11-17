@@ -53,77 +53,7 @@ test('createContext', function(assert) {
   var done = assert.async();
   service.createContext(assignment).then(function() { done(); });
 });
-test('getContextAssignees', function(assert) {
-  const service = this.subject();
-  let assignment = Context.create({
-    assignees:[
-      Profile.create({
-        id: 'profile-id',
-        firstName: 'user first name',
-        lastName: 'user last name',
-        username: 'username'
-      }),
-      Profile.create({
-        id: 'profile-id1',
-        firstName: 'user first name1',
-        lastName: 'user last name1',
-        username: 'username1'
-      })],
-    title:'title',
-    description:'description',
-    isActive:true,
-    dueDate:'12340596',
-    createdDate:'12340596',
-    modifiedDate:'12340596',
-    attempts:[{id:'attempt-1'}],
-    learningObjective:'learning objective'
-  });
-  const expectedData = {
-    "assignees":[
-      { id: 'profile-id',
-        firstName: 'user first name',
-        lastName: 'user last name',
-        username: 'username'
-      },{
-        id: 'profile-id1',
-        firstName: 'user first name1',
-        lastName: 'user last name1',
-        username: 'username1'
-      }
-    ],
-    "contextData": {
-      "contextMap": {},
-      "metadata": {
-        title:'title',
-        description:'description',
-        isActive:true,
-        dueDate:'12340596',
-        createdDate:'12340596',
-        modifiedDate:'12340596',
-        attempts:[{id:'attempt-1'}],
-        learningObjective:'learning objective'
-      }
-    }
-  };
 
-  assert.expect(2);
-
-  service.set('contextAdapter', Ember.Object.create({
-    getContext: function(contextId) {
-      assert.equal(contextId, 'context-id', "Wrong adapter data" );
-      return Ember.RSVP.resolve({expectedData});
-    }
-  }));
-  service.set('contextSerializer', Ember.Object.create({
-    normalizeReadContext: function(payload){
-      assert.ok(payload, 'Wrong assignment object');
-      return assignment;
-    }
-  }));
-
-  var done = assert.async();
-  service.getContextAssignees('context-id').then(function() { done(); });
-});
 test('getContextsCreated', function(assert) {
   const service = this.subject();
   const expectedResponse = {
@@ -303,15 +233,7 @@ test('updateContext', function(assert) {
     isActive:true,
     dueDate:'12340596',
     createdDate:'12340596',
-    modifiedDate:'12340596',
-    attempts:[{id:'attempt-1'}],
-    questions:[{id:'question-1'},{id:'question-2'}],
-    learningObjective:'learning objective',
-    settings:{
-      navigation:'Forward only',
-      showScore:'Per question',
-      answerKey:false
-    }
+    modifiedDate:'12340596'
   });
   const expectedData = {
     "assignees": [
@@ -363,7 +285,7 @@ test('updateContext', function(assert) {
   })];
 
   service.set('contextSerializer', Ember.Object.create({
-    serializeContext: function(assignment){
+    serializeUpdateContext: function(assignment){
       assert.deepEqual(assignment.assignees, expectedAssigneesList, 'Wrong assignees list object');
       return expectedData;
     }

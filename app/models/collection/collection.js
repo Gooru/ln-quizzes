@@ -17,7 +17,7 @@ export default Ember.Object.extend({
   hasResources: Ember.computed.bool('resources.length'),
 
   /**
-   * @property {boolean} Returnn true if the collection is an assessment
+   * @property {boolean} Return true if the collection is an assessment
    */
   isAssessment: Ember.computed.not('isCollection'),
 
@@ -40,6 +40,24 @@ export default Ember.Object.extend({
    * @property {string} Collection's title
    */
   title: null,
+
+  /**
+   * @property {[]}
+   */
+  attempts:[],
+  /**
+   * @property {number}
+   */
+  totalAttempts:Ember.computed.alias('attempts.length'),
+
+  /**
+   * @property {[]}
+   */
+  questions:[],
+  /**
+   * @property {Object}
+   */
+  settings:null,
 
   /**
    * Gets the next resource based on the resource provided

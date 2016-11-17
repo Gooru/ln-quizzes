@@ -3,6 +3,7 @@ import AssessmentResult from 'quizzes/models/result/assessment';
 import QuestionResult from 'quizzes/models/result/question';
 import Context from 'quizzes/models/context/context';
 import Profile from 'quizzes/models/profile/profile';
+import Collection from 'quizzes/models/collection/collection';
 
 export default Ember.Object.extend({
 
@@ -48,13 +49,24 @@ export default Ember.Object.extend({
     }
     serializedAssignment.setProperties({
       assignees:assignees,
+      id:payload.id,
       title: payload.contextData.metadata.title,
       description: payload.contextData.metadata.description,
       isActive: payload.contextData.metadata.isActive,
       dueDate: payload.contextData.metadata.dueDate,
       createdDate: payload.contextData.metadata.createdDate,
       modifiedDate: payload.contextData.metadata.modifiedDate,
-      learningObjective: payload.contextData.metadata.learningObjective
+      learningObjective: payload.contextData.metadata.learningObjective,
+      externalCollectionId: payload.externalCollectionId,
+      owner:Profile.create({
+        id: payload.owner ? payload.owner.id : '',
+        firstName: payload.owner ? payload.owner.firstName : '',
+        lastName: payload.owner ? payload.owner.lastName : '',
+        username: payload.owner ? payload.owner.username : ''
+        }),
+      collection:Collection.create({
+        id: payload.collection.id
+      })
       });
 
     return serializedAssignment;
@@ -89,9 +101,44 @@ export default Ember.Object.extend({
   /**
    * Serializes an assignment
    * @param {Assignment} assignment
-   ** @param {*[]} payload
+   ** @return {*[]} payload
    */
   serializeContext:function(assignment){
+    var serializedAssignment;
+    var assignees;
+    if (assignment.assignees) {
+      assignees = this.serializeAssigneesList(assignment.assignees);
+    }
+    serializedAssignment = {
+      id: assignment.get('id'),
+      assignees:assignees,
+      contextData: {
+        metadata: {
+          title: assignment.get('title'),
+          description: assignment.get('description'),
+          isActive: assignment.get('isActive'),
+          dueDate: assignment.get('dueDate'),
+          createdDate: assignment.get('createdDate'),
+          modifiedDate: assignment.get('modifiedDate'),
+          learningObjective: assignment.get('learningObjective')
+        }
+      },
+      externalCollectionId: assignment.get('externalCollectionId'),
+      owner:{
+        firstName: assignment.get('owner') ? assignment.get('owner.firstName') : '',
+        id: assignment.get('owner') ? assignment.get('owner.id') : '',
+        lastName: assignment.get('owner') ? assignment.get('owner.lastName') : '',
+        username: assignment.get('owner') ? assignment.get('owner.username') : ''
+      }
+    };
+    return serializedAssignment;
+  },
+  /**
+   * Serializes an assignment to update
+   * @param {Assignment} assignment
+   ** @return {*[]} payload
+   */
+  serializeUpdateContext:function(assignment){
     var serializedAssignment;
     var assignees;
     if (assignment.assignees) {

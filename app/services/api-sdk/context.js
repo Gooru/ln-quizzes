@@ -33,15 +33,6 @@ export default Ember.Service.extend({
       service.get('contextAdapter').createContext(serializedAssignment).then(resolve, reject);
     });
   },
-
-  getContextAssignees: function(contextId) {
-    var service = this;
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').getContext(contextId)
-        .then(response => service.get('contextSerializer').normalizeReadContext(response).get('assignees'))
-        .then(resolve, reject);
-    });
-  },
   getContextsCreated: function() {
     var service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -80,7 +71,7 @@ export default Ember.Service.extend({
   },
   updateContext: function(assignment) {
     var service = this;
-    var serializedAssignment = this.get('contextSerializer').serializeContext(assignment);
+    var serializedAssignment = this.get('contextSerializer').serializeUpdateContext(assignment);
     return new Ember.RSVP.Promise(function(resolve, reject) {
       service.get('contextAdapter').updateContext(serializedAssignment,assignment.get('id')).then(resolve, reject);
     });

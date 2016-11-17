@@ -49,14 +49,21 @@ export default Ember.Component.extend({
     assignStudents:function(){
       let component = this;
       let assignedStudents = component.get('students').filterBy('isAssigned',true);
-      component.set('assignment.assignees',assignedStudents);
+
+      component.get('assignment').setProperties({
+        title:component.get('collection.title'),
+        collectionId:component.get('collection.id'),
+        owner:component.get('owner'),
+        assignees:assignedStudents
+      });
+
       if(component.get('assignment.id')){
         component.get('contextService').updateContext(component.get('assignment')).then(function(){
           component.sendAction('onCloseModal');
         });
       }else{
         component.get('contextService').createContext(component.get('assignment')).then(function(){
-          component.sendAction('onCloseModal');
+          Ember.Logger.log('Context has been created');
         });
       }
     }
@@ -82,17 +89,26 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * Assessment
+   * Assignment
    */
   assignment: Context.create({
   }),
-
+  /**
+   * Indicate if all students are selected
+   */
   areAllSelected:false,
-
+  /**
+   * Collection
+   */
+  collection:null,
   /**
    * Student List
    */
-  students:null,
+  students:[],
+  /**
+   * The owner of the context
+   */
+  teacher:null,
   /**
    * Total student selected
    */

@@ -4,6 +4,14 @@ import { moduleFor, test } from 'ember-qunit';
 moduleFor('model:collection/collection', 'Unit | Model | collection/collection', {
   unit: true
 });
+test('totalAttempts', function (assert) {
+  assert.expect(1);
+  let model = this.subject({
+    attempts: [{id:'attempt-1'},{id:'attempt-2'}]
+  });
+
+  assert.equal(model.get('totalAttempts'),2,'Should have 2 attempts');
+});
 
 test('isAssessment', function (assert) {
   assert.expect(1);

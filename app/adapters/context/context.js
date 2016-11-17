@@ -18,24 +18,9 @@ export default Ember.Object.extend({
       // TODO get real headers
       headers: {
         'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        'lms-id': 'quizzes'
+        'lms-id': 'its_learning'
       }
     };
-    return Ember.$.ajax(url, options);
-  },
-  getContext:function(contextId){
-    const namespace = this.get('namespace');
-    const options = {
-      type: 'GET',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-      processData: false,
-      headers: {
-        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        'lms-id': 'quizzes'
-      }
-    };
-    const url = `${namespace}/${contextId}`;
     return Ember.$.ajax(url, options);
   },
   getContextsCreated:function(){
@@ -47,7 +32,7 @@ export default Ember.Object.extend({
       processData: false,
       headers: {
         'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        'lms-id': 'quizzes'
+        'lms-id': 'its_learning'
       }
     };
     const url = `${namespace}/created`;

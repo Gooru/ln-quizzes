@@ -44,14 +44,7 @@ const Context = Ember.Object.extend( {
    * @property {number}
    */
   dueDate:null,
-  /**
-   * @property {[]}
-   */
-  attempts:[],
-  /**
-   * @property {number}
-   */
-  totalAttempts:Ember.computed.alias('attempts.length'),
+
   /**
    * @property {[Profile]}
    */
@@ -61,13 +54,18 @@ const Context = Ember.Object.extend( {
    */
   totalStudents:Ember.computed.alias('assignees.length'),
   /**
-   * @property {[]}
+   * @property {Profile}
    */
-  questions:[],
+  owner:null,
   /**
-   * @property {Object}
+   * @property {number}
    */
-  settings:null
+  externalCollectionId:null,
+
+  /**
+   * @property {Collection}
+   */
+  collection: null
 
 });
 

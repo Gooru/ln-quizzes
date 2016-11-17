@@ -44,9 +44,11 @@ export default Ember.Object.extend({
   normalizeReadContext:function(payload){
     var serializedAssignment = Context.create({});
     var assignees;
+
     if(payload.assignees){
       assignees = this.normalizeAssigneesList(payload.assignees);
     }
+
     serializedAssignment.setProperties({
       assignees:assignees,
       id:payload.id,
@@ -58,17 +60,16 @@ export default Ember.Object.extend({
       modifiedDate: payload.contextData.metadata.modifiedDate,
       learningObjective: payload.contextData.metadata.learningObjective,
       externalCollectionId: payload.externalCollectionId,
-      owner:Profile.create({
-        id: payload.owner ? payload.owner.id : '',
-        firstName: payload.owner ? payload.owner.firstName : '',
-        lastName: payload.owner ? payload.owner.lastName : '',
-        username: payload.owner ? payload.owner.username : ''
-        }),
+      owner: payload.owner ? Profile.create({
+        id: payload.owner.id,
+        firstName:payload.owner.firstName,
+        lastName: payload.owner.lastName ,
+        username: payload.owner.username
+      }) : null,
       collection:Collection.create({
         id: payload.collection.id
       })
       });
-
     return serializedAssignment;
   },
   /**
@@ -76,8 +77,7 @@ export default Ember.Object.extend({
    ** @param {*[]} payload
    */
   normalizeReadContexts:function(payload){
-    payload = payload || [];
-    return payload.map(assignment => this.normalizeReadContext(assignment));
+    return payload.map(this.normalizeReadContext);
   },
 
   /**
@@ -104,32 +104,19 @@ export default Ember.Object.extend({
    ** @return {*[]} payload
    */
   serializeContext:function(assignment){
-    var serializedAssignment;
-    var assignees;
-    if (assignment.assignees) {
-      assignees = this.serializeAssigneesList(assignment.assignees);
+    var serializedAssignment = this.serializeUpdateContext(assignment);
+    serializedAssignment.externalCollectionId = assignment.get('externalCollectionId');
+    serializedAssignment.owner = assignment.get('owner') ? {
+      firstName: assignment.get('owner.firstName'),
+      id: assignment.get('owner.id'),
+      lastName: assignment.get('owner.lastName'),
+      username: assignment.get('owner.username')
+    } : {
+      firstName: '',
+      id: '',
+      lastName: '',
+      username: ''
     }
-    serializedAssignment = {
-      assignees:assignees,
-      contextData: {
-        metadata: {
-          title: assignment.get('title'),
-          description: assignment.get('description'),
-          isActive: assignment.get('isActive'),
-          dueDate: assignment.get('dueDate') ? assignment.get('dueDate') : '',
-          createdDate: assignment.get('createdDate') ? assignment.get('createdDate') : '',
-          modifiedDate: assignment.get('modifiedDate') ? assignment.get('modifiedDate'): '' ,
-          learningObjective: assignment.get('learningObjective')
-        }
-      },
-      externalCollectionId: assignment.get('externalCollectionId'),
-      owner:{
-        firstName: assignment.get('owner') ? assignment.get('owner.firstName') : '',
-        id: assignment.get('owner') ? assignment.get('owner.id') : '',
-        lastName: assignment.get('owner') ? assignment.get('owner.lastName') : '',
-        username: assignment.get('owner') ? assignment.get('owner.username') : ''
-      }
-    };
     return serializedAssignment;
   },
   /**
@@ -150,9 +137,9 @@ export default Ember.Object.extend({
           title: assignment.get('title'),
           description: assignment.get('description'),
           isActive: assignment.get('isActive'),
-          dueDate: assignment.get('dueDate'),
-          createdDate: assignment.get('createdDate'),
-          modifiedDate: assignment.get('modifiedDate'),
+          dueDate: assignment.get('dueDate') || '',
+          createdDate: assignment.get('createdDate') || '',
+          modifiedDate:  assignment.get('modifiedDate') || '' ,
           learningObjective: assignment.get('learningObjective')
         }
       }

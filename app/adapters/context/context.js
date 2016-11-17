@@ -4,7 +4,7 @@ export default Ember.Object.extend({
 
   namespace: '/quizzes/api/v1/context',
 
-  namespace_collection: '/quizzes/api/v1/contexts',
+  namespaceCollection: '/quizzes/api/v1/contexts',
 
   createContext:function(assignment){
     const namespace = this.get('namespace');
@@ -24,7 +24,7 @@ export default Ember.Object.extend({
     return Ember.$.ajax(url, options);
   },
   getContextsCreated:function(){
-    const namespace = this.get('namespace_collection');
+    const namespace = this.get('namespaceCollection');
     const options = {
       type: 'GET',
       contentType: 'application/json; charset=utf-8',

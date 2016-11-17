@@ -105,7 +105,7 @@ test('getContextsCreated', function(assert) {
       learningObjective:'learning objective'
   })];
 
-  assert.expect(2);
+  assert.expect(3);
 
   service.set('contextAdapter', Ember.Object.create({
     getContextsCreated: function() {
@@ -115,13 +115,16 @@ test('getContextsCreated', function(assert) {
   }));
   service.set('contextSerializer', Ember.Object.create({
     normalizeReadContexts: function(payload){
-      assert.ok(payload, 'Wrong assignment object');
+      assert.deepEqual(payload,[{expectedResponse}], 'Wrong assignment object');
       return expectedData;
     }
   }));
 
   var done = assert.async();
-  service.getContextsCreated().then(function() { done(); });
+  service.getContextsCreated().then(function(contextsCreated) {
+    assert.deepEqual(contextsCreated,expectedData, 'Wrong contexts created object');
+    done();
+  });
 });
 
 test('moveToResource', function(assert) {

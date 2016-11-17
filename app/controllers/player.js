@@ -18,6 +18,11 @@ export default Ember.Controller.extend(ModalMixin, {
    */
   contextService: Ember.inject.service('api-sdk/context'),
 
+  /**
+   * @dependency {Ember.Service} i18n service
+   */
+  i18n: Ember.inject.service(),
+
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -117,15 +122,6 @@ export default Ember.Controller.extend(ModalMixin, {
    * @property {Lesson}
    */
   isNavigationDisabled: false,
-
-  /**
-   * Indicates if the current resource type is resource
-   * @property {boolean}
-   */
-  isNotIframeUrl: Ember.computed('resource', function(){
-    const resource = this.get('resource');
-    return (resource && resource.displayGuide);
-  }),
 
   /**
    * Indicates if the current resource type is resource

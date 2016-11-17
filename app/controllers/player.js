@@ -167,7 +167,7 @@ export default Ember.Controller.extend(ModalMixin, {
   resourcesPlayer: Ember.computed('collection.resources','assessmentResult.sortedResourceResults', function(){
     var availableResources = this.get('collection.resources').mapBy('id');
     return this.get('assessmentResult.sortedResourceResults').filter(function(item){
-       return availableResources.contains(item.resourceId);
+       return item.resourceId && availableResources.includes(item.resourceId);
     });
   }),
 

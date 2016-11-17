@@ -18,11 +18,6 @@ export default Ember.Controller.extend(ModalMixin, {
    */
   contextService: Ember.inject.service('api-sdk/context'),
 
-  /**
-   * @dependency {Ember.Service} i18n service
-   */
-  i18n: Ember.inject.service(),
-
   // -------------------------------------------------------------------------
   // Attributes
 

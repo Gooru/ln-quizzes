@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Profile from 'quizzes/models/profile/profile';
 import Context from 'quizzes/models/context/context';
 export default Ember.Route.extend({
 
@@ -341,18 +340,17 @@ export default Ember.Route.extend({
     //TODO GET FROM QUIZZES API
     let studentList = this.get('configurationService.configuration.properties.students');
 
-
-    let assigned = this.get('contextService').getContextAssignees('77d0c04b-b71a-485b-9573-9101cc288a0f');
-
     let isTeacher = params.isTeacher  === 'true';
 
+    if(isTeacher){
+      assignmentsTeacher = this.get('contextService').getContextsCreated();
+    }
 
     return Ember.RSVP.hash({
       profileId,
       isTeacher,
       assignments: isTeacher ? assignmentsTeacher : assignments,
-      studentList,
-      assigned
+      studentList
     });
   },
 
@@ -362,22 +360,9 @@ export default Ember.Route.extend({
    * @param model
    */
   setupController: function(controller, model) {
-    let assignedStudents = [];
-    let students = [];
-
     controller.set('profileId',model.profileId);
     controller.set('isTeacher',model.isTeacher);
-    if(model.assigned){
-      assignedStudents = model.assigned.getEach('id');
-      if(model.studentList){
-        students = model.studentList.map(function(student) {
-          let studentObject = Profile.create(student);
-          studentObject.set('isAssigned',assignedStudents.includes(student.id));
-          return studentObject;
-        });
-      }
-    }
-    controller.set('students',students);
     controller.set('assignments',model.assignments);
+    controller.set('studentList',model.studentList);
   }
 });

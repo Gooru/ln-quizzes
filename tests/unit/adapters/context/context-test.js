@@ -52,13 +52,12 @@ test('createContext', function(assert) {
       assert.deepEqual(response.id,'77d0c04b-b71a-485b-9573-9101cc288a0f', 'Wrong response');
     });
 });
-test('getContext', function(assert) {
+test('getContextsCreated', function(assert) {
   const adapter = this.subject();
-  const context = 'context-id';
 
   const routes = function() {
-    this.get('/quizzes/api/v1/context/context-id', function() {
-      return [200, {'Content-Type': 'application/json'}, JSON.stringify({id:'77d0c04b-b71a-485b-9573-9101cc288a0f'})];
+    this.get('/quizzes/api/v1/contexts/created', function() {
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify([{id:'77d0c04b-b71a-485b-9573-9101cc288a0f'}])];
     }, false);
   };
 
@@ -66,9 +65,9 @@ test('getContext', function(assert) {
   this.pretender.unhandledRequest = function(verb, path) {
     assert.ok(false, `Wrong request [${verb}] url: ${path}`);
   };
-  adapter.getContext(context)
+  adapter.getContextsCreated()
     .then(function(response) {
-      assert.deepEqual(response.id,'77d0c04b-b71a-485b-9573-9101cc288a0f', 'Wrong response');
+      assert.deepEqual(response.length,1, 'Wrong response');
     });
 });
 

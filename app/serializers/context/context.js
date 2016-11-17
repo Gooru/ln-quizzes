@@ -3,6 +3,7 @@ import AssessmentResult from 'quizzes/models/result/assessment';
 import QuestionResult from 'quizzes/models/result/question';
 import Context from 'quizzes/models/context/context';
 import Profile from 'quizzes/models/profile/profile';
+import Collection from 'quizzes/models/collection/collection';
 
 export default Ember.Object.extend({
 
@@ -38,27 +39,40 @@ export default Ember.Object.extend({
   },
   /**
    * Serializes read assignment
-   * @param {Assignment} assignment
    ** @param {*[]} payload
    */
   normalizeReadContext:function(payload){
-    var serializedAssignment = Context.create({});
-    var assignees;
-    if(payload.assignees){
-      assignees = this.normalizeAssigneesList(payload.assignees);
-    }
-    serializedAssignment.setProperties({
-      assignees:assignees,
+    var serializer = this;
+    var serializedAssignment = Context.create({
+      assignees:payload.assignees ? serializer.normalizeAssigneesList(payload.assignees) : [],
+      id:payload.id,
       title: payload.contextData.metadata.title,
       description: payload.contextData.metadata.description,
       isActive: payload.contextData.metadata.isActive,
       dueDate: payload.contextData.metadata.dueDate,
       createdDate: payload.contextData.metadata.createdDate,
       modifiedDate: payload.contextData.metadata.modifiedDate,
-      learningObjective: payload.contextData.metadata.learningObjective
-      });
-
+      learningObjective: payload.contextData.metadata.learningObjective,
+      externalCollectionId: payload.externalCollectionId,
+      owner: payload.owner ? Profile.create({
+        id: payload.owner.id,
+        firstName:payload.owner.firstName,
+        lastName: payload.owner.lastName ,
+        username: payload.owner.username
+      }) : null,
+      collection:Collection.create({
+        id: payload.collection.id
+      })
+    });
     return serializedAssignment;
+  },
+  /**
+   * Serializes read assignments
+   ** @param {*[]} payload
+   */
+  normalizeReadContexts:function(payload){
+    payload = payload || [];
+    return payload.map(assignment => this.normalizeReadContext(assignment));
   },
 
   /**
@@ -82,24 +96,43 @@ export default Ember.Object.extend({
   /**
    * Serializes an assignment
    * @param {Assignment} assignment
-   ** @param {*[]} payload
+   ** @return {*[]} payload
    */
   serializeContext:function(assignment){
+    var serializedAssignment = this.serializeUpdateContext(assignment);
+    serializedAssignment.externalCollectionId = assignment.get('externalCollectionId');
+    serializedAssignment.owner = assignment.get('owner') ? {
+      firstName: assignment.get('owner.firstName'),
+      id: assignment.get('owner.id'),
+      lastName: assignment.get('owner.lastName'),
+      username: assignment.get('owner.username')
+    } : {
+      firstName: '',
+      id: '',
+      lastName: '',
+      username: ''
+    };
+    return serializedAssignment;
+  },
+  /**
+   * Serializes an assignment to update
+   * @param {Assignment} assignment
+   ** @return {*[]} payload
+   */
+  serializeUpdateContext:function(assignment){
     var serializedAssignment;
-    var assignees;
-    if (assignment.assignees) {
-      assignees = this.serializeAssigneesList(assignment.assignees);
-    }
+    const serializer = this;
+
     serializedAssignment = {
-      assignees:assignees,
+      assignees: assignment.get('assignees') ?  serializer.serializeAssigneesList(assignment.get('assignees')): [],
       contextData: {
         metadata: {
           title: assignment.get('title'),
           description: assignment.get('description'),
           isActive: assignment.get('isActive'),
-          dueDate: assignment.get('dueDate'),
-          createdDate: assignment.get('createdDate'),
-          modifiedDate: assignment.get('modifiedDate'),
+          dueDate: assignment.get('dueDate') || '',
+          createdDate: assignment.get('createdDate') || '',
+          modifiedDate:  assignment.get('modifiedDate') || '' ,
           learningObjective: assignment.get('learningObjective')
         }
       }

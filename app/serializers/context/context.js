@@ -42,16 +42,9 @@ export default Ember.Object.extend({
    ** @param {*[]} payload
    */
   normalizeReadContext:function(payload){
-    var serializedAssignment = Context.create({});
-    var assignees;
     var serializer = this;
-
-    if(payload.assignees){
-      assignees = serializer.normalizeAssigneesList(payload.assignees);
-    }
-
-    serializedAssignment.setProperties({
-      assignees:assignees,
+    var serializedAssignment = Context.create({
+      assignees:payload.assignees ? serializer.normalizeAssigneesList(payload.assignees) : [],
       id:payload.id,
       title: payload.contextData.metadata.title,
       description: payload.contextData.metadata.description,
@@ -70,7 +63,7 @@ export default Ember.Object.extend({
       collection:Collection.create({
         id: payload.collection.id
       })
-      });
+    });
     return serializedAssignment;
   },
   /**
@@ -128,12 +121,10 @@ export default Ember.Object.extend({
    */
   serializeUpdateContext:function(assignment){
     var serializedAssignment;
-    var assignees;
-    if (assignment.assignees) {
-      assignees = this.serializeAssigneesList(assignment.assignees);
-    }
+    const serializer = this;
+
     serializedAssignment = {
-      assignees:assignees,
+      assignees: assignment.get('assignees') ?  serializer.serializeAssigneesList(assignment.get('assignees')): [],
       contextData: {
         metadata: {
           title: assignment.get('title'),

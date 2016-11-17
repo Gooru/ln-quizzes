@@ -1,0 +1,31 @@
+[
+  {
+    "description": "Sends event to start the Collection attempt associated to the context",
+    "request": {
+      "url": "^/quizzes/api/v1/context/(.)+/event/start$",
+      "method": "POST"
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "File not found!",
+      "file": "context-simple-start-200-response.json"
+    }
+  },
+  {
+    "description": "Sends event to indicate current resource position and provides the data generated in the previous resource",
+    "request": {
+      "url": "^/quizzes/api/v1/context/(.)+/event/on-resource/(.)+$",
+      "method": "POST"
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{}"
+    }
+  }
+]

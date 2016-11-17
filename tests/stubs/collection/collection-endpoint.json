@@ -2,11 +2,8 @@
   {
     "description": "Gets a collection with all resource types",
     "request": {
-      "url": "^/api/nucleus/v1/collections/all-resource-types-collection-id$",
-      "method": "GET",
-      "headers": {
-        "Authorization": "Token (.+)"
-      }
+      "url": "^/quizzes/api/v1/collection/(.)+$",
+      "method": "GET"
     },
     "response": {
       "status": 200,
@@ -14,58 +11,7 @@
         "Content-Type": "application/json"
       },
       "body": "File not found!",
-      "file": "all-resource-types-collection-200-response.json"
-    }
-  },
-  {
-    "description": "Create a collection",
-    "request": {
-      "url": "^/api/nucleus/v1/collections$",
-      "method": "POST",
-      "headers": {
-        "Authorization": "Token (.+)"
-      }
-    },
-    "response": {
-      "status": 200,
-      "headers": {
-        "Content-Type": "text/plain",
-        "Location": "2d84ab6c-10ee-4578-b89a-6b41c87dc9fc"
-      }
-    }
-  },
-
-  {
-    "description": "Update collection with a specific ID",
-    "request": {
-      "url": "^/api/nucleus/v1/collections/(.+)$",
-      "method": "PUT",
-      "headers": {
-        "authorization": "Token (.+)"
-      }
-    },
-    "response": {
-      "status": 204,
-      "headers": {
-        "Content-Type": "application/json"
-      },
-      "body": ""
-    }
-  },
-  {
-    "description": "Delete collection",
-    "request": {
-      "url": "^/api/nucleus/v1/collections/(.+)$",
-      "method": "DELETE",
-      "headers": {
-        "authorization": "Token (.+)"
-      }
-    },
-    "response": {
-      "status": 200,
-      "headers": {
-        "Content-Type": "application/json"
-      }
+      "file": "get-collection-200-response.json"
     }
   }
 ]

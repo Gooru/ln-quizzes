@@ -122,15 +122,6 @@ export default Ember.Controller.extend(ModalMixin, {
    * Indicates if the current resource type is resource
    * @property {boolean}
    */
-  isNotIframeUrl: Ember.computed('resource', function(){
-    const resource = this.get('resource');
-    return (resource && resource.displayGuide);
-  }),
-
-  /**
-   * Indicates if the current resource type is resource
-   * @property {boolean}
-   */
   isResource: Ember.computed('resource', function(){
     const resource = this.get('resource');
     return (resource && !resource.get('isQuestion'));
@@ -167,7 +158,7 @@ export default Ember.Controller.extend(ModalMixin, {
   resourcesPlayer: Ember.computed('collection.resources','assessmentResult.sortedResourceResults', function(){
     var availableResources = this.get('collection.resources').mapBy('id');
     return this.get('assessmentResult.sortedResourceResults').filter(function(item){
-       return availableResources.contains(item.resourceId);
+       return item.resourceId && availableResources.includes(item.resourceId);
     });
   }),
 

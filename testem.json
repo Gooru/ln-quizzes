@@ -13,25 +13,11 @@
   ],
 
   "proxies": {
-    "/gooruapi": {
-      "target": "http://localhost:8882"
-    },
-    "/gooru-search": {
-      "target": "http://localhost:8882"
-    },
-    "/insights": {
-      "target": "http://localhost:8882"
-    },
-    "/mocked-api": {
-      "target": "http://localhost:8882"
-    },
-    "/nucleus/realtime": {
-      "target": "http://localhost:8882"
-    },
-    "/ws/realtime": {
-      "target": "http://localhost:8882"
-    },
+
     "/api": {
+      "target": "http://localhost:8882"
+    },
+    "/quizzes": {
       "target": "http://localhost:8882"
     }
   }

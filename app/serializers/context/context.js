@@ -110,16 +110,15 @@ export default Ember.Object.extend({
       assignees = this.serializeAssigneesList(assignment.assignees);
     }
     serializedAssignment = {
-      id: assignment.get('id'),
       assignees:assignees,
       contextData: {
         metadata: {
           title: assignment.get('title'),
           description: assignment.get('description'),
           isActive: assignment.get('isActive'),
-          dueDate: assignment.get('dueDate'),
-          createdDate: assignment.get('createdDate'),
-          modifiedDate: assignment.get('modifiedDate'),
+          dueDate: assignment.get('dueDate') ? assignment.get('dueDate') : '',
+          createdDate: assignment.get('createdDate') ? assignment.get('createdDate') : '',
+          modifiedDate: assignment.get('modifiedDate') ? assignment.get('modifiedDate'): '' ,
           learningObjective: assignment.get('learningObjective')
         }
       },

@@ -52,7 +52,7 @@ export default Ember.Component.extend({
 
       component.get('assignment').setProperties({
         title:component.get('collection.title'),
-        collectionId:component.get('collection.id'),
+        externalCollectionId:component.get('collection.id'),
         owner:component.get('owner'),
         assignees:assignedStudents
       });

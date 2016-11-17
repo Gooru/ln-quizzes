@@ -80,7 +80,6 @@ test('serializeContext', function(assert) {
   });
   const response = serializer.serializeContext(assignment);
   const expected ={
-    id:'assignment-id',
     assignees:[{
       id: 'profile-id',
       firstName: 'user first name',
@@ -289,7 +288,6 @@ test('normalizeReadContext', function(assert) {
     }
   };
   const response = serializer.normalizeReadContext(payload);
-  assert.equal(response.get('id'), 'assignment-id', 'Wrong id value');
   assert.equal(response.get('title'), 'title', 'Wrong title value');
   assert.equal(response.get('description'), 'description', 'Wrong description value');
   assert.equal(response.get('isActive'), true , 'Wrong isActive value');

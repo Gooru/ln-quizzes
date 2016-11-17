@@ -44,9 +44,10 @@ export default Ember.Object.extend({
   normalizeReadContext:function(payload){
     var serializedAssignment = Context.create({});
     var assignees;
+    var serializer = this;
 
     if(payload.assignees){
-      assignees = this.normalizeAssigneesList(payload.assignees);
+      assignees = serializer.normalizeAssigneesList(payload.assignees);
     }
 
     serializedAssignment.setProperties({
@@ -77,7 +78,8 @@ export default Ember.Object.extend({
    ** @param {*[]} payload
    */
   normalizeReadContexts:function(payload){
-    return payload.map(this.normalizeReadContext);
+    payload = payload || [];
+    return payload.map(assignment => this.normalizeReadContext(assignment));
   },
 
   /**
@@ -116,7 +118,7 @@ export default Ember.Object.extend({
       id: '',
       lastName: '',
       username: ''
-    }
+    };
     return serializedAssignment;
   },
   /**

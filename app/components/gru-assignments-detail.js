@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
+import { getGradeColor } from 'quizzes/utils/utils';
 
 export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
@@ -28,6 +29,10 @@ export default Ember.Component.extend(ModalMixin,{
     window.onresize = function() {
       component.calculateHeight();
     };
+  },
+
+  willDestroyElement: function() {
+    window.onresize = null;
   },
   // -------------------------------------------------------------------------
   // Actions
@@ -91,6 +96,14 @@ export default Ember.Component.extend(ModalMixin,{
    * @see gru-assignments-list and assignments.js route
    */
   isTeacher: false,
+
+  /**
+   * @property {String} scoreStyle style safe string for the score span
+   */
+  scoreStyle: Ember.computed('assignment.score', function() {
+    const color = getGradeColor(this.get('assignment.score') || 'NA');
+    return Ember.String.htmlSafe(`background-color: ${color}`);
+  }),
 
   /**
    * @property {Array} Students list

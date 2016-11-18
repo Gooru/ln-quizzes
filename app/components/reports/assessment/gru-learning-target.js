@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+import { getGradeColor } from 'quizzes/utils/utils';
 import { correctPercentage } from 'quizzes/utils/question-result';
 
 /**
@@ -36,14 +36,6 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * Learning target to be displayed by the component
-   *
-   * @property {Ember.Object}
-   */
-  learningTarget: null,
-
-
-  /**
    * @property {AssessmentResult} assessment
    */
   assessmentResult: null,
@@ -55,6 +47,31 @@ export default Ember.Component.extend({
   bubbleQuestions: Ember.computed('learningTarget.relatedQuestions.[]', 'assessmentResult.questionResults.[]', function () {
     return this.getBubblesQuestions(this.get("assessmentResult.questionResults"));
   }),
+
+  /**
+   * Percentage of correct answers vs. the total number of questions
+   * @prop {Number}
+   */
+  correctPercentage: Ember.computed('questionsList.[]', function () {
+    return correctPercentage(this.get('questionsList'));
+  }),
+
+  /**
+   * Learning target to be displayed by the component
+   *
+   * @property {Ember.Object}
+   */
+  learningTarget: null,
+
+  /**
+   * @property {String} learningTargetStyle style safe string for learning target
+   */
+  learningTargetStyle: Ember.computed('correctPercentage', function() {
+    return Ember.String.htmlSafe(
+      `border-color:${getGradeColor(this.get('correctPercentage'))}`
+    );
+  }),
+
   /**
    * List of questions
    * @prop {QuestionResult[]}
@@ -62,12 +79,14 @@ export default Ember.Component.extend({
   questionsList: Ember.computed('assessmentResult.questionResults.[]', function () {
     return this.getQuestions(this.get("assessmentResult.questionResults"));
   }),
+
   /**
-   * Percentage of correct answers vs. the total number of questions
-   * @prop {Number}
+   * @property {String} scoreStyle style safe string for the score span
    */
-  correctPercentage: Ember.computed('questionsList.[]', function () {
-    return correctPercentage(this.get('questionsList'));
+  scoreStyle: Ember.computed('correctPercentage', function() {
+    return Ember.String.htmlSafe(
+      `background-color: ${getGradeColor(this.get('correctPercentage'))}`
+    );
   }),
 
   suggestedResources: Ember.computed('learningTarget.suggestedResources.[]', function() {
@@ -96,7 +115,7 @@ export default Ember.Component.extend({
   getQuestions: function (questionResults) {
     let relatedQuestions = this.get('learningTarget.relatedQuestions');
     let questions = questionResults.filter(function (questionResult) {
-      return relatedQuestions.contains(questionResult.get("resourceId"));
+      return relatedQuestions.includes(questionResult.get("resourceId"));
     });
     return questions;
   }

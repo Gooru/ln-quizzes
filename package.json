@@ -46,7 +46,7 @@
     "ember-cp-validations": "^2.9.7",
     "ember-font-awesome": "2.2.0",
     "ember-i18n": "^4.3.2",
-    "ember-i18n-cp-validations": "^2.7.1",
+    "ember-i18n-cp-validations": "^2.7.2",
     "ember-simple-auth": "^1.1.0",
     "ember-truth-helpers": "^1.2.0",
     "grunt": "^0.4.5",

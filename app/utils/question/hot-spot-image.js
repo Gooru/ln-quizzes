@@ -43,7 +43,7 @@ export default MultipleAnswerUtil.extend({
    */
   isAnswerChoiceCorrect: function (answerChoice) {
     let correctAnswer = this.getCorrectAnswer();
-    return correctAnswer.contains(answerChoice);
+    return correctAnswer.includes(answerChoice);
   },
 
   /**
@@ -82,7 +82,7 @@ export default MultipleAnswerUtil.extend({
     let answers = this.get("question.answers");
     return answers.map(function (answer) {
       let answerId = answer.get("id");
-      let selected = userAnswer.contains(answerId);
+      let selected = userAnswer.includes(answerId);
       let answerObject = AnswerObject.create({
         "text": answer.get("text"),
         "order": answer.get("order"),

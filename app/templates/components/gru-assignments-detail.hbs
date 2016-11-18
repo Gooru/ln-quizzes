@@ -24,7 +24,7 @@
                   </div>
                   <div class="last-attempt">
                    <span>{{t 'assignment-details.lastAttempt'}}</span>
-                   <span class="score" style="background-color: {{ gradeColor (if assignment.score assignment.score 'NA') }}">
+                   <span class="score" style={{scoreStyle}}>
                     {{if assignment.score assignment.score '--'}}%
                   </span>
                   </div>

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { getGradeColor } from 'quizzes/utils/utils';
 import { correctPercentage, totalCompleted,totalNotStarted } from 'quizzes/utils/question-result';
 
 export default Ember.Component.extend({
@@ -85,6 +86,13 @@ export default Ember.Component.extend({
    */
   started: Ember.computed("reportData.[]", function(){
     return totalCompleted(this.get('reportData'));
+  }),
+
+  /**
+   * @property {String} startedStyle style safe string for started
+   */
+  startedStyle: Ember.computed('score', function() {
+    return Ember.String.htmlSafe(`background-color: ${getGradeColor(this.get('score'))}`);
   }),
 
   /**

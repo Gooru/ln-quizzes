@@ -1,6 +1,6 @@
 <div class="summary-container">
   {{#if collection.isAssessment}}
-    <div class="grade" style="background-color: {{gradeColor assessmentResult.correctPercentage}}">
+    <div class="grade" style={{gradeStyle}}>
       <span class="percentage">{{round-number assessmentResult.correctPercentage}}%</span>
     <span class="attempts">
       <span class="fractional fraction"> {{{fractional numerator=assessmentResult.correctAnswers denominator=assessmentResult.totalResources}}}</span>
@@ -61,5 +61,3 @@
     </div>
   </div>
 </div>
-
-

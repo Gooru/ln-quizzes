@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
 import Profile from 'quizzes/models/profile/profile';
+import { getGradeColor } from 'quizzes/utils/utils';
 
 export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
@@ -106,9 +107,20 @@ export default Ember.Component.extend(ModalMixin,{
   isTeacher: false,
 
   /**
+   * @property {String} scoreStyle style safe string for the score span
+   */
+  scoreStyle: Ember.computed('assignment.hasStarted', function() {
+    const color = getGradeColor(
+      this.get('assignment.hasStarted') ? this.get('assignment.score') : 'NA'
+    );
+    return Ember.String.htmlSafe(`background-color: ${color}`);
+  }),
+
+  /**
    * @property {Array} Students list
    */
   students: [],
+
   /**
    * @property {Array} Total student list
    */

@@ -39,7 +39,7 @@ export default Ember.Component.extend(QuestionMixin, {
     return answers.map(function(answer){
       let userAnswerCorrect = false;
       let selected = false;
-      if (userAnswers.contains(answer.get("id"))){
+      if (userAnswers.includes(answer.get("id"))){
         userAnswerCorrect = questionUtil.isAnswerChoiceCorrect(answer.get("id"));
         selected = true;
       }

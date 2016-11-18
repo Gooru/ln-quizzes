@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { getGradeColor } from 'quizzes/utils/utils';
 
 export default Ember.Component.extend({
 
@@ -52,6 +53,14 @@ export default Ember.Component.extend({
    * @property {Collection}
    */
   collection: Ember.computed.alias("assessmentResult.collection"),
+
+  /**
+   * @property {String} gradeStyle style safe string for the grade
+   */
+  gradeStyle: Ember.computed('assessmentResult.correctPercentage', function() {
+    const color = getGradeColor(this.get('assessmentResult.correctPercentage'));
+    return Ember.String.htmlSafe(`background-color: ${color}`);
+  }),
 
   /**
    * @property {number} selected attempt

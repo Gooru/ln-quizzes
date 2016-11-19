@@ -47,6 +47,12 @@ export default Ember.Component.extend(ModalMixin,{
       this.actions.showModal.call(this, 'gru-assign-student-modal',
         model, null, null, null, false);
     },
+    /**
+     * Open slide up actions
+     */
+    openActions:function(){
+      this.set('showMenu',true);
+    },
 
     /**
      * Redirect to real time
@@ -114,6 +120,8 @@ export default Ember.Component.extend(ModalMixin,{
    */
   studentList:[],
 
+  showMenu:false,
+
   /**
    *Return the table content height to print on inline styles
    */
@@ -129,9 +137,8 @@ export default Ember.Component.extend(ModalMixin,{
    *Calculate the height of the content
    */
   calculateHeight: function() {
-    var contentHeight = $('.ember-view').parent().outerHeight(true) -
-      $('.table-fixed thead ').height() - $('.search').height();
-    this.set('calculatedTableContentHeight', contentHeight);
+    let height= $('.ember-view').parent().outerHeight(true) > window.outerHeight ? window.outerHeight : $('.ember-view').parent().outerHeight(true) - $('.table-fixed thead ').height() - $('.search').height();
+    this.set('calculatedTableContentHeight', height);
   },
 
   /**

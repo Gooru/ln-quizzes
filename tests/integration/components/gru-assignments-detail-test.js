@@ -8,16 +8,13 @@ moduleForComponent('gru-assignments-detail', 'Integration | Component | gru assi
 test('Layout Student View', function(assert) {
   var assignment = {
     hasStarted:false,
-    score:null,
     title:'Assessment 3 Not Started',
     standards:'',
     assignedDate:'27/10/2016',
     dueDate:'4/11/2016',
     totalAttempts:15,
     attempts:2,
-    lastAttempt:{
-      score:60
-    },
+    score:70,
     questions:['question1','question2','question3'],
     learningObjective:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
     settings:{
@@ -40,6 +37,7 @@ test('Layout Student View', function(assert) {
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body .navigation').length, 'Missing Navigation label');
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body .attempts').length, 'Missing Attempts label');
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body .show-score').length, 'Missing Show Score label');
+  assert.equal($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body span.score').attr('style'),'background-color: #F8BA41','Incorrect score background color');
   assert.ok($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body .answer-key').length, 'Missing Answer Key label');
   assert.notOk($assignmentDetailComponent.find('.gru-assignments-detail .assignment-detail .panel-body .teacher-question').length, 'Question Teacher label should not appear');
 });

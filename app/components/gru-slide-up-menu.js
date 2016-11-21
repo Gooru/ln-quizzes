@@ -26,7 +26,7 @@ export default Ember.Component.extend({
     let component = this;
     if(component.get('visible')) {
       component.toggleVisibility();
-      component.set('menuHeight',`-${$('.slide-menu').innerHeight()}px`);
+      component.set('menuHeight',`-${$menu.innerHeight()}px`);
       $menu.css('bottom',component.get('menuHeight')).animate({
         bottom: '0'
       }, 600);

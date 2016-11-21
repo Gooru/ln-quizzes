@@ -28,10 +28,8 @@ test('addStudent', function(assert) {
 
 test('openActions', function(assert) {
   let component = this.subject();
-  component.set('actions.openActions', function() {
-    assert.ok(true,'Open actions should be called');
-  });
   component.send('openActions');
+  assert.equal(component.get('showMenu'), true, 'Actions menu should be visible');
 });
 
 test('openRealTime', function(assert) {

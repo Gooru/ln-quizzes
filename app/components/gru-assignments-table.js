@@ -140,7 +140,9 @@ export default Ember.Component.extend(ModalMixin,{
    *Calculate the height of the content
    */
   calculateHeight: function() {
-    let height= $('.ember-view').parent().outerHeight(true) > window.outerHeight ? window.outerHeight : $('.ember-view').parent().outerHeight(true) - $('.table-fixed thead ').height() - $('.search').height();
+    let height= $('.ember-view').parent().outerHeight(true) > window.outerHeight ?
+      window.outerHeight : $('.ember-view').parent().outerHeight(true)
+    - $('.table-fixed thead ').height() - $('.search').height();
     this.set('calculatedTableContentHeight', height);
   },
 

@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
 import Profile from 'quizzes/models/profile/profile';
-import { getGradeColor } from 'quizzes/utils/utils';
 
 export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------

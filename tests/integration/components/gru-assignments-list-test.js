@@ -28,8 +28,8 @@ test('Filter by term', function(assert) {
       score:60,
       title:'Assessment 1',
       standards:'',
-      assignedDate:'27/10/2016',
-      dueDate:'2/11,2016',
+      assignedDate:1475859664000,
+      dueDate:1475859664000,
       totalAttempts:15,
       attempts:2
     }),
@@ -38,8 +38,8 @@ test('Filter by term', function(assert) {
       score:10,
       title:'Assessment 2',
       standards:'',
-      assignedDate:'27/10/2016',
-      dueDate:'3/11,2016',
+      assignedDate:1475859664000,
+      dueDate:1475859664000,
       totalAttempts:15,
       attempts:2
     })]);
@@ -61,8 +61,8 @@ test('Select assignment', function(assert) {
       score:60,
       title:'Assessment 1',
       standards:'',
-      assignedDate:'27/10/2016',
-      dueDate:'2/11,2016',
+      assignedDate:1475859664000,
+      dueDate:1475859664000,
       totalAttempts:15,
       attempts:2
     }),
@@ -71,8 +71,8 @@ test('Select assignment', function(assert) {
       score:10,
       title:'Assessment 2',
       standards:'',
-      assignedDate:'27/10/2016',
-      dueDate:'3/11,2016',
+      assignedDate:1475859664000,
+      dueDate:1475859664000,
       totalAttempts:15,
       attempts:2
     })]);

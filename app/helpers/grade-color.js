@@ -16,8 +16,12 @@ import { getGradeColor } from 'quizzes/utils/utils';
  * @returns {String} - hex color string
  */
 
-export function gradeColor(value /*, hash*/) {
-  return Ember.String.htmlSafe(getGradeColor(value[0]));
+export function gradeColor(value) {
+  if(value[1]){
+    return Ember.String.htmlSafe(`${value[1]}: ${getGradeColor(value[0])}`);
+  }else{
+    return Ember.String.htmlSafe(getGradeColor(value[0]));
+  }
 }
 
 export default Ember.Helper.helper(gradeColor);

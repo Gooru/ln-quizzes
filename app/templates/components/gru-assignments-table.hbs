@@ -28,7 +28,7 @@
             </td>
           {{#unless isTeacher}}
             <td class="score col-md-2 col-sm-2 col-xs-3">
-                <span class="score" style={{scoreStyle}}>
+                <span class="score" style={{gradeColor assignment.score 'background-color'}}>
                   {{if assignment.hasStarted assignment.score '--'}}%
                 </span>
             </td>

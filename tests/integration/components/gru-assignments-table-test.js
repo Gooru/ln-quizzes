@@ -20,7 +20,7 @@ test('Table layout student', function(assert) {
     }),
     Ember.Object.create({
       hasStarted:true,
-      score:10,
+      score:70,
       title:'Assessment 2',
       standards:'',
       assignedDate:1475859664000,
@@ -46,6 +46,7 @@ test('Table layout student', function(assert) {
   assert.equal($assignmentTable.find('.gru-assignments-table table tbody tr').length,2, 'Should have 2 rows');
   assert.ok($assignmentTable.find('.gru-assignments-table table tbody tr td.num').length,'Missing num column');
   assert.ok($assignmentTable.find('.gru-assignments-table table tbody tr td.score').length,'Missing score column');
+  assert.equal($assignmentTable.find('.gru-assignments-table table tbody tr:nth-child(2) td.score span.score').attr('style'),'background-color: #F8BA41','Incorrect score background color');
   assert.ok($assignmentTable.find('.gru-assignments-table table tbody tr td.title').length,'Missing title column');
   assert.ok($assignmentTable.find('.gru-assignments-table table tbody tr td.standards').length,'Missing standards column');
   assert.ok($assignmentTable.find('.gru-assignments-table table tbody tr td.due-date').length,'Missing due date column');

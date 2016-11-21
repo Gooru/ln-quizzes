@@ -120,6 +120,9 @@ export default Ember.Component.extend(ModalMixin,{
    */
   studentList:[],
 
+  /**
+   *  @property {Boolean} show actions menu
+   */
   showMenu:false,
 
   /**

@@ -25,7 +25,7 @@
     <div class="assignments-list">
       {{gru-assignments-table assignments=sortedAssignments onSelectAssignment='selectAssignment' sortBy=sortBy reverseSort=reverseSort isTeacher=isTeacher studentList=studentList collection=collection}}
     </div>
-    <div class="assignments-info {{if selectedAssignment 'show' 'hide'}}">
+    <div class="assignments-info {{if selectedAssignment 'show' 'hide'}} hidden-xs">
       {{gru-assignments-detail assignment=selectedAssignment isTeacher=isTeacher students=students collection=collection}}
     </div>
 </div>

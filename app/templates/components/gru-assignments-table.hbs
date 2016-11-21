@@ -15,6 +15,8 @@
             <th class="standards-header hidden-sm hidden-xs col-md-2">{{t 'assignments-view.standards'}}</th>
             <th class="date-header hidden-sm hidden-xs col-md-2"><a {{action 'sortBy' 'dueDate'}}>{{t 'assignments-view.dueDate'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
             <th class="attempts-header hidden-xs col-md-2 col-sm-4"><a {{action 'sortBy' 'attempts'}}>{{t 'assignments-view.attempts'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
+            <th class="attempts-header visible-xs xs-1"></th>
+            <th class="options-header visible-xs xs-2"></th>
         {{/if}}
     </tr>
     </thead>
@@ -42,9 +44,11 @@
           {{else}}
               <td class="standards hidden-sm hidden-xs col-md-2">{{assignment.standards}}</td>
               <td class="due-date hidden-sm hidden-xs col-md-2">{{formatDate assignment.dueDate 'h:mm a MM/DD/YYYY'}}</td>
-              <td class="attempts hidden-xs col-md-2  col-sm-4">{{assignment.attempts}}</td>
+              <td class="attempts col-md-2  col-sm-4 col-xs-1">{{assignment.attempts}}</td>
+              <td class="actions visible-xs xs-2" {{action 'openActions'}}>{{gru-icon name='more_vert'}}</td>
             {{/if}}
         </tr>
     {{/each}}
     </tbody>
 </table>
+{{gru-slide-up-menu visible=showMenu}}

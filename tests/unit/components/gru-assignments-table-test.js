@@ -26,6 +26,12 @@ test('addStudent', function(assert) {
   component.send('addStudent', assignment);
 });
 
+test('openActions', function(assert) {
+  let component = this.subject();
+  component.send('openActions');
+  assert.equal(component.get('showMenu'), true, 'Actions menu should be visible');
+});
+
 test('openRealTime', function(assert) {
   let component = this.subject();
   let assignment = Ember.Object.create({

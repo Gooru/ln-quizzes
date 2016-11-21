@@ -21,25 +21,39 @@ export default Ember.Component.extend({
     !this.get('visible') ? $('.gru-slide-up-menu').addClass('hide'): '';
   },
 
-  visible: false,
-
   setVisible: Ember.observer('visible', function() {
-    if(this.get('visible')) {
-      $('.gru-slide-up-menu').toggleClass('hide');
-      let menuHeight = `-${$('.list-group').innerHeight()}px`;
-      $('body').toggleClass('disabled-screen');
-      $('.gru-slide-up-menu .list-group').css('bottom',menuHeight).animate({
+    let $menu = $('.gru-slide-up-menu .slide-menu');
+    let component = this;
+    if(component.get('visible')) {
+      component.toggleVisibility();
+      component.set('menuHeight',`-${$('.slide-menu').innerHeight()}px`);
+      $menu.css('bottom',component.get('menuHeight')).animate({
         bottom: '0'
       }, 600);
     } else {
-      let menuHeight = `-${$('.list-group').innerHeight()}px`;
-      $('.gru-slide-up-menu .list-group' ).animate({
-        bottom: menuHeight
+      $menu.animate({
+        bottom: component.get('menuHeight')
       }, 600, function() {
-        $('.gru-slide-up-menu').toggleClass('hide');
-        $('body').toggleClass('disabled-screen');
+        component.toggleVisibility();
       });
     }
-  })
+  }),
+  // -------------------------------------------------------------------------
+  // Properties
+  /**
+   * Menu height on pixels
+   */
+  menuHeight:0,
 
+  /**
+   * Indicate if the menu is visible
+   */
+  visible: false,
+
+  // -------------------------------------------------------------------------
+  // Methods
+  toggleVisibility:function(){
+    $('.gru-slide-up-menu').toggleClass('hide');
+    $('body').toggleClass('disabled-screen');
+  }
 });

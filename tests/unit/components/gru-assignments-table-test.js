@@ -26,6 +26,14 @@ test('addStudent', function(assert) {
   component.send('addStudent', assignment);
 });
 
+test('openActions', function(assert) {
+  let component = this.subject();
+  component.set('actions.openActions', function() {
+    assert.ok(true,'Open actions should be called');
+  });
+  component.send('openActions');
+});
+
 test('openRealTime', function(assert) {
   let component = this.subject();
   let assignment = Ember.Object.create({

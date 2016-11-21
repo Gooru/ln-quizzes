@@ -96,6 +96,7 @@ export default Ember.Component.extend(ModalMixin,{
     window.onresize = function() {
       component.calculateHeight();
     };
+
   },
 
   // -------------------------------------------------------------------------
@@ -115,10 +116,8 @@ export default Ember.Component.extend(ModalMixin,{
   /**
    * @property {String} scoreStyle style safe string for the score span
    */
-  scoreStyle: Ember.computed('assignment.hasStarted', function() {
-    const color = getGradeColor(
-      this.get('assignment.hasStarted') ? this.get('assignment.score') : 'NA'
-    );
+  scoreStyle: Ember.computed('assignment.score', function() {
+    const color = getGradeColor(this.get('assignment.score') || 'NA');
     return Ember.String.htmlSafe(`background-color: ${color}`);
   }),
 

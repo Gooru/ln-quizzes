@@ -114,14 +114,6 @@ export default Ember.Component.extend(ModalMixin,{
   isTeacher: false,
 
   /**
-   * @property {String} scoreStyle style safe string for the score span
-   */
-  scoreStyle: Ember.computed('assignment.score', function() {
-    const color = getGradeColor(this.get('assignment.score') || 'NA');
-    return Ember.String.htmlSafe(`background-color: ${color}`);
-  }),
-
-  /**
    * @property {Array} Students list
    */
   students: [],

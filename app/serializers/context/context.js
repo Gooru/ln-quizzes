@@ -130,9 +130,7 @@ export default Ember.Object.extend({
           title: assignment.get('title'),
           description: assignment.get('description'),
           isActive: assignment.get('isActive'),
-          dueDate: assignment.get('dueDate') || '',
-          createdDate: assignment.get('createdDate') || '',
-          modifiedDate:  assignment.get('modifiedDate') || '' ,
+          dueDate: assignment.get('dueDate') || null,
           learningObjective: assignment.get('learningObjective')
         }
       }

@@ -13,9 +13,7 @@ test('createContext', function(assert) {
     title:'title',
     description:'description',
     isActive:true,
-    dueDate:'12340596',
-    createdDate:'12340596',
-    modifiedDate:'12340596',
+    dueDate:12340596,
     attempts:[{id:'attempt-1'}],
     learningObjective:'learning objective'
   });
@@ -26,9 +24,7 @@ test('createContext', function(assert) {
         title:'title',
         description:'description',
         isActive:true,
-        dueDate:'12340596',
-        createdDate:'12340596',
-        modifiedDate:'12340596',
+        dueDate:12340596,
         attempts:[{id:'attempt-1'}],
         learningObjective:'learning objective'
       }
@@ -75,9 +71,7 @@ test('getContextsCreated', function(assert) {
         title:'title',
         description:'description',
         isActive:true,
-        dueDate:'12340596',
-        createdDate:'12340596',
-        modifiedDate:'12340596',
+        dueDate:12340596,
         attempts:[{id:'attempt-1'}],
         learningObjective:'learning objective'
       }
@@ -98,9 +92,7 @@ test('getContextsCreated', function(assert) {
       title:'title',
       description:'description',
       isActive:true,
-      dueDate:'12340596',
-      createdDate:'12340596',
-      modifiedDate:'12340596',
+      dueDate:12340596,
       attempts:[{id:'attempt-1'}],
       learningObjective:'learning objective'
   })];

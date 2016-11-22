@@ -66,9 +66,7 @@ test('serializeContext', function(assert) {
     title:'title',
     description:'description',
     isActive:true,
-    dueDate:'12340596',
-    createdDate:'12340596',
-    modifiedDate:'12340596',
+    dueDate:12340596,
     learningObjective:'learning objective',
     owner:Profile.create({
       id: 'teacher-id',
@@ -96,9 +94,7 @@ test('serializeContext', function(assert) {
         title:'title',
         description:'description',
         isActive:true,
-        dueDate:'12340596',
-        createdDate:'12340596',
-        modifiedDate:'12340596',
+        dueDate:12340596,
         learningObjective:'learning objective'
       }
     },
@@ -129,9 +125,7 @@ test('serializeUpdateContext', function(assert) {
     title:'title',
     description:'description',
     isActive:true,
-    dueDate:'12340596',
-    createdDate:'12340596',
-    modifiedDate:'12340596',
+    dueDate:12340596,
     learningObjective:'learning objective',
     owner:Profile.create({
       id: 'teacher-id',
@@ -159,9 +153,7 @@ test('serializeUpdateContext', function(assert) {
         title:'title',
         description:'description',
         isActive:true,
-        dueDate:'12340596',
-        createdDate:'12340596',
-        modifiedDate:'12340596',
+        dueDate:12340596,
         learningObjective:'learning objective'
       }
     }

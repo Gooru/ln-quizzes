@@ -189,7 +189,7 @@ test('serializeAssigneesList ', function(assert) {
 });
 
 
-test('normalizeAssessmentResult', function(assert) {
+test('normalizeContextResult', function(assert) {
   const serializer = this.subject();
   const payload = {
     id: 'context-id',
@@ -209,7 +209,7 @@ test('normalizeAssessmentResult', function(assert) {
       answer: 'answer-2'
     }]
   };
-  const response = serializer.normalizeAssessmentResult(payload);
+  const response = serializer.normalizeContextResult(payload);
   assert.equal(response.get('contextId'), 'context-id', 'Wrong context id value');
   assert.equal(response.get('collectionId'), 'collection-id', 'Wrong collection id value');
   assert.equal(response.get('currentResourceId'), 'resource-id-2', 'Wrong current resource id value');

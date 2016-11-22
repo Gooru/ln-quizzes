@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 import Collection from 'quizzes/models/collection/collection';
 import Resource from 'quizzes/models/resource/resource';
-import AssessmentResult from 'quizzes/models/result/assessment';
+import ContextResult from 'quizzes/models/result/context';
 import QuestionResult from 'quizzes/models/result/question';
 
 moduleFor('controller:player', 'Unit | Controller | player', {
@@ -16,11 +16,11 @@ test('finishCollection on collection', function(assert) {
     title: 'Collection Title',
     isCollection: true
   });
-  let assessmentResult = AssessmentResult.create(Ember.getOwner(this).ownerInjection(), {
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
     contextId: 'context'
   });
   controller.set('collection', collection);
-  controller.set('assessmentResult', assessmentResult);
+  controller.set('contextResult', contextResult);
   controller.set('contextService', Ember.Object.create({
     endContext: function(contextId) {
       assert.deepEqual(contextId, 'context', 'Wrong context id');
@@ -70,7 +70,7 @@ test('submitQuestion with next question available', function(assert) {
     pending: true,
     startedAt: 'any-date'
   });
-  let assessmentResult = AssessmentResult.create(Ember.getOwner(this).ownerInjection(), {
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
     contextId: 'context',
     getResultByResourceId: function(resourceId) {
       assert.equal(resourceId, question2.get('id'), 'Question ids should match');
@@ -79,7 +79,7 @@ test('submitQuestion with next question available', function(assert) {
   });
   controller.set('collection', collection);
   controller.set('resource', question);
-  controller.set('assessmentResult', assessmentResult);
+  controller.set('contextResult', contextResult);
   controller.set('resourceResult', questionResult);
   controller.set('contextService', Ember.Object.create({
     moveToResource: function(resourceId, contextId, resourceResult) {
@@ -117,10 +117,10 @@ test('submitQuestion with next question unavailable', function(assert) {
   controller.set('collection', collection);
   controller.set('resource', question);
   controller.set('resourceResult', questionResult);
-  let assessmentResult = AssessmentResult.create(Ember.getOwner(this).ownerInjection(), {
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
     contextId: 'context'
   });
-  controller.set('assessmentResult', assessmentResult);
+  controller.set('contextResult', contextResult);
   controller.set('contextService', Ember.Object.create({
     moveToResource: function(resourceId, contextId, resourceResult) {
       assert.deepEqual(resourceId, null, 'Wrong resource id');
@@ -147,14 +147,14 @@ test('selectNavigatorItem', function(assert) {
   });
   let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
   let questionResult2 = QuestionResult.create(Ember.getOwner(this).ownerInjection());
-  let assessmentResult = AssessmentResult.create(Ember.getOwner(this).ownerInjection(), {
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
     contextId: 'context',
     getResultByResourceId: function(resourceId) {
       assert.equal(resourceId, question.get('id'), 'Question ids should match');
       return questionResult;
     }
   });
-  controller.set('assessmentResult', assessmentResult);
+  controller.set('contextResult', contextResult);
   controller.set('resourceResult', questionResult2);
   controller.set('contextService', Ember.Object.create({
     moveToResource: function(resourceId, contextId, resourceResult) {

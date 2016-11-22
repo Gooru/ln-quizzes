@@ -29,19 +29,19 @@ export default Ember.Route.extend({
   model(params) {
     const route = this;
     const contextId = params.contextId;
-    return route.get('contextService').startContext(contextId).then(function(assessmentResult){
+    return route.get('contextService').startContext(contextId).then(function(contextResult){
       return Ember.RSVP.hash({
-        assessmentResult,
-        collection: route.get('collectionService').readCollection(assessmentResult.collectionId)
+        contextResult,
+        collection: route.get('collectionService').readCollection(contextResult.collectionId)
       });
     });
   },
 
   setupController(controller, model) {
-    let assessmentResult = model.assessmentResult;
+    let contextResult = model.contextResult;
     let collection = model.collection;
-    assessmentResult.merge(collection);
-    controller.set('assessmentResult', assessmentResult);
+    contextResult.merge(collection);
+    controller.set('contextResult', contextResult);
     controller.set('collection', collection);
     controller.startAssessment();
   },

@@ -1,4 +1,4 @@
-import AssessmentResult from 'quizzes/models/result/assessment';
+import AssessmentResult from 'quizzes/models/result/context';
 import AnalyticsSerializer from '../analytics/analytics';
 import { toLocal } from 'quizzes/utils/utils';
 

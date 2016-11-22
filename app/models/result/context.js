@@ -1,85 +1,126 @@
 import Ember from 'ember';
+import QuestionResult from './question';
+import ResourceResult from './resource';
+
 /**
- * Model for context inside collection play resource event.
+ * Model for a group of resources that were answered by a user during one attempt to complete an assessment.
  *
- * @typedef {Object} Context
+ * @typedef {Object} ContextResult
  *
  */
 export default Ember.Object.extend({
 
   /**
-   * @property {string} collectionId - Playing collection / assessment UUID
+   * @property {Collection} collection
+   */
+  collection: null,
+
+  /**
+   * @property {string} collectionId
    */
   collectionId: null,
 
   /**
-   * @property {string} parentGooruId - This event should be collection.play eventId for analytics to associate this event with collection.
+   * @property {string} contextId
    */
-  parentEventId: null,
+  contextId: null,
 
   /**
-   * @property {string} sessionId - Session id for the assessment
+   * @property {string} currentResourceId
    */
-  sessionId: null,
+  currentResourceId: null,
 
   /**
-   * @property {string} resourceEventId - Unique Id should be generated for every event from FE. This eventId should be same for start and stop event
+   * @property {ResourceResult} currentResult
    */
-  resourceEventId: null,
+  currentResource: Ember.computed('currentResult', function() {
+    return this.get('currentResult.resource');
+  }),
 
   /**
-   * @property {string} classId - Class unique Id associated for the collection / assessment.
-   * Can be null if play is outside context of class.
+   * @property {ResourceResult} currentResult
    */
-  classId: null,
+  currentResult: Ember.computed('currentResourceId', function() {
+    return this.getResultByResourceId(this.get('currentResourceId'));
+  }),
 
   /**
-   * @property {string} eventType - Values are : start / stop
-   * If resource started to play then start, Reached end page or summary page or moved to next resource  then stop
+   * @property {QuestionResult[]} questionResults
    */
-  eventType: null,
+  questionResults: Ember.computed('resourceResults.[]', function(){
+    return this.get('resourceResults').filter(function(resourceResult){
+      return resourceResult instanceof QuestionResult;
+    });
+  }),
 
   /**
-   * @property {string} courseId - Unique of course associated to the class. Can be null if play is outside context of class.
+   * @property {ResourceResult[]} resourceResults
    */
-  courseId: null,
+  resourceResults: Ember.A([]),
 
   /**
-   * @property {string} unitId - Unit unique Id. Can be null if play is outside context of class.
+   * @property {QuestionResult[]} questionResults
    */
-  unitId: null,
+  sortedResourceResults: Ember.computed('resourceResults.[]', function(){
+    return this.get('resourceResults').sortBy('resource.sequence');
+  }),
 
   /**
-   * @property {string} lessonId - Lesson unique Id. Can be null if play is outside context of class.
+   * @property {boolean} submitted if the context has already been submitted
    */
-  lessonId: null,
+  submitted: false,
 
   /**
-   * @property {string} collectionType - Type of collection/assessment: collection or assessment
+   * @property {number} totalResources
    */
-  collectionType: null,
+  totalResources: Ember.computed.alias('resourceResults.length'),
+
+  // -------------------------------------------------------------------------
+  // Methods
 
   /**
-   * @property {string} clientSource - Get Collection/Assessment API will return how many questions available inside assessments.
+   * Gets the result by resource id
+   * @param {string} resourceId
+   * @returns {ResourceResult}
    */
-  clientSource: 0,
+  getResultByResourceId: function(resourceId) {
+    return this.get('resourceResults').findBy('resourceId', resourceId);
+  },
 
   /**
-   * Indicates if the event type is stop
-   * @property {boolean}
+   * Initializes the assessment results
+   * @param {Collection} collection
    */
-  isStopEvent: Ember.computed.equal("eventType", "stop"),
+  // TODO change may be needed when quizzes endpoint to retrieve resources is ready
+  merge: function(collection) {
+    this.set('collection', collection);
+    const resourceResults = this.get('resourceResults');
+    const resources = collection.get('resources');
 
-  /**
-   * Indicates if the event type is start
-   * @property {boolean}
-   */
-  isStartEvent: Ember.computed.equal("eventType", "start"),
+    if (resources.get('length')) {
 
-  /**
-   * @property  {boolean}
-   */
-  isInContext: Ember.computed.bool("lessonId")
+      resources.forEach(function (resource) {
+        let resourceId = resource.get('id');
+        let found = resourceResults.findBy('resourceId', resourceId);
+        if (!found) {
+          let result = (resource.get('isQuestion')) ?
+            QuestionResult.create({ resourceId, resource }) :
+            ResourceResult.create({ resourceId, resource });
+          resourceResults.pushObject(result);
+        } else {
+          found.set('resource', resource);
+        }
+      });
+
+      if (!this.get('currentResourceId')) {
+        this.set('currentResourceId', resources[0].get('id'));
+      }
+
+    } else {
+      Ember.Logger.error(`Collection with ID: ${collection.get('id')} does not have any resources. No resource results were set.`);
+    }
+
+
+  }
 
 });
-

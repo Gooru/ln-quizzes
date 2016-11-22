@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
 import {VIEW_LAYOUT_PICKER_OPTIONS} from "quizzes/config/config";
-import AssessmentResult from 'quizzes/models/result/assessment';
+import AssessmentResult from 'quizzes/models/result/context';
 // Private variables
 
 

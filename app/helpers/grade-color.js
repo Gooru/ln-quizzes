@@ -18,7 +18,8 @@ import { getGradeColor } from 'quizzes/utils/utils';
 
 export function gradeColor(value) {
   if(value[1]){
-    return Ember.String.htmlSafe(`${value[1]}: ${getGradeColor(value[0])}`);
+    let color = (value[0] || 'NA');
+    return Ember.String.htmlSafe(`${value[1]}: ${getGradeColor(color)}`);
   }else{
     return Ember.String.htmlSafe(getGradeColor(value[0]));
   }

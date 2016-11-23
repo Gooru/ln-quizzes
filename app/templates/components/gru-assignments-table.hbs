@@ -5,13 +5,14 @@
         {{#unless isTeacher}}
             <th class="score-header col-md-2 col-sm-2 col-xs-3"><a {{action 'sortBy' 'score'}}>{{t 'common.score'}} <span>{{gru-icon name='swap_vert'}}</span></a></th>
         {{/unless}}
-        <th class="title-header col-md-3 col-sm-5 col-xs-8"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
 
         {{#if isTeacher}}
-            <th class="modified-date-header hidden-xs col-md-3 col-sm-2"><a {{action 'sortBy' 'modifiedDate'}}>{{t 'assignments-view.dateModified'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
+            <th class="title-header col-md-3 col-sm-6 col-xs-8"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
+            <th class="modified-date-header hidden-xs col-md-3 col-sm-5"><a {{action 'sortBy' 'modifiedDate'}}>{{t 'assignments-view.dateModified'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
             <th class="students-assigned-header hidden-xs hidden-sm col-md-2">{{t 'assignments-view.studentsAssigned'}}</th>
-            <th class="actions-header hidden-xs col-md-3 col-sm-4">{{t 'assignments-view.actions'}}</th>
+            <th class="actions-header col-md-3 hidden-sm">{{t 'assignments-view.actions'}}</th>
         {{else}}
+            <th class="title-header col-md-3 col-sm-5 col-xs-8"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
             <th class="standards-header hidden-sm hidden-xs col-md-2">{{t 'assignments-view.standards'}}</th>
             <th class="date-header hidden-sm hidden-xs col-md-2"><a {{action 'sortBy' 'dueDate'}}>{{t 'assignments-view.dueDate'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
             <th class="attempts-header hidden-xs col-md-2 col-sm-4"><a {{action 'sortBy' 'attempts'}}>{{t 'assignments-view.attempts'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
@@ -33,15 +34,16 @@
                 </span>
             </td>
           {{/unless}}
-            <td class="title col-md-3 col-sm-5 col-xs-8">{{assignment.title}}</td>
           {{#if isTeacher}}
-              <td class="modified-date hidden-xs col-md-3 col-sm-2">{{formatDate assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</td>
+              <td class="title col-md-3 col-sm-6 col-xs-8">{{assignment.title}}</td>
+              <td class="modified-date hidden-xs col-md-3 col-sm-5">{{formatDate assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</td>
               <td class="students-assigned hidden-sm hidden-xs col-md-2">{{assignment.totalStudents}}</td>
-              <td class="actions hidden-xs col-md-3  col-sm-4">
+              <td class="actions hidden-sm col-md-3 ">
                   <button class="btn btn-default add-student" {{action 'addStudent' assignment}}>{{gru-icon name='person_add'}}</button>
                   <button class="btn btn-default real-time" {{action 'openRealTime' assignment}}><span class="real-time-icon"></span></button>
               </td>
           {{else}}
+              <td class="title col-md-3 col-sm-5 col-xs-8">{{assignment.title}}</td>
               <td class="standards hidden-sm hidden-xs col-md-2">{{assignment.standards}}</td>
               <td class="due-date hidden-sm hidden-xs col-md-2">{{formatDate assignment.dueDate 'h:mm a MM/DD/YYYY'}}</td>
               <td class="attempts col-md-2  col-sm-4 col-xs-1">{{assignment.attempts}}</td>

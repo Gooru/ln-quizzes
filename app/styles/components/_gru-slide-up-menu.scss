@@ -9,7 +9,7 @@
     background-color: black;
     opacity: 0.5;
   }
-  .list-group{
+  .slide-menu{
     position: fixed;
     left: 0;
     width: 100%;
@@ -20,5 +20,6 @@
 .disabled-screen{
   overflow: hidden;
   width: 100%;
+  height: 100%;
   position: fixed;
 }

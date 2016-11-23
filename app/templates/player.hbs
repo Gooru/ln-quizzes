@@ -4,7 +4,7 @@
       {{player.gru-navigation
       collection=collection
       ratingScore=resourceResult.reaction
-      readOnly=assessmentResult.submitted
+      readOnly=contextResult.submitted
       onFinishCollection="finishCollection"
       onOpenNavigator="openNavigator"
       onChangeEmotion="changeEmotion"}}
@@ -16,7 +16,7 @@
         resource=resource
         resourceResult=resourceResult
         role=role
-        submitted=assessmentResult.submitted
+        submitted=contextResult.submitted
         onSubmitQuestion="submitQuestion"}}
       {{/if}}
     {{else}}
@@ -28,7 +28,7 @@
       {{player.gru-navigator
       isNavigationDisabled=isNavigationDisabled
       isTeacher=isTeacher
-      submitted=assessmentResult.submitted
+      submitted=contextResult.submitted
       collection=collection
       selectedResourceId=resourceId
       resourceResults=resourcesPlayer

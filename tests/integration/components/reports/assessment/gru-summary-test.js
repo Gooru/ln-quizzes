@@ -3,7 +3,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import QuestionResult from 'quizzes/models/result/question';
 import ResourceResult from 'quizzes/models/result/resource';
-import AssessmentResult from 'quizzes/models/result/assessment';
+import AssessmentResult from 'quizzes/models/result/context';
 
 moduleForComponent('reports/assessment/gru-summary', 'Integration | Component | reports/assessment/gru summary', {
   integration: true,

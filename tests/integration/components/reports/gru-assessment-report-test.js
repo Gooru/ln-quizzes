@@ -1,7 +1,7 @@
 /*import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import AssessmentResult from 'quizzes/models/result/assessment';
+import AssessmentResult from 'quizzes/models/result/context';
 import LearningTargetResult from 'quizzes/models/result/learning-target';
 import QuestionResult from 'quizzes/models/result/question';
 

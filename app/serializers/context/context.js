@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import AssessmentResult from 'quizzes/models/result/assessment';
+import ContextResult from 'quizzes/models/result/context';
 import QuestionResult from 'quizzes/models/result/question';
 import Context from 'quizzes/models/context/context';
 import Profile from 'quizzes/models/profile/profile';
@@ -8,19 +8,18 @@ import Collection from 'quizzes/models/collection/collection';
 export default Ember.Object.extend({
 
   /**
-   * Normalizes a AssessmentResult
-   * @param {AssessmentResult} assessmentResult
+   * Normalizes a ContextResult
+   * @param {ContextResult} contextResult
    * @returns {*[]}
    */
-  normalizeAssessmentResult: function (payload) {
+  normalizeContextResult: function (payload) {
     let serializer = this;
-    const assessmentResult = AssessmentResult.create(Ember.getOwner(this).ownerInjection(), {
+    return ContextResult.create(Ember.getOwner(this).ownerInjection(), {
       contextId: payload.id,
       currentResourceId: payload.currentResourceId,
       resourceResults: serializer.normalizeResourceResults(payload.attempt),
       collectionId: payload.collection.id
     });
-    return assessmentResult;
   },
   /**
    * Normalizes assignees list

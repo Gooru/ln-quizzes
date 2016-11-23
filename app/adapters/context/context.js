@@ -14,7 +14,7 @@ export default Ember.Object.extend({
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
-      data:JSON.stringify(assignment),
+      data: JSON.stringify(assignment),
       // TODO get real headers
       headers: {
         'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',

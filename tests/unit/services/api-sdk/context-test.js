@@ -157,7 +157,7 @@ test('moveToResource', function(assert) {
 test('startContext', function(assert) {
   const service = this.subject();
   const expectedContextId = 'context-id';
-  const assessmentResult = {
+  const contextResult = {
     id: 'result-id'
   };
 
@@ -166,21 +166,21 @@ test('startContext', function(assert) {
   service.set('contextAdapter', Ember.Object.create({
     sendStartContextEvent: function(contextId) {
       assert.deepEqual(contextId, expectedContextId, 'The context id should match');
-      return Ember.RSVP.resolve(assessmentResult);
+      return Ember.RSVP.resolve(contextResult);
     }
   }));
 
   service.set('contextSerializer', Ember.Object.create({
-    normalizeAssessmentResult: function(response) {
-      assert.deepEqual(response, assessmentResult, 'The assessment result should match');
-      return assessmentResult;
+    normalizeContextResult: function(response) {
+      assert.deepEqual(response, contextResult, 'The context result should match');
+      return contextResult;
     }
   }));
 
   var done = assert.async();
   service.startContext(expectedContextId)
     .then(function(result) {
-      assert.deepEqual(result, assessmentResult, 'The result should match');
+      assert.deepEqual(result, contextResult, 'The result should match');
       done();
     });
 });

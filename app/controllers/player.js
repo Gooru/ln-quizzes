@@ -96,9 +96,9 @@ export default Ember.Controller.extend(ModalMixin, {
   // Properties
 
   /**
-   * @property {AssessmentResult} assessmentResult
+   * @property {ContextResult} contextResult
    */
-  assessmentResult: null,
+  contextResult: null,
 
   /**
    * The collection presented in this player
@@ -155,9 +155,9 @@ export default Ember.Controller.extend(ModalMixin, {
    * Return the list of resources available to show on the player
    * @property {ResourceResult[]}
    */
-  resourcesPlayer: Ember.computed('collection.resources','assessmentResult.sortedResourceResults', function(){
+  resourcesPlayer: Ember.computed('collection.resources','contextResult.sortedResourceResults', function(){
     var availableResources = this.get('collection.resources').mapBy('id');
-    return this.get('assessmentResult.sortedResourceResults').filter(function(item){
+    return this.get('contextResult.sortedResourceResults').filter(function(item){
        return item.resourceId && availableResources.includes(item.resourceId);
     });
   }),
@@ -203,13 +203,12 @@ export default Ember.Controller.extend(ModalMixin, {
 
   /**
    * Saves an assessment result
-   * @param {AssessmentResult} assessmentResult
    */
   finishCollection: function() {
     const controller = this;
-    let assessmentResult = controller.get('assessmentResult');
+    let contextResult = controller.get('contextResult');
     return controller.get('saveEnabled') ?
-      controller.get('contextService').endContext(assessmentResult.get('contextId')) :
+      controller.get('contextService').endContext(contextResult.get('contextId')) :
       Ember.RSVP.resolve();
   },
 
@@ -236,9 +235,9 @@ export default Ember.Controller.extend(ModalMixin, {
       Ember.$(window).scrollTop(0);
       controller.moveToResource(next);
     } else {
-      let assessmentResult = controller.get('assessmentResult');
+      let contextResult = controller.get('contextResult');
       let resourceResult = controller.get('resourceResult');
-      return controller.saveResourceResult(null, assessmentResult, resourceResult).then(function() {
+      return controller.saveResourceResult(null, contextResult, resourceResult).then(function() {
         controller.finishConfirm();
       });
     }
@@ -250,13 +249,13 @@ export default Ember.Controller.extend(ModalMixin, {
    */
   moveToResource: function(resource) {
     const controller = this;
-    let assessmentResult = controller.get('assessmentResult');
+    let contextResult = controller.get('contextResult');
     let resourceResult = controller.get('resourceResult');
     let resourceId = resource.get('id');
-    controller.saveResourceResult(resourceId, assessmentResult, resourceResult)
+    controller.saveResourceResult(resourceId, contextResult, resourceResult)
       .then(function() {
         Ember.run(() => controller.set('resource', null));
-        resourceResult = assessmentResult.getResultByResourceId(resourceId);
+        resourceResult = contextResult.getResultByResourceId(resourceId);
         resourceResult.set('startTime', new Date().getTime());
         controller.setProperties({
           showReport: false,
@@ -281,16 +280,16 @@ export default Ember.Controller.extend(ModalMixin, {
   /**
    * Saves the resource result and moves to the next
    * @param resourceId
-   * @param assessmentResult
+   * @param contextResult
    * @param resourceResult
    * @returns {Promise.<boolean>}
    */
-  saveResourceResult: function(resourceId, assessmentResult, resourceResult) {
+  saveResourceResult: function(resourceId, contextResult, resourceResult) {
     let controller = this;
     let promise = Ember.RSVP.resolve();
     let save = controller.get('saveEnabled');
     if (save) {
-      let contextId = assessmentResult.get('contextId');
+      let contextId = contextResult.get('contextId');
       if(resourceResult) {
         resourceResult.set('stopTime', new Date().getTime());
       }
@@ -306,13 +305,13 @@ export default Ember.Controller.extend(ModalMixin, {
   startAssessment: function() {
     const controller = this;
     const collection = controller.get('collection');
-    const assessmentResult = controller.get('assessmentResult');
+    const contextResult = controller.get('contextResult');
     const hasResources = collection.get('hasResources');
     let resource = null;
 
     controller.set('showContent', true);
     if(hasResources) {
-      resource = assessmentResult.get('currentResource');
+      resource = contextResult.get('currentResource');
       if(controller.get('resourceId')) { //if has a resource id as query param
         resource = collection.getResourceById(controller.get('resourceId'));
       }

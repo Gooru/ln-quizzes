@@ -1,10 +1,9 @@
-import ResourceResult from 'quizzes/models/result/resource';
-import { module, test } from 'qunit';
+import { moduleFor, test } from 'ember-qunit';
 
-module('Unit | Model | result/resource');
+moduleFor('model:result/resource', 'Unit | Model | result/resource');
 
 test('timeSpent', function(assert) {
-  let resourceResult = ResourceResult.create({
+  let resourceResult = this.subject({
     savedTime: 0,
     startTime: 0,
     stopTime: 20

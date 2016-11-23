@@ -1,15 +1,13 @@
 import Ember from 'ember';
-import ContextResult from 'quizzes/models/result/context';
 import QuestionResult from 'quizzes/models/result/question';
 import ResourceResult from 'quizzes/models/result/resource';
-import { module, test } from 'qunit';
+import { moduleFor, test } from 'ember-qunit';
 
-module('Unit | Model | result/context');
-
+moduleFor('model:result/context', 'Unit | Model | result/context');
 
 test('questionResults', function(assert) {
-  let contextResult = ContextResult.create({
-    'resourceResults': Ember.A([
+  let contextResult = this.subject({
+    resourceResults: Ember.A([
       ResourceResult.create(),
       ResourceResult.create(),
       QuestionResult.create()
@@ -20,17 +18,17 @@ test('questionResults', function(assert) {
 });
 
 test('totalResources', function(assert) {
-  let contextResult = ContextResult.create({
-    'resourceResults': Ember.A([1,2])
+  let contextResult = this.subject({
+    resourceResults: Ember.A([1,2])
   });
 
   assert.equal(contextResult.get('totalResources'), 2, 'Wrong total resources');
 });
 
 test('currentResult', function(assert) {
-  let contextResult = ContextResult.create({
-    'currentResourceId': 2,
-    'resourceResults': Ember.A([
+  let contextResult = this.subject({
+    currentResourceId: 2,
+    resourceResults: Ember.A([
       ResourceResult.create({ resourceId: 1 }),
       QuestionResult.create({ resourceId: 2 }),
       QuestionResult.create({ resourceId: 3 })
@@ -41,8 +39,8 @@ test('currentResult', function(assert) {
 });
 
 test('getResultByResourceId', function(assert) {
-  let contextResult = ContextResult.create({
-    'resourceResults': Ember.A([
+  let contextResult = this.subject({
+    resourceResults: Ember.A([
       ResourceResult.create({ resourceId: 1 }),
       QuestionResult.create({ resourceId: 2 }),
       QuestionResult.create({ resourceId: 3 })

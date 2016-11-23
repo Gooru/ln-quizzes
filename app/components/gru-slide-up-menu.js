@@ -54,6 +54,6 @@ export default Ember.Component.extend({
   // Methods
   toggleVisibility:function(){
     $('.gru-slide-up-menu').toggleClass('hide');
-    $('body').toggleClass('disabled-screen');
+    $('html,body').toggleClass('disabled-screen');
   }
 });

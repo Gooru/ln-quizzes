@@ -7,10 +7,10 @@
         {{/unless}}
 
         {{#if isTeacher}}
-            <th class="title-header col-md-3 col-sm-3 col-xs-8"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
-            <th class="modified-date-header hidden-xs col-md-3 col-sm-4"><a {{action 'sortBy' 'modifiedDate'}}>{{t 'assignments-view.dateModified'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
+            <th class="title-header col-md-3 col-sm-6 col-xs-8"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
+            <th class="modified-date-header hidden-xs col-md-3 col-sm-5"><a {{action 'sortBy' 'modifiedDate'}}>{{t 'assignments-view.dateModified'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
             <th class="students-assigned-header hidden-xs hidden-sm col-md-2">{{t 'assignments-view.studentsAssigned'}}</th>
-            <th class="actions-header hidden-xs col-md-3 col-sm-4">{{t 'assignments-view.actions'}}</th>
+            <th class="actions-header col-md-3 hidden-sm">{{t 'assignments-view.actions'}}</th>
         {{else}}
             <th class="title-header col-md-3 col-sm-5 col-xs-8"><a {{action 'sortBy' 'title'}}>{{t 'assignments-view.title'}}<span>{{gru-icon name='swap_vert'}}</span></a></th>
             <th class="standards-header hidden-sm hidden-xs col-md-2">{{t 'assignments-view.standards'}}</th>
@@ -35,10 +35,10 @@
             </td>
           {{/unless}}
           {{#if isTeacher}}
-              <td class="title col-md-3 col-sm-3 col-xs-8">{{assignment.title}}</td>
-              <td class="modified-date hidden-xs col-md-3 col-sm-4">{{formatDate assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</td>
+              <td class="title col-md-3 col-sm-6 col-xs-8">{{assignment.title}}</td>
+              <td class="modified-date hidden-xs col-md-3 col-sm-5">{{formatDate assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</td>
               <td class="students-assigned hidden-sm hidden-xs col-md-2">{{assignment.totalStudents}}</td>
-              <td class="actions hidden-xs col-md-3  col-sm-4">
+              <td class="actions hidden-sm col-md-3 ">
                   <button class="btn btn-default add-student" {{action 'addStudent' assignment}}>{{gru-icon name='person_add'}}</button>
                   <button class="btn btn-default real-time" {{action 'openRealTime' assignment}}><span class="real-time-icon"></span></button>
               </td>

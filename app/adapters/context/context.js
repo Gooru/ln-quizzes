@@ -6,7 +6,7 @@ export default Ember.Object.extend({
 
   namespaceCollection: '/quizzes/api/v1/contexts',
 
-  createContext:function(assignment){
+  createContext: function(assignment) {
     const namespace = this.get('namespace');
     const url = `${namespace}`;
     const options = {
@@ -23,7 +23,24 @@ export default Ember.Object.extend({
     };
     return Ember.$.ajax(url, options);
   },
-  getContextsCreated:function(){
+
+  getContextEvents: function(contextId) {
+    const namespace = this.get('namespace');
+    const options = {
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      processData: false,
+      headers: {
+        'profile-id': '21a92642-31ee-4b59-a72d-c70ce74d7fb8',
+        'lms-id': 'its_learning'
+      }
+    };
+    const url = `${namespace}/${contextId}/events`;
+    return Ember.$.ajax(url, options);
+  },
+
+  getContextsCreated: function() {
     const namespace = this.get('namespaceCollection');
     const options = {
       type: 'GET',
@@ -38,6 +55,7 @@ export default Ember.Object.extend({
     const url = `${namespace}/created`;
     return Ember.$.ajax(url, options);
   },
+
   moveToResource: function(resourceId, contextId, previousResource) {
     const namespace = this.get('namespace');
     let data = {};
@@ -61,6 +79,24 @@ export default Ember.Object.extend({
     return Ember.$.ajax(url, options);
   },
 
+  sendEndContextEvent: function(contextId) {
+    const namespace = this.get('namespace');
+    const url = `${namespace}/${contextId}/event/end`;
+    const options = {
+      type: 'POST',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      processData: false,
+      data: JSON.stringify({}),
+      // TODO get real headers
+      headers: {
+        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
+        'lms-id': 'quizzes'
+      }
+    };
+    return Ember.$.ajax(url, options);
+  },
+
   sendStartContextEvent: function(contextId) {
     const namespace = this.get('namespace');
     const url = `${namespace}/${contextId}/event/start`;
@@ -79,24 +115,7 @@ export default Ember.Object.extend({
     return Ember.$.ajax(url, options);
   },
 
-  sendEndContextEvent: function(contextId) {
-    const namespace = this.get('namespace');
-    const url = `${namespace}/${contextId}/event/end`;
-    const options = {
-      type: 'POST',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-      processData: false,
-      data: JSON.stringify({}),
-      // TODO get real headers
-      headers: {
-        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        'lms-id': 'quizzes'
-      }
-    };
-    return Ember.$.ajax(url, options);
-  },
-  updateContext: function(data,contextId){
+  updateContext: function(data,contextId) {
     const namespace = this.get('namespace');
     const url = `${namespace}/${contextId}`;
     const options = {
@@ -104,7 +123,7 @@ export default Ember.Object.extend({
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
-      data:JSON.stringify(data),
+      data: JSON.stringify(data),
       // TODO get real headers
       headers: {
         'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',

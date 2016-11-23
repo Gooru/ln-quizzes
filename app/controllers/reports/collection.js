@@ -16,7 +16,6 @@ export default Ember.Controller.extend({
 
   queryParams: ['anonymous'],
 
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -37,10 +36,11 @@ export default Ember.Controller.extend({
     },
 
     launchAnonymous: function () {
-      var url = window.location.href;
-
-      url += "?anonymous=true";
-      window.open(url, 'realTimeAnonymous', 'width=' + window.screen.width + ', height=' + window.screen.height + ', left=0, top=0, scrollbars=1', true);
+      window.open(
+        `${window.location.href}?anonymous=true`, 'realTimeAnonymous',
+        `width=${window.screen.width}, height=${window.screen.height}, left=0, top=0, scrollbars=1`,
+        true
+      );
     }
   },
 
@@ -102,12 +102,11 @@ export default Ember.Controller.extend({
    * data from the real time server as well
    */
   reportDataLoaded: Ember.observer('reportData', function () {
-    const classId = this.get('routeParams.classId');
-    const collectionId = this.get('routeParams.collectionId');
+    const contextId = this.get('routeParams.contextId');
     const reportData = this.get('reportData');
 
     if (reportData) {
-      this.connectWithWebSocket(classId, collectionId, reportData);
+      this.connectWithWebSocket(contextId, reportData);
     }
   }),
 
@@ -115,7 +114,8 @@ export default Ember.Controller.extend({
   // -------------------------------------------------------------------------
   // Methods
 
-  connectWithWebSocket: function (classId, collectionId, reportData) {
+  connectWithWebSocket: function (contextId, reportData) {
+    const controller = this;
 
     // Create a new web socket connection
     let url = EndPointsConfig.getRealTimeWebSocketUrl();
@@ -124,24 +124,22 @@ export default Ember.Controller.extend({
     webSocketClient.heartbeat.outgoing = REAL_TIME_CLIENT.OUTGOING_HEARTBEAT;
     webSocketClient.heartbeat.incoming = REAL_TIME_CLIENT.INCOMING_HEARTBEAT;
 
-    this.set('webSocketClient', webSocketClient);
+    controller.set('webSocketClient', webSocketClient);
 
     webSocketClient.connect({}, function () {
-      var controller = this;
-
       // Clear a failed connection notification, if there was one
-      this.clearNotification();
+      controller.clearNotification();
 
       // A web socket connection was made to the RT server. Before subscribing
       // for live messages, a request will be made to fetch any initialization data
       // from the RT server (to avoid overriding data from live messages with init data)
-      this.get('realTimeService').findResourcesByCollection(classId, collectionId)
+      controller.get('realTimeService').findResourcesByContext(contextId)
         .then(function (userResourceResults) {
-          const channel = classId + '_' + collectionId;
+          const channel = contextId;
 
           // Subscribe to listen for live messages
-          webSocketClient.subscribe('/topic/' + channel, function (message) {
-            var eventMessage = JSON.parse(message.body);
+          webSocketClient.subscribe(`/topic/${channel}`, function (message) {
+            const eventMessage = JSON.parse(message.body);
             const userResourceResult = controller.get('realTimeSerializer').normalizeRealTimeEvent(eventMessage);
             reportData.merge([userResourceResult]);
           });
@@ -151,23 +149,23 @@ export default Ember.Controller.extend({
           reportData.merge(userResourceResults);
         });
 
-    }.bind(this), function () {
-      var connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
+    }, function () {
+      const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
 
-      this.showNotification();
+      controller.showNotification();
       webSocketClient.disconnect();
       webSocketClient = null;
 
       setTimeout(function () {
         // Make a recursive call to try to reconnect
-        this.connectWithWebSocket(classId, collectionId, reportData);
-      }.bind(this), connectAttemptDelay);
+        controller.connectWithWebSocket(contextId, reportData);
+      }, connectAttemptDelay);
 
-    }.bind(this)).bind(this);
+    });
   },
 
   showNotification: function () {
-    var isDisplayed = this.get('isNotificationDisplayed');
+    let isDisplayed = this.get('isNotificationDisplayed');
 
     if (!isDisplayed) {
       let notifications = this.get('notifications');

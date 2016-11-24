@@ -34,11 +34,11 @@ export default Ember.Service.extend({
     });
   },
 
-  getContextEvents: function(contextId) {
+  getReportData: function(contextId) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').getContextEvents(contextId)
-        .then(response => service.get('contextSerializer').normalizeTeacherContext(response))
+      service.get('contextAdapter').getReportData(contextId)
+        .then(response => service.get('contextSerializer').normalizeReportData(response))
         .then(resolve, reject);
     });
   },

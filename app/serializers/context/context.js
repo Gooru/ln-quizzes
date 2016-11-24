@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ContextResult from 'quizzes/models/result/context';
-import TeacherContextResult from 'quizzes/models/result/teacher-context';
-import TeacherContextEvent from 'quizzes/models/result/teacher-context-event';
+import ReportData from 'quizzes/models/result/report-data';
+import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import QuestionResult from 'quizzes/models/result/question';
 import Context from 'quizzes/models/context/context';
 import Profile from 'quizzes/models/profile/profile';
@@ -103,12 +103,12 @@ export default Ember.Object.extend({
    * @param {TeacherContextResult} contextResult
    * @returns {*[]}
    */
-  normalizeTeacherContext: function (payload) {
+  normalizeReportData: function (payload) {
     const serializer = this;
-    return TeacherContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    return ReportData.create(Ember.getOwner(this).ownerInjection(), {
       contextId: payload.id,
       collectionId: payload.collection.id,
-      contextEvents: serializer.normalizeTeacherContextEvents(payload.profileEvents)
+      reportEvents: serializer.normalizeReportDataEvents(payload.profileEvents)
     });
   },
 
@@ -117,14 +117,14 @@ export default Ember.Object.extend({
    * @param {TeacherContextResult} contextResult
    * @returns {*[]}
    */
-  normalizeTeacherContextEvents: function (payload) {
+  normalizeReportDataEvents: function (payload) {
     const serializer = this;
     payload = payload || [];
     return payload.map(
-      contextEvent => TeacherContextEvent.create(Ember.getOwner(serializer).ownerInjection(), {
-        currentResourceId: contextEvent.currentResourceId,
-        profileId: contextEvent.profileId,
-        resourceResults: serializer.normalizeResourceResults(contextEvent.events)
+      ReportDataEvent => ReportDataEvent.create(Ember.getOwner(serializer).ownerInjection(), {
+        currentResourceId: ReportDataEvent.currentResourceId,
+        profileId: ReportDataEvent.profileId,
+        resourceResults: serializer.normalizeResourceResults(ReportDataEvent.events)
       })
     );
   },

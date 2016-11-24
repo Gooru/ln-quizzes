@@ -71,7 +71,7 @@ test('getContextsCreated', function(assert) {
     .then(response => assert.deepEqual(response.length,1, 'Wrong response'));
 });
 
-test('getContextEvents', function(assert) {
+test('getReportData', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';
   const routes = function() {
@@ -83,7 +83,7 @@ test('getContextEvents', function(assert) {
   this.pretender.map(routes);
   this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
 
-  adapter.getContextEvents(expectedContextId)
+  adapter.getReportData(expectedContextId)
     .then(response => assert.deepEqual(response, {}, 'Wrong response'));
 });
 

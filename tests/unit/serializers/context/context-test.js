@@ -381,7 +381,7 @@ test('normalizeResourceResults', function(assert) {
   assert.equal(response[1].get('savedTime'), 20000, 'Wrong second time spent');
 });
 
-test('normalizeTeacherContext', function(assert) {
+test('normalizeReportData', function(assert) {
   const serializer = this.subject();
   const payload = {
     id: 'context-id',
@@ -408,13 +408,13 @@ test('normalizeTeacherContext', function(assert) {
       events: []
     }]
   };
-  const response = serializer.normalizeTeacherContext(payload);
+  const response = serializer.normalizeReportData(payload);
   assert.equal(response.get('contextId'), 'context-id', 'Wrong context id value');
   assert.equal(response.get('collectionId'), 'collection-id', 'Wrong collection id value');
-  assert.equal(response.get('contextEvents').length, 2, 'Wrong resource results length');
+  assert.equal(response.get('reportEvents').length, 2, 'Wrong resource results length');
 });
 
-test('normalizeTeacherContextEvents', function(assert) {
+test('normalizeReportEvents', function(assert) {
   const serializer = this.subject();
   const payload = [{
     currentResourceId: 'current-resource-id',
@@ -435,7 +435,7 @@ test('normalizeTeacherContextEvents', function(assert) {
     profileId: 'student-id-2',
     events: []
   }];
-  const response = serializer.normalizeTeacherContextEvents(payload);
+  const response = serializer.normalizeReportDataEvents(payload);
   assert.equal(response.length, 2, 'Wrong resource results length');
   assert.equal(response[0].get('currentResourceId'), 'current-resource-id', 'Wrong first current resource');
   assert.equal(response[0].get('profileId'), 'student-id-1', 'Wrong first student id');

@@ -4,7 +4,7 @@ import QuestionResult from 'quizzes/models/result/question';
 /**
  * Profile results/events by resource
  *
- * @typedef {Object} TeacherContextEvent
+ * @typedef {Object} ReportDataEvent
  *
  */
 export default Ember.Object.extend({

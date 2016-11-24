@@ -24,7 +24,7 @@ export default Ember.Object.extend({
     return Ember.$.ajax(url, options);
   },
 
-  getContextEvents: function(contextId) {
+  getReportData: function(contextId) {
     const namespace = this.get('namespace');
     const options = {
       type: 'GET',

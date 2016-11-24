@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import Collection from 'quizzes/models/collection/collection';
 import Resource from 'quizzes/models/resource/resource';
-import ContextEvent from 'quizzes/models/result/teacher-context-event';
+import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('model:result/teacher-context', 'Unit | Model | result/teacher-context');
+moduleFor('model:result/report-data', 'Unit | Model | result/report-data');
 
 test('resourceIds', function(assert) {
   let model = this.subject({
@@ -28,11 +28,11 @@ test('resourceIds', function(assert) {
 
 test('studentIds', function(assert) {
   let model = this.subject({
-    contextEvents: Ember.A([
-      ContextEvent.create({
+    reportEvents: Ember.A([
+      ReportDataEvent.create({
         profileId: 'student1'
       }),
-      ContextEvent.create({
+      ReportDataEvent.create({
         profileId: 'student2'
       })
     ])

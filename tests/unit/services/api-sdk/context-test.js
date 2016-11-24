@@ -124,7 +124,7 @@ test('getContextsCreated', function(assert) {
   });
 });
 
-test('getContextEvents', function(assert) {
+test('getReportData', function(assert) {
   assert.expect(3);
   const service = this.subject();
   const expectedContextId = 'context-id';
@@ -133,21 +133,21 @@ test('getContextEvents', function(assert) {
   };
 
   service.set('contextAdapter', Ember.Object.create({
-    getContextEvents: function(contextId) {
+    getReportData: function(contextId) {
       assert.deepEqual(contextId, expectedContextId, 'The context id should match');
       return Ember.RSVP.resolve(contextResult);
     }
   }));
 
   service.set('contextSerializer', Ember.Object.create({
-    normalizeTeacherContext: function(response) {
+    normalizeReportData: function(response) {
       assert.deepEqual(response, contextResult, 'The context result should match');
       return contextResult;
     }
   }));
 
   let done = assert.async();
-  service.getContextEvents(expectedContextId)
+  service.getReportData(expectedContextId)
     .then(function(result) {
       assert.deepEqual(result, contextResult, 'The result should match');
       done();

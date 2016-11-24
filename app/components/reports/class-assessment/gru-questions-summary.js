@@ -38,7 +38,7 @@ export default Ember.Component.extend({
      * @function actions:toggleView
      */
     toggleView: function () {
-      var newExpandedValue = !this.get('isExpanded');
+      let newExpandedValue = !this.get('isExpanded');
       this.get('onToggleView')(newExpandedValue);
     }
 
@@ -49,7 +49,7 @@ export default Ember.Component.extend({
 
   didInsertElement: function () {
     const delay = 600;  // milliseconds
-    var timer = null;
+    let timer = null;
 
     // Get the component dimensions from the css
     Ember.run.scheduleOnce('afterRender', this, 'updateWidth');
@@ -83,7 +83,7 @@ export default Ember.Component.extend({
 
   /**
    * @property {Number} itemsPerColumn - Maximum number of items per column
-   * This value *must* match the value of the css variable $questions-per-column
+   * This value *must* match the value of the css letiable $questions-per-column
    * @see /app/styles/components/reports/class-assessment/_gru-questions-summary.scss
    */
   itemsPerColumn: 5,
@@ -109,29 +109,24 @@ export default Ember.Component.extend({
     const correctColor = GRADING_SCALE[GRADING_SCALE.length - 1].COLOR;
     const failColor = GRADING_SCALE[0].COLOR;
 
-    var processedData = [];
-
+    let processedData = [];
     for (let i = 0; i < dataLen; i++) {
-
       if (i < visibleIndex) {
         // Process only the data that will be seen; otherwise, there's no need to process the data
         let dataObj = data[i];
         let questionObj = {
           id: dataObj.id,
-          data: [
-            {
-              color: failColor,
-              percentage: roundFloat(dataObj.incorrect / dataObj.total * 100, 1)
-            },
-            {
-              color: correctColor,
-              percentage: roundFloat(dataObj.correct / dataObj.total * 100, 1)
-            }
-          ],
+          data: [{
+            color: failColor,
+            percentage: roundFloat(dataObj.incorrect / dataObj.total * 100, 1)
+          },
+          {
+            color: correctColor,
+            percentage: roundFloat(dataObj.correct / dataObj.total * 100, 1)
+          }],
           completed: dataObj.correct + dataObj.incorrect,
           total: dataObj.total
         };
-
         processedData.push(questionObj);
       }
     }

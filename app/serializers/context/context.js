@@ -121,10 +121,10 @@ export default Ember.Object.extend({
     const serializer = this;
     payload = payload || [];
     return payload.map(
-      ReportDataEvent => ReportDataEvent.create(Ember.getOwner(serializer).ownerInjection(), {
-        currentResourceId: ReportDataEvent.currentResourceId,
-        profileId: ReportDataEvent.profileId,
-        resourceResults: serializer.normalizeResourceResults(ReportDataEvent.events)
+      reportEvent => ReportDataEvent.create(Ember.getOwner(serializer).ownerInjection(), {
+        currentResourceId: reportEvent.currentResourceId,
+        profileId: reportEvent.profileId,
+        resourceResults: serializer.normalizeResourceResults(reportEvent.events)
       })
     );
   },

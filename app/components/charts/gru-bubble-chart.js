@@ -8,21 +8,10 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-// -------------------------------------------------------------------------
-  // Dependencies
-
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['charts','gru-bubble-chart'],
-
-  // -------------------------------------------------------------------------
-  // Actions
-
-
-  // -------------------------------------------------------------------------
-  // Events
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -43,8 +32,5 @@ export default Ember.Component.extend({
   style: Ember.computed('color', function() {
     return Ember.String.htmlSafe(`background-color: ${this.get('color')}`);
   })
-
-  // -------------------------------------------------------------------------
-  // Methods
 
 });

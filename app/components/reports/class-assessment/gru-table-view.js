@@ -5,11 +5,12 @@ import {
   getAnswerResultIcon,
   getScoreString,
   getReactionIcon
-  } from 'quizzes/utils/utils';
+} from 'quizzes/utils/utils';
 import {
   averageReaction,
   correctPercentage,
-  totalTimeSpent } from 'quizzes/utils/question-result';
+  totalTimeSpent
+} from 'quizzes/utils/question-result';
 
 /**
  * Class assessment table view
@@ -65,7 +66,6 @@ export default Ember.Component.extend({
 
   init: function () {
     this._super(...arguments);
-
     this.set('questionProperties', this.initQuestionProperties());
     this.set('studentsHeader', this.initStudentsHeader());
   },
@@ -79,9 +79,15 @@ export default Ember.Component.extend({
   // Properties
 
   /**
+   * Indicates if the report is displayed in anonymous mode
+   * @property {boolean} anonymous
+   */
+  anonymous: false,
+
+  /**
    * @prop { Collection } assessment
    */
-  assessment: null,
+  assessment: Ember.computed.alias('reportData.collection'),
 
   /**
    * @prop { Object[] } assessmentQuestions - An array made up of all the questions in the assessment
@@ -95,11 +101,11 @@ export default Ember.Component.extend({
   assessmentQuestions: Ember.computed('assessment.resources.[]', function () {
     const labelPrefix = this.get('i18n').t('reports.gru-table-view.first-tier-header-prefix').string;
 
-    var questions = this.get('assessment.resources')
-      .sortBy('order')
+    let questions = this.get('assessment.resources')
+      .sortBy('sequence')
       .map(function (question, index) {
         return {
-          value: question.get("id"),
+          value: question.get('id'),
           label: labelPrefix + (index + 1)
         };
       });
@@ -117,9 +123,7 @@ export default Ember.Component.extend({
    * @prop { String[] } assessmentQuestionsIds - An array with the ids of all the questions in the assessment
    */
   assessmentQuestionsIds: Ember.computed('assessmentQuestions.[]', function () {
-    return this.get('assessmentQuestions').map(function (question) {
-      return question.value;
-    });
+    return this.get('assessmentQuestions').map(question => question.value);
   }),
 
   /**
@@ -143,9 +147,8 @@ export default Ember.Component.extend({
    * @prop { String[] } questionPropertiesIds - An array with the ids of all the question properties
    */
   questionPropertiesIds: Ember.computed('questionProperties', function () {
-    return this.get('questionProperties').map(function (questionProperty) {
-      return questionProperty.value;
-    });
+    return this.get('questionProperties')
+      .map(questionProperty => questionProperty.value);
   }),
 
   /**
@@ -154,15 +157,9 @@ export default Ember.Component.extend({
   reportData: null,
 
   /**
-   * Indicates if the report is displayed in anonymous mode
-   * @property {boolean} anonymous
-   */
-  anonymous: false,
-
-  /**
    * @prop { User[] } students - Students taking the assessment
    */
-  students: null,
+  students: Ember.computed.alias('reportData.studentIds'),
 
   /**
    * @prop { String? } studentsHeader - Header for the students names
@@ -172,11 +169,7 @@ export default Ember.Component.extend({
   /**
    * @prop { String[] } studentsIds - An array with the ids of all the students taking the assessment
    */
-  studentsIds: Ember.computed('students.[]', function () {
-    return this.get('students').map(function (student) {
-      return student.id;
-    });
-  }),
+  studentsIds: Ember.computed.alias('reportData.studentIds'),
 
   /**
    * @prop { Object[] } tableData - Ordered data to use as content for the table component
@@ -190,7 +183,7 @@ export default Ember.Component.extend({
    *   - output: table cell content formatted for output (the formatting is done by
    *             the question property's render function)
    */
-  tableData: Ember.computed("anonymous", 'tableFrame', 'reportData.data', function () {
+  tableData: Ember.computed('anonymous', 'tableFrame', 'reportData.reportEvents', function () {
     const studentsIds = this.get('studentsIds');
     const studentsIdsLen = studentsIds.length;
     const questionsIds = this.get('assessmentQuestionsIds');
@@ -198,18 +191,17 @@ export default Ember.Component.extend({
     const questionProperties = this.get('questionProperties');
     const questionPropertiesIds = this.get('questionPropertiesIds');
     const questionPropertiesIdsLen = questionPropertiesIds.length;
-    const reportData = this.get('reportData.data');
+    const reportData = this.get('reportData.reportEvents');
 
     // Copy the table frame contents
-    var data = this.get('tableFrame').slice(0);
-    var totalIndex, propertyValues;
+    let data = this.get('tableFrame').slice(0);
+    let totalIndex, propertyValues;
 
     // Get the value of each question property, for each question, for each student
     for (let i = 0; i < studentsIdsLen; i++) {
 
       // Array for storing all values of the same question property
       propertyValues = [];
-
       for (let k = 0; k < questionPropertiesIdsLen; k++) {
         // Put all values for the same property into an array
         propertyValues[k] = [];
@@ -259,11 +251,11 @@ export default Ember.Component.extend({
    * @return {Object[]}
    */
   tableFrame: Ember.computed('anonymous', 'students.[]', function () {
-    let anonymous = this.get("anonymous");
+    let anonymous = this.get('anonymous');
     return this.get('students').map(function (student) {
       return {
-        id: student.get("id"),
-        header: anonymous ? student.get("code") : student.get("fullName"),
+        id: student.get('id'),
+        header: anonymous ? student.get('code') : student.get('fullName'),
         content: []
       };
     });
@@ -277,7 +269,6 @@ export default Ember.Component.extend({
    * @return {Object[]}
    */
   initQuestionProperties: function () {
-
     return [
       Ember.Object.create({
         filter: {

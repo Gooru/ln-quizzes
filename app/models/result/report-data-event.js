@@ -31,9 +31,8 @@ export default Ember.Object.extend({
    * @property {QuestionResult[]} questionResults
    */
   questionResults: Ember.computed('resourceResults.[]', function () {
-    return this.get('resourceResults').filter(function (resourceResult) {
-      return resourceResult instanceof QuestionResult;
-    });
+    return this.get('resourceResults')
+      .filter(resourceResult => resourceResult instanceof QuestionResult);
   }),
 
   /**

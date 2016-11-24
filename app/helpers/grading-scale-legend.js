@@ -1,4 +1,3 @@
-/*jshint multistr: true */
 import Ember from 'ember';
 import { GRADING_SCALE } from 'quizzes/config/config';
 
@@ -22,13 +21,13 @@ export function gradingScaleLegend(params, hash) {
   const $el = $('<div><ul class="grading-scale-legend"></ul></div>');
   const $legend = $el.find('.grading-scale-legend');
 
-  var gradingScaleLen = GRADING_SCALE.length;
+  let gradingScaleLen = GRADING_SCALE.length;
 
   if (notStarted) {
-    $legend.append('<li class="not-started"> \
-                      <i></i> \
-                      <span>' + notStarted + '</span>\
-                   </li>');
+    $legend.append(`<li class="not-started">
+                      <i></i>
+                      <span>${notStarted}</span>
+                   </li>`);
   }
 
   for (let i = 0; i < gradingScaleLen; i++) {
@@ -37,10 +36,10 @@ export function gradingScaleLegend(params, hash) {
     // The upper limit of the grading scale will be 100
     let upperLimit = GRADING_SCALE[i + 1] ? GRADING_SCALE[i + 1].LOWER_LIMIT - 1 : 100;
 
-    $legend.append('<li> \
-                      <i style="background-color: ' + bracket.COLOR + ';"></i> \
-                      <span>' + bracket.LOWER_LIMIT + ' - ' + upperLimit + '%</span>\
-                   </li>');
+    $legend.append(`<li>
+                      <i style="background-color: ${bracket.COLOR};"></i>
+                      <span>${bracket.LOWER_LIMIT} - ${upperLimit}%</span>
+                   </li>`);
   }
 
   return Ember.String.htmlSafe($el.html());

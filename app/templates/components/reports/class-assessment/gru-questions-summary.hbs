@@ -3,7 +3,7 @@
     <li>
       <a {{action 'selectQuestion' questionData.id}}>
         <span class="index">{{plus-one index}}</span>
-        {{charts/gru-x-bar-chart data=questionData.data}}
+        {{charts.gru-x-bar-chart data=questionData.data}}
         <span class="ratio">
           <span>{{questionData.completed}}</span>/<span>{{questionData.total}}</span>
         </span>

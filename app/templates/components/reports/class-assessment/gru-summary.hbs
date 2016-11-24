@@ -2,7 +2,7 @@
 
   <ul class="overview">
     <li class="scores">
-      {{ charts.gru-pie-chart data=classScores }}
+      {{ charts.gru-pie-chart data=assignmentScores }}
       <span>{{t "common.classScores"}}</span>
     </li>
 
@@ -13,16 +13,17 @@
 
     <li class="completion">
       {{charts.gru-radial-chart
-      value=totalCompleted
-      minValue=0
-      maxValue=students.length }}
+        value=totalCompleted
+        minValue=0
+        maxValue=studentsIds.length
+      }}
       <span>{{t "common.completed"}}</span>
     </li>
   </ul>
 
   <ul class="overview small {{if isFullScreen 'visible'}}">
     <li class="scores">
-      {{ charts.gru-pie-chart data=classScores }}
+      {{ charts.gru-pie-chart data=assignmentScores }}
       <span>{{t "common.classScores"}}</span>
     </li>
 
@@ -30,7 +31,7 @@
       {{charts.gru-radial-chart
       value=totalCompleted
       minValue=0
-      maxValue=students.length }}
+      maxValue=studentsIds.length }}
       <span>{{t "common.completed"}}</span>
     </li>
 
@@ -41,14 +42,13 @@
   </ul>
 
   {{ reports.class-assessment.gru-questions-summary
-  data=questionsData
-  isExpanded=isQuestionView
-  onSelectQuestion=(action 'selectQuestion')
-  onToggleView=(action 'toggleView')}}
+    data=questionsData
+    isExpanded=isQuestionView
+    onSelectQuestion=(action 'selectQuestion')
+    onToggleView=(action 'toggleView')
+  }}
 </div>
 <div class="grading-scale">
   <span class="average">{{t "common.averageScore"}}</span>
   {{grading-scale-legend notStarted=(t "common.notStarted")}}
 </div>
-
-

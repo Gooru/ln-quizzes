@@ -14,9 +14,9 @@ export default Ember.Component.extend({
 
   classNames: ['charts', 'gru-x-bar-chart'],
 
-
   // -------------------------------------------------------------------------
   // Properties
+
   /**
    *
    * Sample
@@ -35,17 +35,18 @@ export default Ember.Component.extend({
    */
   data: null,
 
-  isFull: Ember.computed("data.[]", function(){
-    var sum = this.get("data").reduce(function (previousValue, value) {
-      return previousValue + value.percentage;
-    }, 0);
+  isFull: Ember.computed('data.[]', function(){
+    let sum = this.get('data').reduce(
+      (previousValue, value) => previousValue + value.percentage, 0
+    );
     return (sum >= 100);
   }),
 
   styles: Ember.computed('data', function () {
-    return this.get('data').map(function (questionData) {
-      return Ember.String.htmlSafe('background-color: ' + questionData.color + '; width: ' + questionData.percentage + '%;');
-    });
+    return this.get('data').map(
+      questionData => Ember.String.htmlSafe(
+        `background-color: ${questionData.color}; width: ${questionData.percentage}%;`)
+    );
   }),
 
   // -------------------------------------------------------------------------
@@ -62,9 +63,9 @@ export default Ember.Component.extend({
    * Check if the values are up 100%
    */
   validValues: function () {
-    var sum = this.get("data").reduce(function (previousValue, value) {
-      return previousValue + parseInt(value.percentage);
-    }, 0);
+    let sum = this.get('data').reduce(
+      (previousValue, value) => previousValue + parseInt(value.percentage), 0
+    );
     return (sum <= 100);
   }
 });

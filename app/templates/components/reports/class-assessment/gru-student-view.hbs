@@ -7,11 +7,11 @@
 <div class="student-performance-list">
     {{#each  sortedStudentPerformance as |studentPerformance|}}
       {{ reports.class-assessment.gru-student-performance-box
-      anonymous=anonymous
-      student=studentPerformance.student
-      reportData=studentPerformance.reportData
-      onSelectQuestion=(action 'selectQuestion')
-      onSelectStudent=(action 'selectStudent')
+        anonymous=anonymous
+        student=studentPerformance.student
+        reportData=studentPerformance.reportData
+        onSelectQuestion=(action 'selectQuestion')
+        onSelectStudent=(action 'selectStudent')
       }}
     {{/each}}
 </div>

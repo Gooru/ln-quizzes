@@ -20,8 +20,8 @@ export default Ember.Component.extend({
      */
     selectStudent: function(){
       const component = this;
-      component.get('onSelectStudent')(component.get("student.id"));
-      Ember.Logger.debug('Clicking at student: ' + component.get("student.id"));
+      component.get('onSelectStudent')(component.get('student.id'));
+      Ember.Logger.debug(`Clicking at student: ${component.get('student.id')}`);
     },
 
     /**
@@ -36,16 +36,28 @@ export default Ember.Component.extend({
   },
 
   // -------------------------------------------------------------------------
-  // Events
-
-
-  // -------------------------------------------------------------------------
   // Properties
 
   /**
-   * @property {User} student
+   * Indicates if the report is displayed in anonymous mode
+   * @property {boolean} anonymous
    */
-  student: null,
+  anonymous: false,
+
+  /**
+   * @property {Function} onSelectQuestion - Event handler called when a question in a column is selected
+   */
+  onSelectQuestion: null,
+
+  /**
+   * It returns an object representing the status for each question
+   * @property {[]} questions
+   */
+  questions: Ember.computed('reportData.[]', function(){
+    let component = this;
+    let reportData = component.get('reportData');
+    return reportData.map(item => component.getQuestionStatus(item));
+  }),
 
   /**
    * Array containing the QuestionResult or empty object based on the student responses
@@ -55,28 +67,9 @@ export default Ember.Component.extend({
   reportData: null,
 
   /**
-   * Indicates if the report is displayed in anonymous mode
-   * @property {boolean} anonymous
-   */
-  anonymous: false,
-
-
-  /**
-   * It returns an object representing the status for each question
-   * @property {[]} questions
-   */
-  questions: Ember.computed("reportData.[]", function(){
-    let component = this;
-    let reportData = component.get("reportData");
-    return reportData.map(function(item){
-      return component.getQuestionStatus(item);
-    });
-  }),
-
-  /**
    * @property {number} user assessment score
    */
-  score: Ember.computed("reportData.[]", function(){
+  score: Ember.computed('reportData.[]', function(){
     return correctPercentage(this.get('reportData'));
   }),
 
@@ -84,7 +77,7 @@ export default Ember.Component.extend({
    * Indicates if the assessment has been started
    * @property {number} started
    */
-  started: Ember.computed("reportData.[]", function(){
+  started: Ember.computed('reportData.[]', function(){
     return totalCompleted(this.get('reportData'));
   }),
 
@@ -96,16 +89,17 @@ export default Ember.Component.extend({
   }),
 
   /**
+   * @property {User} student
+   */
+  student: null,
+
+  /**
    * Indicates if the assessment has not started questions
    * @property {number} notStarted
    */
-  totalNotStarted:Ember.computed("reportData.[]", function(){
+  totalNotStarted:Ember.computed('reportData.[]', function(){
     return totalNotStarted(this.get('reportData'));
   }),
-  /**
-   * @property {Function} onSelectQuestion - Event handler called when a question in a column is selected
-   */
-  onSelectQuestion: null,
 
   // -------------------------------------------------------------------------
   // Methods

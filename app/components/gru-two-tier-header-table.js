@@ -44,8 +44,8 @@ export default Ember.Component.extend({
      * @param {number} secondTierIndex
      */
     updateSortCriteria: function (firstTierIndex, secondTierIndex) {
-      var sortCriteria = this.get('sortCriteria');
-      var newSortCriteria = {
+      let sortCriteria = this.get('sortCriteria');
+      let newSortCriteria = {
         firstTierIndex: firstTierIndex,
         secondTierIndex: secondTierIndex
       };
@@ -159,38 +159,29 @@ export default Ember.Component.extend({
   sortedData: Ember.computed('data.length', 'sortCriteria', function () {
     const sortCriteria = this.get('sortCriteria');
     const data = this.get('data');
+    let sortedData = data;
 
     if (sortCriteria) {
       let secondTierHeaders = this.get('secondTierHeaders');
       let firstTierIndex = sortCriteria.firstTierIndex;
       let secondTierIndex = sortCriteria.secondTierIndex;
       let sortColumn = sortCriteria.firstTierIndex * secondTierHeaders.length + secondTierIndex;
-      let sortedData = Ember.copy(data, true);
       let sortFunction;
+      sortedData = Ember.copy(data, true);
 
       if (firstTierIndex === -1 || secondTierIndex  === -1) {
         // Sort alphabetically by row headers
         let rowHeadersHeader = this.get('rowHeadersHeader');
-
-        sortFunction = rowHeadersHeader.sortFunction;
-        sortFunction = sortFunction ? sortFunction : numberSort;
-
-        sortedData.sort(function (a, b) {
-          return sortFunction(a.header, b.header) * sortCriteria.order;
-        });
+        sortFunction = rowHeadersHeader.sortFunction || numberSort;
+        sortedData.sort((a, b) => sortFunction(a.header, b.header) * sortCriteria.order);
       } else if (firstTierIndex >= 0) {
-        sortFunction = secondTierHeaders[secondTierIndex].sortFunction;
-        sortFunction = sortFunction ? sortFunction : numberSort;
-
-        sortedData.sort(function (a, b) {
-          return sortFunction(a.content[sortColumn].value, b.content[sortColumn].value) * sortCriteria.order;
-        });
+        sortFunction = secondTierHeaders[secondTierIndex].sortFunction || numberSort;
+        sortedData.sort(
+          (a, b) => sortFunction(a.content[sortColumn].value, b.content[sortColumn].value) * sortCriteria.order
+        );
       }
-      return sortedData;
-
-    } else {
-      return data;
     }
+    return sortedData;
   }),
 
   /**
@@ -213,16 +204,16 @@ export default Ember.Component.extend({
     const secondTierHeadersLen = secondTierHeaders.length;
     const secondTierHeadersVisible = secondTierHeaders.filterBy('visible', true).length;
     const removeColumns = secondTierHeadersVisible < this.get('currentVisibleHeadersLen');
-    var selectors = [];
-    var cssSelector;
+    let selectors = [];
+    let cssSelector;
 
     secondTierHeaders.forEach(function (header, index) {
       if ((removeColumns && !header.visible) || (!removeColumns && header.visible)) {
         let offset = index - 1;
-        let offsetStr = (offset < 0) ? offset : '+' + offset;
+        let offsetStr = (offset < 0) ? offset : `+${offset}`;
 
-        selectors.push('table tr.second-tier th.' + header.value);
-        selectors.push('table tr.data td:nth-child(' + secondTierHeadersLen + 'n' + offsetStr + ')');
+        selectors.push(`table tr.second-tier th.${header.value}`);
+        selectors.push(`table tr.data td:nth-child(${secondTierHeadersLen}n${offsetStr})`);
       }
     });
     cssSelector = selectors.join(',');
@@ -246,20 +237,17 @@ export default Ember.Component.extend({
     const rowHeadersHeader = !!this.get('rowHeadersHeader');
     const headers = this.$('.second-tier th');
 
-    var currentHeaderIndex = rowHeadersHeader +
+    let currentHeaderIndex = rowHeadersHeader +
       (sortCriteria.firstTierIndex * totalSecondTierHeaders + sortCriteria.secondTierIndex);
 
     headers.removeClass('ascending')
       .removeClass('descending');
 
-    if (currentHeaderIndex >= 0) {
-      if (sortCriteria.order > 0) {
-        headers.eq(currentHeaderIndex).addClass('ascending');
-      } else {
-        headers.eq(currentHeaderIndex).addClass('descending');
-      }
+    if (currentHeaderIndex >= 0 && sortCriteria.order > 0) {
+      headers.eq(currentHeaderIndex).addClass('ascending');
+    } else {
+      headers.eq(currentHeaderIndex).addClass('descending');
     }
-
   }),
 
   // -------------------------------------------------------------------------

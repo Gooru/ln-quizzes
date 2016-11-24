@@ -1,9 +1,7 @@
 import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
-import {VIEW_LAYOUT_PICKER_OPTIONS} from "quizzes/config/config";
+import { VIEW_LAYOUT_PICKER_OPTIONS } from 'quizzes/config/config';
 import AssessmentResult from 'quizzes/models/result/context';
-// Private variables
-
 
 export default Ember.Component.extend(ModalMixin, {
 
@@ -30,37 +28,19 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * When showing the question details
-     * @param {string} questionId
-     */
-    viewQuestionDetail: function (questionId) {
-      Ember.Logger.debug('Class assessment report: question with ID ' + questionId + ' was selected');
-
-      let question = this.get("assessment.resources").findBy("id", questionId);
-      let modalModel = {
-        anonymous: this.get("anonymous"),
-        assessment: this.get("assessment"),
-        students: this.get("students"),
-        selectedQuestion: question,
-        reportData: this.get("reportData")
-      };
-      this.actions.showModal.call(this,
-        'reports.class-assessment.gru-questions-detail', modalModel, null, 'gru-questions-detail-modal', true);
-    },
-
-    /**
      * When showing the student details
      * @param {string} studentId
      */
     viewAssessmentReport: function (studentId) {
-      Ember.Logger.debug('Class assessment report: student with ID ' + studentId + ' was selected');
+      // TODO QZ-175 student report
+      Ember.Logger.debug(`Class assessment report: student with ID ${studentId} was selected`);
 
-      let reportData = this.get("reportData");
-      let assessment = this.get("assessment");
+      let reportData = this.get('reportData');
+      let assessment = this.get('assessment');
       let resourceResults = reportData.getResultsByStudent(studentId);
       resourceResults.forEach(function(resourceResult){
-        let resource = assessment.get("resources").findBy("id", resourceResult.get("resourceId"));
-        resourceResult.set("resource", resource);
+        let resource = assessment.get('resources').findBy('id', resourceResult.get('resourceId'));
+        resourceResult.set('resource', resource);
       });
 
       let assessmentResult = AssessmentResult.create({
@@ -80,6 +60,24 @@ export default Ember.Component.extend(ModalMixin, {
     }
   },
 
+  /**
+   * When showing the question details
+   * @param {string} questionId
+   */
+  viewQuestionDetail: function (questionId) {
+    Ember.Logger.debug(`Assessment report: question with ID ${questionId} was selected`);
+
+    let question = this.get('assessment.resources').findBy('id', questionId);
+    let modalModel = {
+      anonymous: this.get('anonymous'),
+      selectedQuestion: question,
+      reportData: this.get('reportData')
+    };
+    // TODO QZ-176 question report
+    this.actions.showModal.call(this,
+      'reports.class-assessment.gru-questions-detail', modalModel, null, 'gru-questions-detail-modal', true);
+  },
+
   // -------------------------------------------------------------------------
   // Events
 
@@ -96,7 +94,7 @@ export default Ember.Component.extend(ModalMixin, {
   /**
    * @prop { Collection } assessment - Assessment taken by a group of students
    */
-  assessment: null,
+  assessment: Ember.computed.alias('reportData.collection'),
 
   /**
    * @prop { boolean } isTableView - is the table view currently selected?
@@ -111,7 +109,7 @@ export default Ember.Component.extend(ModalMixin, {
   /**
    * @prop { User[] } students - Group of students taking an assessment
    */
-  students: null,
+  students: Ember.computed.alias('reportData.studentIds'),
 
   /**
    * @prop { boolean } isRealTime - if the report is a real time report

@@ -1,5 +1,5 @@
 <div class="chart {{if anonymous 'anonymous'}}">
-  {{charts/gru-x-bar-chart data=questionBarChartData.data}}
+  {{charts.gru-x-bar-chart data=questionBarChartData.data}}
 </div>
 <div class="overall-completion {{if anonymous 'anonymous'}}">
   <span>{{questionBarChartData.completed}}</span>/<span>{{questionBarChartData.total}}</span>
@@ -34,7 +34,7 @@
             {{/unless}}
             {{#if anonymousAndShowResult}}
                 <div class="answer-chart">
-                  {{charts/gru-x-bar-chart data=answerData.charData}}
+                  {{charts.gru-x-bar-chart data=answerData.charData}}
                 </div>
                 <span class="answer-percentage {{if answerData.correct 'success' 'danger'}}">{{answerData.percentage}}%</span>
             {{/if}}

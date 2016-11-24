@@ -34,15 +34,15 @@ export default Ember.Component.extend({
     const width = parseInt($component.css('width').split('px')[0]);
     const height = parseInt($component.css('height').split('px')[0]);
 
-    var radialChart = radialProgress(this.element)
-      .margin({top: 0, right: 0, bottom: 0, left: 0})
+    let radialChart = radialProgress(this.element)
+      .margin({ top: 0, right: 0, bottom: 0, left: 0 })
       .diameter(Math.min(height, width))
       .value(value)
       .minValue(minValue)
       .maxValue(maxValue);
 
     if (!this.get('showPercentageLabel')) {
-      radialChart.__textDisplay(value + '/' + maxValue);
+      radialChart.__textDisplay(`${value}/${maxValue}`);
     }
 
     radialChart.render();
@@ -54,19 +54,33 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * @property {Number} minValue - Lowest value for the graph
-   */
-  minValue: 0,
-
-  /**
    * @property {Number} maxValue - Highest value for the graph
    */
   maxValue: 1,
 
   /**
+   * @property {Number} minValue - Lowest value for the graph
+   */
+  minValue: 0,
+
+  /**
    * @private {Object} radialChart - Radial chart instance
    */
   radialChart: null,
+
+  renderChart: Ember.observer('value', function () {
+    const maxValue = this.get('maxValue');
+    const value = this.get('value');
+    const radialChart = this.get('radialChart');
+
+    radialChart.value(value);
+
+    if (!this.get('showPercentageLabel')) {
+      radialChart.__textDisplay(`${value}/${maxValue}`);
+    }
+
+    radialChart.render();
+  }),
 
   /**
    * @property {boolean} showPercentageLabel - Show the percentage label
@@ -78,21 +92,6 @@ export default Ember.Component.extend({
    * @property {String} value - Value to graph
    * It should be between minValue and maxValue
    */
-  value: 0,
-
-
-  renderChart: Ember.observer('value', function () {
-    const maxValue = this.get('maxValue');
-    const value = this.get('value');
-    const radialChart = this.get('radialChart');
-
-    radialChart.value(value);
-
-    if (!this.get('showPercentageLabel')) {
-      radialChart.__textDisplay(value + '/' + maxValue);
-    }
-
-    radialChart.render();
-  })
+  value: 0
 
 });

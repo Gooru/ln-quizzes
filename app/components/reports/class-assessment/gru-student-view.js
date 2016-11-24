@@ -8,6 +8,9 @@ export default Ember.Component.extend({
 
   classNames: ['reports', 'class-assessment', 'gru-student-view'],
 
+  // -------------------------------------------------------------------------
+  // Actions
+
   actions:{
     /**
      * @function actions:selectQuestion
@@ -21,19 +24,20 @@ export default Ember.Component.extend({
      * When clicking at the student header
      * @param {string} studentId
      */
-    selectStudent: function(studentId){
-      this.get("onSelectStudent")(studentId);
+    selectStudent: function(studentId) {
+      this.get('onSelectStudent')(studentId);
     },
+
     /**
      * Sort students view
      * @function actions:sort
      */
-    sortStudentView:function(sort) {
+    sortStudentView: function(sort) {
       this.set('sortAlphabetically', sort);
-      if(this.get('sortAlphabetically')){
-        this.set('studentPerformanceListSorting',['student.fullName']);
-      }else{
-        this.set('studentPerformanceListSorting',['score:desc','student.fullName']);
+      if(this.get('sortAlphabetically')) {
+        this.set('studentPerformanceListSorting', ['student.fullName']);
+      } else {
+        this.set('studentPerformanceListSorting', ['score:desc','student.fullName']);
       }
     }
   },
@@ -41,20 +45,6 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Properties
-  /**
-   * @prop { Collection } assessment
-   */
-  assessment: null,
-
-  /**
-   * @prop { User[] } students - Students taking the assessment
-   */
-  students: null,
-
-  /**
-   * @prop { ReportData } reportData
-   */
-  reportData: null,
 
   /**
    * Indicates if the report is displayed in anonymous mode
@@ -63,12 +53,34 @@ export default Ember.Component.extend({
   anonymous: false,
 
   /**
-   * Returns a convenience structure to display the student view
+   * @prop { Collection } assessment
+   */
+  assessment:  Ember.computed.alias('reportData.collection'),
+
+  /**
+   * @prop { ReportData } reportData
+   */
+  reportData: null,
+
+  /**
+   * Indicate if the table is to be sorted alphabetically using the students full name, if not, sort by average of score.
    *
+   * @property {Boolean}
+   */
+  sortAlphabetically: false,
+
+  /**
+   * Property containing t he sorted list
+   *
+   * @property {Ember.computed}
+   */
+  sortedStudentPerformance: Ember.computed.sort('studentPerformanceList', 'studentPerformanceListSorting'),
+
+  /**
+   * Returns a convenient structure to display the student view
    *
    * Sample response
-   * The "questionId#" corresponds to the actual question id
-   *
+   * The 'questionId#' corresponds to the actual question id
    *  [
    *    {
    *      student: {User}
@@ -90,15 +102,22 @@ export default Ember.Component.extend({
    *
    * @return [] students performance info
    */
-  studentPerformanceList: Ember.computed("students.[]", "reportData.data", function(){
+  studentPerformanceList: Ember.computed('reportData.reportEvents', function(){
     const component = this;
-    const students = component.get("students");
-    const reportData = component.get("reportData.data");
-    return students.map(function(student){
-      let studentReportData = reportData[student.get("id")] || {};
+    const reportEvents = component.get('reportData.reportEvents');
+    return reportEvents.map(function(studentData){
+      let student = {
+        id: studentData.get('profileId')
+      };
+
+      let studentReportData = {};
+      studentData.get('questionResults').forEach(function(result) {
+        studentReportData[result.id] = result;
+      });
+
       let studentResourceResults = component.getReportDataResults(studentReportData);
       return Ember.Object.create({
-        student: student,
+        student,
         reportData: studentResourceResults,
         score: correctPercentage(studentResourceResults)
       });
@@ -106,24 +125,12 @@ export default Ember.Component.extend({
   }),
 
   /**
-   * Indicate if the table is to be sorted alphabetically using the students full name, if not, sort by average of score.
-   *
-   * @property {Boolean}
-   */
-  sortAlphabetically: false,
-
-  /**
    * Array containing the criteria that controls the sorting, default is sort alphabetically, default is defined by property '@sortAlphabetically'
    *
    * @property {Array}
    */
-  studentPerformanceListSorting: ['score:desc','student.fullName'],
-  /**
-   * Property containing t he sorted list
-   *
-   * @property {Ember.computed}
-   */
-  sortedStudentPerformance: Ember.computed.sort('studentPerformanceList', 'studentPerformanceListSorting'),
+  studentPerformanceListSorting: ['score:desc', 'student.fullName'],
+
   // -------------------------------------------------------------------------
   // Methods
 
@@ -142,13 +149,10 @@ export default Ember.Component.extend({
    * @param {Object} studentReportData
    * @returns {QuestionResult[]}
    */
-  getReportDataResults: function(studentReportData){
-    const component = this;
-    const questions = component.get("assessment.resources");
-
-    return questions.map(function(question){
-      return studentReportData[question.get("id")];
-    });
-  }
+   getReportDataResults: function(studentReportData){
+     const component = this;
+     const questions = component.get('assessment.resources');
+     return questions.map(question => studentReportData[question.get('id')]);
+   }
 
 });

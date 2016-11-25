@@ -1356,12 +1356,18 @@ export default {
     }
   },
   "assign-students":{
+    "assessment-settings":"Assessments Settings",
     "assign-assessment-modal-title":"Assign assessments to Students",
+    "available-from":"Available from:",
+    "date":"date",
+    "due-date":"Due date:",
+    "time":"time",
     "title":"Title: {{title}}",
     "search-by-name":"Search by name",
     "select-all":"Select all ({{count}})",
     "select-students":"Select students",
-    "selected-count":"Selected {{selected}} of {{total}}"
+    "selected-count":"Selected {{selected}} of {{total}}",
+    "students-roster":"Students Roster"
   },
   "assignments-view":{
     actions:"Actions",

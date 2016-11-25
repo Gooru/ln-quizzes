@@ -31,6 +31,12 @@ export default Ember.Component.extend({
       this.set('areAllSelected',!this.get('areAllSelected'));
       this.get('students').forEach(student => student.set('isAssigned', content.get('areAllSelected')));
     },
+
+    selectOption: function (type) {
+      this.set('showAssessmentSetting', type === 'assessmentSettings');
+      this.set('showStudentRoster', type === 'studentRoster');
+    },
+
     /***
      * Search student
      */
@@ -83,6 +89,7 @@ export default Ember.Component.extend({
     $('.search-box').on('keyup', function(){
       component.searchStudent();
     });
+   component.setDatePicker();
   },
 
   // -------------------------------------------------------------------------
@@ -105,6 +112,17 @@ export default Ember.Component.extend({
    * Student List
    */
   students:[],
+  /**
+   * Indicates when then assessments settings are visible
+   * @property {boolean}
+   */
+  showAssessmentSetting: true,
+
+  /**
+   * Indicates when then student roster are visible
+   * @property {boolean}
+   */
+  showStudentRoster: false,
   /**
    * The owner of the context
    */
@@ -131,5 +149,27 @@ export default Ember.Component.extend({
         $(this).hide();
       }
     });
+  },
+  /**
+   * Set date picker component
+   */
+  setDatePicker:function(){
+    $('#available-date,#due-date').datepicker({
+      autoclose: true,
+      startDate: new Date()
+    });
+    $('#available-time,#due-time').timepicker({
+      'showDuration': true,
+      'timeFormat': 'g:ia',
+      //'minTime': this.getHours(), TODO validations
+      'maxTime': '12:00pm'
+    });
   }
+  //TODO Validations
+  //getHours:function(){
+  //  var date = new Date();
+  //  var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
+  //  var period = date.getHours() >= 12 ? 'pm' : 'am';
+  //  return `${hour}:${date.getMinutes()}${period}`;
+  //}
 });

@@ -1,95 +1,147 @@
-/*import Ember from 'ember';
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { GRADING_SCALE } from 'quizzes/config/config';
+import Collection from 'quizzes/models/collection/collection';
+import Resource from 'quizzes/models/resource/resource';
 import QuestionResult from 'quizzes/models/result/question';
-import UserResourcesResult from 'quizzes/models/result/user-resources';
 import ReportData from 'quizzes/models/result/report-data';
+import ReportDataEvent from 'quizzes/models/result/report-data-event';
 
 moduleForComponent('reports/class-assessment/gru-summary', 'Integration | Component | reports/class assessment/gru summary', {
   integration: true,
   beforeEach: function () {
     this.inject.service('i18n');
   }
-});*/
+});
 
-/* TODO review when player is working
 test('it renders', function (assert) {
-
-  var assessment = Ember.Object.create({
+  let collection = Collection.create({
     resources: [
-      Ember.Object.create({
-        "id": "56a120483b6e7b090501d3e7",
-        "order": 1
+      Resource.create({
+        id: '56a120483b6e7b090501d3e7',
+        sequence: 1
       }),
-      Ember.Object.create({
-        "id": "56a1204886b2e565e1b2c230",
-        "order": 3
+      Resource.create({
+        id: '56a1204886b2e565e1b2c230',
+        sequence: 3
       }),
-      Ember.Object.create({
-        "id": "56a12048ddee2022a741356a",
-        "order": 2
+      Resource.create({
+        id: '56a12048ddee2022a741356a',
+        sequence: 2
       })
     ]
   });
 
-  var students = Ember.A([
-    Ember.Object.create({"id": "56983a9060a68052c1ed934c"}),
-    Ember.Object.create({"id": "56983a90fb01fecc328e2388"}),
-    Ember.Object.create({"id": "56983a906596902edadedc7c"}),
-    Ember.Object.create({"id": "56983a9082f705e65f2fe607"})
-  ]);
-
-  var reportData = ReportData.create({
-    students: students,
-    resources: assessment.get("resources")
+  let reportData = ReportData.create({
+    collection,
+    reportEvents: [
+      ReportDataEvent.create({
+        profileId: '56983a9060a68052c1ed934c',
+        resourceResults: Ember.A([
+          QuestionResult.create({
+            resourceId: '56a120483b6e7b090501d3e7',
+            score: 0,
+            reaction: 1,
+            savedTime: 1216,
+            answer: 1
+          }),
+          QuestionResult.create({
+            resourceId: '56a1204886b2e565e1b2c230',
+            score: 100,
+            reaction: 2,
+            savedTime: 2458,
+            answer: 1
+          }),
+          QuestionResult.create({
+            resourceId: '56a12048ddee2022a741356a',
+            score: 100,
+            reaction: 3,
+            savedTime: 1433,
+            answer: 1
+          })
+        ])
+      }),
+      ReportDataEvent.create({
+        profileId: '56983a90fb01fecc328e2388',
+        resourceResults: Ember.A([
+          QuestionResult.create({
+            resourceId: '56a120483b6e7b090501d3e7',
+            score: 0,
+            reaction: 5,
+            savedTime: 1216,
+            answer: 1
+          }),
+          QuestionResult.create({
+            resourceId: '56a12048ddee2022a741356a',
+            score: 100,
+            reaction: 3,
+            savedTime: 1433,
+            answer: 1
+          })
+        ])
+      }),
+      ReportDataEvent.create({
+        profileId: '56983a906596902edadedc7c',
+        resourceResults: Ember.A([
+          QuestionResult.create({
+            resourceId: '56a120483b6e7b090501d3e7',
+            score: 0,
+            reaction: 1,
+            savedTime: 1216,
+            answer: 1
+          }),
+          QuestionResult.create({
+            resourceId: '56a1204886b2e565e1b2c230',
+            score: 100,
+            reaction: 5,
+            savedTime: 2458,
+            answer: 1
+          }),
+          QuestionResult.create({
+            resourceId: '56a12048ddee2022a741356a',
+            score: 100,
+            reaction: 5,
+            savedTime: 1433,
+            answer: 1
+          })
+        ])
+      }),
+      ReportDataEvent.create({
+        profileId: '56983a9082f705e65f2fe607',
+        resourceResults: Ember.A([
+          QuestionResult.create({
+            resourceId: '56a120483b6e7b090501d3e7',
+            score: 100,
+            reaction: 4,
+            savedTime: 1216,
+            answer: 1
+          }),
+          QuestionResult.create({
+            resourceId: '56a1204886b2e565e1b2c230',
+            score: 100,
+            reaction: 4,
+            savedTime: 2458,
+            answer: 1
+          }),
+          QuestionResult.create({
+            resourceId: '56a12048ddee2022a741356a',
+            score: 100,
+            reaction: 3,
+            savedTime: 1433,
+            answer: 1
+          })
+        ])
+      })
+    ]
   });
 
-  reportData.merge([
-    UserResourcesResult.create({
-      user: "56983a9060a68052c1ed934c",
-      resourceResults: Ember.A([
-        QuestionResult.create({resourceId: "56a120483b6e7b090501d3e7", "correct": false, "reaction": 1, "timeSpent": 1216, "userAnswer": 1}),
-        QuestionResult.create({resourceId: "56a1204886b2e565e1b2c230", "correct": true, "reaction": 2, "timeSpent": 2458, "userAnswer": 1}),
-        QuestionResult.create({resourceId: "56a12048ddee2022a741356a", "correct": true, "reaction": 3, "timeSpent": 1433, "userAnswer": 1})
-      ])
-    }),
-    UserResourcesResult.create({
-      user: "56983a90fb01fecc328e2388",
-      resourceResults: Ember.A([
-        QuestionResult.create({resourceId: "56a120483b6e7b090501d3e7", "correct": false, "reaction": 5, "timeSpent": 1216, "userAnswer": 1}),
-        QuestionResult.create({resourceId: "56a1204886b2e565e1b2c230"}),
-        QuestionResult.create({resourceId: "56a12048ddee2022a741356a", "correct": true, "reaction": 3, "timeSpent": 1433, "userAnswer": 1})
-      ])
-    }),
-    UserResourcesResult.create({
-      user: "56983a906596902edadedc7c",
-      resourceResults: Ember.A([
-        QuestionResult.create({resourceId: "56a120483b6e7b090501d3e7", "correct": false, "reaction": 1, "timeSpent": 1216, "userAnswer": 1}),
-        QuestionResult.create({resourceId: "56a1204886b2e565e1b2c230", "correct": true, "reaction": 5, "timeSpent": 2458, "userAnswer": 1}),
-        QuestionResult.create({resourceId: "56a12048ddee2022a741356a", "correct": true, "reaction": 5, "timeSpent": 1433, "userAnswer": 1})
-      ])
-    }),
-    UserResourcesResult.create({
-      user: "56983a9082f705e65f2fe607",
-      resourceResults: Ember.A([
-        QuestionResult.create({resourceId: "56a120483b6e7b090501d3e7", "correct": true, "reaction": 4, "timeSpent": 1216, "userAnswer": 1}),
-        QuestionResult.create({resourceId: "56a1204886b2e565e1b2c230", "correct": true, "reaction": 4, "timeSpent": 2458, "userAnswer": 1}),
-        QuestionResult.create({resourceId: "56a12048ddee2022a741356a", "correct": true, "reaction": 3, "timeSpent": 1433, "userAnswer": 1})
-      ])
-    })
-  ]);
-
   this.setProperties({
-    assessment: assessment,
-    students: students,
     reportData: reportData,
     showAllQuestions: true
   });
 
   this.render(hbs`{{ reports/class-assessment/gru-summary
-    assessment=assessment
-    students=students
     reportData=reportData
     isQuestionView=showAllQuestions }}`);
 
@@ -97,7 +149,7 @@ test('it renders', function (assert) {
   assert.ok($component.length, 'Component has component classes');
 
   // Overview -Circular charts
-  var $overview = $component.find('.overview');
+  let $overview = $component.find('.overview');
 
   assert.equal($overview.length, 2,
     'The charts are rendered in 2 containers -one is for the collapsed view of the questions; the other one is for the expanded view');
@@ -136,15 +188,15 @@ test('it renders', function (assert) {
   // Layout of the first question
   const $firstQuestion = $questions.first();
 
-  var $incorrectBar = $firstQuestion.find('.gru-x-bar-chart .segment:first');
+  let $incorrectBar = $firstQuestion.find('.gru-x-bar-chart .segment:first');
   assert.ok($incorrectBar.attr('style').split(';')[0].indexOf(GRADING_SCALE[0].COLOR) > 0, 'First question -first segment, correct color');
   assert.ok($incorrectBar.attr('style').split(';')[1].indexOf('75%') > 0, 'First question -first segment, correct percentage');
 
-  var $correctBar = $firstQuestion.find('.gru-x-bar-chart .segment:last');
+  let $correctBar = $firstQuestion.find('.gru-x-bar-chart .segment:last');
   assert.ok($correctBar.attr('style').split(';')[0].indexOf(GRADING_SCALE[GRADING_SCALE.length - 1].COLOR) > 0, 'First question -second segment, correct color');
   assert.ok($correctBar.attr('style').split(';')[1].indexOf('25%') > 0, 'First question -second segment, correct percentage');
 
-  var $ratio = $firstQuestion.find('.ratio');
+  let $ratio = $firstQuestion.find('.ratio');
   assert.equal($ratio.find('span:first').text(), '4', 'First question -correct number of students that have completed');
   assert.equal($ratio.find('span:last').text(), '4', 'First question -correct number of total students');
 
@@ -162,4 +214,4 @@ test('it renders', function (assert) {
   assert.equal($ratio.find('span:last').text(), '4', 'Second question -correct number of total students');
 
   assert.ok($component.find('.grading-scale-legend').length, 'Component has a grading scale legend');
-});*/
+});

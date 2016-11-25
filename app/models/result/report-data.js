@@ -46,10 +46,21 @@ export default Ember.Object.extend({
   /**
    * @property {string[]} studentIds - List of student ids
    */
-  studentIds: Ember.computed('reportEvents', function () {
-    return this.get('reportEvents').map(function (student) {
-      return student.get('profileId');
-    });
+  students: Ember.computed('reportEvents', function () {
+    return this.get('reportEvents').map(
+      student => Ember.Object.create({
+        id: student.get('profileId'),
+        code: student.get('profileCode'),
+        fullName: student.get('profileName')
+      })
+    );
+  }),
+
+  /**
+   * @property {string[]} studentIds - List of student ids
+   */
+  studentIds: Ember.computed('students', function () {
+    return this.get('students').map(student => student.get('id'));
   })
 
   // -------------------------------------------------------------------------

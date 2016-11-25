@@ -64,8 +64,8 @@ test('Narration', function (assert) {
 
   const resourceMockA = Ember.Object.create({
     id: 1,
-    'name': 'Resource #3',
-    'type': 'question',
+    name: 'Resource #3',
+    type: 'question',
     narration: 'Some narration message here',
     owner: {
       avatarUrl: '76514d68-5f4b-48e2-b4bc-879b745f3d70.png'

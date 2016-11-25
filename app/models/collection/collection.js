@@ -7,6 +7,11 @@ import Ember from 'ember';
 export default Ember.Object.extend({
 
   /**
+   * @property {[]}
+   */
+  attempts:[],
+
+  /**
    * @property {string}
    */
   id: null,
@@ -27,6 +32,11 @@ export default Ember.Object.extend({
   isCollection: null,
 
   /**
+   * @property {[]}
+   */
+  questions: [],
+
+  /**
    * @property {number} Total of resources in the collection
    */
   resourceCount: Ember.computed.readOnly('resources.length'),
@@ -37,27 +47,27 @@ export default Ember.Object.extend({
   resources: Ember.A(),
 
   /**
+   * @property {Array} List of resources associated to the collection
+   */
+  resourcesSorted: Ember.computed('resources', function() {
+    let resources = this.get('resources');
+    return resources.sortBy('sequence');
+  }),
+
+  /**
+   * @property {Object}
+   */
+  settings: null,
+
+  /**
    * @property {string} Collection's title
    */
   title: null,
 
   /**
-   * @property {[]}
-   */
-  attempts:[],
-  /**
    * @property {number}
    */
   totalAttempts: Ember.computed.alias('attempts.length'),
-
-  /**
-   * @property {[]}
-   */
-  questions:[],
-  /**
-   * @property {Object}
-   */
-  settings:null,
 
   /**
    * Gets the next resource based on the resource provided

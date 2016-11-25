@@ -31,7 +31,6 @@ export default Ember.Component.extend({
    */
   i18n: Ember.inject.service(),
 
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -159,7 +158,7 @@ export default Ember.Component.extend({
   /**
    * @prop { User[] } students - Students taking the assessment
    */
-  students: Ember.computed.alias('reportData.studentIds'),
+  students: Ember.computed.alias('reportData.students'),
 
   /**
    * @prop { String? } studentsHeader - Header for the students names

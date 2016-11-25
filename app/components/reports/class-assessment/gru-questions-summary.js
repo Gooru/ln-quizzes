@@ -119,8 +119,7 @@ export default Ember.Component.extend({
           data: [{
             color: failColor,
             percentage: roundFloat(dataObj.incorrect / dataObj.total * 100, 1)
-          },
-          {
+          }, {
             color: correctColor,
             percentage: roundFloat(dataObj.correct / dataObj.total * 100, 1)
           }],

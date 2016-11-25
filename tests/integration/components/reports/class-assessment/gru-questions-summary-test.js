@@ -8,26 +8,22 @@ moduleForComponent('reports/class-assessment/gru-questions-summary', 'Integratio
 
 test('it renders all questions', function (assert) {
 
-  var questionsData = [
-    {
-      id: 1,
-      correct: 3,
-      incorrect: 4,
-      total: 12
-    },
-    {
-      id: 2,
-      correct: 6,
-      incorrect: 2,
-      total: 12
-    },
-    {
-      id: 3,
-      correct: 4,
-      incorrect: 5,
-      total: 12
-    }
-  ];
+  let questionsData = [{
+    id: 1,
+    correct: 3,
+    incorrect: 4,
+    total: 12
+  }, {
+    id: 2,
+    correct: 6,
+    incorrect: 2,
+    total: 12
+  }, {
+    id: 3,
+    correct: 4,
+    incorrect: 5,
+    total: 12
+  }];
 
   this.set('questionsData', questionsData);
 
@@ -42,20 +38,17 @@ test('it renders all questions', function (assert) {
 
 test('it renders the question charts correctly', function (assert) {
 
-  var questionsData = [
-    {
-      id: 1,
-      correct: 5,
-      incorrect: 5,
-      total: 10
-    },
-    {
-      id: 2,
-      correct: 6,
-      incorrect: 3,
-      total: 10
-    }
-  ];
+  let questionsData = [{
+    id: 1,
+    correct: 5,
+    incorrect: 5,
+    total: 10
+  }, {
+    id: 2,
+    correct: 6,
+    incorrect: 3,
+    total: 10
+  }];
 
   this.set('questionsData', questionsData);
 
@@ -82,26 +75,22 @@ test('it renders the question charts correctly', function (assert) {
 test('it renders some of the questions and a \'view more\' button if the container is not wide enough to show all questions', function (assert) {
   assert.expect(4);
 
-  var questionsData = [
-    {
-      id: 1,
-      correct: 3,
-      incorrect: 4,
-      total: 12
-    },
-    {
-      id: 2,
-      correct: 6,
-      incorrect: 2,
-      total: 12
-    },
-    {
-      id: 3,
-      correct: 4,
-      incorrect: 5,
-      total: 12
-    }
-  ];
+  let questionsData = [{
+    id: 1,
+    correct: 3,
+    incorrect: 4,
+    total: 12
+  }, {
+    id: 2,
+    correct: 6,
+    incorrect: 2,
+    total: 12
+  }, {
+    id: 3,
+    correct: 4,
+    incorrect: 5,
+    total: 12
+  }];
 
   this.set('questionsData', questionsData);
 
@@ -134,26 +123,22 @@ test('it renders some of the questions and a \'view more\' button if the contain
 
 test('it can be forced to show all questions even if the container is not wide enough to show all of them', function (assert) {
 
-  var questionsData = [
-    {
-      id: 1,
-      correct: 3,
-      incorrect: 4,
-      total: 12
-    },
-    {
-      id: 2,
-      correct: 6,
-      incorrect: 2,
-      total: 12
-    },
-    {
-      id: 3,
-      correct: 4,
-      incorrect: 5,
-      total: 12
-    }
-  ];
+  let questionsData = [{
+    id: 1,
+    correct: 3,
+    incorrect: 4,
+    total: 12
+  }, {
+    id: 2,
+    correct: 6,
+    incorrect: 2,
+    total: 12
+  }, {
+    id: 3,
+    correct: 4,
+    incorrect: 5,
+    total: 12
+  }];
 
   this.set('questionsData', questionsData);
 
@@ -184,7 +169,7 @@ test('it can be forced to show all questions even if the container is not wide e
   assert.equal($component.find('ol li').length, 3, 'Component shows all the items');
   assert.ok($viewMoreButton.hasClass('keyboard_arrow_left'), 'Button should indicate that less questions can be viewed');
 
-  // Setting the variable back to false should restore back to the original state
+  // Setting the letiable back to false should restore back to the original state
   this.set('viewAllQuestions', false);
   assert.equal($component.find('ol li').length, 2, 'Component correctly reduces the number of items visible');
   assert.ok($viewMoreButton.hasClass('keyboard_arrow_right'), 'Button should indicate again that more questions can be viewed');
@@ -193,28 +178,23 @@ test('it can be forced to show all questions even if the container is not wide e
 test('it calls an external action when any of the questions is clicked', function (assert) {
   assert.expect(2);
 
-  var numClicks = 1;
-
-  var questionsData = [
-    {
-      id: 1,
-      correct: 3,
-      incorrect: 4,
-      total: 12
-    },
-    {
-      id: 2,
-      correct: 6,
-      incorrect: 2,
-      total: 12
-    },
-    {
-      id: 3,
-      correct: 4,
-      incorrect: 5,
-      total: 12
-    }
-  ];
+  let numClicks = 1;
+  let questionsData = [{
+    id: 1,
+    correct: 3,
+    incorrect: 4,
+    total: 12
+  }, {
+    id: 2,
+    correct: 6,
+    incorrect: 2,
+    total: 12
+  }, {
+    id: 3,
+    correct: 4,
+    incorrect: 5,
+    total: 12
+  }];
 
   this.set('questionsData', questionsData);
 

@@ -54,12 +54,11 @@ export default Ember.Component.extend({
    * - correct: number of questions that the student has answered correctly
    * - incorrect: number of questions that the student has answered incorrectly
    */
-  answersData: Ember.computed('reportData.data', function () {
-    const profileEvents = this.get('reportData.profileEvents');
+  answersData: Ember.computed('reportData.reportEvents', function () {
+    const reportEvents = this.get('reportData.reportEvents');
 
     let answers = [];
-
-    profileEvents.forEach(function (reportEvent) {
+    reportEvents.forEach(function (reportEvent) {
       let answerCounter = {
         correct: 0,
         incorrect: 0
@@ -86,7 +85,7 @@ export default Ember.Component.extend({
    */
   assessmentQuestionsIds: Ember.computed('assessment.resources.[]', function () {
 
-    let questions = this.get('assessment.resources').map(function (question) {
+    let questions = this.get('assessment.resourcesSorted').map(function (question) {
       // Copy only the most important properties of the resources array
       return {
         id: question.id,
@@ -174,14 +173,13 @@ export default Ember.Component.extend({
       questions.push(questionCounter);
 
       reportEvents.forEach(function (student) {
-        let resourceResults = student.get('events').filter(result => result.id === question);
+        let resourceResults = student.get('resourceResults').filter(result => result.resourceId === question);
         resourceResults.forEach(questionResult => {
           questionCounter.correct += questionResult.get('correct') ? 1 : 0;
           questionCounter.incorrect += questionResult.get('incorrect') ? 1 : 0;
         });
       });
     });
-
     return questions;
   }),
 

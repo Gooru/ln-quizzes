@@ -43,10 +43,16 @@ export default Ember.Object.extend({
   /**
    * @property {string} profileId student's id
    */
-  profileId: null
+  profileId: null,
 
+  /**
+   * @property {string} profileCode student's anonymous code
+   */
+  profileCode: null,
 
-  // -------------------------------------------------------------------------
-  // Methods
+  /**
+   * @property {string} profileName student's name
+   */
+  profileName: null
 
 });

@@ -1,9 +1,26 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
+import Resource from 'quizzes/models/resource/resource';
 
 moduleFor('model:collection/collection', 'Unit | Model | collection/collection', {
   unit: true
 });
+
+test('resourcesSorted', function (assert) {
+  assert.expect(3);
+  let model = this.subject({
+    resources: [
+      Resource.create({ id: 'resource-1', sequence: 1 }),
+      Resource.create({ id: 'resource-2', sequence: 3 }),
+      Resource.create({ id: 'resource-3', sequence: 2 })
+    ]
+  });
+
+  assert.equal(model.get('resourcesSorted')[0].get('id'), 'resource-1', 'Wrong first resource');
+  assert.equal(model.get('resourcesSorted')[1].get('id'), 'resource-3', 'Wrong second resource');
+  assert.equal(model.get('resourcesSorted')[2].get('id'), 'resource-2', 'Wrong third resource');
+});
+
 test('totalAttempts', function (assert) {
   assert.expect(1);
   let model = this.subject({

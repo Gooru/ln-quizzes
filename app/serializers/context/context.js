@@ -124,6 +124,8 @@ export default Ember.Object.extend({
       reportEvent => ReportDataEvent.create(Ember.getOwner(serializer).ownerInjection(), {
         currentResourceId: reportEvent.currentResourceId,
         profileId: reportEvent.profileId,
+        profileCode: reportEvent.profileCode,
+        profileName: reportEvent.profileName,
         resourceResults: serializer.normalizeResourceResults(reportEvent.events)
       })
     );

@@ -10,7 +10,7 @@ moduleForComponent('reports/class-assessment/gru-student-view', 'Integration | C
   integration: true
 });*/
 
-/* TODO review when player is working
+/* TODO QZ-210
 test('Layout', function (assert) {
 
   var assessment = Ember.Object.create({

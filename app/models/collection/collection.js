@@ -48,7 +48,7 @@ export default Ember.Object.extend({
   /**
    * @property {number}
    */
-  totalAttempts:Ember.computed.alias('attempts.length'),
+  totalAttempts: Ember.computed.alias('attempts.length'),
 
   /**
    * @property {[]}

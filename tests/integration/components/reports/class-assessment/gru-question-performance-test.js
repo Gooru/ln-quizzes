@@ -10,7 +10,7 @@ moduleForComponent('reports/class-assessment/gru-question-performance', 'Integra
   integration: true
 });*/
 
-/* TODO review when player is working
+/* TODO Fix on QZ-176
 test('When students has no answers yet', function (assert) {
   const selectedQuestion = Ember.Object.create({ //Single Choice
     "id": "569906aa20b7dfae1bcd5262",

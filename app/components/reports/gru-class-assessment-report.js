@@ -38,6 +38,7 @@ export default Ember.Component.extend(ModalMixin, {
       let reportData = this.get('reportData');
       let assessment = this.get('assessment');
       let resourceResults = reportData.getResultsByStudent(studentId);
+
       resourceResults.forEach(function(resourceResult){
         let resource = assessment.get('resources').findBy('id', resourceResult.get('resourceId'));
         resourceResult.set('resource', resource);
@@ -57,25 +58,25 @@ export default Ember.Component.extend(ModalMixin, {
       };
       this.actions.showModal.call(this,
         'reports.gru-assessment-report', modalModel, null, 'gru-assessment-report-modal', true);
+    },
+
+    /**
+     * When showing the question details
+     * @param {string} questionId
+     */
+    viewQuestionDetail: function (questionId) {
+      Ember.Logger.debug(`Assessment report: question with ID ${questionId} was selected`);
+
+      let question = this.get('assessment.resources').findBy('id', questionId);
+      let modalModel = {
+        anonymous: this.get('anonymous'),
+        selectedQuestion: question,
+        reportData: this.get('reportData')
+      };
+      // TODO QZ-176 question report
+      this.actions.showModal.call(this,
+        'reports.class-assessment.gru-questions-detail', modalModel, null, 'gru-questions-detail-modal', true);
     }
-  },
-
-  /**
-   * When showing the question details
-   * @param {string} questionId
-   */
-  viewQuestionDetail: function (questionId) {
-    Ember.Logger.debug(`Assessment report: question with ID ${questionId} was selected`);
-
-    let question = this.get('assessment.resources').findBy('id', questionId);
-    let modalModel = {
-      anonymous: this.get('anonymous'),
-      selectedQuestion: question,
-      reportData: this.get('reportData')
-    };
-    // TODO QZ-176 question report
-    this.actions.showModal.call(this,
-      'reports.class-assessment.gru-questions-detail', modalModel, null, 'gru-questions-detail-modal', true);
   },
 
   // -------------------------------------------------------------------------
@@ -105,11 +106,6 @@ export default Ember.Component.extend(ModalMixin, {
    * @property { ReportData } report data
    */
   reportData: null,
-
-  /**
-   * @prop { User[] } students - Group of students taking an assessment
-   */
-  students: Ember.computed.alias('reportData.studentIds'),
 
   /**
    * @prop { boolean } isRealTime - if the report is a real time report

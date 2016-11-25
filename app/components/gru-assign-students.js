@@ -33,8 +33,8 @@ export default Ember.Component.extend({
     },
 
     selectOption: function (type) {
-      this.set("showAssessmentSetting", type === "assessmentSettings");
-      this.set("showStudentRoster", type === "studentRoster");
+      this.set('showAssessmentSetting', type === 'assessmentSettings');
+      this.set('showStudentRoster', type === 'studentRoster');
     },
 
     /***

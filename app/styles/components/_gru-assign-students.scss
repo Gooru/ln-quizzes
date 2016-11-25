@@ -38,7 +38,7 @@
     padding: 10px;
     border-radius: 6px;
     background-color:$light-100;
-    max-height: 555px;
+    max-height: 480px;
     overflow: scroll;
     .select-all{
       &:hover{
@@ -85,7 +85,10 @@
       border: 1px solid $gray-light;
     }
   }
-  .available-from{
+  .available-from, .due-date{
+    .panel{
+      background-color:$light-100;
+    }
     span{
       display:block;
       margin-bottom:14px;
@@ -93,10 +96,8 @@
         vertical-align: bottom;
       }
     }
-    .date-picker{
-      padding-left:0px;
-    }
     .time-picker,.date-picker{
+      padding:0px;
       input{
         display: inline-block;
         width: 84%;

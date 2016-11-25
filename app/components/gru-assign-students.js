@@ -154,20 +154,22 @@ export default Ember.Component.extend({
    * Set date picker component
    */
   setDatePicker:function(){
-    $('#available-date').datepicker({
+    $('#available-date,#due-date').datepicker({
       autoclose: true,
       startDate: new Date()
     });
-    $('#available-time').timepicker({
+    $('#available-time,#due-time').timepicker({
       'showDuration': true,
       'timeFormat': 'g:ia',
-      'minTime': this.getHours()
+      //'minTime': this.getHours(), TODO validations
+      'maxTime': '12:00pm'
     });
-  },
-  getHours:function(){
-    var date = new Date();
-    var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
-    var period = date.getHours() >= 12 ? 'pm' : 'am';
-    return `${hour}:${date.getMinutes()}${period}`;
   }
+  //TODO Validations
+  //getHours:function(){
+  //  var date = new Date();
+  //  var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
+  //  var period = date.getHours() >= 12 ? 'pm' : 'am';
+  //  return `${hour}:${date.getMinutes()}${period}`;
+  //}
 });

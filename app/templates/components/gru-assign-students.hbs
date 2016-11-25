@@ -1,45 +1,97 @@
-<h5>{{t 'assign-students.title' title=assignment.title}}</h5>
-<div class="row">
-    <div class="students col-md-8 col-sm-8">
-        <div class="students-header">
-            <span>{{t 'assign-students.select-students'}}</span>
-            <div class="search-navigation pull-right">
-                <div class="search-keyword">
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active assessment-settings tab hidden-xs">
+        <a href="#assessmentSettings" aria-controls="assessmentSettings" role="tab" data-toggle="tab" {{action 'selectOption' 'assessmentSettings'}}>
+            <span class="lead">{{t 'assign-students.assessment-settings'}}</span>
+        </a>
+    </li>
+    <li role="presentation" class="student-roster tab hidden-xs">
+        <a href="#studentRoster" aria-controls="studentRoster" role="tab" data-toggle="tab" {{action 'selectOption' 'studentRoster'}}>
+            <span class="lead">{{t 'assign-students.students-roster'}}</span>
+        </a>
+    </li>
+</ul>
+<div class="content tab-content">
+    <div role="tabpanel" class="tab-pane row {{if showAssessmentSetting 'active'}}" id="assessments-settings">
+        <div class="row">
+            <div class="assessment-settings col-md-12 col-sm-12">
+              {{gru-assessment-settings}}
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane row {{if showStudentRoster 'active'}}" id="students-roster">
+        <h5>{{t 'assign-students.title' title=assignment.title}}</h5>
+        <div class="row">
+            <div class="students col-md-6 col-sm-6 col-xs-12">
+                <div class="students-header">
+                    <span>{{t 'assign-students.select-students'}}</span>
+                    <div class="search-navigation pull-right">
+                        <div class="search-keyword">
                     <span class="search-icon">
-                        {{gru-icon name='search'}}
+                      {{gru-icon name='search'}}
                     </span>
-                    <input type="text" class="search-box" placeholder={{t 'assign-students.search-by-name'}}/>
+                            <input type="text" class="search-box" placeholder={{t 'assign-students.search-by-name'}}/>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default list-container">
+                    <div class="panel panel-default select-all {{if areAllSelected 'selected'}}" {{action 'selectAll'}}>
+                        <div class="panel-body">
+                            <span>{{t 'assign-students.select-all' count=students.length}}</span>
+                        </div>
+                    </div>
+                    <div class="student-list list-group live-search-list">
+                      {{#each students as |student| }}
+                          <a class="list-group-item {{if student.isAssigned 'selected'}}" {{action 'selectStudent' student}}>
+                            {{student.lastName}}, {{student.firstName}}
+                            {{#if student.isAssigned}}
+                              {{gru-icon name='done'}}
+                            {{/if}}
+                          </a>
+                      {{/each}}
+                    </div>
+                </div>
+                <span class="selected-count">{{t 'assign-students.selected-count' selected=totalSelected total=students.length}}</span>
+            </div>
+            <div class="date-options col-md-6 col-sm-6 col-xs-12">
+                <div class="row available-from">
+                    <span>{{t 'assign-students.available-from'}}</span>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-md-6 col-sm-6 col-xs-6 date-picker">
+                                <span class="calendar">{{gru-icon name='event'}}</span>
+                                <input type='text' class="form-control" id='available-date' placeholder={{t 'assign-students.date'}}/>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 time-picker">
+                                <span class="clock">{{gru-icon name='access_time'}}</span>
+                                <input type='text' class="form-control" id='available-time' placeholder={{t 'assign-students.time'}}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row due-date">
+                    <span>{{t 'assign-students.due-date'}}</span>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-md-6 col-sm-6 col-xs-6 date-picker">
+                                <span class="calendar">{{gru-icon name='event'}}</span>
+                                <input type='text' class="form-control" id='due-date' placeholder={{t 'assign-students.date'}}/>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 time-picker">
+                                <span class="clock">{{gru-icon name='access_time'}}</span>
+                                <input type='text' class="form-control" id='due-time' placeholder={{t 'assign-students.time'}}/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-       <div class="panel panel-default list-container">
-           <div class="panel panel-default select-all {{if areAllSelected 'selected'}}" {{action 'selectAll'}}>
-               <div class="panel-body">
-                 <span>{{t 'assign-students.select-all' count=students.length}}</span>
-               </div>
-           </div>
-           <div class="student-list list-group live-search-list">
-             {{#each students as |student| }}
-                 <a class="list-group-item {{if student.isAssigned 'selected'}}" {{action 'selectStudent' student}}>
-                   {{student.lastName}}, {{student.firstName}}
-                   {{#if student.isAssigned}}
-                      {{gru-icon name='done'}}
-                   {{/if}}
-                 </a>
-             {{/each}}
-           </div>
-       </div>
-        <span class="selected-count">{{t 'assign-students.selected-count' selected=totalSelected total=students.length}}</span>
-    </div>
-    <div class="assessment-settings col-md-4 col-sm-4">
-      {{gru-assessment-settings}}
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="actions pull-right">
-            <button class="btn btn-default cancel-btn" {{action 'cancel'}}>{{t 'common.cancel'}}</button>
-            <button class="btn btn-default btn-primary assign-btn" {{action 'assignStudents'}}>{{t 'common.assign'}}</button>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="actions pull-right">
+                    <button class="btn btn-default cancel-btn" {{action 'cancel'}}>{{t 'common.cancel'}}</button>
+                    <button class="btn btn-default btn-primary assign-btn" {{action 'assignStudents'}}>{{t 'common.assign'}}</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

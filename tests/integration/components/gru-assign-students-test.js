@@ -40,6 +40,19 @@ test('Assign students Layout', function(assert) {
   assert.ok($assignStudentsComponent.find('.gru-assign-students .assessment-settings').length, 'Missing assessment settings');
   assert.ok($assignStudentsComponent.find('.gru-assign-students .actions .cancel-btn').length, 'Missing cancel button');
   assert.ok($assignStudentsComponent.find('.gru-assign-students .actions .assign-btn').length, 'Missing assign button');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .actions .cancel-btn').length, 'Missing cancel button');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .nav-tabs .assessment-settings').length, 'Missing Assessment Settings Tab');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster').length, 'Missing Student Roster Tab');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options').length, 'Missing Date Option section');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from').length, 'Missing Available From section');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from .date-picker .calendar').length, 'Missing Available from Calendar icon');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from .date-picker input').length, 'Missing Available from input date picker');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from .time-picker .clock').length, 'Missing Available from time icon');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from .time-picker input').length, 'Missing Available from input time picker');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date .date-picker .calendar').length, 'Missing Due date Calendar icon');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date .date-picker input').length, 'Missing Due date input date picker');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date .time-picker .clock').length, 'Missing Due date timer icon');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date .time-picker input').length, 'Missing Due date timer input');
 });
 test('Filter by name', function(assert) {
   var students = Ember.A([
@@ -63,11 +76,15 @@ test('Filter by name', function(assert) {
 
   this.render(hbs`{{gru-assign-students students=students}}`);
   var $assignStudentsComponent = this.$();
-  var $searchInput = $assignStudentsComponent.find('.gru-assign-students .students .students-header .search-navigation input');
-  $searchInput.val('firstname-2');
-  $searchInput.first().keyup();
+  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
   return wait().then(function () {
-    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item:visible').length,1, 'Should have only 1 student');
+    var $searchInput = $assignStudentsComponent.find('.gru-assign-students .students .students-header .search-navigation input');
+    $searchInput.val('firstname-2');
+    $searchInput.first().keyup();
+    return wait().then(function () {
+      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item:visible').length,1, 'Should have only 1 student');
+    });
   });
 });
 test('Select All Students', function(assert) {
@@ -92,11 +109,15 @@ test('Select All Students', function(assert) {
 
   this.render(hbs`{{gru-assign-students students=students}}`);
   var $assignStudentsComponent = this.$();
-  var $selectAll = $assignStudentsComponent.find('.gru-assign-students .students .list-container .select-all');
-  $selectAll.click();
+  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
   return wait().then(function () {
-    assert.ok($assignStudentsComponent.find('.gru-assign-students .list-container .select-all.selected').length, 'Select all button should be selected');
-    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,3, 'All students should be selected');
+    var $selectAll = $assignStudentsComponent.find('.gru-assign-students .students .list-container .select-all');
+    $selectAll.click();
+    return wait().then(function () {
+      assert.ok($assignStudentsComponent.find('.gru-assign-students .list-container .select-all.selected').length, 'Select all button should be selected');
+      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,3, 'All students should be selected');
+    });
   });
 });
 
@@ -122,15 +143,19 @@ test('Selected and Unselected Student', function(assert) {
 
   this.render(hbs`{{gru-assign-students students=students}}`);
   var $assignStudentsComponent = this.$();
-  var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(1)');
-  $student.click();
+  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
   return wait().then(function () {
-    assert.notOk($assignStudentsComponent.find('.gru-assign-students .list-container .select-all.selected').length, 'Select all button should not be selected');
-    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,1, 'Only one student should be selected');
     var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(1)');
     $student.click();
     return wait().then(function () {
-      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,0, 'All students should be unselected');
+      assert.notOk($assignStudentsComponent.find('.gru-assign-students .list-container .select-all.selected').length, 'Select all button should not be selected');
+      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,1, 'Only one student should be selected');
+      var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(1)');
+      $student.click();
+      return wait().then(function () {
+        assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,0, 'All students should be unselected');
+      });
     });
   });
 });
@@ -162,6 +187,10 @@ test('Cancel assign students', function(assert) {
   this.render(hbs`{{gru-assign-students students=students onCloseModal='parentAction'}}`);
 
   var $component = this.$(); //component dom element
-  var $cancelButton = $component.find(".actions .cancel-btn");
-  $cancelButton.click();
+  var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
+  return wait().then(function () {
+    var $cancelButton = $component.find(".actions .cancel-btn");
+    $cancelButton.click();
+  });
 });

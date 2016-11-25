@@ -147,7 +147,7 @@ module.exports = function(defaults) {
 
   app.import({
     development: 'bower_components/datepair.js/dist/datepair.js',
-    production:  'bower_components/datepair.js/dist/min/datepair.min.js'
+    production:  'bower_components/datepair.js/dist/datepair.min.js'
   });
 
   if (EmberApp.env() === 'test') {

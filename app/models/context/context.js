@@ -1,10 +1,22 @@
 import Ember from 'ember';
+import { validator, buildValidations } from 'ember-cp-validations';
+
+const Validations = buildValidations({
+  dueDate: {
+    validators: [
+      validator('date', {
+        after: Ember.computed.readOnly('model.availableDate'),
+        description: 'Date should be older than available date'
+      })
+    ]
+  }
+});
 
 /**
  * Context model
  * typedef {Object} Context
  */
-const Context = Ember.Object.extend( {
+const Context = Ember.Object.extend(Validations,{
 
   /**
    * @property {string}
@@ -35,6 +47,11 @@ const Context = Ember.Object.extend( {
    * @property {number}
    */
   createdDate:null,
+
+  /**
+   * @property {number}
+   */
+  availableDate:null,
 
   /**
    * @property {number}

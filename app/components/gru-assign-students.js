@@ -160,10 +160,10 @@ export default Ember.Component.extend({
     });
     $('#available-time,#due-time').timepicker({
       'showDuration': true,
-      'timeFormat': 'g:ia',
+      'timeFormat': 'g:i a',
       //'minTime': this.getHours(), TODO validations
       'maxTime': '12:00pm'
-    });
+    });;
   }
   //TODO Validations
   //getHours:function(){

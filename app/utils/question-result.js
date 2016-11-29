@@ -119,9 +119,7 @@ export function totalNotStarted(questionsResults) {
  * @prop {QuestionResult[]}
  */
 export function completedResults(questionsResults) {
-  return questionsResults.filter(function (questionResult) {
-      return questionResult.get('completed');
-    });
+  return questionsResults.filter(questionResult => questionResult.get('completed'));
 }
 
 /**
@@ -130,9 +128,7 @@ export function completedResults(questionsResults) {
  * @prop {QuestionResult[]}
  */
 export function answeredResults(questionsResults) {
-  return questionsResults.filter(function (questionResult) {
-      return questionResult.get('answered');
-    });
+  return questionsResults.filter(questionResult => questionResult.get('answered'));
 }
 
 /**
@@ -152,7 +148,5 @@ export function sortResults(questionsResults) {
 export function userAnswers(questionResults){
   let answered = answeredResults(questionResults);
   let sorted = sortResults(answered); //sort results by submitted at
-  return sorted.map(function(questionResult){
-    return questionResult.get('userAnswer');
-  });
+  return sorted.map(questionResult => questionResult.get('userAnswer'));
 }

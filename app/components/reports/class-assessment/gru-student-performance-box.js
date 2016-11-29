@@ -53,7 +53,7 @@ export default Ember.Component.extend({
    * It returns an object representing the status for each question
    * @property {[]} questions
    */
-  questions: Ember.computed('reportData.[]', function(){
+  questions: Ember.computed('reportData.[]', function() {
     let component = this;
     let reportData = component.get('reportData');
     return reportData.map(item => component.getQuestionStatus(item));
@@ -69,7 +69,7 @@ export default Ember.Component.extend({
   /**
    * @property {number} user assessment score
    */
-  score: Ember.computed('reportData.[]', function(){
+  score: Ember.computed('reportData.[]', function() {
     return correctPercentage(this.get('reportData'));
   }),
 
@@ -77,7 +77,7 @@ export default Ember.Component.extend({
    * Indicates if the assessment has been started
    * @property {number} started
    */
-  started: Ember.computed('reportData.[]', function(){
+  started: Ember.computed('reportData.[]', function() {
     return totalCompleted(this.get('reportData'));
   }),
 
@@ -97,7 +97,7 @@ export default Ember.Component.extend({
    * Indicates if the assessment has not started questions
    * @property {number} notStarted
    */
-  totalNotStarted:Ember.computed('reportData.[]', function(){
+  totalNotStarted: Ember.computed('reportData.[]', function(){
     return totalNotStarted(this.get('reportData'));
   }),
 

@@ -12,12 +12,9 @@
 @import 'mixins/gru-accordion';
 
 @import 'controllers/application';
-@import 'controllers/classes';
 
 @import 'controllers/assign';
-@import 'controllers/partials/player';
-@import 'controllers/reports/collection';
-@import 'controllers/reports/student-collection';
+@import 'controllers/reports/context';
 
 // TODO: update these components so they follow the naming conventions
 @import 'components/app-dropdown';

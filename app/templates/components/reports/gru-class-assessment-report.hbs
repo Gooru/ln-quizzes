@@ -8,4 +8,18 @@
 
   {{gru-view-layout-picker onViewLayoutChange='changeView'}}
 
+  {{ reports.class-assessment.gru-table-view
+    reportData=reportData
+    onSelectQuestion=(action 'viewQuestionDetail')
+    onSelectStudent=(action 'viewAssessmentReport')
+    anonymous=anonymous
+  }}
+
+  {{ reports.class-assessment.gru-student-view
+    anonymous=anonymous
+    reportData=reportData
+    onSelectQuestion=(action 'viewQuestionDetail')
+    onSelectStudent=(action 'viewAssessmentReport')
+  }}
+
 </div>

@@ -183,38 +183,25 @@ export default Ember.Component.extend({
    *             the question property's render function)
    */
   tableData: Ember.computed('anonymous', 'tableFrame', 'reportData.reportEvents', function () {
-    const studentsIds = this.get('studentsIds');
-    const studentsIdsLen = studentsIds.length;
-    const questionsIds = this.get('assessmentQuestionsIds');
-    const questionsIdsLen = questionsIds.length;
+    const students = this.get('students');
     const questionProperties = this.get('questionProperties');
     const questionPropertiesIds = this.get('questionPropertiesIds');
     const questionPropertiesIdsLen = questionPropertiesIds.length;
-    const reportData = this.get('reportData.reportEvents');
+    const reportDataEvents = this.get('reportData.reportEvents');
 
     // Copy the table frame contents
     let data = this.get('tableFrame').slice(0);
     let totalIndex, propertyValues;
 
-    // Get the value of each question property, for each question, for each student
-    for (let i = 0; i < studentsIdsLen; i++) {
-
-      // Array for storing all values of the same question property
+    reportDataEvents.forEach(function(reportEvent, i) {
       propertyValues = [];
       for (let k = 0; k < questionPropertiesIdsLen; k++) {
         // Put all values for the same property into an array
         propertyValues[k] = [];
       }
-
-      for (let j = 0; j < questionsIdsLen; j++) {
-        if (questionsIds[j] === -1) {
-          // Save this position to fill it in last (cells with propertyValues)
-          totalIndex = j;
-          continue;
-        }
+      reportEvent.get('resourceResults').forEach(function(questionResult, j) {
         for (let k = 0; k < questionPropertiesIdsLen; k++) {
           let renderFunction = questionProperties[k].renderFunction;
-          let questionResult = reportData[studentsIds[i]][questionsIds[j]];
           let value = questionResult[questionPropertiesIds[k]];
 
           data[i].content[j * questionPropertiesIdsLen + k] = {
@@ -224,23 +211,22 @@ export default Ember.Component.extend({
 
           propertyValues[k].push(questionResult);
         }
-      }
+        // Compute the aggregate values
+        for (let k = 0; k < questionPropertiesIdsLen; k++) {
+          // Set the value in the aggregate (totals) column;
+          let value = questionProperties[k].aggregateFunction(propertyValues[k]);
+          let aggregateRenderFunction = questionProperties[k].aggregateRenderFunction;
 
-      // Compute the aggregate values
-      for (let k = 0; k < questionPropertiesIdsLen; k++) {
-        // Set the value in the aggregate (totals) column;
-        let value = questionProperties[k].aggregateFunction(propertyValues[k]);
-        let aggregateRenderFunction = questionProperties[k].aggregateRenderFunction;
-
-        // For displaying the aggregate value, use the question property's aggregateRenderFunction.
-        // If there's no aggregateRenderFunction, use the property's renderFunction by default.
-        data[i].content[totalIndex * questionPropertiesIdsLen + k] = {
-          value: value,
-          output: (aggregateRenderFunction) ? aggregateRenderFunction(value) :
-            questionProperties[k].renderFunction(value)
-        };
-      }
-    }
+          // For displaying the aggregate value, use the question property's aggregateRenderFunction.
+          // If there's no aggregateRenderFunction, use the property's renderFunction by default.
+          data[i].content[totalIndex * questionPropertiesIdsLen + k] = {
+            value: value,
+            output: (aggregateRenderFunction) ? aggregateRenderFunction(value) :
+              questionProperties[k].renderFunction(value)
+          };
+        }
+      });
+    });
 
     return data;
   }),

@@ -83,7 +83,7 @@ export default Ember.Component.extend({
 
   /**
    * @property {Number} itemsPerColumn - Maximum number of items per column
-   * This value *must* match the value of the css letiable $questions-per-column
+   * This value *must* match the value of the css variable $questions-per-column
    * @see /app/styles/components/reports/class-assessment/_gru-questions-summary.scss
    */
   itemsPerColumn: 5,

@@ -43,6 +43,8 @@ test('Default Layout', function (assert) {
       ReportDataEvent.create({
         currentResourceId: 'resource-1-id',
         profileId: 'user-1-id',
+        profileName: 'user-1-name',
+        profileCode: 'user-1-code',
         resourceResults: Ember.A([
           QuestionResult.create({
             correct: true,
@@ -61,6 +63,8 @@ test('Default Layout', function (assert) {
       ReportDataEvent.create({
         currentResourceId: 'resource-1-id',
         profileId: 'user-2-id',
+        profileName: 'user-2-name',
+        profileCode: 'user-2-code',
         resourceResults: Ember.A([
           QuestionResult.create({
             correct: true,
@@ -95,8 +99,8 @@ test('Default Layout', function (assert) {
   assert.ok($viewContainer.hasClass('student-view'), 'Student view should be selected by default');
 
   T.exists(assert, $viewContainer.find('.gru-view-layout-picker'), 'Missing gru view layout picker');
-  //T.exists(assert, $viewContainer.find('.gru-table-view'), 'Missing table view');
-  //T.exists(assert, $viewContainer.find('.gru-student-view'), 'Missing student view');
+  T.exists(assert, $viewContainer.find('.gru-table-view'), 'Missing table view');
+  T.exists(assert, $viewContainer.find('.gru-student-view'), 'Missing student view');
 
   //click at the view layout picker - thumbnails view
   $viewContainer.find('.gru-view-layout-picker .view-option.thumbnails a').click();

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import QuestionResult from 'quizzes/models/result/question';
 import { correctPercentage } from 'quizzes/utils/question-result';
 
 export default Ember.Component.extend({
@@ -102,17 +103,32 @@ export default Ember.Component.extend({
    *
    * @return [] students performance info
    */
-  studentPerformanceList: Ember.computed('reportData.reportEvents', function(){
+  studentPerformanceList: Ember.computed('reportData.reportEvents.[]', function(){
     const component = this;
     const reportEvents = component.get('reportData.reportEvents');
-    return reportEvents.map(function(studentData){
+    return reportEvents.map(function(studentData) {
       let student = {
-        id: studentData.get('profileId')
+        id: studentData.get('profileId'),
+        fullName: studentData.get('profileName'),
+        code: studentData.get('profileCode')
       };
 
-      let studentReportData = {};
-      studentData.get('questionResults').forEach(function(result) {
-        studentReportData[result.id] = result;
+      let studentReportData = studentData.get('questionResults').reduce(
+        function(studentReport, result) {
+          studentReport[result.resourceId] = result
+          return studentReport;
+        }, {}
+      );
+
+      component.get('assessment.resources').forEach(function(resource) {
+        if(!studentReportData[resource.id]) {
+          studentReportData[resource.id] = QuestionResult.create({
+            score: 0,
+            resourceId: resource.id,
+            skipped: true,
+            started: false
+          });
+        }
       });
 
       let studentResourceResults = component.getReportDataResults(studentReportData);
@@ -149,7 +165,7 @@ export default Ember.Component.extend({
    * @param {Object} studentReportData
    * @returns {QuestionResult[]}
    */
-   getReportDataResults: function(studentReportData){
+   getReportDataResults: function(studentReportData) {
      const component = this;
      const questions = component.get('assessment.resources');
      return questions.map(question => studentReportData[question.get('id')]);

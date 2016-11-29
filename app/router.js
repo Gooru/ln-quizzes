@@ -13,8 +13,6 @@ Router.map(function() {
   this.route('player', { path: '/player/:contextId' });
 
   this.route('reports', function () {
-    this.route('collection', { path: '/class/:classId/collection/:collectionId' });
-    this.route('student-collection');
     this.route('context', { path: '/context/:contextId' });
   });
 

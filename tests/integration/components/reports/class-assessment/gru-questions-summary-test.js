@@ -169,7 +169,7 @@ test('it can be forced to show all questions even if the container is not wide e
   assert.equal($component.find('ol li').length, 3, 'Component shows all the items');
   assert.ok($viewMoreButton.hasClass('keyboard_arrow_left'), 'Button should indicate that less questions can be viewed');
 
-  // Setting the letiable back to false should restore back to the original state
+  // Setting the variable back to false should restore back to the original state
   this.set('viewAllQuestions', false);
   assert.equal($component.find('ol li').length, 2, 'Component correctly reduces the number of items visible');
   assert.ok($viewMoreButton.hasClass('keyboard_arrow_right'), 'Button should indicate again that more questions can be viewed');

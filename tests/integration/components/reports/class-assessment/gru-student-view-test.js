@@ -4,7 +4,6 @@ import hbs from 'htmlbars-inline-precompile';
 import Collection from 'quizzes/models/collection/collection';
 import Resource from 'quizzes/models/resource/resource';
 import QuestionResult from 'quizzes/models/result/question';
-import UserResourcesResult from 'quizzes/models/result/user-resources';
 import ReportData from 'quizzes/models/result/report-data';
 import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import T from 'quizzes/tests/helpers/assert';

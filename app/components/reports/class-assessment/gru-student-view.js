@@ -115,7 +115,7 @@ export default Ember.Component.extend({
 
       let studentReportData = studentData.get('questionResults').reduce(
         function(studentReport, result) {
-          studentReport[result.resourceId] = result
+          studentReport[result.resourceId] = result;
           return studentReport;
         }, {}
       );

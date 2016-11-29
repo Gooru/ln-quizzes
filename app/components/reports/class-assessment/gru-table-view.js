@@ -183,7 +183,6 @@ export default Ember.Component.extend({
    *             the question property's render function)
    */
   tableData: Ember.computed('anonymous', 'tableFrame', 'reportData.reportEvents', function () {
-    const students = this.get('students');
     const questionProperties = this.get('questionProperties');
     const questionPropertiesIds = this.get('questionPropertiesIds');
     const questionPropertiesIdsLen = questionPropertiesIds.length;

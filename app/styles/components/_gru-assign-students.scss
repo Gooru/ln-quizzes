@@ -85,26 +85,4 @@
       border: 1px solid $gray-light;
     }
   }
-  .available-from, .due-date{
-    .panel{
-      background-color:$light-100;
-    }
-    span{
-      display:block;
-      margin-bottom:14px;
-      i{
-        vertical-align: bottom;
-      }
-    }
-    .time-picker,.date-picker{
-      padding:0px;
-      input{
-        display: inline-block;
-        width: 84%;
-      }
-      span{
-        display:inline-block;
-      }
-    }
-  }
 }

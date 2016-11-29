@@ -2,11 +2,24 @@ import Ember from 'ember';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
+  availableDate:{
+    validators: [
+      validator('presence', {
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.available-date-error'
+      })
+    ]
+  },
   dueDate: {
     validators: [
-      validator('date', {
-        after: Ember.computed.readOnly('model.availableDate'),
-        description: 'Date should be older than available date'
+      validator('presence', {
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.due-date-presence-error'
+      }),
+      validator('number-compare', {
+        property:'availableDate'
       })
     ]
   }
@@ -49,9 +62,10 @@ const Context = Ember.Object.extend(Validations,{
   createdDate:null,
 
   /**
-   * @property {number}
+   * @property  {number}
    */
-  availableDate:null,
+  availableDate: null,
+
 
   /**
    * @property {number}

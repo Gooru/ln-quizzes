@@ -83,7 +83,12 @@ export default Ember.Component.extend({
 
   init() {
     this._super(...arguments);
-    this.set('assignment', Context.create(Ember.getOwner(this).ownerInjection()));
+
+    let context = Context.create(Ember.getOwner(this).ownerInjection(),{
+      title:this.get('collection.title')
+    });
+
+    this.set('assignment', context);
   },
   /**
    * DidInsertElement ember event

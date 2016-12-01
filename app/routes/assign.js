@@ -16,7 +16,7 @@ export default Ember.Route.extend({
    */
   model: function() {
 
-    let studentList =this.get('configurationService.configuration.properties.students');
+    let studentList = this.get('configurationService.configuration.properties.students');
 
     let students = studentList.map(function(student){
       let studentObject = Profile.create(student);

@@ -20,6 +20,11 @@ const Validations = buildValidations({
       }),
       validator('number-compare', {
         property:'availableDate'
+      }),
+      validator('dependent', {
+        on: ['availableDate'],
+        message: '{{description}}',
+        descriptionKey: 'common.errors.available-date-error'
       })
     ]
   }

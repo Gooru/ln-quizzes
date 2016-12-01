@@ -30,9 +30,10 @@ const contextServiceStub = Ember.Service.extend({
 
 moduleForComponent('gru-assign-students', 'Integration | Component | gru assign students', {
   integration: true,
+  
   beforeEach: function () {
-  this.register('service:api-sdk/context', contextServiceStub);
-  this.inject.service('api-sdk/context');
+    this.register('service:api-sdk/context', contextServiceStub);
+    this.inject.service('api-sdk/context');
   }
 });
 

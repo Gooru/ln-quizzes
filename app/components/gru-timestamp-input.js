@@ -146,7 +146,7 @@ export default Ember.Component.extend({
   /**
    * @param {Computed } hasContent - computed property that defines whether the rawDateValue and rawTimeValue is null or not.
    */
-  hasContent: Ember.computed.and('rawDateValue', 'rawDateValue'),
+  hasContent: Ember.computed.and('rawDateHasContent', 'rawTimeHasContent'),
   /**
    * @param {Computed } hasContent - computed property that defines whether the rawDateValue is null or not.
    */

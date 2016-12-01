@@ -5,7 +5,9 @@ export default Ember.Route.extend({
 
   // -------------------------------------------------------------------------
   // Dependencies
-
+  /**
+   * @property {Service} Configuration service
+   */
   configurationService: Ember.inject.service('configuration'),
 
   // -------------------------------------------------------------------------

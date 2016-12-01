@@ -11,7 +11,6 @@ export default Ember.Component.extend({
   /**
    * @property {Service} context service
    */
-
   contextService: Ember.inject.service("api-sdk/context"),
 
   // -------------------------------------------------------------------------
@@ -62,22 +61,34 @@ export default Ember.Component.extend({
         owner:component.get('owner'),
         assignees:assignedStudents
       });
-
-      if(component.get('assignment.id')){
-        component.get('contextService').updateContext(component.get('assignment')).then(function(){
-          component.sendAction('onCloseModal');
-        });
-      }else{
-        component.get('contextService').createContext(component.get('assignment')).then(function(){
-          Ember.Logger.log('Context has been created');
-        });
-      }
+      component.get('assignment').validate().then(function ({ validations }) {
+        if (validations.get('isValid')) {
+          if(component.get('assignment.id')){
+            component.get('contextService').updateContext(component.get('assignment')).then(function(){
+              component.sendAction('onCloseModal');
+            });
+          }else{
+            component.get('contextService').createContext(component.get('assignment')).then(function(){
+              Ember.Logger.log('Context has been created');
+            });
+          }
+        }
+      });
     }
   },
 
   // -------------------------------------------------------------------------
   // Events
 
+  init() {
+    this._super(...arguments);
+
+    let context = Context.create(Ember.getOwner(this).ownerInjection(),{
+      title:this.get('collection.title')
+    });
+
+    this.set('assignment', context);
+  },
   /**
    * DidInsertElement ember event
    */
@@ -89,7 +100,6 @@ export default Ember.Component.extend({
     $('.search-box').on('keyup', function(){
       component.searchStudent();
     });
-   component.setDatePicker();
   },
 
   // -------------------------------------------------------------------------
@@ -98,8 +108,7 @@ export default Ember.Component.extend({
   /**
    * Assignment
    */
-  assignment: Context.create({
-  }),
+  assignment:null,
   /**
    * Indicate if all students are selected
    */
@@ -149,27 +158,5 @@ export default Ember.Component.extend({
         $(this).hide();
       }
     });
-  },
-  /**
-   * Set date picker component
-   */
-  setDatePicker:function(){
-    $('#available-date,#due-date').datepicker({
-      autoclose: true,
-      startDate: new Date()
-    });
-    $('#available-time,#due-time').timepicker({
-      'showDuration': true,
-      'timeFormat': 'g:ia',
-      //'minTime': this.getHours(), TODO validations
-      'maxTime': '12:00pm'
-    });
   }
-  //TODO Validations
-  //getHours:function(){
-  //  var date = new Date();
-  //  var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
-  //  var period = date.getHours() >= 12 ? 'pm' : 'am';
-  //  return `${hour}:${date.getMinutes()}${period}`;
-  //}
 });

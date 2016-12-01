@@ -53,6 +53,7 @@ export default Ember.Object.extend({
       description: payload.contextData.metadata.description,
       isActive: payload.contextData.metadata.isActive,
       dueDate: payload.contextData.metadata.dueDate,
+      availableDate: payload.contextData.metadata.availableDate,
       createdDate: payload.contextData.metadata.createdDate,
       modifiedDate: payload.contextData.metadata.modifiedDate,
       learningObjective: payload.contextData.metadata.learningObjective,

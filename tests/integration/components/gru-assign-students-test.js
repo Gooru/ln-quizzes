@@ -2,8 +2,38 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
 import wait from 'ember-test-helpers/wait';
+import T from 'quizzes/tests/helpers/assert';
+import Context from 'quizzes/models/context/context';
+
+const contextServiceStub = Ember.Service.extend({
+
+  createContext(assignment) {
+    return new Ember.RSVP.Promise(function (resolve, reject) {
+      if (!assignment) {
+        reject({status: 500});
+      } else {
+        resolve(assignment);
+      }
+    });
+  },
+  updateContext(assignment) {
+    return new Ember.RSVP.Promise(function (resolve, reject) {
+      if (!assignment) {
+        reject({status: 500});
+      } else {
+        resolve(assignment);
+      }
+    });
+  }
+
+});
+
 moduleForComponent('gru-assign-students', 'Integration | Component | gru assign students', {
-  integration: true
+  integration: true,
+  beforeEach: function () {
+    this.register('service:api-sdk/context', contextServiceStub);
+    this.inject.service('api-sdk/context');
+  }
 });
 
 test('Assign students Layout', function(assert) {
@@ -45,14 +75,7 @@ test('Assign students Layout', function(assert) {
   assert.ok($assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster').length, 'Missing Student Roster Tab');
   assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options').length, 'Missing Date Option section');
   assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from').length, 'Missing Available From section');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from .date-picker .calendar').length, 'Missing Available from Calendar icon');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from .date-picker input').length, 'Missing Available from input date picker');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from .time-picker .clock').length, 'Missing Available from time icon');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from .time-picker input').length, 'Missing Available from input time picker');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date .date-picker .calendar').length, 'Missing Due date Calendar icon');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date .date-picker input').length, 'Missing Due date input date picker');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date .time-picker .clock').length, 'Missing Due date timer icon');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date .time-picker input').length, 'Missing Due date timer input');
+  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date').length, 'Missing Due Date section');
 });
 test('Filter by name', function(assert) {
   var students = Ember.A([
@@ -192,5 +215,57 @@ test('Cancel assign students', function(assert) {
   return wait().then(function () {
     var $cancelButton = $component.find(".actions .cancel-btn");
     $cancelButton.click();
+  });
+});
+
+test('Timestamp due date with due date less than the assigned date', function(assert) {
+
+  let context = Context.create(Ember.getOwner(this).ownerInjection(),{
+    title:this.get('collection.title')
+  });
+
+  this.set('assignment',context);
+  this.render(hbs`{{gru-assign-students assignment=assignment}}`);
+  var $component = this.$();
+  var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
+  return wait().then(function () {
+    var $inputDueDate = $component.find('#datedueDate');
+    var $inputDueDateTime = $component.find('#timedueDate');
+
+    var $inputAvailableDate = $component.find('#dateavailableDate');
+    var $inputAvailableTime = $component.find('#timeavailableDate');
+
+    T.exists(assert, $inputAvailableDate, 'Assigned date input element not found');
+    T.exists(assert, $inputDueDate, 'Due date input element not found');
+    T.exists(assert, $inputAvailableTime, 'Assigned time input element not found');
+    T.exists(assert, $inputDueDateTime, 'Due date time input element not found');
+
+    $inputDueDate.val('10/21/2200');
+    $inputDueDate.blur();
+
+    $inputDueDateTime.val('12:31 PM');
+    $inputDueDateTime.blur();
+
+    $component.find('.assign-btn').click();
+    return wait().then(function () {
+      assert.ok($component.find(".error-messages .error").length, 'Input error message was hidden');
+      $inputAvailableDate.val('10/21/2200');
+      $inputAvailableDate.blur();
+
+      $inputAvailableTime.val('12:30 PM');
+      $inputAvailableTime.blur();
+      return wait().then(function () {
+        assert.ok(!$component.find(".error-messages .error").length, 'Input error message was hidden');
+        $inputDueDate.val('10/21/2200');
+        $inputDueDate.blur();
+
+        $inputDueDateTime.val('10:00 AM');
+        $inputDueDateTime.blur();
+        return wait().then(function () {
+          assert.ok($component.find(".error-messages .error").length, 'Input error message was hidden');
+        });
+      });
+    });
   });
 });

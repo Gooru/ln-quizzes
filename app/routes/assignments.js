@@ -28,7 +28,7 @@ export default Ember.Route.extend({
         title:'Assessment 1',
         standards:'',
         assignedDate:1474072003426,
-        dueDate:1477021500,
+        dueDate:1480356000000,
         totalAttempts:15,
         attempts:2,
         lastAttempt:{

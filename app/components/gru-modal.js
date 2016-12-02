@@ -69,6 +69,12 @@ export default Ember.Component.extend(ModalMixin, {
   'component-name': Ember.computed.alias('modal.name'),
 
   /**
+   * Modal width
+   * @type {String}
+   */
+  width:Ember.computed.alias('modal.width'),
+
+  /**
    * Name of the channel this modal component will be listening to.
    * A global modal component will not have a channel value.
    * @type {String}

@@ -20,7 +20,8 @@ export default Ember.Mixin.create({
           name: componentName,
           model: componentModel,
           activeChannel: activeChannel,
-          'component-class': componentClass
+          'component-class': componentClass,
+          width:componentModel.width ? componentModel.width : '600px'
       });
     }
   },

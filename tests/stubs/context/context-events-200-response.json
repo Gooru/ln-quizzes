@@ -1,0 +1,64 @@
+{
+  "id": "context-simple-id",
+  "collection": {
+    "id": "collection-id"
+  },
+  "profileEvents": [
+    {
+      "currentResourceId": "current-resource",
+      "profileId": "profile-id-1",
+      "resourceResults": [
+        {
+          "resourceId": "current-resource",
+          "timeSpent": 1000,
+          "reaction": 0,
+          "answer": {
+            "isFixed": false,
+            "text": "answer-text",
+            "value": "answer-value"
+          },
+          "score": 0
+        },
+        {
+          "resourceId": "resource-2",
+          "timeSpent": 2000,
+          "reaction": 3,
+          "answer": {
+            "isFixed": false,
+            "text": "answer-text",
+            "value": "answer-value"
+          },
+          "score": 100
+        }
+      ]
+    },
+    {
+      "currentResourceId": "current-resource",
+      "profileId": "profile-id-2",
+      "resourceResults": [
+        {
+          "resourceId": "current-resource",
+          "timeSpent": 1000,
+          "reaction": 0,
+          "answer": {
+            "isFixed": false,
+            "text": "answer-text",
+            "value": "answer-value"
+          },
+          "score": 0
+        },
+        {
+          "resourceId": "resource-2",
+          "timeSpent": 2000,
+          "reaction": 3,
+          "answer": {
+            "isFixed": false,
+            "text": "answer-text",
+            "value": "answer-value"
+          },
+          "score": 100
+        }
+      ]
+    }
+  ]
+}

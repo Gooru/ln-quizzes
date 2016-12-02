@@ -4,7 +4,7 @@ import Ember from 'ember';
  * Context model
  * typedef {Object} Context
  */
-const Context = Ember.Object.extend( {
+const Context = Ember.Object.extend({
 
   /**
    * @property {string}

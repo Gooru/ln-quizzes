@@ -29,6 +29,7 @@
     "KaTeX": "katex#^0.6.0",
     "intro.js": "2.2.0",
     "jt.timepicker": "jquery-timepicker-jt#^1.11.8",
-    "datepair.js": "^0.4.15"
+    "datepair.js": "^0.4.15",
+    "mock-socket": "^6.0.3"
   }
 }

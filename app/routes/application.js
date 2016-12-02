@@ -75,8 +75,8 @@ export default Ember.Route.extend({
     }
 
     return Ember.RSVP.hash({
-      currentSession: currentSession,
-      theme: theme,
+      currentSession,
+      theme,
       translations: theme ? theme.loadTranslations() : null
     });
   },
@@ -141,7 +141,6 @@ export default Ember.Route.extend({
     const legacyUrl = GooruLegacyUrl.create({
       url: route.get('router.url')
     });
-
     if (legacyUrl.get('isLegacyUrl')) { //checking for a legacy legacyUrl
       const routeParams = legacyUrl.get('routeParams');
       if (routeParams) {
@@ -233,10 +232,9 @@ export default Ember.Route.extend({
     const configurationService = route.get('configurationService');
     configurationService.addProperties(Env.APP.properties);
     const routeName = 'sign-in';
-    if (transition){
+    if (transition) {
       route.transitionTo.apply(route, transition);
-    }
-    else {
+    } else {
       route.transitionTo(routeName);
     }
   }

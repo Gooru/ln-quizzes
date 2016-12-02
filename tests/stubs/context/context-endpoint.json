@@ -27,5 +27,20 @@
       },
       "body": "{}"
     }
+  },
+  {
+    "description": "Gets events associated to the context",
+    "request": {
+      "url": "^/quizzes/api/v1/context/(.)+/events$",
+      "method": "GET"
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "File not found!",
+      "file": "context-events-200-response.json"
+    }
   }
 ]

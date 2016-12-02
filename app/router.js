@@ -18,8 +18,8 @@ Router.map(function() {
 
   this.route('integration', { path: '/integration/:appType' });
 
-  this.route('assign',{ path: '/assessment/:assessmentId' });
-  this.route('assignments',{ path: '/profile/:profileId' });
+  this.route('assign', { path: '/assessment/:assessmentId' });
+  this.route('assignments', { path: '/profile/:profileId' });
 });
 
 export default Router;

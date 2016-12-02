@@ -168,5 +168,6 @@ module.exports = function(defaults) {
     production:  'vendor/mathquill/mathquill.min.js'
   });
   app.import('vendor/mathquill/mathquill.css');
+
   return mergeTrees([app.toTree(), mathquillFonts, katexFonts]);
 };

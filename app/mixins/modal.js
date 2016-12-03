@@ -21,7 +21,7 @@ export default Ember.Mixin.create({
           model: componentModel,
           activeChannel: activeChannel,
           'component-class': componentClass,
-          width:componentModel.width ? componentModel.width : '600px'
+          width: componentModel.width || '600px'
       });
     }
   },

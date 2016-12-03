@@ -29,6 +29,11 @@
         }
       }
     }
+    .lead{
+      @media(max-width: $screen-xs-max){
+        font-size: 92%;
+      }
+    }
   }
   .content.tab-content{
     margin: 20px;

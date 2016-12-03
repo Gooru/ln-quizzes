@@ -15,7 +15,8 @@ test('addStudent', function(assert) {
   });
   let expectedModel = {
     students: [],
-    collection: assignment
+    collection: assignment,
+    width:'825px'
   };
   component.set('students', 'students');
   component.set('students', 'students');

@@ -42,7 +42,8 @@ export default Ember.Component.extend(ModalMixin,{
 
       let model = {
         students: this.get('students'),
-        collection: assignment
+        collection: assignment,
+        width:'75%'
       };
       this.actions.showModal.call(this, 'gru-assign-student-modal',
         model, null, null, null, false);
@@ -142,7 +143,7 @@ export default Ember.Component.extend(ModalMixin,{
    *Calculate the height of the content
    */
   calculateHeight: function() {
-    let height= $('.ember-view').parent().outerHeight(true) > window.outerHeight ?
+    let height = $('.ember-view').parent().outerHeight(true) > window.outerHeight ?
       window.outerHeight : $('.ember-view').parent().outerHeight(true)
     - $('.table-fixed thead ').height() - $('.search').height();
     this.set('calculatedTableContentHeight', height);

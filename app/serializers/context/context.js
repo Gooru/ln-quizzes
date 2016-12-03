@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ProfileSerializer from 'quizzes/serializers/profile/profile';
 import ContextResult from 'quizzes/models/result/context';
 import ReportData from 'quizzes/models/result/report-data';
 import ReportDataEvent from 'quizzes/models/result/report-data-event';
@@ -16,13 +17,7 @@ export default Ember.Object.extend({
    */
   normalizeAssigneesList: function (payload) {
     payload = payload || [];
-    return payload.map(assignee => Profile.create({
-        id: assignee.id,
-        firstName: assignee.firstName,
-        lastName: assignee.lastName,
-        username: assignee.username
-      })
-    );
+    return payload.map(ProfileSerializer.normalizeProfile);
   },
 
   /**

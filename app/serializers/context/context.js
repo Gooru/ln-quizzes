@@ -11,13 +11,25 @@ import Collection from 'quizzes/models/collection/collection';
 export default Ember.Object.extend({
 
   /**
+   * @property {ProfileSerializer} resourceSerializer
+   */
+  profileSerializer: null,
+
+  init: function () {
+    this._super(...arguments);
+    this.set('profileSerializer', ProfileSerializer.create(Ember.getOwner(this).ownerInjection()));
+  },
+
+  /**
    * Normalizes assignees list
    * @param {*[]} payload
    * @returns {ResourceResult[]}
    */
   normalizeAssigneesList: function (payload) {
     payload = payload || [];
-    return payload.map(ProfileSerializer.normalizeProfile);
+    return payload.map(
+      assignee => this.get('profileSerializer').normalizeProfile(assignee)
+    );
   },
 
   /**

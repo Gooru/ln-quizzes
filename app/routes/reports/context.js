@@ -72,7 +72,6 @@ export default Ember.Route.extend({
   setupController(controller, model) {
     let collection = model.collection;
     let reportData = model.reportData;
-    console.log(1, model);
     reportData.set('collection', collection);
     controller.set('reportData', reportData);
   }

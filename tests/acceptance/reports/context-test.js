@@ -36,8 +36,8 @@ test('Report context: websocket error', function(assert) {
       disconnect: function(channel, callback) {
         assert.ok(true, 'Disconnect should be called');
       }
-    }
-  }
+    };
+  };
   let stompStub = sinon.stub(Stomp, 'over')
     .onFirstCall().returns(createSocket())
     .onSecondCall().returns(createSocket());
@@ -54,7 +54,6 @@ test('Report context: websocket error', function(assert) {
 test('Report context: websocket success', function(assert) {
   assert.expect(4);
   let expectedUrl = 'realtimeURL/realtimeURI';
-  let connectTimes = 0;
   let createSocket = () => {
     return {
       heartbeat: {},
@@ -76,7 +75,7 @@ test('Report context: websocket success', function(assert) {
           }]
         });*/
       }
-    }
+    };
   };
   let stompStub = sinon.stub(Stomp, 'over')
     .onFirstCall().returns(createSocket());

@@ -30,7 +30,7 @@ export default Ember.Service.extend({
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
       service.get('profileAdapter').readProfile(profileId)
-        .then(response => service.get('profileSerializers').normalizeProfile(response))
+        .then(response => service.get('profileSerializer').normalizeProfile(response))
         .then(resolve, reject);
     });
   }

@@ -75,7 +75,7 @@ export default Ember.Route.extend({
     let profiles = model.profiles;
     reportData.get('reportEvents').forEach(function(reportEvent) {
       let profile = profiles[reportEvent.get('profileId')];
-      reportEvent.set('profileName', profile.get('fullName'));
+      reportEvent.setProfileProperties(profile);
     });
     reportData.set('collection', collection);
     controller.set('reportData', reportData);

@@ -5,11 +5,11 @@
   },
   "profileEvents": [
     {
-      "currentResourceId": "current-resource",
+      "currentResourceId": "question1-id",
       "profileId": "profile-id-1",
-      "resourceResults": [
+      "events": [
         {
-          "resourceId": "current-resource",
+          "resourceId": "question1-id",
           "timeSpent": 1000,
           "reaction": 0,
           "answer": {
@@ -20,7 +20,7 @@
           "score": 0
         },
         {
-          "resourceId": "resource-2",
+          "resourceId": "question2-id",
           "timeSpent": 2000,
           "reaction": 3,
           "answer": {
@@ -33,11 +33,11 @@
       ]
     },
     {
-      "currentResourceId": "current-resource",
+      "currentResourceId": "question1-id",
       "profileId": "profile-id-2",
-      "resourceResults": [
+      "events": [
         {
-          "resourceId": "current-resource",
+          "resourceId": "question1-id",
           "timeSpent": 1000,
           "reaction": 0,
           "answer": {
@@ -45,10 +45,10 @@
             "text": "answer-text",
             "value": "answer-value"
           },
-          "score": 0
+          "score": 100
         },
         {
-          "resourceId": "resource-2",
+          "resourceId": "question2-id",
           "timeSpent": 2000,
           "reaction": 3,
           "answer": {
@@ -56,7 +56,7 @@
             "text": "answer-text",
             "value": "answer-value"
           },
-          "score": 100
+          "score": 0
         }
       ]
     }

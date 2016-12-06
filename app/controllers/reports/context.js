@@ -30,6 +30,12 @@ export default Ember.Controller.extend({
    */
   notifications: Ember.inject.service(),
 
+  /**
+   * @type {ProfileService} profileService
+   * @property {Ember.Service} Service to send profile related events
+   */
+  profileService: Ember.inject.service('api-sdk/profile'),
+
   // -------------------------------------------------------------------------
   // Actions
 
@@ -137,8 +143,11 @@ export default Ember.Controller.extend({
        // Subscribe to listen for live messages
        webSocketClient.subscribe(`/${channel}`, function (message) {
          const eventMessage = JSON.parse(message.body);
-         const reportEvent = controller.get('contextSerializer').normalizeReportDataEvent(eventMessage);
-         reportData.merge([userResourceResult]);
+         const reportEvent = controller.get('contextService').normalizeReportDataEvent(eventMessage);
+         controller.get('profileService').readProfile(reportEvent.get('profileId')).then(function(profile) {
+           reportEvent.setProfileProperties(profile);
+           reportData.mergeEvent(reportEvent);
+         });
        });
 
      }, function () {

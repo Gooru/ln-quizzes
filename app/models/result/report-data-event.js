@@ -53,6 +53,40 @@ export default Ember.Object.extend({
   /**
    * @property {string} profileName student's name
    */
-  profileName: null
+  profileName: null,
+
+  // -------------------------------------------------------------------------
+  // Methods
+
+  /**
+   * Find a resource's index by its id
+   */
+  findIndexByResourceId: function(resourceId) {
+    return this.get('resourceResults').reduce(
+      (index, result, current) =>
+        result.get('resourceId') === resourceId ? current : index,
+      -1);
+  },
+
+  /**
+   * Merge a new result with the corresponding resource result
+   */
+  merge: function(resourceId, newResult) {
+    let index = this.findIndexByResourceId(resourceId);
+    this.get('resourceResults').get(index).setProperties({
+      resourceId: newResult.resourceId,
+      savedTime: newResult.savedTime,
+      reaction: newResult.reaction,
+      answer: newResult.answer,
+      score: newResult.score
+    });
+  },
+
+  /**
+   * Set properties coming from the profile
+   */
+  setProfileProperties: function(profile) {
+    this.set('profileName', profile.get('fullName'));
+  }
 
 });

@@ -7,7 +7,7 @@ moduleForService('service:api-sdk/profile', 'Unit | Service | api-sdk/profile', 
 });
 
 test('readProfile', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
   const service = this.subject();
   let expectedData = {
     firstName: 'first-name',

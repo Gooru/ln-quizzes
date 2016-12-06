@@ -69,7 +69,7 @@ export default Ember.Component.extend({
   /**
    * @property {number} user assessment score
    */
-  score: Ember.computed('reportData.[]', function() {
+  score: Ember.computed('reportData.@each.score', function() {
     return correctPercentage(this.get('reportData'));
   }),
 
@@ -77,7 +77,7 @@ export default Ember.Component.extend({
    * Indicates if the assessment has been started
    * @property {number} started
    */
-  started: Ember.computed('reportData.[]', function() {
+  started: Ember.computed('reportData.@each.score', function() {
     return totalCompleted(this.get('reportData'));
   }),
 

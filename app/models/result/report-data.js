@@ -61,8 +61,32 @@ export default Ember.Object.extend({
    */
   studentIds: Ember.computed('students', function () {
     return this.get('students').map(student => student.get('id'));
-  })
+  }),
 
   // -------------------------------------------------------------------------
   // Methods
+
+  /**
+   * Merge a new event into the report data
+   */
+  mergeEvent: function(newReportEvent) {
+    let oldReportEvents = this.findByProfileId(newReportEvent.get('profileId'));
+    let oldReportEvent = oldReportEvents.length ? oldReportEvents[0] : null;
+    let newResults = newReportEvent.get('resourceResults');
+    let newResult = newResults ? newResults[0] : null;
+    if(newResult) {
+      if(oldReportEvent) {
+        oldReportEvent.merge(newResult.get('resourceId'), newResult);
+      } else {
+        this.get('reportEvents').push(newReportEvent);
+      }
+    }
+  },
+
+  /**
+   * Find an event by a profile id
+   */
+  findByProfileId: function(profileId) {
+    return this.get('reportEvents').filter(reportEvent => reportEvent.get('profileId') === profileId);
+  }
 });

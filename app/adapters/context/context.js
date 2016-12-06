@@ -48,7 +48,7 @@ export default Ember.Object.extend({
       dataType: 'json',
       processData: false,
       headers: {
-        'profile-id': '21a92642-31ee-4b59-a72d-c70ce74d7fb8',
+        'profile-id': '4f2e9b8f-9bae-42e8-ac5b-2113b0584baa',
         'lms-id': 'its_learning'
       }
     };

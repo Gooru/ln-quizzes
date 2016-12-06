@@ -1,13 +1,19 @@
 .gru-assessment-settings{
+  display: flex;
+  flex-wrap: wrap;
   .swap_horizontal {
     width: 24px;
   }
   .panel{
-    width: 52%;
+    width: 100%;
+    margin-right: 10px;
     background-color:$light-100;
 
     .panel-body{
       padding: 10px;
+    }
+    @media(min-width: $screen-sm){
+      width: 47%;
     }
   }
   .setting {

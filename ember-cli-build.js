@@ -145,11 +145,6 @@ module.exports = function(defaults) {
     production:  'bower_components/jt.timepicker/jquery.timepicker.css'
   });
 
-  app.import({
-    development: 'bower_components/datepair.js/dist/datepair.js',
-    production:  'bower_components/datepair.js/dist/datepair.min.js'
-  });
-
   if (EmberApp.env() === 'test') {
     app.import('vendor/wysihtml-dummy.js');
   } else {

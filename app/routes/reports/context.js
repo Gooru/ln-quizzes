@@ -58,12 +58,12 @@ export default Ember.Route.extend({
         collection: route.get('collectionService').readCollection(reportData.collectionId),
         profiles: Ember.RSVP.hash(
           reportData.get('reportEvents').reduce(
-            (events, reportEvent) => {
+            (profiles, reportEvent) => {
               let profileId = reportEvent.profileId;
-              if(!(profileId in events)) {
-                events[profileId] = route.get('profileService').readProfile(profileId);
+              if(!(profileId in profiles)) {
+                profiles[profileId] = route.get('profileService').readProfile(profileId);
               }
-              return events;
+              return profiles;
             }, {}))
       })
     );
@@ -72,6 +72,11 @@ export default Ember.Route.extend({
   setupController(controller, model) {
     let collection = model.collection;
     let reportData = model.reportData;
+    let profiles = model.profiles;
+    reportData.get('reportEvents').forEach(function(reportEvent) {
+      let profile = profiles[reportEvent.get('profileId')];
+      reportEvent.set('profileName', profile.get('fullName'));
+    });
     reportData.set('collection', collection);
     controller.set('reportData', reportData);
   }

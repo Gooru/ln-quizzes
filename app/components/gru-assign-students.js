@@ -61,7 +61,7 @@ export default Ember.Component.extend({
         owner:component.get('owner'),
         assignees:assignedStudents
       });
-      if(this.get('didValidate') === false) {
+      if(!this.get('didValidate')) {
         Ember.$('#date-availableDate').blur();
         Ember.$('#time-availableDate').blur();
         Ember.$('#date-dueDate').blur();

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { DEFAULT_AVAILABLE_TIME, DEFAULT_DUE_TIME } from 'quizzes/config/config';
 const {
   computed,
   defineProperty
@@ -27,6 +28,7 @@ export default Ember.Component.extend({
     },
 
     inputTyping: function() {
+      this.setInputValues();
       this.set('isTyping', true);
       if (this.get('onTyping')){
         this.sendAction('onTyping');
@@ -34,11 +36,11 @@ export default Ember.Component.extend({
     },
 
     enterPressed: function() {
-      this.setInputValues();
       this.set('isTyping', false);
-      this.get('onEnter') && this.get('isValid') && this.get('onEnter')(this.get('valueDate'))&& this.get('onEnter')(this.get('valueTime'));
-      this.get('onEnter') && this.get('isDateValid') && this.get('onEnter')(this.get('valueDate'));
-      this.get('onEnter') && this.get('isTimeValid') && this.get('onEnter')(this.get('valueTime'));
+      let $day = $(`#${this.get('dateID')}`);
+      let $time = $(`#${this.get('timeID')}`);
+      $day.blur();
+      $time.blur();
     }
   },
   // -------------------------------------------------------------------------
@@ -167,13 +169,13 @@ export default Ember.Component.extend({
   /**
    * @param {Computed } showDateErrorClass - computed property that defines the
    */
-  showDateErrorClass: computed('isValid','dateIsInvalid', function() {
+  showDateErrorClass: computed('dateIsInvalid', function() {
     return this.get('dateIsInvalid');
   }),
   /**
    * @param {Computed } showTimeErrorClass - computed property that defines the
    */
-  showTimeErrorClass: computed('isValid','timeIsInvalid', function() {
+  showTimeErrorClass: computed('timeIsInvalid', function() {
     return this.get('timeIsInvalid');
   }),
   /**
@@ -237,12 +239,12 @@ export default Ember.Component.extend({
   showErrorDateInput: computed('dateValidation.isDirty', 'dateIsInvalid','attributeValidation',function() {
     let errorClass = "";
     if(this.get('dateValidation.isDirty')){
-        if(this.get('attributeValidation.errors.length')&& this.get('dateValidation.errors.length')){
-          errorClass = 'has-error' ;
-        }else {
+      if(this.get('attributeValidation.errors.length')&& this.get('dateValidation.errors.length')){
+        errorClass = 'has-error' ;
+      }else {
         errorClass = this.get('dateIsInvalid') ? 'has-error' : 'has-success';
-        }
       }
+    }
     return errorClass;
   }),
 
@@ -275,7 +277,7 @@ export default Ember.Component.extend({
    * Get timestamp date
    */
   getDate: function() {
-    return moment(new Date(this.get('rawDateValue')+" "+this.get('rawTimeValue'))).valueOf();
+    return moment(new Date(`#${this.get('rawDateValue')} ${this.get('rawTimeValue')}`)).valueOf();
   },
   /**
    * Initialize the date picker component
@@ -291,7 +293,8 @@ export default Ember.Component.extend({
 
     $time.timepicker({
       'showDuration': true,
-      'timeFormat': 'g:i A'
+      'timeFormat': 'g:i A',
+      'step':'1'
     });
 
     $day.on('changeDate', function() {
@@ -303,7 +306,7 @@ export default Ember.Component.extend({
     if(this.get('setActualDate')){
       $day.datepicker('setDate', new Date());
       $day.datepicker('update');
-      $time.timepicker('setTime', '12:00 am');
+      $time.timepicker('setTime', DEFAULT_AVAILABLE_TIME);
       $day.blur();
       $time.blur();
     }
@@ -327,11 +330,9 @@ export default Ember.Component.extend({
    */
   setDefaultTime: Ember.observer('rawDateValue', function() {
     let $time = $(`#${this.get('timeID')}`);
-    if(!this.get('setActualDate')){
-      if(this.get('rawDateValue') !==''){
-        $time.timepicker('setTime', '11:30 pm');
+    if(!this.get('setActualDate')&&this.get('rawDateValue')){
+        $time.timepicker('setTime', DEFAULT_DUE_TIME);
         $time.blur();
-      }
     }
   })
 });

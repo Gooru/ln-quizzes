@@ -191,3 +191,6 @@ export const RESERVED_WORDS = [
   "sign-up",
   "sign-up-finish"
 ];
+
+export const DEFAULT_AVAILABLE_TIME = '12:00 am';
+export const DEFAULT_DUE_TIME = '11:30 pm';

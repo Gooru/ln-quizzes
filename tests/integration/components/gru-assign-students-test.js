@@ -230,11 +230,11 @@ test('Timestamp due date with due date less than the assigned date', function(as
   var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
-    var $inputDueDate = $component.find('#datedueDate');
-    var $inputDueDateTime = $component.find('#timedueDate');
+    var $inputDueDate = $component.find('#date-dueDate');
+    var $inputDueDateTime = $component.find('#time-dueDate');
 
-    var $inputAvailableDate = $component.find('#dateavailableDate');
-    var $inputAvailableTime = $component.find('#timeavailableDate');
+    var $inputAvailableDate = $component.find('#date-availableDate');
+    var $inputAvailableTime = $component.find('#time-availableDate');
 
     T.exists(assert, $inputAvailableDate, 'Assigned date input element not found');
     T.exists(assert, $inputDueDate, 'Due date input element not found');
@@ -249,19 +249,19 @@ test('Timestamp due date with due date less than the assigned date', function(as
 
     $component.find('.assign-btn').click();
     return wait().then(function () {
-      assert.ok($component.find(".error-messages .error").length, 'Input error message was hidden');
-      $inputAvailableDate.val('10/21/2200');
+      assert.ok(!$component.find(".error-messages .error").length, 'Input error message should be hidden');
+      $inputAvailableDate.val('');
       $inputAvailableDate.blur();
 
-      $inputAvailableTime.val('12:30 PM');
+      $inputAvailableTime.val('');
       $inputAvailableTime.blur();
       return wait().then(function () {
-        assert.ok(!$component.find(".error-messages .error").length, 'Input error message was hidden');
-        $inputDueDate.val('10/21/2200');
-        $inputDueDate.blur();
+        assert.ok($component.find(".error-messages .error").length, 'Input error message should be hidden');
+        $inputAvailableDate.val('10/21/2200');
+        $inputAvailableDate.blur();
 
-        $inputDueDateTime.val('10:00 AM');
-        $inputDueDateTime.blur();
+        $inputAvailableTime.val('12:31 PM');
+        $inputAvailableTime.blur();
         return wait().then(function () {
           assert.ok($component.find(".error-messages .error").length, 'Input error message was hidden');
         });

@@ -18,10 +18,10 @@ test('Timestamp layout', function(assert) {
 
   this.render(hbs`{{gru-timestamp-input model=assignment valuePath='availableDate'}}`);
   var $timestampInput = this.$();
-  assert.ok($timestampInput.find('.gru-timestamp-input #date-pair .date-picker .calendar').length, 'Missing calendar icon');
-  assert.ok($timestampInput.find('.gru-timestamp-input #date-pair .date-picker input').length, 'Missing date picker');
-  assert.ok($timestampInput.find('.gru-timestamp-input #date-pair .time-picker .clock').length, 'Missing time icon');
-  assert.ok($timestampInput.find('.gru-timestamp-input #date-pair .time-picker input').length, 'Missing time picker');
+  assert.ok($timestampInput.find('.gru-timestamp-input .date-picker .calendar').length, 'Missing calendar icon');
+  assert.ok($timestampInput.find('.gru-timestamp-input .date-picker input').length, 'Missing date picker');
+  assert.ok($timestampInput.find('.gru-timestamp-input .time-picker .clock').length, 'Missing time icon');
+  assert.ok($timestampInput.find('.gru-timestamp-input .time-picker input').length, 'Missing time picker');
 });
 
 test('Timestamp valuePath', function(assert) {
@@ -32,8 +32,8 @@ test('Timestamp valuePath', function(assert) {
 
   this.render(hbs`{{gru-timestamp-input model=assignment valuePath='dueDate'}}`);
   var $timestampInputComponent = this.$();
-  var $input = $timestampInputComponent.find('#datedueDate');
-  var $inputTime = $timestampInputComponent.find('#timedueDate');
+  var $input = $timestampInputComponent.find('#date-dueDate');
+  var $inputTime = $timestampInputComponent.find('#time-dueDate');
 
   T.exists(assert, $input, 'Due date input element not found');
   $input.val('10/21/2200');

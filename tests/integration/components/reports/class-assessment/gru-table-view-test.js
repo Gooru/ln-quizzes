@@ -1,4 +1,3 @@
-/* TODO QZ-210
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
@@ -40,6 +39,8 @@ test('it renders', function (assert) {
     reportEvents: Ember.A([
       ReportDataEvent.create({
         profileId: '56983a9060a68052c1ed934c',
+        profileName: 'student-name-1',
+        profileCode: 'student-code-1',
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -63,6 +64,8 @@ test('it renders', function (assert) {
       }),
       ReportDataEvent.create({
         profileId: '56983a90fb01fecc328e2388',
+        profileName: 'student-name-2',
+        profileCode: 'student-code-2',
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -83,6 +86,8 @@ test('it renders', function (assert) {
       }),
       ReportDataEvent.create({
         profileId: '56983a906596902edadedc7c',
+        profileName: 'student-name-3',
+        profileCode: 'student-code-3',
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -156,6 +161,8 @@ test('it triggers event when clicking on questions', function (assert) {
     reportEvents: Ember.A([
       ReportDataEvent.create({
         profileId: '56983a9060a68052c1ed934c',
+        profileName: 'student-name-1',
+        profileCode: 'student-code-1',
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -179,6 +186,8 @@ test('it triggers event when clicking on questions', function (assert) {
       }),
       ReportDataEvent.create({
         profileId: '56983a90fb01fecc328e2388',
+        profileName: 'student-name-2',
+        profileCode: 'student-code-2',
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -199,6 +208,8 @@ test('it triggers event when clicking on questions', function (assert) {
       }),
       ReportDataEvent.create({
         profileId: '56983a906596902edadedc7c',
+        profileName: 'student-name-3',
+        profileCode: 'student-code-3',
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -241,4 +252,3 @@ test('it triggers event when clicking on questions', function (assert) {
   $component.find('.first-tier th:eq(1)').click();
   $component.find('.first-tier th:eq(3)').click();
 });
-*/

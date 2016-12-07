@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ProfileSerializer from 'quizzes/serializers/profile/profile';
 import ContextResult from 'quizzes/models/result/context';
 import ReportData from 'quizzes/models/result/report-data';
 import ReportDataEvent from 'quizzes/models/result/report-data-event';
@@ -10,18 +11,24 @@ import Collection from 'quizzes/models/collection/collection';
 export default Ember.Object.extend({
 
   /**
+   * @property {ProfileSerializer} resourceSerializer
+   */
+  profileSerializer: null,
+
+  init: function () {
+    this._super(...arguments);
+    this.set('profileSerializer', ProfileSerializer.create(Ember.getOwner(this).ownerInjection()));
+  },
+
+  /**
    * Normalizes assignees list
    * @param {*[]} payload
    * @returns {ResourceResult[]}
    */
   normalizeAssigneesList: function (payload) {
     payload = payload || [];
-    return payload.map(assignee => Profile.create({
-        id: assignee.id,
-        firstName: assignee.firstName,
-        lastName: assignee.lastName,
-        username: assignee.username
-      })
+    return payload.map(
+      assignee => this.get('profileSerializer').normalizeProfile(assignee)
     );
   },
 
@@ -100,9 +107,8 @@ export default Ember.Object.extend({
   },
 
   /**
-   * Normalizes a TeacherContextResult
-   * @param {TeacherContextResult} contextResult
-   * @returns {*[]}
+   * Normalizes a ReportData
+   * @returns {ReportData}
    */
   normalizeReportData: function (payload) {
     const serializer = this;
@@ -114,21 +120,26 @@ export default Ember.Object.extend({
   },
 
   /**
-   * Normalizes a TeacherContextResult
-   * @param {TeacherContextResult} contextResult
-   * @returns {*[]}
+   * Normalizes a ReportDataEvent
+   * @returns {ReportDataEvent}
+   */
+  normalizeReportDataEvent: function (reportEvent) {
+    return ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
+      currentResourceId: reportEvent.currentResourceId,
+      profileId: reportEvent.profileId,
+      resourceResults: this.normalizeResourceResults(reportEvent.events)
+    });
+  },
+
+  /**
+   * Normalizes report data events
+   * @returns {ReportDataEvent[]}
    */
   normalizeReportDataEvents: function (payload) {
     const serializer = this;
     payload = payload || [];
     return payload.map(
-      reportEvent => ReportDataEvent.create(Ember.getOwner(serializer).ownerInjection(), {
-        currentResourceId: reportEvent.currentResourceId,
-        profileId: reportEvent.profileId,
-        profileCode: reportEvent.profileCode,
-        profileName: reportEvent.profileName,
-        resourceResults: serializer.normalizeResourceResults(reportEvent.events)
-      })
+      reportEvent => serializer.normalizeReportDataEvent(reportEvent)
     );
   },
 

@@ -1,7 +1,7 @@
 [
   {
     "request": {
-      "url": "^/gooruapi/rest/v2/user/param-123$",
+      "url": "^/quizzes/api/v1/profile/(.)+$",
       "method": "GET"
     },
     "response": {
@@ -10,7 +10,7 @@
         "Content-Type": "application/json"
       },
       "body": "File not found!",
-      "file": "param-profile-ok-response.json"
+      "file": "profile-ok-response.json"
     }
   },
   {

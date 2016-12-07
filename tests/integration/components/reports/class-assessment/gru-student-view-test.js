@@ -1,104 +1,94 @@
-/*import Ember from 'ember';
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import Collection from 'quizzes/models/collection/collection';
+import Resource from 'quizzes/models/resource/resource';
 import QuestionResult from 'quizzes/models/result/question';
-import UserResourcesResult from 'quizzes/models/result/user-resources';
 import ReportData from 'quizzes/models/result/report-data';
+import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import T from 'quizzes/tests/helpers/assert';
 
 moduleForComponent('reports/class-assessment/gru-student-view', 'Integration | Component | reports/class assessment/gru student view', {
   integration: true
-});*/
+});
 
-/* TODO QZ-210
 test('Layout', function (assert) {
-
-  var assessment = Ember.Object.create({
+  let collection = Collection.create({
     resources: [
-      Ember.Object.create({
-        "id": "56a120483b6e7b090501d3e7",
-        "order": 1
+      Resource.create({
+        id: '56a120483b6e7b090501d3e7',
+        sequence: 1
       }),
-      Ember.Object.create({
-        "id": "56a1204886b2e565e1b2c230",
-        "order": 3
+      Resource.create({
+        id: '56a1204886b2e565e1b2c230',
+        sequence: 3
       }),
-      Ember.Object.create({
-        "id": "56a12048ddee2022a741356a",
-        "order": 2
+      Resource.create({
+        id: '56a12048ddee2022a741356a',
+        sequence: 2
       })
     ]
   });
 
-  var students = Ember.A([
-    Ember.Object.create({"id": "56983a9060a68052c1ed934c","fullName":"Lorena Prendas Chavarria"}),
-    Ember.Object.create({"id": "56983a90fb01fecc328e2388" ,"fullName":"Andres Charpentier Zuñiga"}),
-    Ember.Object.create({"id": "56983a906596902edadedc7c" ,"fullName":"David Zumbado Alfaro"})
-  ]);
-
-  var reportData = ReportData.create({
-    students: students,
-    resources: assessment.get("resources")
+  let reportData = ReportData.create({
+    collection,
+    reportEvents: [
+      ReportDataEvent.create({
+        profileId: '56983a9060a68052c1ed934c',
+        profileName: 'Lorena Prendas Chavarria',
+        profileCode: 'student-code-1',
+        resourceResults: Ember.A([
+          QuestionResult.create({resourceId: '56a120483b6e7b090501d3e7', score: 100}),
+          QuestionResult.create({resourceId: '56a1204886b2e565e1b2c230', score: 100}),
+          QuestionResult.create({resourceId: '56a12048ddee2022a741356a', score: 100})
+        ])
+      }),
+      ReportDataEvent.create({
+        profileId: '56983a90fb01fecc328e2388',
+        profileName: 'Andres Charpentier Zuñiga',
+        profileCode: 'student-code-2',
+        resourceResults: Ember.A([
+          QuestionResult.create({resourceId: '56a120483b6e7b090501d3e7', score: 100}),
+          QuestionResult.create({resourceId: '56a1204886b2e565e1b2c230', score: 100}),
+          QuestionResult.create({resourceId: '56a12048ddee2022a741356a', score: 0})
+        ])
+      }),
+      ReportDataEvent.create({
+        profileId: '56983a906596902edadedc7c',
+        profileName: 'David Zumbado Alfaro',
+        profileCode: 'student-code-3',
+        resourceResults: Ember.A([
+          QuestionResult.create({resourceId: '56a120483b6e7b090501d3e7', score: 100}),
+          QuestionResult.create({resourceId: '56a1204886b2e565e1b2c230', score: 0}),
+          QuestionResult.create({resourceId: '56a12048ddee2022a741356a', score: 0})
+        ])
+      })
+    ]
   });
 
-  reportData.merge([
-    UserResourcesResult.create({
-      user: "56983a9060a68052c1ed934c",
-      resourceResults: Ember.A([
-        QuestionResult.create({resourceId: "56a120483b6e7b090501d3e7", correct: true}),
-        QuestionResult.create({resourceId: "56a1204886b2e565e1b2c230", correct: true}),
-        QuestionResult.create({resourceId: "56a12048ddee2022a741356a", correct: true})
-      ])
-    }),
-    UserResourcesResult.create({
-      user: "56983a90fb01fecc328e2388",
-      resourceResults: Ember.A([
-        QuestionResult.create({resourceId: "56a120483b6e7b090501d3e7", correct: true}),
-        QuestionResult.create({resourceId: "56a1204886b2e565e1b2c230", correct: true}),
-        QuestionResult.create({resourceId: "56a12048ddee2022a741356a", correct: false})
-      ])
-    }),
-    UserResourcesResult.create({
-      user: "56983a906596902edadedc7c",
-      resourceResults: Ember.A([
-        QuestionResult.create({resourceId: "56a120483b6e7b090501d3e7", correct: true}),
-        QuestionResult.create({resourceId: "56a1204886b2e565e1b2c230", correct: false}),
-        QuestionResult.create({resourceId: "56a12048ddee2022a741356a", correct: false})
-      ])
-    })
-  ]);
+  this.set('reportData', reportData);
 
-  this.set("assessment", assessment);
-  this.set("students", students);
-  this.set("reportData", reportData);
-
-  this.render(hbs`{{reports/class-assessment/gru-student-view assessment=assessment students=students reportData=reportData}}`);
+  this.render(hbs`{{reports/class-assessment/gru-student-view reportData=reportData}}`);
 
   const $component = this.$();
-  T.exists(assert, $component.find(".sort-section"), "Sort section missing");
-  const $avrgSortBtn =$component.find(".sort-section button.sort-average");
-  const $alphabeticalSortBtn =$component.find(".sort-section button.sort-alphabetical");
-  T.exists(assert, $avrgSortBtn, "Missing sort by average");
-  T.exists(assert, $alphabeticalSortBtn, "Missing sort alphabetically");
-  assert.equal($component.find(".gru-student-performance-box").length, 3, "It should displayed 3 boxes");
+  T.exists(assert, $component.find('.sort-section'), 'Sort section missing');
+  const $avrgSortBtn =$component.find('.sort-section button.sort-average');
+  const $alphabeticalSortBtn =$component.find('.sort-section button.sort-alphabetical');
+  T.exists(assert, $avrgSortBtn, 'Missing sort by average');
+  T.exists(assert, $alphabeticalSortBtn, 'Missing sort alphabetically');
+  assert.equal($component.find('.gru-student-performance-box').length, 3, 'It should displayed 3 boxes');
 
+  $firstStudentPerformanceBox = $component.find('.gru-student-performance-box:first-child');
+  assert.equal(T.text($firstStudentPerformanceBox.find('.panel-heading')), 'Lorena Prendas Chavarria (100%)', 'It should say Lorena Prendas Chavarria (100%)');
 
-  $firstStudentPerformanceBox = $component.find(".gru-student-performance-box:first-child");
-
-
-  assert.equal(T.text($firstStudentPerformanceBox.find(".panel-heading")), "Lorena Prendas Chavarria (100%)", "It should say Lorena Prendas Chavarria (100%)");
-
-  $lastStudentPerformanceBox = $component.find(".gru-student-performance-box:last-child");
-
-  assert.equal(T.text($lastStudentPerformanceBox.find(".panel-heading")), "David Zumbado Alfaro (33%)", "It should say David Zumbado Alfaro (33%)");
+  $lastStudentPerformanceBox = $component.find('.gru-student-performance-box:last-child');
+  assert.equal(T.text($lastStudentPerformanceBox.find('.panel-heading')), 'David Zumbado Alfaro (33%)', 'It should say David Zumbado Alfaro (33%)');
 
   $alphabeticalSortBtn.click();
 
-  let $firstStudentPerformanceBox = $component.find(".gru-student-performance-box:first-child");
+  let $firstStudentPerformanceBox = $component.find('.gru-student-performance-box:first-child');
+  assert.equal(T.text($firstStudentPerformanceBox.find('.panel-heading')), 'Andres Charpentier Zuñiga (67%)', 'It should say Andres Charpentier Zuñiga');
 
-  assert.equal(T.text($firstStudentPerformanceBox.find(".panel-heading")), "Andres Charpentier Zuñiga (67%)", "It should say Andres Charpentier Zuñiga");
-
-  let $lastStudentPerformanceBox = $component.find(".gru-student-performance-box:last-child");
-  assert.equal(T.text($lastStudentPerformanceBox.find(".panel-heading")), "Lorena Prendas Chavarria (100%)", "It should say Lorena Prendas Chavarria");
-
-});*/
+  let $lastStudentPerformanceBox = $component.find('.gru-student-performance-box:last-child');
+  assert.equal(T.text($lastStudentPerformanceBox.find('.panel-heading')), 'Lorena Prendas Chavarria (100%)', 'It should say Lorena Prendas Chavarria');
+});

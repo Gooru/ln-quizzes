@@ -49,6 +49,7 @@
     "ember-i18n": "^4.3.2",
     "ember-i18n-cp-validations": "^2.7.2",
     "ember-simple-auth": "^1.1.0",
+    "ember-sinon": "0.5.1",
     "ember-truth-helpers": "^1.2.0",
     "grunt": "^0.4.5",
     "grunt-eslint": "^19.0.0",

@@ -23,6 +23,12 @@ export default Ember.Route.extend({
    */
   contextService: Ember.inject.service('api-sdk/context'),
 
+  /**
+   * @type {ProfileService} profileService
+   * @property {Ember.Service} Service to send profile related events
+   */
+  profileService: Ember.inject.service('api-sdk/profile'),
+
   // -------------------------------------------------------------------------
   // Actions
 
@@ -49,7 +55,16 @@ export default Ember.Route.extend({
     return route.get('contextService').getReportData(contextId).then(
       reportData => Ember.RSVP.hash({
         reportData,
-        collection: route.get('collectionService').readCollection(reportData.collectionId)
+        collection: route.get('collectionService').readCollection(reportData.collectionId),
+        profiles: Ember.RSVP.hash(
+          reportData.get('reportEvents').reduce(
+            (profiles, reportEvent) => {
+              let profileId = reportEvent.profileId;
+              if(!(profileId in profiles)) {
+                profiles[profileId] = route.get('profileService').readProfile(profileId);
+              }
+              return profiles;
+            }, {}))
       })
     );
   },
@@ -57,6 +72,11 @@ export default Ember.Route.extend({
   setupController(controller, model) {
     let collection = model.collection;
     let reportData = model.reportData;
+    let profiles = model.profiles;
+    reportData.get('reportEvents').forEach(function(reportEvent) {
+      let profile = profiles[reportEvent.get('profileId')];
+      reportEvent.setProfileProperties(profile);
+    });
     reportData.set('collection', collection);
     controller.set('reportData', reportData);
   }

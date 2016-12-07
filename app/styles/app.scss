@@ -12,12 +12,9 @@
 @import 'mixins/gru-accordion';
 
 @import 'controllers/application';
-@import 'controllers/classes';
 
 @import 'controllers/assign';
-@import 'controllers/partials/player';
-@import 'controllers/reports/collection';
-@import 'controllers/reports/student-collection';
+@import 'controllers/reports/context';
 
 // TODO: update these components so they follow the naming conventions
 @import 'components/app-dropdown';
@@ -56,7 +53,6 @@
 @import 'components/gru-slide-up-menu';
 @import 'components/gru-timestamp-input';
 
-@import 'components/cards/gru-class-card';
 @import 'components/cards/gru-collection-card';
 @import 'components/cards/gru-course-card';
 @import 'components/cards/gru-resource-card';

@@ -87,5 +87,9 @@ export default Ember.Service.extend({
       service.get('contextAdapter').updateContext(
         serializedAssignment, assignment.get('id')).then(resolve, reject);
     });
+  },
+
+  normalizeReportDataEvent: function(reportDataEvent) {
+    return this.get('contextSerializer').normalizeReportDataEvent(reportDataEvent);
   }
 });

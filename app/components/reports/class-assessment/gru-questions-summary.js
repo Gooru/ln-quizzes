@@ -83,7 +83,7 @@ export default Ember.Component.extend({
 
   /**
    * @property {Number} itemsPerColumn - Maximum number of items per column
-   * This value *must* match the value of the css letiable $questions-per-column
+   * This value *must* match the value of the css variable $questions-per-column
    * @see /app/styles/components/reports/class-assessment/_gru-questions-summary.scss
    */
   itemsPerColumn: 5,
@@ -163,8 +163,10 @@ export default Ember.Component.extend({
   updateWidth: function () {
     const component = this;
     const $element = Ember.$(component.element);
-    const width = parseInt($element.css('width').split('px')[0]);
-    this.set('width', width);
+    let width = $element.css('width');
+    if(width) {
+      this.set('width', parseInt(width.split('px')[0]));
+    }
   }
 
 });

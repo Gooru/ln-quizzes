@@ -391,8 +391,6 @@ test('normalizeReportData', function(assert) {
     profileEvents: [{
       currentResourceId: 'current-resource-id',
       profileId: 'student-id-1',
-      profileCode: 'student-code-1',
-      profileName: 'student-name-1',
       events: [{
         resourceId: 'resource-id-1',
         timeSpent: 10000,
@@ -423,8 +421,6 @@ test('normalizeReportEvents', function(assert) {
   const payload = [{
     currentResourceId: 'current-resource-id',
     profileId: 'student-id-1',
-    profileCode: 'student-code-1',
-    profileName: 'student-name-1',
     events: [{
       resourceId: 'resource-id-1',
       timeSpent: 10000,
@@ -439,22 +435,16 @@ test('normalizeReportEvents', function(assert) {
   }, {
     currentResourceId: 'current-resource-id',
     profileId: 'student-id-2',
-    profileCode: 'student-code-2',
-    profileName: 'student-name-2',
     events: []
   }];
   const response = serializer.normalizeReportDataEvents(payload);
   assert.equal(response.length, 2, 'Wrong resource results length');
   assert.equal(response[0].get('currentResourceId'), 'current-resource-id', 'Wrong first current resource');
   assert.equal(response[0].get('profileId'), 'student-id-1', 'Wrong first student id');
-  assert.equal(response[0].get('profileCode'), 'student-code-1', 'Wrong first student code');
-  assert.equal(response[0].get('profileName'), 'student-name-1', 'Wrong first student name');
   assert.equal(response[0].get('resourceResults').length, 2, 'Wrong first results length');
   assert.equal(response[0].get('resourceResults')[0].get('resourceId'), 'resource-id-1', 'Wrong first resource id');
   assert.equal(response[0].get('resourceResults')[1].get('resourceId'), 'resource-id-2', 'Wrong second resource id');
   assert.equal(response[1].get('currentResourceId'), 'current-resource-id', 'Wrong second current resource');
   assert.equal(response[1].get('profileId'), 'student-id-2', 'Wrong second student id');
-  assert.equal(response[1].get('profileCode'), 'student-code-2', 'Wrong second student code');
-  assert.equal(response[1].get('profileName'), 'student-name-2', 'Wrong second student name');
   assert.equal(response[1].get('resourceResults').length, 0, 'Wrong second results length');
 });

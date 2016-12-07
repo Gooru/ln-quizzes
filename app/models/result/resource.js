@@ -10,6 +10,11 @@ import Serializable from 'quizzes/mixins/serializable';
 export default Ember.Object.extend(Serializable, {
 
   /**
+   * @property {number} isQuestion
+   */
+  isQuestion: false,
+
+  /**
    * @property {number} reaction - user reaction to the resource
    */
   reaction: 0,
@@ -25,14 +30,19 @@ export default Ember.Object.extend(Serializable, {
   resourceId: null,
 
   /**
-   * @property {number} isQuestion
-   */
-  isQuestion: false,
-
-  /**
    * @property {number} savedTime - Current loaded time for the resource
    */
   savedTime: 0,
+
+  /**
+   * @property {number} skipped - if the resource was skipped
+   */
+  skipped: false,
+
+  /**
+   * @property {number} started - if the resource was started
+   */
+  started: true,
 
   /**
    * @property {number} startTime - Current start time for the resource

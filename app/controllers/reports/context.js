@@ -14,6 +14,28 @@ import EndPointsConfig from 'quizzes/utils/endpoint-config';
  */
 export default Ember.Controller.extend({
 
+  /**
+   * @type {ContextService} contextService
+   * @property {Ember.Service} Service to send context related events
+   */
+  contextService: Ember.inject.service('api-sdk/context'),
+
+  /**
+   * @requires service:i18n
+   */
+  i18n: Ember.inject.service(),
+
+  /**
+   * @requires service:notifications
+   */
+  notifications: Ember.inject.service(),
+
+  /**
+   * @type {ProfileService} profileService
+   * @property {Ember.Service} Service to send profile related events
+   */
+  profileService: Ember.inject.service('api-sdk/profile'),
+
   // -------------------------------------------------------------------------
   // Actions
 
@@ -83,8 +105,9 @@ export default Ember.Controller.extend({
    * any initialization data from the real time server as well
    */
   reportDataLoaded: Ember.observer('reportData', function () {
-    const contextId = this.get('reportData.contextId');
     const reportData = this.get('reportData');
+    const contextId = reportData.get('contextId');
+
     if (reportData) {
       this.connectWithWebSocket(contextId, reportData);
     }
@@ -115,21 +138,17 @@ export default Ember.Controller.extend({
        // A web socket connection was made to the RT server. Before subscribing
        // for live messages, a request will be made to fetch any initialization data
        // from the RT server (to avoid overriding data from live messages with init data)
-       controller.get('realTimeService').findResourcesByContext(contextId)
-         .then(function (userResourceResults) {
-           const channel = contextId;
+       const channel = contextId;
 
-           // Subscribe to listen for live messages
-           webSocketClient.subscribe(`/topic/${channel}`, function (message) {
-             const eventMessage = JSON.parse(message.body);
-             const userResourceResult = controller.get('realTimeSerializer').normalizeRealTimeEvent(eventMessage);
-             reportData.merge([userResourceResult]);
-           });
-
-           // Merge any init data from the RT server with any
-           // previous report data
-           reportData.merge(userResourceResults);
+       // Subscribe to listen for live messages
+       webSocketClient.subscribe(`/${channel}`, function (message) {
+         const eventMessage = JSON.parse(message.body);
+         const reportEvent = controller.get('contextService').normalizeReportDataEvent(eventMessage);
+         controller.get('profileService').readProfile(reportEvent.get('profileId')).then(function(profile) {
+           reportEvent.setProfileProperties(profile);
+           reportData.mergeEvent(reportEvent);
          });
+       });
 
      }, function () {
        const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
@@ -138,11 +157,9 @@ export default Ember.Controller.extend({
        webSocketClient.disconnect();
        webSocketClient = null;
 
-       setTimeout(function () {
-         // Make a recursive call to try to reconnect
-         controller.connectWithWebSocket(contextId, reportData);
-       }, connectAttemptDelay);
-
+       setTimeout(
+        () => controller.connectWithWebSocket(contextId, reportData),
+        connectAttemptDelay);
      });
    },
 
@@ -165,8 +182,8 @@ export default Ember.Controller.extend({
         preventDuplicates: false,
         showDuration: 300,
         hideDuration: 1000,
-        'timeOut': '0',
-        'extendedTimeOut': '0',
+        timeOut: '0',
+        extendedTimeOut: '0',
         showEasing: 'swing',
         hideEasing: 'linear',
         showMethod: 'fadeIn',

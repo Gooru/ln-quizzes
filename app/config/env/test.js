@@ -10,8 +10,8 @@ export default {
   "realTime": {
     "webServiceUrl": "https://localhost:7357",
     "webServiceUri": "/nucleus/realtime",
-    "webSocketUrl": "https://localhost:7357",
-    "webSocketUri": "/ws/realtime"
+    "webSocketUrl": "realtimeURL",
+    "webSocketUri": "/realtimeURI"
   },
 
   "teams": {

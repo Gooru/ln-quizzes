@@ -14,45 +14,48 @@ const Validations = buildValidations({
   availableDay:{
     validators: [
       validator('presence', {
-        presence: true
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.available-date-error'
       })
     ]
   },
   availableTime:{
     validators: [
       validator('presence', {
-        presence: true
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.available-date-error'
       })
     ]
   },
   dueDay:{
     validators: [
       validator('presence', {
-        presence: true
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.due-date-presence-error'
       })
     ]
   },
   dueTime:{
     validators: [
       validator('presence', {
-        presence: true
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.due-date-presence-error'
       })
     ]
   },
   dueDate: {
     validators: [
-      validator('presence', {
-        presence: true,
-        message: '{{description}}',
-        descriptionKey: 'common.errors.due-date-presence-error'
-      }),
-      validator('number-compare', {
-        property:'availableDate'
-      }),
       validator('dependent', {
         on: ['availableDate'],
         message: '{{description}}',
         descriptionKey: 'common.errors.available-date-error'
+      }),
+      validator('number-compare', {
+        property:'availableDate'
       })
     ]
   }

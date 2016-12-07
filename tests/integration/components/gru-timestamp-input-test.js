@@ -47,3 +47,50 @@ test('Timestamp valuePath', function(assert) {
   });
 });
 
+test('Validate time', function(assert) {
+  assert.expect(3);
+
+  let assignment = Context.create(Ember.getOwner(this).ownerInjection());
+  this.set('assignment',assignment);
+
+  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='dueDate'}}`);
+  var $timestampInputComponent = this.$();
+  var $input = $timestampInputComponent.find('#date-dueDate');
+  var $inputTime = $timestampInputComponent.find('#time-dueDate');
+
+  T.exists(assert, $input, 'Due date input element not found');
+  $input.val('10/21/2200');
+  $input.blur();
+
+  $inputTime.val('');
+  $inputTime.blur();
+
+  return wait().then(function () {
+    assert.ok($timestampInputComponent.find('.time-picker.has-error').length, 'Time should have error');
+    assert.notOk($timestampInputComponent.find('.date-picker.has-error').length, 'Date should not have error');
+  });
+});
+
+test('Validate date', function(assert) {
+  assert.expect(3);
+
+  let assignment = Context.create(Ember.getOwner(this).ownerInjection());
+  this.set('assignment',assignment);
+
+  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='availableDate'}}`);
+  var $timestampInputComponent = this.$();
+  var $input = $timestampInputComponent.find('#date-availableDate');
+  var $inputTime = $timestampInputComponent.find('#time-availableDate');
+
+  T.exists(assert, $input, 'Available date input element not found');
+  $input.val('');
+  $input.blur();
+
+  $inputTime.val('11:30 AM');
+  $inputTime.blur();
+
+  return wait().then(function () {
+    assert.notOk($timestampInputComponent.find('.time-picker.has-error').length, 'Time should not have error');
+    assert.ok($timestampInputComponent.find('.date-picker.has-error').length, 'Date should have error');
+  });
+});

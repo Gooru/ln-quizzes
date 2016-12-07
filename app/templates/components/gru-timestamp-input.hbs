@@ -32,7 +32,16 @@
     </div>
 </div>
 <div class="error-messages">
-  {{#if showMessage}}
+
+  {{#if showDateMessage}}
+      <span class="error">
+        {{{v-get model datePath 'message'}}}
+      </span>
+    {{else if showTimeMessage}}
+      <span class="error">
+        {{{v-get model timePath 'message'}}}
+      </span>
+    {{else if showMessage}}
       <span class="error">
       {{{v-get model valuePath 'message'}}}
       </span>

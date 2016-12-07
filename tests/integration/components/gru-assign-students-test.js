@@ -218,7 +218,7 @@ test('Cancel assign students', function(assert) {
   });
 });
 
-test('Timestamp due date with due date less than the assigned date', function(assert) {
+test('Validate due date with due date less than the assigned date', function(assert) {
 
   let context = Context.create(Ember.getOwner(this).ownerInjection(),{
     title:this.get('collection.title')
@@ -241,30 +241,77 @@ test('Timestamp due date with due date less than the assigned date', function(as
     T.exists(assert, $inputAvailableTime, 'Assigned time input element not found');
     T.exists(assert, $inputDueDateTime, 'Due date time input element not found');
 
+    $inputAvailableDate.val('10/21/2200');
+    $inputAvailableDate.blur();
+
+    $inputAvailableTime.val('10:30 AM');
+    $inputAvailableTime.blur();
+
     $inputDueDate.val('10/21/2200');
     $inputDueDate.blur();
 
-    $inputDueDateTime.val('12:31 PM');
+    $inputDueDateTime.val('10:30 AM');
     $inputDueDateTime.blur();
 
     $component.find('.assign-btn').click();
     return wait().then(function () {
-      assert.ok(!$component.find(".error-messages .error").length, 'Input error message should be hidden');
-      $inputAvailableDate.val('');
+      assert.ok($component.find(".error-messages .error").length, 'Input error message should be visible');
+      $inputDueDate.val('10/22/2200');
+      $inputDueDate.blur();
+
+      $inputDueDateTime.val('11:30 PM');
+      $inputDueDateTime.blur();
+      return wait().then(function () {
+        assert.ok(!$component.find(".error-messages .error").length, 'Input error message should be hidden');
+      });
+    });
+  });
+});
+test('Validate due date when do not have available date', function(assert) {
+
+  let context = Context.create(Ember.getOwner(this).ownerInjection(),{
+    title:this.get('collection.title')
+  });
+
+  this.set('assignment',context);
+  this.render(hbs`{{gru-assign-students assignment=assignment}}`);
+  var $component = this.$();
+  var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
+  return wait().then(function () {
+    var $inputDueDate = $component.find('#date-dueDate');
+    var $inputDueDateTime = $component.find('#time-dueDate');
+
+    var $inputAvailableDate = $component.find('#date-availableDate');
+    var $inputAvailableTime = $component.find('#time-availableDate');
+
+    T.exists(assert, $inputAvailableDate, 'Assigned date input element not found');
+    T.exists(assert, $inputDueDate, 'Due date input element not found');
+    T.exists(assert, $inputAvailableTime, 'Assigned time input element not found');
+    T.exists(assert, $inputDueDateTime, 'Due date time input element not found');
+
+    $inputAvailableDate.val('');
+    $inputAvailableDate.blur();
+
+    $inputAvailableTime.val('');
+    $inputAvailableTime.blur();
+
+    $inputDueDate.val('10/21/2200');
+    $inputDueDate.blur();
+
+    $inputDueDateTime.val('10:30 AM');
+    $inputDueDateTime.blur();
+
+    $component.find('.assign-btn').click();
+    return wait().then(function () {
+      assert.ok($component.find(".error-messages .error").length, 'Input error message should be visible');
+      $inputAvailableDate.val('10/21/2200');
       $inputAvailableDate.blur();
 
-      $inputAvailableTime.val('');
+      $inputAvailableTime.val('10:00 AM');
       $inputAvailableTime.blur();
       return wait().then(function () {
-        assert.ok($component.find(".error-messages .error").length, 'Input error message should be hidden');
-        $inputAvailableDate.val('10/21/2200');
-        $inputAvailableDate.blur();
-
-        $inputAvailableTime.val('12:31 PM');
-        $inputAvailableTime.blur();
-        return wait().then(function () {
-          assert.ok($component.find(".error-messages .error").length, 'Input error message was hidden');
-        });
+        assert.ok(!$component.find(".error-messages .error").length, 'Input error message should be hidden');
       });
     });
   });

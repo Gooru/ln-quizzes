@@ -62,14 +62,10 @@ export default Ember.Component.extend({
         assignees:assignedStudents
       });
       if(this.get('didValidate') === false) {
-        var availableDay = Ember.$('#date-availableDate').val();
-        var availableTime = Ember.$('#time-availableDate').val();
-        var dueDay = Ember.$('#date-dueDate').val();
-        var dueTime = Ember.$('#time-dueDate ').val();
-        component.get('assignment').set('availableDay',availableDay);
-        component.get('assignment').set('availableTime',availableTime);
-        component.get('assignment').set('dueDay',dueDay);
-        component.get('assignment').set('dueTime',dueTime);
+        Ember.$('#date-availableDate').blur();
+        Ember.$('#time-availableDate').blur();
+        Ember.$('#date-dueDate').blur();
+        Ember.$('#time-dueDate ').blur();
       }
       component.get('assignment').validate().then(function ({ validations }) {
         if (validations.get('isValid')) {

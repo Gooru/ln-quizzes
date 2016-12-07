@@ -14,14 +14,14 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Actions
-  actions:{
+  actions: {
     inputValueChange: function() {
       this.setInputValues();
       this.set(`model.${this.get('datePath')}`,this.get('rawDateValue'));
       this.set(`model.${this.get('timePath')}`,this.get('rawTimeValue'));
       this.set(`model.${this.get('valuePath')}`,this.getDate());
       this.set('isTyping', false);
-      if (this.get('onFocusOut')){
+      if (this.get('onFocusOut')) {
         this.sendAction('onFocusOut');
       }
     },
@@ -67,30 +67,31 @@ export default Ember.Component.extend({
   /**
    * @param {String} valuePath - value used to set the attributeValidation
    */
-  valuePath:null,
-
-  datePath:Ember.computed(function(){
+  valuePath: null,
+  /**
+   * @param {String} datePath - value used to set the dateValidation
+   */
+  datePath: Ember.computed(function() {
     return this.get('valuePath') === 'availableDate'? 'availableDay' : 'dueDay';
   }),
-
-  timePath:Ember.computed(function(){
+  /**
+   * @param {String} timePath - value used to set the timeValidation
+   */
+  timePath: Ember.computed(function() {
     return this.get('valuePath') === 'availableDate'? 'availableTime' : 'dueTime';
   }),
-
   /**
    * @param {String} dateID - value date element id
    */
-  dateID:Ember.computed('valuePath',function(){
+  dateID: Ember.computed('valuePath',function() {
     return `date-${this.get('valuePath')}`;
   }),
-
   /**
    * @param {String} timeID - value time element id
    */
-  timeID:Ember.computed('valuePath',function(){
+  timeID: Ember.computed('valuePath',function() {
     return `time-${this.get('valuePath')}`;
   }),
-
   /**
    * @param {String} rawDateValue - unformatted value of the input field
    */
@@ -147,7 +148,7 @@ export default Ember.Component.extend({
   autofocus: false,
 
   /**
-   * Indicates if
+   * Indicates if the component should show the actual date as default
    * @property {boolean}
    */
   setActualDate: false,
@@ -265,7 +266,7 @@ export default Ember.Component.extend({
   /**
    * Get a format date from timestamp
    */
-  getDateFromTimestamp:function(timeStamp){
+  getDateFromTimestamp: function(timeStamp) {
     let date = moment(timeStamp);
     return [date.format('L'),date.format('LT')];
   },
@@ -273,13 +274,13 @@ export default Ember.Component.extend({
   /**
    * Get timestamp date
    */
-  getDate:function(){
+  getDate: function() {
     return moment(new Date(this.get('rawDateValue')+" "+this.get('rawTimeValue'))).valueOf();
   },
   /**
-   * Set date picker component
+   * Initialize the date picker component
    */
-  setDatePicker:function(){
+  setDatePicker: function() {
     let $day = $(`#${this.get('dateID')}`);
     let $time = $(`#${this.get('timeID')}`);
 
@@ -310,7 +311,7 @@ export default Ember.Component.extend({
   /**
    * Set the value of date and time input
    */
-  setInputValues : function(){
+  setInputValues: function(){
     let $day = $(`#${this.get('dateID')}`);
     let $time = $(`#${this.get('timeID')}`);
     this.set('rawDateValue',$day.val());

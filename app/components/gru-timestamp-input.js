@@ -10,19 +10,20 @@ export default Ember.Component.extend({
 
   classNames: ['gru-timestamp-input','validation'],
 
-  classNameBindings: ['showErrorClass:has-error', 'isValid:has-success','valuePath'],
+  classNameBindings: ['valuePath'],
 
   // -------------------------------------------------------------------------
   // Actions
   actions:{
     inputValueChange: function() {
-      this.set('rawDateValue',this.removeWhiteSpaces(this.get('rawDateValue')));
-      this.set('valueDate', this.get('rawDateValue'));
-      this.set('rawTimeValue',this.removeWhiteSpaces(this.get('rawTimeValue')));
-      this.set('valueTime', this.get('rawTimeValue'));
+      this.setInputValues();
+      this.set(`model.${this.get('datePath')}`,this.get('rawDateValue'));
+      this.set(`model.${this.get('timePath')}`,this.get('rawTimeValue'));
+
       if(this.get('rawDateValue') && this.get('rawTimeValue')){
         this.set(`model.${this.get('valuePath')}`,this.getDate());
-      }else{
+      }
+      else{
         this.set(`model.${this.get('valuePath')}`,'');
       }
       this.set('isTyping', false);
@@ -39,12 +40,11 @@ export default Ember.Component.extend({
     },
 
     enterPressed: function() {
-      this.set('rawDateValue',this.removeWhiteSpaces(this.get('rawDateValue')));
-      this.set('valueDate', this.get('rawDateValue'));
-      this.set('rawTimeValue',this.removeWhiteSpaces(this.get('rawTimeValue')));
-      this.set('valueTime', this.get('rawTimeValue'));
+      this.setInputValues();
       this.set('isTyping', false);
       this.get('onEnter') && this.get('isValid') && this.get('onEnter')(this.get('valueDate'))&& this.get('onEnter')(this.get('valueTime'));
+      this.get('onEnter') && this.get('isDateValid') && this.get('onEnter')(this.get('valueDate'));
+      this.get('onEnter') && this.get('isTimeValid') && this.get('onEnter')(this.get('valueTime'));
     }
   },
   // -------------------------------------------------------------------------
@@ -54,6 +54,8 @@ export default Ember.Component.extend({
     this._super(...arguments);
     var valuePath = this.get('valuePath');
     defineProperty(this, 'attributeValidation', computed.oneWay(`model.validations.attrs.${valuePath}`));
+    defineProperty(this, 'dateValidation',valuePath === 'availableDate'? computed.oneWay('model.validations.attrs.availableDay') : computed.oneWay('model.validations.attrs.dueDay'));
+    defineProperty(this, 'timeValidation',valuePath === 'availableDate'? computed.oneWay('model.validations.attrs.availableTime') : computed.oneWay('model.validations.attrs.dueTime'));
     this.set('rawDateValue',this.get(`model.${valuePath}`) ? this.getDateFromTimestamp(this.get(`model.${valuePath}`))[0]:'');
     this.set('rawTimeValue',this.get(`model.${valuePath}`) ? this.getDateFromTimestamp(this.get(`model.${valuePath}`))[1]:'');
   },
@@ -73,18 +75,26 @@ export default Ember.Component.extend({
    */
   valuePath:null,
 
+  datePath:Ember.computed(function(){
+    return this.get('valuePath') === 'availableDate'? 'availableDay' : 'dueDay';
+  }),
+
+  timePath:Ember.computed(function(){
+    return this.get('valuePath') === 'availableDate'? 'availableTime' : 'dueTime';
+  }),
+
   /**
    * @param {String} dateID - value date element id
    */
   dateID:Ember.computed('valuePath',function(){
-    return `date${this.get('valuePath')}`;
+    return `date-${this.get('valuePath')}`;
   }),
 
   /**
    * @param {String} timeID - value time element id
    */
   timeID:Ember.computed('valuePath',function(){
-    return `time${this.get('valuePath')}`;
+    return `time-${this.get('valuePath')}`;
   }),
 
   /**
@@ -101,17 +111,27 @@ export default Ember.Component.extend({
    */
   type: 'text',
   /**
-   * @param {String} valueDatePath - value used to set the rawDateValue
+   * @param {String} valueDate - value used to set the rawDateValue
    */
-  valueDatePath: '',
+  valueDate: '',
   /**
-   * @param {String} valuePath - value used to set the rawTimeValue
+   * @param {String} valueTime - value used to set the rawTimeValue
    */
-  valueTimePath: '',
+  valueTime: '',
   /**
    * @param {Object} attributeValidation - value used to set the rawDateValue
    */
   attributeValidation: null,
+
+  /**
+   * @param {Object} dateValidation
+   */
+  dateValidation: null,
+
+  /**
+   * @param {Object} timeValidation
+   */
+  timeValidation: null,
   /**
    * @param {Boolean} isTyping - Flag for when user is typing
    */
@@ -133,6 +153,11 @@ export default Ember.Component.extend({
   autofocus: false,
 
   /**
+   * Indicates if
+   * @property {boolean}
+   */
+  setActualDate: false,
+  /**
    * @param {Computed } didValidate - value used to check if input has been validated or not
    */
   didValidate: false,
@@ -140,8 +165,21 @@ export default Ember.Component.extend({
   /**
    * @param {Computed } showErrorClass - computed property that defines the
    */
-  showErrorClass: computed('showMessage', 'hasContent', 'attributeValidation', function() {
-    return this.get('attributeValidation') && this.get('showMessage') && this.get('hasContent');
+  showErrorClass: computed('showMessage','attributeValidation', function() {
+    return this.get('attributeValidation') && this.get('showMessage');
+  }),
+
+  /**
+   * @param {Computed } showDateErrorClass - computed property that defines the
+   */
+  showDateErrorClass: computed('isValid','dateIsInvalid', function() {
+    return this.get('dateIsInvalid');
+  }),
+  /**
+   * @param {Computed } showTimeErrorClass - computed property that defines the
+   */
+  showTimeErrorClass: computed('isValid','timeIsInvalid', function() {
+    return this.get('timeIsInvalid');
   }),
   /**
    * @param {Computed } hasContent - computed property that defines whether the rawDateValue and rawTimeValue is null or not.
@@ -160,25 +198,63 @@ export default Ember.Component.extend({
    */
   isValid: computed.readOnly('attributeValidation.isValid'),
   /**
+   * @param {Computed } isDateValid -  A computed property that says whether the value is valid
+   */
+  isDateValid: computed.readOnly('dateValidation.isValid'),
+  /**
+   * @param {Computed } isTimeValid -  A computed property that says whether the value is valid
+   */
+  isTimeValid: computed.readOnly('timeValidation.isValid'),
+  /**
    * @param {Computed } isInvalid - A computed property that says whether the value is invalid
    */
   isInvalid: computed.oneWay('attributeValidation.isInvalid'),
+  /**
+   * @param {Computed } dateIsInvalid - A computed property that says whether the value is invalid
+   */
+  dateIsInvalid: computed.oneWay('dateValidation.isInvalid'),
+  /**
+   * @param {Computed } timeIsInvalid - A computed property that says whether the value is invalid
+   */
+  timeIsInvalid: computed.oneWay('timeValidation.isInvalid'),
   /**
    * @param {Computed } hasContent - computed property that defines what message to show
    */
   showMessage: computed('attributeValidation.isDirty', 'isInvalid', 'didValidate', 'isTyping', function() {
     return (this.get('attributeValidation.isDirty') || this.get('didValidate')) && this.get('isInvalid') && !this.get('isTyping');
   }),
-  // -------------------------------------------------------------------------
-  // Methods
+  /**
+   * @param {Computed } showDateMessage - computed property that defines if the date input is invalid
+   */
+  showErrorDateInput: computed('dateValidation.isDirty', 'dateIsInvalid','attributeValidation',function() {
+    let errorClass = "";
+    if(this.get('dateValidation.isDirty')){
+        if(this.get('attributeValidation.errors.length') > 0 && (this.get('attributeValidation.errors')[0].message).includes('greater')){
+          errorClass = 'has-error' ;
+        }else {
+        errorClass = this.get('dateIsInvalid') ? 'has-error' : 'has-success';
+        }
+      }
+    return errorClass;
+  }),
 
   /**
-   * Remove white spaces from input
+   * @param {Computed } showErrorTimeInput - computed property that defines if the time input is invalid
    */
-  removeWhiteSpaces:function(value){
-    return $.trim(value);
-  },
+  showErrorTimeInput: computed('timeValidation.isDirty', 'timeIsInvalid','attributeValidation',function() {
+    let errorClass = "";
+    if(this.get('timeValidation.isDirty')){
+      if(this.get('attributeValidation.errors.length') > 0 && (this.get('attributeValidation.errors')[0].message).includes('greater')){
+        errorClass = 'has-error' ;
+      }else{
+        errorClass = this.get('timeIsInvalid') ? 'has-error' : 'has-success';
+      }
+    }
+    return errorClass;
+  }),
 
+  // -------------------------------------------------------------------------
+  // Methods
   /**
    * Get a format date from timestamp
    */
@@ -193,18 +269,61 @@ export default Ember.Component.extend({
   getDate:function(){
     return moment(new Date(this.get('rawDateValue')+" "+this.get('rawTimeValue'))).valueOf();
   },
-
   /**
    * Set date picker component
    */
   setDatePicker:function(){
-    $(`#${this.get('dateID')}`).datepicker({
+    let $day = $(`#${this.get('dateID')}`);
+    let $time = $(`#${this.get('timeID')}`);
+
+    $day.datepicker({
       autoclose: true,
       startDate: new Date()
     });
-    $(`#${this.get('timeID')}`).timepicker({
+
+    $time.timepicker({
       'showDuration': true,
       'timeFormat': 'g:i A'
     });
-  }
+
+    $day.on('changeDate', function() {
+      var dateValue = $day.datepicker('getFormattedDate');
+      $day.val(dateValue);
+      $day.blur();
+    });
+
+    if(this.get('setActualDate')){
+      $day.datepicker('setDate', new Date());
+      $day.datepicker('update');
+      $time.timepicker('setTime', '12:00 am');
+      $day.blur();
+      $time.blur();
+    }
+  },
+  /**
+   * Set the value of date and time input
+   */
+  setInputValues : function(){
+    let $day = $(`#${this.get('dateID')}`);
+    let $time = $(`#${this.get('timeID')}`);
+    this.set('rawDateValue',$day.val());
+    this.set('valueDate', this.get('rawDateValue'));
+    this.set('rawTimeValue',$time.val());
+    this.set('valueTime', this.get('rawTimeValue'));
+  },
+
+  // -------------------------------------------------------------------------
+  // Observers
+  /**
+   * Set the default time when the date is selected for due date
+   */
+  setDefaultTime: Ember.observer('rawDateValue', function() {
+    let $time = $(`#${this.get('timeID')}`);
+    if(!this.get('setActualDate')){
+      if(this.get('rawDateValue') !==''){
+        $time.timepicker('setTime', '11:30 pm');
+        $time.blur();
+      }
+    }
+  })
 });

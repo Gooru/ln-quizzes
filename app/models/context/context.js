@@ -11,6 +11,34 @@ const Validations = buildValidations({
       })
     ]
   },
+  availableDay:{
+    validators: [
+      validator('presence', {
+        presence: true
+      })
+    ]
+  },
+  availableTime:{
+    validators: [
+      validator('presence', {
+        presence: true
+      })
+    ]
+  },
+  dueDay:{
+    validators: [
+      validator('presence', {
+        presence: true
+      })
+    ]
+  },
+  dueTime:{
+    validators: [
+      validator('presence', {
+        presence: true
+      })
+    ]
+  },
   dueDate: {
     validators: [
       validator('presence', {
@@ -70,7 +98,14 @@ const Context = Ember.Object.extend(Validations,{
    * @property  {number}
    */
   availableDate: null,
-
+  /**
+   * @property  {number}
+   */
+  availableDay: null,
+  /**
+   * @property  {number}
+   */
+  availableTime: null,
 
   /**
    * @property {number}
@@ -80,6 +115,15 @@ const Context = Ember.Object.extend(Validations,{
    * @property {number}
    */
   dueDate:null,
+
+  /**
+   * @property  {number}
+   */
+  dueDay: null,
+  /**
+   * @property  {number}
+   */
+  dueTime: null,
 
   /**
    * @property {[Profile]}

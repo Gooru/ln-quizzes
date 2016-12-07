@@ -61,10 +61,21 @@ export default Ember.Component.extend({
         owner:component.get('owner'),
         assignees:assignedStudents
       });
+      if(this.get('didValidate') === false) {
+        var availableDay = Ember.$('#date-availableDate').val();
+        var availableTime = Ember.$('#time-availableDate').val();
+        var dueDay = Ember.$('#date-dueDate').val();
+        var dueTime = Ember.$('#time-dueDate ').val();
+        component.get('assignment').set('availableDay',availableDay);
+        component.get('assignment').set('availableTime',availableTime);
+        component.get('assignment').set('dueDay',dueDay);
+        component.get('assignment').set('dueTime',dueTime);
+      }
       component.get('assignment').validate().then(function ({ validations }) {
         if (validations.get('isValid')) {
           if(component.get('assignment.id')){
             component.get('contextService').updateContext(component.get('assignment')).then(function(){
+              component.set('didValidate', true);
               component.sendAction('onCloseModal');
             });
           }else{
@@ -142,7 +153,10 @@ export default Ember.Component.extend({
   totalSelected:Ember.computed('students.@each.isAssigned',function(){
     return this.get('students').filterBy('isAssigned',true).length;
   }),
-
+  /**
+   * @param {Boolean } didValidate - value used to check if input has been validated or not
+   */
+  didValidate: false,
   // -------------------------------------------------------------------------
   // Methods
   /**

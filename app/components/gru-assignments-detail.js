@@ -42,9 +42,24 @@ export default Ember.Component.extend(ModalMixin,{
      * Open add student modal
      */
     addStudent: function () {
+      let assigned = this.get('assignment.assignees');
+      let assignedStudents = [];
+      let students = [];
+      if(assigned){
+        assignedStudents = assigned.getEach('id');
+        if(this.get('studentList')){
+          students = this.get('studentList').map(function(student) {
+            let studentObject = Profile.create(student);
+            studentObject.set('isAssigned',assignedStudents.includes(student.id));
+            return studentObject;
+          });
+        }
+      }
+      this.set('students', students);
+
       let model = {
         students: this.get('students'),
-        collection: this.get('assignment'),
+        assignment: this.get('assignment'),
         width:'75%'
       };
       this.actions.showModal.call(this, 'gru-assign-student-modal',

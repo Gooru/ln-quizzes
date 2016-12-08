@@ -10,8 +10,8 @@ moduleForComponent('gru-assignments-detail', 'Unit | Component | gru assignments
 test('addStudent', function(assert) {
   let component = this.subject();
   let expectedModel = {
-    students: 'students',
-    collection: 'assignment',
+    students: [],
+    assignment: 'assignment',
     width:'75%'
   };
   component.set('assignment', 'assignment');

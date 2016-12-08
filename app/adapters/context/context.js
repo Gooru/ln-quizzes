@@ -17,7 +17,7 @@ export default Ember.Object.extend({
       data: JSON.stringify(assignment),
       // TODO get real headers
       headers: {
-        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
+        'profile-id': 'de6f751b-cfc5-46d7-839d-cfb276e93238',
         'lms-id': 'its_learning'
       }
     };
@@ -48,7 +48,7 @@ export default Ember.Object.extend({
       dataType: 'json',
       processData: false,
       headers: {
-        'profile-id': '4f2e9b8f-9bae-42e8-ac5b-2113b0584baa',
+        'profile-id': 'de6f751b-cfc5-46d7-839d-cfb276e93238',
         'lms-id': 'its_learning'
       }
     };
@@ -126,7 +126,7 @@ export default Ember.Object.extend({
       data: JSON.stringify(data),
       // TODO get real headers
       headers: {
-        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
+        'profile-id': 'de6f751b-cfc5-46d7-839d-cfb276e93238',
         'lms-id': 'quizzes'
       }
     };

@@ -60,7 +60,7 @@ export default Ember.Object.extend({
       description: payload.contextData.metadata.description,
       isActive: payload.contextData.metadata.isActive,
       dueDate: payload.contextData.metadata.dueDate,
-      availableDate: payload.contextData.metadata.availableDate,
+      availableDate: payload.contextData.metadata.startDate,
       createdDate: payload.contextData.metadata.createdDate,
       modifiedDate: payload.contextData.metadata.modifiedDate,
       learningObjective: payload.contextData.metadata.learningObjective,
@@ -69,7 +69,8 @@ export default Ember.Object.extend({
           id: payload.owner.id,
           firstName: payload.owner.firstName,
           lastName: payload.owner.lastName ,
-          username: payload.owner.username
+          username: payload.owner.username,
+          email:payload.owner.email
         }) : null,
       collection:Collection.create({
         id: payload.collection.id
@@ -154,7 +155,8 @@ export default Ember.Object.extend({
         id: profile.get('id'),
         firstName: profile.get('firstName'),
         lastName: profile.get('lastName'),
-        username: profile.get('username')
+        username: profile.get('username'),
+        email:profile.get('email')
       };
     });
     return serializedAssigneesList;
@@ -172,12 +174,14 @@ export default Ember.Object.extend({
       firstName: assignment.get('owner.firstName'),
       id: assignment.get('owner.id'),
       lastName: assignment.get('owner.lastName'),
-      username: assignment.get('owner.username')
+      username: assignment.get('owner.username'),
+      email: assignment.get('owner.email')
     } : {
       firstName: '',
       id: '',
       lastName: '',
-      username: ''
+      username: '',
+      email: ''
     };
     return serializedAssignment;
   },
@@ -218,6 +222,7 @@ export default Ember.Object.extend({
           description: assignment.get('description'),
           isActive: assignment.get('isActive'),
           dueDate: assignment.get('dueDate') || null,
+          startDate:assignment.get('availableDate') || null,
           learningObjective: assignment.get('learningObjective')
         }
       }

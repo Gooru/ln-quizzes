@@ -22,7 +22,7 @@ export default Ember.Route.extend({
 
     let students = studentList.map(function(student){
       let studentObject = Profile.create(student);
-        studentObject.set('isSelected',false);
+        studentObject.set('isAssigned',false);
         return studentObject;
     });
 
@@ -33,7 +33,8 @@ export default Ember.Route.extend({
       id: teacherConfig.id,
       firstName:teacherConfig.firstName,
       lastName:teacherConfig.lastName,
-      username:teacherConfig.username
+      username:teacherConfig.username,
+      email:teacherConfig.email
     });
     let context = this.get('configurationService.configuration.properties.context');
 

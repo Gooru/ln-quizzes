@@ -76,7 +76,9 @@ export default Ember.Component.extend({
             });
           }else{
             component.get('contextService').createContext(component.get('assignment')).then(function(){
-              Ember.Logger.log('Context has been created');
+              component.set('assignment', Context.create(Ember.getOwner(component).ownerInjection(),{
+                title:component.get('collection.title')
+              }));
             });
           }
         }
@@ -89,11 +91,12 @@ export default Ember.Component.extend({
 
   init() {
     this._super(...arguments);
-
-    let context = Context.create(Ember.getOwner(this).ownerInjection(),{
-      title:this.get('collection.title')
-    });
-
+    let context = Context.create(Ember.getOwner(this).ownerInjection(),{});
+    if(!this.get('assignment.id')){
+       context.set('title',this.get('collection.title'));
+    }else{
+      context = Context.create(Ember.getOwner(this).ownerInjection(),this.get('assignment'));
+    }
     this.set('assignment', context);
   },
   /**

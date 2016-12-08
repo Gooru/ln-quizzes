@@ -95,7 +95,7 @@ export default Ember.Component.extend({
     if(!this.get('assignment.id')){
        context.set('title',this.get('collection.title'));
     }else{
-      context = Context.create(Ember.getOwner(this).ownerInjection(),this.get('assignment'))
+      context = Context.create(Ember.getOwner(this).ownerInjection(),this.get('assignment'));
     }
     this.set('assignment', context);
   },

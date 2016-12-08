@@ -61,10 +61,17 @@ export default Ember.Component.extend({
         owner:component.get('owner'),
         assignees:assignedStudents
       });
+      if(!this.get('didValidate')) {
+        Ember.$('#date-availableDate').blur();
+        Ember.$('#time-availableDate').blur();
+        Ember.$('#date-dueDate').blur();
+        Ember.$('#time-dueDate ').blur();
+      }
       component.get('assignment').validate().then(function ({ validations }) {
         if (validations.get('isValid')) {
           if(component.get('assignment.id')){
             component.get('contextService').updateContext(component.get('assignment')).then(function(){
+              component.set('didValidate', true);
               component.sendAction('onCloseModal');
             });
           }else{
@@ -118,6 +125,10 @@ export default Ember.Component.extend({
    */
   collection:null,
   /**
+   * * @param {Boolean } didValidate - value used to check if input has been validated or not
+ */
+  didValidate: false,
+  /**
    * Student List
    */
   students:[],
@@ -142,7 +153,6 @@ export default Ember.Component.extend({
   totalSelected:Ember.computed('students.@each.isAssigned',function(){
     return this.get('students').filterBy('isAssigned',true).length;
   }),
-
   // -------------------------------------------------------------------------
   // Methods
   /**

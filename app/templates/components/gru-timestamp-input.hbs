@@ -1,5 +1,5 @@
-<div id='date-pair' class="panel-body">
-    <div class="col-md-6 col-sm-6 col-xs-6 date-picker">
+<div class="panel-body">
+    <div class="col-xs-6 date-picker {{showErrorDateInput}}">
         <span class="calendar">{{gru-icon name='event'}}</span>
       {{input
       type='text'
@@ -12,10 +12,10 @@
       enter="enterPressed"
       focus-out="inputValueChange"
       autofocus=autofocus
-      maxlength=maxLength
       }}
     </div>
-    <div class="col-md-6 col-sm-6 col-xs-6 time-picker">
+
+    <div class="col-xs-6 time-picker {{showErrorTimeInput}}">
         <span class="clock">{{gru-icon name='access_time'}}</span>
       {{input
       type='text'
@@ -32,9 +32,18 @@
     </div>
 </div>
 <div class="error-messages">
-  {{#if showMessage}}
+
+  {{#if showDateMessage}}
       <span class="error">
-        {{{v-get model valuePath 'message'}}}
+        {{{v-get model datePath 'message'}}}
+      </span>
+    {{else if showTimeMessage}}
+      <span class="error">
+        {{{v-get model timePath 'message'}}}
+      </span>
+    {{else if showMessage}}
+      <span class="error">
+      {{{v-get model valuePath 'message'}}}
       </span>
   {{/if}}
 </div>

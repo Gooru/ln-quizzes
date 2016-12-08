@@ -11,20 +11,51 @@ const Validations = buildValidations({
       })
     ]
   },
-  dueDate: {
+  availableDay:{
+    validators: [
+      validator('presence', {
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.available-date-error'
+      })
+    ]
+  },
+  availableTime:{
+    validators: [
+      validator('presence', {
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.available-date-error'
+      })
+    ]
+  },
+  dueDay:{
     validators: [
       validator('presence', {
         presence: true,
         message: '{{description}}',
         descriptionKey: 'common.errors.due-date-presence-error'
-      }),
-      validator('number-compare', {
-        property:'availableDate'
-      }),
+      })
+    ]
+  },
+  dueTime:{
+    validators: [
+      validator('presence', {
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.due-date-presence-error'
+      })
+    ]
+  },
+  dueDate: {
+    validators: [
       validator('dependent', {
         on: ['availableDate'],
         message: '{{description}}',
         descriptionKey: 'common.errors.available-date-error'
+      }),
+      validator('number-compare', {
+        property:'availableDate'
       })
     ]
   }
@@ -70,7 +101,14 @@ const Context = Ember.Object.extend(Validations,{
    * @property  {number}
    */
   availableDate: null,
-
+  /**
+   * @property  {number}
+   */
+  availableDay: null,
+  /**
+   * @property  {number}
+   */
+  availableTime: null,
 
   /**
    * @property {number}
@@ -80,6 +118,15 @@ const Context = Ember.Object.extend(Validations,{
    * @property {number}
    */
   dueDate:null,
+
+  /**
+   * @property  {number}
+   */
+  dueDay: null,
+  /**
+   * @property  {number}
+   */
+  dueTime: null,
 
   /**
    * @property {[Profile]}

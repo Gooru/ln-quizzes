@@ -56,13 +56,13 @@
                 <div class="row available-from">
                     <span>{{t 'assign-students.available-from'}}</span>
                     <div class="panel panel-default">
-                        {{gru-timestamp-input model=assignment valuePath='availableDate'}}
+                        {{gru-timestamp-input model=assignment valuePath='availableDate' setActualDate=true  datePath='availableDay'  timePath='availableTime'}}
                     </div>
                 </div>
                 <div class="row due-date">
                     <span>{{t 'assign-students.due-date'}}</span>
                     <div class="panel panel-default">
-                      {{gru-timestamp-input model=assignment valuePath='dueDate'}}
+                      {{gru-timestamp-input model=assignment valuePath='dueDate' datePath='dueDay'  timePath='dueTime'}}
                     </div>
                 </div>
             </div>

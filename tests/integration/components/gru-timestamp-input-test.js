@@ -16,7 +16,7 @@ test('Timestamp layout', function(assert) {
   let assignment = Context.create(Ember.getOwner(this).ownerInjection());
   this.set('assignment',assignment);
 
-  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='availableDate'}}`);
+  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='availableDate'  datePath='availableDay'  timePath='availableTime'}}`);
   var $timestampInput = this.$();
   assert.ok($timestampInput.find('.gru-timestamp-input .date-picker .calendar').length, 'Missing calendar icon');
   assert.ok($timestampInput.find('.gru-timestamp-input .date-picker input').length, 'Missing date picker');
@@ -30,7 +30,7 @@ test('Timestamp valuePath', function(assert) {
   let assignment = Context.create(Ember.getOwner(this).ownerInjection());
   this.set('assignment',assignment);
 
-  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='dueDate'}}`);
+  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='dueDate'  datePath='dueDay'  timePath='dueTime'}}`);
   var $timestampInputComponent = this.$();
   var $input = $timestampInputComponent.find('#date-dueDate');
   var $inputTime = $timestampInputComponent.find('#time-dueDate');
@@ -53,7 +53,7 @@ test('Validate time', function(assert) {
   let assignment = Context.create(Ember.getOwner(this).ownerInjection());
   this.set('assignment',assignment);
 
-  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='dueDate'}}`);
+  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='dueDate'  datePath='dueDay'  timePath='dueTime'}}`);
   var $timestampInputComponent = this.$();
   var $input = $timestampInputComponent.find('#date-dueDate');
   var $inputTime = $timestampInputComponent.find('#time-dueDate');
@@ -77,7 +77,7 @@ test('Validate date', function(assert) {
   let assignment = Context.create(Ember.getOwner(this).ownerInjection());
   this.set('assignment',assignment);
 
-  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='availableDate'}}`);
+  this.render(hbs`{{gru-timestamp-input model=assignment valuePath='availableDate' datePath='availableDay'  timePath='availableTime'}}`);
   var $timestampInputComponent = this.$();
   var $input = $timestampInputComponent.find('#date-availableDate');
   var $inputTime = $timestampInputComponent.find('#time-availableDate');

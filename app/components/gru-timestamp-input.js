@@ -73,15 +73,11 @@ export default Ember.Component.extend({
   /**
    * @param {String} datePath - value used to set the dateValidation
    */
-  datePath: Ember.computed(function() {
-    return this.get('valuePath') === 'availableDate'? 'availableDay' : 'dueDay';
-  }),
+  datePath: null,
   /**
    * @param {String} timePath - value used to set the timeValidation
    */
-  timePath: Ember.computed(function() {
-    return this.get('valuePath') === 'availableDate'? 'availableTime' : 'dueTime';
-  }),
+  timePath: null,
   /**
    * @param {String} dateID - value date element id
    */
@@ -162,22 +158,15 @@ export default Ember.Component.extend({
   /**
    * @param {Computed } showErrorClass - computed property that defines the
    */
-  showErrorClass: computed('showMessage','attributeValidation', function() {
-    return this.get('attributeValidation') && this.get('showMessage');
-  }),
-
+  showErrorClass: Ember.computed.and('showMessage', 'attributeValidation'),
   /**
    * @param {Computed } showDateErrorClass - computed property that defines the
    */
-  showDateErrorClass: computed('dateIsInvalid', function() {
-    return this.get('dateIsInvalid');
-  }),
+  showDateErrorClass: computed.oneWay('dateIsInvalid'),
   /**
    * @param {Computed } showTimeErrorClass - computed property that defines the
    */
-  showTimeErrorClass: computed('timeIsInvalid', function() {
-    return this.get('timeIsInvalid');
-  }),
+  showTimeErrorClass:computed.oneWay('timeIsInvalid'),
   /**
    * @param {Computed } hasContent - computed property that defines whether the rawDateValue and rawTimeValue is null or not.
    */
@@ -237,7 +226,7 @@ export default Ember.Component.extend({
    * @param {Computed } showErrorDateInput - computed property that defines if the date input is invalid
    */
   showErrorDateInput: computed('dateValidation.isDirty', 'dateIsInvalid','attributeValidation',function() {
-    let errorClass = "";
+    let errorClass = '';
     if(this.get('dateValidation.isDirty')){
       if(this.get('attributeValidation.errors.length')&& this.get('dateValidation.errors.length')){
         errorClass = 'has-error' ;
@@ -252,7 +241,7 @@ export default Ember.Component.extend({
    * @param {Computed } showErrorTimeInput - computed property that defines if the time input is invalid
    */
   showErrorTimeInput: computed('timeValidation.isDirty', 'timeIsInvalid','attributeValidation',function() {
-    let errorClass = "";
+    let errorClass = '';
     if(this.get('timeValidation.isDirty')){
       if(this.get('attributeValidation.errors.length')&& this.get('timeValidation.errors.length')){
         errorClass = 'has-error' ;

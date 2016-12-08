@@ -205,7 +205,7 @@ test('Cancel assign students', function(assert) {
   this.set('students',students);
 
   this.on('parentAction', function(){
-    assert.ok(true, "Should call onCloseModal");
+    assert.ok(true, 'Should call onCloseModal');
   });
   this.render(hbs`{{gru-assign-students students=students onCloseModal='parentAction'}}`);
 
@@ -213,7 +213,7 @@ test('Cancel assign students', function(assert) {
   var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
-    var $cancelButton = $component.find(".actions .cancel-btn");
+    var $cancelButton = $component.find('.actions .cancel-btn');
     $cancelButton.click();
   });
 });
@@ -255,14 +255,14 @@ test('Validate due date with due date less than the assigned date', function(ass
 
     $component.find('.assign-btn').click();
     return wait().then(function () {
-      assert.ok($component.find(".error-messages .error").length, 'Input error message should be visible');
+      assert.ok($component.find('.error-messages .error').length, 'Input error message should be visible');
       $inputDueDate.val('10/22/2200');
       $inputDueDate.blur();
 
       $inputDueDateTime.val('11:30 PM');
       $inputDueDateTime.blur();
       return wait().then(function () {
-        assert.ok(!$component.find(".error-messages .error").length, 'Input error message should be hidden');
+        assert.ok(!$component.find('.error-messages .error').length, 'Input error message should be hidden');
       });
     });
   });
@@ -304,14 +304,14 @@ test('Validate due date when do not have available date', function(assert) {
 
     $component.find('.assign-btn').click();
     return wait().then(function () {
-      assert.ok($component.find(".error-messages .error").length, 'Input error message should be visible');
+      assert.ok($component.find('.error-messages .error').length, 'Input error message should be visible');
       $inputAvailableDate.val('10/21/2200');
       $inputAvailableDate.blur();
 
       $inputAvailableTime.val('10:00 AM');
       $inputAvailableTime.blur();
       return wait().then(function () {
-        assert.ok(!$component.find(".error-messages .error").length, 'Input error message should be hidden');
+        assert.ok(!$component.find('.error-messages .error').length, 'Input error message should be hidden');
       });
     });
   });

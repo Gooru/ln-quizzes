@@ -125,6 +125,10 @@ export default Ember.Component.extend({
    */
   collection:null,
   /**
+   * * @param {Boolean } didValidate - value used to check if input has been validated or not
+ */
+  didValidate: false,
+  /**
    * Student List
    */
   students:[],
@@ -149,10 +153,6 @@ export default Ember.Component.extend({
   totalSelected:Ember.computed('students.@each.isAssigned',function(){
     return this.get('students').filterBy('isAssigned',true).length;
   }),
-  /**
-   * @param {Boolean } didValidate - value used to check if input has been validated or not
-   */
-  didValidate: false,
   // -------------------------------------------------------------------------
   // Methods
   /**

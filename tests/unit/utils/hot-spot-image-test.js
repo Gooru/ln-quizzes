@@ -1,3 +1,4 @@
+/* Hotspot image is not supported
 import Ember from 'ember';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import HotSpotImageUtil from 'quizzes/utils/question/hot-spot-image';
@@ -188,6 +189,4 @@ test('Hot Spot Image - toUserAnswer when no respond is provided', function (asse
 
   let userAnswer = questionUtil.toUserAnswer(answerObjects);
   assert.equal(userAnswer, null, "Wrong user answer");
-});
-
-
+});*/

@@ -1,3 +1,4 @@
+/* Open ended is not supported
 import Ember from 'ember';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import OpenEndedUtil from 'quizzes/utils/question/open-ended';
@@ -66,3 +67,4 @@ test('Open Ended - toUserAnswer', function (assert) {
   let userAnswer = questionUtil.toUserAnswer(Ember.A([answerObject]));
   assert.equal(userAnswer, "Some text here", "Wrong userAnswer");
 });
+*/

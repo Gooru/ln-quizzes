@@ -66,21 +66,23 @@ export default Ember.Object.extend({
    * @param { [] } userAnswers, i.e [2,1,3,2,1]
    * @return { { answer: *, count: number, key: string }[] }
    */
-  distribution: function (userAnswers) {
+  distribution: function (resourceResults) {
     const util = this;
     const distributionMap = {};
     const distribution = Ember.A([]);
-    const total = userAnswers.length;
-    userAnswers.forEach(function (userAnswer) {
-      let answerKey = util.answerKey(userAnswer);
+    const total = resourceResults.length;
+    resourceResults.forEach(function (result) {
+      let answer = result.get('answer');
+      let answerKey = util.answerKey(answer);
       let answerDistribution = distributionMap[answerKey];
       let count = 0;
       let percentage = 0;
       if (!answerDistribution) {
         answerDistribution = Ember.Object.create({
-          answer: userAnswer,
-          count: count,
-          percentage: percentage,
+          answer,
+          correct: result.get('correct'),
+          count,
+          percentage,
           key: answerKey
         });
         distribution.addObject(answerDistribution);

@@ -1,3 +1,4 @@
+/* Hot text highlight is not supported
 import Ember from 'ember';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import HotTextHighlightUtil from 'quizzes/utils/question/hot-text-highlight';
@@ -408,3 +409,4 @@ test('Hot Text Highlight - toUserAnswer when no respond is provided', function (
 
   assert.equal(userAnswer, null, "Wrong user answer");
 });
+*/

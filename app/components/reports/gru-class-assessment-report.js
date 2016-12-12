@@ -73,7 +73,6 @@ export default Ember.Component.extend(ModalMixin, {
         selectedQuestion: question,
         reportData: this.get('reportData')
       };
-      // TODO QZ-176 question report
       this.actions.showModal.call(this,
         'reports.class-assessment.gru-questions-detail', modalModel, null, 'gru-questions-detail-modal', true);
     }
@@ -110,11 +109,11 @@ export default Ember.Component.extend(ModalMixin, {
   /**
    * @prop { boolean } isRealTime - if the report is a real time report
    */
-  isRealTime:false,
+  isRealTime: false,
 
   /**
    * @prop { boolean } isRealTime - if the report is a real time report
    */
-  showAttempts:false
+  showAttempts: false
 
 });

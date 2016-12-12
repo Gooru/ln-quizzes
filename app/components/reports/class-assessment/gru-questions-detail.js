@@ -9,7 +9,7 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-// -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
@@ -19,20 +19,20 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Actions
-  actions:{
+  actions: {
     /**
      * When clicking at any navigation bubble
      * @param bubbleOption
      */
-    bubbleSelect: function(bubbleOption){
-      this.set("selectedQuestion", bubbleOption.get("value"));
+    bubbleSelect: function(bubbleOption) {
+      this.set('selectedQuestion', bubbleOption.get('value'));
     },
     /**
      * Show performance results
      */
-    showResult:function(){
-      if(this.get("anonymous")){
-        this.set("showResult",!this.get("showResult"));
+    showResult: function() {
+      if(this.get('anonymous')){
+        this.set('showResult', !this.get('showResult'));
       }
     }
   },
@@ -53,42 +53,44 @@ export default Ember.Component.extend({
   /**
    * @property {Collection} assessment
    */
-  assessment: Ember.computed.alias("model.assessment"),
+  assessment: Ember.computed.alias('reportData.collection'),
 
   /**
    * @prop { ReportData } reportData - Representation of the data to show in the reports as a 3D matrix
    * Any changes on the content feed will cause the report data to update
    */
-  reportData: Ember.computed.alias("model.reportData"),
+  reportData: Ember.computed.alias('model.reportData'),
 
   /**
    * Indicates if the report is displayed in anonymous mode
    * @property {boolean} anonymous
    */
-  anonymous: Ember.computed.alias("model.anonymous"),
+  anonymous: Ember.computed.alias('model.anonymous'),
+
   /**
    * Indicates when the report is display in anonymous mode if show all performance results
    * @property {boolean} showResult
    */
   showResult: false,
+
   /**
    * @prop { User[] } students - Group of students taking an assessment
    */
-  students: Ember.computed.alias("model.students"),
+  students: Ember.computed.alias('reportData.students'),
 
   /**
    * Returns a convenience structure to display the question navigation bubbles
    * @returns {Array}
    */
-  questionsNavOptions: Ember.computed("assessment.resources.[]", function () {
-    let questions = this.get("assessment.resources");
-    let selectedQuestion = this.get("selectedQuestion");
+  questionsNavOptions: Ember.computed('assessment.resources.[]', function () {
+    let questions = this.get('assessment.resources');
+    let selectedQuestion = this.get('selectedQuestion');
     return questions.map(function (question, index) {
       return Ember.Object.create({
         label: index + 1,
         status: null, //no status needed
         value: question,
-        selected: (selectedQuestion && selectedQuestion.get("id") === question.get("id"))
+        selected: (selectedQuestion && selectedQuestion.get('id') === question.get('id'))
       });
     });
   }),
@@ -96,9 +98,7 @@ export default Ember.Component.extend({
   /**
    * @property {Resource} selected question
    */
-
-  selectedQuestion: Ember.computed.alias("model.selectedQuestion")
-
+  selectedQuestion: Ember.computed.alias('model.selectedQuestion')
 
   // -------------------------------------------------------------------------
   // Methods

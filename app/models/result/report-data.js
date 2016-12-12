@@ -86,7 +86,7 @@ export default Ember.Object.extend({
         // TODO revise the answer comparison
         return questionResult.get('answer') === answer;
       }
-      return false
+      return false;
     });
   },
 

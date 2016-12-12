@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { getQuestionUtil } from 'quizzes/config/question';
-import { stats, userAnswers } from 'quizzes/utils/question-result';
+import { stats } from 'quizzes/utils/question-result';
 import { CORRECT_COLOR, INCORRECT_COLOR, ANONYMOUS_COLOR } from 'quizzes/config/config';
 
 /**

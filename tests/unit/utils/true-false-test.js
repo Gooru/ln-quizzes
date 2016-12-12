@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import QuestionResult from 'quizzes/models/result/question';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import TrueFalseUtil from 'quizzes/utils/question/true-false';
 import { module, test } from 'qunit';
@@ -12,8 +13,8 @@ test('True/False - getCorrectAnswer when correct answer is provided', function (
     Ember.Object.create({id: 2, isCorrect: true})
   ]);
 
-  let question = Ember.Object.create({answers: answers});
-  let questionUtil = TrueFalseUtil.create({question: question});
+  let question = Ember.Object.create({answers});
+  let questionUtil = TrueFalseUtil.create({question});
   assert.equal(questionUtil.getCorrectAnswer(), 2, 'Incorrect answer id');
 });
 

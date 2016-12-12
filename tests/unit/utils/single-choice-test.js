@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import QuestionResult from 'quizzes/models/result/question'
+import QuestionResult from 'quizzes/models/result/question';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import SingleChoiceUtil from 'quizzes/utils/question/single-choice';
 import { module, test } from 'qunit';

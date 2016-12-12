@@ -1,3 +1,4 @@
+/* Multiple answer is not supported
 import Ember from 'ember';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import MultipleAnswerUtil from 'quizzes/utils/question/multiple-answer';
@@ -180,3 +181,4 @@ test('Multiple Answer - toUserAnswer when the user didn\'t respond', function (a
   let userAnswer = questionUtil.toUserAnswer(answerObjects);
   assert.equal(userAnswer, null, "Wrong user answer");
 });
+*/

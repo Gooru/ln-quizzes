@@ -35,7 +35,7 @@ import { average, roundFloat } from 'quizzes/utils/math';
    let completed = correct + incorrect; //incorrect should include skipped ones
 
    return Ember.Object.create({
-     total: total,
+     total,
      totalCorrect: correct,
      correctPercentage: completed ? roundFloat(correct / completed * 100) : null,
      correctPercentageFromTotal: roundFloat(correct / total * 100, 1), //percentage including not started
@@ -146,7 +146,5 @@ export function sortResults(questionsResults) {
  * @return {*} user answers
  */
 export function userAnswers(questionResults){
-  let answered = answeredResults(questionResults);
-  let sorted = sortResults(answered); //sort results by submitted at
-  return sorted.map(questionResult => questionResult.get('userAnswer'));
+  return questionResults.map(questionResult => questionResult.get('answer'));
 }

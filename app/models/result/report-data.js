@@ -67,7 +67,40 @@ export default Ember.Object.extend({
   // Methods
 
   /**
+   * Find all results for the question id
+   * @param {string} questionId
+   * @returns {QuestionResult[]}
+   */
+  getResultsByQuestion: function(questionId) {
+    return this.get('reportEvents').map(
+      reportEvent => reportEvent.get('resourceResults').find(
+        result => result.get('resourceId') === questionId)
+    ).filter(result => result);
+  },
+
+  getStudentsByQuestionAndAnswer: function(question, answer) {
+    return this.get('reportEvents').filter(function(reportEvent) {
+      let questionResult = reportEvent.get('resourceResults').find(
+        result => result.get('resourceId') === question.get('id'));
+      if(questionResult) {
+        // TODO revise the answer comparison
+        return questionResult.get('answer') === answer;
+      }
+      return false;
+    });
+  },
+
+  /**
+   * Find an event by a profile id
+   * @returns {ReportDataEvent[]}
+   */
+  findByProfileId: function(profileId) {
+    return this.get('reportEvents').filter(reportEvent => reportEvent.get('profileId') === profileId);
+  },
+
+  /**
    * Merge a new event into the report data
+   * @param {ReportDataEvent} newReportEvent new event to merge
    */
   mergeEvent: function(newReportEvent) {
     let oldReportEvents = this.findByProfileId(newReportEvent.get('profileId'));
@@ -81,12 +114,5 @@ export default Ember.Object.extend({
         this.get('reportEvents').push(newReportEvent);
       }
     }
-  },
-
-  /**
-   * Find an event by a profile id
-   */
-  findByProfileId: function(profileId) {
-    return this.get('reportEvents').filter(reportEvent => reportEvent.get('profileId') === profileId);
   }
 });

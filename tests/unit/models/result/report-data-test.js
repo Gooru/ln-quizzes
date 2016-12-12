@@ -145,3 +145,44 @@ test('mergeEvent', function(assert) {
   assert.equal(model.get('reportEvents').get(2).get('profileName'), 'name3', 'Name of new student should match');
   assert.equal(model.get('reportEvents').get(2).get('resourceResults').get(0).get('reaction'), 1, 'Reaction of new student should match');
 });
+
+test('getResultsByQuestion', function(assert) {
+  let model = this.subject({
+    reportEvents: Ember.A([
+      ReportDataEvent.create({
+        profileId: 'student1',
+        profileName: 'name1',
+        resourceResults: [
+          ResourceResult.create({
+            resourceId: 'q1',
+            score: 0
+          }),
+          ResourceResult.create({
+            resourceId: 'q2',
+            score: 0
+          })
+        ]
+      }),
+      ReportDataEvent.create({
+        profileId: 'student2',
+        profileName: 'name2',
+        resourceResults: [
+          ResourceResult.create({
+            resourceId: 'q1',
+            score: 0
+          }),
+          ResourceResult.create({
+            resourceId: 'q2',
+            score: 0
+          })
+        ]
+      })
+    ])
+  });
+
+  // Change a previous result
+  let response = model.getResultsByQuestion('q2');
+  assert.equal(response.length, 2, 'Results count should be two');
+  assert.equal(response[0].get('resourceId'), 'q2', 'First result should have the correct id');
+  assert.equal(response[1].get('resourceId'), 'q2', 'Second result should have the correct id');
+});

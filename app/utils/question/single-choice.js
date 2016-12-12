@@ -68,18 +68,6 @@ export default QuestionUtil.extend({
   },
 
   /**
-   * Returns a unique key representing the answer
-   * For single choice the answer id is already unique
-   * @param {number} answer i.e 1
-   * @returns {number} i.e 1
-   *
-   * @see '# User Answer' section at class comment
-   */
-  answerKey: function (answer) {
-    return answer;
-  },
-
-  /**
    * Converts the model user answer into an answerObject format
    *
    * @param {string} userAnswer answer choice id

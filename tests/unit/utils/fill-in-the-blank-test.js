@@ -1,3 +1,4 @@
+/* FIB is not supported
 import Ember from 'ember';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import FillInTheBlankUtil from 'quizzes/utils/question/fill-in-the-blank';
@@ -315,3 +316,4 @@ test('getQuestionAnswers from text', function(assert) {
   assert.equal(answer2.get('isCorrect'), true, 'Wrong isCorrect');
   assert.equal(answer2.get('type'), 'text', 'Wrong type');
 });
+*/

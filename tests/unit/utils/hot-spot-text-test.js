@@ -1,3 +1,4 @@
+/* Hotspot text is not supported
 import Ember from 'ember';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import HotSpotTextUtil from 'quizzes/utils/question/hot-spot-text';
@@ -188,3 +189,4 @@ test('Hot Spot Text - toUserAnswer when no respond is provided', function (asser
   let userAnswer = questionUtil.toUserAnswer(answerObjects);
   assert.equal(userAnswer, null, "Wrong user answer");
 });
+*/

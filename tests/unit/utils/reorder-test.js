@@ -1,3 +1,4 @@
+/* Reorder is not supported
 import Ember from 'ember';
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import ReorderUtil from 'quizzes/utils/question/reorder';
@@ -183,4 +184,4 @@ test('Reorder - toUserAnswer when no respond is provided', function (assert) {
   let userAnswer = questionUtil.toUserAnswer(answerObjects);
   assert.equal(userAnswer, null, "Wrong user answer ids");
 });
-
+*/

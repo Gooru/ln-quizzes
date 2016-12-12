@@ -171,5 +171,14 @@ export default Ember.Component.extend({
         $(this).hide();
       }
     });
-  }
+  },
+  // -------------------------------------------------------------------------
+  // Observers
+  /**
+   * Clean the assignment properties
+   */
+  cleanAssignment: Ember.observer('assignment', function() {
+    this.get('students').forEach(student => student.set('isAssigned', false));
+
+  })
 });

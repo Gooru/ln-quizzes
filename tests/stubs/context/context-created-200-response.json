@@ -1,0 +1,24 @@
+[
+  {
+    "assignees": [
+      {
+        "id": "assignee-id"
+      }
+    ],
+    "collection": {
+      "id": "collection-id"
+    },
+    "contextData": {
+      "contextMap": {},
+      "metadata": {
+        "description": "string",
+        "dueDate": 0,
+        "startDate": 0,
+        "title": "assignment title"
+      }
+    },
+    "createdDate": 0,
+    "id": "context-id",
+    "modifiedDate": 0
+  }
+]

@@ -291,8 +291,16 @@ export default Ember.Component.extend({
       $day.val(dateValue);
       $day.blur();
     });
+    this.setDefaultAvailableDate();
+  },
+  /**
+   * Set default available date
+   */
+  setDefaultAvailableDate:function(){
+    let $day = $(`#${this.get('dateID')}`);
+    let $time = $(`#${this.get('timeID')}`);
 
-    if(this.get('setActualDate')){
+    if(this.get('setActualDate') && !this.get('rawDateValue')){
       $day.datepicker('setDate', new Date());
       $day.datepicker('update');
       $time.timepicker('setTime', DEFAULT_AVAILABLE_TIME);
@@ -317,7 +325,7 @@ export default Ember.Component.extend({
   /**
    * Set the default time when the date is selected for due date
    */
-  setDefaultTime: Ember.observer('rawDateValue', function() {
+  setDefaultTime: Ember.observer('rawDateValue',function() {
     let $time = $(`#${this.get('timeID')}`);
     if(!this.get('setActualDate')&&this.get('rawDateValue')){
         $time.timepicker('setTime', DEFAULT_DUE_TIME);

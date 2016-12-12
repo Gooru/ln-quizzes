@@ -76,7 +76,7 @@ export default Ember.Component.extend({
             });
           }else{
             component.get('contextService').createContext(component.get('assignment')).then(function(){
-              component.set('assignment',Context.create(Ember.getOwner(component).ownerInjection(),{
+              component.set('assignment', Context.create(Ember.getOwner(component).ownerInjection(),{
                 title:component.get('collection.title')
               }));
             });

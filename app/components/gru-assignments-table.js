@@ -63,6 +63,13 @@ export default Ember.Component.extend(ModalMixin,{
       this.get('router').transitionTo('reports.context', assignment.get('id'));
     },
 
+    /**
+     * Open player
+     */
+    openPlayer:function(assignment){
+      this.get('router').transitionTo('player', assignment.get('id'));
+    },
+
     /***
      * Search assignment
      */
@@ -121,9 +128,13 @@ export default Ember.Component.extend(ModalMixin,{
    * Return menu mobile options
    */
   optionsMobile: Ember.computed('actualAssignment','isTeacher', function () {
-    if(!this.get('isTeacher')){
-      this.calculateStudentOptions(this.get('actualAssignment'));
+   let options;
+    if(this.get('isTeacher')){
+      options = this.teacherOptions(this.get('actualAssignment'));
+    }else{
+      //TODO STUDENT VIEW OPTIONS
     }
+    return options;
   }),
 
   /**
@@ -169,6 +180,24 @@ export default Ember.Component.extend(ModalMixin,{
     this.unSelectAssignment();
     assignment.set('selected',true);
   },
+  /**
+   * Return the teacher options for mobile menu
+   */
+  teacherOptions:function(assignment){
+    return Ember.A([Ember.Object.create({
+      option:'launch',
+      action:'onLaunch',
+      object:assignment
+    }),Ember.Object.create({
+      option:'assign',
+      action:'onAssign',
+      object:assignment
+    }),Ember.Object.create({
+      option:'preview',
+      action:'onPreview',
+      object:assignment
+    })]);
+  },
 
   /**
    * Unselected assignment
@@ -178,22 +207,5 @@ export default Ember.Component.extend(ModalMixin,{
     if(selectedAssignment){
       selectedAssignment.set('selected',false);
     }
-  },
-  /**
-   * Calculate the assignments options to student view
-   */
-  //calculateStudentOptions:function(assignment){
-  //  let options = Ember.A([]);
-  //  if(assignment.get('hasStarted')){
-  //    options.addObject(Ember.Object.create({
-  //      option:'view-report',
-  //      action:'onViewReport'
-  //    }));
-  //
-  //    if(assignment.)
-  //    //redo si tiene attempts
-  //  }else{
-  //    //play
-  //  }
-  //}
+  }
 });

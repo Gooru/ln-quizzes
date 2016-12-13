@@ -104,7 +104,7 @@ module.exports = function (environment) {
       'font-src': "'self' https://www.gooru.org",
       'connect-src': "'self' http://localhost:4200 ws://localhost:4200 http://localhost:8882 https://qa.api.quizzes.edify.cr",
       'img-src': "'self' data: http://qacdn.gooru.org http://profile-images.goorulearning.org.s3.amazonaws.com " +
-        "http://dev-content-gooru-org.s3-us-west-1.amazonaws.com http://dev-user-gooru-org.s3-us-west-1.amazonaws.com",
+      "http://dev-content-gooru-org.s3-us-west-1.amazonaws.com http://dev-user-gooru-org.s3-us-west-1.amazonaws.com",
       'style-src': "'self' 'unsafe-inline' https://www.gooru.org",
       'media-src': "'self'"
     };
@@ -122,33 +122,6 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.embedded = false;
-    ENV.isTestEnv = true;
-
-    ENV.APP.properties = {
-      collection: {
-        id: '05d8c6fc-0ac7-4877-8179-7ee71e04dae3',
-        title: 'Assessment Embedded Title'
-      },
-      teacher: {
-        id: '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        firstName: 'teacher-1',
-        lastName: 'teacher-1',
-        username: 'teacher-1',
-        email: 'emailTeacher@gmail.com'
-      },
-      students: [
-        {
-          id: 'student-11',
-          firstName: 'student-11',
-          lastName: 'student-11',
-          username: 'student-11',
-          email: 'emailstudent-11@gmail.com'
-        }
-      ],
-      context: {
-        classId: 'class-id'
-      }
-    };
   }
 
   if (environment === 'production' && !isEmbedded) {

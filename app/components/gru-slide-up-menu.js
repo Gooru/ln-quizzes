@@ -8,8 +8,17 @@ export default Ember.Component.extend({
   classNames: ['gru-slide-up-menu'],
 
   actions:{
+    /**
+     * Close mobile menu
+     */
     closeMenu:function(){
       this.set('visible',false);
+    },
+    /**
+     * Send option action to his parent
+     */
+    sendOptionAction:function(option){
+      this.sendAction(option.action,option.object);
     }
   },
   // -------------------------------------------------------------------------

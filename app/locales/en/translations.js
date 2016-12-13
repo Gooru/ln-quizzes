@@ -1384,6 +1384,7 @@ export default {
     title:"Title"
   },
   "assignment-details":{
+    "assign":"Assign",
     "answer-key":"Answer Key",
     "attempts":"Attempts",
     "attempts-left":"<b>Attempts left:</b> {{attempts}} of {{count}}",

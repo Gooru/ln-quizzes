@@ -51,7 +51,8 @@ export default Ember.Component.extend(ModalMixin,{
     /**
      * Open slide up actions
      */
-    openActions:function(){
+    openActions:function(assignment){
+      this.set('actualAssignment',assignment);
       this.set('showMenu',true);
     },
 
@@ -101,7 +102,10 @@ export default Ember.Component.extend(ModalMixin,{
 
   // -------------------------------------------------------------------------
   // Properties
-
+  /**
+   * @property {Context} selected assigment
+   */
+  actualAssignment:null,
   /**
    * @property {Number} the calculated resource content table height
    */
@@ -112,6 +116,15 @@ export default Ember.Component.extend(ModalMixin,{
    * @see gru-assignments-list and assignments.js route
    */
   isTeacher: false,
+
+  /**
+   * Return menu mobile options
+   */
+  optionsMobile: Ember.computed('actualAssignment','isTeacher', function () {
+    if(!this.get('isTeacher')){
+      this.calculateStudentOptions(this.get('actualAssignment'));
+    }
+  }),
 
   /**
    * @property {Array} Students list
@@ -165,5 +178,22 @@ export default Ember.Component.extend(ModalMixin,{
     if(selectedAssignment){
       selectedAssignment.set('selected',false);
     }
-  }
+  },
+  /**
+   * Calculate the assignments options to student view
+   */
+  //calculateStudentOptions:function(assignment){
+  //  let options = Ember.A([]);
+  //  if(assignment.get('hasStarted')){
+  //    options.addObject(Ember.Object.create({
+  //      option:'view-report',
+  //      action:'onViewReport'
+  //    }));
+  //
+  //    if(assignment.)
+  //    //redo si tiene attempts
+  //  }else{
+  //    //play
+  //  }
+  //}
 });

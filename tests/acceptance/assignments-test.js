@@ -36,12 +36,12 @@ moduleForAcceptance('Acceptance | assignments',{
         providedAt: Date.now()
       }
     });
-    this.application.unregister('service:configuration');
-    this.application.register('service:configuration', configurationStub);
+    //this.application.unregister('service:configuration');
+    //this.application.register('service:configuration', configurationStub);
   },
-  afterEach: function() {
-    Ember.run(this.application, 'destroy');
-  }
+  //afterEach: function() {
+  //  Ember.run(this.application, 'destroy');
+  //}
 });
 
 test('visiting assignments', function(assert) {

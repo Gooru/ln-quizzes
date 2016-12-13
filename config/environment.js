@@ -122,6 +122,47 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.embedded = false;
+    ENV.isTestEnv = true;
+
+    ENV.APP.properties = {
+      collection: {
+        id: '05d8c6fc-0ac7-4877-8179-7ee71e04dae3',
+        title: 'Assessment Embedded Title'
+      },
+      teacher: {
+        id: '2bcf48ff-a167-443b-b620-ad91d7b888e3',
+        firstName: 'teacher-1',
+        lastName: 'teacher-1',
+        username: 'teacher-1',
+        email: 'emailTeacher@gmail.com'
+      },
+      students: [
+        {
+          id: 'student-1',
+          firstName: 'student-1',
+          lastName: 'student-1',
+          username: 'student-1',
+          email: 'emailstudent-1@gmail.com'
+        },
+        {
+          id: 'student-2',
+          firstName: 'student-2',
+          lastName: 'student-2',
+          username: 'student-2',
+          email: 'emailstudent-2@gmail.com'
+        },
+        {
+          id: 'student-3',
+          firstName: 'student-3',
+          lastName: 'student-3',
+          username: 'student-3',
+          email: 'emailstudent-3@gmail.com'
+        }
+      ],
+      context: {
+        classId: 'class-id'
+      }
+    };
   }
 
   if (environment === 'production' && !isEmbedded) {

@@ -29,7 +29,11 @@ test('addStudent', function(assert) {
 
 test('openActions', function(assert) {
   let component = this.subject();
-  component.send('openActions');
+  let assignment = Ember.Object.create({
+    id: 'id'
+  });
+  component.send('openActions',assignment);
+  assert.equal(component.get('actualAssignment'), assignment, 'Incorrect actual assignment');
   assert.equal(component.get('showMenu'), true, 'Actions menu should be visible');
 });
 
@@ -45,6 +49,31 @@ test('openRealTime', function(assert) {
     }
   });
   component.send('openRealTime', assignment);
+});
+test('openPlayer', function(assert) {
+  let component = this.subject();
+  let assignment = Ember.Object.create({
+    id: 'id'
+  });
+  component.set('router', {
+    transitionTo: function(route, contextId) {
+      assert.equal(route, 'player', 'Route should match');
+      assert.equal(contextId, 'id', 'id should match');
+    }
+  });
+  component.send('openPlayer', assignment);
+});
+test('optionsMobile', function(assert) {
+  let component = this.subject();
+  component.set('isTeacher',true);
+  component.set('actualAssignment', Ember.Object.create({
+    id:'assignment-id'
+  }));
+  assert.equal(component.get('optionsMobile')[0].get('option'),'launch', 'Should have launch option');
+  assert.equal(component.get('optionsMobile')[1].get('option'),'assign', 'Should have assign option');
+  assert.equal(component.get('optionsMobile')[2].get('option'),'preview', 'Should have preview option');
+
+  //TODO TEST STUDENT VIEW
 });
 
 test('selectAssignment', function(assert) {

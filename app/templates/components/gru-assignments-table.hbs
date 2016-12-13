@@ -49,9 +49,9 @@
               <td class="due-date hidden-sm hidden-xs col-md-2">{{formatDate assignment.dueDate 'h:mm a MM/DD/YYYY'}}</td>
               <td class="attempts col-md-2  col-sm-4 col-xs-1">{{assignment.attempts}}</td>
             {{/if}}
-            <td class="actions visible-xs col-xs-2" {{action 'openActions'}}>{{gru-icon name='more_vert'}}</td>
+            <td class="actions visible-xs col-xs-2" {{action 'openActions' assignment}}>{{gru-icon name='more_vert'}}</td>
         </tr>
     {{/each}}
     </tbody>
 </table>
-{{gru-slide-up-menu visible=showMenu}}
+{{gru-slide-up-menu visible=showMenu options=optionsMobile onLaunch='openRealTime' onAssign='addStudent' onPreview='openPlayer'}}

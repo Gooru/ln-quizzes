@@ -51,7 +51,8 @@ export default Ember.Component.extend(ModalMixin,{
     /**
      * Open slide up actions
      */
-    openActions:function(){
+    openActions:function(assignment){
+      this.set('actualAssignment',assignment);
       this.set('showMenu',true);
     },
 
@@ -60,6 +61,13 @@ export default Ember.Component.extend(ModalMixin,{
      */
     openRealTime: function (assignment) {
       this.get('router').transitionTo('reports.context', assignment.get('id'));
+    },
+
+    /**
+     * Open player
+     */
+    openPlayer:function(assignment){
+      this.get('router').transitionTo('player', assignment.get('id'));
     },
 
     /***
@@ -101,7 +109,10 @@ export default Ember.Component.extend(ModalMixin,{
 
   // -------------------------------------------------------------------------
   // Properties
-
+  /**
+   * @property {Context} selected assigment
+   */
+  actualAssignment:null,
   /**
    * @property {Number} the calculated resource content table height
    */
@@ -112,6 +123,19 @@ export default Ember.Component.extend(ModalMixin,{
    * @see gru-assignments-list and assignments.js route
    */
   isTeacher: false,
+
+  /**
+   * Return menu mobile options
+   */
+  optionsMobile: Ember.computed('actualAssignment','isTeacher', function () {
+   let options;
+    if(this.get('isTeacher')){
+      options = this.teacherOptions(this.get('actualAssignment'));
+    }else{
+      //TODO STUDENT VIEW OPTIONS
+    }
+    return options;
+  }),
 
   /**
    * @property {Array} Students list
@@ -155,6 +179,24 @@ export default Ember.Component.extend(ModalMixin,{
   selectAssignment: function(assignment) {
     this.unSelectAssignment();
     assignment.set('selected',true);
+  },
+  /**
+   * Return the teacher options for mobile menu
+   */
+  teacherOptions:function(assignment){
+    return Ember.A([Ember.Object.create({
+      option:'launch',
+      action:'onLaunch',
+      object:assignment
+    }),Ember.Object.create({
+      option:'assign',
+      action:'onAssign',
+      object:assignment
+    }),Ember.Object.create({
+      option:'preview',
+      action:'onPreview',
+      object:assignment
+    })]);
   },
 
   /**

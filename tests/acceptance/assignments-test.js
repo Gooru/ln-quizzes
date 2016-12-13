@@ -2,7 +2,6 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
 import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 import T from 'quizzes/tests/helpers/assert';
-import Ember from 'ember';
 
 moduleForAcceptance('Acceptance | assignments',{
   beforeEach: function() {

@@ -60,6 +60,10 @@ export default Ember.Route.extend({
     if (Env.embedded) {
       route.handleEmbeddedApplication();
     }
+    if (Env.isTestEnv) {
+      const configurationService = route.get('configurationService');
+      configurationService.addProperties(Env.APP.properties);
+    }
   },
 
   model: function(params) {

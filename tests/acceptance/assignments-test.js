@@ -2,31 +2,7 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
 import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 import T from 'quizzes/tests/helpers/assert';
-import Ember from 'ember';
 
-const configurationStub = Ember.Service.extend({
-  configuration:{
-    properties: {
-      students: [
-        {id:'student-1',
-          firstName:'student-1',
-          lastName:'student-1',
-          username:'student-1',
-          email:'emailstudent-1@gmail.com'
-        },
-        {id:'student-2',
-          firstName:'student-2',
-          lastName:'student-2',
-          username:'student-2',
-          email:'emailstudent-2@gmail.com'
-        }
-      ],
-      context: {
-        classId:'class-id'
-      }
-    }
-  }
-});
 moduleForAcceptance('Acceptance | assignments',{
   beforeEach: function() {
     authenticateSession(this.application, {
@@ -36,11 +12,6 @@ moduleForAcceptance('Acceptance | assignments',{
         providedAt: Date.now()
       }
     });
-    this.application.unregister('service:configuration');
-    this.application.register('service:configuration', configurationStub);
-  },
-  afterEach: function() {
-    Ember.run(this.application, 'destroy');
   }
 });
 

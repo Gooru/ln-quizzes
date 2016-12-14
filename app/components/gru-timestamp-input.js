@@ -266,7 +266,7 @@ export default Ember.Component.extend({
    * Get timestamp date
    */
   getDate: function() {
-    return moment(new Date(`#${this.get('rawDateValue')} ${this.get('rawTimeValue')}`)).valueOf();
+    return moment(new Date(`${this.get('rawDateValue')} ${this.get('rawTimeValue')}`)).valueOf();
   },
   /**
    * Initialize the date picker component
@@ -327,7 +327,7 @@ export default Ember.Component.extend({
    */
   setDefaultTime: Ember.observer('rawDateValue',function() {
     let $time = $(`#${this.get('timeID')}`);
-    if(!this.get('setActualDate')&&this.get('rawDateValue')){
+    if(!this.get('setActualDate') && this.get('rawDateValue')){
         $time.timepicker('setTime', DEFAULT_DUE_TIME);
         $time.blur();
     }

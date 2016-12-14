@@ -57,5 +57,20 @@
       "body": "File not found!",
       "file": "context-created-200-response.json"
     }
+  },
+  {
+    "description": "Create context",
+    "request": {
+      "url": "^/quizzes/api/v1/context",
+      "method": "POST"
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{}",
+      "file": "create-context-200-response.json"
+    }
   }
 ]

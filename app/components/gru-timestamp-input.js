@@ -300,7 +300,7 @@ export default Ember.Component.extend({
     let $day = $(`#${this.get('dateID')}`);
     let $time = $(`#${this.get('timeID')}`);
 
-    if(this.get('setActualDate')){
+    if(this.get('setActualDate') && !this.get('rawDateValue')){
       $day.datepicker('setDate', new Date());
       $day.datepicker('update');
       $time.timepicker('setTime', DEFAULT_AVAILABLE_TIME);
@@ -327,7 +327,7 @@ export default Ember.Component.extend({
    */
   setDefaultTime: Ember.observer('rawDateValue',function() {
     let $time = $(`#${this.get('timeID')}`);
-    if(!this.get('setActualDate')&&this.get('rawDateValue')){
+    if(!this.get('setActualDate') && this.get('rawDateValue')){
         $time.timepicker('setTime', DEFAULT_DUE_TIME);
         $time.blur();
     }

@@ -28,15 +28,11 @@ test('Create Context', function(assert) {
       andThen(function () {
         assert.equal( Ember.$('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,1, 'One student should be selected');
         assert.equal(Ember.$('.selected-count').text(),'Selected 1 of 3','Incorrect selected count');
-        fillIn(Ember.$('#date-availableDate'), '12/10/2200');
-        fillIn(Ember.$('#time-availableDate'), '9:30 AM');
         fillIn(Ember.$('#date-dueDate'), '12/10/2200');
-        fillIn(Ember.$('#time-dueDate'), '11:3O PM');
-
         var $assignButton = Ember.$('button.assign-btn');
         click($assignButton);
         andThen(function () {
-          //assert.equal( Ember.$('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,0, 'Assignment list should be clean');
+          assert.equal( Ember.$('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,0, 'Assignment list should be clean');
         });
       });
     });

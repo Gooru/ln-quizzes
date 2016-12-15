@@ -1,3 +1,4 @@
+/* TODO fix when the question type is enabled
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
@@ -226,6 +227,5 @@ test('Set two questions', function (assert) {
 
   assert.equal($component.find('.sortable li:first-child span.gru-math-text').text().trim(), 'An aquifer1', 'First answer choice does not have the right text');
   assert.equal($component.find('.sortable li:last-child span.gru-math-text').text().trim(), 'A pump1', 'Last answer choice does not have the right text');
-
-
 });
+*/

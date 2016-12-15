@@ -1,5 +1,5 @@
 {{reports.assessment.gru-summary
-  assessmentResult=assessmentResult
+  contextResult=contextResult
   areQuestionLinksHidden=areAnswersHidden
   onSelectAttempt='selectAttempt'
   onBubbleSelect='bubbleSelect'
@@ -13,13 +13,6 @@
   </div>
 
 {{else}}
-
-  {{#if assessmentResult.hasMastery}}
-    {{reports.assessment.gru-mastery
-    learningTargets=assessmentResult.mastery
-    assessmentResult=assessmentResult
-    onBubbleSelect='bubbleSelect'}}
-  {{/if}}
 
   {{#if orderedQuestions.length}}
     {{reports.assessment.gru-questions

@@ -1,3 +1,4 @@
+/* TODO fix when the question type is enabled
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
@@ -113,3 +114,4 @@ test('Fill in the blank anonymous', function(assert) {
   T.exists(assert, $fib.find('> span:eq(1).answer.anonymous'), 'The first answer should be anonymous');
   T.exists(assert, $fib.find('> span:eq(3).answer.anonymous'), 'The second answer should be anonymous');
 });
+*/

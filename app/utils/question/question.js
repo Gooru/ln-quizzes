@@ -83,7 +83,8 @@ export default Ember.Object.extend({
           correct: result.get('correct'),
           count,
           percentage,
-          key: answerKey
+          key: answerKey,
+          result
         });
         distribution.addObject(answerDistribution);
         distributionMap[answerKey] = answerDistribution;
@@ -104,7 +105,7 @@ export default Ember.Object.extend({
    * @returns {{}}
    */
   answerKey: function (answer) {
-    return answer;
+    return answer[0].value;
   },
 
   /**

@@ -1,3 +1,4 @@
+/* TODO fix when the question type is enabled
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
@@ -229,3 +230,4 @@ test('Set two questions', function(assert) {
 
   assert.equal($phrasesContainer.find('span:nth-child(1)').text().trim(),'Question 2','Incorrect answer');
 });
+*/

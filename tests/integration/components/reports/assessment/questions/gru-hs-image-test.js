@@ -1,3 +1,4 @@
+/* TODO fix when the question type is enabled
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
@@ -124,3 +125,4 @@ test('Hot Spot Image anonymous', function(assert) {
   T.exists(assert, $hsImage.find('li:eq(1) span.no-selected'), 'The second answer should not be selected');
   T.exists(assert, $hsImage.find('li:eq(2) span.selected.anonymous'), 'The third answer should be anonymous and selected');
 });
+*/

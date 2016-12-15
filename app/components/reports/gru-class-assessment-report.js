@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
 import { VIEW_LAYOUT_PICKER_OPTIONS } from 'quizzes/config/config';
-import AssessmentResult from 'quizzes/models/result/context';
+import ContextResult from 'quizzes/models/result/context';
 
 export default Ember.Component.extend(ModalMixin, {
 
@@ -32,7 +32,6 @@ export default Ember.Component.extend(ModalMixin, {
      * @param {string} studentId
      */
     viewAssessmentReport: function (studentId) {
-      // TODO QZ-175 student report
       Ember.Logger.debug(`Class assessment report: student with ID ${studentId} was selected`);
 
       let reportData = this.get('reportData');
@@ -44,17 +43,17 @@ export default Ember.Component.extend(ModalMixin, {
         resourceResult.set('resource', resource);
       });
 
-      let assessmentResult = AssessmentResult.create({
+      let contextResult = ContextResult.create({
         totalAttempts: 1,
         selectedAttempt: 1,
-        resourceResults: resourceResults,
+        resourceResults,
         collection: assessment,
-        isRealTime:this.get('isRealTime'),
-        showAttempts:this.get('showAttempts')
+        isRealTime: this.get('isRealTime'),
+        showAttempts: this.get('showAttempts')
       });
 
       let modalModel = {
-        assessmentResult: assessmentResult
+        contextResult
       };
       this.actions.showModal.call(this,
         'reports.gru-assessment-report', modalModel, null, 'gru-assessment-report-modal', true);

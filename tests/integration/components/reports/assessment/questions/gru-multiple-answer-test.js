@@ -1,3 +1,4 @@
+/* TODO fix when the question type is enabled
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
@@ -126,3 +127,4 @@ test('Multiple Answer anonymous', function(assert) {
   T.exists(assert, $multipleAnswer.find('li:eq(2) span.anonymous'), 'The second answer should be anonymous');
   T.exists(assert, $multipleAnswer.find('li:eq(3) span.anonymous'), 'The third answer should be anonymous');
 });
+*/

@@ -11,6 +11,11 @@ import ResourceResult from './resource';
 export default Ember.Object.extend({
 
   /**
+   * @property {number} averageReaction sumarization of all reactions
+   */
+  averageReaction: 0,
+
+  /**
    * @property {Collection} collection
    */
   collection: null,
@@ -24,6 +29,16 @@ export default Ember.Object.extend({
    * @property {string} contextId
    */
   contextId: null,
+
+  /**
+   * @property {number} correctAnswers number of correct answers
+   */
+  correctAnswers: 0,
+
+  /**
+   * @property {number} correctPercentage percentage of correct answers
+   */
+  correctPercentage: 0,
 
   /**
    * @property {string} currentResourceId
@@ -45,12 +60,16 @@ export default Ember.Object.extend({
   }),
 
   /**
+   * @property {boolean} isRealTime
+   */
+  isRealTime: false,
+
+  /**
    * @property {QuestionResult[]} questionResults
    */
   questionResults: Ember.computed('resourceResults.[]', function(){
-    return this.get('resourceResults').filter(function(resourceResult){
-      return resourceResult instanceof QuestionResult;
-    });
+    return this.get('resourceResults').filter(
+      resourceResult => resourceResult instanceof QuestionResult);
   }),
 
   /**
@@ -66,14 +85,39 @@ export default Ember.Object.extend({
   }),
 
   /**
+   * @property {boolean} showAttempts
+   */
+  showAttempts: false,
+
+  /**
    * @property {boolean} submitted if the context has already been submitted
    */
   submitted: false,
 
   /**
+   * @property {date} submittedAt Date of submission
+   */
+  submittedAt: 0,
+
+  /**
+   * @property {string} title - Title of the assessment
+   */
+  title: Ember.computed.alias("collection.title"),
+
+  /**
+   * @property {number} totalAttempts number of attempts made
+   */
+  totalAttempts: 0,
+
+  /**
    * @property {number} totalResources
    */
   totalResources: Ember.computed.alias('resourceResults.length'),
+
+  /**
+   * @property {number} totalTimeSpent sum of all the time spent
+   */
+  totalTimeSpent: 0,
 
   // -------------------------------------------------------------------------
   // Methods
@@ -119,8 +163,6 @@ export default Ember.Object.extend({
     } else {
       Ember.Logger.error(`Collection with ID: ${collection.get('id')} does not have any resources. No resource results were set.`);
     }
-
-
   }
 
 });

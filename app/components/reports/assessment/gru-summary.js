@@ -12,15 +12,15 @@ export default Ember.Component.extend({
      * Handle event triggered by gru-bubbles
      */
     bubbleSelect:function(bubbleOption) {
-      this.sendAction("onBubbleSelect", bubbleOption);
+      this.sendAction('onBubbleSelect', bubbleOption);
     },
 
     /**
      * Handle event triggered by gru-bubbles
      */
     selectAttempt:function(attempt) {
-      this.set("selectedAttempt", attempt);
-      this.sendAction("onSelectAttempt", attempt);
+      this.set('selectedAttempt', attempt);
+      this.sendAction('onSelectAttempt', attempt);
     }
   },
 
@@ -33,7 +33,7 @@ export default Ember.Component.extend({
   // Events
   init: function () {
     this._super(...arguments);
-    this.set('selectedAttempt', this.get("assessmentResult.totalAttempts"));
+    this.set('selectedAttempt', this.get('contextResult.totalAttempts'));
   },
 
   // -------------------------------------------------------------------------
@@ -45,20 +45,20 @@ export default Ember.Component.extend({
   areQuestionLinksHidden: false,
 
   /**
-   * @property {AssessmentResult} assessment
+   * @property {ContextResult} assessment
    */
-  assessmentResult: null,
+  contextResult: null,
 
   /**
    * @property {Collection}
    */
-  collection: Ember.computed.alias("assessmentResult.collection"),
+  collection: Ember.computed.alias('contextResult.collection'),
 
   /**
    * @property {String} gradeStyle style safe string for the grade
    */
-  gradeStyle: Ember.computed('assessmentResult.correctPercentage', function() {
-    const color = getGradeColor(this.get('assessmentResult.correctPercentage'));
+  gradeStyle: Ember.computed('contextResult.correctPercentage', function() {
+    const color = getGradeColor(this.get('contextResult.correctPercentage'));
     return Ember.String.htmlSafe(`background-color: ${color}`);
   }),
 
@@ -70,19 +70,19 @@ export default Ember.Component.extend({
   /**
    * @property {boolean} is real time report
    */
-  isRealTime:false,
+  isRealTime: false,
 
   /**
    * @property {[]}
    */
-  resourceLinks: Ember.computed("assessmentResult.sortedResourceResults", function(){
-    return this.getResourceLinks(this.get('assessmentResult.sortedResourceResults'));
+  resourceLinks: Ember.computed('contextResult.sortedResourceResults', function(){
+    return this.getResourceLinks(this.get('contextResult.sortedResourceResults'));
   }),
 
   /**
    * @property {[]}
    */
-  attempts: Ember.computed("assessmentResult.totalAttempts", function(){
+  attempts: Ember.computed('contextResult.totalAttempts', function(){
     return this.getAttemptList();
   }),
   /**
@@ -94,9 +94,14 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Methods
+
+  /**
+   * Create list of attempts to show on the UI
+   * @returns {Array}
+   */
   getAttemptList: function () {
-    var attempts = [];
-    var totalAttempts = this.get('assessmentResult.totalAttempts');
+    let attempts = [];
+    let totalAttempts = this.get('contextResult.totalAttempts');
 
     for (; totalAttempts > 0; totalAttempts--) {
       attempts.push({
@@ -113,13 +118,13 @@ export default Ember.Component.extend({
    * @returns {Array}
    */
   getResourceLinks: function (resourceResults) {
-    return resourceResults.map(function (resourceResult, index) {
-      return Ember.Object.create({
-        label: index + 1, //using index here because the resouce.order could have gaps
+    return resourceResults.map(
+      (resourceResult, index) => Ember.Object.create({
+        label: index + 1,
         status: resourceResult.get('attemptStatus'),
         value: resourceResult.get('id')
-      });
-    });
+      })
+    );
   }
 
 });

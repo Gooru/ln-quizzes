@@ -141,12 +141,10 @@ export function getAnswerResultIcon(isCorrect) {
  * @returns {String} - html string
  */
 export function getScoreString(value) {
-
-  if(typeof value === "number"){
-    var gradeColor = getGradeColor(value);
-    return '<span class="score" style="background-color: '+gradeColor+'">'+value+' %</span>';
+  if(typeof value === 'number'){
+    let gradeColor = getGradeColor(value);
+    return `<span class="score" style="background-color: ${gradeColor}">${value} %</span>`;
   }
-
   return '<span class="score answer-undefined"></span>';
 }
 

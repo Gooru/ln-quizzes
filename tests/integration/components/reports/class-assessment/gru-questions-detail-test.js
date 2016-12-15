@@ -17,7 +17,7 @@ test('Layout', function(assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56b120483b6e7b090501d3e7',
     isResource: false,
-    questionType: 'single_choice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers: Ember.A([
       Answer.create({value: 1, text: 'Answer 1'}),
@@ -33,7 +33,7 @@ test('Layout', function(assert) {
       Resource.create({ //Single Choice
         id: '56a1204886b2e565e1b2c230',
         isResource: false,
-        questionType: 'single_choice',
+        type: 'single_choice',
         body: 'Sample Question SC',
         answers: Ember.A([
           Answer.create({value: 1, text: 'Answer 1'}),
@@ -45,7 +45,7 @@ test('Layout', function(assert) {
       Resource.create({ //Single Choice
         id: '56a12048ddee2022a741356a',
         isResource: false,
-        questionType: 'true_false',
+        type: 'true_false',
         body: 'True False Question',
         answers: Ember.A([
           Answer.create({ value: '1', text: 'True' }),
@@ -141,7 +141,7 @@ test('Layout Anonymous', function(assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56b120483b6e7b090501d3e7',
     isResource: false,
-    questionType: 'single_choice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers: Ember.A([
       Answer.create({value: 1, text: 'Answer 1'}),
@@ -157,7 +157,7 @@ test('Layout Anonymous', function(assert) {
       Resource.create({ //Single Choice
         id: '56a1204886b2e565e1b2c230',
         isResource: false,
-        questionType: 'single_choice',
+        type: 'single_choice',
         body: 'Sample Question SC',
         answers: Ember.A([
           Answer.create({value: 1, text: 'Answer 1'}),
@@ -169,7 +169,7 @@ test('Layout Anonymous', function(assert) {
       Resource.create({ //Single Choice
         id: '56a12048ddee2022a741356a',
         isResource: false,
-        questionType: 'true_false',
+        type: 'true_false',
         body: 'True False Question',
         answers: Ember.A([
           Answer.create({ value: '1', text: 'True' }),
@@ -256,7 +256,7 @@ test('Layout Anonymous and Show Results', function(assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56b120483b6e7b090501d3e7',
     isResource: false,
-    questionType: 'single_choice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers: Ember.A([
       Answer.create({value: 1, text: 'Answer 1'}),
@@ -272,7 +272,7 @@ test('Layout Anonymous and Show Results', function(assert) {
       Resource.create({ //Single Choice
         id: '56a1204886b2e565e1b2c230',
         isResource: false,
-        questionType: 'single_choice',
+        type: 'single_choice',
         body: 'Sample Question SC',
         answers: Ember.A([
           Answer.create({value: 1, text: 'Answer 1'}),
@@ -284,7 +284,7 @@ test('Layout Anonymous and Show Results', function(assert) {
       Resource.create({ //Single Choice
         id: '56a12048ddee2022a741356a',
         isResource: false,
-        questionType: 'true_false',
+        type: 'true_false',
         body: 'True False Question',
         answers: Ember.A([
           Answer.create({ value: '1', text: 'True' }),

@@ -1,8 +1,9 @@
-/* TODO Fix on QZ-175
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
+import QuestionResult from 'quizzes/models/result/question';
+import Resource from 'quizzes/models/resource/resource';
 
 moduleForComponent('reports/assessment/gru-questions-xs', 'Integration | Component | reports/assessment/gru questions xs', {
   integration: true
@@ -11,32 +12,34 @@ moduleForComponent('reports/assessment/gru-questions-xs', 'Integration | Compone
 test('Questions Details Mobile Layout', function(assert) {
   assert.expect(6);
 
-  const questions = Ember.A([Ember.Object.create({
-    question: Ember.Object.create({
-      text:"This is a question 1",
-      questionType: 'OE',
-      order: 1
+  const questions = Ember.A([
+    QuestionResult.create({
+      question: Resource.create({
+        body: 'This is a question 1',
+        type: 'OE',
+        sequence: 1
+      }),
+      score: 100,
+      savedTime: 10000,
+      reaction: 5,
+      answer: 'answer'
     }),
-    correct: true,
-    timeSpent: 10, //seconds
-    reaction: 5,
-    answer: "answer"
-  }), Ember.Object.create({
-    question: Ember.Object.create({
-      text:"This is a question 2",
-      questionType: 'OE',
-      order: 2
-    }),
-    correct: false,
-    timeSpent: 25, //seconds
-    reaction: 2,
-    answer: "answer"
-  })]);
+    QuestionResult.create({
+      question: Resource.create({
+        body: 'This is a question 2',
+        questionType: 'OE',
+        sequence: 2
+      }),
+      score: 0,
+      savedTime: 25000, //seconds
+      reaction: 2,
+      answer: 'answer'
+    })]);
 
   this.set('questions', questions);
   this.render(hbs`{{reports/assessment/gru-questions-xs results=questions}}`);
   const $component = this.$(); //component dom element
-  const $question = $component.find(".gru-questions-xs");
+  const $question = $component.find('.gru-questions-xs');
 
   T.exists(assert, $question, 'Missing questions-xs component');
   T.exists(assert, $question.find('.question-number'), 'Missing question number column');
@@ -45,4 +48,3 @@ test('Questions Details Mobile Layout', function(assert) {
   T.exists(assert, $question.find('.question'), 'Missing question section');
   T.exists(assert, $question.find('.answer'), 'Missing answer section');
 });
-*/

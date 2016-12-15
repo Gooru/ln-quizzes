@@ -1,12 +1,9 @@
 <div class="question-card {{if showPerformance 'show-performance' 'show-correct-answer'}}">
   <div class="question-container">
     <div class="question">
-      <span class="question-number">{{result.question.order}}</span>
+      <span class="question-number">{{result.question.sequence}}</span>
       <span class="question-text">
-        {{gru-math-text text=(if result.question.isFIB result.question.fibText result.question.text)}}
-        {{#if result.question.hasMedia}}
-          <img class="img-responsive" src="{{result.question.mediaUrl}}"/>
-        {{/if}}
+        {{gru-math-text text=result.question.body}}
       </span>
     </div>
     <div class="answer">
@@ -14,14 +11,14 @@
           <span>{{t "common.answer"}}</span>
         <span>
           {{#if result.answered}}
-            {{{component (questionConfig result.question.questionType 'component.answer') question=result.question userAnswer=result.userAnswer}}}
+            {{{component (questionConfig result.question.type 'component.answer') question=result userAnswer=result.answer}}}
           {{/if}}
         </span>
       </div>
         <div class="correct-answer">
           <span>{{t "common.correct-answer"}}</span>
           <span>
-            {{{component (questionConfig result.question.questionType 'component.answer') question=result.question showCorrect=true}}}
+            {{{component (questionConfig result.question.type 'component.answer') question=result showCorrect=true}}}
           </span>
         </div>
     </div>

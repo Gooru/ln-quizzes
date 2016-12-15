@@ -106,12 +106,12 @@ export default Ember.Object.extend({
     return this.get('reportEvents').filter(function(reportEvent) {
       let questionResult = reportEvent.get('resourceResults').find(
         result => result.get('resourceId') === question.get('id'));
-      if(questionResult) {
-        // TODO revise the answer comparison
-        return questionResult.get('answer') === answer;
-      }
-      return false;
-    });
+      return questionResult ? questionResult.get('answer.firstObject.value') === answer[0].value : false;
+    }).map(student => Ember.Object.create({
+      id: student.get('profileId'),
+      code: student.get('profileCode'),
+      fullName: student.get('profileName')
+    }));
   },
 
   /**

@@ -89,7 +89,7 @@ export default Ember.Component.extend({
       // Copy only the most important properties of the resources array
       return {
         id: question.id,
-        order: question.order
+        order: question.sequence
       };
     });
 
@@ -202,6 +202,7 @@ export default Ember.Component.extend({
     let answerIdx = answersData.length - 1;
     let results = [];
 
+    // TODO change to use global score instead of calculating
     for (; answerIdx >= 0; answerIdx--) {
       let correct = answersData[answerIdx].correct;
       let totalAnswered = correct + answersData[answerIdx].incorrect;

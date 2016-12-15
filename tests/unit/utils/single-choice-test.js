@@ -52,49 +52,64 @@ test('Single Choice - distribution', function (assert) {
 
   let distribution = questionUtil.distribution([
     QuestionResult.create({
-      answer: 1
+      answer: [{
+        value: '1'
+      }]
     }),
     QuestionResult.create({
-      answer: 1
+      answer: [{
+        value: '1'
+      }]
     }),
     QuestionResult.create({
-      answer: 2
+      answer: [{
+        value: '2'
+      }]
     }),
     QuestionResult.create({
-      answer: 3
+      answer: [{
+        value: '3'
+      }]
     }),
     QuestionResult.create({
-      answer: 4
+      answer: [{
+        value: '4'
+      }]
     }),
     QuestionResult.create({
-      answer: 3
+      answer: [{
+        value: '3'
+      }]
     }),
     QuestionResult.create({
-      answer: 2
+      answer: [{
+        value: '2'
+      }]
     }),
     QuestionResult.create({
-      answer: 3
+      answer: [{
+        value: '3'
+      }]
     })
   ]);
 
-  let answers = distribution.map(item => item.get('answer')).toArray();
+  let answers = distribution.map(item => item.get('key')).toArray();
   let counts = distribution.map(item => item.get('count')).toArray();
 
-  assert.deepEqual(answers, [1, 2, 3, 4], 'Wrong answers');
+  assert.deepEqual(answers, ['1', '2', '3', '4'], 'Wrong keys');
   assert.deepEqual(counts, [2, 2, 3, 1], 'Wrong counts');
 });
 
 test('Single Choice - answerKey', function (assert) {
   let questionUtil = SingleChoiceUtil.create({question: null});
-
-  let key = questionUtil.answerKey(1);
+  let key = questionUtil.answerKey([{ value: 1 }]);
   assert.equal(key, 1, 'Wrong key');
 });
 
 test('Single Choice - sameAnswer', function (assert) {
   let questionUtil = SingleChoiceUtil.create({question: null});
-  assert.ok(questionUtil.sameAnswer(1, 1), 'Answer should be the same');
-  assert.ok(!questionUtil.sameAnswer(1, 2), 'Answer should not be the same');
+  assert.ok(questionUtil.sameAnswer([{value: 1}], [{value: 1}]), 'Answer should be the same');
+  assert.ok(!questionUtil.sameAnswer([{value: 1}], [{value: 2}]), 'Answer should not be the same');
 });
 
 test('Single Choice - toAnswerObjects', function (assert) {

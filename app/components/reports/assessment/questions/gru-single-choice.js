@@ -25,21 +25,21 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Properties
 
-  answers: Ember.computed("question", function () {
+  answers: Ember.computed('question', function () {
     let component = this;
-    let question = component.get("question");
-    let questionUtil = component.getQuestionUtil(question);
-    let userAnswer = component.get("userAnswer");
-    if (component.get("showCorrect")){
-      userAnswer = questionUtil.getCorrectAnswer();
+    let question = component.get('question');
+    let userAnswer = component.get('userAnswer') ? component.get('userAnswer')[0] : null;
+    let userAnswerCorrect = question.get('correct');
+    if (component.get('showCorrect')) {
+      userAnswer = question.get('question.correctAnswer')[0];
+      userAnswerCorrect = true;
     }
-
-    let userAnswerCorrect = questionUtil.isAnswerChoiceCorrect(userAnswer);
-    let answers = question.get("answers");
+    let answerValue = userAnswer ? userAnswer.value : null;
+    let answers = question.get('question.answers');
     return answers.map(function(answer){
       return {
-        text: answer.get("text"),
-        selected: answer.get("id") === userAnswer,
+        text: answer.get('text'),
+        selected: answer.get('value') === answerValue,
         correct: userAnswerCorrect
       };
     });

@@ -1,20 +1,20 @@
 <div class="summary-container">
   {{#if collection.isAssessment}}
     <div class="grade" style={{gradeStyle}}>
-      <span class="percentage">{{round-number assessmentResult.correctPercentage}}%</span>
+      <span class="percentage">{{round-number contextResult.correctPercentage}}%</span>
     <span class="attempts">
-      <span class="fractional fraction"> {{{fractional numerator=assessmentResult.correctAnswers denominator=assessmentResult.totalResources}}}</span>
+      <span class="fractional fraction"> {{{fractional numerator=contextResult.correctAnswers denominator=contextResult.totalResources}}}</span>
       <span class="text">{{t 'common.correct'}}</span>
     </span>
     </div>
   {{else}}
     <div class="thumbnail">
       <span class="title">{{t "gru-assessment-report.gru-summary.total-time-spent"}}</span>
-      <span class="time-spent">{{gru-icon name='av_timer'}}<span>{{formatTime assessmentResult.totalTimeSpent}}</span></span>
+      <span class="time-spent">{{gru-icon name='av_timer'}}<span>{{formatTime contextResult.totalTimeSpent}}</span></span>
     </div>
   {{/if}}
   <div class="overview">
-    <h5>{{assessmentResult.title}}</h5>
+    <h5>{{contextResult.title}}</h5>
     <div class="information">
       {{#if collection.isAssessment}}
           <span class="attempt">
@@ -31,7 +31,7 @@
                 </ul>
               </span>
               <span>{{t "common.of"}}</span>
-              <span class="total-attempts">{{assessmentResult.totalAttempts}}</span>
+              <span class="total-attempts">{{contextResult.totalAttempts}}</span>
               </span>
             {{else}}
                 {{#if isRealTime}}
@@ -42,16 +42,16 @@
           {{/if}}
            </span>
       {{/if}}
-      {{#if assessmentResult.submittedAt}}
+      {{#if contextResult.submittedAt}}
         <span class="date">
-        {{gru-icon name='event'}}<span>{{formatDate assessmentResult.submittedAt 'h:mm a MMM. Do, YYYY'}}</span>
+        {{gru-icon name='event'}}<span>{{formatDate contextResult.submittedAt 'h:mm a MMM. Do, YYYY'}}</span>
       </span>
       {{/if}}
       <span class="time">
-        {{gru-icon name='av_timer'}}<span>{{formatTime assessmentResult.totalTimeSpent}}</span>
+        {{gru-icon name='av_timer'}}<span>{{formatTime contextResult.totalTimeSpent}}</span>
       </span>
       <span class="reaction">
-        {{reactionIcon assessmentResult.averageReaction}}
+        {{reactionIcon contextResult.averageReaction}}
       </span>
     </div>
     <div class="bubbles">

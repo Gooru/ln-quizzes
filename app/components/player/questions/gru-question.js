@@ -75,8 +75,8 @@ export default Ember.Component.extend({
    */
   questionUtil: Ember.computed('question', function(){
     let question = this.get('question');
-    let type = question.get('questionType');
-    return getQuestionUtil(type).create({ question: question });
+    let type = question.get('type');
+    return getQuestionUtil(type).create({ question });
   }),
 
   /**

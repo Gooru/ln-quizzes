@@ -24,8 +24,8 @@ test('True/False - isCorrect', function (assert) {
     Ember.Object.create({id: 2, isCorrect: true})
   ]);
 
-  let question = Ember.Object.create({answers: answers});
-  let questionUtil = TrueFalseUtil.create({question: question});
+  let question = Ember.Object.create({answers});
+  let questionUtil = TrueFalseUtil.create({question});
 
   assert.ok(!questionUtil.isCorrect(1), 'Option one is not correct');
   assert.ok(questionUtil.isCorrect(2), 'Option two should be correct');
@@ -36,49 +36,65 @@ test('True/False - distribution', function (assert) {
 
   let distribution = questionUtil.distribution([
     QuestionResult.create({
-      answer: 1
+      answer: [{
+        value: 1
+      }]
     }),
     QuestionResult.create({
-      answer: 1
+      answer: [{
+        value: 1
+      }]
     }),
     QuestionResult.create({
-      answer: 2
+      answer: [{
+        value: 2
+      }]
     }),
     QuestionResult.create({
-      answer: 2
+      answer: [{
+        value: 2
+      }]
     }),
     QuestionResult.create({
-      answer: 1
+      answer: [{
+        value: 1
+      }]
     }),
     QuestionResult.create({
-      answer: 2
+      answer: [{
+        value: 2
+      }]
     }),
     QuestionResult.create({
-      answer: 2
+      answer: [{
+        value: 2
+      }]
     }),
     QuestionResult.create({
-      answer: 2
+      answer: [{
+        value: 2
+      }]
     })
   ]);
 
-  let answers = distribution.map(item => item.get('answer')).toArray();
+  let answers = distribution.map(item => item.get('key')).toArray();
   let counts = distribution.map(item => item.get('count')).toArray();
 
-  assert.deepEqual(answers, [1, 2], 'Wrong answers');
+  assert.deepEqual(answers, [1, 2], 'Wrong keys');
   assert.deepEqual(counts, [3, 5], 'Wrong counts');
 });
 
 test('True/False - answerKey', function (assert) {
   let questionUtil = TrueFalseUtil.create({question: null});
 
-  let key = questionUtil.answerKey(1);
+  let key = questionUtil.answerKey([{value: 1}]);
   assert.equal(key, 1, 'Wrong key');
 });
 
 test('True/False - sameAnswer', function (assert) {
   let questionUtil = TrueFalseUtil.create({question: null});
-  assert.ok(questionUtil.sameAnswer(1, 1), 'Answers should be the same');
-  assert.ok(!questionUtil.sameAnswer(1, 2), 'Answers should not be the same');
+  assert.ok(questionUtil.sameAnswer([{value: 1}], [{value: 1}]), 'Answers should be the same');
+  assert.ok(!questionUtil.sameAnswer([{value: 1}], [{value: 2}]), 'Answers should not be the same');
 });
 
 test('True/False - toAnswerObjects with answer id', function (assert) {

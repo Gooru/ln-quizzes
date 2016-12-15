@@ -201,13 +201,12 @@ export default Ember.Component.extend({
       reportEvent.get('resourceResults').forEach(function(questionResult, j) {
         for (let k = 0; k < questionPropertiesIdsLen; k++) {
           let renderFunction = questionProperties[k].renderFunction;
-          let value = questionResult[questionPropertiesIds[k]];
+          let value = questionResult.get(questionPropertiesIds[k]);
 
           data[i].content[j * questionPropertiesIdsLen + k] = {
-            value: value,
+            value,
             output: (!renderFunction) ? value : renderFunction(value)
           };
-
           propertyValues[k].push(questionResult);
         }
         // Compute the aggregate values
@@ -219,7 +218,7 @@ export default Ember.Component.extend({
           // For displaying the aggregate value, use the question property's aggregateRenderFunction.
           // If there's no aggregateRenderFunction, use the property's renderFunction by default.
           data[i].content[totalIndex * questionPropertiesIdsLen + k] = {
-            value: value,
+            value,
             output: (aggregateRenderFunction) ? aggregateRenderFunction(value) :
               questionProperties[k].renderFunction(value)
           };

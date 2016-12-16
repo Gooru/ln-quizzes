@@ -16,6 +16,11 @@ export default Ember.Object.extend({
   answers: Ember.A(),
 
   /**
+   * @property {string} body
+   */
+  body: null,
+
+  /**
    * list of correct answers
    * @property {Answer[]}
    */
@@ -40,31 +45,26 @@ export default Ember.Object.extend({
   isResource: null,
 
   /**
-   * @property {string} owner
-   */
-  owner: null,
-
-  /**
-   * @property {number} sequence
-   */
-  sequence: null,
-
-  /**
-   * @property {string} text
-   */
-  body: null,
-
-  /**
    * Number of choices that can be selected
    * @property {boolean} shuffle
    */
   maxChoices: 1,
 
   /**
+   * @property {string} owner
+   */
+  owner: null,
+
+  /**
    * Text to show just before the answers
    * @property {boolean} shuffle
    */
   prompt: null,
+
+  /**
+   * @property {number} sequence
+   */
+  sequence: null,
 
   /**
    * If the answers should be shuffled
@@ -217,5 +217,4 @@ export default Ember.Object.extend({
    * @property {boolean}
    */
   isYoutubeResource: Ember.computed.equal('type', 'video/youtube')
-
 });

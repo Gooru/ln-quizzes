@@ -1,7 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
 import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
-import T from 'quizzes/tests/helpers/assert';
+import Ember from 'ember';
 
 moduleForAcceptance('Acceptance | assignments',{
   beforeEach: function() {
@@ -15,7 +15,7 @@ moduleForAcceptance('Acceptance | assignments',{
   }
 });
 
-test('visiting assignments', function(assert) {
+test('visiting assignment', function(assert) {
   visit('/profile/profile-id?isTeacher=true');
 
   andThen(function() {
@@ -25,7 +25,7 @@ test('visiting assignments', function(assert) {
     const $addStudent = find('button.add-student');
     click($addStudent);
     andThen(function () {
-      T.exists(assert, find('.gru-assign-student-modal'), 'Missing assign student modal');
+      assert.ok(assert, find('.gru-assign-student-modal'), 'Missing assign student modal');
       var $studentRosterTab = Ember.$('.gru-assign-students .nav-tabs .student-roster a');
       click($studentRosterTab);
       andThen(function () {
@@ -44,7 +44,7 @@ test('visiting assignments', function(assert) {
             click($assignment);
             andThen(function () {
               var $detail = find('.gru-assignments-detail');
-              assert.equal($detail.find('.due-date').text().trim(), 'Due Date: 11:30 pm 12/10/2200','Incorrect due date')
+              assert.equal($detail.find('.due-date').text().trim(), 'Due Date: 11:30 pm 12/10/2200','Incorrect due date');
             });
           });
         });

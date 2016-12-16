@@ -34,11 +34,11 @@ export default Ember.Service.extend({
     });
   },
 
-  getReportData: function(contextId) {
+  getContextsAssigned: function() {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').getReportData(contextId)
-        .then(response => service.get('contextSerializer').normalizeReportData(response))
+      service.get('contextAdapter').getContextsAssigned()
+        .then(response => service.get('contextSerializer').normalizeReadContexts(response))
         .then(resolve, reject);
     });
   },
@@ -48,6 +48,15 @@ export default Ember.Service.extend({
     return new Ember.RSVP.Promise(function(resolve, reject) {
       service.get('contextAdapter').getContextsCreated()
         .then(response => service.get('contextSerializer').normalizeReadContexts(response))
+        .then(resolve, reject);
+    });
+  },
+
+  getReportData: function(contextId) {
+    const service = this;
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service.get('contextAdapter').getReportData(contextId)
+        .then(response => service.get('contextSerializer').normalizeReportData(response))
         .then(resolve, reject);
     });
   },

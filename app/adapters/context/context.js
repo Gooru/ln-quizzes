@@ -24,22 +24,21 @@ export default Ember.Object.extend({
     return Ember.$.ajax(url, options);
   },
 
-  getReportData: function(contextId) {
-    const namespace = this.get('namespace');
+  getContextsAssigned: function() {
+    const namespace = this.get('namespaceCollection');
     const options = {
       type: 'GET',
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
       headers: {
-        'profile-id': '7973e6c6-f0cd-4021-9c49-a0f9f26101b2',
+        'profile-id': 'd940b802-2407-433b-b409-128dad62b590',
         'lms-id': 'its_learning'
       }
     };
-    const url = `${namespace}/${contextId}/events`;
+    const url = `${namespace}/assigned`;
     return Ember.$.ajax(url, options);
   },
-
   getContextsCreated: function() {
     const namespace = this.get('namespaceCollection');
     const options = {
@@ -53,6 +52,22 @@ export default Ember.Object.extend({
       }
     };
     const url = `${namespace}/created`;
+    return Ember.$.ajax(url, options);
+  },
+
+  getReportData: function(contextId) {
+    const namespace = this.get('namespace');
+    const options = {
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      processData: false,
+      headers: {
+        'profile-id': '7973e6c6-f0cd-4021-9c49-a0f9f26101b2',
+        'lms-id': 'its_learning'
+      }
+    };
+    const url = `${namespace}/${contextId}/events`;
     return Ember.$.ajax(url, options);
   },
 

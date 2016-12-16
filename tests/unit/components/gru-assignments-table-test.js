@@ -14,7 +14,6 @@ test('addStudent', function(assert) {
     id: 'id',
     assignees:[{id:'profile-id'}]
   });
-  
   let profile = Ember.Object.create({
     id: 'id',
     externalId:'externalId'

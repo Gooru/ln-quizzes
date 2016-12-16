@@ -12,6 +12,10 @@ export default Ember.Route.extend({
 
   contextService: Ember.inject.service("api-sdk/context"),
 
+  actions:{
+
+  },
+
   // -------------------------------------------------------------------------
   // Methods
 

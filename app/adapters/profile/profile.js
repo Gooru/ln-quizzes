@@ -14,7 +14,7 @@ export default Ember.Object.extend({
       processData: false,
       // TODO get real headers
       headers: {
-        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
+        'profile-id': 'd940b802-2407-433b-b409-128dad62b590',
         'lms-id': 'its_learning'
       }
     };

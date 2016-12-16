@@ -24,6 +24,12 @@ export default Ember.Component.extend({
      */
     selectAssignment:function(assignment){
       this.set('selectedAssignment',assignment);
+    },
+    updateAssignment: function (assignmentUpdated) {
+      this.set('selectedAssignment',assignmentUpdated);
+      let assignment = this.get('assignments').findBy('id',assignmentUpdated.get('id'));
+      this.get('assignments').removeAt(this.get('assignments').indexOf(assignment));
+      this.get('assignments').insertAt(this.get('assignments').indexOf(assignment),assignmentUpdated);
     }
   },
 

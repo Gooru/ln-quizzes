@@ -46,14 +46,11 @@
           {{plus-one index}}
       </td>
       <td class="question-text top-left">
-        {{gru-math-text text=(if result.question.isFIB result.question.fibText result.question.text)}}
-        {{#if result.question.hasMedia}}
-          <img class="img-responsive" src="{{result.question.mediaUrl}}"/>
-        {{/if}}
+        {{gru-math-text text=result.question.body}}
       </td>
       <td class="question-answer top-left">
         {{#if result.answered}}
-          {{{component (questionConfig result.question.questionType 'component.answer') question=result.question userAnswer=result.userAnswer}}}
+          {{{component (questionConfig result.question.type 'component.answer') question=result}}}
         {{/if}}
       </td>
       <td class="question-score {{if showPerformance 'visible' 'hide'}}">
@@ -69,7 +66,7 @@
       </td>
       {{#unless isAnswerKeyHidden}}
         <td class="correct-answer top-left {{if showPerformance 'hide' 'visible'}}">
-          {{{component (questionConfig result.question.questionType 'component.answer') question=result.question showCorrect=true}}}
+          {{{component (questionConfig result.question.type 'component.answer') question=result showCorrect=true}}}
         </td>
       {{/unless}}
     </tr>

@@ -15,14 +15,28 @@ export default ResourceResult.extend({
   answer: null,
 
   /**
+   * @property {boolean} answered - if an answer was provided
+   */
+  answered: Ember.computed.bool('answer'),
+
+  /**
+   * If user did not answer the question or did not view the resource, then status will be skipped.
+   * Values: correct / incorrect / skipped
+   *
+   * This value can be null for “start” event. Required for “stop” event.
+   *
+   * @property {String}
+   */
+  attemptStatus: Ember.computed('correct', 'answered', function () {
+    const correct = this.get('correct');
+    const answered = this.get('answered');
+    return correct ? 'correct' : answered ? 'incorrect' : 'skipped';
+  }),
+
+  /**
    * @property {boolean} correct - Was the answer provided for this question correct?
    */
   correct: Ember.computed.equal('score', 100),
-
-  /**
-   * @property {boolean} hasAnswer - if the question has an answer
-   */
-  hasAnswer: Ember.computed.bool('answer'),
 
   /**
    * @property {boolean} incorrect - Was the answer provided for this question incorrect?

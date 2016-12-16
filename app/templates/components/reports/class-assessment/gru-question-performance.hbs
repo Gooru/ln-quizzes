@@ -18,10 +18,9 @@
       <div class="panel-body">
           <div class="answers-wrapper">
               <div class="answer">
-                {{{component (questionConfig question.questionType 'component.answer')
-                question=question
-                userAnswer=answerData.userAnswer
-                anonymous=anonymousAndNotShowResult}}}
+                {{{component (questionConfig question.type 'component.answer')
+                  question=answerData.result
+                  anonymous=anonymousAndNotShowResult}}}
               </div>
             {{#unless anonymous}}
                 <div class="students">

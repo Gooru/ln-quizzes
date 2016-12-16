@@ -1,3 +1,4 @@
+/* TODO fix when the question type is enabled
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
@@ -60,3 +61,4 @@ test('Open ended Layout when no answer provided', function (assert) {
   T.exists(assert, $answer, 'Missing answer');
   assert.equal(T.text($answer), '', 'Wrong answer text');
 });
+*/

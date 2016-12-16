@@ -67,6 +67,14 @@ export default Ember.Object.extend({
   // Methods
 
   /**
+   * Find an event by a profile id
+   * @returns {ReportDataEvent[]}
+   */
+  findByProfileId: function(profileId) {
+    return this.get('reportEvents').filter(reportEvent => reportEvent.get('profileId') === profileId);
+  },
+
+  /**
    * Find all results for the question id
    * @param {string} questionId
    * @returns {QuestionResult[]}
@@ -78,6 +86,22 @@ export default Ember.Object.extend({
     ).filter(result => result);
   },
 
+  /**
+   * Find all results for the profile id
+   * @param {string} questionId
+   * @returns {QuestionResult[]}
+   */
+  getResultsByStudent: function(profileId) {
+    let profileEvents = this.findByProfileId(profileId);
+    return profileEvents.length ? profileEvents[0].get('resourceResults') : [];
+  },
+
+  /**
+   * Find all results by answer
+   * @param {string} questionId
+   * @param {Answer} answer
+   * @returns {QuestionResult[]}
+   */
   getStudentsByQuestionAndAnswer: function(question, answer) {
     return this.get('reportEvents').filter(function(reportEvent) {
       let questionResult = reportEvent.get('resourceResults').find(
@@ -88,14 +112,6 @@ export default Ember.Object.extend({
       }
       return false;
     });
-  },
-
-  /**
-   * Find an event by a profile id
-   * @returns {ReportDataEvent[]}
-   */
-  findByProfileId: function(profileId) {
-    return this.get('reportEvents').filter(reportEvent => reportEvent.get('profileId') === profileId);
   },
 
   /**

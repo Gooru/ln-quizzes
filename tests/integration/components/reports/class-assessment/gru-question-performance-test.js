@@ -17,12 +17,12 @@ test('When students have no answers yet', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56b120483b6e7b090501d3e7',
     isResource: false,
-    questionType: 'single_choice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers: Ember.A([
-      Answer.create({value: 1, text: 'Answer 1'}),
-      Answer.create({value: 2, text: 'Answer 2'}),
-      Answer.create({value: 3, text: 'Answer 3'})
+      Answer.create({value: '1', text: 'Answer 1'}),
+      Answer.create({value: '2', text: 'Answer 2'}),
+      Answer.create({value: '3', text: 'Answer 3'})
     ]),
     sequence: 1
   });
@@ -86,12 +86,12 @@ test('Non anonymous, layout', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    questionType: 'single_choice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers: Ember.A([
-      Answer.create({value: 1, text: 'Answer 1'}),
-      Answer.create({value: 2, text: 'Answer 2'}),
-      Answer.create({value: 3, text: 'Answer 3'})
+      Answer.create({value: '1', text: 'Answer 1'}),
+      Answer.create({value: '2', text: 'Answer 2'}),
+      Answer.create({value: '3', text: 'Answer 3'})
     ]),
     sequence: 1
   });
@@ -108,7 +108,7 @@ test('Non anonymous, layout', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 1,
+            answer: [{ value: '1' }],
             score: 0,
             reaction: 1,
             savedTime: 1216
@@ -120,7 +120,7 @@ test('Non anonymous, layout', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 2,
+            answer: [{ value: '2' }],
             score: 0,
             reaction: 5,
             savedTime: 1216
@@ -132,7 +132,7 @@ test('Non anonymous, layout', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 3,
+            answer: [{ value: '3' }],
             score: 100,
             reaction: 1,
             savedTime: 1216
@@ -147,7 +147,7 @@ test('Non anonymous, layout', function (assert) {
 
   this.render(hbs`{{reports/class-assessment/gru-question-performance
           reportData=reportData
-          question=selectedQuestion }}`);
+          question=selectedQuestion}}`);
 
   const $component = this.$();
   const $chart = $component.find('.chart');
@@ -170,12 +170,12 @@ test('Anonymous, layout', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    questionType: 'single_choice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers: Ember.A([
-      Answer.create({value: 1, text: 'Answer 1'}),
-      Answer.create({value: 2, text: 'Answer 2'}),
-      Answer.create({value: 3, text: 'Answer 3'})
+      Answer.create({value: '1', text: 'Answer 1'}),
+      Answer.create({value: '2', text: 'Answer 2'}),
+      Answer.create({value: '3', text: 'Answer 3'})
     ]),
     sequence: 1
   });
@@ -192,7 +192,7 @@ test('Anonymous, layout', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 1,
+            answer: [{ value: '1' }],
             score: 0,
             reaction: 1,
             savedTime: 1216
@@ -204,7 +204,7 @@ test('Anonymous, layout', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 2,
+            answer: [{ value: '2' }],
             score: 0,
             reaction: 5,
             savedTime: 1216
@@ -216,7 +216,7 @@ test('Anonymous, layout', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 3,
+            answer: [{ value: '3' }],
             score: 100,
             reaction: 1,
             savedTime: 1216
@@ -251,12 +251,12 @@ test('Anonymous and Show Results', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    questionType: 'single_choice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers: Ember.A([
-      Answer.create({value: 1, text: 'Answer 1'}),
-      Answer.create({value: 2, text: 'Answer 2'}),
-      Answer.create({value: 3, text: 'Answer 3'})
+      Answer.create({value: '1', text: 'Answer 1'}),
+      Answer.create({value: '2', text: 'Answer 2'}),
+      Answer.create({value: '3', text: 'Answer 3'})
     ]),
     sequence: 1
   });
@@ -273,7 +273,7 @@ test('Anonymous and Show Results', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 1,
+            answer: [{ value: '1' }],
             score: 0,
             reaction: 1,
             savedTime: 1216
@@ -285,7 +285,7 @@ test('Anonymous and Show Results', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 2,
+            answer: [{ value: '2' }],
             score: 0,
             reaction: 5,
             savedTime: 1216
@@ -297,7 +297,7 @@ test('Anonymous and Show Results', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 3,
+            answer: [{ value: '3' }],
             score: 100,
             reaction: 1,
             savedTime: 1216
@@ -332,17 +332,17 @@ test('Anonymous and Show Results', function (assert) {
   T.notExists(assert, $component.find('.panel .answers-wrapper .students'), 'Students should be hidden in anonymous');
 });
 
-
 test('Single choice', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    questionType: 'single_choice',
+    type: 'single_choice',
     body: 'Sample Question SC',
+    correctAnswer: [{ value: '2' }],
     answers: Ember.A([
-      Answer.create({value: 1, text: 'Answer 1'}),
-      Answer.create({value: 2, text: 'Answer 2'}),
-      Answer.create({value: 3, text: 'Answer 3'})
+      Answer.create({value: '1', text: 'Answer 1'}),
+      Answer.create({value: '2', text: 'Answer 2'}),
+      Answer.create({value: '3', text: 'Answer 3'})
     ]),
     sequence: 1
   });
@@ -359,7 +359,7 @@ test('Single choice', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 1,
+            answer: [{ value: '1' }],
             score: 0,
             reaction: 1,
             savedTime: 1216
@@ -371,7 +371,7 @@ test('Single choice', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 2,
+            answer: [{ value: '2' }],
             score: 0,
             reaction: 5,
             savedTime: 1216
@@ -383,7 +383,7 @@ test('Single choice', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 3,
+            answer: [{ value: '3' }],
             score: 100,
             reaction: 1,
             savedTime: 1216
@@ -398,7 +398,8 @@ test('Single choice', function (assert) {
 
   this.render(hbs`{{reports/class-assessment/gru-question-performance
           reportData=reportData
-          question=selectedQuestion }}`);
+          question=selectedQuestion
+        }}`);
 
   const $component = this.$();
   const $chart = $component.find('.chart');
@@ -424,12 +425,12 @@ test('Anonymous and Show Results', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    questionType: 'single_choice',
+    type: 'single_choice',
     body: 'Sample Question SC',
     answers: Ember.A([
-      Answer.create({value: 1, text: 'Answer 1'}),
-      Answer.create({value: 2, text: 'Answer 2'}),
-      Answer.create({value: 3, text: 'Answer 3'})
+      Answer.create({value: '1', text: 'Answer 1'}),
+      Answer.create({value: '2', text: 'Answer 2'}),
+      Answer.create({value: '3', text: 'Answer 3'})
     ]),
     sequence: 1
   });
@@ -446,7 +447,7 @@ test('Anonymous and Show Results', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 1,
+            answer: [{ value: '1' }],
             score: 0,
             reaction: 1,
             savedTime: 1216
@@ -458,7 +459,7 @@ test('Anonymous and Show Results', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 2,
+            answer: [{ value: '2' }],
             score: 0,
             reaction: 5,
             savedTime: 1216
@@ -470,7 +471,7 @@ test('Anonymous and Show Results', function (assert) {
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
-            answer: 3,
+            answer: [{ value: '3' }],
             score: 100,
             reaction: 1,
             savedTime: 1216

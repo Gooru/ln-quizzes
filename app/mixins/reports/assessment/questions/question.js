@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { getQuestionUtil } from 'quizzes/config/question';
 
 /**
  * This mixin is only used by the assessment report question components
@@ -10,6 +9,7 @@ export default Ember.Mixin.create({
 
   // -------------------------------------------------------------------------
   // Properties
+
   /**
    * Question information
    * @property {Resource} question
@@ -17,9 +17,9 @@ export default Ember.Mixin.create({
   question: null,
 
   /**
-   * @property {*} selected user answer
+   * @property {Answer[]} selected user answer
    */
-  userAnswer: null,
+  userAnswer: Ember.computed.alias('question.answer'),
 
   /**
    * @property {boolean} indicates if it should display the correct question answer
@@ -29,17 +29,6 @@ export default Ember.Mixin.create({
   /**
    * @property {boolean} indicates if it is in anonymous mode
    */
-  anonymous: null,
-
-  // -------------------------------------------------------------------------
-  // Methods
-  /**
-   * Returns the question util for the question
-   * @param question
-   */
-  getQuestionUtil: function(question){
-    return getQuestionUtil(question.get("questionType")).create({ question: question });
-  }
-
+  anonymous: null
 
 });

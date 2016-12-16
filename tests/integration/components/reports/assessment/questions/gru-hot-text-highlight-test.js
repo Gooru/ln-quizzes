@@ -1,3 +1,4 @@
+/* TODO fix when the question type is enabled
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
@@ -87,5 +88,5 @@ test('Hot Text Highlight Anonymous', function(assert) {
   const $ht_hl = $component.find(".reports.assessment.questions.gru-hot-text-highlight");
   const $correctAnswers = $ht_hl.find('span.anonymous');
   assert.equal($correctAnswers.length, 3, 'There are no correct answers, there should be 3');
-
 });
+*/

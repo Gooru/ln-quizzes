@@ -1,3 +1,4 @@
+/* TODO fix when the question type is enabled
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
@@ -153,3 +154,4 @@ test('Reoder Question - User answer some incorrect', function (assert) {
   assert.equal(T.text($component.find('li:nth-child(4) span.correct')), '4', 'Wrong order text for answer 4');
   assert.equal(T.text($component.find('li:nth-child(4) span.answer-text')), 'Chile', 'Wrong text for answer 4');
 });
+*/

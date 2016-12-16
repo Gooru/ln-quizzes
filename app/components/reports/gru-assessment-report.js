@@ -14,10 +14,10 @@ export default Ember.Component.extend({
      */
     bubbleSelect: function(bubbleOption) {
       const animationSpeed = 1000;  // milliseconds
-      const selectorTable = $(".gru-assessment-report .gru-questions table:visible tbody tr:nth-child(" + bubbleOption.label + ")");
+      const selectorTable = $(`.gru-assessment-report .gru-questions table:visible tbody tr:nth-child(${bubbleOption.label})`);
       const $elTable = $(selectorTable);
 
-      const selectorList = $(".gru-assessment-report .gru-questions .question-cards-list:visible li:nth-child(" + bubbleOption.label + ") .question-card");
+      const selectorList = $(`.gru-assessment-report .gru-questions .question-cards-list:visible li:nth-child(${bubbleOption.label}) .question-card`);
       const $elList = $(selectorList);
 
       const isModal=$('.gru-assessment-report').parents('.gru-modal');
@@ -34,18 +34,18 @@ export default Ember.Component.extend({
           $('html,body').animate({
             scrollTop: $elTable.offset().top - $('.controller.class.analytics.collection.student').offset().top
           }, animationSpeed);
-        } else  if ($elList.length) {
+        } else if ($elList.length) {
           $('html,body').animate({
             scrollTop: $elList.offset().top - $('.controller.class.analytics.collection.student').offset().top
           }, animationSpeed);
-        }else {
-          Ember.Logger.error("No element was found for selectorTable: " + selectorTable);
+        } else {
+          Ember.Logger.error('No element was found for selectorTable: ' + selectorTable);
         }
       }
     },
 
     selectAttempt: function(attempt){
-      this.sendAction("onSelectAttempt", attempt);
+      this.sendAction('onSelectAttempt', attempt);
     }
   },
 
@@ -60,9 +60,9 @@ export default Ember.Component.extend({
   /**
    * Listening for model to update component properties
    */
-  onInit: Ember.on("init", function(){
-    if (this.get("model")){
-      this.set("assessmentResult", this.get("model").assessmentResult);
+  onInit: Ember.on('init', function(){
+    if (this.get('model')){
+      this.set('contextResult', this.get('model').contextResult);
     }
   }),
 
@@ -70,9 +70,9 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * @property {AssessmentResult} assessment
+   * @property {ContextResult} assessment
    */
-  assessmentResult: null,
+  contextResult: null,
 
   /**
    * @property {boolean} areAnswersHidden - Should answer results be hidden?
@@ -92,26 +92,23 @@ export default Ember.Component.extend({
   /**
    * @property {boolean} isRealTime
    */
-  isRealTime:Ember.computed('model',function(){
-    return this.get('model.assessmentResult.isRealTime');
+  isRealTime: Ember.computed('model', function(){
+    return this.get('model.contextResult.isRealTime');
   }),
 
   /**
    * @property {boolean} showAttempts
    */
-  showAttempts:Ember.computed('model',function(){
-    return this.get('model.assessmentResult.showAttempts') !== undefined ? this.get('model.assessmentResult.showAttempts') : true;
+  showAttempts: Ember.computed('model', function(){
+    return this.get('model.contextResult.showAttempts') !== undefined ? this.get('model.contextResult.showAttempts') : true;
   }),
 
   /**
    * Return ordered questions array
    * @return {Ember.Array}
    */
-  orderedQuestions: Ember.computed('assessmentResult.questionResults[]', function() {
-    var resourceResultsOrdered = this.get('assessmentResult.questionResults').sort(function(a, b){
-      return a.get('question.order')-b.get('question.order');
-    });
-
-    return resourceResultsOrdered;
+  orderedQuestions: Ember.computed('contextResult.questionResults[]', function() {
+    return this.get('contextResult.questionResults').sort(
+      (a, b) => a.get('question.sequence') - b.get('question.sequence'));
   })
 });

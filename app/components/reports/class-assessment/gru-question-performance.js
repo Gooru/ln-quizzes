@@ -52,8 +52,7 @@ export default Ember.Component.extend({
     const component = this;
     const reportData = component.get('reportData');
     const question = component.get('question');
-    const questionUtil = getQuestionUtil(question.get('questionType')).create({ question });
-
+    const questionUtil = getQuestionUtil(question.get('type')).create({ question });
     const distribution = questionUtil.distribution(this.get('questionResults'));
 
     const answersData = Ember.A([]);
@@ -62,11 +61,14 @@ export default Ember.Component.extend({
       let students = reportData.getStudentsByQuestionAndAnswer(question, userAnswer);
       let correct = answerDistribution.get('correct');
       let percentage = answerDistribution ? answerDistribution.get('percentage') : 0;
+      let result = answerDistribution.get('result');
+      result.set('resource', question);
       answersData.addObject(Ember.Object.create({
         correct,
         userAnswer,
         percentage,
         students,
+        result,
         charData: Ember.A([Ember.Object.create({
           color: correct ? CORRECT_COLOR : INCORRECT_COLOR,
           percentage

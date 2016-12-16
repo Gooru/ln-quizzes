@@ -32,7 +32,7 @@ export default Ember.Object.extend({
       dataType: 'json',
       processData: false,
       headers: {
-        'profile-id': '21a92642-31ee-4b59-a72d-c70ce74d7fb8',
+        'profile-id': '7973e6c6-f0cd-4021-9c49-a0f9f26101b2',
         'lms-id': 'its_learning'
       }
     };
@@ -71,8 +71,8 @@ export default Ember.Object.extend({
       data: JSON.stringify(data),
       // TODO get real headers
       headers: {
-        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        'lms-id': 'quizzes'
+        'profile-id': '7973e6c6-f0cd-4021-9c49-a0f9f26101b2',
+        'lms-id': 'its_learning'
       }
     };
     const url = `${namespace}/${contextId}/event/on-resource/${resourceId || ''}`;
@@ -90,8 +90,8 @@ export default Ember.Object.extend({
       data: JSON.stringify({}),
       // TODO get real headers
       headers: {
-        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        'lms-id': 'quizzes'
+        'profile-id': '7973e6c6-f0cd-4021-9c49-a0f9f26101b2',
+        'lms-id': 'its_learning'
       }
     };
     return Ember.$.ajax(url, options);
@@ -108,8 +108,8 @@ export default Ember.Object.extend({
       data: JSON.stringify({}),
       // TODO get real headers
       headers: {
-        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        'lms-id': 'quizzes'
+        'profile-id': '7973e6c6-f0cd-4021-9c49-a0f9f26101b2',
+        'lms-id': 'its_learning'
       }
     };
     return Ember.$.ajax(url, options);

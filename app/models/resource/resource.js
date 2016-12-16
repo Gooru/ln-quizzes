@@ -16,7 +16,7 @@ export default Ember.Object.extend({
   answers: Ember.A(),
 
   /**
-   * @property {string} text
+   * @property {string} body
    */
   body: null,
 

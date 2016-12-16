@@ -11,6 +11,10 @@ export default Ember.Object.extend({
    * @property {string} email - The profile email
    */
   email: null,
+  /**
+   * @property {string} externalId - The profile external id
+   */
+  externalId: null,
 
   /**
    * @property {string} firstName - The user first name

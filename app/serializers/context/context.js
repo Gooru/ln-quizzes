@@ -69,6 +69,7 @@ export default Ember.Object.extend({
           id: payload.owner.id,
           firstName: payload.owner.firstName,
           lastName: payload.owner.lastName ,
+          externalId: payload.owner.externalId,
           username: payload.owner.username,
           email:payload.owner.email
         }) : null,
@@ -152,7 +153,7 @@ export default Ember.Object.extend({
   serializeAssigneesList: function(assigneesList) {
     let serializedAssigneesList = assigneesList.map(profile => {
       return {
-        id: profile.get('id'),
+        id: profile.get('externalId'),
         firstName: profile.get('firstName'),
         lastName: profile.get('lastName'),
         username: profile.get('username'),
@@ -172,6 +173,7 @@ export default Ember.Object.extend({
     serializedAssignment.externalCollectionId = assignment.get('externalCollectionId');
     serializedAssignment.owner = assignment.get('owner') ? {
       firstName: assignment.get('owner.firstName'),
+      externalId: assignment.get('owner.externalId'),
       id: assignment.get('owner.id'),
       lastName: assignment.get('owner.lastName'),
       username: assignment.get('owner.username'),
@@ -179,6 +181,7 @@ export default Ember.Object.extend({
     } : {
       firstName: '',
       id: '',
+      externalId: '',
       lastName: '',
       username: '',
       email: ''

@@ -9,20 +9,35 @@ moduleForComponent('gru-assignments-table', 'Unit | Component | gru assignments 
 
 test('addStudent', function(assert) {
   let component = this.subject();
+
   let assignment = Ember.Object.create({
     id: 'id',
-    assignees:[]
+    assignees:[{id:'profile-id'}]
   });
-  let expectedModel = {
-    students: [],
-    assignment: assignment,
-    width:'75%'
-  };
-  component.set('students', 'students');
-  component.set('students', 'students');
-  component.set('actions.showModal', function(componentName, model) {
-    assert.deepEqual(model, expectedModel, 'Model should match');
+  let profile = Ember.Object.create({
+    id: 'id',
+    externalId:'externalId'
+  });
+  component.set('profileService', {
+    readProfile: function(profileId) {
+      return new Ember.RSVP.Promise(function (resolve, reject) {
+        if (!profileId) {
+          reject({status: 500});
+        } else {
+          assert.equal(profileId, 'profile-id', 'id should match');
+          resolve(profile);
+        }
+      });
+    }
+  });
+  var done = assert.async();
+  component.set('actions.showModal.call', function(component,componentName,model) {
+    assert.ok(model.students, 'Missing students');
+    assert.ok(model.assignment, 'Missing assignments');
+    assert.ok(model.width, 'Missing width');
+    assert.ok(model.callback, 'Missing callback');
     assert.equal(componentName, 'gru-assign-student-modal', 'Component name should match');
+    done();
   });
   component.send('addStudent', assignment);
 });

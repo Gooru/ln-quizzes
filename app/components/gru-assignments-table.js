@@ -9,6 +9,10 @@ export default Ember.Component.extend(ModalMixin,{
    * @property {Service} I18N service
    */
   i18n: Ember.inject.service(),
+  /**
+   * @property {Service} profile service
+   */
+  profileService: Ember.inject.service("api-sdk/profile"),
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -25,28 +29,42 @@ export default Ember.Component.extend(ModalMixin,{
      * Open add student modal
      */
     addStudent: function (assignment) {
-      let assigned = assignment.get('assignees');
-      let assignedStudents = [];
+      const component = this;
       let students = [];
-      if(assigned){
-        assignedStudents = assigned.getEach('id');
-        if(this.get('studentList')){
-          students = this.get('studentList').map(function(student) {
-            let studentObject = Profile.create(student);
-            studentObject.set('isAssigned',assignedStudents.includes(student.id));
-            return studentObject;
-          });
-        }
-      }
-      this.set('students', students);
+      let promises =  assignment.get('assignees').map(assignee => assignee.id ?
+          component.get('profileService').readProfile(assignee.id) : { externalId: assignee.externalId, id: '' }
+      );
+      Ember.RSVP.all(promises).then(function(profiles) {
+        let profilesMap = profiles.reduce(function(profilesObj, profile) {
+          profilesObj[profile.externalId] = {
+            externalId: profile.externalId,
+            id: profile.id
+          };
+          return profilesObj;
+        }, {});
 
-      let model = {
-        students: this.get('students'),
-        assignment: assignment,
-        width:'75%'
-      };
-      this.actions.showModal.call(this, 'gru-assign-student-modal',
-        model, null, null, null, false);
+        if(profilesMap && component.get('studentList')){
+            students = component.get('studentList').map(function(student) {
+              let studentObject = Profile.create(student);
+              let actualStudent = profilesMap[student.externalId];
+              studentObject.set('isAssigned', !!actualStudent);
+              studentObject.set('id',  actualStudent ? actualStudent.id : '');
+              return studentObject;
+            });
+        }
+        component.set('students', students);
+
+        let model = {
+          students: component.get('students'),
+          assignment,
+          width:'75%',
+          callback:{
+            success: assignment => component.sendAction('onUpdateAssignment', assignment)
+          }
+        };
+        component.actions.showModal.call(component, 'gru-assign-student-modal',
+          model, null, null, null, false);
+      });
     },
     /**
      * Open slide up actions

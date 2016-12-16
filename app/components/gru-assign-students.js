@@ -53,26 +53,23 @@ export default Ember.Component.extend({
      */
     assignStudents:function(){
       let component = this;
-      let assignedStudents = component.get('students').filterBy('isAssigned',true);
-
-      component.get('assignment').setProperties({
-        title:component.get('collection.title'),
-        externalCollectionId:component.get('collection.id'),
-        owner:component.get('owner'),
-        assignees:assignedStudents
-      });
+      let assigment = component.get('assignment');
       if(!this.get('didValidate')) {
         Ember.$('#date-availableDate').blur();
         Ember.$('#time-availableDate').blur();
         Ember.$('#date-dueDate').blur();
         Ember.$('#time-dueDate ').blur();
       }
-      component.get('assignment').validate().then(function ({ validations }) {
+
+      assigment.validate().then(function ({ validations }) {
+        let assignedStudents = component.get('students').filterBy('isAssigned',true);
+        assigment.set('assignees',assignedStudents);
+
         if (validations.get('isValid')) {
           if(component.get('assignment.id')){
             component.get('contextService').updateContext(component.get('assignment')).then(function(){
               component.set('didValidate', true);
-              component.sendAction('onCloseModal');
+              component.sendAction('onUpdateAssignment', component.get('assignment'));
             });
           }else{
             component.get('contextService').createContext(component.get('assignment')).then(function(){
@@ -92,8 +89,14 @@ export default Ember.Component.extend({
   init() {
     this._super(...arguments);
     let context = Context.create(Ember.getOwner(this).ownerInjection(),{});
+    let assignedStudents = this.get('students').filterBy('isAssigned',true);
     if(!this.get('assignment.id')){
-       context.set('title',this.get('collection.title'));
+       context.setProperties({
+        title:this.get('collection.title'),
+        externalCollectionId:this.get('collection.id'),
+        owner:this.get('owner'),
+        assignees:assignedStudents
+      });
     }else{
       context = Context.create(Ember.getOwner(this).ownerInjection(),this.get('assignment'));
     }

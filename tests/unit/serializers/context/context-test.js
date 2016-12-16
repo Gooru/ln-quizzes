@@ -60,6 +60,7 @@ test('serializeContext', function(assert) {
     learningObjective: 'learning objective',
     owner: Profile.create({
       id: 'teacher-id',
+      externalId:'externalId',
       firstName: 'teacher first name',
       lastName: 'teacher last name',
       username: 'usernameT',
@@ -69,6 +70,7 @@ test('serializeContext', function(assert) {
     assignees: Ember.A([
       Profile.create({
         id: 'profile-id',
+        externalId:'externalId',
         firstName: 'user first name',
         lastName: 'user last name',
         username: 'username',
@@ -76,6 +78,7 @@ test('serializeContext', function(assert) {
       }),
       Profile.create({
         id: 'profile-id1',
+        externalId:'externalId',
         firstName: 'user first name1',
         lastName: 'user last name1',
         username: 'username1',
@@ -85,38 +88,40 @@ test('serializeContext', function(assert) {
   });
   const response = serializer.serializeContext(assignment);
   const expected ={
-    assignees:[
+    assignees: [
       {
-        id: 'profile-id',
+        email: 'email@email.com',
         firstName: 'user first name',
+        id: 'externalId',
         lastName: 'user last name',
-        username: 'username',
-        email:'email@email.com'
-      }, {
-        id: 'profile-id1',
+        username: 'username'
+      },
+      {
+        email: 'email@email.com',
         firstName: 'user first name1',
+        id: 'externalId',
         lastName: 'user last name1',
-        username: 'username1',
-        email:'email@email.com'
+        username: 'username1'
       }
     ],
     contextData: {
       metadata: {
-        title: 'title',
         description: 'description',
-        isActive: true,
         dueDate: 12340596,
-        startDate:12340596,
-        learningObjective: 'learning objective'
+        isActive: true,
+        learningObjective: 'learning objective',
+        startDate: 12340596,
+        title: 'title'
       }
     },
     externalCollectionId: 'assessment-id',
     owner: {
+      email: 'email@email.com',
+      externalId: 'externalId',
       firstName: 'teacher first name',
       id: 'teacher-id',
       lastName: 'teacher last name',
-      username: 'usernameT',
-      email:'email@email.com'
+      username: 'usernameT'
     }
   };
   assert.deepEqual(expected, response, 'serializeAssignment wrong response');
@@ -132,7 +137,7 @@ test('serializeUpdateContext', function(assert) {
     availableDate:12340596,
     learningObjective: 'learning objective',
     owner: Profile.create({
-      id: 'teacher-id',
+      externalId:'externalId',
       firstName: 'teacher first name',
       lastName: 'teacher last name',
       username: 'usernameT',
@@ -141,14 +146,14 @@ test('serializeUpdateContext', function(assert) {
     externalCollectionId: 'assessment-id',
     assignees: Ember.A([
       Profile.create({
-        id: 'profile-id',
+        externalId:'externalId',
         firstName: 'user first name',
         lastName: 'user last name',
         username: 'username',
         email:'email@email.com'
       }),
       Profile.create({
-        id: 'profile-id1',
+        externalId:'externalId',
         firstName: 'user first name1',
         lastName: 'user last name1',
         username: 'username1',
@@ -159,13 +164,13 @@ test('serializeUpdateContext', function(assert) {
   const response = serializer.serializeUpdateContext(assignment);
   const expected ={
     assignees: [{
-      id: 'profile-id',
+      id: 'externalId',
       firstName: 'user first name',
       lastName: 'user last name',
       username: 'username',
       email:'email@email.com'
     }, {
-      id: 'profile-id1',
+      id: 'externalId',
       firstName: 'user first name1',
       lastName: 'user last name1',
       username: 'username1',
@@ -189,14 +194,14 @@ test('serializeAssigneesList ', function(assert) {
   const serializer = this.subject();
   const profileList = Ember.A([
     Profile.create({
-      id: 'profile-id',
+      externalId:'externalId',
       firstName: 'user first name',
       lastName: 'user last name',
       username: 'username',
       email:'email@email.com'
     }),
     Profile.create({
-      id: 'profile-id1',
+      externalId:'externalId',
       firstName: 'user first name1',
       lastName: 'user last name1',
       username: 'username1',
@@ -205,13 +210,13 @@ test('serializeAssigneesList ', function(assert) {
   ]);
   const response = serializer.serializeAssigneesList(profileList);
   const expected = [{
-    id: 'profile-id',
+    id: 'externalId',
     firstName: 'user first name',
     lastName: 'user last name',
     username: 'username',
     email:'email@email.com'
   }, {
-    id: 'profile-id1',
+    id: 'externalId',
     firstName: 'user first name1',
     lastName: 'user last name1',
     username: 'username1',
@@ -283,12 +288,14 @@ test('normalizeReadContext', function(assert) {
     id: 'assignment-id',
     assignees: [{
       id: 'profile-id',
+      externalId:'externalId',
       firstName: 'user first name',
       lastName: 'user last name',
       username: 'username',
       email:'email@email.com'
     }, {
       id: 'profile-id1',
+      externalId:'externalId',
       firstName: 'user first name1',
       lastName: 'user last name1',
       username: 'username1',
@@ -340,12 +347,14 @@ test('normalizeReadContexts', function(assert) {
   const payload = [{
     assignees: [{
       id: 'profile-id',
+      externalId:'externalId',
       firstName: 'user first name',
       lastName: 'user last name',
       username: 'username',
       email:'email@email.com'
     }, {
       id: 'profile-id1',
+      externalId:'externalId',
       firstName: 'user first name1',
       lastName: 'user last name1',
       username: 'username1',

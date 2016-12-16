@@ -72,5 +72,20 @@
       "body": "{}",
       "file": "create-context-200-response.json"
     }
+  },
+  {
+    "description": "Update context",
+    "request": {
+      "url": "^/quizzes/api/v1/context/(.)+",
+      "method": "PUT"
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{}",
+      "file": "update-context-200-response.json"
+    }
   }
 ]

@@ -43,8 +43,7 @@ export default Ember.Component.extend(ModalMixin,{
           return profilesObj;
         }, {});
 
-        if(profilesMap){
-          if(component.get('studentList')){
+        if(profilesMap && component.get('studentList')){
             students = component.get('studentList').map(function(student) {
               let studentObject = Profile.create(student);
               let actualStudent = profilesMap[student.externalId];
@@ -52,7 +51,6 @@ export default Ember.Component.extend(ModalMixin,{
               studentObject.set('id',  actualStudent ? actualStudent.id : '');
               return studentObject;
             });
-          }
         }
         component.set('students', students);
 

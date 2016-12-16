@@ -88,40 +88,40 @@ test('serializeContext', function(assert) {
   });
   const response = serializer.serializeContext(assignment);
   const expected ={
-    'assignees': [
+    assignees: [
       {
-        'email': 'email@email.com',
-        'firstName': 'user first name',
-        'id': 'externalId',
-        'lastName': 'user last name',
-        'username': 'username'
+        email: 'email@email.com',
+        firstName: 'user first name',
+        id: 'externalId',
+        lastName: 'user last name',
+        username: 'username'
       },
       {
-        'email': 'email@email.com',
-        'firstName': 'user first name1',
-        'id': 'externalId',
-        'lastName': 'user last name1',
-        'username': 'username1'
+        email: 'email@email.com',
+        firstName: 'user first name1',
+        id: 'externalId',
+        lastName: 'user last name1',
+        username: 'username1'
       }
     ],
-    'contextData': {
-      'metadata': {
-        'description': 'description',
-        'dueDate': 12340596,
-        'isActive': true,
-        'learningObjective': 'learning objective',
-        'startDate': 12340596,
-        'title': 'title'
+    contextData: {
+      metadata: {
+        description: 'description',
+        dueDate: 12340596,
+        isActive: true,
+        learningObjective: 'learning objective',
+        startDate: 12340596,
+        title: 'title'
       }
     },
-    'externalCollectionId': 'assessment-id',
-    'owner': {
-      'email': 'email@email.com',
-      'externalId': 'externalId',
-      'firstName': 'teacher first name',
-      'id': 'teacher-id',
-      'lastName': 'teacher last name',
-      'username': 'usernameT'
+    externalCollectionId: 'assessment-id',
+    owner: {
+      email: 'email@email.com',
+      externalId: 'externalId',
+      firstName: 'teacher first name',
+      id: 'teacher-id',
+      lastName: 'teacher last name',
+      username: 'usernameT'
     }
   };
   assert.deepEqual(expected, response, 'serializeAssignment wrong response');

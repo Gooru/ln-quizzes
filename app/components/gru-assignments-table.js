@@ -30,46 +30,36 @@ export default Ember.Component.extend(ModalMixin,{
      */
     addStudent: function (assignment) {
       const component = this;
-      let assigned = [];
       let students = [];
-      let promises =  assignment.get('assignees').map(function(assignee){
-        if(assignee.id){
-          return component.get('profileService').readProfile(assignee.id).then(function(profile){
-            assigned.push({
-              externalId:profile.externalId,
-              id:profile.id
-            });
-          });
-        }else{
-          assigned.push({
-            externalId:assignee.externalId,
-            id:''
-          });
-        }
-      });
+      let promises =  assignment.get('assignees').map(assignee => assignee.id ?
+          component.get('profileService').readProfile(assignee.id) : { externalId: assignee.externalId, id: '' }
+      );
+      Ember.RSVP.all(promises).then(function(profiles) {
+        let profilesMap = profiles.reduce(function(profilesObj, profile) {
+          profilesObj[profile.externalId] = {
+            externalId: profile.externalId,
+            id: profile.id
+          };
+          return profilesObj;
+        }, {});
 
-      Ember.RSVP.all(promises).then(function() {
-        if(assigned){
-          if(component.get('studentList')){
+        if(profilesMap && component.get('studentList')){
             students = component.get('studentList').map(function(student) {
               let studentObject = Profile.create(student);
-              let actualStudent = assigned.findBy('externalId', student.externalId);
+              let actualStudent = profilesMap[student.externalId];
               studentObject.set('isAssigned', !!actualStudent);
               studentObject.set('id',  actualStudent ? actualStudent.id : '');
               return studentObject;
             });
-          }
         }
         component.set('students', students);
 
         let model = {
           students: component.get('students'),
-          assignment: assignment,
+          assignment,
           width:'75%',
           callback:{
-            success:function(assignment){
-              component.sendAction('onUpdateAssignment',assignment);
-            }
+            success: assignment => component.sendAction('onUpdateAssignment', assignment)
           }
         };
         component.actions.showModal.call(component, 'gru-assign-student-modal',

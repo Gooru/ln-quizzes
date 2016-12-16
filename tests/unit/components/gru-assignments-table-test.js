@@ -9,12 +9,12 @@ moduleForComponent('gru-assignments-table', 'Unit | Component | gru assignments 
 
 test('addStudent', function(assert) {
   let component = this.subject();
+
   let assignment = Ember.Object.create({
     id: 'id',
-    assignees:[{
-      id:'profile-id'}
-    ]
+    assignees:[{id:'profile-id'}]
   });
+  
   let profile = Ember.Object.create({
     id: 'id',
     externalId:'externalId'

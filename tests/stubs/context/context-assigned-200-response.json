@@ -1,0 +1,21 @@
+[
+  {
+    "collection": {
+      "id": "collection-id"
+    },
+    "contextData": {
+      "contextMap": {},
+      "metadata": {
+        "description": "description assignment",
+        "dueDate": 0,
+        "startDate": 0,
+        "title": "Assignment for student"
+      }
+    },
+    "createdDate": 0,
+    "id": "assignment-id",
+    "owner": {
+      "id": "teacher-id"
+    }
+  }
+]

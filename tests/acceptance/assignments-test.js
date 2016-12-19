@@ -15,7 +15,7 @@ moduleForAcceptance('Acceptance | assignments',{
   }
 });
 
-test('visiting assignment', function(assert) {
+test('Visiting assignment as teacher', function(assert) {
   visit('/profile/profile-id?isTeacher=true');
 
   andThen(function() {
@@ -39,7 +39,7 @@ test('visiting assignment', function(assert) {
           click($assignButton);
           andThen(function () {
             var $table = find('.gru-assignments-table table');
-            assert.equal($table.find('td.students-assigned').text(),'2','Should have 2 students assigned');
+            assert.equal($table.find('td.students-assigned').text(),'2','Should have 1 students assigned');
             var $assignment = $table.find('tbody td:eq(1)');
             click($assignment);
             andThen(function () {
@@ -48,6 +48,26 @@ test('visiting assignment', function(assert) {
             });
           });
         });
+      });
+    });
+  });
+});
+test('Visiting assignment as student and play assignment', function(assert) {
+  visit('/profile/profile-id?isTeacher=false');
+  andThen(function() {
+    assert.equal(currentURL(), '/profile/profile-id?isTeacher=false');
+    var $table = find('.gru-assignments-table table');
+    assert.equal($table.find('tbody tr').length,1,'Should have 1 context assigned');
+    assert.ok(find('.assignments-info.hide').length,'Assignment detail should be hide');
+    const $assignment = $table.find('tbody tr:eq(0)');
+    click($assignment);
+    andThen(function () {
+      assert.notOk(find('.assignments-info.hide').length,'Assignment detail should not be hide');
+      assert.ok(find('.assignments-info.show').length,'Assignment detail should be visible');
+      const $playButton = find('.assignments-info .actions button.play');
+      click($playButton);
+      andThen(function () {
+        assert.equal(currentURL(), '/player/assignment-id');
       });
     });
   });

@@ -42,7 +42,7 @@ export default Ember.Object.extend({
     return ContextResult.create(Ember.getOwner(this).ownerInjection(), {
       contextId: payload.id,
       currentResourceId: payload.currentResourceId,
-      resourceResults: serializer.normalizeResourceResults(payload.attempt),
+      resourceResults: serializer.normalizeResourceResults(payload.events),
       collectionId: payload.collection.id
     });
   },

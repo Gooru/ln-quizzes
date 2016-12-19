@@ -22,7 +22,7 @@ test('finishCollection on collection', function(assert) {
   controller.set('collection', collection);
   controller.set('contextResult', contextResult);
   controller.set('contextService', Ember.Object.create({
-    endContext: function(contextId) {
+    finishContext: function(contextId) {
       assert.deepEqual(contextId, 'context', 'Wrong context id');
       return Ember.RSVP.resolve();
     }

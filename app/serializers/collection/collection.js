@@ -29,7 +29,6 @@ export default Ember.Object.extend({
     return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.id,
       isCollection: payload.isCollection,
-      title: payload.title,
       resources: serializer.normalizeResources(payload.resources)
     });
   },

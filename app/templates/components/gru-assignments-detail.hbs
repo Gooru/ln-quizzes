@@ -8,10 +8,10 @@
                     <button class="btn btn-default preview">{{t 'assignment-details.preview'}}</button>
                   {{else}}
                     {{#if assignment.hasStarted}}
-                        <button class="btn btn-default view-report">{{t 'assignment-details.view-report'}}</button>
-                        <button class="btn btn-default {{if hasAttempts 'redo' 'no-attempts'}}" disabled={{if hasAttempts false true}}>{{t 'assignment-details.redo'}}</button>
+                        <button class="btn btn-default view-report" {{action 'viewReport' assignment}}>{{t 'assignment-details.view-report'}}</button>
+                        <button class="btn btn-default {{if hasAttempts 'redo' 'no-attempts'}}" disabled={{if hasAttempts false true}} {{action 'openPlayer' assignment}}>{{t 'assignment-details.redo'}}</button>
                     {{else}}
-                        <button class="btn btn-default play">{{t 'common.play'}}</button>
+                        <button class="btn btn-default play" {{action 'openPlayer' assignment}}>{{t 'common.play'}}</button>
                     {{/if}}
                 {{/if}}
             </div>

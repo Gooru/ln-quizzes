@@ -73,6 +73,18 @@ export default Ember.Component.extend(ModalMixin,{
     openRealTime: function () {
       this.get('router').transitionTo(
         'reports.context', this.get('assignment.id'));
+    },
+    /**
+     * Open player
+     */
+    openPlayer:function(assignment){
+      this.get('router').transitionTo('player', assignment.get('id'));
+    },
+    /**
+     * View Report
+     */
+    viewReport: function (assignment) {
+      Ember.Logger.log('View Report:', assignment);
     }
   },
 

@@ -123,6 +123,49 @@ test('getContextsCreated', function(assert) {
     done();
   });
 });
+test('getContextsAssigned', function(assert) {
+  assert.expect(3);
+  const service = this.subject();
+  const expectedResponse = {
+    contextData: {
+      contextMap: {},
+      metadata: {
+        title: 'title',
+        description: 'description',
+        isActive: true,
+        dueDate: 12340596
+      }
+    }
+  };
+  const expectedData = [
+    Context.create({
+      title: 'title',
+      description: 'description',
+      isActive: true,
+      dueDate: 12340596,
+      assignees:[]
+    })
+  ];
+
+  service.set('contextAdapter', Ember.Object.create({
+    getContextsAssigned: function() {
+      assert.ok(true,'Wrong adapter' );
+      return Ember.RSVP.resolve([{expectedResponse}]);
+    }
+  }));
+  service.set('contextSerializer', Ember.Object.create({
+    normalizeReadContexts: function(payload){
+      assert.deepEqual(payload, [{expectedResponse}], 'Wrong assignment object');
+      return expectedData;
+    }
+  }));
+
+  let done = assert.async();
+  service.getContextsAssigned().then(function(contextsAssigned) {
+    assert.deepEqual(contextsAssigned, expectedData, 'Wrong contexts assigned object');
+    done();
+  });
+});
 
 test('getReportData', function(assert) {
   assert.expect(3);

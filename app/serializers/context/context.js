@@ -61,8 +61,8 @@ export default Ember.Object.extend({
       isActive: payload.contextData.metadata.isActive,
       dueDate: payload.contextData.metadata.dueDate,
       availableDate: payload.contextData.metadata.startDate,
-      createdDate: payload.contextData.metadata.createdDate,
-      modifiedDate: payload.contextData.metadata.modifiedDate,
+      createdDate: payload.createdDate,
+      modifiedDate: payload.modifiedDate,
       learningObjective: payload.contextData.metadata.learningObjective,
       externalCollectionId: payload.externalCollectionId,
       owner: payload.owner ? Profile.create({
@@ -228,7 +228,9 @@ export default Ember.Object.extend({
           startDate:assignment.get('availableDate') || null,
           learningObjective: assignment.get('learningObjective')
         }
-      }
+      },
+      createdDate: assignment.get('createdDate'),
+      modifiedDate: assignment.get('modifiedDate')
     };
     return serializedAssignment;
   }

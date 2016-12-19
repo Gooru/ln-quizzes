@@ -57,6 +57,8 @@ test('serializeContext', function(assert) {
     isActive: true,
     dueDate: 12340596,
     availableDate: 12340596,
+    createdDate: 12340596,
+    modifiedDate: 12340596,
     learningObjective: 'learning objective',
     owner: Profile.create({
       id: 'teacher-id',
@@ -114,6 +116,8 @@ test('serializeContext', function(assert) {
         title: 'title'
       }
     },
+    createdDate: 12340596,
+    modifiedDate: 12340596,
     externalCollectionId: 'assessment-id',
     owner: {
       email: 'email@email.com',
@@ -135,6 +139,8 @@ test('serializeUpdateContext', function(assert) {
     isActive: true,
     dueDate: 12340596,
     availableDate:12340596,
+    createdDate: 12340596,
+    modifiedDate: 12340596,
     learningObjective: 'learning objective',
     owner: Profile.create({
       externalId:'externalId',
@@ -185,7 +191,9 @@ test('serializeUpdateContext', function(assert) {
         startDate: 12340596,
         learningObjective: 'learning objective'
       }
-    }
+    },
+    createdDate: 12340596,
+    modifiedDate: 12340596
   };
   assert.deepEqual(expected, response, 'Serialize update assignment wrong response');
 });
@@ -308,11 +316,11 @@ test('normalizeReadContext', function(assert) {
         isActive: true,
         dueDate: 12340596,
         startDate: 12340596,
-        createdDate: 12340596,
-        modifiedDate: 12340596,
         learningObjective: 'learning objective'
       }
     },
+    createdDate: 12340596,
+    modifiedDate: 12340596,
     collection: {
       id: 'collection-id'
     },
@@ -367,11 +375,11 @@ test('normalizeReadContexts', function(assert) {
         isActive: true,
         dueDate: 12340596,
         startDate: 12340596,
-        createdDate: 12340596,
-        modifiedDate: 12340596,
         learningObjective: 'learning objective'
       }
     },
+    createdDate: 12340596,
+    modifiedDate: 12340596,
     collection: {
       id: 'collection-id'
     },

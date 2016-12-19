@@ -24,11 +24,7 @@ export default Ember.Route.extend({
 
     let isTeacher = params.isTeacher  === 'true';
 
-    if(isTeacher){
-      assignments = this.get('contextService').getContextsCreated();
-    }else{
-      assignments =  this.get('contextService').getContextsAssigned();
-    }
+    assignments = isTeacher ?  this.get('contextService').getContextsCreated() : this.get('contextService').getContextsAssigned();
 
     return Ember.RSVP.hash({
       profileId,

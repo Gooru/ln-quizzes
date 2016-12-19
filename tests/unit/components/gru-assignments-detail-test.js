@@ -37,6 +37,20 @@ test('openRealTime', function(assert) {
   component.send('openRealTime');
 });
 
+test('openPlayer', function(assert) {
+  let component = this.subject();
+  let assignment = Ember.Object.create({
+    id: 'id'
+  });
+  component.set('router', {
+    transitionTo: function(route, contextId) {
+      assert.equal(route, 'player', 'Route should match');
+      assert.equal(contextId, 'id', 'id should match');
+    }
+  });
+  component.send('openPlayer', assignment);
+});
+
 test('hasAttempts', function(assert) {
   let component = this.subject();
   component.set('assignment', Ember.Object.create({

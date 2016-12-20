@@ -39,7 +39,7 @@ test('Visiting assignment as teacher', function(assert) {
           click($assignButton);
           andThen(function () {
             var $table = find('.gru-assignments-table table');
-            assert.equal($table.find('td.students-assigned:eq(1)').text(),'2','Should have 2 students assigned');
+            assert.equal($table.find('td.students-assigned:eq(1)').text(),'1','Should have 1 students assigned');
             var $assignment = $table.find('tbody td:eq(1)');
             click($assignment);
             andThen(function () {
@@ -87,7 +87,7 @@ test('Visiting assignment as teacher and sort by created date', function(assert)
       assert.equal($table.find('td.title:eq(0)').text(),'assignment title','Incorrect assignment 1 after sort asc');
       assert.equal($table.find('td.title:eq(1)').text(),'Context title','Incorrect assignment 2 after sort asc');
       const $titleHeader = $table.find('th.num-header a');
-      click($titleHeader);//sort by title desc
+      click($titleHeader);//sort by created date desc
       andThen(function () {
         assert.equal($table.find('td.title:eq(0)').text(),'Context title','Incorrect assignment 1 after sort desc');
         assert.equal($table.find('td.title:eq(1)').text(),'assignment title','Incorrect assignment 2 after sort desc');
@@ -109,7 +109,7 @@ test('Visiting assignment as teacher and sort by modified date', function(assert
       assert.equal($table.find('td.title:eq(0)').text(),'assignment title','Incorrect assignment 1 after sort asc');
       assert.equal($table.find('td.title:eq(1)').text(),'Context title','Incorrect assignment 2 after sort asc');
       const $titleHeader = $table.find('th.modified-date-header a');
-      click($titleHeader);//sort by title desc
+      click($titleHeader);//sort by modified date desc
       andThen(function () {
         assert.equal($table.find('td.title:eq(0)').text(),'Context title','Incorrect assignment 1 after sort desc');
         assert.equal($table.find('td.title:eq(1)').text(),'assignment title','Incorrect assignment 2 after sort desc');
@@ -174,7 +174,7 @@ test('Visiting assignment as student and sort by due date', function(assert) {
       assert.equal($table.find('td.title:eq(0)').text(),'Business 2','Incorrect assignment 1 after sort asc');
       assert.equal($table.find('td.title:eq(1)').text(),'Assignment for student','Incorrect assignment 2 after sort asc');
       const $dueDateHeader = $table.find('th.date-header a');
-      click($dueDateHeader);//sort by title desc
+      click($dueDateHeader);//sort by due date desc
       andThen(function () {
         assert.equal($table.find('td.title:eq(0)').text(),'Assignment for student','Incorrect assignment 1 after sort desc');
         assert.equal($table.find('td.title:eq(1)').text(),'Business 2','Incorrect assignment 2 after sort desc');
@@ -196,7 +196,7 @@ test('Visiting assignment as student and sort by created date', function(assert)
       assert.equal($table.find('td.title:eq(0)').text(),'Assignment for student','Incorrect assignment 1 after sort asc');
       assert.equal($table.find('td.title:eq(1)').text(),'Business 2','Incorrect assignment 2 after sort asc');
       const $dueDateHeader = $table.find('th.num-header a');
-      click($dueDateHeader);//sort by title desc
+      click($dueDateHeader);//sort by created date desc
       andThen(function () {
         assert.equal($table.find('td.title:eq(0)').text(),'Business 2','Incorrect assignment 1 after sort desc');
         assert.equal($table.find('td.title:eq(1)').text(),'Assignment for student','Incorrect assignment 2 after sort desc');

@@ -71,7 +71,7 @@ export default Ember.Component.extend({
   /**
    * Sort criteria
    */
-  sortBy:'createdDate',
+  sortBy: 'createdDate',
   /**
    * Assignments sorted by criteria
    */

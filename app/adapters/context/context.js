@@ -73,12 +73,7 @@ export default Ember.Object.extend({
 
   moveToResource: function(resourceId, contextId, previousResource) {
     const namespace = this.get('namespace');
-    let data = {};
-    if(previousResource) {
-      data = {
-        previousResource
-      };
-    }
+    let data = previousResource ? { previousResource } : {};
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
@@ -94,9 +89,9 @@ export default Ember.Object.extend({
     return Ember.$.ajax(url, options);
   },
 
-  sendEndContextEvent: function(contextId) {
+  sendFinishContextEvent: function(contextId) {
     const namespace = this.get('namespace');
-    const url = `${namespace}/${contextId}/event/end`;
+    const url = `${namespace}/${contextId}/event/finish`;
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',

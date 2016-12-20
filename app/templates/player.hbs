@@ -1,4 +1,19 @@
 <div class="controller player">
+  {{#unless showReport}}
+    <div class="aside">
+      {{player.gru-navigator
+      isNavigationDisabled=isNavigationDisabled
+      isTeacher=isTeacher
+      submitted=contextResult.submitted
+      collection=collection
+      selectedResourceId=resourceId
+      resourceResults=resourcesPlayer
+      onItemSelected="selectNavigatorItem"
+      onCloseNavigator="closeNavigator"
+      onFinishCollection="finishCollection"
+      }}
+    </div>
+  {{/unless}}
   <div class="main" role="main">
     {{#if collection.hasResources }}
       {{player.gru-navigation
@@ -23,19 +38,4 @@
       {{! TODO add the not found component here}}
     {{/if}}
   </div>
-  {{#unless showReport}}
-    <div class="aside">
-      {{player.gru-navigator
-      isNavigationDisabled=isNavigationDisabled
-      isTeacher=isTeacher
-      submitted=contextResult.submitted
-      collection=collection
-      selectedResourceId=resourceId
-      resourceResults=resourcesPlayer
-      onItemSelected="selectNavigatorItem"
-      onCloseNavigator="closeNavigator"
-      onFinishCollection="finishCollection"
-      }}
-    </div>
-  {{/unless}}
 </div>

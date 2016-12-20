@@ -208,7 +208,7 @@ export default Ember.Controller.extend(ModalMixin, {
     const controller = this;
     let contextResult = controller.get('contextResult');
     return controller.get('saveEnabled') ?
-      controller.get('contextService').endContext(contextResult.get('contextId')) :
+      controller.get('contextService').finishContext(contextResult.get('contextId')) :
       Ember.RSVP.resolve();
   },
 
@@ -247,12 +247,12 @@ export default Ember.Controller.extend(ModalMixin, {
    * Moves to resource
    * @param {Resource} resource
    */
-  moveToResource: function(resource) {
+  moveToResource: function(resource, firstTime) {
     const controller = this;
     let contextResult = controller.get('contextResult');
     let resourceResult = controller.get('resourceResult');
     let resourceId = resource.get('id');
-    controller.saveResourceResult(resourceId, contextResult, resourceResult)
+    controller.saveResourceResult(resourceId, contextResult, resourceResult, firstTime)
       .then(function() {
         Ember.run(() => controller.set('resource', null));
         resourceResult = contextResult.getResultByResourceId(resourceId);
@@ -284,7 +284,7 @@ export default Ember.Controller.extend(ModalMixin, {
    * @param resourceResult
    * @returns {Promise.<boolean>}
    */
-  saveResourceResult: function(resourceId, contextResult, resourceResult) {
+  saveResourceResult: function(resourceId, contextResult, resourceResult, firstTime) {
     let controller = this;
     let promise = Ember.RSVP.resolve();
     let save = controller.get('saveEnabled');
@@ -293,8 +293,9 @@ export default Ember.Controller.extend(ModalMixin, {
       if(resourceResult) {
         resourceResult.set('stopTime', new Date().getTime());
       }
-      promise = controller.get('contextService')
-        .moveToResource(resourceId, contextId, resourceResult);
+      promise = firstTime ? Ember.RSVP.resolve() :
+        controller.get('contextService')
+          .moveToResource(resourceId, contextId, resourceResult);
     }
     return promise;
   },
@@ -317,7 +318,7 @@ export default Ember.Controller.extend(ModalMixin, {
       }
     }
     if(resource) {
-      controller.moveToResource(resource);
+      controller.moveToResource(resource, true);
     }
   }
 

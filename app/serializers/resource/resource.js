@@ -22,7 +22,6 @@ export default Ember.Object.extend({
       id: resourceData.id,
       isResource: resourceData.isResource,
       sequence: resourceData.sequence,
-      owner: resourceData.owner,
       body: questionData.body,
       correctAnswer: questionData.correctAnswer,
       title: questionData.title,

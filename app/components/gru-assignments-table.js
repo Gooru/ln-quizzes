@@ -203,10 +203,6 @@ export default Ember.Component.extend(ModalMixin,{
    */
   teacherOptions:function(assignment){
     return Ember.A([Ember.Object.create({
-      option:'launch',
-      action:'onLaunch',
-      object:assignment
-    }),Ember.Object.create({
       option:'assign',
       action:'onAssign',
       object:assignment

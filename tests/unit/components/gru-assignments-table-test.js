@@ -84,9 +84,8 @@ test('optionsMobile', function(assert) {
   component.set('actualAssignment', Ember.Object.create({
     id:'assignment-id'
   }));
-  assert.equal(component.get('optionsMobile')[0].get('option'),'launch', 'Should have launch option');
-  assert.equal(component.get('optionsMobile')[1].get('option'),'assign', 'Should have assign option');
-  assert.equal(component.get('optionsMobile')[2].get('option'),'preview', 'Should have preview option');
+  assert.equal(component.get('optionsMobile')[0].get('option'),'assign', 'Should have assign option');
+  assert.equal(component.get('optionsMobile')[1].get('option'),'preview', 'Should have preview option');
 
   //TODO TEST STUDENT VIEW
 });

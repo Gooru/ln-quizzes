@@ -71,9 +71,7 @@ export default Ember.Component.extend({
   /**
    * Sort criteria
    */
-  sortBy: Ember.computed('isTeacher',function(){
-    return this.get('isTeacher') ? 'createdDate' : 'assignedDate';
-  }),
+  sortBy: 'createdDate',
   /**
    * Assignments sorted by criteria
    */

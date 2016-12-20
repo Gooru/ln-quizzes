@@ -189,11 +189,11 @@ test('sendStartContextEvent', function(assert) {
     .then(response => assert.deepEqual(response, {}, 'Wrong response'));
 });
 
-test('sendEndContextEvent', function(assert) {
+test('sendFinishContextEvent', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';
   const routes = function() {
-    this.post('/quizzes/api/v1/context/context-id/event/end', function() {
+    this.post('/quizzes/api/v1/context/context-id/event/finish', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };
@@ -201,7 +201,7 @@ test('sendEndContextEvent', function(assert) {
   this.pretender.map(routes);
   this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
 
-  adapter.sendEndContextEvent(expectedContextId)
+  adapter.sendFinishContextEvent(expectedContextId)
     .then(response => assert.deepEqual(response, {}, 'Wrong response'));
 });
 

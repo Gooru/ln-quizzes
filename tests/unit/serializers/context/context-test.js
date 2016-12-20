@@ -241,7 +241,7 @@ test('normalizeContextResult', function(assert) {
     collection: {
       id: 'collection-id'
     },
-    attempt: [{
+    events: [{
       resourceId: 'resource-id-1',
       timeSpent: 10000,
       reaction: 1,

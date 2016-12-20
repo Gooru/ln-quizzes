@@ -81,10 +81,10 @@ export default Ember.Service.extend({
     });
   },
 
-  endContext: function(contextId) {
+  finishContext: function(contextId) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').sendEndContextEvent(contextId)
+      service.get('contextAdapter').sendFinishContextEvent(contextId)
         .then(resolve, reject);
     });
   },

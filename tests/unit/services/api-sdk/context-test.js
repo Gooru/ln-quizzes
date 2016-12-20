@@ -261,7 +261,7 @@ test('startContext', function(assert) {
     });
 });
 
-test('endContext', function(assert) {
+test('finishContext', function(assert) {
   assert.expect(2);
   const service = this.subject();
   const expectedContextId = 'context-id';
@@ -270,14 +270,14 @@ test('endContext', function(assert) {
   };
 
   service.set('contextAdapter', Ember.Object.create({
-    sendEndContextEvent: function(contextId) {
+    sendFinishContextEvent: function(contextId) {
       assert.deepEqual(contextId, expectedContextId, 'The context id should match');
       return Ember.RSVP.resolve(assessmentResult);
     }
   }));
 
   let done = assert.async();
-  service.endContext(expectedContextId)
+  service.finishContext(expectedContextId)
     .then(function(result) {
       assert.deepEqual(result, assessmentResult, 'The result should match');
       done();

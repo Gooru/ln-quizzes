@@ -1,7 +1,7 @@
 <table class="table table-fixed">
     <thead>
     <tr>
-        <th class="num-header col-xs-1"><a {{action 'sortBy' (if isTeacher 'createdDate' 'assignedDate')}}><span>{{gru-icon name='swap_vert'}}</span></a></th>
+        <th class="num-header col-xs-1"><a {{action 'sortBy' 'createdDate'}}><span>{{gru-icon name='swap_vert'}}</span></a></th>
         {{#unless isTeacher}}
             <th class="score-header col-md-2 col-sm-2 col-xs-3"><a {{action 'sortBy' 'score'}}>{{t 'common.score'}} <span>{{gru-icon name='swap_vert'}}</span></a></th>
         {{/unless}}

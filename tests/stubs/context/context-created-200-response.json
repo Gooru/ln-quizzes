@@ -12,13 +12,38 @@
       "contextMap": {},
       "metadata": {
         "description": "string",
-        "dueDate": 0,
-        "startDate": 0,
+        "dueDate": 3,
+        "startDate": 2,
         "title": "assignment title"
       }
     },
-    "createdDate": 0,
+    "createdDate": 2,
     "id": "context-id",
-    "modifiedDate": 0
+    "modifiedDate": 1
+  },
+  {
+    "assignees": [
+      {
+        "id": "student-1"
+      },
+      {
+        "id": "student-2"
+      }
+    ],
+    "collection": {
+      "id": "collection-id"
+    },
+    "contextData": {
+      "contextMap": {},
+      "metadata": {
+        "description": "string",
+        "dueDate": 2,
+        "startDate": 2,
+        "title": "Context title"
+      }
+    },
+    "createdDate": 1,
+    "id": "context-id",
+    "modifiedDate": 2
   }
 ]

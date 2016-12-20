@@ -62,13 +62,13 @@ test('Visiting assignment as teacher and sort by title', function(assert) {
     const $titleHeader = $table.find('th.title-header a');
     click($titleHeader);//remove sort default and sort by title asc
     andThen(function () {
-      assert.equal($table.find('td.title:eq(0)').text(),'Context title','Incorrect assignment 1 after sort asc');
-      assert.equal($table.find('td.title:eq(1)').text(),'assignment title','Incorrect assignment 2 after sort asc');
+      assert.equal($table.find('td.title:eq(0)').text(),'assignment title','Incorrect assignment 1 after sort asc');
+      assert.equal($table.find('td.title:eq(1)').text(),'Context title','Incorrect assignment 2 after sort asc');
       const $titleHeader = $table.find('th.title-header a');
       click($titleHeader);//sort by title desc
       andThen(function () {
-        assert.equal($table.find('td.title:eq(0)').text(),'assignment title','Incorrect assignment 1 after sort desc');
-        assert.equal($table.find('td.title:eq(1)').text(),'Context title','Incorrect assignment 2 after sort desc');
+        assert.equal($table.find('td.title:eq(0)').text(),'Context title','Incorrect assignment 1 after sort desc');
+        assert.equal($table.find('td.title:eq(1)').text(),'assignment title','Incorrect assignment 2 after sort desc');
       });
     });
   });

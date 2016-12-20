@@ -39,6 +39,7 @@
                             <span>{{t 'assign-students.select-all' count=students.length}}</span>
                         </div>
                     </div>
+                    <span>{{assigneesError}}</span>
                     <div class="student-list list-group live-search-list">
                       {{#each students as |student| }}
                           <a class="list-group-item {{if student.isAssigned 'selected'}}" {{action 'selectStudent' student}}>

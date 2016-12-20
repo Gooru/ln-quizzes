@@ -143,6 +143,7 @@ export default {
       "add-question-description": "Please enter the question.",
       "add-question-title": "Please enter the question title.",
       "assessment-title-presence": "Please enter the assessment title.",
+      "assignees-error":"You must select at least one student for creating the assignment.",
       "available-date-error":"You must complete the available date",
       "can-not-join-class": "Oops! Unable to join classroom. Please try again shortly.",
       "assessment-not-added-to": "Oops! Unable to add assessment to lesson right now. Please try again shortly.",

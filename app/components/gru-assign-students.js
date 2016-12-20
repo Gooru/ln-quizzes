@@ -78,6 +78,8 @@ export default Ember.Component.extend({
               }));
             });
           }
+        }else if(validations.get('error.attribute') === 'assignees'){
+          component.set('assigneesError',validations.get('error.message'));
         }
       });
     }
@@ -122,6 +124,10 @@ export default Ember.Component.extend({
    * Assignment
    */
   assignment:null,
+  /**
+   * Assignees error
+   */
+  assigneesError:null,
   /**
    * Indicate if all students are selected
    */

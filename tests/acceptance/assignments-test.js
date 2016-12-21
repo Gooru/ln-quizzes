@@ -32,8 +32,8 @@ test('Visiting assignment as teacher', function(assert) {
         var $student = Ember.$('.gru-assign-students .students .student-list .list-group-item:eq(1)');
         click($student);
         andThen(function () {
-          assert.equal( Ember.$('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,2, 'One student should be selected');
-          assert.equal(Ember.$('.selected-count').text(),'Selected 2 of 3','Incorrect selected count');
+          assert.equal( Ember.$('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,3, '3 student should be selected');
+          assert.equal(Ember.$('.selected-count').text(),'Selected 3 of 3','Incorrect selected count');
           fillIn(Ember.$('#date-dueDate'), '12/10/2200');
           var $assignButton = Ember.$('button.assign-btn');
           click($assignButton);

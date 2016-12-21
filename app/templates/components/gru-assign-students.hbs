@@ -44,12 +44,19 @@
                     {{/if}}
                     <div class="student-list list-group live-search-list">
                       {{#each students as |student| }}
-                          <a class="list-group-item {{if student.isAssigned 'selected'}}" {{action 'selectStudent' student}}>
-                            {{student.lastName}}, {{student.firstName}}
-                            {{#if student.isAssigned}}
+                        {{#if student.isAssigned}}
+                            <a class="list-group-item">
+                              {{student.lastName}}, {{student.firstName}}
                               {{gru-icon name='done'}}
-                            {{/if}}
-                          </a>
+                            </a>
+                          {{else}}
+                            <a class="list-group-item {{if student.isSelected 'selected'}}" {{action 'selectStudent' student}}>
+                              {{student.lastName}}, {{student.firstName}}
+                              {{#if student.isSelected}}
+                                {{gru-icon name='done'}}
+                              {{/if}}
+                            </a>
+                          {{/if}}
                       {{/each}}
                     </div>
                 </div>

@@ -28,7 +28,7 @@ export default Ember.Component.extend({
     selectAll:function(){
       const content = this ;
       this.set('areAllSelected',!this.get('areAllSelected'));
-      this.get('students').forEach(student => student.set('isAssigned', content.get('areAllSelected')));
+      this.get('students').forEach(student => !student.get('isAssigned') ? student.set('isSelected', content.get('areAllSelected')): student.set('isSelected', false));
     },
 
     selectOption: function (type) {
@@ -40,7 +40,7 @@ export default Ember.Component.extend({
      * Search student
      */
     selectStudent: function (student) {
-      student.set('isAssigned',!student.get('isAssigned'));
+      student.set('isSelected',!student.get('isSelected'));
     },
     /***
      * Cancel assign student
@@ -62,6 +62,8 @@ export default Ember.Component.extend({
       }
 
       let assignedStudents = component.get('students').filterBy('isAssigned',true);
+      assignedStudents.addObjects(component.get('students').filterBy('isSelected',true));
+
       assigment.set('assignees',assignedStudents);
 
       assigment.validate().then(function ({ validations }) {
@@ -74,7 +76,8 @@ export default Ember.Component.extend({
           }else{
             component.get('contextService').createContext(component.get('assignment')).then(function(){
               component.set('assignment', Context.create(Ember.getOwner(component).ownerInjection(),{
-                title:component.get('collection.title')
+                title:component.get('collection.title'),
+                assignees:[]
               }));
             });
           }
@@ -140,6 +143,11 @@ export default Ember.Component.extend({
    * * @param {Boolean } didValidate - value used to check if input has been validated or not
  */
   didValidate: false,
+
+  /**
+   * * @param {Boolean } isUpdate - indicate if the view is implemented to update a context
+   */
+  isUpdate: false,
   /**
    * Student List
    */
@@ -162,8 +170,9 @@ export default Ember.Component.extend({
   /**
    * Total student selected
    */
-  totalSelected:Ember.computed('students.@each.isAssigned',function(){
-    return this.get('students').filterBy('isAssigned',true).length;
+  totalSelected:Ember.computed('students.@each.isAssigned','students.@each.isSelected',function(){
+    return this.get('students').filterBy('isAssigned',true).length +
+      this.get('students').filterBy('isSelected',true).length;
   }),
   // -------------------------------------------------------------------------
   // Methods
@@ -187,7 +196,10 @@ export default Ember.Component.extend({
    * Clean the assignment properties
    */
   cleanAssignment: Ember.observer('assignment', function() {
-    this.get('students').forEach(student => student.set('isAssigned', false));
+    this.get('students').forEach(student => {
+      student.set('isAssigned', false);
+      student.set('isSelected', false);
+    });
   }),
   /**
    * Clean Assignees Error

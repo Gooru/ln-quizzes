@@ -20,15 +20,15 @@ test('Questions Layout', function (assert) {
         body: 'This is a question 1',
         type: 'single_choice',
         sequence: 1,
-        correctAnswer: {
+        correctAnswer: [{
           value: 'answer'
-        }
+        }]
       }),
       reaction: 4,
       savedTime: 2096,
-      answer: {
+      answer: [{
         value: 'answer'
-      }
+      }]
     }),
     QuestionResult.create({
       score: 100,
@@ -36,15 +36,15 @@ test('Questions Layout', function (assert) {
         body: 'This is a question 2',
         type: 'single_choice',
         sequence: 3,
-        correctAnswer: {
+        correctAnswer: [{
           value: 'answer'
-        }
+        }]
       }),
       reaction: 4,
       savedTime: 2096,
-      answer: {
+      answer: [{
         value: 'answer'
-      }
+      }]
     })
   ]);
 

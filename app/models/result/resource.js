@@ -10,7 +10,7 @@ import Serializable from 'quizzes/mixins/serializable';
 export default Ember.Object.extend(Serializable, {
 
   /**
-   * @property {number} isQuestion
+   * @property {boolean} isQuestion
    */
   isQuestion: false,
 

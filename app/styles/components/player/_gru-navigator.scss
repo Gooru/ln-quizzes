@@ -1,15 +1,18 @@
 .player .gru-navigator {
   overflow-x: hidden;
-  overflow-y: auto;
   height: 100%;
+  width: 260px;
   background-color: $dark-400;
+  @include flexbox();
+  @include flex-direction(column);
   .navigator-header {
-    width: 100%;
-    padding: 7px 10px 10px 22px;
     @include flexbox();
     @include justify-content(space-between);
     @include align-items(center);
-    color:$white;
+    width: 100%;
+    min-height: 45px;
+    padding: 7px 10px 10px 22px;
+    color: $white;
     p {
       margin: 0;
     }
@@ -25,43 +28,33 @@
   }
 
   .resources {
-    padding: 0;
     position: relative;
+    height: 100%;
+    overflow: auto;
+    padding: 0;
     .bgd-line {
       display: block;
-      position: absolute;
-      content: '';
-      top: 10px;
-      left: 24px;
-      width: 5px;
-      height: 90%;
       background-color: $gray-lighter;
       z-index: 1;
     }
     li {
+      @include flexbox;
+      @include flex-wrap(nowrap);
+      @include flex-direction(row);
+      @include align-content(stretch);
+      @include align-items(center);
+      @include justify-content(flex-start);
       list-style: none;
       border-radius: 0;
       border: 0;
       background: rgba(0,0,0,0.17);
-      min-height: 65px;
+      min-height: 45px;
       overflow: hidden;
-      padding:10px 5px;
+      padding: 10px 0;
       display: block;
       width: 100%;
       cursor: pointer;
       margin: 1px 0 0 0;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-      -webkit-justify-content: flex-start;
-      justify-content: flex-start;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: stretch;
-      align-content: stretch;
-      display: -webkit-flex;
-      display: flex;
       /*
         This class is for when we have data on whether a resource is completed or not, for now, all resources will look as though they have not been completed.
       */
@@ -71,22 +64,17 @@
       }
       .resources-info {
         position: relative;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-        -webkit-justify-content: flex-start;
-        justify-content: flex-start;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: stretch;
-        align-content: stretch;
-        display: -webkit-flex;
-        display: flex;
-        width:100%;
+        @include flexbox;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include align-content(stretch);
+        @include align-items(center);
+        @include justify-content(flex-start);
+        width: 100%;
         padding: 0 5px;
 
         span.number {
+          @include flex-shrink(0);
           width: 40px;
           text-align: center;
           color: $white;
@@ -192,6 +180,7 @@
   }
 
   .submit-all {
+    min-height: 45px;
     text-align: center;
     margin: 0 0 20px 0;
   }

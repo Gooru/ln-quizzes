@@ -128,7 +128,7 @@ export function completedResults(questionsResults) {
  * @prop {QuestionResult[]}
  */
 export function answeredResults(questionsResults) {
-  return questionsResults.filter(questionResult => questionResult.get('answered'));
+  return questionsResults.filter(questionResult => questionResult.get('started'));
 }
 
 /**

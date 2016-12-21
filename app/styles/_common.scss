@@ -111,9 +111,6 @@ span.validation.warning {
 
 .app-container {
   min-height: 400px;
-  @media (min-width: $screen-md-min) {
-    min-height: 400px;
-  }
 }
 
 .text-white {

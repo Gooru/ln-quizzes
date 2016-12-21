@@ -1,21 +1,5 @@
 .player .gru-viewer {
-
-  .narration {
-    margin-top: 0;
-    @media (max-width: $screen-sm-max) {
-      margin-top: 30px;
-    }
-    @media (max-width: $screen-xs-max) {
-      margin-top: 0;
-    }
-    .panel-body {
-      padding: 10px 15px;
-    }
-    span {
-      display: table-cell;
-      vertical-align: middle;
-    }
-  }
+  overflow: auto;
   .not-iframe {
     padding: 25px;
     .panel-header {
@@ -70,20 +54,8 @@
     }
   }
   .content {
-    overflow: auto;
-    height: 100vh;
     width: 100%;
-    float: right;
-    padding-bottom: $player-navigation-height;
-    padding-left: 310px;
-    padding-right: 45px;
-    @media (min-width: $screen-md) {
-      padding-bottom: $player-navigation-md-height;
-    }
-    @media (max-width: $screen-sm-max) {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
+
     .avatar {
       text-align: center;
       padding-right: 15px;

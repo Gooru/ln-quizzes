@@ -6,7 +6,7 @@
     display: none;
   }
 
-  div.ember-view,
+  > .ember-view,
   .quizzes,
   .app-container {
     height: 100%;

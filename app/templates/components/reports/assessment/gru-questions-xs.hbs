@@ -10,7 +10,7 @@
       <div class="your-answer">
           <span>{{t "common.answer"}}</span>
         <span>
-          {{#if result.answered}}
+          {{#if result.started}}
             {{{component (questionConfig result.question.type 'component.answer') question=result userAnswer=result.answer}}}
           {{/if}}
         </span>

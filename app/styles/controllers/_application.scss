@@ -2,17 +2,9 @@
 
   > .controller {
     @include flexbox;
-    @include flex-direction(column);
+    @include flex-direction(row);
     @include align-content(flex-start);
     min-height: 100%;
-
-    @media (min-width: $screen-md) {
-      @include flex-direction(row);
-    }
-
-    > * {
-      width: 100%;
-    }
 
     > .navigation {
       @media (min-width: $screen-md) {
@@ -24,6 +16,10 @@
       * {
         background-color: transparent;
       }
+    }
+
+    > .main {
+      width: 100%;
     }
 
     > .content {

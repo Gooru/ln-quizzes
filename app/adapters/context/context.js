@@ -85,7 +85,8 @@ export default Ember.Object.extend({
         'lms-id': 'its_learning'
       }
     };
-    const url = `${namespace}/${contextId}/event/on-resource/${resourceId || ''}`;
+    const resourceIdParam = resourceId || previousResource.resourceId;
+    const url = `${namespace}/${contextId}/event/on-resource/${resourceIdParam}`;
     return Ember.$.ajax(url, options);
   },
 
@@ -95,7 +96,6 @@ export default Ember.Object.extend({
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
       processData: false,
       data: JSON.stringify({}),
       // TODO get real headers

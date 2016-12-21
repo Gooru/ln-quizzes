@@ -134,11 +134,11 @@ test('moveToResource no resource', function(assert) {
   const expectedContextId = 'context-id';
   const expectedResourceId = null;
   const expectedPreviousResource = {
-    id: 'id'
+    resourceId: 'id'
   };
   const expectedResponse = {};
   const routes = function() {
-    this.post('/quizzes/api/v1/context/context-id/event/on-resource/', function(request) {
+    this.post('/quizzes/api/v1/context/context-id/event/on-resource/id', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
       assert.deepEqual(requestBodyJson.previousResource, expectedPreviousResource, 'Wrong previous resource');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify(expectedResponse)];
@@ -155,11 +155,11 @@ test('moveToResource no resource', function(assert) {
 test('moveToResource no previous resource', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';
-  const expectedResourceId = null;
+  const expectedResourceId = 'resource-id';
   const expectedPreviousResource = null;
   const expectedResponse = {};
   const routes = function() {
-    this.post('/quizzes/api/v1/context/context-id/event/on-resource/', function(request) {
+    this.post('/quizzes/api/v1/context/context-id/event/on-resource/resource-id', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
       assert.notOk(requestBodyJson.previousResource, 'Wrong previous resource');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify(expectedResponse)];

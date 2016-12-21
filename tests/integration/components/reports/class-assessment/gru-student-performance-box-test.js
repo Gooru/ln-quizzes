@@ -22,25 +22,29 @@ test('Layout when all completed', function (assert) {
       score: 100,
       resourceId: '569906aa20b7dfae1bcd5262',
       reaction: 2,
-      savedTime: 701
+      savedTime: 701,
+      answer: true
     }),
     QuestionResult.create({
       score: 100,
       resourceId: '569906aa3ec3bb39969acbe6',
       reaction: 4,
-      savedTime: 1333
+      savedTime: 1333,
+      answer: true
     }),
     QuestionResult.create({
       score: 0,
       resourceId: '569906aadfa0072204f7c7c7',
       reaction: 5,
-      skipped: true
+      skipped: true,
+      answer: true
     }),
     QuestionResult.create({
       score: 0,
       resourceId: '569906aacea8416665209d53',
       reaction: 1,
-      savedTime: 1013
+      savedTime: 1013,
+      answer: true
     })
   ]);
 
@@ -89,24 +93,26 @@ test('Layout having not started questions', function (assert) {
       score: 100,
       resourceId: '569906aa20b7dfae1bcd5262',
       reaction: 2,
-      savedTime: 701
+      savedTime: 701,
+      answer: true
     }),
     QuestionResult.create({
       score: 100,
       resourceId: '569906aa3ec3bb39969acbe6',
       reaction: 4,
-      savedTime: 1333
+      savedTime: 1333,
+      answer: true
     }),
     QuestionResult.create({
       score: 0,
-      resourceId: '569906aadfa0072204f7c7c7',
-      started: false
+      resourceId: '569906aadfa0072204f7c7c7'
     }),
     QuestionResult.create({
       score: 0,
       resourceId: '569906aacea8416665209d53',
       reaction: 1,
-      savedTime: 1013
+      savedTime: 1013,
+      answer: true
     })
   ]);
 
@@ -156,7 +162,8 @@ test('Showing student code in anonymous mode', function (assert) {
       score: 100,
       resourceId: '569906aa20b7dfae1bcd5262',
       reaction: 2,
-      savedTime: 701
+      savedTime: 701,
+      answer: true
     })
   ]);
 

@@ -38,9 +38,21 @@ test('Layout', function (assert) {
         profileName: 'Lorena Prendas Chavarria',
         profileCode: 'student-code-1',
         resourceResults: Ember.A([
-          QuestionResult.create({resourceId: '56a120483b6e7b090501d3e7', score: 100}),
-          QuestionResult.create({resourceId: '56a1204886b2e565e1b2c230', score: 100}),
-          QuestionResult.create({resourceId: '56a12048ddee2022a741356a', score: 100})
+          QuestionResult.create({
+            resourceId: '56a120483b6e7b090501d3e7',
+            score: 100,
+            answer: true
+          }),
+          QuestionResult.create({
+            resourceId: '56a1204886b2e565e1b2c230',
+            score: 100,
+            answer: true
+          }),
+          QuestionResult.create({
+            resourceId: '56a12048ddee2022a741356a',
+            score: 100,
+            answer: true
+          })
         ])
       }),
       ReportDataEvent.create({
@@ -48,9 +60,21 @@ test('Layout', function (assert) {
         profileName: 'Andres Charpentier Zuñiga',
         profileCode: 'student-code-2',
         resourceResults: Ember.A([
-          QuestionResult.create({resourceId: '56a120483b6e7b090501d3e7', score: 100}),
-          QuestionResult.create({resourceId: '56a1204886b2e565e1b2c230', score: 100}),
-          QuestionResult.create({resourceId: '56a12048ddee2022a741356a', score: 0})
+          QuestionResult.create({
+            resourceId: '56a120483b6e7b090501d3e7',
+            score: 100,
+            answer: true
+          }),
+          QuestionResult.create({
+            resourceId: '56a1204886b2e565e1b2c230',
+            score: 100,
+            answer: true
+          }),
+          QuestionResult.create({
+            resourceId: '56a12048ddee2022a741356a',
+            score: 0,
+            answer: true
+          })
         ])
       }),
       ReportDataEvent.create({
@@ -58,9 +82,21 @@ test('Layout', function (assert) {
         profileName: 'David Zumbado Alfaro',
         profileCode: 'student-code-3',
         resourceResults: Ember.A([
-          QuestionResult.create({resourceId: '56a120483b6e7b090501d3e7', score: 100}),
-          QuestionResult.create({resourceId: '56a1204886b2e565e1b2c230', score: 0}),
-          QuestionResult.create({resourceId: '56a12048ddee2022a741356a', score: 0})
+          QuestionResult.create({
+            resourceId: '56a120483b6e7b090501d3e7',
+            score: 100,
+            answer: true
+          }),
+          QuestionResult.create({
+            resourceId: '56a1204886b2e565e1b2c230',
+            score: 0,
+            answer: true
+          }),
+          QuestionResult.create({
+            resourceId: '56a12048ddee2022a741356a',
+            score: 0,
+            answer: true
+          })
         ])
       })
     ]

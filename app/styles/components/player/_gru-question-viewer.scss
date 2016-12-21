@@ -1,9 +1,11 @@
 .player .gru-question-viewer {
-
-  padding: 15px;
+  @include flexbox;
+  @include justify-content(space-between);
+  @include flex-direction(column);
+  padding: 0 15px;
 
   @media (min-width: $screen-sm) {
-    padding: 0;
+    @include flex-direction(row);
   }
 
   .question-panel > h2,
@@ -15,9 +17,18 @@
     margin: 0;
   }
 
-  .question-panel {
+  .question-panel,
+  .answers-panel {
     width: 100%;
+    @media (min-width: $screen-sm) {
+      width: 48%;
+    }
+    .panel-body {
+      padding: 20px;
+    }
+  }
 
+  .question-panel {
     .question {
       span.text {
         display: block;
@@ -29,22 +40,12 @@
         max-height: 100%;
       }
     }
-
-    @media (min-width: $screen-sm) {
-      margin-left: 16px;
-      width: 47%;
-      float: left;
-    }
     .hints, .explanation{
       display: block;
-    }
-    .panel-body {
-      padding: 20px;
     }
   }
 
   .answers-panel {
-    width: 100%;
     margin-bottom: 30px;
 
     .answer-choices {
@@ -56,20 +57,11 @@
     .actions {
       margin-top: 30px;
       text-align: center;
-      .save{
+      .save {
         @media (min-width: $screen-sm) {
           float:right;
         }
       }
-    }
-
-    @media (min-width: $screen-sm) {
-      margin-left: 20px;
-      width: 48%;
-      float: left;
-    }
-    .panel-body {
-      padding: 20px;
     }
   }
 

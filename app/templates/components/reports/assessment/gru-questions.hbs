@@ -49,7 +49,7 @@
         {{gru-math-text text=result.question.body}}
       </td>
       <td class="question-answer top-left">
-        {{#if result.answered}}
+        {{#if result.started}}
           {{{component (questionConfig result.question.type 'component.answer') question=result}}}
         {{/if}}
       </td>

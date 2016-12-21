@@ -1,26 +1,12 @@
 .player .gru-navigation {
   // temporary for GG-92
   height: $player-navigation-height;
-  float:right;
   width: 100%;
   z-index: 10;
   @media (min-width: $screen-md) {
-    padding-left: 250px;
     height: $player-navigation-md-height;
   }
   .content {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    -webkit-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-align-items: flex-start;
-    align-items: flex-start;
-    -webkit-align-content: stretch;
-    align-content: stretch;
-    display: -webkit-flex;
-    display: flex;
     @media (min-width: $screen-md) {
       overflow: hidden;
 
@@ -32,7 +18,7 @@
       width:100%;
       height:57px;
       background-color: $dark-400;
-      padding:0 30px;
+      padding: 0 30px;
       span{
         width: 100%;
         height: 100%;
@@ -58,8 +44,6 @@
     }
     .reaction-bar{
       margin-top: 20px;
-      padding-left: 60px;
-      padding-right: 60px;
       @media (max-width: $screen-sm-max) {
         padding-left: 15px;
         padding-right: 15px;
@@ -68,28 +52,11 @@
       >div >div{
         margin-bottom: 0;
         width: 100%;
-        -webkit-flex-direction: column;
-        flex-direction: column;
-        -webkit-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-align-items: flex-start;
-        align-items: flex-start;
-        -webkit-align-content: stretch;
-        align-content: stretch;
-        display: -webkit-flex;
-        display: flex;
-        padding:0;
+        padding: 0;
         @media (min-width: $screen-md) {
-          margin-bottom:23px;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-justify-content: space-between;
-          justify-content: space-between;
-          padding:15px;
+          @include flexbox;
+          @include justify-content(space-between);
+          padding: 15px;
         }
         >*{
           width:100%;

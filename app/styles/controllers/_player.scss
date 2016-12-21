@@ -1,15 +1,24 @@
 .player {
   overflow: hidden;
+  height: 100%;
   .gru-header,
   .gru-footer {
     display: none;
   }
+
+  div.ember-view,
+  .quizzes,
+  .app-container {
+    height: 100%;
+  }
+
   .app-container {
     margin: 0;
     padding: 0;
+    position: relative;
 
     .aside {
-      height: 100vh;
+      height: 100%;
       min-height: 400px;
       background: #EEEEEE;
 
@@ -31,7 +40,7 @@
     .main {
       @include flexbox;
       @include flex-direction(column);
-      height: 100vh;
+      height: 100%;
       min-height: 400px;
     }
   }

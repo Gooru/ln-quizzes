@@ -66,8 +66,10 @@ export default Ember.Component.extend({
       answers.push(answerCounter);
 
       reportEvent.get('questionResults').forEach(function (questionResult) {
-        answerCounter.correct += questionResult.get('correct') ? 1 : 0;
-        answerCounter.incorrect += questionResult.get('incorrect') ? 1 : 0;
+        if(questionResult.get('started')) {
+          answerCounter.correct += questionResult.get('correct') ? 1 : 0;
+          answerCounter.incorrect += questionResult.get('incorrect') ? 1 : 0;
+        }
       });
     });
 
@@ -175,8 +177,10 @@ export default Ember.Component.extend({
       reportEvents.forEach(function (student) {
         let resourceResults = student.get('resourceResults').filter(result => result.resourceId === question);
         resourceResults.forEach(questionResult => {
-          questionCounter.correct += questionResult.get('correct') ? 1 : 0;
-          questionCounter.incorrect += questionResult.get('incorrect') ? 1 : 0;
+          if(questionResult.get('started')) {
+            questionCounter.correct += questionResult.get('correct') ? 1 : 0;
+            questionCounter.incorrect += questionResult.get('incorrect') ? 1 : 0;
+          }
         });
       });
     });

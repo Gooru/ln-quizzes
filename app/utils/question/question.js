@@ -73,28 +73,29 @@ export default Ember.Object.extend({
     const total = resourceResults.length;
     resourceResults.forEach(function (result) {
       let answer = result.get('answer');
-      let answerKey = util.answerKey(answer);
-      let answerDistribution = distributionMap[answerKey];
-      let count = 0;
-      let percentage = 0;
-      if (!answerDistribution) {
-        answerDistribution = Ember.Object.create({
-          answer,
-          correct: result.get('correct'),
-          count,
-          percentage,
-          key: answerKey,
-          result
-        });
-        distribution.addObject(answerDistribution);
-        distributionMap[answerKey] = answerDistribution;
+      if(result.get('started')) {
+        let answerKey = util.answerKey(answer);
+        let answerDistribution = distributionMap[answerKey];
+        let count = 0;
+        let percentage = 0;
+        if (!answerDistribution) {
+          answerDistribution = Ember.Object.create({
+            answer,
+            correct: result.get('correct'),
+            count,
+            percentage,
+            key: answerKey,
+            result
+          });
+          distribution.addObject(answerDistribution);
+          distributionMap[answerKey] = answerDistribution;
+        } else {
+          count = answerDistribution.get('count');
+        }
+        count += 1;
+        answerDistribution.set('count', count);
+        answerDistribution.set('percentage', Math.round(count / total * 100));
       }
-      else {
-        count = answerDistribution.get('count');
-      }
-      count += 1;
-      answerDistribution.set('count', count);
-      answerDistribution.set('percentage', Math.round(count / total * 100));
     });
     return distribution;
   },

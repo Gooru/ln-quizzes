@@ -58,6 +58,15 @@ const Validations = buildValidations({
         property:'availableDate'
       })
     ]
+  },
+  assignees:{
+    validators: [
+      validator('presence', {
+        presence: true,
+        message: '{{description}}',
+        descriptionKey: 'common.errors.assignees-error'
+      })
+    ]
   }
 });
 

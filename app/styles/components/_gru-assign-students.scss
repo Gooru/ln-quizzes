@@ -53,7 +53,12 @@
         background-color: $sky-100;
       }
     }
+    .error-assignees-empty{
+      padding: 10px;
+      color:$red-500;
+    }
     .student-list{
+      margin-top: 10px;
       .list-group-item{
         margin-bottom: 3px;
         .gru-icon{

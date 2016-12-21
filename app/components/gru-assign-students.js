@@ -61,10 +61,10 @@ export default Ember.Component.extend({
         Ember.$('#time-dueDate ').blur();
       }
 
-      assigment.validate().then(function ({ validations }) {
-        let assignedStudents = component.get('students').filterBy('isAssigned',true);
-        assigment.set('assignees',assignedStudents);
+      let assignedStudents = component.get('students').filterBy('isAssigned',true);
+      assigment.set('assignees',assignedStudents);
 
+      assigment.validate().then(function ({ validations }) {
         if (validations.get('isValid')) {
           if(component.get('assignment.id')){
             component.get('contextService').updateContext(component.get('assignment')).then(function(){
@@ -78,8 +78,8 @@ export default Ember.Component.extend({
               }));
             });
           }
-        }else if(validations.get('error.attribute') === 'assignees'){
-          component.set('assigneesError',validations.get('error.message'));
+        }else if(validations.get('errors').findBy('attribute','assignees')){
+          component.set('assigneesError',validations.get('errors').findBy('attribute','assignees').get('message'));
         }
       });
     }
@@ -188,6 +188,13 @@ export default Ember.Component.extend({
    */
   cleanAssignment: Ember.observer('assignment', function() {
     this.get('students').forEach(student => student.set('isAssigned', false));
-
+  }),
+  /**
+   * Clean Assignees Error
+   */
+  cleanAssigneesError: Ember.observer('totalSelected', function() {
+    if(this.get('totalSelected') > 0){
+      this.set('assigneesError', null);
+    }
   })
 });

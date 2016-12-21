@@ -316,3 +316,45 @@ test('Validate due date when do not have available date', function(assert) {
     });
   });
 });
+test('Validate when assignees list is empty', function(assert) {
+
+  let context = Context.create(Ember.getOwner(this).ownerInjection(),{
+    title:this.get('collection.title')
+  });
+  this.set('assignment',context);
+  var students = Ember.A([
+    Ember.Object.create({
+      firstName:'firstname-1',
+      lastName:'lastname-1',
+      isSelected:false
+    }),
+    Ember.Object.create({
+      firstName:'firstname-2',
+      lastName:'lastname-2',
+      isSelected:false
+    }),
+    Ember.Object.create({
+      firstName:'firstname-3',
+      lastName:'lastname-3',
+      isSelected:false
+    })
+  ]);
+  this.set('students',students);
+
+  this.render(hbs`{{gru-assign-students assignment=assignment students=students}}`);
+  var $component = this.$();
+  var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
+  return wait().then(function () {
+    assert.ok(!$component.find('.error-assignees-empty').length, 'Assignees error should not appear');
+    $component.find('.assign-btn').click();
+    return wait().then(function () {
+      assert.ok($component.find('.error-assignees-empty').length, 'Assignees error should appear');
+      var $student = $component.find('.gru-assign-students .students .student-list .list-group-item:eq(1)');
+      $student.click();
+      return wait().then(function () {
+        assert.ok(!$component.find('.error-assignees-empty').length, 'Assignees error should not appear');
+      });
+    });
+  });
+});

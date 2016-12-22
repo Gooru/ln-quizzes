@@ -138,21 +138,21 @@ module.exports = function (environment) {
       },
       students: [
         {
-          id: 'student-1',
+          externalId: 'student-1',
           firstName: 'student-1',
           lastName: 'student-1',
           username: 'student-1',
           email: 'emailstudent-1@gmail.com'
         },
         {
-          id: 'student-2',
+          externalId: 'student-2',
           firstName: 'student-2',
           lastName: 'student-2',
           username: 'student-2',
           email: 'emailstudent-2@gmail.com'
         },
         {
-          id: 'student-3',
+          externalId: 'student-3',
           firstName: 'student-3',
           lastName: 'student-3',
           username: 'student-3',

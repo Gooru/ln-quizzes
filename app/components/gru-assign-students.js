@@ -28,7 +28,14 @@ export default Ember.Component.extend({
     selectAll:function(){
       const content = this ;
       this.set('areAllSelected',!this.get('areAllSelected'));
-      this.get('students').forEach(student => !student.get('isAssigned') ? student.set('isSelected', content.get('areAllSelected')): student.set('isSelected', false));
+      this.get('students').forEach(student => {
+          if(!student.get('isAssigned')){
+            student.set('isSelected', content.get('areAllSelected'));
+          }else{
+            student.set('isSelected', false);
+          }
+        }
+      );
     },
 
     selectOption: function (type) {

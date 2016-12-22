@@ -4,6 +4,7 @@ import Ember from 'ember';
 import wait from 'ember-test-helpers/wait';
 import T from 'quizzes/tests/helpers/assert';
 import Context from 'quizzes/models/context/context';
+import Profile from 'quizzes/models/profile/profile';
 
 const contextServiceStub = Ember.Service.extend({
 
@@ -38,17 +39,17 @@ moduleForComponent('gru-assign-students', 'Integration | Component | gru assign 
 
 test('Assign students Layout', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -79,17 +80,17 @@ test('Assign students Layout', function(assert) {
 });
 test('Filter by name', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -112,17 +113,17 @@ test('Filter by name', function(assert) {
 });
 test('Select All Students', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -146,17 +147,17 @@ test('Select All Students', function(assert) {
 
 test('Selected and Unselected Student', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -185,17 +186,17 @@ test('Selected and Unselected Student', function(assert) {
 test('Cancel assign students', function(assert) {
 
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -323,17 +324,17 @@ test('Validate when assignees list is empty', function(assert) {
   });
   this.set('assignment',context);
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -360,17 +361,17 @@ test('Validate when assignees list is empty', function(assert) {
 });
 test('Try unselected an assigned student on update mode', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isAssigned:true
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isAssigned:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isAssigned:false
@@ -393,17 +394,17 @@ test('Try unselected an assigned student on update mode', function(assert) {
 });
 test('Assign a new student on update mode', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isAssigned:true
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isAssigned:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isAssigned:false
@@ -428,18 +429,18 @@ test('Assign a new student on update mode', function(assert) {
 });
 test('Try unselected an assigned student on create mode', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isAssigned:false,
       isSelected:true
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isAssigned:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isAssigned:false

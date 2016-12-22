@@ -44,21 +44,21 @@ test('it renders', function (assert) {
             score: 0,
             reaction: 1,
             savedTime: 1216,
-            answer: 1
+            answer: [{ value: 1 }]
           }),
           QuestionResult.create({
             resourceId: '56a1204886b2e565e1b2c230',
             score: 100,
             reaction: 2,
             savedTime: 2458,
-            answer: 1
+            answer: [{ value: 1 }]
           }),
           QuestionResult.create({
             resourceId: '56a12048ddee2022a741356a',
             score: 100,
             reaction: 3,
             savedTime: 1433,
-            answer: 1
+            answer: [{ value: 1 }]
           })
         ])
       }),
@@ -70,14 +70,14 @@ test('it renders', function (assert) {
             score: 0,
             reaction: 5,
             savedTime: 1216,
-            answer: 1
+            answer: [{ value: 1 }]
           }),
           QuestionResult.create({
             resourceId: '56a12048ddee2022a741356a',
             score: 100,
             reaction: 3,
             savedTime: 1433,
-            answer: 1
+            answer: [{ value: 1 }]
           })
         ])
       }),
@@ -89,21 +89,21 @@ test('it renders', function (assert) {
             score: 0,
             reaction: 1,
             savedTime: 1216,
-            answer: 1
+            answer: [{ value: 1 }]
           }),
           QuestionResult.create({
             resourceId: '56a1204886b2e565e1b2c230',
             score: 100,
             reaction: 5,
             savedTime: 2458,
-            answer: 1
+            answer: [{ value: 1 }]
           }),
           QuestionResult.create({
             resourceId: '56a12048ddee2022a741356a',
             score: 100,
             reaction: 5,
             savedTime: 1433,
-            answer: 1
+            answer: [{ value: 1 }]
           })
         ])
       }),
@@ -115,21 +115,21 @@ test('it renders', function (assert) {
             score: 100,
             reaction: 4,
             savedTime: 1216,
-            answer: 1
+            answer: [{ value: 1 }]
           }),
           QuestionResult.create({
             resourceId: '56a1204886b2e565e1b2c230',
             score: 100,
             reaction: 4,
             savedTime: 2458,
-            answer: 1
+            answer: [{ value: 1 }]
           }),
           QuestionResult.create({
             resourceId: '56a12048ddee2022a741356a',
             score: 100,
             reaction: 3,
             savedTime: 1433,
-            answer: 1
+            answer: [{ value: 1 }]
           })
         ])
       })

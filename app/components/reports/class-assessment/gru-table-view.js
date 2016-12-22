@@ -187,10 +187,11 @@ export default Ember.Component.extend({
     const questionPropertiesIds = this.get('questionPropertiesIds');
     const questionPropertiesIdsLen = questionPropertiesIds.length;
     const reportDataEvents = this.get('reportData.reportEvents');
+    const assessmentQuestions = this.get('assessment.resources').sortBy('sequence');
 
     // Copy the table frame contents
     let data = this.get('tableFrame').slice(0);
-    let totalIndex, propertyValues;
+    let propertyValues;
 
     reportDataEvents.forEach(function(reportEvent, i) {
       propertyValues = [];
@@ -198,7 +199,14 @@ export default Ember.Component.extend({
         // Put all values for the same property into an array
         propertyValues[k] = [];
       }
-      reportEvent.get('resourceResults').forEach(function(questionResult, j) {
+      reportEvent.get('resourceResults').map(
+        questionResult => {
+          let question = assessmentQuestions.findBy('id', questionResult.get('resourceId'));
+          questionResult.set('resource', question);
+          return questionResult;
+        }
+      ).sortBy('resource.sequence').forEach(function(questionResult, l) {
+        let j = l + 1;
         for (let k = 0; k < questionPropertiesIdsLen; k++) {
           let renderFunction = questionProperties[k].renderFunction;
           let value = questionResult.get(questionPropertiesIds[k]);
@@ -217,7 +225,7 @@ export default Ember.Component.extend({
 
           // For displaying the aggregate value, use the question property's aggregateRenderFunction.
           // If there's no aggregateRenderFunction, use the property's renderFunction by default.
-          data[i].content[totalIndex * questionPropertiesIdsLen + k] = {
+          data[i].content[k] = {
             value,
             output: (aggregateRenderFunction) ? aggregateRenderFunction(value) :
               questionProperties[k].renderFunction(value)

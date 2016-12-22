@@ -53,7 +53,8 @@ export default Ember.Component.extend(ModalMixin, {
       });
 
       let modalModel = {
-        contextResult
+        contextResult,
+        width: '75%'
       };
       this.actions.showModal.call(this,
         'reports.gru-assessment-report', modalModel, null, 'gru-assessment-report-modal', true);
@@ -70,7 +71,8 @@ export default Ember.Component.extend(ModalMixin, {
       let modalModel = {
         anonymous: this.get('anonymous'),
         selectedQuestion: question,
-        reportData: this.get('reportData')
+        reportData: this.get('reportData'),
+        width: '75%'
       };
       this.actions.showModal.call(this,
         'reports.class-assessment.gru-questions-detail', modalModel, null, 'gru-questions-detail-modal', true);

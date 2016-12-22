@@ -8,7 +8,7 @@
 <div class="panel panel-default question">
     <div class="panel-body">
     <h3>{{t "common.question"}}</h3>
-      <span>{{gru-math-text text=(if question.isFIB question.fibText question.text)}}</span>
+      <span>{{gru-math-text text=question.body}}</span>
       {{#if question.hasMedia}}
           <img class="img-responsive" src="{{question.mediaUrl}}"/>
       {{/if}}

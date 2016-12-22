@@ -4,6 +4,7 @@ import Ember from 'ember';
 import wait from 'ember-test-helpers/wait';
 import T from 'quizzes/tests/helpers/assert';
 import Context from 'quizzes/models/context/context';
+import Profile from 'quizzes/models/profile/profile';
 
 const contextServiceStub = Ember.Service.extend({
 
@@ -38,17 +39,17 @@ moduleForComponent('gru-assign-students', 'Integration | Component | gru assign 
 
 test('Assign students Layout', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -79,17 +80,17 @@ test('Assign students Layout', function(assert) {
 });
 test('Filter by name', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -112,17 +113,17 @@ test('Filter by name', function(assert) {
 });
 test('Select All Students', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -146,17 +147,17 @@ test('Select All Students', function(assert) {
 
 test('Selected and Unselected Student', function(assert) {
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -185,17 +186,17 @@ test('Selected and Unselected Student', function(assert) {
 test('Cancel assign students', function(assert) {
 
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -323,17 +324,17 @@ test('Validate when assignees list is empty', function(assert) {
   });
   this.set('assignment',context);
   var students = Ember.A([
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-1',
       lastName:'lastname-1',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-2',
       lastName:'lastname-2',
       isSelected:false
     }),
-    Ember.Object.create({
+    Profile.create({
       firstName:'firstname-3',
       lastName:'lastname-3',
       isSelected:false
@@ -355,6 +356,108 @@ test('Validate when assignees list is empty', function(assert) {
       return wait().then(function () {
         assert.ok(!$component.find('.error-assignees-empty').length, 'Assignees error should not appear');
       });
+    });
+  });
+});
+test('Try unselected an assigned student on update mode', function(assert) {
+  var students = Ember.A([
+    Profile.create({
+      firstName:'firstname-1',
+      lastName:'lastname-1',
+      isAssigned:true
+    }),
+    Profile.create({
+      firstName:'firstname-2',
+      lastName:'lastname-2',
+      isAssigned:false
+    }),
+    Profile.create({
+      firstName:'firstname-3',
+      lastName:'lastname-3',
+      isAssigned:false
+    })
+  ]);
+  this.set('students',students);
+
+  this.render(hbs`{{gru-assign-students students=students isUpdate=true}}`);
+  var $assignStudentsComponent = this.$();
+  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
+  return wait().then(function () {
+    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
+    var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(0)');
+    $student.click();
+    return wait().then(function () {
+      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
+    });
+  });
+});
+test('Assign a new student on update mode', function(assert) {
+  var students = Ember.A([
+    Profile.create({
+      firstName:'firstname-1',
+      lastName:'lastname-1',
+      isAssigned:true
+    }),
+    Profile.create({
+      firstName:'firstname-2',
+      lastName:'lastname-2',
+      isAssigned:false
+    }),
+    Profile.create({
+      firstName:'firstname-3',
+      lastName:'lastname-3',
+      isAssigned:false
+    })
+  ]);
+  this.set('students',students);
+
+  this.render(hbs`{{gru-assign-students students=students isUpdate=true}}`);
+  var $assignStudentsComponent = this.$();
+  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
+  return wait().then(function () {
+    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
+    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item.selected').length,0, 'Should have 0 new students selected');
+    var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(1)');
+    $student.click();
+    return wait().then(function () {
+      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,2, 'Should have 1 student assigned');
+      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item.selected').length,1, 'Should have 1 new students selected');
+    });
+  });
+});
+test('Try unselected an assigned student on create mode', function(assert) {
+  var students = Ember.A([
+    Profile.create({
+      firstName:'firstname-1',
+      lastName:'lastname-1',
+      isAssigned:false,
+      isSelected:true
+    }),
+    Profile.create({
+      firstName:'firstname-2',
+      lastName:'lastname-2',
+      isAssigned:false
+    }),
+    Profile.create({
+      firstName:'firstname-3',
+      lastName:'lastname-3',
+      isAssigned:false
+    })
+  ]);
+  this.set('students',students);
+
+  this.render(hbs`{{gru-assign-students students=students}}`);
+  var $assignStudentsComponent = this.$();
+  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  $studentRosterTab.click();
+  return wait().then(function () {
+    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
+    var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(0)');
+    $student.click();
+    return wait().then(function () {
+      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,0, 'Should have 0 student assigned');
     });
   });
 });

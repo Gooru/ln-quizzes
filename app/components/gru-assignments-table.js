@@ -12,7 +12,7 @@ export default Ember.Component.extend(ModalMixin,{
   /**
    * @property {Service} profile service
    */
-  profileService: Ember.inject.service("api-sdk/profile"),
+  profileService: Ember.inject.service('api-sdk/profile'),
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -79,7 +79,7 @@ export default Ember.Component.extend(ModalMixin,{
      */
     openRealTime: function (assignment) {
       if(this.get('realTimeURL')){
-        let url = this.get('realTimeURL').replace("{context-id}", assignment.get('id'));
+        let url = this.get('realTimeURL').replace('{context-id}', assignment.get('id'));
         window.location.href = url;
       }else{
         this.get('router').transitionTo('reports.context', assignment.get('id'));
@@ -91,7 +91,7 @@ export default Ember.Component.extend(ModalMixin,{
      */
     openPlayer:function(assignment){
       if(this.get('playerURL')){
-        let url = this.get('playerURL').replace("{context-id}", assignment.get('id'));
+        let url = this.get('playerURL').replace('{context-id}', assignment.get('id'));
         window.location.href = url;
       } else {
         this.get('router').transitionTo('player', assignment.get('id'));

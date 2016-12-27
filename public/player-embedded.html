@@ -20,7 +20,8 @@
 
   <script type="text/javascript">
     (function () {
-      var contextId = location.search.split('context-id=')[1];
+      let match = /context-id=([^&]*)/.exec(location.search);
+      let contextId = match ? match[1] : '';
       jQuery(document).ready(function () {
         var emberApp = window['QuizzesWebApp'];
         emberApp.start({

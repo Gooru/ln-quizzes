@@ -20,10 +20,12 @@
 
   <script type="text/javascript">
     (function () {
+      let match = /context-id=([^&]*)/.exec(location.search);
+      let contextId = match ? match[1] : '';
       jQuery(document).ready(function () {
         var emberApp = window['QuizzesWebApp'];
         emberApp.start({
-          transition: [ 'reports.context', 'ab53626c-4df1-4626-b2cb-560ca7de1a3f' ]
+          transition: [ 'reports.context', contextId ]
         });
       });
     })(); // call anonymous function

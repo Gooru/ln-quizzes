@@ -23,9 +23,9 @@
 </div>
 <div class="assignments-list-container">
     <div class="assignments-list">
-      {{gru-assignments-table assignments=sortedAssignments onSelectAssignment='selectAssignment' sortBy=sortBy reverseSort=reverseSort isTeacher=isTeacher studentList=studentList collection=collection  onUpdateAssignment='updateAssignment'}}
+      {{gru-assignments-table assignments=sortedAssignments onSelectAssignment='selectAssignment' sortBy=sortBy reverseSort=reverseSort isTeacher=isTeacher studentList=studentList collection=collection  onUpdateAssignment='updateAssignment' realTimeURL=realTimeURL playerURL=playerURL}}
     </div>
     <div class="assignments-info {{if selectedAssignment 'show' 'hide'}} hidden-xs">
-      {{gru-assignments-detail assignment=selectedAssignment isTeacher=isTeacher studentList=studentList collection=collection}}
+      {{gru-assignments-detail assignment=selectedAssignment isTeacher=isTeacher studentList=studentList collection=collection realTimeURL=realTimeURL playerURL=playerURL}}
     </div>
 </div>

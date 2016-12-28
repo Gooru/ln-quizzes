@@ -21,6 +21,9 @@ export default Ember.Route.extend({
     let profileId = params.profileId;
     let assignments;
     let studentList = this.get('configurationService.configuration.properties.students');
+    let playerURL = this.get('configurationService.configuration.properties.playerURL');
+    let realTimeURL = this.get('configurationService.configuration.properties.realTimeURL');
+
 
     let isTeacher = params.isTeacher  === 'true';
 
@@ -30,7 +33,9 @@ export default Ember.Route.extend({
       profileId,
       isTeacher,
       assignments,
-      studentList
+      studentList,
+      playerURL,
+      realTimeURL
     });
   },
 
@@ -44,5 +49,7 @@ export default Ember.Route.extend({
     controller.set('isTeacher',model.isTeacher);
     controller.set('assignments',model.assignments);
     controller.set('studentList',model.studentList);
+    controller.set('playerURL',model.playerURL);
+    controller.set('realTimeURL',model.realTimeURL);
   }
 });

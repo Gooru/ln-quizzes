@@ -71,14 +71,23 @@ export default Ember.Component.extend(ModalMixin,{
      * Redirect to real time
      */
     openRealTime: function () {
-      this.get('router').transitionTo(
-        'reports.context', this.get('assignment.id'));
+      if(this.get('realTimeURL')){
+        let url = this.get('realTimeURL').replace('{context-id}', this.get('assignment.id'));
+        window.location.href = url;
+      } else {
+        this.get('router').transitionTo('reports.context', this.get('assignment.id'));
+      }
     },
     /**
      * Open player
      */
     openPlayer:function(assignment){
-      this.get('router').transitionTo('player', assignment.get('id'));
+      if(this.get('playerURL')){
+        let url = this.get('playerURL').replace('{context-id}', assignment.get('id'));
+        window.location.href = url;
+      } else {
+        this.get('router').transitionTo('player', assignment.get('id'));
+      }
     },
     /**
      * View Report

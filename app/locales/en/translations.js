@@ -1100,7 +1100,7 @@ export default {
     "score": "Score",
     "completion": "Completion",
     "timeSpent": "Time",
-    "study-time": "Study Time",
+    "study-time": "Time",
     "reaction": "Reaction",
     "attempts": "Attempt"
   },
@@ -1125,7 +1125,7 @@ export default {
     "student": "Student",
     "score": "Score",
     "completion": "Completion",
-    "study-time": "Study Time"
+    "study-time": "Time"
   },
   "gru-resource-new": {
     "resource-already-exist": "This resource already exists in Gooru!"
@@ -1186,7 +1186,7 @@ export default {
     "reactions": "Reactions",
     "score": "Score",
     "scores": "Scores",
-    "study-time": "Study Time",
+    "study-time": "Time",
     "time-spent": "Time Spent",
     "totals": "Total"
   },

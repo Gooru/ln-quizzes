@@ -35,7 +35,7 @@
     .answer-correct, .answer-incorrect {
       i {
         display: block;
-        line-height: 28px;
+        line-height: 25px;
       }
     }
     .answer-correct {
@@ -79,6 +79,7 @@
           }
         }
         td {
+          white-space: nowrap;
           &:nth-child(3n-1) {
             border-left: 1px solid $gray-lighter;
           }
@@ -86,11 +87,19 @@
           .score {
             border-radius: 4px;
             text-align: center;
-            width: 68px;
-            height: 43px;
+            width: 42px;
+            height: 25px;
             display: block;
             color: $white;
-            padding: 7px;
+          }
+          .emotion {
+            padding-top: 2px;
+            cursor: default;
+            height: 24px;
+            width: 24px;
+            &:hover {
+              transform: scale(1);
+            }
           }
         }
         th + td {

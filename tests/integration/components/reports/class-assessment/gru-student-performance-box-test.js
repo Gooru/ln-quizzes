@@ -10,7 +10,7 @@ moduleForComponent('reports/class-assessment/gru-student-performance-box', 'Inte
 
 test('Layout when all completed', function (assert) {
 
-  assert.expect(9);
+  assert.expect(10);
 
   const student = Ember.Object.create({
     id: '56983a9060a68052c1ed934c',
@@ -66,7 +66,8 @@ test('Layout when all completed', function (assert) {
   const $header = $component.find('.panel .panel-heading');
   T.exists(assert, $header, 'Missing student box title');
   T.exists(assert, $header.find('.score'), 'Missing student box score');
-  assert.equal(T.text($header), 'Rocha, Perez (50%)', 'Wrong title');
+  assert.equal(T.text($header.find('.name')), 'Rocha, Perez', 'Wrong name');
+  assert.equal(T.text($header.find('.score')), '50%', 'Wrong score');
 
   const $questions = $component.find('.panel .questions');
   T.exists(assert, $questions, 'Missing questions area');
@@ -149,7 +150,7 @@ test('Layout having not started questions', function (assert) {
 
 test('Showing student code in anonymous mode', function (assert) {
 
-  assert.expect(4);
+  assert.expect(3);
 
   const student = Ember.Object.create({
     id: '56983a9060a68052c1ed934c',
@@ -180,6 +181,5 @@ test('Showing student code in anonymous mode', function (assert) {
 
   const $header = $component.find('.panel .panel-heading');
   T.exists(assert, $header, 'Missing student box title');
-  T.exists(assert, $header.find('.score'), 'Missing student box score');
-  assert.equal(T.text($header), 'abcde (100%)', 'Wrong title, it should use students code');
+  assert.equal(T.text($header), 'abcde', 'Wrong title, it should use students code');
 });

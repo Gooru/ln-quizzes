@@ -27,8 +27,8 @@ export function alphabeticalStringSort(a, b) {
  */
 export function checkStandards(standards, checkableStandards, codes) {
   standards.forEach(function(standard) {
-    if (checkableStandards.includes(standard.get("id"))) {
-      standard.set("disabled", !codes.includes(standard.get("id")));
+    if (checkableStandards.includes(standard.get('id'))) {
+      standard.set('disabled', !codes.includes(standard.get('id')));
     }
   });
 }
@@ -86,16 +86,16 @@ export function formatTime(timeInMillis) {
     secs = secs % 60;
 
     if (hours >= 1) {
-      result = Math.floor(hours) + 'h ';
+      result = `${Math.floor(hours)}h `;
       if (mins >= 1) {
-        result += Math.floor(mins) + 'm';
+        result += `${Math.floor(mins)}m`;
       }
     } else {
       if (mins >= 1) {
-        result = Math.floor(mins) + 'm ';
+        result = `${Math.floor(mins)}m `;
       }
       if (secs >= 1) {
-        result += Math.floor(secs) + 's';
+        result += `${Math.floor(secs)}s`;
       }
     }
   } else {
@@ -136,19 +136,6 @@ export function getAnswerResultIcon(isCorrect) {
 }
 
 /**
- * Get a html of the score string.
- * @param {number} value - %value
- * @returns {String} - html string
- */
-export function getScoreString(value) {
-  if(typeof value === 'number'){
-    let gradeColor = getGradeColor(value);
-    return `<span class="score" style="background-color: ${gradeColor}">${value} %</span>`;
-  }
-  return '<span class="score answer-undefined"></span>';
-}
-
-/**
  * Get an icon depending on a reaction value. If the reaction value is null,
  * a dash is returned. For any other falsy value, an empty string is returned.
  * @param {Number} reactionValue
@@ -162,9 +149,9 @@ export function getReactionIcon(reactionValue) {
       return emotion.value === reactionValue;
     })[0];
     if (reaction && reaction.value && reaction.unicode) {
-      html = '<div class="emotion emotion-' + reaction.value + '">';
+      html = `<div class="emotion emotion-${reaction.value}">`;
       html += '  <svg class="svg-sprite">';
-      html += '    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/emoji-one/emoji.svg#'+ reaction.unicode + '"></use>';
+      html += `    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/emoji-one/emoji.svg#${reaction.unicode}"></use>`;
       html += ' </svg>';
       html += '</div>';
     } else {
@@ -198,10 +185,24 @@ export function getGradeColor(grade) {
     }
 
   } else {
-    Ember.Logger.error('Grade value: ' + grade + ' is not a numeric value');
+    Ember.Logger.error(`Grade value: ${grade} is not a numeric value`);
   }
   return color;
 }
+
+/**
+ * Get a html of the score string.
+ * @param {number} value - %value
+ * @returns {String} - html string
+ */
+export function getScoreString(value) {
+  if(typeof value === 'number'){
+    let gradeColor = getGradeColor(value);
+    return `<span class="score" style="background-color: ${gradeColor}">${value} %</span>`;
+  }
+  return '<span class="score answer-undefined"></span>';
+}
+
 /**
  * Convert a number into Upper Letter
  * @param number
@@ -211,7 +212,7 @@ export function getLetter(number){
   return String.fromCharCode(65 + number);
 }
 
-/*
+/**
  * Function for sorting numbers in ascending order
  * @param {number} a
  * @param {number} b
@@ -246,15 +247,15 @@ export function generateUUID() {
  */
 export function truncate(text, maxLength, type, suffix){
   let config = { //TODO product owner will provide max lengths, this will be moved to the configuration
-    "name": 15,
-    "short": 10,
-    "player-nav-sm": 30,
-    "medium": 35,
-    "collection-card-courses":45,
-    "medium-large":100,
-    "large": 200
+    'name': 15,
+    'short': 10,
+    'player-nav-sm': 30,
+    'medium': 35,
+    'collection-card-courses':45,
+    'medium-large':100,
+    'large': 200
   };
-  let defaultType = "short";
+  let defaultType = 'short';
 
   if (!text) { return null; }
 
@@ -272,15 +273,20 @@ export function truncate(text, maxLength, type, suffix){
   if (text.length > maxLength) {
     truncated = text.substring(0, maxLength);
     if (addSuffix) {
-      truncated = truncated + "...";
+      truncated = `${truncated}...`;
     }
   }
 
   return truncated;
 }
 
+/**
+ * Remove HTML tags
+ * @param {string} text
+ * @returns {*}
+ */
 export function noTags(text){
-  let element = document.createElement("p");
+  let element = document.createElement('p');
   element.innerHTML = text;
   return $(element).text();
 }
@@ -354,11 +360,11 @@ export function getFileNameFromInvalidUrl(url) {
  */
 export function replaceMathExpression(text){
   var questionText = $.parseHTML(text);
-  var newQuestionText="";
+  var newQuestionText='';
   $.each( questionText, function( i, el ) {
     let latex = $(el).find('.source').text();
     if(latex.length>0){
-      let mathToSave = "<span class='gru-math-expression'><span class='source' hidden>" + latex + "</span>$$" + latex + "$$</span>";
+      let mathToSave = `<span class='gru-math-expression'><span class='source' hidden>${latex}</span>$$${latex}$$</span>`;
       $(el).empty().append(mathToSave);
     }
     if(el.outerHTML){
@@ -378,7 +384,7 @@ export function removeHtmlTags(text){
   var newText;
 
   if (text){
-    newText = text.replace(/(<([^>]+)>)/ig,"");
+    newText = text.replace(/(<([^>]+)>)/ig,'');
   }
 
   return newText;

@@ -11,6 +11,10 @@ import Ember from 'ember';
  */
 export default Ember.Route.extend({
 
+  queryParams: {
+    anonymous : {}
+  },
+
   /**
    * @type {CollectionService} collectionService
    * @property {Ember.Service} Service to retrieve a collection
@@ -51,9 +55,11 @@ export default Ember.Route.extend({
   model: function (params) {
     const route = this;
     const contextId = params.contextId;
+    const anonymous = params.anonymous;
 
     return route.get('contextService').getReportData(contextId).then(
       reportData => Ember.RSVP.hash({
+        anonymous,
         reportData,
         collection: route.get('collectionService').readCollection(reportData.collectionId),
         profiles: Ember.RSVP.hash(
@@ -70,6 +76,7 @@ export default Ember.Route.extend({
   },
 
   setupController(controller, model) {
+    let anonymous = model.anonymous;
     let collection = model.collection;
     let reportData = model.reportData;
     let profiles = model.profiles;
@@ -79,5 +86,6 @@ export default Ember.Route.extend({
     });
     reportData.set('collection', collection);
     controller.set('reportData', reportData);
+    controller.set('anonymous', anonymous);
   }
 });

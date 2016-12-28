@@ -61,7 +61,7 @@ export default Ember.Component.extend(ModalMixin,{
       let model = {
         students: this.get('students'),
         assignment: this.get('assignment'),
-        width:'75%'
+        width:'95%'
       };
       this.actions.showModal.call(this, 'gru-assign-student-modal',
         model, null, null, null, false);

@@ -76,15 +76,27 @@
     margin-bottom: 12px;
     >*{
       display: inline-block;
+      @media(max-width: $screen-xs-max){
+        display: block;
+      }
     }
     .search-navigation{
+      @media(min-width: $screen-sm-min){
+        float:right;
+      }
       input{
         outline: none;
         max-width: 168px;
+        @media(max-width: $screen-xs-max){
+          margin-left: 24px
+        }
       }
       .search-icon{
         position: absolute;
         right: 184px;
+        @media(max-width: $screen-xs-max) {
+          right: 212px;
+        }
       }
     }
   }

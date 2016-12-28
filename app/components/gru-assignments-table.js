@@ -57,7 +57,7 @@ export default Ember.Component.extend(ModalMixin,{
         let model = {
           students: component.get('students'),
           assignment,
-          width:'75%',
+          width:'95%',
           callback:{
             success: assignment => component.sendAction('onUpdateAssignment', assignment)
           }

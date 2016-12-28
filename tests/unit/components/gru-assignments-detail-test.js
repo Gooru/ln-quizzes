@@ -12,7 +12,7 @@ test('addStudent', function(assert) {
   let expectedModel = {
     students: [],
     assignment: 'assignment',
-    width:'75%'
+    width:'95%'
   };
   component.set('assignment', 'assignment');
   component.set('students', 'students');

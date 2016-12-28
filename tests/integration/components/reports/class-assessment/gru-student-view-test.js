@@ -115,16 +115,24 @@ test('Layout', function (assert) {
   assert.equal($component.find('.gru-student-performance-box').length, 3, 'It should displayed 3 boxes');
 
   let $firstStudentPerformanceBox = $component.find('.gru-student-performance-box:first-child');
-  assert.equal(T.text($firstStudentPerformanceBox.find('.panel-heading')), 'Lorena Prendas Chavarria (100%)', 'It should say Lorena Prendas Chavarria (100%)');
+  let $firstPanelHeading = $firstStudentPerformanceBox.find('.panel-heading');
+  assert.equal(T.text($firstPanelHeading.find('.name')), 'Lorena Prendas Chavarria', 'Wrong first name');
+  assert.equal(T.text($firstPanelHeading.find('.score')), '100%', 'Wrong first score');
 
   let $lastStudentPerformanceBox = $component.find('.gru-student-performance-box:last-child');
-  assert.equal(T.text($lastStudentPerformanceBox.find('.panel-heading')), 'David Zumbado Alfaro (33%)', 'It should say David Zumbado Alfaro (33%)');
+  let $lastPanelHeading = $lastStudentPerformanceBox.find('.panel-heading');
+  assert.equal(T.text($lastPanelHeading.find('.name')), 'David Zumbado Alfaro', 'Wrong last name');
+  assert.equal(T.text($lastPanelHeading.find('.score')), '33%', 'Wrong last score');
 
   $alphabeticalSortBtn.click();
 
   $firstStudentPerformanceBox = $component.find('.gru-student-performance-box:first-child');
-  assert.equal(T.text($firstStudentPerformanceBox.find('.panel-heading')), 'Andres Charpentier Zuñiga (67%)', 'It should say Andres Charpentier Zuñiga');
+  $firstPanelHeading = $firstStudentPerformanceBox.find('.panel-heading');
+  assert.equal(T.text($firstPanelHeading.find('.name')), 'Andres Charpentier Zuñiga', 'Wrong first alphabetical name');
+  assert.equal(T.text($firstPanelHeading.find('.score')), '67%', 'Wrong first alphabetical score');
 
   $lastStudentPerformanceBox = $component.find('.gru-student-performance-box:last-child');
-  assert.equal(T.text($lastStudentPerformanceBox.find('.panel-heading')), 'Lorena Prendas Chavarria (100%)', 'It should say Lorena Prendas Chavarria');
+  $lastPanelHeading = $lastStudentPerformanceBox.find('.panel-heading');
+  assert.equal(T.text($lastPanelHeading.find('.name')), 'Lorena Prendas Chavarria', 'Wrong last alphabetical name');
+  assert.equal(T.text($lastPanelHeading.find('.score')), '100%', 'Wrong last alphabetical score');
 });

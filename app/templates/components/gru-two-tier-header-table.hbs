@@ -7,9 +7,9 @@
 
   <tr class="first-tier">
     {{#if rowHeadersHeader}}
-      <td></td>
+      <td class="fixed"></td>
     {{else}}
-      <td rowspan="2"></td>
+      <td rowspan="2" class="fixed"></td>
     {{/if}}
 
     {{#each firstTierHeaders as |header|}}
@@ -22,7 +22,7 @@
   <tr class="second-tier">
     {{#if rowHeadersHeader}}
       <th scope="col"
-          class="row-header"
+          class="row-header fixed"
         {{action "updateSortCriteria" 0 -1}}>
         <span>
           {{rowHeadersHeader.label}}
@@ -51,7 +51,7 @@
 
   {{#each sortedData as |row|}}
     <tr class="data">
-      <th scope="row"
+      <th scope="row" class="fixed"
         {{action "selectRowHeader" row.id}}>
         <span>{{row.header}}</span>
       </th>

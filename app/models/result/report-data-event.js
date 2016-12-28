@@ -48,7 +48,9 @@ export default Ember.Object.extend({
   /**
    * @property {string} profileCode student's anonymous code
    */
-  profileCode: null,
+  profileCode: Ember.computed('profileId', function() {
+    return this.get('profileId').slice(0, 4);
+  }),
 
   /**
    * @property {string} profileName student's name

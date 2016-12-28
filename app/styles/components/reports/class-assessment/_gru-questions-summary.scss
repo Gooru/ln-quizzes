@@ -5,29 +5,24 @@
 
   font-size: $font-size-small;
   position: relative;
+  margin: 0 0 15px;
 
   > ol {
     list-style: none;
     margin: 0;
     padding: 0;
 
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    @include flexbox;
+    @include flex-direction(column);
+    @include flex-wrap(wrap);
+    @include align-content(flex-start)
 
     height: $question-height * $questions-per-column;
 
     li {
       height: $question-height;
       max-width: $max-question-width;
+      padding-left: 2em;
       display: table;
 
       > a {

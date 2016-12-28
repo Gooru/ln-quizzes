@@ -1,17 +1,24 @@
 .gru-two-tier-header-table {
-  $table-cell-width: 90px;
-
+  overflow-x: auto;
+  position: relative;
   table {
     font-size: $font-size-h6;
     background: $white;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.07);
-    border-top: 47px solid $dark-400;
-    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.07);
+    border-top: 15px solid $dark-400;
+    border-radius: 0 5px 0 0;
     border-collapse: inherit;
+    margin-left: 120px;
+    .fixed {
+      width: 120px;
+      position: absolute;
+      left: 0;
+    }
 
     th, td {
       border: none;
-      padding: 10px 20px;
+      height: 32px;
+      padding: 0px 4px;
       font-weight: normal;
     }
 
@@ -24,9 +31,16 @@
     }
 
     > .first-tier {
-      height: 42px;
+      height: 32px;
       td, th {
         border-bottom: 1px solid $dark-200;
+      &.fixed {
+          border-top: 15px solid $dark-400;
+          border-radius: 5px 0 0;
+          border-collapse: inherit;
+          height: 47px;
+          top: 0
+        }
       }
       th {
         &:hover {
@@ -36,15 +50,25 @@
     }
 
     > .second-tier {
-      height: 47px;
+      height: 32px;
 
       th {
         line-height: 23px;
+        &.reaction {
+          min-width: 80px;
+        }
+        &.correct {
+          min-width: 50px
+        }
+        &.timeSpent {
+          min-width: 62px;
+        }
+
+
         > span {
           display: block;
           font-weight: normal;
           opacity: 0.6;
-          min-width: $table-cell-width;
         }
 
         i.gru-icon {
@@ -55,7 +79,6 @@
         }
 
         &.row-header {
-          width: auto;
           text-align: left;
 
           > span {
@@ -83,12 +106,6 @@
           }
         }
       }
-
-      + .data {
-        th, td {
-          padding-top: 20px;
-        }
-      }
     }
 
     > .data {
@@ -100,21 +117,11 @@
         &:hover {
           cursor: pointer;
         }
-        &:first-child {
-          padding-top: 20px;
-        }
       }
       td {
         border-width: 0 0 1px 0;
         border-color: $gray-lighter;
         border-style: solid;
-        width: $table-cell-width;
-      }
-
-      &:last-child {
-        th, td {
-          padding-bottom: 20px;
-        }
       }
     }
   }

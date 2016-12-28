@@ -5,22 +5,34 @@
   padding: 20px 0 10px 0;
 
   .content {
-    margin-bottom: 35px;
-
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
+    margin-bottom: 5px;
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
 
     .overview {
+      @include flexbox;
+      @include justify-content(space-between);
+      width: 100%;
+      padding: 0;
+      @media(min-width: $screen-sm-min) {
+        width: 50%;
+        padding: 0 15px 0 0;
+      }
+      @media(min-width: $screen-md-min) {
+        width: 40%;
+      }
+      @media(min-width: $screen-lg-min) {
+        width: 35%;
+      }
       list-style: none;
-      margin: 0;
-      padding: 0 15px 0 0;
+      margin: 0 0 15px;
       overflow: hidden;
       float: left;
       border-right: 1px solid $gray-lighter;
 
       > li {
-        width: 132px;
+        width: 33.3%;
         height: 147px;
         text-align: center;
         display: inline-block;
@@ -50,6 +62,7 @@
     }
 
     .gru-questions-summary {
+      width: 60%;
       z-index: 1;
       flex: 1;
       background: $white;
@@ -120,6 +133,7 @@
     }
     span.average {
       padding: 0 18px 0 8px;
+      white-space: nowrap;
       color: $gray-base;
       font-size: $font-size-h6;
     }

@@ -22,10 +22,12 @@
     (function () {
       let match = /context-id=([^&]*)/.exec(location.search);
       let contextId = match ? match[1] : '';
+      match = /anonymous=([^&]*)/.exec(location.search);
+      let anonymous = match ? match[1] : false;
       jQuery(document).ready(function () {
         var emberApp = window['QuizzesWebApp'];
         emberApp.start({
-          transition: [ 'reports.context', contextId ]
+          transition: [ 'reports.context', contextId, {queryParams: {anonymous: anonymous}} ]
         });
       });
     })(); // call anonymous function

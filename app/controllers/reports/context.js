@@ -52,7 +52,7 @@ export default Ember.Controller.extend({
      */
     launchAnonymous: function () {
       let url = window.location.href;
-      let separator = url.includes('?') ? '?' : '&';
+      let separator = !url.includes('?') ? '?' : '&';
       window.open(
         `${url}${separator}anonymous=true`, 'realTimeAnonymous',
         `width=${window.screen.width}, height=${window.screen.height}, left=0, top=0, scrollbars=1`,

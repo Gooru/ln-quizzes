@@ -16,6 +16,7 @@
 @import 'controllers/assign';
 @import 'controllers/player';
 @import 'controllers/reports/context';
+@import 'controllers/edit/assessment';
 
 // TODO: update these components so they follow the naming conventions
 @import 'components/app-dropdown';
@@ -66,6 +67,8 @@
 
 @import 'components/modals/modals';
 @import 'components/modals/gru-submit-confirmation';
+
+@import 'components/editor/assessment/gru-header';
 
 @import 'components/player/gru-navigation';
 @import 'components/player/gru-navigator';

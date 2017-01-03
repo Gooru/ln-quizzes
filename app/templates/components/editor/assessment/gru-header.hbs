@@ -1,0 +1,9 @@
+<header xmlns="http://www.w3.org/1999/html">
+  <h1>{{t "common.edit-assessment"}}</h1>
+
+  <nav>
+    <a href="#" class="tab {{if (eq selected 'information') 'selected'}}" {{action 'select' 'information'}}>{{t "common.information"}}</a>
+    <a href="#" class="tab {{if (eq selected 'builder') 'selected'}}" {{action 'select' 'builder'}}>{{t "common.builder"}}</a>
+  </nav>
+
+</header>

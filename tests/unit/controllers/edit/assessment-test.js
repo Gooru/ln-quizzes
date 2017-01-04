@@ -1,8 +1,9 @@
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('controller:edit/assessment', 'Unit | Controller | edit/assessment', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  needs: [
+    'service:i18n'
+  ]
 });
 
 // Replace this with your real tests.

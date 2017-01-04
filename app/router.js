@@ -23,10 +23,6 @@ Router.map(function() {
 
   this.route('assign', { path: '/assessment/:assessmentId' });
   this.route('assignments', { path: '/profile/:profileId' });
-
-  this.route('edit', function() {
-    this.route('assessment');
-  });
 });
 
 export default Router;

@@ -11,14 +11,14 @@
           <span>{{t "common.answer"}}</span>
         <span>
           {{#if result.started}}
-            {{{component (questionConfig result.question.type 'component.answer') question=result userAnswer=result.answer}}}
+            {{{component (question-config result.question.type 'component.answer') question=result userAnswer=result.answer}}}
           {{/if}}
         </span>
       </div>
         <div class="correct-answer">
           <span>{{t "common.correct-answer"}}</span>
           <span>
-            {{{component (questionConfig result.question.type 'component.answer') question=result showCorrect=true}}}
+            {{{component (question-config result.question.type 'component.answer') question=result showCorrect=true}}}
           </span>
         </div>
     </div>

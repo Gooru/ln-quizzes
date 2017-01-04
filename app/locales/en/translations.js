@@ -1403,7 +1403,7 @@ export default {
     "view-report":"View Report"
   },
   "gru-submission-format":{
-    "textbox":"Text box",
+    "textbox":"Text Box",
     "upload":"Upload (URL or File)"
   }
 };

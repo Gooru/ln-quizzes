@@ -1,7 +1,30 @@
 {{editor.assessment.gru-header options=options selected=selected headerActions=headerActions title=headerTitle}}
 
 {{#if (eq selected 'editor')}}
-editor
+    <section id="editor">
+      <div class="header">
+          <h2>Editor</h2>
+      </div>
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <div class="border-bottom">
+                  <h3>Assessment Task</h3>
+              </div>
+          </div>
+          <div class="panel-body">
+              <div class="panel panel-default submission-format panel-borderless">
+                  <div class="panel-heading">
+                      <div class="border-bottom">
+                          <h3>Student Submission Format (Select one)</h3>
+                      </div>
+                  </div>
+                  <div class="panel-body">
+                    {{gru-submission-format}}
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
 {{/if}}
 
 {{#if (eq selected 'information')}}

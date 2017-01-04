@@ -34,7 +34,7 @@ export default Ember.Component.extend({
    */
   submissionFormats: Ember.A([
     Ember.Object.create({
-      format:'texbox'
+      format:'textbox'
     }),
     Ember.Object.create({
       format:'upload'

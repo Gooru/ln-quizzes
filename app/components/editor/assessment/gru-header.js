@@ -18,6 +18,12 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Properties
 
-  selected: 'information'
+  headerOptions: [],
+
+  options: [],
+
+  selected: '',
+
+  title: ''
 
 });

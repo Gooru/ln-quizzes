@@ -12,13 +12,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{editor/assessment/gru-header}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#editor/assessment/gru-header}}
-      template block text
-    {{/editor/assessment/gru-header}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

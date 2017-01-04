@@ -7,13 +7,26 @@
       font-size: 34px;
       margin: 0;
       color: $white;
-      display: inline-block;
+      display: block;
+    }
+  }
+  .actions {
+    float: right;
+    display: inline-block;
+    padding-top: 10px;
+    font-size: 14px;
+    button {
+      padding: 6px 8px;
+      margin-left: 2px;
+    }
+    i {
+      font-size: 18px;
     }
   }
   nav {
     padding-top: 15px;
     white-space: nowrap;
-    display: block;
+    display: inline-block;
     .tab {
       display: inline-block;
       vertical-align: middle;

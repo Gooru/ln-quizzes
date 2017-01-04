@@ -12,7 +12,7 @@ export default {
     "about": "About",
     "about-you": "About You",
     "add": "Add",
-    "add-assessment": "Create New Assessment",
+    "add-assessment": "Add New Assessment",
     "add-collaborator": "Add Collaborator",
     "add-collection": "Create New Collection",
     "add-collection-item": "Create Resource or Question",
@@ -55,7 +55,7 @@ export default {
     "assessmentInitial": "A",
     "assessments": "Assessments",
     "assign":"Assign",
-    "assign-to-class": "Assign to Classroom",
+    "assign-to-class": "Assign to Class",
     "assign-to-course": "Assign to Course",
     "attempt": "Attempt number",
     "audience": "Audience",
@@ -68,7 +68,6 @@ export default {
     "beta": "Beta",
     "big-ideas": "Big Ideas",
     "biography": "Biography",
-    "builder": "Editor",
     "cancel": "Cancel",
     "category": "Category",
     "categoryOptions": {
@@ -125,6 +124,7 @@ export default {
     "edit-course": "Edit Course",
     "edit-question": "Edit Question",
     "edit-resource": "Edit Resource",
+    "editor": "Editor",
     "email_support": "support@gooru.org",
     "emotions": {
       "emotion-1": "I need help",

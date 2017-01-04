@@ -11,6 +11,9 @@ Router.map(function() {
   this.route('index', {path: '/'});
 
   this.route('player', { path: '/player/:contextId' });
+  this.route('edit', function() {
+    this.route('assessment', { path: '/assessment/:assessmentId' });
+  });
 
   this.route('reports', function () {
     this.route('context', { path: '/context/:contextId' });
@@ -20,6 +23,10 @@ Router.map(function() {
 
   this.route('assign', { path: '/assessment/:assessmentId' });
   this.route('assignments', { path: '/profile/:profileId' });
+
+  this.route('edit', function() {
+    this.route('assessment');
+  });
 });
 
 export default Router;

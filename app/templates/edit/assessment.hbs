@@ -5,7 +5,7 @@
         <div class="header">
             <h2>{{t 'common.editor'}}</h2>
         </div>
-        <div class="panel panel-default">
+        <div class="panel panel-default assessment-task">
             <div class="panel-heading">
                 <div class="border-bottom">
                     <h3>{{t 'common.assessment-task'}}</h3>
@@ -28,5 +28,7 @@
 {{/if}}
 
 {{#if (eq selected 'information')}}
-information
+    <section id="information">
+        information
+    </section>
 {{/if}}

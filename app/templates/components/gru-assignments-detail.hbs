@@ -41,14 +41,14 @@
             <div class="text-container">
                 {{#if isTeacher}}
                     <div class="date-modified">
-                        <span><b>{{t 'assignments-view.dateModified'}}: </b> {{formatDate assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</span>
+                        <span><b>{{t 'assignments-view.dateModified'}}: </b> {{format-date assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</span>
                     </div>
                 {{else}}
                   <div class="questions">
                       <span><b>{{t 'assignment-details.questions'}}:</b> {{assignment.questions.length}}</span>
                   </div>
                   <div class="date-assigned">
-                      <span><b>{{t 'assignments-view.date'}}: </b> {{formatDate assignment.assignedDate 'h:mm a MM/DD/YYYY'}}</span>
+                      <span><b>{{t 'assignments-view.date'}}: </b> {{format-date assignment.assignedDate 'h:mm a MM/DD/YYYY'}}</span>
                   </div>
                 {{/if}}
             </div>
@@ -60,7 +60,7 @@
             </div>
             {{#if isTeacher}}
                 <div class="due-date">
-                    <span><b>{{t 'assignments-view.dueDate'}}: </b>{{formatDate assignment.dueDate 'h:mm a MM/DD/YYYY'}}</span>
+                    <span><b>{{t 'assignments-view.dueDate'}}: </b>{{format-date assignment.dueDate 'h:mm a MM/DD/YYYY'}}</span>
                 </div>
             {{/if}}
             <div class="navigation">

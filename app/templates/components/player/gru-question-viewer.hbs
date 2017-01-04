@@ -48,7 +48,7 @@
         <h2>{{t "gru-question-viewer.answer"}}</h2>
 
         <form {{action "submitQuestion" on="submit"}}>
-          {{component (questionConfig question.type 'component.player')
+          {{component (question-config question.type 'component.player')
           instructionsActionTextKey=instructionsActionTextKey
           question=question
           readOnly=isInputDisabled

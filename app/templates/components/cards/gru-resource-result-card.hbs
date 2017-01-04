@@ -24,10 +24,10 @@
     <div class="result-details {{if item.timeSpent "hasStarted"}}">
       {{#if item.timeSpent}}
         <div>
-          {{gru-icon name='av_timer'}}{{formatTime item.timeSpent}}
+          {{gru-icon name='av_timer'}}{{format-time item.timeSpent}}
           {{#if item.reaction}}
             <span class="resource-reaction">
-              {{reactionIcon item.reaction}}
+              {{reaction-icon item.reaction}}
             </span>
           {{/if}}
         </div>
@@ -38,4 +38,3 @@
   </div>
   --}}
 </div>
-

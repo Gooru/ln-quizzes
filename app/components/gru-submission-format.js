@@ -16,7 +16,9 @@ export default Ember.Component.extend({
 
 
   actions: {
-
+    /**
+     * Selected format type
+     */
     selectType:function(type){
       this.set('selectedType',type);
     }

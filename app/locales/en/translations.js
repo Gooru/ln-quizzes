@@ -51,6 +51,7 @@ export default {
       one: "Assessment",
       other: "Assessments"
     },
+    "assessment-task":"Assessment Task",
     "assessment-title": "Assessment Title",
     "assessmentInitial": "A",
     "assessments": "Assessments",
@@ -409,6 +410,7 @@ export default {
     "study": "Study",
     "student": "Student",
     "student-id": "Student ID (not displayed on Profile)",
+    "student-submission-format":"Student Submission Format (Select one)",
     "subject-and-framework": "Subject and Framework",
     "submit": "Submit",
     "submit-all": "Submit all",
@@ -580,7 +582,7 @@ export default {
   "content": {
     "assessments":{
       "edit":{
-          "best-practices": "<p>An assessment is a set of scored questions which you and your students can use to monitor understanding and performance.</p><p>Use a variety of question types (including several based on the SBAC) in your assessment so students can demonstrate understanding in different ways. We recommend tagging each question to standards, micro-standards, and Webb's Depth of Knowledge.</p>"
+        "best-practices": "<p>An assessment is a set of scored questions which you and your students can use to monitor understanding and performance.</p><p>Use a variety of question types (including several based on the SBAC) in your assessment so students can demonstrate understanding in different ways. We recommend tagging each question to standards, micro-standards, and Webb's Depth of Knowledge.</p>"
       }
     },
     "classes": {

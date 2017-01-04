@@ -1,24 +1,37 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import wait from 'ember-test-helpers/wait';
 
 moduleForComponent('gru-submission-format', 'Integration | Component | gru submission format', {
-  integration: true
+  integration: true,
+  beforeEach: function () {
+    this.i18n = this.container.lookup('service:i18n');
+    this.i18n.set("locale","en");
+  }
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
+test('Layout', function(assert) {
   this.render(hbs`{{gru-submission-format}}`);
+  var $submissionFormat = this.$();
+  assert.ok($submissionFormat.find('.panel.submission-format-textbox').length, 'Missing text box option');
+  assert.ok($submissionFormat.find('.panel.submission-format-upload').length, 'Missing upload option');
+  assert.equal($submissionFormat.find('.panel.submission-format-textbox .panel-footer').text().trim(),this.get('i18n').t('gru-submission-format.textbox').string, 'Incorrect textbox label');
+  assert.equal($submissionFormat.find('.panel.submission-format-upload .panel-footer').text().trim(),this.get('i18n').t('gru-submission-format.upload').string, 'Incorrect upload label');
+});
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#gru-submission-format}}
-      template block text
-    {{/gru-submission-format}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+test('Select Option', function(assert) {
+  this.render(hbs`{{gru-submission-format}}`);
+  var $submissionFormat = this.$();
+  var $upload = $submissionFormat.find('.panel.submission-format-upload');
+  $upload.click();
+  return wait().then(function () {
+    assert.notOk($submissionFormat.find('.panel.submission-format-textbox.active').length, 'Textbox should not be active');
+    assert.ok($submissionFormat.find('.panel.submission-format-upload.active').length, 'Upload should be active');
+    var $textbox = $submissionFormat.find('.panel.submission-format-textbox');
+    $textbox.click();
+    return wait().then(function () {
+      assert.ok($submissionFormat.find('.panel.submission-format-textbox.active').length, 'Textbox should be active');
+      assert.notOk($submissionFormat.find('.panel.submission-format-upload.active').length, 'Upload should notbe active');
+    });
+  });
 });

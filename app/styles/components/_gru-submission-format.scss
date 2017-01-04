@@ -1,0 +1,52 @@
+.gru-submission-format{
+  .panel.active{
+    opacity:0.6;
+  }
+  margin-top:10px;
+  @include flexbox;
+  @include justify-content(center);
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  .panel{
+    border-radius: 4px;
+    width: 184px;
+    height: 96px;
+    float: left;
+    margin: 0 10px 40px 10px;
+    cursor: pointer;
+
+    .panel-body{
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      background-color:$blue-400;
+      padding: 10px 15px 10px 15px;
+
+      .format-icon{
+        display: inline-block;
+        margin: 0 auto;
+        vertical-align: top;
+        -webkit-background-size: 70px 70px;
+        background-size: 70px 70px;
+        height: 70px;
+        width: 70px;
+      }
+    }
+    .panel-footer{
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      background-color:$blue-500;
+      color:$white;
+      padding: 5px 15px 5px 15px;
+    }
+  }
+  .submission-format-textbox{
+    i{
+      background: url('');
+    }
+  }
+  .submission-format-upload{
+    i{
+      background: url('');
+    }
+  }
+}

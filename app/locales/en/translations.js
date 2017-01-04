@@ -1401,5 +1401,9 @@ export default {
     "redo":"Redo",
     "show-score":"Show Score",
     "view-report":"View Report"
+  },
+  "gru-submission-format":{
+    "textbox":"Text box",
+    "upload":"Upload (URL or File)"
   }
 };

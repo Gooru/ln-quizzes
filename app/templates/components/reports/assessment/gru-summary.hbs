@@ -10,7 +10,7 @@
   {{else}}
     <div class="thumbnail">
       <span class="title">{{t "gru-assessment-report.gru-summary.total-time-spent"}}</span>
-      <span class="time-spent">{{gru-icon name='av_timer'}}<span>{{formatTime contextResult.totalTimeSpent}}</span></span>
+      <span class="time-spent">{{gru-icon name='av_timer'}}<span>{{format-time contextResult.totalTimeSpent}}</span></span>
     </div>
   {{/if}}
   <div class="overview">
@@ -44,14 +44,14 @@
       {{/if}}
       {{#if contextResult.submittedAt}}
         <span class="date">
-        {{gru-icon name='event'}}<span>{{formatDate contextResult.submittedAt 'h:mm a MMM. Do, YYYY'}}</span>
+        {{gru-icon name='event'}}<span>{{format-date contextResult.submittedAt 'h:mm a MMM. Do, YYYY'}}</span>
       </span>
       {{/if}}
       <span class="time">
-        {{gru-icon name='av_timer'}}<span>{{formatTime contextResult.totalTimeSpent}}</span>
+        {{gru-icon name='av_timer'}}<span>{{format-time contextResult.totalTimeSpent}}</span>
       </span>
       <span class="reaction">
-        {{reactionIcon contextResult.averageReaction}}
+        {{reaction-icon contextResult.averageReaction}}
       </span>
     </div>
     <div class="bubbles">

@@ -30,14 +30,14 @@
             </td>
           {{#unless isTeacher}}
             <td class="score col-md-2 col-sm-2 col-xs-3">
-                <span class="score" style={{gradeColor assignment.score 'background-color'}}>
+                <span class="score" style={{grade-color assignment.score 'background-color'}}>
                   {{if assignment.hasStarted assignment.score '--'}}%
                 </span>
             </td>
           {{/unless}}
           {{#if isTeacher}}
               <td class="title col-md-3 col-sm-6 col-xs-8">{{assignment.title}}</td>
-              <td class="modified-date hidden-xs col-md-3 col-sm-5">{{formatDate assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</td>
+              <td class="modified-date hidden-xs col-md-3 col-sm-5">{{format-date assignment.modifiedDate 'h:mm a MM/DD/YYYY'}}</td>
               <td class="students-assigned hidden-sm col-md-2 col-xs-2">{{assignment.totalStudents}}</td>
               <td class="actions hidden-sm hidden-xs col-md-3 ">
                   <button class="btn btn-default add-student" {{action 'addStudent' assignment}}>{{gru-icon name='person_add'}}</button>
@@ -46,7 +46,7 @@
           {{else}}
               <td class="title col-md-3 col-sm-5 col-xs-8">{{assignment.title}}</td>
               <td class="standards hidden-sm hidden-xs col-md-2">{{assignment.standards}}</td>
-              <td class="due-date hidden-sm hidden-xs col-md-2">{{formatDate assignment.dueDate 'h:mm a MM/DD/YYYY'}}</td>
+              <td class="due-date hidden-sm hidden-xs col-md-2">{{format-date assignment.dueDate 'h:mm a MM/DD/YYYY'}}</td>
               <td class="attempts col-md-2  col-sm-4 col-xs-1">{{assignment.attempts}}</td>
             {{/if}}
             <td class="actions visible-xs col-xs-2" {{action 'openActions' assignment}}>{{gru-icon name='more_vert'}}</td>

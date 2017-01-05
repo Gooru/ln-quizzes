@@ -11,6 +11,9 @@ Router.map(function() {
   this.route('index', {path: '/'});
 
   this.route('player', { path: '/player/:contextId' });
+  this.route('edit', function() {
+    this.route('assessment', { path: '/assessment/:assessmentId' });
+  });
 
   this.route('reports', function () {
     this.route('context', { path: '/context/:contextId' });

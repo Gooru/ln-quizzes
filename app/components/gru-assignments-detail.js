@@ -17,25 +17,6 @@ export default Ember.Component.extend(ModalMixin,{
   classNames: ['gru-assignments-detail'],
 
   // -------------------------------------------------------------------------
-  // Events
-
-  /**
-   * DidInsertElement ember event
-   */
-  didInsertElement: function() {
-    const component = this;
-
-    component.calculateHeight();
-
-    window.onresize = function() {
-      component.calculateHeight();
-    };
-  },
-
-  willDestroyElement: function() {
-    window.onresize = null;
-  },
-  // -------------------------------------------------------------------------
   // Actions
 
   actions:{
@@ -107,20 +88,6 @@ export default Ember.Component.extend(ModalMixin,{
   assignment: null,
 
   /**
-   * @property {Number} the calculated resource content table height
-   */
-  calculatedContentHeight: null,
-
-  /**
-   *Return the table content height to print on inline styles
-   */
-  contentHeight: Ember.computed('calculatedContentHeight', function() {
-    var height = this.get('calculatedContentHeight');
-    const heightString = height > 0 && height >= 400 ? `${height}px` : '100%';
-    return Ember.String.htmlSafe(`max-height: ${heightString}`);
-  }),
-
-  /**
    *Indicate if the assignment has attempts left
    */
   hasAttempts: Ember.computed('assignment.attempts', 'assignment.totalAttempts',
@@ -146,17 +113,6 @@ export default Ember.Component.extend(ModalMixin,{
   /**
    * @property {Array} Students list
    */
-  students: null,
-
-  // -------------------------------------------------------------------------
-  // Methods
-  /**
-   *Calculate the height of the content
-   */
-  calculateHeight: function() {
-    var contentHeight = $('.ember-view').parent().outerHeight(true) -
-      $('.table-fixed thead ').height() - $('.search').height();
-    this.set('calculatedContentHeight', contentHeight);
-  }
+  students: null
 
 });

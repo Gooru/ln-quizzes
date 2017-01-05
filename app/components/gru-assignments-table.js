@@ -5,10 +5,12 @@ import Profile from 'quizzes/models/profile/profile';
 export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
   // Dependencies
+
   /**
    * @property {Service} I18N service
    */
   i18n: Ember.inject.service(),
+
   /**
    * @property {Service} profile service
    */
@@ -118,22 +120,6 @@ export default Ember.Component.extend(ModalMixin,{
       }
     }
   },
-  // -------------------------------------------------------------------------
-  // Events
-
-  /**
-   * DidInsertElement ember event
-   */
-  didInsertElement: function() {
-    const component = this;
-
-    component.calculateHeight();
-
-    window.onresize = function() {
-      component.calculateHeight();
-    };
-
-  },
 
   // -------------------------------------------------------------------------
   // Properties
@@ -141,10 +127,6 @@ export default Ember.Component.extend(ModalMixin,{
    * @property {Context} selected assigment
    */
   actualAssignment:null,
-  /**
-   * @property {Number} the calculated resource content table height
-   */
-  calculatedTableContentHeight: null,
 
   /**
    * @property {Boolean} Indicate if is a teacher view
@@ -180,26 +162,8 @@ export default Ember.Component.extend(ModalMixin,{
    */
   showMenu:false,
 
-  /**
-   *Return the table content height to print on inline styles
-   */
-  tableContentHeight: Ember.computed('calculatedTableContentHeight', function() {
-    var height = this.get('calculatedTableContentHeight');
-    const heightString = height > 0 ? `${height}px` : '100%';
-    return Ember.String.htmlSafe(`max-height: ${heightString}`);
-  }),
-
   // -------------------------------------------------------------------------
   // Methods
-  /**
-   *Calculate the height of the content
-   */
-  calculateHeight: function() {
-    let height = $('.ember-view').parent().outerHeight(true) > window.outerHeight ?
-      window.outerHeight : $('.ember-view').parent().outerHeight(true)
-    - $('.table-fixed thead ').height() - $('.search').height();
-    this.set('calculatedTableContentHeight', height);
-  },
 
   /**
    * Set assignment as selected

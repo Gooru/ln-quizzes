@@ -25,6 +25,10 @@ export default Ember.Component.extend({
     selectAssignment:function(assignment){
       this.set('selectedAssignment',assignment);
     },
+
+    /**
+     * Update assignment
+     */
     updateAssignment: function (assignmentUpdated) {
       this.set('selectedAssignment',assignmentUpdated);
       let assignment = this.get('assignments').findBy('id',assignmentUpdated.get('id'));

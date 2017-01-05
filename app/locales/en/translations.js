@@ -1371,7 +1371,7 @@ export default {
     "title":"Title: {{title}}",
     "search-by-name":"Search by name",
     "select-all":"Select all ({{count}})",
-    "select-students":"Select students",
+    "select-students":"Select student(s)",
     "selected-count":"Selected {{selected}} of {{total}}",
     "students-roster":"Students Roster"
   },

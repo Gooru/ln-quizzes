@@ -25,10 +25,10 @@
         display: inline-block;
         margin: 0 auto;
         vertical-align: top;
-        -webkit-background-size: 70px 70px;
-        background-size: 70px 70px;
-        height: 60px;
-        width: 60px;
+        -webkit-background-size: 52px 52px;
+        background-size: 52px 52px;
+        height: 52px;
+        width: 52px;
       }
     }
     .panel-footer{
@@ -41,13 +41,15 @@
     }
   }
   .submission-format-textbox{
+    text-align: center;
     i{
-      background: url('');
+      background: url('quizzes/text-box-icon.svg');
     }
   }
   .submission-format-upload{
+    text-align: center;
     i{
-      background: url('');
+      background: url('quizzes/upload-icon.svg');
     }
   }
 }

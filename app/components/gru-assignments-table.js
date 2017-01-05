@@ -5,10 +5,12 @@ import Profile from 'quizzes/models/profile/profile';
 export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
   // Dependencies
+
   /**
    * @property {Service} I18N service
    */
   i18n: Ember.inject.service(),
+
   /**
    * @property {Service} profile service
    */

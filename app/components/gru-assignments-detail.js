@@ -17,12 +17,6 @@ export default Ember.Component.extend(ModalMixin,{
   classNames: ['gru-assignments-detail'],
 
   // -------------------------------------------------------------------------
-  // Events
-
-  willDestroyElement: function() {
-    window.onresize = null;
-  },
-  // -------------------------------------------------------------------------
   // Actions
 
   actions:{

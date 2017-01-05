@@ -22,7 +22,7 @@
         <th class="options-header visible-xs col-xs-2"></th>
     </tr>
     </thead>
-    <tbody style={{tableContentHeight}}>
+    <tbody >
    {{#each assignments as |assignment index|}}
         <tr class="{{if assignment.selected 'selected'}}" {{action 'selectAssignment' assignment}}>
             <td class="num col-xs-1">

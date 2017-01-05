@@ -1,8 +1,12 @@
 .gru-assignments-list{
+  @include flexbox;
+  @include flex-direction(column);
+  height: 100%;
   .out-of-scope{
     display: none;
   }
   .header{
+    margin-right: 0;
     .search{
       .search-navigation{
         margin: 10px 32px;
@@ -40,6 +44,7 @@
   }
   .assignments-list-container{
     @include flexbox;
+    height: 100%;
     .assignments-list{
       padding-right: 0px;
       width: 100%;
@@ -47,7 +52,7 @@
     .assignments-info{
       margin-left: 10px;
       width: 70%;
-      height: inherit;
+      height: 100%;
       @media(min-width:  $screen-md-min) {
         width: 40%;
       }

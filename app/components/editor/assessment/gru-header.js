@@ -18,12 +18,24 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Properties
 
-  headerOptions: [],
+  /**
+   * @property {Object[]} headerActions List of action buttons to show
+   */
+  headerActions: [],
 
+  /**
+   * @property {Object[]} options List of tab options to show
+   */
   options: [],
 
+  /**
+   * @property {String} selected Current option selected
+   */
   selected: '',
 
+  /**
+   * @property {String} title Header title
+   */
   title: ''
 
 });

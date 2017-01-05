@@ -17,6 +17,9 @@ export default Ember.Controller.extend({
   // -------------------------------------------------------------------------
   // Properties
 
+  /**
+   * @property {Object[]} headerActions List of action buttons to show
+   */
   headerActions: Ember.computed(function(){
     return [{
       name: 'delete',
@@ -41,10 +44,16 @@ export default Ember.Controller.extend({
     }];
   }),
 
+  /**
+   * @property {String} headerTitle
+   */
   headerTitle: Ember.computed(function() {
     return this.get('i18n').t('common.add-assessment');
   }),
 
+  /**
+   * @property {Object[]} options List of tab options to show
+   */
   options: Ember.computed(function(){
     return [{
       name: 'editor',
@@ -55,5 +64,9 @@ export default Ember.Controller.extend({
     }];
   }),
 
+
+  /**
+   * @property {String} selected Current option selected
+   */
   selected: 'editor'
 });

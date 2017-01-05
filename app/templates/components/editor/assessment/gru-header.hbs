@@ -3,7 +3,7 @@
 
   <nav>
     {{#each options as |option|}}
-      <a href="#" class="tab {{if (eq selected option.name) 'selected'}}" {{action 'select' option.name}}>{{option.text}}</a>
+      <a href="#" class="tab {{option.name}} {{if (eq selected option.name) 'selected'}}" {{action 'select' option.name}}>{{option.text}}</a>
     {{/each}}
   </nav>
 

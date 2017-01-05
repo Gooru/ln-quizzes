@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/vendor.css">
   <link rel="stylesheet" href="assets/quizzes.css">
 </head>
-<body style="background-color: #ffffff;">
+<body>
 <script src="assets/vendor.js"></script>
 <script src="assets/quizzes.js"></script>
 
@@ -23,7 +23,7 @@
     jQuery(document).ready(function () {
       var emberApp = window['QuizzesWebApp'];
       emberApp.start({
-        transition: [ 'edit.assessment', '' ],    
+        transition: [ 'edit.assessment', '' ]
       });
     });
   })(); // call anonymous function

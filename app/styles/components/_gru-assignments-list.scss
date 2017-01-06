@@ -45,9 +45,11 @@
   .assignments-list-container{
     @include flexbox;
     height: 100%;
+    overflow: hidden;
     .assignments-list{
       padding-right: 0px;
       width: 100%;
+      height: 100%;
     }
     .assignments-info{
       margin-left: 10px;

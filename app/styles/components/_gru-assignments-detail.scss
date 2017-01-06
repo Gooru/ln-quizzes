@@ -3,7 +3,6 @@
   .assignment-detail{
     @include flexbox;
     @include flex-direction(column);
-    overflow: hidden;
     height: 100%;
     .panel-heading{
       text-align: right;
@@ -36,8 +35,7 @@
       }
     }
     .panel-body{
-      overflow-y: auto;
-      height: 100%;
+      overflow: auto;
       span.score{
         width: 46px;
         height: 36px;

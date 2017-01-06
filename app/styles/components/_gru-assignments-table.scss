@@ -2,9 +2,10 @@
   height: 100%;
   table{
     height: 100%;
+    @include flexbox;
+    @include flex-direction(column);
     thead{
       width: 100%;
-      display: block;
       tr{
         @include flexbox;
         th{
@@ -29,58 +30,58 @@
     tbody{
       overflow-y: auto;
       width: 100%;
-      height: calc(100% - 56px);
+      height: 100%;
       display: block;
-    tr{
-      cursor: pointer;
-      @include flexbox;
-      td{
-        line-height: 32px;
-        text-align: center;
-        background-color: $white;
-         &.title{
-           text-align: left;
-          }
-          span.score{
-            width: 46px;
-            height: 36px;
-            text-align: center;
-            line-height: 36px;
-            border-radius: 5px;
-            color: #fff;
-            display: inline-block;
-          }
-        &.actions{
-          button{
-            margin: 0 2px;
-            i{
-              font-size: 24px;
+      tr{
+        cursor: pointer;
+        @include flexbox;
+        td{
+          line-height: 32px;
+          text-align: center;
+          background-color: $white;
+           &.title{
+             text-align: left;
             }
-            span.real-time-icon {
-              background-image: url('quizzes/images/on-air-gray.svg');
-              background-size: 24px 24px;
-              display: block;
-              height: 24px;
-              margin: 0 auto;
-              width: 24px;
+            span.score{
+              width: 46px;
+              height: 36px;
+              text-align: center;
+              line-height: 36px;
+              border-radius: 5px;
+              color: #fff;
+              display: inline-block;
             }
-          }
-          i.more_vert{
-            vertical-align: middle;
+          &.actions{
+            button{
+              margin: 0 2px;
+              i{
+                font-size: 24px;
+              }
+              span.real-time-icon {
+                background-image: url('quizzes/images/on-air-gray.svg');
+                background-size: 24px 24px;
+                display: block;
+                height: 24px;
+                margin: 0 auto;
+                width: 24px;
+              }
+            }
+            i.more_vert{
+              vertical-align: middle;
+            }
           }
         }
-      }
-      &.selected{
-        td{
+        &.selected{
+          td{
+              background-color:$sky-100;
+          }
+        }
+        &:hover{
+          td{
             background-color:$sky-100;
+          }
         }
       }
-      &:hover{
-        td{
-          background-color:$sky-100;
-        }
-      }
-     }
     }
   }
   .table-fixed tbody td, .table-fixed thead > tr> th {

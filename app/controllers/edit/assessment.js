@@ -43,7 +43,20 @@ export default Ember.Controller.extend({
       icon: 'person_add'
     }];
   }),
-
+  /**
+   * @property {Object[]} headerActions List of action buttons to show
+   */
+  footerActions: Ember.computed(function(){
+    return [{
+      name: 'cancel',
+      text: this.get('i18n').t('common.cancel'),
+      class: 'btn-default'
+    }, {
+      name: 'save',
+      text: this.get('i18n').t('common.save'),
+      class: 'btn-primary'
+    }];
+  }),
   /**
    * @property {String} headerTitle
    */

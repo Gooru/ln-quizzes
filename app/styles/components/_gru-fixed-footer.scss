@@ -1,0 +1,18 @@
+.gru-fixed-footer{
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:60px;
+  width:100%;
+  background-color: $dark-400;
+
+  .actions{
+    display: inline-block;
+    float: right;
+    margin: 15px 0;
+    button{
+      font-size: $font-size-h6;
+      margin-right:6px;
+    }
+  }
+}

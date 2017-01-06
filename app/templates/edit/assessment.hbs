@@ -36,6 +36,25 @@
         <div class="header">
             <h2>{{t 'common.information'}}</h2>
         </div>
+        <div class="content">
+          {{gru-image isEditing = true}}
+            <div class="panel panel-default information">
+                <div class="panel-body">
+                    <div class="title">
+                        <label>
+                            <span class="required">{{t "common.assessment-title"}}</span>
+                            {{validation.gru-input model=assessment valuePath='title' maxLength=50}}
+                        </label>
+                    </div>
+                    <div class="learning-objective">
+                        <label>
+                            <span>{{t "common.learning-objective"}}</span>
+                            {{validation.gru-textarea rawTextareaValue=assessment.learningObjective model=assessment valuePath='learningObjective' maxLength=500 rows=1}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
       {{gru-fixed-footer footerActions=footerActions}}
     </section>
 {{/if}}

@@ -71,5 +71,29 @@
       margin-top: 25px;
     }
   }
+  #information{
+    margin-bottom: 120px;
+    .content{
+      @include flexbox;
+      .gru-image{
+        float: left;
+        margin-right: 20px;
+      }
+      .panel.information{
+        @include flex(1);
+        border-radius: 6px;
+        .title{
+          .form-group{
+            width: 300px;
+          }
+        }
+        .learning-objective{
+          .form-group{
+            width: 700px;
+          }
+        }
+      }
+    }
+  }
 }
 

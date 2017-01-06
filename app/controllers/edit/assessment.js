@@ -16,6 +16,10 @@ export default Ember.Controller.extend({
 
   // -------------------------------------------------------------------------
   // Properties
+  assessment:Ember.Object.create({
+    title:'',
+    learningObjective:''
+  }),
 
   /**
    * @property {Object[]} headerActions List of action buttons to show
@@ -81,5 +85,9 @@ export default Ember.Controller.extend({
   /**
    * @property {String} selected Current option selected
    */
-  selected: 'editor'
+  selected: 'editor',
+  /**
+   * Indicate if is editing view
+   */
+  isEditing:true
 });

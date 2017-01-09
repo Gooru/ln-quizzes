@@ -1,11 +1,26 @@
+.edit_assessment {
+ overflow: hidden;
+height: 100%;
+ > .ember-view,
+ .quizzes,
+ .app-container {
+   height: 100%;
+ }
+  .app-container {
+  margin: 0;
+  padding: 0;
+  position: relative;
+ }
+}
 .app-container {
   margin: 0;
   padding: 0;
-
+  @include flexbox();
+  @include flex-direction(column);
   > section {
-
     padding-left: 5%;
     padding-right: 5%;
+    overflow: auto;
 
     h2 {
       display: inline-block;
@@ -69,6 +84,32 @@
     }
     .math-editor{
       margin-top: 25px;
+    }
+  }
+  #information{
+    height: 100%;
+    padding-bottom: 40px;
+    margin-bottom:40px;
+    .content{
+      @include flexbox;
+      .gru-image{
+        float: left;
+        margin-right: 20px;
+      }
+      .panel.information{
+        @include flex(1);
+        border-radius: 6px;
+        .title{
+          .form-group{
+            width: 300px;
+          }
+        }
+        .learning-objective{
+          .form-group{
+            width: 700px;
+          }
+        }
+      }
     }
   }
 }

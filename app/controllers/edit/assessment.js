@@ -16,6 +16,10 @@ export default Ember.Controller.extend({
 
   // -------------------------------------------------------------------------
   // Properties
+  assessment:Ember.Object.create({
+    title:'',
+    learningObjective:''
+  }),
 
   /**
    * @property {Object[]} headerActions List of action buttons to show
@@ -43,7 +47,20 @@ export default Ember.Controller.extend({
       icon: 'person_add'
     }];
   }),
-
+  /**
+   * @property {Object[]} headerActions List of action buttons to show
+   */
+  footerActions: Ember.computed(function(){
+    return [{
+      name: 'cancel',
+      text: this.get('i18n').t('common.cancel'),
+      class: 'btn-default'
+    }, {
+      name: 'save',
+      text: this.get('i18n').t('common.save'),
+      class: 'btn-primary'
+    }];
+  }),
   /**
    * @property {String} headerTitle
    */
@@ -68,5 +85,9 @@ export default Ember.Controller.extend({
   /**
    * @property {String} selected Current option selected
    */
-  selected: 'editor'
+  selected: 'editor',
+  /**
+   * Indicate if is editing view
+   */
+  isEditing:true
 });

@@ -1,0 +1,24 @@
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active from-web tab">
+        <a href="#from-web" aria-controls="fromWeb" role="tab" data-toggle="tab" {{action 'selectOption' 'fromWeb'}}>
+            <span class="lead">{{t 'gru-rubric-creation.from-web'}}</span>
+        </a>
+    </li>
+    <li role="presentation" class="from-computer tab">
+        <a href="#from-computer" aria-controls="fromComputer" role="tab" data-toggle="tab" {{action 'selectOption' 'fromComputer'}}>
+            <span class="lead">{{t 'gru-rubric-creation.from-computer'}}</span>
+        </a>
+    </li>
+</ul>
+<div class="content tab-content">
+    <div role="tabpanel" class="tab-pane row {{if showFromWeb 'active'}}" id="from-web">
+        <div class="row">
+            FROM WEB
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane row {{if showFromComputer 'active'}}" id="from-computer">
+        <div class="row">
+            FROM COMPUTER
+        </div>
+    </div>
+</div>

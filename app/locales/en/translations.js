@@ -1409,5 +1409,9 @@ export default {
   "gru-submission-format":{
     "textbox":"Text Box",
     "upload":"Upload (URL or File)"
+  },
+  "gru-rubric-creation":{
+    "from-web":"From Web",
+    "from-computer":"From Your Computer"
   }
 };

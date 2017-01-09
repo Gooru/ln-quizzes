@@ -32,7 +32,7 @@ export default Ember.Component.extend({
     var component = this;
     component._super( ...arguments );
 
-    component.get("lookupService").readDepthOfKnowledgeItems()
+    component.get('lookupService').readDepthOfKnowledgeItems()
       .then(function(knowledge) {
         component.set('knowledge', knowledge);
         component.set('editKnowledge', component.getOptionsArray(knowledge, component.get('srcSelectedKnowledge')));

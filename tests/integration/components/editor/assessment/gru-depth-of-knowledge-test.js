@@ -26,7 +26,7 @@ const lookupServiceStub = Ember.Service.extend({
   }
 });
 
-moduleForComponent('gru-depth-of-knowledge', 'Integration | Component | gru depth-of-knowledge', {
+moduleForComponent('editor/assessment/gru-depth-of-knowledge', 'Integration | Component | editor/assessment/gru depth-of-knowledge', {
   integration: true,
   beforeEach: function () {
     this.inject.service('i18n');
@@ -42,10 +42,10 @@ test('Depth of knowledge layout, no knowledge selected - read only', function (a
   this.set('selectedKnowledge', selectedKnowledge);
 
   this.render(hbs`
-    {{gru-depth-of-knowledge isEditing=false srcSelectedKnowledge=selectedKnowledge}}
+    {{editor/assessment/gru-depth-of-knowledge isEditing=false srcSelectedKnowledge=selectedKnowledge}}
   `);
 
-  const $component = this.$(".content.gru-depth-of-knowledge");
+  const $component = this.$('.content.gru-depth-of-knowledge');
   assert.ok($component.length, 'Component found');
   assert.ok($component.find('> label span').text(), this.get('i18n').t('common.depth-of-knowledge').string, 'Label');
   assert.ok($component.find('> div span').text(), this.get('i18n').t('common.not-specified').string, 'No selected knowledge should be visible');
@@ -57,10 +57,10 @@ test('Depth of knowledge layout, knowledge selected - read only', function (asse
   this.set('selectedKnowledge', selectedKnowledge);
 
   this.render(hbs`
-    {{gru-depth-of-knowledge isEditing=false srcSelectedKnowledge=selectedKnowledge}}
+    {{editor/assessment/gru-depth-of-knowledge isEditing=false srcSelectedKnowledge=selectedKnowledge}}
   `);
 
-  const $component = this.$(".content.gru-depth-of-knowledge");
+  const $component = this.$('.content.gru-depth-of-knowledge');
   return wait().then(function(){
     assert.ok($component.length, 'Component found');
     assert.equal($component.find('.btn-empty').length, 1, 'Knowledge selected');
@@ -75,10 +75,10 @@ test('Depth of knowledge layout - edit', function (assert) {
   this.set('selectedKnowledge', selectedKnowledge);
 
   this.render(hbs`
-    {{gru-depth-of-knowledge isEditing=true srcSelectedKnowledge=initialKnowledge editSelectedKnowledge=selectedKnowledge}}
+    {{editor/assessment/gru-depth-of-knowledge isEditing=true srcSelectedKnowledge=initialKnowledge editSelectedKnowledge=selectedKnowledge}}
   `);
 
-  const $component = this.$(".content.gru-depth-of-knowledge");
+  const $component = this.$('.content.gru-depth-of-knowledge');
   assert.ok($component.find('.depth-of-knowledge').length, 'depth-of-knowledge container');
 
   return wait().then(function(){
@@ -98,10 +98,10 @@ test('Depth of knowledge edit, add knowledge -returning to edit mode will discar
   this.set('isEditing', true);
 
   this.render(hbs`
-    {{gru-depth-of-knowledge isEditing=isEditing srcSelectedKnowledge=initialKnowledge editSelectedKnowledge=selectedKnowledge}}
+    {{editor/assessment/gru-depth-of-knowledge isEditing=isEditing srcSelectedKnowledge=initialKnowledge editSelectedKnowledge=selectedKnowledge}}
   `);
 
-  const $component = this.$(".content.gru-depth-of-knowledge");
+  const $component = this.$('.content.gru-depth-of-knowledge');
   return wait().then(function(){
 
     var $knowledgeList = $component.find('ul');

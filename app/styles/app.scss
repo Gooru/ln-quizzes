@@ -55,9 +55,7 @@
 @import 'components/gru-slide-up-menu';
 @import 'components/gru-timestamp-input';
 @import 'components/gru-submission-format';
-@import 'components/gru-fixed-footer';
 @import 'components/gru-image';
-@import 'components/gru-depth-of-knowledge';
 
 @import 'components/cards/gru-collection-card';
 @import 'components/cards/gru-course-card';
@@ -73,6 +71,8 @@
 @import 'components/modals/gru-submit-confirmation';
 
 @import 'components/editor/assessment/gru-header';
+@import 'components/editor/assessment/gru-fixed-footer';
+@import 'components/editor/assessment/gru-depth-of-knowledge';
 
 @import 'components/player/gru-navigation';
 @import 'components/player/gru-navigator';

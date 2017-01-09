@@ -12,7 +12,7 @@ test('Layout without image - read only', function (assert) {
 
   this.render(hbs`{{gru-image isEditing=false srcImage=null }}`);
 
-  const $component = this.$(".content.gru-image");
+  const $component = this.$('.content.gru-image');
   assert.ok($component.length, 'Component found');
   assert.ok($component.hasClass('is-viewing'), 'Read only class');
   assert.ok($component.find('> i.library_add').length, 'Image placeholder');
@@ -23,7 +23,7 @@ test('Layout with image - read only', function (assert) {
   this.set('imageUrl', imageUrl);
   this.render(hbs`{{gru-image isEditing=false srcImage=imageUrl }}`);
 
-  const $component = this.$(".content.gru-image");
+  const $component = this.$('.content.gru-image');
   assert.ok($component.length, 'Component found');
   assert.ok($component.hasClass('is-viewing'), 'Read only class');
   assert.ok($component.hasClass('has-src-image'), 'Has image class');
@@ -35,7 +35,7 @@ test('Layout without image - edit', function (assert) {
 
   this.render(hbs`{{gru-image isEditing=true srcImage=null editImage=null }}`);
 
-  const $component = this.$(".content.gru-image");
+  const $component = this.$('.content.gru-image');
   assert.ok($component.length, 'Component found');
   assert.ok($component.hasClass('is-editing'), 'Edit class');
 
@@ -50,7 +50,7 @@ test('Layout with image - edit', function (assert) {
   this.set('imageUrl', imageUrl);
   this.render(hbs`{{gru-image isEditing=true srcImage=imageUrl editImage=imageUrl}}`);
 
-  const $component = this.$(".content.gru-image");
+  const $component = this.$('.content.gru-image');
   assert.ok($component.length, 'Component found');
   assert.ok($component.hasClass('is-editing'), 'Edit class');
   assert.ok($component.hasClass('has-edit-image'), 'Has image class');
@@ -68,7 +68,7 @@ test('Delete button replaces the currently selected image with a placeholder', f
   this.set('imageUrl', imageUrl);
   this.render(hbs`{{gru-image isEditing=true srcImage=imageUrl editImage=imageUrl}}`);
 
-  const $component = this.$(".content.gru-image");
+  const $component = this.$('.content.gru-image');
   assert.ok($component.length, 'Component found');
   assert.ok($component.hasClass('is-editing'), 'Edit class');
   assert.ok($component.hasClass('has-edit-image'), 'Has image class');

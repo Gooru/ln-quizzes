@@ -242,6 +242,7 @@ export default {
     "latest-attempt":"Latest attempt",
     "launch-anonymous": "Launch Anonymous",
     "launch-on-air": "Go Live",
+    "learning-objective": "Learning Objective",
     "learning-objectives": "Learning Objectives",
     "learning-target": "Micro-standard",
     "learning-target-mobile": "Micro-standard in Standard",

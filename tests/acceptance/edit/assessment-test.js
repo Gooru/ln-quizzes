@@ -33,7 +33,6 @@ test('visiting /edit/assessment', function(assert) {
     assert.ok(Ember.$('section#editor').length,'Missing editor section');
     assert.ok(Ember.$('section#editor .header').length,'Missing editor header');
     assert.ok(Ember.$('section#editor .header h2').length,'Missing editor header title');
-    assert.ok(Ember.$('section#editor .header h2').length,'Missing editor header title');
     assert.ok(Ember.$('section#editor .panel.assessment-task').length,'Missing assessment task panel');
     assert.ok(Ember.$('section#editor .panel.assessment-task .math-editor .gru-rich-text-editor').length,'Missing math editor');
     assert.ok(Ember.$('section#editor .panel.assessment-task button.add-image').length,'Missing add image button');
@@ -44,6 +43,10 @@ test('visiting /edit/assessment', function(assert) {
     click($informationTab);
     andThen(function() {
       assert.ok(Ember.$('section#information').length,'Missing information section');
+      assert.ok(Ember.$('section#information .header').length,'Missing information header');
+      assert.ok(Ember.$('section#information .header h2').length,'Missing information header title');
+      assert.ok(Ember.$('section#information .title label .gru-input').length,'Missing assessment title input');
+      assert.ok(Ember.$('section#information .learning-objective label .gru-textarea').length,'Missing assessment learning objective');
     });
   });
 });

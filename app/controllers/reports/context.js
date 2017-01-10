@@ -145,7 +145,10 @@ export default Ember.Controller.extend({
        // Subscribe to listen for live messages
        webSocketClient.subscribe(`/topic/${channel}`, function (message) {
          let eventMessage = JSON.parse(message.body);
-         reportData.parseEvent(eventMessage);
+         controller.get('profileService').readProfile(eventMessage.profileId).then(profile => {
+           eventMessage.profileName = profile.get('fullName');
+           reportData.parseEvent(eventMessage);
+         });
        });
 
      }, function () {

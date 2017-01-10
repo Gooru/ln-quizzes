@@ -9,12 +9,12 @@
       color: $white;
       line-height: $font-size-h6;
       height: 26px;
+      @include flexbox;
+      @include justify-content(space-between);
+      @include align-items(center);
       .name {
         max-width: 90px;
         display: inline-block;
-      }
-      .score {
-        float: right;
       }
       .material-icons {
         font-size:$in-progress-icon-size;
@@ -36,9 +36,7 @@
         }
       }
       .question-in-progress{
-        float: right;
-        position: relative;
-        top: -5px;
+        padding-top: 2px;
       }
     }
 

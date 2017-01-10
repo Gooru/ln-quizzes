@@ -4,8 +4,8 @@
     <div class="panel-heading {{ if anonymous 'anonymous'}}" style={{startedStyle}} {{action 'selectStudent'}}>
       <span class="name ellipsis">{{ if anonymous student.code student.fullName }}</span>
       {{#unless anonymous}}
-        <span class="score">{{score}}%</span>
         {{#if totalNotStarted}}<span class="question-in-progress">{{gru-icon name='av_timer'}}</span>{{/if}}
+        <span class="score">{{score}}%</span>
       {{/unless}}
     </div>
   {{else}}

@@ -137,38 +137,42 @@ export default Ember.Object.extend({
   /**
    * Parse and add event data from web socket
    * @param {Object} eventData
-   * @returns {ReportData}
    */
   parseEvent: function(eventData) {
     if (eventData.eventName === 'startContextEvent') {
-      let oldReportEvents = this.findByProfileId(eventData.profileId);
-      if (oldReportEvents) {
-        if(eventData.eventBody.isNewAttempt) {
-          let profileEvent = oldReportEvents[0];
-          profileEvent.set('currentResourceId', eventData.eventBody.currentResourceId);
-          profileEvent.get('resourceResults').forEach(result => result.clear());
-        }
-      } else {
-        let newProfileEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
-          currentResourceId: eventData.eventBody.currentResourceId,
-          profileId: eventData.profileId,
-          // TODO load profile data
-          /* profileCode: '222',
-          profileName: '222', */
-          resourceResults: this.get('collection.resources').map(res =>
-            QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
-              resourceId: res.id,
-              resource: res,
-              savedTime: 0,
-              reaction: 0,
-              answer: null,
-              score: 0
-            })
-          )
-        });
-        this.get('reportEvents').pushObject(newProfileEvent);
-      }
+      this.parseStartEvent(eventData);
     }
-    return this;
+  },
+
+  /**
+   * Parse start event data from web socket
+   * @param {Object} eventData
+   */
+  parseStartEvent: function(eventData) {
+    let oldReportEvents = this.findByProfileId(eventData.profileId);
+    if (oldReportEvents.length) {
+      if(eventData.eventBody.isNewAttempt) {
+        let profileEvent = oldReportEvents[0];
+        profileEvent.set('currentResourceId', eventData.eventBody.currentResourceId);
+        profileEvent.get('resourceResults').forEach(result => result.clear());
+      }
+    } else {
+      let newProfileEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
+        currentResourceId: eventData.eventBody.currentResourceId,
+        profileId: eventData.profileId,
+        profileName: eventData.profileName,
+        resourceResults: this.get('collection.resources').map(res =>
+          QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
+            resourceId: res.id,
+            resource: res,
+            savedTime: 0,
+            reaction: 0,
+            answer: null,
+            score: 0
+          })
+        )
+      });
+      this.get('reportEvents').pushObject(newProfileEvent);
+    }
   }
 });

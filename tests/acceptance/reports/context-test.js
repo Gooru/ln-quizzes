@@ -81,7 +81,7 @@ test('Report context: websocket success', function(assert) {
   });
 });
 
-test('Report context: websocket message', function(assert) {
+test('Report context: websocket start message', function(assert) {
   assert.expect(7);
   let expectedUrl = 'realtimeURL/realtimeURI';
   let createSocket = () => {
@@ -91,8 +91,19 @@ test('Report context: websocket message', function(assert) {
         assert.ok(true, 'Connect should be called');
         connectCallback();
       },
-      subscribe: function(channel) {
+      subscribe: function(channel, callback) {
         assert.equal(channel, '/topic/context-simple-id', 'Channel should match.');
+        callback({
+          body: `{
+           "contextId": "context-simple-id",
+           "profileId": "new-profile-id",
+           "eventName": "startContextEvent",
+           "eventBody": {
+             "isNewAttempt": true,
+             "currentResourceId": "current-resource"
+            }
+          }`
+        });
       }
     };
   };
@@ -103,9 +114,9 @@ test('Report context: websocket message', function(assert) {
   let done = assert.async();
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
-    assert.equal(Ember.$('.gru-student-performance-box').length, 2, 'Should show 2 students');
+    assert.equal(Ember.$('.gru-student-performance-box').length, 3, 'Should show 3 students');
     assert.ok(Ember.$('.gru-student-performance-box:first .score').text().indexOf('50%') > -1, 'Score for student 1 shows correctly');
-    assert.ok(Ember.$('.gru-student-performance-box:last .score').text().indexOf('50%') > -1, 'Score for student 2 shows correctly');
+    assert.ok(Ember.$('.gru-student-performance-box:last .score').text().indexOf('0%') > -1, 'Score for student 2 shows correctly');
     done();
   });
 });

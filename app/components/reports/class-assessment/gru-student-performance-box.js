@@ -97,7 +97,7 @@ export default Ember.Component.extend({
    * Indicates if the assessment has not started questions
    * @property {number} notStarted
    */
-  totalNotStarted: Ember.computed('reportData.[]', function(){
+  totalNotStarted: Ember.computed('reportData.@each.score', function(){
     return totalNotStarted(this.get('reportData'));
   }),
 
@@ -122,6 +122,4 @@ export default Ember.Component.extend({
       id: questionId
     });
   }
-
-
 });

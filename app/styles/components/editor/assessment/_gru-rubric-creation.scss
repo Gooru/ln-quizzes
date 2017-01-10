@@ -6,9 +6,9 @@
       height: 50px;
       margin-bottom: 0;
       display: block;
-      
+
       &:nth-child(1){
-        margin-right: 15px; 
+        margin-right: 15px;
       }
       a{
         padding: 10px 0;
@@ -35,6 +35,18 @@
     }
     .lead {
       font-size: $font-size-h6;
+    }
+  }
+  .add-from-web{
+    > *{
+      vertical-align: middle;
+    }
+    .url-label{
+      .gru-input{
+        .form-group{
+          width: 330px;
+        }
+      }
     }
   }
 }

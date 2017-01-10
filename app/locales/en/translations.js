@@ -1412,6 +1412,7 @@ export default {
   },
   "gru-rubric-creation":{
     "from-web":"From Web",
-    "from-computer":"From Your Computer"
+    "from-computer":"From Your Computer",
+    "url":"URL"
   }
 };

@@ -11,13 +11,16 @@
     </li>
 </ul>
 <div class="content tab-content">
-    <div role="tabpanel" class="tab-pane row {{if showFromWeb 'active'}}" id="from-web">
-        <div class="row">
-            FROM WEB
+    <div role="tabpanel" class="tab-pane {{if showFromWeb 'active'}}" id="from-web">
+        <div class="add-from-web">
+            <label class="url-label">
+              {{validation.gru-input model=rubric valuePath='url' placeholder=(t 'gru-rubric-creation.url')}}
+            </label>
+            <button class="btn btn-default btn-primary add-btn" title={{t 'common.add'}}>{{t 'common.add'}}</button>
         </div>
     </div>
-    <div role="tabpanel" class="tab-pane row {{if showFromComputer 'active'}}" id="from-computer">
-        <div class="row">
+    <div role="tabpanel" class="tab-pane {{if showFromComputer 'active'}}" id="from-computer">
+        <div class="add-from-computer">
             FROM COMPUTER
         </div>
     </div>

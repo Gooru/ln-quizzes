@@ -39,6 +39,9 @@ test('visiting /edit/assessment', function(assert) {
     assert.ok(Ember.$('section#editor .panel.assessment-task .submission-format').length,'Missing submission format section');
     assert.ok(Ember.$('section#editor .panel.assessment-task .submission-format h3').length,'Missing submission format title');
     assert.ok(Ember.$('section#editor .panel.assessment-task .submission-format .gru-submission-format').length,'Missing gru-submission-format component');
+    assert.ok(Ember.$('section#editor .panel.rubric-creation').length,'Missing rubric creation panel');
+    assert.ok(Ember.$('section#editor .panel.rubric-creation .panel-heading h3').length,'Missing rubric creation title');
+    assert.ok(Ember.$('section#editor .panel.rubric-creation .gru-rubric-creation').length,'Missing rubric creation component');
     var $informationTab = Ember.$('.header.assessment.edit nav a.information');
     click($informationTab);
     andThen(function() {

@@ -18,7 +18,10 @@ export default Ember.Controller.extend({
   // Properties
   assessment:Ember.Object.create({
     title:'',
-    learningObjective:''
+    learningObjective:'',
+    rubric:{
+      url:''
+    }
   }),
 
   /**

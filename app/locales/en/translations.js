@@ -379,6 +379,7 @@ export default {
     },
     "resource-title": "Resource Title",
     "resource-url": "Resource URL",
+    "rubric-creation":"Rubric Creation",
     "role": "Role",
     "save": "Save",
     "save-next": "Save and Next",
@@ -1408,5 +1409,10 @@ export default {
   "gru-submission-format":{
     "textbox":"Text Box",
     "upload":"Upload (URL or File)"
+  },
+  "gru-rubric-creation":{
+    "from-web":"From Web",
+    "from-computer":"From Your Computer",
+    "url":"URL"
   }
 };

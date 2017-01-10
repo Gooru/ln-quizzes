@@ -42,11 +42,15 @@
       vertical-align: middle;
     }
     .url-label{
+      margin-right: 15px;
       .gru-input{
         .form-group{
           width: 330px;
         }
       }
+    }
+    .add-btn{
+      margin-bottom: 15px;
     }
   }
 }

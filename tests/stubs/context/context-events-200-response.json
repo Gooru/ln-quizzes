@@ -1,5 +1,5 @@
 {
-  "id": "context-simple-id",
+  "contextId": "context-simple-id",
   "collection": {
     "id": "collection-id"
   },

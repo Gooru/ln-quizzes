@@ -103,7 +103,7 @@ export default Ember.Component.extend({
    *
    * @return [] students performance info
    */
-  studentPerformanceList: Ember.computed('reportData.reportEvents.[]', function(){
+  studentPerformanceList: Ember.computed('reportData.reportEvents.@each.profileId', function(){
     const component = this;
     const reportEvents = component.get('reportData.reportEvents');
     return reportEvents.map(function(studentData) {

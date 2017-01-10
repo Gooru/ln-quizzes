@@ -63,7 +63,7 @@ test('Report context: websocket success', function(assert) {
         connectCallback();
       },
       subscribe: function(channel) {
-        assert.equal(channel, '/context-simple-id', 'Channel should match.');
+        assert.equal(channel, '/topic/context-simple-id', 'Channel should match.');
       }
     };
   };
@@ -91,21 +91,8 @@ test('Report context: websocket message', function(assert) {
         assert.ok(true, 'Connect should be called');
         connectCallback();
       },
-      subscribe: function(channel, callback) {
-        assert.equal(channel, '/context-simple-id', 'Channel should match.');
-        callback({
-          body: JSON.stringify({
-            currentResourceId: 'question1-id',
-            profileId: 'profile-id-2',
-            events: [{
-              resourceId: 'question2-id',
-              timeSpent: 100,
-              reaction: 3,
-              answer: 'answer',
-              score: 100
-            }]
-          })
-        });
+      subscribe: function(channel) {
+        assert.equal(channel, '/topic/context-simple-id', 'Channel should match.');
       }
     };
   };
@@ -118,7 +105,7 @@ test('Report context: websocket message', function(assert) {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
     assert.equal(Ember.$('.gru-student-performance-box').length, 2, 'Should show 2 students');
     assert.ok(Ember.$('.gru-student-performance-box:first .score').text().indexOf('50%') > -1, 'Score for student 1 shows correctly');
-    assert.ok(Ember.$('.gru-student-performance-box:last .score').text().indexOf('100%') > -1, 'Score for student 2 shows correctly');
+    assert.ok(Ember.$('.gru-student-performance-box:last .score').text().indexOf('50%') > -1, 'Score for student 2 shows correctly');
     done();
   });
 });

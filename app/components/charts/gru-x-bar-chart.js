@@ -35,7 +35,7 @@ export default Ember.Component.extend({
    */
   data: null,
 
-  isFull: Ember.computed('data.[]', function(){
+  isFull: Ember.computed('data.@each.color', 'data.@each.percentage', function(){
     let sum = this.get('data').reduce(
       (previousValue, value) => previousValue + value.percentage, 0
     );

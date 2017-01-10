@@ -54,7 +54,7 @@ export default Ember.Component.extend({
    * - correct: number of questions that the student has answered correctly
    * - incorrect: number of questions that the student has answered incorrectly
    */
-  answersData: Ember.computed('reportData.reportEvents', function () {
+  answersData: Ember.computed('reportData.reportEvents.@each.currentResourceId', function () {
     const reportEvents = this.get('reportData.reportEvents');
 
     let answers = [];
@@ -85,7 +85,7 @@ export default Ember.Component.extend({
    * @prop { String[] } assessmentQuestionsIds - An array with the ids of all the questions in the assessment
    * ordered in ascending order per each question's order value.
    */
-  assessmentQuestionsIds: Ember.computed('assessment.resources.[]', function () {
+  assessmentQuestionsIds: Ember.computed('assessment.resources.@each.id', function () {
 
     let questions = this.get('assessment.resourcesSorted').map(function (question) {
       // Copy only the most important properties of the resources array
@@ -157,7 +157,7 @@ export default Ember.Component.extend({
    * - incorrect: number of students that did not answer the question correctly
    * - total: total number of students
    */
-  questionsData: Ember.computed('reportData.data', function () {
+  questionsData: Ember.computed('reportData.reportEvents.@each.currentResourceId', function () {
     const studentsIds = this.get('studentsIds');
     const totalStudents = studentsIds.length;
     const questionsIds = this.get('assessmentQuestionsIds');
@@ -199,14 +199,13 @@ export default Ember.Component.extend({
    * - score: number of questions answered correctly vs. total number of questions
    * - completed: have all the questions in the assessment been answered?
    */
-  scoresData: Ember.computed('answersData', function () {
+  scoresData: Ember.computed('answersData.@each.correct', 'answersData.@each.incorrect', function () {
     const answersData = this.get('answersData');
     const totalQuestions = this.get('assessmentQuestionsIds').length;
 
     let answerIdx = answersData.length - 1;
     let results = [];
 
-    // TODO change to use global score instead of calculating
     for (; answerIdx >= 0; answerIdx--) {
       let correct = answersData[answerIdx].correct;
       let totalAnswered = correct + answersData[answerIdx].incorrect;

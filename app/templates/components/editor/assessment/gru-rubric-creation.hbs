@@ -21,7 +21,15 @@
     </div>
     <div role="tabpanel" class="tab-pane {{if showFromComputer 'active'}}" id="from-computer">
         <div class="add-from-computer">
-            FROM COMPUTER
+            <div class="information">
+                <span class="icon">{{gru-icon name="link"}}</span>
+                <span class="title">{{t 'common.upload-file'}}</span>
+            </div>
+            <label class="filename-label">
+                <span class="required file-name">{{t 'common.file-name'}}</span>
+                <span class="formats">{{t 'common.valid-extensions' extensions=validExtensions}}</span>
+            </label>
+          {{editor.assessment.gru-file-picker validMimeType=rubric.mimeType}}
         </div>
     </div>
 </div>

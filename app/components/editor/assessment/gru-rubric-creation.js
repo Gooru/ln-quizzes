@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {UPLOADABLE_TYPES } from 'quizzes/config/config';
 
 export default Ember.Component.extend({
 
@@ -33,5 +34,15 @@ export default Ember.Component.extend({
    * Indicates when show from computer is visible
    * @property {boolean}
    */
-  showFromComputer: false
+  showFromComputer: false,
+
+  /**
+   * @type {String} list of all valid extension per quizzes/config/config#UPLOAD_TYPES
+   */
+  validExtensions: Ember.computed(function() {
+    var extensions = UPLOADABLE_TYPES.map(function(typeObject) {
+      return typeObject.validExtensions;
+    });
+    return extensions.join(' ');
+  })
 });

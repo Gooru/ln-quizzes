@@ -13,7 +13,10 @@
     padding:0px;
     input{
       display: inline-block;
-      width: 84%;
+      width: 74%;
+      @media(min-width: $screen-sm){
+        width: 80%;
+      }
     }
     span{
       display:inline-block;

@@ -124,7 +124,7 @@ export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
   // Properties
   /**
-   * @property {Context} selected assigment
+   * @property {Context} selected assignment
    */
   actualAssignment:null,
 

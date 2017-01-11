@@ -26,9 +26,9 @@
                     <span>{{t 'assign-students.select-students'}}</span>
                     <div class="search-navigation">
                         <div class="search-keyword">
-                    <span class="search-icon">
-                      {{gru-icon name='search'}}
-                    </span>
+                           <span class="search-icon">
+                             {{gru-icon name='search'}}
+                           </span>
                             <input type="text" class="search-box" placeholder={{t 'assign-students.search-by-name'}}/>
                         </div>
                     </div>
@@ -63,13 +63,13 @@
                 <span class="selected-count">{{t 'assign-students.selected-count' selected=totalSelected total=students.length}}</span>
             </div>
             <div class="date-options col-md-6 col-sm-6 col-xs-12">
-                <div class="row available-from">
+                <div class="available-from">
                     <span>{{t 'assign-students.available-from'}}</span>
                     <div class="panel panel-default">
                         {{gru-timestamp-input model=assignment rawDateValue=assignment.availableDay rawTimeValue=assignment.availableTime valuePath='availableDate' setActualDate=true  datePath='availableDay'  timePath='availableTime'}}
                     </div>
                 </div>
-                <div class="row due-date">
+                <div class="due-date">
                     <span>{{t 'assign-students.due-date'}}</span>
                     <div class="panel panel-default">
                       {{gru-timestamp-input model=assignment rawDateValue=assignment.dueDay rawTimeValue=assignment.dueTime valuePath='dueDate' datePath='dueDay'  timePath='dueTime'}}

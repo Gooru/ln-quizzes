@@ -84,18 +84,12 @@
       @media(min-width: $screen-sm-min){
         float:right;
       }
-      input{
-        outline: none;
-        max-width: 168px;
-        @media(max-width: $screen-xs-max){
-          margin-left: 24px
-        }
-      }
-      .search-icon{
-        position: absolute;
-        right: 184px;
-        @media(max-width: $screen-xs-max) {
-          right: 212px;
+      .search-keyword{
+        @include flexbox;
+        .search-icon{
+          i{
+            vertical-align: text-top;
+          }
         }
       }
     }

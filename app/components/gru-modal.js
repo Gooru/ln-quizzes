@@ -75,7 +75,7 @@ export default Ember.Component.extend(ModalMixin, {
   width:Ember.computed('modal.width',function(){
     let width = this.get('modal.width');
     if (window.outerHeight < 768){
-      width = '85%';
+      width = '93%';
     }
     return Ember.String.htmlSafe(`width: ${width}`);
   }),

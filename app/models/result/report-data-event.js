@@ -13,17 +13,27 @@ export default Ember.Object.extend({
   // Properties
 
   /**
+   * @property {Number} averageReaction averaged student's reactions
+   */
+  averageReaction: 0,
+
+  /**
+   * @property {Number} averageScore calculated student score
+   */
+  averageScore: 0,
+
+  /**
    * @property {string} currentResourceId
    */
   currentResourceId: null,
 
   /**
-   * @property {boolean} isAttemptStarted - is the user starting a new attempt?
+   * @property {boolean} isAttemptStarted - if the user started the attempt
    */
   isAttemptStarted: true,
 
   /**
-   * @property {boolean} isAttemptFinished - is the user finishing the current attempt?
+   * @property {boolean} isAttemptFinished - if the user finished the attempt
    */
   isAttemptFinished: false,
 
@@ -56,6 +66,28 @@ export default Ember.Object.extend({
    * @property {string} profileName student's name
    */
   profileName: null,
+
+  /**
+   * @property {Number} totalAnswered total number of answered questions
+   */
+  totalAnswered: 0,
+
+  /**
+   * @property {Number} totalCorrect total number of correct answers
+   */
+  totalCorrect: 0,
+
+  /**
+   * @property {Number} totalIncorrect total number of incorrect answers
+   */
+  totalIncorrect: Ember.computed('totalAnswered', 'totalCorrect', function() {
+    return this.get('totalAnswered') - this.get('totalCorrect');
+  }),
+
+  /**
+   * @property {Number} totalTimeSpent summarized time spent
+   */
+  totalTimeSpent: 0,
 
   // -------------------------------------------------------------------------
   // Methods

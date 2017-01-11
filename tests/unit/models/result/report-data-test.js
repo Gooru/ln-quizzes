@@ -187,48 +187,6 @@ test('getResultsByQuestion', function(assert) {
   assert.equal(response[1].get('resourceId'), 'q2', 'Second result should have the correct id');
 });
 
-test('getResultsByStudent', function(assert) {
-  let model = this.subject({
-    reportEvents: Ember.A([
-      ReportDataEvent.create({
-        profileId: 'student1',
-        profileName: 'name1',
-        resourceResults: [
-          ResourceResult.create({
-            resourceId: 'q1',
-            score: 0
-          }),
-          ResourceResult.create({
-            resourceId: 'q2',
-            score: 0
-          })
-        ]
-      }),
-      ReportDataEvent.create({
-        profileId: 'student2',
-        profileName: 'name2',
-        resourceResults: [
-          ResourceResult.create({
-            resourceId: 'q1',
-            score: 0
-          }),
-          ResourceResult.create({
-            resourceId: 'q2',
-            score: 0
-          })
-        ]
-      })
-    ])
-  });
-
-  // Change a previous result
-  let response = model.getResultsByStudent('student2');
-  assert.equal(response.length, 2, 'Results count should be two');
-  assert.equal(response[0].get('resourceId'), 'q1', 'First result should have the correct id');
-  assert.equal(response[1].get('resourceId'), 'q2', 'Second result should have the correct id');
-});
-
-
 test('getStudentsByQuestionAndAnswer', function(assert) {
   let model = this.subject({
     reportEvents: Ember.A([

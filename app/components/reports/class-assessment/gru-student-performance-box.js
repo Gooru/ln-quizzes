@@ -1,11 +1,9 @@
 import Ember from 'ember';
 import { getGradeColor } from 'quizzes/utils/utils';
-import { correctPercentage, totalCompleted,totalNotStarted } from 'quizzes/utils/question-result';
 
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -20,8 +18,8 @@ export default Ember.Component.extend({
      */
     selectStudent: function(){
       const component = this;
-      component.get('onSelectStudent')(component.get('student.id'));
-      Ember.Logger.debug(`Clicking at student: ${component.get('student.id')}`);
+      component.get('onSelectStudent')(component.get('student.profileId'));
+      Ember.Logger.debug(`Clicking at student: ${component.get('student.profileId')}`);
     },
 
     /**
@@ -69,17 +67,7 @@ export default Ember.Component.extend({
   /**
    * @property {number} user assessment score
    */
-  score: Ember.computed('reportData.@each.score', function() {
-    return correctPercentage(this.get('reportData'));
-  }),
-
-  /**
-   * Indicates if the assessment has been started
-   * @property {number} started
-   */
-  started: Ember.computed('reportData.@each.score', function() {
-    return totalCompleted(this.get('reportData'));
-  }),
+  score: Ember.computed.alias('student.averageScore'),
 
   /**
    * @property {String} startedStyle style safe string for started
@@ -92,14 +80,6 @@ export default Ember.Component.extend({
    * @property {User} student
    */
   student: null,
-
-  /**
-   * Indicates if the assessment has not started questions
-   * @property {number} notStarted
-   */
-  totalNotStarted: Ember.computed('reportData.@each.score', function(){
-    return totalNotStarted(this.get('reportData'));
-  }),
 
   // -------------------------------------------------------------------------
   // Methods

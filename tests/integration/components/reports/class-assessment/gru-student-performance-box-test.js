@@ -13,8 +13,10 @@ test('Layout when all completed', function (assert) {
   assert.expect(10);
 
   const student = Ember.Object.create({
-    id: '56983a9060a68052c1ed934c',
-    fullName: 'Rocha, Perez'
+    profileId: '56983a9060a68052c1ed934c',
+    profileName: 'Rocha, Perez',
+    isAttemptStarted: true,
+    averageScore: 50
   });
 
   const reportData = Ember.A([
@@ -85,8 +87,10 @@ test('Layout having not started questions', function (assert) {
   assert.expect(9);
 
   const student = Ember.Object.create({
-    id: '56983a9060a68052c1ed934c',
-    fullName: 'Rocha, Perez'
+    profileId: '56983a9060a68052c1ed934c',
+    profileName: 'Rocha, Perez',
+    isAttemptStarted: true,
+    averageScore: 50
   });
 
   const reportData = Ember.A([
@@ -153,9 +157,11 @@ test('Showing student code in anonymous mode', function (assert) {
   assert.expect(3);
 
   const student = Ember.Object.create({
-    id: '56983a9060a68052c1ed934c',
-    fullName: 'Rocha, Perez',
-    code: 'abcde'
+    profileId: '56983a9060a68052c1ed934c',
+    profileName: 'Rocha, Perez',
+    profileCode: 'abcde',
+    isAttemptStarted: true,
+    averageScore: 50
   });
 
   const reportData = Ember.A([

@@ -47,36 +47,6 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * @prop { Object[] } answersData - Array that keeps track of all the correct and incorrect answers
-   * for each student taking an assessment
-   *
-   * Each object will consist of:
-   * - correct: number of questions that the student has answered correctly
-   * - incorrect: number of questions that the student has answered incorrectly
-   */
-  answersData: Ember.computed('reportData.reportEvents.@each.currentResourceId', function () {
-    const reportEvents = this.get('reportData.reportEvents');
-
-    let answers = [];
-    reportEvents.forEach(function (reportEvent) {
-      let answerCounter = {
-        correct: 0,
-        incorrect: 0
-      };
-      answers.push(answerCounter);
-
-      reportEvent.get('questionResults').forEach(function (questionResult) {
-        if(questionResult.get('started')) {
-          answerCounter.correct += questionResult.get('correct') ? 1 : 0;
-          answerCounter.incorrect += questionResult.get('incorrect') ? 1 : 0;
-        }
-      });
-    });
-
-    return answers;
-  }),
-
-  /**
    * @prop { Collection } assessment
    */
   assessment: Ember.computed.alias('reportData.collection'),
@@ -106,7 +76,7 @@ export default Ember.Component.extend({
    * - color: color corresponding to a grade bracket in the grading scale (@see /app/config/config.js)
    * - value: percentage of students in the class with a score within said grade bracket
    */
-  assignmentScores: Ember.computed('scoresData', function () {
+  assignmentScores: Ember.computed('scoresData.@each.score', 'scoresData.@each.completed', function () {
     const scoresData = this.get('scoresData');
     const scoresColors = scoresData.map(result => getGradeColor(result.score));
     const colors = GRADING_SCALE.map(item => item.COLOR);
@@ -132,7 +102,7 @@ export default Ember.Component.extend({
    * @prop { number } averageScore - average score in the assessment
    * for the entire group of students (per scoresData)
    */
-  averageScore: Ember.computed('scoresData', function () {
+  averageScore: Ember.computed('scoresData.@each.score', function () {
     let scores = this.get('scoresData').map(result => result.score);
     return scores.length ? Math.round(average(scores)) : 0;
   }),
@@ -165,9 +135,9 @@ export default Ember.Component.extend({
 
     let questions = [];
 
-    questionsIds.forEach(function (question) {
+    questionsIds.forEach(function (questionId) {
       let questionCounter = {
-        id: question,
+        id: questionId,
         correct: 0,
         incorrect: 0,
         total: totalStudents
@@ -175,7 +145,7 @@ export default Ember.Component.extend({
       questions.push(questionCounter);
 
       reportEvents.forEach(function (student) {
-        let resourceResults = student.get('resourceResults').filter(result => result.resourceId === question);
+        let resourceResults = student.get('resourceResults').filter(result => result.resourceId === questionId);
         resourceResults.forEach(questionResult => {
           if(questionResult.get('started')) {
             questionCounter.correct += questionResult.get('correct') ? 1 : 0;
@@ -199,26 +169,18 @@ export default Ember.Component.extend({
    * - score: number of questions answered correctly vs. total number of questions
    * - completed: have all the questions in the assessment been answered?
    */
-  scoresData: Ember.computed('answersData.@each.correct', 'answersData.@each.incorrect', function () {
-    const answersData = this.get('answersData');
-    const totalQuestions = this.get('assessmentQuestionsIds').length;
+  scoresData: Ember.computed('reportData.reportEvents.@each.currentResourceId', function () {
+    const reportEvents = this.get('reportData.reportEvents');
 
-    let answerIdx = answersData.length - 1;
     let results = [];
-
-    for (; answerIdx >= 0; answerIdx--) {
-      let correct = answersData[answerIdx].correct;
-      let totalAnswered = correct + answersData[answerIdx].incorrect;
-
-      if (totalAnswered > 0) {
-        let score = Math.round(correct / totalAnswered * 100);
+    reportEvents.forEach(reportEvent => {
+      if(reportEvent.get('totalAnswered') > 0) {
         results.push({
-          score,
-          completed: totalAnswered === totalQuestions
+          score: reportEvent.get('averageScore'),
+          completed: reportEvent.get('isAttemptFinished')
         });
       }
-    }
-
+    });
     return results;
   }),
 

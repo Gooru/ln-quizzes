@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { CONTEXT_EVENT_TYPES } from 'quizzes/config/config';
 import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import QuestionResult from 'quizzes/models/result/question';
 
@@ -89,16 +90,6 @@ export default Ember.Object.extend({
   },
 
   /**
-   * Find all results for the profile id
-   * @param {string} questionId
-   * @returns {QuestionResult[]}
-   */
-  getResultsByStudent: function(profileId) {
-    let profileEvents = this.findByProfileId(profileId);
-    return profileEvents.length ? profileEvents[0].get('resourceResults') : [];
-  },
-
-  /**
    * Find all results by answer
    * @param {string} questionId
    * @param {Answer} answer
@@ -139,8 +130,28 @@ export default Ember.Object.extend({
    * @param {Object} eventData
    */
   parseEvent: function(eventData) {
-    if (eventData.eventName === 'startContextEvent') {
+    if (eventData.eventName === CONTEXT_EVENT_TYPES.START) {
       this.parseStartEvent(eventData);
+    } else if (eventData.eventName === CONTEXT_EVENT_TYPES.FINISH) {
+      this.parseFinishEvent(eventData);
+    }
+  },
+
+  /**
+   * Parse start event data from web socket
+   * @param {Object} eventData
+   */
+  parseFinishEvent: function(eventData) {
+    let oldReportEvents = this.findByProfileId(eventData.profileId);
+    if (oldReportEvents.length) {
+      let profileEvent = oldReportEvents[0];
+      let summary = eventData.eventBody.eventSummary;
+      profileEvent.set('isAttemptFinished', true);
+      profileEvent.set('totalAnswered', summary.totalAnswered);
+      profileEvent.set('totalCorrect', summary.totalCorrect);
+      profileEvent.set('averageReaction', summary.averageReaction);
+      profileEvent.set('averageScore', summary.averageScore);
+      profileEvent.set('totalTimeSpent', summary.totalTimeSpent);
     }
   },
 

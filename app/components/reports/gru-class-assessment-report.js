@@ -36,14 +36,19 @@ export default Ember.Component.extend(ModalMixin, {
 
       let reportData = this.get('reportData');
       let assessment = this.get('assessment');
-      let resourceResults = reportData.getResultsByStudent(studentId);
-
+      let reportEvent = reportData.findByProfileId(studentId)[0];
+      let resourceResults = reportEvent.get('resourceResults');
       resourceResults.forEach(function(resourceResult){
         let resource = assessment.get('resources').findBy('id', resourceResult.get('resourceId'));
         resourceResult.set('resource', resource);
       });
 
       let contextResult = ContextResult.create({
+        averageReaction: reportEvent.get('averageReaction'),
+        correctPercentage: reportEvent.get('averageScore'),
+        correctAnswers: reportEvent.get('totalCorrect'),
+        currentResourceId: reportEvent.get('currentResourceId'),
+        totalTimeSpent: reportEvent.get('totalTimeSpent'),
         totalAttempts: 1,
         selectedAttempt: 1,
         resourceResults,

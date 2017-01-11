@@ -38,6 +38,8 @@ test('it renders', function (assert) {
     reportEvents: [
       ReportDataEvent.create({
         profileId: '56983a9060a68052c1ed934c',
+        averageScore: 67,
+        totalAnswered: 3,
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -64,6 +66,8 @@ test('it renders', function (assert) {
       }),
       ReportDataEvent.create({
         profileId: '56983a90fb01fecc328e2388',
+        averageScore: 50,
+        totalAnswered: 3,
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -83,6 +87,8 @@ test('it renders', function (assert) {
       }),
       ReportDataEvent.create({
         profileId: '56983a906596902edadedc7c',
+        averageScore: 67,
+        totalAnswered: 3,
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -109,6 +115,8 @@ test('it renders', function (assert) {
       }),
       ReportDataEvent.create({
         profileId: '56983a9082f705e65f2fe607',
+        averageScore: 100,
+        totalAnswered: 3,
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',

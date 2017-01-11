@@ -39,7 +39,7 @@ export default Ember.Component.extend({
             scrollTop: $elList.offset().top - $('.controller.class.analytics.collection.student').offset().top
           }, animationSpeed);
         } else {
-          Ember.Logger.error('No element was found for selectorTable: ' + selectorTable);
+          Ember.Logger.error(`No element was found for selectorTable: ${selectorTable}`);
         }
       }
     },

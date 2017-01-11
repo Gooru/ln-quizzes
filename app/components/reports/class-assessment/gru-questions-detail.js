@@ -82,17 +82,17 @@ export default Ember.Component.extend({
    * Returns a convenience structure to display the question navigation bubbles
    * @returns {Array}
    */
-  questionsNavOptions: Ember.computed('assessment.resources.[]', function () {
+  questionsNavOptions: Ember.computed('assessment.resources.@each.id', function () {
     let questions = this.get('assessment.resources');
     let selectedQuestion = this.get('selectedQuestion');
-    return questions.map(function (question, index) {
-      return Ember.Object.create({
+    return questions.map(
+      (question, index) => Ember.Object.create({
         label: index + 1,
         status: null, //no status needed
         value: question,
         selected: (selectedQuestion && selectedQuestion.get('id') === question.get('id'))
-      });
-    });
+      })
+    );
   }),
 
   /**

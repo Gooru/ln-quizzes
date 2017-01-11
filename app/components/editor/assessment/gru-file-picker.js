@@ -79,7 +79,7 @@ export default Ember.Component.extend({
    * List of valid file extensions.
    * @prop {String}
    */
-  validMimeType: "",
+  validMimeType: '',
 
 
   // -------------------------------------------------------------------------

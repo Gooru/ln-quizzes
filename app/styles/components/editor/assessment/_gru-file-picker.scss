@@ -1,12 +1,12 @@
 .editor.assessment.gru-file-picker{
   > div {
-    @include flexbox();
+    @include flexbox;
     input {
       width: 80%;
       border-bottom: 1px solid #ddd;
     }
     .file-picker {
-      @include flex();
+      @include flexbox;
       .upload.btn {
         margin-left: 5px;
         .fa-upload {

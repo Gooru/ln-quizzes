@@ -7,7 +7,7 @@ moduleForComponent('editor/assessment/gru-file-picker', 'Integration | Component
 
 test('it renders', function(assert) {
   this.render(hbs`{{editor/assessment/gru-file-picker}}`);
-  const $component = this.$(".editor.assessment.gru-file-picker");
+  const $component = this.$('.editor.assessment.gru-file-picker');
   assert.ok($component.length, 'Component');
   assert.ok($component.find('div:first-child input[readonly]').length, 'Readonly input');
   assert.ok($component.find('div:first-child div.upload.btn').length, 'Upload button');

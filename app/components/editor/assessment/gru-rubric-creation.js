@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {UPLOADABLE_TYPES } from 'quizzes/config/config';
+import {UPLOADABLE_TYPES} from 'quizzes/config/config';
 
 export default Ember.Component.extend({
 
@@ -40,9 +40,7 @@ export default Ember.Component.extend({
    * @type {String} list of all valid extension per quizzes/config/config#UPLOAD_TYPES
    */
   validExtensions: Ember.computed(function() {
-    var extensions = UPLOADABLE_TYPES.map(function(typeObject) {
-      return typeObject.validExtensions;
-    });
+    var extensions = UPLOADABLE_TYPES.map(typeObject => typeObject.validExtensions);
     return extensions.join(' ');
   })
 });

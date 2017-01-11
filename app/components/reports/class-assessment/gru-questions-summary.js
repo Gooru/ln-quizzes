@@ -102,7 +102,7 @@ export default Ember.Component.extend({
    * @prop { Object[] } processedData - Transform the data objects in 'data' into objects that can be consumed
    * by the template
    */
-  processedData: Ember.computed('data', 'visibleColumns', function () {
+  processedData: Ember.computed('data.@each.correct', 'data.@each.incorrect', 'visibleColumns', function () {
     const data = this.get('data');
     const dataLen = data.length;
     const visibleIndex = this.get('visibleColumns') * this.get('itemsPerColumn');

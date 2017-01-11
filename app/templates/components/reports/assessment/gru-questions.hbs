@@ -54,7 +54,7 @@
         {{/if}}
       </td>
       <td class="question-score {{if showPerformance 'visible' 'hide'}}">
-        <span class="{{if result.correct 'correct' 'incorrect'}}">
+        <span class="{{if result.started (if result.correct 'correct' 'incorrect') 'not-started'}}">
           {{gru-icon name='radio_button_checked'}}
         </span>
       </td>

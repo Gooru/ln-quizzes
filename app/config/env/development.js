@@ -11,7 +11,7 @@ export default {
     "webServiceUrl": "https://qa.api.quizzes.edify.cr",
     "webServiceUri": "/",
     "webSocketUrl": "https://qa.api.quizzes.edify.cr",
-    "webSocketUri": "/ws/realtime"
+    "webSocketUri": "/ws/quizzes-realtime"
   },
 
   "teams": {

@@ -97,7 +97,7 @@ export default Ember.Component.extend({
    *
    * The questions will be ordered in the array in ascending order per the order value
    */
-  assessmentQuestions: Ember.computed('assessment.resources.[]', function () {
+  assessmentQuestions: Ember.computed('assessment.resources.@each.id', function () {
     const labelPrefix = this.get('i18n').t('reports.gru-table-view.first-tier-header-prefix').string;
 
     let questions = this.get('assessment.resources')
@@ -121,7 +121,7 @@ export default Ember.Component.extend({
   /**
    * @prop { String[] } assessmentQuestionsIds - An array with the ids of all the questions in the assessment
    */
-  assessmentQuestionsIds: Ember.computed('assessmentQuestions.[]', function () {
+  assessmentQuestionsIds: Ember.computed('assessmentQuestions.@each.value', 'assessmentQuestions.@each.label', function () {
     return this.get('assessmentQuestions').map(question => question.value);
   }),
 
@@ -182,7 +182,7 @@ export default Ember.Component.extend({
    *   - output: table cell content formatted for output (the formatting is done by
    *             the question property's render function)
    */
-  tableData: Ember.computed('anonymous', 'tableFrame', 'reportData.reportEvents', function () {
+  tableData: Ember.computed('anonymous', 'tableFrame', 'reportData.reportEvents.@each.profileId', function () {
     const questionProperties = this.get('questionProperties');
     const questionPropertiesIds = this.get('questionPropertiesIds');
     const questionPropertiesIdsLen = questionPropertiesIds.length;
@@ -241,7 +241,7 @@ export default Ember.Component.extend({
    * @prop {Object[]} tableFrame - The table frame that encloses the table data
    * @return {Object[]}
    */
-  tableFrame: Ember.computed('anonymous', 'students.[]', function () {
+  tableFrame: Ember.computed('anonymous', 'students.@each.fullName', function () {
     let anonymous = this.get('anonymous');
     return this.get('students').map(function (student) {
       return {

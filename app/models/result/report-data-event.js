@@ -20,7 +20,7 @@ export default Ember.Object.extend({
   /**
    * @property {boolean} isAttemptStarted - is the user starting a new attempt?
    */
-  isAttemptStarted: false,
+  isAttemptStarted: true,
 
   /**
    * @property {boolean} isAttemptFinished - is the user finishing the current attempt?

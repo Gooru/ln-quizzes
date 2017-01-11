@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import ReportDataEvent from 'quizzes/models/result/report-data-event';
+import QuestionResult from 'quizzes/models/result/question';
 
 /**
  * Report data model for context/assigment report
@@ -46,7 +48,7 @@ export default Ember.Object.extend({
   /**
    * @property {string[]} studentIds - List of student ids
    */
-  students: Ember.computed('reportEvents', function () {
+  students: Ember.computed('reportEvents.@each.profileId', function () {
     return this.get('reportEvents').map(
       student => Ember.Object.create({
         id: student.get('profileId'),
@@ -59,7 +61,7 @@ export default Ember.Object.extend({
   /**
    * @property {string[]} studentIds - List of student ids
    */
-  studentIds: Ember.computed('students', function () {
+  studentIds: Ember.computed('students.@each.id', function () {
     return this.get('students').map(student => student.get('id'));
   }),
 
@@ -129,6 +131,48 @@ export default Ember.Object.extend({
       } else {
         this.get('reportEvents').push(newReportEvent);
       }
+    }
+  },
+
+  /**
+   * Parse and add event data from web socket
+   * @param {Object} eventData
+   */
+  parseEvent: function(eventData) {
+    if (eventData.eventName === 'startContextEvent') {
+      this.parseStartEvent(eventData);
+    }
+  },
+
+  /**
+   * Parse start event data from web socket
+   * @param {Object} eventData
+   */
+  parseStartEvent: function(eventData) {
+    let oldReportEvents = this.findByProfileId(eventData.profileId);
+    if (oldReportEvents.length) {
+      if(eventData.eventBody.isNewAttempt) {
+        let profileEvent = oldReportEvents[0];
+        profileEvent.set('currentResourceId', eventData.eventBody.currentResourceId);
+        profileEvent.get('resourceResults').forEach(result => result.clear());
+      }
+    } else {
+      let newProfileEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
+        currentResourceId: eventData.eventBody.currentResourceId,
+        profileId: eventData.profileId,
+        profileName: eventData.profileName,
+        resourceResults: this.get('collection.resources').map(res =>
+          QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
+            resourceId: res.id,
+            resource: res,
+            savedTime: 0,
+            reaction: 0,
+            answer: null,
+            score: 0
+          })
+        )
+      });
+      this.get('reportEvents').pushObject(newProfileEvent);
     }
   }
 });

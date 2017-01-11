@@ -53,7 +53,7 @@ export default Ember.Component.extend({
    * It returns an object representing the status for each question
    * @property {[]} questions
    */
-  questions: Ember.computed('reportData.[]', function() {
+  questions: Ember.computed('reportData.@each.answer', function() {
     let component = this;
     let reportData = component.get('reportData');
     return reportData.map(item => component.getQuestionStatus(item));
@@ -97,7 +97,7 @@ export default Ember.Component.extend({
    * Indicates if the assessment has not started questions
    * @property {number} notStarted
    */
-  totalNotStarted: Ember.computed('reportData.[]', function(){
+  totalNotStarted: Ember.computed('reportData.@each.score', function(){
     return totalNotStarted(this.get('reportData'));
   }),
 
@@ -122,6 +122,4 @@ export default Ember.Component.extend({
       id: questionId
     });
   }
-
-
 });

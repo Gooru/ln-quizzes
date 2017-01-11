@@ -62,6 +62,14 @@ export default Ember.Object.extend(Serializable, {
     let startTime = this.get('startTime') || 0;
     let stopTime = this.get('stopTime') || startTime;
     return savedTime + (stopTime - startTime);
-  })
+  }),
+
+  // -------------------------------------------------------------------------
+  // Methods
+
+  clear: function() {
+    this.set('reaction', 0);
+    this.set('savedTime', 0);
+  }
 
 });

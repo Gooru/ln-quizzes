@@ -115,7 +115,7 @@ export default Ember.Object.extend({
   normalizeReportData: function (payload) {
     const serializer = this;
     return ReportData.create(Ember.getOwner(this).ownerInjection(), {
-      contextId: payload.id,
+      contextId: payload.contextId,
       collectionId: payload.collection.id,
       reportEvents: serializer.normalizeReportDataEvents(payload.profileEvents)
     });

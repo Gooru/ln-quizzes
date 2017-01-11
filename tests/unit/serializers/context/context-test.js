@@ -432,7 +432,7 @@ test('normalizeResourceResults', function(assert) {
 test('normalizeReportData', function(assert) {
   const serializer = this.subject();
   const payload = {
-    id: 'context-id',
+    contextId: 'context-id',
     collection: {
       id: 'collection-id'
     },

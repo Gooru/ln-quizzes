@@ -71,5 +71,14 @@ export default ResourceResult.extend({
   /**
    * @property {boolean} submitted - if the question is already submitted
    */
-  submitted: false
+  submitted: false,
+
+  // -------------------------------------------------------------------------
+  // Methods
+
+  clear: function() {
+    this._super(...arguments);
+    this.set('answer', null);
+    this.set('score', 0);
+  }
 });

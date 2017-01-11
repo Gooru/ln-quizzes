@@ -15,9 +15,16 @@ export default Ember.Component.extend({
     /***
      * Select tab option
      */
-    selectOption: function (type) {
+    selectOption: function(type) {
       this.set('showFromWeb', type === 'fromWeb');
       this.set('showFromComputer', type === 'fromComputer');
+    },
+    /***
+     * Select file
+     */
+    selectFile: function(file) {
+      //TODO
+      this.set('rubric.file',file);
     }
   },
 

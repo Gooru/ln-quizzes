@@ -29,7 +29,7 @@
                 <span class="required file-name">{{t 'common.file-name'}}</span>
                 <span class="formats">{{t 'common.valid-extensions' extensions=validExtensions}}</span>
             </label>
-          {{editor.assessment.gru-file-picker validMimeType=rubric.mimeType}}
+          {{editor.assessment.gru-file-picker validMimeType=rubric.mimeType onSelectFile=(action 'selectFile')}}
         </div>
     </div>
 </div>

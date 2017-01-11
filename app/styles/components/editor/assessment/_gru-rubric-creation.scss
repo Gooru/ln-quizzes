@@ -53,4 +53,30 @@
       margin-bottom: 15px;
     }
   }
+  .add-from-computer{
+    .information{
+      .icon{
+        color:$light-300;
+        margin-right: 5px;
+        i{
+          vertical-align: middle;
+        }
+      }
+      .title{
+        font-size: $font-size-large;
+      }
+    }
+    .filename-label{
+      > *{
+        display: block;
+      }
+      .formats{
+        font-style: italic;
+        font-size: $font-size-small;
+      }
+    }
+    .gru-file-picker{
+      width: 36%;
+    }
+  }
 }

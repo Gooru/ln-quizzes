@@ -20,7 +20,8 @@ export default Ember.Controller.extend({
     title:'',
     learningObjective:'',
     rubric:{
-      url:''
+      url:'',
+      mimeType:'application/pdf'
     }
   }),
 

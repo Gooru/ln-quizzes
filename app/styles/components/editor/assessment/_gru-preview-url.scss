@@ -1,0 +1,17 @@
+.editor.assessment.gru-preview-url{
+ .preview{
+   width:620px;
+   height: 328px;
+
+   iframe{
+     width: inherit;
+   }
+ }
+  .preview.show-legend{
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    color:$gray-light;
+    border: 2px dashed $gray-light;
+  }
+}

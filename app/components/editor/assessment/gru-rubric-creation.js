@@ -25,12 +25,23 @@ export default Ember.Component.extend({
     selectFile: function(file) {
       //TODO
       this.set('rubric.file',file);
+    },
+    /***
+     * Add URL
+     */
+    addURL: function(url){
+      if(this.get('showFromWeb')){
+        this.set('rubricURL',url);
+      }
     }
   },
 
   // -------------------------------------------------------------------------
   // Properties
-
+  /*** Indicates when then show from web option is visible
+   * * @property {boolean}
+   * */
+  rubricURL:"",
   /**
    * Indicates when then show from web option is visible
    * @property {boolean}

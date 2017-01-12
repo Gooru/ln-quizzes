@@ -16,7 +16,8 @@
             <label class="url-label">
               {{validation.gru-input model=rubric valuePath='url' placeholder=(t 'gru-rubric-creation.url')}}
             </label>
-            <button class="btn btn-default btn-primary add-btn" title={{t 'common.add'}}>{{t 'common.add'}}</button>
+            <button class="btn btn-default btn-primary add-btn" title={{t 'common.add'}} {{action 'addURL' rubric.url}}>{{t 'common.add'}}</button>
+          {{editor.assessment.gru-preview-url url=rubricURL}}
         </div>
     </div>
     <div role="tabpanel" class="tab-pane {{if showFromComputer 'active'}}" id="from-computer">

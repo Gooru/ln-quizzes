@@ -107,9 +107,12 @@ export default Ember.Object.extend({
    */
   merge: function(resourceId, newResult) {
     let index = this.findIndexByResourceId(resourceId);
+    newResult.savedTime = newResult.savedTime || newResult.timeSpent;
     this.get('resourceResults').get(index).setProperties({
       resourceId: newResult.resourceId,
       savedTime: newResult.savedTime,
+      stopTime: 0,
+      timeSpent: 0,
       reaction: newResult.reaction,
       answer: newResult.answer,
       score: newResult.score
@@ -121,6 +124,18 @@ export default Ember.Object.extend({
    */
   setProfileProperties: function(profile) {
     this.set('profileName', profile.get('fullName'));
+  },
+
+  /**
+   * Set summary properties coming from web sockets events
+   */
+  setProfileSummary: function(summary, isAttemptFinished) {
+    this.set('isAttemptFinished', isAttemptFinished);
+    this.set('totalAnswered', summary.totalAnswered);
+    this.set('totalCorrect', summary.totalCorrect);
+    this.set('averageReaction', summary.averageReaction);
+    this.set('averageScore', summary.averageScore);
+    this.set('totalTimeSpent', summary.totalTimeSpent);
   }
 
 });

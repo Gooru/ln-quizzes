@@ -134,6 +134,8 @@ export default Ember.Object.extend({
       this.parseStartEvent(eventData);
     } else if (eventData.eventName === CONTEXT_EVENT_TYPES.FINISH) {
       this.parseFinishEvent(eventData);
+    } else if(eventData.eventName === CONTEXT_EVENT_TYPES.ON_RESOURCE){
+      this.parseOnResourceEvent(eventData);
     }
   },
 
@@ -144,14 +146,22 @@ export default Ember.Object.extend({
   parseFinishEvent: function(eventData) {
     let oldReportEvents = this.findByProfileId(eventData.profileId);
     if (oldReportEvents.length) {
+      oldReportEvents[0].setProfileSummary(eventData.eventBody.eventSummary, true);
+    }
+  },
+
+  /**
+   * Parse on resource event data from web socket
+   * @param {Object} eventData
+   */
+  parseOnResourceEvent: function(eventData) {
+    let oldReportEvents = this.findByProfileId(eventData.profileId);
+    if (oldReportEvents.length) {
       let profileEvent = oldReportEvents[0];
-      let summary = eventData.eventBody.eventSummary;
-      profileEvent.set('isAttemptFinished', true);
-      profileEvent.set('totalAnswered', summary.totalAnswered);
-      profileEvent.set('totalCorrect', summary.totalCorrect);
-      profileEvent.set('averageReaction', summary.averageReaction);
-      profileEvent.set('averageScore', summary.averageScore);
-      profileEvent.set('totalTimeSpent', summary.totalTimeSpent);
+      let previousResource = eventData.eventBody.previousResource;
+      profileEvent.setProfileSummary(eventData.eventBody.eventSummary, false);
+      profileEvent.set('currentResourceId', eventData.eventBody.currentResourceId);
+      profileEvent.merge(previousResource.resourceId, previousResource);
     }
   },
 

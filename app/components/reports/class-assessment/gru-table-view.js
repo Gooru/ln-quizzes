@@ -6,11 +6,6 @@ import {
   getScoreString,
   getReactionIcon
 } from 'quizzes/utils/utils';
-import {
-  averageReaction,
-  correctPercentage,
-  totalTimeSpent
-} from 'quizzes/utils/question-result';
 
 /**
  * Class assessment table view
@@ -217,21 +212,21 @@ export default Ember.Component.extend({
           };
           propertyValues[k].push(questionResult);
         }
-        // Compute the aggregate values
-        for (let k = 0; k < questionPropertiesIdsLen; k++) {
-          // Set the value in the aggregate (totals) column;
-          let value = questionProperties[k].aggregateFunction(propertyValues[k]);
-          let aggregateRenderFunction = questionProperties[k].aggregateRenderFunction;
-
-          // For displaying the aggregate value, use the question property's aggregateRenderFunction.
-          // If there's no aggregateRenderFunction, use the property's renderFunction by default.
-          data[i].content[k] = {
-            value,
-            output: (aggregateRenderFunction) ? aggregateRenderFunction(value) :
-              questionProperties[k].renderFunction(value)
-          };
-        }
       });
+      // Compute the aggregate values
+      for (let k = 0; k < questionPropertiesIdsLen; k++) {
+        // Set the value in the aggregate (totals) column;
+        let value = reportEvent.get(questionProperties[k].aggregateValue);
+        let aggregateRenderFunction = questionProperties[k].aggregateRenderFunction;
+
+        // For displaying the aggregate value, use the question property's aggregateRenderFunction.
+        // If there's no aggregateRenderFunction, use the property's renderFunction by default.
+        data[i].content[k] = {
+          value,
+          output: (aggregateRenderFunction) ? aggregateRenderFunction(value) :
+            questionProperties[k].renderFunction(value)
+        };
+      }
     });
 
     return data;
@@ -270,7 +265,7 @@ export default Ember.Component.extend({
         value: 'correct',
         visible: true,
         renderFunction: getAnswerResultIcon,
-        aggregateFunction: correctPercentage,
+        aggregateValue: 'averageScore',
         aggregateRenderFunction: getScoreString
       }),
       Ember.Object.create({
@@ -280,7 +275,7 @@ export default Ember.Component.extend({
         label: this.get('i18n').t('reports.gru-table-view.study-time').string,
         value: 'timeSpent',
         renderFunction: formatTime,
-        aggregateFunction: totalTimeSpent
+        aggregateValue: 'totalTimeSpent'
       }),
       Ember.Object.create({
         filter: {
@@ -289,7 +284,7 @@ export default Ember.Component.extend({
         label: this.get('i18n').t('reports.gru-table-view.reaction').string,
         value: 'reaction',
         renderFunction: getReactionIcon,
-        aggregateFunction: averageReaction
+        aggregateValue: 'averageReaction'
       })
     ];
   },

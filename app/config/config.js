@@ -99,6 +99,12 @@ export const GRADING_SCALE = [
   {LOWER_LIMIT: 90, COLOR: '#4B9741'} //green-400
 ];
 
+export const CONTEXT_EVENT_TYPES = {
+  FINISH: 'finishContextEvent',
+  ON_RESOURCE: 'onResourceEvent',
+  START: 'startContextEvent'
+};
+
 export const CORRECT_COLOR = GRADING_SCALE[GRADING_SCALE.length - 1].COLOR; //green-400
 
 export const INCORRECT_COLOR = GRADING_SCALE[0].COLOR;//red-400

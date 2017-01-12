@@ -102,7 +102,7 @@ export default Ember.Object.extend({
   /**
    * @property {string} title - Title of the assessment
    */
-  title: Ember.computed.alias("collection.title"),
+  title: Ember.computed.alias('collection.title'),
 
   /**
    * @property {number} totalAttempts number of attempts made

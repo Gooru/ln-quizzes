@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { REAL_TIME_CLIENT } from 'quizzes/config/config';
+import { REAL_TIME_CLIENT, CONTEXT_EVENT_TYPES } from 'quizzes/config/config';
 import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
 /**
@@ -145,8 +145,14 @@ export default Ember.Controller.extend({
        // Subscribe to listen for live messages
        webSocketClient.subscribe(`/topic/${channel}`, function (message) {
          let eventMessage = JSON.parse(message.body);
-         controller.get('profileService').readProfile(eventMessage.profileId).then(profile => {
-           eventMessage.profileName = profile.get('fullName');
+         let profilePromise = Ember.RSVP.resolve();
+         if(eventMessage.eventName === CONTEXT_EVENT_TYPES.START){
+           profilePromise = controller.get('profileService').readProfile(eventMessage.profileId);
+         }
+         profilePromise.then(profile => {
+           if(profile) {
+             eventMessage.profileName = profile.get('fullName');
+           }
            reportData.parseEvent(eventMessage);
          });
        });

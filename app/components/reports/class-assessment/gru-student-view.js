@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import QuestionResult from 'quizzes/models/result/question';
-import { correctPercentage } from 'quizzes/utils/question-result';
 
 export default Ember.Component.extend({
 
@@ -36,9 +35,9 @@ export default Ember.Component.extend({
     sortStudentView: function(sort) {
       this.set('sortAlphabetically', sort);
       if(this.get('sortAlphabetically')) {
-        this.set('studentPerformanceListSorting', ['student.fullName']);
+        this.set('studentPerformanceListSorting', ['student.profileName']);
       } else {
-        this.set('studentPerformanceListSorting', ['score:desc','student.fullName']);
+        this.set('studentPerformanceListSorting', ['student.averageScore:desc','student.profileName']);
       }
     }
   },
@@ -107,12 +106,6 @@ export default Ember.Component.extend({
     const component = this;
     const reportEvents = component.get('reportData.reportEvents');
     return reportEvents.map(function(studentData) {
-      let student = {
-        id: studentData.get('profileId'),
-        fullName: studentData.get('profileName'),
-        code: studentData.get('profileCode')
-      };
-
       let studentReportData = studentData.get('questionResults').reduce(
         function(studentReport, result) {
           studentReport[result.resourceId] = result;
@@ -124,18 +117,15 @@ export default Ember.Component.extend({
         if(!studentReportData[resource.id]) {
           studentReportData[resource.id] = QuestionResult.create({
             score: 0,
-            resourceId: resource.id,
-            skipped: true,
-            started: false
+            resourceId: resource.id
           });
         }
       });
 
       let studentResourceResults = component.getReportDataResults(studentReportData);
       return Ember.Object.create({
-        student,
-        reportData: studentResourceResults,
-        score: correctPercentage(studentResourceResults)
+        student: studentData,
+        reportData: studentResourceResults
       });
     });
   }),
@@ -145,7 +135,7 @@ export default Ember.Component.extend({
    *
    * @property {Array}
    */
-  studentPerformanceListSorting: ['score:desc', 'student.fullName'],
+  studentPerformanceListSorting: ['student.averageScore:desc', 'student.profileName'],
 
   // -------------------------------------------------------------------------
   // Methods

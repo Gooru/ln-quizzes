@@ -187,5 +187,5 @@ export default Ember.Object.extend({
   replaceByProfileId: function(profileId, profileEvent) {
     this.set('reportEvents', this.get('reportEvents').map(reportEvent =>
       reportEvent.get('profileId') === profileId ? profileEvent : reportEvent));
-  },
+  }
 });

@@ -66,5 +66,5 @@ test('Show PDF', function (assert) {
   var $component = this.$();
 
   assert.ok($component.find('.gru-preview-url iframe').length, 'Missing url preview');
-  assert.equal($component.find('iframe').attr('src'), 'http://qacdn.gooru.org/qalive/f000/2441/3308/GooruLearnYourWay.pdf', 'Wrong url');
+  assert.equal($component.find('iframe').attr('src'), 'http://www.worldanimalfoundation.net/f/koala.pdf', 'Wrong url');
 });

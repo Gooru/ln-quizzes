@@ -41,7 +41,7 @@ export default Ember.Component.extend({
   /*** Indicates when then show from web option is visible
    * * @property {boolean}
    * */
-  rubricURL:"",
+  rubricURL:'',
   /**
    * Indicates when then show from web option is visible
    * @property {boolean}

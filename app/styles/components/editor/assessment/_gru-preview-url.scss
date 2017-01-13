@@ -1,7 +1,8 @@
 .editor.assessment.gru-preview-url{
   height: 80%;
   .preview{
-    width: 57%;
+    width: 620px;
+    overdflow-x:auto;
     height: 100%;
     iframe {
      width: inherit;

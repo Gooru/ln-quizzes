@@ -22,10 +22,10 @@ export default ResourceResult.extend({
    *
    * @property {String}
    */
-  attemptStatus: Ember.computed('correct', 'answered', function () {
+  attemptStatus: Ember.computed('correct', 'skipped', function () {
     const correct = this.get('correct');
-    const answered = this.get('answered');
-    return correct ? 'correct' : answered ? 'incorrect' : 'skipped';
+    const skipped = this.get('skipped');
+    return correct ? 'correct' : (skipped ? 'skipped' : 'incorrect');
   }),
 
   /**
@@ -62,6 +62,11 @@ export default ResourceResult.extend({
    * @property {number} score - Resource score
    */
   score: 0,
+
+  /**
+   * @property {boolean} started
+   */
+  skipped: false,
 
   /**
    * @property {boolean} started

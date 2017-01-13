@@ -410,11 +410,15 @@ test('normalizeResourceResults', function(assert) {
     resourceId: 'resource-id-1',
     timeSpent: 10000,
     reaction: 1,
+    score: 100,
+    isSkipped: false,
     answer: 'answer-1'
   }, {
     resourceId: 'resource-id-2',
     timeSpent: 20000,
     reaction: 3,
+    score: 0,
+    isSkipped: true,
     answer: 'answer-2'
   }];
   const response = serializer.normalizeResourceResults(payload);
@@ -423,10 +427,14 @@ test('normalizeResourceResults', function(assert) {
   assert.equal(response[0].get('reaction'), 1, 'Wrong first reaction');
   assert.equal(response[0].get('resourceId'), 'resource-id-1', 'Wrong first resource id');
   assert.equal(response[0].get('savedTime'), 10000, 'Wrong first time spent');
+  assert.equal(response[0].get('score'), 100, 'Wrong first score');
+  assert.notOk(response[0].get('skipped'), 'Wrong first skipped value');
   assert.equal(response[1].get('answer'), 'answer-2', 'Wrong second answer');
   assert.equal(response[1].get('reaction'), 3, 'Wrong second reaction');
   assert.equal(response[1].get('resourceId'), 'resource-id-2', 'Wrong second resource id');
   assert.equal(response[1].get('savedTime'), 20000, 'Wrong second time spent');
+  assert.equal(response[1].get('score'), 0, 'Wrong second score');
+  assert.ok(response[1].get('skipped'), 'Wrong second skipped value');
 });
 
 test('normalizeReportData', function(assert) {

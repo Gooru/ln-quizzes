@@ -70,6 +70,8 @@ export default Ember.Object.extend(Serializable, {
   clear: function() {
     this.set('reaction', 0);
     this.set('savedTime', 0);
+    this.set('startTime', 0);
+    this.set('stopTime', 0);
   }
 
 });

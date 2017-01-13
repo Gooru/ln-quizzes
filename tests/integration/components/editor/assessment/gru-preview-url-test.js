@@ -57,7 +57,7 @@ test('Show PDF', function (assert) {
   assert.expect(2);
 
 
-  const url = 'http://qacdn.gooru.org/qalive/f000/2441/3308/GooruLearnYourWay.pdf';
+  const url = 'http://www.worldanimalfoundation.net/f/koala.pdf';
 
   this.set('url', url);
 

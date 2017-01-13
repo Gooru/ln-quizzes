@@ -1,12 +1,12 @@
 .editor.assessment.gru-preview-url{
- .preview{
-   width:620px;
-   height: 328px;
-
-   iframe{
+  height: 80%;
+  .preview{
+    width: 57%;
+    height: 100%;
+    iframe {
      width: inherit;
    }
- }
+  }
   .preview.show-legend{
     @include flexbox;
     @include justify-content(center);

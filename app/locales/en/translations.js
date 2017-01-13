@@ -1413,6 +1413,9 @@ export default {
   "gru-rubric-creation":{
     "from-web":"From Web",
     "from-computer":"From Your Computer",
-    "url":"URL"
+    "url":"URL",
+    "gru-preview-url":{
+      "add":"Add a rubric above"
+    }
   }
 };

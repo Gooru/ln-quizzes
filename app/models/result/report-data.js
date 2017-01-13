@@ -108,24 +108,6 @@ export default Ember.Object.extend({
   },
 
   /**
-   * Merge a new event into the report data
-   * @param {ReportDataEvent} newReportEvent new event to merge
-   */
-  mergeEvent: function(newReportEvent) {
-    let oldReportEvents = this.findByProfileId(newReportEvent.get('profileId'));
-    let oldReportEvent = oldReportEvents.length ? oldReportEvents[0] : null;
-    let newResults = newReportEvent.get('resourceResults');
-    let newResult = newResults ? newResults[0] : null;
-    if(newResult) {
-      if(oldReportEvent) {
-        oldReportEvent.merge(newResult.get('resourceId'), newResult);
-      } else {
-        this.get('reportEvents').push(newReportEvent);
-      }
-    }
-  },
-
-  /**
    * Parse and add event data from web socket
    * @param {Object} eventData
    */
@@ -171,29 +153,39 @@ export default Ember.Object.extend({
    */
   parseStartEvent: function(eventData) {
     let oldReportEvents = this.findByProfileId(eventData.profileId);
+    let newProfileEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
+      currentResourceId: eventData.eventBody.currentResourceId,
+      profileId: eventData.profileId,
+      profileName: eventData.profileName,
+      resourceResults: this.get('collection.resources').map(res =>
+        QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
+          resourceId: res.id,
+          resource: res,
+          savedTime: 0,
+          reaction: 0,
+          answer: null,
+          score: 0
+        })
+      )
+    });
     if (oldReportEvents.length) {
+      newProfileEvent.set('profileName', oldReportEvents[0].get('profileName'));
       if(eventData.eventBody.isNewAttempt) {
-        let profileEvent = oldReportEvents[0];
-        profileEvent.set('currentResourceId', eventData.eventBody.currentResourceId);
-        profileEvent.get('resourceResults').forEach(result => result.clear());
+        // Replace the old student report
+        this.replaceByProfileId(eventData.profileId, newProfileEvent);
       }
     } else {
-      let newProfileEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
-        currentResourceId: eventData.eventBody.currentResourceId,
-        profileId: eventData.profileId,
-        profileName: eventData.profileName,
-        resourceResults: this.get('collection.resources').map(res =>
-          QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
-            resourceId: res.id,
-            resource: res,
-            savedTime: 0,
-            reaction: 0,
-            answer: null,
-            score: 0
-          })
-        )
-      });
       this.get('reportEvents').pushObject(newProfileEvent);
     }
-  }
+  },
+
+  /**
+   * Replace an event using a profile id
+   * @param {String} profileId
+   * @param {Object} profileEvent
+   */
+  replaceByProfileId: function(profileId, profileEvent) {
+    this.set('reportEvents', this.get('reportEvents').map(reportEvent =>
+      reportEvent.get('profileId') === profileId ? profileEvent : reportEvent));
+  },
 });

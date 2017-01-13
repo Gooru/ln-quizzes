@@ -103,7 +103,8 @@ export default Ember.Object.extend({
         savedTime: resourceResult.timeSpent,
         reaction: resourceResult.reaction,
         answer: resourceResult.answer.length ? resourceResult.answer : null,
-        score: resourceResult.score
+        score: resourceResult.score,
+        skipped: resourceResult.isSkipped
       })
     );
   },

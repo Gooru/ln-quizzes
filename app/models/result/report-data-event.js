@@ -93,6 +93,18 @@ export default Ember.Object.extend({
   // Methods
 
   /**
+   * Set summary properties coming from web sockets events
+   */
+  clearProfileSummary: function() {
+    this.set('isAttemptFinished', false);
+    this.set('totalAnswered', 0);
+    this.set('totalCorrect', 0);
+    this.set('averageReaction', 0);
+    this.set('averageScore', 0);
+    this.set('totalTimeSpent', 0);
+  },
+
+  /**
    * Find a resource's index by its id
    */
   findIndexByResourceId: function(resourceId) {
@@ -112,7 +124,7 @@ export default Ember.Object.extend({
       resourceId: newResult.resourceId,
       savedTime: newResult.savedTime,
       stopTime: 0,
-      timeSpent: 0,
+      startTime: 0,
       reaction: newResult.reaction,
       answer: newResult.answer,
       score: newResult.score

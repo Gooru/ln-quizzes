@@ -15,7 +15,6 @@
 
 @import 'controllers/assign';
 @import 'controllers/assignments';
-@import 'controllers/player';
 @import 'controllers/reports/context';
 @import 'controllers/edit/assessment';
 
@@ -77,6 +76,7 @@
 @import 'components/editor/assessment/gru-file-picker';
 @import 'components/editor/assessment/gru-preview-url';
 
+@import 'components/player/qz-player';
 @import 'components/player/gru-navigation';
 @import 'components/player/gru-navigator';
 @import 'components/player/gru-viewer';

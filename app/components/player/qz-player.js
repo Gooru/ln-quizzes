@@ -1,16 +1,15 @@
 import Ember from 'ember';
 import ModalMixin from 'quizzes/mixins/modal';
 
-/**
- * @module
- * @typedef {Object} PlayerController
- *
- * @augments Ember/Controller
- */
-export default Ember.Controller.extend(ModalMixin, {
-
+export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Dependencies
+
+  /**
+   * @type {CollectionService} collectionService
+   * @property {Ember.Service} Service to retrieve a collection
+   */
+  collectionService: Ember.inject.service('api-sdk/collection'),
 
   /**
    * @type {ContextService} contextService
@@ -91,6 +90,10 @@ export default Ember.Controller.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Events
 
+  init: function() {
+    this._super(...arguments);
+    this.startAssessment();
+  },
 
   // -------------------------------------------------------------------------
   // Properties
@@ -304,22 +307,21 @@ export default Ember.Controller.extend(ModalMixin, {
    * Starts the assessment or collection
    */
   startAssessment: function() {
-    const controller = this;
-    const collection = controller.get('collection');
-    const contextResult = controller.get('contextResult');
+    const component = this;
+    const collection = component.get('collection');
+    const contextResult = component.get('contextResult');
     const hasResources = collection.get('hasResources');
     let resource = null;
 
-    controller.set('showContent', true);
+    component.set('showContent', true);
     if(hasResources) {
       resource = contextResult.get('currentResource');
-      if(controller.get('resourceId')) { //if has a resource id as query param
-        resource = collection.getResourceById(controller.get('resourceId'));
+      if(component.get('resourceId')) { //if has a resource id as query param
+        resource = collection.getResourceById(component.get('resourceId'));
       }
     }
     if(resource) {
-      controller.moveToResource(resource, true);
+      component.moveToResource(resource, true);
     }
   }
-
 });

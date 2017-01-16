@@ -27,5 +27,5 @@ test('it renders', function(assert) {
   var $studentModalComponent = this.$();
   assert.ok($studentModalComponent.find('.gru-assign-student-modal').length, 'Missing modal component');
   assert.ok($studentModalComponent.find('.gru-assign-student-modal h4.modal-title').length, 'Missing modal title');
-  assert.ok($studentModalComponent.find('.gru-assign-students').length, 'Missing assign students');
+  assert.ok($studentModalComponent.find('.qz-assign-students').length, 'Missing assign students');
 });

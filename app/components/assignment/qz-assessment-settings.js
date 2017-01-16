@@ -13,7 +13,7 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['gru-assessment-settings'],
+  classNames: ['qz-assessment-settings'],
 
   // -------------------------------------------------------------------------
   // Actions

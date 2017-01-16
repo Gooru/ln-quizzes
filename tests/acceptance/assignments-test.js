@@ -26,13 +26,13 @@ test('Visiting assignment as teacher', function(assert) {
     click($addStudent);
     andThen(function () {
       assert.ok(assert, find('.gru-assign-student-modal'), 'Missing assign student modal');
-      var $studentRosterTab = Ember.$('.gru-assign-students .nav-tabs .student-roster a');
+      var $studentRosterTab = Ember.$('.qz-assign-students .nav-tabs .student-roster a');
       click($studentRosterTab);
       andThen(function () {
-        var $student = Ember.$('.gru-assign-students .students .student-list .list-group-item:eq(2)');
+        var $student = Ember.$('.qz-assign-students .students .student-list .list-group-item:eq(2)');
         click($student);
         andThen(function () {
-          assert.equal( Ember.$('.gru-assign-students .students .list-container .student-list .list-group-item i.done').length,2, '2 student should be selected');
+          assert.equal( Ember.$('.qz-assign-students .students .list-container .student-list .list-group-item i.done').length,2, '2 student should be selected');
           assert.equal(Ember.$('.selected-count').text(),'Selected 2 of 3','Incorrect selected count');
           Ember.$('#date-dueDate').val('');
           fillIn(Ember.$('#date-dueDate'), '10/10/2200');

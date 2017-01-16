@@ -20,19 +20,19 @@ test('Create Context', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/assessment/assessment-id');
-    var $studentRosterTab = Ember.$('.gru-assign-students .nav-tabs .student-roster a');
+    var $studentRosterTab = Ember.$('.qz-assign-students .nav-tabs .student-roster a');
     click($studentRosterTab);
     andThen(function () {
-      var $student = Ember.$('.gru-assign-students .students .student-list .list-group-item:eq(1)');
+      var $student = Ember.$('.qz-assign-students .students .student-list .list-group-item:eq(1)');
       click($student);
       andThen(function () {
-        assert.equal( Ember.$('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,1, 'One student should be selected');
+        assert.equal( Ember.$('.qz-assign-students .students .list-container .student-list .list-group-item.selected').length,1, 'One student should be selected');
         assert.equal(Ember.$('.selected-count').text(),'Selected 1 of 3','Incorrect selected count');
         fillIn(Ember.$('#date-dueDate'), '12/10/2200');
         var $assignButton = Ember.$('button.assign-btn');
         click($assignButton);
         andThen(function () {
-          assert.equal( Ember.$('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,0, 'Assignment list should be clean');
+          assert.equal( Ember.$('.qz-assign-students .students .list-container .student-list .list-group-item.selected').length,0, 'Assignment list should be clean');
         });
       });
     });

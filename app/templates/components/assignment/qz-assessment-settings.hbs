@@ -5,7 +5,7 @@
                   {{gru-icon name="swap_horizontal"}}
                     <span class="backwards-header">{{t "gru-settings-edit.backwards"}}</span>
                 </div>
-              {{gru-switch switchOptions=switchOptions onOptionSwitch='onBackwardsChange' isChecked=model.bidirectional}}
+              {{qz-switch switchOptions=switchOptions onOptionSwitch='onBackwardsChange' isChecked=model.bidirectional}}
             </div>
         </div>
 </div>
@@ -40,7 +40,7 @@
               {{gru-icon name="spellcheck"}}
                 <span>{{t "gru-settings-edit.answer-key"}}</span>
             </div>
-          {{gru-switch switchOptions=switchOptions onOptionSwitch='onAnswerKeyChange' isChecked=model.showKey}}
+          {{qz-switch switchOptions=switchOptions onOptionSwitch='onAnswerKeyChange' isChecked=model.showKey}}
         </div>
     </div>
 </div>

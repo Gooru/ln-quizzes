@@ -38,6 +38,14 @@
               {{editor.assessment.qz-rubric-creation rubric=assessment.rubric}}
             </div>
         </div>
+      {{#if hasNoCategory}}
+          {{editor.assessment.qz-category}}
+      {{else}}
+        {{#each assessment.categories as |category|}}
+          {{editor.assessment.qz-category category=category}}
+        {{/each}}
+      {{/if}}
+        <a class="add-prefix" href="#" {{action 'addCategory'}}>{{t "common.add-new-unit"}}</a>
     </section>
 {{/if}}
 

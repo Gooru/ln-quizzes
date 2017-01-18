@@ -3,31 +3,31 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 
-moduleForComponent('gru-switch', 'Integration | Component | gru switch', {
+moduleForComponent('qz-switch', 'Integration | Component | qz switch', {
   integration: true,
   beforeEach: function () {
-    this.container.lookup('service:i18n').set("locale","en");
+    this.container.lookup('service:i18n').set('locale','en');
   }
 });
 
 test('Switch Layout', function(assert) {
   assert.expect(2);
   const switchOptions = Ember.A([Ember.Object.create({
-    'label': "Option A",
+    'label': 'Option A',
     'value': 'some-value'
   }), Ember.Object.create({
-    'label': "Option B",
+    'label': 'Option B',
     'value': 'some-value'
   })]);
 
   this.set('switchOptions', switchOptions);
-  this.render(hbs`{{gru-switch switchOptions=switchOptions}}`);
+  this.render(hbs`{{qz-switch switchOptions=switchOptions}}`);
 
   const $component = this.$(); //component dom element
-  const $switch = $component.find(".gru-switch");
+  const $switch = $component.find('.qz-switch');
 
   T.exists(assert, $switch, 'Missing switch component');
-  T.exists(assert, $switch.find(".switch"), 'Missing switch');
+  T.exists(assert, $switch.find('.switch'), 'Missing switch');
 
 });
 
@@ -35,18 +35,18 @@ test('Switch', function(assert) {
  assert.expect(2);
 
   const switchOptions = Ember.A([Ember.Object.create({
-    'label': "Option A",
+    'label': 'Option A',
     'value': 'some-value'
   }), Ember.Object.create({
-    'label': "Option B",
+    'label': 'Option B',
     'value': 'some-value'
   })]);
   this.set('switchOptions', switchOptions);
 
-  this.render(hbs`{{gru-switch switchOptions=switchOptions onOptionSwitch='parentAction'}}`);
+  this.render(hbs`{{qz-switch switchOptions=switchOptions onOptionSwitch='parentAction'}}`);
 
   const $component = this.$(); //component dom element
-  const $switchComponent = $component.find(".gru-switch");
+  const $switchComponent = $component.find('.qz-switch');
   var counter = 0;
 
   this.on('parentAction', function(option){
@@ -57,6 +57,6 @@ test('Switch', function(assert) {
     }
     counter += 1;
   });
-  $switchComponent.find("a").click();
-  $switchComponent.find("a").click();
+  $switchComponent.find('a').click();
+  $switchComponent.find('a').click();
 });

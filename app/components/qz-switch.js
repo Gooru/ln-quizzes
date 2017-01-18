@@ -15,7 +15,7 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['gru-switch'],
+  classNames: ['qz-switch'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -29,10 +29,10 @@ export default Ember.Component.extend({
     selectOption: function () {
       if(this.get('isChecked')){
         this.set('isChecked',false);
-        this.sendAction("onOptionSwitch", this.get("isChecked"));
+        this.sendAction('onOptionSwitch', this.get('isChecked'));
       }else{
         this.set('isChecked',true);
-        this.sendAction("onOptionSwitch", this.get("isChecked"));
+        this.sendAction('onOptionSwitch', this.get('isChecked'));
       }
     }
 
@@ -65,14 +65,14 @@ export default Ember.Component.extend({
    * @property {Array} Option A
    */
   optionA:Ember.computed('switchOptions.[]', function() {
-    return this.get("switchOptions")[0];
+    return this.get('switchOptions')[0];
   }),
   /**
    * Option in the right side of the switch
    * @property {Array} Option B
    */
   optionB:Ember.computed('switchOptions.[]', function() {
-    return this.get("switchOptions")[1];
+    return this.get('switchOptions')[1];
   }),
   /**
    * Indicate if the switch is checked

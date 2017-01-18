@@ -1416,6 +1416,12 @@ export default {
     "url":"URL",
     "qz-preview-url":{
       "add":"Add a rubric above"
+    },
+    "qz-category":{
+      "feedback-guidance":"Feedback Guidance",
+      "required-feedback":"Required Feedback",
+      "title":"Category Title",
+      "new-category":"Add New Category"
     }
   }
 };

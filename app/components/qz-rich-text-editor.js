@@ -36,7 +36,7 @@ export default Ember.Component.extend({
           component.get('editor').composer.selection.setBookmark(component.get('cursor'));
         }
         if (component.get('editor').composer) {
-          component.get('editor').composer.commands.exec("insertHTML", html);
+          component.get('editor').composer.commands.exec('insertHTML', html);
           var editorElement = component.$(editorClass);
           component.set('content', editorElement.html());
           component.makeExpressionsReadOnly();
@@ -95,7 +95,7 @@ export default Ember.Component.extend({
     component.set('editor', editor);
 
     // observe load Event
-    editor.on("load", onLoad);
+    editor.on('load', onLoad);
 
     function onLoad() {
       Ember.run (function(){
@@ -103,7 +103,7 @@ export default Ember.Component.extend({
         {
           editor.focus();
           if (component.get('content')) {
-            editor.composer.commands.exec("insertHTML", component.get('content'));
+            editor.composer.commands.exec('insertHTML', component.get('content'));
             component.renderMathExpressions();
             component.makeExpressionsReadOnly();
             component.setCursor();
@@ -241,7 +241,7 @@ export default Ember.Component.extend({
    */
 
   editorIndex: Ember.computed(function(){
-    let editorIndex = this.get("uuid");
+    let editorIndex = this.get('uuid');
     if (!editorIndex){
       editorIndex = generateUUID();
     }
@@ -277,7 +277,7 @@ export default Ember.Component.extend({
    * Cancel expression panel
    */
   cancelExpression() {
-    this.get('mathField').latex(""); // Clear math field
+    this.get('mathField').latex(''); // Clear math field
     this.set('editingExpression', null);
   },
 
@@ -300,7 +300,7 @@ export default Ember.Component.extend({
       document.getElementById(editorId),
       {
         delimiters: [
-          {left: "$$", right: "$$", display: false}
+          {left: '$$', right: '$$', display: false}
         ]
       });
   }

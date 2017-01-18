@@ -2,11 +2,11 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import wait from 'ember-test-helpers/wait';
 
-moduleForComponent('editor/assessment/qz-submission-format', 'Integration | Component | editor/assessment/gru submission format', {
+moduleForComponent('editor/assessment/qz-submission-format', 'Integration | Component | editor/assessment/qz submission format', {
   integration: true,
   beforeEach: function () {
     this.i18n = this.container.lookup('service:i18n');
-    this.i18n.set("locale","en");
+    this.i18n.set('locale','en');
   }
 });
 

@@ -1414,7 +1414,7 @@ export default {
     "from-web":"From Web",
     "from-computer":"From Your Computer",
     "url":"URL",
-    "gru-preview-url":{
+    "qz-preview-url":{
       "add":"Add a rubric above"
     }
   }

@@ -1,12 +1,12 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('gru-assessment-settings', 'Integration | Component | gru assessment settings', {
+moduleForComponent('qz-assessment-settings', 'Integration | Component | gru assessment settings', {
   integration: true
 });
 
 test('Layout', function(assert) {
-  this.render(hbs`{{gru-assessment-settings}}`);
+  this.render(hbs`{{assignment/qz-assessment-settings}}`);
 
   var $settingsComponent = this.$();
   assert.equal($settingsComponent.find('.panel.assessment-settings').length,4, 'Should be 4 panel with settings');

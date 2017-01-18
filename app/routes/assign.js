@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Profile from 'quizzes/models/profile/profile';
 
 export default Ember.Route.extend({
 
@@ -19,29 +18,14 @@ export default Ember.Route.extend({
   model: function() {
 
     let studentList = this.get('configurationService.configuration.properties.students');
-
-    let students = studentList.map(function(student){
-      let studentObject = Profile.create(student);
-        studentObject.set('isAssigned',false);
-        return studentObject;
-    });
-
     let collection = this.get('configurationService.configuration.properties.collection');
     let teacherConfig = this.get('configurationService.configuration.properties.teacher');
-
-    let teacher = Profile.create({
-      id: teacherConfig.id,
-      firstName:teacherConfig.firstName,
-      lastName:teacherConfig.lastName,
-      username:teacherConfig.username,
-      email:teacherConfig.email
-    });
     let context = this.get('configurationService.configuration.properties.context');
 
     return Ember.RSVP.hash({
-      students,
+      studentList,
       collection,
-      teacher,
+      teacherConfig,
       context
     });
   },
@@ -52,9 +36,9 @@ export default Ember.Route.extend({
    * @param model
    */
   setupController: function(controller, model) {
-    controller.set('students', model.students);
+    controller.set('studentList', model.studentList);
     controller.set('collection',model.collection);
-    controller.set('teacher',model.teacher);
+    controller.set('teacherConfig',model.teacherConfig);
     controller.set('context',model.context);
   }
 

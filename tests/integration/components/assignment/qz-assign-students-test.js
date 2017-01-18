@@ -2,7 +2,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
 import wait from 'ember-test-helpers/wait';
-import T from 'quizzes/tests/helpers/assert';
+import T from '../../../helpers/assert';
 import Context from 'quizzes/models/context/context';
 import Profile from 'quizzes/models/profile/profile';
 
@@ -29,7 +29,7 @@ const contextServiceStub = Ember.Service.extend({
 
 });
 
-moduleForComponent('gru-assign-students', 'Integration | Component | gru assign students', {
+moduleForComponent('qz-assign-students', 'Integration | Component | qz assign students', {
   integration: true,
   beforeEach: function () {
     this.register('service:api-sdk/context', contextServiceStub);
@@ -57,26 +57,26 @@ test('Assign students Layout', function(assert) {
   ]);
   this.set('students',students);
 
-  this.render(hbs`{{gru-assign-students students=students}}`);
+  this.render(hbs`{{assignment/qz-assign-students students=students}}`);
   var $assignStudentsComponent = this.$();
-  assert.ok($assignStudentsComponent.find('.gru-assign-students h5').length, 'Missing title');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .students .students-header span').length, 'Missing title on student list section ');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .students .students-header .search-navigation .search-icon').length, 'Missing search icon');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .students .students-header .search-navigation input').length, 'Missing search input');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .students .list-container .select-all').length, 'Missing select all option');
-  assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .select-all span').text(),'Select all ('+students.length+')', 'Incorrect students count');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list').length, 'Missing student list');
-  assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item').length,3, 'Should have 3 students');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .selected-count').length, 'Missing selected count');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .assessment-settings').length, 'Missing assessment settings');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .actions .cancel-btn').length, 'Missing cancel button');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .actions .assign-btn').length, 'Missing assign button');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .actions .cancel-btn').length, 'Missing cancel button');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .nav-tabs .assessment-settings').length, 'Missing Assessment Settings Tab');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster').length, 'Missing Student Roster Tab');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options').length, 'Missing Date Option section');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .available-from').length, 'Missing Available From section');
-  assert.ok($assignStudentsComponent.find('.gru-assign-students .date-options .due-date').length, 'Missing Due Date section');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students h5').length, 'Missing title');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .students .students-header span').length, 'Missing title on student list section ');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .students .students-header .search-navigation .search-icon').length, 'Missing search icon');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .students .students-header .search-navigation input').length, 'Missing search input');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .students .list-container .select-all').length, 'Missing select all option');
+  assert.equal($assignStudentsComponent.find('.qz-assign-students .students .list-container .select-all span').text(),'Select all ('+students.length+')', 'Incorrect students count');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .students .list-container .student-list').length, 'Missing student list');
+  assert.equal($assignStudentsComponent.find('.qz-assign-students .students .list-container .student-list .list-group-item').length,3, 'Should have 3 students');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .selected-count').length, 'Missing selected count');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .assessment-settings').length, 'Missing assessment settings');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .actions .cancel-btn').length, 'Missing cancel button');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .actions .assign-btn').length, 'Missing assign button');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .actions .cancel-btn').length, 'Missing cancel button');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .nav-tabs .assessment-settings').length, 'Missing Assessment Settings Tab');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .nav-tabs .student-roster').length, 'Missing Student Roster Tab');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .date-options').length, 'Missing Date Option section');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .date-options .available-from').length, 'Missing Available From section');
+  assert.ok($assignStudentsComponent.find('.qz-assign-students .date-options .due-date').length, 'Missing Due Date section');
 });
 test('Filter by name', function(assert) {
   var students = Ember.A([
@@ -98,16 +98,16 @@ test('Filter by name', function(assert) {
   ]);
   this.set('students',students);
 
-  this.render(hbs`{{gru-assign-students students=students}}`);
+  this.render(hbs`{{assignment/qz-assign-students students=students}}`);
   var $assignStudentsComponent = this.$();
-  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $assignStudentsComponent.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
-    var $searchInput = $assignStudentsComponent.find('.gru-assign-students .students .students-header .search-navigation input');
+    var $searchInput = $assignStudentsComponent.find('.qz-assign-students .students .students-header .search-navigation input');
     $searchInput.val('firstname-2');
     $searchInput.first().keyup();
     return wait().then(function () {
-      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item:visible').length,1, 'Should have only 1 student');
+      assert.equal($assignStudentsComponent.find('.qz-assign-students .students .list-container .student-list .list-group-item:visible').length,1, 'Should have only 1 student');
     });
   });
 });
@@ -131,16 +131,16 @@ test('Select All Students', function(assert) {
   ]);
   this.set('students',students);
 
-  this.render(hbs`{{gru-assign-students students=students}}`);
+  this.render(hbs`{{assignment/qz-assign-students students=students}}`);
   var $assignStudentsComponent = this.$();
-  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $assignStudentsComponent.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
-    var $selectAll = $assignStudentsComponent.find('.gru-assign-students .students .list-container .select-all');
+    var $selectAll = $assignStudentsComponent.find('.qz-assign-students .students .list-container .select-all');
     $selectAll.click();
     return wait().then(function () {
-      assert.ok($assignStudentsComponent.find('.gru-assign-students .list-container .select-all.selected').length, 'Select all button should be selected');
-      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,3, 'All students should be selected');
+      assert.ok($assignStudentsComponent.find('.qz-assign-students .list-container .select-all.selected').length, 'Select all button should be selected');
+      assert.equal($assignStudentsComponent.find('.qz-assign-students .students .list-container .student-list .list-group-item.selected').length,3, 'All students should be selected');
     });
   });
 });
@@ -165,20 +165,20 @@ test('Selected and Unselected Student', function(assert) {
   ]);
   this.set('students',students);
 
-  this.render(hbs`{{gru-assign-students students=students}}`);
+  this.render(hbs`{{assignment/qz-assign-students students=students}}`);
   var $assignStudentsComponent = this.$();
-  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $assignStudentsComponent.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
-    var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(1)');
+    var $student = $assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item:eq(1)');
     $student.click();
     return wait().then(function () {
-      assert.notOk($assignStudentsComponent.find('.gru-assign-students .list-container .select-all.selected').length, 'Select all button should not be selected');
-      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,1, 'Only one student should be selected');
-      var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(1)');
+      assert.notOk($assignStudentsComponent.find('.qz-assign-students .list-container .select-all.selected').length, 'Select all button should not be selected');
+      assert.equal($assignStudentsComponent.find('.qz-assign-students .students .list-container .student-list .list-group-item.selected').length,1, 'Only one student should be selected');
+      var $student = $assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item:eq(1)');
       $student.click();
       return wait().then(function () {
-        assert.equal($assignStudentsComponent.find('.gru-assign-students .students .list-container .student-list .list-group-item.selected').length,0, 'All students should be unselected');
+        assert.equal($assignStudentsComponent.find('.qz-assign-students .students .list-container .student-list .list-group-item.selected').length,0, 'All students should be unselected');
       });
     });
   });
@@ -208,10 +208,10 @@ test('Cancel assign students', function(assert) {
   this.on('parentAction', function(){
     assert.ok(true, 'Should call onCloseModal');
   });
-  this.render(hbs`{{gru-assign-students students=students onCloseModal='parentAction'}}`);
+  this.render(hbs`{{assignment/qz-assign-students students=students onCloseModal='parentAction'}}`);
 
   var $component = this.$(); //component dom element
-  var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $component.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
     var $cancelButton = $component.find('.actions .cancel-btn');
@@ -226,9 +226,9 @@ test('Validate due date with due date less than the assigned date', function(ass
   });
 
   this.set('assignment',context);
-  this.render(hbs`{{gru-assign-students assignment=assignment}}`);
+  this.render(hbs`{{assignment/qz-assign-students assignment=assignment}}`);
   var $component = this.$();
-  var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $component.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
     var $inputDueDate = $component.find('#date-dueDate');
@@ -275,9 +275,9 @@ test('Validate due date when do not have available date', function(assert) {
   });
 
   this.set('assignment',context);
-  this.render(hbs`{{gru-assign-students assignment=assignment}}`);
+  this.render(hbs`{{assignment/qz-assign-students assignment=assignment}}`);
   var $component = this.$();
-  var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $component.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
     var $inputDueDate = $component.find('#date-dueDate');
@@ -342,16 +342,16 @@ test('Validate when assignees list is empty', function(assert) {
   ]);
   this.set('students',students);
 
-  this.render(hbs`{{gru-assign-students assignment=assignment students=students}}`);
+  this.render(hbs`{{assignment/qz-assign-students assignment=assignment students=students}}`);
   var $component = this.$();
-  var $studentRosterTab = $component.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $component.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
     assert.ok(!$component.find('.error-assignees-empty').length, 'Assignees error should not appear');
     $component.find('.assign-btn').click();
     return wait().then(function () {
       assert.ok($component.find('.error-assignees-empty').length, 'Assignees error should appear');
-      var $student = $component.find('.gru-assign-students .students .student-list .list-group-item:eq(1)');
+      var $student = $component.find('.qz-assign-students .students .student-list .list-group-item:eq(1)');
       $student.click();
       return wait().then(function () {
         assert.ok(!$component.find('.error-assignees-empty').length, 'Assignees error should not appear');
@@ -379,16 +379,16 @@ test('Try unselected an assigned student on update mode', function(assert) {
   ]);
   this.set('students',students);
 
-  this.render(hbs`{{gru-assign-students students=students isUpdate=true}}`);
+  this.render(hbs`{{assignment/qz-assign-students students=students isUpdate=true}}`);
   var $assignStudentsComponent = this.$();
-  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $assignStudentsComponent.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
-    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
-    var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(0)');
+    assert.equal($assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
+    var $student = $assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item:eq(0)');
     $student.click();
     return wait().then(function () {
-      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
+      assert.equal($assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
     });
   });
 });
@@ -412,18 +412,18 @@ test('Assign a new student on update mode', function(assert) {
   ]);
   this.set('students',students);
 
-  this.render(hbs`{{gru-assign-students students=students isUpdate=true}}`);
+  this.render(hbs`{{assignment/qz-assign-students students=students isUpdate=true}}`);
   var $assignStudentsComponent = this.$();
-  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $assignStudentsComponent.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
-    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
-    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item.selected').length,0, 'Should have 0 new students selected');
-    var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(1)');
+    assert.equal($assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
+    assert.equal($assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item.selected').length,0, 'Should have 0 new students selected');
+    var $student = $assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item:eq(1)');
     $student.click();
     return wait().then(function () {
-      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,2, 'Should have 1 student assigned');
-      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item.selected').length,1, 'Should have 1 new students selected');
+      assert.equal($assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item i.done').length,2, 'Should have 1 student assigned');
+      assert.equal($assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item.selected').length,1, 'Should have 1 new students selected');
     });
   });
 });
@@ -448,16 +448,16 @@ test('Try unselected an assigned student on create mode', function(assert) {
   ]);
   this.set('students',students);
 
-  this.render(hbs`{{gru-assign-students students=students}}`);
+  this.render(hbs`{{assignment/qz-assign-students students=students}}`);
   var $assignStudentsComponent = this.$();
-  var $studentRosterTab = $assignStudentsComponent.find('.gru-assign-students .nav-tabs .student-roster a');
+  var $studentRosterTab = $assignStudentsComponent.find('.qz-assign-students .nav-tabs .student-roster a');
   $studentRosterTab.click();
   return wait().then(function () {
-    assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
-    var $student = $assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item:eq(0)');
+    assert.equal($assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item i.done').length,1, 'Should have 1 student assigned');
+    var $student = $assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item:eq(0)');
     $student.click();
     return wait().then(function () {
-      assert.equal($assignStudentsComponent.find('.gru-assign-students .students .student-list .list-group-item i.done').length,0, 'Should have 0 student assigned');
+      assert.equal($assignStudentsComponent.find('.qz-assign-students .students .student-list .list-group-item i.done').length,0, 'Should have 0 student assigned');
     });
   });
 });

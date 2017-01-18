@@ -16,7 +16,7 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['gru-assign-students'],
+  classNames: ['qz-assign-students'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -187,7 +187,7 @@ export default Ember.Component.extend({
    * Filter student list by name
    */
   searchStudent:function(){
-    var searchTerm = $('.gru-assign-students .search-box').val().toLowerCase();
+    var searchTerm = $('.qz-assign-students .search-box').val().toLowerCase();
 
     $('.live-search-list a').each(function(){
       if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {

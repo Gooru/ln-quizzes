@@ -1,7 +1,7 @@
 <div class="component player">
   {{#unless showReport}}
     <div class="aside">
-      {{player.gru-navigator
+      {{player.qz-navigator
       isNavigationDisabled=isNavigationDisabled
       isTeacher=isTeacher
       submitted=contextResult.submitted
@@ -16,7 +16,7 @@
   {{/unless}}
   <div class="main" role="main">
     {{#if collection.hasResources }}
-      {{player.gru-navigation
+      {{player.qz-navigation
       collection=collection
       ratingScore=resourceResult.reaction
       readOnly=contextResult.submitted
@@ -25,7 +25,7 @@
       onChangeEmotion="changeEmotion"}}
 
       {{#if resource}}
-        {{player.gru-viewer
+        {{player.qz-viewer
         isNotIframeUrl=isNotIframeUrl
         collection=collection
         resource=resource

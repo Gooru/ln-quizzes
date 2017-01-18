@@ -1021,17 +1021,17 @@ export default {
     "restriction": "The image must be a JPG, GIF or PNG file smaller than 5 MB.",
     "submit": "Use Image"
   },
-  "gru-fib": {
+  "qz-fib": {
     "instructions": "Please type your answer(s) in the blank(s) provided, and click \"{{action}}\"."
   },
 
-  "gru-hs-image": {
+  "qz-hs-image": {
     "instructions": "Please select the correct image(s), and click \"{{action}}\"."
   },
-  "gru-hs-text": {
+  "qz-hs-text": {
     "instructions": "Please select the correct answer(s), and click \"{{action}}\"."
   },
-  "gru-hot-text": {
+  "qz-hot-text": {
     "instructions": "Please select the correct answer, and click \"{{action}}\"."
   },
   "gru-login-prompt": {
@@ -1042,40 +1042,40 @@ export default {
     "not-now": "Not now",
     "sign-in": "Sign in"
   },
-  "gru-multiple-answer": {
+  "qz-multiple-answer": {
     "instructions": "Please select the correct answer, and click \"{{action}}\"."
   },
-  "gru-single-choice": {
+  "qz-single-choice": {
     "instructions": "Please select the correct answer, and click \"{{action}}\"."
   },
 
-  "gru-open-ended": {
+  "qz-open-ended": {
     "instructions": "Please type your answer in the field below, and click the \"{{action}}\" button to save your response when you're done.",
     "characterLimit": "Character Limit"
   },
 
-  "gru-question-viewer": {
+  "qz-question-viewer": {
     "answer": "Answer",
     "question": "Question"
   },
-  "gru-true-false": {
+  "qz-true-false": {
     "instructions": "Please select the correct answer, and click \"{{action}}\".",
     "true": "True",
     "false": "False"
   },
 
-  "gru-reorder": {
+  "qz-reorder": {
     "instructions": "Please reorder the answers in correct order, and click \"{{action}}\"."
   },
 
   "player": {
-    "gru-navigation": {
+    "qz-navigation": {
       "view-report": "View Report"
     },
-    "gru-navigator": {
+    "qz-navigator": {
       "see-usage-report": "See Usage Report"
     },
-    "gru-viewer": {
+    "qz-viewer": {
       "not-iframe-url": {
         "header_1": "This resource cannot be viewed within Gooru.",
         "header_2": "Click the button below to open the resource in a new tab.",

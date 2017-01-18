@@ -170,31 +170,31 @@ const Question = Ember.Object.extend(Validations, {
 
   /**
    * @property {boolean} indicates if the question is single choice type
-   * @see components/player/gru-single-choice.js
+   * @see components/player/qz-single-choice.js
    */
   isSingleChoice: Ember.computed.equal('questionType', QUESTION_TYPES.singleChoice),
 
   /**
    * @property {boolean} indicates if the question is multiple answer type
-   * @see components/player/gru-multiple-answer.js
+   * @see components/player/qz-multiple-answer.js
    */
   isMultipleAnswer: Ember.computed.equal('questionType', QUESTION_TYPES.multipleAnswer),
 
   /**
    * @property {boolean} indicates if the question is true false type
-   * @see components/player/gru-true-false.js
+   * @see components/player/qz-true-false.js
    */
   isTrueFalse: Ember.computed.equal('questionType', QUESTION_TYPES.trueFalse),
 
   /**
    * @property {boolean} indicates if the question is open ended type
-   * @see components/player/gru-open-ended.js
+   * @see components/player/qz-open-ended.js
    */
   isOpenEnded: Ember.computed.equal('questionType', QUESTION_TYPES.openEnded),
 
   /**
    * @property {boolean} indicates if the question is fill in the blank type
-   * @see components/player/gru-fib.js
+   * @see components/player/qz-fib.js
    */
   isFIB: Ember.computed.equal('questionType', QUESTION_TYPES.fib),
 
@@ -222,13 +222,13 @@ const Question = Ember.Object.extend(Validations, {
 
   /**
    * @property {boolean} indicates if the question is reorder
-   * @see components/player/gru-reorder.js
+   * @see components/player/qz-reorder.js
    */
   isHotTextReorder: Ember.computed.equal('questionType', QUESTION_TYPES.hotTextReorder),
 
   /**
    * @property {boolean} indicates if the question is hot spot text
-   * @see components/player/gru-hot-text-highlight.js
+   * @see components/player/qz-hot-text-highlight.js
    */
   isHotTextHighlight: Ember.computed.equal('questionType', QUESTION_TYPES.hotTextHighlight),
 

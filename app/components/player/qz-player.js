@@ -20,6 +20,8 @@ export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Attributes
 
+  classNames:['qz-player'],
+
   // -------------------------------------------------------------------------
   // Actions
 
@@ -76,8 +78,8 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Handle onSubmitQuestion event from gru-question-viewer
-     * @see components/player/gru-question-viewer.js
+     * Handle onSubmitQuestion event from qz-question-viewer
+     * @see components/player/qz-question-viewer.js
      * @param {Resource} question
      * @param {QuestionResult} questionResult
      */
@@ -159,7 +161,7 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {ResourceResult[]}
    */
   resourcesPlayer: Ember.computed('collection.resources','contextResult.sortedResourceResults', function(){
-    var availableResources = this.get('collection.resources').mapBy('id');
+    let availableResources = this.get('collection.resources').mapBy('id');
     return this.get('contextResult.sortedResourceResults').filter(function(item){
        return item.resourceId && availableResources.includes(item.resourceId);
     });

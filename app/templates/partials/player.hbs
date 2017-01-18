@@ -11,7 +11,7 @@
     {{reports.gru-assessment-report assessmentResult=assessmentResult }}
   {{else}}
     {{#if collection.hasResources }}
-      {{player.gru-navigation
+      {{player.qz-navigation
       collection=collection
       submitted=assessmentResult.submitted
       ratingScore=resourceResult.reaction
@@ -24,7 +24,7 @@
       }}
 
       {{#if resource}}
-      {{player.gru-viewer
+      {{player.qz-viewer
       submitted=assessmentResult.submitted
       resource=resource
       resourceResult=resourceResult
@@ -41,7 +41,7 @@
 </div>
 {{#unless showReport}}
   <div class="aside">
-    {{player.gru-navigator
+    {{player.qz-navigator
     lessonTitle=lessonTitle
     resourceResults=resourcesPlayer
     collection=collection

@@ -7,7 +7,7 @@ import hbs from 'htmlbars-inline-precompile';
 moduleForComponent('player/qz-navigator', 'Integration | Component | player/qz navigator', {
   integration: true,
   beforeEach: function () {
-    this.container.lookup('service:i18n').set("locale","en");
+    this.container.lookup('service:i18n').set('locale','en');
   }
 });
 
@@ -19,14 +19,14 @@ test('Player Navigator', function(assert) {
     id: '1',
     title: '<p>Resource #1</p>',
     format: 'question',
-    "isQuestion": true
+    'isQuestion': true
   });
 
   const resourceMockB = Ember.Object.create({
     id: '2',
     title: 'Resource #2',
     format: 'webpage',
-    "isQuestion": false
+    'isQuestion': false
   });
 
   const collectionMock = Ember.Object.create({
@@ -55,7 +55,7 @@ test('Player Navigator', function(assert) {
   this.set('resourceResults', resourceResults);
 
   this.on('itemSelected', function(/*resource*/) {
-    assert.ok(false, "This should not be called");
+    assert.ok(false, 'This should not be called');
   });
 
   this.render(hbs`{{player.qz-navigator collection=collection
@@ -63,27 +63,27 @@ test('Player Navigator', function(assert) {
       selectedResourceId='1' onItemSelected='itemSelected'}}`);
 
   var $component = this.$(); //component dom element
-  const $navigator = $component.find(".qz-navigator");
-  T.exists(assert, $navigator, "Missing navigator section");
+  const $navigator = $component.find('.qz-navigator');
+  T.exists(assert, $navigator, 'Missing navigator section');
 
   //$navigatorHeader
-  const $navigatorHeader = $component.find(".qz-navigator .navigator-header");
-  T.exists(assert, $navigatorHeader.find(".collection-type"), "Missing collection type");
-  T.exists(assert, $navigatorHeader.find(".collection-title"), "Missing collection title");
+  const $navigatorHeader = $component.find('.qz-navigator .navigator-header');
+  T.exists(assert, $navigatorHeader.find('.collection-type'), 'Missing collection type');
+  T.exists(assert, $navigatorHeader.find('.collection-title'), 'Missing collection title');
 
   //$collectionResources list
-  const $collectionResources = $navigator.find(".resources");
-  T.exists(assert, $collectionResources, "Missing collection resources");
-  const $resourceItems = $collectionResources.find("li.list-group-item");
-  assert.equal($resourceItems.length, 2, "Missing resources with list-group-item class");
-  const $firstResourceItem = $collectionResources.find("li.list-group-item:eq(0)");
-  T.exists(assert, $firstResourceItem.find(".resources-info"), "Missing resources info");
-  T.exists(assert, $firstResourceItem.find(".resources-info .bubble-type.question"), "Missing question class type");
-  assert.equal(T.text($firstResourceItem.find(".resources-info .title.visible-sm")), "Resource #1", "Wrong item text");
+  const $collectionResources = $navigator.find('.resources');
+  T.exists(assert, $collectionResources, 'Missing collection resources');
+  const $resourceItems = $collectionResources.find('li.list-group-item');
+  assert.equal($resourceItems.length, 2, 'Missing resources with list-group-item class');
+  const $firstResourceItem = $collectionResources.find('li.list-group-item:eq(0)');
+  T.exists(assert, $firstResourceItem.find('.resources-info'), 'Missing resources info');
+  T.exists(assert, $firstResourceItem.find('.resources-info .bubble-type.question'), 'Missing question class type');
+  assert.equal(T.text($firstResourceItem.find('.resources-info .title.visible-sm')), 'Resource #1', 'Wrong item text');
 
   //$resourceItem Selected
-  let $selected = $navigator.find(".list-group-item:eq(0).selected");
-  T.exists(assert, $selected, "Incorrect selected resource 1");
+  let $selected = $navigator.find('.list-group-item:eq(0).selected');
+  T.exists(assert, $selected, 'Incorrect selected resource 1');
 
 
 });
@@ -97,9 +97,9 @@ test('Layout when navigator is closed', function(assert) {
 
   this.render(hbs`{{player/qz-navigator onCloseNavigator='parentAction' lessonTitle='E-Lesson1'}}`);
   var $component = this.$(); //component dom element
-  var $menuButton = $component.find(".hamburger-icon");
+  var $menuButton = $component.find('.hamburger-icon');
 
-  assert.ok($menuButton, "Missing menu button");
+  assert.ok($menuButton, 'Missing menu button');
   $menuButton.click();
 
 });
@@ -136,9 +136,9 @@ test('it allows navigation between resource links -by default', function(assert)
 
   this.on('externalAction', function(item) {
     if (selectCtr === 0) {
-      assert.equal(item.get("id"), '2', "Resource item selected");
+      assert.equal(item.get('id'), '2', 'Resource item selected');
     } else {
-      assert.equal(item.get("id"), '1', "Resource item selected");
+      assert.equal(item.get('id'), '1', 'Resource item selected');
     }
     selectCtr += 1;
   });
@@ -159,13 +159,13 @@ test('it allows navigation between resource links -by default', function(assert)
       selectedResourceId='1'}}`);
 
   const $component = this.$('.qz-navigator');
-  assert.ok($component.find(".list-group-item:eq(0).selected").length, 'First item selected');
+  assert.ok($component.find('.list-group-item:eq(0).selected').length, 'First item selected');
 
   // Click on the second resource
-  $component.find(".list-group-item:eq(1)").click();
+  $component.find('.list-group-item:eq(1)').click();
 
   // Click on the first resource
-  $component.find(".list-group-item:eq(0)").click();
+  $component.find('.list-group-item:eq(0)').click();
 });
 
 test('resource link navigation is disabled', function(assert) {
@@ -198,7 +198,7 @@ test('resource link navigation is disabled', function(assert) {
   });
 
   this.on('externalAction', function() {
-    assert.notOk(true, "Resource item selected");
+    assert.notOk(true, 'Resource item selected');
   });
 
   const resourceResults = Ember.A([
@@ -220,10 +220,10 @@ test('resource link navigation is disabled', function(assert) {
   const $component = this.$('.qz-navigator');
 
   // Click on the second resource
-  $component.find(".list-group-item:eq(1)").click();
+  $component.find('.list-group-item:eq(1)').click();
 
   // Click on the first resource
-  $component.find(".list-group-item:eq(0)").click();
+  $component.find('.list-group-item:eq(0)').click();
 
 });
 
@@ -234,15 +234,15 @@ test('See usage report', function(assert) {
     isCollection: true
   });
 
-  this.set("collection", collection);
+  this.set('collection', collection);
   this.on('parentAction', function(){
     assert.ok(true, 'external Action was called!');
   });
 
   this.render(hbs`{{player/qz-navigator collection=collection onFinishCollection='parentAction' lessonTitle='E-Lesson1'}}`);
   var $component = this.$(); //component dom element
-  var $seeReportButton = $component.find(".qz-navigator .see-usage-report");
-  assert.ok($seeReportButton.length, "Missing button");
+  var $seeReportButton = $component.find('.qz-navigator .see-usage-report');
+  assert.ok($seeReportButton.length, 'Missing button');
   $seeReportButton.click();
 });
 
@@ -253,7 +253,7 @@ test('Finish collection', function(assert) {
     isAssessment: true
   });
 
-  this.set("collection", collection);
+  this.set('collection', collection);
 
   this.on('onFinishCollection', function(){
     assert.ok(true, 'external Action was called!');
@@ -261,8 +261,8 @@ test('Finish collection', function(assert) {
 
   this.render(hbs`{{player/qz-navigator onFinishCollection='onFinishCollection' submitted=false collection=collection}}`);
   var $component = this.$(); //component dom element
-  var $finishButton = $component.find("button.finish-collection");
+  var $finishButton = $component.find('button.finish-collection');
 
-  assert.ok($finishButton, "Missing finish button");
+  assert.ok($finishButton, 'Missing finish button');
   $finishButton.click();
 });

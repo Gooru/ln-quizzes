@@ -13,11 +13,11 @@ test('Vimeo resource layout', function (assert) {
 
   const resource = Ember.Object.create(
     {
-      "id": 10,
-      "order": 2,
-      "resourceType": "vimeo/video",
-      "resourceFormat": "video",
-      "url": "https://vimeo.com/11590751"
+      'id': 10,
+      'order': 2,
+      'resourceType': 'vimeo/video',
+      'resourceFormat': 'video',
+      'url': 'https://vimeo.com/11590751'
     });
 
   this.set('resource', resource);
@@ -25,8 +25,6 @@ test('Vimeo resource layout', function (assert) {
 
   var $component = this.$(); //component dom element
 
-  T.exists(assert, $component.find(".qz-vimeo-resource iframe"), "Missing youtube player element");
-  assert.equal($component.find("iframe").attr("src"), "//player.vimeo.com/video/11590751", "Wrong url");
+  T.exists(assert, $component.find('.qz-vimeo-resource iframe'), 'Missing youtube player element');
+  assert.equal($component.find('iframe').attr('src'), '//player.vimeo.com/video/11590751', 'Wrong url');
 });
-
-

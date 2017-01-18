@@ -35,7 +35,7 @@ export default Ember.Component.extend({
      * Action triggered when the user open de navigator panel
      */
     openNavigator:function(){
-      this.sendAction("onOpenNavigator");
+      this.sendAction('onOpenNavigator');
     }
   },
 

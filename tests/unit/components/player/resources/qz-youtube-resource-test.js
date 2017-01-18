@@ -9,11 +9,11 @@ test('getYoutubeIdFromUrl', function (assert) {
 
   var component = this.subject();
 
-  var id = component.getYoutubeIdFromUrl("https://www.youtube.com/watch?v=3HMjvnCjc24&list=PL7302FBCD1366292D");
-  assert.equal(id, "3HMjvnCjc24", "Incorrect ID");
+  var id = component.getYoutubeIdFromUrl('https://www.youtube.com/watch?v=3HMjvnCjc24&list=PL7302FBCD1366292D');
+  assert.equal(id, '3HMjvnCjc24', 'Incorrect ID');
 
-  id = component.getYoutubeIdFromUrl("https://www.youtube.com/watch?v=1_43zbexW7w");
-  assert.equal(id, "1_43zbexW7w", "Incorrect ID");
+  id = component.getYoutubeIdFromUrl('https://www.youtube.com/watch?v=1_43zbexW7w');
+  assert.equal(id, '1_43zbexW7w', 'Incorrect ID');
 
   /*
     The regexp used to get the id support several urls,

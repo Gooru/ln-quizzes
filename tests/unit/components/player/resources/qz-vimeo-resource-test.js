@@ -9,8 +9,8 @@ test('getVimeoID default url', function (assert) {
 
   var component = this.subject();
 
-  var id = component.getVimeoID("https://vimeo.com/11590751");
-  assert.equal(id, 11590751, "Incorrect ID");
+  var id = component.getVimeoID('https://vimeo.com/11590751');
+  assert.equal(id, 11590751, 'Incorrect ID');
 
 });
 test('getVimeoID non default vimeo url', function (assert) {
@@ -18,8 +18,8 @@ test('getVimeoID non default vimeo url', function (assert) {
 
   var component = this.subject();
 
-  var id = component.getVimeoID("http://vimeo.com/11590751");
-  assert.equal(id, 11590751, "Incorrect ID");
+  var id = component.getVimeoID('http://vimeo.com/11590751');
+  assert.equal(id, 11590751, 'Incorrect ID');
 
 });
 test('getVimeoID vimeo url with numbers', function (assert) {
@@ -27,8 +27,8 @@ test('getVimeoID vimeo url with numbers', function (assert) {
 
   var component = this.subject();
 
-  var id = component.getVimeoID("http://12vimeo.com/11590751");
-  assert.equal(id, 11590751, "Incorrect ID");
+  var id = component.getVimeoID('http://12vimeo.com/11590751');
+  assert.equal(id, 11590751, 'Incorrect ID');
 
 });
 test('getVimeoID when no id provided', function (assert) {
@@ -36,7 +36,7 @@ test('getVimeoID when no id provided', function (assert) {
 
   var component = this.subject();
 
-  var id = component.getVimeoID("https://vimeo.com/");
-  assert.equal(id, "", "Should be empty");
+  var id = component.getVimeoID('https://vimeo.com/');
+  assert.equal(id, '', 'Should be empty');
 
 });

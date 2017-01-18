@@ -14,11 +14,11 @@ test('Url resource layout', function (assert) {
 
   const resource = Ember.Object.create(
     {
-      "id": 12,
-      "order": 2,
-      "resourceType": "resource/url",
-      "resourceFormat": "video",
-      "url": "http://www.water4all.org/us/"
+      'id': 12,
+      'order': 2,
+      'resourceType': 'resource/url',
+      'resourceFormat': 'video',
+      'url': 'http://www.water4all.org/us/'
     });
 
   this.set('resource', resource);
@@ -26,7 +26,6 @@ test('Url resource layout', function (assert) {
 
   var $component = this.$(); //component dom element
 
-  T.exists(assert, $component.find(".qz-url-resource iframe"), "Missing url resource element");
-  assert.equal($component.find("iframe").attr("src"), "http://www.water4all.org/us/", "Wrong url");
+  T.exists(assert, $component.find('.qz-url-resource iframe'), 'Missing url resource element');
+  assert.equal($component.find('iframe').attr('src'), 'http://www.water4all.org/us/', 'Wrong url');
 });
-

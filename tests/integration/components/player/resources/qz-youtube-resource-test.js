@@ -14,15 +14,15 @@ test('Youtube player layout', function (assert) {
 
   const resource = Ember.Object.create(
     {
-      "id": 10,
-      "order": 2,
-      "resourceType": "video/youtube",
-      "resourceFormat": "video",
-      "displayGuide": {
-        "start_time": "00:03:10",
-        "end_time": "00:03:20"
+      'id': 10,
+      'order': 2,
+      'resourceType': 'video/youtube',
+      'resourceFormat': 'video',
+      'displayGuide': {
+        'start_time': '00:03:10',
+        'end_time': '00:03:20'
       },
-      "url": "https://www.youtube.com/watch?v=aBSH3IoFZsc"
+      'url': 'https://www.youtube.com/watch?v=aBSH3IoFZsc'
     });
 
   this.set('resource', resource);
@@ -30,7 +30,6 @@ test('Youtube player layout', function (assert) {
 
   var $component = this.$(); //component dom element
 
-  T.exists(assert, $component.find(".qz-youtube-resource iframe"), "Missing youtube element");
-  assert.equal($component.find("iframe").attr("src"), "https://www.youtube.com/embed/aBSH3IoFZsc?start=190&end=200&rel=0", "Wrong url");
+  T.exists(assert, $component.find('.qz-youtube-resource iframe'), 'Missing youtube element');
+  assert.equal($component.find('iframe').attr('src'), 'https://www.youtube.com/embed/aBSH3IoFZsc?start=190&end=200&rel=0', 'Wrong url');
 });
-

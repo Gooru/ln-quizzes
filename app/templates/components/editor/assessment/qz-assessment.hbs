@@ -1,0 +1,70 @@
+{{editor.assessment.qz-header options=options selected=selected headerActions=headerActions title=headerTitle}}
+
+{{#if (eq selected 'editor')}}
+    <section id="editor">
+        <div class="header">
+            <h2>{{t 'common.editor'}}</h2>
+        </div>
+        <div class="panel panel-default assessment-task">
+            <div class="panel-heading">
+                <div class="border-bottom">
+                    <h3>{{t 'common.assessment-task'}}</h3>
+                </div>
+                <div class="math-editor">
+                  {{qz-rich-text-editor}}
+                </div>
+                <button class="add-image btn btn-sm btn-primary">{{t "common.add-question-image"}}</button>
+            </div>
+            <div class="panel-body">
+                <div class="panel panel-default submission-format panel-borderless">
+                    <div class="panel-heading">
+                        <div class="border-bottom">
+                            <h3>{{t 'common.student-submission-format'}}</h3>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                      {{editor.assessment.qz-submission-format}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default rubric-creation">
+            <div class="panel-heading">
+                <div class="border-bottom">
+                    <h3>{{t 'common.rubric-creation'}}</h3>
+                </div>
+            </div>
+            <div class="panel-body">
+              {{editor.assessment.qz-rubric-creation rubric=assessment.rubric}}
+            </div>
+        </div>
+    </section>
+{{/if}}
+
+{{#if (eq selected 'information')}}
+    <section id="information">
+        <div class="header">
+            <h2>{{t 'common.information'}}</h2>
+        </div>
+        <div class="content">
+          {{gru-image isEditing = true}}
+            <div class="panel panel-default information">
+                <div class="panel-body">
+                    <div class="title">
+                        <label>
+                            <span class="required">{{t "common.assessment-title"}}</span>
+                          {{validation.gru-input model=assessment valuePath='title' maxLength=50}}
+                        </label>
+                    </div>
+                    <div class="learning-objective">
+                        <label>
+                            <span>{{t "common.learning-objective"}}</span>
+                          {{validation.gru-textarea rawTextareaValue=assessment.learningObjective model=assessment valuePath='learningObjective' maxLength=500 rows=1}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{editor.assessment.qz-fixed-footer footerActions=footerActions}}
+{{/if}}

@@ -1264,7 +1264,7 @@ export default {
     "birthday": "Birthday"
   },
 
-  "gru-rich-text-editor": {
+  "qz-rich-text-editor": {
     "bold": "Bold",
     "expression": "Expression",
     "italic": "Italic",
@@ -1406,15 +1406,15 @@ export default {
     "show-score":"Show Score",
     "view-report":"View Report"
   },
-  "gru-submission-format":{
+  "qz-submission-format":{
     "textbox":"Text Box",
     "upload":"Upload (URL or File)"
   },
-  "gru-rubric-creation":{
+  "qz-rubric-creation":{
     "from-web":"From Web",
     "from-computer":"From Your Computer",
     "url":"URL",
-    "gru-preview-url":{
+    "qz-preview-url":{
       "add":"Add a rubric above"
     }
   }

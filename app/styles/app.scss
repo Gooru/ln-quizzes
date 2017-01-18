@@ -17,7 +17,6 @@
 @import 'controllers/assignments';
 @import 'controllers/player';
 @import 'controllers/reports/context';
-@import 'controllers/edit/assessment';
 
 // TODO: update these components so they follow the naming conventions
 @import 'components/app-dropdown';
@@ -35,7 +34,7 @@
 @import 'components/gru-featured-courses';
 @import 'components/gru-image-picker';
 @import 'components/gru-modal';
-@import 'components/gru-rich-text-editor';
+@import 'components/qz-rich-text-editor';
 @import 'components/gru-select';
 @import 'components/gru-standards-popup';
 @import 'components/gru-switch';
@@ -52,7 +51,6 @@
 @import 'components/gru-assign-student-modal';
 @import 'components/gru-slide-up-menu';
 @import 'components/gru-timestamp-input';
-@import 'components/gru-submission-format';
 @import 'components/gru-image';
 
 @import 'components/assignment/qz-assign-students';
@@ -71,12 +69,14 @@
 @import 'components/modals/modals';
 @import 'components/modals/gru-submit-confirmation';
 
-@import 'components/editor/assessment/gru-header';
-@import 'components/editor/assessment/gru-fixed-footer';
-@import 'components/editor/assessment/gru-depth-of-knowledge';
-@import 'components/editor/assessment/gru-rubric-creation';
-@import 'components/editor/assessment/gru-file-picker';
-@import 'components/editor/assessment/gru-preview-url';
+@import 'components/editor/assessment/qz-header';
+@import 'components/editor/assessment/qz-fixed-footer';
+@import 'components/editor/assessment/qz-depth-of-knowledge';
+@import 'components/editor/assessment/qz-rubric-creation';
+@import 'components/editor/assessment/qz-file-picker';
+@import 'components/editor/assessment/qz-preview-url';
+@import 'components/editor/assessment/qz-assessment';
+@import 'components/editor/assessment/qz-submission-format';
 
 @import 'components/player/gru-navigation';
 @import 'components/player/gru-navigator';

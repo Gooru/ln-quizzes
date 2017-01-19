@@ -43,7 +43,6 @@ export default Ember.Route.extend({
     contextResult.merge(collection);
     controller.set('contextResult', contextResult);
     controller.set('collection', collection);
-    controller.startAssessment();
   },
 
   deactivate: function(){

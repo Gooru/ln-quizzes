@@ -1,6 +1,7 @@
 .app-container {
 
-  > .controller {
+  > .controller,
+  > .ember-view > .component {
     @include flexbox;
     @include flex-direction(row);
     @include align-content(flex-start);

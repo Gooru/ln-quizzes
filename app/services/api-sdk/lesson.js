@@ -11,7 +11,7 @@ import { CONTENT_TYPES } from "quizzes/config/config";
  *
  * @module
  * @see controllers/player.js
- * @see components/player/gru-viewer.js
+ * @see components/player/qz-viewer.js
  *
  * @typedef {Object} LessonService
  * @augments Ember/Service

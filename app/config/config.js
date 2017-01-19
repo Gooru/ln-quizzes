@@ -1,9 +1,9 @@
 export const RESOURCE_COMPONENT_MAP = {
-  'video/youtube' : 'player.resources.gru-youtube-resource',
-  'resource/url'  : 'player.resources.gru-url-resource',
-  'handouts'      : 'player.resources.gru-pdf-resource',
-  'image'         : 'player.resources.gru-image-resource',
-  'vimeo/video'   : 'player.resources.gru-vimeo-resource'
+  'video/youtube' : 'player.resources.qz-youtube-resource',
+  'resource/url'  : 'player.resources.qz-url-resource',
+  'handouts'      : 'player.resources.qz-pdf-resource',
+  'image'         : 'player.resources.qz-image-resource',
+  'vimeo/video'   : 'player.resources.qz-vimeo-resource'
 };
 
 export const UPLOADABLE_TYPES = [

@@ -1,0 +1,41 @@
+<div class="component player">
+  {{#unless showReport}}
+    <div class="aside">
+      {{player.qz-navigator
+      isNavigationDisabled=isNavigationDisabled
+      isTeacher=isTeacher
+      submitted=contextResult.submitted
+      collection=collection
+      selectedResourceId=resourceId
+      resourceResults=resourcesPlayer
+      onItemSelected="selectNavigatorItem"
+      onCloseNavigator="closeNavigator"
+      onFinishCollection="finishCollection"
+      }}
+    </div>
+  {{/unless}}
+  <div class="main" role="main">
+    {{#if collection.hasResources }}
+      {{player.qz-navigation
+      collection=collection
+      ratingScore=resourceResult.reaction
+      readOnly=contextResult.submitted
+      onFinishCollection="finishCollection"
+      onOpenNavigator="openNavigator"
+      onChangeEmotion="changeEmotion"}}
+
+      {{#if resource}}
+        {{player.qz-viewer
+        isNotIframeUrl=isNotIframeUrl
+        collection=collection
+        resource=resource
+        resourceResult=resourceResult
+        role=role
+        submitted=contextResult.submitted
+        onSubmitQuestion="submitQuestion"}}
+      {{/if}}
+    {{else}}
+      {{! TODO add the not found component here}}
+    {{/if}}
+  </div>
+</div>

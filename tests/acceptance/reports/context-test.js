@@ -75,9 +75,8 @@ test('Report context: websocket success', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
     assert.equal(Ember.$('.gru-student-performance-box').length, 2, 'Should show 2 students');
-    // TODO score is still not being loaded
-    assert.ok(Ember.$('.gru-student-performance-box:first .score').text().indexOf('0%') > -1, 'Score for student 1 shows correctly');
-    assert.ok(Ember.$('.gru-student-performance-box:last .score').text().indexOf('0%') > -1, 'Score for student 2 shows correctly');
+    assert.equal(Ember.$('.gru-student-performance-box:first .score').text(), '100%', 'Score for student 1 shows correctly');
+    assert.equal(Ember.$('.gru-student-performance-box:last .score').text(), '67%', 'Score for student 2 shows correctly');
     done();
   });
 });
@@ -116,9 +115,8 @@ test('Report context: websocket start message', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
     assert.equal(Ember.$('.gru-student-performance-box').length, 3, 'Should show 3 students');
-    // TODO score is still not being loaded
-    assert.ok(Ember.$('.gru-student-performance-box:first .score').text().indexOf('0%') > -1, 'Score for student 1 shows correctly');
-    assert.ok(Ember.$('.gru-student-performance-box:last .score').text().indexOf('0%') > -1, 'Score for student 2 shows correctly');
+    assert.equal(Ember.$('.gru-student-performance-box:first .score').text(), '100%', 'Score for student 1 shows correctly');
+    assert.equal(Ember.$('.gru-student-performance-box:last .score').text(), '0%', 'Score for student 2 shows correctly');
     done();
   });
 });
@@ -162,9 +160,8 @@ test('Report context: websocket finish message', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
     assert.equal(Ember.$('.gru-student-performance-box').length, 2, 'Should show 2 students');
-    // TODO score is still not being loaded
-    assert.ok(Ember.$('.gru-student-performance-box:first .score').text().indexOf('75%') > -1, 'Score for student 1 shows correctly');
-    assert.ok(Ember.$('.gru-student-performance-box:last .score').text().indexOf('0%') > -1, 'Score for student 2 shows correctly');
+    assert.equal(Ember.$('.gru-student-performance-box:first .score').text(), '100%', 'Score for student 1 shows correctly');
+    assert.equal(Ember.$('.gru-student-performance-box:last .score').text(), '75%', 'Score for student 2 shows correctly');
     done();
   });
 });
@@ -218,9 +215,8 @@ test('Report context: websocket on resource message', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
     assert.equal(Ember.$('.gru-student-performance-box').length, 2, 'Should show 2 students');
-    // TODO score is still not being loaded
-    assert.ok(Ember.$('.gru-student-performance-box:first .score').text().indexOf('75%') > -1, 'Score for student 1 shows correctly');
-    assert.ok(Ember.$('.gru-student-performance-box:last .score').text().indexOf('0%') > -1, 'Score for student 2 shows correctly');
+    assert.equal(Ember.$('.gru-student-performance-box:first .score').text(), '100%', 'Score for student 1 shows correctly');
+    assert.equal(Ember.$('.gru-student-performance-box:last .score').text(), '75%', 'Score for student 2 shows correctly');
     done();
   });
 });

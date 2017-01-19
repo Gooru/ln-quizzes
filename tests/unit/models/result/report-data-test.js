@@ -389,7 +389,79 @@ test('parseStartEvent', function(assert) {
   assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(1).get('score'), 0, 'Second score after parse should match');
 });
 
-test('replaceByProfileId', function(assert) {
+test('setCollection', function(assert) {
+  let collection = Collection.create({
+    resources: Ember.A([
+      Resource.create({
+        id: 'q1'
+      }),
+      Resource.create({
+        id: 'q2'
+      }),
+      Resource.create({
+        id: 'q3'
+      }),
+      Resource.create({
+        id: 'q4'
+      })
+    ])
+  });
+  let model = this.subject({
+    reportEvents: Ember.A([
+      ReportDataEvent.create({
+        profileId: 'student1',
+        profileName: 'name1',
+        resourceResults: [
+          ResourceResult.create({
+            resourceId: 'q1',
+            score: 100
+          }),
+          ResourceResult.create({
+            resourceId: 'q2',
+            score: 100
+          })
+        ]
+      }),
+      ReportDataEvent.create({
+        profileId: 'student2',
+        profileName: 'name2',
+        resourceResults: [
+          ResourceResult.create({
+            resourceId: 'q1',
+            score: 100
+          }),
+          ResourceResult.create({
+            resourceId: 'q2',
+            score: 100
+          }),
+          ResourceResult.create({
+            resourceId: 'q3',
+            score: 100
+          }),
+          ResourceResult.create({
+            resourceId: 'q4',
+            score: 100
+          })
+        ]
+      })
+    ])
+  });
+
+  model.setCollection(collection);
+  assert.equal(model.get('reportEvents').get(0).get('profileId'), 'student1', 'Profile id should match');
+  assert.equal(model.get('reportEvents').get(0).get('resourceResults').get(0).get('score'), 100, 'First score for first student should not change');
+  assert.equal(model.get('reportEvents').get(0).get('resourceResults').get(2).get('score'), 0, 'Third score for first student should change');
+  assert.ok(model.get('reportEvents').get(0).get('resourceResults').get(2).get('skipped'), 'Third question for first student should be skipped');
+  assert.equal(model.get('reportEvents').get(0).get('resourceResults').get(3).get('score'), 0, 'Fourth score for first student should change');
+  assert.ok(model.get('reportEvents').get(0).get('resourceResults').get(3).get('skipped'), 'Fourth question for first student should be skipped');
+  assert.equal(model.get('reportEvents').get(1).get('profileId'), 'student2', 'Profile id should match');
+  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(0).get('score'), 100, 'Second student scores should not change');
+  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(1).get('score'), 100, 'Second student scores should not change');
+  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(2).get('score'), 100, 'Second student scores should not change');
+  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(3).get('score'), 100, 'Second student scores should not change');
+});
+
+test('getResultsByQuestion', function(assert) {
   let model = this.subject({
     reportEvents: Ember.A([
       ReportDataEvent.create({
@@ -407,11 +479,6 @@ test('replaceByProfileId', function(assert) {
         ]
       }),
       ReportDataEvent.create({
-        averageScore: 100,
-        averageReaction: 2,
-        totalAnswered: 1,
-        totalCorrect: 1,
-        totalTimeSpent: 10000,
         profileId: 'student2',
         profileName: 'name2',
         resourceResults: [
@@ -428,15 +495,9 @@ test('replaceByProfileId', function(assert) {
     ])
   });
 
-  let newEvent = ReportDataEvent.create({
-    profileId: 'student2',
-    profileName: 'newname',
-    averageReaction: 4,
-    resourceResults: Ember.A()
-  });
-
-  model.replaceByProfileId('student2', newEvent);
-  assert.equal(model.get('reportEvents').get(1).get('profileId'), 'student2', 'Profile id should match');
-  assert.equal(model.get('reportEvents').get(1).get('profileName'), 'newname', 'Profile id should match');
-  assert.equal(model.get('reportEvents').get(1).get('averageReaction'), 4, 'Average reaction should match');
+  // Change a previous result
+  let response = model.getResultsByQuestion('q2');
+  assert.equal(response.length, 2, 'Results count should be two');
+  assert.equal(response[0].get('resourceId'), 'q2', 'First result should have the correct id');
+  assert.equal(response[1].get('resourceId'), 'q2', 'Second result should have the correct id');
 });

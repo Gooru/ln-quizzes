@@ -7,6 +7,14 @@
     {
       "currentResourceId": "question1-id",
       "profileId": "profile-id-1",
+      "isComplete": false,
+      "contextProfileSummary": {
+        "averageReaction": 1,
+        "averageScore": 67,
+        "totalAnswered": 3,
+        "totalCorrect": 3,
+        "totalTimeSpent": 32000
+      },
       "events": [
         {
           "resourceId": "question1-id",
@@ -35,6 +43,14 @@
     {
       "currentResourceId": "question1-id",
       "profileId": "profile-id-2",
+      "isComplete": false,
+      "contextProfileSummary": {
+        "averageReaction": 1,
+        "averageScore": 100,
+        "totalAnswered": 3,
+        "totalCorrect": 3,
+        "totalTimeSpent": 10000
+      },
       "events": [
         {
           "resourceId": "question1-id",

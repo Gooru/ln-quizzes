@@ -84,7 +84,7 @@ export default Ember.Route.extend({
       let profile = profiles[reportEvent.get('profileId')];
       reportEvent.setProfileProperties(profile);
     });
-    reportData.set('collection', collection);
+    reportData.setCollection(collection);
     controller.set('reportData', reportData);
     controller.set('anonymous', anonymous);
   }

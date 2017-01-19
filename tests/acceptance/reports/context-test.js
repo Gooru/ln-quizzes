@@ -215,7 +215,6 @@ test('Report context: websocket on resource message', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
     assert.equal(Ember.$('.gru-student-performance-box').length, 2, 'Should show 2 students');
-    // TODO score is still not being loaded
     assert.equal(Ember.$('.gru-student-performance-box:first .score').text(), '100%', 'Score for student 1 shows correctly');
     assert.equal(Ember.$('.gru-student-performance-box:last .score').text(), '75%', 'Score for student 2 shows correctly');
     done();

@@ -1,5 +1,9 @@
 .player .qz-viewer {
-  overflow: auto;
+  overflow-y: scroll;
+  margin-right: -15px;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
   .not-iframe {
     padding: 25px;
     .panel-header {

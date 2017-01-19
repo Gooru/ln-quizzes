@@ -30,7 +30,8 @@
   .resources {
     position: relative;
     height: 100%;
-    overflow: auto;
+    overflow-y: scroll;
+    margin-right: -15px;
     padding: 0;
     .bgd-line {
       display: block;

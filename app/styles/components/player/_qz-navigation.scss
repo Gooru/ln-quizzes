@@ -1,5 +1,5 @@
 .player .qz-navigation {
-  // temporary for GG-92
+  @include flex-shrink(0);
   height: $player-navigation-height;
   width: 100%;
   z-index: 10;
@@ -9,7 +9,6 @@
   .content {
     @media (min-width: $screen-md) {
       overflow: hidden;
-
       .hamburger-icon {
         display: none;
       }

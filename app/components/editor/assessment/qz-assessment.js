@@ -18,14 +18,47 @@ export default Ember.Component.extend({
   classNames: ['editor','assessment','qz-assessment'],
 
   // -------------------------------------------------------------------------
+  // Actions
+  actions:{
+    /**
+     * Add new category
+     */
+    addNewCategory:function(){
+      let newCategory = Ember.Object.create({
+        title:'',
+        feedbackGuidance:'',
+        requiredFeedback:false
+      });
+      let categories = this.get('categories');
+      categories.addObject(newCategory);
+    }
+  },
+
+  // -------------------------------------------------------------------------
   // Properties
   assessment:Ember.Object.create({
     title:'',
     learningObjective:'',
-    rubric:{
+    rubric:Ember.Object.create({
       url:'',
-      mimeType:'application/pdf,image/*'
+      mimeType:'application/pdf,image/*',
+      categories:Ember.A([])
+    })
+  }),
+  /**
+   * @property {Category[]} Temporal categories array
+   */
+  categories:Ember.computed('assessment.rubric.categories.[]',function(){
+    let categories = Ember.A([Ember.Object.create({
+      title:'',
+      feedbackGuidance:'',
+      requiredFeedback:false
+    })]);
+    if(this.get('assessment.rubric.categories.length')){
+      //TODO return a copy of categories
+      categories = this.get('assessment.rubric.categories');
     }
+    return categories;
   }),
 
   /**

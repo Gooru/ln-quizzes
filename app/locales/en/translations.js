@@ -1420,6 +1420,7 @@ export default {
     "qz-category":{
       "feedback-guidance":"Feedback Guidance",
       "required-feedback":"Required Feedback",
+      "scoring":"Scoring",
       "title":"Category Title",
       "new-category":"Add New Category"
     }

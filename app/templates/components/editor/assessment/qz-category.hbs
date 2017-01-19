@@ -1,6 +1,6 @@
 <div class="panel panel-default category">
     <div class="panel-body">
-        <div class="number">{{category.number}}</div>
+        <div class="number">{{plus-one number}}</div>
         <div class="category-info">
             <label class="title">
                 <span class="required">{{t "qz-rubric-creation.qz-category.title"}}</span>
@@ -11,11 +11,20 @@
                   <span class="required">{{t "qz-rubric-creation.qz-category.feedback-guidance"}}</span>
                 {{validation.gru-textarea rawTextareaValue=category.feedbackGuidance model=category valuePath='feedbackGuidance' maxLength=500 rows=1}}
               </label>
-              <label><input type="checkbox" value="">{{t 'qz-rubric-creation.qz-category.required-feedback'}}</label>
+              <label class="required-feedback">
+                  <span {{action 'setFeedBack'}}>
+                    {{#if category.requiredFeedback}}
+                      {{gru-icon name='check_box'}}
+                    {{else}}
+                      {{gru-icon name='check_box_outline_blank'}}
+                    {{/if}}
+                  </span>
+                {{t 'qz-rubric-creation.qz-category.required-feedback'}}</label>
           </div>
-            <div class="score">
-              {{qz-switch switchOptions=switchOptions onOptionSwitch='onAnswerKeyChange' isChecked=showScore}}
-            </div>
+            <label class="scoring">
+              {{t 'qz-rubric-creation.qz-category.scoring'}}
+              {{qz-switch switchOptions=switchOptions onOptionSwitch='onScoringChange' isChecked=showScore}}
+            </label>
         </div>
     </div>
     <div class="panel-footer">

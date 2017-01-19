@@ -38,14 +38,10 @@
               {{editor.assessment.qz-rubric-creation rubric=assessment.rubric}}
             </div>
         </div>
-      {{#if hasNoCategory}}
-          {{editor.assessment.qz-category}}
-      {{else}}
-        {{#each assessment.categories as |category|}}
-          {{editor.assessment.qz-category category=category}}
+        {{#each categories as |category index|}}
+          {{editor.assessment.qz-category category=category number=index}}
         {{/each}}
-      {{/if}}
-        <a class="add-prefix" href="#" {{action 'addCategory'}}>{{t "common.add-new-unit"}}</a>
+        <a class="add-prefix add-category" {{action 'addNewCategory'}}>{{t "qz-rubric-creation.qz-category.new-category"}}</a>
     </section>
 {{/if}}
 

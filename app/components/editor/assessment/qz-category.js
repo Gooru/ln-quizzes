@@ -7,12 +7,31 @@ export default Ember.Component.extend({
   classNames: ['editor','assessment','qz-category'],
 
   // -------------------------------------------------------------------------
+  // Actions
+  actions:{
+    /**
+     *Set if feedback is required
+     */
+    setFeedBack: function(){
+      this.set('category.requiredFeedback',!this.get('category.requiredFeedback'));
+    },
+    /**
+     *Triggered when scoring switch change
+     */
+    onScoringChange:function(isChecked){
+      this.set('showScore',isChecked);
+    }
+  },
+
+  // -------------------------------------------------------------------------
   // Properties
   category:Ember.Object.create({
     title:'',
     feedbackGuidance:'',
     requiredFeedback:false
   }),
+
+  number:1,
   /**
    *Show the score scale
    *

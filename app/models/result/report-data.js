@@ -187,5 +187,34 @@ export default Ember.Object.extend({
   replaceByProfileId: function(profileId, profileEvent) {
     this.set('reportEvents', this.get('reportEvents').map(reportEvent =>
       reportEvent.get('profileId') === profileId ? profileEvent : reportEvent));
+  },
+
+  /**
+   * Set the collection and update the events to have all resources
+   * @param {Collection} collection
+   */
+  setCollection(collection) {
+    this.set('collection', collection);
+    const resources = collection.get('resources');
+    const reportEvents = this.get('reportEvents');
+    reportEvents.forEach(reportEvent => {
+      resources.forEach(resource => {
+        let resourceResult = reportEvent.get('resourceResults')
+          .findBy('resourceId', resource.id);
+        if(!resourceResult) {
+          reportEvent.get('resourceResults').pushObject(
+            QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
+              resourceId: resource.id,
+              resource: resource,
+              savedTime: 0,
+              reaction: 0,
+              answer: null,
+              score: 0,
+              skipped: true
+            })
+          );
+        }
+      });
+    });
   }
 });

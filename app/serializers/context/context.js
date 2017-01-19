@@ -127,11 +127,23 @@ export default Ember.Object.extend({
    * @returns {ReportDataEvent}
    */
   normalizeReportDataEvent: function (reportEvent) {
-    return ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
+    let summary = reportEvent.contextProfileSummary;
+    let reportDataEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
       currentResourceId: reportEvent.currentResourceId,
       profileId: reportEvent.profileId,
-      resourceResults: this.normalizeResourceResults(reportEvent.events)
+      resourceResults: this.normalizeResourceResults(reportEvent.events),
+      isAttemptFinished: reportEvent.isComplete
     });
+    if (summary) {
+      reportDataEvent.setProperties({
+        totalAnswered: summary.totalAnswered,
+        totalCorrect: summary.totalCorrect,
+        averageReaction: summary.averageReaction,
+        averageScore: summary.averageScore,
+        totalTimeSpent: summary.totalTimeSpent
+      });
+    }
+    return reportDataEvent;
   },
 
   /**

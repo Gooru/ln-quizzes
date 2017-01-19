@@ -1,13 +1,28 @@
+.reports_context {
+  overflow: hidden;
+  height: 100%;
+
+  > .ember-view,
+  .quizzes,
+  .app-container {
+    height: 100%;
+    background-color: $body-bg;
+    padding: 0;
+  }
+}
+
 .reports_collection .container-fluid {
   min-width: $screen-md-min;
 }
 
 .app-container > .controller.reports {
+  overflow: auto;
+  height: 100%;
   $gutter-width: 30px;
   $on-air-icon: 40px;
 
   display: block;
-  padding: 0 15px 30px 15px;
+  padding: 0 30px 30px;
 
   .header {
 

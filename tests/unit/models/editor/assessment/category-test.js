@@ -1,8 +1,8 @@
-import { moduleForModel, test } from 'ember-qunit';
+import Ember from 'ember';
+import { moduleFor, test } from 'ember-qunit';
 
-moduleForModel('editor/assessment/category', 'Unit | Model | editor/assessment/category', {
-  // Specify the other units that are required for this test.
-  needs: []
+moduleFor('model:editor/assessment/category', 'Unit | Model | editor/assessment/category', {
+  unit: true
 });
 
 test('it exists', function(assert) {

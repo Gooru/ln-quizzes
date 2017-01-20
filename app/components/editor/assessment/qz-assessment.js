@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import Category from 'quizzes/models/editor/assessment/category';
+import Rubric from 'quizzes/models/editor/assessment/rubric';
 /**
  *
  * Component for add/edit assessment
@@ -24,11 +26,7 @@ export default Ember.Component.extend({
      * Add new category
      */
     addNewCategory:function(){
-      let newCategory = Ember.Object.create({
-        title:'',
-        feedbackGuidance:'',
-        requiredFeedback:false
-      });
+      let newCategory = Category.create({});
       let categories = this.get('categories');
       categories.addObject(newCategory);
     }
@@ -39,11 +37,7 @@ export default Ember.Component.extend({
   assessment:Ember.Object.create({
     title:'',
     learningObjective:'',
-    rubric:Ember.Object.create({
-      url:'',
-      mimeType:'application/pdf,image/*',
-      categories:Ember.A([])
-    })
+    rubric:Rubric.create({})
   }),
   /**
    * @property {Category[]} Temporal categories array

@@ -1422,7 +1422,17 @@ export default {
       "required-feedback":"Required Feedback",
       "scoring":"Scoring",
       "title":"Category Title",
-      "new-category":"Add New Category"
+      "new-category":"Add New Category",
+      "qz-scoring-levels":{
+        "levels":"Levels",
+        "best":"Best",
+        "worse":"Worse",
+        "exemplary":"ex. Exemplary",
+        "proficient":"ex. Proficient",
+        "basic":"ex. Basic",
+        "below-basic":"ex. Below Basic",
+        "points":"Points"
+      }
     }
   }
 };

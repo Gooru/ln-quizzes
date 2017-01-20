@@ -24,6 +24,9 @@
             <label class="scoring">
               {{t 'qz-rubric-creation.qz-category.scoring'}}
               {{qz-switch switchOptions=switchOptions onOptionSwitch='onScoringChange' isChecked=showScore}}
+                {{#if showScore}}
+                    {{editor.assessment.qz-scoring-levels}}
+                {{/if}}
             </label>
         </div>
     </div>

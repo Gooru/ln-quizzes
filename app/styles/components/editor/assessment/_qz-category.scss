@@ -38,7 +38,9 @@
           }
         }
         .scoring{
-          .qz-switch{
+          @include flexbox;
+          @include align-items(baseline);
+          .qz-switch,.qz-scoring-levels{
             margin-left: 16px;
           }
         }

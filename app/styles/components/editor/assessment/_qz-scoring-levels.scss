@@ -1,0 +1,41 @@
+.editor.assessment.qz-scoring-levels{
+  @include flexbox;
+  width: 100%;
+  .score-section{
+    width: 50%;
+  }
+  .levels{
+    margin-left: 15px;
+    @include flexbox;
+    .scale {
+      .line{
+        border-left: 1px solid $gray-light;
+        min-height: 173px;
+        margin-left: 15px;
+      }
+      .arrow-down{
+        margin-left: 10px;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid $gray-light;
+      }
+    }
+    .level-list{
+      width: 100%;
+      input{
+        font-size: $font-size-base;
+      }
+    }
+  }
+  .points{
+    margin-left: 30px;
+    .point-list{
+      padding-left: 42px;
+      .gru-input.point{
+        width: 24%;
+      }
+    }
+  }
+}

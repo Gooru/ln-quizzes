@@ -30,5 +30,5 @@ test('Assign Layout', function(assert) {
   this.set('studentList',students);
   this.render(hbs`{{assignment/qz-assign studentList=studentList teacherConfig=teacherConfig}}`);
   var $component = this.$();
-  assert.ok($component.find('.qz-assign-students'));
+  assert.ok($component.find('.qz-assign-students').length,'Assign students missing');
 });

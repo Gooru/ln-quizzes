@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:editor/assessment/category', 'Unit | Model | editor/assessment/category', {

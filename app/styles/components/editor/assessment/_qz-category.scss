@@ -10,7 +10,7 @@
         .title,.feedback-guidance{
           @include flexbox;
           @include align-self(center);
-          margin-bottom: 16px;
+          margin-bottom: 6px;
         }
         .gru-input.title,.gru-textarea.feedbackGuidance{
           margin-left: 15px;

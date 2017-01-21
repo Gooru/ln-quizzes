@@ -1423,7 +1423,8 @@ export default {
       "required-feedback":"Required Feedback",
       "scoring":"Scoring",
       "title":"Category Title",
-      "title-placeholder":"ex. Grammar, Ideas, Thesis"
+      "title-placeholder":"ex. Grammar, Ideas, Thesis",
+      "new-category":"Add New Category"
     }
   }
 };

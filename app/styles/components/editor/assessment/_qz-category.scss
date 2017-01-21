@@ -10,7 +10,7 @@
         .title,.feedback-guidance{
           @include flexbox;
           @include align-self(center);
-          margin-bottom: 16px;
+          margin-bottom: 6px;
         }
         .gru-input.title,.gru-textarea.feedbackGuidance{
           margin-left: 15px;
@@ -21,13 +21,15 @@
             width: 100%;
             input{
               margin-top: -15px;
+              font-size: $font-size-base;
             }
           }
         }
         .gru-textarea.feedbackGuidance{
           width: 85%;
           textarea{
-            margin-top: -23px;
+            margin-top: -6px;
+            font-size: $font-size-base;
           }
         }
         .required-feedback{

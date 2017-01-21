@@ -21,13 +21,15 @@
             width: 100%;
             input{
               margin-top: -15px;
+              font-size: $font-size-base;
             }
           }
         }
         .gru-textarea.feedbackGuidance{
           width: 85%;
           textarea{
-            margin-top: -23px;
+            margin-top: -6px;
+            font-size: $font-size-base;
           }
         }
         .required-feedback{

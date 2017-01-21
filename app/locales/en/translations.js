@@ -1419,10 +1419,11 @@ export default {
     },
     "qz-category":{
       "feedback-guidance":"Feedback Guidance",
+      "feedback-guidance-placeholer":"ex. As you are reviwing this category, pay careful attention to the author's purpose",
       "required-feedback":"Required Feedback",
       "scoring":"Scoring",
       "title":"Category Title",
-      "new-category":"Add New Category"
+      "title-placeholder":"ex. Grammar, Ideas, Thesis"
     }
   }
 };

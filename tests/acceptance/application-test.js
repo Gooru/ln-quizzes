@@ -6,13 +6,7 @@ import T from 'quizzes/tests/helpers/assert';
 
 moduleForAcceptance('Acceptance | application', {
   beforeEach: function() {
-    authenticateSession(this.application, {
-      isAnonymous: true,
-      token: 'token-value',
-      user: {
-        gooruUId: 'anonymous'
-      }
-    });
+    authenticateSession(this.application, {});
   }
 });
 

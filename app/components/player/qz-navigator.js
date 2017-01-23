@@ -17,7 +17,6 @@ export default Ember.Component.extend(ModalMixin, {
 
   // -------------------------------------------------------------------------
   // Dependencies
-  session: Ember.inject.service('session'),
 
   // -------------------------------------------------------------------------
   // Attributes

@@ -1,18 +1,10 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 import Env from '../config/environment';
-import SessionMixin from '../mixins/session';
 import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
 const Config = Env['simple-auth-custom'] || {};
 
-export default DS.RESTAdapter.extend(SessionMixin, {
-
-  headers: Ember.computed('session.token', function() {
-    return {
-      'gooru-session-token': this.get('session.token-api3')
-    };
-  }),
+export default DS.RESTAdapter.extend({
 
   /**
    * @property {string} API Key

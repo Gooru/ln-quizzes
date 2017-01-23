@@ -7,8 +7,6 @@ import Ember from 'ember';
  */
 export default Ember.Object.extend({
 
-  session: Ember.inject.service('session'),
-
   namespace: '/config',
 
   /**

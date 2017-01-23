@@ -19,18 +19,10 @@ export default Ember.Route.extend({
    */
   configurationService: Ember.inject.service('configuration'),
 
-  session: Ember.inject.service(),
-
   /**
    * @requires service:notifications
    */
   notifications: Ember.inject.service(),
-
-  /**
-   * @requires service:api-sdk/log
-   */
-  errorService: Ember.inject.service('api-sdk/error'),
-
 
   // -------------------------------------------------------------------------
   // Methods
@@ -67,8 +59,6 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    const route = this;
-    const currentSession = route.get('session.data.authenticated');
     const themeConfig = Env.themes || {};
     const themeId = params.themeId || Env.themes.default;
 
@@ -79,7 +69,6 @@ export default Ember.Route.extend({
     }
 
     return Ember.RSVP.hash({
-      currentSession,
       theme,
       translations: theme ? theme.loadTranslations() : null
     });
@@ -190,7 +179,6 @@ export default Ember.Route.extend({
       description: 'Endpoint error'
     });
     Ember.Logger.error(model);
-    //route.get('errorService').createError(model);
   },
 
   /**
@@ -219,7 +207,6 @@ export default Ember.Route.extend({
 
     Ember.Logger.error(model);
     Ember.Logger.error(error);
-    //route.get('errorService').createError(model);
   },
 
   deactivate: function () {

@@ -5,13 +5,9 @@
   },
 
   "realTime": {
-    "webServiceUrl": "https://goorurt.qa.gooruweb.edify.cr",
-    "webServiceUri": "/nucleus/realtime",
-    "webSocketUrl": "https://goorurt.qa.gooruweb.edify.cr",
-    "webSocketUri": "/ws/realtime"
-  },
-
-  "teams": {
-    "url": "http://teams-qa.gooru.org"
+    "webServiceUrl": "https://qa.api.quizzes.edify.cr",
+    "webServiceUri": "/",
+    "webSocketUrl": "https://qa.api.quizzes.edify.cr",
+    "webSocketUri": "/ws/quizzes-realtime"
   }
 }

@@ -86,6 +86,31 @@
     .math-editor{
       margin-top: 25px;
     }
+    .overall-score{
+      .feedback{
+        label{
+          @include flexbox;
+          @include align-items(center);
+          .feedbackGuidance{
+            width: 88%;
+          }
+          textarea{
+            margin-top: -6px;
+            font-size: $font-size-base;
+          }
+        }
+      }
+      .total-points{
+        display: inline-block;
+      }
+      .required-feedback{
+        float:right;
+        @include flexbox;
+        .check_box{
+          color:$blue-500;
+        }
+      }
+    }
   }
   #information{
     height: 100%;

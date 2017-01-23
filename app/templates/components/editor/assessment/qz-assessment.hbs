@@ -42,6 +42,35 @@
           {{editor.assessment.qz-category category=category number=index}}
         {{/each}}
         <a class="add-prefix add-category" {{action 'addNewCategory'}}>{{t "qz-rubric-creation.qz-category.new-category"}}</a>
+        <div class="panel panel-default overall-score">
+            <div class="panel-heading">
+                <div>
+                    <h3>{{t 'over-all-score.title'}}</h3>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="feedback">
+                    <label>
+                        <span class="required">{{t "qz-rubric-creation.qz-category.feedback-guidance"}}</span>
+                      {{validation.gru-textarea rawTextareaValue=assessment.feedbackGuidance model=assessment valuePath='feedbackGuidance' maxLength=500 rows=1 placeholder=(t 'over-all-score.feedback-guidance-placeholder')}}
+                    </label>
+                </div>
+                <div class="total-points">
+                    <span>{{t 'over-all-score.total-points'}}:</span>
+                    <span>{{assessment.totalPoints}} {{t 'over-all-score.points'}}</span>
+                </div>
+                <label class="required-feedback">
+                  <span {{action 'setFeedBack'}}>
+                    {{#if assessment.requiredFeedback}}
+                      {{gru-icon name='check_box'}}
+                    {{else}}
+                      {{gru-icon name='check_box_outline_blank'}}
+                    {{/if}}
+                  </span>
+                  {{t 'qz-rubric-creation.qz-category.required-feedback'}}
+                </label>
+            </div>
+        </div>
     </section>
 {{/if}}
 

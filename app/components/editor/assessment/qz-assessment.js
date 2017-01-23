@@ -29,6 +29,12 @@ export default Ember.Component.extend({
       let newCategory = Category.create({});
       let categories = this.get('categories');
       categories.addObject(newCategory);
+    },
+    /**
+     *Set if feedback is required
+     */
+    setFeedBack: function(){
+      this.set('assessment.requiredFeedback',!this.get('assessment.requiredFeedback'));
     }
   },
 
@@ -37,7 +43,10 @@ export default Ember.Component.extend({
   assessment:Ember.Object.create({
     title:'',
     learningObjective:'',
-    rubric:Rubric.create({})
+    rubric:Rubric.create({}),
+    totalPoints:0,
+    feedbackGuidance:'',
+    requiredFeedback:false
   }),
   /**
    * @property {Category[]} Temporal categories array

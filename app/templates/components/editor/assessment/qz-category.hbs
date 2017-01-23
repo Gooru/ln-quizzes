@@ -9,7 +9,7 @@
           <div class="feedback">
               <label class="feedback-guidance">
                   <span class="required">{{t "qz-rubric-creation.qz-category.feedback-guidance"}}</span>
-                {{validation.gru-textarea rawTextareaValue=category.feedbackGuidance model=category valuePath='feedbackGuidance' maxLength=500 rows=1 placeholder=(t 'qz-rubric-creation.qz-category.feedback-guidance-placeholer')}}
+                {{validation.gru-textarea rawTextareaValue=category.feedbackGuidance model=category valuePath='feedbackGuidance' maxLength=500 rows=1 placeholder=(t 'qz-rubric-creation.qz-category.feedback-guidance-placeholder')}}
               </label>
               <label class="required-feedback">
                   <span {{action 'setFeedBack'}}>
@@ -19,7 +19,8 @@
                       {{gru-icon name='check_box_outline_blank'}}
                     {{/if}}
                   </span>
-                {{t 'qz-rubric-creation.qz-category.required-feedback'}}</label>
+                {{t 'qz-rubric-creation.qz-category.required-feedback'}}
+              </label>
           </div>
             <div class="scoring">
               <span>{{t 'qz-rubric-creation.qz-category.scoring'}}</span>

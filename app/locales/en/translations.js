@@ -1419,7 +1419,7 @@ export default {
     },
     "qz-category":{
       "feedback-guidance":"Feedback Guidance",
-      "feedback-guidance-placeholer":"ex. As you are reviwing this category, pay careful attention to the author's purpose",
+      "feedback-guidance-placeholder":"ex. As you are reviwing this category, pay careful attention to the author's purpose",
       "required-feedback":"Required Feedback",
       "scoring":"Scoring",
       "title":"Category Title",
@@ -1437,5 +1437,11 @@ export default {
         "worst":"Worst"
       }
     }
+  },
+  "over-all-score":{
+    "title":"Overall Score & Feedback",
+    "total-points":"Total Points Possible",
+    "points": "pts",
+    "feedback-guidance-placeholder":"ex. As you are reviewing this essay as a whole, provide feedback on consistency of author’s voice from beginning to end"
   }
 };

@@ -10,3 +10,10 @@ test('addNewCategory', function(assert) {
   component.send('addNewCategory');
   assert.equal(component.get('categories.length'), 2, 'Should have 2 categories');
 });
+
+test('setFeedBack', function(assert) {
+  let component = this.subject();
+  assert.equal(component.get('assessment.requiredFeedback'),false,'Feedback is not required');
+  component.send('setFeedBack');
+  assert.equal(component.get('assessment.requiredFeedback'),true,'Feedback is not required');
+});

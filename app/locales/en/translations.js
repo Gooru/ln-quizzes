@@ -1424,14 +1424,15 @@ export default {
       "title":"Category Title",
       "new-category":"Add New Category",
       "qz-scoring-levels":{
-        "levels":"Levels",
-        "best":"Best",
-        "worse":"Worse",
-        "exemplary":"ex. Exemplary",
-        "proficient":"ex. Proficient",
         "basic":"ex. Basic",
         "below-basic":"ex. Below Basic",
-        "points":"Points"
+        "best":"Best",
+        "exemplary":"ex. Exemplary",
+        "levels":"Levels",
+        "new-level":"Add New Level",
+        "points":"Points",
+        "proficient":"ex. Proficient",
+        "worst":"Worst"
       }
     }
   }

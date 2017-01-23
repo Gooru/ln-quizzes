@@ -21,13 +21,13 @@
                   </span>
                 {{t 'qz-rubric-creation.qz-category.required-feedback'}}</label>
           </div>
-            <label class="scoring">
-              {{t 'qz-rubric-creation.qz-category.scoring'}}
+            <div class="scoring">
+              <span>{{t 'qz-rubric-creation.qz-category.scoring'}}</span>
               {{qz-switch switchOptions=switchOptions onOptionSwitch='onScoringChange' isChecked=showScore}}
                 {{#if showScore}}
                     {{editor.assessment.qz-scoring-levels}}
                 {{/if}}
-            </label>
+            </div>
         </div>
     </div>
     <div class="panel-footer">

@@ -8,9 +8,10 @@
     margin-left: 15px;
     @include flexbox;
     .scale {
+      margin-top: 10px;
       .line{
         border-left: 1px solid $gray-light;
-        min-height: 173px;
+        min-height: 134px;
         margin-left: 15px;
       }
       .arrow-down{
@@ -24,6 +25,7 @@
     }
     .level-list{
       width: 100%;
+      margin-left: 16px;
       input{
         font-size: $font-size-base;
       }
@@ -36,6 +38,14 @@
       .gru-input.point{
         width: 24%;
       }
+    }
+  }
+  .btn-new-level{
+    margin-left: 65px;
+    font-size: $font-size-base;
+    i{
+      font-size: $font-size-h4;
+      vertical-align: bottom;
     }
   }
 }

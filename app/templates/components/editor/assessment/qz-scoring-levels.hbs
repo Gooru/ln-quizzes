@@ -1,11 +1,11 @@
-<div class="score-section">
+<div class="score-section level">
     <span>{{t 'qz-rubric-creation.qz-category.qz-scoring-levels.levels'}}</span>
     <div class="levels">
         <div class="scale">
-            <span>{{t 'qz-rubric-creation.qz-category.qz-scoring-levels.best'}}</span>
+            <span class="best">{{t 'qz-rubric-creation.qz-category.qz-scoring-levels.best'}}</span>
             <div class="line"></div>
             <div class="arrow-down"></div>
-            <span>{{t 'qz-rubric-creation.qz-category.qz-scoring-levels.worse'}}</span>
+            <span class="worst">{{t 'qz-rubric-creation.qz-category.qz-scoring-levels.worst'}}</span>
         </div>
         <div class="level-list">
           {{#each scoringLevels as |level|}}
@@ -13,6 +13,7 @@
           {{/each}}
         </div>
     </div>
+    <button class="btn btn-primary btn-new-level">{{gru-icon name='add'}}{{t 'qz-rubric-creation.qz-category.qz-scoring-levels.new-level'}}</button>
 </div>
 <div class="score-section points">
     <span>{{t 'qz-rubric-creation.qz-category.qz-scoring-levels.points'}}</span>

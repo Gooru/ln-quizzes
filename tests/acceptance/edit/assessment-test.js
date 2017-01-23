@@ -67,6 +67,12 @@ test('visiting /edit/assessment - Add New Category', function(assert) {
     andThen(function() {
       assert.equal(Ember.$('section#editor .qz-category').length,2,'Should have 2 categories');
       assert.equal(Ember.$('section#editor .qz-category:eq(1) .category .number').text(),'2','Incorrect category number');
+      assert.notOk(Ember.$('section#editor .qz-category:eq(1) .qz-scoring-levels').length,'Scoring levels should not appear');
+      var $score =Ember.$('section#editor .qz-category:eq(1) .scoring .qz-switch a');
+      click($score);
+      andThen(function() {
+        assert.ok(Ember.$('section#editor .qz-category:eq(1) .qz-scoring-levels').length,'Missing scoring levels');
+      });
     });
   });
 });

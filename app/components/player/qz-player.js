@@ -223,8 +223,7 @@ export default Ember.Component.extend(ModalMixin, {
   finishConfirm: function() {
     const controller = this;
     controller.actions.showModal.call(this,
-      'modals.gru-submit-confirmation',
-      {
+      'modals.gru-submit-confirmation', {
         onConfirm: controller.finishCollection.bind(controller)
       });
   },

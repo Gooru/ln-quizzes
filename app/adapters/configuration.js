@@ -20,7 +20,8 @@ export default Ember.Object.extend({
     const namespace = adapter.get('namespace');
     const url = `${namespace}/${key}.json`;
     const options = {
-      type: 'GET'
+      type: 'GET',
+      cache: false
     };
     return Ember.RSVP.hashSettled({
       configuration: Ember.$.ajax(url, options)

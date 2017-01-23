@@ -8,10 +8,10 @@ export default {
   },
 
   "realTime": {
-    "webServiceUrl": "https://www.gooru.org",
-    "webServiceUri": "/nucleus/realtime",
-    "webSocketUrl": "https://rt.gooru.org",
-    "webSocketUri": "/ws/realtime"
+    "webServiceUrl": "https://qa.api.quizzes.edify.cr",
+    "webServiceUri": "/",
+    "webSocketUrl": "https://qa.api.quizzes.edify.cr",
+    "webSocketUri": "/ws/quizzes-realtime"
   },
 
   "teams": {

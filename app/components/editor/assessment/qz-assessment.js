@@ -43,11 +43,7 @@ export default Ember.Component.extend({
    * @property {Category[]} Temporal categories array
    */
   categories:Ember.computed('assessment.rubric.categories.[]',function(){
-    let categories = Ember.A([Ember.Object.create({
-      title:'',
-      feedbackGuidance:'',
-      requiredFeedback:false
-    })]);
+    let categories = Ember.A([Category.create({})]);
     if(this.get('assessment.rubric.categories.length')){
       //TODO return a copy of categories
       categories = this.get('assessment.rubric.categories');

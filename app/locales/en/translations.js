@@ -1424,7 +1424,18 @@ export default {
       "scoring":"Scoring",
       "title":"Category Title",
       "title-placeholder":"ex. Grammar, Ideas, Thesis",
-      "new-category":"Add New Category"
+      "new-category":"Add New Category",
+      "qz-scoring-levels":{
+        "basic":"ex. Basic",
+        "below-basic":"ex. Below Basic",
+        "best":"Best",
+        "exemplary":"ex. Exemplary",
+        "levels":"Levels",
+        "new-level":"Add New Level",
+        "points":"Points",
+        "proficient":"ex. Proficient",
+        "worst":"Worst"
+      }
     }
   }
 };

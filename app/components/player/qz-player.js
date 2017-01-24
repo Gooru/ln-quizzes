@@ -54,7 +54,6 @@ export default Ember.Component.extend(ModalMixin, {
       const collection = component.get('collection');
       let contextResult = component.get('contextResult');
       let resourceResult = component.get('resourceResult');
-      console.log(contextResult, resourceResult, 2)
       component.saveResourceResult(null, contextResult, resourceResult).then(() => {
         if (collection.get('isAssessment')) {
           //open confirmation modal

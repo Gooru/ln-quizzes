@@ -5,7 +5,6 @@
     width: 50%;
   }
   .levels{
-    margin-left: 15px;
     @include flexbox;
     .scale {
       margin-top: 10px;

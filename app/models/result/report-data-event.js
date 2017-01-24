@@ -128,6 +128,7 @@ export default Ember.Object.extend({
     this.get('resourceResults').get(index).setProperties({
       resourceId: newResult.resourceId,
       savedTime: newResult.savedTime,
+      skipped: newResult.isSkipped,
       stopTime: 0,
       startTime: 0,
       reaction: newResult.reaction,

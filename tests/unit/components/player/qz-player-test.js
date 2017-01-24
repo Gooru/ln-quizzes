@@ -12,18 +12,11 @@ moduleForComponent('player/qz-player', 'Unit | Component | player/qz player', {
 });
 
 test('finishCollection on collection', function(assert) {
-  assert.expect(5);
+  assert.expect(4);
   let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
-  let question = Resource.create(Ember.getOwner(this).ownerInjection(), {
-    title: 'Question #1'
-  });
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Collection Title',
-    isCollection: true,
-    nextResource: function(q) {
-      assert.deepEqual(q, question);
-      return null;
-    }
+    isCollection: true
   });
   let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
     contextId: 'context'
@@ -31,7 +24,6 @@ test('finishCollection on collection', function(assert) {
   let component = this.subject({
     collection,
     contextResult,
-    resource: question,
     resourceResult: questionResult,
     contextService: Ember.Object.create({
       finishContext: function(contextId) {
@@ -53,16 +45,32 @@ test('finishCollection on collection', function(assert) {
 });
 
 test('finishCollection on assessment', function(assert) {
-  assert.expect(1);
+  assert.expect(4);
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Assessment Title',
     isCollection: false
   });
-  let component = this.subject({
-    collection
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context'
   });
+  let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
+  let component = this.subject({
+    collection,
+    contextResult,
+    resourceResult: questionResult,
+    contextService: Ember.Object.create({
+      moveToResource: function(resourceId, contextId, resourceResult) {
+        assert.deepEqual(resourceId, null, 'Wrong resource id');
+        assert.deepEqual(contextId, 'context', 'Wrong context id');
+        assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
+        return Ember.RSVP.resolve();
+      }
+    })
+  });
+  let done = assert.async();
   component.set('actions.showModal', function(modal) {
     assert.equal(modal, 'modals.gru-submit-confirmation', 'Correct modal');
+    done();
   });
 
   component.send('finishCollection');

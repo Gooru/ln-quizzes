@@ -39,7 +39,7 @@
             </div>
         </div>
         {{#each categories as |category index|}}
-          {{editor.assessment.qz-category category=category number=index}}
+          {{editor.assessment.qz-category category=category number=index onDeleteCategory='deleteCategory'}}
         {{/each}}
         <a class="add-prefix add-category" {{action 'addNewCategory'}}>{{t "qz-rubric-creation.qz-category.new-category"}}</a>
         <div class="panel panel-default overall-score">

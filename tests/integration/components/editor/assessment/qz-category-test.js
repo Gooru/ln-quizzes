@@ -26,3 +26,24 @@ test('Category Layout', function(assert) {
   assert.ok($component.find('.editor.assessment.qz-category .panel-footer .actions .btn.delete').length,'Missing delete category button');
   assert.ok($component.find('.editor.assessment.qz-category .panel-footer .actions .btn.copy').length,'Missing copy category button');
 });
+
+test('Delete Category', function(assert) {
+  assert.expect(1);
+
+  this.on('parentAction', function(category){
+    assert.ok(categoryDelete, category);
+  });
+
+  var categoryDelete = Ember.Object.create({
+    title:'Category for test',
+    feedbackGuidance:'Guidance for test',
+    requiredFeedback:false
+  });
+
+  this.set('category',categoryDelete);
+  this.render(hbs`{{editor/assessment/qz-category category=categoryDelete onDeleteCategory='parentAction'}}`);
+
+  var $component = this.$(); //component dom element
+  var $delete = $component.find(".btn.delete");
+  $delete.click();
+});

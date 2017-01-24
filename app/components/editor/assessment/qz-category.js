@@ -20,6 +20,12 @@ export default Ember.Component.extend({
      */
     onScoringChange:function(isChecked){
       this.set('showScore',isChecked);
+    },
+    /**
+     *Delete a category
+     */
+    deleteCategory:function(category){
+      this.sendAction('onDeleteCategory',category);
     }
   },
 

@@ -35,6 +35,13 @@ export default Ember.Component.extend({
      */
     setFeedBack: function(){
       this.set('assessment.requiredFeedback',!this.get('assessment.requiredFeedback'));
+    },
+    /**
+     *Triggered by qz-category
+     */
+    deleteCategory:function(category){
+      let categories = this.get('categories');
+      categories.removeObject(category);
     }
   },
 

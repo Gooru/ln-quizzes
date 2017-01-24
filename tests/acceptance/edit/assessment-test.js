@@ -76,3 +76,25 @@ test('visiting /edit/assessment - Add New Category', function(assert) {
     });
   });
 });
+
+test('visiting /edit/assessment - Delete Category', function(assert) {
+  visit('/edit/assessment/assessment-id');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/edit/assessment/assessment-id');
+    assert.ok(Ember.$('section#editor .qz-category').length,'Missing default category');
+    assert.equal(Ember.$('section#editor .qz-category').length,1,'Should have only one category');
+    assert.equal(Ember.$('section#editor .qz-category .category .number').text(),'1','Incorrect category number');
+    var $addCategory =Ember.$('section#editor .add-category');
+    assert.ok($addCategory.length,'Missing add category');
+    click($addCategory);
+    andThen(function() {
+      assert.equal(Ember.$('section#editor .qz-category').length,2,'Should have 2 categories');
+      var category = Ember.$('section#editor .qz-category:eq(1)');
+      click(category.find('.panel-footer .actions .btn.delete'));
+      andThen(function() {
+        assert.equal(Ember.$('section#editor .qz-category').length,1,'Should have 2 categories');
+      });
+    });
+  });
+});

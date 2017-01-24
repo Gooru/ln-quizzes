@@ -12,7 +12,10 @@
           @include align-self(center);
           margin-bottom: 6px;
         }
-        .gru-input.title,.gru-textarea.feedbackGuidance{
+        .gru-input.title{
+          margin-left: 44px;
+        }
+        .gru-textarea.feedbackGuidance{
           margin-left: 15px;
         }
         .gru-input.title{
@@ -34,7 +37,7 @@
         }
         .required-feedback{
           display: flex;
-          margin-left: 13%;
+          margin-left: 133px;
           .check_box{
             color:$blue-500;
           }
@@ -43,7 +46,7 @@
           @include flexbox;
           @include align-items(baseline);
           .qz-switch,.qz-scoring-levels{
-            margin-left: 16px;
+            margin-left: 11px;
           }
         }
       }

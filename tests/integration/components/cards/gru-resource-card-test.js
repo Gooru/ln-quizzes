@@ -105,11 +105,8 @@ test('Resource card trying buttons', function(assert) {
   this.on("playResource", function(resource){
     assert.equal(resource.get("id"), 1, "Wrong resource id");
   });
-  this.set('session', {
-    userId: 'user-id'
-  });
 
-  this.render(hbs`{{cards/gru-resource-card resource=resource editEnabled=true onPlayResource="playResource" onEditResource="editResource" session=session profileService=profileService}}`);
+  this.render(hbs`{{cards/gru-resource-card resource=resource editEnabled=true onPlayResource="playResource" onEditResource="editResource" profileService=profileService}}`);
   var $component = this.$(); //component dom element
   const $resourceCard = $component.find(".gru-resource-card");
   T.exists(assert, $resourceCard.find(".panel-footer button.edit-btn"), "Edit Button should be visible");

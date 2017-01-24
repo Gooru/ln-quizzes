@@ -1,16 +1,7 @@
 import DS from 'ember-data';
-import Env from '../config/environment';
 import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
-const Config = Env['simple-auth-custom'] || {};
-
 export default DS.RESTAdapter.extend({
-
-  /**
-   * @property {string} API Key
-   * @see simple-auth-custom at environment.js
-   */
-  apiKey: Config.apiKey,
 
   /**
    * This custom implementation removes the default pluralization of the type

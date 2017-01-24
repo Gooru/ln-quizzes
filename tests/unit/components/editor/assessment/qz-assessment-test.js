@@ -17,3 +17,13 @@ test('setFeedBack', function(assert) {
   component.send('setFeedBack');
   assert.equal(component.get('assessment.requiredFeedback'),true,'Feedback is not required');
 });
+
+test('deleteCategory', function(assert) {
+  let component = this.subject();
+  assert.equal(component.get('categories.length'), 1, 'Should have one category');
+  component.send('addNewCategory');
+  assert.equal(component.get('categories.length'), 2, 'Should have 2 categories');
+  component.send('deleteCategory',component.get('categories')[1]);
+  assert.equal(component.get('categories.length'), 1, 'Should have 1 category');
+});
+

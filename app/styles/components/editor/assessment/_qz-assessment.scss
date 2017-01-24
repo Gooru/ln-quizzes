@@ -95,13 +95,16 @@
             width: 88%;
           }
           textarea{
-            margin-top: -6px;
+            margin-left: 15px;
             font-size: $font-size-base;
           }
         }
       }
       .total-points{
         display: inline-block;
+        .label-pts{
+          margin-left: 10px
+        }
       }
       .required-feedback{
         float:right;

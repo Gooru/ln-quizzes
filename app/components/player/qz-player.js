@@ -50,15 +50,20 @@ export default Ember.Component.extend(ModalMixin, {
      * When clicking at submit all or end
      */
     finishCollection: function() {
-      const controller = this;
-      const collection = controller.get('collection');
-      if (collection.get('isAssessment')) {
-        //open confirmation modal
-        controller.finishConfirm();
-      } else {
-        //finishes the last resource
-        controller.finishCollection();
-      }
+      const component = this;
+      const collection = component.get('collection');
+      let contextResult = component.get('contextResult');
+      let resourceResult = component.get('resourceResult');
+      console.log(contextResult, resourceResult, 2)
+      component.saveResourceResult(null, contextResult, resourceResult).then(() => {
+        if (collection.get('isAssessment')) {
+          //open confirmation modal
+          component.finishConfirm();
+        } else {
+          //finishes the last resource
+          component.finishCollection();
+        }
+      });
     },
 
     /**
@@ -73,8 +78,8 @@ export default Ember.Component.extend(ModalMixin, {
      * @param {Resource} resource
      */
     selectNavigatorItem: function(resource){
-      const controller = this;
-      controller.moveToResource(resource);
+      const component = this;
+      component.moveToResource(resource);
     },
 
     /**
@@ -84,8 +89,8 @@ export default Ember.Component.extend(ModalMixin, {
      * @param {QuestionResult} questionResult
      */
     submitQuestion: function(question){
-      const controller = this;
-      controller.moveOrFinish(question);
+      const component = this;
+      component.moveOrFinish(question);
     }
   },
 
@@ -210,22 +215,20 @@ export default Ember.Component.extend(ModalMixin, {
    * Saves an assessment result
    */
   finishCollection: function() {
-    const controller = this;
-    let contextResult = controller.get('contextResult');
-    return controller.get('saveEnabled') ?
-      controller.get('contextService').finishContext(contextResult.get('contextId')) :
-      Ember.RSVP.resolve();
+    const component = this;
+    let contextResult = component.get('contextResult');
+    return !component.get('saveEnabled') ? Ember.RSVP.resolve() :
+        component.get('contextService').finishContext(contextResult.get('contextId'));
   },
 
   /**
    * Opens the confirmation dialog to finish the assessment
    */
   finishConfirm: function() {
-    const controller = this;
-    controller.actions.showModal.call(this,
-      'modals.gru-submit-confirmation',
-      {
-        onConfirm: controller.finishCollection.bind(controller)
+    const component = this;
+    component.actions.showModal.call(this,
+      'modals.gru-submit-confirmation', {
+        onConfirm: component.finishCollection.bind(component)
       });
   },
 
@@ -234,17 +237,16 @@ export default Ember.Component.extend(ModalMixin, {
    * @param {Resource} resource
    */
   moveOrFinish: function(resource) {
-    const controller = this;
-    const next = controller.get('collection').nextResource(resource);
+    const component = this;
+    const next = component.get('collection').nextResource(resource);
     if (next) {
       Ember.$(window).scrollTop(0);
-      controller.moveToResource(next);
+      component.moveToResource(next);
     } else {
-      let contextResult = controller.get('contextResult');
-      let resourceResult = controller.get('resourceResult');
-      return controller.saveResourceResult(null, contextResult, resourceResult).then(function() {
-        controller.finishConfirm();
-      });
+      let contextResult = component.get('contextResult');
+      let resourceResult = component.get('resourceResult');
+      return component.saveResourceResult(null, contextResult, resourceResult)
+        .then(() => component.finishConfirm());
     }
   },
 
@@ -253,16 +255,16 @@ export default Ember.Component.extend(ModalMixin, {
    * @param {Resource} resource
    */
   moveToResource: function(resource, firstTime) {
-    const controller = this;
-    let contextResult = controller.get('contextResult');
-    let resourceResult = controller.get('resourceResult');
+    const component = this;
+    let contextResult = component.get('contextResult');
+    let resourceResult = component.get('resourceResult');
     let resourceId = resource.get('id');
-    controller.saveResourceResult(resourceId, contextResult, resourceResult, firstTime)
+    return component.saveResourceResult(resourceId, contextResult, resourceResult, firstTime)
       .then(function() {
-        Ember.run(() => controller.set('resource', null));
+        Ember.run(() => component.set('resource', null));
         resourceResult = contextResult.getResultByResourceId(resourceId);
         resourceResult.set('startTime', new Date().getTime());
-        controller.setProperties({
+        component.setProperties({
           showReport: false,
           resourceId,
           resource,
@@ -290,16 +292,16 @@ export default Ember.Component.extend(ModalMixin, {
    * @returns {Promise.<boolean>}
    */
   saveResourceResult: function(resourceId, contextResult, resourceResult, firstTime) {
-    let controller = this;
+    let component = this;
     let promise = Ember.RSVP.resolve();
-    let save = controller.get('saveEnabled');
+    let save = component.get('saveEnabled');
     if (save) {
       let contextId = contextResult.get('contextId');
       if(resourceResult) {
         resourceResult.set('stopTime', new Date().getTime());
       }
       promise = firstTime ? Ember.RSVP.resolve() :
-        controller.get('contextService')
+        component.get('contextService')
           .moveToResource(resourceId, contextId, resourceResult);
     }
     return promise;

@@ -143,6 +143,7 @@ export default Ember.Object.extend({
       let previousResource = eventData.eventBody.previousResource;
       profileEvent.setProfileSummary(eventData.eventBody.eventSummary, false);
       profileEvent.set('currentResourceId', eventData.eventBody.currentResourceId);
+      profileEvent.incrementProperty('updated');
       profileEvent.merge(previousResource.resourceId, previousResource);
     }
   },

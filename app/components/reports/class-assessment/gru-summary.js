@@ -55,7 +55,8 @@ export default Ember.Component.extend({
    * @prop { String[] } assessmentQuestionsIds - An array with the ids of all the questions in the assessment
    * ordered in ascending order per each question's order value.
    */
-  assessmentQuestionsIds: Ember.computed('assessment.resources.@each.id', function () {
+  assessmentQuestionsIds: Ember.computed('assessment.resources.@each.id',
+    'assessment.resources.@each.sequence', function () {
 
     let questions = this.get('assessment.resourcesSorted').map(function (question) {
       // Copy only the most important properties of the resources array
@@ -127,7 +128,7 @@ export default Ember.Component.extend({
    * - incorrect: number of students that did not answer the question correctly
    * - total: total number of students
    */
-  questionsData: Ember.computed('reportData.reportEvents.@each.currentResourceId', function () {
+  questionsData: Ember.computed('reportData.reportEvents.@each.updated', function () {
     const studentsIds = this.get('studentsIds');
     const totalStudents = studentsIds.length;
     const questionsIds = this.get('assessmentQuestionsIds');
@@ -169,7 +170,9 @@ export default Ember.Component.extend({
    * - score: number of questions answered correctly vs. total number of questions
    * - completed: have all the questions in the assessment been answered?
    */
-  scoresData: Ember.computed('reportData.reportEvents.@each.currentResourceId', function () {
+  scoresData: Ember.computed('reportData.reportEvents.@each.totalAnswered',
+    'reportData.reportEvents.@each.averageScore',
+    'reportData.reportEvents.@each.isAttemptFinished', function () {
     const reportEvents = this.get('reportData.reportEvents');
 
     let results = [];

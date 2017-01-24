@@ -78,31 +78,9 @@ export default Ember.Component.extend({
 
   /**
    * Returns a convenient structure to display the student view
-   *
-   * Sample response
-   * The 'questionId#' corresponds to the actual question id
-   *  [
-   *    {
-   *      student: {User}
-   *      reportData: {
-   *        questionId1 : QuestionResult,
-   *        questionId2 : QuestionResult,
-   *        questionId3 : QuestionResult
-   *      },
-   *    },
-   *    {
-   *      student: {User}
-   *      reportData: {
-   *        questionId1 : QuestionResult,
-   *        questionId2 : QuestionResult,
-   *        questionId3 : QuestionResult
-   *      },
-   *    }
-   *  ]
-   *
    * @return [] students performance info
    */
-  studentPerformanceList: Ember.computed('reportData.reportEvents.@each.profileId', function(){
+  studentPerformanceList: Ember.computed('reportData.reportEvents.@each.updated', function(){
     const component = this;
     const reportEvents = component.get('reportData.reportEvents');
     return reportEvents.map(function(studentData) {

@@ -93,7 +93,7 @@ test('visiting /edit/assessment - Delete Category', function(assert) {
       var category = Ember.$('section#editor .qz-category:eq(1)');
       click(category.find('.panel-footer .actions .btn.delete'));
       andThen(function() {
-        assert.equal(Ember.$('section#editor .qz-category').length,1,'Should have 2 categories');
+        assert.equal(Ember.$('section#editor .qz-category').length,1,'Should have 1 categories');
       });
     });
   });

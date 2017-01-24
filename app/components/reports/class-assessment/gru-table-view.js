@@ -177,7 +177,7 @@ export default Ember.Component.extend({
    *   - output: table cell content formatted for output (the formatting is done by
    *             the question property's render function)
    */
-  tableData: Ember.computed('anonymous', 'tableFrame', 'reportData.reportEvents.@each.profileId', function () {
+  tableData: Ember.computed('anonymous', 'tableFrame', 'reportData.reportEvents.@each.updated', function () {
     const questionProperties = this.get('questionProperties');
     const questionPropertiesIds = this.get('questionPropertiesIds');
     const questionPropertiesIdsLen = questionPropertiesIds.length;

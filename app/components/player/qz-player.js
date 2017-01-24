@@ -212,9 +212,10 @@ export default Ember.Component.extend(ModalMixin, {
   finishCollection: function() {
     const controller = this;
     let contextResult = controller.get('contextResult');
-    return controller.get('saveEnabled') ?
-      controller.get('contextService').finishContext(contextResult.get('contextId')) :
-      Ember.RSVP.resolve();
+    return controller.moveOrFinish(controller.get('resource')).then(
+      () => !controller.get('saveEnabled') ? Ember.RSVP.resolve() :
+        controller.get('contextService').finishContext(contextResult.get('contextId'))
+    );
   },
 
   /**
@@ -238,12 +239,12 @@ export default Ember.Component.extend(ModalMixin, {
     if (next) {
       Ember.$(window).scrollTop(0);
       controller.moveToResource(next);
+      return Ember.RSVP.resolve();
     } else {
       let contextResult = controller.get('contextResult');
       let resourceResult = controller.get('resourceResult');
-      return controller.saveResourceResult(null, contextResult, resourceResult).then(function() {
-        controller.finishConfirm();
-      });
+      return controller.saveResourceResult(null, contextResult, resourceResult)
+        .then(() => controller.finishConfirm());
     }
   },
 

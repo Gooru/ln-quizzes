@@ -89,6 +89,11 @@ export default Ember.Object.extend({
    */
   totalTimeSpent: 0,
 
+  /**
+   * @property {Number} updated keep track of updated to redraw realtime dashboard
+   */
+  updated: 0,
+
   // -------------------------------------------------------------------------
   // Methods
 

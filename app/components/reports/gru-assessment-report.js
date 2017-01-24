@@ -107,7 +107,7 @@ export default Ember.Component.extend({
    * Return ordered questions array
    * @return {Ember.Array}
    */
-  orderedQuestions: Ember.computed('contextResult.questionResults[]', function() {
+  orderedQuestions: Ember.computed('contextResult.questionResults.[]', function() {
     return this.get('contextResult.questionResults').sort(
       (a, b) => a.get('question.sequence') - b.get('question.sequence'));
   })

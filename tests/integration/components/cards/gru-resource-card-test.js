@@ -2,8 +2,7 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
-import ResourceModel from 'quizzes/models/content/resource';
-import QuestionModel from 'quizzes/models/content/question';
+import ResourceModel from 'quizzes/models/resource/resource';
 
 moduleForComponent('cards/gru-resource-card', 'Integration | Component | cards/gru resource card', {
   integration: true
@@ -44,7 +43,7 @@ test('Resource Card Layout', function(assert) {
 });
 
 test('Question Card Layout', function(assert) {
-  var question = QuestionModel.create({
+  var question = ResourceModel.create({
     title: "Question Title",
     format:"question",
     type:"single_choice",

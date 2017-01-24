@@ -1,4 +1,3 @@
-import Ember from "ember";
 import { moduleFor } from 'ember-qunit';
 import Pretender from 'pretender';
 
@@ -6,12 +5,6 @@ export default function(name, moduleName, options = {}) {
   moduleFor(name, moduleName, {
     needs: options.needs,
     beforeEach() {
-      /**
-       * Most of Quizzes services uses the session service, if you need to mock
-       * the session service differently you can do it by registering again in your test
-       * beforeEach method
-       */
-      this.register('service:session', Ember.Service.extend({}));
 
       //Starting the pretender
       this.pretender = new Pretender();

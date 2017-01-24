@@ -7,8 +7,6 @@ import Ember from 'ember';
  */
 export default Ember.Object.extend({
 
-  session: Ember.inject.service('session'),
-
   namespace: '/api/nucleus/v1/taxonomy',
 
   /**
@@ -118,7 +116,7 @@ export default Ember.Object.extend({
 
   defineHeaders: function() {
     return {
-      'Authorization': 'Token ' + this.get('session.token-api3')
+      'Authorization': 'Token '
     };
   }
 

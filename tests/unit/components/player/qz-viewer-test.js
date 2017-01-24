@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import Question from 'quizzes/models/content/question';
+import Question from 'quizzes/models/resource/resource';
 import QuestionResult from 'quizzes/models/result/question';
 
 moduleForComponent('player/qz-viewer', 'Unit | Component | player/qz viewer', {

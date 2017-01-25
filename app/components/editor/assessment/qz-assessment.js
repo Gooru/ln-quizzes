@@ -26,7 +26,7 @@ export default Ember.Component.extend({
      * Add new category
      */
     addNewCategory:function(){
-      let newCategory = Category.create({});
+      let newCategory = Category.create({}).initLevels();
       let categories = this.get('categories');
       categories.addObject(newCategory);
     },
@@ -42,6 +42,14 @@ export default Ember.Component.extend({
     deleteCategory:function(category){
       let categories = this.get('categories');
       categories.removeObject(category);
+    },
+    /**
+     *Copy category
+     */
+    copyCategory: function (category,index) {
+      let categories = this.get('categories');
+      let newCategory = category.copy();
+      categories.insertAt(index+1, newCategory);
     }
   },
 
@@ -59,7 +67,7 @@ export default Ember.Component.extend({
    * @property {Category[]} Temporal categories array
    */
   categories:Ember.computed('assessment.rubric.categories.[]',function(){
-    let categories = Ember.A([Category.create({})]);
+    let categories = Ember.A([Category.create({}).initLevels()]);
     if(this.get('assessment.rubric.categories.length')){
       //TODO return a copy of categories
       categories = this.get('assessment.rubric.categories');

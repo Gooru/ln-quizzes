@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
+import Category from 'quizzes/models/editor/assessment/category';
 
 moduleForComponent('editor/assessment/qz-category', 'Integration | Component | editor/assessment/qz category', {
   integration: true
@@ -46,4 +47,25 @@ test('Delete Category', function(assert) {
   var $component = this.$(); //component dom element
   var $delete = $component.find(".btn.delete");
   $delete.click();
+});
+
+test('Copy Category', function(assert) {
+  assert.expect(1);
+
+  this.on('parentAction', function(category){
+    assert.ok(categoryCopy, category);
+  });
+
+  var categoryCopy = Category.create({
+    title:'Category for test',
+    feedbackGuidance:'Guidance for test',
+    requiredFeedback:false
+  });
+
+  this.set('category',categoryCopy);
+  this.render(hbs`{{editor/assessment/qz-category category=categoryCopy onCopyCategory='parentAction'}}`);
+
+  var $component = this.$(); //component dom element
+  var $copy = $component.find(".btn.copy");
+  $copy.click();
 });

@@ -1,13 +1,30 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import Level from 'quizzes/models/editor/assessment/level';
+import Ember from 'ember';
 
 moduleForComponent('editor/assessment/qz-scoring-levels', 'Integration | Component | editor/assessment/qz scoring levels', {
   integration: true
 });
 
 test('Scoring Level Layout', function(assert) {
+  let scoringLevels = Ember.A([
+    Level.create({
+      id:'exemplary'
+    }),
+    Level.create({
+      id:'proficient'
+    }),
+    Level.create({
+      id:'basic'
+    }),
+    Level.create({
+      id:'below-basic'
+    })
+  ]);
+  this.set('scoringLevels',scoringLevels);
 
-  this.render(hbs`{{editor/assessment/qz-scoring-levels}}`);
+  this.render(hbs`{{editor/assessment/qz-scoring-levels scoringLevels=scoringLevels}}`);
   var $component = this.$();
   assert.ok($component.find('.editor.assessment.qz-scoring-levels').length,'Missing scoring levels component');
   assert.ok($component.find('.editor.assessment.qz-scoring-levels .level span').length,'Missing levels title');

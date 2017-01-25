@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Level from 'quizzes/models/editor/assessment/level';
 
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------
@@ -13,19 +12,6 @@ export default Ember.Component.extend({
   /**
    * @property {Level[]} ScoringLevels
    */
-  scoringLevels:Ember.A([
-    Level.create({
-      id:'exemplary'
-    }),
-    Level.create({
-      id:'proficient'
-    }),
-    Level.create({
-      id:'basic'
-    }),
-    Level.create({
-      id:'below-basic'
-    })
-  ])
+  scoringLevels:null
 
 });

@@ -22,7 +22,7 @@ export default Ember.Object.extend({
    * Return a copy of the level
    *
    * @function
-   * @return {Category}
+   * @return {Level}
    */
   copy: function() {
     var properties = this.getProperties(this.modelProperties());
@@ -33,7 +33,7 @@ export default Ember.Object.extend({
    * Copy a list of property values from another model to override the current ones
    *
    * @function
-   * @param {Category} model
+   * @param {Level} model
    * @param {String[]} propertyList
    * @return {null}
    */

@@ -16,5 +16,47 @@ export default Ember.Object.extend({
   /**
    * @property {Integer} Points
    */
-  points:0
+  points:0,
+
+  /**
+   * Return a copy of the level
+   *
+   * @function
+   * @return {Category}
+   */
+  copy: function() {
+    var properties = this.getProperties(this.modelProperties());
+    return this.get('constructor').create(properties);
+  },
+
+  /**
+   * Copy a list of property values from another model to override the current ones
+   *
+   * @function
+   * @param {Category} model
+   * @param {String[]} propertyList
+   * @return {null}
+   */
+  merge: function(model, propertyList = []) {
+    var properties = model.getProperties(propertyList);
+    this.setProperties(properties);
+  },
+  /**
+   * Return a list of properties
+   *
+   * @function
+   * @return {Array}
+   */
+  modelProperties: function() {
+    var properties = [];
+    const enumerableKeys = Object.keys(this);
+    for (let i = 0; i < enumerableKeys.length; i++) {
+      let key = enumerableKeys[i];
+      let value = Ember.typeOf(this.get(key));
+      if (value === 'string' || value === 'number' || value === 'boolean') {
+        properties.push(key);
+      }
+    }
+    return properties;
+  }
 });

@@ -38,8 +38,13 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Properties
+  /**
+   * @property {Category} Category
+   */
   category:Category.create({}),
-
+  /**
+   * @property {int} Category index number
+   */
   number:1,
   /**
    *Show the score scale

@@ -6,6 +6,9 @@ import Level from 'quizzes/models/editor/assessment/level';
  * typedef {Object} Category
  */
 export default Ember.Object.extend({
+  /**
+   *Init the scoring levels default on each category
+   */
   initLevels: function() {
     this.set('scoringLevels',Ember.A([
       Level.create({

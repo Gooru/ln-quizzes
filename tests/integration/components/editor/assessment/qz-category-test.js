@@ -45,7 +45,7 @@ test('Delete Category', function(assert) {
   this.render(hbs`{{editor/assessment/qz-category category=categoryDelete onDeleteCategory='parentAction'}}`);
 
   var $component = this.$(); //component dom element
-  var $delete = $component.find(".btn.delete");
+  var $delete = $component.find('.btn.delete');
   $delete.click();
 });
 
@@ -66,6 +66,6 @@ test('Copy Category', function(assert) {
   this.render(hbs`{{editor/assessment/qz-category category=categoryCopy onCopyCategory='parentAction'}}`);
 
   var $component = this.$(); //component dom element
-  var $copy = $component.find(".btn.copy");
+  var $copy = $component.find('.btn.copy');
   $copy.click();
 });

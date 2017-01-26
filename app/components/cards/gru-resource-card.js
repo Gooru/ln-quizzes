@@ -12,11 +12,6 @@ import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
 export default Ember.Component.extend(ModalMixin,{
   // Dependencies
 
-  /**
-   * @property {Service} session
-   */
-  session: Ember.inject.service('session'),
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -37,16 +32,6 @@ export default Ember.Component.extend(ModalMixin,{
      */
     playResource:function(){
       this.sendAction("onPlayResource", this.get("resource"));
-    },
-    /**
-     * Action triggered to remix the question
-     */
-    remixQuestion: function(){
-      if (this.get('session.isAnonymous')) {
-        this.send('showModal', 'content.modals.gru-login-prompt');
-      } else {
-        this.sendAction("onRemixQuestion", this.get("resource"));
-      }
     }
   },
 

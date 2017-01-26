@@ -2,19 +2,9 @@
 import Ember from 'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 import sinon from 'sinon';
 
 moduleForAcceptance('Acceptance | reports/context', {
-  beforeEach: function() {
-    authenticateSession(this.application, {
-      isAnonymous: true,
-      token: 'token-value',
-      user: {
-        providedAt: Date.now()
-      }
-    });
-  },
   afterEach: function() {
     Stomp.over.restore();
   }

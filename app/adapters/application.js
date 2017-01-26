@@ -1,24 +1,7 @@
-import Ember from 'ember';
 import DS from 'ember-data';
-import Env from '../config/environment';
-import SessionMixin from '../mixins/session';
 import EndPointsConfig from 'quizzes/utils/endpoint-config';
 
-const Config = Env['simple-auth-custom'] || {};
-
-export default DS.RESTAdapter.extend(SessionMixin, {
-
-  headers: Ember.computed('session.token', function() {
-    return {
-      'gooru-session-token': this.get('session.token-api3')
-    };
-  }),
-
-  /**
-   * @property {string} API Key
-   * @see simple-auth-custom at environment.js
-   */
-  apiKey: Config.apiKey,
+export default DS.RESTAdapter.extend({
 
   /**
    * This custom implementation removes the default pluralization of the type

@@ -12,9 +12,5 @@ export default {
     "webServiceUri": "/nucleus/realtime",
     "webSocketUrl": "realtimeURL",
     "webSocketUri": "/realtimeURI"
-  },
-
-  "teams": {
-    "url": "http://teams-qa.gooru.org"
   }
 };

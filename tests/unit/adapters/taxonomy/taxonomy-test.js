@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import { test } from 'ember-qunit';
 import moduleForAdapter from 'quizzes/tests/helpers/module-for-adapter';
 
@@ -8,9 +7,6 @@ moduleForAdapter('adapter:taxonomy/taxonomy', 'Unit | Adapter | taxonomy/taxonom
 
 test('Fetch Taxonomy Subjects for K-12', function(assert) {
   const adapter = this.subject();
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   this.pretender.map(function() {
     this.get('/api/nucleus/v1/taxonomy/subjects', function(request) {
       assert.equal(request.queryParams.classification_type, 'k_12', 'Wrong classification type value');
@@ -25,9 +21,6 @@ test('Fetch Taxonomy Subjects for K-12', function(assert) {
 
 test('Fetch Taxonomy Subjects for Higher Education', function(assert) {
   const adapter = this.subject();
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   this.pretender.map(function() {
     this.get('/api/nucleus/v1/taxonomy/subjects', function(request) {
       assert.equal(request.queryParams.classification_type, 'higher_education', 'Wrong classification type value');
@@ -42,9 +35,6 @@ test('Fetch Taxonomy Subjects for Higher Education', function(assert) {
 
 test('Fetch Taxonomy Subjects for Professional Learning', function(assert) {
   const adapter = this.subject();
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   this.pretender.map(function() {
     this.get('/api/nucleus/v1/taxonomy/subjects', function(request) {
       assert.equal(request.queryParams.classification_type, 'professional_learning', 'Wrong classification type value');
@@ -59,9 +49,6 @@ test('Fetch Taxonomy Subjects for Professional Learning', function(assert) {
 
 test('Fetch Taxonomy Courses', function(assert) {
   const adapter = this.subject();
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   this.pretender.map(function() {
     this.get('/api/nucleus/v1/taxonomy/frameworks/framework-id/subjects/taxonomy-subject-id/courses', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
@@ -75,9 +62,6 @@ test('Fetch Taxonomy Courses', function(assert) {
 
 test('Fetch Taxonomy Domains', function(assert) {
   const adapter = this.subject();
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   this.pretender.map(function() {
     this.get('/api/nucleus/v1/taxonomy/frameworks/framework-id/subjects/taxonomy-subject-id/courses/taxonomy-course-id/domains', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
@@ -91,9 +75,6 @@ test('Fetch Taxonomy Domains', function(assert) {
 
 test('Fetch Taxonomy Codes', function(assert) {
   const adapter = this.subject();
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   this.pretender.map(function() {
     this.get('/api/nucleus/v1/taxonomy/frameworks/framework-id/subjects/taxonomy-subject-id/courses/taxonomy-course-id/domains/taxonomy-domain-id/codes', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];

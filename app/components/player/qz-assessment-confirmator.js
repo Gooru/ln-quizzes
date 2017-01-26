@@ -6,11 +6,6 @@ export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Dependencies
 
-  /**
-   * @property {Ember.Service} Service to do retrieve audiences
-   */
-  assessmentService: Ember.inject.service('api-sdk/assessment'),
-
   // -------------------------------------------------------------------------
   // Attributes
   classNames: ['qz-assessment-confirmator'],

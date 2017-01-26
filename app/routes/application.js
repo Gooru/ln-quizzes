@@ -19,18 +19,10 @@ export default Ember.Route.extend({
    */
   configurationService: Ember.inject.service('configuration'),
 
-  session: Ember.inject.service(),
-
   /**
    * @requires service:notifications
    */
   notifications: Ember.inject.service(),
-
-  /**
-   * @requires service:api-sdk/log
-   */
-  errorService: Ember.inject.service('api-sdk/error'),
-
 
   // -------------------------------------------------------------------------
   // Methods
@@ -67,8 +59,6 @@ export default Ember.Route.extend({
   },
 
   model: function(params) {
-    const route = this;
-    const currentSession = route.get('session.data.authenticated');
     const themeConfig = Env.themes || {};
     const themeId = params.themeId || Env.themes.default;
 
@@ -79,7 +69,6 @@ export default Ember.Route.extend({
     }
 
     return Ember.RSVP.hash({
-      currentSession,
       theme,
       translations: theme ? theme.loadTranslations() : null
     });
@@ -161,12 +150,6 @@ export default Ember.Route.extend({
      */
   trackEndPointError : function(event, jqXHR, settings){
     const route = this;
-
-    // do not track errors at the user-error api, this to prevent a loop
-    if (settings.url.indexOf('api/nucleus-utils/v1/user-error') >= 0 ) {
-      return;
-    }
-
     const targetElement = event.currentTarget && event.currentTarget.activeElement ?
       event.currentTarget.activeElement : false;
     const model = Error.create({
@@ -190,7 +173,6 @@ export default Ember.Route.extend({
       description: 'Endpoint error'
     });
     Ember.Logger.error(model);
-    //route.get('errorService').createError(model);
   },
 
   /**
@@ -219,7 +201,6 @@ export default Ember.Route.extend({
 
     Ember.Logger.error(model);
     Ember.Logger.error(error);
-    //route.get('errorService').createError(model);
   },
 
   deactivate: function () {
@@ -235,7 +216,7 @@ export default Ember.Route.extend({
     const transition = Env.APP.transition;
     const configurationService = route.get('configurationService');
     configurationService.addProperties(Env.APP.properties);
-    const routeName = 'sign-in';
+    const routeName = 'index';
     if (transition) {
       route.transitionTo.apply(route, transition);
     } else {

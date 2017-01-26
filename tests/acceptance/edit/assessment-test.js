@@ -1,18 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | edit/assessment',{
-  beforeEach: function() {
-    authenticateSession(this.application, {
-      isAnonymous: true,
-      token: 'token-value',
-      user: {
-        providedAt: Date.now()
-      }
-    });
-  }
-});
+moduleForAcceptance('Acceptance | edit/assessment');
 
 test('visiting /edit/assessment', function(assert) {
   visit('/edit/assessment/assessment-id');

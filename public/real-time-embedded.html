@@ -20,10 +20,10 @@
 
   <script type="text/javascript">
     (function () {
-      let match = /context-id=([^&]*)/.exec(location.search);
-      let contextId = match ? match[1] : '';
+      var match = /context-id=([^&]*)/.exec(location.search);
+      var contextId = match ? match[1] : '';
       match = /anonymous=([^&]*)/.exec(location.search);
-      let anonymous = match ? match[1] : false;
+      var anonymous = match ? match[1] : false;
       jQuery(document).ready(function () {
         var emberApp = window['QuizzesWebApp'];
         emberApp.start({

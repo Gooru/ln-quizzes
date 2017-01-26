@@ -21,9 +21,10 @@
 
     li {
       height: $question-height;
-      max-width: $max-question-width;
+      width: $max-question-width;
       padding-left: 2em;
       display: table;
+      flex-shrink: 0;
 
       > a {
         display: -ms-flexbox;

@@ -115,7 +115,7 @@ export default Ember.Component.extend({
    *
    * @property {QuestionResult[]}
    */
-  questionResults: Ember.computed('question', 'reportData.[]', function(){
+  questionResults: Ember.computed('question', 'reportData.reportEvents.@each.updated', function(){
     const reportData = this.get('reportData');
     return reportData.getResultsByQuestion(this.get('question.id'));
   }),

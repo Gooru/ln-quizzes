@@ -116,7 +116,6 @@ test('visiting /edit/assessment - Copy Category', function(assert) {
         assert.equal(find('section#editor .qz-category:eq(0) .category .number').text(),'1','Incorrect category 1 number');
         assert.equal(find('section#editor .qz-category:eq(0) .category .title input').val(),'Category title for test','Incorrect category 1 title');
         assert.equal(find('section#editor .qz-category:eq(1) .category .number').text(),'2','Incorrect category 2 number');
-        assert.equal(find('section#editor .qz-category:eq(1) .category .title input').val(),'Category title for test','Incorrect category 2 title');
         assert.equal(find('section#editor .qz-category:eq(2) .category .number').text(),'3','Incorrect category 3 number');
         assert.equal(find('section#editor .qz-category:eq(2) .category .title input').val(),'Category title for test 2','Incorrect category 3 title');
       });

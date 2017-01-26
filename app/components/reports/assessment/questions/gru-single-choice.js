@@ -25,7 +25,8 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Properties
 
-  answers: Ember.computed('question', function () {
+  answers: Ember.computed('question', 'userAnswer',
+    'question.answers.@each.text', 'question.answers.@each.value', function () {
     let component = this;
     let question = component.get('question');
     let userAnswer = component.get('userAnswer') ? component.get('userAnswer')[0] : null;
@@ -36,7 +37,7 @@ export default Ember.Component.extend(QuestionMixin, {
     }
     let answerValue = userAnswer ? userAnswer.value : null;
     let answers = question.get('question.answers');
-    return answers.map(function(answer){
+    return answers.map(function(answer) {
       return {
         text: answer.get('text'),
         selected: answer.get('value') === answerValue,

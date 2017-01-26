@@ -44,14 +44,15 @@ export default Ember.Component.extend(ModalMixin, {
       });
 
       let contextResult = ContextResult.create({
-        averageReaction: reportEvent.get('averageReaction'),
-        correctPercentage: reportEvent.get('averageScore'),
-        correctAnswers: reportEvent.get('totalCorrect'),
-        currentResourceId: reportEvent.get('currentResourceId'),
-        totalTimeSpent: reportEvent.get('totalTimeSpent'),
+        reportEvent,
+        averageReaction: Ember.computed.alias('reportEvent.averageReaction'),
+        correctPercentage: Ember.computed.alias('reportEvent.averageScore'),
+        correctAnswers: Ember.computed.alias('reportEvent.totalCorrect'),
+        currentResourceId: Ember.computed.alias('reportEvent.currentResourceId'),
+        totalTimeSpent: Ember.computed.alias('reportEvent.totalTimeSpent'),
         totalAttempts: 1,
         selectedAttempt: 1,
-        resourceResults,
+        resourceResults: Ember.computed.alias('reportEvent.resourceResults'),
         collection: assessment,
         isRealTime: this.get('isRealTime'),
         showAttempts: this.get('showAttempts')

@@ -67,7 +67,7 @@ export default Ember.Object.extend({
   /**
    * @property {QuestionResult[]} questionResults
    */
-  questionResults: Ember.computed('resourceResults.[]', function(){
+  questionResults: Ember.computed('resourceResults.@each.updated', function(){
     return this.get('resourceResults').filter(
       resourceResult => resourceResult instanceof QuestionResult);
   }),
@@ -80,7 +80,7 @@ export default Ember.Object.extend({
   /**
    * @property {QuestionResult[]} questionResults
    */
-  sortedResourceResults: Ember.computed('resourceResults.[]', function(){
+  sortedResourceResults: Ember.computed('resourceResults.@each.updated', function(){
     return this.get('resourceResults').sortBy('resource.sequence');
   }),
 

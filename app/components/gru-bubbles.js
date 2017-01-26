@@ -29,8 +29,8 @@ export default Ember.Component.extend({
     selectBubbleOption: function(option) {
       let component = this;
       component.clearSelection();
-      option.set("selected", true);
-      component.sendAction("onBubbleSelect", option);
+      option.set('selected', true);
+      component.sendAction('onBubbleSelect', option);
     }
 
   },
@@ -42,7 +42,7 @@ export default Ember.Component.extend({
    * @property {Ember.Object[]} { label: string, status: string, value: Object, selected: boolean }
 
    */
-    bubbleOptions: null,
+  bubbleOptions: null,
 
   // -------------------------------------------------------------------------
   // Methods
@@ -50,9 +50,9 @@ export default Ember.Component.extend({
    * Clears current selection
    */
   clearSelection: function(){
-    const options = this.get("bubbleOptions");
+    const options = this.get('bubbleOptions');
     options.forEach(function(option){
-      option.set("selected", false);
+      option.set('selected', false);
     });
   }
 

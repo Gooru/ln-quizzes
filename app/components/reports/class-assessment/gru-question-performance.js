@@ -48,7 +48,7 @@ export default Ember.Component.extend({
    * Convenience structure to display the answers distribution
    * @property {*} answer distributions
    */
-  answersData: Ember.computed('questionResults.[]', function() {
+  answersData: Ember.computed('questionResults.@each.updated', function() {
     const component = this;
     const reportData = component.get('reportData');
     const question = component.get('question');

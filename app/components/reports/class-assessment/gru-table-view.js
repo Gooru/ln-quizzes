@@ -140,7 +140,7 @@ export default Ember.Component.extend({
   /**
    * @prop { String[] } questionPropertiesIds - An array with the ids of all the question properties
    */
-  questionPropertiesIds: Ember.computed('questionProperties', function () {
+  questionPropertiesIds: Ember.computed('questionProperties.@each.value', function () {
     return this.get('questionProperties')
       .map(questionProperty => questionProperty.value);
   }),
@@ -236,7 +236,7 @@ export default Ember.Component.extend({
    * @prop {Object[]} tableFrame - The table frame that encloses the table data
    * @return {Object[]}
    */
-  tableFrame: Ember.computed('anonymous', 'students.@each.fullName', function () {
+  tableFrame: Ember.computed('anonymous', 'students.@each.fullName', 'students.@each.id', function () {
     let anonymous = this.get('anonymous');
     return this.get('students').map(function (student) {
       return {

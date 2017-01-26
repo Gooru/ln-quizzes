@@ -129,6 +129,7 @@ export default Ember.Object.extend({
     let oldReportEvents = this.findByProfileId(eventData.profileId);
     if (oldReportEvents.length) {
       oldReportEvents[0].setProfileSummary(eventData.eventBody.eventSummary, true);
+      oldReportEvents[0].incrementProperty('updated');
     }
   },
 
@@ -143,8 +144,8 @@ export default Ember.Object.extend({
       let previousResource = eventData.eventBody.previousResource;
       profileEvent.setProfileSummary(eventData.eventBody.eventSummary, false);
       profileEvent.set('currentResourceId', eventData.eventBody.currentResourceId);
-      profileEvent.incrementProperty('updated');
       profileEvent.merge(previousResource.resourceId, previousResource);
+      profileEvent.incrementProperty('updated');
     }
   },
 
@@ -154,7 +155,7 @@ export default Ember.Object.extend({
    */
   parseStartEvent: function(eventData) {
     let oldReportEvents = this.findByProfileId(eventData.profileId);
-    let newProfileEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
+    let properties = {
       currentResourceId: eventData.eventBody.currentResourceId,
       profileId: eventData.profileId,
       profileName: eventData.profileName,
@@ -165,17 +166,20 @@ export default Ember.Object.extend({
           savedTime: 0,
           reaction: 0,
           answer: null,
-          score: 0
+          score: 0,
+          skipped: true
         })
       )
-    });
+    };
     if (oldReportEvents.length) {
-      newProfileEvent.set('profileName', oldReportEvents[0].get('profileName'));
-      if(eventData.eventBody.isNewAttempt) {
-        // Replace the old student report
-        this.replaceByProfileId(eventData.profileId, newProfileEvent);
-      }
+      let currentReportEvent = oldReportEvents[0];
+      currentReportEvent.setProperties(properties);
+      currentReportEvent.clearProfileSummary();
+      currentReportEvent.incrementProperty('updated');
     } else {
+      let newProfileEvent = ReportDataEvent.create(
+        Ember.getOwner(this).ownerInjection(), properties
+      );
       this.get('reportEvents').pushObject(newProfileEvent);
     }
   },

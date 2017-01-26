@@ -6,7 +6,15 @@ export default Ember.Component.extend({
 
   classNames: ['editor','assessment','qz-scoring-levels'],
 
-  // -------------------------------------------------------------------------
+  actions:{
+    /**
+     * Delete Level
+     */
+    deleteLevel: function(level){
+      this.get('scoringLevels').removeObject(level);
+    }
+  },
+  //// -------------------------------------------------------------------------
   // Properties
 
   /**

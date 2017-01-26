@@ -1,19 +1,8 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 import Ember from 'ember';
 
-moduleForAcceptance('Acceptance | assign',{
-  beforeEach: function() {
-    authenticateSession(this.application, {
-      isAnonymous: true,
-      token: 'token-value',
-      user: {
-        providedAt: Date.now()
-      }
-    });
-  }
-});
+moduleForAcceptance('Acceptance | assign');
 
 test('Create Context', function(assert) {
   visit('/assessment/assessment-id');
@@ -38,4 +27,3 @@ test('Create Context', function(assert) {
     });
   });
 });
-

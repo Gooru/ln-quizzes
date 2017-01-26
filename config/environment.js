@@ -35,7 +35,8 @@ module.exports = function (environment) {
   ENV.embedded = isEmbedded;
 
   ENV.i18n = {
-    defaultLocale: 'en'
+    defaultLocale: 'en',
+    suppressWarnings: true
   };
 
   /**

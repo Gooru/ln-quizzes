@@ -12,9 +12,5 @@ export default {
     "webServiceUri": "/",
     "webSocketUrl": "https://qa.api.quizzes.edify.cr",
     "webSocketUri": "/ws/quizzes-realtime"
-  },
-
-  "teams": {
-    "url": "http://teams.gooru.org"
   }
 };

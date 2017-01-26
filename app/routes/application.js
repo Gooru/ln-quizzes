@@ -150,12 +150,6 @@ export default Ember.Route.extend({
      */
   trackEndPointError : function(event, jqXHR, settings){
     const route = this;
-
-    // do not track errors at the user-error api, this to prevent a loop
-    if (settings.url.indexOf('api/nucleus-utils/v1/user-error') >= 0 ) {
-      return;
-    }
-
     const targetElement = event.currentTarget && event.currentTarget.activeElement ?
       event.currentTarget.activeElement : false;
     const model = Error.create({
@@ -222,7 +216,7 @@ export default Ember.Route.extend({
     const transition = Env.APP.transition;
     const configurationService = route.get('configurationService');
     configurationService.addProperties(Env.APP.properties);
-    const routeName = 'sign-in';
+    const routeName = 'index';
     if (transition) {
       route.transitionTo.apply(route, transition);
     } else {

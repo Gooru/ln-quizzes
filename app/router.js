@@ -8,7 +8,7 @@ const Router = Ember.Router.extend(googlePageview, {
 });
 
 Router.map(function() {
-  this.route('index', {path: '/'});
+  this.route('index', { path: '/' });
 
   this.route('player', { path: '/player/:contextId' });
   this.route('edit', function() {

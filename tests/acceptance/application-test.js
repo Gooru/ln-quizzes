@@ -1,14 +1,9 @@
 import Ember from 'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 import T from 'quizzes/tests/helpers/assert';
 
-moduleForAcceptance('Acceptance | application', {
-  beforeEach: function() {
-    authenticateSession(this.application, {});
-  }
-});
+moduleForAcceptance('Acceptance | application');
 
 test('Theme support - no theme', function(assert) {
   visit('/');
@@ -22,7 +17,6 @@ test('Theme support - no theme', function(assert) {
 
     const $styleLink = Ember.$('#theme-style-link');
     T.notExists(assert, $styleLink, 'Link element should not be added');
-
   });
 });
 

@@ -272,17 +272,6 @@ export default Ember.Component.extend(ModalMixin, {
   },
 
   /**
-   * Reset all values to default
-   */
-  resetValues: function() {
-    this.set('resourceId', null);
-    this.set('resource', null);
-    this.set('resourceResult', null);
-    this.set('role', null);
-    this.set('showContent', false);
-  },
-
-  /**
    * Saves the resource result and moves to the next
    * @param resourceId
    * @param contextResult

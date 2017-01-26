@@ -1,19 +1,8 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
 import T from 'quizzes/tests/helpers/assert';
-import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | player', {
-  beforeEach: function () {
-    authenticateSession(this.application, {
-      isAnonymous: true,
-      token: 'player-token',
-      user: {
-        gooruUId: 'player-token-user-id'
-      }
-    });
-  }
-});
+moduleForAcceptance('Acceptance | player');
 
 test('Layout', function (assert) {
   assert.expect(5);
@@ -21,7 +10,6 @@ test('Layout', function (assert) {
 
   andThen(function () {
     assert.equal(currentURL(), '/player/context-simple-id');
-
     const $playerContainer = find('.component.player');
     T.exists(assert, $playerContainer, 'Missing player');
     T.exists(assert, $playerContainer.find('.main .qz-navigation'), 'Missing player navigation');

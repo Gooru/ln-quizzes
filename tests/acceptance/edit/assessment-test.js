@@ -46,20 +46,18 @@ test('visiting /edit/assessment - Add New Category', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/edit/assessment/assessment-id');
-    assert.ok(find('section#editor .qz-category').length,'Missing default category');
-    assert.equal(find('section#editor .qz-category').length,1,'Should have only one category');
-    assert.equal(find('section#editor .qz-category .category .number').text(),'1','Incorrect category number');
+    assert.notOk(find('section#editor .qz-category').length,'Should not have default category');
     var $addCategory =find('section#editor .add-category');
     assert.ok($addCategory.length,'Missing add category');
     click($addCategory);
     andThen(function() {
-      assert.equal(find('section#editor .qz-category').length,2,'Should have 2 categories');
-      assert.equal(find('section#editor .qz-category:eq(1) .category .number').text(),'2','Incorrect category number');
-      assert.notOk(find('section#editor .qz-category:eq(1) .qz-scoring-levels').length,'Scoring levels should not appear');
-      var $score =find('section#editor .qz-category:eq(1) .scoring .qz-switch a');
+      assert.equal(find('section#editor .qz-category').length,1,'Should have 1 category');
+      assert.equal(find('section#editor .qz-category:eq(0) .category .number').text(),'1','Incorrect category number');
+      assert.notOk(find('section#editor .qz-category:eq(0) .qz-scoring-levels').length,'Scoring levels should not appear');
+      var $score =find('section#editor .qz-category:eq(0) .scoring .qz-switch a');
       click($score);
       andThen(function() {
-        assert.ok(find('section#editor .qz-category:eq(1) .qz-scoring-levels').length,'Missing scoring levels');
+        assert.ok(find('section#editor .qz-category:eq(0) .qz-scoring-levels').length,'Missing scoring levels');
       });
     });
   });
@@ -70,18 +68,16 @@ test('visiting /edit/assessment - Delete Category', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/edit/assessment/assessment-id');
-    assert.ok(find('section#editor .qz-category').length,'Missing default category');
-    assert.equal(find('section#editor .qz-category').length,1,'Should have only one category');
-    assert.equal(find('section#editor .qz-category .category .number').text(),'1','Incorrect category number');
+    assert.notOk(find('section#editor .qz-category').length,'Should not have categories');
     var $addCategory =find('section#editor .add-category');
     assert.ok($addCategory.length,'Missing add category');
     click($addCategory);
     andThen(function() {
-      assert.equal(find('section#editor .qz-category').length,2,'Should have 2 categories');
-      var category = find('section#editor .qz-category:eq(1)');
+      assert.equal(find('section#editor .qz-category').length,1,'Should have 1 category');
+      var category = find('section#editor .qz-category:eq(0)');
       click(category.find('.panel-footer .actions .btn.delete'));
       andThen(function() {
-        assert.equal(find('section#editor .qz-category').length,1,'Should have 1 categories');
+        assert.equal(find('section#editor .qz-category').length,0,'Should not have categories');
       });
     });
   });
@@ -91,22 +87,19 @@ test('visiting /edit/assessment - Copy Category', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/edit/assessment/assessment-id');
-    fillIn(find('section#editor .qz-category .category .title input'), 'Category title for test');
     var $addCategory = find('section#editor .add-category');
     assert.ok($addCategory.length,'Missing add category');
     click($addCategory);
     andThen(function() {
-      assert.equal(find('section#editor .qz-category').length,2,'Should have 2 categories');
+      assert.equal(find('section#editor .qz-category').length,1,'Should have 1 category');
       var category = find('section#editor .qz-category:eq(0)');
-      fillIn(find('section#editor .qz-category .category:eq(1) .title input'), 'Category title for test 2');
+      fillIn(category.find('.title input'), 'Category title for test');
       click(category.find('.panel-footer .actions .btn.copy'));
       andThen(function() {
-        assert.equal(find('section#editor .qz-category').length,3,'Should have 1 categories');
-        assert.equal(find('section#editor .qz-category:eq(0) .category .number').text(),'1','Incorrect category 1 number');
-        assert.equal(find('section#editor .qz-category:eq(0) .category .title input').val(),'Category title for test','Incorrect category 1 title');
+        assert.equal(find('section#editor .qz-category').length,2,'Should have 2 categories');
+        assert.equal(category.find('.category .number').text(),'1','Incorrect category 1 number');
+        assert.equal(category.find('.category .title input').val(),'Category title for test','Incorrect category 1 title');
         assert.equal(find('section#editor .qz-category:eq(1) .category .number').text(),'2','Incorrect category 2 number');
-        assert.equal(find('section#editor .qz-category:eq(2) .category .number').text(),'3','Incorrect category 3 number');
-        assert.equal(find('section#editor .qz-category:eq(2) .category .title input').val(),'Category title for test 2','Incorrect category 3 title');
       });
     });
   });

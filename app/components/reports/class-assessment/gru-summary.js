@@ -170,9 +170,7 @@ export default Ember.Component.extend({
    * - score: number of questions answered correctly vs. total number of questions
    * - completed: have all the questions in the assessment been answered?
    */
-  scoresData: Ember.computed('reportData.reportEvents.@each.totalAnswered',
-    'reportData.reportEvents.@each.averageScore',
-    'reportData.reportEvents.@each.isAttemptFinished', function () {
+  scoresData: Ember.computed('reportData.reportEvents.@each.updated', function () {
     const reportEvents = this.get('reportData.reportEvents');
 
     let results = [];

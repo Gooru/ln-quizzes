@@ -64,6 +64,11 @@ export default Ember.Object.extend(Serializable, {
     return savedTime + (stopTime - startTime);
   }),
 
+  /**
+   * @property {Number} updated keep track of updated to redraw realtime dashboard
+   */
+  updated: 0,
+
   // -------------------------------------------------------------------------
   // Methods
 

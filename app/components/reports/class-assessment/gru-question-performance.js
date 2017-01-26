@@ -48,7 +48,7 @@ export default Ember.Component.extend({
    * Convenience structure to display the answers distribution
    * @property {*} answer distributions
    */
-  answersData: Ember.computed('questionResults.[]', function() {
+  answersData: Ember.computed('questionResults.@each.updated', function() {
     const component = this;
     const reportData = component.get('reportData');
     const question = component.get('question');
@@ -115,7 +115,7 @@ export default Ember.Component.extend({
    *
    * @property {QuestionResult[]}
    */
-  questionResults: Ember.computed('question', 'reportData.[]', function(){
+  questionResults: Ember.computed('question', 'reportData.reportEvents.@each.updated', function(){
     const reportData = this.get('reportData');
     return reportData.getResultsByQuestion(this.get('question.id'));
   }),

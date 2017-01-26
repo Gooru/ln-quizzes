@@ -125,16 +125,17 @@ export default Ember.Object.extend({
   merge: function(resourceId, newResult) {
     let index = this.findIndexByResourceId(resourceId);
     newResult.savedTime = newResult.savedTime || newResult.timeSpent;
-    this.get('resourceResults').get(index).setProperties({
+    let result = this.get('resourceResults').get(index);
+    result.clear();
+    result.setProperties({
       resourceId: newResult.resourceId,
       savedTime: newResult.savedTime,
       skipped: newResult.isSkipped,
-      stopTime: 0,
-      startTime: 0,
       reaction: newResult.reaction,
       answer: newResult.answer,
       score: newResult.score
     });
+    result.incrementProperty('updated');
   },
 
   /**

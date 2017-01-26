@@ -67,7 +67,7 @@ export default Ember.Component.extend({
   /**
    * @prop { Number } visibleColumns - Number of columns of charts visible
    */
-  allColumns: Ember.computed('data', 'itemsPerColumn', function () {
+  allColumns: Ember.computed('data.[]', 'itemsPerColumn', function () {
     return Math.ceil(this.get('data').length / this.get('itemsPerColumn'));
   }),
 

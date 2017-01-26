@@ -75,7 +75,7 @@ export default Ember.Component.extend({
   /**
    * @property {[]}
    */
-  resourceLinks: Ember.computed('contextResult.sortedResourceResults', function(){
+  resourceLinks: Ember.computed('contextResult.sortedResourceResults.@each.updated', function(){
     return this.getResourceLinks(this.get('contextResult.sortedResourceResults'));
   }),
 

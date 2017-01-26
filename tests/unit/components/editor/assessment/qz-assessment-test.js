@@ -1,5 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Category from 'quizzes/models/editor/assessment/category';
+import Ember from 'ember';
+
 
 moduleForComponent('editor/assessment/qz-assessment', 'Unit | Component | editor/assessment/qz assessment', {
   unit: true

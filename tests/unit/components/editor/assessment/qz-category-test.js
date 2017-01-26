@@ -8,7 +8,7 @@ test('setFeedBack', function(assert) {
   let component = this.subject();
   assert.equal(component.get('category.requiredFeedback'),false,'Feedback is not required');
   component.send('setFeedBack');
-  assert.equal(component.get('category.requiredFeedback'),true,'Feedback is not required');
+  assert.equal(component.get('category.requiredFeedback'),true,'Feedback is should be required');
 });
 
 test('onScoringChange', function(assert) {
@@ -18,7 +18,7 @@ test('onScoringChange', function(assert) {
   assert.equal(component.get('showScore'),true,'Should show the score');
 });
 
-test('Delete Category', function(assert) {
+test('deleteCategory', function(assert) {
   let component = this.subject();
   let categoryDelete = {id:'category-test'};
   component.set('sendAction', function(actionName, category) {
@@ -26,4 +26,15 @@ test('Delete Category', function(assert) {
     assert.equal(category,categoryDelete, 'Category should match');
   });
   component.send('deleteCategory', categoryDelete);
+});
+
+test('copyCategory', function(assert) {
+  let component = this.subject();
+  let categoryCopy = {id:'category-test'};
+  component.set('sendAction', function(actionName, category, index) {
+    assert.equal(actionName, 'onCopyCategory', 'Action sent should match');
+    assert.equal(category,categoryCopy, 'Category should match');
+    assert.equal(index,1, 'Index should match');
+  });
+  component.send('copyCategory', categoryCopy,1);
 });

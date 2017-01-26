@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Category from 'quizzes/models/editor/assessment/category';
 
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------
@@ -18,25 +19,32 @@ export default Ember.Component.extend({
     /**
      *Triggered when scoring switch change
      */
-    onScoringChange:function(isChecked){
+    onScoringChange: function(isChecked){
       this.set('showScore',isChecked);
     },
     /**
      *Delete a category
      */
-    deleteCategory:function(category){
+    deleteCategory: function(category){
       this.sendAction('onDeleteCategory',category);
+    },
+    /**
+     *Copy category
+     */
+    copyCategory: function (category,index) {
+      this.sendAction('onCopyCategory',category,index);
     }
   },
 
   // -------------------------------------------------------------------------
   // Properties
-  category:Ember.Object.create({
-    title:'',
-    feedbackGuidance:'',
-    requiredFeedback:false
-  }),
-
+  /**
+   * @property {Category} Category
+   */
+  category:Category.create({}),
+  /**
+   * @property {int} Category index number
+   */
   number:1,
   /**
    *Show the score scale

@@ -1,10 +1,12 @@
 import Ember from 'ember';
 import Env from '../config/environment';
 
-
+/*
+ * Initializer to mantain route history
+ */
 export function initialize(app) {
 
-  var historyCache = Ember.Object.extend({
+  let historyCache = Ember.Object.extend({
     /**
      * @property {*} the last route
      */
@@ -31,17 +33,17 @@ export function initialize(app) {
     saveLastRoute: function() {
       const route = this;
       const currentRouteName = route.routeName;
-      const currentRouteUrl = route.router.get("url");
+      const currentRouteUrl = route.router.get('url');
 
-      const lastRoute = this.get("history.lastRoute");
+      const lastRoute = this.get('history.lastRoute');
 
       const savedRouteUrl = lastRoute.get('url');
       const parentRouteIdx = savedRouteUrl && savedRouteUrl.indexOf(currentRouteUrl);
 
       if (!currentRouteName.match(/\.loading/) &&
         (!savedRouteUrl || parentRouteIdx === -1)) {
-        // On deactivate, save the "child-most" route
-        // For example: on deactive save the route "search.collection", but "search" (the parent route)
+        // On deactivate, save the 'child-most' route
+        // For example: on deactive save the route 'search.collection', but 'search' (the parent route)
         // will not be saved
         lastRoute.set('name', currentRouteName);
         lastRoute.set('url', currentRouteUrl);

@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import QuestionResult from 'quizzes/models/result/question';
-import Assessment from 'quizzes/models/content/assessment';
+import Assessment from 'quizzes/models/collection/collection';
 import T from 'quizzes/tests/helpers/assert';
 import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
 

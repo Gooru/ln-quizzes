@@ -1,19 +1,8 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'quizzes/tests/helpers/ember-simple-auth';
 import Ember from 'ember';
 
-moduleForAcceptance('Acceptance | assignments',{
-  beforeEach: function() {
-    authenticateSession(this.application, {
-      isAnonymous: true,
-      token: 'token-value',
-      user: {
-        providedAt: Date.now()
-      }
-    });
-  }
-});
+moduleForAcceptance('Acceptance | assignments');
 
 test('Visiting assignment as teacher', function(assert) {
   visit('/profile/profile-id?isTeacher=true');

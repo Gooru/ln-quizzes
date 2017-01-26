@@ -457,175 +457,7 @@ export default {
   /*
    * CONTROLLERS: Translations used in a specific controller
    */
-  "index": {
-    "joinUs": "Join Us to <br/> Honor the Human Right to <br/> Education",
-    "browseContent": {
-      "title": "Hi there! What are you looking for?",
-      "description_1": "I am looking for",
-      "description_2": "learning materials in",
-      "description_3": "or",
-      "button": "Browse Content",
-      "footer": {
-        "description_1": "Already have an account? ",
-        "description_2": " here.",
-        "login": "Login"
-      },
-      "grades_missing_message": "Please select Grade and Subject.",
-      "subjects_missing_message": "Please select Subject."
-    },
-    "gettingStarted": {
-      "title": "Getting Started with Gooru",
-      "toolkit": {
-        "title": "Getting Started Toolkit",
-        "description": "Welcome to Gooru! Check out these resources to learn what you can do with Gooru and get started quickly."
-      },
-      "classroom": {
-        "title": "Stories from the Classroom",
-        "description": "Learn by example through stories of teachers who say Gooru has made a difference in their classroom."
-      },
-      "events": {
-        "title": "Check Out our Events!",
-        "description": "We offer free webinars and trainings to help you get started with Gooru."
-      }
-    },
-    "empowerStudents": {
-      "title": "Empower Students to Learn Their Way",
-      "find": "Find",
-      "remix": "Remix",
-      "share": "Share",
-      "monitor": "Monitor"
-    },
-    "findDescription": "Browse thousands of K-12 collections made by teachers, or search over 16M resources",
-    "remixDescription": "Remix collections and customize content to meet your students' needs.",
-    "shareDescription": "Share collections with students through Gooru classrooms. Login is not required to access.",
-    "monitorDescription": "Measure your students' engagement and progress to intervene in real-time.",
-    "freeAndOpen": {
-      "title": "Free and Open.<br/>Always.",
-      "description": "We believe education is a human right. Gooru will always be free of cost and ads for educators and students worldwide.",
-      "button": "Learn More about Our Approach"
-    }
-  },
-  "class": {
-    "info": {
-      "class-info": "Classroom Information",
-      "teachers": "Teachers",
-      "students": "Students",
-      "subject": "Subject",
-      "grade": "Grade",
-      "description": "Description",
-      "edit-info": "Edit Information",
-      "share-class": "Share Classroom",
-      "invite-co-teachers": "Invite Co-teachers",
-      "add-students": "Add Students",
-      "class-code": "Classroom Code",
-      "delete": "Delete Classroom"
-    },
-    "edit": {
-      "assigned-course": "Assigned course",
-      "basic-info": "Basic Information",
-      "class-name": "Classroom Name",
-      "class-greetings": "Classroom Announcements",
-      "class-greetings-placeholder": "Greet your students, motivate them, or make an announcement, etc.",
-      "class-minscore": "Assessment Minimum Score for Trophies (1-100%)",
-      "course-map": "Course Map",
-      "edit-class": "Edit Classroom Settings"
-    },
-    "overview": {
-      "title": "Course Map",
-      "locate": "Locate Me",
-      "editContent": "Edit Content"
-    },
-    "analytics": {
-      "performance": {
-        "title": "View Performance",
-        "better-experience-message": "For a better Gooru experience, view full Classroom Analytics in tablet or desktop.",
-        "actions": {
-          "share": "Share",
-          "edit": "Edit Content",
-          "download": "Download",
-          "fullScreen": "View Full Screen",
-          "exitFullScreen": "Exit Full Screen",
-          "assessment": "View Assessment",
-          "collection": "View Collection",
-          "both": "View Both"
-        },
-        "teacher": {
-          "metricsTable": {
-            "average": "Average",
-            "class-average": "Class Average"
-          }
-        }
-      },
-      "mastery": {
-        "title": "View Mastery"
-      }
-    },
-    "quick-start": {
-      "title": "Assign content to this classroom.",
-      "new-course": "Quickstart a New Course",
-      "new-course-desc": "Start by creating a collection or assessment",
-      "new-collection": "New Collection",
-      "new-assessment": "New Assessment",
-      "remix-a-sample": "Remix a Sample",
-      "add-existing-course": "Add a Course from your Library",
-      "existing-course-desc": "The quickest way to start a classroom",
-      "choose-course": "Choose Course",
-      "remix-from-course": "Remix a Featured Course",
-      "featured-course": "View Featured Courses",
-      "remix-desc": "Copy and customize a featured course for your students."
-    }
-  },
-  "classes": {
-    "classesJoined": "Classrooms I've Joined",
-    "classesTaught": "Classrooms I Teach",
-    "noClassesJoined": "You have not joined any classrooms",
-    "noClassesTaught": "You do not have any created classrooms"
-  },
   "content": {
-    "assessments":{
-      "edit":{
-        "best-practices": "<p>An assessment is a set of scored questions which you and your students can use to monitor understanding and performance.</p><p>Use a variety of question types (including several based on the SBAC) in your assessment so students can demonstrate understanding in different ways. We recommend tagging each question to standards, micro-standards, and Webb's Depth of Knowledge.</p>"
-      }
-    },
-    "classes": {
-      "create": {
-        "title": "Create a Classroom",
-        "content": "Where students engage with content.",
-        "class-name-input": "Name your Classroom",
-        "condition-prompt": "How will students join your classroom?",
-        "condition-prompt-code": "Anyone with Classroom code",
-        "condition-prompt-invite": "Invite only",
-        "get-started": "Get Started"
-      },
-      "join": {
-        "title": "Join a Classroom",
-        "content": "Where the journey begins.",
-        "class-code-input": "Enter a Classroom Code",
-        "class-not-found": "Classroom not found. Make sure you've entered the correct classroom code",
-        "invalid-code": "Invalid classroom code.",
-        "already-member": "You are already a member of this classroom.",
-        "join-class": "Join Classroom",
-        "join-not-allowed": "You are not able to join this classroom",
-        "not-now": "Not now",
-        "terms-and-conditions": 'By clicking Join Classroom, I agree to share my assessment and collection progress data generated from studying this Gooru classroom with the teacher(s) of this classroom.'
-      }
-    },
-    "collections":{
-      "edit":{
-        "assign-to-course": "Assign to Course",
-        "best-practices": "<p>Students interact with your content at the collection level. When creating a learning collection, make sure to include learning objectives, and consider using a variety of resource types to expose students to the concepts in multiple ways.</p><p>Use the sequencing of the resources to build on concepts. Progression through a collection should flow in a logical manner and take the intended audience from a general to more complex level of understanding if appropriate, or allow adequately for student exploration.</p><p>Include checks for understanding along the way via our Gooru questions or other interactives. We recommend enough resources and/or enough variety of resources to accomplish the objectives in the collection and ensuring that each resource has a role and purpose.</p>"
-      }
-    },
-    "courses":{
-      "edit":{
-        "assign-to-class": "Assign to Classroom",
-        "best-practices": "<p>A course is a folder that allows you to organize your learning content into units and lessons. When creating a course consider the essential questions you are addressing, the learning objectives, and organization of your content.</p><p>You can piece the lessons together to create a diverse experience for your student population (for example, you could sequence your units chronologically, by topic, or by standard).</p>",
-        "information": {
-          "course-title": "Course Title",
-          "description": "Description"
-        }
-      }
-    },
     "questions":{
       "edit":{
         "add-to": "Add to",
@@ -665,50 +497,6 @@ export default {
         }
       }
     },
-    "modals":{
-      "delete-class":{
-        "legend": "You're about to delete your classroom",
-        "student-access": "Students won't be able to access the classroom",
-        "student-data-deleted": "All student data will be deleted"
-      },
-      "delete-content": {
-        "legend": "You are about to delete",
-        "content-legend": "<span>{{type}}</span> {{index}} - {{title}} from {{parentName}}",
-        "content-legend-header": "{{title}} from {{parentName}}",
-        "delete-warning": "All content in this {{type}} will be deleted",
-        "delete-error": "Oops! Unable to delete {{type}} right now. Please try again shortly.",
-        "confirmation": "Are you sure you want to continue? Please type “delete” below and click “delete”."
-      },
-      "delete-resource": {
-        "legend": "Confirm you want to permanently delete <b>{{title}}</b>",
-        "delete-warning": "All content in this {{type}} will be deleted",
-        "delete-error": "Oops! Unable to delete {{type}} right now. Please try again shortly.",
-        "confirmation": "Are you sure you want to continue? Please click “Permanently Delete”.",
-        "first-check": "This is a permanent delete and cannot be undone",
-        "second-check": "Copies of this resource, in your collections and any collection by other users in the community, will be deleted"
-      },
-      "remove-content": {
-        "legend": "You are about to remove <b>{{title}}</b> from <b>{{parentName}}</b>",
-        "remove-error": "Oops! Unable to remove {{type}} right now. Please try again shortly.",
-        "confirmation": "Are you sure you want to continue? Please type “remove” below and click “remove”."
-      },
-      "remove-student": {
-        "title":"Remove student and delete their data",
-        "legend": "You are about to remove {{studentName}} from this classroom and delete all of their data.",
-        "data-inaccessible":"All their data will be deleted and not accessible by you or them",
-        "classroom-access":"They will not have access to the classroom or content",
-        "data-lost":"If they re-join the class, all past data will be lost",
-        "remove-error": "Oops! Unable to remove this student right now. Please try again shortly.",
-        "confirmation": "Are you sure you want to continue? Please type “delete” below and click “delete”."
-      },
-      "quick-remove-content":{
-        "legend": "Confirm you want to remove <b>{{title}}</b> from <b>{{parentName}}</b>."
-      },
-      "quick-delete-content":{
-        "legend": "Confirm you want to permanently delete <b>{{title}}</b> from <b>{{parentName}}</b>.",
-        "delete": "Permanently Delete"
-      }
-    },
     "resources":{
       "edit": {
         "best-practices": "<p>Resources are multimedia content in a variety of formats such as videos, interactives, websites, images, Google docs, and more. Get creative and use your own resources or get “resourceful” and search our ample supply in Gooru.</p><p>Use a variety of resource types to engage your students and include narration so you can help guide your students through the resource.</p><p>We recommend tagging each question to standards, micro-standards and 21st century skills. You can see how your students are interacting with resources through the teacher dashboard.</p>",
@@ -719,20 +507,6 @@ export default {
           "select-a-license": "Please select a license"
         }
       }
-    }
-  },
-  "user": {
-    "active-classes": "Active Classrooms",
-    "archived-classes": "Archived Classrooms",
-    "create-class": "Create Classroom",
-    "join-class": "Join Classroom",
-    "joined-classes": {
-      'one': "You're currently enrolled in 1 classroom",
-      "other": "You're currently enrolled in {{count}} classrooms"
-    },
-    "teaching-classes": {
-      'one': " and teaching 1 classroom",
-      "other": " and teaching {{count}} classrooms"
     }
   },
 
@@ -819,18 +593,6 @@ export default {
     "teams": "Teams",
     "information": "Classroom Information"
   },
-  "gru-user-registration": {
-    "joinTitle": "Join the Gooru Community!",
-    "joinDescription": "Find, remix, and share the best free K-12 learning resources.",
-    "googleButton": "Sign up with Google",
-    "whyGoogle": "Why sign up with Google",
-    "descriptionWhyGoogle": "It's fast and easy. Use your existing Google account to sign in without a password.",
-    "or": "Or",
-    "noGoogleAccount": "Don't have a Google account?",
-    "signUpEmail": "Sign up with your email address",
-    "haveAccount": "Already have an account?",
-    "clickLogIn": "Click here to log in."
-  },
   "sign-up": {
     "step-1-title": "Hello!",
     "step-1-description": "We’re glad you’ve decided to join us.",
@@ -877,49 +639,6 @@ export default {
     "error-country-message": 'Please select your country.',
     "error-state-message": 'Please select your state or territory.',
     "error-district-message": 'Please select your district/charter from the list or provide it in "Other".'
-  },
-
-  "gru-user-sign-up-cancel": {
-    "title": "Leave Registration?",
-    "exit?": "Are you sure you want to exit?",
-    "registration_incomplete": "Your registration is not complete.",
-    "leave": "Leave Registration",
-    "continue": "Continue with Registration"
-  },
-
-  "login": {
-    "title": "Welcome Back!",
-    "description": "Learning is just around the corner.",
-    "title-session-ends": "Your session expired.",
-    "description-session-ends": "Please sign in.",
-    "gooruAccountTitle": "Log in to your Gooru account",
-    "googleButton": "Sign in with Google",
-    "or": "Or",
-    "haveAccount": "Do you have an account?",
-    "signUpHere": "Sign Up here!",
-    "forgotPassword": "Forgot your password?",
-    "password": "Password",
-    "usernameOrEmail": "Username or Email",
-    "log-in": "Log In"
-  },
-
-  "forgot-password": {
-    "description": "It happens to all of us.",
-    "usernameOrEmail": "Please enter your email",
-    "footer-google-description-1": "Try logging in again by pressing <a href='/sign-in'>'Sign In with Google.'</a>",
-    "footer-description-1": "You will receive an email with a link to reset your password.",
-    "footer-description-2": "If you have any questions, please contact ",
-    "mail": "support@gooru.org",
-    "error-email-not-exists": "Sorry, we don't recognize this email.",
-    "secondStepTitle": "Check your email",
-    "secondStepDescription-1": "We've sent you an email with a link to reset your password.",
-    "secondStepDescription-2": "If you have any questions, please contact"
-  },
-
-  "reset-password": {
-    "new-password": "Enter your new password",
-    "new-password-confirm": "Confirm your password",
-    "title": "Reset password"
   },
 
   "footer": {
@@ -973,27 +692,6 @@ export default {
     "prompt": "Select a subject"
   },
 
-  "search-filter": {
-    "courses": "Courses",
-    "collections": "Collections",
-    "resources": "Resources",
-    "assessments": "Assessments",
-    "questions": "Questions",
-    "question-types": {
-      "single_choice": "Single Choice",
-      "FIB": "Fill in the Blank",
-      "true_false": "True / False",
-      "MA": "Multiple Answer",
-      "HS_TXT": "Multiple Select - Text",
-      "HS_IMG": "Multiple Select - Image",
-      "HT_RO": "Drag and Drop Order",
-      "HT_HL": "Hot Text- Highlight"
-    },
-    "author": {
-      "placeholder": "Author"
-    }
-  },
-
   "resource": {
     "video": "Video",
     "webpage": "Webpage",
@@ -1003,16 +701,6 @@ export default {
     "text": "Text",
     "audio": "Audio",
     "oer": "OER"
-  },
-
-  "search-result": {
-    "resource": "Resource",
-    "resources": "Resources",
-    "and": "and",
-    "question": "Question",
-    "questions": "Questions",
-    "in-this-collection": "in this collection",
-    "search-results-for": "Search Results for"
   },
 
   "gru-image-picker": {
@@ -1033,14 +721,6 @@ export default {
   },
   "qz-hot-text": {
     "instructions": "Please select the correct answer, and click \"{{action}}\"."
-  },
-  "gru-login-prompt": {
-    "title": "Welcome to Gooru!",
-    "instructions": "You need to sign in to complete that action.",
-    "existing-user": "Already have an account?",
-    "new-user": "New here?",
-    "not-now": "Not now",
-    "sign-in": "Sign in"
   },
   "qz-multiple-answer": {
     "instructions": "Please select the correct answer, and click \"{{action}}\"."
@@ -1088,18 +768,6 @@ export default {
     }
   },
 
-  "profile": {
-    "gru-navigation": {
-      "about": "About",
-      "about-you": "About You",
-      "library": "Library",
-      "followers": "Followers"
-    },
-    "edit": {
-      "select-district": "Select a district..."
-    }
-  },
-
   "gru-data-picker": {
     "score": "Score",
     "completion": "Completion",
@@ -1131,9 +799,6 @@ export default {
     "completion": "Completion",
     "study-time": "Time"
   },
-  "gru-resource-new": {
-    "resource-already-exist": "This resource already exists in Gooru!"
-  },
   "gru-assessment-report": {
     "gru-summary": {
       "total-time-spent": "Total Time Spent"
@@ -1141,46 +806,11 @@ export default {
     "hidden-report": "Your teacher has selected to hide your summary report for this assessment."
   },
   "cards": {
-    "gru-class-card": {
-      "student": {
-        one: "{{count}} Student",
-        other: "{{count}} Students"
-      },
-      "archived":{
-        "request-report":"This class is archived and cannot be modified. Existing class data can be accessed via report.",
-        "report-in-progress":"Report generation can take up to 20 min. Please check back.",
-        "download-report":"Download your data for this class.",
-        "no-report-available":"This class has no assigned course content."
-      }
-    },
-    "gru-course-card": {
-      "in": "in",
-      "units": {
-        one: "{{count}} Unit",
-        other: "{{count}} Units"
-      },
-      "resource": {
-        one: "{{count}} Resource",
-        other: "{{count}} Resources"
-      },
-      "and": "and",
-      "question": {
-        one: "{{count}} Question",
-        other: "{{count}} Questions"
-      }
-    },
     "gru-resource-card": {
       "add": "Add to"
     },
     "gru-resource-result-card": {
       "skipped": "Skipped"
-    },
-    "gru-profile-card": {
-      "followers": "Followers",
-      "following": "Following"
-    },
-    "gru-user-network-card": {
-      "follow": "Follow"
     }
   },
   "reports.gru-table-view": {
@@ -1197,30 +827,6 @@ export default {
   "gru-emotion-picker": {
     "react-to-resource": "React to this resource"
   },
-  "home":{
-    "no-classes-found":{
-      "create-class":{
-        "title":"Teach with a Gooru classroom",
-        "description":"Created a classroom, assign content, and invite students.",
-        "button-text":"Create Classroom"
-      },
-      "join-class":{
-        "title":"Learn with a Gooru classroom",
-        "description":"Join your teacher’s classroom to start learning.",
-        "button-text":"Enter Classroom Code"
-      },
-      "featured-courses":{
-        "title":"Featured Courses",
-        "description":"Browse math, science, social studies, and ELA courses.",
-        "button-text":"Featured Courses"
-      },
-      "teacher-toolkit":{
-        "title":"Teacher Toolkit",
-        "description":"This toolkit has resources to help you get started.",
-        "button-text":"Teacher Toolkit"
-      }
-    }
-  },
   "taxonomy": {
     "gru-taxonomy-selector": {
       "add-secondary": "Add secondary",
@@ -1230,10 +836,6 @@ export default {
   },
   "validations": {
     "unsavedChanges": "Your changes haven't been saved yet. Would you like to leave this page?"
-  },
-  "featured": {
-    "featured-title": "Featured Courses",
-    "featured-description": "Gooru’s featured courses are vetted and reviewed, educator-curated, created in classrooms, and studied by students. They were developed and implemented at innovative schools, districts, and charters, and are designed to support blended learning, flipped classrooms, project-based learning, and many other instructional models. Discover, remix, and customize courses to personalize learning and increase student engagement! Click here to  <a href='http://about.gooru.org/courses' target='_blank'>learn more</a> about the development of these courses."
   },
 
   "taxonomy.modals": {
@@ -1253,15 +855,6 @@ export default {
       },
       "shortcutText": "Unit is tagged to"
     }
-  },
-
-  "account-settings": {
-    "title": "Account Settings",
-    "account-info": "Account Info",
-    "private-info": "Private Info",
-    "email-address": "Email Address",
-    "gender": "Gender",
-    "birthday": "Birthday"
   },
 
   "qz-rich-text-editor": {

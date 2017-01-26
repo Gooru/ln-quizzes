@@ -11,8 +11,6 @@ import { TAXONOMY_LEVELS } from 'quizzes/config/config';
  */
 export default Ember.Object.extend({
 
-  session: Ember.inject.service('session'),
-
   /**
    * Normalize the Fetch Taxonomy Subjects endpoint's response
    *

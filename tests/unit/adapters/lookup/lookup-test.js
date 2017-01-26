@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import { test } from 'ember-qunit';
 import moduleForAdapter from 'quizzes/tests/helpers/module-for-adapter';
 
@@ -11,9 +10,6 @@ test('readAudiences', function(assert) {
   assert.expect(1);
 
   const adapter = this.subject();
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   const routes = function() {
     this.get('/api/nucleus/v1/lookups/audience', function(/*request*/) {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
@@ -35,9 +31,6 @@ test('readLicenses', function(assert) {
   assert.expect(1);
 
   const adapter = this.subject();
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   const routes = function() {
     this.get('/api/nucleus/v1/lookups/licenses', function(/*request*/) {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
@@ -59,9 +52,6 @@ test('readDepthOfKnowledgeItems', function(assert) {
   assert.expect(1);
 
   const adapter = this.subject();
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   const routes = function() {
     this.get('/api/nucleus/v1/lookups/dok', function(/*request*/) {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
@@ -84,9 +74,6 @@ test('readCountries', function(assert) {
 
   const adapter = this.subject();
   const keyword = "any-keyword";
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   const routes = function() {
     this.get('/api/nucleus/v1/lookups/countries', function(request) {
       assert.equal(request.queryParams.keyword, 'any-keyword', "Missing query param");
@@ -110,9 +97,6 @@ test('readStates', function(assert) {
 
   const adapter = this.subject();
   const keyword = "any-keyword";
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   const routes = function() {
     this.get('/api/nucleus/v1/lookups/countries/1/states', function(request) {
       assert.equal(request.queryParams.keyword, 'any-keyword', "Missing query param");
@@ -136,9 +120,6 @@ test('readDistricts', function(assert) {
 
   const adapter = this.subject();
   const keyword = "any-keyword";
-  adapter.set('session', Ember.Object.create({
-    'token-api3': 'token-api-3'
-  }));
   const routes = function() {
     this.get('/api/nucleus/v1/lookups/school-districts', function(request) {
       assert.equal(request.queryParams.keyword, 'any-keyword', "Missing keyword param");

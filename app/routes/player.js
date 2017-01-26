@@ -43,9 +43,5 @@ export default Ember.Route.extend({
     contextResult.merge(collection);
     controller.set('contextResult', contextResult);
     controller.set('collection', collection);
-  },
-
-  deactivate: function(){
-    this.get('controller').resetValues();
   }
 });

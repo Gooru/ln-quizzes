@@ -8,7 +8,7 @@ let App;
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 Ember.TextField.reopen({
-  attributeBindings: ["data-toggle", "data-placement"]
+  attributeBindings: ['data-toggle', 'data-placement']
 });
 
 App = Ember.Application.extend({

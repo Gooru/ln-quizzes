@@ -3,7 +3,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import wait from 'ember-test-helpers/wait';
-import Question from 'quizzes/models/content/question';
+import Question from 'quizzes/models/resource/resource';
 
 moduleForComponent('qz-rich-text-editor', 'Integration | Component | qz rich text editor', {
   integration: true,

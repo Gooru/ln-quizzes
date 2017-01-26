@@ -1,6 +1,6 @@
 import AnswerObject from 'quizzes/utils/question/answer-object';
 import QuestionUtil from './question';
-import Answer from 'quizzes/models/content/answer';
+import Answer from 'quizzes/models/resource/answer';
 
 /**
  * It contains convenience methods for grading and retrieving useful information

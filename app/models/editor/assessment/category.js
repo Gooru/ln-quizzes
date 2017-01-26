@@ -52,9 +52,7 @@ export default Ember.Object.extend({
     var properties = this.getProperties(this.modelProperties());
     var scoringLevels = this.get('scoringLevels');
     // Copy array values
-    var levels = this.get('scoringLevels').map(function (level) {
-      return level.copy();
-    });
+    var levels = this.get('scoringLevels').map(level => { return level.copy(); });
     properties.scoringLevels = levels;
     return this.get('constructor').create(properties);
   },

@@ -19,6 +19,7 @@ test('visiting /edit/assessment', function(assert) {
     assert.ok(find('.header.assessment.edit button.preview').length,'Missing preview button');
     assert.ok(find('.header.assessment.edit button.settings').length,'Missing settings button');
     assert.ok(find('.header.assessment.edit button.assign').length,'Missing assign to class button');
+    assert.ok(find('.qz-fixed-footer').length,'Fixed footer');
     assert.ok(find('section#prompt').length,'Missing prompt section');
     assert.ok(find('section#prompt .header').length,'Missing prompt header');
     assert.ok(find('section#prompt .header h2').length,'Missing editor header title');

@@ -23,6 +23,24 @@
     padding-right: 5%;
     overflow: auto;
 
+    .panel {
+      border-radius: 6px;
+      margin-bottom: 30px;
+      .panel-heading {
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+        h3 {
+          color:$gray;
+          display: inline-block;
+        }
+        div.border-bottom{
+          padding-bottom: 15px;
+          border-bottom: 1px solid $gray-lighter;
+          margin-bottom: 0;
+        }
+      }
+    }
+
     h2 {
       display: inline-block;
       font-size: $font-size-h4;
@@ -42,7 +60,6 @@
     }
 
     .panel {
-      margin-bottom: 0;
 
       .panel-heading, .panel-body {
         padding-left: 25px;
@@ -57,24 +74,7 @@
 
     }
   }
-  #editor{
-    .panel {
-      border-radius: 6px;
-      margin-bottom: 30px;
-      .panel-heading {
-        border-top-right-radius: 6px;
-        border-top-left-radius: 6px;
-        h3 {
-          color:$gray;
-          display: inline-block;
-        }
-        div.border-bottom{
-          padding-bottom: 15px;
-          border-bottom: 1px solid $gray-lighter;
-          margin-bottom: 0;
-        }
-      }
-    }
+  #prompt{
     .panel-borderless {
       border: 0;
       box-shadow: none;
@@ -85,34 +85,6 @@
     }
     .math-editor{
       margin-top: 25px;
-    }
-    .overall-score{
-      .feedback{
-        label{
-          @include flexbox;
-          @include align-items(center);
-          .feedbackGuidance{
-            width: 88%;
-          }
-          textarea{
-            margin-left: 15px;
-            font-size: $font-size-base;
-          }
-        }
-      }
-      .total-points{
-        display: inline-block;
-        .label-pts{
-          margin-left: 10px
-        }
-      }
-      .required-feedback{
-        float:right;
-        @include flexbox;
-        .check_box{
-          color:$blue-500;
-        }
-      }
     }
   }
   #information{
@@ -141,18 +113,48 @@
       }
     }
   }
-  .add-category{
-    margin-bottom: 15px;
-    display: block;
-    border: 2px dashed #bbb;
-    padding: 20px;
-    border-radius: 6px;
-    font-size: 17px;
-    color: #666;
-    text-align: center;
-  }
-  .add-prefix:before {
-    content: '+ ';
+  #rubric{
+    .overall-score{
+      .feedback{
+        label{
+          @include flexbox;
+          @include align-items(center);
+          .feedbackGuidance{
+            width: 88%;
+          }
+          textarea{
+            margin-left: 15px;
+            font-size: $font-size-base;
+          }
+        }
+      }
+      .total-points{
+        display: inline-block;
+        .label-pts{
+          margin-left: 10px
+        }
+      }
+      .required-feedback{
+        float:right;
+        @include flexbox;
+        .check_box{
+          color:$blue-500;
+        }
+      }
+    }
+    .add-category{
+      margin-bottom: 15px;
+      display: block;
+      border: 2px dashed #bbb;
+      padding: 20px;
+      border-radius: 6px;
+      font-size: 17px;
+      color: #666;
+      text-align: center;
+    }
+    .add-prefix:before {
+      content: '+ ';
+    }
   }
 }
 

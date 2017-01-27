@@ -127,11 +127,14 @@ export default Ember.Component.extend({
    */
   options: Ember.computed(function(){
     return [{
-      name: 'editor',
-      text: this.get('i18n').t('common.editor')
-    }, {
       name: 'information',
       text: this.get('i18n').t('common.information')
+    },{
+      name: 'prompt',
+      text: this.get('i18n').t('common.prompt')
+    },{
+      name: 'rubric',
+      text: this.get('i18n').t('common.rubric')
     }];
   }),
 
@@ -139,7 +142,7 @@ export default Ember.Component.extend({
   /**
    * @property {String} selected Current option selected
    */
-  selected: 'editor',
+  selected: 'prompt',
   /**
    * Indicate if is editing view
    */

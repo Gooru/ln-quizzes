@@ -2,6 +2,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Level from 'quizzes/models/editor/assessment/level';
 import Ember from 'ember';
+import wait from 'ember-test-helpers/wait';
 
 moduleForComponent('editor/assessment/qz-scoring-levels', 'Integration | Component | editor/assessment/qz scoring levels', {
   integration: true
@@ -41,4 +42,32 @@ test('Scoring Level Layout', function(assert) {
   assert.ok($component.find('.editor.assessment.qz-scoring-levels .points span').length,'Missing points title');
   assert.ok($component.find('.editor.assessment.qz-scoring-levels .points .point-list').length,'Missing points list');
   assert.equal($component.find('.editor.assessment.qz-scoring-levels .points .point-list .gru-input').length,4,'Should have 4 point inputs');
+});
+
+test('Delete Scoring Level', function(assert) {
+  let scoringLevels = Ember.A([
+    Level.create({
+      id:'exemplary'
+    }),
+    Level.create({
+      id:'proficient'
+    }),
+    Level.create({
+      id:'basic'
+    }),
+    Level.create({
+      id:'below-basic'
+    })
+  ]);
+  this.set('scoringLevels',scoringLevels);
+
+  this.render(hbs`{{editor/assessment/qz-scoring-levels scoringLevels=scoringLevels}}`);
+  var $component = this.$();
+  assert.ok($component.find('.editor.assessment.qz-scoring-levels').length,'Missing scoring levels component');
+  assert.equal($component.find('.editor.assessment.qz-scoring-levels .points .point-list .btn.delete').length,4,'Should have 4 delete buttons');
+  var $firstLevelDeleteBtn = $component.find('.editor.assessment.qz-scoring-levels .points .point-list div:eq(0) .btn.delete');
+  $firstLevelDeleteBtn.click();
+  return wait().then(function () {
+    assert.equal($component.find('.editor.assessment.qz-scoring-levels .points .point-list .gru-input').length,3,'Should have 3 levels');
+  });
 });

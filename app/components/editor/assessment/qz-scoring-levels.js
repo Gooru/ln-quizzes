@@ -5,7 +5,8 @@ export default Ember.Component.extend({
   // Attributes
 
   classNames: ['editor','assessment','qz-scoring-levels'],
-
+  //// -------------------------------------------------------------------------
+  // Actions
   actions:{
     /**
      * Delete Level

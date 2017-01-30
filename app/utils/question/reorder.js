@@ -14,9 +14,9 @@ import AnswerObject from 'quizzes/utils/question/answer-object';
  *   answerId correspond to the answer choice id selected
  *   skip is always false
  *
- * [{"text":"1","status":"correct","order":1,"answerId":1234,"skip":false},
- * {"text":"2","status":"correct","order":3,"answerId":1234,"skip":false},
- * {"text":"3","status":"correct","order":2,"answerId":1234,"skip":false}]
+ * [{'text':'1','status':'correct','order':1,'answerId':1234,'skip':false},
+ * {'text':'2','status':'correct','order':3,'answerId':1234,'skip':false},
+ * {'text':'3','status':'correct','order':2,'answerId':1234,'skip':false}]
  *
  * # User answer (structure used by the FE)
  *
@@ -55,9 +55,9 @@ export default QuestionUtil.extend({
    * @see '# Answer Object' section at class comment
    */
   getCorrectAnswer: function () {
-    const answers = this.get("question.answers").sortBy("order");
+    const answers = this.get('question.answers').sortBy('order');
     return answers.map(function (answer) {
-      return answer.get("id");
+      return answer.get('value');
     });
   },
 
@@ -88,11 +88,11 @@ export default QuestionUtil.extend({
     return userAnswer.map(function (answerId, index) {
       let answer = util.getAnswerById(answerId);
       return AnswerObject.create({
-        "text": answer.get("text"),
-        "correct": util.isAnswerChoiceCorrect(answerId, index),
-        "order": index + 1,
-        "answerId": answerId,
-        "skip": false
+        'text': answer.get('text'),
+        'correct': util.isAnswerChoiceCorrect(answerId, index),
+        'order': index + 1,
+        'answerId': answerId,
+        'skip': false
       });
     });
   },
@@ -107,11 +107,10 @@ export default QuestionUtil.extend({
    * @see '# Answer Object' section at class comment
    */
   toUserAnswer: function (answerObjects) {
-    answerObjects = answerObjects.sortBy("order");
     return (!answerObjects || !answerObjects.length) ?
       null : //if not respond is provided
       answerObjects.map(function (answerObject) {
-        return answerObject.get("answerId");
+        return answerObject.get('answerId');
       });
   }
 

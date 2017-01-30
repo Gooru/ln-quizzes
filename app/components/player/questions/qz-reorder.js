@@ -48,11 +48,10 @@ export default QuestionComponent.extend({
    * @property {*}
    */
   answers: Ember.computed('question.answers.[]', function() {
-    let answers = this.get('question.answers').sortBy('order');
-
+    let answers = this.get('question.answers');
     if (this.get('hasUserAnswer')) { //@see quizzes/utils/question/reorder.js
       let userAnswer = this.get('userAnswer');
-      answers = userAnswer.map(answerId => answers.findBy('id', answerId));
+      answers = userAnswer.map(answerId => answers.findBy('value', answerId));
     }
     return answers;
   }),
@@ -88,7 +87,10 @@ export default QuestionComponent.extend({
   notify: function(onLoad) {
     const component = this;
     const $items = component.$('.sortable').find('li');
-    const answers = $items.map((idx, item) => $(item).data('id')).toArray();
+    const answers = Ember.A([]);
+
+    $items.map((idx, item) => answers.pushObject({value:$(item).data('id')}));
+
     component.notifyAnswerChanged(answers);
     if(onLoad) {
       component.notifyAnswerLoaded(answers);

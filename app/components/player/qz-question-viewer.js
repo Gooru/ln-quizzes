@@ -309,8 +309,7 @@ export default Ember.Component.extend({
 
   submitQuestion: function() {
     if (!this.get('submitted')) {
-      let questionResult = this.get('questionResult');
-      this.sendAction('onSubmitQuestion', this.get('question'), questionResult);
+      this.sendAction('onSubmitQuestion', this.get('question'));
     }
   }
 });

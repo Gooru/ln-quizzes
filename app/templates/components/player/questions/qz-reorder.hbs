@@ -5,7 +5,7 @@
 <div class="answer-choices">
     <ul class="sortable {{if readOnly 'disabled'}} {{if areAnswersShuffled 'show' 'hidden'}}">
       {{#each answers as |answer|}}
-        <li data-id="{{answer.id}}">
+        <li data-id="{{answer.value}}">
           {{gru-icon name='menu'}}
           <div>{{{gru-math-text text=answer.text}}}</div>
         </li>

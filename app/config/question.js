@@ -33,7 +33,7 @@ export const QUESTION_CONFIG = {
       answer: 'reports.assessment.questions.gru-single-choice'
     }
   }),
-  'MA'    : Ember.Object.create({
+  'multiple_answer'    : Ember.Object.create({
     apiType: 'multiple_answer_question',
     util: MultipleAnswerUtil,
     component: {

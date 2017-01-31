@@ -59,10 +59,10 @@ export default QuestionComponent.extend({
     let answers = this.get('question.answers');
     let userAnswer = this.get('userAnswer');
     return answers.map(function(answer) {
-      var answerId = answer.get('id');
-      let userSelectionItem = userAnswer ? userAnswer.findBy('id', answerId) : null;
+      var answerValue = answer.get('value');
+      let userSelectionItem = userAnswer ? userAnswer.findBy('value', answerValue) : null;
       return {
-        id: answerId,
+        value: answerValue,
         text: answer.get('text'),
         groupValue: userSelectionItem ? component.userSelectionItemToChoice(userSelectionItem) : null
       };
@@ -87,11 +87,11 @@ export default QuestionComponent.extend({
      */
   choiceToUserSelectionItem: function(answerChoice) {
     let values = answerChoice.split('|');
-    let id = values[1];
+    let value = values[1];
     let selection = values[0] === 'yes';
     return {
-        id: id,
-        selection: selection
+        selection,
+        value: { value }
     };
   },
 
@@ -130,13 +130,16 @@ export default QuestionComponent.extend({
   setUserAnswerChoice: function(answerChoice) {
     let userSelection = this.get('userSelection');
     let userSelectionItem = this.choiceToUserSelectionItem(answerChoice);
-    let id = userSelectionItem.id;
-    let selection = userSelectionItem.selection;
-    let found = userSelection.findBy('id', id);
+    let value = userSelectionItem.value;
+    let found = userSelection.findBy('value', value);
     if (found) {
-      found.selection = selection;
+      if (!userSelectionItem.selection) {
+        userSelection.removeObject(found);
+      }
     } else {
-      userSelection.addObject(userSelectionItem);
+      if (userSelectionItem.selection) {
+        userSelection.addObject(userSelectionItem);
+      }
     }
   },
 
@@ -147,7 +150,7 @@ export default QuestionComponent.extend({
    * @return {string} in the format value|id, i.e yes|answer_1
    */
   userSelectionItemToChoice: function(userSelectionItem) {
-    const selection = userSelectionItem.selection ? 'yes' : 'no';
-    return `${selection}|${userSelectionItem.id}`;
+    const selection = userSelectionItem ? 'yes' : 'no';
+    return `${selection}|${userSelectionItem.value}`;
   }
 });

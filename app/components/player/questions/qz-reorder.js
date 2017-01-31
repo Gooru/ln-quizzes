@@ -51,7 +51,7 @@ export default QuestionComponent.extend({
     let answers = this.get('question.answers');
     if (this.get('hasUserAnswer')) { //@see quizzes/utils/question/reorder.js
       let userAnswer = this.get('userAnswer');
-      answers = userAnswer.map(answerId => answers.findBy('value', answerId));
+      answers = userAnswer.map(answer => answers.findBy('value', answer.value));
     }
     return answers;
   }),

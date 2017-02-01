@@ -4,7 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 
-moduleForComponent('reports/assessment/questions/gru-reorder', 'Integration | Component | reports/assessment/questions/gru reorder', {
+moduleForComponent('reports/assessment/questions/qz-reorder', 'Integration | Component | reports/assessment/questions/qz reorder', {
   integration: true,
   beforeEach: function () {
     this.container.lookup('service:i18n').set("locale", "en");
@@ -119,7 +119,7 @@ test('Reoder Question - User answer all incorrect', function (assert) {
   assert.equal(T.text($component.find('li:nth-child(4) span.answer-text')), 'Chile', 'Wrong text for answer 4');
 });
 
-test('Reoder Question - User answer some incorrect', function (assert) {
+test('Reorder Question - User answer some incorrect', function (assert) {
 
   var question = Ember.Object.create({
     questionType: "HT_RO",

@@ -14,7 +14,7 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['reports', 'assessment', 'questions', 'gru-reorder'],
+  classNames: ['reports', 'assessment', 'questions', 'qz-reorder'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -28,22 +28,20 @@ export default Ember.Component.extend(QuestionMixin, {
   answers: Ember.computed("question", function () {
     let component = this;
     let question = component.get("question");
-    let questionUtil = component.getQuestionUtil(question);
     let userAnswers = component.get("userAnswer");
-    let correctAnswers = questionUtil.getCorrectAnswer();
+    let correctAnswers = question.get('question.correctAnswer');
     if (component.get("showCorrect")){
       userAnswers = correctAnswers;
     }
-
-    //answer in the correct order
-    let answers = question.get("answers").sortBy("order");
-    return answers.map(function(answer, index){
-      let userAnswerAtIndex = userAnswers.objectAt(index);
-      let correctAnswerAtIndex = correctAnswers.objectAt(index);
+    let answers = question.get("question.answers");
+    return answers.map(function(answer){
+      let userAnswer = userAnswers.findBy('value', answer.value);
+      let correctAnswer = correctAnswers.findBy('value', userAnswer.value);
+      let correct = correctAnswer && correctAnswers.indexOf(correctAnswer) === userAnswers.indexOf(userAnswer);
       return {
-        selectedOrder: userAnswers.indexOf(correctAnswerAtIndex) + 1,
+        selectedOrder: userAnswers.indexOf(userAnswer)+1,
         text: answer.get("text"),
-        correct: questionUtil.isAnswerChoiceCorrect(userAnswerAtIndex, index)
+        correct
       };
     });
   })

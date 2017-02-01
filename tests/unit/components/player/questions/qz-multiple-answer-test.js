@@ -182,7 +182,7 @@ test('setUserAnswerChoice', function(assert) {
   component.get('setUserAnswerChoice').call(component, 'yes|answer');
   assert.deepEqual(component.get('userSelection'), expectedUserSelection, 'User selection should match');
 
-  let response = component.get('setUserAnswerChoice').call(component, 'no|answer');
+  component.get('setUserAnswerChoice').call(component, 'no|answer');
   expectedUserSelection = [{
     value: 'answer',
     selection: false

@@ -41,7 +41,12 @@ export default QuestionComponent.extend({
 
   init: function() {
     this._super( ...arguments );
-    const userSelection = this.get('userAnswer') || Ember.A([]);
+    const userAnswers = this.get('userAnswer');
+    const answers = this.get('question.answers');
+    const userSelection = userAnswers ? answers.map(answer => ({
+      value: answer.value,
+      selection: !!userAnswers.findBy('value', answer.value)
+    })) : Ember.A();
     this.set('userSelection', userSelection);
     if(this.get('hasUserAnswer')) {
       this.notify(true);
@@ -54,17 +59,17 @@ export default QuestionComponent.extend({
    * Convenient structure to render options
    * @property {[]}
    */
-  answers: Ember.computed('question.answers', 'userAnswer', function() {
+  answers: Ember.computed('question.answers', 'userSelection', function() {
     const component = this;
     let answers = this.get('question.answers');
-    let userAnswer = this.get('userAnswer');
+    let userSelection = this.get('userSelection');
     return answers.map(function(answer) {
-      var answerId = answer.get('id');
-      let userSelectionItem = userAnswer ? userAnswer.findBy('id', answerId) : null;
+      let answerId = answer.get('value');
+      let filteredUserAnswer = userSelection.findBy('value', answerId);
       return {
-        id: answerId,
+        value: answerId,
         text: answer.get('text'),
-        groupValue: userSelectionItem ? component.userSelectionItemToChoice(userSelectionItem) : null
+        groupValue: filteredUserAnswer ? component.userSelectionItemToChoice(filteredUserAnswer) : null
       };
     });
   }),
@@ -87,12 +92,9 @@ export default QuestionComponent.extend({
      */
   choiceToUserSelectionItem: function(answerChoice) {
     let values = answerChoice.split('|');
-    let id = values[1];
+    let value = values[1];
     let selection = values[0] === 'yes';
-    return {
-        id: id,
-        selection: selection
-    };
+    return { value, selection };
   },
 
   /**
@@ -112,7 +114,9 @@ export default QuestionComponent.extend({
    */
   notify: function(onLoad) {
     const component = this;
-    let userSelection = component.get('userSelection').toArray();
+    let userSelection = component.get('userSelection')
+      .filter(answer => answer.selection)
+      .map(answer => ({ value: answer.value }));
     component.notifyAnswerChanged(userSelection);
     if (component.isAnswerCompleted()) {
       if(onLoad) {
@@ -130,9 +134,9 @@ export default QuestionComponent.extend({
   setUserAnswerChoice: function(answerChoice) {
     let userSelection = this.get('userSelection');
     let userSelectionItem = this.choiceToUserSelectionItem(answerChoice);
-    let id = userSelectionItem.id;
+    let value = userSelectionItem.value;
     let selection = userSelectionItem.selection;
-    let found = userSelection.findBy('id', id);
+    let found = userSelection.findBy('value', value);
     if (found) {
       found.selection = selection;
     } else {
@@ -142,12 +146,11 @@ export default QuestionComponent.extend({
 
   /**
    * Converts user selection item to answer choice
-   * @param {{id: *, selection: boolean}} userSelectionItem
+   * @param {{value: *, selection: boolean}} userSelectionItem
    *
-   * @return {string} in the format value|id, i.e yes|answer_1
+   * @return {string} in the format selection|value, i.e yes|answer_1
    */
-  userSelectionItemToChoice: function(userSelectionItem) {
-    const selection = userSelectionItem.selection ? 'yes' : 'no';
-    return `${selection}|${userSelectionItem.id}`;
+  userSelectionItemToChoice: function(answer) {
+    return `${answer.selection ? 'yes' : 'no'}|${answer.value}`;
   }
 });

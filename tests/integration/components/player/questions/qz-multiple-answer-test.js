@@ -1,8 +1,9 @@
-/* TODO fix when the question type is enabled
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
+import AnswerModel from 'quizzes/models/resource/answer';
+import ResourceModel from 'quizzes/models/resource/resource';
 
 moduleForComponent('player/questions/qz-multiple-answer', 'Integration | Component | player/questions/qz multiple answer', {
   integration: true,
@@ -13,50 +14,30 @@ moduleForComponent('player/questions/qz-multiple-answer', 'Integration | Compone
 });
 
 test('Multiple answer question layout', function (assert) {
-
   assert.expect(6);
-
-  let question = Ember.Object.create({
-    'id': '569906aa77bebed003fa6eb1',
-    questionType: 'MA',
-    text: 'Sample Question MA',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([
-      Ember.Object.create({
-        'id': 1,
-        'text': '<p>An aquifer</p>',
-        'answerType': 'text',
-
-        'sequence': 1
+  let question = ResourceModel.create({
+    id: '569906aa20b7dfae1bcd5',
+    type: 'multiple_answer',
+    body: 'Sample Question SC',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: 1,
+        text: 'An aquifer'
       }),
-      Ember.Object.create({
-        'id': 2,
-        'text': '<p>A well</p>',
-        'answerType': 'text',
-
-        'sequence': 2
+      AnswerModel.create({
+        value: 2,
+        text: 'A well'
       }),
-      Ember.Object.create({
-        'id': 3,
-        'text': '<p>A pump</p>',
-        'answerType': 'text',
-
-        'sequence': 3
+      AnswerModel.create({
+        value: 3,
+        text: 'A pump'
       })
-    ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 5,
-    'hasAnswers': true
+    ])
   });
 
-
   this.set('question', question);
-
   this.render(hbs`{{player/questions/qz-multiple-answer question=question}}`);
-
-  var $component = this.$(); //component dom element
+  let $component = this.$(); //component dom element
   T.exists(assert, $component.find('.instructions'), 'Missing instructions');
   assert.equal($component.find('.answer-choices tbody tr').length, 3, 'Missing answer choices');
   assert.equal($component.find('.answer-choices tr input[type=radio]').length, 6, 'Missing answer choices radio inputs');
@@ -65,45 +46,30 @@ test('Multiple answer question layout', function (assert) {
   assert.ok($component.find('.answer-choices tbody tr:eq(2) td:eq(2)').html().indexOf('(C)A pump'), 'Incorrect Message');
 });
 
-
 test('Multiple answer question events', function (assert) {
-
   assert.expect(6);
 
-  let question = Ember.Object.create({
-    'id': '569906aa77bebed003fa6eb1',
-    questionType: 'MA',
-    text: 'Sample Question MA',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([
-      Ember.Object.create({
-        'id': '1',
-        'text': '<p>An aquifer</p>',
-        'answerType': 'text',
-        'sequence': 1
+  let question = ResourceModel.create({
+    id: '569906aa20b7dfae1bcd5',
+    type: 'multiple_answer',
+    body: 'Sample Question SC',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'An aquifer'
       }),
-      Ember.Object.create({
-        'id': '2',
-        'text': '<p>A well</p>',
-        'answerType': 'text',
-        'sequence': 2
+      AnswerModel.create({
+        value: '2',
+        text: 'A well'
       }),
-      Ember.Object.create({
-        'id': '3',
-        'text': '<p>A pump</p>',
-        'answerType': 'text',
-        'sequence': 3
+      AnswerModel.create({
+        value: '3',
+        text: 'A pump'
       })
-    ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 5,
-    'hasAnswers': true
+    ])
   });
 
   let answers = [];
-
   this.set('question', question);
   this.on('myOnAnswerChanged', function (question, answer) {
     //called 4 times
@@ -118,19 +84,16 @@ test('Multiple answer question events', function (assert) {
   this.render(hbs`{{player/questions/qz-multiple-answer question=question
         onAnswerChanged='myOnAnswerChanged' onAnswerCompleted='myOnAnswerCompleted'}}`);
 
-  var $component = this.$(); //component dom element
+  let $component = this.$(); //component dom element
 
   //select a radio button
-  answers = [{id:'1', selection: true}];
+  answers = [{value:'1'}];
   $component.find('.answer-choices tbody tr:eq(0) input[type=radio]:eq(0)').click(); //Yes
-
-  answers = [{id:'1', selection: true}, {id:'2', selection: true}];
+  answers = [{value:'1'}, {value:'2'}];
   $component.find('.answer-choices tbody tr:eq(1) input[type=radio]:eq(0)').click(); //Yes
-
-  answers = [{id:'1', selection: true}, {id:'2', selection: true}, {id:'3', selection: true}];
+  answers = [{value:'1'}, {value:'2'}, {value:'3'}];
   $component.find('.answer-choices tbody tr:eq(2) input[type=radio]:eq(0)').click(); //Yes
-
-  answers = [{id:'1', selection: true}, {id:'2', selection: false}, {id:'3', selection: true}];
+  answers = [{value:'1'}, {value:'3'}];
   $component.find('.answer-choices tbody tr:eq(1) input[type=radio]:eq(1)').click(); //No
 
 });
@@ -139,44 +102,30 @@ test('Multiple answer question layout - read only', function (assert) {
 
   assert.expect(2);
 
-  let question = Ember.Object.create({
-    'id': '569906aa77bebed003fa6eb1',
-    questionType: 'MA',
-    text: 'Sample Question MA',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([
-      Ember.Object.create({
-        'id': 1,
-        'text': '<p>An aquifer</p>',
-        'answerType': 'text',
-        'sequence': 1
+  let question = ResourceModel.create({
+    id: '569906aa20b7dfae1bcd5',
+    type: 'multiple_answer',
+    body: 'Sample Question SC',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'An aquifer'
       }),
-      Ember.Object.create({
-        'id': 2,
-        'text': '<p>A well</p>',
-        'answerType': 'text',
-        'sequence': 2
+      AnswerModel.create({
+        value: '2',
+        text: 'A well'
       }),
-      Ember.Object.create({
-        'id': 3,
-        'text': '<p>A pump</p>',
-        'answerType': 'text',
-        'sequence': 3
+      AnswerModel.create({
+        value: '3',
+        text: 'A pump'
       })
-    ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 5,
-    'hasAnswers': true
+    ])
   });
 
-
   this.set('question', question);
-
   this.render(hbs`{{player/questions/qz-multiple-answer question=question readOnly=true}}`);
 
-  var $component = this.$(); //component dom element
+  let $component = this.$(); //component dom element
   T.exists(assert, $component.find('.instructions'), 'Missing instructions');
   assert.equal($component.find('.answer-choices tr input[disabled]').length, 6, 'Missing answer choices radio inputs');
 });
@@ -184,49 +133,27 @@ test('Multiple answer question layout - read only', function (assert) {
 test('Multiple answer question layout - with user answer', function (assert) {
 
   assert.expect(7);
-
-  let question = Ember.Object.create({
-    'id': '569906aa77bebed003fa6eb1',
-    questionType: 'MA',
-    text: 'Sample Question MA',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([
-      Ember.Object.create({
-        'id': 1,
-        'text': '<p>An aquifer</p>',
-        'answerType': 'text',
-        'sequence': 1
+  let question = ResourceModel.create({
+    id: '569906aa20b7dfae1bcd5',
+    type: 'multiple_answer',
+    body: 'Sample Question SC',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'An aquifer'
       }),
-      Ember.Object.create({
-        'id': 2,
-        'text': '<p>A well</p>',
-        'answerType': 'text',
-        'sequence': 2
+      AnswerModel.create({
+        value: '2',
+        text: 'A well'
       }),
-      Ember.Object.create({
-        'id': 3,
-        'text': '<p>A pump</p>',
-        'answerType': 'text',
-        'sequence': 3
+      AnswerModel.create({
+        value: '3',
+        text: 'A pump'
       })
-    ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 5,
-    'hasAnswers': true
+    ])
   });
 
-  const answers = [{
-      'id': 1,
-      'selection': true
-    }, {
-      'id': 2,
-      'selection': false
-    }, {
-      'id': 3,
-      'selection': false
-    }];
+  const answers = [{ value: '1' }];
   this.on('changeAnswer', function (question, answer) {
     assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
   });
@@ -234,18 +161,17 @@ test('Multiple answer question layout - with user answer', function (assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
   });
   this.set('question', question);
-  this.set('userAnswer', [{id: 1, selection: true}, {id: 2, selection: false}, {id: 3, selection: false}]);
+  this.set('userAnswer', [{value: '1'}]);
 
   this.render(hbs`{{player/questions/qz-multiple-answer question=question
                     userAnswer=userAnswer
                     onAnswerChanged='changeAnswer'
                     onAnswerLoaded='loadAnswer'}}`);
 
-  var $component = this.$(); //component dom element
+  let $component = this.$(); //component dom element
   T.exists(assert, $component.find('.instructions'), 'Missing instructions');
   assert.equal($component.find('.answer-choices tbody tr input').length, 6, 'Missing answer choices radio inputs');
   assert.equal($component.find('.answer-choices tbody tr:eq(0) input:checked').val(), 'yes|1', 'Wrong selection for answer 1');
   assert.equal($component.find('.answer-choices tbody tr:eq(1) input:checked').val(), 'no|2', 'Wrong selection for answer 1');
   assert.equal($component.find('.answer-choices tbody tr:eq(2) input:checked').val(), 'no|3', 'Wrong selection for answer 1');
 });
-*/

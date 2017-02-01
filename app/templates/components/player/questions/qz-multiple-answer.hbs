@@ -17,18 +17,18 @@
           <td>
             {{radio-button
               disabled=readOnly
-            value=(concat "yes|" answer.id)
+            value=(concat "yes|" answer.value)
             groupValue=answer.groupValue
             changed="selectAnswerChoice"
-            name=(concat "answer-choice-radio-" answer.id)}}
+            name=(concat "answer-choice-radio-" answer.value)}}
           </td>
           <td>
             {{radio-button
             disabled=readOnly
-            value=(concat "no|" answer.id)
+            value=(concat "no|" answer.value)
             groupValue=answer.groupValue
             changed="selectAnswerChoice"
-            name=(concat "answer-choice-radio-" answer.id)}}
+            name=(concat "answer-choice-radio-" answer.value)}}
           </td>
           <td class="answer-text">
             <span class="letter">({{answer-letter index}})</span>{{{gru-math-text text=answer.text}}}

@@ -5,6 +5,8 @@ import QuestionResult from 'quizzes/models/result/question';
 import Assessment from 'quizzes/models/collection/collection';
 import T from 'quizzes/tests/helpers/assert';
 import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
+import AnswerModel from 'quizzes/models/resource/answer';
+import ResourceModel from 'quizzes/models/resource/resource';
 
 moduleForComponent('player/qz-question-viewer', 'Integration | Component | player/qz question viewer', {
   integration: true,
@@ -98,40 +100,29 @@ test('Submit button should become enabled and call action on submit', function (
 test('Multiple Answer - Submit button should become enabled by clicking 1 radio button when user answer if provided', function (assert) {
   assert.expect(6);
 
-  let question = Ember.Object.create({
-    'id': '569906aa77bebed003fa6eb1',
-    type: 'MA',
-    body: 'Sample Question MA',
-    answers: Ember.A([
-      Ember.Object.create({
-        'id': '1',
-        'text': '<p>An aquifer</p>',
-        'answerType': 'text',
-        'isCorrect': true,
-        'order': 1
+
+  let question = ResourceModel.create({
+    id: '569906aa20b7dfae1bcd5',
+    type: 'multiple_answer',
+    body: 'Sample Question SC',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'An aquifer'
       }),
-      Ember.Object.create({
-        'id': '2',
-        'text': '<p>A well</p>',
-        'answerType': 'text',
-        'isCorrect': false,
-        'order': 2
+      AnswerModel.create({
+        value: '2',
+        text: 'A well'
       }),
-      Ember.Object.create({
-        'id': '3',
-        'text': '<p>A pump</p>',
-        'answerType': 'text',
-        'isCorrect': false,
-        'order': 3
+      AnswerModel.create({
+        value: '3',
+        text: 'A pump'
       })
-    ]),
-    'format': 'question',
-    'sequence': 5,
-    'hasAnswers': true
+    ])
   });
 
 
-  const userAnswer = [{id: '1', selection: true}, {id: '2', selection: false}, {id: '3', selection: false}];
+  const userAnswer = [{value: '1'}];
   this.set('question', question);
 
   const questionResult = QuestionResult.create({
@@ -150,8 +141,8 @@ test('Multiple Answer - Submit button should become enabled by clicking 1 radio 
 
   assert.equal($component.find('.answer-choices tbody tr input').length, 6, 'Missing answer choices radio inputs');
   assert.equal($component.find('.answer-choices tbody tr:eq(0) input:checked').val(), 'yes|1', 'Wrong selection for answer 1');
-  assert.equal($component.find('.answer-choices tbody tr:eq(1) input:checked').val(), 'no|2', 'Wrong selection for answer 1');
-  assert.equal($component.find('.answer-choices tbody tr:eq(2) input:checked').val(), 'no|3', 'Wrong selection for answer 1');
+  assert.equal($component.find('.answer-choices tbody tr:eq(1) input:checked').val(), 'no|2', 'Wrong selection for answer 2');
+  assert.equal($component.find('.answer-choices tbody tr:eq(2) input:checked').val(), 'no|3', 'Wrong selection for answer 3');
 
   $answerPanel.find('.answer-choices tbody tr:eq(2) input:eq(0)').click(); //clicking yes at last answer choice
 

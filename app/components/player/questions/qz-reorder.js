@@ -41,7 +41,7 @@ export default QuestionComponent.extend({
    * Convenient structure to render the question answer choices
    * @property {*}
    */
-  answers: Ember.computed('question.answers.[]', function() {
+  answers: Ember.computed('question.answers.@each.value', function() {
     let answers = this.get('question.answers');
     if (this.get('hasUserAnswer')) {
       let userAnswer = this.get('userAnswer');
@@ -135,14 +135,8 @@ export default QuestionComponent.extend({
    */
   validateShuffle:function(){
     const component = this;
-    let isValid = false;
     const $items = component.$('.sortable li').toArray();
-    $items.reduce(function(items, item,idx) {
-      if(component.get('answers')[idx].get('value') !== $(item).data('id')){
-        isValid = true;
-      }
-      return items;
-    }, {});
-    return isValid;
+    let answers = component.get('answers');
+    return $items.reduce((isValid, item,idx) => isValid && answers[idx].get('value') !== $(item).data('id') );
   }
 });

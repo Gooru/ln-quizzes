@@ -1,8 +1,9 @@
-/* TODO fix when the question type is enabled
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
+import AnswerModel from 'quizzes/utils/question/answer-object';
+import ResourceModel from 'quizzes/models/resource/resource';
 
 moduleForComponent('player/questions/qz-reorder', 'Integration | Component | player/questions/qz reorder', {
   integration: true,
@@ -14,28 +15,34 @@ moduleForComponent('player/questions/qz-reorder', 'Integration | Component | pla
 
 test('Reorder question layout', function (assert) {
 
-  let question = Ember.Object.create({
-    'id': '569906aadfa0072204f7c7c7',
-    questionType: 'HT_RO',
-    text: 'Reorder Question',
+  let question = ResourceModel.create({
+    id: '569906aadfa0072204f7c7c7',
+    type: 'drag_and_drop',
+    body: 'Reorder Question',
     hints: [],
     explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['crc', 'bra', 'pan', 'chi']
-      Ember.Object.create({id: '1', text: 'An aquifer', order: 1}),
-      Ember.Object.create({id: '2', text: 'A well', order: 2}),
-      Ember.Object.create({id: '3', text: 'A pump', order: 3})
-    ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 3,
-    'hasAnswers': true
+    answers:  Ember.A([
+        AnswerModel.create({
+          value: '1',
+          text: 'An aquifer'
+        }),
+        AnswerModel.create({
+          value: '2',
+          text: 'A well'
+        }),
+        AnswerModel.create({
+          value: '3',
+          text: 'A pump'
+        })
+      ]),
+    sequence:1
   });
 
   this.set('question', question);
 
   this.render(hbs`{{player/questions/qz-reorder question=question}}`);
 
-  var $component = this.$(); //component dom element
+  var $component = this.$();
 
   assert.ok($component.find('.instructions'), 'Missing instructions');
   T.exists(assert,$component.find('.sortable.show'), 'The options should be shuffled');
@@ -44,24 +51,37 @@ test('Reorder question layout', function (assert) {
 });
 
 test('Notifications work after reordering questions', function (assert) {
-  let question = Ember.Object.create({
-    'id': '569906aadfa0072204f7c7c7',
-    questionType: 'HT_RO',
-    text: 'Reorder Question',
+  let question = ResourceModel.create({
+    id: '569906aadfa0072204f7c7c7',
+    type: 'drag_and_drop',
+    body: 'Reorder Question',
     hints: [],
     explanation: 'Sample explanation text',
-    answers: Ember.A([
-      Ember.Object.create({id: 'aquifer', text: 'An aquifer', order: 3}),
-      Ember.Object.create({id: 'well', text: 'A well', order: 2}),
-      Ember.Object.create({id: 'pump', text: 'A pump', order: 1})
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: 1,
+        text: 'An aquifer'
+      }),
+      AnswerModel.create({
+        value: 2,
+        text: 'A well'
+      }),
+      AnswerModel.create({
+        value: 3,
+        text: 'A pump'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 3,
-    'hasAnswers': true
+    sequence:1
   });
 
-  var answers = ['pump', 'well', 'aquifer'];
+  var answers = Ember.A([
+   {
+      value: 2
+    },{
+      value: 1
+    },{
+      value: 3
+    }]);
 
   this.set('question', question);
 
@@ -79,7 +99,7 @@ test('Notifications work after reordering questions', function (assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not in the correct order');
   });
 
-  this.set('userAnswer', ['pump', 'well', 'aquifer']);
+  this.set('userAnswer', answers);
 
   this.render(hbs`{{player/questions/qz-reorder question=question
                     onAnswerChanged='changeAnswer'
@@ -89,40 +109,57 @@ test('Notifications work after reordering questions', function (assert) {
 
   var $component = this.$(); //component dom element
 
-  assert.equal($component.find('.sortable li:first-child').data('id'), 'pump', 'First answer choice, data-id value is incorrect');
-  assert.equal($component.find('.sortable li:last-child').data('id'), 'aquifer', 'Last answer choice, data-id value is incorrect');
+  assert.equal($component.find('.sortable li:first-child').data('id'), 2, 'First answer choice, value is incorrect');
+  assert.equal($component.find('.sortable li:last-child').data('id'), 3, 'Last answer choice, value is incorrect');
 
   // Move first item to be the last
   $component.find('.sortable li:first-child')
     .insertAfter('.sortable li:last-child');
 
-  answers = ['well', 'aquifer', 'pump'];
+  answers = Ember.A([{
+      value: 1
+    },{
+      value: 3
+    },{
+      value: 2
+    }]);
   $component.find('.sortable').trigger('sortupdate');
 
   // Move current first item to be the second one
   $component.find('.sortable li:first-child')
     .insertBefore('.sortable li:last-child');
-  answers = ['aquifer', 'well', 'pump'];
+  answers = Ember.A([{
+      value: 3
+    },{
+      value: 1
+    },{
+      value: 2
+    }]);
   $component.find('.sortable').trigger('sortupdate');
 });
-
 test('Reorder question layout - read only', function (assert) {
 
-  let question = Ember.Object.create({
-    'id': '569906aadfa0072204f7c7c7',
-    questionType: 'HT_RO',
-    text: 'Reorder Question',
+  let question = ResourceModel.create({
+    id: '569906aadfa0072204f7c7c7',
+    type: 'drag_and_drop',
+    body: 'Reorder Question',
     hints: [],
     explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['crc', 'bra', 'pan', 'chi']
-      Ember.Object.create({id: '1', text: 'An aquifer', order: 1}),
-      Ember.Object.create({id: '2', text: 'A well', order: 2}),
-      Ember.Object.create({id: '3', text: 'A pump', order: 3})
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: 1,
+        text: 'An aquifer'
+      }),
+      AnswerModel.create({
+        value: 2,
+        text: 'A well'
+      }),
+      AnswerModel.create({
+        value: 3,
+        text: 'A pump'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 3,
-    'hasAnswers': true
+    sequence:1
   });
 
   this.set('question', question);
@@ -139,23 +176,38 @@ test('Reorder question layout - read only', function (assert) {
 
 test('Reorder question layout - with user answer', function (assert) {
   assert.expect(5);
-  let question = Ember.Object.create({
-    'id': '569906aadfa0072204f7c7c7',
-    questionType: 'HT_RO',
-    text: 'Reorder Question',
+  let question = ResourceModel.create({
+    id: '569906aadfa0072204f7c7c7',
+    type: 'drag_and_drop',
+    body: 'Reorder Question',
     hints: [],
     explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['crc', 'bra', 'pan', 'chi']
-      Ember.Object.create({id: 'aquifer', text: 'An aquifer', order: 1}),
-      Ember.Object.create({id: 'well', text: 'A well', order: 2}),
-      Ember.Object.create({id: 'pump', text: 'A pump', order: 3})
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: 1,
+        text: 'An aquifer'
+      }),
+      AnswerModel.create({
+        value: 2,
+        text: 'A well'
+      }),
+      AnswerModel.create({
+        value: 3,
+        text: 'A pump'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 3,
-    'hasAnswers': true
+    sequence:1
   });
-  var answers = ['well', 'aquifer', 'pump'];
+
+  var answers = Ember.A([
+    {
+      value: 2
+    },{
+      value: 1
+    },{
+      value: 3
+    }]);
+
   this.on('changeAnswer', function (question, answer) {
     assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
   });
@@ -163,7 +215,7 @@ test('Reorder question layout - with user answer', function (assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
   });
   this.set('question', question);
-  this.set('userAnswer', ['well', 'aquifer', 'pump']);
+  this.set('userAnswer', answers);
 
   this.render(hbs`{{player/questions/qz-reorder question=question
                     userAnswer=userAnswer
@@ -172,60 +224,7 @@ test('Reorder question layout - with user answer', function (assert) {
 
   var $component = this.$(); //component dom element
   assert.equal($component.find('.sortable li').length, 3, '3 Sortable items should be found');
-  assert.equal($component.find('.sortable li:first-child').data('id'), 'well', 'First answer choice, data-id value is incorrect');
-  assert.equal($component.find('.sortable li:last-child').data('id'), 'pump', 'Last answer choice, data-id value is incorrect');
+  assert.equal($component.find('.sortable li:first-child').data('id'), 2, 'First answer choice, data-id value is incorrect');
+  assert.equal($component.find('.sortable li:last-child').data('id'), 3, 'Last answer choice, data-id value is incorrect');
 
 });
-test('Set two questions', function (assert) {
-
-  let question1 = Ember.Object.create({
-    'id': '569906aadfa0072204f7c7c7',
-    questionType: 'HT_RO',
-    text: 'Reorder Question',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['crc', 'bra', 'pan', 'chi']
-      Ember.Object.create({id: 'aquifer', text: 'An aquifer1', order: 1}),
-      Ember.Object.create({id: 'well', text: 'A well1', order: 2}),
-      Ember.Object.create({id: 'pump', text: 'A pump1', order: 3})
-    ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 3,
-    'hasAnswers': true
-  });
-
-  let question = Ember.Object.create({
-    'id': '569906aadfa0072204f7c7c7',
-    questionType: 'HT_RO',
-    text: 'Reorder Question',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['crc', 'bra', 'pan', 'chi']
-      Ember.Object.create({id: 'aquifer', text: 'An aquifer', order: 1}),
-      Ember.Object.create({id: 'well', text: 'A well', order: 2}),
-      Ember.Object.create({id: 'pump', text: 'A pump', order: 3})
-    ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 3,
-    'hasAnswers': true
-  });
-
-  this.set('question', question);
-  this.set('userAnswer', ['aquifer', 'well', 'pump']);
-
-  this.render(hbs`{{player/questions/qz-reorder question=question userAnswer=userAnswer}}`);
-
-  var $component = this.$(); //component dom element
-
-  assert.equal($component.find('.sortable li:first-child span.gru-math-text').text().trim(), 'An aquifer', 'First answer choice does not have the right text');
-  assert.equal($component.find('.sortable li:last-child span.gru-math-text').text().trim(), 'A pump', 'Last answer choice does not have the right text');
-
-  this.set('question', question1);
-  this.set('userAnswer', ['aquifer', 'well', 'pump']);
-
-  assert.equal($component.find('.sortable li:first-child span.gru-math-text').text().trim(), 'An aquifer1', 'First answer choice does not have the right text');
-  assert.equal($component.find('.sortable li:last-child span.gru-math-text').text().trim(), 'A pump1', 'Last answer choice does not have the right text');
-});
-*/

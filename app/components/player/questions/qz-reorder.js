@@ -15,14 +15,8 @@ import QuestionComponent from './qz-question';
 export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
-  // Dependencies
-
-  // -------------------------------------------------------------------------
   // Attributes
   classNames:['qz-reorder'],
-
-  // -------------------------------------------------------------------------
-  // Actions
 
   // -------------------------------------------------------------------------
   // Events
@@ -49,7 +43,7 @@ export default QuestionComponent.extend({
    */
   answers: Ember.computed('question.answers.[]', function() {
     let answers = this.get('question.answers');
-    if (this.get('hasUserAnswer')) { //@see quizzes/utils/question/reorder.js
+    if (this.get('hasUserAnswer')) {
       let userAnswer = this.get('userAnswer');
       answers = userAnswer.map(answer => answers.findBy('value', answer.value));
     }
@@ -127,9 +121,28 @@ export default QuestionComponent.extend({
   shuffle: function() {
     const component = this;
     const $items = component.$('.sortable') ;
-    return $items.each(function() {
+    $items.each(function() {
       var items = $items.children().clone(true);
-      return (items.length) ? $(this).html(component.disorder(items)) : $items;
+      if(items.length){
+        while (!component.validateShuffle()) {
+          $(this).html(component.disorder(items));
+        }
+      }
     });
+  },
+  /**
+   * Validate shuffle doesn't be equal than the correct order
+   */
+  validateShuffle:function(){
+    const component = this;
+    let isValid = false;
+    const $items = component.$('.sortable li').toArray();
+    $items.reduce(function(items, item,idx) {
+      if(component.get('answers')[idx].get('value') !== $(item).data('id')){
+        isValid = true;
+      }
+      return items;
+    }, {});
+    return isValid;
   }
 });

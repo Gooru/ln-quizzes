@@ -19,7 +19,7 @@ export const QUESTION_TYPES = {
   fib: 'FIB',
   hotSpotText: 'HS_TXT',
   hotSpotImage: 'HS_IMG',
-  hotTextReorder: 'HT_RO',
+  hotTextReorder: 'drag_and_drop',
   hotTextHighlight: 'HT_HL'
 };
 
@@ -41,8 +41,8 @@ export const QUESTION_CONFIG = {
       answer: 'reports.assessment.questions.gru-multiple-answer'
     }
   }),
-  'HT_RO' : Ember.Object.create({
-    apiType: 'hot_text_reorder_question',
+  'drag_and_drop' : Ember.Object.create({
+    apiType: 'drag_and_drop',
     util: ReorderUtil,
     component: {
       player: 'player.questions.qz-reorder',

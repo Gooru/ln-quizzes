@@ -98,7 +98,7 @@ test('isHotSpotImage', function(assert) {
 test('isHotTextReorder', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'HT_RO'
+    'type': 'drag_and_drop'
   });
 
   assert.ok(model.get('isHotTextReorder'), 'It should be hot text reorder');

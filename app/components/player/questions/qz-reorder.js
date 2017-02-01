@@ -15,14 +15,8 @@ import QuestionComponent from './qz-question';
 export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
-  // Dependencies
-
-  // -------------------------------------------------------------------------
   // Attributes
   classNames:['qz-reorder'],
-
-  // -------------------------------------------------------------------------
-  // Actions
 
   // -------------------------------------------------------------------------
   // Events
@@ -47,12 +41,11 @@ export default QuestionComponent.extend({
    * Convenient structure to render the question answer choices
    * @property {*}
    */
-  answers: Ember.computed('question.answers.[]', function() {
-    let answers = this.get('question.answers').sortBy('order');
-
-    if (this.get('hasUserAnswer')) { //@see quizzes/utils/question/reorder.js
+  answers: Ember.computed('question.answers.@each.value', function() {
+    let answers = this.get('question.answers');
+    if (this.get('hasUserAnswer')) {
       let userAnswer = this.get('userAnswer');
-      answers = userAnswer.map(answerId => answers.findBy('id', answerId));
+      answers = userAnswer.map(answer => answers.findBy('value', answer.value));
     }
     return answers;
   }),
@@ -88,7 +81,10 @@ export default QuestionComponent.extend({
   notify: function(onLoad) {
     const component = this;
     const $items = component.$('.sortable').find('li');
-    const answers = $items.map((idx, item) => $(item).data('id')).toArray();
+    const answers = Ember.A([]);
+
+    $items.map((idx, item) => answers.pushObject({value:$(item).data('id')}));
+
     component.notifyAnswerChanged(answers);
     if(onLoad) {
       component.notifyAnswerLoaded(answers);
@@ -125,9 +121,22 @@ export default QuestionComponent.extend({
   shuffle: function() {
     const component = this;
     const $items = component.$('.sortable') ;
-    return $items.each(function() {
+    $items.each(function() {
       var items = $items.children().clone(true);
-      return (items.length) ? $(this).html(component.disorder(items)) : $items;
+      if(items.length){
+        while (!component.validateShuffle()) {
+          $(this).html(component.disorder(items));
+        }
+      }
     });
+  },
+  /**
+   * Validate shuffle doesn't be equal than the correct order
+   */
+  validateShuffle:function(){
+    const component = this;
+    const $items = component.$('.sortable li').toArray();
+    let answers = component.get('answers');
+    return $items.reduce((isValid, item,idx) => isValid && answers[idx].get('value') !== $(item).data('id'), true);
   }
 });

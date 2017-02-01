@@ -137,6 +137,6 @@ export default QuestionComponent.extend({
     const component = this;
     const $items = component.$('.sortable li').toArray();
     let answers = component.get('answers');
-    return $items.reduce((isValid, item,idx) => isValid && answers[idx].get('value') !== $(item).data('id') );
+    return $items.reduce((isValid, item,idx) => isValid && answers[idx].get('value') !== $(item).data('id'), true);
   }
 });

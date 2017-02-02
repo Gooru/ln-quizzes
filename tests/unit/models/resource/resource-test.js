@@ -44,7 +44,7 @@ test('isSingleChoice', function(assert) {
 test('isMultipleAnswer', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    type: 'MA'
+    type: 'multiple_answer'
   });
 
   assert.ok(model.get('isMultipleAnswer'), 'It should be multiple answer');

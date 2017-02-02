@@ -25,6 +25,10 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Properties
 
+  /**
+   * Convenient structure to render options
+   * @property {[]}
+   */
   answers: Ember.computed('question', 'userAnswer',
     'question.answers.@each.text', 'question.answers.@each.value', function () {
     let component = this;

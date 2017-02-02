@@ -35,52 +35,20 @@ test('True/False - distribution', function (assert) {
   let questionUtil = TrueFalseUtil.create({question: null});
 
   let distribution = questionUtil.distribution([
-    QuestionResult.create({
-      answer: [{
-        value: 1
-      }]
-    }),
-    QuestionResult.create({
-      answer: [{
-        value: 1
-      }]
-    }),
-    QuestionResult.create({
-      answer: [{
-        value: 2
-      }]
-    }),
-    QuestionResult.create({
-      answer: [{
-        value: 2
-      }]
-    }),
-    QuestionResult.create({
-      answer: [{
-        value: 1
-      }]
-    }),
-    QuestionResult.create({
-      answer: [{
-        value: 2
-      }]
-    }),
-    QuestionResult.create({
-      answer: [{
-        value: 2
-      }]
-    }),
-    QuestionResult.create({
-      answer: [{
-        value: 2
-      }]
-    })
+    QuestionResult.create({ answer: [{ value: '1' }] }),
+    QuestionResult.create({ answer: [{ value: '1' }] }),
+    QuestionResult.create({ answer: [{ value: '2' }] }),
+    QuestionResult.create({ answer: [{ value: '2' }] }),
+    QuestionResult.create({ answer: [{ value: '1' }] }),
+    QuestionResult.create({ answer: [{ value: '2' }] }),
+    QuestionResult.create({ answer: [{ value: '2' }] }),
+    QuestionResult.create({ answer: [{ value: '2' }] })
   ]);
 
   let answers = distribution.map(item => item.get('key')).toArray();
   let counts = distribution.map(item => item.get('count')).toArray();
 
-  assert.deepEqual(answers, [1, 2], 'Wrong keys');
+  assert.deepEqual(answers, ['1', '2'], 'Wrong keys');
   assert.deepEqual(counts, [3, 5], 'Wrong counts');
 });
 

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getQuestionUtil } from 'quizzes/config/question';
+import QuestionUtil from 'quizzes/utils/question/question';
 import { stats } from 'quizzes/utils/question-result';
 import { CORRECT_COLOR, INCORRECT_COLOR, ANONYMOUS_COLOR } from 'quizzes/config/config';
 
@@ -52,7 +52,7 @@ export default Ember.Component.extend({
     const component = this;
     const reportData = component.get('reportData');
     const question = component.get('question');
-    const questionUtil = getQuestionUtil(question.get('type')).create({ question });
+    const questionUtil = QuestionUtil.create({question});
     const distribution = questionUtil.distribution(this.get('questionResults'));
 
     const answersData = Ember.A([]);

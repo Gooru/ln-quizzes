@@ -106,7 +106,7 @@ export default Ember.Object.extend({
    * @returns {{}}
    */
   answerKey: function (answer) {
-    return answer[0].value;
+    return Ember.A(answer).sortBy('value').reduce((key, item) => `${key}${item.value}`, '');
   },
 
   /**

@@ -14,7 +14,7 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['reports', 'assessment', 'questions', 'gru-multiple-answer'],
+  classNames: ['reports', 'assessment', 'questions', 'qz-multiple-answer'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -25,25 +25,29 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Properties
 
-  answers: Ember.computed("question", function () {
+  /**
+   * Convenient structure to render options
+   * @property {[]}
+   */
+  answers: Ember.computed('question', 'userAnswer',
+    'question.answers.@each.text', 'question.answers.@each.value', function () {
     let component = this;
-    let question = component.get("question");
-    let questionUtil = component.getQuestionUtil(question);
-    let userAnswers = component.get("userAnswer");
-
-    if (component.get("showCorrect")){
-      userAnswers = questionUtil.getCorrectAnswer();
+    let question = component.get('question');
+    let userAnswers = component.get('userAnswer') || null;
+    let correctAnswers = question.get('question.correctAnswer');
+    if (component.get('showCorrect')){
+      userAnswers = correctAnswers;
     }
 
-    let answers = question.get("answers");
-    return answers.map(function(answer){
-      let userAnswer = userAnswers.filterBy("id", answer.get("id"));
-      let correct = questionUtil.isAnswerChoiceCorrect(userAnswer.get("firstObject"));
-
+    let answers = question.get('question.answers');
+    return answers.map(answer => {
+      let userAnswer = userAnswers.filterBy('value', answer.value);
+      let correctAnswer = correctAnswers.filterBy('value', answer.value);
+      let correct = userAnswer.length === correctAnswer.length;
       return {
-        text: answer.get("text"),
-        selected: userAnswer.get("firstObject.selection"),
-        correct: correct
+        text: answer.text,
+        selected: !!userAnswer.length,
+        correct
       };
     });
   })

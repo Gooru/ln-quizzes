@@ -17,15 +17,10 @@ export default Ember.Component.extend(QuestionMixin, {
   classNames: ['reports', 'assessment', 'questions', 'qz-reorder'],
 
   // -------------------------------------------------------------------------
-  // Actions
-
-  // -------------------------------------------------------------------------
-  // Events
-
-  // -------------------------------------------------------------------------
   // Properties
 
-  answers: Ember.computed("question", function () {
+  answers:Ember.computed('question', 'userAnswer',
+    'question.answers.@each.text', 'question.answers.@each.value', function () {
     let component = this;
     let question = component.get("question");
     let userAnswers = component.get("userAnswer");
@@ -45,10 +40,4 @@ export default Ember.Component.extend(QuestionMixin, {
       };
     });
   })
-
-  // -------------------------------------------------------------------------
-  // Observers
-
-  // -------------------------------------------------------------------------
-  // Methods
 });

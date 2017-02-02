@@ -46,7 +46,7 @@ export const QUESTION_CONFIG = {
     util: ReorderUtil,
     component: {
       player: 'player.questions.qz-reorder',
-      answer: 'reports.assessment.questions.gru-reorder'
+      answer: 'reports.assessment.questions.qz-reorder'
     }
   }),
   'HT_HL' : Ember.Object.create({

@@ -7,7 +7,7 @@ import Answer from 'quizzes/models/resource/answer';
 moduleForComponent('reports/assessment/questions/qz-reorder', 'Integration | Component | reports/assessment/questions/qz reorder', {
   integration: true,
   beforeEach: function () {
-    this.container.lookup('service:i18n').set("locale", "en");
+    this.container.lookup('service:i18n').set('locale', 'en');
     this.inject.service('i18n');
   }
 });
@@ -15,7 +15,7 @@ moduleForComponent('reports/assessment/questions/qz-reorder', 'Integration | Com
 test('Reoder Question - Show Correct Answer', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: "drag_and_drop",
+    questionType: 'drag_and_drop',
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),
@@ -58,7 +58,7 @@ test('Reoder Question - Show Correct Answer', function (assert) {
 test('Reoder Question - User answer correct', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: "drag_and_drop",
+    questionType: 'drag_and_drop',
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),
@@ -102,7 +102,7 @@ test('Reoder Question - User answer correct', function (assert) {
 test('Reoder Question - User answer all incorrect', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: "drag_and_drop",
+    questionType: 'drag_and_drop',
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),
@@ -146,7 +146,7 @@ test('Reoder Question - User answer all incorrect', function (assert) {
 test('Reorder Question - User answer some incorrect', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: "drag_and_drop",
+    questionType: 'drag_and_drop',
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),

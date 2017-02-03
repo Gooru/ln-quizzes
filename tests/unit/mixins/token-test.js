@@ -18,3 +18,21 @@ test('token', function(assert) {
   });
   assert.equal(subject.get('token'), token);
 });
+
+test('headers', function(assert) {
+  let token = 'my-token';
+  let TokenObject = Ember.Object.extend(TokenMixin);
+  let subject = TokenObject.create({
+    configurationService: {
+      configuration: {
+        properties: {
+          token
+        }
+      }
+    }
+  });
+  const expectedHeaders = {
+    'Authorization': 'Token my-token'
+  };
+  assert.deepEqual(subject.get('headers'), expectedHeaders);
+});

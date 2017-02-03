@@ -22,6 +22,9 @@ module.exports = function(defaults) {
     },
     fingerprint: {
       exclude: ['themes/edify'] //excluding test theme files
+    },
+    babel: {
+      includePolyfill: true
     }
   });
 

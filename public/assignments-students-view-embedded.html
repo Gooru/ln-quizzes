@@ -25,6 +25,7 @@
       emberApp.start({
         transition: [ 'assignments','profile-id',{queryParams:{isTeacher:false}}],
         properties: {
+          token: localStorage.getItem('token'),
           playerURL:'player-embedded.html?context-id={context-id}'
         }
       });

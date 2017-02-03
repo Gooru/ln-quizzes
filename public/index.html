@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/vendor.css">
   <link rel="stylesheet" href="assets/quizzes.css">
   <style type="text/css">
-   a{
+   .row a {
      display: flex;
      justify-content: center;
      width: 198px;
@@ -28,16 +28,41 @@
      margin: 10px;
    }
     .containers{
-      min-height: 158px;
+      min-height: 205px;
+    }
+    .login {
+      float: right;
+    }
+    h3 {
+      display: inline;
     }
   </style>
 </head>
 <body style="background-color: #ffffff;">
 <script src="assets/vendor.js"></script>
 <script src="assets/quizzes.js"></script>
+<script type="text/javascript">
+  var token = localStorage.getItem('token');
+  $.ajax({
+    type: 'GET',
+    url: 'https://www.gooru.org/api/nucleus-auth/v1/token',
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    processData: false,
+    headers: {
+      'Authorization': 'Token ' + token
+    },
+    global: false
+  }).done(function() {
+    console.log(token);
+  }).fail(function() {
+    alert('There was a problem with the credentials. Please login again.');
+  });
+</script>
 
-<div class="demo" style="margin: 20px">
+  <div class="demo" style="margin: 20px">
     <h3>Quizzes Demo Page</h3>
+    <a class="login" href="login.html">Login</a>
     <div class="panel-body">
      <div class="row">
        <div class="col-md-6 col-sm-6 col-xs-12">
@@ -45,7 +70,10 @@
            <div class="panel-heading">Teacher Experience</div>
            <div class="panel-body containers">
              <div class="option">
-               <a href="assign-students-embedded.html">Create Assignment</a>
+               <a href="assign-students-embedded.html?collection-id=25250d86-a5b7-40e5-b247-7f7793ac04b9&collection-name=Math">Create assignment</a>
+             </div>
+             <div class="option">
+               <a href="assessment-editor-embedded.html">Edit assessment</a>
              </div>
             <div class="option">
               <a href="assignments-teachers-view-embedded.html">View created assignments</a>
@@ -65,6 +93,6 @@
        </div>
      </div>
     </div>
-</div>
+  </div>
 </body>
 </html>

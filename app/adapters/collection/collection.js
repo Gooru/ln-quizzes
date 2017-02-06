@@ -1,7 +1,6 @@
 import Ember from 'ember';
- import ApplicationAdapter from '../application';
 
-export default ApplicationAdapter.extend({
+export default Ember.Object.extend({
 
   /**
    * @property {string} End-point URI

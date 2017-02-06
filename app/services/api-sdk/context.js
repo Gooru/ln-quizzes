@@ -26,6 +26,11 @@ export default Ember.Service.extend({
   // -------------------------------------------------------------------------
   // Methods
 
+  /**
+   * Creates a context
+   * @param {Context} assignment
+   * @returns {Promise}
+   */
   createContext: function(assignment) {
     const service = this;
     let serializedAssignment = service.get('contextSerializer').serializeContext(assignment);
@@ -34,6 +39,10 @@ export default Ember.Service.extend({
     });
   },
 
+  /**
+   * Gets all the contexts assigned to the current student
+   * @returns {Promise}
+   */
   getContextsAssigned: function() {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -43,6 +52,10 @@ export default Ember.Service.extend({
     });
   },
 
+  /**
+   * Gets all contexts created by the current teacher
+   * @returns {Promise}
+   */
   getContextsCreated: function() {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -52,6 +65,11 @@ export default Ember.Service.extend({
     });
   },
 
+  /**
+   * Get data to show on the real time report
+   * @param {String} contextId
+   * @returns {Promise}
+   */
   getReportData: function(contextId) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -61,6 +79,13 @@ export default Ember.Service.extend({
     });
   },
 
+  /**
+   * Save the previous resource response and current resource
+   * @param {String} resourceId current resource
+   * @param {String} contextId
+   * @param {Object} previousResource resource to save
+   * @returns {Promise}
+   */
   moveToResource: function(resourceId, contextId, previousResult) {
     const service = this;
     let serializedPreviousResult = previousResult ?
@@ -72,6 +97,11 @@ export default Ember.Service.extend({
     });
   },
 
+  /**
+   * Send event to notify the student started an assignment
+   * @param {String} contextId
+   * @returns {Promise}
+   */
   startContext: function(contextId) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -81,6 +111,11 @@ export default Ember.Service.extend({
     });
   },
 
+  /**
+   * Send event to notify the student submitted all questions in an assignment
+   * @param {String} contextId
+   * @returns {Promise}
+   */
   finishContext: function(contextId) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -89,6 +124,11 @@ export default Ember.Service.extend({
     });
   },
 
+  /**
+   * Update an assignment/context
+   * @param {Context} assignment
+   * @returns {Promise}
+   */
   updateContext: function(assignment) {
     const service = this;
     let serializedAssignment = this.get('contextSerializer').serializeUpdateContext(assignment);
@@ -98,6 +138,11 @@ export default Ember.Service.extend({
     });
   },
 
+  /**
+   * Normalize a real time event coming from web sockets
+   * @param {Object} reportDataEvent
+   * @returns {Promise}
+   */
   normalizeReportDataEvent: function(reportDataEvent) {
     return this.get('contextSerializer').normalizeReportDataEvent(reportDataEvent);
   }

@@ -26,6 +26,11 @@ export default Ember.Service.extend({
   // -------------------------------------------------------------------------
   // Methods
 
+  /**
+   * Reads a profile by id
+   * @param {String} profileId
+   * @returns {Promise}
+   */
   readProfile: function(profileId) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {

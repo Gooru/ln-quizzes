@@ -40,7 +40,8 @@
 <script type="text/javascript">
   (function () {
     jQuery(document).ready(function () {
-      $('.btn').click(function() {
+      $('.btn').click(function(e) {
+        e.preventDefault();
         var username = $('#username').val();
         var password = $('#password').val();
         $.ajax({
@@ -87,7 +88,7 @@
                  <label for="password">Password:</label>
                  <input type="password" class="form-control" id="password">
                </div>
-               <button type="button" class="btn btn-default">Submit</button>
+               <button type="submit" class="btn btn-default">Submit</button>
              </form>
             </div>
           </div>

@@ -54,15 +54,16 @@
     },
     global: false
   }).done(function() {
-    console.log(token);
+    console.log('All good.');
   }).fail(function() {
-    alert('There was a problem with the credentials. Please login again.');
+    console.log('There was a problem with the credentials. Please login again.');
+    location.href = 'login.html';
   });
 </script>
 
   <div class="demo" style="margin: 20px">
     <h3>Quizzes Demo Page</h3>
-    <a class="login" href="login.html">Login</a>
+    <a class="login" href="login.html">Login or change user</a>
     <div class="panel-body">
      <div class="row">
        <div class="col-md-6 col-sm-6 col-xs-12">

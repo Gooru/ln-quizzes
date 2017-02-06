@@ -27,7 +27,10 @@
       jQuery(document).ready(function () {
         var emberApp = window['QuizzesWebApp'];
         emberApp.start({
-          transition: [ 'reports.context', contextId, {queryParams: {anonymous: anonymous}} ]
+          transition: [ 'reports.context', contextId, {queryParams: {anonymous: anonymous}} ],
+          properties: {
+            token: localStorage.getItem('token')
+          }
         });
       });
     })(); // call anonymous function

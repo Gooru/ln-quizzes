@@ -6,7 +6,7 @@ export default Ember.Object.extend(TokenMixin, {
   /**
    * @property {string} namespace End-point URI
    */
-  namespace: '/quizzes/api/v1/profile',
+  namespace: '/api/nucleus/v1/profiles',
 
   /**
    * Reads a profile by id
@@ -15,16 +15,13 @@ export default Ember.Object.extend(TokenMixin, {
    */
   readProfile: function(profileId) {
     const namespace = this.get('namespace');
-    const url = `${namespace}/${profileId}`;
+    const url = `${namespace}/${profileId}/demographics`;
     const options = {
       type: 'GET',
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
-      headers: Object.assign(this.get('headers'), {
-        'profile-id': 'd940b802-2407-433b-b409-128dad62b590',
-        'lms-id': 'its_learning'
-      })
+      headers: this.get('headers')
     };
     return Ember.$.ajax(url, options);
   }

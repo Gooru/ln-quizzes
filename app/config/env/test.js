@@ -4,7 +4,8 @@
 export default {
   "endpoint" : {
     "url": "http://localhost:7357",
-    "secureUrl": "http://localhost:7357"
+    "secureUrl": "http://localhost:7357",
+    "providerUrl": "http://localhost:7357"
   },
 
   "realTime": {

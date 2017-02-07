@@ -14,22 +14,6 @@ test('addStudent', function(assert) {
     id: 'id',
     assignees:[{id:'profile-id'}]
   });
-  let profile = Ember.Object.create({
-    id: 'id',
-    externalId:'externalId'
-  });
-  component.set('profileService', {
-    readProfile: function(profileId) {
-      return new Ember.RSVP.Promise(function (resolve, reject) {
-        if (!profileId) {
-          reject({status: 500});
-        } else {
-          assert.equal(profileId, 'profile-id', 'id should match');
-          resolve(profile);
-        }
-      });
-    }
-  });
   var done = assert.async();
   component.set('actions.showModal.call', function(component,componentName,model) {
     assert.ok(model.students, 'Missing students');

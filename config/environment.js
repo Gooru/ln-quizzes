@@ -91,6 +91,7 @@ module.exports = function (environment) {
     ENV.isTestEnv = true;
 
     ENV.APP.properties = {
+      token: 'token',
       collection: {
         id: '05d8c6fc-0ac7-4877-8179-7ee71e04dae3',
         title: 'Assessment Embedded Title'
@@ -104,21 +105,21 @@ module.exports = function (environment) {
       },
       students: [
         {
-          externalId: 'student-1',
+          id: 'student-1',
           firstName: 'student-1',
           lastName: 'student-1',
           username: 'student-1',
           email: 'emailstudent-1@gmail.com'
         },
         {
-          externalId: 'student-2',
+          id: 'student-2',
           firstName: 'student-2',
           lastName: 'student-2',
           username: 'student-2',
           email: 'emailstudent-2@gmail.com'
         },
         {
-          externalId: 'student-3',
+          id: 'student-3',
           firstName: 'student-3',
           lastName: 'student-3',
           username: 'student-3',

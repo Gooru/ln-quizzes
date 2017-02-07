@@ -1,7 +1,6 @@
 {
   "firstName": "first-name",
   "id": "profile-id",
-  "externalId":"student-1",
   "lastName": "last-name",
   "username": "username",
   "email": "e@mail.com"

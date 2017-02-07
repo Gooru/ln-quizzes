@@ -14,8 +14,11 @@ export default {
           if (url.startsWith(EndPointsConfig.getRealTimeWebServiceUri()) || url.startsWith(EndPointsConfig.getRealTimeWebSocketUri())) {
             const realTimeUrl = EndPointsConfig.getRealTimeWebServiceUrl();
             settings.url = `${realTimeUrl}${url}`;
-          } else {
+          } if (url.startsWith('/quizzes')) {
             const endpointUrl = EndPointsConfig.getEndpointUrl();
+            settings.url = `${endpointUrl}${url}`;
+          } else {
+            const endpointUrl = EndPointsConfig.getEndpointProviderUrl();
             settings.url = `${endpointUrl}${url}`;
           }
         }

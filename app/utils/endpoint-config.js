@@ -5,6 +5,11 @@ export function getEndpointUrl() {
   return configuration.get("endpoint.url");
 }
 
+export function getEndpointProviderUrl() {
+  const configuration = ConfigurationService.configuration;
+  return configuration.get("endpoint.providerUrl");
+}
+
 export function getEndpointSecureUrl() {
   const configuration = ConfigurationService.configuration;
   return configuration.get("endpoint.secureUrl");

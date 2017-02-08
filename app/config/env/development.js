@@ -4,7 +4,8 @@
 export default {
   "endpoint" : {
     "url": "https://qa.api.quizzes.edify.cr",
-    "secureUrl": "https://qa.api.quizzes.edify.cr"
+    "secureUrl": "https://qa.api.quizzes.edify.cr",
+    "providerUrl": "http://nucleus-qa.gooru.org"
   },
 
   "realTime": {

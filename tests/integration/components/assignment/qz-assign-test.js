@@ -13,19 +13,19 @@ test('Assign Layout', function(assert) {
       username:'amara',
       email:'emailTeacher@gmail.com'
   };
-  var students = [
-    {externalId:'student-1',
-      firstName:'Anaí',
-      lastName:'Arroyo',
-      username:'anaiarroyo',
-      email:'emailstudent-1@gmail.com'
-    },
-    {externalId:'student-2',
-      firstName:'Melany',
-      lastName:'Delgado',
-      username:'melanydelgado',
-      email:'emailstudent-2@gmail.com'
-    }];
+  var students = [{
+    id:'student-1',
+    firstName:'Anaí',
+    lastName:'Arroyo',
+    username:'anaiarroyo',
+    email:'emailstudent-1@gmail.com'
+  },{
+    id:'student-2',
+    firstName:'Melany',
+    lastName:'Delgado',
+    username:'melanydelgado',
+    email:'emailstudent-2@gmail.com'
+  }];
   this.set('teacherConfig',teacher);
   this.set('studentList',students);
   this.render(hbs`{{assignment/qz-assign studentList=studentList teacherConfig=teacherConfig}}`);

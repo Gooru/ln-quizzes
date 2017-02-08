@@ -35,7 +35,6 @@
 <body style="background-color: #ffffff;">
 <script src="assets/vendor.js"></script>
 <script src="assets/quizzes.js"></script>
-<script src="login.js"></script>
 
 <script type="text/javascript">
   (function () {
@@ -46,7 +45,7 @@
         var password = $('#password').val();
         $.ajax({
           type: 'POST',
-          url: 'https://www.gooru.org/api/nucleus-auth/v1/token',
+          url: 'https://nucleus-qa.gooru.org/api/nucleus-auth/v1/token',
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
           processData: false,

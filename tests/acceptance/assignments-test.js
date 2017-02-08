@@ -42,7 +42,8 @@ test('Visiting assignment as teacher', function(assert) {
     });
   });
 });
-//test('Visiting assignment as teacher and sort by title', function(assert) {
+
+// test('Visiting assignment as teacher and sort by title', function(assert) {
 //  visit('/profile/profile-id?isTeacher=true');
 //  andThen(function() {
 //    assert.equal(currentURL(), '/profile/profile-id?isTeacher=true');
@@ -62,7 +63,7 @@ test('Visiting assignment as teacher', function(assert) {
 //      });
 //    });
 //  });
-//});
+// });
 
 test('Visiting assignment as teacher and sort by created date', function(assert) {
   visit('/profile/profile-id?isTeacher=true');

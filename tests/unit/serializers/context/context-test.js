@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 import QuestionResult from 'quizzes/models/result/question';
 import ResourceResult from 'quizzes/models/result/resource';
@@ -54,74 +53,20 @@ test('serializeContext', function(assert) {
     id: 'assignment-id',
     title: 'title',
     description: 'description',
-    isActive: true,
-    dueDate: 12340596,
-    availableDate: 12340596,
-    createdDate: 12340596,
-    modifiedDate: 12340596,
-    learningObjective: 'learning objective',
-    owner: Profile.create({
-      id: 'teacher-id',
-      firstName: 'teacher first name',
-      lastName: 'teacher last name',
-      username: 'usernameT',
-      email:'email@email.com'
-    }),
-    externalCollectionId: 'assessment-id',
-    assignees: Ember.A([
-      Profile.create({
-        id: 'profile-id',
-        firstName: 'user first name',
-        lastName: 'user last name',
-        username: 'username',
-        email:'email@email.com'
-      }),
-      Profile.create({
-        id: 'profile-id1',
-        firstName: 'user first name1',
-        lastName: 'user last name1',
-        username: 'username1',
-        email:'email@email.com'
-      })
-    ])
+    classId: 'class-id',
+    collectionId: 'assessment-id',
+    isCollection: true
   });
   const response = serializer.serializeContext(assignment);
-  const expected ={
-    assignees: [
-      {
-        email: 'email@email.com',
-        firstName: 'user first name',
-        id: 'profile-id',
-        lastName: 'user last name',
-        username: 'username'
-      },
-      {
-        email: 'email@email.com',
-        firstName: 'user first name1',
-        id: 'profile-id1',
-        lastName: 'user last name1',
-        username: 'username1'
-      }
-    ],
+  const expected = {
+    classId: 'class-id',
+    collectionId: 'assessment-id',
+    isCollection: true,
     contextData: {
       metadata: {
         description: 'description',
-        dueDate: 12340596,
-        isActive: true,
-        learningObjective: 'learning objective',
-        startDate: 12340596,
         title: 'title'
       }
-    },
-    createdDate: 12340596,
-    modifiedDate: 12340596,
-    externalCollectionId: 'assessment-id',
-    owner: {
-      email: 'email@email.com',
-      firstName: 'teacher first name',
-      id: 'teacher-id',
-      lastName: 'teacher last name',
-      username: 'usernameT'
     }
   };
   assert.deepEqual(expected, response, 'serializeAssignment wrong response');
@@ -132,101 +77,18 @@ test('serializeUpdateContext', function(assert) {
   const assignment = Context.create({
     title: 'title',
     description: 'description',
-    isActive: true,
-    dueDate: 12340596,
-    availableDate:12340596,
-    createdDate: 12340596,
-    modifiedDate: 12340596,
-    learningObjective: 'learning objective',
-    owner: Profile.create({
-      id:'id',
-      firstName: 'teacher first name',
-      lastName: 'teacher last name',
-      username: 'usernameT',
-      email:'email@email.com'
-    }),
-    externalCollectionId: 'assessment-id',
-    assignees: Ember.A([
-      Profile.create({
-        id:'id',
-        firstName: 'user first name',
-        lastName: 'user last name',
-        username: 'username',
-        email:'email@email.com'
-      }),
-      Profile.create({
-        id:'id',
-        firstName: 'user first name1',
-        lastName: 'user last name1',
-        username: 'username1',
-        email:'email@email.com'
-      })
-    ])
+    collectionId: 'assessment-id'
   });
   const response = serializer.serializeUpdateContext(assignment);
-  const expected ={
-    assignees: [{
-      id: 'id',
-      firstName: 'user first name',
-      lastName: 'user last name',
-      username: 'username',
-      email:'email@email.com'
-    }, {
-      id: 'id',
-      firstName: 'user first name1',
-      lastName: 'user last name1',
-      username: 'username1',
-      email:'email@email.com'
-    }],
+  const expected = {
     contextData: {
       metadata: {
         title: 'title',
-        description: 'description',
-        isActive: true,
-        dueDate: 12340596,
-        startDate: 12340596,
-        learningObjective: 'learning objective'
+        description: 'description'
       }
-    },
-    createdDate: 12340596,
-    modifiedDate: 12340596
+    }
   };
   assert.deepEqual(expected, response, 'Serialize update assignment wrong response');
-});
-
-test('serializeAssigneesList ', function(assert) {
-  const serializer = this.subject();
-  const profileList = Ember.A([
-    Profile.create({
-      id:'id',
-      firstName: 'user first name',
-      lastName: 'user last name',
-      username: 'username',
-      email:'email@email.com'
-    }),
-    Profile.create({
-      id:'id',
-      firstName: 'user first name1',
-      lastName: 'user last name1',
-      username: 'username1',
-      email:'email@email.com'
-    })
-  ]);
-  const response = serializer.serializeAssigneesList(profileList);
-  const expected = [{
-    id: 'id',
-    firstName: 'user first name',
-    lastName: 'user last name',
-    username: 'username',
-    email:'email@email.com'
-  }, {
-    id: 'id',
-    firstName: 'user first name1',
-    lastName: 'user last name1',
-    username: 'username1',
-    email:'email@email.com'
-  }];
-  assert.deepEqual(expected, response, 'serializeAssigneesList wrong response');
 });
 
 test('normalizeContextResult', function(assert) {
@@ -264,110 +126,33 @@ test('normalizeContextResult', function(assert) {
   assert.equal(response.get('resourceResults')[1].get('savedTime'), 20000, 'Wrong second time spent');
 });
 
-test('normalizeAssigneesList', function(assert) {
-  const serializer = this.subject();
-  const payload = [{
-    id: 'id-1',
-    firstName: 'firstname1',
-    lastName: 'lastname1',
-    username: 'username1',
-    email:'email@email.com'
-  }, {
-    id: 'id-2',
-    firstName: 'firstname2',
-    lastName: 'lastname2',
-    username: 'username2',
-    email:'email@email.com'
-  }];
-  const response = serializer.normalizeAssigneesList(payload);
-  assert.equal(response[0].get('id'), 'id-1', 'Wrong context id value');
-  assert.equal(response[0].get('firstName'), 'firstname1', 'Wrong first name value');
-  assert.equal(response[0].get('lastName'), 'lastname1', 'Wrong last name value');
-  assert.equal(response[0].get('username'), 'username1', 'Wrong username value');
-});
-
 test('normalizeReadContext', function(assert) {
   const serializer = this.subject();
   const payload = {
     id: 'assignment-id',
-    assignees: [{
-      id: 'profile-id',
-      firstName: 'user first name',
-      lastName: 'user last name',
-      username: 'username',
-      email:'email@email.com'
-    }, {
-      id: 'profile-id1',
-      firstName: 'user first name1',
-      lastName: 'user last name1',
-      username: 'username1',
-      email:'email@email.com'
-    }],
     contextData: {
       metadata: {
         title: 'title',
         description: 'description',
-        isActive: true,
-        dueDate: 12340596,
-        startDate: 12340596,
-        learningObjective: 'learning objective'
+        isActive: true
       }
     },
-    createdDate: 12340596,
-    modifiedDate: 12340596,
-    collection: {
-      id: 'collection-id'
-    },
-    externalCollectionId: 'assessment-id',
-    owner: {
-      firstName: 'ownerFirstname',
-      id: 'owner-id',
-      lastName:'ownerLastname',
-      username: 'ownerUsername',
-      email:'email@email.com'
-    }
+    collectionId: 'assessment-id'
   };
   const response = serializer.normalizeReadContext(payload);
   assert.equal(response.get('title'), 'title', 'Wrong title value');
   assert.equal(response.get('description'), 'description', 'Wrong description value');
   assert.equal(response.get('isActive'), true , 'Wrong isActive value');
-  assert.equal(response.get('dueDate'), 12340596, 'Wrong dueDate value');
-  assert.equal(response.get('availableDate'), 12340596, 'Wrong dueDate value');
-  assert.equal(response.get('createdDate'), 12340596, 'Wrong createdDate value');
-  assert.equal(response.get('modifiedDate'), 12340596, 'Wrong modifiedDate value');
-  assert.equal(response.get('learningObjective'), 'learning objective', 'Wrong learningObjective value');
-  assert.equal(response.get('externalCollectionId'), 'assessment-id', 'Wrong collectionId value');
-  assert.equal(response.get('owner.firstName'), 'ownerFirstname', 'Wrong owner fist name value');
-  assert.equal(response.get('owner.id'), 'owner-id', 'Wrong owner id value');
-  assert.equal(response.get('owner.lastName'), 'ownerLastname', 'Wrong last name value');
-  assert.equal(response.get('owner.username'), 'ownerUsername', 'Wrong username value');
-  assert.equal(response.get('collection.id'), 'collection-id', 'Wrong username value');
+  assert.equal(response.get('collectionId'), 'assessment-id', 'Wrong collectionId value');
 });
 
 test('normalizeReadContexts', function(assert) {
   const serializer = this.subject();
   const payload = [{
-    assignees: [{
-      id: 'profile-id',
-      firstName: 'user first name',
-      lastName: 'user last name',
-      username: 'username',
-      email:'email@email.com'
-    }, {
-      id: 'profile-id1',
-      firstName: 'user first name1',
-      lastName: 'user last name1',
-      username: 'username1',
-      email:'email@email.com'
-    }],
     contextData: {
       metadata: {
         title: 'title',
-        description: 'description',
-        isActive: true,
-        dueDate: 12340596,
-        startDate: 12340596,
-        learningObjective: 'learning objective'
+        description: 'description'
       }
     },
     createdDate: 12340596,
@@ -375,25 +160,12 @@ test('normalizeReadContexts', function(assert) {
     collection: {
       id: 'collection-id'
     },
-    externalCollectionId: 'assessment-id',
-    owner: {
-      firstName: 'ownerFirstname',
-      id: 'owner-id',
-      lastName:'ownerLastname',
-      username: 'ownerUsername',
-      email:'email@email.com'
-    }
+    collectionId: 'assessment-id'
   }];
   const response = serializer.normalizeReadContexts(payload);
   assert.equal(response.length, 1, 'The array should have 1 context');
   assert.equal(response[0].get('title'), 'title', 'Wrong title value');
   assert.equal(response[0].get('description'), 'description', 'Wrong description value');
-  assert.equal(response[0].get('isActive'), true , 'Wrong isActive value');
-  assert.equal(response[0].get('dueDate'), 12340596, 'Wrong dueDate value');
-  assert.equal(response[0].get('availableDate'), 12340596, 'Wrong dueDate value');
-  assert.equal(response[0].get('createdDate'), 12340596, 'Wrong createdDate value');
-  assert.equal(response[0].get('modifiedDate'), 12340596, 'Wrong modifiedDate value');
-  assert.equal(response[0].get('learningObjective'), 'learning objective', 'Wrong learningObjective value');
 });
 
 test('normalizeResourceResults', function(assert) {

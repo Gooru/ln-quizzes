@@ -2,7 +2,7 @@
   {
     "description": "Sends event to start the Collection attempt associated to the context",
     "request": {
-      "url": "^/quizzes/api/v1/context/(.)+/event/start$",
+      "url": "^/quizzes/api/v1/contexts/(.)+/event/start$",
       "method": "POST"
     },
     "response": {
@@ -17,7 +17,7 @@
   {
     "description": "Sends event to indicate current resource position and provides the data generated in the previous resource",
     "request": {
-      "url": "^/quizzes/api/v1/context/(.)+/event/on-resource/(.)+$",
+      "url": "^/quizzes/api/v1/contexts/(.)+/event/on-resource/(.)+$",
       "method": "POST"
     },
     "response": {
@@ -31,7 +31,7 @@
   {
     "description": "Gets events associated to the context",
     "request": {
-      "url": "^/quizzes/api/v1/context/(.)+/events$",
+      "url": "^/quizzes/api/v1/contexts/(.)+/events$",
       "method": "GET"
     },
     "response": {
@@ -76,7 +76,7 @@
   {
     "description": "Create context",
     "request": {
-      "url": "^/quizzes/api/v1/context",
+      "url": "^/quizzes/api/v1/contexts",
       "method": "POST"
     },
     "response": {
@@ -91,7 +91,7 @@
   {
     "description": "Update context",
     "request": {
-      "url": "^/quizzes/api/v1/context/(.)+",
+      "url": "^/quizzes/api/v1/contexts/(.)+",
       "method": "PUT"
     },
     "response": {

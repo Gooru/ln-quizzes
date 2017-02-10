@@ -128,43 +128,48 @@ test('normalizeContextResult', function(assert) {
 test('normalizeReadContext', function(assert) {
   const serializer = this.subject();
   const payload = {
-    id: 'assignment-id',
-    contextData: {
-      metadata: {
-        title: 'title',
-        description: 'description',
-        isActive: true
-      }
-    },
-    collectionId: 'assessment-id'
-  };
-  const response = serializer.normalizeReadContext(payload);
-  assert.equal(response.get('title'), 'title', 'Wrong title value');
-  assert.equal(response.get('description'), 'description', 'Wrong description value');
-  assert.equal(response.get('isActive'), true , 'Wrong isActive value');
-  assert.equal(response.get('collectionId'), 'assessment-id', 'Wrong collectionId value');
-});
-
-test('normalizeReadContexts', function(assert) {
-  const serializer = this.subject();
-  const payload = [{
+    contextId: 'assignment-id',
+    classId: 'class-id',
     contextData: {
       metadata: {
         title: 'title',
         description: 'description'
       }
     },
-    createdDate: 12340596,
-    modifiedDate: 12340596,
-    collection: {
-      id: 'collection-id'
+    collectionId: 'assessment-id',
+    isCollection: true
+  };
+  const response = serializer.normalizeReadContext(payload);
+  assert.equal(response.get('id'), 'assignment-id', 'Wrong context id');
+  assert.equal(response.get('title'), 'title', 'Wrong title value');
+  assert.equal(response.get('description'), 'description', 'Wrong description value');
+  assert.equal(response.get('classId'), 'class-id', 'Wrong class id value');
+  assert.equal(response.get('isCollection'), true, 'Wrong isCollection value');
+  assert.equal(response.get('collectionId'), 'assessment-id', 'Wrong collectionId value');
+});
+
+test('normalizeReadContexts', function(assert) {
+  const serializer = this.subject();
+  const payload = [{
+    contextId: 'assignment-id',
+    classId: 'class-id',
+    contextData: {
+      metadata: {
+        title: 'title',
+        description: 'description'
+      }
     },
-    collectionId: 'assessment-id'
+    collectionId: 'assessment-id',
+    isCollection: true
   }];
   const response = serializer.normalizeReadContexts(payload);
   assert.equal(response.length, 1, 'The array should have 1 context');
+  assert.equal(response[0].get('id'), 'assignment-id', 'Wrong context id');
   assert.equal(response[0].get('title'), 'title', 'Wrong title value');
   assert.equal(response[0].get('description'), 'description', 'Wrong description value');
+  assert.equal(response[0].get('classId'), 'class-id', 'Wrong class id value');
+  assert.equal(response[0].get('isCollection'), true, 'Wrong isCollection value');
+  assert.equal(response[0].get('collectionId'), 'assessment-id', 'Wrong collectionId value');
 });
 
 test('normalizeResourceResults', function(assert) {

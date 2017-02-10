@@ -4,7 +4,6 @@ import ReportData from 'quizzes/models/result/report-data';
 import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import QuestionResult from 'quizzes/models/result/question';
 import Context from 'quizzes/models/context/context';
-import Profile from 'quizzes/models/profile/profile';
 
 export default Ember.Object.extend({
 
@@ -29,24 +28,13 @@ export default Ember.Object.extend({
    */
   normalizeReadContext: function(payload) {
     return Context.create({
-      id: payload.id,
+      id: payload.contextId,
       title: payload.contextData.metadata.title,
       description: payload.contextData.metadata.description,
-      isActive: payload.contextData.metadata.isActive,
-      dueDate: payload.contextData.metadata.dueDate,
-      availableDate: payload.contextData.metadata.startDate,
-      createdDate: payload.createdDate,
-      modifiedDate: payload.modifiedDate,
-      learningObjective: payload.contextData.metadata.learningObjective,
-      externalCollectionId: payload.externalCollectionId,
-      owner: payload.owner ? Profile.create({
-          id: payload.owner.id,
-          firstName: payload.owner.firstName,
-          lastName: payload.owner.lastName ,
-          username: payload.owner.username,
-          email:payload.owner.email
-        }) : null,
-      collectionId: payload.collectionId
+      classId: payload.classId,
+      collectionId: payload.collectionId,
+      isCollection: payload.isCollection,
+      profileId: payload.profileId
     });
   },
 

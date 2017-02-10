@@ -58,15 +58,6 @@ const Validations = buildValidations({
         property:'availableDate'
       })
     ]
-  },
-  assignees:{
-    validators: [
-      validator('presence', {
-        presence: true,
-        message: '{{description}}',
-        descriptionKey: 'common.errors.assignees-error'
-      })
-    ]
   }
 });
 
@@ -136,15 +127,6 @@ const Context = Ember.Object.extend(Validations,{
    * @property  {number}
    */
   dueTime: null,
-
-  /**
-   * @property {[Profile]}
-   */
-  assignees:[],
-  /**
-   * @property {number}
-   */
-  totalStudents:Ember.computed.alias('assignees.length'),
   /**
    * @property {Profile}
    */

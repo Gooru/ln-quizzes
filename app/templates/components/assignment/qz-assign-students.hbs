@@ -1,89 +1,33 @@
-<ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active assessment-settings tab">
-        <a href="#assessmentSettings" aria-controls="assessmentSettings" role="tab" data-toggle="tab" {{action 'selectOption' 'assessmentSettings'}}>
-            <span class="lead">{{t 'assign-students.assessment-settings'}}</span>
-        </a>
-    </li>
-    <li role="presentation" class="student-roster tab">
-        <a href="#studentRoster" aria-controls="studentRoster" role="tab" data-toggle="tab" {{action 'selectOption' 'studentRoster'}}>
-            <span class="lead">{{t 'assign-students.students-roster'}}</span>
-        </a>
-    </li>
-</ul>
-<div class="content tab-content">
-    <div role="tabpanel" class="tab-pane row {{if showAssessmentSetting 'active'}}" id="assessments-settings">
-        <div class="row">
-            <div class="assessment-settings col-md-12 col-sm-12">
-              {{assignment.qz-assessment-settings}}
-            </div>
-        </div>
+<form {{action "createAssignment" on="submit"}}>
+    <div class="form-group">
+        <label for="class-id">Class ID:</label>
+      {{validation.gru-input class="form-control" id="class-id" model=assignment valuePath='classId'}}
     </div>
-    <div role="tabpanel" class="tab-pane row {{if showStudentRoster 'active'}}" id="students-roster">
-        <h5>{{t 'assign-students.title' title=assignment.title}}</h5>
-        <div class="row">
-            <div class="students col-md-6 col-sm-6 col-xs-12">
-                <div class="students-header">
-                    <span>{{t 'assign-students.select-students'}}</span>
-                    <div class="search-navigation">
-                        <div class="search-keyword">
-                           <span class="search-icon">
-                             {{gru-icon name='search'}}
-                           </span>
-                            <input type="text" class="search-box" placeholder={{t 'assign-students.search-by-name'}}/>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default list-container">
-                    <div class="panel panel-default select-all {{if areAllSelected 'selected'}}" {{action 'selectAll'}}>
-                        <div class="panel-body">
-                            <span>{{t 'assign-students.select-all' count=students.length}}</span>
-                        </div>
-                    </div>
-                    {{#if assigneesError}}
-                      <span class="error-assignees-empty">{{assigneesError}}</span>
-                    {{/if}}
-                    <div class="student-list list-group live-search-list">
-                      {{#each students as |student| }}
-                        {{#if student.isAssigned}}
-                            <a class="list-group-item">
-                              {{student.lastName}}, {{student.firstName}}
-                              {{gru-icon name='done'}}
-                            </a>
-                          {{else}}
-                            <a class="list-group-item {{if student.isSelected 'selected'}}" {{action 'selectStudent' student}}>
-                              {{student.lastName}}, {{student.firstName}}
-                              {{#if student.isSelected}}
-                                {{gru-icon name='done'}}
-                              {{/if}}
-                            </a>
-                          {{/if}}
-                      {{/each}}
-                    </div>
-                </div>
-                <span class="selected-count">{{t 'assign-students.selected-count' selected=totalSelected total=students.length}}</span>
-            </div>
-            <div class="date-options col-md-6 col-sm-6 col-xs-12">
-                <div class="available-from">
-                    <span>{{t 'assign-students.available-from'}}</span>
-                    <div class="panel panel-default">
-                        {{gru-timestamp-input model=assignment rawDateValue=assignment.availableDay rawTimeValue=assignment.availableTime valuePath='availableDate' setActualDate=true  datePath='availableDay'  timePath='availableTime'}}
-                    </div>
-                </div>
-                <div class="due-date">
-                    <span>{{t 'assign-students.due-date'}}</span>
-                    <div class="panel panel-default">
-                      {{gru-timestamp-input model=assignment rawDateValue=assignment.dueDay rawTimeValue=assignment.dueTime valuePath='dueDate' datePath='dueDay'  timePath='dueTime'}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="actions pull-right">
-                    <button class="btn btn-default cancel-btn" {{action 'cancel'}}>{{t 'common.cancel'}}</button>
-                    <button class="btn btn-default btn-primary assign-btn" {{action 'assignStudents'}}>{{t 'common.assign'}}</button>
-                </div>
-            </div>
-        </div>
+    <div class="form-group">
+        <label for="collection-id">Collection ID:</label>
+      {{validation.gru-input class="form-control" id="collection-id" model=assignment valuePath='collectionId'}}
     </div>
-</div>
+    <div class="form-group">
+        <label for="title">Title:</label>
+      {{validation.gru-input class="form-control" id="title" model=assignment valuePath='title'}}
+    </div>
+  <div class="form-group">
+    {{
+    validation.gru-radio
+    model=assignment
+    groupValue=assignment.isCollection
+    valuePath=value
+    name='isCollection'
+    translationPath='common.collection'
+    }}
+    {{
+    validation.gru-radio
+    model=assignment
+    groupValue=assignment.isCollection
+    valuePath=value
+    name='isCollection'
+    translationPath='common.assessment'
+    }}
+  </div>
+    <button type="submit" class="btn btn-info">Submit</button>
+</form>

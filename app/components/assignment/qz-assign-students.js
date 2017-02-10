@@ -101,13 +101,11 @@ export default Ember.Component.extend({
   init() {
     this._super(...arguments);
     let context = Context.create(Ember.getOwner(this).ownerInjection(),{});
-    let assignedStudents = this.get('students').filterBy('isAssigned',true);
     if(!this.get('assignment.id')){
        context.setProperties({
         title:this.get('collection.title'),
         externalCollectionId:this.get('collection.id'),
-        owner:this.get('owner'),
-        assignees:assignedStudents
+        owner:this.get('owner')
       });
     }else{
       context = Context.create(Ember.getOwner(this).ownerInjection(),this.get('assignment'));
@@ -118,13 +116,13 @@ export default Ember.Component.extend({
    * DidInsertElement ember event
    */
   didInsertElement: function() {
-    const component = this;
-    $('.live-search-list a').each(function(){
-      $(this).attr('data-search-term', $(this).text().toLowerCase());
-    });
-    $('.search-box').on('keyup', function(){
-      component.searchStudent();
-    });
+    //const component = this;
+    //$('.live-search-list a').each(function(){
+    //  $(this).attr('data-search-term', $(this).text().toLowerCase());
+    //});
+    //$('.search-box').on('keyup', function(){
+    //  component.searchStudent();
+    //});
   },
 
   // -------------------------------------------------------------------------

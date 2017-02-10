@@ -14,7 +14,7 @@ test('createContext', function(assert) {
   const adapter = this.subject();
 
   const routes = function() {
-    this.post('/quizzes/api/v1/context', function() {
+    this.post('/quizzes/api/v1/contexts', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({id:'77d0c04b-b71a-485b-9573-9101cc288a0f'})];
     }, false);
   };
@@ -92,7 +92,7 @@ test('getReportData', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';
   const routes = function() {
-    this.get('/quizzes/api/v1/context/context-id/events', function() {
+    this.get('/quizzes/api/v1/contexts/context-id/events', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };
@@ -113,7 +113,7 @@ test('moveToResource', function(assert) {
   };
   const expectedResponse = {};
   const routes = function() {
-    this.post('/quizzes/api/v1/context/context-id/event/on-resource/resource-id', function(request) {
+    this.post('/quizzes/api/v1/contexts/context-id/event/on-resource/resource-id', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
       assert.deepEqual(requestBodyJson.previousResource, expectedPreviousResource, 'Wrong previous resource');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify(expectedResponse)];
@@ -138,7 +138,7 @@ test('moveToResource no resource', function(assert) {
   };
   const expectedResponse = {};
   const routes = function() {
-    this.post('/quizzes/api/v1/context/context-id/event/on-resource/id', function(request) {
+    this.post('/quizzes/api/v1/contexts/context-id/event/on-resource/id', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
       assert.deepEqual(requestBodyJson.previousResource, expectedPreviousResource, 'Wrong previous resource');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify(expectedResponse)];
@@ -159,7 +159,7 @@ test('moveToResource no previous resource', function(assert) {
   const expectedPreviousResource = null;
   const expectedResponse = {};
   const routes = function() {
-    this.post('/quizzes/api/v1/context/context-id/event/on-resource/resource-id', function(request) {
+    this.post('/quizzes/api/v1/contexts/context-id/event/on-resource/resource-id', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
       assert.notOk(requestBodyJson.previousResource, 'Wrong previous resource');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify(expectedResponse)];
@@ -177,7 +177,7 @@ test('sendStartContextEvent', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';
   const routes = function() {
-    this.post('/quizzes/api/v1/context/context-id/event/start', function() {
+    this.post('/quizzes/api/v1/contexts/context-id/event/start', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };
@@ -193,7 +193,7 @@ test('sendFinishContextEvent', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';
   const routes = function() {
-    this.post('/quizzes/api/v1/context/context-id/event/finish', function() {
+    this.post('/quizzes/api/v1/contexts/context-id/event/finish', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };
@@ -209,7 +209,7 @@ test('updateContext', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';
   const routes = function() {
-    this.put('/quizzes/api/v1/context/context-id', function() {
+    this.put('/quizzes/api/v1/contexts/context-id', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };

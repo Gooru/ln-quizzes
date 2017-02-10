@@ -6,12 +6,7 @@ export default Ember.Object.extend(TokenMixin,  {
   /**
    * @property {Object} namespace base url for context endpoints
    */
-  namespace: '/quizzes/api/v1/context',
-
-  /**
-   * @property {Object} namespaceCollection base url for context collection endpoints
-   */
-  namespaceCollection: '/quizzes/api/v1/contexts',
+  namespace: '/quizzes/api/v1/contexts',
 
   /**
    * Creates a context
@@ -40,7 +35,7 @@ export default Ember.Object.extend(TokenMixin,  {
    * @returns {Promise}
    */
   getContextsAssigned: function() {
-    const namespace = this.get('namespaceCollection');
+    const namespace = this.get('namespace');
     const options = {
       type: 'GET',
       contentType: 'application/json; charset=utf-8',
@@ -60,7 +55,7 @@ export default Ember.Object.extend(TokenMixin,  {
    * @returns {Promise}
    */
   getContextsCreated: function() {
-    const namespace = this.get('namespaceCollection');
+    const namespace = this.get('namespace');
     const options = {
       type: 'GET',
       contentType: 'application/json; charset=utf-8',

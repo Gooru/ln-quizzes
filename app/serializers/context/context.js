@@ -1,36 +1,12 @@
 import Ember from 'ember';
-import ProfileSerializer from 'quizzes/serializers/profile/profile';
 import ContextResult from 'quizzes/models/result/context';
 import ReportData from 'quizzes/models/result/report-data';
 import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import QuestionResult from 'quizzes/models/result/question';
 import Context from 'quizzes/models/context/context';
 import Profile from 'quizzes/models/profile/profile';
-import Collection from 'quizzes/models/collection/collection';
 
 export default Ember.Object.extend({
-
-  /**
-   * @property {ProfileSerializer} resourceSerializer
-   */
-  profileSerializer: null,
-
-  init: function () {
-    this._super(...arguments);
-    this.set('profileSerializer', ProfileSerializer.create(Ember.getOwner(this).ownerInjection()));
-  },
-
-  /**
-   * Normalizes assignees list
-   * @param {*[]} payload
-   * @returns {ResourceResult[]}
-   */
-  normalizeAssigneesList: function (payload) {
-    payload = payload || [];
-    return payload.map(
-      assignee => this.get('profileSerializer').normalizeProfile(assignee)
-    );
-  },
 
   /**
    * Normalizes a ContextResult
@@ -52,9 +28,7 @@ export default Ember.Object.extend({
    ** @param {*[]} payload
    */
   normalizeReadContext: function(payload) {
-    const serializer = this;
-    let serializedAssignment = Context.create({
-      assignees: payload.assignees ? serializer.normalizeAssigneesList(payload.assignees) : [],
+    return Context.create({
       id: payload.id,
       title: payload.contextData.metadata.title,
       description: payload.contextData.metadata.description,
@@ -72,11 +46,8 @@ export default Ember.Object.extend({
           username: payload.owner.username,
           email:payload.owner.email
         }) : null,
-      collection:Collection.create({
-        id: payload.collection.id
-      })
+      collectionId: payload.collectionId
     });
-    return serializedAssignment;
   },
 
   /**
@@ -158,44 +129,15 @@ export default Ember.Object.extend({
   },
 
   /**
-   * Serializes an assigneesList
-   * @param {[Profile]} assigneesList
-   ** @param {*[]} payload
-   */
-  serializeAssigneesList: function(assigneesList) {
-    let serializedAssigneesList = assigneesList.map(profile => {
-      return {
-        id: profile.get('id'),
-        firstName: profile.get('firstName'),
-        lastName: profile.get('lastName'),
-        username: profile.get('username'),
-        email:profile.get('email')
-      };
-    });
-    return serializedAssigneesList;
-  },
-
-  /**
    * Serializes an assignment
    * @param {Assignment} assignment
    ** @return {*[]} payload
    */
   serializeContext: function(assignment) {
     let serializedAssignment = this.serializeUpdateContext(assignment);
-    serializedAssignment.externalCollectionId = assignment.get('externalCollectionId');
-    serializedAssignment.owner = assignment.get('owner') ? {
-      firstName: assignment.get('owner.firstName'),
-      id: assignment.get('owner.id'),
-      lastName: assignment.get('owner.lastName'),
-      username: assignment.get('owner.username'),
-      email: assignment.get('owner.email')
-    } : {
-      firstName: '',
-      id: '',
-      lastName: '',
-      username: '',
-      email: ''
-    };
+    serializedAssignment.collectionId = assignment.get('collectionId');
+    serializedAssignment.classId = assignment.get('classId');
+    serializedAssignment.isCollection = assignment.get('isCollection');
     return serializedAssignment;
   },
 
@@ -225,24 +167,14 @@ export default Ember.Object.extend({
    ** @return {*[]} payload
    */
   serializeUpdateContext: function(assignment) {
-    let serializedAssignment;
-    const serializer = this;
-    serializedAssignment = {
-      assignees: assignment.get('assignees') ? serializer.serializeAssigneesList(assignment.get('assignees')): [],
+    return {
       contextData: {
         metadata: {
           title: assignment.get('title'),
-          description: assignment.get('description'),
-          isActive: assignment.get('isActive'),
-          dueDate: assignment.get('dueDate') || null,
-          startDate:assignment.get('availableDate') || null,
-          learningObjective: assignment.get('learningObjective')
+          description: assignment.get('description')
         }
-      },
-      createdDate: assignment.get('createdDate'),
-      modifiedDate: assignment.get('modifiedDate')
+      }
     };
-    return serializedAssignment;
   }
 
 });

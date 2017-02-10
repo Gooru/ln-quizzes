@@ -1,7 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 import QuestionResult from 'quizzes/models/result/question';
 import ResourceResult from 'quizzes/models/result/resource';
-import Profile from 'quizzes/models/profile/profile';
 import Context from 'quizzes/models/context/context';
 
 moduleFor('serializer:context/context', 'Unit | Serializer | context/context');

@@ -5,7 +5,6 @@ import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import QuestionResult from 'quizzes/models/result/question';
 import Context from 'quizzes/models/context/context';
 import Profile from 'quizzes/models/profile/profile';
-import Collection from 'quizzes/models/collection/collection';
 
 export default Ember.Object.extend({
 

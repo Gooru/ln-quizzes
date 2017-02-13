@@ -155,7 +155,6 @@ export default Ember.Route.extend({
     const model = Error.create({
       type: 'url',
       timestamp: new Date().getTime(),
-      userId: 'anonymous',
       details: {
         route: route.get('router.url'),
         userAgent: navigator.userAgent,
@@ -190,7 +189,6 @@ export default Ember.Route.extend({
     const model = Error.create({
       type: 'page',
       timestamp: new Date().getTime(),
-      userId: 'anonymous',
       details: {
         route: route.get('router.url'),
         userAgent: navigator.userAgent,

@@ -146,10 +146,12 @@ export default Ember.Controller.extend({
        webSocketClient.subscribe(`/topic/${channel}`, function (message) {
          let eventMessage = JSON.parse(message.body);
          let profilePromise = Ember.RSVP.resolve();
-         if(eventMessage.eventName === CONTEXT_EVENT_TYPES.START){
-           profilePromise = controller.get('profileService').readProfile(eventMessage.profileId);
+         let profileId = eventMessage.profileId;
+         if(eventMessage.eventName === CONTEXT_EVENT_TYPES.START) {
+           profilePromise = controller.get('profileService').readProfiles([ profileId ]);
          }
-         profilePromise.then(profile => {
+         profilePromise.then(profiles => {
+           let profile = profiles ? profiles[profileId] : null;
            if(profile) {
              eventMessage.profileName = profile.get('fullName');
            }

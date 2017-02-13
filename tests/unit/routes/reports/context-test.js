@@ -13,44 +13,37 @@ moduleFor('route:reports/context', 'Unit | Route | reports/context', {
 test('model', function(assert) {
   let route = this.subject();
   route.set('contextService', {
-    getReportData: function() {
-      return new Ember.RSVP.resolve(
-        ReportData.create({
-          id: 'context-id',
-          collection: {
-            id: 'collection-id'
-          },
-          reportEvents: [{
-            profileId: 'profile1'
-          }, {
-            profileId: 'profile2'
-          }]
-        })
-      );
-    }
+    getReportData: () => new Ember.RSVP.resolve(
+      ReportData.create({
+        id: 'context-id',
+        collectionId: 'collection-id',
+        reportEvents: [{
+          profileId: 'profile1'
+        }, {
+          profileId: 'profile2'
+        }]
+      })
+    )
   });
   route.set('collectionService', {
-    readCollection: function() {
-      return new Ember.RSVP.resolve({
-        id: 'collection-id'
-      });
-    }
+    readCollection: () => new Ember.RSVP.resolve({
+      id: 'collection-id'
+    })
   });
   route.set('profileService', {
-    readProfile: function(profileId) {
-      return new Ember.RSVP.resolve({
-        id: profileId
-      });
-    }
+    readProfiles: () => new Ember.RSVP.resolve('profiles')
   });
+
+  let expectedCollection = {
+    id: 'collection-id'
+  };
   let done = assert.async();
-  route.model({ contextId: 'context-id'}).then(function(hash){
+  route.model({ contextId: 'context-id' }).then(function(hash) {
     assert.ok(hash.reportData, 'Report data is added to the model');
     assert.ok(hash.collection, 'Collection is added to the model');
     assert.ok(hash.profiles, 'Profiles object is added to the model');
-    assert.equal(hash.collection.id, 'collection-id', 'Collection id should match');
-    assert.equal(hash.profiles.profile1.id, 'profile1', 'Profile 1 id should match');
-    assert.equal(hash.profiles.profile2.id, 'profile2', 'Profile 2 id should match');
+    assert.deepEqual(hash.collection, expectedCollection, 'Collection should match');
+    assert.equal(hash.profiles, 'profiles', 'Profiles object should match');
     done();
   });
 });
@@ -88,9 +81,7 @@ test('setupController', function(assert) {
   };
   route.setupController(controller, model);
   assert.deepEqual(model.reportData.reportEvents[0].profileName, 'first-name1 last-name1', 'Profile 1 name should match');
-  //assert.deepEqual(model.reportData.reportEvents[0].profileCode, 'code1', 'Profile 1 code should match');
   assert.deepEqual(model.reportData.reportEvents[1].profileName, 'first-name2 last-name2', 'Profile 2 name should match');
-  //assert.deepEqual(model.reportData.reportEvents[0].profileCode, 'code2', 'Profile 2 code should match');
   assert.deepEqual(model.reportData.collection, model.collection, 'Report data collection should be set');
   assert.deepEqual(controller.reportData, model.reportData, 'Report data should be set in the controller');
 });

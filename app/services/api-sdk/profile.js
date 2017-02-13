@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import ProfileSerializer from 'quizzes/serializers/profile/profile';
 import ProfileAdapter from 'quizzes/adapters/profile/profile';
+import { arrayIntoChunks } from 'quizzes/utils/utils';
 
 export default Ember.Service.extend({
 
@@ -28,15 +29,20 @@ export default Ember.Service.extend({
 
   /**
    * Reads a profile by id
-   * @param {String} profileId
+   * @param {String[]} profileIds
+   * @param {Number} chunkSize number of profiles to read at once
    * @returns {Promise}
    */
-  readProfile: function(profileId) {
+  readProfiles: function(profileIds, chunkSize=50) {
     const service = this;
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('profileAdapter').readProfile(profileId)
-        .then(response => service.get('profileSerializer').normalizeProfile(response))
-        .then(resolve, reject);
-    });
+    // the profiles endpoint only accepts 50 ids at the same time
+    const chunks = arrayIntoChunks(profileIds, chunkSize).map(
+      ids => service.get('profileAdapter').readProfiles(ids).then(
+        response => service.get('profileSerializer').normalizeProfiles(response))
+    );
+    return new Ember.RSVP.Promise((resolve, reject) =>
+      Ember.RSVP.all(chunks).then(responses => Object.assign(...responses))
+        .then(resolve, reject)
+    );
   }
 });

@@ -62,15 +62,9 @@ export default Ember.Route.extend({
         anonymous,
         reportData,
         collection: route.get('collectionService').readCollection(reportData.collectionId),
-        profiles: Ember.RSVP.hash(
-          reportData.get('reportEvents').reduce(
-            (profiles, reportEvent) => {
-              let profileId = reportEvent.profileId;
-              if(!(profileId in profiles)) {
-                profiles[profileId] = route.get('profileService').readProfile(profileId);
-              }
-              return profiles;
-            }, {}))
+        profiles: route.get('profileService').readProfiles(
+          reportData.get('reportEvents').map(reportEvent => reportEvent.profileId)
+        )
       })
     );
   },

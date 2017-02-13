@@ -389,3 +389,14 @@ export function removeHtmlTags(text){
 
   return newText;
 }
+
+/**
+ * Split an array into chunks
+ */
+export function arrayIntoChunks(arr, chunkSize) {
+  var chunks = [], i;
+  for (i = 0; i < arr.length; i += chunkSize) {
+    chunks.push(arr.slice(i, i + chunkSize));
+  }
+  return chunks;
+}

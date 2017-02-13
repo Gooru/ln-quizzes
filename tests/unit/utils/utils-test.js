@@ -16,8 +16,9 @@ import {
   generateUUID,
   cleanFilename,
   getFileNameFromInvalidUrl,
-  replaceMathExpression
-  } from 'quizzes/utils/utils';
+  replaceMathExpression,
+  arrayIntoChunks
+} from 'quizzes/utils/utils';
 
 import { module, test } from 'qunit';
 
@@ -43,8 +44,8 @@ test('checkStandards', function (assert) {
 
   checkStandards(standards, checkableStandards, codes);
 
-  assert.equal(standards[0].get("disabled"), false);
-  assert.equal(standards[1].get("disabled"), true);
+  assert.equal(standards[0].get('disabled'), false);
+  assert.equal(standards[1].get('disabled'), true);
 
 });
 
@@ -89,10 +90,10 @@ test('formatDate', function (assert) {
   date.setMinutes(15);
   date.setHours(11);
   //trying default format
-  assert.equal(formatDate(date), 'Saturday, February 20th, 2010 11:15 AM', "Wrong date format");
+  assert.equal(formatDate(date), 'Saturday, February 20th, 2010 11:15 AM', 'Wrong date format');
 
   //trying custom format
-  assert.equal('Feb 20th 10', formatDate(date, "MMM Do YY"));
+  assert.equal('Feb 20th 10', formatDate(date, 'MMM Do YY'));
 });
 
 test('formatTime', function (assert) {
@@ -202,8 +203,8 @@ test('Clean filename', function (assert) {
 });
 
 test('Get File Name from Invalid URL', function (assert) {
-  var url = "//content.gooru.org/content/f000/2441/3377/FromAtoZinc.pdf";
-  assert.equal(getFileNameFromInvalidUrl(url), "FromAtoZinc.pdf", 'Wrong filename.');
+  var url = '//content.gooru.org/content/f000/2441/3377/FromAtoZinc.pdf';
+  assert.equal(getFileNameFromInvalidUrl(url), 'FromAtoZinc.pdf', 'Wrong filename.');
 });
 
 test('Replace Math Expression', function (assert) {
@@ -212,4 +213,12 @@ test('Replace Math Expression', function (assert) {
   var expected = '<span class="gru-math-expression"><span class="gru-math-expression"><span class="source" hidden="">\frac{1}{2}</span>$$\frac{1}{2}$$</span></span><br>';
 
   assert.equal(replaceMathExpression(mathExpression), expected, 'Wrong expression');
+});
+
+test('Array into chunks', function (assert) {
+  let array = [...Array(10).keys()];
+  let expected = [ [0, 1], [2, 3], [4, 5], [6, 7], [8, 9] ];
+  assert.deepEqual(arrayIntoChunks(array, 2), expected, 'Wrong split into chunks of size 2');
+  expected = [ [0, 1, 2, 3, 4], [5, 6, 7, 8, 9] ];
+  assert.deepEqual(arrayIntoChunks(array, 5), expected, 'Wrong split into chunks of size 5');
 });

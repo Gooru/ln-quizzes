@@ -14,15 +14,22 @@ test('readProfile', function(assert) {
   const adapter = this.subject();
 
   const routes = function() {
-    this.get('/api/nucleus/v1/profiles/profile-id/demographics',
-      () => [200, {'Content-Type': 'application/json'}, JSON.stringify({id:'77d0c04b-b71a-485b-9573-9101cc288a0f'})],
-      false);
+    this.get('/api/nucleus/v2/profiles/search',
+      () => [
+        200,
+        {'Content-Type': 'application/json'},
+        JSON.stringify({
+          users: [{
+            id: '77d0c04b-b71a-485b-9573-9101cc288a0f'
+          }]
+        })
+      ], false);
   };
 
   this.pretender.map(routes);
   this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
-  adapter.readProfile('profile-id')
+  adapter.readProfiles(['profile-id'])
     .then(response =>
-      assert.deepEqual(response.id, '77d0c04b-b71a-485b-9573-9101cc288a0f', 'Wrong response')
+      assert.deepEqual(response.users[0].id, '77d0c04b-b71a-485b-9573-9101cc288a0f', 'Wrong response')
     );
 });

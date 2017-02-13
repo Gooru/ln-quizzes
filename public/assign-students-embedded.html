@@ -22,18 +22,10 @@
   (function () {
     jQuery(document).ready(function () {
       var emberApp = window['QuizzesWebApp'];
-      var match = /collection-id=([^&]*)/.exec(location.search);
-      var collectionId = match ? match[1] : '25250d86-a5b7-40e5-b247-7f7793ac04b9';
-      match = /collection-name=([^&]*)/.exec(location.search);
-      var collectionTitle = match ? match[1] : 'Math';
       emberApp.start({
         transition: [ 'assign', '' ],
         properties: {
           token: localStorage.getItem('token'),
-          collection:{
-            id: collectionId,
-            title: collectionTitle
-          },
           teacher: {
             id:'988712',
             firstName:'Amara',

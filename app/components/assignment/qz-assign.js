@@ -7,13 +7,6 @@ export default Ember.Component.extend({
   // Events
   init: function() {
     this._super(...arguments);
-    let profilesList = this.get('studentList').map(function(student){
-      let studentObject = Profile.create(student);
-      studentObject.set('isAssigned',false);
-      return studentObject;
-    });
-    this.set('students',profilesList);
-
     this.set('teacher',Profile.create({
       id: this.get('teacherConfig.id'),
       firstName:this.get('teacherConfig.firstName'),

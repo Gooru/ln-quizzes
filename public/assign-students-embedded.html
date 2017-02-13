@@ -22,18 +22,10 @@
   (function () {
     jQuery(document).ready(function () {
       var emberApp = window['QuizzesWebApp'];
-      var match = /collection-id=([^&]*)/.exec(location.search);
-      var collectionId = match ? match[1] : '25250d86-a5b7-40e5-b247-7f7793ac04b9';
-      match = /collection-name=([^&]*)/.exec(location.search);
-      var collectionTitle = match ? match[1] : 'Math';
       emberApp.start({
         transition: [ 'assign', '' ],
         properties: {
           token: localStorage.getItem('token'),
-          collection:{
-            id: collectionId,
-            title: collectionTitle
-          },
           teacher: {
             id:'988712',
             firstName:'Amara',
@@ -41,72 +33,6 @@
             username:'amara',
             email:'emailTeacher@gmail.com'
            },
-          students: [{
-              id:'student-1',
-              firstName:'Anaí',
-              lastName:'Arroyo',
-              username:'anaiarroyo',
-              email:'emailstudent-1@gmail.com'
-            },{
-              id:'student-2',
-              firstName:'Melany',
-              lastName:'Delgado',
-              username:'melanydelgado',
-              email:'emailstudent-2@gmail.com'
-            },{
-              id:'student-3',
-              firstName:'Martin',
-              lastName:'Mendez',
-              username:'martinmendez',
-              email:'emailstudent-3@gmail.com'
-            },{
-              id:'student-4',
-              firstName:'Jeffrey',
-              lastName:'Bermudez',
-              username:'jeffreybermudez',
-              email:'emailstudent-4@gmail.com'
-            },{
-              id:'student-5',
-              firstName:'Carlos',
-              lastName:'Villalta',
-              username:'carlosvillalta',
-              email:'emailstudent-5@gmail.com'
-            },
-            {id:'student-6',
-              firstName:'Miguel',
-              lastName:'Zumbado',
-              username:'miguelzumbado',
-              email:'emailstudent-6@gmail.com'},
-            {id:'student-7',
-              firstName:'Fabian',
-              lastName:'Perez',
-              username:'fabianperez',
-              email:'emailstudent-7@gmail.com'
-            },{
-              id:'student-8',
-              firstName:'Javier',
-              lastName:'Perez',
-              username:'javierperez',
-              email:'emailstudent-8@gmail.com'
-            },{
-              id:'student-9',
-              firstName:'Jennifer',
-              lastName:'Ajoy',
-              username:'jenniferajoy',
-              email:'emailstudent-9@gmail.com'
-            },{
-              id:'student-10',
-              firstName:'Alejandro',
-              lastName:'Bonilla',
-              username:'alejandrobonilla',
-              email:'emailstudent-10@gmail.com'
-            },{
-              id:'student-11',
-              firstName:'David',
-              lastName:'Artavia',
-              username:'davidartavia',
-              email:'emailstudent-11@gmail.com'}
-          ],
           context: {
             classId:'class-id'
           }

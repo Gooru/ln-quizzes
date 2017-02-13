@@ -45,7 +45,7 @@
   var token = localStorage.getItem('token');
   $.ajax({
     type: 'GET',
-    url: 'https://nucleus-qa.gooru.org/api/nucleus-auth/v1/token',
+    url: 'https://nile-qa.gooru.org/api/nucleus-auth/v2/token',
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     processData: false,
@@ -71,7 +71,7 @@
            <div class="panel-heading">Teacher Experience</div>
            <div class="panel-body containers">
              <div class="option">
-               <a href="assign-students-embedded.html?collection-id=25250d86-a5b7-40e5-b247-7f7793ac04b9&collection-name=Math">Create assignment</a>
+               <a href="assign-students-embedded.html">Create assignment</a>
              </div>
              <div class="option">
                <a href="assessment-editor-embedded.html">Edit assessment</a>

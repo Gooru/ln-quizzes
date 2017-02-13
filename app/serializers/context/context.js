@@ -15,10 +15,10 @@ export default Ember.Object.extend({
   normalizeContextResult: function (payload) {
     const serializer = this;
     return ContextResult.create(Ember.getOwner(this).ownerInjection(), {
-      contextId: payload.id,
+      contextId: payload.contextId,
       currentResourceId: payload.currentResourceId,
       resourceResults: serializer.normalizeResourceResults(payload.events),
-      collectionId: payload.collection.id
+      collectionId: payload.collectionId
     });
   },
 

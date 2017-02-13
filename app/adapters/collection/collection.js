@@ -5,7 +5,7 @@ export default Ember.Object.extend({
   /**
    * @property {string} End-point URI
    */
-  namespace: '/quizzes/api/v1/collection',
+  namespace: '/quizzes/api/v1/collections',
 
   /**
    * Reads a Collection by id

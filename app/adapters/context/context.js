@@ -112,18 +112,19 @@ export default Ember.Object.extend(TokenMixin,  {
       })
     };
     const resourceIdParam = resourceId || previousResource.resourceId;
-    const url = `${namespace}/${contextId}/event/on-resource/${resourceIdParam}`;
+    const url = `${namespace}/${contextId}/onResource/${resourceIdParam}`;
     return Ember.$.ajax(url, options);
   },
 
-  /**
+
+/**
    * Send event to notify the student submitted all questions in an assignment
    * @param {String} contextId
    * @returns {Promise}
    */
   sendFinishContextEvent: function(contextId) {
     const namespace = this.get('namespace');
-    const url = `${namespace}/${contextId}/event/finish`;
+    const url = `${namespace}/${contextId}/finish`;
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
@@ -144,7 +145,7 @@ export default Ember.Object.extend(TokenMixin,  {
    */
   sendStartContextEvent: function(contextId) {
     const namespace = this.get('namespace');
-    const url = `${namespace}/${contextId}/event/start`;
+    const url = `${namespace}/${contextId}/start`;
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',

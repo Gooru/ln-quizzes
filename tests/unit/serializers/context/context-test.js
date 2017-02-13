@@ -93,11 +93,9 @@ test('serializeUpdateContext', function(assert) {
 test('normalizeContextResult', function(assert) {
   const serializer = this.subject();
   const payload = {
-    id: 'context-id',
+    contextId: 'context-id',
     currentResourceId: 'resource-id-2',
-    collection: {
-      id: 'collection-id'
-    },
+    collectionId: 'collection-id',
     events: [{
       resourceId: 'resource-id-1',
       timeSpent: 10000,

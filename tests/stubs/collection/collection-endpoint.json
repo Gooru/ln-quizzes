@@ -2,7 +2,7 @@
   {
     "description": "Gets a collection with all resource types",
     "request": {
-      "url": "^/quizzes/api/v1/collection/(.)+$",
+      "url": "^/quizzes/api/v1/collections/(.)+$",
       "method": "GET"
     },
     "response": {

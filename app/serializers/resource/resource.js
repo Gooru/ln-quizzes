@@ -16,7 +16,7 @@ export default Ember.Object.extend({
    */
   normalizeReadResource: function(resourceData) {
     const serializer = this;
-    const questionData = resourceData.questionData;
+    const questionData = resourceData.metadata;
     const interaction = questionData.interaction;
     const resource = ResourceModel.create(Ember.getOwner(this).ownerInjection(), {
       id: resourceData.id,
@@ -29,7 +29,7 @@ export default Ember.Object.extend({
       answers: serializer.normalizeAnswers(interaction.choices),
       maxChoices: interaction.maxChoices,
       prompt: interaction.prompt,
-      shuffle: interaction.shuffle
+      shuffle: interaction.isShuffle
     });
     return resource;
   },
@@ -52,7 +52,7 @@ export default Ember.Object.extend({
    */
   normalizeAnswer: function(choice) {
     return AnswerModel.create(Ember.getOwner(this).ownerInjection(), {
-      isFixed: choice.fixed,
+      isFixed: choice.isFixed,
       text: choice.text,
       value: choice.value
     });

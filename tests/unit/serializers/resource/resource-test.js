@@ -7,7 +7,7 @@ test('normalizeReadResource', function(assert) {
   const resourceData = {
     id: 'resource-id',
     isResource:	false,
-    questionData: {
+    metadata: {
       title: 'question-title',
       type: 'singleChoice',
       correctAnswer: [{
@@ -15,7 +15,7 @@ test('normalizeReadResource', function(assert) {
       }],
       body: 'question-body',
       interaction: {
-        shuffle: false,
+        isShuffle: false,
         maxChoices: 1,
         prompt:	'question-prompt',
         choices: [

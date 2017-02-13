@@ -11,6 +11,6 @@ test('readCollection', function(assert) {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   });
-  adapter.readCollection('collection-id')
+  adapter.readCollection('collection-id','collection')
     .then(response => assert.deepEqual({}, response, 'Wrong response'));
 });

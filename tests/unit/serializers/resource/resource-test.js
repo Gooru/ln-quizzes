@@ -50,3 +50,29 @@ test('normalizeReadResource', function(assert) {
     assert.notOk(answer.get('isFixed'), 'Wrong answer ${index} isFixed');
   });
 });
+test('normalizeReadResource without interaction', function(assert) {
+  const serializer = this.subject();
+  const resource = {
+    id: 'resource-without-interaction',
+    isResource:	false,
+    metadata: {
+      title: 'question-title',
+      type: 'singleChoice',
+      correctAnswer: [{
+        value: 'a'
+      }],
+      body: 'question-body'
+    }
+  };
+  const  newResource = serializer.normalizeReadResource(resource);
+  assert.equal(newResource.get('id'), 'resource-without-interaction', 'Wrong id');
+  assert.equal(newResource.get('title'), 'question-title', 'Wrong title');
+  assert.equal(newResource.get('type'), 'singleChoice', 'Wrong type');
+  assert.notOk(newResource.get('isResource'), 'Wrong value for isResource');
+  assert.deepEqual(newResource.get('correctAnswer'), [{value: 'a'}], 'Wrong correctAnswer');
+  assert.equal(newResource.get('body'), 'question-body', 'Wrong body');
+  assert.notOk(newResource.get('shuffle'), 'Wrong value for shuffle');
+  assert.equal(newResource.get('maxChoices'),0, 'Wrong maxChoices');
+  assert.notOk(newResource.get('prompt'),  'Wrong maxChoices');
+  assert.notOk(newResource.get('answers').length, 'Wrong answers length');
+});

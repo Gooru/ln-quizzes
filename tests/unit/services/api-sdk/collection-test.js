@@ -10,11 +10,13 @@ moduleForService('service:api-sdk/collection', 'Unit | Service | api-sdk/collect
 test('readCollection', function(assert) {
   const service = this.subject();
   const expectedCollectionId = 'collection-id';
-  assert.expect(2);
+  const expectedType = 'collection';
+  assert.expect(3);
 
   service.set('collectionAdapter', Ember.Object.create({
-    readCollection: function(collectionId) {
+    readCollection: function(collectionId,type) {
       assert.equal(collectionId, expectedCollectionId, 'Wrong Collection id');
+      assert.equal(type, expectedType, 'Wrong Collection type');
       return Ember.RSVP.resolve({ id: collectionId });
     }
   }));
@@ -27,5 +29,5 @@ test('readCollection', function(assert) {
   }));
 
   var done = assert.async();
-  service.readCollection(expectedCollectionId).then(done);
+  service.readCollection(expectedCollectionId,expectedType).then(done);
 });

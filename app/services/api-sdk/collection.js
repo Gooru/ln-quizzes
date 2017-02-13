@@ -27,12 +27,13 @@ export default Ember.Service.extend({
   /**
    * Gets a Collection by id
    * @param {string} collectionId
+   * @param {type} Collection Type
    * @returns {Promise}
    */
-  readCollection: function(collectionId){
+  readCollection: function(collectionId,type){
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('collectionAdapter').readCollection(collectionId)
+      service.get('collectionAdapter').readCollection(collectionId,type)
         .then(function(responseData) {
           resolve(service.get('collectionSerializer').normalizeReadCollection(responseData));
         }, reject );

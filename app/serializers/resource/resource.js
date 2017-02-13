@@ -18,6 +18,7 @@ export default Ember.Object.extend({
     const serializer = this;
     const questionData = resourceData.metadata;
     const interaction = questionData.interaction;
+
     const resource = ResourceModel.create(Ember.getOwner(this).ownerInjection(), {
       id: resourceData.id,
       isResource: resourceData.isResource,
@@ -25,12 +26,17 @@ export default Ember.Object.extend({
       body: questionData.body,
       correctAnswer: questionData.correctAnswer,
       title: questionData.title,
-      type: questionData.type,
-      answers: serializer.normalizeAnswers(interaction.choices),
-      maxChoices: interaction.maxChoices,
-      prompt: interaction.prompt,
-      shuffle: interaction.isShuffle
+      type: questionData.type
     });
+
+    if(interaction){
+      resource.setProperties({
+        answers: serializer.normalizeAnswers(interaction.choices),
+        maxChoices: interaction.maxChoices,
+        prompt: interaction.prompt,
+        shuffle: interaction.isShuffle
+      });
+    }
     return resource;
   },
 

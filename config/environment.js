@@ -70,7 +70,7 @@ module.exports = function (environment) {
       'default-src': "'none'",
       'script-src': "'unsafe-eval' 'unsafe-inline' 'self' http://localhost:4200 http://localhost",
       'font-src': "'self' https://www.gooru.org",
-      'connect-src': "'self' http://localhost:4200 wss://qa.api.quizzes.edify.cr http://localhost:8882 https://qa.api.quizzes.edify.cr",
+      'connect-src': "'self' http://localhost:4200 wss://qa.api.quizzes.edify.cr http://localhost:8882 https://qa.api.quizzes.edify.cr https://nile-qa.gooru.org",
       'img-src': "'self' data: http://qacdn.gooru.org http://profile-images.goorulearning.org.s3.amazonaws.com " +
       "http://dev-content-gooru-org.s3-us-west-1.amazonaws.com http://dev-user-gooru-org.s3-us-west-1.amazonaws.com",
       'style-src': "'self' 'unsafe-inline' https://www.gooru.org",

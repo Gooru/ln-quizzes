@@ -16,16 +16,21 @@ export default Ember.Route.extend({
   },
 
   /**
+   * @type {AttemptService} attemptService
+   * @property {Ember.Service} Service to send context related events
+   */
+  attemptService: Ember.inject.service('api-sdk/attempt'),
+
+  /**
    * @type {CollectionService} collectionService
    * @property {Ember.Service} Service to retrieve a collection
    */
   collectionService: Ember.inject.service('api-sdk/collection'),
 
   /**
-   * @type {ContextService} contextService
-   * @property {Ember.Service} Service to send context related events
+   * @property {Service} Configuration service
    */
-  contextService: Ember.inject.service('api-sdk/context'),
+  configurationService: Ember.inject.service('configuration'),
 
   /**
    * @type {ProfileService} profileService
@@ -56,12 +61,13 @@ export default Ember.Route.extend({
     const route = this;
     const contextId = params.contextId;
     const anonymous = params.anonymous;
+    const type = route.get('configurationService.configuration.properties.type');
 
-    return route.get('contextService').getReportData(contextId).then(
+    return route.get('attemptService').getReportData(contextId).then(
       reportData => Ember.RSVP.hash({
         anonymous,
         reportData,
-        collection: route.get('collectionService').readCollection(reportData.collectionId),
+        collection: route.get('collectionService').readCollection(reportData.collectionId, type),
         profiles: route.get('profileService').readProfiles(
           reportData.get('reportEvents').map(reportEvent => reportEvent.profileId)
         )

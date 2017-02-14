@@ -24,12 +24,15 @@
       var contextId = match ? match[1] : '';
       match = /anonymous=([^&]*)/.exec(location.search);
       var anonymous = match ? match[1] : false;
+      match = /type=([^&]*)/.exec(location.search);
+      var collectionType = match ? match[1] : 'no-type';
       jQuery(document).ready(function () {
         var emberApp = window['QuizzesWebApp'];
         emberApp.start({
           transition: [ 'reports.context', contextId, {queryParams: {anonymous: anonymous}} ],
           properties: {
-            token: localStorage.getItem('token')
+            token: localStorage.getItem('token'),
+            type: collectionType
           }
         });
       });

@@ -42,6 +42,8 @@ test('Report context: websocket error', function(assert) {
   });
 });
 
+
+
 test('Report context: websocket success', function(assert) {
   assert.expect(7);
   let expectedUrl = 'realtimeURL/realtimeURI';

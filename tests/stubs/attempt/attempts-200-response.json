@@ -1,14 +1,12 @@
 {
   "contextId": "context-simple-id",
-  "collection": {
-    "id": "collection-id"
-  },
-  "profileEvents": [
+  "collectionId": "collection-id",
+  "profileAttempts": [
     {
       "currentResourceId": "question1-id",
       "profileId": "profile-id-1",
       "isComplete": false,
-      "contextProfileSummary": {
+      "eventSummary": {
         "averageReaction": 1,
         "averageScore": 67,
         "totalAnswered": 3,
@@ -44,7 +42,7 @@
       "currentResourceId": "question1-id",
       "profileId": "profile-id-2",
       "isComplete": false,
-      "contextProfileSummary": {
+      "eventSummary": {
         "averageReaction": 1,
         "averageScore": 100,
         "totalAnswered": 3,

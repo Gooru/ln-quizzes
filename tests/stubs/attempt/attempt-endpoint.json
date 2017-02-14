@@ -2,7 +2,7 @@
   {
     "description": "Gets events associated to the context",
     "request": {
-      "url": "^/quizzes/api/v1/attempts/(.)+$",
+      "url": "^/quizzes/api/v1/attempts/contexts/(.)+$",
       "method": "GET"
     },
     "response": {

@@ -103,7 +103,7 @@ test('Multiple Answer - Submit button should become enabled by clicking 1 radio 
 
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_answer',
+    type: 'multiple_choice',
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({

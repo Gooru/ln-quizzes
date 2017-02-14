@@ -25,7 +25,7 @@ export default Ember.Object.extend(TokenMixin,  {
         'lms-id': 'its_learning'
       })
     };
-    const url = `${namespace}/${contextId}`;
+    const url = `${namespace}/contexts/${contextId}`;
     return Ember.$.ajax(url, options);
   }
 });

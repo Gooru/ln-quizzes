@@ -14,7 +14,7 @@ test('getReportData', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';
   const routes = function() {
-    this.get('/quizzes/api/v1/attempts/context-id', function() {
+    this.get('/quizzes/api/v1/attempts/contexts/context-id', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };

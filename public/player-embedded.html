@@ -22,12 +22,15 @@
     (function () {
       var match = /context-id=([^&]*)/.exec(location.search);
       var contextId = match ? match[1] : '';
+      match = /type=([^&]*)/.exec(location.search);
+      var collectionType = match ? match[1] : 'no-type';
       jQuery(document).ready(function () {
         var emberApp = window['QuizzesWebApp'];
         emberApp.start({
           transition: [ 'player', contextId ],
           properties: {
-            token: localStorage.getItem('token')
+            token: localStorage.getItem('token'),
+            type:collectionType
           }
         });
       });

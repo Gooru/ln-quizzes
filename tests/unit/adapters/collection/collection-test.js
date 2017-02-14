@@ -7,10 +7,10 @@ moduleForAdapter('adapter:collection/collection', 'Unit | Adapter | collection/c
 test('readCollection', function(assert) {
   const adapter = this.subject();
   this.pretender.map(function() {
-    this.get('/quizzes/api/v1/collection/collection-id', function() {
+    this.get('/quizzes/api/v1/collections/collection-id', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   });
-  adapter.readCollection('collection-id')
+  adapter.readCollection('collection-id','collection')
     .then(response => assert.deepEqual({}, response, 'Wrong response'));
 });

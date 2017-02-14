@@ -20,6 +20,11 @@ export default Ember.Route.extend({
    */
   contextService: Ember.inject.service('api-sdk/context'),
 
+  /**
+   * @property {Service} Configuration service
+   */
+  configurationService: Ember.inject.service('configuration'),
+
   // -------------------------------------------------------------------------
   // Methods
 
@@ -30,9 +35,10 @@ export default Ember.Route.extend({
     const route = this;
     const contextId = params.contextId;
     return route.get('contextService').startContext(contextId).then(function(contextResult){
+      let type = route.get('configurationService.configuration.properties.type');
       return Ember.RSVP.hash({
         contextResult,
-        collection: route.get('collectionService').readCollection(contextResult.collectionId)
+        collection: route.get('collectionService').readCollection(contextResult.collectionId,type)
       });
     });
   },

@@ -5,7 +5,7 @@
     {
       "id": "question1-id",
       "isResource": false,
-      "questionData": {
+      "metadata": {
         "body": "question1-body",
         "correctAnswer": [
           {
@@ -22,7 +22,7 @@
           ],
           "maxChoices": 1,
           "prompt": "question1-prompt",
-          "shuffle": true
+          "isShuffle": true
         },
         "title": "question1-title",
         "type": "true_false"
@@ -31,7 +31,7 @@
     {
       "id": "question2-id",
       "isResource": false,
-      "questionData": {
+      "metadata": {
         "body": "question2-body",
         "correctAnswer": [
           {
@@ -48,7 +48,7 @@
           ],
           "maxChoices": 1,
           "prompt": "question2-prompt",
-          "shuffle": true
+          "isShuffle": true
         },
         "title": "question2-title",
         "type": "single_choice"

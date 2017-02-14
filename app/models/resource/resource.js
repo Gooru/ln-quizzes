@@ -48,7 +48,7 @@ export default Ember.Object.extend({
    * Number of choices that can be selected
    * @property {boolean} shuffle
    */
-  maxChoices: 1,
+  maxChoices: 0,
 
   /**
    * @property {string} owner

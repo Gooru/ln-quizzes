@@ -16,7 +16,7 @@ export const QUESTION_TYPES = {
   multipleAnswer: 'multiple_answer',
   trueFalse: 'true_false',
   openEnded: 'OE',
-  fib: 'FIB',
+  fib: 'text_entry',
   hotSpotText: 'HS_TXT',
   hotSpotImage: 'HS_IMG',
   hotTextReorder: 'drag_and_drop',
@@ -66,8 +66,8 @@ export const QUESTION_CONFIG = {
       answer: 'reports.assessment.questions.gru-true-false'
     }
   }),
-  'FIB'   : Ember.Object.create({
-    apiType: 'fill_in_the_blank_question',
+  'text_entry'   : Ember.Object.create({
+    apiType: 'text_entry_question',
     util: FillInTheBlankUtil,
     component: {
       player: 'player.questions.qz-fib',

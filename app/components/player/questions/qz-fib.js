@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import QuestionComponent from './qz-question';
-import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
 
 /**
  * Fill in the blank
@@ -48,15 +47,16 @@ export default QuestionComponent.extend({
     if (component.get('hasUserAnswer')) {
       let userAnswer = component.get('userAnswer');
       userAnswer.forEach(function(choice){
-        let input = `<input type='text' value='${choice}' ${disabled}/>`;
-        answers = answers.replace(FillInTheBlank.LEGACY_REGEX.single, input);
+        let input = `<input type='text' value='${choice.value}' ${disabled}/>`;
+        answers = answers.replace('[]', input);
       });
 
       return answers;
     }
     else {
       let input = `<input type='text' value='' ${disabled}/>`;
-      return answers.replace(FillInTheBlank.LEGACY_REGEX.global, input);
+      let regex = /\[]/g;
+      return answers.replace(regex, input);
     }
   }),
 
@@ -74,7 +74,7 @@ export default QuestionComponent.extend({
       inputs = component.$('.fib-answers input[type=text]'),
       answers = inputs.map(function (index, input) {
         let answer = Ember.$(input).val();
-        return Ember.$.trim(answer);
+        return{value: Ember.$.trim(answer)};
       }).toArray();
 
     const answerCompleted = answers.join('').length > 0; //to check that at least 1 answer has text

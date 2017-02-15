@@ -1,7 +1,5 @@
 import Ember from 'ember';
 import ContextResult from 'quizzes/models/result/context';
-import ReportData from 'quizzes/models/result/report-data';
-import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import QuestionResult from 'quizzes/models/result/question';
 import Context from 'quizzes/models/context/context';
 
@@ -64,55 +62,6 @@ export default Ember.Object.extend({
         score: resourceResult.score,
         skipped: resourceResult.isSkipped
       })
-    );
-  },
-
-  /**
-   * Normalizes a ReportData
-   * @returns {ReportData}
-   */
-  normalizeReportData: function (payload) {
-    const serializer = this;
-    return ReportData.create(Ember.getOwner(this).ownerInjection(), {
-      contextId: payload.contextId,
-      collectionId: payload.collection.id,
-      reportEvents: serializer.normalizeReportDataEvents(payload.profileEvents)
-    });
-  },
-
-  /**
-   * Normalizes a ReportDataEvent
-   * @returns {ReportDataEvent}
-   */
-  normalizeReportDataEvent: function (reportEvent) {
-    let summary = reportEvent.contextProfileSummary;
-    let reportDataEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
-      currentResourceId: reportEvent.currentResourceId,
-      profileId: reportEvent.profileId,
-      resourceResults: this.normalizeResourceResults(reportEvent.events),
-      isAttemptFinished: reportEvent.isComplete
-    });
-    if (summary) {
-      reportDataEvent.setProperties({
-        totalAnswered: summary.totalAnswered,
-        totalCorrect: summary.totalCorrect,
-        averageReaction: summary.averageReaction,
-        averageScore: summary.averageScore,
-        totalTimeSpent: summary.totalTimeSpent
-      });
-    }
-    return reportDataEvent;
-  },
-
-  /**
-   * Normalizes report data events
-   * @returns {ReportDataEvent[]}
-   */
-  normalizeReportDataEvents: function (payload) {
-    const serializer = this;
-    payload = payload || [];
-    return payload.map(
-      reportEvent => serializer.normalizeReportDataEvent(reportEvent)
     );
   },
 

@@ -88,22 +88,6 @@ test('getContextsCreated', function(assert) {
     .then(response => assert.deepEqual(response.length,1, 'Wrong response'));
 });
 
-test('getReportData', function(assert) {
-  const adapter = this.subject();
-  const expectedContextId = 'context-id';
-  const routes = function() {
-    this.get('/quizzes/api/v1/contexts/context-id/events', function() {
-      return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
-    }, false);
-  };
-
-  this.pretender.map(routes);
-  this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
-
-  adapter.getReportData(expectedContextId)
-    .then(response => assert.deepEqual(response, {}, 'Wrong response'));
-});
-
 test('moveToResource', function(assert) {
   const adapter = this.subject();
   const expectedContextId = 'context-id';

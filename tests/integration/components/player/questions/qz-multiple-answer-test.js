@@ -17,7 +17,7 @@ test('Multiple answer question layout', function (assert) {
   assert.expect(6);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_answer',
+    type: 'multiple_choice',
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -51,7 +51,7 @@ test('Multiple answer question events', function (assert) {
 
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_answer',
+    type: 'multiple_choice',
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -104,7 +104,7 @@ test('Multiple answer question layout - read only', function (assert) {
 
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_answer',
+    type: 'multiple_choice',
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -135,7 +135,7 @@ test('Multiple answer question layout - with user answer', function (assert) {
   assert.expect(7);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_answer',
+    type: 'multiple_choice',
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({

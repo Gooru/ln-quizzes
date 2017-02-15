@@ -12,7 +12,7 @@ moduleFor('route:reports/context', 'Unit | Route | reports/context', {
 
 test('model', function(assert) {
   let route = this.subject();
-  route.set('contextService', {
+  route.set('attemptService', {
     getReportData: () => new Ember.RSVP.resolve(
       ReportData.create({
         id: 'context-id',

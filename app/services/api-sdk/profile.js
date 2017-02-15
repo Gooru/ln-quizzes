@@ -41,7 +41,7 @@ export default Ember.Service.extend({
         response => service.get('profileSerializer').normalizeProfiles(response))
     );
     return new Ember.RSVP.Promise((resolve, reject) =>
-      Ember.RSVP.all(chunks).then(responses => Object.assign(...responses))
+      Ember.RSVP.all(chunks).then(responses => Object.assign({}, ...responses))
         .then(resolve, reject)
     );
   }

@@ -25,8 +25,8 @@ export default Ember.Object.extend({
      return Profile.create({
        id: profile.id,
        email: profile.email,
-       firstName: profile.firstName,
-       lastName: profile.lastName,
+       firstName: profile.first_name,
+       lastName: profile.last_name,
        username: profile.username
      });
    }

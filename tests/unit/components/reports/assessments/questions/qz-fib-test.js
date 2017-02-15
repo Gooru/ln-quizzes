@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 
-moduleForComponent('reports/assessment/questions/gru-fib', 'Unit | Component | reports/assessment/questions/gru-fib', {
+moduleForComponent('reports/assessment/questions/qz-fib', 'Unit | Component | reports/assessment/questions/qz-fib', {
   integration: false
 });
 

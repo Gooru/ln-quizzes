@@ -71,7 +71,7 @@ export const QUESTION_CONFIG = {
     util: FillInTheBlankUtil,
     component: {
       player: 'player.questions.qz-fib',
-      answer: 'reports.assessment.questions.gru-fib'
+      answer: 'reports.assessment.questions.qz-fib'
     }
   }),
   'HS_IMG': Ember.Object.create({

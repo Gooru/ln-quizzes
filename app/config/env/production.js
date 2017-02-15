@@ -5,7 +5,7 @@ export default {
   "endpoint" : {
     "url": "https://qa.api.quizzes.edify.cr",
     "secureUrl": "https://qa.api.quizzes.edify.cr/",
-    "providerUrl": "http://nile-qa.gooru.org"
+    "providerUrl": "https://nile-qa.gooru.org"
   },
 
   "realTime": {

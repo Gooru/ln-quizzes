@@ -19,16 +19,16 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Properties
 
-  answer: Ember.computed("question", "anonymous", function () {
+  answer: Ember.computed('question', 'anonymous','userAnswer','question.answers.@each.value', function () {
     let component = this;
-    let question = component.get("question");
-    let questionText = question.get("question.body");
+    let question = component.get('question');
+    let questionText = question.get('question.body');
     let questionTextParts = questionText.split('[]');
-    let userAnswers = component.get("userAnswer");
-    let anonymous = component.get("anonymous");
+    let userAnswers = component.get('userAnswer');
+    let anonymous = component.get('anonymous');
     let correctAnswers = question.get('question.correctAnswer');
 
-    if (component.get("showCorrect")){
+    if (component.get('showCorrect')){
       userAnswers = question.get('question.correctAnswer');
     }
 

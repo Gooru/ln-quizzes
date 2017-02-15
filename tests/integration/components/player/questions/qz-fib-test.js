@@ -18,7 +18,6 @@ test('Fill in the blanks layout', function(assert) {
     'id': '569906aacea8416665209d53',
     questionType: 'text_entry',
     body: 'The sun is [] and the moon []',
-    fibText: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
@@ -52,7 +51,6 @@ test('Fill in the blanks events', function(assert) {
     'id': '569906aacea8416665209d53',
     questionType: 'text_entry',
     body: 'The sun is [] and the moon []',
-    fibText: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
@@ -122,7 +120,6 @@ test('Fill in the blanks layout - read only', function(assert) {
     'id': '569906aacea8416665209d53',
     questionType: 'text_entry',
     body: 'The sun is [] and the moon []',
-    fibText: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
@@ -153,7 +150,6 @@ test('Fill in the blanks layout - with user answer', function(assert) {
     'id': '569906aacea8416665209d53',
     questionType: 'text_entry',
     body: 'The sun is [] and the moon []',
-    fibText: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
@@ -198,7 +194,6 @@ test('Set two questions', function(assert) {
     'id': '569906aacea8416665209d53',
     questionType: 'text_entry',
     body: 'The sun is [] and the moon []',
-    fibText: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
@@ -218,8 +213,7 @@ test('Set two questions', function(assert) {
   const question1 = ResourceModel.create({
     'id': '569906aacea8416665209d53',
     questionType: 'FIB',
-    body: 'The sun is[] and the moon[]',
-    fibText: 'The sun is[] ,the moon[] and the stars[]',
+    body: 'The sun is[] ,the moon[] and the stars[]',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([

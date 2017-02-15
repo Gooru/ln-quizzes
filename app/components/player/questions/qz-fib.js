@@ -34,13 +34,12 @@ export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
   // Properties
   /**
-   * Replace '_______' to an input
-   * @param question
-   *
+   * Replace '[]' to an input
+   * @param question.body
    */
-  answers: Ember.computed('question.fibText', function() {
+  answers: Ember.computed('question.body', function() {
     const component = this;
-    let answers = component.get('question.fibText');
+    let answers = component.get('question.body');
     let readOnly = component.get('readOnly');
     let disabled = readOnly ? 'disabled': '';
 

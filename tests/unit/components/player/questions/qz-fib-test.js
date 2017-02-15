@@ -11,13 +11,13 @@ moduleForComponent('player/questions/qz-fib', 'Unit | Component | player/questio
 
 test('answers without user answer', function(assert) {
   let component = this.subject();
-  component.set('question',ResourceModel.create({fibText:'The sun is []'}));
+  component.set('question',ResourceModel.create({body:'The sun is []'}));
   assert.equal(component.get('answers'),`The sun is <input type='text' value='' />`);
 });
 
 test('answers with user answer', function(assert) {
   let component = this.subject();
-  let question = ResourceModel.create({fibText:'The sun is []',answers: Ember.A([
+  let question = ResourceModel.create({body:'The sun is []',answers: Ember.A([
     AnswerModel.create({
       value: 'yellow',
       text: 'yellow'

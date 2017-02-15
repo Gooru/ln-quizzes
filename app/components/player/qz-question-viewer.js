@@ -147,6 +147,10 @@ export default Ember.Component.extend({
    */
   answerCompleted: false,
 
+  /**
+   * @property {string} Return the question body and modified the text if the question is
+   * FIB to show the correct format.
+   */
   questionBody:Ember.computed('question.body',function(){
     let component = this;
     let text = this.get('question.body');

@@ -71,7 +71,7 @@ test('isOpenEnded', function(assert) {
 test('isFIB', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'FIB'
+    'type': 'text_entry'
   });
 
   assert.ok(model.get('isFIB'), 'It should be fill in the blank');

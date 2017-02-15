@@ -38,7 +38,7 @@ export default QuestionComponent.extend({
    * @param question
    *
    */
-  answers: Ember.computed('question.text', function() {
+  answers: Ember.computed('question.fibText', function() {
     const component = this;
     let answers = component.get('question.fibText');
     let readOnly = component.get('readOnly');

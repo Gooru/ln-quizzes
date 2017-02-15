@@ -1,8 +1,9 @@
-/* TODO fix when the question type is enabled
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
+import AnswerModel from 'quizzes/utils/question/answer-object';
+import ResourceModel from 'quizzes/models/resource/resource';
 
 moduleForComponent('player/questions/qz-fib', 'Integration | Component | player/questions/qz fib', {
   integration: true,
@@ -13,21 +14,24 @@ moduleForComponent('player/questions/qz-fib', 'Integration | Component | player/
 
 test('Fill in the blanks layout', function(assert) {
   assert.expect(3);
-  const question = Ember.Object.create({
+  const question = ResourceModel.create({
     'id': '569906aacea8416665209d53',
-    questionType: 'FIB',
-    text: 'The sun is [yellow] and the moon [white]',
-    fibText: 'The sun is _______ and the moon _______',
+    questionType: 'text_entry',
+    body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
-      Ember.Object.create({id: 1, text: 'yellow'}),
-      Ember.Object.create({id: 2, text: 'white'})
+      AnswerModel.create({
+        value: 'yellow',
+        text: 'yellow'
+      }),
+      AnswerModel.create({
+        value: 'white',
+        text: 'white'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 4,
-    'hasAnswers': true
+    sequence:1,
+    hasAnswers: true
   });
 
   this.set('question', question);
@@ -42,21 +46,25 @@ test('Fill in the blanks layout', function(assert) {
 
 test('Fill in the blanks events', function(assert) {
   assert.expect(8);
-  const question = Ember.Object.create({
+
+  const question = ResourceModel.create({
     'id': '569906aacea8416665209d53',
-    questionType: 'FIB',
-    text: 'The sun is [yellow] and the moon [white]',
-    fibText: 'The sun is _______ and the moon _______',
+    questionType: 'text_entry',
+    body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
-      Ember.Object.create({id: 1, text: 'yellow'}),
-      Ember.Object.create({id: 2, text: 'white'})
+      AnswerModel.create({
+        value: 'yellow',
+        text: 'yellow'
+      }),
+      AnswerModel.create({
+        value: 'white',
+        text: 'white'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 4,
-    'hasAnswers': true
+    sequence:1,
+    hasAnswers: true
   });
 
   let answers = [];
@@ -85,22 +93,22 @@ test('Fill in the blanks events', function(assert) {
 
   var $component = this.$(); //component dom element
   //enter response
-  answers = ['yellow', ''];
+  answers = [{value:'yellow'}, {value:''}];
   $component.find('.fib-answers input:eq(0)').first().val('yellow');
   $component.find('.fib-answers input').first().keyup();
 
   //enter response
-  answers = ['yellow', 'white'];
+  answers = [{value:'yellow'}, {value:'white'}];
   $component.find('.fib-answers input:eq(1)').first().val('white');
   $component.find('.fib-answers input').first().keyup();
 
   //clear response
-  answers = ['', 'white'];
+  answers = [{value:''}, {value:'white'}];
   $component.find('.fib-answers input:eq(0)').first().val('');
   $component.find('.fib-answers input').first().keyup();
 
   //clear response
-  answers = ['', ''];
+  answers = [{value:''}, {value:''}];
   $component.find('.fib-answers input:eq(1)').first().val('');
   $component.find('.fib-answers input').first().keyup();
 });
@@ -108,21 +116,24 @@ test('Fill in the blanks events', function(assert) {
 
 test('Fill in the blanks layout - read only', function(assert) {
   assert.expect(1);
-  const question = Ember.Object.create({
+  const question = ResourceModel.create({
     'id': '569906aacea8416665209d53',
-    questionType: 'FIB',
-    text: 'The sun is [yellow] and the moon [white]',
-    fibText: 'The sun is _______ and the moon _______',
+    questionType: 'text_entry',
+    body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
-      Ember.Object.create({id: 1, text: 'yellow'}),
-      Ember.Object.create({id: 2, text: 'white'})
+      AnswerModel.create({
+        value: 'yellow',
+        text: 'yellow'
+      }),
+      AnswerModel.create({
+        value: 'white',
+        text: 'white'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 4,
-    'hasAnswers': true
+    sequence:1,
+    hasAnswers: true
   });
 
   this.set('question', question);
@@ -135,24 +146,27 @@ test('Fill in the blanks layout - read only', function(assert) {
 
 test('Fill in the blanks layout - with user answer', function(assert) {
   assert.expect(5);
-  const question = Ember.Object.create({
+  const question = ResourceModel.create({
     'id': '569906aacea8416665209d53',
-    questionType: 'FIB',
-    text: 'The sun is [yellow] and the moon [white]',
-    fibText: 'The sun is _______ and the moon _______',
+    questionType: 'text_entry',
+    body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
-      Ember.Object.create({id: 1, text: 'yellow'}),
-      Ember.Object.create({id: 2, text: 'white'})
+      AnswerModel.create({
+        value: 'yellow',
+        text: 'yellow'
+      }),
+      AnswerModel.create({
+        value: 'white',
+        text: 'white'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 4,
-    'hasAnswers': true
+    sequence:1,
+    hasAnswers: true
   });
 
-  const answers = ['amarillo', 'gris'];
+  const answers = [{value:'amarillo'},{value:'gris'}];
   this.on('changeAnswer', function (question, answer) {
     assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
   });
@@ -160,7 +174,7 @@ test('Fill in the blanks layout - with user answer', function(assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
   });
   this.set('question', question);
-  this.set('userAnswer', ['amarillo', 'gris']);
+  this.set('userAnswer', [{value:'amarillo'},{value:'gris'}]);
   this.render(hbs`{{player/questions/qz-fib question=question
                     userAnswer=userAnswer
                     onAnswerChanged='changeAnswer'
@@ -175,48 +189,55 @@ test('Fill in the blanks layout - with user answer', function(assert) {
 
 test('Set two questions', function(assert) {
   assert.expect(2);
-  const question = Ember.Object.create({
+
+  const question = ResourceModel.create({
     'id': '569906aacea8416665209d53',
-    questionType: 'FIB',
-    text: 'The sun is[yellow] and the moon[white]',
-    fibText: 'The sun is_______ and the moon_______',
+    questionType: 'text_entry',
+    body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
-      Ember.Object.create({id: 1, text: 'yellow'}),
-      Ember.Object.create({id: 2, text: 'white'})
+      AnswerModel.create({
+        value: 'yellow',
+        text: 'yellow'
+      }),
+      AnswerModel.create({
+        value: 'white',
+        text: 'white'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 4,
-    'hasAnswers': true
+    sequence:1,
+    hasAnswers: true
   });
 
-  const question1 = Ember.Object.create({
+  const question1 = ResourceModel.create({
     'id': '569906aacea8416665209d53',
     questionType: 'FIB',
-    text: 'The sun is[yellow] ,the moon[white] and the stars_______',
-    fibText: 'The sun is_______ ,the moon_______ and the stars_______',
+    body: 'The sun is[] ,the moon[] and the stars[]',
     hints: [],
     explanation: 'Sample explanation text',
     answers: Ember.A([
-      Ember.Object.create({id: 1, text: 'yellow'}),
-      Ember.Object.create({id: 2, text: 'white'})
+      AnswerModel.create({
+        value: 'yellow',
+        text: 'yellow'
+      }),
+      AnswerModel.create({
+        value: 'white',
+        text: 'white'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 4,
-    'hasAnswers': true
+    sequence:1,
+    hasAnswers: true
   });
 
   this.set('question', question);
   this.render(hbs`{{player/questions/qz-fib question=question}}`);
 
   var $component = this.$(); //component dom element
-  assert.equal($component.find('.fib-answers').text().trim(),'The sun is and the moon','Incorrect answer');
+  assert.equal($component.find('.fib-answers').text().trim(),'The sun is  and the moon','Incorrect answer');
 
   this.set('question', question1);
 
   assert.equal($component.find('.fib-answers').text().trim(),'The sun is ,the moon and the stars','Incorrect answer');
 });
-*/
+

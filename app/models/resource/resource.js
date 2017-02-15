@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import {QUESTION_TYPES} from 'quizzes/config/question';
-import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
 
 /**
  * Resource Model
@@ -85,14 +84,6 @@ export default Ember.Object.extend({
 
   // -------------------------------------------------------------------------
   // Computed
-
-  /**
-   * Returns the FIB text
-   * @property {string}
-   */
-  fibText: Ember.computed('body', function(){
-    return FillInTheBlank.toFibText(this.get('body'));
-  }),
 
   /**
    * Indicates the resource format. i.e image, text, video, interaction, webpage, question

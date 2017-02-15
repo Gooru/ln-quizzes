@@ -1,0 +1,618 @@
+[4mRunning "test" task[24m
+
+[4mRunning "stubby:test" (stubby) task[24m
+Stubby HTTP server listening on port 8882
+Stubby HTTPS server listening on port 7443
+Admin server listening on port 8889
+
+[4mRunning "exec:run:ember test" (exec) task[24m
+cleaning up...
+Built project successfully. Stored in "/Users/mmendez/Projects/quizzes/tmp/core_object-tests_dist-WqSKWMwk.tmp".
+ok 1 PhantomJS 2.1 - Acceptance | application: Theme support - no theme
+ok 2 PhantomJS 2.1 - Acceptance | application: Theme support - Having translations and styles url
+ok 3 PhantomJS 2.1 - Acceptance | edit/assessment: visiting /edit/assessment
+ok 4 PhantomJS 2.1 - Acceptance | edit/assessment: visiting /edit/assessment - Add New Category
+ok 5 PhantomJS 2.1 - Acceptance | edit/assessment: visiting /edit/assessment - Delete Category
+ok 6 PhantomJS 2.1 - Acceptance | edit/assessment: visiting /edit/assessment - Copy Category
+ok 7 PhantomJS 2.1 - Acceptance | edit/assessment: visiting /edit/assessment - Overall Score
+ok 8 PhantomJS 2.1 - Acceptance | index: load: Layout
+ok 9 PhantomJS 2.1 - Acceptance | player: Layout
+ok 10 PhantomJS 2.1 - Acceptance | player: Collection - Navigate
+ok 11 PhantomJS 2.1 - Acceptance | player: selectNavigatorItem & closeNavigator: When moving to another resource the navigator should be closed
+ok 12 PhantomJS 2.1 - Acceptance | player: openNavigator & closeNavigator: When opening and closing the navigator
+ok 13 PhantomJS 2.1 - Acceptance | reports/context: Report context: websocket error
+ok 14 PhantomJS 2.1 - Acceptance | reports/context: Report context: websocket success
+ok 15 PhantomJS 2.1 - Acceptance | reports/context: Report context: websocket start message
+ok 16 PhantomJS 2.1 - Acceptance | reports/context: Report context: websocket finish message
+ok 17 PhantomJS 2.1 - Acceptance | reports/context: Report context: websocket on resource message
+ok 18 PhantomJS 2.1 - Integration | Component | app dropdown: Layout using defaults
+ok 19 PhantomJS 2.1 - Integration | Component | app dropdown: Layout with options
+ok 20 PhantomJS 2.1 - Integration | Component | app dropdown: Disabled/selected items by default
+ok 21 PhantomJS 2.1 - Integration | Component | app dropdown: Single select interaction
+ok 22 PhantomJS 2.1 - Integration | Component | app dropdown: Multiple select interaction
+ok 23 PhantomJS 2.1 - Integration | Component | app dropdown: Multiple select interaction - unselect
+ok 24 PhantomJS 2.1 - Integration | Component | cards/gru resource card: Resource Card Layout
+ok 25 PhantomJS 2.1 - Integration | Component | cards/gru resource card: Question Card Layout
+ok 26 PhantomJS 2.1 - Integration | Component | cards/gru resource card: Resource card trying buttons
+ok 27 PhantomJS 2.1 - Integration | Component | cards/gru resource card: Resource Card with publisher
+ok 28 PhantomJS 2.1 - Integration | Component | cards/gru resource result card: Resource card that is not a question and it has not been started
+ok 29 PhantomJS 2.1 - Integration | Component | cards/gru resource result card: Resource card that is not a question and it has been viewed but not reacted to
+ok 30 PhantomJS 2.1 - Integration | Component | cards/gru resource result card: Resource card that is not a question and it has been viewed but reacted to
+ok 31 PhantomJS 2.1 - Integration | Component | cards/gru resource result card: Resource card that is a question
+ok 32 PhantomJS 2.1 - Integration | Component | charts/gru bubble chart: Bubble Chart Layout
+ok 33 PhantomJS 2.1 - Integration | Component | charts/gru pie chart: Pie Chart Layout
+ok 34 PhantomJS 2.1 - Integration | Component | charts/gru-radial-chart: Information Chart Layout
+ok 35 PhantomJS 2.1 - Integration | Component | charts/gru x bar chart: Stacked horizontal bar chart layout
+ok 36 PhantomJS 2.1 - Integration | Component | charts/gru x bar chart: Full bar segment layout
+ok 37 PhantomJS 2.1 - Integration | Component | datepicker field: renders datepicker
+ok 38 PhantomJS 2.1 - Integration | Component | editor/assessment/qz assessment: it renders
+ok 39 PhantomJS 2.1 - Integration | Component | editor/assessment/qz category: Category Layout
+ok 40 PhantomJS 2.1 - Integration | Component | editor/assessment/qz category: Delete Category
+ok 41 PhantomJS 2.1 - Integration | Component | editor/assessment/qz category: Copy Category
+ok 42 PhantomJS 2.1 - Integration | Component | editor/assessment/qz depth-of-knowledge: Depth of knowledge layout, no knowledge selected - read only
+ok 43 PhantomJS 2.1 - Integration | Component | editor/assessment/qz depth-of-knowledge: Depth of knowledge layout, knowledge selected - read only
+ok 44 PhantomJS 2.1 - Integration | Component | editor/assessment/qz depth-of-knowledge: Depth of knowledge layout - edit
+ok 45 PhantomJS 2.1 - Integration | Component | editor/assessment/qz depth-of-knowledge: Depth of knowledge edit, add knowledge -returning to edit mode will discard any changes
+ok 46 PhantomJS 2.1 - Integration | Component | editor/assessment/qz file picker: it renders
+ok 47 PhantomJS 2.1 - Integration | Component | editor/assessment/qz fixed footer: it renders
+ok 48 PhantomJS 2.1 - Integration | Component | editor/assessment/qz header: Layout
+ok 49 PhantomJS 2.1 - Integration | Component | editor/assessment/qz header: Change selected
+ok 50 PhantomJS 2.1 - Integration | Component | editor/assessment/qz preview url: Preview url layout
+ok 51 PhantomJS 2.1 - Integration | Component | editor/assessment/qz preview url: Show url
+ok 52 PhantomJS 2.1 - Integration | Component | editor/assessment/qz preview url: Show image
+ok 53 PhantomJS 2.1 - Integration | Component | editor/assessment/qz preview url: Show PDF
+ok 54 PhantomJS 2.1 - Integration | Component | editor/assessment/qz rubric creation: Rubric creation Layout
+ok 55 PhantomJS 2.1 - Integration | Component | editor/assessment/qz scoring levels: Scoring Level Layout
+ok 56 PhantomJS 2.1 - Integration | Component | editor/assessment/qz scoring levels: Delete Scoring Level
+ok 57 PhantomJS 2.1 - Integration | Component | editor/assessment/qz submission format: Layout
+ok 58 PhantomJS 2.1 - Integration | Component | editor/assessment/qz submission format: Select Option
+ok 59 PhantomJS 2.1 - Integration | Component | grade dropdown: Layout using defaults
+ok 60 PhantomJS 2.1 - Integration | Component | grade dropdown: Interaction - notify change event
+ok 61 PhantomJS 2.1 - Integration | Component | grade dropdown: Interaction select/unselect items
+ok 62 PhantomJS 2.1 - Integration | Component | gru breadcrumb: Layout and click
+ok 63 PhantomJS 2.1 - Integration | Component | gru bubbles: Bubbles Layout
+ok 64 PhantomJS 2.1 - Integration | Component | gru bubbles: Select bubble
+ok 65 PhantomJS 2.1 - Integration | Component | gru category panel: it renders
+ok 66 PhantomJS 2.1 - Integration | Component | gru category panel textfield: it renders
+ok 67 PhantomJS 2.1 - Integration | Component | gru emotion picker: Emotion Picker
+ok 68 PhantomJS 2.1 - Integration | Component | gru emotion picker: Click emotion
+ok 69 PhantomJS 2.1 - Integration | Component | gru emotion picker: Verify selected emotion
+ok 70 PhantomJS 2.1 - Integration | Component | gru emotion picker: Click emotion in readOnly
+ok 71 PhantomJS 2.1 - Integration | Component | gru icon: Layout
+ok 72 PhantomJS 2.1 - Integration | Component | gru image picker: it renders
+ok 73 PhantomJS 2.1 - Integration | Component | gru image picker: it renders submit and reset (cancel) buttons when an image has been selected
+ok 74 PhantomJS 2.1 - Integration | Component | gru image: Layout without image - read only
+ok 75 PhantomJS 2.1 - Integration | Component | gru image: Layout with image - read only
+ok 76 PhantomJS 2.1 - Integration | Component | gru image: Layout without image - edit
+ok 77 PhantomJS 2.1 - Integration | Component | gru image: Layout with image - edit
+ok 78 PhantomJS 2.1 - Integration | Component | gru image: Delete button replaces the currently selected image with a placeholder
+ok 79 PhantomJS 2.1 - Integration | Component | gru math text: Render math expression on katex
+ok 80 PhantomJS 2.1 - Integration | Component | gru select date picker: Layout
+ok 81 PhantomJS 2.1 - Integration | Component | gru slide up menu: Slide menu not visible
+ok 82 PhantomJS 2.1 - Integration | Component | gru slide up menu: Slide menu visible
+ok 83 PhantomJS 2.1 - Integration | Component | gru slide up menu: Test action
+ok 84 PhantomJS 2.1 - Integration | Component | gru spinner button: Layout
+ok 85 PhantomJS 2.1 - Integration | Component | gru timestamp input: Timestamp layout
+ok 86 PhantomJS 2.1 - Integration | Component | gru timestamp input: Timestamp valuePath
+ok 87 PhantomJS 2.1 - Integration | Component | gru user icons: it renders all users when the number of users is less than the view threshold
+ok 88 PhantomJS 2.1 - Integration | Component | gru user icons: it renders all users when the number of users is equal to the view threshold
+ok 89 PhantomJS 2.1 - Integration | Component | gru user icons: it renders all users when the number of users is greater than the view threshold
+ok 90 PhantomJS 2.1 - Integration | Component | gru user icons: it opens/closes a modal to view more users when the number of users exceeds the view threshold
+ok 91 PhantomJS 2.1 - Integration | Component | gru user teaser: User Tease Layout
+ok 92 PhantomJS 2.1 - Integration | Component | gru user teaser: User Tease with only 1 user
+ok 93 PhantomJS 2.1 - Integration | Component | gru view layout picker: View-Layout-Picker Layout
+ok 94 PhantomJS 2.1 - Integration | Component | gru view layout picker: Select option
+ok 95 PhantomJS 2.1 - Integration | Component | gru view layout picker: Select option again
+ok 96 PhantomJS 2.1 - Integration | Component | gru view layout picker: Select another option
+ok 97 PhantomJS 2.1 - Integration | Component | player/questions/qz multiple answer: Multiple answer question layout
+ok 98 PhantomJS 2.1 - Integration | Component | player/questions/qz multiple answer: Multiple answer question events
+ok 99 PhantomJS 2.1 - Integration | Component | player/questions/qz multiple answer: Multiple answer question layout - read only
+ok 100 PhantomJS 2.1 - Integration | Component | player/questions/qz multiple answer: Multiple answer question layout - with user answer
+ok 101 PhantomJS 2.1 - Integration | Component | player/questions/qz reorder: Reorder question layout
+ok 102 PhantomJS 2.1 - Integration | Component | player/questions/qz reorder: Notifications work after reordering questions
+ok 103 PhantomJS 2.1 - Integration | Component | player/questions/qz reorder: Reorder question layout - read only
+ok 104 PhantomJS 2.1 - Integration | Component | player/questions/qz reorder: Reorder question layout - with user answer
+ok 105 PhantomJS 2.1 - Integration | Component | player/questions/qz single choice: Single choice question layout
+ok 106 PhantomJS 2.1 - Integration | Component | player/questions/qz single choice: Single choice question layout - read only
+ok 107 PhantomJS 2.1 - Integration | Component | player/questions/qz single choice: Single choice question with user answer
+ok 108 PhantomJS 2.1 - Integration | Component | player/questions/qz true false: True or false question layout
+ok 109 PhantomJS 2.1 - Integration | Component | player/questions/qz true false: True or false question layout - read only
+ok 110 PhantomJS 2.1 - Integration | Component | player/questions/qz true false: True or false question layout - with user answer
+ok 111 PhantomJS 2.1 - Integration | Component | player/questions/qz true false: True or false question layout - False as correct answer
+ok 112 PhantomJS 2.1 - Integration | Component | player/qz navigation: Not submitted layout
+ok 113 PhantomJS 2.1 - Integration | Component | player/qz navigation: Submitted layout
+ok 114 PhantomJS 2.1 - Integration | Component | player/qz navigation: Layout when navigator is opened
+ok 115 PhantomJS 2.1 - Integration | Component | player/qz navigator: Player Navigator
+ok 116 PhantomJS 2.1 - Integration | Component | player/qz navigator: Layout when navigator is closed
+ok 117 PhantomJS 2.1 - Integration | Component | player/qz navigator: it allows navigation between resource links -by default
+ok 118 PhantomJS 2.1 - Integration | Component | player/qz navigator: resource link navigation is disabled
+ok 119 PhantomJS 2.1 - Integration | Component | player/qz navigator: See usage report
+ok 120 PhantomJS 2.1 - Integration | Component | player/qz navigator: Finish collection
+ok 121 PhantomJS 2.1 - Integration | Component | player/qz player: it renders
+ok 122 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Layout
+ok 123 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Submit button should become enabled and call action on submit
+ok 124 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Multiple Answer - Submit button should become enabled by clicking 1 radio button when user answer if provided
+ok 125 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Clicking on the "Hints" button should display a certain number of hints and then become disabled
+ok 126 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Clicking on the "Explanation" button should display an explanation and then it should become disabled
+ok 127 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Save Button Text key
+ok 128 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Submit button disabled when submitted
+ok 129 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Show feedback layout
+ok 130 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Show feedback when submitted layout
+ok 131 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Question Viewer Submit by Enter
+ok 132 PhantomJS 2.1 - Integration | Component | player/qz question viewer: Open ended question try submit by enter
+ok 133 PhantomJS 2.1 - Integration | Component | player/qz viewer: On question submit
+ok 134 PhantomJS 2.1 - Integration | Component | player/qz viewer: Narration
+ok 135 PhantomJS 2.1 - Integration | Component | player/qz viewer: Layout when a resource url cannot be showed in an iframe
+ok 136 PhantomJS 2.1 - Integration | Component | player/resources/qz image resource: True or false question layout
+ok 137 PhantomJS 2.1 - Integration | Component |  player/resources/qz pdf resource: PDF player layout
+ok 138 PhantomJS 2.1 - Integration | Component | player/resources/qz url resource: Url resource layout
+ok 139 PhantomJS 2.1 - Integration | Component | player/resources/qz vimeo resource: Vimeo resource layout
+ok 140 PhantomJS 2.1 - Integration | Component | player/resources/qz youtube resource: Youtube player layout
+ok 141 PhantomJS 2.1 - Integration | Component | qz rich text editor: Layout
+ok 142 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select fraction
+ok 143 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select sqrt
+ok 144 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select sqrtn
+ok 145 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select subscript
+ok 146 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select superscript
+ok 147 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select overline
+ok 148 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select sum
+ok 149 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select plus
+ok 150 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select minus
+ok 151 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select div
+ok 152 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select cdot
+ok 153 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select not equal
+ok 154 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select less
+ok 155 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select greater
+ok 156 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select less-equal
+ok 157 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select greater-equal
+ok 158 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select sim
+ok 159 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select approx
+ok 160 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select alpha
+ok 161 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select ()
+ok 162 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select {}
+ok 163 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select ||
+ok 164 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select angle
+ok 165 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select measured angle
+ok 166 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select infinity
+ok 167 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select perpendicular
+ok 168 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select parallel
+ok 169 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select sigma
+ok 170 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select theta
+ok 171 PhantomJS 2.1 - Integration | Component | qz rich text editor: Select pi
+ok 172 PhantomJS 2.1 - Integration | Component | qz rich text editor: Show editor toolbar
+ok 173 PhantomJS 2.1 - Integration | Component | qz rich text editor: Hide editor toolbar
+ok 174 PhantomJS 2.1 - Integration | Component | qz switch: Switch Layout
+ok 175 PhantomJS 2.1 - Integration | Component | qz switch: Switch
+ok 176 PhantomJS 2.1 - Integration | Component | rating stars: rating-stars-default
+ok 177 PhantomJS 2.1 - Integration | Component | rating stars: rating-stars-selected
+ok 178 PhantomJS 2.1 - Integration | Component | rating stars: rating-stars-small
+ok 179 PhantomJS 2.1 - Integration | Component | reports/assessment/gru questions: Questions Layout
+ok 180 PhantomJS 2.1 - Integration | Component | reports/assessment/gru questions: Buttons Options
+ok 181 PhantomJS 2.1 - Integration | Component | reports/assessment/gru questions xs: Questions Details Mobile Layout
+ok 182 PhantomJS 2.1 - Integration | Component | reports/assessment/gru summary: it renders for assessment
+ok 183 PhantomJS 2.1 - Integration | Component | reports/assessment/gru summary: Assessment attempts on real time
+ok 184 PhantomJS 2.1 - Integration | Component | reports/assessment/gru summary: Assessment attempts on static report
+ok 185 PhantomJS 2.1 - Integration | Component | reports/assessment/gru summary: it renders for collection
+ok 186 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru single choice: Single Choice Correct Answer
+ok 187 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru single choice: Single Choice Your Answer Incorrect
+ok 188 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru single choice: Single Choice Your Answer Correct
+ok 189 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru single choice: Single Choice anonymous
+ok 190 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru true false: True False Correct Answer
+ok 191 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru true false: True False Your Answer Incorrect
+ok 192 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru true false: True False Your Answer Correct
+ok 193 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/gru true false: True False anonymous
+ok 194 PhantomJS 2.1 - Integration | Component | /reports/assessment/questions/qz multiple answer: Multiple Answer Correct Answer
+ok 195 PhantomJS 2.1 - Integration | Component | /reports/assessment/questions/qz multiple answer: Multiple Answer Your Answer Incorrect
+ok 196 PhantomJS 2.1 - Integration | Component | /reports/assessment/questions/qz multiple answer: Multiple Answer Your Answer Correct
+ok 197 PhantomJS 2.1 - Integration | Component | /reports/assessment/questions/qz multiple answer: Multiple Answer anonymous
+ok 198 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/qz reorder: Reoder Question - Show Correct Answer
+ok 199 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/qz reorder: Reoder Question - User answer correct
+ok 200 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/qz reorder: Reoder Question - User answer all incorrect
+ok 201 PhantomJS 2.1 - Integration | Component | reports/assessment/questions/qz reorder: Reorder Question - User answer some incorrect
+ok 202 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question information: Question Information With Narration Hints Explanation Media
+ok 203 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question information: Question Information Without Narration Hints Explanation Media
+ok 204 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question information: Question Information Anonymous
+ok 205 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question performance: When students have no answers yet
+ok 206 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question performance: Non anonymous, layout
+ok 207 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question performance: Anonymous, layout
+ok 208 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question performance: Anonymous and Show Results
+ok 209 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question performance: Single choice
+ok 210 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru question performance: Anonymous and Show Results
+ok 211 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions detail: Layout
+ok 212 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions detail: Layout Anonymous
+ok 213 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions detail: Layout Anonymous and Show Results
+ok 214 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it renders all questions
+ok 215 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it renders the question charts correctly
+ok 216 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it renders some of the questions and a 'view more' button if the container is not wide enough to show all questions
+ok 217 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it can be forced to show all questions even if the container is not wide enough to show all of them
+ok 218 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru questions summary: it calls an external action when any of the questions is clicked
+ok 219 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru student performance box: Layout when all completed
+ok 220 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru student performance box: Layout having not started questions
+ok 221 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru student performance box: Showing student code in anonymous mode
+ok 222 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru student view: Layout
+ok 223 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru summary: it renders
+ok 224 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru table view: it renders
+ok 225 PhantomJS 2.1 - Integration | Component | reports/class assessment/gru table view: it triggers event when clicking on questions
+ok 226 PhantomJS 2.1 - Integration | Component | reports/gru assessment report: Layout when answer results are shown
+ok 227 PhantomJS 2.1 - Integration | Component | reports/gru assessment report: Layout when answer results are not shown
+ok 228 PhantomJS 2.1 - Integration | Component | reports/gru class assessment report: Default Layout
+ok 229 PhantomJS 2.1 - Integration | Component | role radio button: renders role radio button
+ok 230 PhantomJS 2.1 - Integration | Component | standard dropdown: Layout and interaction
+ok 231 PhantomJS 2.1 - Integration | Component | standards popup: gru-standards-popup
+ok 232 PhantomJS 2.1 - Integration | Component | subject dropdown: Layout using defaults
+ok 233 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it renders the browse panels
+ok 234 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it can populate the browse panels per a specific item path
+ok 235 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it calls an external action when clicking an item that is not in the last browse panel
+ok 236 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it loads sub-level items async
+ok 237 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it keeps track of checked items
+ok 238 PhantomJS 2.1 - Integration | Component | taxonomy/gru browse selector: it displays exceeding levels of data as accordions in the last browse panel (if there are more than 2 browse panels in the browse selector)
+ok 239 PhantomJS 2.1 - Integration | Component | taxonomy/gru subject course picker: Show courses - no selection
+ok 240 PhantomJS 2.1 - Integration | Component | taxonomy/gru subject course picker: Show courses - with selection
+ok 241 PhantomJS 2.1 - Integration | Component | taxonomy/gru subject picker: Show subjects - no selection
+ok 242 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it renders a shortcut list of taxonomy tags, a browse selector and a list of selected taxonomy tags
+ok 243 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it opens the browse selector to the location of the first selected tag by default
+ok 244 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it opens the browse selector to a specific location after clicking on a shortcut tag
+ok 245 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it adds/removes a tag from the selected tags after it has been checked/unchecked in the browse selector
+ok 246 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it unchecks a tag in the browse selector after its tags are removed from the selected tags
+ok 247 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy picker: it calls an external action when the save button is clicked
+ok 248 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: View mode it renders when no selection is made
+ok 249 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: View mode it renders - no show categories
+ok 250 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: Edit mode it renders when no selection is made
+ok 251 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: Edit mode category selection
+ok 252 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy selector: View mode with selection
+ok 253 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag list: it renders all tags correctly
+ok 254 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag list: it renders max allowed tags correctly
+ok 255 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag: it renders a taxonomy tag correctly
+ok 256 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag: if it is not read-only, it calls an external action when the tag is clicked
+ok 257 PhantomJS 2.1 - Integration | Component | taxonomy/gru taxonomy tag: it calls an external action when its remove button is clicked
+ok 258 PhantomJS 2.1 - Integration | Component | gru input number: number input invalid
+ok 259 PhantomJS 2.1 - Integration | Component | gru input number: number input range
+ok 260 PhantomJS 2.1 - Integration | Component | gru input: Layout and clear functionality
+ok 261 PhantomJS 2.1 - Unit | Adapter | attempt/attempt: getReportData
+ok 262 PhantomJS 2.1 - Unit | Adapter | collection/collection: readCollection
+ok 263 PhantomJS 2.1 - Unit | Adapter | configuration: loadConfiguration
+ok 264 PhantomJS 2.1 - Unit | Adapter | context/context: createContext
+ok 265 PhantomJS 2.1 - Unit | Adapter | context/context: getContextsAssigned
+ok 266 PhantomJS 2.1 - Unit | Adapter | context/context: getContextsCreated
+ok 267 PhantomJS 2.1 - Unit | Adapter | context/context: moveToResource
+ok 268 PhantomJS 2.1 - Unit | Adapter | context/context: moveToResource no resource
+ok 269 PhantomJS 2.1 - Unit | Adapter | context/context: moveToResource no previous resource
+ok 270 PhantomJS 2.1 - Unit | Adapter | context/context: sendStartContextEvent
+ok 271 PhantomJS 2.1 - Unit | Adapter | context/context: sendFinishContextEvent
+ok 272 PhantomJS 2.1 - Unit | Adapter | context/context: updateContext
+ok 273 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readAudiences
+ok 274 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readLicenses
+ok 275 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readDepthOfKnowledgeItems
+ok 276 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readCountries
+ok 277 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readStates
+ok 278 PhantomJS 2.1 - Unit | Adapter | lookup/lookup: readDistricts
+ok 279 PhantomJS 2.1 - Unit | Adapter | profile/profile: readProfile
+ok 280 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Subjects for K-12
+ok 281 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Subjects for Higher Education
+ok 282 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Subjects for Professional Learning
+ok 283 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Courses
+ok 284 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Domains
+ok 285 PhantomJS 2.1 - Unit | Adapter | taxonomy/taxonomy: Fetch Taxonomy Codes
+ok 286 PhantomJS 2.1 - Unit | Component | editor/assessment/qz assessment: addNewCategory
+ok 287 PhantomJS 2.1 - Unit | Component | editor/assessment/qz assessment: setFeedBack
+ok 288 PhantomJS 2.1 - Unit | Component | editor/assessment/qz assessment: deleteCategory
+ok 289 PhantomJS 2.1 - Unit | Component | editor/assessment/qz assessment: copyCategory
+ok 290 PhantomJS 2.1 - Unit | Component | editor/assessment/qz category: setFeedBack
+ok 291 PhantomJS 2.1 - Unit | Component | editor/assessment/qz category: onScoringChange
+ok 292 PhantomJS 2.1 - Unit | Component | editor/assessment/qz category: deleteCategory
+ok 293 PhantomJS 2.1 - Unit | Component | editor/assessment/qz category: copyCategory
+ok 294 PhantomJS 2.1 - Unit | Component | editor/assessment/qz header: select
+ok 295 PhantomJS 2.1 - Unit | Component | editor/assessment/qz rubric creation: addURL
+ok 296 PhantomJS 2.1 - Unit | Component | editor/assessment/qz scoring levels: deleteLevel
+ok 297 PhantomJS 2.1 - Unit | Component | editor/assessment/qz submission format: selectType
+ok 298 PhantomJS 2.1 - Unit | Component | gru assignments detail: addStudent
+ok 299 PhantomJS 2.1 - Unit | Component | gru assignments detail: openRealTime
+ok 300 PhantomJS 2.1 - Unit | Component | gru assignments detail: openPlayer
+ok 301 PhantomJS 2.1 - Unit | Component | gru assignments detail: hasAttempts
+ok 302 PhantomJS 2.1 - Unit | Component | gru assignments table: addStudent
+ok 303 PhantomJS 2.1 - Unit | Component | gru assignments table: openActions
+ok 304 PhantomJS 2.1 - Unit | Component | gru assignments table: openRealTime
+ok 305 PhantomJS 2.1 - Unit | Component | gru assignments table: openPlayer
+ok 306 PhantomJS 2.1 - Unit | Component | gru assignments table: optionsMobile
+ok 307 PhantomJS 2.1 - Unit | Component | gru assignments table: selectAssignment
+ok 308 PhantomJS 2.1 - Unit | Component | gru assignments table: sortBy
+ok 309 PhantomJS 2.1 - Unit | Component | gru slide up menu: closeMenu
+ok 310 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: selectAnswerChoice on load
+ok 311 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: answers
+ok 312 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: userSelection with empty user answer
+ok 313 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: userSelection with no user answer
+ok 314 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: userSelection with user answer
+ok 315 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: isAnswerCompleted not complete
+ok 316 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: isAnswerCompleted complete
+ok 317 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: choiceToUserSelectionItem
+ok 318 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: userSelectionItemToChoice
+ok 319 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: setUserAnswerChoice
+ok 320 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: notify not completed
+ok 321 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: notify completed on load
+ok 322 PhantomJS 2.1 - Unit | Component | player/questions/qz multiple answer: notify completed not on load
+ok 323 PhantomJS 2.1 - Unit | Component | player/questions/qz question: hasUserAnswer
+ok 324 PhantomJS 2.1 - Unit | Component | player/questions/qz question: notifyAnswerChanged
+ok 325 PhantomJS 2.1 - Unit | Component | player/questions/qz question: notifyAnswerCleared
+ok 326 PhantomJS 2.1 - Unit | Component | player/questions/qz question: notifyAnswerCompleted
+ok 327 PhantomJS 2.1 - Unit | Component | player/questions/qz question: notifyAnswerLoaded
+ok 328 PhantomJS 2.1 - Unit | Component | player/questions/qz reorder: answers
+ok 329 PhantomJS 2.1 - Unit | Component | player/questions/qz single choice: selectAnswerChoice on load
+ok 330 PhantomJS 2.1 - Unit | Component | player/qz navigation: changeEmotion
+ok 331 PhantomJS 2.1 - Unit | Component | player/qz navigation: openNavigator
+ok 332 PhantomJS 2.1 - Unit | Component | player/qz navigator: closeNavigator
+ok 333 PhantomJS 2.1 - Unit | Component | player/qz navigator: finishCollection
+ok 334 PhantomJS 2.1 - Unit | Component | player/qz navigator: seeUsageReport
+ok 335 PhantomJS 2.1 - Unit | Component | player/qz navigator: selectItem navigation disabled
+ok 336 PhantomJS 2.1 - Unit | Component | player/qz navigator: selectItem no resource
+ok 337 PhantomJS 2.1 - Unit | Component | player/qz navigator: selectItem with item selected
+ok 338 PhantomJS 2.1 - Unit | Component | player/qz navigator: selectItem with no item selected
+ok 339 PhantomJS 2.1 - Unit | Component | player/qz player: finishCollection on collection
+ok 340 PhantomJS 2.1 - Unit | Component | player/qz player: finishCollection on assessment
+ok 341 PhantomJS 2.1 - Unit | Component | player/qz player: submitQuestion with next question available
+ok 342 PhantomJS 2.1 - Unit | Component | player/qz player: submitQuestion with next question unavailable
+ok 343 PhantomJS 2.1 - Unit | Component | player/qz player: selectNavigatorItem
+ok 344 PhantomJS 2.1 - Unit | Component | player/qz player: changeEmotion
+ok 345 PhantomJS 2.1 - Unit | Component | player/qz question viewer: changeAnswer
+ok 346 PhantomJS 2.1 - Unit | Component | player/qz question viewer: clearAnswer
+ok 347 PhantomJS 2.1 - Unit | Component | player/qz question viewer: completeAnswer
+ok 348 PhantomJS 2.1 - Unit | Component | player/qz question viewer: loadedAnswer
+ok 349 PhantomJS 2.1 - Unit | Component | player/qz question viewer: showExplanation
+ok 350 PhantomJS 2.1 - Unit | Component | player/qz question viewer: showHint
+ok 351 PhantomJS 2.1 - Unit | Component | player/qz question viewer: submitQuestion
+ok 352 PhantomJS 2.1 - Unit | Component | player/qz question viewer: reloadQuestion
+ok 353 PhantomJS 2.1 - Unit | Component | player/qz viewer: resourceComponentSelected for non valid resource type
+ok 354 PhantomJS 2.1 - Unit | Component | player/qz viewer: resourceComponentSelected for image resource type
+ok 355 PhantomJS 2.1 - Unit | Component | player/qz viewer: resourceComponentSelected for text/pdf resource type
+ok 356 PhantomJS 2.1 - Unit | Component | player/qz viewer: resourceComponentSelected for youtube resource type
+ok 357 PhantomJS 2.1 - Unit | Component | player/qz viewer: resourceComponentSelected for vimeo resource type
+ok 358 PhantomJS 2.1 - Unit | Component | player/qz viewer: resourceComponentSelected for youtube resource type
+ok 359 PhantomJS 2.1 - Unit | Component | player/qz viewer: buttonTextKey when is not the last resource
+ok 360 PhantomJS 2.1 - Unit | Component | player/qz viewer: buttonTextKey when is the last resource and assessment
+ok 361 PhantomJS 2.1 - Unit | Component | player/qz viewer: buttonTextKey when is the last resource and collection
+ok 362 PhantomJS 2.1 - Unit | Component | player/qz viewer: submitQuestion
+ok 363 PhantomJS 2.1 - Unit | Component | player/resources/ qz vimeo resource: getVimeoID default url
+ok 364 PhantomJS 2.1 - Unit | Component | player/resources/ qz vimeo resource: getVimeoID non default vimeo url
+ok 365 PhantomJS 2.1 - Unit | Component | player/resources/ qz vimeo resource: getVimeoID vimeo url with numbers
+ok 366 PhantomJS 2.1 - Unit | Component | player/resources/ qz vimeo resource: getVimeoID when no id provided
+ok 367 PhantomJS 2.1 - Unit | Component | player/resources/ qz youtube resource: getYoutubeIdFromUrl
+ok 368 PhantomJS 2.1 - Unit | Component | reports/assessment/questions/gru-fib: mergeArrays
+ok 369 PhantomJS 2.1 - Unit | Component | reports/assessment/questions/qz reorder: answers when show correct
+ok 370 PhantomJS 2.1 - Unit | Component | reports/assessment/questions/qz reorder: answers show user answers
+ok 371 PhantomJS 2.1 - Unit | Controller | reports/context: it exists
+ok 372 PhantomJS 2.1 - Unit | Helper | fractional: Fractional Helper
+ok 373 PhantomJS 2.1 - Unit | Helper | fractional: Fractional Helper With Expression
+ok 374 PhantomJS 2.1 - Unit | Helper | grading scale legend: it works without named arguments
+ok 375 PhantomJS 2.1 - Unit | Helper | grading scale legend: it works with the argument 'notStarted'
+ok 376 PhantomJS 2.1 - Unit | Helper | no tags: Sanitize tag text default behavior
+ok 377 PhantomJS 2.1 - Unit | Helper | no tags: Sanitize tag text default behavior
+ok 378 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text default behavior
+ok 379 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text passing maxLength
+ok 380 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text no suffix
+ok 381 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text passing a valid type
+ok 382 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text passing a valid type and max length
+ok 383 PhantomJS 2.1 - Unit | Helper | truncate: Truncate text when not needed
+ok 384 PhantomJS 2.1 - Unit | Initializer | route: it works
+ok 385 PhantomJS 2.1 - Unit | Mixin | modal: it works
+ok 386 PhantomJS 2.1 - Unit | Mixin | token: token
+ok 387 PhantomJS 2.1 - Unit | Mixin | token: headers
+ok 388 PhantomJS 2.1 - Unit | Model | collection/collection: resourcesSorted
+ok 389 PhantomJS 2.1 - Unit | Model | collection/collection: totalAttempts
+ok 390 PhantomJS 2.1 - Unit | Model | collection/collection: isAssessment
+ok 391 PhantomJS 2.1 - Unit | Model | collection/collection: hasResources empty
+ok 392 PhantomJS 2.1 - Unit | Model | collection/collection: hasResources not empty
+ok 393 PhantomJS 2.1 - Unit | Model | collection/collection: prevResource without resources
+ok 394 PhantomJS 2.1 - Unit | Model | collection/collection: prevResource
+ok 395 PhantomJS 2.1 - Unit | Model | collection/collection: nextResource without resources
+ok 396 PhantomJS 2.1 - Unit | Model | collection/collection: nextResource
+ok 397 PhantomJS 2.1 - Unit | Model | collection/collection: getResourceById without resources
+ok 398 PhantomJS 2.1 - Unit | Model | collection/collection: getResourceById
+ok 399 PhantomJS 2.1 - Unit | Model | collection/collection: isLastResource
+ok 400 PhantomJS 2.1 - Unit | Model | editor/assessment/category: it exists
+ok 401 PhantomJS 2.1 - Unit | Model | resource/resource: isQuestion
+ok 402 PhantomJS 2.1 - Unit | Model | resource/resource: format question
+ok 403 PhantomJS 2.1 - Unit | Model | resource/resource: format resource
+ok 404 PhantomJS 2.1 - Unit | Model | resource/resource: isSingleChoice
+ok 405 PhantomJS 2.1 - Unit | Model | resource/resource: isMultipleAnswer
+ok 406 PhantomJS 2.1 - Unit | Model | resource/resource: isTrueFalse
+ok 407 PhantomJS 2.1 - Unit | Model | resource/resource: isOpenEnded
+ok 408 PhantomJS 2.1 - Unit | Model | resource/resource: isFIB
+ok 409 PhantomJS 2.1 - Unit | Model | resource/resource: isHotSpotText
+ok 410 PhantomJS 2.1 - Unit | Model | resource/resource: isHotSpotImage
+ok 411 PhantomJS 2.1 - Unit | Model | resource/resource: isHotTextReorder
+ok 412 PhantomJS 2.1 - Unit | Model | resource/resource: isHotTextHighlight
+ok 413 PhantomJS 2.1 - Unit | Model | resource/resource: isImageResource
+ok 414 PhantomJS 2.1 - Unit | Model | resource/resource: isYoutubeResource
+ok 415 PhantomJS 2.1 - Unit | Model | resource/resource: isPDFResource
+ok 416 PhantomJS 2.1 - Unit | Model | resource/resource: isVimeoResource
+ok 417 PhantomJS 2.1 - Unit | Model | resource/resource: isHotTextHighlightWord
+ok 418 PhantomJS 2.1 - Unit | Model | resource/resource: isHotTextHighlightSentence
+ok 419 PhantomJS 2.1 - Unit | Model | resource/resource: hasAnswers
+ok 420 PhantomJS 2.1 - Unit | Model | resource/resource: assetUrl
+ok 421 PhantomJS 2.1 - Unit | Model | resource/resource: isUrlResource
+ok 422 PhantomJS 2.1 - Unit | Model | result/context: questionResults
+ok 423 PhantomJS 2.1 - Unit | Model | result/context: totalResources
+ok 424 PhantomJS 2.1 - Unit | Model | result/context: currentResult
+ok 425 PhantomJS 2.1 - Unit | Model | result/context: getResultByResourceId
+ok 426 PhantomJS 2.1 - Unit | Model | result/question: attemptStatus
+ok 427 PhantomJS 2.1 - Unit | Model | result/question: clear
+ok 428 PhantomJS 2.1 - Unit | Model | result/question: correct/incorrect
+ok 429 PhantomJS 2.1 - Unit | Model | result/question: started
+ok 430 PhantomJS 2.1 - Unit | Model | result/report-data-event: questionResults
+ok 431 PhantomJS 2.1 - Unit | Model | result/report-data-event: profileCode
+ok 432 PhantomJS 2.1 - Unit | Model | result/report-data-event: setProfileProperties
+ok 433 PhantomJS 2.1 - Unit | Model | result/report-data-event: totalIncorrect
+ok 434 PhantomJS 2.1 - Unit | Model | result/report-data-event: setProfileSummary
+ok 435 PhantomJS 2.1 - Unit | Model | result/report-data-event: findIndexByResourceId
+ok 436 PhantomJS 2.1 - Unit | Model | result/report-data-event: merge with saved time
+ok 437 PhantomJS 2.1 - Unit | Model | result/report-data-event: merge with time spent
+ok 438 PhantomJS 2.1 - Unit | Model | result/report-data: resourceIds
+ok 439 PhantomJS 2.1 - Unit | Model | result/report-data: studentIds
+ok 440 PhantomJS 2.1 - Unit | Model | result/report-data: students
+ok 441 PhantomJS 2.1 - Unit | Model | result/report-data: findByProfileId
+ok 442 PhantomJS 2.1 - Unit | Model | result/report-data: getResultsByQuestion
+ok 443 PhantomJS 2.1 - Unit | Model | result/report-data: getStudentsByQuestionAndAnswer
+ok 444 PhantomJS 2.1 - Unit | Model | result/report-data: parseFinishEvent
+ok 445 PhantomJS 2.1 - Unit | Model | result/report-data: parseOnResourceEvent
+ok 446 PhantomJS 2.1 - Unit | Model | result/report-data: parseStartEvent
+ok 447 PhantomJS 2.1 - Unit | Model | result/report-data: setCollection
+ok 448 PhantomJS 2.1 - Unit | Model | result/report-data: getResultsByQuestion
+ok 449 PhantomJS 2.1 - Unit | Model | result/resource: timeSpent
+ok 450 PhantomJS 2.1 - Unit | Model | result/resource: clear
+ok 451 PhantomJS 2.1 - Unit | Model | taxonomy/browse-item: createFromTaxonomyItem -copy up to one level
+ok 452 PhantomJS 2.1 - Unit | Model | taxonomy/browse-item: createFromTaxonomyItem -copy up to two levels
+ok 453 PhantomJS 2.1 - Unit | Model | taxonomy/browse-item: createFromTaxonomyItem -copy up to three levels
+ok 454 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-item: getPath with no ancestors
+ok 455 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-item: getPath with ancestors
+ok 456 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-item: find
+ok 457 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-item: destroyItem
+ok 458 PhantomJS 2.1 - Unit | Model | taxonomy/taxonomy-tag-data: isMicroStandardId
+ok 459 PhantomJS 2.1 - Unit | Route | reports/context: model
+ok 460 PhantomJS 2.1 - Unit | Route | reports/context: setupController
+ok 461 PhantomJS 2.1 - Unit | Serializer | attempt/attempt: normalizeReportData
+ok 462 PhantomJS 2.1 - Unit | Serializer | attempt/attempt: normalizeReportEvents
+ok 463 PhantomJS 2.1 - Unit | Serializer | collection/collection: normalizeReadCollection
+ok 464 PhantomJS 2.1 - Unit | Serializer | collection/collection: normalizeReadCollection with resources
+ok 465 PhantomJS 2.1 - Unit | Serializer | context/context: serializeResourceResult with a resource
+ok 466 PhantomJS 2.1 - Unit | Serializer | context/context: serializeResourceResult with a question
+ok 467 PhantomJS 2.1 - Unit | Serializer | context/context: serializeContext
+ok 468 PhantomJS 2.1 - Unit | Serializer | context/context: serializeUpdateContext
+ok 469 PhantomJS 2.1 - Unit | Serializer | context/context: normalizeContextResult
+ok 470 PhantomJS 2.1 - Unit | Serializer | context/context: normalizeReadContext
+ok 471 PhantomJS 2.1 - Unit | Serializer | context/context: normalizeReadContexts
+ok 472 PhantomJS 2.1 - Unit | Serializer | context/context: normalizeResourceResults
+ok 473 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeProfile
+ok 474 PhantomJS 2.1 - Unit | Serializer | profile/profile: normalizeProfiles
+ok 475 PhantomJS 2.1 - Unit | Serializer | resource/resource: normalizeReadResource
+ok 476 PhantomJS 2.1 - Unit | Serializer | resource/resource: normalizeReadResource without interaction
+ok 477 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeFetchSubjects
+ok 478 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeFetchCourses
+ok 479 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeFetchDomains
+ok 480 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeFetchCodes
+ok 481 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: serializeTaxonomy
+ok 482 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeTaxonomyObject
+ok 483 PhantomJS 2.1 - Unit | Serializer | taxonomy/taxonomy: normalizeTaxonomyArray
+ok 484 PhantomJS 2.1 - Unit | Service | api-sdk/attempt: getReportData
+ok 485 PhantomJS 2.1 - Unit | Service | api-sdk/collection: readCollection
+ok 486 PhantomJS 2.1 - Unit | Service | api-sdk/context: createContext
+ok 487 PhantomJS 2.1 - Unit | Service | api-sdk/context: getContextsCreated
+ok 488 PhantomJS 2.1 - Unit | Service | api-sdk/context: getContextsAssigned
+ok 489 PhantomJS 2.1 - Unit | Service | api-sdk/context: moveToResource
+ok 490 PhantomJS 2.1 - Unit | Service | api-sdk/context: startContext
+ok 491 PhantomJS 2.1 - Unit | Service | api-sdk/context: finishContext
+ok 492 PhantomJS 2.1 - Unit | Service | api-sdk/context: updateContext
+ok 493 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readAudiences
+ok 494 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readLicenses
+ok 495 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readDepthOfKnowledgeItems
+ok 496 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readCountries
+ok 497 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readStates
+ok 498 PhantomJS 2.1 - Unit | Service | api-sdk/lookup: readDistricts
+ok 499 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readProfiles
+ok 500 PhantomJS 2.1 - Unit | Service | api-sdk/profile: readProfiles chunk size 1
+ok 501 PhantomJS 2.1 - Unit | Service | api-sdk/taxonomy: fetchSubjects
+ok 502 PhantomJS 2.1 - Unit | Service | api-sdk/taxonomy: fetchCourses
+ok 503 PhantomJS 2.1 - Unit | Service | api-sdk/taxonomy: fetchDomains
+ok 504 PhantomJS 2.1 - Unit | Service | api-sdk/taxonomy: fetchCodes
+ok 505 PhantomJS 2.1 - Unit | Service | configuration: loadConfiguration
+ok 506 PhantomJS 2.1 - Unit | Service | taxonomy: getSubjects when taxonomy container has not been loaded
+ok 507 PhantomJS 2.1 - Unit | Service | taxonomy: getSubjects when taxonomy is already loaded
+ok 508 PhantomJS 2.1 - Unit | Service | taxonomy: getCourses when taxonomy courses does not exist for subject
+ok 509 PhantomJS 2.1 - Unit | Service | taxonomy: getCourses when taxonomy courses exist for subject
+ok 510 PhantomJS 2.1 - Unit | Service | taxonomy: findSubjectById for a loaded category and subject
+ok 511 PhantomJS 2.1 - Unit | Service | taxonomy: findSubjectById for a loaded category and non-loaded subject
+ok 512 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -all in L0
+ok 513 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -L1 with parent
+ok 514 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -L1 with/without parent
+ok 515 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -one learning target
+ok 516 PhantomJS 2.1 - Unit | Service | taxonomy: Create standards hierarchy -multi-level learning targets
+ok 517 PhantomJS 2.1 - Unit | Utility | answer object: Answer Object - correct
+ok 518 PhantomJS 2.1 - Unit | Utility | dropdown item: it works
+ok 519 PhantomJS 2.1 - Unit | utils | endpoint-config: getEndpointUrl
+ok 520 PhantomJS 2.1 - Unit | utils | endpoint-config: getEndpointSecureUrl
+ok 521 PhantomJS 2.1 - Unit | utils | endpoint-config: getRealTimeWebServiceUrl
+ok 522 PhantomJS 2.1 - Unit | utils | endpoint-config: getRealTimeWebServiceUri
+ok 523 PhantomJS 2.1 - Unit | utils | endpoint-config: getRealTimeWebSocketUrl
+ok 524 PhantomJS 2.1 - Unit | utils | endpoint-config: getRealTimeWebSocketUri
+ok 525 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isCollectionPlayer
+ok 526 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isAssessmentPlayer
+ok 527 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isResourcePlayer
+ok 528 PhantomJS 2.1 - Unit | Utility | gooru legacy url: module
+ok 529 PhantomJS 2.1 - Unit | Utility | gooru legacy url: id
+ok 530 PhantomJS 2.1 - Unit | Utility | gooru legacy url: contentId
+ok 531 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isLegacyUrl
+ok 532 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isLegacyUrl - not so
+ok 533 PhantomJS 2.1 - Unit | Utility | gooru legacy url: isLegacyUrl - google sign url
+ok 534 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for collection-play with no content id
+ok 535 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for collection-play with content id
+ok 536 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for collection-play with invalid content id, cid={1}
+ok 537 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for assessment-play with no content id
+ok 538 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for assessment-play with content id
+ok 539 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for assessment-play with invalid content id, cid={1}
+ok 540 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for resource-play
+ok 541 PhantomJS 2.1 - Unit | Utility | gooru legacy url: routeParams for profile
+ok 542 PhantomJS 2.1 - Unit | Utility | math: isNumeric with integer literals
+ok 543 PhantomJS 2.1 - Unit | Utility | math: isNumeric with floting-point literals
+ok 544 PhantomJS 2.1 - Unit | Utility | math: isNumeric with non-numeric values
+ok 545 PhantomJS 2.1 - Unit | Utility | math: Average on array of values
+ok 546 PhantomJS 2.1 - Unit | Utility | math: Average on non-valid values
+ok 547 PhantomJS 2.1 - Unit | Utility | question-result: Average Reaction
+ok 548 PhantomJS 2.1 - Unit | Utility | question-result: Correct Answers
+ok 549 PhantomJS 2.1 - Unit | Utility | question-result: Correct Percentage
+ok 550 PhantomJS 2.1 - Unit | Utility | question-result: Total Time Spent
+ok 551 PhantomJS 2.1 - Unit | Utility | single choice: Single Choice - getCorrectAnswer empty array
+ok 552 PhantomJS 2.1 - Unit | Utility | single choice: Single Choice - getCorrectAnswer no correct answer provided
+ok 553 PhantomJS 2.1 - Unit | Utility | single choice: Single Choice - getCorrectAnswer when correct answer is provided
+ok 554 PhantomJS 2.1 - Unit | Utility | single choice: Single Choice - isCorrect
+ok 555 PhantomJS 2.1 - Unit | Utility | single choice: Single Choice - distribution
+ok 556 PhantomJS 2.1 - Unit | Utility | single choice: Single Choice - answerKey
+ok 557 PhantomJS 2.1 - Unit | Utility | single choice: Single Choice - sameAnswer
+ok 558 PhantomJS 2.1 - Unit | Utility | single choice: Single Choice - toAnswerObjects
+ok 559 PhantomJS 2.1 - Unit | Utility | single choice: Single Choice - toUserAnswer
+ok 560 PhantomJS 2.1 - Unit | Utility | sort featured courses: getSubjects and sort Courses
+ok 561 PhantomJS 2.1 - Unit | Utility | taxonomy: Create taxonomy test tree: one node
+ok 562 PhantomJS 2.1 - Unit | Utility | taxonomy: Create taxonomy test tree: one node with 2 children
+ok 563 PhantomJS 2.1 - Unit | Utility | taxonomy: Create taxonomy test tree: one node, 2 children, 3 grandchildren (per child)
+ok 564 PhantomJS 2.1 - Unit | Utility | taxonomy: Create taxonomy test tree: two nodes with 4 children each
+ok 565 PhantomJS 2.1 - Unit | Utility | true false: True/False - getCorrectAnswer when correct answer is provided
+ok 566 PhantomJS 2.1 - Unit | Utility | true false: True/False - isCorrect
+ok 567 PhantomJS 2.1 - Unit | Utility | true false: True/False - distribution
+ok 568 PhantomJS 2.1 - Unit | Utility | true false: True/False - answerKey
+ok 569 PhantomJS 2.1 - Unit | Utility | true false: True/False - sameAnswer
+ok 570 PhantomJS 2.1 - Unit | Utility | true false: True/False - toAnswerObjects with answer id
+ok 571 PhantomJS 2.1 - Unit | Utility | true false: True/False - toAnswerObjects with no answer id
+ok 572 PhantomJS 2.1 - Unit | Utility | true false: True/False - toUserAnswer with answer id
+ok 573 PhantomJS 2.1 - Unit | Utility | true false: True/False - toUserAnswer with no answer id
+ok 574 PhantomJS 2.1 - Unit | Utility | utils: alphabeticalStringSort
+ok 575 PhantomJS 2.1 - Unit | Utility | utils: checkStandards
+ok 576 PhantomJS 2.1 - Unit | Utility | utils: courseSectionsPrefix
+ok 577 PhantomJS 2.1 - Unit | Utility | utils: formatDate
+ok 578 PhantomJS 2.1 - Unit | Utility | utils: formatTime
+ok 579 PhantomJS 2.1 - Unit | Utility | utils: formatTimeInSeconds
+ok 580 PhantomJS 2.1 - Unit | Utility | utils: getAnswerResultIcon
+ok 581 PhantomJS 2.1 - Unit | Utility | utils: getScoreString
+ok 582 PhantomJS 2.1 - Unit | Utility | utils: getReactionIcon
+ok 583 PhantomJS 2.1 - Unit | Utility | utils: getGradeColor
+ok 584 PhantomJS 2.1 - Unit | Utility | utils: getLetter
+ok 585 PhantomJS 2.1 - Unit | Utility | utils: numberSort
+ok 586 PhantomJS 2.1 - Unit | Utility | utils: Check Uuid format
+ok 587 PhantomJS 2.1 - Unit | Utility | utils: Clean filename
+ok 588 PhantomJS 2.1 - Unit | Utility | utils: Get File Name from Invalid URL
+ok 589 PhantomJS 2.1 - Unit | Utility | utils: Replace Math Expression
+ok 590 PhantomJS 2.1 - Unit | Utility | utils: Array into chunks
+ok 591 PhantomJS 2.1 - Unit | Validator | hot-text-highlight: check if brackets are balanced using bracketsAreBalanced()
+ok 592 PhantomJS 2.1 - Unit | Validator | hot-text-highlight: check if selections are valid using validateSelections()
+ok 593 PhantomJS 2.1 - Unit | Validator | hot-text-highlight: check if answer is correct with words selection
+ok 594 PhantomJS 2.1 - Unit | Validator | hot-text-highlight: check if answer is correct with sentence selection
+ok 595 PhantomJS 2.1 - Unit | Validator | number-compare: Valid Compare Numbers
+ok 596 PhantomJS 2.1 - Unit | Validator | number-compare: Invalid Compare Numbers
+ok 597 PhantomJS 2.1 - Unit | Validator | presence-html: Text is invalid
+ok 598 PhantomJS 2.1 - Unit | Validator | presence-html: Text is valid
+
+1..598
+# tests 598
+# pass  598
+# skip  0
+# fail  0
+
+# ok
+
+[32mDone, without errors.[39m

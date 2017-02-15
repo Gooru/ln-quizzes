@@ -66,20 +66,6 @@ export default Ember.Service.extend({
   },
 
   /**
-   * Get data to show on the real time report
-   * @param {String} contextId
-   * @returns {Promise}
-   */
-  getReportData: function(contextId) {
-    const service = this;
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').getReportData(contextId)
-        .then(response => service.get('contextSerializer').normalizeReportData(response))
-        .then(resolve, reject);
-    });
-  },
-
-  /**
    * Save the previous resource response and current resource
    * @param {String} resourceId current resource
    * @param {String} contextId
@@ -136,14 +122,5 @@ export default Ember.Service.extend({
       service.get('contextAdapter').updateContext(
         serializedAssignment, assignment.get('id')).then(resolve, reject);
     });
-  },
-
-  /**
-   * Normalize a real time event coming from web sockets
-   * @param {Object} reportDataEvent
-   * @returns {Promise}
-   */
-  normalizeReportDataEvent: function(reportDataEvent) {
-    return this.get('contextSerializer').normalizeReportDataEvent(reportDataEvent);
   }
 });

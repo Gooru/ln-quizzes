@@ -13,7 +13,7 @@ import HotTextHighlightUtil from 'quizzes/utils/question/hot-text-highlight';
 //Question Types
 export const QUESTION_TYPES = {
   singleChoice: 'single_choice',
-  multipleAnswer: 'multiple_answer',
+  multipleAnswer: 'multiple_choice',
   trueFalse: 'true_false',
   openEnded: 'OE',
   fib: 'text_entry',
@@ -33,8 +33,8 @@ export const QUESTION_CONFIG = {
       answer: 'reports.assessment.questions.gru-single-choice'
     }
   }),
-  'multiple_answer'    : Ember.Object.create({
-    apiType: 'multiple_answer_question',
+  'multiple_choice'    : Ember.Object.create({
+    apiType: 'multiple_choice_question',
     util: MultipleAnswerUtil,
     component: {
       player: 'player.questions.qz-multiple-answer',

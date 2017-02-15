@@ -5,9 +5,9 @@ moduleFor('serializer:profile/profile', 'Unit | Serializer | profile/profile');
 test('normalizeProfile', function(assert) {
   const serializer = this.subject();
   const payload = {
-    firstName: 'first-name',
+    first_name: 'first-name',
     id: 'profile-id',
-    lastName: 'last-name',
+    last_name: 'last-name',
     username: 'username',
     email: 'e@mail.com'
   };
@@ -24,9 +24,9 @@ test('normalizeProfiles', function(assert) {
   const serializer = this.subject();
   const payload = {
     users: [{
-      firstName: 'first-name',
+      first_name: 'first-name',
       id: 'profile-id',
-      lastName: 'last-name',
+      last_name: 'last-name',
       username: 'username',
       email: 'e@mail.com'
     }]

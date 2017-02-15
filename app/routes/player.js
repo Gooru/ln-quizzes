@@ -38,7 +38,7 @@ export default Ember.Route.extend({
       let type = route.get('configurationService.configuration.properties.type');
       return Ember.RSVP.hash({
         contextResult,
-        collection: route.get('collectionService').readCollection(contextResult.collectionId,type)
+        collection: route.get('collectionService').readCollection(contextResult.collectionId, type)
       });
     });
   },

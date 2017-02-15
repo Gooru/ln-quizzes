@@ -18,7 +18,7 @@ test('Multiple Answer Correct Answer', function(assert) {
   let questionResult = QuestionResult.create({
     resource: ResourceModel.create({
       id: '569906aa20b7dfae1bcd5',
-      type: 'multiple_answer',
+      type: 'multiple_choice',
       body: 'Sample Question MA',
       correctAnswer: Ember.A([
         AnswerModel.create({ value: '2', text: 'Answer 2' }),
@@ -49,7 +49,7 @@ test('Multiple Answer Your Answer Incorrect', function(assert) {
   let questionResult = QuestionResult.create({
     resource: ResourceModel.create({
       id: '569906aa20b7dfae1bcd5',
-      type: 'multiple_answer',
+      type: 'multiple_choice',
       body: 'Sample Question MA',
       correctAnswer: Ember.A([
         AnswerModel.create({ value: '2', text: 'Answer 2' }),
@@ -79,7 +79,7 @@ test('Multiple Answer Your Answer Correct', function(assert) {
   let questionResult = QuestionResult.create({
     resource: ResourceModel.create({
       id: '569906aa20b7dfae1bcd5',
-      type: 'multiple_answer',
+      type: 'multiple_choice',
       body: 'Sample Question MA',
       correctAnswer: Ember.A([
         AnswerModel.create({ value: '2', text: 'Answer 2' }),
@@ -110,7 +110,7 @@ test('Multiple Answer anonymous', function(assert) {
   let questionResult = QuestionResult.create({
     resource: ResourceModel.create({
       id: '569906aa20b7dfae1bcd5',
-      type: 'multiple_answer',
+      type: 'multiple_choice',
       body: 'Sample Question MA',
       correctAnswer: Ember.A([
         AnswerModel.create({ value: '2', text: 'Answer 2' }),

@@ -4,9 +4,7 @@ import moduleForService from 'quizzes/tests/helpers/module-for-service';
 import Context from 'quizzes/models/context/context';
 import Profile from 'quizzes/models/profile/profile';
 
-moduleForService('service:api-sdk/context', 'Unit | Service | api-sdk/context', {
-
-});
+moduleForService('service:api-sdk/context', 'Unit | Service | api-sdk/context');
 
 test('createContext', function(assert) {
   assert.expect(2);
@@ -165,36 +163,6 @@ test('getContextsAssigned', function(assert) {
     assert.deepEqual(contextsAssigned, expectedData, 'Wrong contexts assigned object');
     done();
   });
-});
-
-test('getReportData', function(assert) {
-  assert.expect(3);
-  const service = this.subject();
-  const expectedContextId = 'context-id';
-  const contextResult = {
-    id: 'result-id'
-  };
-
-  service.set('contextAdapter', Ember.Object.create({
-    getReportData: function(contextId) {
-      assert.deepEqual(contextId, expectedContextId, 'The context id should match');
-      return Ember.RSVP.resolve(contextResult);
-    }
-  }));
-
-  service.set('contextSerializer', Ember.Object.create({
-    normalizeReportData: function(response) {
-      assert.deepEqual(response, contextResult, 'The context result should match');
-      return contextResult;
-    }
-  }));
-
-  let done = assert.async();
-  service.getReportData(expectedContextId)
-    .then(function(result) {
-      assert.deepEqual(result, contextResult, 'The result should match');
-      done();
-    });
 });
 
 test('moveToResource', function(assert) {

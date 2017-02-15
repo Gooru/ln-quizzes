@@ -93,7 +93,7 @@ export default Ember.Object.extend({
       serialized.answer = resourceResult.get('answer') ?
         resourceResult.get('answer').map(answer => {
           return { value: answer.value };
-        }) : Ember.A();
+        }) : null;
     }
     return serialized;
   },

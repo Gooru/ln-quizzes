@@ -71,7 +71,7 @@ export default ResourceResult.extend({
   /**
    * @property {boolean} started
    */
-  started: Ember.computed.bool('answer.length'),
+  started: Ember.computed.bool('answer'),
 
   /**
    * @property {boolean} submitted - if the question is already submitted

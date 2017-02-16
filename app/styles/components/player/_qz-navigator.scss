@@ -101,21 +101,21 @@
           z-index: 2;
           display: inline-block;
         }
-        .video {
+        .video_resource {
           background: url("quizzes/images/video-resource.svg");
           -webkit-background-size: 31px 30px;
           background-size: 31px 30px;
           height:30px;
           width: 31px;
         }
-        .webpage {
+        .webpage_resource {
           background: url("quizzes/images/website-resource.svg");
           -webkit-background-size: 29px 30px;
           background-size: 29px 30px;
           height: 30px;
           width: 29px;
         }
-        .interactive {
+        .interactive_resource {
           background: url("quizzes/images/interactive-resource.svg");
           -webkit-background-size: 34px 30px;
           background-size: 34px 30px;
@@ -129,21 +129,21 @@
           height: 30px;
           width: 30px;
         }
-        .image {
+        .image_resource {
           background: url("quizzes/images/image-resource.svg");
           -webkit-background-size: 30px 30px;
           background-size: 30px 30px;
           height: 30px;
           width: 30px;
         }
-        .text {
+        .text_resource {
           background: url("quizzes/images/text-resource.svg");
           -webkit-background-size: 31px 30px;
           background-size: 31px 30px;
           height: 30px;
           width: 31px;
         }
-        .audio {
+        .audio_resource {
           background: url("quizzes/images/audio-resource.svg");
           -webkit-background-size: 34px 30px;
           background-size: 34px 30px;

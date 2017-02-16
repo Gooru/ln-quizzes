@@ -1,8 +1,8 @@
 export const RESOURCE_COMPONENT_MAP = {
   'video/youtube' : 'player.resources.qz-youtube-resource',
-  'resource/url'  : 'player.resources.qz-url-resource',
-  'handouts'      : 'player.resources.qz-pdf-resource',
-  'image'         : 'player.resources.qz-image-resource',
+  'resource/url'  : 'qz-preview-url',
+  'handouts'      : 'qz-preview-url',
+  'image'         : 'qz-preview-url',
   'vimeo/video'   : 'player.resources.qz-vimeo-resource'
 };
 
@@ -19,14 +19,14 @@ export const UPLOADABLE_TYPES = [
   }
 ];
 
-export const RESOURCE_TYPES = [
-    "webpage",
-    "video",
-    "interactive",
-    "audio",
-    "image",
-    "text"
-  ];
+export const RESOURCE_TYPES = {
+  webpage: "webpage_resource",
+  video: "video_resource",
+  interactive: "interactive_resource",
+  audio: "audio_resource",
+  image: "image_resource",
+  text: "text_resource"
+};
 
 export const DEFAULT_IMAGES = {
   USER_PROFILE: '/assets/quizzes/profile.png',

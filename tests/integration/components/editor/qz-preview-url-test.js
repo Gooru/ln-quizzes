@@ -1,21 +1,22 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import ResourceModel from 'quizzes/models/resource/resource';
 
-moduleForComponent('editor/assessment/qz-preview-url', 'Integration | Component | editor/assessment/qz preview url', {
+moduleForComponent('qz-preview-url', 'Integration | Component | qz preview url', {
   integration: true
 });
 test('Preview url layout', function (assert) {
 
   assert.expect(2);
 
-  this.render(hbs`{{editor/assessment/qz-preview-url url=url}}`);
+  this.render(hbs`{{qz-preview-url resource=resource isRubric=true}}`);
 
   var $component = this.$();
 
   assert.ok($component.find('.qz-preview-url .preview.show-legend span').length, 'Missing preview legend');
 
-  const url = 'http://www.water4all.org/us/';
-  this.set('url', url);
+  const resource = ResourceModel.create({body:'http://www.water4all.org/us/'});
+  this.set('resource', resource);
 
   assert.ok($component.find('.qz-preview-url .preview.show-url').length, 'Missing url preview');
 
@@ -26,10 +27,10 @@ test('Show url', function (assert) {
 
   assert.expect(2);
 
-  const url = 'http://www.water4all.org/us/';
+  const resource = ResourceModel.create({body:'http://www.water4all.org/us/'});
 
-  this.set('url', url);
-  this.render(hbs`{{editor/assessment/qz-preview-url url=url}}`);
+  this.set('resource', resource);
+  this.render(hbs`{{qz-preview-url resource=resource}}`);
 
   var $component = this.$();
 
@@ -41,11 +42,11 @@ test('Show image', function (assert) {
 
   assert.expect(2);
 
-  const url = 'test/images/icon.png';
+  const resource = ResourceModel.create({body:'test/images/icon.png'});
 
-  this.set('url', url);
+  this.set('resource', resource);
 
-  this.render(hbs`{{editor/assessment/qz-preview-url url=url}}`);
+  this.render(hbs`{{qz-preview-url resource=resource}}`);
 
   var $component = this.$();
   assert.ok($component.find('.qz-preview-url iframe').length,'Missing url preview');
@@ -56,12 +57,11 @@ test('Show PDF', function (assert) {
 
   assert.expect(2);
 
+  const resource = ResourceModel.create({body:'http://www.worldanimalfoundation.net/f/koala.pdf'});
 
-  const url = 'http://www.worldanimalfoundation.net/f/koala.pdf';
+  this.set('resource', resource);
 
-  this.set('url', url);
-
-  this.render(hbs`{{editor/assessment/qz-preview-url url=url}}`);
+  this.render(hbs`{{qz-preview-url resource=resource}}`);
 
   var $component = this.$();
 

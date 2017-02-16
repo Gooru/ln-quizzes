@@ -26,7 +26,7 @@ test('format question', function(assert) {
 test('format resource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    isResource: true
+    isResource: false
   });
 
   assert.ok(model.get('format'), 'question');
@@ -116,7 +116,7 @@ test('isHotTextHighlight', function(assert) {
 test('isImageResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'image/png'
+    'resourceType': 'image/png'
   });
 
   assert.ok(model.get('isImageResource'), 'It should be image resource type');
@@ -125,7 +125,7 @@ test('isImageResource', function(assert) {
 test('isYoutubeResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'video/youtube'
+    'resourceType': 'video/youtube'
   });
 
   assert.ok(model.get('isYoutubeResource'), 'It should be youtube resource type');
@@ -134,7 +134,7 @@ test('isYoutubeResource', function(assert) {
 test('isPDFResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'handouts'
+    'resourceType': 'handouts'
   });
 
   assert.ok(model.get('isPDFResource'), 'It should be pdf resource type');
@@ -142,7 +142,7 @@ test('isPDFResource', function(assert) {
 test('isVimeoResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'vimeo/video'
+    'resourceType': 'vimeo/video'
   });
 
   assert.ok(model.get('isVimeoResource'), 'It should be vimeo resource type');

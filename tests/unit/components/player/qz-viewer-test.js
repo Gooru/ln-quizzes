@@ -12,7 +12,7 @@ test('resourceComponentSelected for non valid resource type', function (assert) 
 
   var component = this.subject({
     resource: Ember.Object.create({
-      type: 'any-non-valid-value'
+      resourceType: 'any-non-valid-value'
     })
   });
 
@@ -28,7 +28,7 @@ test('resourceComponentSelected for image resource type', function (assert) {
     })
   });
 
-  assert.equal(component.get('resourceComponentSelected'), 'player.resources.qz-image-resource', 'Wrong component name');
+  assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
 });
 
 test('resourceComponentSelected for text/pdf resource type', function (assert) {
@@ -36,11 +36,11 @@ test('resourceComponentSelected for text/pdf resource type', function (assert) {
 
   var component = this.subject({
     resource: Ember.Object.create({
-      type: 'handouts'
+      resourceType: 'handouts'
     })
   });
 
-  assert.equal(component.get('resourceComponentSelected'), 'player.resources.qz-pdf-resource', 'Wrong component name');
+  assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
 });
 
 test('resourceComponentSelected for youtube resource type', function (assert) {
@@ -48,7 +48,7 @@ test('resourceComponentSelected for youtube resource type', function (assert) {
 
   var component = this.subject({
     resource: Ember.Object.create({
-      type: 'video/youtube'
+      resourceType: 'video/youtube'
     })
   });
 
@@ -59,23 +59,23 @@ test('resourceComponentSelected for vimeo resource type', function (assert) {
 
   var component = this.subject({
     resource: Ember.Object.create({
-      type: 'vimeo/video'
+      resourceType: 'vimeo/video'
     })
   });
 
   assert.equal(component.get('resourceComponentSelected'), 'player.resources.qz-vimeo-resource', 'Wrong component name');
 });
 
-test('resourceComponentSelected for youtube resource type', function (assert) {
+test('resourceComponentSelected for url resource type', function (assert) {
   assert.expect(1);
 
   var component = this.subject({
     resource: Ember.Object.create({
-      type: 'resource/url'
+      resourceType: 'resource/url'
     })
   });
 
-  assert.equal(component.get('resourceComponentSelected'), 'player.resources.qz-url-resource', 'Wrong component name');
+  assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
 });
 
 test('buttonTextKey when is not the last resource', function (assert) {

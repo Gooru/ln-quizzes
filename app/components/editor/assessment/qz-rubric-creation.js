@@ -31,7 +31,7 @@ export default Ember.Component.extend({
      */
     addURL: function(url){
       if(this.get('showFromWeb')){
-        this.set('rubricURL',url);
+        this.set('resource.url',url);
       }
     }
   },
@@ -41,7 +41,7 @@ export default Ember.Component.extend({
   /*** Indicates when then show from web option is visible
    * * @property {boolean}
    * */
-  rubricURL:'',
+  resource:null,
   /**
    * Indicates when then show from web option is visible
    * @property {boolean}

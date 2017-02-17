@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import QuestionMixin from 'quizzes/mixins/reports/assessment/questions/question';
-import FillInTheBlank from 'quizzes/utils/question/fill-in-the-blank';
 
 /**
  * Fill in the blank
@@ -15,34 +14,39 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['reports', 'assessment', 'questions', 'gru-fib'],
+  classNames: ['reports', 'assessment', 'questions', 'qz-fib'],
 
   // -------------------------------------------------------------------------
   // Properties
-
-  answer: Ember.computed("question", "anonymous", function () {
+  /**
+   * Return an array with every sentence and user answer, and indicate if is correct or incorrect
+   * @return {Array}
+   */
+  answer: Ember.computed('question', 'anonymous','userAnswer','question.answers.@each.value', function () {
     let component = this;
-    let question = component.get("question");
-    let questionUtil = this.getQuestionUtil(question);
-    let questionText = question.get("fibText");
-    let questionTextParts = questionText.split(FillInTheBlank.LEGACY_REGEX.text);
-    let userAnswers = component.get("userAnswer");
-    let anonymous = component.get("anonymous");
+    let question = component.get('question');
+    let questionText = question.get('question.body');
+    let questionTextParts = questionText.split('[]');
+    let userAnswers = component.get('userAnswer');
+    let anonymous = component.get('anonymous');
+    let correctAnswers = question.get('question.correctAnswer');
 
-    if (component.get("showCorrect")){
-      userAnswers = questionUtil.getCorrectAnswer();
+    if (component.get('showCorrect')){
+      userAnswers = question.get('question.correctAnswer');
     }
 
-    let answers = userAnswers.map(function(userAnswer, index){
-      let userAnswerCorrect = questionUtil.isAnswerChoiceCorrect(userAnswer, index);
-      let elementClass = (anonymous) ? 'anonymous' : ((userAnswerCorrect) ?'correct':'incorrect');
+    let answers = userAnswers.map(function(answer){
+      let userAnswer = userAnswers.findBy('value', answer.value);
+      let correctAnswer = correctAnswers.findBy('value', userAnswer.value);
+      let correct = correctAnswer && correctAnswers.indexOf(correctAnswer) === userAnswers.indexOf(userAnswer);
+      let elementClass = (anonymous) ? 'anonymous' : ((correct) ?'correct':'incorrect');
       return {
-        text: userAnswer,
+        text: userAnswer.value,
         'class': `answer ${elementClass}`
       };
     });
 
-    let sentences= questionTextParts.map(function(questionTextPart){
+    let sentences = questionTextParts.map(function(questionTextPart){
       return {
         text: questionTextPart,
         'class': 'sentence'

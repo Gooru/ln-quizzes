@@ -134,18 +134,17 @@ export default Ember.Object.extend({
    * @property {boolean} indicates if the question is hot spot text
    * @see components/player/qz-hot-text-highlight.js
    */
-  isHotTextHighlight: Ember.computed.equal('type', QUESTION_TYPES.hotTextHighlight),
+  isHotTextHighlight: Ember.computed.or('isHotTextHighlightWord', 'isHotTextHighlightSentence'),
 
   /**
    * @property {boolean} indicates if the question is hot text word type
    */
-  isHotTextHighlightWord: Ember.computed.equal('answers.firstObject.highlightType', 'word'),
+  isHotTextHighlightWord: Ember.computed.equal('type', QUESTION_TYPES.hotTextHighlightWord),
 
   /**
    * @property {boolean} indicates if the question is hot text sentence type
    */
-  isHotTextHighlightSentence: Ember.computed.equal('answers.firstObject.highlightType', 'sentence'),
-
+  isHotTextHighlightSentence: Ember.computed.equal('type', QUESTION_TYPES.hotTextHighlightSentence),
 
   /**
    * @property {boolean} indicates if the question is reorder

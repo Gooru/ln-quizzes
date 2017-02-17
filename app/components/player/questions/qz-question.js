@@ -33,7 +33,7 @@ export default Ember.Component.extend({
    * Indicate if the question has a user answer
    * @property {Boolean}
    */
-  hasUserAnswer:Ember.computed('userAnswer', function () {
+  hasUserAnswer: Ember.computed('userAnswer', function () {
     return this.get('userAnswer') && this.get('userAnswer.length');
   }),
 

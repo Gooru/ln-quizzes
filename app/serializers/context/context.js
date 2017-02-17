@@ -58,7 +58,7 @@ export default Ember.Object.extend({
         resourceId: resourceResult.resourceId,
         savedTime: resourceResult.timeSpent,
         reaction: resourceResult.reaction,
-        answer: resourceResult.answer.length ? resourceResult.answer : null,
+        answer: resourceResult.answer || null,
         score: resourceResult.score,
         skipped: resourceResult.isSkipped
       })

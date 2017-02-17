@@ -42,7 +42,7 @@ test('Fill in the blank Correct Answer', function(assert) {
   this.render(hbs`{{reports/assessment/questions/qz-fib question=question showCorrect=showCorrect}}`);
 
   const $component = this.$(); //component dom element
-  const $fib = $component.find(".reports.assessment.questions.qz-fib");
+  const $fib = $component.find('.reports.assessment.questions.qz-fib');
 
   T.exists(assert, $fib, 'Missing fill in the blank component');
   T.exists(assert, $fib.find('> span:eq(1).answer.correct'), 'The first answer should be correct');
@@ -82,7 +82,7 @@ test('Fill in the blank Your Answer Incorrect', function(assert) {
 
   this.render(hbs`{{reports/assessment/questions/qz-fib question=question userAnswer=userAnswer}}`);
   const $component = this.$(); //component dom element
-  const $fib = $component.find(".reports.assessment.questions.qz-fib");
+  const $fib = $component.find('.reports.assessment.questions.qz-fib');
   T.exists(assert, $fib, 'Missing fill in the blank component');
   T.exists(assert, $fib.find('> span:eq(1).answer.incorrect'), 'The first answer should be incorrect');
   T.exists(assert, $fib.find('> span:eq(3).answer.correct'), 'The second answer should be correct');
@@ -120,7 +120,7 @@ test('Fill in the blank Your Answer Correct', function(assert) {
 
   this.render(hbs`{{reports/assessment/questions/qz-fib question=question userAnswer=userAnswer}}`);
   const $component = this.$(); //component dom element
-  const $fib = $component.find(".reports.assessment.questions.qz-fib");
+  const $fib = $component.find('.reports.assessment.questions.qz-fib');
   T.exists(assert, $fib, 'Missing fill in the blank component');
   T.exists(assert, $fib.find('> span:eq(1).answer.correct'), 'The first answer should be correct');
   T.exists(assert, $fib.find('> span:eq(3).answer.correct'), 'The second answer should be correct');
@@ -159,7 +159,7 @@ test('Fill in the blank anonymous', function(assert) {
 
   this.render(hbs`{{reports/assessment/questions/qz-fib question=question userAnswer=userAnswer anonymous=true}}`);
   const $component = this.$(); //component dom element
-  const $fib = $component.find(".reports.assessment.questions.qz-fib");
+  const $fib = $component.find('.reports.assessment.questions.qz-fib');
   T.exists(assert, $fib, 'Missing fill in the blank component');
   T.exists(assert, $fib.find('> span:eq(1).answer.anonymous'), 'The first answer should be anonymous');
   T.exists(assert, $fib.find('> span:eq(3).answer.anonymous'), 'The second answer should be anonymous');

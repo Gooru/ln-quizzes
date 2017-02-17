@@ -18,7 +18,10 @@ export default Ember.Component.extend(QuestionMixin, {
 
   // -------------------------------------------------------------------------
   // Properties
-
+  /**
+   * Return an array with every sentence and user answer, and indicate if is correct or incorrect
+   * @return {Array}
+   */
   answer: Ember.computed('question', 'anonymous','userAnswer','question.answers.@each.value', function () {
     let component = this;
     let question = component.get('question');

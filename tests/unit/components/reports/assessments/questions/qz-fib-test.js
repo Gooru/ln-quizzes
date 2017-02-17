@@ -2,6 +2,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 import AnswerModel from 'quizzes/utils/question/answer-object';
 import ResourceModel from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('reports/assessment/questions/qz-fib', 'Unit | Component | reports/assessment/questions/qz-fib', {
   integration: false
@@ -38,7 +39,7 @@ test('answers show correct answer', function(assert) {
   let component = this.subject();
   var question = Ember.Object.create({
     question:ResourceModel.create({
-      questionType: 'text_entry',
+      type: QUESTION_TYPES.fib,
       body: 'The mountain is []',
       answers:Ember.A([
         AnswerModel.create({
@@ -64,7 +65,7 @@ test('answers show user answer anonymous', function(assert) {
   let component = this.subject();
   var question = Ember.Object.create({
     question:ResourceModel.create({
-      questionType: 'text_entry',
+      type: QUESTION_TYPES.fib,
       body: 'The mountain is []',
       answers:Ember.A([
         AnswerModel.create({
@@ -94,7 +95,7 @@ test('answers show user answer correct', function(assert) {
   let component = this.subject();
   var question = Ember.Object.create({
     question:ResourceModel.create({
-      questionType: 'text_entry',
+      type: QUESTION_TYPES.fib,
       body: 'The mountain is []',
       answers:Ember.A([
         AnswerModel.create({
@@ -123,7 +124,7 @@ test('answers show user answer incorrect', function(assert) {
   let component = this.subject();
   var question = Ember.Object.create({
     question:ResourceModel.create({
-      questionType: 'text_entry',
+      type: QUESTION_TYPES.fib,
       body: 'The mountain is []',
       answers:Ember.A([
         AnswerModel.create({
@@ -147,6 +148,3 @@ test('answers show user answer incorrect', function(assert) {
   assert.equal(component.get('answer')[1].text,'blue','Incorrect text');
   assert.equal(component.get('answer')[1].class,'answer incorrect','Class should be incorrect');
 });
-
-
-

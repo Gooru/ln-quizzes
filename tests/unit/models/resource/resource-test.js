@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import {QUIZZES_RESOURCE_TYPES} from 'quizzes/config/config';
-import {QUESTION_TYPES} from 'quizzes/config/question';
+import { QUIZZES_RESOURCE_TYPES } from 'quizzes/config/config';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleFor('model:resource/resource', 'Unit | Model | resource/resource', {
   unit: true
@@ -37,7 +37,7 @@ test('format resource', function(assert) {
 test('isSingleChoice', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    type: 'single_choice'
+    type: QUESTION_TYPES.singleChoice
   });
 
   assert.ok(model.get('isSingleChoice'), 'It should be single choice');
@@ -46,7 +46,7 @@ test('isSingleChoice', function(assert) {
 test('isMultipleAnswer', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    type: 'multiple_choice'
+    type: QUESTION_TYPES.multipleAnswer
   });
 
   assert.ok(model.get('isMultipleAnswer'), 'It should be multiple answer');
@@ -55,7 +55,7 @@ test('isMultipleAnswer', function(assert) {
 test('isTrueFalse', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    type: 'true_false'
+    type: QUESTION_TYPES.trueFalse
   });
 
   assert.ok(model.get('isTrueFalse'), 'It should be true/false');
@@ -64,7 +64,7 @@ test('isTrueFalse', function(assert) {
 test('isOpenEnded', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    type: 'OE'
+    type: QUESTION_TYPES.openEnded
   });
 
   assert.ok(model.get('isOpenEnded'), 'It should be open ended');
@@ -73,7 +73,7 @@ test('isOpenEnded', function(assert) {
 test('isFIB', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'text_entry'
+    type: QUESTION_TYPES.fib
   });
 
   assert.ok(model.get('isFIB'), 'It should be fill in the blank');
@@ -82,7 +82,7 @@ test('isFIB', function(assert) {
 test('isHotSpotText', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'HS_TXT'
+    type: QUESTION_TYPES.hotSpotText
   });
 
   assert.ok(model.get('isHotSpotText'), 'It should be hot spot text');
@@ -91,7 +91,7 @@ test('isHotSpotText', function(assert) {
 test('isHotSpotImage', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'HS_IMG'
+    type: QUESTION_TYPES.hotSpotImage
   });
 
   assert.ok(model.get('isHotSpotImage'), 'It should be hot spot image');
@@ -100,7 +100,7 @@ test('isHotSpotImage', function(assert) {
 test('isHotTextReorder', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'drag_and_drop'
+    type: QUESTION_TYPES.hotTextReorder
   });
 
   assert.ok(model.get('isHotTextReorder'), 'It should be hot text reorder');
@@ -118,7 +118,7 @@ test('isHotTextHighlight', function(assert) {
 test('isImageResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'resourceType': QUIZZES_RESOURCE_TYPES.image
+    resourceType: QUIZZES_RESOURCE_TYPES.image
   });
 
   assert.ok(model.get('isImageResource'), 'It should be image resource type');
@@ -127,7 +127,7 @@ test('isImageResource', function(assert) {
 test('isYoutubeResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'resourceType': QUIZZES_RESOURCE_TYPES.youtube
+    resourceType: QUIZZES_RESOURCE_TYPES.youtube
   });
 
   assert.ok(model.get('isYoutubeResource'), 'It should be youtube resource type');
@@ -136,7 +136,7 @@ test('isYoutubeResource', function(assert) {
 test('isPDFResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'resourceType': QUIZZES_RESOURCE_TYPES.pdf
+    resourceType: QUIZZES_RESOURCE_TYPES.pdf
   });
 
   assert.ok(model.get('isPDFResource'), 'It should be pdf resource type');
@@ -144,7 +144,7 @@ test('isPDFResource', function(assert) {
 test('isVimeoResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'resourceType': QUIZZES_RESOURCE_TYPES.vimeo
+    resourceType: QUIZZES_RESOURCE_TYPES.vimeo
   });
 
   assert.ok(model.get('isVimeoResource'), 'It should be vimeo resource type');
@@ -173,13 +173,10 @@ test('hasAnswers', function(assert) {
 
   var answers = Ember.A();
   Ember.run(function () {
-    answers.pushObject(Ember.Object.create({id: 1}));
+    answers.pushObject(Ember.Object.create({ id: 1 }));
   });
 
-  let model = this.subject({
-    answers
-  });
-
+  let model = this.subject({ answers });
   assert.ok(model.get('hasAnswers'), 'It should have answers');
 });
 
@@ -194,7 +191,7 @@ test('assetUrl', function(assert) {
 test('isUrlResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': QUIZZES_RESOURCE_TYPES.url
+    type: QUIZZES_RESOURCE_TYPES.url
   });
 
   assert.ok(model.get('isUrlResource'), 'It should be url resource type');

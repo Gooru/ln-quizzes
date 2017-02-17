@@ -3,6 +3,7 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 import Answer from 'quizzes/models/resource/answer';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('reports/assessment/questions/qz-reorder', 'Integration | Component | reports/assessment/questions/qz reorder', {
   integration: true,
@@ -15,7 +16,7 @@ moduleForComponent('reports/assessment/questions/qz-reorder', 'Integration | Com
 test('Reoder Question - Show Correct Answer', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: 'drag_and_drop',
+    type: QUESTION_TYPES.hotTextReorder,
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),
@@ -58,7 +59,7 @@ test('Reoder Question - Show Correct Answer', function (assert) {
 test('Reoder Question - User answer correct', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: 'drag_and_drop',
+    type: QUESTION_TYPES.hotTextReorder,
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),
@@ -102,7 +103,7 @@ test('Reoder Question - User answer correct', function (assert) {
 test('Reoder Question - User answer all incorrect', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: 'drag_and_drop',
+    type: QUESTION_TYPES.hotTextReorder,
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),
@@ -146,7 +147,7 @@ test('Reoder Question - User answer all incorrect', function (assert) {
 test('Reorder Question - User answer some incorrect', function (assert) {
 
   var question = Ember.Object.create({
-    questionType: 'drag_and_drop',
+    type: QUESTION_TYPES.hotTextReorder,
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),
@@ -187,4 +188,3 @@ test('Reorder Question - User answer some incorrect', function (assert) {
   assert.equal(T.text($component.find('li:nth-child(4) span.correct')), '4', 'Wrong order text for answer 4');
   assert.equal(T.text($component.find('li:nth-child(4) span.answer-text')), 'Chile', 'Wrong text for answer 4');
 });
-

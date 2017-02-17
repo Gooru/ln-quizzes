@@ -4,6 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import AnswerModel from 'quizzes/utils/question/answer-object';
 import ResourceModel from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('player/questions/qz-fib', 'Integration | Component | player/questions/qz fib', {
   integration: true,
@@ -15,8 +16,8 @@ moduleForComponent('player/questions/qz-fib', 'Integration | Component | player/
 test('Fill in the blanks layout', function(assert) {
   assert.expect(3);
   const question = ResourceModel.create({
-    'id': '569906aacea8416665209d53',
-    questionType: 'text_entry',
+    id: '569906aacea8416665209d53',
+    type: QUESTION_TYPES.fib,
     body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
@@ -48,8 +49,8 @@ test('Fill in the blanks events', function(assert) {
   assert.expect(8);
 
   const question = ResourceModel.create({
-    'id': '569906aacea8416665209d53',
-    questionType: 'text_entry',
+    id: '569906aacea8416665209d53',
+    type: QUESTION_TYPES.fib,
     body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
@@ -118,7 +119,7 @@ test('Fill in the blanks layout - read only', function(assert) {
   assert.expect(1);
   const question = ResourceModel.create({
     'id': '569906aacea8416665209d53',
-    questionType: 'text_entry',
+    type: QUESTION_TYPES.fib,
     body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
@@ -148,7 +149,7 @@ test('Fill in the blanks layout - with user answer', function(assert) {
   assert.expect(5);
   const question = ResourceModel.create({
     'id': '569906aacea8416665209d53',
-    questionType: 'text_entry',
+    type: QUESTION_TYPES.fib,
     body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
@@ -192,7 +193,7 @@ test('Set two questions', function(assert) {
 
   const question = ResourceModel.create({
     'id': '569906aacea8416665209d53',
-    questionType: 'text_entry',
+    type: QUESTION_TYPES.fib,
     body: 'The sun is [] and the moon []',
     hints: [],
     explanation: 'Sample explanation text',
@@ -212,7 +213,7 @@ test('Set two questions', function(assert) {
 
   const question1 = ResourceModel.create({
     'id': '569906aacea8416665209d53',
-    questionType: 'FIB',
+    type: QUESTION_TYPES.fib,
     body: 'The sun is[] ,the moon[] and the stars[]',
     hints: [],
     explanation: 'Sample explanation text',
@@ -240,4 +241,3 @@ test('Set two questions', function(assert) {
 
   assert.equal($component.find('.fib-answers').text().trim(),'The sun is ,the moon and the stars','Incorrect answer');
 });
-

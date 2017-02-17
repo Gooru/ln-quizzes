@@ -7,6 +7,7 @@ import T from 'quizzes/tests/helpers/assert';
 import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
 import AnswerModel from 'quizzes/models/resource/answer';
 import ResourceModel from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('player/qz-question-viewer', 'Integration | Component | player/qz question viewer', {
   integration: true,
@@ -14,21 +15,17 @@ moduleForComponent('player/qz-question-viewer', 'Integration | Component | playe
     this.i18n = this.container.lookup('service:i18n');
     this.i18n.set('locale','en');
   }
-
 });
 
-
 test('Layout', function (assert) {
-
   assert.expect(10);
 
-  const question = Ember.Object.create(
-    {
-      'id': 10,
-      'sequence': 2,
-      'body': 'Dummy question text',
-      'type': 'OE'
-    });
+  const question = Ember.Object.create({
+    id: 10,
+    sequence: 2,
+    body: 'Dummy question text',
+    type: QUESTION_TYPES.openEnded
+  });
 
   const questionResult = QuestionResult.create();
 
@@ -66,10 +63,10 @@ test('Submit button should become enabled and call action on submit', function (
 
   const question = Ember.Object.create(
     {
-      'id': 10,
-      'sequence': 2,
-      'body': 'Dummy question text',
-      'type': 'OE'
+      id: 10,
+      sequence: 2,
+      body: 'Dummy question text',
+      type: QUESTION_TYPES.openEnded
     });
 
   const questionResult = QuestionResult.create();
@@ -100,10 +97,9 @@ test('Submit button should become enabled and call action on submit', function (
 test('Multiple Answer - Submit button should become enabled by clicking 1 radio button when user answer if provided', function (assert) {
   assert.expect(6);
 
-
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_choice',
+    type: QUESTION_TYPES.multipleAnswer,
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -120,7 +116,6 @@ test('Multiple Answer - Submit button should become enabled by clicking 1 radio 
       })
     ])
   });
-
 
   const userAnswer = [{value: '1'}];
   this.set('question', question);
@@ -152,12 +147,12 @@ test('Multiple Answer - Submit button should become enabled by clicking 1 radio 
 test('Clicking on the "Hints" button should display a certain number of hints and then become disabled', function(assert) {
 
   const question = Ember.Object.create({
-    'id': 10,
-    'sequence': 2,
-    'text': 'Dummy question text',
-    'type': 'OE',
-    'hasMedia': false,
-    'hints': [
+    id: 10,
+    sequence: 2,
+    text: 'Dummy question text',
+    type: QUESTION_TYPES.openEnded,
+    hasMedia: false,
+    hints: [
       {
         hintId: 790,
         hintText: 'Hints text 1',
@@ -195,13 +190,13 @@ test('Clicking on the "Hints" button should display a certain number of hints an
 test('Clicking on the "Explanation" button should display an explanation and then it should become disabled', function(assert) {
 
   const question = Ember.Object.create({
-    'id': 11,
-    'sequence': 2,
-    'text': 'Dummy question text',
-    'type': 'OE',
-    'hasMedia': false,
-    'hints': [],
-    'explanation': '<p>This is a test explanation</p>'
+    id: 11,
+    sequence: 2,
+    text: 'Dummy question text',
+    type: QUESTION_TYPES.openEnded,
+    hasMedia: false,
+    hints: [],
+    explanation: '<p>This is a test explanation</p>'
   });
 
   const questionResult = QuestionResult.create();
@@ -226,13 +221,13 @@ test('Save Button Text key', function (assert) {
 
   const question = Ember.Object.create(
     {
-      'id': 10,
-      'sequence': 2,
-      'text': 'Dummy question text',
-      'mediaUrl': 'test.jpg',
-      'type': 'OE',
-      'hasMedia': true,
-      'hints': []
+      id: 10,
+      sequence: 2,
+      text: 'Dummy question text',
+      mediaUrl: 'test.jpg',
+      type: QUESTION_TYPES.openEnded,
+      hasMedia: true,
+      hints: []
     });
 
   const questionResult = QuestionResult.create();
@@ -253,12 +248,12 @@ test('Submit button disabled when submitted', function (assert) {
 
   const question = Ember.Object.create(
     {
-      'id': 10,
-      'sequence': 2,
-      'text': 'Dummy question text',
-      'mediaUrl': 'test.jpg',
-      'type': 'OE',
-      'hasMedia': true
+      id: 10,
+      sequence: 2,
+      text: 'Dummy question text',
+      mediaUrl: 'test.jpg',
+      type: QUESTION_TYPES.openEnded,
+      hasMedia: true
     });
 
   const questionResult = QuestionResult.create();
@@ -280,10 +275,10 @@ test('Show feedback layout', function (assert) {
 
   const question = Ember.Object.create(
     {
-      'id': 10,
-      'sequence': 2,
-      'body': 'Dummy question text',
-      'type': 'OE'
+      id: 10,
+      sequence: 2,
+      body: 'Dummy question text',
+      type: QUESTION_TYPES.openEnded
     });
 
   const assessment = Assessment.create({
@@ -321,12 +316,12 @@ test('Show feedback when submitted layout', function (assert) {
 
   const question = Ember.Object.create(
     {
-      'id': 10,
-      'sequence': 2,
-      'text': 'Dummy question text',
-      'mediaUrl': 'test.jpg',
-      'type': 'OE',
-      'hasMedia': true
+      id: 10,
+      sequence: 2,
+      text: 'Dummy question text',
+      mediaUrl: 'test.jpg',
+      type: QUESTION_TYPES.openEnded,
+      hasMedia: true
     });
 
   const assessment = Assessment.create({
@@ -356,12 +351,12 @@ test('Question Viewer Submit by Enter', function (assert) {
 
   const question = Ember.Object.create(
     {
-      'id': 10,
-      'sequence': 2,
-      'text': 'Dummy question text',
-      'mediaUrl': 'test.jpg',
-      'type': 'single_choice',
-      'hasMedia': true
+      id: 10,
+      sequence: 2,
+      text: 'Dummy question text',
+      mediaUrl: 'test.jpg',
+      type: QUESTION_TYPES.singleChoice,
+      hasMedia: true
     });
 
   const questionResult = QuestionResult.create();
@@ -386,13 +381,13 @@ test('Open ended question try submit by enter', function (assert) {
 
   const question = Ember.Object.create(
     {
-      'id': 10,
-      'sequence': 2,
-      'text': 'Dummy question text',
-      'mediaUrl': 'test.jpg',
-      'type': 'OE',
-      'isOpenEnded': true,
-      'hasMedia': true
+      id: 10,
+      sequence: 2,
+      text: 'Dummy question text',
+      mediaUrl: 'test.jpg',
+      type: QUESTION_TYPES.openEnded,
+      isOpenEnded: true,
+      hasMedia: true
     });
 
   const questionResult = QuestionResult.create();

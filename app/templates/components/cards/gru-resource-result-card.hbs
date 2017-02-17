@@ -12,7 +12,7 @@
     <div class="resource-description">
       {{#if item.resource.isQuestion }}
         {{#link-to "content.questions.play" item.resource.id class="pointer"}}<div class="title">{{item.resource.text}}</div>{{/link-to}}
-        <div class="format">{{t (concat 'common.question-type.' item.resource.questionType) }}</div>
+        <div class="format">{{t (concat 'common.question-type.' item.resource.type) }}</div>
       {{else}}
         {{#link-to "content.resources.play" item.resource.id class="pointer"}}<div class="title">{{item.resource.title}}</div>{{/link-to}}
         <div class="format">{{t (concat 'common.resource-format.' item.resource.resourceFormat) }}</div>

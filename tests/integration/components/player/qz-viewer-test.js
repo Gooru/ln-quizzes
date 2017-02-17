@@ -3,6 +3,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import T from 'quizzes/tests/helpers/assert';
 import hbs from 'htmlbars-inline-precompile';
 import QuestionResult from 'quizzes/models/result/question';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('player/qz-viewer', 'Integration | Component | player/qz viewer', {
   integration: true,
@@ -16,20 +17,18 @@ test('On question submit', function (assert) {
 
   const resource = Ember.Object.create(
     {
-      'id': 10,
-      'sequence': 2,
-      'body': 'Dummy resource text',
-      'media': 'test.jpg',
-      'isQuestion': true,
-      'type': 'OE'
+      id: 10,
+      sequence: 2,
+      body: 'Dummy resource text',
+      media: 'test.jpg',
+      isQuestion: true,
+      type: QUESTION_TYPES.openEnded
     });
 
   const collection = Ember.Object.create({
     collectionType: 'assessment',
     resources: Ember.A([resource]),
-    isLastResource: function(){
-      return true;
-    }
+    isLastResource: () => true
   });
 
   const resourceResult = QuestionResult.create();

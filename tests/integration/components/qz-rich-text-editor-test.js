@@ -4,6 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import wait from 'ember-test-helpers/wait';
 import Question from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('qz-rich-text-editor', 'Integration | Component | qz rich text editor', {
   integration: true,
@@ -17,8 +18,8 @@ test('Layout', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -28,48 +29,31 @@ test('Layout', function(assert) {
 
   const $component = this.$();
   T.exists(assert,  $component.find('.bold'), 'Missing bold button');
-
   T.exists(assert,  $component.find('.italic'), 'Missing italic button');
-
   T.exists(assert,  $component.find('.underline'), 'Missing underline button');
-
   T.exists(assert,  $component.find('.superscript'), 'Missing superscript button');
-
   T.exists(assert,  $component.find('.subscript'), 'Missing subscript button');
-
   T.exists(assert,  $component.find('.add-function'), 'Missing add function button');
-
   T.exists(assert,  $component.find('.expressions-panel'), 'Missing expression panel');
-
   T.exists(assert,  $component.find('.equation-wrapper'), 'Missing equation wrapper');
-
   T.exists(assert,  $component.find('.math-editor'), 'Missing math editor ');
-
   T.exists(assert,  $component.find('.actions button'), 'Missing insert button');
-
   T.exists(assert,$component.find('.tab-content .fraction'),'Missing fraction');
-
   T.exists(assert,$component.find('.tab-content .sqrt'),'Missing sqrt');
-
   T.exists(assert,$component.find('.tab-content .sqrtn'),'Missing sqrtn');
-
   T.exists(assert,$component.find('.tab-content .overline'),'Missing overline');
-
   T.exists(assert,$component.find('.tab-content .sum'),'Missing sum');
-
   T.exists(assert,$component.find('.tab-content .greater-equal'),'Missing greather-equal');
-
   T.exists(assert,$component.find('.tab-content .greater'),'Missing greather');
-
   T.exists(assert,$component.find('.tab-content .infinity'),'Missing infinity');
-
 });
+
 test('Select fraction', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -87,8 +71,8 @@ test('Select sqrt', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -106,8 +90,8 @@ test('Select sqrtn', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -127,8 +111,8 @@ test('Select subscript', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -147,8 +131,8 @@ test('Select superscript', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -191,8 +175,8 @@ test('Select overline', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -211,8 +195,8 @@ test('Select sum', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -232,8 +216,8 @@ test('Select plus', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -251,8 +235,8 @@ test('Select minus', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -270,8 +254,8 @@ test('Select div', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -289,8 +273,8 @@ test('Select cdot', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -309,8 +293,8 @@ test('Select not equal', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -328,8 +312,8 @@ test('Select less', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -347,8 +331,8 @@ test('Select greater', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -367,8 +351,8 @@ test('Select less-equal', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -387,8 +371,8 @@ test('Select greater-equal', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -406,8 +390,8 @@ test('Select sim', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -426,8 +410,8 @@ test('Select approx', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -446,8 +430,8 @@ test('Select alpha', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -466,8 +450,8 @@ test('Select ()', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -487,8 +471,8 @@ test('Select {}', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -508,8 +492,8 @@ test('Select ||', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -529,8 +513,8 @@ test('Select angle', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -549,8 +533,8 @@ test('Select measured angle', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -569,8 +553,8 @@ test('Select infinity', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -590,8 +574,8 @@ test('Select perpendicular', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -610,8 +594,8 @@ test('Select parallel', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -630,8 +614,8 @@ test('Select sigma', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -650,8 +634,8 @@ test('Select theta', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -670,8 +654,8 @@ test('Select pi', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'true_false'
+    text: '',
+    type: QUESTION_TYPES.trueFalse
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -690,8 +674,8 @@ test('Show editor toolbar', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'single_choice'
+    text: '',
+    type: QUESTION_TYPES.singleChoice
   });
 
   this.set('tempQuestion', tempQuestion);
@@ -707,8 +691,8 @@ test('Hide editor toolbar', function(assert) {
 
   var tempQuestion = Question.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question for testing',
-    text:'',
-    type: 'single_choice'
+    text: '',
+    type: QUESTION_TYPES.singleChoice
   });
 
   this.set('tempQuestion', tempQuestion);

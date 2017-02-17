@@ -6,7 +6,7 @@ import Ember from 'ember';
 moduleForComponent('cards/gru-resource-result-card', 'Integration | Component | cards/gru resource result card', {
   integration: true,
   beforeEach: function () {
-    this.container.lookup('service:i18n').set("locale", "en");
+    this.container.lookup('service:i18n').set('locale', 'en');
     this.inject.service('i18n');
   }
 });
@@ -16,8 +16,8 @@ test('Resource card that is not a question and it has not been started', functio
 
   const mockResourceResult = Ember.Object.create({
     resource: {
-      resourceFormat: "video",
-      title: "Learn the MEAN Stack."
+      resourceFormat: 'video',
+      title: 'Learn the MEAN Stack.'
     }
   });
 
@@ -36,11 +36,11 @@ test('Resource card that is not a question and it has not been started', functio
 
   const $resourceTitle = $detailsContainer.find('.resource-description .title');
 
-  assert.equal(T.text($resourceTitle), 'Learn the MEAN Stack.', "Incorrect title");
+  assert.equal(T.text($resourceTitle), 'Learn the MEAN Stack.', 'Incorrect title');
 
   const $resourceFormat = $detailsContainer.find('.resource-description .format');
 
-  assert.equal(T.text($resourceFormat), this.get('i18n').t('common.resource-format.' + mockResourceResult.resource.resourceFormat).toString(), 'Wrong resource type text');
+  assert.equal(T.text($resourceFormat), this.get('i18n').t(`common.resource-format.${mockResourceResult.resource.resourceFormat}`).toString(), 'Wrong resource type text');
 
   const $resultContainer = $component.find('.result-details');
   assert.ok($resultContainer, 'Result container not found');
@@ -57,8 +57,8 @@ test('Resource card that is not a question and it has been viewed but not reacte
   const mockResourceResult = Ember.Object.create({
     timeSpent: 12345,
     resource: {
-      resourceFormat: "video",
-      title: "Learn the MEAN Stack."
+      resourceFormat: 'video',
+      title: 'Learn the MEAN Stack.'
     }
   });
 
@@ -84,8 +84,8 @@ test('Resource card that is not a question and it has been viewed but reacted to
     timeSpent: 12345,
     reaction: 3,
     resource: {
-      resourceFormat: "video",
-      title: "Learn the MEAN Stack."
+      resourceFormat: 'video',
+      title: 'Learn the MEAN Stack.'
     }
   });
 
@@ -111,9 +111,9 @@ test('Resource card that is a question', function (assert) {
   assert.expect(4);
   const mockQuestionResult = Ember.Object.create({
     resource: {
-      resourceFormat: "question",
-      title: "Learn the MEAN Stack.",
-      questionType: "FIB",
+      resourceFormat: 'question',
+      title: 'Learn the MEAN Stack.',
+      type: 'text_entry',
       isQuestion: true
     }
   });
@@ -131,6 +131,6 @@ test('Resource card that is a question', function (assert) {
   const $questionIcon = $detailsContainer.find('.card-icon i.question-icon');
   assert.ok($questionIcon, 'Icon not found');
 
-  const $questionType = $detailsContainer.find('.resource-description .format');
-  assert.equal(T.text($questionType), this.get('i18n').t('common.question-type.' + mockQuestionResult.resource.questionType).toString(), 'Wrong question type text');
+  const $type = $detailsContainer.find('.resource-description .format');
+  assert.equal(T.text($type), this.get('i18n').t(`common.question-type.${mockQuestionResult.resource.type}`).toString(), 'Wrong question type text');
 });

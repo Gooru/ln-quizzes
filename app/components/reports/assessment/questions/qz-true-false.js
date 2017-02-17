@@ -1,4 +1,4 @@
-import SingleChoiceComponent from 'quizzes/components/reports/assessment/questions/gru-single-choice';
+import SingleChoiceComponent from 'quizzes/components/reports/assessment/questions/qz-single-choice';
 
 /**
  * True/False
@@ -13,7 +13,7 @@ export default SingleChoiceComponent.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['reports', 'assessment', 'questions', 'gru-true-false']
+  classNames: ['reports', 'assessment', 'questions', 'qz-true-false']
 
   // -------------------------------------------------------------------------
   // Properties

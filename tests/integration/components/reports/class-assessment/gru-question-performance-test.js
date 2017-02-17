@@ -8,6 +8,7 @@ import ReportData from 'quizzes/models/result/report-data';
 import ReportDataEvent from 'quizzes/models/result/report-data-event';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('reports/class-assessment/gru-question-performance', 'Integration | Component | reports/class assessment/gru question performance', {
   integration: true
@@ -17,7 +18,7 @@ test('When students have no answers yet', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56b120483b6e7b090501d3e7',
     isResource: false,
-    type: 'single_choice',
+    type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers: Ember.A([
       Answer.create({value: '1', text: 'Answer 1'}),
@@ -86,7 +87,7 @@ test('Non anonymous, layout', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    type: 'single_choice',
+    type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers: Ember.A([
       Answer.create({value: '1', text: 'Answer 1'}),
@@ -170,7 +171,7 @@ test('Anonymous, layout', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    type: 'single_choice',
+    type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers: Ember.A([
       Answer.create({value: '1', text: 'Answer 1'}),
@@ -251,7 +252,7 @@ test('Anonymous and Show Results', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    type: 'single_choice',
+    type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers: Ember.A([
       Answer.create({value: '1', text: 'Answer 1'}),
@@ -336,7 +337,7 @@ test('Single choice', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    type: 'single_choice',
+    type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     correctAnswer: [{ value: '2' }],
     answers: Ember.A([
@@ -418,14 +419,14 @@ test('Single choice', function (assert) {
   assert.equal($component.find('.panel .answers-wrapper .answer').length, 3, 'Missing answers, 3 answers were given');
   assert.equal($component.find('.panel .answers-wrapper .students').length, 3, 'Missing students, 3 answers were given');
 
-  assert.equal($component.find('.panel .answers-wrapper .answer .gru-single-choice').length, 3, 'Missing question type components, 3 answers were given');
+  assert.equal($component.find('.panel .answers-wrapper .answer .qz-single-choice').length, 3, 'Missing question type components, 3 answers were given');
 });
 
 test('Anonymous and Show Results', function (assert) {
   const selectedQuestion = Resource.create({ //Single Choice
     id: '56a120483b6e7b090501d3e7',
     isResource: false,
-    type: 'single_choice',
+    type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers: Ember.A([
       Answer.create({value: '1', text: 'Answer 1'}),

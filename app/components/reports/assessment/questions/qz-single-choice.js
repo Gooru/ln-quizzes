@@ -14,7 +14,7 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['reports', 'assessment', 'questions', 'gru-single-choice'],
+  classNames: ['reports', 'assessment', 'questions', 'qz-single-choice'],
 
   // -------------------------------------------------------------------------
   // Actions

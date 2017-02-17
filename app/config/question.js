@@ -1,9 +1,7 @@
 import Ember from 'ember';
 import OpenEndedUtil from 'quizzes/utils/question/open-ended';
-import FillInTheBlankUtil from 'quizzes/utils/question/fill-in-the-blank';
 import HotSpotImageUtil from 'quizzes/utils/question/hot-spot-image';
 import HotSpotTextUtil from 'quizzes/utils/question/hot-spot-text';
-
 
 //Question Types
 export const QUESTION_TYPES = {
@@ -25,7 +23,7 @@ export const QUESTION_CONFIG = {
     apiType: 'single_choice_question',
     component: {
       player: 'player.questions.qz-single-choice',
-      answer: 'reports.assessment.questions.gru-single-choice'
+      answer: 'reports.assessment.questions.qz-single-choice'
     }
   }),
   'multiple_choice'    : Ember.Object.create({
@@ -46,26 +44,25 @@ export const QUESTION_CONFIG = {
     apiType: 'hot_text_highlight_question',
     component: {
       player: 'player.questions.qz-hot-text-highlight',
-      answer: 'reports.assessment.questions.gru-hot-text-highlight'
+      answer: 'reports.assessment.questions.qz-hot-text-highlight'
     }
   }),
   'hot_text_sentence' : Ember.Object.create({
     apiType: 'hot_text_highlight_question',
     component: {
       player: 'player.questions.qz-hot-text-highlight',
-      answer: 'reports.assessment.questions.gru-hot-text-highlight'
+      answer: 'reports.assessment.questions.qz-hot-text-highlight'
     }
   }),
   'true_false'   : Ember.Object.create({
     apiType: 'true_false_question',
     component: {
       player: 'player.questions.qz-true-false',
-      answer: 'reports.assessment.questions.gru-true-false'
+      answer: 'reports.assessment.questions.qz-true-false'
     }
   }),
   'text_entry'   : Ember.Object.create({
     apiType: 'text_entry_question',
-    util: FillInTheBlankUtil,
     component: {
       player: 'player.questions.qz-fib',
       answer: 'reports.assessment.questions.qz-fib'

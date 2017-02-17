@@ -4,6 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import AnswerModel from 'quizzes/models/resource/answer';
 import ResourceModel from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('player/questions/qz-single-choice', 'Integration | Component | player/questions/qz single choice', {
   integration: true,
@@ -17,7 +18,7 @@ test('Single choice question layout', function (assert) {
   assert.expect(10);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'single_choice',
+    type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -75,7 +76,7 @@ test('Single choice question layout - read only', function (assert) {
   assert.expect(2);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'single_choice',
+    type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -107,7 +108,7 @@ test('Single choice question with user answer', function (assert) {
   assert.expect(5);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'single_choice',
+    type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({

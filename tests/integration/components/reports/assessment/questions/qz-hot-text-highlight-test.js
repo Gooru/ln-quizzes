@@ -31,7 +31,7 @@ test('Hot Text Highlight User Answer', function(assert) {
 
   this.render(hbs`{{reports/assessment/questions/qz-hot-text-highlight question=question userAnswer=userAnswer}}`);
   const $component = this.$(); //component dom element
-  const $ht_hl = $component.find(".reports.assessment.questions.qz-hot-text-highlight");
+  const $ht_hl = $component.find('.reports.assessment.questions.qz-hot-text-highlight');
 
   T.exists(assert, $ht_hl, 'Missing  component');
   const $correctAnswers = $ht_hl.find('span.correct');
@@ -60,7 +60,7 @@ test('Hot Text Highlight Correct Answer', function(assert) {
 
   this.render(hbs`{{reports/assessment/questions/qz-hot-text-highlight question=question showCorrect=true}}`);
   const $component = this.$(); //component dom element
-  const $ht_hl = $component.find(".reports.assessment.questions.qz-hot-text-highlight");
+  const $ht_hl = $component.find('.reports.assessment.questions.qz-hot-text-highlight');
 
   T.exists(assert, $ht_hl, 'Missing  component');
   const $correctAnswers = $ht_hl.find('span.correct');
@@ -90,7 +90,7 @@ test('Hot Text Highlight Anonymous', function(assert) {
 
   this.render(hbs`{{reports/assessment/questions/qz-hot-text-highlight question=question showCorrect=true anonymous=true}}`);
   const $component = this.$(); //component dom element
-  const $ht_hl = $component.find(".reports.assessment.questions.qz-hot-text-highlight");
+  const $ht_hl = $component.find('.reports.assessment.questions.qz-hot-text-highlight');
   const $correctAnswers = $ht_hl.find('span.anonymous');
   assert.equal($correctAnswers.length, 2, 'There are no correct answers, there should be 3');
 });

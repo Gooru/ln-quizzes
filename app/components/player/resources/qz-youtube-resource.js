@@ -52,8 +52,8 @@ export default ResourceComponent.extend({
   /**
    * @property {string} full resource youtube url
    */
-  youtubeUrl: Ember.computed('resource.url', function() {
-    const url = this.get('resource.url');
+  youtubeUrl: Ember.computed('resource.body', function() {
+    const url = this.get('resource.body');
     const youtubeId = this.getYoutubeIdFromUrl(url);
     const player = Env.player.youtubePlayerUrl;
     const start = this.get('start');

@@ -33,11 +33,11 @@ export default ResourceComponent.extend({
   /**
    * @property {string} full resource vimeo url
    */
-  vimeoUrl: Ember.computed('resource.url', function() {
+  vimeoUrl: Ember.computed('resource.body', function() {
     const component = this;
     var vimeoPlayerUrl = Env.player.vimeoPlayerUrl;
 
-    return vimeoPlayerUrl+ component.getVimeoID(this.get('resource.url'));
+    return vimeoPlayerUrl+ component.getVimeoID(this.get('resource.body'));
   }),
 
   // -------------------------------------------------------------------------

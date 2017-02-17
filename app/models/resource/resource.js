@@ -214,7 +214,7 @@ export default Ember.Object.extend({
    */
   resourceType: Ember.computed('type', function() {
     let format = this.get('type');
-    let resourceUrl = this.get('url');
+    let resourceUrl = this.get('body');
     let youtubePattern = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
     let vimeoPattern = /(http|https)?:\/\/(www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^/]*)\/videos\/|)(\d+)(?:|\/\?)/;
     let pdfPattern = /.*\.pdf/;

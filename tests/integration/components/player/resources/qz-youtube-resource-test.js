@@ -22,7 +22,7 @@ test('Youtube player layout', function (assert) {
         'start_time': '00:03:10',
         'end_time': '00:03:20'
       },
-      'url': 'https://www.youtube.com/watch?v=aBSH3IoFZsc'
+      'body': 'https://www.youtube.com/watch?v=aBSH3IoFZsc'
     });
 
   this.set('resource', resource);

@@ -17,7 +17,7 @@ test('Vimeo resource layout', function (assert) {
       'order': 2,
       'resourceType': 'vimeo/video',
       'resourceFormat': 'video',
-      'url': 'https://vimeo.com/11590751'
+      'body': 'https://vimeo.com/11590751'
     });
 
   this.set('resource', resource);

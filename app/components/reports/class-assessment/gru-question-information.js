@@ -24,6 +24,21 @@ export default Ember.Component.extend({
   question: null,
 
   /**
+   * @property {string} Return the question body and modified the text if the question is
+   * FIB to show the correct format.
+   */
+  questionBody:Ember.computed('question.body',function(){
+    let component = this;
+    let text = this.get('question.body');
+
+    if(component.get('question.isFIB')){
+      let regex = /\[]/g;
+      text = component.get('question.body').replace(regex, '_______');
+    }
+    return text;
+  }),
+
+  /**
    * @prop { String[]} hints - Question hints
    */
   hints: Ember.computed('question.hints',function(){

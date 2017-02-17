@@ -414,3 +414,33 @@ test('Open ended question try submit by enter', function (assert) {
 
   assert.ok(true);
 });
+
+test('Question viewer body when question type is FIB', function (assert) {
+
+  const question = ResourceModel.create({
+    'id': '569906aacea8416665209d53',
+    type: 'text_entry',
+    body: 'The sun is [] and the moon []',
+    hints: [],
+    explanation: 'Sample explanation text',
+    answers: Ember.A([
+      AnswerModel.create({
+        value: 'yellow',
+        text: 'yellow'
+      }),
+      AnswerModel.create({
+        value: 'white',
+        text: 'white'
+      })
+    ]),
+    sequence:1,
+    hasAnswers: true
+  });
+
+  this.set('question', question);
+
+  this.render(hbs`{{player/qz-question-viewer question=question }}`);
+  const $component = this.$();
+  const $questionViewer = $component.find('.qz-question-viewer');
+  assert.equal($questionViewer.find('.question .gru-math-text').text(),'The sun is _______ and the moon _______','Incorrect text');
+});

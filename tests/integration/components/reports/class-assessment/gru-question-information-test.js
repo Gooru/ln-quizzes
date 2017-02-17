@@ -2,6 +2,8 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
+import AnswerModel from 'quizzes/utils/question/answer-object';
+import ResourceModel from 'quizzes/models/resource/resource';
 
 moduleForComponent('reports/class-assessment/gru-question-information', 'Integration | Component | reports/class assessment/gru question information', {
   integration: true
@@ -99,4 +101,34 @@ test('Question Information Anonymous', function(assert) {
   const $questionInformation = $component.find('.gru-question-information');
   T.notExists(assert, $questionInformation.find('.hints'), 'Hints should not be visible');
   T.notExists(assert, $questionInformation.find('.explanation'), 'Explanation should not be visible');
+});
+
+test('Question Information FIB text', function(assert) {
+  const question = ResourceModel.create({
+    'id': '569906aacea8416665209d53',
+    type: 'text_entry',
+    body: 'The sun is [] and the moon []',
+    hints: [],
+    explanation: 'Sample explanation text',
+    answers: Ember.A([
+      AnswerModel.create({
+        value: 'yellow',
+        text: 'yellow'
+      }),
+      AnswerModel.create({
+        value: 'white',
+        text: 'white'
+      })
+    ]),
+    sequence:1,
+    hasAnswers: true
+  });
+
+  this.set('question', question);
+
+  this.render(hbs`{{reports/class-assessment/gru-question-information question=question}}`);
+
+  const $component = this.$();
+  const $questionInformation = $component.find('.gru-question-information');
+  assert.equal($questionInformation.find('.question .gru-math-text').text(),'The sun is _______ and the moon _______','Incorrect text');
 });

@@ -28,6 +28,14 @@ export const RESOURCE_TYPES = {
   text: "text_resource"
 };
 
+export const QUIZZES_RESOURCE_TYPES = {
+  url: "resource/url",
+  youtube: "video/youtube",
+  vimeo: "vimeo/video",
+  pdf: "handouts",
+  image:"image"
+};
+
 export const DEFAULT_IMAGES = {
   USER_PROFILE: '/assets/quizzes/profile.png',
   COURSE: '/assets/quizzes/course-default.png',

@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
+import {QUIZZES_RESOURCE_TYPES} from 'quizzes/config/config';
 
 moduleFor('model:resource/resource', 'Unit | Model | resource/resource', {
   unit: true
@@ -116,7 +117,7 @@ test('isHotTextHighlight', function(assert) {
 test('isImageResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'resourceType': 'image/png'
+    'resourceType': QUIZZES_RESOURCE_TYPES.image
   });
 
   assert.ok(model.get('isImageResource'), 'It should be image resource type');
@@ -125,7 +126,7 @@ test('isImageResource', function(assert) {
 test('isYoutubeResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'resourceType': 'video/youtube'
+    'resourceType': QUIZZES_RESOURCE_TYPES.youtube
   });
 
   assert.ok(model.get('isYoutubeResource'), 'It should be youtube resource type');
@@ -134,7 +135,7 @@ test('isYoutubeResource', function(assert) {
 test('isPDFResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'resourceType': 'handouts'
+    'resourceType': QUIZZES_RESOURCE_TYPES.pdf
   });
 
   assert.ok(model.get('isPDFResource'), 'It should be pdf resource type');
@@ -142,7 +143,7 @@ test('isPDFResource', function(assert) {
 test('isVimeoResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'resourceType': 'vimeo/video'
+    'resourceType': QUIZZES_RESOURCE_TYPES.vimeo
   });
 
   assert.ok(model.get('isVimeoResource'), 'It should be vimeo resource type');
@@ -200,7 +201,7 @@ test('assetUrl', function(assert) {
 test('isUrlResource', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'resource/url'
+    'type': QUIZZES_RESOURCE_TYPES.url
   });
 
   assert.ok(model.get('isUrlResource'), 'It should be url resource type');

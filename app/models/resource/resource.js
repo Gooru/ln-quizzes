@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import {QUESTION_TYPES} from 'quizzes/config/question';
-import {RESOURCE_TYPES} from 'quizzes/config/config';
+import {RESOURCE_TYPES, QUIZZES_RESOURCE_TYPES} from 'quizzes/config/config';
 
 /**
  * Resource Model
@@ -184,7 +184,7 @@ export default Ember.Object.extend({
    * Indicates if it is an pdf resource
    * @property {boolean}
    */
-  isPDFResource: Ember.computed.equal('resourceType', 'handouts'),
+  isPDFResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.pdf),
 
   /**
    * @property {boolean} indicates if the question is true false type
@@ -196,19 +196,19 @@ export default Ember.Object.extend({
    * Indicates if it is an url resource
    * @property {boolean}
    */
-  isUrlResource: Ember.computed.equal('resourceType', 'resource/url'),
+  isUrlResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.url),
 
   /**
    * Indicates if it is an vimeo resource
    * @property {boolean}
    */
-  isVimeoResource: Ember.computed.equal('resourceType', 'vimeo/video'),
+  isVimeoResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.vimeo),
 
   /**
    * Indicates if it is an youtube resource
    * @property {boolean}
    */
-  isYoutubeResource: Ember.computed.equal('resourceType', 'video/youtube'),
+  isYoutubeResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.youtube),
 
   /**
    * @property {String} Indicates the resource type. i.e video/youtube, assessment-question, image/png
@@ -219,31 +219,31 @@ export default Ember.Object.extend({
     let youtubePattern = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
     let vimeoPattern = /(http|https)?:\/\/(www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^/]*)\/videos\/|)(\d+)(?:|\/\?)/;
     let pdfPattern = /.*\.pdf/;
-    let resourceType = 'resource/url'; // Default type
+    let resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
     if (resourceUrl) {
       switch (format) {
         case RESOURCE_TYPES.audio:
         case RESOURCE_TYPES.interactive:
         case RESOURCE_TYPES.webpage:
-          resourceType = 'resource/url'; // Default type
+          resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
           break;
         case RESOURCE_TYPES.image:
-          resourceType = pdfPattern.test(resourceUrl) ? 'handouts' : 'image';
+          resourceType = pdfPattern.test(resourceUrl) ? QUIZZES_RESOURCE_TYPES.pdf : QUIZZES_RESOURCE_TYPES.image;
           break;
         case RESOURCE_TYPES.text:
-          resourceType = 'handouts';
+          resourceType = QUIZZES_RESOURCE_TYPES.pdf;
           break;
         case RESOURCE_TYPES.video:
           if (youtubePattern.test(resourceUrl)) {
-            resourceType = 'video/youtube';
+            resourceType = QUIZZES_RESOURCE_TYPES.youtube;
           } else if (vimeoPattern.test(resourceUrl)) {
-            resourceType = 'vimeo/video';
+            resourceType = QUIZZES_RESOURCE_TYPES.vimeo;
           } else {
-            resourceType = 'resource/url';
+            resourceType = QUIZZES_RESOURCE_TYPES.url;
           }
           break;
         default:
-          resourceType = 'resource/url'; // Default type
+          resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
       }
     }
     return resourceType;

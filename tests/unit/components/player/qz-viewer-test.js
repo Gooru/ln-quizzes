@@ -2,6 +2,7 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import Question from 'quizzes/models/resource/resource';
 import QuestionResult from 'quizzes/models/result/question';
+import {QUIZZES_RESOURCE_TYPES} from 'quizzes/config/config';
 
 moduleForComponent('player/qz-viewer', 'Unit | Component | player/qz viewer', {
   unit: true
@@ -36,7 +37,7 @@ test('resourceComponentSelected for text/pdf resource type', function (assert) {
 
   var component = this.subject({
     resource: Ember.Object.create({
-      resourceType: 'handouts'
+      resourceType: QUIZZES_RESOURCE_TYPES.pdf
     })
   });
 
@@ -48,7 +49,7 @@ test('resourceComponentSelected for youtube resource type', function (assert) {
 
   var component = this.subject({
     resource: Ember.Object.create({
-      resourceType: 'video/youtube'
+      resourceType: QUIZZES_RESOURCE_TYPES.youtube
     })
   });
 
@@ -59,7 +60,7 @@ test('resourceComponentSelected for vimeo resource type', function (assert) {
 
   var component = this.subject({
     resource: Ember.Object.create({
-      resourceType: 'vimeo/video'
+      resourceType: QUIZZES_RESOURCE_TYPES.vimeo
     })
   });
 
@@ -71,7 +72,7 @@ test('resourceComponentSelected for url resource type', function (assert) {
 
   var component = this.subject({
     resource: Ember.Object.create({
-      resourceType: 'resource/url'
+      resourceType: QUIZZES_RESOURCE_TYPES.url
     })
   });
 
@@ -84,7 +85,7 @@ test('buttonTextKey when is not the last resource', function (assert) {
   var component = this.subject({
     resource: Ember.Object.create({
       id: 1,
-      type: 'resource/url'
+      type: QUIZZES_RESOURCE_TYPES.url
     }),
     collection: Ember.Object.create({
       isLastResource: () => false
@@ -100,7 +101,7 @@ test('buttonTextKey when is the last resource and assessment', function (assert)
   var component = this.subject({
     resource: Ember.Object.create({
       id: 1,
-      type: 'resource/url'
+      type: QUIZZES_RESOURCE_TYPES.url
     }),
     collection: Ember.Object.create({
       isLastResource: () => true,
@@ -117,7 +118,7 @@ test('buttonTextKey when is the last resource and collection', function (assert)
   var component = this.subject({
     resource: Ember.Object.create({
       id: 1,
-      type: 'resource/url'
+      type: QUIZZES_RESOURCE_TYPES.url
     }),
     collection: Ember.Object.create({
       isLastResource: () => true,

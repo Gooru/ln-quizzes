@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import QuestionComponent from './qz-question';
+import QuestionUtil from 'quizzes/utils/question/hot-text-highlight';
 
 /**
  * Hot Text Highlight
@@ -44,51 +45,32 @@ export default QuestionComponent.extend({
    */
   initItems: function() {
     const component = this;
-    component.generateItems();
     if(component.get('hasUserAnswer')) {
       component.notifyEvents(component.getSelectedItems(), true);
     }
   }.on('didInsertElement'),
 
-
   // -------------------------------------------------------------------------
   // Properties
 
   /**
-   * @property {{index: number, text: string}} items
+   * @property items possible answers, it handles word and sentence variants
    */
-  items: null,
-
-  // -------------------------------------------------------------------------
-  // Observers
-
-  /**
-   * Refresh items when the question changes
-   */
-  refreshItems: Ember.observer('question.id', function() {
-    this.generateItems();
+  items: Ember.computed('question.body', function() {
+    const component = this;
+    let items = QuestionUtil.getItems(this.get('question'));
+    if (component.get('hasUserAnswer')) {
+      let userAnswer = component.get('userAnswer');
+      items.forEach(
+        item => item.set('selected',
+          !!userAnswer.findBy('value', `${item.get('text')},${item.get('index')}`))
+      );
+    }
+    return items;
   }),
 
   // -------------------------------------------------------------------------
   // Methods
-
-  /**
-   * Generate phrase items from the first question answer text
-   * It handle word and sentence variants, and it sets the 'items' component property accordingly
-   */
-  generateItems: function() {
-    const component = this;
-    const util = component.get('questionUtil');
-    let items = util.getItems();
-    if (component.get('hasUserAnswer')) {
-      let userAnswer = component.get('userAnswer');
-      items.forEach(function(item){
-        let selected = userAnswer.findBy('index', item.get('index'));
-        item.set('selected', selected !== undefined);
-      });
-    }
-    component.set('items', items);
-  },
 
   /**
    * Returns those items selected by the user
@@ -105,9 +87,9 @@ export default QuestionComponent.extend({
    */
   notifyEvents: function(selectedItems, onLoad) {
     const component = this;
-    const userAnswer = selectedItems.map(function(item) {
-      return { index: item.get('index'), text: item.get('text') };
-    });
+    const userAnswer = selectedItems.map(
+      item => ({ value: `${item.get('text')},${item.get('index')}` })
+    );
 
     component.notifyAnswerChanged(userAnswer);
     if (selectedItems.get('length')) {

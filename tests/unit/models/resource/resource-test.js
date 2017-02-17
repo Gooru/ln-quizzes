@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
+import {QUESTION_TYPES} from 'quizzes/config/question';
 
 moduleFor('model:resource/resource', 'Unit | Model | resource/resource', {
   unit: true
@@ -107,7 +108,7 @@ test('isHotTextReorder', function(assert) {
 test('isHotTextHighlight', function(assert) {
   assert.expect(1);
   let model = this.subject({
-    'type': 'HT_HL'
+    type: QUESTION_TYPES.hotTextHighlightSentence
   });
 
   assert.ok(model.get('isHotTextHighlight'), 'It should be hot text high light');
@@ -150,12 +151,8 @@ test('isVimeoResource', function(assert) {
 
 test('isHotTextHighlightWord', function(assert) {
   assert.expect(1);
-  var answers = Ember.A();
-  Ember.run(function () {
-    answers.pushObject(Ember.Object.create({highlightType: 'word'}));
-  });
   let model = this.subject({
-    answers
+    type: QUESTION_TYPES.hotTextHighlightWord
   });
 
   assert.ok(model.get('isHotTextHighlightWord'), 'It should be hot text word');
@@ -163,12 +160,8 @@ test('isHotTextHighlightWord', function(assert) {
 
 test('isHotTextHighlightSentence', function(assert) {
   assert.expect(1);
-  var answers = Ember.A();
-  Ember.run(function () {
-    answers.pushObject(Ember.Object.create({highlightType: 'sentence'}));
-  });
   let model = this.subject({
-    answers
+    type: QUESTION_TYPES.hotTextHighlightSentence
   });
 
   assert.ok(model.get('isHotTextHighlightSentence'), 'It should be hot text sentence');

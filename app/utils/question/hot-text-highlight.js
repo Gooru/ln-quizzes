@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import QuestionUtil from './question';
-import AnswerObject from 'quizzes/utils/question/answer-object';
 /**
  * It contains convenience methods for grading and retrieving useful information
  * for hot text highlight
@@ -15,9 +13,9 @@ import AnswerObject from 'quizzes/utils/question/answer-object';
  *   answerId it is always 0
  *   skip is always false
  *
- * [{"text":"Tell","status":"incorrect","order":1,"answerId":0,"skip":false},
- * {"text":"nos.","status":"correct","order":14,"answerId":0,"skip":false},
- * {"text":"parens","status":"correct","order":31,"answerId":0,"skip":false}]
+ * [{'text':'Tell','status':'incorrect','order':1,'answerId':0,'skip':false},
+ * {'text':'nos.','status':'correct','order':14,'answerId':0,'skip':false},
+ * {'text':'parens','status':'correct','order':31,'answerId':0,'skip':false}]
  *
  * # User answer (structure used by the FE)
  *
@@ -28,194 +26,102 @@ import AnswerObject from 'quizzes/utils/question/answer-object';
  *
  *   { {index: number, text: string }[] }
  *
- * @typedef {Object} HotTextHighlightUtil
  */
-export default QuestionUtil.extend({
 
-  // -------------------------------------------------------------------------
-  // Observers
-
-
-  // -------------------------------------------------------------------------
-  // Methods
-  /**
-   * Indicates if the answer choice is correct
-   * @param { { index: number, text: string } } answerChoice
-   *
-   * @see '# User Answer' section at class comment
-   */
-  isAnswerChoiceCorrect: function (answerChoice) {
-    let correctAnswer = this.getCorrectAnswer();
-    let found = correctAnswer.findBy("index", answerChoice.index);
-    return found !== null && found !== undefined; //if found
-  },
-
-  /**
-   * Gets the correct answer
-   * The question text contains the information for the correct answer, correct items are wrapped by []
-   * i.e La casa es de [colo] pero el [teco] es azul
-   * @return {{index: number, text: string }[]} returns the correct answer items
-   *
-   * @see '# User Answer' section at class comment
-   */
-  getCorrectAnswer: function () {
-    const items = this.getItems();
-    return items.filterBy("correct", true).map(function (item) {
-      return {index: item.get("index"), text: item.get("text")};
+/**
+* Splits text and returns the index of each
+* @param {string} text
+* @param {string} regex delimiter
+* @returns {{index: number, text: string, selected: boolean}} items
+*/
+export function splitWithIndex(text, delim) {
+  const regex = new RegExp(delim);
+  let remainingText = text;
+  let result = [];
+  let index = 0;
+  let nextSplit = regex.exec(remainingText);
+  while(nextSplit) {
+    let currentText = remainingText.slice(0, nextSplit.index);
+    remainingText = remainingText.slice(nextSplit.index).replace(nextSplit[0], '');
+    result.push({
+      text: currentText,
+      index
     });
-  },
-
-  /**
-   * Gets items based on text format.
-   * This methods creates an item for each word in the text, it removes []
-   * i.e La casa es de [colo] pero el [teco] es azul
-   * @param {string} text
-   * @returns {{index: number, text: string, selected: boolean}} items
-   */
-  getWordItems: function (text) {
-    const util = this,
-      words = Ember.A(text.split(" "));
-
-    return util.toItems(words);
-  },
-
-  /**
-   * Gets items based on text format
-   * Each text before, after and in between [] are considered sentences
-   * @param {string} text i.e Sentence 1 [Sentence 2] Sentence 3 with any text here [Sentence 4] Sentence 5
-   *
-   * @returns {{index: number, text: string, selected: boolean}} items
-   */
-  getSentenceItems: function (text) {
-    const util = this,
-      regex = /(\[.*?\.])/gm,
-      items = text.split(regex);
-
-    let result = [];
-    items.forEach(function(item){
-      if (!regex.exec(item)){ // split consecutive non correct sentences
-        result = result.concat(item.replace(/\. /gm, ".@").split("@"));
-      }
-      else {
-        result.push(item);
-      }
+    index += nextSplit.index + nextSplit[0].length;
+    nextSplit = regex.exec(remainingText);
+  }
+  if(index < text.length) {
+    result.push({
+      text: remainingText,
+      index
     });
-    return util.toItems(result);
-  },
+  }
+  return result;
+}
 
-  /**
-   * Transforms the text so it is compliant with hot text highlight question.
-   * It removes the initial/wrapping <p> tag if available
-   * @param {string} text
-   * @returns {string}
-   */
-  transformText: function (text) {
-    const regex = /^<p>(.*)<\/p>$/gm,
-      match = regex.exec(text);
-    return (match) ? match[1].trim() : text;
-  },
+/**
+ * Gets items based on text format.
+ * This methods creates an item for each word in the text, it removes []
+ * i.e La casa es de [colo] pero el [teco] es azul
+ * @param {string} text
+ * @returns {{index: number, text: string, selected: boolean}} items
+ */
+export function getWordItems(text) {
+  return toItems(splitWithIndex(text, ' '));
+}
 
-  /**
-   * Transforms a list of string into item objects, it trims the texts and removes []
-   * @param {string[]} textList
-   *
-   * @returns {{index: number, text: string, selected: boolean, correct: boolean}} items
-   */
-  toItems: function (textList) {
-    textList = textList.filter(function (text) {
-      let trimmed = text.trim();
-      return trimmed || trimmed.length;
-    });
+/**
+ * Gets items based on text format
+ * Each text before, after and in between [] are considered sentences
+ * @param {string} text i.e Sentence 1 [Sentence 2] Sentence 3 with any text here [Sentence 4] Sentence 5
+ *
+ * @returns {{index: number, text: string, selected: boolean}} items
+ */
+export function getSentenceItems(text) {
+  return toItems(splitWithIndex(text.replace(/\. /gm, '.@'), '@'));
+}
 
-    return textList.map(function (text, index) {
-      let correct = text.indexOf("[") >= 0 && text.indexOf("]") > 0;
-      return Ember.Object.create({
-        index: index,
-        text: text.replace("[", "").replace("]", "").trim(),
-        selected: false,
-        correct: correct
-      });
-    });
-  },
+/**
+ * Transforms the text so it is compliant with hot text highlight question.
+ * It removes the initial/wrapping <p> tag if available
+ * @param {string} text
+ * @returns {string}
+ */
+export function transformText(text) {
+  const match = /^<p>(.*)<\/p>$/gm.exec(text);
+  return match ? match[1].trim() : text;
+}
 
-  /**
-   * Generate phrase items from the first question answer text
-   * It handle word and sentence variants, and it sets the 'items' component property accordingly
-   */
-  getItems: function () {
-    const util = this,
-      question = util.get("question"),
-      answers = question.get("answers");
+/**
+ * Transforms a list of string into item objects, it trims the texts and removes []
+ * @param {string[]} textList
+ *
+ * @returns {{index: number, text: string, selected: boolean, correct: boolean}} items
+ */
+export function toItems(textList) {
+  return textList.filter(item => !!item.text.trim()).map(
+    item => Ember.Object.create({
+      index: item.index + item.text.search(/\S/),
+      text: item.text.trim(),
+      selected: false
+    })
+  );
+}
 
-    var items = Ember.A();
-    if (question.get("hasAnswers")) {
-      const answer = answers.get("firstObject"),
-        text = util.transformText(answer.get("text"));
-
-      if (question.get("isHotTextHighlightWord")) {
-        items = util.getWordItems(text);
-      }
-      else {
-        items = util.getSentenceItems(text);
-      }
+/**
+ * Generate phrase items from the first question answer text
+ * It handle word and sentence variants, and it sets the 'items' component property accordingly
+ */
+export function getItems(question) {
+  const text = question.get('body');
+  let items = Ember.A();
+  if (text) {
+    if (question.get('isHotTextHighlightWord')) {
+      items = getWordItems(text);
+    } else {
+      items = getSentenceItems(text);
     }
-
-    return items;
-  },
-
-  /**
-   * Returns a unique key representing the answer
-   * For hot text the answer is an array of string
-   * @param { {index: number, text: string }[] } answer
-   * @returns {string} i.e 1,2,3
-   *
-   * @see '# User Answer' section at class comment
-   */
-  answerKey: function (answer) {
-    let indexes = answer.map(function (item) {
-      return item.index;
-    });
-    return indexes.sort().join();
-  },
-
-  /**
-   * Converts the model user answer into an answerObject format
-   *
-   * @param { {index: number, text: string }[] } userAnswer answer ids in selected order
-   * @return {AnswerObject[]}
-   *
-   * @see '# User Answer' section at class comment
-   * @see '# Answer Object' section at class comment
-   */
-  toAnswerObjects: function (userAnswer) {
-    let util = this;
-    return userAnswer.map(function (selection) {
-      let index = selection.index;
-      return AnswerObject.create({
-        "text": selection.text,
-        "correct": util.isAnswerChoiceCorrect(selection),
-        "order": index + 1,
-        "answerId": 0,
-        "skip": false
-      });
-    });
-  },
-
-  /**
-   * Converts an answerObject format to model userAnswer
-   *
-   * @param {AnswerObject[]} answerObjects
-   * @return {{index: number, text: string }[]} answer ids in selected order
-   *
-   * @see '# User Answer' section at class comment
-   * @see '# Answer Object' section at class comment
-   */
-  toUserAnswer: function (answerObjects) {
-    return (!answerObjects || !answerObjects.length) ?
-      null : //if not respond is provided
-      answerObjects.map(function (answerObject) {
-        return {index: (answerObject.get("order") - 1), text: answerObject.get("text")};
-      });
   }
 
-});
+  return items;
+}

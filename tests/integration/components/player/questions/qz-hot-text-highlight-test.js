@@ -1,7 +1,7 @@
-/* TODO fix when the question type is enabled
-import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { QUESTION_TYPES } from 'quizzes/config/question';
+import ResourceModel from 'quizzes/models/resource/resource';
 
 moduleForComponent('player/questions/qz-hot-text-highlight', 'Integration | Component | player/questions/qz hot text highlight', {
   integration: true
@@ -10,20 +10,10 @@ moduleForComponent('player/questions/qz-hot-text-highlight', 'Integration | Comp
 test('Layout', function(assert) {
   assert.expect(4);
 
-  let question = Ember.Object.create({
-    'id': '569906aa68f276ae7ea03c30',
-    questionType: 'HT_HL',
-    text: '<p>Seleccione las palabras escritas incorrectamente</p>',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([
-      Ember.Object.create({ id: '1', text:'<p>Sentence 1 [Sentence 2.] Sentence 3 [Sentence 4.] Sentence 5</p>' })
-    ]),
-    isHotTextHighlightWord: false,
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 6,
-    'hasAnswers': true
+  let question = ResourceModel.create({
+    id: '569906aa68f276ae7ea03c30',
+    type: QUESTION_TYPES.hotTextHighlightSentence,
+    body: 'Sentence 1. Sentence 2. Sentence 3. Sentence 4. Sentence 5'
   });
 
   this.set('question', question);
@@ -42,20 +32,10 @@ test('Layout', function(assert) {
 test('markItem', function(assert) {
   assert.expect(14);
 
-  let question = Ember.Object.create({
-    'id': '569906aa68f276ae7ea03c30',
-    questionType: 'HT_HL',
-    text: '<p>Seleccione las palabras escritas incorrectamente</p>',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([ // ['le', 'colo', 'teco']
-      Ember.Object.create({ id: '1', text:'<p>Sentence 1 [Sentence 2.] Sentence 3 [Sentence 4.] Sentence 5</p>' })
-    ]),
-    isHotTextHighlightWord: false,
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 6,
-    'hasAnswers': true
+  let question = ResourceModel.create({
+    id: '569906aa68f276ae7ea03c30',
+    type: QUESTION_TYPES.hotTextHighlightSentence,
+    body: 'Sentence 1. Sentence 2. Sentence 3. Sentence 4. Sentence 5'
   });
 
   let answers = [];
@@ -85,16 +65,16 @@ test('markItem', function(assert) {
     $item3 = $phrasesContainer.find('span.item:eq(3)');
 
   //selecting items
-  answers = [{index:1, text:'Sentence 2.'}];
+  answers = [{ value: 'Sentence 2.,12' }];
   $item1.click();
   assert.ok($item1.hasClass('selected'), 'Item 1 should be selected');
 
-  answers = [{index:1, text:'Sentence 2.'}, {index:3, text:'Sentence 4.'}];
+  answers = [{ value: 'Sentence 2.,12' }, { value: 'Sentence 4.,36' }];
   $item3.click();
   assert.ok($item3.hasClass('selected'), 'Item 3 should be selected');
 
   //deselecting items
-  answers = [{index:3, text:'Sentence 4.'}];
+  answers = [{ value: 'Sentence 4.,36' }];
   $item1.click();
   assert.ok(!$item1.hasClass('selected'), 'Item 1 should not be selected');
   assert.ok($item3.hasClass('selected'), 'Item 3 should be selected');
@@ -109,20 +89,10 @@ test('markItem', function(assert) {
 test('Layout - read only', function(assert) {
   assert.expect(1);
 
-  let question = Ember.Object.create({
-    'id': '569906aa68f276ae7ea03c30',
-    questionType: 'HT_HL',
-    text: '<p>Seleccione las palabras escritas incorrectamente</p>',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([
-      Ember.Object.create({ id: '1', text:'<p>Sentence 1 [Sentence 2.] Sentence 3 [Sentence 4.] Sentence 5</p>' })
-    ]),
-    isHotTextHighlightWord: false,
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 6,
-    'hasAnswers': true
+  let question = ResourceModel.create({
+    id: '569906aa68f276ae7ea03c30',
+    type: QUESTION_TYPES.hotTextHighlightSentence,
+    body: 'Sentence 1. Sentence 2. Sentence 3. Sentence 4. Sentence 5'
   });
 
   this.set('question', question);
@@ -138,29 +108,13 @@ test('Layout - read only', function(assert) {
 test('Layout - with user answer', function(assert) {
   assert.expect(4);
 
-  let question = Ember.Object.create({
-    'id': '569906aa68f276ae7ea03c30',
-    questionType: 'HT_HL',
-    text: '<p>Seleccione las palabras escritas incorrectamente</p>',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([
-      Ember.Object.create({ id: '1', text:'<p>Sentence 1 [Sentence 2.] Sentence 3 [Sentence 4.] Sentence 5</p>' })
-    ]),
-    isHotTextHighlightWord: false,
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 6,
-    'hasAnswers': true
+  let question = ResourceModel.create({
+    id: '569906aa68f276ae7ea03c30',
+    type: QUESTION_TYPES.hotTextHighlightSentence,
+    body: 'Sentence 1. Sentence 2. Sentence 3. Sentence 4. Sentence 5'
   });
 
-  const answers = [{
-    'index': 1,
-    'text': 'Sentence 2.'
-  }, {
-    'index': 3,
-    'text': 'Sentence 4.'
-  }];
+  const answers = [{ value: 'Sentence 2.,12' }, { 'value': 'Sentence 4.,36' }];
   this.on('changeAnswer', function (question, answer) {
     assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
   });
@@ -168,7 +122,7 @@ test('Layout - with user answer', function(assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
   });
   this.set('question', question);
-  this.set('userAnswer', [{ index: 1 }, { index: 3} ]);
+  this.set('userAnswer', answers);
 
   this.render(hbs`{{player/questions/qz-hot-text-highlight question=question
                     userAnswer=userAnswer
@@ -185,36 +139,16 @@ test('Layout - with user answer', function(assert) {
 test('Set two questions', function(assert) {
   assert.expect(2);
 
-  let question = Ember.Object.create({
-    'id': '569906aa68f276ae7ea03c30',
-    questionType: 'HT_HL',
-    text: '<p>Seleccione las palabras escritas incorrectamente</p>',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([
-      Ember.Object.create({ id: '1', text:'<p>Sentence 1 [Sentence 2.] Sentence 3 [Sentence 4.] Sentence 5</p>' })
-    ]),
-    isHotTextHighlightWord: false,
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 6,
-    'hasAnswers': true
+  let question = ResourceModel.create({
+    id: '569906aa68f276ae7ea03c30',
+    type: QUESTION_TYPES.hotTextHighlightSentence,
+    body: 'Sentence 1. Sentence 2. Sentence 3. Sentence 4. Sentence 5'
   });
 
-  let question1 = Ember.Object.create({
-    'id': '569906aa68f276ae7ea03c30',
-    questionType: 'HT_HL',
-    text: '<p>Seleccione las palabras escritas incorrectamente2</p>',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([
-      Ember.Object.create({ id: '1', text:'<p>Question 2[Sentence 2.] Question 2 [Sentence 4.] Question 2</p>' })
-    ]),
-    isHotTextHighlightWord: false,
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'order': 6,
-    'hasAnswers': true
+  let question1 = ResourceModel.create({
+    id: '569906aa68f276ae7ea03c30',
+    type: QUESTION_TYPES.hotTextHighlightSentence,
+    body: 'Question 2. Sentence 2. Question 2. Sentence 4. Question 2'
   });
 
   this.set('question', question);
@@ -224,10 +158,9 @@ test('Set two questions', function(assert) {
   var $component = this.$(), //component dom element
     $phrasesContainer = $component.find('.phrases');
 
-  assert.equal($phrasesContainer.find('span:nth-child(1)').text().trim(),'Sentence 1','Incorrect answer');
+  assert.equal($phrasesContainer.find('span:nth-child(1)').text().trim(),'Sentence 1.', 'Incorrect answer');
 
   this.set('question', question1);
 
-  assert.equal($phrasesContainer.find('span:nth-child(1)').text().trim(),'Question 2','Incorrect answer');
+  assert.equal($phrasesContainer.find('span:nth-child(1)').text().trim(),'Question 2.', 'Incorrect answer');
 });
-*/

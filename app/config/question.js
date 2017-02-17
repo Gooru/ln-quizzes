@@ -1,13 +1,8 @@
 import Ember from 'ember';
-import SingleChoiceUtil from 'quizzes/utils/question/single-choice';
-import MultipleAnswerUtil from 'quizzes/utils/question/multiple-answer';
-import TrueFalseUtil from 'quizzes/utils/question/true-false';
 import OpenEndedUtil from 'quizzes/utils/question/open-ended';
 import FillInTheBlankUtil from 'quizzes/utils/question/fill-in-the-blank';
-import ReorderUtil from 'quizzes/utils/question/reorder';
 import HotSpotImageUtil from 'quizzes/utils/question/hot-spot-image';
 import HotSpotTextUtil from 'quizzes/utils/question/hot-spot-text';
-import HotTextHighlightUtil from 'quizzes/utils/question/hot-text-highlight';
 
 
 //Question Types
@@ -20,14 +15,14 @@ export const QUESTION_TYPES = {
   hotSpotText: 'HS_TXT',
   hotSpotImage: 'HS_IMG',
   hotTextReorder: 'drag_and_drop',
-  hotTextHighlight: 'HT_HL'
+  hotTextHighlightWord: 'hot_text_word',
+  hotTextHighlightSentence: 'hot_text_sentence'
 };
 
 //Question type configuration
 export const QUESTION_CONFIG = {
   'single_choice'    : Ember.Object.create({
     apiType: 'single_choice_question',
-    util: SingleChoiceUtil,
     component: {
       player: 'player.questions.qz-single-choice',
       answer: 'reports.assessment.questions.gru-single-choice'
@@ -35,7 +30,6 @@ export const QUESTION_CONFIG = {
   }),
   'multiple_choice'    : Ember.Object.create({
     apiType: 'multiple_choice_question',
-    util: MultipleAnswerUtil,
     component: {
       player: 'player.questions.qz-multiple-answer',
       answer: 'reports.assessment.questions.qz-multiple-answer'
@@ -43,16 +37,20 @@ export const QUESTION_CONFIG = {
   }),
   'drag_and_drop' : Ember.Object.create({
     apiType: 'drag_and_drop',
-    util: ReorderUtil,
     component: {
       player: 'player.questions.qz-reorder',
       answer: 'reports.assessment.questions.qz-reorder'
     }
   }),
-  'HT_HL' : Ember.Object.create({
+  'hot_text_word' : Ember.Object.create({
     apiType: 'hot_text_highlight_question',
-    util: HotTextHighlightUtil,
-    defaultType: 'word',
+    component: {
+      player: 'player.questions.qz-hot-text-highlight',
+      answer: 'reports.assessment.questions.gru-hot-text-highlight'
+    }
+  }),
+  'hot_text_sentence' : Ember.Object.create({
+    apiType: 'hot_text_highlight_question',
     component: {
       player: 'player.questions.qz-hot-text-highlight',
       answer: 'reports.assessment.questions.gru-hot-text-highlight'
@@ -60,7 +58,6 @@ export const QUESTION_CONFIG = {
   }),
   'true_false'   : Ember.Object.create({
     apiType: 'true_false_question',
-    util: TrueFalseUtil,
     component: {
       player: 'player.questions.qz-true-false',
       answer: 'reports.assessment.questions.gru-true-false'

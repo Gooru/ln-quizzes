@@ -1,6 +1,7 @@
 .player .qz-viewer {
+  height: 100%;
   overflow-y: scroll;
-  margin-right: -15px;
+  margin: 0 -15px 15px 0;
   &::-webkit-scrollbar {
     -webkit-appearance: none;
   }
@@ -59,7 +60,8 @@
   }
   .content {
     width: 100%;
-
+    height: 100%;
+    padding:0 15px;
     .avatar {
       text-align: center;
       padding-right: 15px;

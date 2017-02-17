@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import {QUESTION_TYPES} from 'quizzes/config/question';
+import {RESOURCE_TYPES, QUIZZES_RESOURCE_TYPES} from 'quizzes/config/config';
 
 /**
  * Resource Model
@@ -89,8 +90,8 @@ export default Ember.Object.extend({
    * Indicates the resource format. i.e image, text, video, interaction, webpage, question
    * @property {string} format
    */
-  format: Ember.computed('isResource', function() {
-    return this.get('isResource') ? 'resource' : 'question';
+  format: Ember.computed('isResource','type', function() {
+    return this.get('isResource') ? this.get('type') : 'question';
   }),
 
   /**
@@ -155,8 +156,8 @@ export default Ember.Object.extend({
    * Indicates if it is an image resource
    * @property {boolean}
    */
-  isImageResource: Ember.computed('type', function(){
-    var type = this.get('type');
+  isImageResource: Ember.computed('resourceType', function(){
+    var type = this.get('resourceType');
     return type && type.indexOf('image') >= 0;
   }),
 
@@ -182,7 +183,7 @@ export default Ember.Object.extend({
    * Indicates if it is an pdf resource
    * @property {boolean}
    */
-  isPDFResource: Ember.computed.equal('type', 'handouts'),
+  isPDFResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.pdf),
 
   /**
    * @property {boolean} indicates if the question is true false type
@@ -194,17 +195,56 @@ export default Ember.Object.extend({
    * Indicates if it is an url resource
    * @property {boolean}
    */
-  isUrlResource: Ember.computed.equal('type', 'resource/url'),
+  isUrlResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.url),
 
   /**
    * Indicates if it is an vimeo resource
    * @property {boolean}
    */
-  isVimeoResource: Ember.computed.equal('type', 'vimeo/video'),
+  isVimeoResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.vimeo),
 
   /**
    * Indicates if it is an youtube resource
    * @property {boolean}
    */
-  isYoutubeResource: Ember.computed.equal('type', 'video/youtube')
+  isYoutubeResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.youtube),
+
+  /**
+   * @property {String} Indicates the resource type. i.e video/youtube, assessment-question, image/png
+   */
+  resourceType: Ember.computed('type', function() {
+    let format = this.get('type');
+    let resourceUrl = this.get('url');
+    let youtubePattern = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    let vimeoPattern = /(http|https)?:\/\/(www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^/]*)\/videos\/|)(\d+)(?:|\/\?)/;
+    let pdfPattern = /.*\.pdf/;
+    let resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
+    if (resourceUrl) {
+      switch (format) {
+        case RESOURCE_TYPES.audio:
+        case RESOURCE_TYPES.interactive:
+        case RESOURCE_TYPES.webpage:
+          resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
+          break;
+        case RESOURCE_TYPES.image:
+          resourceType = pdfPattern.test(resourceUrl) ? QUIZZES_RESOURCE_TYPES.pdf : QUIZZES_RESOURCE_TYPES.image;
+          break;
+        case RESOURCE_TYPES.text:
+          resourceType = QUIZZES_RESOURCE_TYPES.pdf;
+          break;
+        case RESOURCE_TYPES.video:
+          if (youtubePattern.test(resourceUrl)) {
+            resourceType = QUIZZES_RESOURCE_TYPES.youtube;
+          } else if (vimeoPattern.test(resourceUrl)) {
+            resourceType = QUIZZES_RESOURCE_TYPES.vimeo;
+          } else {
+            resourceType = QUIZZES_RESOURCE_TYPES.url;
+          }
+          break;
+        default:
+          resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
+      }
+    }
+    return resourceType;
+  })
 });

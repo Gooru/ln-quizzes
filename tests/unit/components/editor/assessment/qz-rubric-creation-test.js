@@ -9,5 +9,5 @@ moduleForComponent('editor/assessment/qz-rubric-creation', 'Unit | Component | e
 test('addURL', function(assert) {
   let component = this.subject();
   component.send('addURL', 'url');
-  assert.equal(component.get('rubricURL'), 'url', 'Incorrect URL');
+  assert.equal(component.get('resource.url'), 'url', 'Incorrect URL');
 });

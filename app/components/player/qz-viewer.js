@@ -134,7 +134,7 @@ export default Ember.Component.extend({
    * @property {string}
    */
   resourceComponentSelected: Ember.computed('resource.id', function () {
-    const resourceType = (this.get('resource.isImageResource') ? 'image' : this.get('resource.type'));
+    const resourceType = (this.get('resource.isImageResource') ? 'image' : this.get('resource.resourceType'));
     var component = RESOURCE_COMPONENT_MAP[resourceType];
 
     if (!component) {

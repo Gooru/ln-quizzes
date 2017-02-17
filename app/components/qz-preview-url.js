@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['editor','assessment','qz-preview-url'],
+  classNames:['qz-preview-url'],
 
   // -------------------------------------------------------------------------
   // Properties
@@ -25,5 +25,7 @@ export default Ember.Component.extend({
   /**
    * @property {string} Resource URL
    */
-  url:''
+  url:Ember.computed.alias('resource.body'),
+
+  resource:null
 });

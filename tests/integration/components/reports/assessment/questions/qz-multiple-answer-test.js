@@ -5,6 +5,7 @@ import Ember from 'ember';
 import AnswerModel from 'quizzes/models/resource/answer';
 import ResourceModel from 'quizzes/models/resource/resource';
 import QuestionResult from 'quizzes/models/result/question';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('/reports/assessment/questions/qz-multiple-answer', 'Integration | Component | /reports/assessment/questions/qz multiple answer', {
   integration: true,
@@ -18,7 +19,7 @@ test('Multiple Answer Correct Answer', function(assert) {
   let questionResult = QuestionResult.create({
     resource: ResourceModel.create({
       id: '569906aa20b7dfae1bcd5',
-      type: 'multiple_choice',
+      type: QUESTION_TYPES.multipleAnswer,
       body: 'Sample Question MA',
       correctAnswer: Ember.A([
         AnswerModel.create({ value: '2', text: 'Answer 2' }),
@@ -49,7 +50,7 @@ test('Multiple Answer Your Answer Incorrect', function(assert) {
   let questionResult = QuestionResult.create({
     resource: ResourceModel.create({
       id: '569906aa20b7dfae1bcd5',
-      type: 'multiple_choice',
+      type: QUESTION_TYPES.multipleAnswer,
       body: 'Sample Question MA',
       correctAnswer: Ember.A([
         AnswerModel.create({ value: '2', text: 'Answer 2' }),
@@ -79,7 +80,7 @@ test('Multiple Answer Your Answer Correct', function(assert) {
   let questionResult = QuestionResult.create({
     resource: ResourceModel.create({
       id: '569906aa20b7dfae1bcd5',
-      type: 'multiple_choice',
+      type: QUESTION_TYPES.multipleAnswer,
       body: 'Sample Question MA',
       correctAnswer: Ember.A([
         AnswerModel.create({ value: '2', text: 'Answer 2' }),
@@ -110,7 +111,7 @@ test('Multiple Answer anonymous', function(assert) {
   let questionResult = QuestionResult.create({
     resource: ResourceModel.create({
       id: '569906aa20b7dfae1bcd5',
-      type: 'multiple_choice',
+      type: QUESTION_TYPES.multipleAnswer,
       body: 'Sample Question MA',
       correctAnswer: Ember.A([
         AnswerModel.create({ value: '2', text: 'Answer 2' }),

@@ -4,6 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import AnswerModel from 'quizzes/models/resource/answer';
 import ResourceModel from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('player/questions/qz-true-false', 'Integration | Component | player/questions/qz true false', {
   integration: true,
@@ -19,7 +20,7 @@ test('True or false question layout', function (assert) {
 
   let question = ResourceModel.create({ //true false
     id: '569906aa3ec3bb39969acbe6',
-    type: 'true_false',
+    type: QUESTION_TYPES.trueFalse,
     body: 'True False Question',
     answers: Ember.A([
       AnswerModel.create({value: '1', text: 'True'}),
@@ -65,7 +66,7 @@ test('True or false question layout - read only', function (assert) {
 
   let question = ResourceModel.create({ //true false
     id: '569906aa3ec3bb39969acbe6',
-    type: 'true_false',
+    type: QUESTION_TYPES.trueFalse,
     body: 'True False Question',
     answers: Ember.A([
       AnswerModel.create({value: '1', text: 'True'}),
@@ -90,7 +91,7 @@ test('True or false question layout - with user answer', function (assert) {
 
   let question = ResourceModel.create({ //true false
     id: '569906aa3ec3bb39969acbe6',
-    type: 'true_false',
+    type: QUESTION_TYPES.trueFalse,
     body: 'True False Question',
     answers: Ember.A([
       AnswerModel.create({value: '1', text: 'True'}),
@@ -124,7 +125,7 @@ test('True or false question layout - False as correct answer', function (assert
 
   let question = ResourceModel.create({ //true false
     id: '569906aa3ec3bb39969acbe6',
-    type: 'true_false',
+    type: QUESTION_TYPES.trueFalse,
     body: 'True False Question',
     answers: Ember.A([
       AnswerModel.create({value: '1', text: 'True'}),

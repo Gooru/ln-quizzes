@@ -60,6 +60,22 @@ export function splitWithIndex(text, delim) {
 }
 
 /**
+ * Transforms a list of string into item objects, it trims the texts and removes []
+ * @param {string[]} textList
+ *
+ * @returns {{index: number, text: string, selected: boolean, correct: boolean}} items
+ */
+export function toItems(textList) {
+  return textList.filter(item => !!item.text.trim()).map(
+    item => Ember.Object.create({
+      index: item.index + item.text.search(/\S/),
+      text: item.text.trim(),
+      selected: false
+    })
+  );
+}
+
+/**
  * Gets items based on text format.
  * This methods creates an item for each word in the text, it removes []
  * i.e La casa es de [colo] pero el [teco] es azul
@@ -90,22 +106,6 @@ export function getSentenceItems(text) {
 export function transformText(text) {
   const match = /^<p>(.*)<\/p>$/gm.exec(text);
   return match ? match[1].trim() : text;
-}
-
-/**
- * Transforms a list of string into item objects, it trims the texts and removes []
- * @param {string[]} textList
- *
- * @returns {{index: number, text: string, selected: boolean, correct: boolean}} items
- */
-export function toItems(textList) {
-  return textList.filter(item => !!item.text.trim()).map(
-    item => Ember.Object.create({
-      index: item.index + item.text.search(/\S/),
-      text: item.text.trim(),
-      selected: false
-    })
-  );
 }
 
 /**

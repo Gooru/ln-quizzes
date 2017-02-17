@@ -4,6 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import AnswerModel from 'quizzes/utils/question/answer-object';
 import ResourceModel from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('player/questions/qz-reorder', 'Integration | Component | player/questions/qz reorder', {
   integration: true,
@@ -17,7 +18,7 @@ test('Reorder question layout', function (assert) {
 
   let question = ResourceModel.create({
     id: '569906aadfa0072204f7c7c7',
-    type: 'drag_and_drop',
+    type: QUESTION_TYPES.hotTextReorder,
     body: 'Reorder Question',
     hints: [],
     explanation: 'Sample explanation text',
@@ -53,7 +54,7 @@ test('Reorder question layout', function (assert) {
 test('Notifications work after reordering questions', function (assert) {
   let question = ResourceModel.create({
     id: '569906aadfa0072204f7c7c7',
-    type: 'drag_and_drop',
+    type: QUESTION_TYPES.hotTextReorder,
     body: 'Reorder Question',
     hints: [],
     explanation: 'Sample explanation text',
@@ -137,11 +138,12 @@ test('Notifications work after reordering questions', function (assert) {
     }]);
   $component.find('.sortable').trigger('sortupdate');
 });
+
 test('Reorder question layout - read only', function (assert) {
 
   let question = ResourceModel.create({
     id: '569906aadfa0072204f7c7c7',
-    type: 'drag_and_drop',
+    type: QUESTION_TYPES.hotTextReorder,
     body: 'Reorder Question',
     hints: [],
     explanation: 'Sample explanation text',
@@ -178,7 +180,7 @@ test('Reorder question layout - with user answer', function (assert) {
   assert.expect(5);
   let question = ResourceModel.create({
     id: '569906aadfa0072204f7c7c7',
-    type: 'drag_and_drop',
+    type: QUESTION_TYPES.hotTextReorder,
     body: 'Reorder Question',
     hints: [],
     explanation: 'Sample explanation text',

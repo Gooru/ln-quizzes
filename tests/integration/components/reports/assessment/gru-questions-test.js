@@ -4,6 +4,7 @@ import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 import QuestionResult from 'quizzes/models/result/question';
 import Resource from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('reports/assessment/gru-questions', 'Integration | Component | reports/assessment/gru questions', {
   integration: true,
@@ -18,7 +19,7 @@ test('Questions Layout', function (assert) {
       score: 100,
       resource: Resource.create({
         body: 'This is a question 1',
-        type: 'single_choice',
+        type: QUESTION_TYPES.singleChoice,
         sequence: 1,
         correctAnswer: [{
           value: 'answer'
@@ -34,7 +35,7 @@ test('Questions Layout', function (assert) {
       score: 100,
       resource: Resource.create({
         body: 'This is a question 2',
-        type: 'single_choice',
+        type: QUESTION_TYPES.singleChoice,
         sequence: 3,
         correctAnswer: [{
           value: 'answer'
@@ -73,7 +74,7 @@ test('Questions Layout', function (assert) {
   assert.equal(T.text($component.find('table tbody td.number-question:eq(1)')), '2', 'Wrong question number for question 2');
   T.exists(assert, $component.find('table tbody td.question-text'), 'Missing text column');
   T.exists(assert, $component.find('table tbody td.question-answer'), 'Missing answer column');
-  T.exists(assert, $component.find('table tbody td.question-answer:eq(0) .gru-single-choice'), 'Missing gru-open-ended component');
+  T.exists(assert, $component.find('table tbody td.question-answer:eq(0) .qz-single-choice'), 'Missing gru-open-ended component');
   T.exists(assert, $component.find('table tbody td.question-score'), 'Missing score column');
   T.exists(assert, $component.find('table tbody td.question-time'), 'Missing time spent column');
   T.exists(assert, $component.find('table tbody td.question-reaction'), 'Missing reaction column');
@@ -90,7 +91,7 @@ test('Buttons Options', function (assert) {
       score: 100,
       resource: Resource.create({
         body: 'This is a question 1',
-        type: 'single_choice',
+        type: QUESTION_TYPES.singleChoice,
         sequence: 1,
         correctAnswer: {
           value: 'answer'
@@ -106,7 +107,7 @@ test('Buttons Options', function (assert) {
       score: 100,
       resource: Resource.create({
         body: 'This is a question 2',
-        type: 'single_choice',
+        type: QUESTION_TYPES.singleChoice,
         sequence: 3,
         correctAnswer: {
           value: 'answer'
@@ -140,7 +141,7 @@ test('Buttons Options', function (assert) {
   T.exists(assert, $component.find('table tbody td.question-time.hide'), 'Time spent column should be hide');
   T.exists(assert, $component.find('table tbody td.question-reaction.hide'), 'Reaction column should be hide');
   T.exists(assert, $component.find('table tbody td.correct-answer.visible'), 'Correct answer column should be visible');
-  T.exists(assert, $component.find('table tbody td.correct-answer.visible:eq(0) .gru-single-choice'), 'Correct answer column should be visible');
+  T.exists(assert, $component.find('table tbody td.correct-answer.visible:eq(0) .qz-single-choice'), 'Correct answer column should be visible');
 
   const $performanceButton = $component.find('.btn-group button.performance');
   $performanceButton.click(); //Show performance

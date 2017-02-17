@@ -68,6 +68,20 @@ export default Ember.Object.extend({
 
   // -------------------------------------------------------------------------
   // Methods
+  /**
+   * Compares the answer values
+   * @param {Answer} a
+   * @param {Answer} b
+   * @returns {Boolean}
+   */
+  compareAnswers: function(a, b) {
+    let result = a.length === b.length;
+    a.forEach(answerA => {
+      let filteredAnswers = b.find(answerB => answerB.value === answerA.value);
+      result &= !!filteredAnswers;
+    });
+    return result;
+  },
 
   /**
    * Find an event by a profile id
@@ -96,10 +110,10 @@ export default Ember.Object.extend({
    * @returns {QuestionResult[]}
    */
   getStudentsByQuestionAndAnswer: function(question, answer) {
-    return this.get('reportEvents').filter(function(reportEvent) {
+    return this.get('reportEvents').filter(reportEvent => {
       let questionResult = reportEvent.get('resourceResults').find(
         result => result.get('resourceId') === question.get('id'));
-      return questionResult ? questionResult.get('answer.firstObject.value') === answer[0].value : false;
+      return questionResult ? this.compareAnswers(questionResult.get('answer'), answer) : false;
     }).map(student => Ember.Object.create({
       id: student.get('profileId'),
       code: student.get('profileCode'),

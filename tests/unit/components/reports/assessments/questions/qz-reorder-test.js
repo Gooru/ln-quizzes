@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Answer from 'quizzes/models/resource/answer';
 import Ember from 'ember';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('reports/assessment/questions/qz-reorder', 'Unit | Component | reports/assessment/questions/qz reorder', {
   // Specify the other units that are required for this test
@@ -10,7 +11,7 @@ moduleForComponent('reports/assessment/questions/qz-reorder', 'Unit | Component 
 test('answers when show correct', function(assert) {
   let component = this.subject();
   var question = Ember.Object.create({
-    questionType: "drag_and_drop",
+    type: QUESTION_TYPES.hotTextReorder,
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),
@@ -52,10 +53,11 @@ test('answers when show correct', function(assert) {
   component.set('question', question);
   assert.deepEqual(component.get('answers'),expectedAnswers,'Incorrect answers');
 });
+
 test('answers show user answers', function(assert) {
   let component = this.subject();
   var question = Ember.Object.create({
-    questionType: "drag_and_drop",
+    type: QUESTION_TYPES.hotTextReorder,
     question:{
       answers: Ember.A([
         Answer.create({ value: 'crc', text: 'Costa Rica'}),

@@ -4,6 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import AnswerModel from 'quizzes/models/resource/answer';
 import ResourceModel from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('player/questions/qz-multiple-answer', 'Integration | Component | player/questions/qz multiple answer', {
   integration: true,
@@ -17,7 +18,7 @@ test('Multiple answer question layout', function (assert) {
   assert.expect(6);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_choice',
+    type: QUESTION_TYPES.multipleAnswer,
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -51,7 +52,7 @@ test('Multiple answer question events', function (assert) {
 
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_choice',
+    type: QUESTION_TYPES.multipleAnswer,
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -104,7 +105,7 @@ test('Multiple answer question layout - read only', function (assert) {
 
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_choice',
+    type: QUESTION_TYPES.multipleAnswer,
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({
@@ -135,7 +136,7 @@ test('Multiple answer question layout - with user answer', function (assert) {
   assert.expect(7);
   let question = ResourceModel.create({
     id: '569906aa20b7dfae1bcd5',
-    type: 'multiple_choice',
+    type: QUESTION_TYPES.multipleAnswer,
     body: 'Sample Question SC',
     answers:  Ember.A([
       AnswerModel.create({

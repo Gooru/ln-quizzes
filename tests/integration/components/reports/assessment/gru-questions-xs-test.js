@@ -4,6 +4,7 @@ import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 import QuestionResult from 'quizzes/models/result/question';
 import Resource from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('reports/assessment/gru-questions-xs', 'Integration | Component | reports/assessment/gru questions xs', {
   integration: true
@@ -16,7 +17,7 @@ test('Questions Details Mobile Layout', function(assert) {
     QuestionResult.create({
       question: Resource.create({
         body: 'This is a question 1',
-        type: 'OE',
+        type: QUESTION_TYPES.openEnded,
         sequence: 1
       }),
       score: 100,
@@ -27,7 +28,7 @@ test('Questions Details Mobile Layout', function(assert) {
     QuestionResult.create({
       question: Resource.create({
         body: 'This is a question 2',
-        questionType: 'OE',
+        type: QUESTION_TYPES.openEnded,
         sequence: 2
       }),
       score: 0,

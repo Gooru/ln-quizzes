@@ -4,6 +4,7 @@ import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
 import AnswerModel from 'quizzes/utils/question/answer-object';
 import ResourceModel from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes/config/question';
 
 moduleForComponent('reports/assessment/questions/qz-fib', 'Integration | Component | reports/assessment/questions/qz-fib', {
   integration: true
@@ -13,7 +14,7 @@ test('Fill in the blank Correct Answer', function(assert) {
 
   var question = Ember.Object.create({
     question:ResourceModel.create({
-      questionType: 'text_entry',
+      type: QUESTION_TYPES.fib,
       body: 'The mountain is [] and the sky []',
       hints: [],
       explanation: 'Sample explanation text',
@@ -54,7 +55,7 @@ test('Fill in the blank Your Answer Incorrect', function(assert) {
 
   var question = Ember.Object.create({
     question:ResourceModel.create({
-      questionType: 'text_entry',
+      type: QUESTION_TYPES.fib,
       body: 'The mountain is [] and the sky []',
       hints: [],
       explanation: 'Sample explanation text',
@@ -92,7 +93,7 @@ test('Fill in the blank Your Answer Correct', function(assert) {
 
   var question = Ember.Object.create({
     question:ResourceModel.create({
-      questionType: 'text_entry',
+      type: QUESTION_TYPES.fib,
       body: 'The mountain is [] and the sky []',
       hints: [],
       explanation: 'Sample explanation text',
@@ -131,7 +132,7 @@ test('Fill in the blank anonymous', function(assert) {
 
   var question = Ember.Object.create({
     question:ResourceModel.create({
-      questionType: 'text_entry',
+      type: QUESTION_TYPES.fib,
       body: 'The mountain is [] and the sky []',
       hints: [],
       explanation: 'Sample explanation text',
@@ -164,4 +165,3 @@ test('Fill in the blank anonymous', function(assert) {
   T.exists(assert, $fib.find('> span:eq(1).answer.anonymous'), 'The first answer should be anonymous');
   T.exists(assert, $fib.find('> span:eq(3).answer.anonymous'), 'The second answer should be anonymous');
 });
-

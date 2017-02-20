@@ -27,15 +27,24 @@ export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
   // Events
 
+  /**
+   * Remove click event on answers
+   */
   removeSubscriptions: Ember.on('willDestroyElement', function() {
     this.$('li.answer').off('click');
   }),
 
+  /**
+   * Initialize answers when the user has previous answers or not
+   */
   setupInstanceProperties: Ember.on('init', function() {
     const component = this;
     component.setAnswers();
   }),
 
+  /**
+   * Set answers and set click events on every answer to selected and unselected answers
+   */
   setupSubscriptions: Ember.on('didInsertElement', function() {
     const component = this;
     const readOnly = component.get('readOnly');

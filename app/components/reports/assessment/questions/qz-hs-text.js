@@ -17,30 +17,28 @@ export default Ember.Component.extend(QuestionMixin, {
   classNames: ['reports', 'assessment', 'questions', 'qz-hs-text'],
 
   // -------------------------------------------------------------------------
-  // Actions
-
-  // -------------------------------------------------------------------------
-  // Events
-
-  // -------------------------------------------------------------------------
   // Properties
 
+  /**
+   * Return the hot spot answers to show on the component, indicating if the user select the answer and
+   * if is correct or not.
+   */
   answers: Ember.computed("question", "anonymous", function () {
     let component = this;
-    let question = component.get("question");
-    let questionUtil = component.getQuestionUtil(question);
-    let userAnswers = component.get("userAnswer");
+    let question = component.get('question');
+    let userAnswers = component.get('userAnswer');
+    let correctAnswers = question.get('question.correctAnswer');
     let anonymous = component.get("anonymous");
     if (component.get("showCorrect")){
-      userAnswers = questionUtil.getCorrectAnswer();
+      userAnswers = question.get('question.correctAnswer');
     }
 
-    let answers = question.get("answers");
+    let answers = question.get('question.answers');
     return answers.map(function(answer){
       let userAnswerCorrect = false;
       let selected = false;
-      if (userAnswers.includes(answer.get("value"))){
-        userAnswerCorrect = questionUtil.isAnswerChoiceCorrect(answer.get("value"));
+      if (userAnswers.findBy('value', answer.value)){
+        userAnswerCorrect =  correctAnswers.findBy('value', answer.value);
         selected = true;
       }
 
@@ -52,10 +50,4 @@ export default Ember.Component.extend(QuestionMixin, {
       };
     });
   })
-
-  // -------------------------------------------------------------------------
-  // Observers
-
-  // -------------------------------------------------------------------------
-  // Methods
 });

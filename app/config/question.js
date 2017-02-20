@@ -81,7 +81,7 @@ export const QUESTION_CONFIG = {
     util: HotSpotTextUtil,
     component: {
       player: 'player.questions.qz-hs-text',
-      answer: 'reports.assessment.questions.gru-hs-text'
+      answer: 'reports.assessment.questions.qz-hs-text'
     }
   }),
   'OE'    : Ember.Object.create({

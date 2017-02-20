@@ -74,7 +74,7 @@ test('Questions Layout', function (assert) {
   assert.equal(T.text($component.find('table tbody td.number-question:eq(1)')), '2', 'Wrong question number for question 2');
   T.exists(assert, $component.find('table tbody td.question-text'), 'Missing text column');
   T.exists(assert, $component.find('table tbody td.question-answer'), 'Missing answer column');
-  T.exists(assert, $component.find('table tbody td.question-answer:eq(0) .qz-single-choice'), 'Missing gru-open-ended component');
+  T.exists(assert, $component.find('table tbody td.question-answer:eq(0) .qz-single-choice'), 'Missing qz-single-choice component');
   T.exists(assert, $component.find('table tbody td.question-score'), 'Missing score column');
   T.exists(assert, $component.find('table tbody td.question-time'), 'Missing time spent column');
   T.exists(assert, $component.find('table tbody td.question-reaction'), 'Missing reaction column');

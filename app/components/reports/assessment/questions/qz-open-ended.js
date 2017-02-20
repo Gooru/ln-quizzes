@@ -16,7 +16,7 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['reports', 'assessment', 'questions','gru-open-ended'],
+  classNames: ['reports', 'assessment', 'questions','qz-open-ended'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -28,8 +28,8 @@ export default Ember.Component.extend(QuestionMixin, {
   // Properties
 
   answer: Ember.computed('question', 'showCorrect', function () {
-    const correctAnswer = this.get('question.question.correctAnswer.text') || 'N/A';
-    return (this.get('showCorrect')) ? correctAnswer : this.get('userAnswer');
+    const correctAnswer = this.get('question.question.correctAnswer.firstObject.value') || 'N/A';
+    return this.get('showCorrect') ? correctAnswer : this.get('userAnswer.firstObject.value');
   })
 
   // -------------------------------------------------------------------------

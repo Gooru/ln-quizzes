@@ -10,7 +10,7 @@ export const QUESTION_TYPES = {
   trueFalse: 'true_false',
   openEnded: 'OE',
   fib: 'text_entry',
-  hotSpotText: 'HS_TXT',
+  hotSpotText: 'multiple_choice_text',
   hotSpotImage: 'HS_IMG',
   hotTextReorder: 'drag_and_drop',
   hotTextHighlightWord: 'hot_text_word',
@@ -76,8 +76,8 @@ export const QUESTION_CONFIG = {
       answer: 'reports.assessment.questions.gru-hs-image'
     }
   }),
-  'HS_TXT': Ember.Object.create({
-    apiType: 'hot_spot_text_question',
+  'multiple_choice_text': Ember.Object.create({
+    apiType: 'multiple_choice_text_question',
     util: HotSpotTextUtil,
     component: {
       player: 'player.questions.qz-hs-text',

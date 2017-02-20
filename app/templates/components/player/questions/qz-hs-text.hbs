@@ -1,1 +1,16 @@
-{{partial 'components/player/questions/partial-gru-hs-item'}}
+<p class="instructions">
+  {{instructions}}
+</p>
+
+<div class="answer-choices clearfix">
+
+    <ul>
+      {{#each answers as |answer|}}
+          <li data-id="{{answer.value}}" class="answer {{if readOnly 'disabled'}}">
+                <span class="answer-text">{{{gru-math-text text=answer.text}}}</span>
+                <div>{{gru-icon name='done'}}</div>
+          </li>
+      {{/each}}
+    </ul>
+
+</div>

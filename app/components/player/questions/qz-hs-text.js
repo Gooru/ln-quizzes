@@ -51,13 +51,14 @@ export default QuestionComponent.extend({
         const answerId = $this.data('id');
 
         var selected = component.get('selectedAnswers');
-        var idx = selected.indexOf(answerId);
+        let answer = selected.findBy('value',answerId);
 
         $this.toggleClass('selected');
 
-        if (idx === -1) {
-          selected.push(answerId);
+        if (!answer) {
+          selected.push({value:answerId});
         } else {
+          var idx = selected.indexOf(answer);
           selected.splice(idx, 1);
         }
 
@@ -70,29 +71,29 @@ export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
   // Properties
 
-  /*
+  /**
    * @typedef answers
    * @prop {String} id - answer id
    * @prop {String} content - markup string containing the answer text
    */
   answers: Ember.computed.map('question.answers', function(answer) {
     return {
-      id: answer.get('id'),
-      content: answer.get('text')
+      value: answer.get('value'),
+      text: answer.get('text')
     };
   }),
 
-  /*
+  /**
    * @prop {String} instructions - Question instructions
    */
   instructions: Ember.computed(function() {
     return this.get('i18n').t('qz-hs-text.instructions');
   }),
 
-  /*
+  /**
    * @prop {Array} selectedAnswers - Array of ids for each one of the answers selected by the user
    */
-  selectedAnswers: null,
+  selectedAnswers: Ember.A([]),
 
   // -------------------------------------------------------------------------
   // Observers
@@ -108,6 +109,7 @@ export default QuestionComponent.extend({
     const component = this;
     let selected = component.get('selectedAnswers');
     let cleared = !selected.length;
+
     component.notifyAnswerChanged(selected);
     if (cleared) {
       component.notifyAnswerCleared(selected);
@@ -134,8 +136,8 @@ export default QuestionComponent.extend({
   setUserAnswer: function() {
     if (this.get('hasUserAnswer')) {
       const userAnswer = this.get('userAnswer');
-      userAnswer.forEach(function(answerId){
-        let selector = `li.answer[data-id='${answerId}']`;
+      userAnswer.forEach(function(answer){
+        let selector = `li.answer[data-id='${answer.value}']`;
         let $answer = Ember.$(selector);
         $answer.toggleClass('selected');
       });

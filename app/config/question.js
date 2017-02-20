@@ -8,7 +8,7 @@ export const QUESTION_TYPES = {
   singleChoice: 'single_choice',
   multipleAnswer: 'multiple_choice',
   trueFalse: 'true_false',
-  openEnded: 'OE',
+  openEnded: 'extended_text',
   fib: 'text_entry',
   hotSpotText: 'HS_TXT',
   hotSpotImage: 'HS_IMG',
@@ -84,12 +84,12 @@ export const QUESTION_CONFIG = {
       answer: 'reports.assessment.questions.gru-hs-text'
     }
   }),
-  'OE'    : Ember.Object.create({
+  'extended_text'    : Ember.Object.create({
     apiType: 'open_ended_question',
     util: OpenEndedUtil,
     component: {
       player: 'player.questions.qz-open-ended',
-      answer: 'reports.assessment.questions.gru-open-ended'
+      answer: 'reports.assessment.questions.qz-open-ended'
     }
   })
 };

@@ -19,7 +19,7 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-open-ended'],
+  classNames: ['qz-open-ended'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -80,7 +80,7 @@ export default QuestionComponent.extend({
    */
   notify: function(onLoad) {
     const component = this,
-      answer = Ember.$.trim(component.get('answer'));
+      answer = [{ value: Ember.$.trim(component.get('answer')) }];
     component.notifyAnswerChanged(answer);
     if (component.get('isAnswerCompleted')) {
       if(onLoad) {

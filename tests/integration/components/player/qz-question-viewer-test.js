@@ -76,7 +76,7 @@ test('Submit button should become enabled and call action on submit', function (
 
   this.on('mySubmitQuestion', function(question, questionResult) {
     assert.equal(question.get('id'), 10, 'Wrong id');
-    assert.equal(questionResult.get('answer'), 'test', 'Wrong answer');
+    assert.equal(questionResult.get('answer.firstObject.value'), 'test', 'Wrong answer');
   });
   this.render(hbs`{{player/qz-question-viewer question=question questionResult=questionResult
       onSubmitQuestion='mySubmitQuestion'}}`);
@@ -289,7 +289,7 @@ test('Show feedback layout', function (assert) {
 
   this.on('mySubmitQuestion', function(question, questionResult){
     assert.equal(question.get('id'), 10, 'Wrong id');
-    assert.equal(questionResult.get('answer'), 'test', 'Wrong answer');
+    assert.equal(questionResult.get('answer.firstObject.value'), 'test', 'Wrong answer');
   });
 
   this.set('assessment', assessment);

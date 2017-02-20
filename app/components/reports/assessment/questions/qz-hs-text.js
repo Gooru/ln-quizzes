@@ -14,7 +14,7 @@ export default Ember.Component.extend(QuestionMixin, {
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['reports', 'assessment', 'questions', 'gru-hs-text'],
+  classNames: ['reports', 'assessment', 'questions', 'qz-hs-text'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -39,8 +39,8 @@ export default Ember.Component.extend(QuestionMixin, {
     return answers.map(function(answer){
       let userAnswerCorrect = false;
       let selected = false;
-      if (userAnswers.includes(answer.get("id"))){
-        userAnswerCorrect = questionUtil.isAnswerChoiceCorrect(answer.get("id"));
+      if (userAnswers.includes(answer.get("value"))){
+        userAnswerCorrect = questionUtil.isAnswerChoiceCorrect(answer.get("value"));
         selected = true;
       }
 

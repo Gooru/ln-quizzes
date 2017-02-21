@@ -1,8 +1,10 @@
-/* TODO fix when the question type is enabled
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'quizzes/tests/helpers/assert';
 import Ember from 'ember';
+import { QUESTION_TYPES } from 'quizzes/config/question';
+import AnswerModel from 'quizzes/utils/question/answer-object';
+import ResourceModel from 'quizzes/models/resource/resource';
 
 moduleForComponent('reports/assessment/questions/qz-hs-text', 'Integration | Component | reports/assessment/questions/qz hs text', {
   integration: true,
@@ -15,16 +17,40 @@ moduleForComponent('reports/assessment/questions/qz-hs-text', 'Integration | Com
 test('Hot Spot Text Correct Answer', function(assert) {
 
   var question = Ember.Object.create({
-    questionType: 'HS_TXT',
-    text: 'Sample Question HS_TXT',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([
-      Ember.Object.create({ id: '1', isCorrect: true, text:'Answer 1' }),
-      Ember.Object.create({ id: '2', isCorrect: false, text:'Answer 2' }),
-      Ember.Object.create({ id: '3', isCorrect: true, text:'Answer 3' })
-    ]),
-    order: 2
+    question: ResourceModel.create({
+      id: '569906aadfa0072204f7c7c7',
+      type: QUESTION_TYPES.hotSpotText,
+      body: 'Hot spot text',
+      answers:  Ember.A([
+        AnswerModel.create({
+          value: '1',
+          text: 'An aquifer'
+        }),
+        AnswerModel.create({
+          value: '2',
+          text: 'A well'
+        }),
+        AnswerModel.create({
+          value: '3',
+          text: 'A pump'
+        })
+      ]),
+      correctAnswer:Ember.A([
+        AnswerModel.create({
+          value: '1',
+          text: 'An aquifer'
+        }),
+        AnswerModel.create({
+          value: '2',
+          text: 'A well'
+        }),
+        AnswerModel.create({
+          value: '3',
+          text: 'A pump'
+        })
+      ]),
+      sequence:1
+    })
   });
 
   var showCorrect = true;
@@ -42,19 +68,39 @@ test('Hot Spot Text Correct Answer', function(assert) {
 test('Hot Spot Text Your Answer Incorrect', function(assert) {
 
   var question = Ember.Object.create({
-    questionType: 'HS_TXT',
-    text: 'Sample Question HS_TXT',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([
-      Ember.Object.create({ id: '1', isCorrect: true, text:'Answer 1' }),
-      Ember.Object.create({ id: '2', isCorrect: false, text:'Answer 2' }),
-      Ember.Object.create({ id: '3', isCorrect: true, text:'Answer 3' })
-    ]),
-    order: 2
+    question: ResourceModel.create({
+      id: '569906aadfa0072204f7c7c7',
+      type: QUESTION_TYPES.hotSpotText,
+      body: 'Hot spot text',
+      answers:  Ember.A([
+        AnswerModel.create({
+          value: '1',
+          text: 'An aquifer'
+        }),
+        AnswerModel.create({
+          value: '2',
+          text: 'A well'
+        }),
+        AnswerModel.create({
+          value: '3',
+          text: 'A pump'
+        })
+      ]),
+      correctAnswer:Ember.A([
+        AnswerModel.create({
+          value: '1',
+          text: 'An aquifer'
+        }),
+        AnswerModel.create({
+          value: '2',
+          text: 'A well'
+        })
+      ]),
+      sequence:1
+    })
   });
 
-  var userAnswer = Ember.A(['1', '2']);
+  var userAnswer = Ember.A([{value:'1'},{value:'3'}]);
 
   this.set('question', question);
   this.set('userAnswer', userAnswer);
@@ -64,26 +110,47 @@ test('Hot Spot Text Your Answer Incorrect', function(assert) {
   const $hsText = $component.find('.reports.assessment.questions.qz-hs-text');
 
   T.exists(assert, $hsText.find('li:eq(0).selected.correct'), 'The first answer should be correct and selected');
-  T.exists(assert, $hsText.find('li:eq(1).selected.incorrect'), 'The second answer should be incorrect and selected');
-  T.notExists(assert, $hsText.find('li:eq(2).selected'), 'The third answer should not be selected');
+  T.exists(assert, $hsText.find('li:eq(2).selected.incorrect'), 'The third answer should be incorrect and selected');
+  T.notExists(assert, $hsText.find('li:eq(1).selected'), 'The second answer should not be selected');
 });
 
 test('Hot Spot Text Your Answer Correct', function(assert) {
 
   var question = Ember.Object.create({
-    questionType: 'HS_TXT',
-    text: 'Sample Question HS_TXT',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([
-      Ember.Object.create({ id: '1', isCorrect: true, text:'Answer 1' }),
-      Ember.Object.create({ id: '2', isCorrect: false, text:'Answer 2' }),
-      Ember.Object.create({ id: '3', isCorrect: true, text:'Answer 3' })
-    ]),
-    order: 2
+    question: ResourceModel.create({
+      id: '569906aadfa0072204f7c7c7',
+      type: QUESTION_TYPES.hotSpotText,
+      body: 'Hot spot text',
+      answers:  Ember.A([
+        AnswerModel.create({
+          value: '1',
+          text: 'An aquifer'
+        }),
+        AnswerModel.create({
+          value: '2',
+          text: 'A well'
+        }),
+        AnswerModel.create({
+          value: '3',
+          text: 'A pump'
+        })
+      ]),
+      correctAnswer:Ember.A([
+        AnswerModel.create({
+          value: '1',
+          text: 'An aquifer'
+        }),
+        AnswerModel.create({
+          value: '2',
+          text: 'A well'
+        })
+      ]),
+      sequence:1
+    })
   });
 
-  var userAnswer = Ember.A(['1', '3']);
+
+  var userAnswer = Ember.A([{value:'1'}, {value:'2'}]);
 
   this.set('question', question);
   this.set('userAnswer', userAnswer);
@@ -93,26 +160,46 @@ test('Hot Spot Text Your Answer Correct', function(assert) {
   const $hsText = $component.find('.reports.assessment.questions.qz-hs-text');
 
   T.exists(assert, $hsText.find('li:eq(0).selected.correct'), 'The first answer should be correct');
-  T.exists(assert, $hsText.find('li:eq(2).selected.correct'), 'The third answer should be correct');
+  T.exists(assert, $hsText.find('li:eq(1).selected.correct'), 'The second answer should be correct');
   T.notExists(assert, $hsText.find('li.incorrect'), 'Should not be incorrect answers at all');
 });
 
 test('Hot Spot Text Anonymous', function(assert) {
 
   var question = Ember.Object.create({
-    questionType: 'HS_TXT',
-    text: 'Sample Question HS_TXT',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers:  Ember.A([
-      Ember.Object.create({ id: '1', isCorrect: true, text:'Answer 1' }),
-      Ember.Object.create({ id: '2', isCorrect: false, text:'Answer 2' }),
-      Ember.Object.create({ id: '3', isCorrect: true, text:'Answer 3' })
-    ]),
-    order: 2
+    question: ResourceModel.create({
+      id: '569906aadfa0072204f7c7c7',
+      type: QUESTION_TYPES.hotSpotText,
+      body: 'Hot spot text',
+      answers:  Ember.A([
+        AnswerModel.create({
+          value: '1',
+          text: 'An aquifer'
+        }),
+        AnswerModel.create({
+          value: '2',
+          text: 'A well'
+        }),
+        AnswerModel.create({
+          value: '3',
+          text: 'A pump'
+        })
+      ]),
+      correctAnswer:Ember.A([
+        AnswerModel.create({
+          value: '1',
+          text: 'An aquifer'
+        }),
+        AnswerModel.create({
+          value: '2',
+          text: 'A well'
+        })
+      ]),
+      sequence:1
+    })
   });
 
-  var userAnswer = Ember.A(['1', '3']);
+  var userAnswer = Ember.A([{value:'1'}, {value:'3'}]);
 
   this.set('question', question);
   this.set('userAnswer', userAnswer);
@@ -124,4 +211,3 @@ test('Hot Spot Text Anonymous', function(assert) {
   T.exists(assert, $hsText.find('li:eq(0).selected.anonymous'), 'The first answer should be anonymous');
   T.exists(assert, $hsText.find('li:eq(2).selected.anonymous'), 'The third answer should be anonymous');
 });
-*/

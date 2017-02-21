@@ -23,13 +23,13 @@ export default Ember.Component.extend(QuestionMixin, {
    * Return the hot spot answers to show on the component, indicating if the user select the answer and
    * if is correct or not.
    */
-  answers: Ember.computed("question", "anonymous", function () {
+  answers: Ember.computed('question', 'anonymous', function () {
     let component = this;
     let question = component.get('question');
     let userAnswers = component.get('userAnswer');
     let correctAnswers = question.get('question.correctAnswer');
-    let anonymous = component.get("anonymous");
-    if (component.get("showCorrect")){
+    let anonymous = component.get('anonymous');
+    if (component.get('showCorrect')){
       userAnswers = question.get('question.correctAnswer');
     }
 
@@ -46,7 +46,7 @@ export default Ember.Component.extend(QuestionMixin, {
       return {
         text: answer.get('text'),
         selected: selected,
-        "class": elementClass
+        'class': elementClass
       };
     });
   })

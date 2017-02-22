@@ -1,10 +1,10 @@
 import Ember from 'ember';
-import GruHSTextComponent from './qz-hs-text';
+import HSTextComponent from './qz-hs-text';
 
 /**
  * Hot Spot Image
  *
- * Component responsible for controlling the logic and appearance of a hot spot
+ * Component responsible for controlling the logic and appearance of a multiple choice
  * image question inside of the {@link player/qz-question-viewer.js}
  *
  * @module
@@ -12,7 +12,7 @@ import GruHSTextComponent from './qz-hs-text';
  * @see components/player/qz-question-viewer.js
  * @augments components/player/questions/qz-hs-text.js
  */
-export default GruHSTextComponent.extend({
+export default HSTextComponent.extend({
 
   // -------------------------------------------------------------------------
   // Dependencies
@@ -22,39 +22,28 @@ export default GruHSTextComponent.extend({
   // Attributes
   classNames:['qz-hs-image'],
 
-  // -------------------------------------------------------------------------
-  // Actions
-
-  // -------------------------------------------------------------------------
-  // Events
 
   // -------------------------------------------------------------------------
   // Properties
 
-  /*
+  /**
    * @typedef answers
-   * @prop {id} id - answer id
-   * @prop {string} content - url string for an image
+   * @prop {value} id - answer value
+   * @prop {text} text - url string for an image
    */
   answers: Ember.computed.map('question.answers', function(answer) {
     return {
-      id: answer.get('id'),
-      content: answer.get('text')
+      value: answer.get('value'),
+      text: answer.get('text')
     };
   }),
 
-  /*
+  /**
    * @prop {String} instructions - Question instructions
    */
   instructions: Ember.computed(function() {
     var action = this.get('i18n').t(this.get('instructionsActionTextKey')).string;
     return this.get('i18n').t('qz-hs-image.instructions', {action});
   })
-
-  // -------------------------------------------------------------------------
-  // Observers
-
-  // -------------------------------------------------------------------------
-  // Methods
 
 });

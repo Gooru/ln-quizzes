@@ -31,7 +31,7 @@ export default Ember.Object.extend({
 
     if(interaction){
       resource.setProperties({
-        answers: serializer.normalizeAnswers(interaction.choices),
+        answers: serializer.normalizeAnswers(interaction.choices,questionData.type),
         maxChoices: interaction.maxChoices,
         prompt: interaction.prompt,
         shuffle: interaction.isShuffle
@@ -45,9 +45,9 @@ export default Ember.Object.extend({
    * @param choices array
    * @returns {Answer[]}
    */
-  normalizeAnswers: function(choices) {
+  normalizeAnswers: function(choices,type) {
     return Ember.isArray(choices)
-      ? choices.map(answer => this.normalizeAnswer(answer))
+      ? choices.map(answer => this.normalizeAnswer(answer,type))
       : [];
   },
 
@@ -56,10 +56,11 @@ export default Ember.Object.extend({
    * @param choice object
    * @returns {Answer}
    */
-  normalizeAnswer: function(choice) {
+  normalizeAnswer: function(choice,type) {
+    let isHSImage = type === 'multiple_choice_image';
     return AnswerModel.create(Ember.getOwner(this).ownerInjection(), {
       isFixed: choice.isFixed,
-      text: choice.text,
+      text: isHSImage ? localStorage.getItem('cdnURL') + choice.text : choice.text,
       value: choice.value
     });
   }

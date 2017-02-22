@@ -13,6 +13,11 @@ export default Ember.Object.extend({
   // Properties
 
   /**
+   * @property {String} attemptId
+   */
+  attemptId: null,
+
+  /**
    * @property {Number} averageReaction averaged student's reactions
    */
   averageReaction: 0,
@@ -21,6 +26,21 @@ export default Ember.Object.extend({
    * @property {Number} averageScore calculated student score
    */
   averageScore: 0,
+
+  /**
+   * @property {Collection} collection
+   */
+  collection: null,
+
+  /**
+   * @property {String} collectionId
+   */
+  collectionId: null,
+
+  /**
+   * @property {String} contextId
+   */
+  contextId: null,
 
   /**
    * @property {string} currentResourceId

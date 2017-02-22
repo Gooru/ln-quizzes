@@ -38,5 +38,34 @@ export default Ember.Service.extend({
         .then(response => service.get('attemptSerializer').normalizeReportData(response))
         .then(resolve, reject);
     });
+  },
+
+  /**
+   * Get attempt data for report
+   * @param {String} attemptId
+   * @returns {Promise}
+   */
+  getAttemptData: function(attemptId) {
+    const service = this;
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service.get('attemptAdapter').getAttemptData(attemptId)
+        .then(response => service.get('attemptSerializer').normalizeReportDataEvent(response))
+        .then(resolve, reject);
+    });
+  },
+
+  /**
+   * Get all attempt ids by context and profile id
+   * @param {String} contextId
+   * @param {String} profileId
+   * @returns {Promise}
+   */
+  getAttemptIds: function(contextIds, profileIds) {
+    const service = this;
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service.get('attemptAdapter').getAttemptIds(contextIds, profileIds)
+        .then(response => service.get('attemptSerializer').normalizeAttemptIds(response))
+        .then(resolve, reject);
+    });
   }
 });

@@ -28,8 +28,66 @@ test('getReportData', function(assert) {
 
   let done = assert.async();
   service.getReportData(expectedContextId)
-    .then(function(result) {
+    .then(result => {
       assert.deepEqual(result, contextResult, 'The result should match');
+      done();
+    });
+});
+
+test('getAttemptData', function(assert) {
+  assert.expect(3);
+  const service = this.subject();
+  const expectedAttemptId = 'attempt-id';
+  const attemptData = { id: 'result-id' };
+
+  service.set('attemptAdapter', Ember.Object.create({
+    getAttemptData: function(attemptId) {
+      assert.deepEqual(attemptId, expectedAttemptId, 'The attempt id should match');
+      return Ember.RSVP.resolve(attemptData);
+    }
+  }));
+
+  service.set('attemptSerializer', Ember.Object.create({
+    normalizeReportDataEvent: function(response) {
+      assert.deepEqual(response, attemptData, 'The attempt data should match');
+      return attemptData;
+    }
+  }));
+
+  let done = assert.async();
+  service.getAttemptData(expectedAttemptId)
+    .then(result => {
+      assert.deepEqual(result, attemptData, 'The result should match');
+      done();
+    });
+});
+
+test('getAttemptIds', function(assert) {
+  assert.expect(4);
+  const service = this.subject();
+  const expectedContextId = 'context-id';
+  const expectedProfileId = 'profile-id';
+  const attemptData = { attempts: ['results'] };
+
+  service.set('attemptAdapter', Ember.Object.create({
+    getAttemptIds: function(contextId, profileId) {
+      assert.deepEqual(contextId, expectedContextId, 'The context id should match');
+      assert.deepEqual(profileId, expectedProfileId, 'The profile id should match');
+      return Ember.RSVP.resolve(attemptData);
+    }
+  }));
+
+  service.set('attemptSerializer', Ember.Object.create({
+    normalizeAttemptIds: function(response) {
+      assert.deepEqual(response, attemptData, 'The attempt data should match');
+      return attemptData;
+    }
+  }));
+
+  let done = assert.async();
+  service.getAttemptIds(expectedContextId, expectedProfileId)
+    .then(result => {
+      assert.deepEqual(result, attemptData, 'The result should match');
       done();
     });
 });

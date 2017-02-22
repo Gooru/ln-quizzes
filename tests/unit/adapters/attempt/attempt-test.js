@@ -25,3 +25,36 @@ test('getReportData', function(assert) {
   adapter.getReportData(expectedContextId)
     .then(response => assert.deepEqual(response, {}, 'Wrong response'));
 });
+
+test('getAttemptData', function(assert) {
+  const adapter = this.subject();
+  const expectedAttemptId = 'attempt-id';
+  const routes = function() {
+    this.get('/quizzes/api/v1/attempts/attempt-id', function() {
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
+    }, false);
+  };
+
+  this.pretender.map(routes);
+  this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+
+  adapter.getAttemptData(expectedAttemptId)
+    .then(response => assert.deepEqual(response, {}, 'Wrong response'));
+});
+
+test('getAttemptIds', function(assert) {
+  const adapter = this.subject();
+  const expectedContextId = 'context-id';
+  const expectedProfileId = 'profile-id';
+  const routes = function() {
+    this.get('/quizzes/api/v1/attempts/contexts/context-id/profiles/profile-id', function() {
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
+    }, false);
+  };
+
+  this.pretender.map(routes);
+  this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+
+  adapter.getAttemptIds(expectedContextId, expectedProfileId)
+    .then(response => assert.deepEqual(response, {}, 'Wrong response'));
+});

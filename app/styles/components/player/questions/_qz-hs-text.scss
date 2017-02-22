@@ -9,6 +9,7 @@
 
       li.answer {
         @include flexbox();
+        @include justify-content(space-between);
         border: 2px solid $gray-lighter;
         margin-top: 10px;
         padding: 15px;
@@ -32,7 +33,12 @@
           display: inline-block;
         }
         .answer-text{
-          min-width: 94%;
+          width: 88%;
+          word-wrap: break-word;
+        }
+        .check-icon{
+          width: 24px;
+          @include flex-shrink(1);
         }
         div{
           display: none;

@@ -50,7 +50,7 @@ export default Ember.Route.extend({
   model: function (params) {
     const route = this;
     const contextId = params.contextId;
-    const profileId = '';
+    const profileId = route.get('configurationService.configuration.properties.profileId');
     const type = route.get('configurationService.configuration.properties.type');
 
     return route.get('attemptService').getAttemptIds(contextId, profileId).then(
@@ -64,9 +64,7 @@ export default Ember.Route.extend({
     );
   },
 
-  setupController(controller, model) {
-    let collection = model.collection;
-    let attemptData = model.attemptData;
+  setupController(controller, { collection, attemptData }) {
     attemptData.setCollection(collection);
     controller.set('attemptData', attemptData);
   }

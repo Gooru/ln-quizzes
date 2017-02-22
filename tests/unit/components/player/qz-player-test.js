@@ -12,7 +12,7 @@ moduleForComponent('player/qz-player', 'Unit | Component | player/qz player', {
 });
 
 test('finishCollection on collection', function(assert) {
-  assert.expect(4);
+  assert.expect(6);
   let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Collection Title',
@@ -25,6 +25,12 @@ test('finishCollection on collection', function(assert) {
     collection,
     contextResult,
     resourceResult: questionResult,
+    router: {
+      transitionTo: (route, contextId) => {
+        assert.deepEqual(contextId, 'context', 'Wrong context id in transition');
+        assert.deepEqual(route, 'reports.student-context', 'Wrong transition route');
+      }
+    },
     contextService: Ember.Object.create({
       finishContext: function(contextId) {
         assert.deepEqual(contextId, 'context', 'Wrong context id');

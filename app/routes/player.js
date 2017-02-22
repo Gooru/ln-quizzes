@@ -34,20 +34,21 @@ export default Ember.Route.extend({
   model(params) {
     const route = this;
     const contextId = params.contextId;
+    let type = route.get('configurationService.configuration.properties.type');
+    let reportURL = route.get('configurationService.configuration.properties.reportURL');
     return route.get('contextService').startContext(contextId).then(function(contextResult){
-      let type = route.get('configurationService.configuration.properties.type');
       return Ember.RSVP.hash({
         contextResult,
-        collection: route.get('collectionService').readCollection(contextResult.collectionId, type)
+        collection: route.get('collectionService').readCollection(contextResult.collectionId, type),
+        reportURL
       });
     });
   },
 
-  setupController(controller, model) {
-    let contextResult = model.contextResult;
-    let collection = model.collection;
+  setupController(controller, { contextResult, collection, reportURL }) {
     contextResult.merge(collection);
     controller.set('contextResult', contextResult);
     controller.set('collection', collection);
+    controller.set('reportURL', reportURL);
   }
 });

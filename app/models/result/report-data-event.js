@@ -159,6 +159,33 @@ export default Ember.Object.extend({
   },
 
   /**
+   * Set the collection and update the events to have all resources
+   * @param {Collection} collection
+   */
+  setCollection(collection) {
+    this.set('collection', collection);
+    this.set('collectionId', collection.get('id'));
+    const resources = collection.get('resources');
+    resources.forEach(resource => {
+      let resourceResult = this.get('resourceResults')
+        .findBy('resourceId', resource.id);
+      if(!resourceResult) {
+        this.get('resourceResults').pushObject(
+          QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
+            resourceId: resource.id,
+            resource: resource,
+            savedTime: 0,
+            reaction: 0,
+            answer: null,
+            score: 0,
+            skipped: true
+          })
+        );
+      }
+    });
+  },
+
+  /**
    * Set properties coming from the profile
    */
   setProfileProperties: function(profile) {

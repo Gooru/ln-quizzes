@@ -38,7 +38,7 @@
         }
         .check-icon{
           width: 24px;
-          @include flex-shrink(1);
+          @include flex-shrink(0);
         }
         div{
           display: none;

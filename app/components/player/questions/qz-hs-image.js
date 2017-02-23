@@ -37,7 +37,7 @@ export default HSTextComponent.extend({
    * @prop {text} text - url string for an image
    */
   answers: Ember.computed.map('question.answers', function(answer) {
-    let cdnURL = this.get('configurationService.configuration.properties.cdnUrl');
+    let cdnURL = this.get('configurationService.configuration.properties.cdnURL');
     return {
       value: answer.get('value'),
       text: cdnURL + answer.get('text')

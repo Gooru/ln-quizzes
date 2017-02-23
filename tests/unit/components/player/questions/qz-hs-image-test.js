@@ -7,7 +7,7 @@ import { QUESTION_TYPES } from 'quizzes/config/question';
 const configurationServiceStub = Ember.Service.extend({
   configuration:{
     properties:{
-      cdnUrl:'cdnURL/'
+      cdnURL:'cdnURL/'
     }
   }
 });

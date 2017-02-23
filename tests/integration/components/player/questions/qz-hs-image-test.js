@@ -8,7 +8,7 @@ import ResourceModel from 'quizzes/models/resource/resource';
 const configurationServiceStub = Ember.Service.extend({
   configuration:{
     properties:{
-      cdnUrl:'cdnURL/'
+      cdnURL:'cdnURL/'
     }
   }
 });

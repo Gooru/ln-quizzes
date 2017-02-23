@@ -169,11 +169,13 @@ export default Ember.Object.extend({
     resources.forEach(resource => {
       let resourceResult = this.get('resourceResults')
         .findBy('resourceId', resource.id);
-      if(!resourceResult) {
+      if(resourceResult) {
+        resourceResult.set('resource', resource);
+      } else {
         this.get('resourceResults').pushObject(
           QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
             resourceId: resource.id,
-            resource: resource,
+            resource,
             savedTime: 0,
             reaction: 0,
             answer: null,

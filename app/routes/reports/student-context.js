@@ -55,7 +55,7 @@ export default Ember.Route.extend({
 
     return route.get('attemptService').getAttemptIds(contextId, profileId).then(
       attemptIds => !attemptIds || !attemptIds.length ? null :
-          route.get('attemptService').getAttemptData(attemptIds[0]).then(
+          route.get('attemptService').getAttemptData(attemptIds[attemptIds.length - 1]).then(
             attemptData => Ember.RSVP.hash({
               attemptData,
               collection: route.get('collectionService').readCollection(attemptData.collectionId, type)
@@ -68,5 +68,4 @@ export default Ember.Route.extend({
     attemptData.setCollection(collection);
     controller.set('attemptData', attemptData);
   }
-
 });

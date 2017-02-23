@@ -25,7 +25,7 @@ export default Ember.Object.extend({
    ** @param {*[]} payload
    */
   normalizeReadContext: function(payload) {
-    return Context.create({
+    return Context.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.contextId,
       title: payload.contextData.metadata.title,
       description: payload.contextData.metadata.description,
@@ -91,9 +91,7 @@ export default Ember.Object.extend({
     };
     if (resourceResult.get('isQuestion')) {
       serialized.answer = resourceResult.get('answer') ?
-        resourceResult.get('answer').map(answer => {
-          return { value: answer.value };
-        }) : null;
+        resourceResult.get('answer').map(({ value }) => ({ value })) : null;
     }
     return serialized;
   },

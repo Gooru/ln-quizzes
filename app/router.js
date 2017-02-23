@@ -17,6 +17,7 @@ Router.map(function() {
 
   this.route('reports', function () {
     this.route('context', { path: '/context/:contextId' });
+    this.route('student-context', { path: '/student-context/:contextId' });
   });
 
   this.route('integration', { path: '/integration/:appType' });

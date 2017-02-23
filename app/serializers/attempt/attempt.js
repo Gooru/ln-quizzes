@@ -35,6 +35,9 @@ export default Ember.Object.extend({
   normalizeReportDataEvent: function (reportEvent) {
     let summary = reportEvent.eventSummary;
     let reportDataEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
+      attemptId: reportEvent.attemptId,
+      collectionId: reportEvent.collectionId,
+      contextId: reportEvent.contextId,
       currentResourceId: reportEvent.currentResourceId,
       profileId: reportEvent.profileId,
       resourceResults: this.get('contextSerializer').normalizeResourceResults(reportEvent.events),
@@ -62,5 +65,13 @@ export default Ember.Object.extend({
     return payload.map(
       reportEvent => serializer.normalizeReportDataEvent(reportEvent)
     );
+  },
+
+  /**
+   * Normalizes attempt ids to an array
+   * @returns {String[]}
+   */
+  normalizeAttemptIds: function (payload) {
+    return payload && payload.attempts ? payload.attempts : [];
   }
 });

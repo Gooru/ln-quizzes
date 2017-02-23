@@ -408,7 +408,7 @@ test('setCollection', function(assert) {
   });
   let model = this.subject({
     reportEvents: Ember.A([
-      ReportDataEvent.create({
+      ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
         profileId: 'student1',
         profileName: 'name1',
         resourceResults: [
@@ -422,7 +422,7 @@ test('setCollection', function(assert) {
           })
         ]
       }),
-      ReportDataEvent.create({
+      ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
         profileId: 'student2',
         profileName: 'name2',
         resourceResults: [

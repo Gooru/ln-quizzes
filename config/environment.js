@@ -92,6 +92,7 @@ module.exports = function (environment) {
 
     ENV.APP.properties = {
       token: 'token',
+      profileId: 'profile-id',
       collection: {
         id: '05d8c6fc-0ac7-4877-8179-7ee71e04dae3',
         title: 'Assessment Embedded Title'

@@ -11,6 +11,11 @@ export default Ember.Component.extend(ModalMixin,{
    */
   i18n: Ember.inject.service(),
 
+  /**
+   * @property {Service} Context service
+   */
+  contextService: Ember.inject.service('api-sdk/context'),
+
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -62,13 +67,17 @@ export default Ember.Component.extend(ModalMixin,{
     /**
      * Open player
      */
-    openPlayer:function(assignment){
-      if(this.get('playerURL')){
-        let url = this.get('playerURL').replace('{context-id}', assignment.get('id'));
-        window.location.href = url;
-      } else {
-        this.get('router').transitionTo('player', assignment.get('id'));
-      }
+    openPlayer: function(assignment) {
+      const playerURL = this.get('playerURL');
+      assignment.set('classId', null);
+      this.get('contextService').createContext(assignment).then(({ id }) => {
+        if (playerURL) {
+          let url = playerURL.replace('{context-id}', id);
+          window.location.href = url;
+        } else {
+          this.get('router').transitionTo('player', id);
+        }
+      });
     },
     /**
      * View Report

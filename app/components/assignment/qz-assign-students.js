@@ -11,7 +11,7 @@ export default Ember.Component.extend({
   /**
    * @property {Service} context service
    */
-  contextService: Ember.inject.service("api-sdk/context"),
+  contextService: Ember.inject.service('api-sdk/context'),
 
   // -------------------------------------------------------------------------
   // Attributes

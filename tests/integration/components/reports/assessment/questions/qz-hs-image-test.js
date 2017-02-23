@@ -67,7 +67,7 @@ test('Hot Spot Image Correct Answer', function(assert) {
   this.set('showCorrect', showCorrect);
   this.render(hbs`{{reports/assessment/questions/qz-hs-image question=question showCorrect=showCorrect}}`);
   const $component = this.$(); //component dom element
-  const $hsImage = $component.find(".reports.assessment.questions.qz-hs-image");
+  const $hsImage = $component.find('.reports.assessment.questions.qz-hs-image');
 
   T.exists(assert, $hsImage.find('li:eq(0) span.correct'), 'The first answer should be correct');
   assert.ok($hsImage.find('li:eq(0) span img').prop('src').indexOf('cdnURL/url1.jpg') >= 0, 'First image src does not coincide');
@@ -118,7 +118,7 @@ test('Hot Spot Image Your Answer Incorrect', function(assert) {
 
   this.render(hbs`{{reports/assessment/questions/qz-hs-image question=question userAnswer=userAnswer}}`);
   const $component = this.$(); //component dom element
-  const $hsImage = $component.find(".reports.assessment.questions.qz-hs-image");
+  const $hsImage = $component.find('.reports.assessment.questions.qz-hs-image');
 
   T.exists(assert, $hsImage.find('li:eq(0) span.selected.correct'), 'The first answer should be correct and selected');
   T.exists(assert, $hsImage.find('li:eq(1) span.selected.incorrect'), 'The second answer should be incorrect and selected');
@@ -167,7 +167,7 @@ test('Hot Spot Image Your Answer Correct', function(assert) {
 
   this.render(hbs`{{reports/assessment/questions/qz-hs-image question=question userAnswer=userAnswer}}`);
   const $component = this.$(); //component dom element
-  const $hsImage = $component.find(".reports.assessment.questions.qz-hs-image");
+  const $hsImage = $component.find('.reports.assessment.questions.qz-hs-image');
 
   T.exists(assert, $hsImage.find('li:eq(0) span.selected.correct'), 'The first answer should be correct and selected');
   T.exists(assert, $hsImage.find('li:eq(1) span.no-selected'), 'The second answer should not be selected');
@@ -221,7 +221,7 @@ test('Hot Spot Image anonymous', function(assert) {
 
   this.render(hbs`{{reports/assessment/questions/qz-hs-image question=question userAnswer=userAnswer anonymous=true}}`);
   const $component = this.$(); //component dom element
-  const $hsImage = $component.find(".reports.assessment.questions.qz-hs-image");
+  const $hsImage = $component.find('.reports.assessment.questions.qz-hs-image');
 
   T.exists(assert, $hsImage.find('li:eq(0) span.selected.anonymous'), 'The first answer should be anonymous');
   T.exists(assert, $hsImage.find('li:eq(1) span.no-selected'), 'The second answer should not be selected');

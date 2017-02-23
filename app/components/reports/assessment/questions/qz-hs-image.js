@@ -57,7 +57,7 @@ export default Ember.Component.extend(QuestionMixin, {
       let cdnURL = component.get('configurationService.configuration.properties.cdnURL');
       return {
         image: answer.get('text') ? cdnURL + answer.get('text') : DEFAULT_IMAGES.QUESTION_PLACEHOLDER_IMAGE,
-        selected: selected,
+        selected,
         'class': elementClass
       };
     });

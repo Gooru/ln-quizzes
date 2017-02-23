@@ -70,7 +70,7 @@ export const QUESTION_CONFIG = {
     apiType: 'hot_spot_image_question',
     component: {
       player: 'player.questions.qz-hs-image',
-      answer: 'reports.assessment.questions.gru-hs-image'
+      answer: 'reports.assessment.questions.qz-hs-image'
     }
   }),
   'multiple_choice_text': Ember.Object.create({

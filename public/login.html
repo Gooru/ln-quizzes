@@ -61,6 +61,7 @@
         }).done(function(response) {
           localStorage.setItem('token', response.access_token);
           localStorage.setItem('username', response.username);
+          localStorage.setItem('cdnURL', response.cdn_urls.content_cdn_url);
           location.href = 'index.html';
         }).fail(function() {
           alert('There was a problem with the credentials.');

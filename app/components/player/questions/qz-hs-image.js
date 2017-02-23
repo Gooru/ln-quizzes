@@ -4,7 +4,7 @@ import HSTextComponent from './qz-hs-text';
 /**
  * Hot Spot Image
  *
- * Component responsible for controlling the logic and appearance of a multiple choice
+ * Component responsible for controlling the logic and appearance of a hot spot
  * image question inside of the {@link player/qz-question-viewer.js}
  *
  * @module
@@ -33,8 +33,8 @@ export default HSTextComponent.extend({
 
   /**
    * @typedef answers
-   * @prop {value} id - answer value
-   * @prop {text} text - url string for an image
+   * @property {String} value - answer value
+   * @property {String} text - url string for an image
    */
   answers: Ember.computed.map('question.answers', function(answer) {
     let cdnURL = this.get('configurationService.configuration.properties.cdnURL');
@@ -45,7 +45,7 @@ export default HSTextComponent.extend({
   }),
 
   /**
-   * @prop {String} instructions - Question instructions
+   * @property {String} instructions - Question instructions
    */
   instructions: Ember.computed(function() {
     var action = this.get('i18n').t(this.get('instructionsActionTextKey')).string;

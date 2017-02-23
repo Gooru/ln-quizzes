@@ -1,5 +1,3 @@
-/*global SockJS:true*/
-import Ember from 'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from 'quizzes/tests/helpers/module-for-acceptance';
 import T from 'quizzes/tests/helpers/assert';

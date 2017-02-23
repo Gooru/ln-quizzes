@@ -38,14 +38,22 @@ test('openRealTime', function(assert) {
 });
 
 test('openPlayer', function(assert) {
+  const done = assert.async();
   let component = this.subject();
   let assignment = Ember.Object.create({
     id: 'id'
   });
+  component.set('contextService', {
+    createContext: newAssignment => {
+      assert.equal(assignment, newAssignment);
+      return Ember.RSVP.resolve({ id: 'new-id'});
+    }
+  });
   component.set('router', {
     transitionTo: function(route, contextId) {
       assert.equal(route, 'player', 'Route should match');
-      assert.equal(contextId, 'id', 'id should match');
+      assert.equal(contextId, 'new-id', 'id should match');
+      done();
     }
   });
   component.send('openPlayer', assignment);

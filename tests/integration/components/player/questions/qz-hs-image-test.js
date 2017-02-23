@@ -5,13 +5,22 @@ import { QUESTION_TYPES } from 'quizzes/config/question';
 import AnswerModel from 'quizzes/utils/question/answer-object';
 import ResourceModel from 'quizzes/models/resource/resource';
 
+const configurationServiceStub = Ember.Service.extend({
+  configuration:{
+    properties:{
+      cdnUrl:'cdnURL/'
+    }
+  }
+});
+
 moduleForComponent('player/questions/qz-hs-image', 'Integration | Component | player/questions/qz hs image', {
   integration: true,
   beforeEach: function () {
     this.container.lookup('service:i18n').set('locale', 'en');
+    this.register('service:configuration', configurationServiceStub);
+    this.inject.service('configuration');
   }
 });
-
 
 test('Layout', function (assert) {
 
@@ -49,10 +58,10 @@ test('Layout', function (assert) {
 
   assert.equal($answersContainer.find('li.answer:first-child').data('id'), '1', 'First answer choice, data-id value is incorrect');
   const $firstImage = $answersContainer.find('li.answer:first-child img');
-  assert.ok($firstImage.prop('src').indexOf('url1.jpg') >= 0, 'First image path is not set correctly');
+  assert.ok($firstImage.prop('src').indexOf('cdnURL/url1.jpg') >= 0, 'First image path is not set correctly');
   assert.equal($answersContainer.find('li.answer:last-child').data('id'), '3', 'Last answer choice, data-id value is incorrect');
   const $image = $answersContainer.find('li.answer:last-child img');
-  assert.ok($image.prop('src').indexOf('url3.jpg') >= 0, 'Last image path is not set correctly');
+  assert.ok($image.prop('src').indexOf('cdnURL/url3.jpg') >= 0, 'Last image path is not set correctly');
 });
 
 test('Selecting answers', function (assert) {

@@ -18,6 +18,11 @@ export default HSTextComponent.extend({
   // Dependencies
   i18n: Ember.inject.service(),
 
+  /**
+   * @property {Service} Configuration service
+   */
+  configurationService: Ember.inject.service('configuration'),
+
   // -------------------------------------------------------------------------
   // Attributes
   classNames:['qz-hs-image'],
@@ -32,9 +37,10 @@ export default HSTextComponent.extend({
    * @prop {text} text - url string for an image
    */
   answers: Ember.computed.map('question.answers', function(answer) {
+    let cdnURL = this.get('configurationService.configuration.properties.cdnUrl');
     return {
       value: answer.get('value'),
-      text: answer.get('text')
+      text: cdnURL + answer.get('text')
     };
   }),
 

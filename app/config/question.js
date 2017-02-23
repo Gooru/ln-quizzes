@@ -1,7 +1,5 @@
 import Ember from 'ember';
 import OpenEndedUtil from 'quizzes/utils/question/open-ended';
-import HotSpotImageUtil from 'quizzes/utils/question/hot-spot-image';
-import HotSpotTextUtil from 'quizzes/utils/question/hot-spot-text';
 
 //Question Types
 export const QUESTION_TYPES = {
@@ -70,7 +68,6 @@ export const QUESTION_CONFIG = {
   }),
   'multiple_choice_image': Ember.Object.create({
     apiType: 'hot_spot_image_question',
-    util: HotSpotImageUtil,
     component: {
       player: 'player.questions.qz-hs-image',
       answer: 'reports.assessment.questions.gru-hs-image'
@@ -78,7 +75,6 @@ export const QUESTION_CONFIG = {
   }),
   'multiple_choice_text': Ember.Object.create({
     apiType: 'multiple_choice_text_question',
-    util: HotSpotTextUtil,
     component: {
       player: 'player.questions.qz-hs-text',
       answer: 'reports.assessment.questions.qz-hs-text'

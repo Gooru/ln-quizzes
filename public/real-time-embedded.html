@@ -32,6 +32,7 @@
           transition: [ 'reports.context', contextId, {queryParams: {anonymous: anonymous}} ],
           properties: {
             token: localStorage.getItem('token'),
+            cdnUrl: localStorage.getItem('cdnURL'),
             type: collectionType
           }
         });

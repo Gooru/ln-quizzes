@@ -13,6 +13,11 @@ export default Ember.Object.extend({
   // Properties
 
   /**
+   * @property {String} attemptId
+   */
+  attemptId: null,
+
+  /**
    * @property {Number} averageReaction averaged student's reactions
    */
   averageReaction: 0,
@@ -21,6 +26,21 @@ export default Ember.Object.extend({
    * @property {Number} averageScore calculated student score
    */
   averageScore: 0,
+
+  /**
+   * @property {Collection} collection
+   */
+  collection: null,
+
+  /**
+   * @property {String} collectionId
+   */
+  collectionId: null,
+
+  /**
+   * @property {String} contextId
+   */
+  contextId: null,
 
   /**
    * @property {string} currentResourceId
@@ -136,6 +156,35 @@ export default Ember.Object.extend({
       score: newResult.score
     });
     result.incrementProperty('updated');
+  },
+
+  /**
+   * Set the collection and update the events to have all resources
+   * @param {Collection} collection
+   */
+  setCollection(collection) {
+    this.set('collection', collection);
+    this.set('collectionId', collection.get('id'));
+    const resources = collection.get('resources');
+    resources.forEach(resource => {
+      let resourceResult = this.get('resourceResults')
+        .findBy('resourceId', resource.id);
+      if(resourceResult) {
+        resourceResult.set('resource', resource);
+      } else {
+        this.get('resourceResults').pushObject(
+          QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
+            resourceId: resource.id,
+            resource,
+            savedTime: 0,
+            reaction: 0,
+            answer: null,
+            score: 0,
+            skipped: true
+          })
+        );
+      }
+    });
   },
 
   /**

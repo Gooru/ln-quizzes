@@ -214,26 +214,9 @@ export default Ember.Object.extend({
    */
   setCollection(collection) {
     this.set('collection', collection);
-    const resources = collection.get('resources');
     const reportEvents = this.get('reportEvents');
     reportEvents.forEach(reportEvent => {
-      resources.forEach(resource => {
-        let resourceResult = reportEvent.get('resourceResults')
-          .findBy('resourceId', resource.id);
-        if(!resourceResult) {
-          reportEvent.get('resourceResults').pushObject(
-            QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
-              resourceId: resource.id,
-              resource: resource,
-              savedTime: 0,
-              reaction: 0,
-              answer: null,
-              score: 0,
-              skipped: true
-            })
-          );
-        }
-      });
+      reportEvent.setCollection(collection);
     });
   }
 });

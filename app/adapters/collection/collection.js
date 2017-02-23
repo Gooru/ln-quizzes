@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import TokenMixin from 'quizzes/mixins/token';
 
-export default Ember.Object.extend(TokenMixin,{
+export default Ember.Object.extend(TokenMixin, {
 
   /**
    * @property {string} End-point URI

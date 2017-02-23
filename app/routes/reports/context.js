@@ -69,7 +69,7 @@ export default Ember.Route.extend({
         reportData,
         collection: route.get('collectionService').readCollection(reportData.collectionId, type),
         profiles: route.get('profileService').readProfiles(
-          reportData.get('reportEvents').map(reportEvent => reportEvent.profileId)
+          reportData.get('reportEvents').map(({ profileId }) => profileId)
         )
       })
     );

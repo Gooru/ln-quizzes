@@ -1,17 +1,12 @@
 import Ember from 'ember';
 import TokenMixin from 'quizzes/mixins/token';
 
-export default Ember.Object.extend(TokenMixin,  {
+export default Ember.Object.extend(TokenMixin, {
 
   /**
    * @property {Object} namespace base url for context endpoints
    */
   namespace: '/quizzes/api/v1/contexts',
-
-  /**
-   * @property {Object} namespace base url for attempts endpoints
-   */
-  attemptsNamespace: '/quizzes/api/v1/attempts',
 
   /**
    * Creates a context

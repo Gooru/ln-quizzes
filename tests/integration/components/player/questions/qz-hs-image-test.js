@@ -1,35 +1,48 @@
-/* TODO fix when the question type is enabled
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { QUESTION_TYPES } from 'quizzes/config/question';
+import AnswerModel from 'quizzes/utils/question/answer-object';
+import ResourceModel from 'quizzes/models/resource/resource';
+
+const configurationServiceStub = Ember.Service.extend({
+  configuration:{
+    properties:{
+      cdnURL:'cdnURL/'
+    }
+  }
+});
 
 moduleForComponent('player/questions/qz-hs-image', 'Integration | Component | player/questions/qz hs image', {
   integration: true,
   beforeEach: function () {
     this.container.lookup('service:i18n').set('locale', 'en');
+    this.register('service:configuration', configurationServiceStub);
+    this.inject.service('configuration');
   }
 });
 
-
 test('Layout', function (assert) {
 
-  let question = Ember.Object.create({
-    'id': '569906aa04f742731bd4e896',
-    isHotSpotImage: true,
-    questionType: 'HS_IMG',
-    text: 'Sample Question HS_IMG',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['1', '3']
-      Ember.Object.create({'id': 1, 'text': 'test-1.png'}),
-      Ember.Object.create({'id': 2, 'text': 'test-2.png'}),
-      Ember.Object.create({'id': 3, 'text': 'test-3.png'})
+  let question = ResourceModel.create({
+    id: '569906aadfa0072204f7c7c7',
+    type: QUESTION_TYPES.hotSpotImage,
+    body: 'Hot spot image',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'url1.jpg'
+      }),
+      AnswerModel.create({
+        value: '2',
+        text: 'url2.jpg'
+      }),
+      AnswerModel.create({
+        value: '3',
+        text: 'url3.jpg'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'narration': 'Deserunt occaecat ullamco cillum in incididunt anim sit consequat consequat sit. Ipsum duis irure do quis amet cupidatat tempor qui nulla commodo nisi veniam. Culpa Lorem consequat ad officia. Consectetur minim pariatur id laborum tempor voluptate dolor quis laboris et quis commodo.',
-    'order': 7,
-    'hasAnswers': true
+    sequence:1
   });
 
 
@@ -43,32 +56,35 @@ test('Layout', function (assert) {
   assert.ok($component.find('.instructions'), 'Missing instructions');
   assert.equal($answersContainer.find('li.answer').length, 3, 'Incorrect number of answer choices');
 
-  assert.equal($answersContainer.find('li.answer:first-child').data('id'), 1, 'First answer choice, data-id value is incorrect');
+  assert.equal($answersContainer.find('li.answer:first-child').data('id'), '1', 'First answer choice, data-id value is incorrect');
   const $firstImage = $answersContainer.find('li.answer:first-child img');
-  assert.ok($firstImage.prop('src').indexOf('test-1.png') >= 0, 'First image path is not set correctly');
-  assert.equal($answersContainer.find('li.answer:last-child').data('id'), 3, 'Last answer choice, data-id value is incorrect');
+  assert.ok($firstImage.prop('src').indexOf('cdnURL/url1.jpg') >= 0, 'First image path is not set correctly');
+  assert.equal($answersContainer.find('li.answer:last-child').data('id'), '3', 'Last answer choice, data-id value is incorrect');
   const $image = $answersContainer.find('li.answer:last-child img');
-  assert.ok($image.prop('src').indexOf('test-3.png') >= 0, 'Last image path is not set correctly');
+  assert.ok($image.prop('src').indexOf('cdnURL/url3.jpg') >= 0, 'Last image path is not set correctly');
 });
 
 test('Selecting answers', function (assert) {
 
-  let question = Ember.Object.create({
-    'id': '569906aa04f742731bd4e896',
-    isHotSpotImage: true,
-    questionType: 'HS_IMG',
-    text: 'Sample Question HS_IMG',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['1', '3']
-      Ember.Object.create({'id': 1, 'text': 'test-1.png'}),
-      Ember.Object.create({'id': 2, 'text': 'test-2.png'})
+  let question = ResourceModel.create({
+    id: '569906aadfa0072204f7c7c7',
+    type: QUESTION_TYPES.hotSpotImage,
+    body: 'Hot spot image',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'url1.jpg'
+      }),
+      AnswerModel.create({
+        value: '2',
+        text: 'url2.jpg'
+      }),
+      AnswerModel.create({
+        value: '3',
+        text: 'url3.jpg'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'narration': 'Deserunt occaecat ullamco cillum in incididunt anim sit consequat consequat sit. Ipsum duis irure do quis amet cupidatat tempor qui nulla commodo nisi veniam. Culpa Lorem consequat ad officia. Consectetur minim pariatur id laborum tempor voluptate dolor quis laboris et quis commodo.',
-    'order': 7,
-    'hasAnswers': true
+    sequence:1
   });
 
   this.set('question', question);
@@ -100,24 +116,29 @@ test('Selecting answers', function (assert) {
 test('Notifications work after selecting questions', function (assert) {
   assert.expect(12);
   let answers = [];
-  let question = Ember.Object.create({
-    'id': '569906aa04f742731bd4e896',
-    isHotSpotImage: true,
-    questionType: 'HS_IMG',
-    text: 'Sample Question HS_IMG',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['1', '3']
-      Ember.Object.create({'id': 1, 'text': 'test-1.png'}),
-      Ember.Object.create({'id': 2, 'text': 'test-2.png'}),
-      Ember.Object.create({'id': 3, 'text': 'test-3.png'}),
-      Ember.Object.create({'id': 4, 'text': 'test-4.png'})
+  let question = ResourceModel.create({
+    id: '569906aadfa0072204f7c7c7',
+    type: QUESTION_TYPES.hotSpotImage,
+    body: 'Hot spot image',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'url1.jpg'
+      }),
+      AnswerModel.create({
+        value: '2',
+        text: 'url2.jpg'
+      }),
+      AnswerModel.create({
+        value: '3',
+        text: 'url3.jpg'
+      }),
+      AnswerModel.create({
+        value: '4',
+        text: 'url4.jpg'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'narration': 'Deserunt occaecat ullamco cillum in incididunt anim sit consequat consequat sit. Ipsum duis irure do quis amet cupidatat tempor qui nulla commodo nisi veniam. Culpa Lorem consequat ad officia. Consectetur minim pariatur id laborum tempor voluptate dolor quis laboris et quis commodo.',
-    'order': 7,
-    'hasAnswers': true
+    sequence:1
   });
 
 
@@ -143,21 +164,21 @@ test('Notifications work after selecting questions', function (assert) {
   const $answers = this.$('li.answer');
 
   // Select first answer
-  answers = [1];
+  answers = [{value:1}];
   $answers.eq(0).click();
 
-  answers = [1, 3];
+  answers = [{value:1},{value:3}];
   $answers.eq(2).click();
 
   // Three answers selected
-  answers = [1, 3, 4];
+  answers = [{value:1},{value:3},{value:4}];
   $answers.eq(3).click();
 
   // Now, test deselecting all answers
-  answers = [1, 4];
+  answers = [{value:1}, {value:4}];
   $answers.eq(2).click();
 
-  answers = [4];
+  answers = [{value:4}];
   $answers.eq(0).click();
 
   // Send onAnswerCleared notification
@@ -167,23 +188,25 @@ test('Notifications work after selecting questions', function (assert) {
 
 test('Layout - read only', function (assert) {
 
-  let question = Ember.Object.create({
-    'id': '569906aa04f742731bd4e896',
-    isHotSpotImage: true,
-    questionType: 'HS_IMG',
-    text: 'Sample Question HS_IMG',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['1', '3']
-      Ember.Object.create({'id': 1, 'text': 'test-1.png'}),
-      Ember.Object.create({'id': 2, 'text': 'test-2.png'}),
-      Ember.Object.create({'id': 3, 'text': 'test-3.png'})
+  let question = ResourceModel.create({
+    id: '569906aadfa0072204f7c7c7',
+    type: QUESTION_TYPES.hotSpotImage,
+    body: 'Hot spot image',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'url1.jpg'
+      }),
+      AnswerModel.create({
+        value: '2',
+        text: 'url2.jpg'
+      }),
+      AnswerModel.create({
+        value: '3',
+        text: 'url3.jpg'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'narration': 'Deserunt occaecat ullamco cillum in incididunt anim sit consequat consequat sit. Ipsum duis irure do quis amet cupidatat tempor qui nulla commodo nisi veniam. Culpa Lorem consequat ad officia. Consectetur minim pariatur id laborum tempor voluptate dolor quis laboris et quis commodo.',
-    'order': 7,
-    'hasAnswers': true
+    sequence:1
   });
 
 
@@ -200,26 +223,29 @@ test('Layout - read only', function (assert) {
 
 test('Layout - with user answer', function (assert) {
   assert.expect(4);
-  let question = Ember.Object.create({
-    'id': '569906aa04f742731bd4e896',
-    isHotSpotImage: true,
-    questionType: 'HS_IMG',
-    text: 'Sample Question HS_IMG',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['1', '3']
-      Ember.Object.create({'id': 1, 'text': 'test-1.png'}),
-      Ember.Object.create({'id': 2, 'text': 'test-2.png'}),
-      Ember.Object.create({'id': 3, 'text': 'test-3.png'})
+  let question = ResourceModel.create({
+    id: '569906aadfa0072204f7c7c7',
+    type: QUESTION_TYPES.hotSpotImage,
+    body: 'Hot spot image',
+    answers:  Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'url1.jpg'
+      }),
+      AnswerModel.create({
+        value: '2',
+        text: 'url2.jpg'
+      }),
+      AnswerModel.create({
+        value: '3',
+        text: 'url3.jpg'
+      })
     ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'narration': 'Deserunt occaecat ullamco cillum in incididunt anim sit consequat consequat sit. Ipsum duis irure do quis amet cupidatat tempor qui nulla commodo nisi veniam. Culpa Lorem consequat ad officia. Consectetur minim pariatur id laborum tempor voluptate dolor quis laboris et quis commodo.',
-    'order': 7,
-    'hasAnswers': true
+    sequence:1
   });
 
-  const answers = [2];
+
+  const answers = [{value:2}];
   this.on('changeAnswer', function (question, answer) {
     assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
   });
@@ -227,7 +253,7 @@ test('Layout - with user answer', function (assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
   });
   this.set('question', question);
-  this.set('userAnswer', [2]);
+  this.set('userAnswer', [{value:2}]);
 
   this.render(hbs`{{player/questions/qz-hs-image question=question
                     userAnswer=userAnswer
@@ -240,61 +266,3 @@ test('Layout - with user answer', function (assert) {
   assert.equal($answersContainer.find('li.answer').length, 3, 'Incorrect number of answer choices');
   assert.equal($answersContainer.find('li.answer.selected').length, 1, 'One should be selected');
 });
-
-test('Set two questions', function (assert) {
-
-  let question = Ember.Object.create({
-    'id': '569906aa04f742731bd4e896',
-    isHotSpotImage: true,
-    questionType: 'HS_IMG',
-    text: 'Sample Question HS_IMG',
-    hints: [],
-    explanation: 'Sample explanation text',
-    answers: Ember.A([ // ['1', '3']
-      Ember.Object.create({'id': 1, 'text': 'test-1.png'}),
-      Ember.Object.create({'id': 2, 'text': 'test-2.png'}),
-      Ember.Object.create({'id': 3, 'text': 'test-3.png'})
-    ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'narration': 'Deserunt occaecat ullamco cillum in incididunt anim sit consequat consequat sit. Ipsum duis irure do quis amet cupidatat tempor qui nulla commodo nisi veniam. Culpa Lorem consequat ad officia. Consectetur minim pariatur id laborum tempor voluptate dolor quis laboris et quis commodo.',
-    'order': 7,
-    'hasAnswers': true
-  });
-  let question1 = Ember.Object.create({
-    'id': '569906aa04f742731bd4e896',
-    isHotSpotImage: true,
-    questionType: 'HS_IMG',
-    text: 'Sample Question HS_IMG 2',
-    hints: [],
-    explanation: 'Sample explanation text2',
-    answers: Ember.A([ // ['1', '3']
-      Ember.Object.create({'id': 1, 'text': 'test-4.png'}),
-      Ember.Object.create({'id': 2, 'text': 'test-5.png'}),
-      Ember.Object.create({'id': 3, 'text': 'test-6.png'})
-    ]),
-    'resourceType': 'assessment-question',
-    'resourceFormat': 'question',
-    'narration': 'Deserunt occaecat ullamco cillum in incididunt anim sit consequat consequat sit. Ipsum duis irure do quis amet cupidatat tempor qui nulla commodo nisi veniam. Culpa Lorem consequat ad officia. Consectetur minim pariatur id laborum tempor voluptate dolor quis laboris et quis commodo.',
-    'order': 7,
-    'hasAnswers': true
-  });
-
-
-  this.set('question', question);
-
-  this.render(hbs`{{player/questions/qz-hs-image question=question}}`);
-
-  const $component = this.$(); //component dom element
-  const $answersContainer = $component.find('.answer-choices');
-
-  assert.ok($component.find('.instructions'), 'Missing instructions');
-
-  let $image = $answersContainer.find('li.answer:first-child img');
-  assert.ok($image.prop('src').indexOf('test-1.png') >= 0 , 'Incorrect Answer');
-  this.set('question', question1);
-
-  $image = $answersContainer.find('li.answer:first-child img');
-  assert.ok($image.prop('src').indexOf('test-4.png') >= 0, 'Incorrect Answer');
-});
-*/

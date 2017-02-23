@@ -1,1 +1,16 @@
-{{partial 'components/player/questions/partial-gru-hs-item'}}
+<p class="instructions">
+  {{instructions}}
+</p>
+
+<div class="answer-choices clearfix">
+
+    <ul>
+      {{#each answers as |answer|}}
+          <li data-id="{{answer.value}}" class="answer {{if readOnly 'disabled'}}">
+              <img class="img-thumbnail" src="{{answer.text}}" />
+              <div>{{gru-icon name='check_circle'}}</div>
+          </li>
+      {{/each}}
+    </ul>
+
+</div>

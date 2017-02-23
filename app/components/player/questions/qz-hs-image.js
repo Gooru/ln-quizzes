@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import GruHSTextComponent from './qz-hs-text';
+import HSTextComponent from './qz-hs-text';
 
 /**
  * Hot Spot Image
@@ -12,49 +12,44 @@ import GruHSTextComponent from './qz-hs-text';
  * @see components/player/qz-question-viewer.js
  * @augments components/player/questions/qz-hs-text.js
  */
-export default GruHSTextComponent.extend({
+export default HSTextComponent.extend({
 
   // -------------------------------------------------------------------------
   // Dependencies
   i18n: Ember.inject.service(),
 
+  /**
+   * @property {Service} Configuration service
+   */
+  configurationService: Ember.inject.service('configuration'),
+
   // -------------------------------------------------------------------------
   // Attributes
   classNames:['qz-hs-image'],
 
-  // -------------------------------------------------------------------------
-  // Actions
-
-  // -------------------------------------------------------------------------
-  // Events
 
   // -------------------------------------------------------------------------
   // Properties
 
-  /*
+  /**
    * @typedef answers
-   * @prop {id} id - answer id
-   * @prop {string} content - url string for an image
+   * @property {String} value - answer value
+   * @property {String} text - url string for an image
    */
   answers: Ember.computed.map('question.answers', function(answer) {
+    let cdnURL = this.get('configurationService.configuration.properties.cdnURL');
     return {
-      id: answer.get('id'),
-      content: answer.get('text')
+      value: answer.get('value'),
+      text: cdnURL + answer.get('text')
     };
   }),
 
-  /*
-   * @prop {String} instructions - Question instructions
+  /**
+   * @property {String} instructions - Question instructions
    */
   instructions: Ember.computed(function() {
     var action = this.get('i18n').t(this.get('instructionsActionTextKey')).string;
     return this.get('i18n').t('qz-hs-image.instructions', {action});
   })
-
-  // -------------------------------------------------------------------------
-  // Observers
-
-  // -------------------------------------------------------------------------
-  // Methods
 
 });

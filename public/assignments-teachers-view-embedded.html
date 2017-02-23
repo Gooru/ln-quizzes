@@ -26,6 +26,7 @@
         transition: [ 'assignments','profile-id',{queryParams:{isTeacher:true}}],
         properties: {
           token: localStorage.getItem('token'),
+          cdnURL: localStorage.getItem('cdnURL'),
           playerURL:'player-embedded.html?context-id={context-id}&type=assessment',
           realTimeURL:'real-time-embedded.html?context-id={context-id}&type=assessment',
           students: [{

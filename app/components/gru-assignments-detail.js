@@ -65,9 +65,9 @@ export default Ember.Component.extend(ModalMixin,{
       }
     },
     /**
-     * Open player
+     * Preview player
      */
-    openPlayer: function(assignment) {
+    previewPlayer: function(assignment) {
       const playerURL = this.get('playerURL');
       assignment.set('classId', null);
       this.get('contextService').createContext(assignment).then(({ id }) => {
@@ -78,6 +78,17 @@ export default Ember.Component.extend(ModalMixin,{
           this.get('router').transitionTo('player', id);
         }
       });
+    },
+    /**
+     * Open player
+     */
+    openPlayer:function(assignment){
+      if(this.get('playerURL')){
+        let url = this.get('playerURL').replace('{context-id}', assignment.get('id'));
+        window.location.href = url;
+      } else {
+        this.get('router').transitionTo('player', assignment.get('id'));
+      }
     },
     /**
      * View Report

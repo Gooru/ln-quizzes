@@ -61,7 +61,7 @@ export default Ember.Object.extend(Serializable, {
     let savedTime = this.get('savedTime') || 0;
     let startTime = this.get('startTime') || 0;
     let stopTime = this.get('stopTime') || startTime;
-    return savedTime + (stopTime - startTime);
+    return this.roundMilliseconds(savedTime + (stopTime - startTime));
   }),
 
   /**
@@ -71,12 +71,19 @@ export default Ember.Object.extend(Serializable, {
 
   // -------------------------------------------------------------------------
   // Methods
-
+  /**
+   * Clear properties
+   */
   clear: function() {
     this.set('reaction', 0);
     this.set('savedTime', 0);
     this.set('startTime', 0);
     this.set('stopTime', 0);
+  },
+  /**
+   * Round milliseconds
+   */
+  roundMilliseconds: function(milliseconds){
+    return (milliseconds - milliseconds % 1000);
   }
-
 });

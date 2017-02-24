@@ -17,7 +17,7 @@ test('serializeResourceResult with a resource', function(assert) {
   const response = serializer.serializeResourceResult(resourceResult);
   const expected = {
     resourceId: 'resource-id',
-    timeSpent: 20010,
+    timeSpent: 20000,
     reaction: 2
   };
 

@@ -60,7 +60,7 @@ export default Ember.Component.extend(ModalMixin, {
 
       let modalModel = {
         contextResult,
-        width: '75%'
+        width: '80%'
       };
       this.actions.showModal.call(this,
         'reports.gru-assessment-report', modalModel, null, 'gru-assessment-report-modal', true);

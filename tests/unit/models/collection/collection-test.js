@@ -206,3 +206,12 @@ test('isLastResource', function (assert) {
   lastResource = model.isLastResource(resourceA);
   assert.ok(!lastResource, 'It is the last resource');
 });
+
+test('showKey', function (assert) {
+  assert.expect(1);
+  let model = this.subject({
+    settings: {showKey:true}
+  });
+
+  assert.equal(model.get('showKey'),true,'Should be true');
+});

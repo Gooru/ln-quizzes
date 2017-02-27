@@ -39,6 +39,13 @@ export default Ember.Component.extend({
   collection: Ember.computed.alias('attemptData.collection'),
 
   /**
+   * @property {boolean} isAnswerKeyHidden - Should the answer key be hidden?
+   */
+  isAnswerKeyHidden: Ember.computed('collection.isAssessment', 'collection.showKey', function() {
+    return (this.get('collection.isAssessment') && !this.get('collection.showKey'));
+  }),
+
+  /**
    * @property {boolean} isRealTime
    */
   isRealTime: true,

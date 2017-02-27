@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ResourceSerializer from 'quizzes/serializers/resource/resource';
 import CollectionModel from 'quizzes/models/collection/collection';
-
+import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
 /**
  * Serializer for Collection
  *
@@ -29,7 +29,8 @@ export default Ember.Object.extend({
     return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.id,
       isCollection: payload.isCollection,
-      resources: serializer.normalizeResources(payload.resources)
+      resources: serializer.normalizeResources(payload.resources),
+      settings: payload.metadata ? serializer.normalizeSettings(payload.metadata.setting) : null
     });
   },
 
@@ -42,5 +43,15 @@ export default Ember.Object.extend({
     return Ember.isArray(payload)
       ? payload.map(resource => this.get('resourceSerializer').normalizeReadResource(resource))
       : [];
+  },
+  /**
+   * Normalize the settings from a collection
+   * @param setting
+   * @returns {Object}
+   */
+  normalizeSettings: function(setting) {
+    return {
+      showKey: setting.show_key === ASSESSMENT_SHOW_VALUES.SUMMARY
+    };
   }
 });

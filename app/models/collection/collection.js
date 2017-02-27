@@ -70,6 +70,11 @@ export default Ember.Object.extend({
   totalAttempts: Ember.computed.alias('attempts.length'),
 
   /**
+   * @property {boolean} Indicate if show answer key setting
+   */
+  showKey: Ember.computed.alias('settings.showKey'),
+
+  /**
    * Gets the next resource based on the resource provided
    * @param {Resource} resource
    * @returns {Resource|undefined} next resource

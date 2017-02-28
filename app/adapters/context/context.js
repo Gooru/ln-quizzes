@@ -49,6 +49,26 @@ export default Ember.Object.extend(TokenMixin, {
     const url = `${namespace}/assigned`;
     return Ember.$.ajax(url, options);
   },
+  /**
+   * Get context by id assigned to the current student
+   * @returns {Promise}
+   */
+  getAssignedContextById: function(contextId) {
+    const namespace = this.get('namespace');
+    const options = {
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      processData: false,
+      headers: Object.assign(this.get('headers'), {
+        'profile-id': '8856379a-a8c9-402d-b1b0-faae3b36d137',
+        'lms-id': 'its_learning'
+      })
+    };
+
+    const url = `${namespace}/${contextId}/assigned`;
+    return Ember.$.ajax(url, options);
+  },
 
   /**
    * Gets all contexts created by the current teacher

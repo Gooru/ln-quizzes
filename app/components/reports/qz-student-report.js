@@ -3,6 +3,9 @@ import ContextResult from 'quizzes/models/result/context';
 
 export default Ember.Component.extend({
 
+  // -------------------------------------------------------------------------
+  // Attributes
+
   classNames: ['reports', 'qz-student-report'],
 
   // -------------------------------------------------------------------------

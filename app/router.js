@@ -24,6 +24,7 @@ Router.map(function() {
 
   this.route('assign', { path: '/assessment/:assessmentId' });
   this.route('assignments', { path: '/profile/:profileId' });
+  this.route('player-confirmation');
 });
 
 export default Router;

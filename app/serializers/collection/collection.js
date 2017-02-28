@@ -51,7 +51,8 @@ export default Ember.Object.extend({
    */
   normalizeSettings: function(setting) {
     return {
-      showKey: setting.show_key === ASSESSMENT_SHOW_VALUES.SUMMARY
+      showKey: setting.show_key === ASSESSMENT_SHOW_VALUES.SUMMARY,
+      attempts: setting.attempts_allowed || -1
     };
   }
 });

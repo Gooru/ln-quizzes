@@ -7,9 +7,9 @@ import Ember from 'ember';
 export default Ember.Object.extend({
 
   /**
-   * @property {[]}
+   * @property {number} Attempts allowed
    */
-  attempts:[],
+  attempts:Ember.computed.alias('settings.attempts'),
 
   /**
    * @property {string}

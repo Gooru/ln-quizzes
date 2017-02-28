@@ -535,7 +535,8 @@ export default {
     "unlimited-attempts-left": 'You have unlimited attempts',
     "attempts-left": {
       'one':"You have 1 attempt left",
-      'other':"You have {{count}} attempts"
+      'other':"You have {{count}} attempts",
+      'no-attempts':"You have not attempts left"
     },
     "unlimited-attempts":"You have unlimited attempts",
     "cancel": "Cancel",

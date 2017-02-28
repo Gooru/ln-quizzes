@@ -7,6 +7,8 @@ import Ember from 'ember';
  * @augments ember/Route
  */
 export default Ember.Route.extend({
+  // -------------------------------------------------------------------------
+  // Dependencies
 
   /**
    * @type {CollectionService} collectionService

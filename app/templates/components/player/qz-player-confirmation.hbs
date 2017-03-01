@@ -3,7 +3,7 @@
         <h3 class="modal-title">{{t "gru-assessment-confirmation.title"}}</h3>
     </div>
     <div class="panel-body">
-        <span class="lead description">{{t 'gru-assessment-confirmation.description'}} {{model.title}}</span>
+        <span class="lead description">{{t 'gru-assessment-confirmation.description'}} {{context.title}}</span>
         <div class="setting info">
           {{#if collection.bidirectional}}
             {{gru-icon name='swap_horiz'}}
@@ -24,7 +24,7 @@
                 {{t "gru-assessment-confirmation.unlimited-attempts-left"}}
               {{else}}
                 {{#if noMoreAttempts}}
-                  {{t "gru-assessment-confirmation.no-attempts"}}
+                  <span class="no-more-attempts">{{t "gru-assessment-confirmation.no-attempts"}}</span>
                 {{else}}
                   {{t "gru-assessment-confirmation.attempts-left" count=attemptsLeft}}
                 {{/if}}
@@ -32,10 +32,7 @@
             </p>
         </div>
         <div class="actions">
-            <button type="button" class="btn btn-default cancel" data-dismiss="modal" aria-label="{{t 'gru-assessment-confirmation.cancel'}}" {{action 'cancel'}}>
-                <span aria-hidden="true">{{t 'gru-assessment-confirmation.cancel'}}</span>
-            </button>
-            <button type="button" class="btn btn-primary {{if context.hasStarted "continue" "start"}}" {{action 'start'}} disabled={{disableStart}}>{{if model.hasStarted (t 'gru-assessment-confirmation.continue') (t 'gru-assessment-confirmation.start')}}</button>
+            <button type="button" class="btn btn-primary {{if context.hasStarted "continue" "start"}}" {{action 'start'}} disabled={{disableStart}}>{{if context.hasStarted (t 'gru-assessment-confirmation.continue') (t 'gru-assessment-confirmation.start')}}</button>
         </div>
     </div>
 </div>

@@ -65,11 +65,6 @@ export default Ember.Object.extend({
   title: null,
 
   /**
-   * @property {number}
-   */
-  totalAttempts: Ember.computed.alias('attempts.length'),
-
-  /**
    * @property {boolean} Indicate if show answer key setting
    */
   showKey: Ember.computed.alias('settings.showKey'),

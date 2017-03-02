@@ -46,4 +46,9 @@
       min-height: 400px;
     }
   }
+  .qz-player.confirmation{
+    @include flexbox;
+    @include justify-content(center);
+    margin-top:20px;
+  }
 }

@@ -22,6 +22,8 @@ export default Ember.Component.extend(ModalMixin, {
 
   classNames:['qz-player'],
 
+  classNameBindings:['showConfirmation:confirmation'],
+
   // -------------------------------------------------------------------------
   // Actions
 
@@ -66,10 +68,24 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Action triggered when the user open de navigator panel
+     * Action triggered when the user open the navigator panel
      */
     openNavigator: function(){
       Ember.$( '.app-container' ).addClass( 'navigator-on' );
+    },
+
+    /**
+     * Action triggered when the user open the player
+     */
+    openPlayer:function(){
+      const component = this;
+      let startContext = component.get('startContextFunction');
+      startContext().then(function(contextResult){
+        contextResult.merge(component.get('collection'));
+        component.set('contextResult',contextResult);
+        component.set('showConfirmation',false);
+        component.startAssessment();
+      });
     },
 
     /**
@@ -92,17 +108,25 @@ export default Ember.Component.extend(ModalMixin, {
       component.moveOrFinish(question);
     }
   },
-
   // -------------------------------------------------------------------------
   // Events
 
   init: function() {
     this._super(...arguments);
-    this.startAssessment();
+    if(this.get('collection.isCollection')){
+      this.set('showConfirmation',false);
+      this.startAssessment();
+    }
   },
 
   // -------------------------------------------------------------------------
   // Properties
+
+  /**
+   * The attempts played in a context
+   * @property {Collection} attempts
+   */
+  attempts: Ember.computed.alias('contextResult.context.attempts'),
 
   /**
    * @property {ContextResult} contextResult
@@ -113,7 +137,13 @@ export default Ember.Component.extend(ModalMixin, {
    * The collection presented in this player
    * @property {Collection} collection
    */
-  collection: null,
+  collection: Ember.computed.alias('contextResult.collection'),
+
+  /**
+   * The context presented in this player
+   * @property {Context} context
+   */
+  context: Ember.computed.alias('contextResult.context'),
 
   /**
    * Is Assessment
@@ -200,6 +230,12 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean} showContent
    */
   showContent: false,
+
+  /**
+   * Indicates if show the assessment confirmation
+   * @property {boolean} showConfirmation
+   */
+  showConfirmation: true,
 
   /**
    * Indicates if the report should be displayed

@@ -164,6 +164,49 @@ test('getContextsAssigned', function(assert) {
     done();
   });
 });
+test('getAssignedContextById', function(assert) {
+  assert.expect(3);
+  const service = this.subject();
+  const expectedResponse = {
+    contextId:'context-id',
+    metadata:{
+      title:'title',
+      description:'description'
+    },
+    classId: 'class-id',
+    collectionId:'collection-id',
+    isCollection: true,
+    profileId: 'profile-id'
+  };
+  const expectedData = Context.create( {
+      id: 'context-id',
+      title: 'title',
+      description: 'description',
+      classId: 'class-id',
+      collectionId: 'collection-id',
+      isCollection: true,
+      profileId: 'profile-id'
+    });
+
+  service.set('contextAdapter', Ember.Object.create({
+    getAssignedContextById: function(contextId) {
+      assert.equal(contextId,'context-id','Wrong adapter' );
+      return Ember.RSVP.resolve([{expectedResponse}]);
+    }
+  }));
+  service.set('contextSerializer', Ember.Object.create({
+    normalizeReadContext: function(payload){
+      assert.deepEqual(payload, [{expectedResponse}], 'Wrong assignment object');
+      return expectedData;
+    }
+  }));
+
+  let done = assert.async();
+  service.getAssignedContextById('context-id').then(function(contextsAssigned) {
+    assert.deepEqual(contextsAssigned, expectedData, 'Wrong context assigned by id object');
+    done();
+  });
+});
 
 test('moveToResource', function(assert) {
   const service = this.subject();

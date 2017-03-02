@@ -34,7 +34,8 @@ export default Ember.Object.extend({
       classId: payload.classId,
       collectionId: payload.collectionId,
       isCollection: payload.isCollection,
-      profileId: payload.profileId
+      profileId: payload.profileId,
+      hasStarted: payload.hasStarted
     });
   },
 
@@ -77,6 +78,7 @@ export default Ember.Object.extend({
     serializedAssignment.collectionId = assignment.get('collectionId');
     serializedAssignment.classId = assignment.get('classId');
     serializedAssignment.isCollection = assignment.get('isCollection');
+    serializedAssignment.hasStarted = assignment.get('hasStarted');
     return serializedAssignment;
   },
 

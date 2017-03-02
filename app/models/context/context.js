@@ -7,6 +7,11 @@ import Ember from 'ember';
 const Context = Ember.Object.extend({
 
   /**
+   * @property {number} attempts
+   */
+  attempts: null,
+
+  /**
    * @property {string}
    */
   id: null,

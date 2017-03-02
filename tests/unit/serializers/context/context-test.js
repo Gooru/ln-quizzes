@@ -54,7 +54,8 @@ test('serializeContext', function(assert) {
     description: 'description',
     classId: 'class-id',
     collectionId: 'assessment-id',
-    isCollection: true
+    isCollection: true,
+    hasStarted:false
   });
   const response = serializer.serializeContext(assignment);
   const expected = {
@@ -66,7 +67,8 @@ test('serializeContext', function(assert) {
         description: 'description',
         title: 'title'
       }
-    }
+    },
+    hasStarted:false
   };
   assert.deepEqual(expected, response, 'serializeAssignment wrong response');
 });
@@ -135,7 +137,8 @@ test('normalizeReadContext', function(assert) {
       }
     },
     collectionId: 'assessment-id',
-    isCollection: true
+    isCollection: true,
+    hasStarted:true
   };
   const response = serializer.normalizeReadContext(payload);
   assert.equal(response.get('id'), 'assignment-id', 'Wrong context id');
@@ -144,6 +147,7 @@ test('normalizeReadContext', function(assert) {
   assert.equal(response.get('classId'), 'class-id', 'Wrong class id value');
   assert.equal(response.get('isCollection'), true, 'Wrong isCollection value');
   assert.equal(response.get('collectionId'), 'assessment-id', 'Wrong collectionId value');
+  assert.equal(response.get('hasStarted'), true, 'Wrong hasStarted value');
 });
 
 test('normalizeReadContexts', function(assert) {
@@ -158,7 +162,8 @@ test('normalizeReadContexts', function(assert) {
       }
     },
     collectionId: 'assessment-id',
-    isCollection: true
+    isCollection: true,
+    hasStarted:false
   }];
   const response = serializer.normalizeReadContexts(payload);
   assert.equal(response.length, 1, 'The array should have 1 context');
@@ -168,6 +173,7 @@ test('normalizeReadContexts', function(assert) {
   assert.equal(response[0].get('classId'), 'class-id', 'Wrong class id value');
   assert.equal(response[0].get('isCollection'), true, 'Wrong isCollection value');
   assert.equal(response[0].get('collectionId'), 'assessment-id', 'Wrong collectionId value');
+  assert.equal(response[0].get('hasStarted'), false, 'Wrong hasStarted value');
 });
 
 test('normalizeResourceResults', function(assert) {

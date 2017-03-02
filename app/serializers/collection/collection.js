@@ -30,7 +30,7 @@ export default Ember.Object.extend({
       id: payload.id,
       isCollection: payload.isCollection,
       resources: serializer.normalizeResources(payload.resources),
-      settings: payload.metadata ? serializer.normalizeSettings(payload.metadata.setting) : null
+      settings: !payload.isCollection && payload.metadata ? serializer.normalizeSettings(payload.metadata.setting) : null
     });
   },
 
@@ -51,7 +51,8 @@ export default Ember.Object.extend({
    */
   normalizeSettings: function(setting) {
     return {
-      showKey: setting.show_key === ASSESSMENT_SHOW_VALUES.SUMMARY
+      showKey: setting.show_key === ASSESSMENT_SHOW_VALUES.SUMMARY,
+      attempts: setting.attempts_allowed || -1
     };
   }
 });

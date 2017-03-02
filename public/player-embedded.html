@@ -29,6 +29,7 @@
         emberApp.start({
           transition: [ 'player', contextId ],
           properties: {
+            profileId: localStorage.getItem('profileId'),
             reportURL:'student-report-embedded.html?context-id={context-id}&type=' + collectionType,
             token: localStorage.getItem('token'),
             cdnURL: localStorage.getItem('cdnURL'),

@@ -7,9 +7,9 @@ import Ember from 'ember';
 export default Ember.Object.extend({
 
   /**
-   * @property {[]}
+   * @property {number} Attempts allowed
    */
-  attempts:[],
+  attempts:Ember.computed.alias('settings.attempts'),
 
   /**
    * @property {string}
@@ -63,11 +63,6 @@ export default Ember.Object.extend({
    * @property {string} Collection's title
    */
   title: null,
-
-  /**
-   * @property {number}
-   */
-  totalAttempts: Ember.computed.alias('attempts.length'),
 
   /**
    * @property {boolean} Indicate if show answer key setting

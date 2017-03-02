@@ -59,6 +59,21 @@
     }
   },
   {
+    "description": "Get context assigned by id",
+    "request": {
+      "url": "^/quizzes/api/v1/contexts/(.)+/assigned$",
+      "method": "GET"
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "File not found!",
+      "file": "context-assigned-byId-200-response.json"
+    }
+  },
+  {
     "description": "Create context",
     "request": {
       "url": "^/quizzes/api/v1/contexts",

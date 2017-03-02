@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="title">{{t "gru-assessment-confirmation.title"}}</h3>
+    </div>
+    <div class="panel-body">
+        <span class="lead description">{{t 'gru-assessment-confirmation.description'}} {{context.title}}</span>
+      {{#unless noMoreAttempts}}
+          <div class="setting info">
+            {{#if collection.bidirectional}}
+              {{gru-icon name='swap_horiz'}}
+                <p class="lead">
+                  {{t "gru-assessment-confirmation.setting-forward-backward"}}
+                </p>
+            {{else}}
+              {{gru-icon name='trending_flat'}}
+                <p class="lead">
+                  {{t "gru-assessment-confirmation.setting-forward"}}
+                </p>
+                {{/if}}
+              </div>
+      {{/unless}}
+        <div class="attempts info">
+          {{gru-icon name='history'}}
+            <p class="lead">
+              {{#if unlimited}}
+                {{t "gru-assessment-confirmation.unlimited-attempts-left"}}
+              {{else}}
+                {{#if noMoreAttempts}}
+                  <span class="no-more-attempts">{{t "gru-assessment-confirmation.attempts-left.no-attempts"}}</span>
+                {{else}}
+                  {{t "gru-assessment-confirmation.attempts-left" count=attemptsLeft}}
+                {{/if}}
+              {{/if}}
+            </p>
+        </div>
+      {{#unless noMoreAttempts}}
+        <div class="actions">
+            <button type="button" class="btn btn-primary {{if context.hasStarted "continue" "start"}}" {{action 'start'}} disabled={{disableStart}}>{{if context.hasStarted (t 'gru-assessment-confirmation.continue') (t 'gru-assessment-confirmation.start')}}</button>
+        </div>
+      {{/unless}}
+    </div>
+</div>

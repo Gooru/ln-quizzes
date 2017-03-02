@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import T from 'quizzes/tests/helpers/assert';
+import T from 'dummy/tests/helpers/assert';
 import hbs from 'htmlbars-inline-precompile';
-import QuestionResult from 'quizzes/models/result/question';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('player/qz-viewer', 'Integration | Component | player/qz viewer', {
   integration: true,

@@ -1,5 +1,5 @@
 import { test } from 'ember-qunit';
-import moduleForAdapter from 'quizzes/tests/helpers/module-for-adapter';
+import moduleForAdapter from 'dummy/tests/helpers/module-for-adapter';
 
 moduleForAdapter('adapter:collection/collection', 'Unit | Adapter | collection/collection', {
 });

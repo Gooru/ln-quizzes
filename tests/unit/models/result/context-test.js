@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import QuestionResult from 'quizzes/models/result/question';
-import ResourceResult from 'quizzes/models/result/resource';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import ResourceResult from 'quizzes-addon/models/result/resource';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:result/context', 'Unit | Model | result/context');

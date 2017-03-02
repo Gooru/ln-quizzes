@@ -1,38 +1,33 @@
 import Ember from 'ember';
-import TokenMixin from 'quizzes/mixins/token';
-import { module, test } from 'qunit';
+import TokenMixin from 'quizzes-addon/mixins/token';
+import { moduleFor, test } from 'ember-qunit';
 
-module('Unit | Mixin | token');
+moduleFor('mixin:token', 'Unit | Mixin | token', {
+  beforeEach: function () {
+    let token = 'my-token';
+    this.register('service:quizzes/configuration', Ember.Object.extend({
+      configuration: {
+        properties: { token }
+      }
+    }));
+    this.inject.service('location-service', { as: 'location' });
+  }
+});
 
 test('token', function(assert) {
   let token = 'my-token';
   let TokenObject = Ember.Object.extend(TokenMixin);
-  let subject = TokenObject.create({
-    configurationService: {
-      configuration: {
-        properties: {
-          token
-        }
-      }
-    }
-  });
+  this.registry.register('test:subject', TokenObject);
+  const subject = this.container.lookup('test:subject');
   assert.equal(subject.get('token'), token);
 });
 
 test('headers', function(assert) {
-  let token = 'my-token';
-  let TokenObject = Ember.Object.extend(TokenMixin);
-  let subject = TokenObject.create({
-    configurationService: {
-      configuration: {
-        properties: {
-          token
-        }
-      }
-    }
-  });
   const expectedHeaders = {
     'Authorization': 'Token my-token'
   };
+  let TokenObject = Ember.Object.extend(TokenMixin);
+  this.registry.register('test:subject', TokenObject);
+  const subject = this.container.lookup('test:subject');
   assert.deepEqual(subject.get('headers'), expectedHeaders);
 });

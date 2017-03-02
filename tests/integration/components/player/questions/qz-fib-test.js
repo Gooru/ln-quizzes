@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
-import AnswerModel from 'quizzes/utils/question/answer-object';
-import ResourceModel from 'quizzes/models/resource/resource';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import T from 'dummy/tests/helpers/assert';
+import AnswerModel from 'quizzes-addon/utils/question/answer-object';
+import ResourceModel from 'quizzes-addon/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('player/questions/qz-fib', 'Integration | Component | player/questions/qz fib', {
   integration: true,

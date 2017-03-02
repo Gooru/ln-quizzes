@@ -1,4 +1,4 @@
-import { noTags } from '../../../helpers/no-tags';
+import { noTags } from 'quizzes-addon/helpers/no-tags';
 import { module, test } from 'qunit';
 
 module('Unit | Helper | no tags');

@@ -1,4 +1,4 @@
-import DropdownItem from '../../../utils/dropdown-item';
+import DropdownItem from 'quizzes-addon/utils/dropdown-item';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | dropdown item');

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ModalMixin from '../../../mixins/modal';
+import ModalMixin from 'quizzes-addon/mixins/modal';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | modal');

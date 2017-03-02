@@ -1,5 +1,5 @@
 import { test } from 'ember-qunit';
-import moduleForAdapter from 'quizzes/tests/helpers/module-for-adapter';
+import moduleForAdapter from 'dummy/tests/helpers/module-for-adapter';
 
 moduleForAdapter('adapter:configuration', 'Unit | Adapter | configuration', {
   // needs: []

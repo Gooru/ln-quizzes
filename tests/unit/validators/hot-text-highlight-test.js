@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 import Ember from 'ember';
-import Answer from 'quizzes/models/resource/answer';
+import Answer from 'quizzes-addon/models/resource/answer';
 
 moduleFor('validator:hot-text-highlight', 'Unit | Validator | hot-text-highlight', {
   needs: ['validator:messages']

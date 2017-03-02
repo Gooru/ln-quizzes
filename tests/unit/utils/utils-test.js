@@ -18,7 +18,7 @@ import {
   getFileNameFromInvalidUrl,
   replaceMathExpression,
   arrayIntoChunks
-} from 'quizzes/utils/utils';
+} from 'quizzes-addon/utils/utils';
 
 import { module, test } from 'qunit';
 

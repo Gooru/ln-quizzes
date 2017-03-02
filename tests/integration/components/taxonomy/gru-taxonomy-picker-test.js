@@ -1,11 +1,11 @@
 import { moduleForComponent, test } from 'ember-qunit';
-import { generateTaxonomyTestTree } from 'quizzes/utils/taxonomy';
+import { generateTaxonomyTestTree } from 'quizzes-addon/utils/taxonomy';
 import hbs from 'htmlbars-inline-precompile';
 import wait from 'ember-test-helpers/wait';
 import Ember from 'ember';
-import TaxonomyRoot from 'quizzes/models/taxonomy/taxonomy-root';
-import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
-import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
+import TaxonomyRoot from 'quizzes-addon/models/taxonomy/taxonomy-root';
+import TaxonomyItem from 'quizzes-addon/models/taxonomy/taxonomy-item';
+import TaxonomyTagData from 'quizzes-addon/models/taxonomy/taxonomy-tag-data';
 
 moduleForComponent('taxonomy/gru-taxonomy-picker', 'Integration | Component | taxonomy/gru taxonomy picker', {
   integration: true

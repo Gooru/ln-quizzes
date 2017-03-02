@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Context from 'quizzes/models/context/context';
-import T from 'quizzes/tests/helpers/assert';
+import Context from 'quizzes-addon/models/context/context';
+import T from 'dummy/tests/helpers/assert';
 import wait from 'ember-test-helpers/wait';
 import Ember from 'ember';
 

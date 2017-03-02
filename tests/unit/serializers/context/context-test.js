@@ -1,7 +1,7 @@
 import { moduleFor, test } from 'ember-qunit';
-import QuestionResult from 'quizzes/models/result/question';
-import ResourceResult from 'quizzes/models/result/resource';
-import Context from 'quizzes/models/context/context';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import ResourceResult from 'quizzes-addon/models/result/resource';
+import Context from 'quizzes-addon/models/context/context';
 
 moduleFor('serializer:context/context', 'Unit | Serializer | context/context');
 
@@ -17,7 +17,7 @@ test('serializeResourceResult with a resource', function(assert) {
   const response = serializer.serializeResourceResult(resourceResult);
   const expected = {
     resourceId: 'resource-id',
-    timeSpent: 20000,
+    timeSpent: 20010,
     reaction: 2
   };
 

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import Resource from 'quizzes/models/resource/resource';
+import Resource from 'quizzes-addon/models/resource/resource';
 
 moduleFor('model:collection/collection', 'Unit | Model | collection/collection', {
   unit: true
@@ -205,13 +205,4 @@ test('isLastResource', function (assert) {
 
   lastResource = model.isLastResource(resourceA);
   assert.ok(!lastResource, 'It is the last resource');
-});
-
-test('showKey', function (assert) {
-  assert.expect(1);
-  let model = this.subject({
-    settings: {showKey:true}
-  });
-
-  assert.equal(model.get('showKey'),true,'Should be true');
 });

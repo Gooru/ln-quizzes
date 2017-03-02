@@ -1,8 +1,8 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
-import AnswerModel from 'quizzes/utils/question/answer-object';
-import ResourceModel from 'quizzes/models/resource/resource';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import AnswerModel from 'quizzes-addon/utils/question/answer-object';
+import ResourceModel from 'quizzes-addon/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('reports/assessment/questions/qz-fib', 'Unit | Component | reports/assessment/questions/qz-fib', {
   integration: false

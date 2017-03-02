@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
-import { generateTaxonomyTestTree } from 'quizzes/utils/taxonomy';
-import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
+import { generateTaxonomyTestTree } from 'quizzes-addon/utils/taxonomy';
+import TaxonomyItem from 'quizzes-addon/models/taxonomy/taxonomy-item';
 
 module('Unit | Utility | taxonomy');
 

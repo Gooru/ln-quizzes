@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Collection from 'quizzes/models/collection/collection';
-import ContextResult from 'quizzes/models/result/context';
+import Collection from 'quizzes-addon/models/collection/collection';
+import ContextResult from 'quizzes-addon/models/result/context';
 
 moduleForComponent('player/qz-player', 'Integration | Component | player/qz player', {
   integration: true

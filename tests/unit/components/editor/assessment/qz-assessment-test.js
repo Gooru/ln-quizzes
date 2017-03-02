@@ -1,5 +1,5 @@
 import { moduleForComponent, test } from 'ember-qunit';
-import Category from 'quizzes/models/editor/assessment/category';
+import Category from 'quizzes-addon/models/editor/assessment/category';
 import Ember from 'ember';
 
 

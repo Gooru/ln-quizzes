@@ -1,4 +1,4 @@
-import { isNumeric, average } from '../../../utils/math';
+import { isNumeric, average } from 'quizzes-addon/utils/math';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | math');

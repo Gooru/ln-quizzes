@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Level from 'quizzes/models/editor/assessment/level';
+import Level from 'quizzes-addon/models/editor/assessment/level';
 import Ember from 'ember';
 import wait from 'ember-test-helpers/wait';
 

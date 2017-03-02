@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import QuestionResult from 'quizzes/models/result/question';
-import T from 'quizzes/tests/helpers/assert';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import T from 'dummy/tests/helpers/assert';
 import Ember from 'ember';
 
 moduleForComponent('reports/class-assessment/gru-student-performance-box', 'Integration | Component | reports/class assessment/gru student performance box', {

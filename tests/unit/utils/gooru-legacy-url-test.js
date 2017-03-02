@@ -1,4 +1,4 @@
-import GooruLegacyUrl from 'quizzes/utils/gooru-legacy-url';
+import GooruLegacyUrl from 'quizzes-addon/utils/gooru-legacy-url';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | gooru legacy url');

@@ -1,12 +1,12 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { GRADING_SCALE } from 'quizzes/config/config';
-import Collection from 'quizzes/models/collection/collection';
-import Resource from 'quizzes/models/resource/resource';
-import QuestionResult from 'quizzes/models/result/question';
-import ReportData from 'quizzes/models/result/report-data';
-import ReportDataEvent from 'quizzes/models/result/report-data-event';
+import { GRADING_SCALE } from 'quizzes-addon/config/quizzes-config';
+import Collection from 'quizzes-addon/models/collection/collection';
+import Resource from 'quizzes-addon/models/resource/resource';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import ReportData from 'quizzes-addon/models/result/report-data';
+import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 
 moduleForComponent('reports/class-assessment/gru-summary', 'Integration | Component | reports/class assessment/gru summary', {
   integration: true,

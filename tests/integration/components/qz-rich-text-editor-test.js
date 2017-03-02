@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
+import T from 'dummy/tests/helpers/assert';
 import wait from 'ember-test-helpers/wait';
-import Question from 'quizzes/models/resource/resource';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import Question from 'quizzes-addon/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('qz-rich-text-editor', 'Integration | Component | qz rich text editor', {
   integration: true,

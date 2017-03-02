@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import Collection from 'quizzes/models/collection/collection';
-import Resource from 'quizzes/models/resource/resource';
-import ContextResult from 'quizzes/models/result/context';
-import QuestionResult from 'quizzes/models/result/question';
+import Collection from 'quizzes-addon/models/collection/collection';
+import Resource from 'quizzes-addon/models/resource/resource';
+import ContextResult from 'quizzes-addon/models/result/context';
+import QuestionResult from 'quizzes-addon/models/result/question';
 
 moduleForComponent('player/qz-player', 'Unit | Component | player/qz player', {
   // Specify the other units that are required for this test

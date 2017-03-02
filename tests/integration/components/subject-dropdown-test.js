@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
+import T from 'dummy/tests/helpers/assert';
 
 moduleForComponent('subject-dropdown', 'Integration | Component | subject dropdown', {
   integration: true,

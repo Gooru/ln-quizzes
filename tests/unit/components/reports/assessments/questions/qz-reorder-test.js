@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
-import Answer from 'quizzes/models/resource/answer';
+import Answer from 'quizzes-addon/models/resource/answer';
 import Ember from 'ember';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('reports/assessment/questions/qz-reorder', 'Unit | Component | reports/assessment/questions/qz reorder', {
   // Specify the other units that are required for this test

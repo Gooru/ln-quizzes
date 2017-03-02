@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import T from 'quizzes/tests/helpers/assert';
-import QuestionResult from 'quizzes/models/result/question';
+import T from 'dummy/tests/helpers/assert';
+import QuestionResult from 'quizzes-addon/models/result/question';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('player/qz-navigator', 'Integration | Component | player/qz navigator', {

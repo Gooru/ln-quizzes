@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
-import ResourceModel from 'quizzes/models/resource/resource';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import T from 'dummy/tests/helpers/assert';
+import ResourceModel from 'quizzes-addon/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('cards/gru-resource-card', 'Integration | Component | cards/gru resource card', {
   integration: true

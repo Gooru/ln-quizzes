@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import Question from 'quizzes/models/resource/resource';
-import QuestionResult from 'quizzes/models/result/question';
-import {QUIZZES_RESOURCE_TYPES} from 'quizzes/config/config';
+import Question from 'quizzes-addon/models/resource/resource';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import {QUIZZES_RESOURCE_TYPES} from 'quizzes-addon/config/quizzes-config';
 
 moduleForComponent('player/qz-viewer', 'Unit | Component | player/qz viewer', {
   unit: true

@@ -1,4 +1,4 @@
-import { truncate } from '../../../helpers/truncate';
+import { truncate } from 'quizzes-addon/helpers/truncate';
 import { module, test } from 'qunit';
 
 module('Unit | Helper | truncate');

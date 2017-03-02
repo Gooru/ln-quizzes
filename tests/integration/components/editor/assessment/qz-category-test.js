@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import Category from 'quizzes/models/editor/assessment/category';
+import Category from 'quizzes-addon/models/editor/assessment/category';
 
 moduleForComponent('editor/assessment/qz-category', 'Integration | Component | editor/assessment/qz category', {
   integration: true

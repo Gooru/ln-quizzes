@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import QuestionResult from 'quizzes/models/result/question';
-import ResourceResult from 'quizzes/models/result/resource';
-import Profile from 'quizzes/models/profile/profile';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import ResourceResult from 'quizzes-addon/models/result/resource';
+import Profile from 'quizzes-addon/models/profile/profile';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:result/report-data-event', 'Unit | Model | result/report-data-event');

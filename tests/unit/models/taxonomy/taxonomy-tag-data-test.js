@@ -1,5 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
-import TaxonomyTagData from 'quizzes/models/taxonomy/taxonomy-tag-data';
+import TaxonomyTagData from 'quizzes-addon/models/taxonomy/taxonomy-tag-data';
 
 moduleFor('model:taxonomy/taxonomy-tag-data', 'Unit | Model | taxonomy/taxonomy-tag-data', {
   unit: true

@@ -52,7 +52,7 @@ test('openPlayer', function(assert) {
   component.set('router', {
     transitionTo: function(route, contextId) {
       assert.equal(route, 'player', 'Route should match');
-      assert.equal(contextId, 'id', 'id should match');
+      assert.equal(contextId, 'new-id', 'id should match');
       done();
     }
   });

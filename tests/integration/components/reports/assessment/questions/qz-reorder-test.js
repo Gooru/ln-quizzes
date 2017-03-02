@@ -1,9 +1,9 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
+import T from 'dummy/tests/helpers/assert';
 import Ember from 'ember';
-import Answer from 'quizzes/models/resource/answer';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import Answer from 'quizzes-addon/models/resource/answer';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('reports/assessment/questions/qz-reorder', 'Integration | Component | reports/assessment/questions/qz reorder', {
   integration: true,

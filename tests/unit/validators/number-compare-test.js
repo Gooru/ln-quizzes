@@ -1,5 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
-import Context from 'quizzes/models/context/context';
+import Context from 'quizzes-addon/models/context/context';
 import Ember from 'ember';
 
 moduleFor('validator:number-compare', 'Unit | Validator | number-compare', {

@@ -1,6 +1,6 @@
 <div class="component player">
   {{#unless showReport}}
-    <div class="aside">
+    <div class="qz-aside">
       {{player.qz-navigator
       isNavigationDisabled=isNavigationDisabled
       isTeacher=isTeacher
@@ -14,7 +14,7 @@
       }}
     </div>
   {{/unless}}
-  <div class="main" role="main">
+  <div class="qz-main" role="main">
     {{#if collection.hasResources }}
       {{player.qz-navigation
       collection=collection

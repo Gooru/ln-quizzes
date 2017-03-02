@@ -1,11 +1,11 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
-import AnswerModel from 'quizzes/models/resource/answer';
-import ResourceModel from 'quizzes/models/resource/resource';
-import QuestionResult from 'quizzes/models/result/question';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import T from 'dummy/tests/helpers/assert';
+import AnswerModel from 'quizzes-addon/models/resource/answer';
+import ResourceModel from 'quizzes-addon/models/resource/resource';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('reports/assessment/questions/qz-open-ended', 'Integration | Component | reports/assessment/questions/qz-open-ended', {
   integration: true,

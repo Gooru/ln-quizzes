@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
-import Resource from 'quizzes/models/resource/resource';
+import Resource from 'quizzes-addon/models/resource/resource';
 
 moduleForComponent('reports/assessment/questions/qz-hot-text-highlight', 'Unit | Component | reports/assessment/questions/qz hot text highlight', {
   // Specify the other units that are required for this test

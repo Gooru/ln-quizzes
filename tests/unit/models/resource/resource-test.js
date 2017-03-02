@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import { QUIZZES_RESOURCE_TYPES } from 'quizzes/config/config';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import { QUIZZES_RESOURCE_TYPES } from 'quizzes-addon/config/quizzes-config';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleFor('model:resource/resource', 'Unit | Model | resource/resource', {
   unit: true

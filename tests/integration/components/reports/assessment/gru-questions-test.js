@@ -1,10 +1,10 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
+import T from 'dummy/tests/helpers/assert';
 import Ember from 'ember';
-import QuestionResult from 'quizzes/models/result/question';
-import Resource from 'quizzes/models/resource/resource';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import Resource from 'quizzes-addon/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('reports/assessment/gru-questions', 'Integration | Component | reports/assessment/gru questions', {
   integration: true,

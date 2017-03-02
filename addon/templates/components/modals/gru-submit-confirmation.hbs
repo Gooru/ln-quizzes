@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{t "gru-submit-confirmation.title"}}</h3>
+</div>
+<div class="modal-body">
+    <span class="lead description">{{t 'gru-submit-confirmation.description'}}</span>
+    <div class="actions">
+        <button type="button" class="btn btn-default cancel" data-dismiss="modal" aria-label="{{t 'gru-submit-confirmation.cancel'}}" {{action 'cancel'}}>
+            <span aria-hidden="true">{{t 'gru-submit-confirmation.cancel'}}</span>
+        </button>
+        <button type="button" class="btn btn-success submit" data-dismiss="modal" {{action 'confirm'}}>{{t 'gru-submit-confirmation.confirm'}}</button>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import ResourceModel from 'quizzes/models/resource/resource';
+import ResourceModel from 'quizzes-addon/models/resource/resource';
 
 moduleForComponent('qz-preview-url', 'Integration | Component | qz preview url', {
   integration: true

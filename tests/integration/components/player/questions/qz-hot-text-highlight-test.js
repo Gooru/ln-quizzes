@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { QUESTION_TYPES } from 'quizzes/config/question';
-import ResourceModel from 'quizzes/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
+import ResourceModel from 'quizzes-addon/models/resource/resource';
 
 moduleForComponent('player/questions/qz-hot-text-highlight', 'Integration | Component | player/questions/qz hot text highlight', {
   integration: true

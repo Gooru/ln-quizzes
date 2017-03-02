@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { GRADING_SCALE } from 'quizzes/config/config';
+import { GRADING_SCALE } from 'quizzes-addon/config/quizzes-config';
 
 moduleForComponent('reports/class-assessment/gru-questions-summary', 'Integration | Component | reports/class assessment/gru questions summary', {
   integration: true

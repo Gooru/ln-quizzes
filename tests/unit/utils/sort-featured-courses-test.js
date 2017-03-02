@@ -1,4 +1,4 @@
-import { sortFeaturedCourses, getSubjects } from 'quizzes/utils/sort-featured-courses';
+import { sortFeaturedCourses, getSubjects } from 'quizzes-addon/utils/sort-featured-courses';
 import Ember from 'ember';
 import { module, test } from 'qunit';
 
@@ -61,17 +61,17 @@ test('getSubjects and sort Courses', function (assert) {
   let orderedSubjects = getSubjects(courses);
   let orderedCourses = sortFeaturedCourses(courses);
 
-  assert.equal(orderedSubjects.get("length"), 4, "Wrong amount of subjects");
+  assert.equal(orderedSubjects.length, 4, "Wrong amount of subjects");
   assert.equal(orderedSubjects[0].subject, '', "Empty subject for courses with no taxonomy information");
   assert.equal(orderedSubjects[1].subject, 'K-12.SC', "Second subject");
   assert.equal(orderedSubjects[2].subject, 'K-12.M', "Third subject");
   assert.equal(orderedSubjects[3].subject, 'K-12.EL', "Fourth subject");
 
-  assert.equal(orderedCourses.get("length"), 4, "Courses buckets");
-  assert.equal(orderedCourses[0].get("length"), 0, "Course bucket 1");
-  assert.equal(orderedCourses[1].get("length"), 2, "Course bucket 2");
-  assert.equal(orderedCourses[2].get("length"), 3, "Course bucket 3");
-  assert.equal(orderedCourses[3].get("length"), 2, "Course bucket 4");
+  assert.equal(orderedCourses.length, 4, "Courses buckets");
+  assert.equal(orderedCourses[0].length, 0, "Course bucket 1");
+  assert.equal(orderedCourses[1].length, 2, "Course bucket 2");
+  assert.equal(orderedCourses[2].length, 3, "Course bucket 3");
+  assert.equal(orderedCourses[3].length, 2, "Course bucket 4");
 
   for (let i = orderedCourses.length-1; i > 0; i--) {
     for (var o = 0; o < orderedCourses[o].length; o++) {

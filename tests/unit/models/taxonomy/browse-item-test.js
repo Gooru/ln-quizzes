@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
-import BrowseItem from 'quizzes/models/taxonomy/browse-item';
-import TaxonomyItem from 'quizzes/models/taxonomy/taxonomy-item';
+import BrowseItem from 'quizzes-addon/models/taxonomy/browse-item';
+import TaxonomyItem from 'quizzes-addon/models/taxonomy/taxonomy-item';
 
 moduleFor('model:taxonomy/browse-item', 'Unit | Model | taxonomy/browse-item', {
   unit: true

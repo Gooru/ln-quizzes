@@ -2,7 +2,7 @@
   @include flexbox;
   @include justify-content(space-between);
   @include flex-direction(column);
-  padding: 0;
+  padding: 0 15px;
 
   @media (min-width: $screen-sm) {
     @include flex-direction(row);

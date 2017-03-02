@@ -5,7 +5,7 @@ import {
   getItems,
   transformText,
   splitWithIndex
-} from 'quizzes/utils/question/hot-text-highlight';
+} from 'quizzes-addon/utils/question/hot-text-highlight';
 
 import { module, test } from 'qunit';
 
@@ -16,17 +16,18 @@ test('Hot Text Highlight - getWordItems', function (assert) {
   const mapItems = ({ index, text }) => ({ index, text });
 
   //with no words
-  let wordItems = getWordItems('').toArray();
+  console.log(getWordItems(''));
+  let wordItems = getWordItems('');
   assert.equal(wordItems.length, 0, 'Wrong number of items');
 
   //with one word
-  wordItems = getWordItems('text').toArray();
+  wordItems = getWordItems('text');
   assert.equal(wordItems.length, 1, 'Wrong number of items');
   assert.equal(wordItems[0].get('index'), 0, 'Wrong index for first object');
   assert.equal(wordItems[0].get('text'), 'text', 'Wrong text for first object');
 
   //with many words
-  wordItems = getWordItems('  A  phrase with  many words and extra spaces   ').toArray();
+  wordItems = getWordItems('  A  phrase with  many words and extra spaces   ');
   const expectedItems = [
     { index: 2, text: 'A' },
     { index: 5, text: 'phrase' },
@@ -46,12 +47,12 @@ test('Hot Text Highlight - getSentenceItems', function (assert) {
   const mapItems = ({ index, text }) => ({ index, text });
 
   //with no text
-  let sentenceItems = getSentenceItems('').toArray();
+  let sentenceItems = getSentenceItems('');
   let expectedItems = [];
   assert.equal(sentenceItems.length, 0, 'Wrong number of items');
 
   //with no correct
-  sentenceItems = getSentenceItems('Sentence 1').toArray();
+  sentenceItems = getSentenceItems('Sentence 1');
   assert.equal(sentenceItems.length, 1, 'Wrong number of items');
   assert.equal(sentenceItems[0].get('index'), 0, 'Wrong id for first object');
   assert.equal(sentenceItems[0].get('text'), 'Sentence 1', 'Wrong text for first object');
@@ -62,7 +63,7 @@ test('Hot Text Highlight - getSentenceItems', function (assert) {
     { index: 12, text: 'Sentence 2.' },
     { index: 24, text: 'Sentence 3' }
   ];
-  sentenceItems = getSentenceItems('Sentence 1. Sentence 2. Sentence 3').toArray();
+  sentenceItems = getSentenceItems('Sentence 1. Sentence 2. Sentence 3');
   assert.equal(sentenceItems.length, 3, 'Wrong number of items');
   assert.deepEqual(sentenceItems.map(mapItems), expectedItems, 'Wrong values for sentence items');
 
@@ -114,7 +115,7 @@ test('Hot Text Highlight - getItems isHotTextHighlightWord', function (assert) {
     body: 'Many correct items  in this &sentence 23',
     isHotTextHighlightWord: true
   });
-  const items = getItems(question).toArray();
+  const items = getItems(question);
   const expectedItems = [
     { index: 0, text: 'Many' },
     { index: 5, text: 'correct' },

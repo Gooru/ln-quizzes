@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
-import TaxonomyRoot from 'quizzes/models/taxonomy/taxonomy-root';
+import T from 'dummy/tests/helpers/assert';
+import TaxonomyRoot from 'quizzes-addon/models/taxonomy/taxonomy-root';
 
 
 moduleForComponent('gru-subject-picker', 'Integration | Component | taxonomy/gru subject picker', {

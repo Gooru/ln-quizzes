@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import Collection from 'quizzes/models/collection/collection';
-import Resource from 'quizzes/models/resource/resource';
-import ResourceResult from 'quizzes/models/result/resource';
-import ReportDataEvent from 'quizzes/models/result/report-data-event';
+import Collection from 'quizzes-addon/models/collection/collection';
+import Resource from 'quizzes-addon/models/resource/resource';
+import ResourceResult from 'quizzes-addon/models/result/resource';
+import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:result/report-data', 'Unit | Model | result/report-data');

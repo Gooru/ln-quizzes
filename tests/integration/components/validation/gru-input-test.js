@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
+import T from 'dummy/tests/helpers/assert';
 import wait from 'ember-test-helpers/wait';
 import { validator, buildValidations } from 'ember-cp-validations';
 

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import AnswerModel from 'quizzes/models/resource/answer';
-import ResourceModel from 'quizzes/models/resource/resource';
+import AnswerModel from 'quizzes-addon/models/resource/answer';
+import ResourceModel from 'quizzes-addon/models/resource/resource';
 
 moduleForComponent('player/questions/qz-multiple-answer', 'Unit | Component | player/questions/qz multiple answer', {
   // Specify the other units that are required for this test

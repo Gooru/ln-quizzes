@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
+import T from 'dummy/tests/helpers/assert';
 
 moduleForComponent('datepicker-field', 'Integration | Component | datepicker field', {
   integration: true,
@@ -20,5 +20,3 @@ test('renders datepicker', function(assert) {
   T.exists(assert, $component.find("button.datepicker-icon"), "Datepicker icon element not found");
   assert.equal(this.$('#datepicker').attr('placeholder'), "MyBirthday", "Wrong placeholder");
 });
-
-

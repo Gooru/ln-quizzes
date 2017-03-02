@@ -9,7 +9,7 @@ export default function(name, options = {}) {
   module(name, {
     beforeEach() {
       this.application = startApp();
-      wait();
+
       if (options.beforeEach) {
         return options.beforeEach.apply(this, arguments);
       }

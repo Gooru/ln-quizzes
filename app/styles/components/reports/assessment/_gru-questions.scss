@@ -27,7 +27,7 @@
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
     border-radius: 5px;
     padding: 20px 0 40px 0;
-    table-layout: fixed;
+    display: block;
 
     @media (min-width: $screen-md) {
       padding: 20px 15px 40px 15px;
@@ -45,7 +45,7 @@
 
     }
     th.number {
-      width: 5%;
+      width: 2%;
     }
     th.question {
       width: 25%;

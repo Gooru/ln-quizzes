@@ -1,14 +1,14 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import Collection from 'quizzes/models/collection/collection';
-import Answer from 'quizzes/models/resource/answer';
-import Resource from 'quizzes/models/resource/resource';
-import QuestionResult from 'quizzes/models/result/question';
-import ReportData from 'quizzes/models/result/report-data';
-import ReportDataEvent from 'quizzes/models/result/report-data-event';
+import Collection from 'quizzes-addon/models/collection/collection';
+import Answer from 'quizzes-addon/models/resource/answer';
+import Resource from 'quizzes-addon/models/resource/resource';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import ReportData from 'quizzes-addon/models/result/report-data';
+import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import T from 'dummy/tests/helpers/assert';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('reports/class-assessment/gru-questions-detail', 'Integration | Component | reports/class assessment/gru questions detail', {
   integration: true

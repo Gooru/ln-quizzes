@@ -1,4 +1,4 @@
-import { fractional } from '../../../helpers/fractional';
+import { fractional } from 'quizzes-addon/helpers/fractional';
 import { module, test } from 'qunit';
 
 module('Unit | Helper | fractional');

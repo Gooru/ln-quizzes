@@ -1,7 +1,7 @@
 /* Open ended is not supported
 import Ember from 'ember';
-import AnswerObject from 'quizzes/utils/question/answer-object';
-import OpenEndedUtil from 'quizzes/utils/question/open-ended';
+import AnswerObject from 'quizzes-addon/utils/question/answer-object';
+import OpenEndedUtil from 'quizzes-addon/utils/question/open-ended';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | open ended');

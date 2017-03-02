@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import DropdownItem from '../../../utils/dropdown-item';
-import T from 'quizzes/tests/helpers/assert';
+import DropdownItem from 'quizzes-addon/utils/dropdown-item';
+import T from 'dummy/tests/helpers/assert';
 
 moduleForComponent('app-dropdown', 'Integration | Component | app dropdown', {
   integration: true
@@ -269,4 +269,3 @@ test('Multiple select interaction - unselect', function (assert) {
 
 
 });
-

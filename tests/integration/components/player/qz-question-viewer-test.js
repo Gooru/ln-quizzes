@@ -1,13 +1,13 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import QuestionResult from 'quizzes/models/result/question';
-import Assessment from 'quizzes/models/collection/collection';
-import T from 'quizzes/tests/helpers/assert';
-import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
-import AnswerModel from 'quizzes/models/resource/answer';
-import ResourceModel from 'quizzes/models/resource/resource';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import QuestionResult from 'quizzes-addon/models/result/question';
+import Assessment from 'quizzes-addon/models/collection/collection';
+import T from 'dummy/tests/helpers/assert';
+import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
+import AnswerModel from 'quizzes-addon/models/resource/answer';
+import ResourceModel from 'quizzes-addon/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('player/qz-question-viewer', 'Integration | Component | player/qz question viewer', {
   integration: true,

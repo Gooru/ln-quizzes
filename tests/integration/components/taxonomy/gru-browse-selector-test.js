@@ -2,8 +2,8 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import wait from 'ember-test-helpers/wait';
 import Ember from 'ember';
-import BrowseItem from 'quizzes/models/taxonomy/browse-item';
-import { generateBrowseTestTree } from 'quizzes/utils/taxonomy';
+import BrowseItem from 'quizzes-addon/models/taxonomy/browse-item';
+import { generateBrowseTestTree } from 'quizzes-addon/utils/taxonomy';
 
 moduleForComponent('taxonomy/gru-browse-selector', 'Integration | Component | taxonomy/gru browse selector', {
   integration: true

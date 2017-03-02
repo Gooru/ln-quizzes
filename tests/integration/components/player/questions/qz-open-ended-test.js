@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
-import { QUESTION_TYPES } from 'quizzes/config/question';
+import T from 'dummy/tests/helpers/assert';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('player/questions/qz-open-ended', 'Integration | Component | player/questions/qz open ended', {
   integration: true,

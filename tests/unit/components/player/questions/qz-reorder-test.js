@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import AnswerModel from 'quizzes/utils/question/answer-object';
+import AnswerModel from 'quizzes-addon/utils/question/answer-object';
 
 moduleForComponent('player/questions/qz-reorder', 'Unit | Component | player/questions/qz reorder', {
   // Specify the other units that are required for this test

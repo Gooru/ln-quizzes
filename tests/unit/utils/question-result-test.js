@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { averageReaction, correctAnswers, correctPercentage, totalTimeSpent}
-  from 'quizzes/utils/question-result';
-import QuestionResult from 'quizzes/models/result/question';
+  from 'quizzes-addon/utils/question-result';
+import QuestionResult from 'quizzes-addon/models/result/question';
 import { module, test } from 'qunit';
 
 

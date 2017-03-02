@@ -1,4 +1,4 @@
-import EndPointsConfig from 'quizzes/utils/endpoint-config';
+import EndPointsConfig from 'quizzes-addon/utils/endpoint-config';
 import { module, test } from 'qunit';
 
 module('Unit | utils | endpoint-config');

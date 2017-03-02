@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
-import AnswerModel from 'quizzes/utils/question/answer-object';
-import ResourceModel from 'quizzes/models/resource/resource';
+import T from 'dummy/tests/helpers/assert';
+import AnswerModel from 'quizzes-addon/utils/question/answer-object';
+import ResourceModel from 'quizzes-addon/models/resource/resource';
 
 moduleForComponent('reports/class-assessment/gru-question-information', 'Integration | Component | reports/class assessment/gru question information', {
   integration: true

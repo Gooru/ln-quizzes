@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import Question from 'quizzes/models/resource/resource';
+import Question from 'quizzes-addon/models/resource/resource';
 
 moduleForComponent('player/qz-navigator', 'Unit | Component | player/qz navigator', {
   // Specify the other units that are required for this test

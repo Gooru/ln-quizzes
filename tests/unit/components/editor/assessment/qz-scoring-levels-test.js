@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Ember from 'ember';
-import Level from 'quizzes/models/editor/assessment/level';
+import Level from 'quizzes-addon/models/editor/assessment/level';
 
 moduleForComponent('editor/assessment/qz-scoring-levels', 'Unit | Component | editor/assessment/qz scoring levels', {
   unit: true

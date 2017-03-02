@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import T from 'quizzes/tests/helpers/assert';
+import T from 'dummy/tests/helpers/assert';
 import Ember from 'ember';
 
 moduleForComponent('gru-user-teaser', 'Integration | Component | gru user teaser', {
@@ -17,7 +17,7 @@ test('User Tease Layout', function(assert) {
     'fullName': 'lastname-1 firstname-1',
     'id': 'id-1',
     'lastName': 'lastname-1',
-    'avatarUrl': '/assets/quizzes/profile.png',
+    'avatarUrl': '/assets/quizzes-addon/profile.png',
     'username': 'username-1'
   }),Ember.Object.create({
     'email': 'user_2@test.com',
@@ -25,7 +25,7 @@ test('User Tease Layout', function(assert) {
     'fullName': 'lastname-2 firstname-2',
     'id': 'id-2',
     'lastName': 'lastname-2',
-    'avatarUrl': '/assets/quizzes/profile.png',
+    'avatarUrl': '/assets/quizzes-addon/profile.png',
     'username': 'username-2'
   }),Ember.Object.create({
     'email': 'user_1@test.com',
@@ -33,7 +33,7 @@ test('User Tease Layout', function(assert) {
     'fullName': 'lastname-3 firstname-3',
     'id': 'id-1',
     'lastName': 'lastname-3',
-    'avatarUrl': '/assets/quizzes/profile.png',
+    'avatarUrl': '/assets/quizzes-addon/profile.png',
     'username': 'username-3'
   })]);
   this.set('users', users);
@@ -55,7 +55,7 @@ test('User Tease with only 1 user', function(assert) {
     'fullName': 'lastname-1 firstname-1',
     'id': 'id-1',
     'lastName': 'lastname-1',
-    'avatarUrl': '/assets/quizzes/profile.png',
+    'avatarUrl': '/assets/quizzes-addon/profile.png',
     'username': 'username-1'
   })]);
   this.set('users', users);

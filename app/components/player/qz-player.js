@@ -108,6 +108,16 @@ export default Ember.Component.extend(ModalMixin, {
       component.moveOrFinish(question);
     }
   },
+  // -------------------------------------------------------------------------
+  // Events
+
+  init: function() {
+    this._super(...arguments);
+    if(this.get('collection.isCollection')){
+      this.set('showConfirmation',false);
+      this.startAssessment();
+    }
+  },
 
   // -------------------------------------------------------------------------
   // Properties

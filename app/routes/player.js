@@ -45,27 +45,44 @@ export default Ember.Route.extend({
     let reportURL = route.get('configurationService.configuration.properties.reportURL');
     const profileId = route.get('configurationService.configuration.properties.profileId');
 
-    return route.get('contextService').getAssignedContextById(contextId).then(
-        context => !context ? null : route.get('collectionService').readCollection(context.collectionId, type).then(
-          collection => !collection ? null : route.get('attemptService').getAttemptIds(contextId, profileId).then(
-            attempts => Ember.RSVP.hash({
+    if(type === 'collection'){
+      return route.get('contextService').startContext(contextId).then(function(contextResult){
+        return Ember.RSVP.hash({
+          contextResult,
+          collection: route.get('collectionService').readCollection(contextResult.collectionId, type),
+          reportURL
+        });
+      });
+    } else {
+      return route.get('contextService').getAssignedContextById(contextId).then(
+          context => !context ? null : route.get('collectionService').readCollection(context.collectionId, type).then(
+            collection => !collection ? null : route.get('attemptService').getAttemptIds(contextId, profileId).then(
+              attempts => Ember.RSVP.hash({
               attempts,
               collection,
               context,
               reportURL,
               startContextFunction: () => route.startContext(context.id)
-          })
+            })
+          )
         )
-      )
-    );
+      );
+    }
   },
 
   setupController(controller,model) {
-    controller.set('attempts', model.attempts);
-    controller.set('collection', model.collection);
-    controller.set('context', model.context);
+    let collection = model.collection;
+    if(collection.get('isCollection')){
+      let contextResult = model.contextResult;
+      contextResult.merge(collection);
+      controller.set('contextResult', contextResult);
+    }else{
+      controller.set('attempts', model.attempts);
+      controller.set('context', model.context);
+      controller.set('startContextFunction', model.startContextFunction);
+    }
+    controller.set('collection', collection);
     controller.set('reportURL', model.reportURL);
-    controller.set('startContextFunction', model.startContextFunction);
   },
   /**
    * @param {string} contextId

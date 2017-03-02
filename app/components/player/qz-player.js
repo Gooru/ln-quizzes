@@ -123,6 +123,12 @@ export default Ember.Component.extend(ModalMixin, {
   // Properties
 
   /**
+   * The attempts played in a context
+   * @property {Collection} attempts
+   */
+  attempts: Ember.computed.alias('contextResult.context.attempts'),
+
+  /**
    * @property {ContextResult} contextResult
    */
   contextResult: null,
@@ -131,7 +137,13 @@ export default Ember.Component.extend(ModalMixin, {
    * The collection presented in this player
    * @property {Collection} collection
    */
-  collection: null,
+  collection: Ember.computed.alias('contextResult.collection'),
+
+  /**
+   * The context presented in this player
+   * @property {Context} context
+   */
+  context: Ember.computed.alias('contextResult.context'),
 
   /**
    * Is Assessment

@@ -18,12 +18,12 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * @property {[string]} currentAttempts
+   * @property {number} currentAttempts
    */
   attempts: null,
 
   attemptsLeft: Ember.computed('attempts','collection.attempts',function(){
-      return this.get('collection.attempts') -  this.get('attempts.length');
+      return this.get('collection.attempts') -  this.get('attempts');
     }
   ),
 
@@ -49,7 +49,7 @@ export default Ember.Component.extend({
    */
   noMoreAttempts: Ember.computed('collection.isAssessment','collection.attempts','attempts',function(){
     return (this.get('collection.isAssessment') && this.get('collection.attempts') > 0
-    && this.get('attempts') && this.get('attempts.length') >= this.get('collection.attempts'));
+    && this.get('attempts') && this.get('attempts') >= this.get('collection.attempts'));
   }),
   /**
    * @property {boolean} flag for determining unlimited behaviour

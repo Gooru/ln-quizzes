@@ -8,8 +8,7 @@ moduleForComponent('player/qz-player-confirmation', 'Integration | Component | p
 });
 
 test('Player confirmation Layout No more attempts', function(assert) {
-
-  let attempts = ['attempt-id','attempt-2'];
+  let attempts = 2;
   let collection = Collection.create({
     settings:{
       attempts:2
@@ -33,7 +32,7 @@ test('Player confirmation Layout No more attempts', function(assert) {
 
 test('Player confirmation Layout has more attempts', function(assert) {
 
-  let attempts = ['attempt-id','attempt-2'];
+  let attempts = 2;
   let collection = Collection.create({
     settings:{
       attempts:4

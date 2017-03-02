@@ -12,7 +12,7 @@ test('attemptsLeft', function(assert) {
       attempts: 3
     }
   });
-  let attempts = ['1','2'];
+  let attempts = 2;
 
   let component = this.subject({
     collection,
@@ -56,7 +56,7 @@ test('noMoreAttempts', function(assert) {
       attempts: 2
     }
   });
-  let attempts = ['1','2'];
+  let attempts = 2;
 
   let component = this.subject({
     collection,
@@ -74,7 +74,7 @@ test('disableStart', function(assert) {
       attempts: 2
     }
   });
-  let attempts = ['1','2'];
+  let attempts = 2;
 
   let component = this.subject({
     collection,

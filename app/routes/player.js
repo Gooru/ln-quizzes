@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ContextResult from 'quizzes/models/result/context';
 
 /**
  * @typedef { Ember.Route } PlayerRoute
@@ -72,16 +73,17 @@ export default Ember.Route.extend({
 
   setupController(controller,model) {
     let collection = model.collection;
-    if(collection.get('isCollection')){
-      let contextResult = model.contextResult;
+    let contextResult =  ContextResult.create({collection});
+    if (collection.get('isCollection')) {
+      contextResult = model.contextResult;
       contextResult.merge(collection);
-      controller.set('contextResult', contextResult);
-    }else{
-      controller.set('attempts', model.attempts);
-      controller.set('context', model.context);
+    } else {
+      let context =  model.context;
+      context.set('attempts', model.attempts.length);
+      contextResult.set('context',context);
       controller.set('startContextFunction', model.startContextFunction);
     }
-    controller.set('collection', collection);
+    controller.set('contextResult', contextResult);
     controller.set('reportURL', model.reportURL);
   },
   /**

@@ -540,6 +540,7 @@ export default {
     },
     "unlimited-attempts":"You have unlimited attempts",
     "cancel": "Cancel",
+    "continue": "Continue",
     "start": "Start!"
   },
   "gru-submit-confirmation":{

@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   // Actions
   actions: {
     start(){
-      this.get('router').transitionTo('player', this.get('context.id'));
+      this.sendAction('onStartPlayer');
     }
   },
 
@@ -23,7 +23,7 @@ export default Ember.Component.extend({
   attempts: null,
 
   attemptsLeft: Ember.computed('attempts','collection.attempts',function(){
-      return this.get('collection.attempts') - this.get('attempts');
+      return this.get('collection.attempts') -  this.get('attempts.length');
     }
   ),
 

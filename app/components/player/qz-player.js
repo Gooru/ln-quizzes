@@ -22,6 +22,8 @@ export default Ember.Component.extend(ModalMixin, {
 
   classNames:['qz-player'],
 
+  classNameBindings:['showConfirmation:confirmation'],
+
   // -------------------------------------------------------------------------
   // Actions
 
@@ -66,10 +68,24 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Action triggered when the user open de navigator panel
+     * Action triggered when the user open the navigator panel
      */
     openNavigator: function(){
       Ember.$( '.app-container' ).addClass( 'navigator-on' );
+    },
+
+    /**
+     * Action triggered when the user open the player
+     */
+    openPlayer:function(){
+      const component = this;
+      let startContext = component.get('startContextFunction');
+      startContext().then(function(contextResult){
+        contextResult.merge(component.get('collection'));
+        component.set('contextResult',contextResult);
+        component.set('showConfirmation',false);
+        component.startAssessment();
+      });
     },
 
     /**
@@ -96,10 +112,9 @@ export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Events
 
-  init: function() {
-    this._super(...arguments);
-    this.startAssessment();
-  },
+  //init: function() {
+  //  this._super(...arguments);
+  //},
 
   // -------------------------------------------------------------------------
   // Properties
@@ -200,6 +215,12 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean} showContent
    */
   showContent: false,
+
+  /**
+   * Indicates if show the assessment confirmation
+   * @property {boolean} showConfirmation
+   */
+  showConfirmation: true,
 
   /**
    * Indicates if the report should be displayed

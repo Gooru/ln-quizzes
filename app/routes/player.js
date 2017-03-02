@@ -68,8 +68,8 @@ export default Ember.Route.extend({
     controller.set('startContextFunction', model.startContextFunction);
   },
   /**
-   * @param {contextId: string}
-   * @param {collection: Collection}
+   * @param {string} contextId
+   * Starts context to show the player
    */
   startContext:function(contextId){
     const route = this;

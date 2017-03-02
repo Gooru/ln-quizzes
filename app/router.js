@@ -12,8 +12,6 @@ Router.map(function() {
 
   this.route('player', { path: '/player/:contextId' });
 
-  this.route('player-confirmation', { path: '/player-confirmation/:contextId' });
-
   this.route('edit', function() {
     this.route('assessment', { path: '/assessment/:assessmentId' });
   });

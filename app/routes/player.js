@@ -93,9 +93,7 @@ export default Ember.Route.extend({
   startContext:function(contextId){
     const route = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      route.get('contextService').startContext(contextId).then(function(contextResult) {
-          resolve(contextResult);
-        }, reject );
+      route.get('contextService').startContext(contextId).then(resolve, reject);
     });
   }
 });

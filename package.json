@@ -49,6 +49,9 @@
     "ember-papaparse": "^0.0.3",
     "ember-resolver": "^2.0.3",
     "ember-truth-helpers": "^1.2.0",
+    "grunt": "^0.4.5",
+    "grunt-eslint": "^19.0.0",
+    "grunt-svgstore": "^1.0.0",
     "loader.js": "^4.0.10"
   },
   "keywords": [
@@ -59,7 +62,8 @@
     "ember-cli-babel": "^5.1.7",
     "ember-cli-htmlbars": "^1.0.10",
     "ember-disable-proxy-controllers": "^1.0.1",
-    "ember-radio-button": "^1.0.7"
+    "ember-radio-button": "^1.0.7",
+    "grunt-exec": "^1.0.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

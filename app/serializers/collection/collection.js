@@ -51,8 +51,9 @@ export default Ember.Object.extend({
    */
   normalizeSettings: function(setting) {
     return {
-      showKey: setting.show_key === ASSESSMENT_SHOW_VALUES.SUMMARY,
-      attempts: setting.attempts_allowed || -1
+      attempts: setting.attempts_allowed || -1,
+      bidirectional: setting.bidirectional_play || false,
+      showKey: setting.show_key === ASSESSMENT_SHOW_VALUES.SUMMARY
     };
   }
 });

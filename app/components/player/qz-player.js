@@ -153,9 +153,11 @@ export default Ember.Component.extend(ModalMixin, {
 
   /**
    * Should resource navigation in the player be disabled?
-   * @property {Lesson}
+   * @property {boolean}
    */
-  isNavigationDisabled: false,
+  isNavigationDisabled: Ember.computed('collection',function(){
+    return !this.get('collection.bidirectional');
+  }),
 
   /**
    * Indicates if the current resource type is resource

@@ -1,6 +1,12 @@
 {
   "id": "collection-id",
   "isCollection": false,
+  "metadata": {
+    "setting": {
+      "attempts_allowed":-1,
+      "bidirectional_play":true
+    }
+  },
   "resources": [
     {
       "id": "question1-id",
@@ -55,4 +61,5 @@
       }
     }
   ]
+
 }

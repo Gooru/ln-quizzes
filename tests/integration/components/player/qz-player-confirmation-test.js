@@ -50,3 +50,25 @@ test('Player confirmation Layout has more attempts', function(assert) {
   assert.notOk($component.find('.qz-player-confirmation .panel-body .no-more-attempts').length,'Missing no more attempts lead');
   assert.equal($component.find('.qz-player-confirmation .panel-body .actions button').prop('disabled'),false,'Start button should not be disabled');
 });
+
+test('Player confirmation Layout Not bidirectional', function(assert) {
+
+  let attempts = 2;
+  let collection = Collection.create({
+    settings:{
+      attempts:4,
+      bidirectional:false
+    },
+    isAssessment:true
+  });
+  let context = Context.create({
+    title:'context-title'
+  });
+  this.set('attempts',attempts);
+  this.set('context',context);
+  this.set('collection',collection);
+  this.render(hbs`{{player/qz-player-confirmation attempts=attempts collection=collection context=context}}`);
+  var $component = this.$();
+  assert.notOk($component.find('.qz-player-confirmation p.bidirectional').length,'Bidirectional lead should not appear');
+  assert.ok($component.find('.qz-player-confirmation p.not-bidirectional').length,'Not bidirectional lead should appear');
+});

@@ -8,12 +8,12 @@
           <div class="setting info">
             {{#if collection.bidirectional}}
               {{gru-icon name='swap_horiz'}}
-                <p class="lead">
+                <p class="lead bidirectional">
                   {{t "gru-assessment-confirmation.setting-forward-backward"}}
                 </p>
             {{else}}
               {{gru-icon name='trending_flat'}}
-                <p class="lead">
+                <p class="lead not-bidirectional">
                   {{t "gru-assessment-confirmation.setting-forward"}}
                 </p>
                 {{/if}}

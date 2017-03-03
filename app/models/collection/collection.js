@@ -9,7 +9,12 @@ export default Ember.Object.extend({
   /**
    * @property {number} Attempts allowed
    */
-  attempts:Ember.computed.alias('settings.attempts'),
+  attempts: Ember.computed.alias('settings.attempts'),
+
+  /**
+   * @property {boolean} Bidirectional
+   */
+  bidirectional: Ember.computed.alias('settings.bidirectional'),
 
   /**
    * @property {string}

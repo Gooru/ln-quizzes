@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
 
 /**
  * @typedef {Object} Collection
@@ -37,6 +38,13 @@ export default Ember.Object.extend({
   isCollection: null,
 
   /**
+   * @property {boolean} Returns true if the assessment has immediate feedback setting
+   */
+  immediateFeedback: Ember.computed('showFeedback', function(){
+    return this.get('showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
+  }),
+
+  /**
    * @property {[]}
    */
   questions: [],
@@ -68,6 +76,10 @@ export default Ember.Object.extend({
    * @property {string} Collection's title
    */
   title: null,
+  /**
+   * @property {string} Indicate if show answer key setting
+   */
+  showFeedback: Ember.computed.alias('settings.showFeedback'),
 
   /**
    * @property {boolean} Indicate if show answer key setting

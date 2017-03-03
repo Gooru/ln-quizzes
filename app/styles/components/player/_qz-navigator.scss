@@ -154,6 +154,7 @@
           margin:0 0 0 18px;
           color:$white;
           overflow:hidden;
+          width: 50%;
           p{
             margin: 0;
           }
@@ -172,6 +173,15 @@
         background: -webkit-linear-gradient(left, $blue-500 0%,$blue-400 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(-90deg, $blue-500 0%, $blue-400 100%);
         color: $white;
+      }
+      .score{
+        @include flexbox;
+      }
+      span.correct{
+        color:$brand-success;
+      }
+      span.incorrect{
+        color:$brand-incorrect;
       }
     }
 

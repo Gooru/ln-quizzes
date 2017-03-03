@@ -41,7 +41,7 @@ test('finishCollection on collection', function(assert) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });
@@ -71,7 +71,7 @@ test('finishCollection on assessment', function(assert) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });
@@ -123,7 +123,7 @@ test('submitQuestion with next question available', function(assert) {
         assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });
@@ -166,7 +166,7 @@ test('submitQuestion with next question unavailable', function(assert) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });
@@ -209,7 +209,7 @@ test('selectNavigatorItem', function(assert) {
         assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult2, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });

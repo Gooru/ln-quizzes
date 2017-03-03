@@ -240,6 +240,12 @@ export default Ember.Component.extend(ModalMixin, {
   showConfirmation: true,
 
   /**
+   * Indicates if show inmediate feedback
+   * @property {boolean} showFeedback
+   */
+  showFeedback: Ember.computed.alias('collection.immediateFeedback'),
+
+  /**
    * Indicates if the report should be displayed
    * @property {boolean} showReport
    */
@@ -351,7 +357,8 @@ export default Ember.Component.extend(ModalMixin, {
       }
       promise = firstTime ? Ember.RSVP.resolve() :
         component.get('contextService')
-          .moveToResource(resourceId, contextId, resourceResult);
+          .moveToResource(resourceId, contextId, resourceResult).then(
+            result => resourceResult.set('score',result.score));
     }
     return promise;
   },

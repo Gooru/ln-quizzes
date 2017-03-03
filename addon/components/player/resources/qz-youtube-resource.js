@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Env from 'quizzes-addon/config/environment';
 import ResourceComponent from 'quizzes-addon/components/player/resources/qz-resource';
 
 /**
@@ -53,6 +52,7 @@ export default ResourceComponent.extend({
    * @property {string} full resource youtube url
    */
   youtubeUrl: Ember.computed('resource.body', function() {
+    const Env = Ember.getOwner(this).resolveRegistration('config:environment');
     const url = this.get('resource.body');
     const youtubeId = this.getYoutubeIdFromUrl(url);
     const player = Env.player.youtubePlayerUrl;

@@ -74,7 +74,7 @@ export default Ember.Component.extend({
    * (to be consumed by the pie chart component)
    *
    * Each object will consist of:
-   * - color: color corresponding to a grade bracket in the grading scale (@see /app/config/quizzes-config.js)
+   * - color: color corresponding to a grade bracket in the grading scale (@see /app/config/config.js)
    * - value: percentage of students in the class with a score within said grade bracket
    */
   assignmentScores: Ember.computed('scoresData.@each.score', 'scoresData.@each.completed', function () {

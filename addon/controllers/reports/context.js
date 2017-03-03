@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { REAL_TIME_CLIENT, CONTEXT_EVENT_TYPES } from 'quizzes-addon/config/quizzes-config';
-import EndPointsConfig from 'quizzes-addon/utils/endpoint-config';
+import ConfigMixin from 'quizzes-addon/mixins/endpoint-config';
 
 /**
  *
@@ -12,7 +12,7 @@ import EndPointsConfig from 'quizzes-addon/utils/endpoint-config';
  * @module
  * @augments ember/Route
  */
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(ConfigMixin, {
 
   /**
    * @type {ContextService} contextService
@@ -125,7 +125,7 @@ export default Ember.Controller.extend({
      const controller = this;
 
      // Create a new web socket connection
-     let url = EndPointsConfig.getRealTimeWebSocketUrl();
+     let url = this.getRealTimeWebSocketUrl();
      let socket = new SockJS(url);
      let webSocketClient = Stomp.over(socket);
      webSocketClient.heartbeat.outgoing = REAL_TIME_CLIENT.OUTGOING_HEARTBEAT;

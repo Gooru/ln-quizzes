@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Env from 'quizzes-addon/config/environment';
 import ResourceComponent from 'quizzes-addon/components/player/resources/qz-resource';
 
 /**
@@ -35,6 +34,7 @@ export default ResourceComponent.extend({
    */
   vimeoUrl: Ember.computed('resource.body', function() {
     const component = this;
+    const Env = Ember.getOwner(this).resolveRegistration('config:environment');
     var vimeoPlayerUrl = Env.player.vimeoPlayerUrl;
 
     return vimeoPlayerUrl+ component.getVimeoID(this.get('resource.body'));

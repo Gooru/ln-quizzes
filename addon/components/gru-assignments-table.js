@@ -14,7 +14,7 @@ export default Ember.Component.extend(ModalMixin,{
   /**
    * @property {Service} profile service
    */
-  profileService: Ember.inject.service('quizzes/profile'),
+  profileService: Ember.inject.service('quizzes/api-sdk/profile'),
 
   // -------------------------------------------------------------------------
   // Attributes

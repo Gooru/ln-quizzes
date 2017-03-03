@@ -19,10 +19,11 @@ test('finishCollection on collection', function(assert) {
     isCollection: true
   });
   let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
-    contextId: 'context'
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'}
   });
   let component = this.subject({
-    collection,
     contextResult,
     resourceResult: questionResult,
     router: {
@@ -57,11 +58,12 @@ test('finishCollection on assessment', function(assert) {
     isCollection: false
   });
   let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
-    contextId: 'context'
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'}
   });
   let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
   let component = this.subject({
-    collection,
     contextResult,
     resourceResult: questionResult,
     contextService: Ember.Object.create({
@@ -105,13 +107,14 @@ test('submitQuestion with next question available', function(assert) {
   });
   let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
     contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'},
     getResultByResourceId: function(resourceId) {
       assert.equal(resourceId, question2.get('id'), 'Question ids should match');
       return questionResult2;
     }
   });
   let component = this.subject({
-    collection,
     resource: question,
     resourceResult: questionResult,
     contextResult,
@@ -149,11 +152,12 @@ test('submitQuestion with next question unavailable', function(assert) {
   });
   let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
   let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
-    contextId: 'context'
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'}
   });
 
   let component = this.subject({
-    collection,
     resource: question,
     resourceResult: questionResult,
     contextResult,
@@ -190,13 +194,14 @@ test('selectNavigatorItem', function(assert) {
   let questionResult2 = QuestionResult.create(Ember.getOwner(this).ownerInjection());
   let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
     contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'},
     getResultByResourceId: function(resourceId) {
       assert.equal(resourceId, question.get('id'), 'Question ids should match');
       return questionResult;
     }
   });
   let component = this.subject({
-    collection,
     resourceResult: questionResult2,
     contextResult,
     contextService: Ember.Object.create({
@@ -226,12 +231,50 @@ test('changeEmotion', function(assert) {
     isCollection: false
   });
   let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
-  let component = this.subject({
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
     collection,
-    resourceResult: questionResult
+    context:{id:'context-id',attempts:'2'}
+  });
+  let component = this.subject({
+    resourceResult: questionResult,
+    contextResult
   });
   let emotion = 'emotion';
   component.send('changeEmotion', emotion);
-
   assert.equal(questionResult.get('reaction'), 'emotion', 'reactionType should be updated');
+});
+
+test('isNavigationDisabled', function(assert) {
+  assert.expect(2);
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: false,
+    settings:{
+      bidirectional:true
+    }
+  });
+  let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'}
+  });
+  let component = this.subject({
+    resourceResult: questionResult,
+    contextResult
+  });
+
+  assert.equal(component.get('isNavigationDisabled'), false , 'Navigation should not be disabled');
+
+  let collection2 = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: false,
+    settings:{
+      bidirectional:false
+    }
+  });
+  component.set('collection',collection2);
+  assert.equal(component.get('isNavigationDisabled'), true , 'Navigation should be disabled');
+
 });

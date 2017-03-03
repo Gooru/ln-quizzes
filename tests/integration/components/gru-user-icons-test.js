@@ -229,8 +229,6 @@ test('users are sorted first by state (active first), then ascending alphabetica
 //  assert.ok(!$popover.length, 'Tooltip should have been hidden');
 //});
 
-
-
 test('it opens/closes a modal to view more users when the number of users exceeds the view threshold', function(assert) {
 
   const users = [

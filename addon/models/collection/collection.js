@@ -7,9 +7,14 @@ import Ember from 'ember';
 export default Ember.Object.extend({
 
   /**
-   * @property {[]}
+   * @property {number} Attempts allowed
    */
-  attempts:[],
+  attempts: Ember.computed.alias('settings.attempts'),
+
+  /**
+   * @property {boolean} Bidirectional
+   */
+  bidirectional: Ember.computed.alias('settings.bidirectional'),
 
   /**
    * @property {string}
@@ -60,14 +65,14 @@ export default Ember.Object.extend({
   settings: null,
 
   /**
+   * @property {boolean} Indicate if show answer key setting
+   */
+  showKey: Ember.computed.alias('settings.showKey'),
+
+  /**
    * @property {string} Collection's title
    */
   title: null,
-
-  /**
-   * @property {number}
-   */
-  totalAttempts: Ember.computed.alias('attempts.length'),
 
   /**
    * Gets the next resource based on the resource provided

@@ -40,6 +40,19 @@ export default Ember.Service.extend({
   },
 
   /**
+   * Gets  contexts by id assigned to the current student
+   * @returns {Promise}
+   */
+  getAssignedContextById: function(contextId) {
+    const service = this;
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service.get('contextAdapter').getAssignedContextById(contextId)
+        .then(response => service.get('contextSerializer').normalizeReadContext(response))
+        .then(resolve, reject);
+    });
+  },
+
+  /**
    * Gets all the contexts assigned to the current student
    * @returns {Promise}
    */

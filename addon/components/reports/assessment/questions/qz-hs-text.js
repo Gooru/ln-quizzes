@@ -45,7 +45,7 @@ export default Ember.Component.extend(QuestionMixin, {
       let elementClass = (anonymous) ? 'anonymous' : ((userAnswerCorrect) ? 'correct' : 'incorrect');
       return {
         text: answer.get('text'),
-        selected: selected,
+        selected,
         'class': elementClass
       };
     });

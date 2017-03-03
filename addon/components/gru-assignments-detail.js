@@ -11,6 +11,11 @@ export default Ember.Component.extend(ModalMixin,{
    */
   i18n: Ember.inject.service(),
 
+  /**
+   * @property {Service} Context service
+   */
+  contextService: Ember.inject.service('quizzes/api-sdk/context'),
+
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -58,6 +63,21 @@ export default Ember.Component.extend(ModalMixin,{
       } else {
         this.get('router').transitionTo('reports.context', this.get('assignment.id'));
       }
+    },
+    /**
+     * Preview player
+     */
+    previewPlayer: function(assignment) {
+      const playerURL = this.get('playerURL');
+      assignment.set('classId', null);
+      this.get('contextService').createContext(assignment).then(({ id }) => {
+        if (playerURL) {
+          let url = playerURL.replace('{context-id}', id);
+          window.location.href = url;
+        } else {
+          this.get('router').transitionTo('player', id);
+        }
+      });
     },
     /**
      * Open player

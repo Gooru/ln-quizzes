@@ -56,7 +56,7 @@ export default Ember.Component.extend({
   showFromComputer: false,
 
   /**
-   * @type {String} list of all valid extension per quizzes/config/quizzes-config#UPLOAD_TYPES
+   * @type {String} list of all valid extension per quizzes/config/config#UPLOAD_TYPES
    */
   validExtensions: Ember.computed(function() {
     var extensions = UPLOADABLE_TYPES.map(typeObject => typeObject.validExtensions);

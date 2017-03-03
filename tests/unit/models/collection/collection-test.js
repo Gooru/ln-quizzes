@@ -21,15 +21,6 @@ test('resourcesSorted', function (assert) {
   assert.equal(model.get('resourcesSorted')[2].get('id'), 'resource-2', 'Wrong third resource');
 });
 
-test('totalAttempts', function (assert) {
-  assert.expect(1);
-  let model = this.subject({
-    attempts: [{id:'attempt-1'},{id:'attempt-2'}]
-  });
-
-  assert.equal(model.get('totalAttempts'),2,'Should have 2 attempts');
-});
-
 test('isAssessment', function (assert) {
   assert.expect(1);
   let model = this.subject({
@@ -193,4 +184,22 @@ test('isLastResource', function (assert) {
 
   lastResource = model.isLastResource(resourceA);
   assert.ok(!lastResource, 'It is the last resource');
+});
+
+test('attempts', function (assert) {
+  assert.expect(1);
+  let model = this.subject({
+    settings: {attempts: 1}
+  });
+
+  assert.equal(model.get('attempts'),1,'Incorrect attempts');
+});
+
+test('showKey', function (assert) {
+  assert.expect(1);
+  let model = this.subject({
+    settings: {showKey:true}
+  });
+
+  assert.equal(model.get('showKey'),true,'Should be true');
 });

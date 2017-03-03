@@ -35,4 +35,10 @@
     height: 100%;
     min-height: 400px;
   }
+
+  &.confirmation {
+    @include flexbox;
+    @include justify-content(center);
+    margin-top:20px;
+  }
 }

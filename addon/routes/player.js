@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ContextResult from 'quizzes-addon/models/result/context';
 
 /**
  * @typedef { Ember.Route } PlayerRoute
@@ -7,6 +8,13 @@ import Ember from 'ember';
  * @augments ember/Route
  */
 export default Ember.Route.extend({
+  // -------------------------------------------------------------------------
+  // Dependencies
+  /**
+   * @type {AttemptService} attemptService
+   * @property {Ember.Service} Service to send context related events
+   */
+  quizzesAttemptService: Ember.inject.service('quizzes/attempt'),
 
   /**
    * @type {CollectionService} collectionService
@@ -31,34 +39,75 @@ export default Ember.Route.extend({
   /**
    * @param {{ contextId: string }} params
    */
-  model(params) {
-    return this.quizzesModel(params);
-  },
+   /**
+    * @param {{ contextId: string }} params
+    */
+   model(params) {
+     return this.quizzesModel(params);
+   },
 
-  /**
-   * @param {{ contextId: string }} params
-   */
-  quizzesModel(params) {
-    const route = this;
-    const contextId = params.contextId;
-    if(params.token) {
-      route.get('quizzesConfigurationService').addProperties({ token: params.token });
+   /**
+    * @param {{ contextId: string }} params
+    */
+   quizzesModel(params) {
+     const route = this;
+     const contextId = params.contextId;
+     if(params.token) {
+       route.get('quizzesConfigurationService').addProperties({ token: params.token });
+     }
+     let type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
+     let reportURL = params.routeURL || route.get('quizzesConfigurationService.configuration.properties.reportURL');
+     let profileId = params.profileId || route.get('quizzesConfigurationService.configuration.properties.profileId');
+
+     if(type === 'collection'){
+       return route.get('quizzesContextService').startContext(contextId).then(function(contextResult){
+         return Ember.RSVP.hash({
+           contextResult,
+           collection: route.get('quizzesCollectionService').readCollection(contextResult.collectionId, type),
+           reportURL
+         });
+       });
+     } else {
+       return route.get('quizzesContextService').getAssignedContextById(contextId).then(
+           context => !context ? null : route.get('quizzesCollectionService').readCollection(context.collectionId, type).then(
+             collection => !collection ? null : route.get('quizzesAttemptService').getAttemptIds(contextId, profileId).then(
+               attempts => Ember.RSVP.hash({
+                 attempts,
+                 collection,
+                 context,
+                 reportURL,
+                 startContextFunction: () => route.startContext(context.id)
+               })
+           )
+         )
+       );
+     }
+   },
+
+  setupController(controller,model) {
+    let collection = model.collection;
+    let contextResult =  ContextResult.create();
+    if (collection.get('isCollection')) {
+      contextResult = model.contextResult;
+      contextResult.merge(collection);
+    } else {
+      let context =  model.context;
+      context.set('attempts', model.attempts.length);
+      contextResult.set('context',context);
+      contextResult.set('collection',collection);
+      controller.set('startContextFunction', model.startContextFunction);
     }
-    let type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
-    let reportURL = params.routeURL || route.get('quizzesConfigurationService.configuration.properties.reportURL');
-    return route.get('quizzesContextService').startContext(contextId).then(function(contextResult){
-      return Ember.RSVP.hash({
-        contextResult,
-        collection: route.get('quizzesCollectionService').readCollection(contextResult.collectionId, type),
-        reportURL
-      });
-    });
-  },
-
-  setupController(controller, { contextResult, collection, reportURL }) {
-    contextResult.merge(collection);
     controller.set('contextResult', contextResult);
-    controller.set('collection', collection);
-    controller.set('reportURL', reportURL);
+    controller.set('reportURL', model.reportURL);
+  },
+  /**
+   * @param {string} contextId
+   * Starts context to show the player
+   */
+  startContext:function(contextId){
+    const route = this;
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      route.get('quizzesContextService').startContext(contextId).then(resolve, reject);
+    });
   }
 });

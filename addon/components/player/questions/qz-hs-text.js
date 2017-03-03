@@ -82,8 +82,8 @@ export default QuestionComponent.extend({
 
   /**
    * @typedef answers
-   * @prop {String} id - answer id
-   * @prop {String} content - markup string containing the answer text
+   * @property {String} value - answer value
+   * @property {String} content - markup string containing the answer text
    */
   answers: Ember.computed.map('question.answers', function(answer) {
     return {
@@ -93,14 +93,14 @@ export default QuestionComponent.extend({
   }),
 
   /**
-   * @prop {String} instructions - Question instructions
+   * @property {String} instructions - Question instructions
    */
   instructions: Ember.computed(function() {
     return this.get('i18n').t('qz-hs-text.instructions');
   }),
 
   /**
-   * @prop {Array} selectedAnswers - Array of ids for each one of the answers selected by the user
+   * @property {Array} selectedAnswers - Array of ids for each one of the answers selected by the user
    */
   selectedAnswers: Ember.A([]),
 

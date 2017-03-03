@@ -16,7 +16,7 @@ export default Ember.Component.extend({
   /**
    * @property {Ember.Service} Service to do retrieve depth of knowledge
    */
-  lookupService: Ember.inject.service('api-sdk/lookup'),
+  lookupService: Ember.inject.service('quizzes/lookup'),
 
   // -------------------------------------------------------------------------
   // Attributes

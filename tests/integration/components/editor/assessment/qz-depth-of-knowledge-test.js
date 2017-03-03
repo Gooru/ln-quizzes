@@ -30,8 +30,8 @@ moduleForComponent('editor/assessment/qz-depth-of-knowledge', 'Integration | Com
   integration: true,
   beforeEach: function () {
     this.inject.service('i18n');
-    this.register('service:api-sdk/lookup', lookupServiceStub);
-    this.inject.service('api-sdk/lookup');
+    this.register('service:quizzes/lookup', lookupServiceStub);
+    this.inject.service('quizzes/lookup');
   }
 });
 

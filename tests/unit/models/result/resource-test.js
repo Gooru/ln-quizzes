@@ -6,15 +6,15 @@ test('timeSpent', function(assert) {
   let resourceResult = this.subject({
     savedTime: 0,
     startTime: 0,
-    stopTime: 20
+    stopTime: 2000
   });
-  assert.equal(resourceResult.get('timeSpent'), 20, 'Wrong time spent');
+  assert.equal(resourceResult.get('timeSpent'), 2000, 'Wrong time spent');
 
-  resourceResult.set('startTime', 10);
-  assert.equal(resourceResult.get('timeSpent'), 10, 'Wrong time spent');
+  resourceResult.set('startTime', 1000);
+  assert.equal(resourceResult.get('timeSpent'), 1000, 'Wrong time spent');
 
-  resourceResult.set('savedTime', 50);
-  assert.equal(resourceResult.get('timeSpent'), 60, 'Wrong time spent');
+  resourceResult.set('savedTime', 5000);
+  assert.equal(resourceResult.get('timeSpent'), 6000, 'Wrong time spent');
 });
 
 test('clear', function(assert) {
@@ -30,5 +30,9 @@ test('clear', function(assert) {
   assert.equal(resourceResult.get('startTime'), 0, 'Wrong start time');
   assert.equal(resourceResult.get('stopTime'), 0, 'Wrong stop time');
   assert.equal(resourceResult.get('timeSpent'), 0, 'Wrong time spent');
+});
 
+test('roundMilliseconds', function(assert) {
+  const component = this.subject();
+  assert.equal(component.roundMilliseconds(445010), 445000, 'Wrong rounded');
 });

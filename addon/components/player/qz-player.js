@@ -9,18 +9,20 @@ export default Ember.Component.extend(ModalMixin, {
    * @type {CollectionService} collectionService
    * @property {Ember.Service} Service to retrieve a collection
    */
-  collectionService: Ember.inject.service('quizzes/collection'),
+  collectionService: Ember.inject.service('quizzes/api-sdk/collection'),
 
   /**
    * @type {ContextService} contextService
    * @property {Ember.Service} Service to send context related events
    */
-  contextService: Ember.inject.service('quizzes/context'),
+  contextService: Ember.inject.service('quizzes/api-sdk/context'),
 
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames:['qz-player'],
+
+  classNameBindings:['showConfirmation:confirmation'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -66,10 +68,24 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Action triggered when the user open de navigator panel
+     * Action triggered when the user open the navigator panel
      */
     openNavigator: function(){
       Ember.$( '.app-container' ).addClass( 'navigator-on' );
+    },
+
+    /**
+     * Action triggered when the user open the player
+     */
+    openPlayer:function(){
+      const component = this;
+      let startContext = component.get('startContextFunction');
+      startContext().then(function(contextResult){
+        contextResult.merge(component.get('collection'));
+        component.set('contextResult',contextResult);
+        component.set('showConfirmation',false);
+        component.startAssessment();
+      });
     },
 
     /**
@@ -92,17 +108,25 @@ export default Ember.Component.extend(ModalMixin, {
       component.moveOrFinish(question);
     }
   },
-
   // -------------------------------------------------------------------------
   // Events
 
   init: function() {
     this._super(...arguments);
-    this.startAssessment();
+    if(this.get('collection.isCollection')){
+      this.set('showConfirmation',false);
+      this.startAssessment();
+    }
   },
 
   // -------------------------------------------------------------------------
   // Properties
+
+  /**
+   * The attempts played in a context
+   * @property {Collection} attempts
+   */
+  attempts: Ember.computed.alias('contextResult.context.attempts'),
 
   /**
    * @property {ContextResult} contextResult
@@ -113,7 +137,13 @@ export default Ember.Component.extend(ModalMixin, {
    * The collection presented in this player
    * @property {Collection} collection
    */
-  collection: null,
+  collection: Ember.computed.alias('contextResult.collection'),
+
+  /**
+   * The context presented in this player
+   * @property {Context} context
+   */
+  context: Ember.computed.alias('contextResult.context'),
 
   /**
    * Is Assessment
@@ -123,9 +153,11 @@ export default Ember.Component.extend(ModalMixin, {
 
   /**
    * Should resource navigation in the player be disabled?
-   * @property {Lesson}
+   * @property {Boolean}
    */
-  isNavigationDisabled: false,
+  isNavigationDisabled: Ember.computed('collection',function(){
+    return !this.get('collection.bidirectional');
+  }),
 
   /**
    * Indicates if the current resource type is resource
@@ -200,6 +232,12 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean} showContent
    */
   showContent: false,
+
+  /**
+   * Indicates if show the assessment confirmation
+   * @property {boolean} showConfirmation
+   */
+  showConfirmation: true,
 
   /**
    * Indicates if the report should be displayed

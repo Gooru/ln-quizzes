@@ -61,6 +61,26 @@ test('createContext', function(assert) {
     );
 });
 
++test('getAssignedContextById', function(assert) {
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
+  const expectedContextId = 'context-id';
+  const routes = function() {
+    this.get('/quizzes/api/v1/contexts/context-id/assigned', function() {
+      return [200, {'Content-Type': 'application/json'}, JSON.stringify([{ id: '77d0c04b-b71a-485b-9573-9101cc288a0f' }])];
+    }, false);
+  };
+
+  this.pretender.map(routes);
+  this.pretender.unhandledRequest = function(verb, path) {
+    assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+  };
+  adapter.getAssignedContextById(expectedContextId)
+    .then(response => assert.deepEqual(response.length, 1, 'Wrong response'));
+});
 
 test('getContextsAssigned', function(assert) {
   const adapter = this.subject({

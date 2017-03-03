@@ -65,7 +65,4 @@ test('it renders max allowed tags correctly', function(assert) {
   assert.ok($component.find(".popover").length, 'Tooltip is visible');
   assert.equal($component.find('> .gru-taxonomy-tag').length, 2, 'Tags visible without the tooltip');
   assert.equal($component.find(".popover .gru-taxonomy-tag").length, 4, 'Tags visible in the tooltip');
-
-  $component.find(".non-visible-tags").click();
-  assert.ok(!$component.find(".popover").length, 'Tooltip should not be visible');
 });

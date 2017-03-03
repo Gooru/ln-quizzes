@@ -24,7 +24,6 @@ export default Ember.Object.extend({
     return Ember.RSVP.hashSettled({
       configuration: Ember.$.ajax(url, options)
     }).then(function(hash) {
-      console.log(2)
       return hash.configuration.value;
     });
   }

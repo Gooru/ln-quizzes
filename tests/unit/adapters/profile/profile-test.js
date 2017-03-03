@@ -1,5 +1,7 @@
+import Ember from 'ember';
 import Pretender from 'pretender';
 import { moduleFor, test } from 'ember-qunit';
+import Configuration from 'quizzes-addon/config/env/test';
 
 moduleFor('adapter:profile/profile', 'Unit | Adapter | profile/profile', {
   beforeEach: function() {
@@ -11,7 +13,11 @@ moduleFor('adapter:profile/profile', 'Unit | Adapter | profile/profile', {
 });
 
 test('readProfile', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
 
   const routes = function() {
     this.get('/api/nucleus/v2/profiles/search',

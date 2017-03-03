@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import TokenMixin from 'quizzes-addon/mixins/token';
 import ApplicationAdapter from 'quizzes-addon/adapters/application';
 

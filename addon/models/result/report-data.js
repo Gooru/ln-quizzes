@@ -173,7 +173,7 @@ export default Ember.Object.extend({
       currentResourceId: eventData.eventBody.currentResourceId,
       profileId: eventData.profileId,
       profileName: eventData.profileName,
-      resourceResults: this.get('collection.resources').map(res =>
+      resourceResults: Ember.A(this.get('collection.resources').map(res =>
         QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
           resourceId: res.id,
           resource: res,
@@ -183,7 +183,7 @@ export default Ember.Object.extend({
           score: 0,
           skipped: true
         })
-      )
+      ))
     };
     if (oldReportEvents.length) {
       let currentReportEvent = oldReportEvents[0];

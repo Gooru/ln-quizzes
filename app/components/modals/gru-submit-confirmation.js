@@ -1,0 +1,1 @@
+export { default } from 'quizzes-addon/components/modals/gru-submit-confirmation';

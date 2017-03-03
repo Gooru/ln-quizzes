@@ -75,7 +75,7 @@ export default Ember.Object.extend({
    * @returns {Resource|undefined} next resource
    */
   nextResource: function(resource){
-    var next;
+    let next;
     if (this.get('hasResources')){
       const resources = this.get('resources'),
         index = resources.indexOf(resource);
@@ -90,7 +90,7 @@ export default Ember.Object.extend({
    * @returns {Resource|undefined} previous resource
    */
   prevResource: function(resource){
-    var next;
+    let next;
     if (this.get('hasResources')){
       const resources = this.get('resources'),
         index = resources.indexOf(resource);
@@ -105,11 +105,11 @@ export default Ember.Object.extend({
    * @returns {Resource|undefined}
    */
   getResourceById: function(resourceId){
-    var resource;
-    if (this.get('hasResources')){
+    let resource;
+    if (this.get('hasResources')) {
       const resources = this.get('resources').filterBy('id', resourceId);
-      if (resources.get('length')){
-        resource = resources.get('firstObject');
+      if (resources.length) {
+        resource = resources[0];
       }
     }
     return resource;

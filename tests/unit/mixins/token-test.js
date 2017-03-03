@@ -10,7 +10,6 @@ moduleFor('mixin:token', 'Unit | Mixin | token', {
         properties: { token }
       }
     }));
-    this.inject.service('location-service', { as: 'location' });
   }
 });
 

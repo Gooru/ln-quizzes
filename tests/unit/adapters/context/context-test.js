@@ -1,5 +1,7 @@
+import Ember from 'ember';
 import Pretender from 'pretender';
 import { moduleFor, test } from 'ember-qunit';
+import Configuration from 'quizzes-addon/config/env/test';
 
 moduleFor('adapter:context/context', 'Unit | Adapter | context/context', {
   beforeEach: function() {
@@ -11,7 +13,11 @@ moduleFor('adapter:context/context', 'Unit | Adapter | context/context', {
 });
 
 test('createContext', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
 
   const routes = function() {
     this.post('/quizzes/api/v1/contexts', function() {
@@ -57,7 +63,11 @@ test('createContext', function(assert) {
 
 
 test('getContextsAssigned', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const routes = function() {
     this.get('/quizzes/api/v1/contexts/assigned', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify([{id:'77d0c04b-b71a-485b-9573-9101cc288a0f'}])];
@@ -73,7 +83,11 @@ test('getContextsAssigned', function(assert) {
 });
 
 test('getContextsCreated', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const routes = function() {
     this.get('/quizzes/api/v1/contexts/created', function() {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify([{id:'77d0c04b-b71a-485b-9573-9101cc288a0f'}])];
@@ -89,7 +103,11 @@ test('getContextsCreated', function(assert) {
 });
 
 test('moveToResource', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const expectedContextId = 'context-id';
   const expectedResourceId = 'resource-id';
   const expectedPreviousResource = {
@@ -114,7 +132,11 @@ test('moveToResource', function(assert) {
 });
 
 test('moveToResource no resource', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const expectedContextId = 'context-id';
   const expectedResourceId = null;
   const expectedPreviousResource = {
@@ -137,7 +159,11 @@ test('moveToResource no resource', function(assert) {
 });
 
 test('moveToResource no previous resource', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const expectedContextId = 'context-id';
   const expectedResourceId = 'resource-id';
   const expectedPreviousResource = null;
@@ -158,7 +184,11 @@ test('moveToResource no previous resource', function(assert) {
 });
 
 test('sendStartContextEvent', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const expectedContextId = 'context-id';
   const routes = function() {
     this.post('/quizzes/api/v1/contexts/context-id/start', function() {
@@ -174,7 +204,11 @@ test('sendStartContextEvent', function(assert) {
 });
 
 test('sendFinishContextEvent', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const expectedContextId = 'context-id';
   const routes = function() {
     this.post('/quizzes/api/v1/contexts/context-id/finish', function() {
@@ -190,7 +224,11 @@ test('sendFinishContextEvent', function(assert) {
 });
 
 test('updateContext', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const expectedContextId = 'context-id';
   const routes = function() {
     this.put('/quizzes/api/v1/contexts/context-id', function() {

@@ -187,7 +187,7 @@ test('parseFinishEvent', function(assert) {
       ReportDataEvent.create({
         profileId: 'student1',
         profileName: 'name1',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 0
@@ -196,12 +196,12 @@ test('parseFinishEvent', function(assert) {
             resourceId: 'q2',
             score: 0
           })
-        ]
+        ])
       }),
       ReportDataEvent.create({
         profileId: 'student2',
         profileName: 'name2',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 0
@@ -210,7 +210,7 @@ test('parseFinishEvent', function(assert) {
             resourceId: 'q2',
             score: 0
           })
-        ]
+        ])
       })
     ])
   });
@@ -243,7 +243,7 @@ test('parseOnResourceEvent', function(assert) {
       ReportDataEvent.create({
         profileId: 'student1',
         profileName: 'name1',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 0
@@ -252,12 +252,12 @@ test('parseOnResourceEvent', function(assert) {
             resourceId: 'q2',
             score: 0
           })
-        ]
+        ])
       }),
       ReportDataEvent.create({
         profileId: 'student2',
         profileName: 'name2',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 0
@@ -266,7 +266,7 @@ test('parseOnResourceEvent', function(assert) {
             resourceId: 'q2',
             score: 0
           })
-        ]
+        ])
       })
     ])
   });
@@ -301,7 +301,8 @@ test('parseOnResourceEvent', function(assert) {
 });
 
 test('parseStartEvent', function(assert) {
-  let model = this.subject({
+  let model = this.subject(Ember.getOwner(this).ownerInjection());
+  model.setProperties({
     collection: Collection.create({
       resources: Ember.A([
         Resource.create({
@@ -316,7 +317,7 @@ test('parseStartEvent', function(assert) {
       ReportDataEvent.create({
         profileId: 'student1',
         profileName: 'name1',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 0
@@ -325,7 +326,7 @@ test('parseStartEvent', function(assert) {
             resourceId: 'q2',
             score: 0
           })
-        ]
+        ])
       }),
       ReportDataEvent.create({
         averageScore: 100,
@@ -335,7 +336,7 @@ test('parseStartEvent', function(assert) {
         totalTimeSpent: 10000,
         profileId: 'student2',
         profileName: 'name2',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 0
@@ -344,7 +345,7 @@ test('parseStartEvent', function(assert) {
             resourceId: 'q2',
             score: 0
           })
-        ]
+        ])
       })
     ])
   });
@@ -411,7 +412,7 @@ test('setCollection', function(assert) {
       ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
         profileId: 'student1',
         profileName: 'name1',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 100
@@ -420,12 +421,12 @@ test('setCollection', function(assert) {
             resourceId: 'q2',
             score: 100
           })
-        ]
+        ])
       }),
       ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
         profileId: 'student2',
         profileName: 'name2',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 100
@@ -442,7 +443,7 @@ test('setCollection', function(assert) {
             resourceId: 'q4',
             score: 100
           })
-        ]
+        ])
       })
     ])
   });
@@ -467,7 +468,7 @@ test('getResultsByQuestion', function(assert) {
       ReportDataEvent.create({
         profileId: 'student1',
         profileName: 'name1',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 0
@@ -476,12 +477,12 @@ test('getResultsByQuestion', function(assert) {
             resourceId: 'q2',
             score: 0
           })
-        ]
+        ])
       }),
       ReportDataEvent.create({
         profileId: 'student2',
         profileName: 'name2',
-        resourceResults: [
+        resourceResults: Ember.A([
           ResourceResult.create({
             resourceId: 'q1',
             score: 0
@@ -490,7 +491,7 @@ test('getResultsByQuestion', function(assert) {
             resourceId: 'q2',
             score: 0
           })
-        ]
+        ])
       })
     ])
   });

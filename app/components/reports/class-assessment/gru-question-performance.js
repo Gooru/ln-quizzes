@@ -1,0 +1,1 @@
+export { default } from 'quizzes-addon/components/reports/class-assessment/gru-question-performance';

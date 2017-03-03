@@ -14,7 +14,7 @@ test('questionResults', function(assert) {
     ])
   });
 
-  assert.equal(contextResult.get('questionResults').get('length'), 1, 'Wrong question results');
+  assert.equal(contextResult.get('questionResults').length, 1, 'Wrong question results');
 });
 
 test('totalResources', function(assert) {

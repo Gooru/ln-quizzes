@@ -16,7 +16,6 @@ test('Hot Text Highlight - getWordItems', function (assert) {
   const mapItems = ({ index, text }) => ({ index, text });
 
   //with no words
-  console.log(getWordItems(''));
   let wordItems = getWordItems('');
   assert.equal(wordItems.length, 0, 'Wrong number of items');
 

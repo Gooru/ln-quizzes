@@ -9,11 +9,11 @@ moduleFor('model:collection/collection', 'Unit | Model | collection/collection',
 test('resourcesSorted', function (assert) {
   assert.expect(3);
   let model = this.subject({
-    resources: [
+    resources: Ember.A([
       Resource.create({ id: 'resource-1', sequence: 1 }),
       Resource.create({ id: 'resource-2', sequence: 3 }),
       Resource.create({ id: 'resource-3', sequence: 2 })
-    ]
+    ])
   });
 
   assert.equal(model.get('resourcesSorted')[0].get('id'), 'resource-1', 'Wrong first resource');
@@ -162,24 +162,14 @@ test('getResourceById without resources', function (assert) {
 test('getResourceById', function (assert) {
   assert.expect(2);
 
-  var resources = Ember.A(),
-    resourceA = null,
-    resourceB = null;
-
-  Ember.run(function () {
-    resourceA = Ember.Object.create({id: 1});
-    resourceB = Ember.Object.create({id: 2});
-
-    resources.pushObject(resourceA);
-    resources.pushObject(resourceB);
-  });
-  let model = this.subject({
-    resources: resources
-  });
-
-  var resource = model.getResourceById(resourceA.get('id'));
+  let resources = Ember.A([
+    Ember.Object.create({id: '1'}),
+    Ember.Object.create({id: '2'})
+  ]);
+  let model = this.subject({ resources });
+  let resource = model.getResourceById('1');
   assert.ok(resource, 'Resource should be found');
-  assert.equal(resource.get('id'), 1, 'Wrong resource id');
+  assert.equal(resource.get('id'), '1', 'Wrong resource id');
 });
 
 test('isLastResource', function (assert) {
@@ -196,9 +186,7 @@ test('isLastResource', function (assert) {
     resources.pushObject(resourceA);
     resources.pushObject(resourceB);
   });
-  let model = this.subject({
-    resources: resources
-  });
+  let model = this.subject({ resources });
 
   var lastResource = model.isLastResource(resourceB);
   assert.ok(lastResource, 'It is not the last resource');

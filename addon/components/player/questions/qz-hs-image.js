@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import QuestionComponent from 'quizzes-addon/components/player/questions/qz-hs-text';
+import GruHSTextComponent from 'quizzes-addon/components/player/questions/qz-hs-text';
 
 /**
  * Hot Spot Image

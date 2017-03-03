@@ -1,5 +1,7 @@
+import Ember from 'ember';
 import Pretender from 'pretender';
 import { moduleFor, test } from 'ember-qunit';
+import Configuration from 'quizzes-addon/config/env/test';
 
 moduleFor('adapter:attempt/attempt', 'Unit | Adapter | attempt/attempt', {
   beforeEach: function() {
@@ -11,7 +13,11 @@ moduleFor('adapter:attempt/attempt', 'Unit | Adapter | attempt/attempt', {
 });
 
 test('getReportData', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const expectedContextId = 'context-id';
   const routes = function() {
     this.get('/quizzes/api/v1/attempts/contexts/context-id', function() {
@@ -27,7 +33,11 @@ test('getReportData', function(assert) {
 });
 
 test('getAttemptData', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const expectedAttemptId = 'attempt-id';
   const routes = function() {
     this.get('/quizzes/api/v1/attempts/attempt-id', function() {
@@ -43,7 +53,11 @@ test('getAttemptData', function(assert) {
 });
 
 test('getAttemptIds', function(assert) {
-  const adapter = this.subject();
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
   const expectedContextId = 'context-id';
   const expectedProfileId = 'profile-id';
   const routes = function() {

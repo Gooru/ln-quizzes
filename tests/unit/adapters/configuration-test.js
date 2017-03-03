@@ -11,7 +11,7 @@ test('loadConfiguration', function(assert) {
 
   const adapter = this.subject();
   const routes = function() {
-    this.get('/config/any-environment.json', function(/*request*/) {
+    this.get('config/any-environment.json', function(/*request*/) {
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({ a: 1 })];
     }, false);
   };

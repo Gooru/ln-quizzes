@@ -1,6 +1,8 @@
 module.exports = {
   "framework": "qunit",
   "test_page": "tests/index.html?hidepassed",
+  "reporter": "tap",
+  "xunit_intermediate_output": false,
   "disable_watching": true,
   "launch_in_ci": [
     "PhantomJS"
@@ -9,6 +11,7 @@ module.exports = {
     "PhantomJS",
     "Chrome"
   ],
+
   "proxies": {
     "/quizzes": {
       "target": "http://localhost:8882"
@@ -17,4 +20,4 @@ module.exports = {
       "target": "http://localhost:8882"
     }
   }
-};
+}

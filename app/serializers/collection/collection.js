@@ -53,6 +53,7 @@ export default Ember.Object.extend({
     return {
       attempts: setting.attempts_allowed || -1,
       bidirectional: setting.bidirectional_play || false,
+      showFeedback: setting.show_feedback || ASSESSMENT_SHOW_VALUES.SUMMARY,
       showKey: setting.show_key === ASSESSMENT_SHOW_VALUES.SUMMARY
     };
   }

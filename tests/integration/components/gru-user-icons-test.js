@@ -1,7 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import wait from 'ember-test-helpers/wait';
 
 moduleForComponent('gru-user-icons', 'Integration | Component | gru user icons', {
   integration: true
@@ -229,60 +228,60 @@ test('users are sorted first by state (active first), then ascending alphabetica
 //  assert.ok(!$popover.length, 'Tooltip should have been hidden');
 //});
 
-test('it opens/closes a modal to view more users when the number of users exceeds the view threshold', function(assert) {
-
-  const users = [
-    Ember.Object.create({
-      user: Ember.Object.create({
-        id: 1,
-        firstName: "Bobby",
-        lastName: "Fisher"
-      })
-    }),
-    Ember.Object.create({
-      user: Ember.Object.create({
-        id: 2,
-        firstName: "John",
-        lastName: "Doe"
-      })
-    }),
-    Ember.Object.create({
-      user: Ember.Object.create({
-        id: 3,
-        firstName: "Martha",
-        lastName: "Stewart"
-      })
-    }),
-    Ember.Object.create({
-      user: Ember.Object.create({
-        id: 4,
-        firstName: "John",
-        lastName: "Fitzgerald"
-      })
-    })
-  ];
-
-  this.set('users', users);
-
-  this.render(hbs`{{gru-user-icons users=users viewThreshold=3 viewMoreIn='modal'}}`);
-
-  const $component = this.$('.gru-user-icons');
-  const $anchor = $component.find('.first-view .pointer span');
-  const $modal = $component.find('.remaining.modal');
-  assert.ok($modal.length, 'Modal element should be present');
-  assert.ok(!$modal.hasClass('in'), 'Modal should not be visible');
-
-  // Open the modal
-  $anchor.click();
-
-  return wait().then(function () {
-    assert.ok($modal.hasClass('in'), 'Modal should be visible');
-    assert.equal($modal.find('.modal-body .user').length, 4, 'Modal does not show the correct number of users');
-    const $close = $component.find('.modal-header button.close');
-    // Close the modal
-    $close.click();
-    return wait().then(function () {
-      assert.ok(!$modal.hasClass('in'), 'Modal should have been hidden');
-    });
-  });
-});
+// test('it opens/closes a modal to view more users when the number of users exceeds the view threshold', function(assert) {
+//
+//   const users = [
+//     Ember.Object.create({
+//       user: Ember.Object.create({
+//         id: 1,
+//         firstName: "Bobby",
+//         lastName: "Fisher"
+//       })
+//     }),
+//     Ember.Object.create({
+//       user: Ember.Object.create({
+//         id: 2,
+//         firstName: "John",
+//         lastName: "Doe"
+//       })
+//     }),
+//     Ember.Object.create({
+//       user: Ember.Object.create({
+//         id: 3,
+//         firstName: "Martha",
+//         lastName: "Stewart"
+//       })
+//     }),
+//     Ember.Object.create({
+//       user: Ember.Object.create({
+//         id: 4,
+//         firstName: "John",
+//         lastName: "Fitzgerald"
+//       })
+//     })
+//   ];
+//
+//   this.set('users', users);
+//
+//   this.render(hbs`{{gru-user-icons users=users viewThreshold=3 viewMoreIn='modal'}}`);
+//
+//   const $component = this.$('.gru-user-icons');
+//   const $anchor = $component.find('.first-view .pointer span');
+//   const $modal = $component.find('.remaining.modal');
+//   assert.ok($modal.length, 'Modal element should be present');
+//   assert.ok(!$modal.hasClass('in'), 'Modal should not be visible');
+//
+//   // Open the modal
+//   $anchor.click();
+//
+//   return wait().then(function () {
+//     assert.ok($modal.hasClass('in'), 'Modal should be visible');
+//     assert.equal($modal.find('.modal-body .user').length, 4, 'Modal does not show the correct number of users');
+//     const $close = $component.find('.modal-header button.close');
+//     // Close the modal
+//     $close.click();
+//     return wait().then(function () {
+//       assert.ok(!$modal.hasClass('in'), 'Modal should have been hidden');
+//     });
+//   });
+// });

@@ -54,11 +54,17 @@ test('normalizeReadCollection with settings', function(assert) {
     isCollection: false,
     metadata: {
       setting: {
-        show_key:'summary'
+        show_key: 'summary',
+        attempts_allowed: -1,
+        bidirectional_play: true,
+        show_feedback: 'never'
       }
     }
   };
 
   const collection2 = serializer.normalizeReadCollection(collectionData2);
-  assert.equal(collection2.get('showKey'),true, 'Should be true');
+  assert.equal(collection2.get('showKey'), true, 'Should be true');
+  assert.equal(collection2.get('attempts'), -1, 'Incorrect attempts');
+  assert.equal(collection2.get('bidirectional'), true, 'Bidirectional should be true');
+  assert.equal(collection2.get('showFeedback'), 'never', 'showFeedback should be never');
 });

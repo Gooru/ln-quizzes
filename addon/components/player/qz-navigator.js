@@ -87,19 +87,19 @@ export default Ember.Component.extend(ModalMixin, {
    * A convenient structure to render the menu
    * @property
    */
-  resourceItems: Ember.computed('collection', 'resourceResults.[]', 'selectedResourceId', function(){
+  resourceItems: Ember.computed('collection', 'resourceResults.@each.value', 'selectedResourceId', function(){
     let component = this;
     let collection = component.get('collection');
     let resourceResults = component.get('resourceResults');
-    let items = resourceResults.map(function(resourceResult){
+    return resourceResults.map(function(resourceResult) {
       let resourceId = resourceResult.get('resource.id');
       return {
         resource: collection.getResourceById(resourceId),
         started: resourceResult.get('started'),
+        isCorrect: resourceResult.get('isCorrect'),
         selected: resourceId === component.get('selectedResourceId')
       };
     });
-    return items;
   }),
 
   /**

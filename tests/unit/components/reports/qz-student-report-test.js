@@ -1,65 +1,16 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
-import Collection from 'quizzes-addon/models/collection/collection';
-import Resource from 'quizzes-addon/models/resource/resource';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
+import Collection from 'quizzes-addon/models/collection/collection';
+import Resource from 'quizzes-addon/models/resource/resource';
 
-moduleForComponent('reports/qz-student-report', 'Integration | Component | reports/qz student report', {
-  integration: true
+moduleForComponent('reports/qz-student-report', 'Unit | Component | reports/qz student report', {
+  // Specify the other units that are required for this test
+  // needs: ['component:foo', 'helper:bar'],
+  unit: true
 });
-
-test('Layout', function(assert) {
-
-  const collection = Collection.create({
-    id: 'collection-id',
-    isCollection: false,
-    title: 'Sample Assessment Name',
-    resources: [
-      Resource.create({
-        id: 'resource-1-id',
-        sequence: 1,
-        title: 'Resource 1'
-      }),
-      Resource.create({
-        id: 'resource-2-id',
-        sequence: 2,
-        title: 'Resource 2'
-      })
-    ]
-  });
-
-  this.set('attemptData', ReportDataEvent.create({
-    attemptId: 'attempt-id',
-    collection,
-    collectionId: collection.id,
-    contextId: 'context-id',
-    currentResourceId: 'resource-1-id',
-    profileId: 'user-2-id',
-    resourceResults: Ember.A([
-      QuestionResult.create({
-        correct: true,
-        resourceId: 'resource-1-id',
-        reaction: 2,
-        savedTime: 701
-      }),
-      QuestionResult.create({
-        correct: true,
-        resourceId: 'resource-2-id',
-        reaction: 4,
-        savedTime: 1333
-      })
-    ])
-  }));
-  this.render(hbs`{{reports/qz-student-report attemptData=attemptData}}`);
-
-  const $component = this.$('.reports.qz-student-report');
-  assert.ok($component.length, 'Component');
-  assert.ok($component.find('.reports.gru-assessment-report').length, 'Assessment report');
-});
-
-test('Layout when show key setting', function (assert) {
+test('contextResult', function(assert) {
   const collection = Collection.create({
     id: 'collection-id',
     isCollection: false,
@@ -80,8 +31,7 @@ test('Layout when show key setting', function (assert) {
       showKey:false
     }
   });
-
-  this.set('attemptData', ReportDataEvent.create({
+  const attemptData = ReportDataEvent.create({
     attemptId: 'attempt-id',
     collection,
     collectionId: collection.id,
@@ -102,64 +52,14 @@ test('Layout when show key setting', function (assert) {
         savedTime: 1333
       })
     ])
-  }));
-
-  this.render(hbs`{{reports/qz-student-report attemptData=attemptData}}`);
-
-  const $component = this.$('.reports.gru-assessment-report');
-  assert.ok($component.length, 'Component');
-  assert.notOk($component.find('.gru-questions .questions-header .performance').length, 'Performance button should not appear');
-  assert.notOk($component.find('.gru-questions .questions-header .correct-answer').length, 'Correct answer button should not appear');
-
-  const collection2 = Collection.create({
-    id: 'collection-id',
-    isCollection: false,
-    title: 'Sample Assessment Name',
-    resources: [
-      Resource.create({
-        id: 'resource-1-id',
-        sequence: 1,
-        title: 'Resource 1'
-      }),
-      Resource.create({
-        id: 'resource-2-id',
-        sequence: 2,
-        title: 'Resource 2'
-      })
-    ],
-    settings:{
-      showKey:true
-    }
   });
-
-  this.set('attemptData', ReportDataEvent.create({
-    attemptId: 'attempt-id',
-    collection:collection2,
-    collectionId: collection2.id,
-    contextId: 'context-id',
-    currentResourceId: 'resource-1-id',
-    profileId: 'user-2-id',
-    resourceResults: Ember.A([
-      QuestionResult.create({
-        correct: true,
-        resourceId: 'resource-1-id',
-        reaction: 2,
-        savedTime: 701
-      }),
-      QuestionResult.create({
-        correct: true,
-        resourceId: 'resource-2-id',
-        reaction: 4,
-        savedTime: 1333
-      })
-    ])
-  }));
-
-  assert.ok($component.find('.gru-questions .questions-header .performance').length, 'Performance button should appear');
-  assert.ok($component.find('.gru-questions .questions-header .correct-answer').length, 'Correct answer button should appear');
+  let component = this.subject({
+    attemptData
+  });
+  assert.deepEqual(component.get('contextResult.reportEvent'),attemptData, 'Attempt Data should match');
 });
 
-test('Layout when teacher hidden the summary report', function (assert) {
+test('collection', function(assert) {
   const collection = Collection.create({
     id: 'collection-id',
     isCollection: false,
@@ -180,8 +80,7 @@ test('Layout when teacher hidden the summary report', function (assert) {
       showKey:false
     }
   });
-
-  this.set('attemptData', ReportDataEvent.create({
+  const attemptData = ReportDataEvent.create({
     attemptId: 'attempt-id',
     collection,
     collectionId: collection.id,
@@ -202,20 +101,106 @@ test('Layout when teacher hidden the summary report', function (assert) {
         savedTime: 1333
       })
     ])
-  }));
+  });
+  let component = this.subject({
+    attemptData
+  });
+  assert.deepEqual(component.get('collection'),collection, 'Collection should match');
+});
+test('isAnswerKeyHidden', function(assert) {
+  const collection = Collection.create({
+    id: 'collection-id',
+    isCollection: false,
+    title: 'Sample Assessment Name',
+    resources: [
+      Resource.create({
+        id: 'resource-1-id',
+        sequence: 1,
+        title: 'Resource 1'
+      }),
+      Resource.create({
+        id: 'resource-2-id',
+        sequence: 2,
+        title: 'Resource 2'
+      })
+    ],
+    settings:{
+      showKey:false
+    }
+  });
+  const attemptData = ReportDataEvent.create({
+    attemptId: 'attempt-id',
+    collection,
+    collectionId: collection.id,
+    contextId: 'context-id',
+    currentResourceId: 'resource-1-id',
+    profileId: 'user-2-id',
+    resourceResults: Ember.A([
+      QuestionResult.create({
+        correct: true,
+        resourceId: 'resource-1-id',
+        reaction: 2,
+        savedTime: 701
+      }),
+      QuestionResult.create({
+        correct: true,
+        resourceId: 'resource-2-id',
+        reaction: 4,
+        savedTime: 1333
+      })
+    ])
+  });
+  let component = this.subject({
+    attemptData
+  });
+  assert.equal(component.get('isAnswerKeyHidden'),true, 'Answer key should be hidden');
+});
 
-  this.set('areAnswersHidden',true);
-
-  this.render(hbs`{{reports/qz-student-report attemptData=attemptData areAnswersHidden=areAnswersHidden}}`);
-
-  const $component = this.$('.reports.gru-assessment-report');
-  assert.ok($component.length, 'Component');
-  assert.notOk($component.find('.gru-bubbles').length, 'Questions bubbles should not appear');
-  assert.notOk($component.find('.gru-questions').length, 'Assessment report should not appear');
-  assert.ok($component.find('.hidden-report').length, 'Hidden report text should appear');
-
-  this.set('areAnswersHidden',false);
-  assert.ok($component.find('.gru-bubbles').length, 'Questions bubbles should appear');
-  assert.ok($component.find('.gru-questions').length, 'Assessment report should appear');
-  assert.notOk($component.find('.hidden-report').length, 'Hidden report text should not appear');
+test('areAnswersHidden', function(assert) {
+  const collection = Collection.create({
+    id: 'collection-id',
+    isCollection: false,
+    title: 'Sample Assessment Name',
+    resources: [
+      Resource.create({
+        id: 'resource-1-id',
+        sequence: 1,
+        title: 'Resource 1'
+      }),
+      Resource.create({
+        id: 'resource-2-id',
+        sequence: 2,
+        title: 'Resource 2'
+      })
+    ],
+    settings:{
+      showFeedback:'never'
+    }
+  });
+  const attemptData = ReportDataEvent.create({
+    attemptId: 'attempt-id',
+    collection,
+    collectionId: collection.id,
+    contextId: 'context-id',
+    currentResourceId: 'resource-1-id',
+    profileId: 'user-2-id',
+    resourceResults: Ember.A([
+      QuestionResult.create({
+        correct: true,
+        resourceId: 'resource-1-id',
+        reaction: 2,
+        savedTime: 701
+      }),
+      QuestionResult.create({
+        correct: true,
+        resourceId: 'resource-2-id',
+        reaction: 4,
+        savedTime: 1333
+      })
+    ])
+  });
+  let component = this.subject({
+    attemptData
+  });
+  assert.equal(component.get('areAnswersHidden'),true, 'Answers should be hidden');
 });

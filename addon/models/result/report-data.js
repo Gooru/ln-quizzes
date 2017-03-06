@@ -167,36 +167,38 @@ export default Ember.Object.extend({
    * Parse start event data from web socket
    * @param {Object} eventData
    */
-  parseStartEvent: function(eventData) {
-    let oldReportEvents = this.findByProfileId(eventData.profileId);
-    let properties = {
-      currentResourceId: eventData.eventBody.currentResourceId,
-      profileId: eventData.profileId,
-      profileName: eventData.profileName,
-      resourceResults: Ember.A(this.get('collection.resources').map(res =>
-        QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
-          resourceId: res.id,
-          resource: res,
-          savedTime: 0,
-          reaction: 0,
-          answer: null,
-          score: 0,
-          skipped: true
-        })
-      ))
-    };
-    if (oldReportEvents.length) {
-      let currentReportEvent = oldReportEvents[0];
-      currentReportEvent.setProperties(properties);
-      currentReportEvent.clearProfileSummary();
-      currentReportEvent.incrementProperty('updated');
-    } else {
-      let newProfileEvent = ReportDataEvent.create(
-        Ember.getOwner(this).ownerInjection(), properties
-      );
-      this.get('reportEvents').pushObject(newProfileEvent);
-    }
-  },
+   parseStartEvent: function(eventData) {
+     if(eventData.eventBody.isNewAttempt) {
+       let oldReportEvents = this.findByProfileId(eventData.profileId);
+       let properties = {
+         currentResourceId: eventData.eventBody.currentResourceId,
+         profileId: eventData.profileId,
+         profileName: eventData.profileName,
+         resourceResults: this.get('collection.resources').map(res =>
+           QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
+             resourceId: res.id,
+             resource: res,
+             savedTime: 0,
+             reaction: 0,
+             answer: null,
+             score: 0,
+             skipped: true
+           })
+         )
+       };
+       if (oldReportEvents.length) {
+         let currentReportEvent = oldReportEvents[0];
+         currentReportEvent.setProperties(properties);
+         currentReportEvent.clearProfileSummary();
+         currentReportEvent.incrementProperty('updated');
+       } else {
+         let newProfileEvent = ReportDataEvent.create(
+           Ember.getOwner(this).ownerInjection(), properties
+         );
+         this.get('reportEvents').pushObject(newProfileEvent);
+       }
+     }
+   },
 
   /**
    * Replace an event using a profile id

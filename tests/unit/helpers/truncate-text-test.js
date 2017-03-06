@@ -1,7 +1,7 @@
-import { truncate } from 'quizzes-addon/helpers/truncate';
+import { truncateText as truncate } from 'quizzes-addon/helpers/truncate-text';
 import { module, test } from 'qunit';
 
-module('Unit | Helper | truncate');
+module('Unit | Helper | truncate text');
 
 test('Truncate text default behavior', function(assert) {
   let result = truncate({}, { text: "Text having more than 10 characters" });
@@ -32,5 +32,3 @@ test('Truncate text when not needed', function(assert) {
   let result = truncate({}, { text: "My Text", maxLength: 100 });
   assert.equal(result, "My Text", "Text should not be truncated since its length is < than maxLength, no suffix should be added");
 });
-
-

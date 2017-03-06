@@ -41,7 +41,7 @@ test('finishCollection on collection', function(assert) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });
@@ -71,7 +71,7 @@ test('finishCollection on assessment', function(assert) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });
@@ -123,7 +123,7 @@ test('submitQuestion with next question available', function(assert) {
         assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });
@@ -166,7 +166,7 @@ test('submitQuestion with next question unavailable', function(assert) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });
@@ -209,7 +209,7 @@ test('selectNavigatorItem', function(assert) {
         assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult2, 'Wrong result object');
-        return Ember.RSVP.resolve();
+        return Ember.RSVP.resolve({score:100});
       }
     })
   });
@@ -276,5 +276,37 @@ test('isNavigationDisabled', function(assert) {
   });
   component.set('collection',collection2);
   assert.equal(component.get('isNavigationDisabled'), true , 'Navigation should be disabled');
+});
 
+test('showFeedback', function(assert) {
+  assert.expect(2);
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: false,
+    settings:{
+      showFeedback:'immediate'
+    }
+  });
+  let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'}
+  });
+  let component = this.subject({
+    resourceResult: questionResult,
+    contextResult
+  });
+
+  assert.equal(component.get('showFeedback'), true , 'Show feedback should be true');
+
+  let collection2 = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: false,
+    settings:{
+      showFeedback:'never'
+    }
+  });
+  component.set('collection',collection2);
+  assert.equal(component.get('showFeedback'), false , 'Should not show feedback');
 });

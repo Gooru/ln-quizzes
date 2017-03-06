@@ -10,6 +10,13 @@ import Serializable from 'quizzes-addon/mixins/serializable';
 export default Ember.Object.extend(Serializable, {
 
   /**
+   * @property {boolean} isCorrect
+   */
+  isCorrect: Ember.computed('score', function() {
+    return this.get('score') === 100;
+  }),
+
+  /**
    * @property {boolean} isQuestion
    */
   isQuestion: false,

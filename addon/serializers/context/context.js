@@ -24,11 +24,13 @@ export default Ember.Object.extend({
    * Serializes read assignment
    ** @param {*[]} payload
    */
-  normalizeReadContext: function(payload) {
+   normalizeReadContext: function(payload) {
+    const contextData = payload.contextData;
+    const metadata = contextData ? contextData.metadata : {};
     return Context.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.contextId,
-      title: payload.contextData.metadata.title,
-      description: payload.contextData.metadata.description,
+      title: metadata.title,
+      description: metadata.description,
       classId: payload.classId,
       collectionId: payload.collectionId,
       isCollection: payload.isCollection,

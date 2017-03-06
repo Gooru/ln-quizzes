@@ -9,17 +9,24 @@
 </div>
 <ul class="list-group resources {{if isNavigationDisabled 'disabled' }}">
   {{#each resourceItems as |item index|}}
-      <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}"
+    <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}"
         {{action 'selectItem' item}}>
       <div class="resources-info">
         <span class="number">{{plus-one index}}</span>
         <i class="bubble-type {{item.resource.format}}"></i>
-          <h6 class="title hidden-sm hidden-md">
-            {{truncate text=(no-tags text=item.resource.title) type='medium'}}
-          </h6>
-          <h6 class="title visible-sm visible-md">
-            {{truncate text=(no-tags text=item.resource.title) type='player-nav-sm'}}
-          </h6>
+        <h6 class="title hidden-sm hidden-md">
+          {{truncate-text text=(no-tags text=item.resource.title) type='medium'}}
+        </h6>
+        <h6 class="title visible-sm visible-md">
+          {{truncate-text text=(no-tags text=item.resource.title) type='player-nav-sm'}}
+        </h6>
+        {{#if showFeedback}}
+          {{#if item.started}}
+            <span class="score {{if item.isCorrect 'correct' 'incorrect'}}">
+              {{gru-icon name='radio_button_checked'}}
+            </span>
+          {{/if}}
+        {{/if}}
       </div>
     </li>
   {{/each}}

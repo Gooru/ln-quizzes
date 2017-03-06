@@ -2,9 +2,7 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import QuestionResult from 'quizzes-addon/models/result/question';
-import Assessment from 'quizzes-addon/models/collection/collection';
 import T from 'dummy/tests/helpers/assert';
-import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
 import AnswerModel from 'quizzes-addon/models/resource/answer';
 import ResourceModel from 'quizzes-addon/models/resource/resource';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
@@ -268,83 +266,6 @@ test('Submit button disabled when submitted', function (assert) {
 
   var $answerPanel = $component.find('.answers-panel');
   assert.ok($answerPanel.find('.actions button.save').attr('disabled'), 'Button should be disabled');
-});
-
-test('Show feedback layout', function (assert) {
-  assert.expect(3);
-
-  const question = Ember.Object.create(
-    {
-      id: 10,
-      sequence: 2,
-      body: 'Dummy question text',
-      type: QUESTION_TYPES.openEnded
-    });
-
-  const assessment = Assessment.create({
-    showFeedback: ASSESSMENT_SHOW_VALUES.IMMEDIATE
-  });
-
-  const questionResult = QuestionResult.create();
-
-  this.on('mySubmitQuestion', function(question, questionResult){
-    assert.equal(question.get('id'), 10, 'Wrong id');
-    assert.equal(questionResult.get('answer.firstObject.value'), 'test', 'Wrong answer');
-  });
-
-  this.set('assessment', assessment);
-  this.set('questionResult', questionResult);
-  this.set('question', question);
-  this.set('role', 'student');
-
-  this.render(hbs`{{player/qz-question-viewer question=question questionResult=questionResult
-      collection=assessment onSubmitQuestion='mySubmitQuestion' hasContext=true role=role}}`);
-
-  var $component = this.$(); //component dom element
-  var $answerPanel = $component.find('.answers-panel');
-  const $saveButton = $answerPanel.find('.actions button.save');
-  assert.equal(T.text($saveButton), this.i18n.t('common.save').toString(), 'Wrong button text');
-
-  var $openEndedComponent = $answerPanel.find('.qz-open-ended');
-  $openEndedComponent.find('textarea').val('test');
-  $openEndedComponent.find('textarea').change();
-  $answerPanel.find('.actions button.save').click();
-});
-
-test('Show feedback when submitted layout', function (assert) {
-  assert.expect(2);
-
-  const question = Ember.Object.create(
-    {
-      id: 10,
-      sequence: 2,
-      text: 'Dummy question text',
-      mediaUrl: 'test.jpg',
-      type: QUESTION_TYPES.openEnded,
-      hasMedia: true
-    });
-
-  const assessment = Assessment.create({
-    showFeedback: ASSESSMENT_SHOW_VALUES.IMMEDIATE
-  });
-
-  const questionResult = QuestionResult.create({
-    submitted: true
-  });
-
-  this.set('assessment', assessment);
-  this.set('questionResult', questionResult);
-  this.set('question', question);
-  this.set('role', 'student');
-
-  this.render(hbs`{{player/qz-question-viewer question=question questionResult=questionResult
-      collection=assessment onSubmitQuestion='mySubmitQuestion' hasContext=true role=role}}`);
-
-  var $component = this.$(); //component dom element
-  var $answerPanel = $component.find('.answers-panel');
-  assert.notOk($answerPanel.find('.actions button.save').attr('disabled'), 'Button should be enabled');
-
-  assert.ok($answerPanel.find('.feedback').length, 'Feedback should be shown');
 });
 
 test('Question Viewer Submit by Enter', function (assert) {

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {truncate as truncateString } from 'quizzes-addon/utils/utils';
+import { truncate as truncateString } from 'quizzes-addon/utils/utils';
 /**
  * Convenience helper to truncate texts
  *
@@ -13,7 +13,7 @@ import {truncate as truncateString } from 'quizzes-addon/utils/utils';
  * @param {{}} hash, it has helper parameters
  * @returns {*}
  */
-export function truncate(params, hash) {
+export function truncateText(params, hash) {
   let text = hash.text;
   let maxLength = hash.maxLength;
   let type = hash.type;
@@ -22,4 +22,4 @@ export function truncate(params, hash) {
   return truncateString(text, maxLength, type, suffix);
 }
 
-export default Ember.Helper.helper(truncate);
+export default Ember.Helper.helper(truncateText);

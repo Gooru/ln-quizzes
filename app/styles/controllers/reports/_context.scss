@@ -33,7 +33,7 @@
         width: $on-air-icon;
         height: $on-air-icon;
         vertical-align: middle;
-        background-image: url('quizzes/images/on-air-icon.svg');
+        background-image: url('/quizzes-addon/assets/quizzes/images/on-air-icon.svg');
         background-size: $on-air-icon $on-air-icon;
         vertical-align: 28px;
         @include text-hide();
@@ -67,7 +67,7 @@
         margin-left: $gutter-width;
 
         > i {
-          background-image: url('quizzes/images/on-air-icon-anonymous.svg');
+          background-image: url('/quizzes-addon/assets/quizzes/images/on-air-icon-anonymous.svg');
         }
       }
       .mode {

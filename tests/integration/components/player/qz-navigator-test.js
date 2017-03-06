@@ -266,3 +266,54 @@ test('Finish collection', function(assert) {
   assert.ok($finishButton, 'Missing finish button');
   $finishButton.click();
 });
+test('Show Feedback', function(assert) {
+
+  assert.expect(4);
+
+  const resourceMockA = Ember.Object.create({
+    id: '1',
+    title: 'Resource #1'
+  });
+
+  const resourceMockB = Ember.Object.create({
+    id: '2',
+    title: 'Resource #2'
+  });
+
+  const collectionMock = Ember.Object.create({
+    id: 'collection-id',
+    resources: Ember.A([
+      resourceMockA,
+      resourceMockB
+    ]),
+    getResourceById: function(id){
+      if (id === '1') {
+        return resourceMockA;
+      } else {
+        return resourceMockB;
+      }
+    }
+  });
+
+  const resourceResults = Ember.A([
+    QuestionResult.create({ resource: resourceMockA,started:true,score:100 }),
+    QuestionResult.create({ resource: resourceMockB,started:true,score:0 })
+  ]);
+
+  this.set('resourceResults', resourceResults);
+  this.set('collection', collectionMock);
+
+  this.render(hbs`
+    {{player.qz-navigator
+      resourceResults=resourceResults
+      showFeedback=true
+      collection=collection
+      selectedResourceId='1'}}`);
+
+  const $component = this.$('.qz-navigator');
+  assert.ok($component.find('.list-group-item:eq(0) span.score.correct').length, 'First item should be correct');
+  assert.ok($component.find('.list-group-item:eq(0) span.score.correct i.radio_button_checked').length, 'Missing icon');
+  assert.ok($component.find('.list-group-item:eq(1) span.score.incorrect').length, 'Second item should be incorrect');
+  assert.ok($component.find('.list-group-item:eq(1) span.score.incorrect i.radio_button_checked').length, 'Missing icon');
+
+});

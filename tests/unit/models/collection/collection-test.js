@@ -216,3 +216,29 @@ test('attempts', function (assert) {
   assert.equal(model.get('attempts'),1,'Incorrect attempts');
 });
 
+test('immediateFeedback', function (assert) {
+  assert.expect(1);
+  let model = this.subject({
+    settings: {showFeedback: 'immediate'}
+  });
+
+  assert.equal(model.get('immediateFeedback'),true,'Should be immediate feedback');
+});
+
+test('showFeedback', function (assert) {
+  assert.expect(1);
+  let model = this.subject({
+    settings: {showFeedback: 'summary'}
+  });
+
+  assert.equal(model.get('showFeedback'),'summary','Show feedback should be summary');
+});
+
+test('bidirectional', function (assert) {
+  assert.expect(1);
+  let model = this.subject({
+    settings: {bidirectional: true}
+  });
+
+  assert.equal(model.get('bidirectional'),true,'Bidirectional should be true');
+});

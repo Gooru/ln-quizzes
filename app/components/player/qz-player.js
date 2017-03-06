@@ -240,7 +240,7 @@ export default Ember.Component.extend(ModalMixin, {
   showConfirmation: true,
 
   /**
-   * Indicates if show inmediate feedback
+   * Indicates if show immediate feedback
    * @property {boolean} showFeedback
    */
   showFeedback: Ember.computed.alias('collection.immediateFeedback'),

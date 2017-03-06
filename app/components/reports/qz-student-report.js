@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ContextResult from 'quizzes/models/result/context';
+import { ASSESSMENT_SHOW_VALUES } from 'quizzes/config/config';
 
 export default Ember.Component.extend({
 
@@ -46,6 +47,13 @@ export default Ember.Component.extend({
    */
   isAnswerKeyHidden: Ember.computed('collection.isAssessment', 'collection.showKey', function() {
     return (this.get('collection.isAssessment') && !this.get('collection.showKey'));
+  }),
+
+  /**
+   * @property {boolean} areAnswersHidden - Should answer results be hidden?
+   */
+  areAnswersHidden: Ember.computed('collection.isAssessment', 'collection.showFeedback', function() {
+    return (this.get('collection.isAssessment') && this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.NEVER);
   }),
 
   /**

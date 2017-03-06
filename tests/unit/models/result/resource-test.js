@@ -37,3 +37,13 @@ test('roundMilliseconds', function(assert) {
   const component = this.subject();
   assert.equal(component.roundMilliseconds(445010), 445000, 'Wrong rounded');
 });
+
+test('isCorrect', function(assert) {
+  let resourceResult = this.subject({
+    score:0
+  });
+  assert.equal(resourceResult.get('isCorrect'), false, 'Should be incorrect');
+
+  resourceResult.set('score', 100);
+  assert.equal(resourceResult.get('isCorrect'), true, 'Should be correct');
+});

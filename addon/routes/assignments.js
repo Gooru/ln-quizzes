@@ -24,10 +24,11 @@ export default Ember.Route.extend({
     let playerURL = this.get('quizzesConfigurationService.configuration.properties.playerURL');
     let realTimeURL = this.get('quizzesConfigurationService.configuration.properties.realTimeURL');
 
-
     let isTeacher = params.isTeacher  === 'true';
 
-    assignments = isTeacher ?  this.get('quizzesContextService').getContextsCreated() : this.get('quizzesContextService').getContextsAssigned();
+    assignments = isTeacher ?
+      this.get('quizzesContextService').getContextsCreated() :
+      this.get('quizzesContextService').getContextsAssigned();
 
     return Ember.RSVP.hash({
       profileId,

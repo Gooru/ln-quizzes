@@ -1,11 +1,14 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
+  var isEmbedded = process.env.QUIZZES_EMBEDDED === 'true';
   var ENV = {
     modulePrefix: 'dummy',
+    rootElement: '#quizzes-application-container',
     environment: environment,
-    rootURL: '/',
-    locationType: 'auto',
+    rootURL: isEmbedded ? undefined : '/',
+    locationType: isEmbedded ? 'none' : 'auto',
+    exportApplicationGlobal: 'QuizzesWebApp',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -20,8 +23,14 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    embedded: {
+      //Add anything you want as default values
     }
   };
+
+  ENV.embedded = isEmbedded;
 
   ENV.i18n = {
     defaultLocale: 'en',
@@ -55,6 +64,16 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.contentSecurityPolicy = {
+      'default-src': "'none'",
+      'script-src': "'unsafe-eval' 'unsafe-inline' 'self' http://localhost:4200 http://localhost",
+      'font-src': "'self' https://www.gooru.org",
+      'connect-src': "'self' http://localhost:4200 wss://qa.api.quizzes.edify.cr http://localhost:8882 https://qa.api.quizzes.edify.cr https://nile-qa.gooru.org",
+      'img-src': "'self' data: http://qacdn.gooru.org http://profile-images.goorulearning.org.s3.amazonaws.com " +
+      "http://dev-content-gooru-org.s3-us-west-1.amazonaws.com http://dev-user-gooru-org.s3-us-west-1.amazonaws.com",
+      'style-src': "'self' 'unsafe-inline' https://www.gooru.org",
+      'media-src': "'self'"
+    };
   }
 
   if (environment === 'test') {
@@ -66,6 +85,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.embedded = false;
     ENV.isTestEnv = true;
 
     ENV.APP.properties = {

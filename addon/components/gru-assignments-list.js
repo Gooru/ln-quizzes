@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   /**
    * @property {Service} Context service
    */
-  contextService: Ember.inject.service('quizzes/api-sdk/context'),
+  contextService: Ember.inject.service('quizzes/context'),
 
   // -------------------------------------------------------------------------
   // Attributes

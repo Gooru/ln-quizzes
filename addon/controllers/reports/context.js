@@ -28,7 +28,7 @@ export default Ember.Controller.extend(ConfigMixin, {
   /**
    * @requires service:notifications
    */
-  notifications: Ember.inject.service(),
+  notifications: Ember.inject.service('quizzes/notifications'),
 
   /**
    * @type {ProfileService} profileService

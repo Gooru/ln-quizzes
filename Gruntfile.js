@@ -8,6 +8,30 @@ module.exports = function (grunt) {
         }
       }
     },
+    stubby: {
+      test: {
+        options: {
+          relativeFilesPath: true,
+          persistent: false,
+          mute: true,
+          location: "0.0.0.0"
+        },
+        files: [{
+          src: ['tests/stubs/**/*-endpoint.json']
+        }]
+      },
+      server: {
+        options: {
+          relativeFilesPath: true,
+          persistent: true,
+          mute: false,
+          location: "0.0.0.0"
+        },
+        files: [{
+          src: ['tests/stubs/**/*-endpoint.json']
+        }]
+      }
+    },
     svgstore: {
       options: {
         svg: {
@@ -30,6 +54,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-stubby');
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-svgstore');
   grunt.loadNpmTasks('grunt-eslint');
@@ -43,7 +68,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', function () {
     //for development
-    var server = grunt.option("server") || grunt.option("s");
+    var noStubby = grunt.option("no-stubby") || grunt.option("ns"),
+      server = grunt.option("server") || grunt.option("s");
 
     var command = 'ember test';
     if (server) {
@@ -51,12 +77,12 @@ module.exports = function (grunt) {
     }
     var testExecTask = 'exec:run:' + command;
 
-    var tasks = [testExecTask];
+    var tasks = noStubby ? [testExecTask] : ['stubby:test', testExecTask];
     grunt.task.run(tasks);
   });
 
   grunt.registerTask('bamboo-test', function () {
-    grunt.task.run(['exec:run:ember test --silent -r xunit > report-xunit.xml']);
+    grunt.task.run(['stubby:test', 'exec:run:ember test --silent -r xunit > report-xunit.xml']);
   });
 
   grunt.registerTask('generateSVG', ['svgstore']);

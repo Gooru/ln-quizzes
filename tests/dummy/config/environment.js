@@ -28,6 +28,22 @@ module.exports = function(environment) {
     suppressWarnings: true
   };
 
+  /**
+   * Application themes configuration
+   */
+  ENV.themes = {
+    'default': null, /* when present it is not necessary to pass a query param */
+    'edify' : {
+      'translations': {
+        'locale': 'en-edify', /* this way it fallback to 'en' */
+        'url': '/themes/edify/translations.json'
+      },
+      'styles': {
+        'url': '/themes/edify/styles.css'
+      }
+    }
+  };
+
   ENV.player = {
     vimeoPlayerUrl:'//player.vimeo.com/video/',
     youtubePlayerUrl:'https://www.youtube.com/embed/'
@@ -93,10 +109,6 @@ module.exports = function(environment) {
         classId: 'class-id'
       }
     };
-  }
-
-  if (environment === 'production') {
-
   }
 
   return ENV;

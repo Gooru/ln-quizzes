@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "id-for-pochita",
+      "firstName": "Russell",
+      "lastName": "Collaborator1",
+      "username": "russell",
+      "avatarUrl": ""
+    },
+    {
+      "id": "id-for-pochita",
+      "firstName": "Shawn",
+      "lastName": "Collaborator2",
+      "username": "shawn",
+      "avatarUrl": ""
+    }
+  ]
+}

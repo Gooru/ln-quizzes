@@ -78,6 +78,7 @@ export default Ember.Route.extend({
     if (collection.get('isCollection') || profileId === 'anonymous') {
       contextResult = model.contextResult;
       contextResult.merge(collection);
+      controller.set('profileId', profileId);
     } else {
       let context =  model.context;
       context.set('attempts', model.attempts.length);

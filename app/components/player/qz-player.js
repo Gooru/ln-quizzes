@@ -16,13 +16,6 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {Ember.Service} Service to send context related events
    */
   contextService: Ember.inject.service('api-sdk/context'),
-
-  /**
-   * @property {Service} Configuration service
-   */
-  configurationService: Ember.inject.service('configuration'),
-
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -119,7 +112,7 @@ export default Ember.Component.extend(ModalMixin, {
 
   init: function() {
     this._super(...arguments);
-    const profileId = this.get('configurationService.configuration.properties.profileId');
+    const profileId = this.get('profileId');
     if(this.get('collection.isCollection') || profileId === 'anonymous'){
       this.set('showConfirmation',false);
       this.startAssessment();

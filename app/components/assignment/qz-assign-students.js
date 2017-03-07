@@ -50,8 +50,8 @@ export default Ember.Component.extend({
         const configurationService = component.get('configurationService');
         configurationService.addProperties({
             type:collectionType,
-            profileId: localStorage.getItem('profileId'),
-            token: localStorage.getItem('token'),
+            profileId: component.get('configurationService.configuration.properties.profileId'),
+            token: component.get('configurationService.configuration.properties.token'),
             reportURL:'student-report-embedded.html?context-id={context-id}&type=' + collectionType
           }
         );

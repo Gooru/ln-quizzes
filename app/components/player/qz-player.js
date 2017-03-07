@@ -16,7 +16,6 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {Ember.Service} Service to send context related events
    */
   contextService: Ember.inject.service('api-sdk/context'),
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -113,7 +112,7 @@ export default Ember.Component.extend(ModalMixin, {
 
   init: function() {
     this._super(...arguments);
-    if(this.get('collection.isCollection')){
+    if(this.get('collection.isCollection') || this.get('isAnonymous')){
       this.set('showConfirmation',false);
       this.startAssessment();
     }

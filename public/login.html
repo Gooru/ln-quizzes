@@ -39,7 +39,7 @@
 <script type="text/javascript">
   (function () {
     jQuery(document).ready(function () {
-      $('.btn').click(function(e) {
+      $('#user-login').click(function(e) {
         e.preventDefault();
         var username = $('#username').val();
         var password = $('#password').val();
@@ -68,6 +68,31 @@
           alert('There was a problem with the credentials.');
         });
       });
+      $('#anonymous-login').click(function(e) {
+        e.preventDefault();
+        var username = $('#username').val();
+        var password = $('#password').val();
+        $.ajax({
+          type: 'POST',
+          url: 'https://nile-qa.gooru.org/api/nucleus-auth/v2/signin',
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json',
+          processData: false,
+          data: JSON.stringify({
+            'client_key': 'c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==',
+            'client_id': 'ba956a97-ae15-11e5-a302-f8a963065976',
+            'grant_type': 'anonymous'
+          }),
+          global: false
+        }).done(function(response) {
+          localStorage.setItem('token', response.access_token);
+          localStorage.setItem('profileId', response.user_id);
+          localStorage.setItem('cdnURL', response.cdn_urls.content_cdn_url);
+          location.href = 'assign-students-embedded.html';
+        }).fail(function() {
+          alert('There was a problem with the anonymous login.');
+        });
+      });
     });
   })();
 </script>
@@ -89,8 +114,11 @@
                  <label for="password">Password:</label>
                  <input type="password" class="form-control" id="password">
                </div>
-               <button type="submit" class="btn btn-default">Submit</button>
+               <button id='user-login' type="submit" class="btn bt-info">Submit</button>
              </form>
+              <div style="margin-top: 20px">
+                <button id='anonymous-login' type="submit" class="btn btn-primary">Login as Anonymous</button>
+              </div>
             </div>
           </div>
         </div>

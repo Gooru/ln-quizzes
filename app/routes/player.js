@@ -46,7 +46,7 @@ export default Ember.Route.extend({
     let reportURL = route.get('configurationService.configuration.properties.reportURL');
     const profileId = route.get('configurationService.configuration.properties.profileId');
 
-    if(type === 'collection'){
+    if(type === 'collection' || profileId === 'anonymous'){
       return route.get('contextService').startContext(contextId).then(function(contextResult){
         return Ember.RSVP.hash({
           contextResult,
@@ -57,26 +57,28 @@ export default Ember.Route.extend({
     } else {
       return route.get('contextService').getAssignedContextById(contextId).then(
           context => !context ? null : route.get('collectionService').readCollection(context.collectionId, type).then(
-            collection => !collection ? null : route.get('attemptService').getAttemptIds(contextId, profileId).then(
-              attempts => Ember.RSVP.hash({
-              attempts,
-              collection,
-              context,
-              reportURL,
-              startContextFunction: () => route.startContext(context.id)
-            })
+              collection => !collection ? null : route.get('attemptService').getAttemptIds(contextId, profileId).then(
+                  attempts => Ember.RSVP.hash({
+                    attempts,
+                    collection,
+                    context,
+                    reportURL,
+                    startContextFunction: () => route.startContext(context.id)
+                  })
+              )
           )
-        )
       );
     }
   },
 
   setupController(controller,model) {
     let collection = model.collection;
+    const isAnonymous = this.get('configurationService.configuration.properties.profileId') === 'anonymous';
     let contextResult =  ContextResult.create({collection});
-    if (collection.get('isCollection')) {
+    if (collection.get('isCollection') || isAnonymous) {
       contextResult = model.contextResult;
       contextResult.merge(collection);
+      controller.set('isAnonymous', isAnonymous);
     } else {
       let context =  model.context;
       context.set('attempts', model.attempts.length);

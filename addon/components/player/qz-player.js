@@ -113,7 +113,7 @@ export default Ember.Component.extend(ModalMixin, {
 
   init: function() {
     this._super(...arguments);
-    if(this.get('collection.isCollection')){
+    if(this.get('collection.isCollection') || this.get('isAnonymous')) {
       this.set('showConfirmation',false);
       this.startAssessment();
     }
@@ -156,7 +156,7 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {Boolean}
    */
   isNavigationDisabled: Ember.computed('collection',function(){
-    return !this.get('collection.bidirectional');
+    return this.get('isAssessment') && !this.get('collection.bidirectional');
   }),
 
   /**

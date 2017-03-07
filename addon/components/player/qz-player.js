@@ -9,13 +9,13 @@ export default Ember.Component.extend(ModalMixin, {
    * @type {CollectionService} collectionService
    * @property {Ember.Service} Service to retrieve a collection
    */
-  collectionService: Ember.inject.service('quizzes/api-sdk/collection'),
+  collectionService: Ember.inject.service('quizzes/collection'),
 
   /**
    * @type {ContextService} contextService
    * @property {Ember.Service} Service to send context related events
    */
-  contextService: Ember.inject.service('quizzes/api-sdk/context'),
+  contextService: Ember.inject.service('quizzes/context'),
 
   // -------------------------------------------------------------------------
   // Attributes

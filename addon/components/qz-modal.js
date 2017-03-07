@@ -15,7 +15,7 @@ export default Ember.Component.extend(ModalMixin, {
   // Attributes
 
   /** @type {String[]} */
-  classNames:['gru-modal', 'fade', 'modal'],
+  classNames:['qz-modal', 'fade', 'modal'],
 
   /** @type {String[]} */
   classNameBindings: ['component-class'],

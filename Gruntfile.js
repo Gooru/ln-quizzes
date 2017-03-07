@@ -6,7 +6,8 @@ module.exports = function (grunt) {
         cmd: function (command) {
           return command;
         }
-      }
+      },
+      "ember-serve": 'QUIZZES_EMBEDDED=true ember serve',
     },
     stubby: {
       test: {
@@ -83,6 +84,14 @@ module.exports = function (grunt) {
 
   grunt.registerTask('bamboo-test', function () {
     grunt.task.run(['stubby:test', 'exec:run:ember test --silent -r xunit > report-xunit.xml']);
+  });
+
+  grunt.registerTask('run', function (target) {
+    var serverExecTask = 'exec:ember-serve';
+
+    var tasks = ['generateSVG'];
+    tasks.push(serverExecTask);
+    grunt.task.run(tasks);
   });
 
   grunt.registerTask('generateSVG', ['svgstore']);

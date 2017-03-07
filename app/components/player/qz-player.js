@@ -156,7 +156,7 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean}
    */
   isNavigationDisabled: Ember.computed('collection',function(){
-    return !this.get('collection.bidirectional');
+    return  this.get('isAssessment') && !this.get('collection.bidirectional');
   }),
 
   /**

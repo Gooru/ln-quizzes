@@ -278,6 +278,29 @@ test('isNavigationDisabled', function(assert) {
   assert.equal(component.get('isNavigationDisabled'), true , 'Navigation should be disabled');
 
 });
+test('isNavigationDisabled for collection', function(assert) {
+  assert.expect(1);
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Collection Title',
+    isCollection: false,
+    settings:{
+      bidirectional:true
+    }
+  });
+  let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'}
+  });
+  let component = this.subject({
+    resourceResult: questionResult,
+    contextResult
+  });
+
+  assert.equal(component.get('isNavigationDisabled'), false , 'Navigation should not be disabled');
+
+});
 test('showFeedback', function(assert) {
   assert.expect(2);
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {

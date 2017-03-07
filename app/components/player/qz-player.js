@@ -112,8 +112,7 @@ export default Ember.Component.extend(ModalMixin, {
 
   init: function() {
     this._super(...arguments);
-    const profileId = this.get('profileId');
-    if(this.get('collection.isCollection') || profileId === 'anonymous'){
+    if(this.get('collection.isCollection') || this.get('isAnonymous')){
       this.set('showConfirmation',false);
       this.startAssessment();
     }

@@ -13,6 +13,11 @@ export default Ember.Component.extend({
    */
   contextService: Ember.inject.service('api-sdk/context'),
 
+  /**
+   * @type {ConfigurationService} Service to retrieve configuration information
+   */
+  configurationService: Ember.inject.service('configuration'),
+
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -31,6 +36,26 @@ export default Ember.Component.extend({
         component.set('assignment', Context.create(Ember.getOwner(component).ownerInjection(), {
           title: component.get('collection.title')
         }));
+      });
+    },
+    /***
+     * Create context as anonymous
+     */
+    createContextAnonymous:function(){
+      let component = this;
+      let assignment = component.get('assignment');
+      assignment.set('classId', null);
+      const collectionType = assignment.get('isCollection') ? 'collection' : 'assessment';
+      component.get('contextService').createContext(assignment).then(({ id }) => {
+        const configurationService = component.get('configurationService');
+        configurationService.addProperties({
+            type:collectionType,
+            profileId: localStorage.getItem('profileId'),
+            token: localStorage.getItem('token'),
+            reportURL:'student-report-embedded.html?context-id={context-id}&type=' + collectionType
+          }
+        );
+        component.get('router').transitionTo('player', id);
       });
     }
   },

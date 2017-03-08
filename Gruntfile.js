@@ -100,4 +100,6 @@ module.exports = function (grunt) {
     var buildExecTask = 'exec:build-' + (target || 'dev');
     grunt.task.run(['generateSVG', buildExecTask]);
   });
+
+  grunt.registerTask('generateSVG', ['svgstore']);
 };

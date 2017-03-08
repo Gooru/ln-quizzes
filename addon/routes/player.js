@@ -66,7 +66,8 @@ export default Ember.Route.extend({
            contextResult,
            collection: route.get('quizzesCollectionService').readCollection(contextResult.collectionId, type),
            reportURL,
-           resourceId
+           resourceId,
+           isAnonymous: profileId === 'anonymous'
          });
        });
      } else {
@@ -79,7 +80,8 @@ export default Ember.Route.extend({
                  context,
                  reportURL,
                  startContextFunction: () => route.startContext(context.id),
-                 resourceId
+                 resourceId,
+                 isAnonymous: profileId === 'anonymous'
                })
            )
          )
@@ -89,7 +91,7 @@ export default Ember.Route.extend({
 
   setupController(controller, model) {
     let collection = model.collection;
-    const isAnonymous = this.get('configurationService.configuration.properties.profileId') === 'anonymous';
+    const isAnonymous = model.isAnonymous;
     let contextResult =  ContextResult.create();
     if(model.resourceId) {
       contextResult.set('currentResourceId', model.resourceId);

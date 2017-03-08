@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  queryParams: ['resourceId'],
+  queryParams: ['resourceId', 'sourceId'],
 
   // -------------------------------------------------------------------------
   // Properties

@@ -59,7 +59,7 @@ export default Ember.Route.extend({
      let reportURL = params.routeURL || route.get('quizzesConfigurationService.configuration.properties.reportURL');
      let profileId = params.profileId || route.get('quizzesConfigurationService.configuration.properties.profileId');
 
-     if(type === 'collection'){
+     if(type === 'collection' || profileId === 'anonymous') {
        return route.get('quizzesContextService').startContext(contextId).then(function(contextResult){
          return Ember.RSVP.hash({
            contextResult,
@@ -86,15 +86,17 @@ export default Ember.Route.extend({
 
   setupController(controller,model) {
     let collection = model.collection;
+    const isAnonymous = this.get('configurationService.configuration.properties.profileId') === 'anonymous';
     let contextResult =  ContextResult.create();
-    if (collection.get('isCollection')) {
+    if (collection.get('isCollection') || isAnonymous) {
       contextResult = model.contextResult;
       contextResult.merge(collection);
     } else {
       let context =  model.context;
       context.set('attempts', model.attempts.length);
-      contextResult.set('context',context);
-      contextResult.set('collection',collection);
+      contextResult.set('context', context);
+      contextResult.set('collection', collection);
+      controller.set('isAnonymous', isAnonymous);
       controller.set('startContextFunction', model.startContextFunction);
     }
     controller.set('contextResult', contextResult);

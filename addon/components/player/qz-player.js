@@ -9,13 +9,13 @@ export default Ember.Component.extend(ModalMixin, {
    * @type {CollectionService} collectionService
    * @property {Ember.Service} Service to retrieve a collection
    */
-  collectionService: Ember.inject.service('quizzes/api-sdk/collection'),
+  collectionService: Ember.inject.service('quizzes/collection'),
 
   /**
    * @type {ContextService} contextService
    * @property {Ember.Service} Service to send context related events
    */
-  contextService: Ember.inject.service('quizzes/api-sdk/context'),
+  contextService: Ember.inject.service('quizzes/context'),
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -113,7 +113,7 @@ export default Ember.Component.extend(ModalMixin, {
 
   init: function() {
     this._super(...arguments);
-    if(this.get('collection.isCollection')){
+    if(this.get('collection.isCollection') || this.get('isAnonymous')) {
       this.set('showConfirmation',false);
       this.startAssessment();
     }
@@ -156,7 +156,7 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {Boolean}
    */
   isNavigationDisabled: Ember.computed('collection',function(){
-    return !this.get('collection.bidirectional');
+    return this.get('isAssessment') && !this.get('collection.bidirectional');
   }),
 
   /**

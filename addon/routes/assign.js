@@ -7,7 +7,7 @@ export default Ember.Route.extend({
   /**
    * @property {Service} Configuration service
    */
-  configurationService: Ember.inject.service('configuration'),
+  configurationService: Ember.inject.service('quizzes/configuration'),
 
   // -------------------------------------------------------------------------
   // Methods
@@ -37,4 +37,3 @@ export default Ember.Route.extend({
   }
 
 });
-

@@ -45,7 +45,7 @@ export default Ember.Component.extend({
   // Properties
   /**
    * Component model, this was necessary because this component is rendered in a modal
-   * @see gru-modal.js
+   * @see qz-modal.js
    */
   model: null,
 

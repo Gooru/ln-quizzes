@@ -20,12 +20,12 @@ export default Ember.Component.extend({
       const selectorList = $(`.gru-assessment-report .gru-questions .question-cards-list:visible li:nth-child(${bubbleOption.label}) .question-card`);
       const $elList = $(selectorList);
 
-      const isModal=$('.gru-assessment-report').parents('.gru-modal');
+      const isModal=$('.gru-assessment-report').parents('.qz-modal');
       //Check if the assessment report is showing into a modal
       if(isModal.length){
         if ($elTable.length) {
-          $('.gru-modal').animate({
-            scrollTop: $elTable.offset().top -   $('.gru-modal').offset().top
+          $('.qz-modal').animate({
+            scrollTop: $elTable.offset().top -   $('.qz-modal').offset().top
           }, animationSpeed);
         }
       }else{

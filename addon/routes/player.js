@@ -51,6 +51,7 @@ export default Ember.Route.extend({
     */
    quizzesModel(params) {
      const route = this;
+     const resourceId = params.resourceId;
      const contextId = params.contextId;
      if(params.token) {
        route.get('quizzesConfigurationService').addProperties({ token: params.token });
@@ -64,7 +65,8 @@ export default Ember.Route.extend({
          return Ember.RSVP.hash({
            contextResult,
            collection: route.get('quizzesCollectionService').readCollection(contextResult.collectionId, type),
-           reportURL
+           reportURL,
+           resourceId
          });
        });
      } else {
@@ -76,7 +78,8 @@ export default Ember.Route.extend({
                  collection,
                  context,
                  reportURL,
-                 startContextFunction: () => route.startContext(context.id)
+                 startContextFunction: () => route.startContext(context.id),
+                 resourceId
                })
            )
          )
@@ -84,10 +87,13 @@ export default Ember.Route.extend({
      }
    },
 
-  setupController(controller,model) {
+  setupController(controller, model) {
     let collection = model.collection;
     const isAnonymous = this.get('configurationService.configuration.properties.profileId') === 'anonymous';
     let contextResult =  ContextResult.create();
+    if(model.resourceId) {
+      contextResult.set('currentResourceId', model.resourceId);
+    }
     if (collection.get('isCollection') || isAnonymous) {
       contextResult = model.contextResult;
       contextResult.merge(collection);

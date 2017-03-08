@@ -2,12 +2,13 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     exec: {
-      "run": {
+      'run': {
         cmd: function (command) {
           return command;
         }
       },
-      "ember-serve": 'QUIZZES_EMBEDDED=true ember serve',
+      'ember-serve': 'QUIZZES_EMBEDDED=true ember serve',
+      'build-prod-bamboo': 'QUIZZES_EMBEDDED=true ember build --environment=production --output-path quizzes'
     },
     stubby: {
       test: {
@@ -86,7 +87,7 @@ module.exports = function (grunt) {
     grunt.task.run(['stubby:test', 'exec:run:ember test --silent -r xunit > report-xunit.xml']);
   });
 
-  grunt.registerTask('run', function (target) {
+  grunt.registerTask('run', function () {
     var serverExecTask = 'exec:ember-serve';
 
     var tasks = ['generateSVG'];
@@ -94,5 +95,9 @@ module.exports = function (grunt) {
     grunt.task.run(tasks);
   });
 
-  grunt.registerTask('generateSVG', ['svgstore']);
+  // Wrapper for ember build, this runs generateSVG before the build
+  grunt.registerTask('build', function (target) {
+    var buildExecTask = 'exec:build-' + (target || 'dev');
+    grunt.task.run(['generateSVG', buildExecTask]);
+  });
 };

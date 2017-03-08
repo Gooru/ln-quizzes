@@ -27,16 +27,31 @@ export default Ember.Service.extend({
   /**
    * Gets a Collection by id
    * @param {string} collectionId
-   * @param {type} Collection Type
-   * @returns {Promise}
+   * @param {string} type collection|assessment
+   * @param {boolean} refresh
+   * @returns {Promise.<Collection>}
    */
-  readCollection: function(collectionId,type){
+  readCollection: function(collectionId, type, refresh = false){
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('collectionAdapter').readCollection(collectionId,type)
+      service.get('collectionAdapter').readCollection(collectionId, type, refresh)
         .then(function(responseData) {
           resolve(service.get('collectionSerializer').normalizeReadCollection(responseData));
         }, reject );
     });
+  },
+
+  /**
+   * Notifies a collection change
+   * @param {string} collectionId
+   * @param {string} type collection|assessment
+   * @returns {Promise.<boolean>}
+   */
+  notifyCollectionChange: function(collectionId, type){
+    return this.readCollection(collectionId, type, true).then(function(){
+      return true;
+    });
   }
+
+
 });

@@ -23,7 +23,7 @@ export default Ember.Object.extend({
   /**
    * Normalize the Collection data into a Collection object
    * @param payload
-   * @returns {Question}
+   * @returns {Collection}
    */
   normalizeReadCollection: function(payload) {
     const serializer = this;

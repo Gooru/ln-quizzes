@@ -12,12 +12,14 @@ export default ApplicationAdapter.extend(TokenMixin,  {
    * Reads a Collection by id
    *
    * @param {string} collectionId
+   * @param {string} type collection|assessment
+   * @param {boolean} refresh indicates if the data should be refreshed from the repository
    * @returns {Promise}
    */
-  readCollection: function(collectionId,type) {
+  readCollection: function(collectionId, type, refresh = false) {
     const adapter = this;
     const namespace = adapter.get('namespace');
-    const url = `${namespace}/${collectionId}?type=${type}`;
+    const url = `${namespace}/${collectionId}?type=${type}&refresh=${refresh}`;
     const options = {
       type: 'GET',
       contentType: 'application/json; charset=utf-8',

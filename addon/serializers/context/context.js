@@ -108,6 +108,7 @@ export default Ember.Object.extend({
   serializeUpdateContext: function(assignment) {
     return {
       contextData: {
+        contextMap: assignment.get('contextMapping'),
         metadata: {
           title: assignment.get('title'),
           description: assignment.get('description')

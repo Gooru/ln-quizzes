@@ -64,6 +64,7 @@ test('serializeContext', function(assert) {
     isCollection: true,
     hasStarted: false,
     contextData: {
+      contextMap: {},
       metadata: {
         description: 'description',
         title: 'title'
@@ -78,11 +79,17 @@ test('serializeUpdateContext', function(assert) {
   const assignment = Context.create({
     title: 'title',
     description: 'description',
-    collectionId: 'assessment-id'
+    collectionId: 'assessment-id',
+    contextMapping: {
+      justAnything: 123
+    }
   });
   const response = serializer.serializeUpdateContext(assignment);
   const expected = {
     contextData: {
+      contextMap: {
+        justAnything: 123
+      },
       metadata: {
         title: 'title',
         description: 'description'

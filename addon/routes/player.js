@@ -39,9 +39,6 @@ export default Ember.Route.extend({
   /**
    * @param {{ contextId: string }} params
    */
-   /**
-    * @param {{ contextId: string }} params
-    */
    model(params) {
      return this.quizzesModel(params);
    },
@@ -53,13 +50,9 @@ export default Ember.Route.extend({
      const route = this;
      const resourceId = params.resourceId;
      const contextId = params.contextId;
-     if(params.token) {
-       route.get('quizzesConfigurationService').addProperties({ token: params.token });
-     }
      let type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
      let reportURL = params.routeURL || route.get('quizzesConfigurationService.configuration.properties.reportURL');
      let profileId = params.profileId || route.get('quizzesConfigurationService.configuration.properties.profileId');
-
      if(type === 'collection' || profileId === 'anonymous') {
        return route.get('quizzesContextService').startContext(contextId).then(function(contextResult){
          return Ember.RSVP.hash({

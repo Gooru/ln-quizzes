@@ -30,3 +30,16 @@ test('loadConfiguration', function(assert) {
     done();
   });
 });
+
+test('setToken', function(assert) {
+  const service = this.subject( {
+    configuration: {
+      properties: {
+
+      }
+    }
+  });
+
+  service.setToken('abc');
+  assert.equal(service.get('configuration.properties.token'), 'abc');
+});

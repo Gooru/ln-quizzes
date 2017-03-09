@@ -161,7 +161,8 @@ export default Ember.Object.extend({
         }
       });
 
-      if (!this.get('currentResourceId')) {
+      let currentResourceId = this.get('currentResourceId');
+      if (!currentResourceId || resourceResults.findBy('id', currentResourceId)) {
         this.set('currentResourceId', resources[0].get('id'));
       }
 

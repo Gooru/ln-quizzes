@@ -14,12 +14,12 @@ export default Ember.Service.extend({
   // Properties
 
   /**
-   * @property {EventsAdapter} adapter
+   * @property {ContextAdapter} adapter
    */
   contextAdapter: null,
 
   /**
-   * @property {EventsSerializer} serializer
+   * @property {ContextSerializer} serializer
    */
   contextSerializer: null,
 

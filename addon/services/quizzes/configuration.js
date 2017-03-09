@@ -45,6 +45,15 @@ const ConfigurationService = Ember.Service.extend({
   addProperties:function(properties){
     const service = this;
     service.set('configuration.properties',properties);
+  },
+
+  /**
+   * Sets the token property
+   * @param {string} token
+   */
+  setToken: function(token) {
+    const service = this;
+    service.set('configuration.properties.token', token);
   }
 });
 

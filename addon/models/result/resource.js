@@ -10,6 +10,16 @@ import Serializable from 'quizzes-addon/mixins/serializable';
 export default Ember.Object.extend(Serializable, {
 
   /**
+   * Values: started / skipped
+   *
+   * @property {String}
+   */
+  attemptStatus: Ember.computed('correct', 'skipped', function () {
+    const skipped = this.get('skipped');
+    return skipped ? 'skipped' : 'started';
+  }),
+
+  /**
    * @property {boolean} isCorrect
    */
   isCorrect: Ember.computed('score', function() {
@@ -19,7 +29,12 @@ export default Ember.Object.extend(Serializable, {
   /**
    * @property {boolean} isQuestion
    */
-  isQuestion: false,
+  isQuestion: Ember.computed.not('isResource'),
+
+  /**
+   * @property {boolean} isQuestion
+   */
+  isResource: Ember.computed.bool('resource.isResource'),
 
   /**
    * @property {number} reaction - user reaction to the resource
@@ -60,6 +75,15 @@ export default Ember.Object.extend(Serializable, {
    * @property {number} stopTime - Current stop time for the resource
    */
   stopTime: 0,
+
+  /**
+   * @property {number} timeSpent - Time spent in this resource
+   */
+  timeSpentToSave: Ember.computed('startTime', 'stopTime', 'savedTime', function() {
+    let startTime = this.get('startTime') || 0;
+    let stopTime = this.get('stopTime') || startTime;
+    return this.roundMilliseconds(stopTime - startTime);
+  }),
 
   /**
    * @property {number} timeSpent - Time spent in this resource

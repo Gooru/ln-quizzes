@@ -12,12 +12,13 @@ test('serializeResourceResult with a resource', function(assert) {
     savedTime: 20,
     startTime: 10,
     stopTime: 20000,
-    reaction: 2
+    reaction: 2,
+    isQuestion: false
   });
   const response = serializer.serializeResourceResult(resourceResult);
   const expected = {
     resourceId: 'resource-id',
-    timeSpent: 20000,
+    timeSpent: 19000,
     reaction: 2
   };
 
@@ -33,7 +34,8 @@ test('serializeResourceResult with a question', function(assert) {
     reaction: 2,
     answer: [{
       value: 'answer'
-    }]
+    }],
+    isQuestion: true
   });
   const response = serializer.serializeResourceResult(questionResult);
   const expected = {

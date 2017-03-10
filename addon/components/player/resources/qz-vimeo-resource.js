@@ -29,6 +29,11 @@ export default ResourceComponent.extend({
   // -------------------------------------------------------------------------
   // Properties
 
+  aspectRatio: {
+    width: 16,
+    height: 9
+  },
+
   /**
    * @property {string} full resource vimeo url
    */

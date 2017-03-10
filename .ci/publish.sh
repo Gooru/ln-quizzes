@@ -4,7 +4,9 @@ set -e
 
 source .ci/common.sh
 
-VERSION=$(node -e "console.log(require('./package.json').version);")
+VERSION=$(docker run -v $PWD:/app \
+  --workdir /app \
+  --user node node:4.6 node -e "console.log(require('./package.json').version);")
 
 if [ -z "$S3_BUCKET" ]; then
   error "No S3 bucket specified."
@@ -18,7 +20,7 @@ fi
 
 info "Creating CodeDeploy bundle..."
 
-npm pack
+docker run -v $PWD:/app --workdir /app --user node node:4.6 npm pack
 
 info "Publishing version ${VERSION} to S3..."
 
@@ -27,3 +29,4 @@ aws s3 cp quizzes-addon-${VERSION}.tgz \
 
 info "Done publishing."
 
+docker run -v $PWD:/app --workdir /app --user node node:4.6 rm quizzes-addon-${VERSION}.tgz

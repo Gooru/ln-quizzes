@@ -30,6 +30,11 @@ export default ResourceComponent.extend({
   // -------------------------------------------------------------------------
   // Properties
 
+  aspectRatio: {
+    width: 16,
+    height: 9
+  },
+
   /**
    * @property {string}Begin playing the video at the given number of seconds from the start of the video
    */

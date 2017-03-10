@@ -17,6 +17,21 @@ test('timeSpent', function(assert) {
   assert.equal(resourceResult.get('timeSpent'), 6000, 'Wrong time spent');
 });
 
+test('timeSpentToSave', function(assert) {
+  let resourceResult = this.subject({
+    savedTime: 0,
+    startTime: 0,
+    stopTime: 2000
+  });
+  assert.equal(resourceResult.get('timeSpentToSave'), 2000, 'Wrong time spent');
+
+  resourceResult.set('startTime', 1000);
+  assert.equal(resourceResult.get('timeSpentToSave'), 1000, 'Wrong time spent');
+
+  resourceResult.set('savedTime', 5000);
+  assert.equal(resourceResult.get('timeSpentToSave'), 1000, 'Wrong time spent');
+});
+
 test('clear', function(assert) {
   let resourceResult = this.subject({
     savedTime: 20,

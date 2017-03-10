@@ -91,7 +91,7 @@ export default Ember.Object.extend({
     let serialized = {
       reaction: resourceResult.get('reaction'),
       resourceId: resourceResult.get('resourceId'),
-      timeSpent: resourceResult.get('timeSpent')
+      timeSpent: resourceResult.get('timeSpentToSave')
     };
     if (resourceResult.get('isQuestion')) {
       serialized.answer = resourceResult.get('answer') ?

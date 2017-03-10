@@ -18,9 +18,9 @@ if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$AWS_
   exit 1
 fi
 
-info "Creating CodeDeploy bundle..."
+info "Creating NPM tgz bundle..."
 
-docker run -v $PWD:/app --workdir /app --user node node:4.6 npm pack
+docker run -v $PWD:/app --workdir /app node:4.6 npm pack
 
 info "Publishing version ${VERSION} to S3..."
 
@@ -29,4 +29,4 @@ aws s3 cp quizzes-addon-${VERSION}.tgz \
 
 info "Done publishing."
 
-docker run -v $PWD:/app --workdir /app --user node node:4.6 rm quizzes-addon-${VERSION}.tgz
+docker run -v $PWD:/app --workdir /app node:4.6 rm quizzes-addon-${VERSION}.tgz

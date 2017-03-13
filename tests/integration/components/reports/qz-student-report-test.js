@@ -56,7 +56,7 @@ test('Layout', function(assert) {
 
   const $component = this.$('.reports.qz-student-report');
   assert.ok($component.length, 'Component');
-  assert.ok($component.find('.reports.gru-assessment-report').length, 'Assessment report');
+  assert.ok($component.find('.reports.qz-assessment-report').length, 'Assessment report');
 });
 
 test('Layout when show key setting', function (assert) {
@@ -106,10 +106,10 @@ test('Layout when show key setting', function (assert) {
 
   this.render(hbs`{{reports/qz-student-report attemptData=attemptData}}`);
 
-  const $component = this.$('.reports.gru-assessment-report');
+  const $component = this.$('.reports.qz-assessment-report');
   assert.ok($component.length, 'Component');
-  assert.notOk($component.find('.gru-questions .questions-header .performance').length, 'Performance button should not appear');
-  assert.notOk($component.find('.gru-questions .questions-header .correct-answer').length, 'Correct answer button should not appear');
+  assert.notOk($component.find('.qz-questions .questions-header .performance').length, 'Performance button should not appear');
+  assert.notOk($component.find('.qz-questions .questions-header .correct-answer').length, 'Correct answer button should not appear');
 
   const collection2 = Collection.create({
     id: 'collection-id',
@@ -155,8 +155,8 @@ test('Layout when show key setting', function (assert) {
     ])
   }));
 
-  assert.ok($component.find('.gru-questions .questions-header .performance').length, 'Performance button should appear');
-  assert.ok($component.find('.gru-questions .questions-header .correct-answer').length, 'Correct answer button should appear');
+  assert.ok($component.find('.qz-questions .questions-header .performance').length, 'Performance button should appear');
+  assert.ok($component.find('.qz-questions .questions-header .correct-answer').length, 'Correct answer button should appear');
 });
 
 test('Layout when teacher hidden the summary report', function (assert) {
@@ -208,14 +208,14 @@ test('Layout when teacher hidden the summary report', function (assert) {
 
   this.render(hbs`{{reports/qz-student-report attemptData=attemptData areAnswersHidden=areAnswersHidden}}`);
 
-  const $component = this.$('.reports.gru-assessment-report');
+  const $component = this.$('.reports.qz-assessment-report');
   assert.ok($component.length, 'Component');
   assert.notOk($component.find('.gru-bubbles').length, 'Questions bubbles should not appear');
-  assert.notOk($component.find('.gru-questions').length, 'Assessment report should not appear');
+  assert.notOk($component.find('.qz-questions').length, 'Assessment report should not appear');
   assert.ok($component.find('.hidden-report').length, 'Hidden report text should appear');
 
   this.set('areAnswersHidden',false);
   assert.ok($component.find('.gru-bubbles').length, 'Questions bubbles should appear');
-  assert.ok($component.find('.gru-questions').length, 'Assessment report should appear');
+  assert.ok($component.find('.qz-questions').length, 'Assessment report should appear');
   assert.notOk($component.find('.hidden-report').length, 'Hidden report text should not appear');
 });

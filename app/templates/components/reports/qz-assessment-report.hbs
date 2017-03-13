@@ -1,0 +1,23 @@
+{{reports.assessment.qz-summary
+  contextResult=contextResult
+  areQuestionLinksHidden=areAnswersHidden
+  onSelectAttempt='selectAttempt'
+  onBubbleSelect='bubbleSelect'
+  isRealTime=isRealTime
+  showAttempts=showAttempts}}
+
+{{#if areAnswersHidden}}
+
+  <div class="hidden-report">
+    <span>{{t "qz-assessment-report.hidden-report"}}</span>
+  </div>
+
+{{else}}
+
+  {{#if orderedQuestions.length}}
+    {{reports.assessment.qz-questions
+      isAnswerKeyHidden=isAnswerKeyHidden
+      results=orderedQuestions}}
+  {{/if}}
+
+{{/if}}

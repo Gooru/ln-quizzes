@@ -1,1 +1,0 @@
-export { default } from 'quizzes-addon/components/reports/assessment/gru-questions-xs';

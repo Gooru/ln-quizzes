@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:result/question', 'Unit | Model | result/question');
@@ -5,13 +6,20 @@ moduleFor('model:result/question', 'Unit | Model | result/question');
 test('attemptStatus', function(assert) {
   let resourceResult = this.subject({
     score: 100,
-    skipped: false
+    skipped: false,
+    resource: Ember.Object.create({
+      isResource: false
+    })
   });
   assert.equal(resourceResult.get('attemptStatus'), 'correct', 'The status should be correct');
   resourceResult.set('score', 0);
   assert.equal(resourceResult.get('attemptStatus'), 'incorrect', 'The status should be incorrect');
   resourceResult.set('skipped', true);
   assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The status should be skipped');
+  resourceResult.set('resource.isResource', true);
+  assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The resource status should be skipped');
+  resourceResult.set('skipped', false);
+  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The resource status should be skipped');
 });
 
 test('clear', function(assert) {

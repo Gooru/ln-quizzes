@@ -752,23 +752,21 @@ export default {
     "instructions": "Please reorder the answers in correct order, and click \"{{action}}\"."
   },
 
-  "player": {
-    "qz-navigation": {
-      "view-report": "View Report"
-    },
-    "qz-navigator": {
-      "see-usage-report": "See Usage Report"
-    },
-    "qz-viewer": {
-      "not-iframe-url": {
-        "header_1": "This resource cannot be viewed within Gooru.",
-        "header_2": "Click the button below to open the resource in a new tab.",
-        "view-resource": "View Resource",
-        "footer_1": "Why am I seeing this blank page?",
-        "footer_2": "Resources added in Gooru come from thousands of different publishers who",
-        "footer_3": "create and share their content. Resources have variety of settings, including",
-        "footer_4": "requirements that take you to another page to view the content."
-      }
+  "qz-navigation": {
+    "view-report": "View Report"
+  },
+  "qz-navigator": {
+    "see-usage-report": "See Usage Report"
+  },
+  "qz-viewer": {
+    "not-iframe-url": {
+      "header_1": "This resource cannot be viewed within Gooru.",
+      "header_2": "Click the button below to open the resource in a new tab.",
+      "view-resource": "View Resource",
+      "footer_1": "Why am I seeing this blank page?",
+      "footer_2": "Resources added in Gooru come from thousands of different publishers who",
+      "footer_3": "create and share their content. Resources have variety of settings, including",
+      "footer_4": "requirements that take you to another page to view the content."
     }
   },
 

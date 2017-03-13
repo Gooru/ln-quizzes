@@ -15,7 +15,7 @@ export default Ember.Component.extend({
   /**
    * @property {ReportDataEvent} attemptData all data for the current/last attempt
    */
-   attemptData: null,
+  attemptData: null,
 
    /**
     * @property {ContextResult} contextResult data normalized for report

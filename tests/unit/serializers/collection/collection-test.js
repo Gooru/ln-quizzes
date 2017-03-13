@@ -35,12 +35,13 @@ test('normalizeReadCollection with resources', function(assert) {
   assert.equal(collection.get('resources')[0], 'resource1-normalized', 'Wrong value for resource');
 });
 
-test('normalizeReadCollection with settings', function(assert) {
+test('normalizeReadCollection with settings and title', function(assert) {
   const serializer = this.subject();
   const collectionData = {
     id: 'collection-id',
     isCollection: false,
     metadata: {
+      title: 'collection-title',
       setting: {
         show_key:'never'
       }
@@ -48,6 +49,7 @@ test('normalizeReadCollection with settings', function(assert) {
   };
   const collection = serializer.normalizeReadCollection(collectionData);
   assert.equal(collection.get('showKey'), false, 'Should be false');
+  assert.equal(collection.get('title'), 'collection-title', 'Should be false');
 
   const collectionData2 = {
     id: 'collection-id',

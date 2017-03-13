@@ -25,7 +25,14 @@ export default ResourceResult.extend({
   attemptStatus: Ember.computed('correct', 'skipped', function () {
     const correct = this.get('correct');
     const skipped = this.get('skipped');
-    return correct ? 'correct' : (skipped ? 'skipped' : 'incorrect');
+    const isResource = this.get('isResource');
+    let status = 'started';
+    if(isResource) {
+      status = skipped ? 'skipped' : 'started';
+    } else {
+      status = correct ? 'correct' : (skipped ? 'skipped' : 'incorrect');
+    }
+    return status;
   }),
 
   /**
@@ -37,11 +44,6 @@ export default ResourceResult.extend({
    * @property {boolean} incorrect - Was the answer provided for this question incorrect?
    */
   incorrect: Ember.computed.not('correct'),
-
-  /**
-   * @property {boolean} isQuestion
-   */
-  isQuestion: true,
 
   /**
    * @property {number} resource - the question

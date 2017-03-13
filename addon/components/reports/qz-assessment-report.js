@@ -60,7 +60,7 @@ export default Ember.Component.extend({
   /**
    * Listening for model to update component properties
    */
-  onInit: Ember.on('init', function(){
+  onInit: Ember.on('init', function() {
     if (this.get('model')){
       this.set('contextResult', this.get('model').contextResult);
     }

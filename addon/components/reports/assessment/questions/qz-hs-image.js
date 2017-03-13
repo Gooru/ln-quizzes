@@ -18,7 +18,7 @@ export default Ember.Component.extend(QuestionMixin, {
   /**
    * @property {Service} Configuration service
    */
-  configurationService: Ember.inject.service('configuration'),
+  configurationService: Ember.inject.service('quizzes/configuration'),
 
   // -------------------------------------------------------------------------
   // Attributes

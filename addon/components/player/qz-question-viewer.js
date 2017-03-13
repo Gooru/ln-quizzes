@@ -1,5 +1,10 @@
 import Ember from 'ember';
-import { KEY_CODES, ASSESSMENT_SHOW_VALUES, FEEDBACK_EMOTION_VALUES } from 'quizzes-addon/config/quizzes-config';
+import {
+  KEY_CODES,
+  ASSESSMENT_SHOW_VALUES,
+  FEEDBACK_EMOTION_VALUES,
+  DEFAULT_IMAGES
+} from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Player question viewer
@@ -16,10 +21,16 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Dependencies
+
   /**
    * @requires service:i18n
    */
   i18n: Ember.inject.service(),
+
+  /**
+   * @requires service:quizzes/configuration
+   */
+  configurationService: Ember.inject.service('quizzes/configuration'),
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -302,6 +313,17 @@ export default Ember.Component.extend({
    * @property {boolean}
    */
   submitted: false,
+
+  /**
+   * Returns the thumbnail url if it exists
+   * @property {String}
+   */
+  thumbnail: Ember.computed('question.thumbnail', function() {
+    let cdnURL = this.get('configurationService.configuration.properties.cdnURL');
+    return this.get('question.thumbnail') ?
+      `${cdnURL}${this.get('question.thumbnail')}` :
+      DEFAULT_IMAGES.QUESTION_PLACEHOLDER_IMAGE;
+  }),
 
   // -------------------------------------------------------------------------
   // Observers

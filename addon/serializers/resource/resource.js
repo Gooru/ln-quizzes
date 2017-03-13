@@ -26,6 +26,7 @@ export default Ember.Object.extend({
       body: questionData.url || questionData.body,
       correctAnswer: questionData.correctAnswer,
       title: questionData.title,
+      thumbnail: questionData.thumbnail,
       type: questionData.type
     });
 

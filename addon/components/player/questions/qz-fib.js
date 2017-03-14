@@ -73,7 +73,7 @@ export default QuestionComponent.extend({
       inputs = component.$('.fib-answers input[type=text]'),
       answers = inputs.map(function (index, input) {
         let answer = Ember.$(input).val();
-        return{value: Ember.$.trim(answer)};
+        return { value: Ember.$.trim(answer) };
       }).toArray();
 
     const answerCompleted = answers.join('').length > 0; //to check that at least 1 answer has text

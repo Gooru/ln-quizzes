@@ -14,8 +14,6 @@ export default Ember.Component.extend({
 
   classNames: ['reports', 'class-assessment', 'qz-question-information'],
 
-
-
   // -------------------------------------------------------------------------
   // Properties
   /**

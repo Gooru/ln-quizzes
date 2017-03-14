@@ -15,8 +15,8 @@ const configurationServiceStub = Ember.Service.extend({
 moduleForComponent('reports/assessment/questions/qz-hs-image', 'Unit | Component | reports/assessment/questions/qz hs image', {
   integration: false,
   beforeEach: function () {
-    this.register('service:configuration', configurationServiceStub);
-    this.inject.service('configuration');
+    this.register('service:quizzes/configuration', configurationServiceStub);
+    this.inject.service('quizzes/configuration');
   }
 });
 

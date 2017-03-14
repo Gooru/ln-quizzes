@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import QuestionResult from 'quizzes-addon/models/result/question';
+import ResourceResult from 'quizzes-addon/models/result/resource';
 
 /**
  * Profile results/events by resource
@@ -166,14 +167,29 @@ export default Ember.Object.extend({
     this.set('collection', collection);
     this.set('collectionId', collection.get('id'));
     const resources = collection.get('resources');
+    let resourceResults = this.get('resourceResults');
     resources.forEach(resource => {
-      let resourceResult = this.get('resourceResults')
+      let resourceResult = resourceResults
         .findBy('resourceId', resource.id);
       if(resourceResult) {
+        if(resource.get('isResource')) {
+          let result = ResourceResult.create({
+            resourceId: resource.id,
+            resource,
+            savedTime: resourceResult.savedTime,
+            reaction: resourceResult.reaction,
+            answer: resourceResult.answer || null,
+            score: resourceResult.score,
+            skipped: resourceResult.isSkipped
+          });
+          resourceResults.removeObject(resourceResult);
+          resourceResults.pushObject(result);
+        }
         resourceResult.set('resource', resource);
       } else {
+        let ResultModel = resource.get('isResource') ? ResourceResult : QuestionResult;
         this.get('resourceResults').pushObject(
-          QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
+          ResultModel.create(Ember.getOwner(this).ownerInjection(), {
             resourceId: resource.id,
             resource: resource,
             savedTime: 0,

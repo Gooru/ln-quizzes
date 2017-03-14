@@ -157,6 +157,19 @@ export default Ember.Object.extend({
             ResourceResult.create({ resourceId, resource });
           resourceResults.pushObject(result);
         } else {
+          if(resource.get('isResource')) {
+            let result = ResourceResult.create({
+              resourceId,
+              resource,
+              savedTime: found.savedTime,
+              reaction: found.reaction,
+              answer: found.answer || null,
+              score: found.score,
+              skipped: found.isSkipped
+            });
+            resourceResults.removeObject(found);
+            resourceResults.pushObject(result);
+          }
           found.set('resource', resource);
         }
       });

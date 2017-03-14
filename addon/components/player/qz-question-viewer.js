@@ -2,8 +2,7 @@ import Ember from 'ember';
 import {
   KEY_CODES,
   ASSESSMENT_SHOW_VALUES,
-  FEEDBACK_EMOTION_VALUES,
-  DEFAULT_IMAGES
+  FEEDBACK_EMOTION_VALUES
 } from 'quizzes-addon/config/quizzes-config';
 
 /**
@@ -321,8 +320,7 @@ export default Ember.Component.extend({
   thumbnail: Ember.computed('question.thumbnail', function() {
     let cdnURL = this.get('configurationService.configuration.properties.cdnURL');
     return this.get('question.thumbnail') ?
-      `${cdnURL}${this.get('question.thumbnail')}` :
-      DEFAULT_IMAGES.QUESTION_PLACEHOLDER_IMAGE;
+      `${cdnURL}${this.get('question.thumbnail')}` : null;
   }),
 
   // -------------------------------------------------------------------------

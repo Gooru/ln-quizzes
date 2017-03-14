@@ -17,8 +17,8 @@ moduleForComponent('player/questions/qz-hs-image', 'Integration | Component | pl
   integration: true,
   beforeEach: function () {
     this.container.lookup('service:i18n').set('locale', 'en');
-    this.register('service:configuration', configurationServiceStub);
-    this.inject.service('configuration');
+    this.register('service:quizzes/configuration', configurationServiceStub);
+    this.inject.service('quizzes/configuration');
   }
 });
 

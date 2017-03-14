@@ -309,6 +309,9 @@ export default Ember.Component.extend(ModalMixin, {
     let contextResult = component.get('contextResult');
     let resourceResult = component.get('resourceResult');
     let resourceId = resource.get('id');
+    if(resourceResult) {
+      resourceResult.set('skipped', false);
+    }
     return component.saveResourceResult(resourceId, contextResult, resourceResult, firstTime)
       .then(function() {
         Ember.run(() => component.set('resource', null));

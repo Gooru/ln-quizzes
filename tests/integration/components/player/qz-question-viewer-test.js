@@ -360,3 +360,22 @@ test('Question viewer body when question type is FIB', function (assert) {
   const $questionViewer = $component.find('.qz-question-viewer');
   assert.equal($questionViewer.find('.question .gru-math-text').text(),'The sun is _______ and the moon _______','Incorrect text');
 });
+
+test('Question viewer body when question type is FIB', function (assert) {
+
+  const question = ResourceModel.create({
+    'id': '569906aacea8416665209d53',
+    type: 'hot_text_word',
+    body: 'The sun is yellow and the moon white',
+    description: 'Sample description text',
+    sequence:1,
+    hasAnswers: true
+  });
+
+  this.set('question', question);
+
+  this.render(hbs`{{player/qz-question-viewer question=question }}`);
+  const $component = this.$();
+  const $questionViewer = $component.find('.qz-question-viewer');
+  assert.equal($questionViewer.find('.question .gru-math-text').text(),'Sample description text','Incorrect text');
+});

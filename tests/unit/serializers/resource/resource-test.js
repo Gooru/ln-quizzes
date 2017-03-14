@@ -15,6 +15,7 @@ test('normalizeReadResource', function(assert) {
         value: 'a'
       }],
       body: 'question-body',
+      description: 'question-description',
       interaction: {
         isShuffle: false,
         maxChoices: 1,
@@ -42,6 +43,7 @@ test('normalizeReadResource', function(assert) {
   assert.notOk(resource.get('isResource'), 'Wrong value for isResource');
   assert.deepEqual(resource.get('correctAnswer'), [{value: 'a'}], 'Wrong correctAnswer');
   assert.equal(resource.get('body'), 'question-body', 'Wrong body');
+  assert.equal(resource.get('description'), 'question-description', 'Wrong description');
   assert.notOk(resource.get('shuffle'), 'Wrong value for shuffle');
   assert.equal(resource.get('maxChoices'), 1, 'Wrong maxChoices');
   assert.equal(resource.get('prompt'), 'question-prompt', 'Wrong maxChoices');
@@ -52,6 +54,7 @@ test('normalizeReadResource', function(assert) {
     assert.notOk(answer.get('isFixed'), 'Wrong answer ${index} isFixed');
   });
 });
+
 test('normalizeReadResource without interaction', function(assert) {
   const serializer = this.subject();
   const resource = {
@@ -74,6 +77,7 @@ test('normalizeReadResource without interaction', function(assert) {
   assert.notOk(newResource.get('isResource'), 'Wrong value for isResource');
   assert.deepEqual(newResource.get('correctAnswer'), [{value: 'a'}], 'Wrong correctAnswer');
   assert.equal(newResource.get('body'), 'question-body', 'Wrong body');
+  assert.equal(newResource.get('description'), null, 'Wrong description');
   assert.notOk(newResource.get('shuffle'), 'Wrong value for shuffle');
   assert.equal(newResource.get('maxChoices'),0, 'Wrong maxChoices');
   assert.notOk(newResource.get('prompt'),  'Wrong maxChoices');

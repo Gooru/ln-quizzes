@@ -113,7 +113,7 @@ export default Ember.Component.extend(ModalMixin, {
 
   init: function() {
     this._super(...arguments);
-    if(this.get('collection.isCollection') || this.get('isAnonymous')) {
+    if(this.get('collection.isCollection') || this.get('isAnonymous') || this.get('isTeacher')) {
       this.set('showConfirmation',false);
       this.startAssessment();
     }

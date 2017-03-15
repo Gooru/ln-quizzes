@@ -53,14 +53,18 @@ export default Ember.Route.extend({
      let type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
      let reportURL = params.routeURL || route.get('quizzesConfigurationService.configuration.properties.reportURL');
      let profileId = params.profileId || route.get('quizzesConfigurationService.configuration.properties.profileId');
-     if(type === 'collection' || profileId === 'anonymous') {
+     let role = params.role;
+     let isTeacher = role === 'teacher';
+     let isAnonymous = profileId === 'anonymous';
+     if(type === 'collection' || isAnonymous || isTeacher) {
        return route.get('quizzesContextService').startContext(contextId).then(function(contextResult){
          return Ember.RSVP.hash({
            contextResult,
            collection: route.get('quizzesCollectionService').readCollection(contextResult.collectionId, type),
            reportURL,
            resourceId,
-           isAnonymous: profileId === 'anonymous'
+           isAnonymous,
+           role
          });
        });
      } else {
@@ -74,7 +78,8 @@ export default Ember.Route.extend({
                  reportURL,
                  startContextFunction: () => route.startContext(context.id),
                  resourceId,
-                 isAnonymous: profileId === 'anonymous'
+                 isAnonymous,
+                 role
                })
            )
          )
@@ -85,11 +90,12 @@ export default Ember.Route.extend({
   setupController(controller, model) {
     let collection = model.collection;
     const isAnonymous = model.isAnonymous;
+    const isTeacher = model.role === 'teacher';
     let contextResult =  ContextResult.create();
     if(model.resourceId) {
       contextResult.set('currentResourceId', model.resourceId);
     }
-    if (collection.get('isCollection') || isAnonymous) {
+    if (collection.get('isCollection') || isAnonymous || isTeacher) {
       contextResult = model.contextResult;
       contextResult.merge(collection);
     } else {
@@ -98,6 +104,7 @@ export default Ember.Route.extend({
       contextResult.set('context', context);
       contextResult.set('collection', collection);
       controller.set('isAnonymous', isAnonymous);
+      controller.set('role', model.role);
       controller.set('startContextFunction', model.startContextFunction);
     }
     controller.set('contextResult', contextResult);

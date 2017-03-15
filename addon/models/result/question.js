@@ -68,7 +68,7 @@ export default ResourceResult.extend({
   /**
    * @property {boolean} started
    */
-  skipped: false,
+  skipped: true,
 
   /**
    * @property {boolean} started

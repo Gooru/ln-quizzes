@@ -19,24 +19,24 @@ export default Ember.Route.extend({
    * @type {AttemptService} attemptService
    * @property {Ember.Service} Service to send context related events
    */
-  attemptService: Ember.inject.service('quizzes/attempt'),
+  quizzesAttemptService: Ember.inject.service('quizzes/attempt'),
 
   /**
    * @type {CollectionService} collectionService
    * @property {Ember.Service} Service to retrieve a collection
    */
-  collectionService: Ember.inject.service('quizzes/collection'),
+  quizzesCollectionService: Ember.inject.service('quizzes/collection'),
 
   /**
    * @property {Service} Configuration service
    */
-  configurationService: Ember.inject.service('quizzes/configuration'),
+  quizzesConfigurationService: Ember.inject.service('quizzes/configuration'),
 
   /**
    * @type {ProfileService} profileService
    * @property {Ember.Service} Service to send profile related events
    */
-  profileService: Ember.inject.service('quizzes/profile'),
+  quizzesProfileService: Ember.inject.service('quizzes/profile'),
 
   // -------------------------------------------------------------------------
   // Actions
@@ -58,17 +58,24 @@ export default Ember.Route.extend({
    * @param {{ contextId: string }} params
    */
   model: function (params) {
+    return this.quizzesModel(params);
+  },
+
+  /**
+   * @param {{ contextId: string }} params
+   */
+  quizzesModel: function(params) {
     const route = this;
     const contextId = params.contextId;
     const anonymous = params.anonymous;
-    const type = params.type || route.get('configurationService.configuration.properties.type');
+    const type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
 
-    return route.get('attemptService').getReportData(contextId).then(
+    return route.get('quizzesAttemptService').getReportData(contextId).then(
       reportData => Ember.RSVP.hash({
         anonymous,
         reportData,
-        collection: route.get('collectionService').readCollection(reportData.collectionId, type),
-        profiles: route.get('profileService').readProfiles(
+        collection: route.get('quizzesCollectionService').readCollection(reportData.collectionId, type),
+        profiles: route.get('quizzesProfileService').readProfiles(
           reportData.get('reportEvents').map(({ profileId }) => profileId)
         )
       })

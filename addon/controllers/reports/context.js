@@ -14,11 +14,13 @@ import ConfigMixin from 'quizzes-addon/mixins/endpoint-config';
  */
 export default Ember.Controller.extend(ConfigMixin, {
 
+  queryParams: ['anonymous'],
+
   /**
    * @type {ContextService} contextService
    * @property {Ember.Service} Service to send context related events
    */
-  contextService: Ember.inject.service('quizzes/context'),
+  quizzesContextService: Ember.inject.service('quizzes/context'),
 
   /**
    * @requires service:i18n
@@ -28,13 +30,13 @@ export default Ember.Controller.extend(ConfigMixin, {
   /**
    * @requires service:notifications
    */
-  notifications: Ember.inject.service('quizzes/notifications'),
+  quizzesNotifications: Ember.inject.service('quizzes/notifications'),
 
   /**
    * @type {ProfileService} profileService
    * @property {Ember.Service} Service to send profile related events
    */
-  profileService: Ember.inject.service('quizzes/profile'),
+  quizzesProfileService: Ember.inject.service('quizzes/profile'),
 
   // -------------------------------------------------------------------------
   // Actions
@@ -148,7 +150,7 @@ export default Ember.Controller.extend(ConfigMixin, {
          let profilePromise = Ember.RSVP.resolve();
          let profileId = eventMessage.profileId;
          if(eventMessage.eventName === CONTEXT_EVENT_TYPES.START) {
-           profilePromise = controller.get('profileService').readProfiles([ profileId ]);
+           profilePromise = controller.get('quizzesProfileService').readProfiles([ profileId ]);
          }
          profilePromise.then(profiles => {
            let profile = profiles ? profiles[profileId] : null;
@@ -179,7 +181,7 @@ export default Ember.Controller.extend(ConfigMixin, {
     let isDisplayed = this.get('isNotificationDisplayed');
 
     if (!isDisplayed) {
-      let notifications = this.get('notifications');
+      let notifications = this.get('quizzesNotifications');
       let message = this.get('i18n').t('common.warnings.on-air-connection-lost').string;
 
       // Use custom options for the notification
@@ -207,7 +209,7 @@ export default Ember.Controller.extend(ConfigMixin, {
    * Remove all notifications
    */
   clearNotification: function () {
-    this.get('notifications').clear();
+    this.get('quizzesNotifications').clear();
     this.set('isNotificationDisplayed', false);
   }
 });

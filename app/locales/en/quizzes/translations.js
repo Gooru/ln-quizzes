@@ -801,8 +801,8 @@ export default {
     "completion": "Completion",
     "study-time": "Time"
   },
-  "gru-assessment-report": {
-    "gru-summary": {
+  "qz-assessment-report": {
+    "qz-summary": {
       "total-time-spent": "Total Time Spent"
     },
     "hidden-report": "Your teacher has selected to hide your summary report for this assessment."
@@ -815,7 +815,7 @@ export default {
       "skipped": "Skipped"
     }
   },
-  "reports.gru-table-view": {
+  "reports.qz-table-view": {
     "first-tier-header-prefix": "Q",
     "student": "Student",
     "reaction": "Reaction",

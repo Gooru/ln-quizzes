@@ -54,7 +54,12 @@ const Context = Ember.Object.extend({
   /**
    * @property {String}
    */
-  collectionId: null
+  collectionId: null,
+
+  /**
+   * @property {Object}
+   */
+  contextMapping: {}
 });
 
 export default Context;

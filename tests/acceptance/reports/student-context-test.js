@@ -14,7 +14,7 @@ test('Layout', function (assert) {
     T.exists(assert, $studentReport, 'Missing report');
     assert.equal($studentReport.find('.summary-container .percentage').text(), '67%', 'Wrong grade');
     assert.equal($studentReport.find('.bubbles-list').children().length, 2, 'Wrong length of questions');
-    const $questions = $studentReport.find('.gru-questions.performance-view');
+    const $questions = $studentReport.find('.qz-questions.performance-view');
     T.exists(assert, $questions.find('table tr:first-child .question-score .incorrect'), 'Wrong score value for first answer');
     T.exists(assert, $questions.find('table tr:last-child .question-score .correct'), 'Wrong score value for last answer');
   });

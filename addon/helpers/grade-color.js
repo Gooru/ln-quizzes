@@ -10,7 +10,7 @@ import { getGradeColor } from 'quizzes-addon/utils/utils';
  * <div class="grade" style="background-color: {{gradeColor score}}">
  *  ...
  * </div>
- * @see /app/templates/components/reports/assessment/gru-summary.hbs#L1
+ * @see /app/templates/components/reports/assessment/qz-summary.hbs#L1
  *
  * @param value - score within the grading scale
  * @returns {String} - hex color string

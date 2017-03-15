@@ -12,7 +12,7 @@ moduleFor('route:reports/context', 'Unit | Route | reports/context', {
 
 test('model', function(assert) {
   let route = this.subject();
-  route.set('attemptService', {
+  route.set('quizzesAttemptService', {
     getReportData: () => new Ember.RSVP.resolve(
       ReportData.create({
         id: 'context-id',
@@ -25,12 +25,12 @@ test('model', function(assert) {
       })
     )
   });
-  route.set('collectionService', {
+  route.set('quizzesCollectionService', {
     readCollection: () => new Ember.RSVP.resolve({
       id: 'collection-id'
     })
   });
-  route.set('profileService', {
+  route.set('quizzesProfileService', {
     readProfiles: () => new Ember.RSVP.resolve('profiles')
   });
 

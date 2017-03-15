@@ -117,7 +117,7 @@ test('Open ended layout - with user answer', function (assert) {
     assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
   });
   this.set('question', question);
-  this.set('userAnswer', 'test');
+  this.set('userAnswer', [{ value: 'test' }]);
   this.render(hbs`{{player/questions/qz-open-ended question=question
                     userAnswer=userAnswer
                     onAnswerChanged='changeAnswer'

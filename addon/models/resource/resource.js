@@ -27,6 +27,11 @@ export default Ember.Object.extend({
   correctAnswer: Ember.A(),
 
   /**
+   * @property {String} description
+   */
+  description: null,
+
+  /**
    * resource id
    * @property {string} id
    */

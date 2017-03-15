@@ -75,11 +75,13 @@ export default Ember.Object.extend({
    * @returns {Boolean}
    */
   compareAnswers: function(a, b) {
-    let result = a.length === b.length;
-    a.forEach(answerA => {
-      let filteredAnswers = b.find(answerB => answerB.value === answerA.value);
-      result &= !!filteredAnswers;
-    });
+    let result = a && b && a.length === b.length;
+    if(result) {
+      a.forEach(answerA => {
+        let filteredAnswers = b.find(answerB => answerB.value === answerA.value);
+        result &= !!filteredAnswers;
+      });
+    }
     return result;
   },
 

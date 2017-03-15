@@ -161,11 +161,15 @@ export default Ember.Component.extend({
    * @property {string} Return the question body and modified the text if the question is
    * FIB to show the correct format.
    */
-  questionBody:Ember.computed('question.body',function(){
+  questionBody: Ember.computed('question.body', 'question.description',function(){
     let component = this;
     let text = this.get('question.body');
 
-    if(component.get('question.isFIB')){
+    if(component.get('question.isHotTextHighlight')) {
+      text = this.get('question.description');
+    }
+
+    if(component.get('question.isFIB')) {
       let regex = /\[]/g;
       text = component.get('question.body').replace(regex, '_______');
     }

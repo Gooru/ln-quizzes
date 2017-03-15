@@ -17,8 +17,8 @@ moduleForComponent('player/questions/qz-hs-image', 'Unit | Component | player/qu
   // needs: ['component:foo', 'helper:bar'],
   unit: true,
   beforeEach: function () {
-    this.register('service:configuration', configurationServiceStub);
-    this.inject.service('configuration');
+    this.register('service:quizzes/configuration', configurationServiceStub);
+    this.inject.service('quizzes/configuration');
   }
 });
 test('answers', function(assert) {

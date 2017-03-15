@@ -95,6 +95,7 @@ module.exports = function(environment) {
         id: '05d8c6fc-0ac7-4877-8179-7ee71e04dae3',
         title: 'Assessment Embedded Title'
       },
+      role: 'student',
       teacher: {
         id: '2bcf48ff-a167-443b-b620-ad91d7b888e3',
         firstName: 'teacher-1',

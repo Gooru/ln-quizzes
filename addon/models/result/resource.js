@@ -59,12 +59,12 @@ export default Ember.Object.extend(Serializable, {
   /**
    * @property {number} skipped - if the resource was skipped
    */
-  skipped: false,
+  skipped: true,
 
   /**
    * @property {number} started - if the resource was started
    */
-  started: true,
+  started: Ember.computed.not('skipped'),
 
   /**
    * @property {number} startTime - Current start time for the resource

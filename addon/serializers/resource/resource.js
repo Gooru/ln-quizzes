@@ -24,8 +24,10 @@ export default Ember.Object.extend({
       isResource: resourceData.isResource,
       sequence: resourceData.sequence,
       body: questionData.url || questionData.body,
+      description: questionData.description,
       correctAnswer: questionData.correctAnswer,
       title: questionData.title,
+      thumbnail: questionData.thumbnail,
       type: questionData.type
     });
 

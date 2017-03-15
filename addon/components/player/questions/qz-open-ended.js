@@ -98,7 +98,7 @@ export default QuestionComponent.extend({
    * */
   setAnswers: function() {
     if (this.get('hasUserAnswer')) {
-      let userAnswer = this.get('userAnswer');
+      let userAnswer = this.get('userAnswer.firstObject.value');
       this.set('answer', userAnswer);
       this.notify(true);
     }

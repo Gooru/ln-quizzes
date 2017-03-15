@@ -9,11 +9,13 @@ test('normalizeReadResource', function(assert) {
     isResource:	false,
     metadata: {
       title: 'question-title',
+      thumbnail: 'question-thumbnail',
       type: 'singleChoice',
       correctAnswer: [{
         value: 'a'
       }],
       body: 'question-body',
+      description: 'question-description',
       interaction: {
         isShuffle: false,
         maxChoices: 1,
@@ -36,10 +38,12 @@ test('normalizeReadResource', function(assert) {
   const resource = serializer.normalizeReadResource(resourceData);
   assert.equal(resource.get('id'), 'resource-id', 'Wrong id');
   assert.equal(resource.get('title'), 'question-title', 'Wrong title');
+  assert.equal(resource.get('thumbnail'),  'question-thumbnail', 'Wrong thumbnail');
   assert.equal(resource.get('type'), 'singleChoice', 'Wrong type');
   assert.notOk(resource.get('isResource'), 'Wrong value for isResource');
   assert.deepEqual(resource.get('correctAnswer'), [{value: 'a'}], 'Wrong correctAnswer');
   assert.equal(resource.get('body'), 'question-body', 'Wrong body');
+  assert.equal(resource.get('description'), 'question-description', 'Wrong description');
   assert.notOk(resource.get('shuffle'), 'Wrong value for shuffle');
   assert.equal(resource.get('maxChoices'), 1, 'Wrong maxChoices');
   assert.equal(resource.get('prompt'), 'question-prompt', 'Wrong maxChoices');
@@ -50,6 +54,7 @@ test('normalizeReadResource', function(assert) {
     assert.notOk(answer.get('isFixed'), 'Wrong answer ${index} isFixed');
   });
 });
+
 test('normalizeReadResource without interaction', function(assert) {
   const serializer = this.subject();
   const resource = {
@@ -67,10 +72,12 @@ test('normalizeReadResource without interaction', function(assert) {
   const  newResource = serializer.normalizeReadResource(resource);
   assert.equal(newResource.get('id'), 'resource-without-interaction', 'Wrong id');
   assert.equal(newResource.get('title'), 'question-title', 'Wrong title');
+  assert.equal(newResource.get('thumbnail'), null, 'Wrong thumbnail');
   assert.equal(newResource.get('type'), 'singleChoice', 'Wrong type');
   assert.notOk(newResource.get('isResource'), 'Wrong value for isResource');
   assert.deepEqual(newResource.get('correctAnswer'), [{value: 'a'}], 'Wrong correctAnswer');
   assert.equal(newResource.get('body'), 'question-body', 'Wrong body');
+  assert.equal(newResource.get('description'), null, 'Wrong description');
   assert.notOk(newResource.get('shuffle'), 'Wrong value for shuffle');
   assert.equal(newResource.get('maxChoices'),0, 'Wrong maxChoices');
   assert.notOk(newResource.get('prompt'),  'Wrong maxChoices');

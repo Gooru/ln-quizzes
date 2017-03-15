@@ -4,6 +4,9 @@
             <h2>{{t "qz-question-viewer.question"}}</h2>
             <div class="question">
                 <span class="text">{{gru-math-text text=questionBody}}</span>
+                {{#if thumbnail}}
+                  <img src="{{thumbnail}}"/>
+                {{/if}}
             </div>
             <div>
               {{partial 'components/player/qz-question-information'}}

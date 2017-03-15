@@ -25,6 +25,7 @@ test('Layout when all completed', function (assert) {
       resourceId: '569906aa20b7dfae1bcd5262',
       reaction: 2,
       savedTime: 701,
+      skipped: false,
       answer: [{ value: 'answer' }]
     }),
     QuestionResult.create({
@@ -32,6 +33,7 @@ test('Layout when all completed', function (assert) {
       resourceId: '569906aa3ec3bb39969acbe6',
       reaction: 4,
       savedTime: 1333,
+      skipped: false,
       answer: [{ value: 'answer' }]
     }),
     QuestionResult.create({
@@ -46,6 +48,7 @@ test('Layout when all completed', function (assert) {
       resourceId: '569906aacea8416665209d53',
       reaction: 1,
       savedTime: 1013,
+      skipped: false,
       answer: [{ value: 'answer' }]
     })
   ]);
@@ -98,6 +101,7 @@ test('Layout having not started questions', function (assert) {
       score: 100,
       resourceId: '569906aa20b7dfae1bcd5262',
       reaction: 2,
+      skipped: false,
       savedTime: 701,
       answer: [{ value: 'answer' }]
     }),
@@ -105,6 +109,7 @@ test('Layout having not started questions', function (assert) {
       score: 100,
       resourceId: '569906aa3ec3bb39969acbe6',
       reaction: 4,
+      skipped: false,
       savedTime: 1333,
       answer: [{ value: 'answer' }]
     }),
@@ -116,6 +121,7 @@ test('Layout having not started questions', function (assert) {
       score: 0,
       resourceId: '569906aacea8416665209d53',
       reaction: 1,
+      skipped: false,
       savedTime: 1013,
       answer: [{ value: 'answer' }]
     })
@@ -180,7 +186,8 @@ test('Showing student code in anonymous mode', function (assert) {
   this.render(hbs`{{reports/class-assessment/qz-student-performance-box
     student=student
     reportData=reportData
-    anonymous=true }}`);
+    anonymous=true
+  }}`);
 
   const $component = this.$();
   T.exists(assert, $component.find('.panel'), 'Missing student box panel');

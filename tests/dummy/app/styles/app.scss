@@ -5,4 +5,8 @@
   .quizzes, > .ember-view {
     height: 100%;
   }
+  .app-container {
+    height: 100%;
+    padding: 0;
+  }
 }

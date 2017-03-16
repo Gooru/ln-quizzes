@@ -53,7 +53,7 @@ export default Ember.Route.extend({
      let type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
      let reportURL = params.routeURL || route.get('quizzesConfigurationService.configuration.properties.reportURL');
      let profileId = params.profileId || route.get('quizzesConfigurationService.configuration.properties.profileId');
-     let role = params.role || route.get('quizzesConfigurationService.configuration.properties.role');
+     let role = params.role || route.get('quizzesConfigurationService.configuration.properties.role') || 'student';
      let isTeacher = role === 'teacher';
      let isAnonymous = profileId === 'anonymous';
      if(type === 'collection' || isAnonymous || isTeacher) {

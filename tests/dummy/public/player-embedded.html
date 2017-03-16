@@ -24,6 +24,8 @@
       var contextId = match ? match[1] : '';
       match = /type=([^&]*)/.exec(location.search);
       var collectionType = match ? match[1] : 'no-type';
+      match = /role=([^&]*)/.exec(location.search);
+      var userRole = match ? match[1] : 'student';
       jQuery(document).ready(function () {
         var emberApp = window['QuizzesWebApp'];
         emberApp.start({
@@ -33,7 +35,8 @@
             reportURL:'student-report-embedded.html?context-id={context-id}&type=' + collectionType,
             token: localStorage.getItem('token'),
             cdnURL: localStorage.getItem('cdnURL'),
-            type: collectionType
+            type: collectionType,
+            role: userRole
           }
         });
       });

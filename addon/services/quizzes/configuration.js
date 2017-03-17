@@ -35,16 +35,19 @@ const ConfigurationService = Ember.Service.extend({
     return service.get('configurationAdapter').loadConfiguration(`${hostname}-quizzes`)
       .then(function(hostnameConfiguration){ //it looks for the specific domain configuration
        if (hostnameConfiguration) {
-         configuration.setProperties(hostnameConfiguration);
+         service.mergeConfiguration(hostnameConfiguration);
          Ember.Logger.info('Quizzes custom host configuration found: ', hostnameConfiguration);
        }
        return configuration;
     });
   },
 
-  addProperties:function(properties){
-    const service = this;
-    service.set('configuration.properties',properties);
+  mergeConfiguration: function(configuration) {
+    this.get('configuration').setProperties(configuration);
+  },
+
+  addProperties: function(properties) {
+    this.set('configuration.properties', properties);
   },
 
   /**

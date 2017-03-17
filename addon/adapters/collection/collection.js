@@ -25,10 +25,7 @@ export default ApplicationAdapter.extend(TokenMixin,  {
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
-      headers: Object.assign(this.get('headers'), {
-        'profile-id': '2bcf48ff-a167-443b-b620-ad91d7b888e3',
-        'lms-id': 'its_learning'
-      })
+      headers: this.get('headers')
     };
     return this.sendAjaxRequest(url, options);
   }

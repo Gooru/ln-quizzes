@@ -20,10 +20,7 @@ export default ApplicationAdapter.extend(TokenMixin,  {
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
-      headers: Object.assign(this.get('headers'), {
-        'profile-id': '7973e6c6-f0cd-4021-9c49-a0f9f26101b2',
-        'lms-id': 'its_learning'
-      })
+      headers: this.get('headers')
     };
     const url = `${namespace}/contexts/${contextId}`;
     return this.sendAjaxRequest(url, options);
@@ -41,10 +38,7 @@ export default ApplicationAdapter.extend(TokenMixin,  {
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
-      headers: Object.assign(this.get('headers'), {
-        'profile-id': '7973e6c6-f0cd-4021-9c49-a0f9f26101b2',
-        'lms-id': 'its_learning'
-      })
+      headers: this.get('headers')
     };
     const url = `${namespace}/${attemptId}`;
     return this.sendAjaxRequest(url, options);
@@ -63,10 +57,7 @@ export default ApplicationAdapter.extend(TokenMixin,  {
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
-      headers: Object.assign(this.get('headers'), {
-        'profile-id': '7973e6c6-f0cd-4021-9c49-a0f9f26101b2',
-        'lms-id': 'its_learning'
-      })
+      headers: this.get('headers')
     };
     const url = `${namespace}/contexts/${contextId}/profiles/${profileId}`;
     return this.sendAjaxRequest(url, options);

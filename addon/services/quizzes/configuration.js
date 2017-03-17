@@ -25,6 +25,8 @@ const ConfigurationService = Ember.Service.extend({
       (isDevelopment ? DevelopmentConfiguration : TestConfiguration);
 
     const configuration = Ember.Object.create(envConfiguration);
+    configuration.set('properties', {});
+
     service.set('configuration', configuration);
 
     //setting the configuration to the global variable

@@ -15,18 +15,18 @@ export default Ember.Route.extend({
    * @type {AttemptService} attemptService
    * @property {Ember.Service} Service to send context related events
    */
-  attemptService: Ember.inject.service('quizzes/attempt'),
+  quizzesAttemptService: Ember.inject.service('quizzes/attempt'),
 
   /**
    * @type {CollectionService} collectionService
    * @property {Ember.Service} Service to retrieve a collection
    */
-  collectionService: Ember.inject.service('quizzes/collection'),
+  quizzesCollectionService: Ember.inject.service('quizzes/collection'),
 
   /**
    * @property {Service} Configuration service
    */
-  configurationService: Ember.inject.service('quizzes/configuration'),
+  quizzesConfigurationService: Ember.inject.service('quizzes/configuration'),
 
   // -------------------------------------------------------------------------
   // Actions
@@ -48,17 +48,24 @@ export default Ember.Route.extend({
    * @param {{ contextId: string }} params
    */
   model: function (params) {
+    return this.quizzesModel(params);
+  },
+
+  /**
+   * @param {{ contextId: string }} params
+   */
+  quizzesModel: function (params) {
     const route = this;
     const contextId = params.contextId;
-    const profileId = params.profileId || route.get('configurationService.configuration.properties.profileId');
-    const type = params.profileId || route.get('configurationService.configuration.properties.type');
+    const profileId = params.profileId || route.get('quizzesConfigurationService.configuration.properties.profileId');
+    const type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
 
-    return route.get('attemptService').getAttemptIds(contextId, profileId).then(
+    return route.get('quizzesAttemptService').getAttemptIds(contextId, profileId).then(
       attemptIds => !attemptIds || !attemptIds.length ? null :
-          route.get('attemptService').getAttemptData(attemptIds[attemptIds.length - 1]).then(
+          route.get('quizzesAttemptService').getAttemptData(attemptIds[attemptIds.length - 1]).then(
             attemptData => Ember.RSVP.hash({
               attemptData,
-              collection: route.get('collectionService').readCollection(attemptData.collectionId, type)
+              collection: route.get('quizzesCollectionService').readCollection(attemptData.collectionId, type)
             })
           )
     );

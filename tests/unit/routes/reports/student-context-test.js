@@ -10,7 +10,7 @@ moduleFor('route:reports/student-context', 'Unit | Route | reports/student conte
 
 test('model', function(assert) {
   let route = this.subject();
-  route.set('attemptService', {
+  route.set('quizzesAttemptService', {
     getAttemptData: () => new Ember.RSVP.resolve(
       ReportDataEvent.create({
         contextId: 'context-id',
@@ -19,7 +19,7 @@ test('model', function(assert) {
     ),
     getAttemptIds: () => new Ember.RSVP.resolve([ 'attempt-id' ])
   });
-  route.set('collectionService', {
+  route.set('quizzesCollectionService', {
     readCollection: () => new Ember.RSVP.resolve({
       id: 'collection-id'
     })

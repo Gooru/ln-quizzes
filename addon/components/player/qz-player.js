@@ -268,7 +268,7 @@ export default Ember.Component.extend(ModalMixin, {
     let contextResult = component.get('contextResult');
     let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
         component.get('contextService').finishContext(contextResult.get('contextId'));
-    return promise.then(() => this.redirectToReport());
+    return promise.then(() => this.get('onFinish') && this.sendAction('onFinish'));
   },
 
   /**
@@ -327,20 +327,9 @@ export default Ember.Component.extend(ModalMixin, {
   },
 
   /**
-   * Redirect to the student report
+   * When the submission is complete
    */
-  redirectToReport: function() {
-    const reportURL = this.get('reportURL');
-    if(reportURL){
-      let url = reportURL.replace('{context-id}', this.get('contextResult.contextId'));
-      window.location.href = url;
-    } else {
-      this.get('router').transitionTo(
-        'reports.student-context',
-        this.get('contextResult.contextId')
-      );
-    }
-  },
+  onFinish: null,
 
   /**
    * Saves the resource result and moves to the next

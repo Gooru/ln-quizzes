@@ -12,7 +12,7 @@ moduleForComponent('player/qz-player', 'Unit | Component | player/qz player', {
 });
 
 test('finishCollection on collection', function(assert) {
-  assert.expect(6);
+  assert.expect(5);
   let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Collection Title',
@@ -23,15 +23,12 @@ test('finishCollection on collection', function(assert) {
     collection,
     context:{id:'context-id',attempts:'2'}
   });
+  let sendAction = action => assert.equal(action, 'onFinish', 'Should call onFinish action');
   let component = this.subject({
     contextResult,
     resourceResult: questionResult,
-    router: {
-      transitionTo: (route, contextId) => {
-        assert.deepEqual(contextId, 'context', 'Wrong context id in transition');
-        assert.deepEqual(route, 'reports.student-context', 'Wrong transition route');
-      }
-    },
+    onFinish: 'onFinish',
+    sendAction,
     contextService: Ember.Object.create({
       finishContext: function(contextId) {
         assert.deepEqual(contextId, 'context', 'Wrong context id');
@@ -41,7 +38,7 @@ test('finishCollection on collection', function(assert) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve({score:100});
+        return Ember.RSVP.resolve({ score:100 });
       }
     })
   });

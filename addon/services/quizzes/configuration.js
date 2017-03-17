@@ -59,6 +59,15 @@ const ConfigurationService = Ember.Service.extend({
   setToken: function(token) {
     const service = this;
     service.set('configuration.properties.token', token);
+  },
+
+  /**
+   * Sets the cdn url
+   * @param {string} url
+   */
+  setCdnUrl: function(url) {
+    const service = this;
+    service.set('configuration.properties.cdnURL', url);
   }
 });
 

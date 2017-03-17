@@ -61,7 +61,7 @@ export default Ember.Route.extend({
     const type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
 
     return route.get('quizzesAttemptService').getAttemptIds(contextId, profileId).then(
-      attemptIds => !attemptIds || !attemptIds.length ? null :
+      attemptIds => !attemptIds || !attemptIds.length ? {} :
           route.get('quizzesAttemptService').getAttemptData(attemptIds[attemptIds.length - 1]).then(
             attemptData => Ember.RSVP.hash({
               attemptData,
@@ -72,8 +72,11 @@ export default Ember.Route.extend({
   },
 
   setupController(controller, model) {
-    model.attemptData.setCollection(model.collection);
-    controller.set('attemptData', model.attemptData);
+    let attemptData = model.attemptData;
+    if(attemptData) {
+      attemptData.setCollection(model.collection);
+      controller.set('attemptData', model.attemptData);
+    }
   }
 
 });

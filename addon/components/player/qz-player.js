@@ -63,8 +63,7 @@ export default Ember.Component.extend(ModalMixin, {
         } else {
           //finishes the last resource
           component.finishCollection();
-        }
-      });
+      }});
     },
 
     /**
@@ -275,11 +274,7 @@ export default Ember.Component.extend(ModalMixin, {
    * Opens the confirmation dialog to finish the assessment
    */
   finishConfirm: function() {
-    const component = this;
-    component.actions.showModal.call(this,
-      'modals.gru-submit-confirmation', {
-        onConfirm: component.finishCollection.bind(component)
-      });
+    this.set('showFinishConfirmation',true);
   },
 
   /**

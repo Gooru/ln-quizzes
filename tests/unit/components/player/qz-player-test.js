@@ -49,7 +49,7 @@ test('finishCollection on collection', function(assert) {
 });
 
 test('finishCollection on assessment', function(assert) {
-  assert.expect(4);
+  assert.expect(3);
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Assessment Title',
     isCollection: false
@@ -72,12 +72,6 @@ test('finishCollection on assessment', function(assert) {
       }
     })
   });
-  let done = assert.async();
-  component.set('actions.showModal', function(modal) {
-    assert.equal(modal, 'modals.gru-submit-confirmation', 'Correct modal');
-    done();
-  });
-
   component.send('finishCollection');
 });
 
@@ -136,7 +130,7 @@ test('submitQuestion with next question available', function(assert) {
 });
 
 test('submitQuestion with next question unavailable', function(assert) {
-  assert.expect(5);
+  assert.expect(4);
   let question = Resource.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question #1'
   });
@@ -167,11 +161,6 @@ test('submitQuestion with next question unavailable', function(assert) {
       }
     })
   });
-
-  component.set('actions.showModal', function(modal) {
-    assert.equal(modal, 'modals.gru-submit-confirmation', 'Correct modal');
-  });
-
   Ember.run(function() {
     component.send('submitQuestion', question);
   });

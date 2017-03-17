@@ -37,7 +37,7 @@ export default Ember.Component.extend(ModalMixin, {
      * Action triggered when the user wants to finish the collection
      */
     finishCollection: function() {
-      this.sendAction('onFinishCollection');
+      this.set('showFinishConfirmation',true);
     },
 
     /**
@@ -87,7 +87,7 @@ export default Ember.Component.extend(ModalMixin, {
    * A convenient structure to render the menu
    * @property
    */
-  resourceItems: Ember.computed('collection', 'resourceResults.@each.value', 'selectedResourceId', function(){
+  resourceItems: Ember.computed('collection', 'resourceResults.@each.value', 'selectedResourceId','showFinishConfirmation', function(){
     let component = this;
     let collection = component.get('collection');
     let resourceResults = component.get('resourceResults');

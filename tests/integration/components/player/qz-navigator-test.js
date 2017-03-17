@@ -3,6 +3,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import T from 'dummy/tests/helpers/assert';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import hbs from 'htmlbars-inline-precompile';
+import wait from 'ember-test-helpers/wait';
 
 moduleForComponent('player/qz-navigator', 'Integration | Component | player/qz navigator', {
   integration: true,
@@ -255,16 +256,15 @@ test('Finish collection', function(assert) {
 
   this.set('collection', collection);
 
-  this.on('onFinishCollection', function(){
-    assert.ok(true, 'external Action was called!');
-  });
-
   this.render(hbs`{{player/qz-navigator onFinishCollection='onFinishCollection' submitted=false collection=collection}}`);
   var $component = this.$(); //component dom element
   var $finishButton = $component.find('button.finish-collection');
 
   assert.ok($finishButton, 'Missing finish button');
   $finishButton.click();
+  return wait().then(function () {
+    assert.notOk($component.find('button.finish-collection').length, 'Finish Collection Button should not appear');
+  });
 });
 test('Show Feedback', function(assert) {
   assert.expect(4);

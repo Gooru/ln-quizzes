@@ -34,6 +34,27 @@ export default Ember.Route.extend({
   quizzesConfigurationService: Ember.inject.service('quizzes/configuration'),
 
   // -------------------------------------------------------------------------
+  // Actions
+  actions:{
+    /**
+     * When the submission is complete
+     */
+    onFinish: function() {
+      let controller = this.get('controller');
+      const reportURL = controller.get('reportURL');
+      if(reportURL){
+        let url = reportURL.replace('{context-id}', controller.get('contextResult.contextId'));
+        window.location.href = url;
+      } else {
+        this.transitionTo(
+          'reports.student-context',
+          controller.get('contextResult.contextId')
+        );
+      }
+    }
+  },
+
+  // -------------------------------------------------------------------------
   // Methods
 
   /**
@@ -103,6 +124,7 @@ export default Ember.Route.extend({
       context.set('attempts', model.attempts.length);
       contextResult.set('context', context);
       contextResult.set('collection', collection);
+      controller.set('collection', collection);
       controller.set('isAnonymous', isAnonymous);
       controller.set('role', model.role);
       controller.set('startContextFunction', model.startContextFunction);
@@ -110,6 +132,7 @@ export default Ember.Route.extend({
     controller.set('contextResult', contextResult);
     controller.set('reportURL', model.reportURL);
   },
+
   /**
    * @param {string} contextId
    * Starts context to show the player

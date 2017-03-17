@@ -1,17 +1,22 @@
 .reports.assessment.questions.qz-multiple-answer {
   ul{
+    max-width: 100%;
     display: inline-block;
     padding-left: 0px;
-    li{
+    li {
+      @include flexbox;
+      @include flex-wrap(nowrap);
+      min-height: 25px;
+      max-width: 100%;
       list-style: none;
       position:relative;
-      display: flex;
       padding: 5px 0;
       border-bottom: 1px solid #eeeeee;
       &:last-child {
         border: none;
       }
       span.column {
+        @include flex-shrink(0);
         width: 35px;
         min-width: 35px;
         display: inline-block;

@@ -1,18 +1,18 @@
-.modals.gru-submit-confirmation {
+.qz-submit-confirmation {
   max-width: 455px;
 
-  .modal-header {
+  .panel-heading {
     background-color: $green-400;
     display: block;
     text-align: left;
   }
 
-  .modal-title {
+  .title {
     color: $white;
     font-size: $font-size-h6;
   }
 
-  .modal-body {
+  .panel-body {
     padding: 15px 40px;
 
     div {

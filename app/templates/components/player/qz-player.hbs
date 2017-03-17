@@ -12,31 +12,36 @@
             resourceResults=resourcesPlayer
             selectedResourceId=resourceId
             showFeedback=showFeedback
+            showFinishConfirmation=showFinishConfirmation
             onItemSelected="selectNavigatorItem"
             onCloseNavigator="closeNavigator"
             onFinishCollection="finishCollection"
             }}
           </div>
       {{/unless}}
-        <div class="qz-main" role="main">
+        <div class="qz-main {{if showFinishConfirmation 'submission-confirm'}}" role="main">
           {{#if collection.hasResources }}
-            {{player.qz-navigation
-            collection=collection
-            ratingScore=resourceResult.reaction
-            readOnly=contextResult.submitted
-            onFinishCollection="finishCollection"
-            onOpenNavigator="openNavigator"
-            onChangeEmotion="changeEmotion"}}
-
-            {{#if resource}}
-              {{player.qz-viewer
-              isNotIframeUrl=isNotIframeUrl
+            {{#if showFinishConfirmation}}
+              {{player.qz-submit-confirmation onConfirmFinish='finishCollection'}}
+            {{else}}
+              {{player.qz-navigation
               collection=collection
-              resource=resource
-              resourceResult=resourceResult
-              role=role
-              submitted=contextResult.submitted
-              onSubmitQuestion="submitQuestion"}}
+              ratingScore=resourceResult.reaction
+              readOnly=contextResult.submitted
+              onFinishCollection="finishCollection"
+              onOpenNavigator="openNavigator"
+              onChangeEmotion="changeEmotion"}}
+
+              {{#if resource}}
+                {{player.qz-viewer
+                isNotIframeUrl=isNotIframeUrl
+                collection=collection
+                resource=resource
+                resourceResult=resourceResult
+                role=role
+                submitted=contextResult.submitted
+                onSubmitQuestion="submitQuestion"}}
+              {{/if}}
             {{/if}}
           {{else}}
           {{! TODO add the not found component here}}

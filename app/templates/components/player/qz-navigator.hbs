@@ -39,9 +39,11 @@
     </div>
   </div>
 {{else}}
+  {{#unless showFinishConfirmation}}
   <div class="submit-all">
     {{#unless submitted}}
       <button tabindex=-1 class="btn btn-success finish-collection" {{action "finishCollection"}}>{{t "common.submit-all"}}</button>
     {{/unless}}
   </div>
+  {{/unless}}
 {{/if}}

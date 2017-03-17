@@ -23,3 +23,22 @@ test('it renders', function(assert) {
   var $component = this.$();
   assert.ok($component.find('.qz-player').length,'Assessment component should appear');
 });
+
+test('Show finish Confirmation', function(assert) {
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: false,
+    hasResources:true
+  });
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'}
+  });
+  this.set('contextResult', contextResult);
+  this.set('showFinishConfirmation', true);
+  this.set('showConfirmation',false);
+  this.render(hbs`{{player/qz-player contextResult=contextResult showConfirmation=showConfirmation showFinishConfirmation=showFinishConfirmation}}`);
+  var $component = this.$();
+  assert.ok($component.find('.qz-submit-confirmation').length,'Submit confirmation should appear');
+});

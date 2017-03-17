@@ -18,10 +18,8 @@ test('closeNavigator', function(assert) {
 
 test('finishCollection', function(assert) {
   let component = this.subject();
-  component.set('sendAction', function(actionName) {
-    assert.equal(actionName, 'onFinishCollection', 'Action sent should match');
-  });
   component.send('finishCollection');
+  assert.equal(component.get('showFinishConfirmation'),true, 'Should be true');
 });
 
 test('seeUsageReport', function(assert) {

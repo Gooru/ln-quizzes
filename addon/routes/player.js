@@ -124,7 +124,6 @@ export default Ember.Route.extend({
       context.set('attempts', model.attempts.length);
       contextResult.set('context', context);
       contextResult.set('collection', collection);
-      controller.set('collection', collection);
       controller.set('isAnonymous', isAnonymous);
       controller.set('role', model.role);
       controller.set('startContextFunction', model.startContextFunction);

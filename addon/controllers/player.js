@@ -14,5 +14,15 @@ export default Ember.Controller.extend({
   /**
    * @property {string} resourceId
    */
-  resourceId: null
+  resourceId: null,
+
+  /**
+   * @property {Collection} collection
+   */
+  collection: Ember.computed.alias('contextResult.collection'),
+
+  /**
+   * @property {ContextResult} contextResult
+   */
+  contextResult: null
 });

@@ -49,9 +49,16 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * When clicking at submit all or end
+     * Finish from the confirmation
      */
     finishCollection: function() {
+      this.finishCollection();
+    },
+
+    /**
+     * When clicking at submit all or end
+     */
+    submitAll: function() {
       const component = this;
       const collection = component.get('collection');
       let contextResult = component.get('contextResult');
@@ -82,7 +89,7 @@ export default Ember.Component.extend(ModalMixin, {
       startContext().then(function(contextResult){
         contextResult.merge(component.get('collection'));
         component.set('contextResult',contextResult);
-        component.set('showConfirmation',false);
+        component.set('showConfirmation', false);
         component.startAssessment();
       });
     },
@@ -93,6 +100,7 @@ export default Ember.Component.extend(ModalMixin, {
      */
     selectNavigatorItem: function(resource){
       const component = this;
+      component.set('showFinishConfirmation', false);
       component.moveToResource(resource);
     },
 

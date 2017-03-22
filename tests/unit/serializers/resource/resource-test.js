@@ -11,6 +11,10 @@ test('normalizeReadResource', function(assert) {
       title: 'question-title',
       thumbnail: 'question-thumbnail',
       type: 'singleChoice',
+      display_guide:{
+        is_broken:1,
+        is_frame_breaker:0
+      },
       correctAnswer: [{
         value: 'a'
       }],
@@ -39,6 +43,7 @@ test('normalizeReadResource', function(assert) {
   assert.equal(resource.get('id'), 'resource-id', 'Wrong id');
   assert.equal(resource.get('title'), 'question-title', 'Wrong title');
   assert.equal(resource.get('thumbnail'),  'question-thumbnail', 'Wrong thumbnail');
+  assert.equal(resource.get('displayGuide'),  true , 'Wrong displayGuide');
   assert.equal(resource.get('type'), 'singleChoice', 'Wrong type');
   assert.notOk(resource.get('isResource'), 'Wrong value for isResource');
   assert.deepEqual(resource.get('correctAnswer'), [{value: 'a'}], 'Wrong correctAnswer');

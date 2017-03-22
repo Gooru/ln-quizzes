@@ -28,8 +28,11 @@ export default Ember.Object.extend({
       correctAnswer: questionData.correctAnswer,
       title: questionData.title,
       thumbnail: questionData.thumbnail,
+      displayGuide: questionData['display_guide']&& (questionData['display_guide'].is_broken ===1 || questionData['display_guide'].is_frame_breaker ===1),
       type: questionData.type
     });
+
+    resource.set('displayGuide', resource.get('displayGuide') || this.checkURLProtocol(resource.body));
 
     if(interaction){
       resource.setProperties({
@@ -64,5 +67,8 @@ export default Ember.Object.extend({
       text: choice.text,
       value: choice.value
     });
+  },
+  checkURLProtocol: function(url){
+    return (window.location.protocol === 'https:'  && /^((http):\/\/)/.test(url));
   }
 });

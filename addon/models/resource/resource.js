@@ -88,6 +88,11 @@ export default Ember.Object.extend({
    */
   type: null,
 
+  /**
+   * @property {JSONObject}
+   */
+  displayGuide: null,
+
   // -------------------------------------------------------------------------
   // Computed
 

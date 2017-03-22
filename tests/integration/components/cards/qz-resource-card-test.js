@@ -5,14 +5,14 @@ import T from 'dummy/tests/helpers/assert';
 import ResourceModel from 'quizzes-addon/models/resource/resource';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
-moduleForComponent('cards/gru-resource-card', 'Integration | Component | cards/gru resource card', {
+moduleForComponent('cards/qz-resource-card', 'Integration | Component | cards/gru resource card', {
   integration: true
 });
 
 test('Resource Card Layout', function(assert) {
   var resource = ResourceModel.create({
     title: 'Resource Title',
-    format:'video',
+    format:'video_resource',
     description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     owner:Ember.Object.create({
       firstName:'Publisher'
@@ -28,9 +28,9 @@ test('Resource Card Layout', function(assert) {
   });
 
   this.set('resource', resource);
-  this.render(hbs`{{cards/gru-resource-card resource=resource}}`);
+  this.render(hbs`{{cards/qz-resource-card resource=resource}}`);
   var $component = this.$(); //component dom element
-  const $resourceCard = $component.find('.gru-resource-card');
+  const $resourceCard = $component.find('.qz-resource-card');
   T.exists(assert, $resourceCard.find('.panel-heading h6.title'), 'Missing Title');
   T.exists(assert, $resourceCard.find(`.panel-heading i.${resource.format}-icon`), 'Missing Resource Icon');
   assert.equal(T.text($resourceCard.find('.panel-heading .resource-type span')), 'Video', 'Incorrect  resource type');
@@ -63,9 +63,9 @@ test('Question Card Layout', function(assert) {
   });
 
   this.set('question', question);
-  this.render(hbs`{{cards/gru-resource-card resource=question}}`);
+  this.render(hbs`{{cards/qz-resource-card resource=question}}`);
   var $component = this.$(); //component dom element
-  const $resourceCard = $component.find('.gru-resource-card');
+  const $resourceCard = $component.find('.qz-resource-card');
   T.exists(assert, $resourceCard.find('.panel-heading h6.title'), 'Missing Title');
   T.exists(assert, $resourceCard.find('.panel-heading i.question-icon'), 'Missing Question Icon');
   assert.equal(T.text($resourceCard.find('.panel-heading .question-type span')), 'Single Choice', 'Incorrect question type');
@@ -85,7 +85,7 @@ test('Resource card trying buttons', function(assert) {
   var resource = ResourceModel.create({
     id: 1,
     title: 'Resource Title',
-    format:'video',
+    format:'video_resource',
     description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     owner:Ember.Object.create({
       name:'Publisher'
@@ -107,9 +107,9 @@ test('Resource card trying buttons', function(assert) {
     assert.equal(resource.get('id'), 1, 'Wrong resource id');
   });
 
-  this.render(hbs`{{cards/gru-resource-card resource=resource editEnabled=true onPlayResource='playResource' onEditResource='editResource' profileService=profileService}}`);
+  this.render(hbs`{{cards/qz-resource-card resource=resource editEnabled=true onPlayResource='playResource' onEditResource='editResource' profileService=profileService}}`);
   var $component = this.$(); //component dom element
-  const $resourceCard = $component.find('.gru-resource-card');
+  const $resourceCard = $component.find('.qz-resource-card');
   T.exists(assert, $resourceCard.find('.panel-footer button.edit-btn'), 'Edit Button should be visible');
   T.exists(assert, $resourceCard.find('.panel-footer button.play-btn'), 'Play Button should be visible');
   $resourceCard.find('.panel-footer button.edit-btn').click();
@@ -118,7 +118,7 @@ test('Resource card trying buttons', function(assert) {
 test('Resource Card with publisher', function(assert) {
   var resource = ResourceModel.create({
     title: 'Resource Title',
-    format:'video',
+    format:'video_resource',
     description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     owner:Ember.Object.create({
       firstName:'Publisher'
@@ -135,9 +135,9 @@ test('Resource Card with publisher', function(assert) {
   });
 
   this.set('resource', resource);
-  this.render(hbs`{{cards/gru-resource-card resource=resource}}`);
+  this.render(hbs`{{cards/qz-resource-card resource=resource}}`);
   var $component = this.$(); //component dom element
-  const $resourceCard = $component.find('.gru-resource-card');
+  const $resourceCard = $component.find('.qz-resource-card');
   T.notExists(assert, $resourceCard.find('.panel-body .publisher img'), 'Publisher should not have image');
   T.notExists(assert, $resourceCard.find('.panel-body .publisher .publisher-name a'), 'The publisher name should not be a link');
   T.exists(assert,$resourceCard.find('.panel-body .publisher .publisher-name'), 'Missing publisher Name');

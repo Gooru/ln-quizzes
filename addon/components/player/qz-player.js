@@ -188,6 +188,15 @@ export default Ember.Component.extend(ModalMixin, {
   isTeacher: Ember.computed.not('isStudent'),
 
   /**
+   * Indicates if the current resource type is resource
+   * @property {boolean}
+   */
+  isNotIframeUrl: Ember.computed('resource', function(){
+    const resource = this.get('resource');
+    return (resource && resource.displayGuide);
+  }),
+
+  /**
    * URL to redirect to student report
    * @property {String} reportURL
    */

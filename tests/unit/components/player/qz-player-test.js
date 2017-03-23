@@ -296,3 +296,40 @@ test('showFeedback', function(assert) {
   component.set('collection',collection2);
   assert.equal(component.get('showFeedback'), false , 'Should not show feedback');
 });
+
+test('isNotIframeUrl', function(assert) {
+
+  let resource = Resource.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Question #1',
+    displayGuide:true
+  });
+
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Collection Title',
+    nextResource: function(q) {
+      assert.deepEqual(q, resource);
+      return null;
+    }
+  });
+  let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'}
+  });
+
+  let component = this.subject({
+    resource: resource,
+    resourceResult: questionResult,
+    contextResult,
+    contextService: Ember.Object.create({
+      moveToResource: function(resourceId, contextId, resourceResult) {
+        assert.deepEqual(resourceId, null, 'Wrong resource id');
+        assert.deepEqual(contextId, 'context', 'Wrong context id');
+        assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
+        return Ember.RSVP.resolve({score:100});
+      }
+    })
+  });
+  assert.equal(component.get('isNotIframeUrl'), true , 'isNotIframeUrl should be true');
+});

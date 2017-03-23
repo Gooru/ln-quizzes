@@ -39,7 +39,7 @@
           </div>
         {{else}}
         <div class="resource-type">
-          <span>{{t (concat "common.resource-format." resource.format)}}</span>
+          <span>{{t (concat "qz-player.resource-format." resource.format)}}</span>
         </div>
         {{/if}}
       </div>
@@ -51,34 +51,34 @@
     {{/if}}
     <div class="publisher">
         {{#if showPublisher}}
-          <b class="publisher-name">{{resource.publisher}}</b>
-          {{else}}
+            <b class="publisher-name">{{resource.publisher}}</b>
+        {{else}}
             <img class="img-responsive" src="{{ resource.owner.avatarUrl }}">
             <span class="owner">{{#link-to 'profile.content.courses' resource.owner.id class="pointer"}}
             {{resource.owner.displayName}}{{/link-to}}</span>
         {{/if}}
     </div>
     <div class="description">
-      <p class="truncate">{{gru-math-text text=(if resource.isFIB resource.fibText resource.description)}}</p>
+        <p class="truncate">{{gru-math-text text=(if resource.isFIB resource.fibText resource.description)}}</p>
     </div>
   </div>
   <div class="panel-footer">
     {{#if isLinkOut}}
         <div class="buttons">
-            <a class="play-btn btn btn-success btn-sm" href="{{{resource.url}}}" target="_blank">{{t "common.play"}}</a>
+            <a class="play-btn btn btn-success btn-sm" href="{{{resource.body}}}" target="_blank">{{t "common.play"}}</a>
         </div>
     {{else}}
-          <div class="buttons">
-            {{#if editEnabled }}
-                <button class="edit-btn btn btn-success btn-sm" {{action "editResource"}}>{{t "common.edit"}}</button>
-                <button class="play-btn btn btn-success btn-sm" {{action "playResource"}}>{{t "common.play"}}</button>
+        <div class="buttons">
+          {{#if editEnabled }}
+              <button class="edit-btn btn btn-success btn-sm" {{action "editResource"}}>{{t "common.edit"}}</button>
+              <button class="play-btn btn btn-success btn-sm" {{action "playResource"}}>{{t "common.play"}}</button>
+          {{/if}}
+          {{#if isQuestion}}
+            {{#if remixEnabled}}
+                <button class="copy-btn btn btn-success btn-sm" {{action "remixQuestion"}}>{{t "common.remix"}}</button>
             {{/if}}
-            {{#if isQuestion}}
-              {{#if remixEnabled}}
-                  <button class="copy-btn btn btn-success btn-sm" {{action "remixQuestion"}}>{{t "common.remix"}}</button>
-              {{/if}}
-            {{/if}}
-          </div>
+          {{/if}}
+        </div>
         {{#unless publishVisible}}
             <div class="visibility"  title="{{t 'common.visibility-tooltip'}}" data-toggle="tooltip">
               {{#unless resource.isVisibleOnProfile }}

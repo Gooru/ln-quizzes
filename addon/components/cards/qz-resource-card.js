@@ -15,7 +15,7 @@ export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['cards','gru-resource-card'],
+  classNames:['cards','qz-resource-card'],
 
   // -------------------------------------------------------------------------
   // Actions

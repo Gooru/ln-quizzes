@@ -1,4 +1,4 @@
-.cards.gru-resource-card {
+.cards.qz-resource-card {
   $line-height: 1.2;
   width: 220px;
   height: 270px;
@@ -24,24 +24,23 @@
             display: block;
             height: 36px;
             width: 28px;
-            margin: 0 auto;
             vertical-align: top;
             margin: 5px 0 0 0;
-            &.video-icon {
+            &.video_resource-icon {
               background: url("quizzes-addon/quizzes/images/video-resource-green.svg");
               -webkit-background-size: 31px 30px;
               background-size: 31px 30px;
               height: 30px;
               width: 31px;
             }
-            &.webpage-icon {
+            &.webpage_resource-icon {
               background: url("quizzes-addon/quizzes/images/website-resource-green.svg");
               -webkit-background-size: 29px 30px;
               background-size: 29px 30px;
               height: 30px;
               width: 29px;
             }
-            &.interactive-icon {
+            &.interactive_resource-icon {
               background: url("quizzes-addon/quizzes/images/interactive-resource-green.svg");
               -webkit-background-size: 34px 30px;
               background-size: 34px 30px;
@@ -57,21 +56,21 @@
               height: 30px;
               width: 30px;
             }
-            &.image-icon {
+            &.image_resource-icon {
               background: url("quizzes-addon/quizzes/images/image-resource-green.svg");
               -webkit-background-size: 30px 30px;
               background-size: 30px 30px;
               height: 30px;
               width: 30px;
             }
-            &.text-icon {
+            &.text_resource-icon {
               background: url("quizzes-addon/quizzes/images/text-resource-green.svg");
               -webkit-background-size: 31px 30px;
               background-size: 31px 30px;
               height: 30px;
               width: 31px;
             }
-            &.audio-icon {
+            &.audio_resource-icon {
               background: url("quizzes-addon/quizzes/images/audio-resource-green.svg");
               -webkit-background-size: 34px 30px;
               background-size: 34px 30px;

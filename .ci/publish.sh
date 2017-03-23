@@ -1,16 +1,7 @@
 #!/bin/bash
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/')
 
-if [ "$GIT_BRANCH" = "master" ] || [ "$GIT_BRANCH" = "develop" ] || [[ "$GIT_BRANCH" =~ ^Nile-release.* ]]; then
-
-  PACKAGE_SUFFIX="-qa";
-  if [ "$GIT_BRANCH" = "master" ]; then
-    PACKAGE_SUFFIX=""
-  fi
-  if [ "$GIT_BRANCH" = "develop" ]; then
-    PACKAGE_SUFFIX="-dev"
-  fi
-
+if [ "$GIT_BRANCH" = "develop" ] || [[ "$GIT_BRANCH" =~ ^Nile-release.* ]]; then
   set -e
 
   source .ci/common.sh
@@ -36,7 +27,7 @@ if [ "$GIT_BRANCH" = "master" ] || [ "$GIT_BRANCH" = "develop" ] || [[ "$GIT_BRA
   info "Publishing version ${VERSION} to S3..."
 
   aws s3 cp quizzes-addon-${VERSION}.tgz \
-    s3://${S3_BUCKET}/quizzes-addon/${VERSION}/quizzes-addon${PACKAGE_SUFFIX}.tgz
+    s3://${S3_BUCKET}/quizzes-addon/${VERSION}/quizzes-addon-${VERSION}.tgz
 
   info "Done publishing."
 

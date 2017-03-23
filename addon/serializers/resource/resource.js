@@ -28,7 +28,8 @@ export default Ember.Object.extend({
       correctAnswer: questionData.correctAnswer,
       title: questionData.title,
       thumbnail: questionData.thumbnail,
-      displayGuide: questionData['display_guide']&& (questionData['display_guide'].is_broken ===1 || questionData['display_guide'].is_frame_breaker ===1),
+      displayGuide: questionData['display_guide'] && (questionData['display_guide'].is_broken === 1
+      || questionData['display_guide'].is_frame_breaker === 1),
       type: questionData.type
     });
 

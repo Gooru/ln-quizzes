@@ -37,7 +37,7 @@ export default Ember.Component.extend(ModalMixin, {
      * Action triggered when the user wants to finish the collection
      */
     finishCollection: function() {
-      this.set('showFinishConfirmation',true);
+      this.sendAction('onFinishCollection');
     },
 
     /**

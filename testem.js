@@ -4,6 +4,7 @@ module.exports = {
   "reporter": "tap",
   "xunit_intermediate_output": false,
   "disable_watching": true,
+  "parallel": 4,
   "launch_in_ci": [
     "PhantomJS"
   ],

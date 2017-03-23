@@ -8,7 +8,7 @@ if [ "$GIT_BRANCH" = "develop" ]; then
 
   VERSION=$(docker run -v $PWD:/app \
     --workdir /app \
-    --user node node:4.6 node -e "console.log(require('./package.json').version);")
+    --user node node:6 node -e "console.log(require('./package.json').version);")
 
   if [ -z "$S3_BUCKET" ]; then
     error "No S3 bucket specified."
@@ -22,7 +22,7 @@ if [ "$GIT_BRANCH" = "develop" ]; then
 
   info "Creating NPM tgz bundle..."
 
-  docker run -v $PWD:/app --workdir /app node:4.6 npm pack
+  docker run -v $PWD:/app --workdir /app node:6 npm pack
 
   info "Publishing version ${VERSION} to S3..."
 
@@ -31,5 +31,5 @@ if [ "$GIT_BRANCH" = "develop" ]; then
 
   info "Done publishing."
 
-  docker run -v $PWD:/app --workdir /app node:4.6 rm quizzes-addon-${VERSION}.tgz
+  docker run -v $PWD:/app --workdir /app node:6 rm quizzes-addon-${VERSION}.tgz
 fi

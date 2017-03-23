@@ -73,7 +73,7 @@ module.exports = function (grunt) {
     var noStubby = grunt.option("no-stubby") || grunt.option("ns"),
       server = grunt.option("server") || grunt.option("s");
 
-    var command = 'ember test';
+    var command = 'ember exam --split=4 --parallel';
     if (server) {
       command += " --server";
     }
@@ -84,7 +84,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('bamboo-test', function () {
-    grunt.task.run(['stubby:test', 'exec:run:ember test --silent -r xunit > report-xunit.xml']);
+    grunt.task.run(['stubby:test', 'exec:run:ember exam --split=4 --parallel --silent -r xunit > report-xunit.xml']);
   });
 
   grunt.registerTask('run', function () {

@@ -33,12 +33,10 @@ function handle_error() {
 
 function show_spinner() {
   local -r pid="${1}"
-  local -r delay='1m'
+  local -r delay='5s'
   local temp
   while ps a | awk '{print $1}' | grep -q "${pid}"; do
     echo "Still running... ¯\_(ツ)_/¯"
     sleep "${delay}"
   done
 }
-
-

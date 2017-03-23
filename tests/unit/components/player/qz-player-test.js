@@ -11,7 +11,7 @@ moduleForComponent('player/qz-player', 'Unit | Component | player/qz player', {
   unit: true
 });
 
-test('finishCollection on collection', function(assert) {
+test('submitAll on collection', function(assert) {
   assert.expect(5);
   let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
@@ -44,11 +44,11 @@ test('finishCollection on collection', function(assert) {
   });
 
   Ember.run(function() {
-    component.send('finishCollection');
+    component.send('submitAll');
   });
 });
 
-test('finishCollection on assessment', function(assert) {
+test('submitAll on assessment', function(assert) {
   assert.expect(3);
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Assessment Title',
@@ -72,7 +72,7 @@ test('finishCollection on assessment', function(assert) {
       }
     })
   });
-  component.send('finishCollection');
+  component.send('submitAll');
 });
 
 test('submitQuestion with next question available', function(assert) {

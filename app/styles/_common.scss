@@ -169,7 +169,7 @@ span.validation.warning {
 .img-question{
   width:15px;
   height: 15px;
-  background: url('/quizzes-addon/assets/quizzes/questionmark.png') no-repeat;
+  background: url('quizzes-addon/quizzes/questionmark.png') no-repeat;
 }
 .border-gray{
   border-right: 1px solid $gray;
@@ -187,25 +187,25 @@ span.validation.warning {
 
 .cards {
   i.video-icon {
-    background-image: url("/quizzes-addon/assets/quizzes/images/video-resource.svg");
+    background-image: url("quizzes-addon/quizzes/images/video-resource.svg");
   }
   i.webpage-icon {
-    background: url("/quizzes-addon/assets/quizzes/images/website-resource.svg");
+    background: url("quizzes-addon/quizzes/images/website-resource.svg");
   }
   i.interactive-icon {
-    background: url("/quizzes-addon/assets/quizzes/images/interactive-resource.svg");
+    background: url("quizzes-addon/quizzes/images/interactive-resource.svg");
   }
   i.question-icon {
-    background: url("/quizzes-addon/assets/quizzes/images/question-resource.svg");
+    background: url("quizzes-addon/quizzes/images/question-resource.svg");
   }
   i.image-icon {
-    background: url("/quizzes-addon/assets/quizzes/images/image-resource.svg");
+    background: url("quizzes-addon/quizzes/images/image-resource.svg");
   }
   i.text-icon {
-    background: url("/quizzes-addon/assets/quizzes/images/text-resource.svg");
+    background: url("quizzes-addon/quizzes/images/text-resource.svg");
   }
   i.audio-icon {
-    background: url("/quizzes-addon/assets/quizzes/images/audio-resource.svg");
+    background: url("quizzes-addon/quizzes/images/audio-resource.svg");
   }
 
   .gru-taxonomy-tag-list.in-card {
@@ -293,25 +293,25 @@ span.validation.warning {
     }
     &.collections {
       i {
-        background: url("/quizzes-addon/assets/quizzes/images/navigation_collection.svg");
+        background: url("quizzes-addon/quizzes/images/navigation_collection.svg");
         width: 20px;
         min-height: 15px;
       }
       &.active {
         i {
-          background: url("/quizzes-addon/assets/quizzes/images/navigation_collection_selected.svg");
+          background: url("quizzes-addon/quizzes/images/navigation_collection_selected.svg");
         }
       }
     }
     &.assessments {
       i {
-        background: url("/quizzes-addon/assets/quizzes/images/navigation_assessment.svg");
+        background: url("quizzes-addon/quizzes/images/navigation_assessment.svg");
         width: 20px;
         min-height: 15px;
       }
       &.active {
         i {
-          background: url("/quizzes-addon/assets/quizzes/images/navigation_assessment_selected.svg");
+          background: url("quizzes-addon/quizzes/images/navigation_assessment_selected.svg");
         }
       }
     }
@@ -322,13 +322,13 @@ span.validation.warning {
 
       }
       i{
-        background: url("/quizzes-addon/assets/quizzes/images/navigation_resource.svg");
+        background: url("quizzes-addon/quizzes/images/navigation_resource.svg");
         width: 23px;
         min-height: 21px;
       }
       &.active {
         i {
-          background: url("/quizzes-addon/assets/quizzes/images/navigation_resource_selected.svg");
+          background: url("quizzes-addon/quizzes/images/navigation_resource_selected.svg");
         }
       }
     }

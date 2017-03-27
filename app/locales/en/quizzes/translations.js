@@ -802,6 +802,9 @@ export default {
     "study-time": "Time"
   },
   "qz-assessment-report": {
+    "open-ended": "Free Response Questions",
+    "questions": "Questions",
+    "resources": "Resources",
     "qz-summary": {
       "total-time-spent": "Total Time Spent"
     },

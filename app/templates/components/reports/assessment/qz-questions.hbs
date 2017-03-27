@@ -1,6 +1,6 @@
 <div class="questions-header">
   <div class="title">
-      <h4>{{t "common.questions"}}</h4>
+      <h4>{{title}}</h4>
   </div>
   {{#if isAnswerKeyHidden}}
     <em>{{t "common.answer-key-was-hidden"}}</em>
@@ -23,9 +23,11 @@
     <th class="header answer top-left">
       {{t "common.answer"}}
     </th>
-    <th class="header score {{if showPerformance 'visible' 'hide'}}">
-      {{t "common.score"}}
-    </th>
+    {{#if showScore}}
+      <th class="header score {{if showPerformance 'visible' 'hide'}}">
+        {{t "common.score"}}
+      </th>
+    {{/if}}
     <th class="header time-spent {{if showPerformance 'visible' 'hide'}}">
       {{t "common.timeSpent"}}
      </th>
@@ -40,10 +42,10 @@
   </tr>
   </thead>
   <tbody>
-  {{#each results as |result index|}}
+  {{#each results as |result|}}
     <tr>
       <td class="number-question top-left">
-          {{plus-one index}}
+          {{result.question.sequence}}
       </td>
       <td class="question-text top-left">
         {{gru-math-text text=result.question.body}}
@@ -53,11 +55,13 @@
           {{{component (qz-question-config result.question.type 'component.answer') question=result}}}
         {{/if}}
       </td>
-      <td class="question-score {{if showPerformance 'visible' 'hide'}}">
-        <span class="{{if result.started (if result.correct 'correct' 'incorrect') 'not-started'}}">
-          {{gru-icon name='radio_button_checked'}}
-        </span>
-      </td>
+      {{#if showScore}}
+        <td class="question-score {{if showPerformance 'visible' 'hide'}}">
+          <span class="{{if result.started (if result.correct 'correct' 'incorrect') 'not-started'}}">
+            {{gru-icon name='radio_button_checked'}}
+          </span>
+        </td>
+      {{/if}}
       <td class="question-time {{if showPerformance 'visible' 'hide'}}">
         {{format-time result.timeSpent}}
       </td>

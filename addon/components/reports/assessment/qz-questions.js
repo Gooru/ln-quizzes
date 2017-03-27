@@ -52,5 +52,19 @@ export default Ember.Component.extend({
    *
    * @property {Boolean}
    */
-  showPerformance: true
+  showPerformance: true,
+
+  /**
+   * Indicate if the table show the score column
+   *
+   * @property {Boolean}
+   */
+  showScore: true,
+
+  /**
+   * The components title
+   *
+   * @property {String}
+   */
+  title: null
 });

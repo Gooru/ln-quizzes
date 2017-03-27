@@ -26,8 +26,9 @@ export default ResourceResult.extend({
     const correct = this.get('correct');
     const skipped = this.get('skipped');
     const isResource = this.get('isResource');
+    const isOpenEnded = this.get('isOpenEnded');
     let status = 'started';
-    if(isResource) {
+    if(isResource || isOpenEnded) {
       status = skipped ? 'skipped' : 'started';
     } else {
       status = correct ? 'correct' : (skipped ? 'skipped' : 'incorrect');
@@ -44,6 +45,11 @@ export default ResourceResult.extend({
    * @property {boolean} incorrect - Was the answer provided for this question incorrect?
    */
   incorrect: Ember.computed.not('correct'),
+
+  /**
+   * @property {boolean} isOpenEnded - If the question is openEnded
+   */
+  isOpenEnded: Ember.computed.readOnly('question.isOpenEnded'),
 
   /**
    * @property {number} resource - the question

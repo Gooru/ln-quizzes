@@ -151,7 +151,7 @@ export function getReactionIcon(reactionValue) {
     if (reaction && reaction.value && reaction.unicode) {
       html = `<div class="emotion emotion-${reaction.value}">`;
       html += '  <svg class="svg-sprite">';
-      html += `    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/emoji-one/emoji.svg#${reaction.unicode}"></use>`;
+      html += `    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/quizzes-addon/emoji-one/emoji.svg#${reaction.unicode}"></use>`;
       html += ' </svg>';
       html += '</div>';
     } else {

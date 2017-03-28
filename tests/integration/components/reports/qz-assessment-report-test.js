@@ -1,7 +1,5 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
-import Collection from 'quizzes-addon/models/collection/collection';
 import ContextResult from 'quizzes-addon/models/result/context';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import ResourceResult from 'quizzes-addon/models/result/resource';

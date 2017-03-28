@@ -1,11 +1,7 @@
+import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:result/resource', 'Unit | Model | result/resource');
-
-attemptStatus: Ember.computed('correct', 'skipped', function () {
-  const skipped = this.get('skipped');
-  return skipped ? 'skipped' : 'started';
-}),
 
 test('attemptStatus', function(assert) {
   let resourceResult = this.subject({

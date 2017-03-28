@@ -22,7 +22,7 @@ export default ResourceResult.extend({
    *
    * @property {String}
    */
-  attemptStatus: Ember.computed('correct', 'skipped', function () {
+  attemptStatus: Ember.computed('correct', 'skipped', 'isResource', 'isOpenEnded', function () {
     const correct = this.get('correct');
     const skipped = this.get('skipped');
     const isResource = this.get('isResource');
@@ -49,7 +49,7 @@ export default ResourceResult.extend({
   /**
    * @property {boolean} isOpenEnded - If the question is openEnded
    */
-  isOpenEnded: Ember.computed.readOnly('question.isOpenEnded'),
+  isOpenEnded: Ember.computed.alias('question.isOpenEnded'),
 
   /**
    * @property {number} resource - the question

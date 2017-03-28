@@ -14,16 +14,16 @@ test('attemptStatus', function(assert) {
   assert.equal(resourceResult.get('attemptStatus'), 'correct', 'The status should be correct');
   resourceResult.set('score', 0);
   assert.equal(resourceResult.get('attemptStatus'), 'incorrect', 'The status should be incorrect');
-  resourceResult.set('isOpenEnded', true);
-  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The resource status should be skipped');
+  resourceResult.set('resource.isOpenEnded', true);
+  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The question status should be started');
   resourceResult.set('skipped', true);
   assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The status should be skipped');
-  resourceResult.set('isOpenEnded', false);
+  resourceResult.set('resource.isOpenEnded', false);
   assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The status should be skipped');
   resourceResult.set('resource.isResource', true);
   assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The resource status should be skipped');
   resourceResult.set('skipped', false);
-  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The resource status should be skipped');
+  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The resource status should be started');
 });
 
 test('clear', function(assert) {

@@ -2,7 +2,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'dummy/tests/helpers/assert';
 
-moduleForComponent('gru-emotion-picker', 'Integration | Component | gru emotion picker', {
+moduleForComponent('qz-emotion-picker', 'Integration | Component | qz emotion picker', {
   integration: true,
   beforeEach: function () {
     this.container.lookup('service:i18n').set("locale","en");
@@ -10,10 +10,10 @@ moduleForComponent('gru-emotion-picker', 'Integration | Component | gru emotion 
 });
 
 test('Emotion Picker', function(assert) {
-  this.render(hbs`{{gru-emotion-picker}}`);
+  this.render(hbs`{{qz-emotion-picker}}`);
 
   const $component = this.$(); //component dom element
-  const $emotionPicker = $component.find(".gru-emotion-picker");
+  const $emotionPicker = $component.find(".qz-emotion-picker");
 
   T.exists(assert, $emotionPicker, 'Missing emotion picker');
 
@@ -31,7 +31,7 @@ test('Click emotion', function(assert) {
     assert.equal('5', emotion);
   });
 
-  this.render(hbs`{{gru-emotion-picker onChangeEmotion='parentAction'}}`);
+  this.render(hbs`{{qz-emotion-picker onChangeEmotion='parentAction'}}`);
   var $component = this.$(); //component dom element
   var $emotionPicker = $component.find("div.emotion-picker");
   $emotionPicker.find(".emotions-list li:first-child .emotion").click();
@@ -42,7 +42,7 @@ test('Verify selected emotion', function(assert) {
 
   this.set('emotionValue', 3);
 
-  this.render(hbs`{{gru-emotion-picker startEmotion=emotionValue}}`);
+  this.render(hbs`{{qz-emotion-picker startEmotion=emotionValue}}`);
   var $component = this.$(); //component dom element
   var $emotionPicker = $component.find("div.emotion-picker");
   var $selectedEmotion = $emotionPicker.find(".emotions-list li:eq(2) .emotion");
@@ -56,9 +56,8 @@ test('Click emotion in readOnly', function(assert) {
     assert.ok(false, "This should not be called: " + emotion);
   });
 
-  this.render(hbs`{{gru-emotion-picker onChangeEmotion='parentAction' readOnly=true}}`);
+  this.render(hbs`{{qz-emotion-picker onChangeEmotion='parentAction' readOnly=true}}`);
   var $component = this.$(); //component dom element
   var $emotionPicker = $component.find("div.emotion-picker");
   $emotionPicker.find(".emotions-list li:first-child .emotion").click();
 });
-

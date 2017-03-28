@@ -829,7 +829,7 @@ export default {
     "time-spent": "Time Spent",
     "totals": "Total"
   },
-  "gru-emotion-picker": {
+  "qz-emotion-picker": {
     "react-to-resource": "React to this resource"
   },
   "taxonomy": {

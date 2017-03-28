@@ -92,15 +92,15 @@ export default Ember.Component.extend({
   /**
    * @property {boolean} isRealTime
    */
-  isRealTime: Ember.computed('model', function(){
+  isRealTime: Ember.computed('model.contextResult.isRealTime', function(){
     return this.get('model.contextResult.isRealTime');
   }),
 
   /**
    * @property {boolean} showAttempts
    */
-  showAttempts: Ember.computed('model', function(){
-    return this.get('model.contextResult.showAttempts') !== undefined ? this.get('model.contextResult.showAttempts') : true;
+  showAttempts: Ember.computed('model.contextResult.showAttempts', function(){
+    return this.get('model.contextResult.showAttempts') === undefined || this.get('model.contextResult.showAttempts');
   }),
 
   /**

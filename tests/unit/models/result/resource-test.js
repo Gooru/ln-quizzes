@@ -2,6 +2,23 @@ import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:result/resource', 'Unit | Model | result/resource');
 
+attemptStatus: Ember.computed('correct', 'skipped', function () {
+  const skipped = this.get('skipped');
+  return skipped ? 'skipped' : 'started';
+}),
+
+test('attemptStatus', function(assert) {
+  let resourceResult = this.subject({
+    skipped: false,
+    resource: Ember.Object.create({
+      isResource: true
+    })
+  });
+  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The resource status should be skipped');
+  resourceResult.set('skipped', true);
+  assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The resource status should be skipped');
+});
+
 test('timeSpent', function(assert) {
   let resourceResult = this.subject({
     savedTime: 0,

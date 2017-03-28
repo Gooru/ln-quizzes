@@ -14,7 +14,11 @@ test('attemptStatus', function(assert) {
   assert.equal(resourceResult.get('attemptStatus'), 'correct', 'The status should be correct');
   resourceResult.set('score', 0);
   assert.equal(resourceResult.get('attemptStatus'), 'incorrect', 'The status should be incorrect');
+  resourceResult.set('isOpenEnded', true);
+  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The resource status should be skipped');
   resourceResult.set('skipped', true);
+  assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The status should be skipped');
+  resourceResult.set('isOpenEnded', false);
   assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The status should be skipped');
   resourceResult.set('resource.isResource', true);
   assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The resource status should be skipped');
@@ -57,4 +61,14 @@ test('started', function(assert) {
   assert.notOk(resourceResult.get('started'), 'Started should be false');
   resourceResult.set('answer', [{}]);
   assert.ok(resourceResult.get('started'), 'Started should be true');
+});
+
+test('isOpenEnded', function(assert) {
+  let resource = Ember.Object.create({
+    isOpenEnded: false
+  });
+  let resourceResult = this.subject({ resource });
+  assert.notOk(resourceResult.get('isOpenEnded'), 'isOpenEnded should be false');
+  resource.set('isOpenEnded', true);
+  assert.ok(resourceResult.get('isOpenEnded'), 'isOpenEnded should be true');
 });

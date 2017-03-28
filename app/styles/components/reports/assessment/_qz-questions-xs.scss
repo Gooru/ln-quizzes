@@ -12,9 +12,15 @@
     }
     .question-container {
       border-bottom: 1px solid $gray-lighter;
-      .question-text img {
-        max-height: 100px;
-        margin: 5px 0;
+
+      .question-text {
+        word-wrap: break-word;
+        overflow: auto;
+        max-width: 12em;
+        img {
+          max-height: 100px;
+          margin: 5px 0;
+        }
       }
     }
   }
@@ -33,5 +39,4 @@
   .your-answer {
     padding: 8px 0 8px 15%;
   }
-
 }

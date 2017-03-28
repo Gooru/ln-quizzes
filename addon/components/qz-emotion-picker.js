@@ -18,7 +18,7 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['gru-emotion-picker'],
+  classNames: ['qz-emotion-picker'],
 
   // -------------------------------------------------------------------------
   // Actions

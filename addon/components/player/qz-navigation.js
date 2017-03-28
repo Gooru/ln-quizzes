@@ -25,7 +25,7 @@ export default Ember.Component.extend({
   actions: {
     /**
      * Action triggered when the user change the emotion
-     * @see gru-emotion-picker
+     * @see qz-emotion-picker
      */
     changeEmotion: function(emotionScore) {
       this.sendAction('onChangeEmotion', emotionScore);

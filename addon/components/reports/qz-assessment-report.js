@@ -92,23 +92,52 @@ export default Ember.Component.extend({
   /**
    * @property {boolean} isRealTime
    */
-  isRealTime: Ember.computed('model', function(){
+  isRealTime: Ember.computed('model.contextResult.isRealTime', function(){
     return this.get('model.contextResult.isRealTime');
   }),
 
   /**
    * @property {boolean} showAttempts
    */
-  showAttempts: Ember.computed('model', function(){
-    return this.get('model.contextResult.showAttempts') !== undefined ? this.get('model.contextResult.showAttempts') : true;
+  showAttempts: Ember.computed('model.contextResult.showAttempts', function(){
+    return this.get('model.contextResult.showAttempts') === undefined || this.get('model.contextResult.showAttempts');
   }),
 
   /**
-   * Return ordered questions array
+   * Return ordered questions/resources array
    * @return {Ember.Array}
    */
-  orderedQuestions: Ember.computed('contextResult.questionResults.@each.updated', function() {
-    return this.get('contextResult.questionResults').sort(
-      (a, b) => a.get('question.sequence') - b.get('question.sequence'));
+  orderedQuestions: Ember.computed.alias('contextResult.sortedResourceResults'),
+
+  /**
+   * List of open ended questions to be displayed
+   *
+   * @constant {Array}
+   */
+  resultsOpenEnded: Ember.computed('orderedQuestions.@each.updated', function() {
+    return this.get('orderedQuestions')
+      .filter(resourceResult => resourceResult.get('isOpenEnded'));
+  }),
+
+  /**
+   * List of questions to be displayed (Not open ended)
+   *
+   * @constant {Array}
+   */
+  resultsQuestions: Ember.computed('orderedQuestions.@each.updated', function() {
+    return this.get('orderedQuestions')
+      .filter(resourceResult =>
+        resourceResult.get('isQuestion') && !resourceResult.get('isOpenEnded')
+      );
+  }),
+
+  /**
+   * List of questions to be displayed (Not open ended)
+   *
+   * @constant {Array}
+   */
+  resultsResources: Ember.computed('orderedQuestions.@each.updated', function() {
+    return this.get('orderedQuestions')
+      .filter(resourceResult => resourceResult.get('isResource'));
   })
 });

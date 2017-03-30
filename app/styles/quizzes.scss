@@ -25,7 +25,7 @@
 @import 'components/gru-breadcrumb';
 @import 'components/gru-bubbles';
 @import 'components/gru-category-panel';
-@import 'components/gru-emotion-picker';
+@import 'components/qz-emotion-picker';
 @import 'components/gru-image-picker';
 @import 'components/qz-modal';
 @import 'components/qz-rich-text-editor';
@@ -50,7 +50,7 @@
 @import 'components/assignment/qz-assign-students';
 @import 'components/assignment/qz-assessment-settings';
 
-@import 'components/cards/gru-resource-card';
+@import 'components/cards/qz-resource-card';
 @import 'components/cards/gru-resource-result-card';
 
 @import 'components/charts/gru-bubble-chart';
@@ -94,6 +94,8 @@
 @import 'components/reports/qz-assessment-report';
 @import 'components/reports/assessment/qz-questions';
 @import 'components/reports/assessment/qz-questions-xs';
+@import 'components/reports/assessment/qz-resources';
+@import 'components/reports/assessment/qz-resources-xs';
 @import 'components/reports/assessment/qz-summary';
 @import 'components/reports/assessment/questions/qz-single-choice';
 @import 'components/reports/assessment/questions/qz-multiple-answer';

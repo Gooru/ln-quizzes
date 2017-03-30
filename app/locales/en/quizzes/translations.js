@@ -802,6 +802,9 @@ export default {
     "study-time": "Time"
   },
   "qz-assessment-report": {
+    "open-ended": "Free Response Questions",
+    "questions": "Questions",
+    "resources": "Resources",
     "qz-summary": {
       "total-time-spent": "Total Time Spent"
     },
@@ -826,7 +829,7 @@ export default {
     "time-spent": "Time Spent",
     "totals": "Total"
   },
-  "gru-emotion-picker": {
+  "qz-emotion-picker": {
     "react-to-resource": "React to this resource"
   },
   "taxonomy": {
@@ -1014,7 +1017,7 @@ export default {
     },
     "qz-category":{
       "feedback-guidance":"Feedback Guidance",
-      "feedback-guidance-placeholder":"ex. As you are reviwing this category, pay careful attention to the author's purpose",
+      "feedback-guidance-placeholder":"ex. As you are reviewing this category, pay careful attention to the author's purpose",
       "required-feedback":"Required Feedback",
       "scoring":"Scoring",
       "title":"Category Title",
@@ -1038,5 +1041,16 @@ export default {
     "total-points":"Total Points Possible",
     "points": "pts",
     "feedback-guidance-placeholder":"ex. As you are reviewing this essay as a whole, provide feedback on consistency of author’s voice from beginning to end"
+  },
+  "qz-player":{
+    "resource-format": {
+      "image_resource": "Image",
+      "text_resource": "Text",
+      "video_resource": "Video",
+      "interactive_resource": "Interactive",
+      "webpage_resource": "Webpage",
+      "audio_resource": "Audio",
+      "question": "Question"
+    }
   }
 };

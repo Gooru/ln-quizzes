@@ -2,7 +2,6 @@
   margin-top: 20px;
   .questions-header {
     margin: 30px 0;
-
     .title {
       float: left;
       margin: 0 20px 10px 0;
@@ -27,7 +26,7 @@
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
     border-radius: 5px;
     padding: 20px 0 40px 0;
-    table-layout: fixed;
+    display: block;
 
     @media (min-width: $screen-md) {
       padding: 20px 15px 40px 15px;
@@ -42,6 +41,7 @@
       height: 30px;
       text-align: center;
       border-bottom: 1px solid $gray-lighter;
+
     }
     th.number {
       width: 2%;
@@ -64,9 +64,20 @@
     th.correct-answer {
       width: 36%;
     }
-    .question-text img {
-      max-height: 100px;
-      margin: 5px 0;
+    .question-text {
+      .text {
+        word-wrap: break-word;
+        overflow: auto;
+        max-width: 18em;
+        display: block;
+        @media (max-width: $screen-sm) {
+          max-width: 10em;
+        }
+      }
+      img {
+        max-height: 100px;
+        margin: 5px 0;
+      }
     }
     .question-score span{
       .mdi {
@@ -118,9 +129,7 @@
   }
 
   &.key-hidden.performance-view {
-
     .questions-header {
-
       > em {
         display: block;
         font-style: normal;

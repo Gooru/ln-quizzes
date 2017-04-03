@@ -29,7 +29,7 @@
 
   .resources {
     position: relative;
-    height: 100%;
+    height: auto;
     overflow-y: scroll;
     margin-right: -15px;
     padding: 0;
@@ -195,11 +195,16 @@
     text-align: center;
     margin: 0 0 20px 0;
   }
-
-  .see-usage-report {
-    cursor: pointer;
-    i {
-      float: right;
+  .navigator-subheader{
+    color: $white;
+    margin: 0 20px;
+    .see-usage-report {
+      cursor: pointer;
+      @include flexbox;
+      @include justify-content(space-between);
+      i {
+        float: right;
+      }
     }
   }
 }

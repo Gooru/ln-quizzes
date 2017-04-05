@@ -15,6 +15,5 @@ export default Ember.Component.extend({
     confirm(){
       this.sendAction('onConfirmFinish');
     }
-
   }
 });

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { ASSESSMENT_SHOW_VALUES, RESOURCE_COMPONENT_MAP } from 'quizzes-addon/config/quizzes-config';
+import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
 /**
  * Player viewer
  *
@@ -34,16 +34,6 @@ export default Ember.Component.extend({
       component.$('.content').scrollTop(0);
       component.sendAction('onSubmitQuestion', question, questionResult);
     }
-  },
-
-
-  // -------------------------------------------------------------------------
-  // Events
-  /**
-   * DidInsertElement ember event
-   */
-  didInsertElement: function() {
-    this.calculateResourceContentHeight();
   },
 
   // -------------------------------------------------------------------------
@@ -130,22 +120,6 @@ export default Ember.Component.extend({
   resource: null,
 
   /**
-   * The resource component selected
-   * @property {string}
-   */
-  resourceComponentSelected: Ember.computed('resource.id', function () {
-    const resourceType = (this.get('resource.isImageResource') ? 'image' : this.get('resource.resourceType'));
-    var component = RESOURCE_COMPONENT_MAP[resourceType];
-
-    if (!component) {
-      Ember.Logger.error(`Resources of type ${resourceType} are currently not supported`);
-    } else {
-      Ember.Logger.debug('Resources component selected: ', component);
-      return component;
-    }
-  }),
-
-  /**
    * The resource or question result playing
    * @property {ResourceResult}
    */
@@ -161,35 +135,5 @@ export default Ember.Component.extend({
    * Indicates when the collection is already submitted
    * @property {boolean}
    */
-  submitted: false,
-
-  // -------------------------------------------------------------------------
-  // Observers
-  /**
-   * Observes for the resource change
-   */
-  resourceObserver: function() {
-    this.calculateResourceContentHeight();
-  }.observes('resource.id'),
-
-  // -------------------------------------------------------------------------
-  // Methods
-
-  /**
-   * Calculates the height of the content area (it will change depending on height
-   * of the narration -if there is one)
-   */
-  calculateResourceContentHeight: function() {
-    if (this.get('resource.isUrlResource') ||
-        this.get('resource.isPDFResource') ||
-        this.get('resource.isImageResource') &&
-        this.get('isNotIframeUrl')===false) {
-      var narrationHeight = this.$('.narration').innerHeight();
-      var contentHeight = this.$('.content').height();
-
-      // The 4 pixels subtracted are to make sure no scroll bar will appear for the content
-      // (Users should rely on the iframe scroll bar instead)
-      this.set('calculatedResourceContentHeight', contentHeight - narrationHeight - 4);
-    }
-  }
+  submitted: false
 });

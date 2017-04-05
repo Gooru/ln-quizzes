@@ -3,7 +3,7 @@
   @include flex-direction(column);
   @include justify-content(space-between);
   height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   margin: 0 0 15px 15px;
   &::-webkit-scrollbar {
     -webkit-appearance: none;

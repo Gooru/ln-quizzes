@@ -740,6 +740,7 @@ export default {
 
   "qz-question-viewer": {
     "answer": "Answer",
+    "previous": "Previous",
     "question": "Question"
   },
   "qz-true-false": {

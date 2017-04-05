@@ -7,6 +7,7 @@
     question=resource
     questionResult=resourceResult
     role=role
+    showPrevious=showPrevious
     submitted=submitted
     onSubmitQuestion="submitQuestion"
     }}
@@ -56,5 +57,10 @@
         Not implemented
       {{/if}}
     {{/if}}
+  {{/if}}
+</div>
+<div class="actions-section">
+  {{#if showPrevious}}
+      <button class="previous btn" {{action 'previousResource'}}>{{t "qz-question-viewer.previous"}}</button>
   {{/if}}
 </div>

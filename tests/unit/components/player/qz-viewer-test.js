@@ -144,3 +144,23 @@ test('submitQuestion', function(assert) {
   });
   component.send('submitQuestion', question, questionResult);
 });
+test('previousResource', function(assert) {
+  assert.expect(1);
+  let component = this.subject();
+  let question =  Question.create({
+    'id': '1',
+    type:'question',
+    body: 'The sun is yellow and the moon white',
+    description: 'Sample description text',
+    sequence:1,
+    hasAnswers: true,
+    isResource:false
+  });
+  component.set('sendAction', function(actionName) {
+    assert.equal(actionName, 'onPreviousResource', 'Action sent should match');
+  });
+  component.set('$', function() {
+    return { scrollTop: () => 0 };
+  });
+  component.send('previousResource', question);
+});

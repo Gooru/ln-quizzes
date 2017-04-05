@@ -24,6 +24,15 @@ export default Ember.Component.extend({
   // Actions
   actions: {
     /***
+     * Return to previous resource
+     * @param {Resource} question
+     */
+    previousResource: function () {
+      const component = this;
+      component.$('.content').scrollTop(0);
+      component.sendAction('onPreviousResource',component.get('resource'));
+    },
+    /***
      * When the user submits the question
      * @param {Resource} question
      * @param {QuestionResult} questionResult

@@ -95,6 +95,20 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
+     * Handle onPreviousResource event from qz-question-viewer
+     * @see components/player/qz-question-viewer.js
+     * @param {Resource} question
+     */
+    previousResource: function(resource){
+      const component = this;
+      const next = component.get('collection').prevResource(resource);
+      if (next) {
+        Ember.$(window).scrollTop(0);
+        component.moveToResource(next);
+      }
+    },
+
+    /**
      * Triggered when a navigator resource is selected
      * @param {Resource} resource
      */
@@ -260,6 +274,15 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean} showFeedback
    */
   showFeedback: Ember.computed.alias('collection.immediateFeedback'),
+
+  /**
+   * Indicates if the current resource type is resource
+   * @property {boolean}
+   */
+  showPrevious: Ember.computed('resource','isNavigationDisabled', function(){
+    const resource = this.get('resource');
+    return !!this.get('collection').prevResource(resource) && !this.get('isNavigationDisabled');
+  }),
 
   /**
    * Indicates if the report should be displayed

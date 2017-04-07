@@ -33,7 +33,7 @@ export default Ember.Component.extend(QuestionMixin, {
     'question.answers.@each.text', 'question.answers.@each.value', function () {
     let component = this;
     let question = component.get('question');
-    let userAnswers = component.get('userAnswer') || null;
+    let userAnswers = component.get('userAnswer') || [];
     let correctAnswers = question.get('question.correctAnswer');
     if (component.get('showCorrect')){
       userAnswers = correctAnswers;
@@ -41,7 +41,7 @@ export default Ember.Component.extend(QuestionMixin, {
 
     let answers = question.get('question.answers');
     return answers.map(answer => {
-      let userAnswer = userAnswers.filterBy('value', answer.value);
+      let userAnswer = userAnswers.filterBy('value', answer.value) || [];
       let correctAnswer = correctAnswers.filterBy('value', answer.value);
       let correct = userAnswer.length === correctAnswer.length;
       return {

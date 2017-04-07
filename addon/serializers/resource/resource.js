@@ -16,8 +16,8 @@ export default Ember.Object.extend({
    */
   normalizeReadResource: function(resourceData) {
     const serializer = this;
-    const questionData = resourceData.metadata;
-    const interaction = questionData.interaction;
+    const questionData = resourceData.metadata || resourceData;
+    const interaction = questionData ? questionData.interaction : null;
 
     const resource = ResourceModel.create(Ember.getOwner(this).ownerInjection(), {
       id: resourceData.id,
@@ -35,7 +35,7 @@ export default Ember.Object.extend({
 
     resource.set('displayGuide', resource.get('displayGuide') || this.checkURLProtocol(resource.body));
 
-    if(interaction){
+    if(interaction) {
       resource.setProperties({
         answers: serializer.normalizeAnswers(interaction.choices),
         maxChoices: interaction.maxChoices,

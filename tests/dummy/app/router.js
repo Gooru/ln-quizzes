@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('player', { path: '/player/:contextId' });
+  this.route('resource-player', { path: '/resource-player/:resourceId' });
 
   this.route('edit', function() {
     this.route('assessment', { path: '/assessment/:assessmentId' });

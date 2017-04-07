@@ -26,14 +26,14 @@ export default Ember.Component.extend(QuestionMixin, {
     'question.answers.@each.text', 'question.answers.@each.value', function () {
     let component = this;
     let question = component.get('question');
-    let userAnswers = component.get('userAnswer');
+    let userAnswers = component.get('userAnswer') || [];
     let correctAnswers = question.get('question.correctAnswer');
     if (component.get('showCorrect')){
       userAnswers = correctAnswers;
     }
     let answers = question.get('question.answers');
     return answers.map(function(answer){
-      let userAnswer = userAnswers.findBy('value', answer.value);
+      let userAnswer = userAnswers.findBy('value', answer.value) || {};
       let correctAnswer = correctAnswers.findBy('value', userAnswer.value);
       let correct = correctAnswer && correctAnswers.indexOf(correctAnswer) === userAnswers.indexOf(userAnswer);
       return {

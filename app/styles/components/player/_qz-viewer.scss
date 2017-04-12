@@ -10,7 +10,6 @@
   }
   .qz-content {
     width: 100%;
-    height: 85%;
     padding:0;
     .avatar {
       text-align: center;
@@ -33,9 +32,16 @@
       }
     }
   }
+  .qz-content.question{
+    height: auto;
+  }
+  .qz-content.resource{
+    height: 85%;
+  }
+
   .actions-section{
     height: 50px;
-    margin:20px;
+    margin:10px 20px;
   }
   .btn.previous {
     border-radius: 15px;

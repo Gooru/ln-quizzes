@@ -1,4 +1,4 @@
-<div class="qz-content">
+<div class="qz-content {{if resource.isQuestion 'question' 'resource'}}">
   {{#if resource.isQuestion}}
     {{player.qz-question-viewer
       buttonTextKey=buttonTextKey
@@ -17,9 +17,9 @@
       isNotIframeUrl=isNotIframeUrl
     }}
   {{/if}}
-</div>
-<div class="actions-section">
-  {{#if showPrevious}}
-      <button class="previous btn" {{action 'previousResource'}}>{{t "qz-question-viewer.previous"}}</button>
-  {{/if}}
+    <div class="actions-section">
+      {{#if showPrevious}}
+          <button class="previous btn" {{action 'previousResource'}}>{{t "qz-question-viewer.previous"}}</button>
+      {{/if}}
+    </div>
 </div>

@@ -77,16 +77,18 @@ export default Ember.Component.extend({
     const component = this;
     const aspectRatio = component.get('aspectRatio');
     const $element = Ember.$(component.element);
-    const height = parseInt($element.css('height').split('px')[0]);
-    const width = parseInt($element.css('width').split('px')[0]);
+    const height = $element.css('height') ? parseInt($element.css('height').split('px')[0]) : 0;
+    const width = $element.css('width') ? parseInt($element.css('width').split('px')[0]) : 0;
     let newWidth = height * aspectRatio.width / aspectRatio.height;
     let newHeight = 0;
     if(newWidth > width) {
       newWidth = 0;
       newHeight = width * aspectRatio.height / aspectRatio.width;
     }
-    this.set('width', newWidth);
-    this.set('height', newHeight);
+    if(!component.isDestroyed) {
+      component.set('width', newWidth);
+      component.set('height', newHeight);
+    }
   }
 
 });

@@ -72,9 +72,8 @@ export default Ember.Route.extend({
   },
 
   setupController(controller, model) {
-    let attemptData = model.attemptData;
-    if(attemptData) {
-      attemptData.setCollection(model.collection);
+    if(model && model.attemptData) {
+      model.attemptData.setCollection(model.collection);
       controller.set('attemptData', model.attemptData);
     }
   }

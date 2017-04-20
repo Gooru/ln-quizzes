@@ -165,7 +165,7 @@ export default Ember.Object.extend({
               reaction: found.reaction,
               answer: found.answer || null,
               score: found.score,
-              skipped: found.isSkipped
+              skipped: found.skipped
             });
             resourceResults.removeObject(found);
             resourceResults.pushObject(result);

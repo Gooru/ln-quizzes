@@ -420,6 +420,11 @@ test('setCollection', function(assert) {
           ResourceResult.create({
             resourceId: 'q2',
             score: 100
+          }),
+          ResourceResult.create({
+            resourceId: 'q3',
+            score: 0,
+            skipped: true
           })
         ])
       }),
@@ -456,10 +461,10 @@ test('setCollection', function(assert) {
   assert.equal(model.get('reportEvents').get(0).get('resourceResults').get(3).get('score'), 0, 'Fourth score for first student should change');
   assert.ok(model.get('reportEvents').get(0).get('resourceResults').get(3).get('skipped'), 'Fourth question for first student should be skipped');
   assert.equal(model.get('reportEvents').get(1).get('profileId'), 'student2', 'Profile id should match');
-  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(0).get('score'), 100, 'Second student scores should not change');
+  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(0).get('score'), 100, 'First student scores should not change');
   assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(1).get('score'), 100, 'Second student scores should not change');
-  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(2).get('score'), 100, 'Second student scores should not change');
-  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(3).get('score'), 100, 'Second student scores should not change');
+  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(2).get('score'), 100, 'Third student scores should not change');
+  assert.equal(model.get('reportEvents').get(1).get('resourceResults').get(3).get('score'), 100, 'Fourth student scores should not change');
 });
 
 test('getResultsByQuestion', function(assert) {

@@ -16,7 +16,7 @@ export default Ember.Object.extend({
    */
   normalizeReadResource: function(resourceData) {
     const serializer = this;
-    const questionData = resourceData.metadata || resourceData;
+    const questionData = resourceData.title || !resourceData.metadata ? resourceData : resourceData.metadata;
     const interaction = questionData ? questionData.interaction : null;
 
     const resource = ResourceModel.create(Ember.getOwner(this).ownerInjection(), {

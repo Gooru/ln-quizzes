@@ -88,3 +88,24 @@ test('normalizeReadResource without interaction', function(assert) {
   assert.notOk(newResource.get('prompt'),  'Wrong maxChoices');
   assert.notOk(newResource.get('answers').length, 'Wrong answers length');
 });
+
+test('normalizeReadResource from Nile', function(assert) {
+  const serializer = this.subject();
+  const resource = {
+    id: 'resource-nile',
+    title: 'resource-title',
+    content_subformat: 'webpage_resource',
+    url: 'resource-body',
+    metadata: {}
+  };
+  const  newResource = serializer.normalizeReadResource(resource);
+  assert.equal(newResource.get('id'), 'resource-nile', 'Wrong id');
+  assert.equal(newResource.get('title'), 'resource-title', 'Wrong title');
+  assert.equal(newResource.get('thumbnail'), null, 'Wrong thumbnail');
+  assert.equal(newResource.get('type'), 'webpage_resource', 'Wrong type');
+  assert.notOk(newResource.get('isResource'), 'Wrong value for isResource');
+  assert.notOk(newResource.get('correctAnswer'), 'Wrong correctAnswer');
+  assert.equal(newResource.get('body'), 'resource-body', 'Wrong body');
+  assert.equal(newResource.get('description'), null, 'Wrong description');
+  assert.notOk(newResource.get('answers').length, 'Wrong answers length');
+});

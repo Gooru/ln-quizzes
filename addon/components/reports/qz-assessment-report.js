@@ -109,7 +109,7 @@ export default Ember.Component.extend({
    */
   orderedQuestions: Ember.computed('contextResult.sortedResourceResults.@each.updated',function(){
     this.get('contextResult.sortedResourceResults').forEach(function (result,index) {
-      result.set('sequence',index + 1);
+      result.set('resource.sequence',index + 1);
     });
     return this.get('contextResult.sortedResourceResults');
   }),

@@ -151,7 +151,7 @@ export default Ember.Object.extend({
     result.setProperties({
       resourceId: newResult.resourceId,
       savedTime: newResult.savedTime,
-      skipped: newResult.isSkipped,
+      skipped: newResult.skipped,
       reaction: newResult.reaction,
       answer: newResult.answer,
       score: newResult.score
@@ -180,7 +180,7 @@ export default Ember.Object.extend({
             reaction: resourceResult.reaction,
             answer: resourceResult.answer || null,
             score: resourceResult.score,
-            skipped: resourceResult.isSkipped
+            skipped: resourceResult.skipped
           });
           resourceResults.removeObject(resourceResult);
           resourceResults.pushObject(result);

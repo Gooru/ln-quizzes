@@ -107,8 +107,12 @@ export default Ember.Component.extend({
    * Return ordered questions/resources array
    * @return {Ember.Array}
    */
-  orderedQuestions: Ember.computed.alias('contextResult.sortedResourceResults'),
-
+  orderedQuestions: Ember.computed('contextResult.sortedResourceResults.@each.updated',function(){
+    this.get('contextResult.sortedResourceResults').forEach(function (result,index) {
+      result.set('sequence',index + 1);
+    });
+    return this.get('contextResult.sortedResourceResults');
+  }),
   /**
    * List of open ended questions to be displayed
    *

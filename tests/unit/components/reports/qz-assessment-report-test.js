@@ -36,11 +36,11 @@ test('showAttempts', function(assert) {
 
 test('orderedQuestions', function(assert) {
   let contextResult = ContextResult.create({
-    sortedResourceResults: 'resourse-results'
+    sortedResourceResults: [Ember.Object.create({sequence:1}),Ember.Object.create({sequence:3})]
   });
   const model = { contextResult };
   let component = this.subject({ model });
-  assert.equal(component.get('orderedQuestions'), 'resourse-results', 'Ordered questions should match');
+  assert.equal(component.get('orderedQuestions')[1].sequence, 2, 'Ordered questions should match');
 });
 
 test('resultsQuestions, resultsOpenEnded and resultsResources', function(assert) {
@@ -76,10 +76,10 @@ test('resultsQuestions, resultsOpenEnded and resultsResources', function(assert)
   });
   const model = { contextResult };
   let component = this.subject({ model });
-  assert.equal(component.get('resultsQuestions').length, 1, 'Lenght of resultsQuestions should be 1');
+  assert.equal(component.get('resultsQuestions').length, 1, 'Length of resultsQuestions should be 1');
   assert.equal(component.get('resultsQuestions')[0].get('resource.id'), 'question-1', 'Question id should match');
-  assert.equal(component.get('resultsOpenEnded').length, 1, 'Lenght of resultsOpenEnded should be 1');
+  assert.equal(component.get('resultsOpenEnded').length, 1, 'Length of resultsOpenEnded should be 1');
   assert.equal(component.get('resultsOpenEnded')[0].get('resource.id'), 'open-ended-1', 'Open Ended question id should match');
-  assert.equal(component.get('resultsResources').length, 1, 'Lenght of resultsResources should be 1');
+  assert.equal(component.get('resultsResources').length, 1, 'Length of resultsResources should be 1');
   assert.equal(component.get('resultsResources')[0].get('resource.id'), 'resource-1', 'Resource id should match');
 });

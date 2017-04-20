@@ -42,13 +42,25 @@ test('Layout', function(assert) {
         correct: true,
         resourceId: 'resource-1-id',
         reaction: 2,
-        savedTime: 701
+        savedTime: 701,
+        resource: Resource.create({
+          id: 'resource-1',
+          sequence: 1,
+          body: 'Resource 1',
+          isResource: true
+        })
       }),
       QuestionResult.create({
         correct: true,
         resourceId: 'resource-2-id',
         reaction: 4,
-        savedTime: 1333
+        savedTime: 1333,
+        resource: Resource.create({
+          id: 'resource-1',
+          sequence: 4,
+          body: 'Resource 1',
+          isResource: true
+        })
       })
     ])
   }));
@@ -93,13 +105,25 @@ test('Layout when show key setting', function (assert) {
         correct: true,
         resourceId: 'resource-1-id',
         reaction: 2,
-        savedTime: 701
+        savedTime: 701,
+        resource: Resource.create({
+          id: 'resource-1',
+          sequence: 1,
+          body: 'Resource 1',
+          isResource: false
+        })
       }),
       QuestionResult.create({
         correct: true,
         resourceId: 'resource-2-id',
         reaction: 4,
-        savedTime: 1333
+        savedTime: 1333,
+        resource: Resource.create({
+          id: 'resource-1',
+          sequence: 3,
+          body: 'Resource 1',
+          isResource: false
+        })
       })
     ])
   }));
@@ -144,13 +168,25 @@ test('Layout when show key setting', function (assert) {
         correct: true,
         resourceId: 'resource-1-id',
         reaction: 2,
-        savedTime: 701
+        savedTime: 701,
+        resource: Resource.create({
+          id: 'resource-1',
+          sequence: 1,
+          body: 'Resource 1',
+          isResource: false
+        })
       }),
       QuestionResult.create({
         correct: true,
         resourceId: 'resource-2-id',
         reaction: 4,
-        savedTime: 1333
+        savedTime: 1333,
+        resource: Resource.create({
+          id: 'resource-1',
+          sequence: 2,
+          body: 'Resource 1',
+          isResource: true
+        })
       })
     ])
   }));
@@ -193,13 +229,25 @@ test('Layout when teacher hidden the summary report', function (assert) {
         correct: true,
         resourceId: 'resource-1-id',
         reaction: 2,
-        savedTime: 701
+        savedTime: 701,
+        resource: Resource.create({
+          id: 'resource-1',
+          sequence: 4,
+          body: 'Resource 1',
+          isResource: false
+        })
       }),
       QuestionResult.create({
         correct: true,
         resourceId: 'resource-2-id',
         reaction: 4,
-        savedTime: 1333
+        savedTime: 1333,
+        resource: Resource.create({
+          id: 'resource-1',
+          sequence: 4,
+          body: 'Resource 1',
+          isResource: false
+        })
       })
     ])
   }));

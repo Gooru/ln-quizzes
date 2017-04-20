@@ -36,11 +36,39 @@ test('showAttempts', function(assert) {
 
 test('orderedQuestions', function(assert) {
   let contextResult = ContextResult.create({
-    sortedResourceResults: [Ember.Object.create({sequence:1}),Ember.Object.create({sequence:3})]
+    sortedResourceResults: Ember.A([
+    QuestionResult.create({
+      resource: Resource.create({
+        id: 'question-1',
+        sequence: 1,
+        body: 'Question 1',
+        type: QUESTION_TYPES.singleChoice,
+        isResource: false
+      })
+    }),
+    ResourceResult.create({
+      resource: Resource.create({
+        id: 'resource-1',
+        sequence: 4,
+        body: 'Resource 1',
+        isResource: true
+      })
+    }),
+    QuestionResult.create({
+      resource: Resource.create({
+        id: 'open-ended-1',
+        sequence: 5,
+        body: 'Open Ended 1',
+        type: QUESTION_TYPES.openEnded,
+        isResource: false
+      })
+    })
+  ])
   });
   const model = { contextResult };
   let component = this.subject({ model });
-  assert.equal(component.get('orderedQuestions')[1].sequence, 2, 'Ordered questions should match');
+  assert.equal(component.get('orderedQuestions')[1].get('resource.sequence'), 2, 'Ordered questions sequence should match');
+  assert.equal(component.get('orderedQuestions')[2].get('resource.sequence'), 3, 'Ordered questions sequence should match');
 });
 
 test('resultsQuestions, resultsOpenEnded and resultsResources', function(assert) {

@@ -66,6 +66,11 @@ export default Ember.Object.extend({
     return this.get('students').map(student => student.get('id'));
   }),
 
+  /**
+   * @property {date} submittedAt Date of submission
+   */
+  submittedAt: 0,
+
   // -------------------------------------------------------------------------
   // Methods
   /**

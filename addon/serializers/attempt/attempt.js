@@ -41,7 +41,8 @@ export default Ember.Object.extend({
       currentResourceId: reportEvent.currentResourceId,
       profileId: reportEvent.profileId,
       resourceResults: this.get('contextSerializer').normalizeResourceResults(reportEvent.events),
-      isAttemptFinished: reportEvent.isComplete
+      isAttemptFinished: reportEvent.isComplete,
+      submittedAt: reportEvent.createdDate
     });
     if (summary) {
       reportDataEvent.setProperties({

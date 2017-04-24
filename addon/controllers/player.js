@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  queryParams: ['resourceId', 'sourceId'],
+  queryParams: ['resourceId', 'sourceId', 'source'],
 
   // -------------------------------------------------------------------------
   // Properties
@@ -24,5 +24,11 @@ export default Ember.Controller.extend({
   /**
    * @property {ContextResult} contextResult
    */
-  contextResult: null
+  contextResult: null,
+
+  /**
+   * Indicates the component of the application that is originating the events
+   * @property {String} source
+   */
+  source: null
 });

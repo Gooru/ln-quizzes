@@ -83,15 +83,16 @@ export default Ember.Service.extend({
    * @param {String} resourceId current resource
    * @param {String} contextId
    * @param {Object} previousResource resource to save
+   * @param {String} source component originating events
    * @returns {Promise}
    */
-  moveToResource: function(resourceId, contextId, previousResult) {
+  moveToResource: function(resourceId, contextId, previousResult, source) {
     const service = this;
     let serializedPreviousResult = previousResult ?
       this.get('contextSerializer').serializeResourceResult(previousResult) :
       null;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').moveToResource(resourceId, contextId, serializedPreviousResult)
+      service.get('contextAdapter').moveToResource(resourceId, contextId, serializedPreviousResult, source)
         .then(resolve, reject);
     });
   },
@@ -99,12 +100,13 @@ export default Ember.Service.extend({
   /**
    * Send event to notify the student started an assignment
    * @param {String} contextId
+   * @param {String} source component originating events
    * @returns {Promise}
    */
-  startContext: function(contextId) {
+  startContext: function(contextId, source) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').sendStartContextEvent(contextId)
+      service.get('contextAdapter').sendStartContextEvent(contextId, source)
         .then(response => service.get('contextSerializer').normalizeContextResult(response))
         .then(resolve, reject);
     });
@@ -113,12 +115,13 @@ export default Ember.Service.extend({
   /**
    * Send event to notify the student submitted all questions in an assignment
    * @param {String} contextId
+   * @param {String} source component originating events
    * @returns {Promise}
    */
-  finishContext: function(contextId) {
+  finishContext: function(contextId, source) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').sendFinishContextEvent(contextId)
+      service.get('contextAdapter').sendFinishContextEvent(contextId, source)
         .then(resolve, reject);
     });
   },

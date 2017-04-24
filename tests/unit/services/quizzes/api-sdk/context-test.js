@@ -213,17 +213,19 @@ test('moveToResource', function(assert) {
   const service = this.subject();
   const expectedContextId = 'context-id';
   const expectedResourceId = 'resource-id';
+  const expectedSource = 'source';
   const previousResult =  {
     id: 'result-id'
   };
 
-  assert.expect(5);
+  assert.expect(6);
 
   service.set('contextAdapter', Ember.Object.create({
-    moveToResource: function(resourceId, contextId, previous) {
+    moveToResource: function(resourceId, contextId, previous, source) {
       assert.deepEqual(resourceId, expectedResourceId, 'The resource id should match');
       assert.deepEqual(contextId, expectedContextId, 'The context id should match');
       assert.deepEqual(previous, previousResult, 'The previous result should match');
+      assert.deepEqual(source, expectedSource, 'The source should match');
       return Ember.RSVP.resolve(previousResult);
     }
   }));
@@ -236,7 +238,7 @@ test('moveToResource', function(assert) {
   }));
 
   let done = assert.async();
-  service.moveToResource(expectedResourceId, expectedContextId, previousResult)
+  service.moveToResource(expectedResourceId, expectedContextId, previousResult, expectedSource)
     .then(function(result) {
       assert.deepEqual(result, previousResult, 'The result should match');
       done();
@@ -244,16 +246,18 @@ test('moveToResource', function(assert) {
 });
 
 test('startContext', function(assert) {
-  assert.expect(3);
+  assert.expect(4);
   const service = this.subject();
   const expectedContextId = 'context-id';
+  const expectedSource = 'source';
   const contextResult = {
     id: 'result-id'
   };
 
   service.set('contextAdapter', Ember.Object.create({
-    sendStartContextEvent: function(contextId) {
+    sendStartContextEvent: function(contextId, source) {
       assert.deepEqual(contextId, expectedContextId, 'The context id should match');
+      assert.deepEqual(source, expectedSource, 'The source should match');
       return Ember.RSVP.resolve(contextResult);
     }
   }));
@@ -266,7 +270,7 @@ test('startContext', function(assert) {
   }));
 
   let done = assert.async();
-  service.startContext(expectedContextId)
+  service.startContext(expectedContextId, expectedSource)
     .then(function(result) {
       assert.deepEqual(result, contextResult, 'The result should match');
       done();
@@ -274,22 +278,24 @@ test('startContext', function(assert) {
 });
 
 test('finishContext', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
   const service = this.subject();
   const expectedContextId = 'context-id';
+  const expectedSource = 'source';
   const assessmentResult = {
     id: 'result-id'
   };
 
   service.set('contextAdapter', Ember.Object.create({
-    sendFinishContextEvent: function(contextId) {
+    sendFinishContextEvent: function(contextId, source) {
       assert.deepEqual(contextId, expectedContextId, 'The context id should match');
+      assert.deepEqual(source, expectedSource, 'The source should match');
       return Ember.RSVP.resolve(assessmentResult);
     }
   }));
 
   let done = assert.async();
-  service.finishContext(expectedContextId)
+  service.finishContext(expectedContextId, expectedSource)
     .then(function(result) {
       assert.deepEqual(result, assessmentResult, 'The result should match');
       done();

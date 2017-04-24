@@ -86,9 +86,12 @@ export default ApplicationAdapter.extend(TokenMixin, {
    * @param {Object} previousResource resource to save
    * @returns {Promise}
    */
-  moveToResource: function(resourceId, contextId, previousResource) {
+  moveToResource: function(resourceId, contextId, previousResource, eventSource) {
     const namespace = this.get('namespace');
     let data = previousResource ? { previousResource } : {};
+    if(eventSource) {
+      data.eventSource = eventSource;
+    }
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
@@ -107,14 +110,15 @@ export default ApplicationAdapter.extend(TokenMixin, {
    * @param {String} contextId
    * @returns {Promise}
    */
-  sendFinishContextEvent: function(contextId) {
+  sendFinishContextEvent: function(contextId, eventSource) {
     const namespace = this.get('namespace');
     const url = `${namespace}/${contextId}/finish`;
+    let data = eventSource ? { eventSource } : {};
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
       processData: false,
-      data: JSON.stringify({}),
+      data: JSON.stringify(data),
       headers: this.get('headers')
     };
     return this.sendAjaxRequest(url, options);
@@ -125,15 +129,16 @@ export default ApplicationAdapter.extend(TokenMixin, {
    * @param {String} contextId
    * @returns {Promise}
    */
-  sendStartContextEvent: function(contextId) {
+  sendStartContextEvent: function(contextId, eventSource) {
     const namespace = this.get('namespace');
     const url = `${namespace}/${contextId}/start`;
+    let data = eventSource ? { eventSource } : {};
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
-      data: JSON.stringify({}),
+      data: JSON.stringify(data),
       headers: this.get('headers')
     };
     return this.sendAjaxRequest(url, options);

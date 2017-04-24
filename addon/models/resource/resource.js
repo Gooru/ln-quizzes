@@ -56,6 +56,11 @@ export default Ember.Object.extend({
   maxChoices: 0,
 
   /**
+   * @property {string}
+   */
+  narration: null,
+
+  /**
    * @property {string} owner
    */
   owner: null,
@@ -115,6 +120,12 @@ export default Ember.Object.extend({
    * @property {boolean}
    */
   hasCorrectResponse: Ember.computed.bool('correctResponse.length'),
+
+  /**
+   * Indicates if the resource has a narration
+   * @property {boolean}
+   */
+  hasNarration: Ember.computed.bool('narration'),
 
   /**
    * Indicates if the question has owner

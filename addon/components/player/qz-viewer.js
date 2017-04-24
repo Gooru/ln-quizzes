@@ -35,14 +35,13 @@ export default Ember.Component.extend({
       component.sendAction('onSubmitQuestion', question, questionResult);
     }
   },
-
-
   // -------------------------------------------------------------------------
   // Events
   /**
    * DidInsertElement ember event
    */
   didInsertElement: function() {
+    this.setNarrationEffect();
     this.calculateResourceContentHeight();
   },
 
@@ -83,6 +82,11 @@ export default Ember.Component.extend({
    * @property {Collection} collection
    */
   collection: null,
+  /**
+   * Indicates if collection has an author
+   * @property {string}
+   */
+  collectionHasAuthor: Ember.computed.notEmpty('collection.author'),
 
   /**
    * The text for the action in the instructions
@@ -152,6 +156,12 @@ export default Ember.Component.extend({
   resourceResult: null,
 
   /**
+   * Indicates if the collection author is visible
+   * @property {boolean} showCollectionAuthor
+   */
+  showCollectionAuthor: true,
+
+  /**
    * Indicates the user's role, could be 'student', 'teacher' or null
    * @property {string}
    */
@@ -191,5 +201,11 @@ export default Ember.Component.extend({
       // (Users should rely on the iframe scroll bar instead)
       this.set('calculatedResourceContentHeight', contentHeight - narrationHeight - 4);
     }
+  },
+  /**
+   * Set jquery effect to narration
+   * */
+  setNarrationEffect: function () {
+    $( '.narration' ).effect( 'highlight',{ color: '#84B7DD'}, 2000);
   }
 });

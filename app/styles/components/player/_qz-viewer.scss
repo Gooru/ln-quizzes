@@ -2,6 +2,26 @@
   height: 100%;
   overflow-y: scroll;
   margin: 0 0 15px 15px;
+
+  .narration {
+    margin-top: 0;
+    margin-bottom: 15px;
+    max-width: 904px;
+    @media (max-width: $screen-sm-max) {
+      margin-top: 30px;
+    }
+    @media (max-width: $screen-xs-max) {
+      margin-top: 0;
+    }
+    .panel-body {
+      padding: 10px 15px;
+    }
+    span {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
   &::-webkit-scrollbar {
     -webkit-appearance: none;
   }

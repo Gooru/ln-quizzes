@@ -291,6 +291,12 @@ export default Ember.Component.extend(ModalMixin, {
   showReport: false,
 
   /**
+   * Indicates the component of the application that is originating the events
+   * @property {String} source
+   */
+  source: null,
+
+  /**
    * Query param indicating if it is a collection or assessment
    * @property {string}
    */
@@ -305,8 +311,10 @@ export default Ember.Component.extend(ModalMixin, {
   finishCollection: function() {
     const component = this;
     let contextResult = component.get('contextResult');
+    let contextId = contextResult.get('contextId');
+    let source = component.get('source');
     let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
-        component.get('contextService').finishContext(contextResult.get('contextId'));
+        component.get('contextService').finishContext(contextId, source);
     return promise.then(() => this.get('onFinish') && this.sendAction('onFinish'));
   },
 
@@ -378,12 +386,13 @@ export default Ember.Component.extend(ModalMixin, {
     let promise = Ember.RSVP.resolve();
     let save = component.get('saveEnabled');
     if (save) {
+      let source = component.get('source');
       let contextId = contextResult.get('contextId');
       if(resourceResult) {
         resourceResult.set('stopTime', new Date().getTime());
       }
       promise = firstTime ? Ember.RSVP.resolve() :
-        component.get('contextService').moveToResource(resourceId, contextId, resourceResult)
+        component.get('contextService').moveToResource(resourceId, contextId, resourceResult, source)
           .then(result => resourceResult.set('score', result.score));
     }
     return promise;

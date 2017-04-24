@@ -130,6 +130,7 @@ test('moveToResource', function(assert) {
   });
   const expectedContextId = 'context-id';
   const expectedResourceId = 'resource-id';
+  const expectedSource = 'source';
   const expectedPreviousResource = {
     id: 'id'
   };
@@ -138,6 +139,7 @@ test('moveToResource', function(assert) {
     this.post('/quizzes/api/v1/contexts/context-id/onResource/resource-id', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
       assert.deepEqual(requestBodyJson.previousResource, expectedPreviousResource, 'Wrong previous resource');
+      assert.deepEqual(requestBodyJson.eventSource, expectedSource, 'Wrong source value');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify(expectedResponse)];
     }, false);
   };
@@ -147,7 +149,7 @@ test('moveToResource', function(assert) {
     assert.ok(false, `Wrong request [${verb}] url: ${path}`);
   };
 
-  adapter.moveToResource(expectedResourceId, expectedContextId, expectedPreviousResource)
+  adapter.moveToResource(expectedResourceId, expectedContextId, expectedPreviousResource, expectedSource)
     .then(response => assert.deepEqual(response, expectedResponse, 'Wrong response'));
 });
 
@@ -210,8 +212,11 @@ test('sendStartContextEvent', function(assert) {
     })
   });
   const expectedContextId = 'context-id';
+  const expectedSource = 'source';
   const routes = function() {
-    this.post('/quizzes/api/v1/contexts/context-id/start', function() {
+    this.post('/quizzes/api/v1/contexts/context-id/start', function(request) {
+      let requestBodyJson = JSON.parse(request.requestBody);
+      assert.deepEqual(requestBodyJson.eventSource, expectedSource, 'Wrong source value');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };
@@ -219,7 +224,7 @@ test('sendStartContextEvent', function(assert) {
   this.pretender.map(routes);
   this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
 
-  adapter.sendStartContextEvent(expectedContextId)
+  adapter.sendStartContextEvent(expectedContextId, expectedSource)
     .then(response => assert.deepEqual(response, {}, 'Wrong response'));
 });
 
@@ -230,8 +235,11 @@ test('sendFinishContextEvent', function(assert) {
     })
   });
   const expectedContextId = 'context-id';
+  const expectedSource = 'source';
   const routes = function() {
-    this.post('/quizzes/api/v1/contexts/context-id/finish', function() {
+    this.post('/quizzes/api/v1/contexts/context-id/finish', function(request) {
+      let requestBodyJson = JSON.parse(request.requestBody);
+      assert.deepEqual(requestBodyJson.eventSource, expectedSource, 'Wrong source value');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };
@@ -239,7 +247,7 @@ test('sendFinishContextEvent', function(assert) {
   this.pretender.map(routes);
   this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
 
-  adapter.sendFinishContextEvent(expectedContextId)
+  adapter.sendFinishContextEvent(expectedContextId, expectedSource)
     .then(response => assert.deepEqual(response, {}, 'Wrong response'));
 });
 

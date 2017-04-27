@@ -232,8 +232,8 @@ export default Ember.Component.extend(ModalMixin, {
    * Return the list of resources available to show on the player
    * @property {ResourceResult[]}
    */
-  resourcesPlayer: Ember.computed('collection.resources','contextResult.sortedResourceResults', function(){
-    let availableResources = this.get('collection.resources').mapBy('id');
+  resourcesPlayer: Ember.computed('collection.resourcesSorted','contextResult.sortedResourceResults', function(){
+    let availableResources = this.get('collection.resourcesSorted').mapBy('id');
     return this.get('contextResult.sortedResourceResults').filter(function(item){
        return item.resourceId && availableResources.includes(item.resourceId);
     });

@@ -435,7 +435,7 @@ export default Ember.Component.extend(ModalMixin, {
     const component = this;
     let promise = Ember.RSVP.resolve();
     let id = resource.ownerId;
-    if(resource.get('narration').length){
+    if(resource.get('narration')){
       let profile = [id];
       promise = component.get('profileService').readProfiles(profile).then(
           result => resource.set('owner', result[id])

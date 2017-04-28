@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ResourceSerializer from 'quizzes-addon/serializers/resource/resource';
 import CollectionModel from 'quizzes-addon/models/collection/collection';
-import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
+import { ASSESSMENT_SHOW_VALUES,  DEFAULT_IMAGES } from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Serializer for Collection
@@ -15,6 +15,8 @@ export default Ember.Object.extend({
    */
   resourceSerializer: null,
 
+  session: Ember.inject.service('session'),
+
   init: function () {
     this._super(...arguments);
     this.set('resourceSerializer', ResourceSerializer.create(Ember.getOwner(this).ownerInjection()));
@@ -27,8 +29,12 @@ export default Ember.Object.extend({
    */
   normalizeReadCollection: function(payload) {
     const serializer = this;
+    const basePath = serializer.get('session.cdnUrls.content');
+    const avatarUrl = payload.thumbnail ? basePath + payload.thumbnail : null;
+
     return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.id,
+      avatarUrl:avatarUrl,
       isCollection: payload.isCollection,
       resources: serializer.normalizeResources(payload.resources),
       settings: !payload.isCollection && payload.metadata ? serializer.normalizeSettings(payload.metadata.setting) : null,

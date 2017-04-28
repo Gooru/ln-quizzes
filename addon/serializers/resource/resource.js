@@ -26,6 +26,8 @@ export default Ember.Object.extend({
       body: questionData.url || questionData.body,
       description: questionData.description,
       correctAnswer: questionData.correctAnswer,
+      narration:questionData.narration,
+      ownerId:questionData.ownerId,
       title: questionData.title,
       thumbnail: questionData.thumbnail,
       displayGuide: questionData.display_guide && (questionData.display_guide.is_broken === 1 ||

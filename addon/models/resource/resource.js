@@ -61,7 +61,12 @@ export default Ember.Object.extend({
   narration: null,
 
   /**
-   * @property {string} owner
+   * @property {string} ownerId
+   */
+  ownerId:null,
+
+  /**
+   * @property {Profile} owner
    */
   owner: null,
 

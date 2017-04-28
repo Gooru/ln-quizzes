@@ -12,7 +12,7 @@ moduleForComponent('player/qz-player', 'Unit | Component | player/qz player', {
 });
 
 test('submitAll on collection', function(assert) {
-  assert.expect(5);
+  assert.expect(7);
   let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Collection Title',
@@ -29,15 +29,18 @@ test('submitAll on collection', function(assert) {
     resourceResult: questionResult,
     onFinish: 'onFinish',
     sendAction,
+    source: 'source',
     contextService: Ember.Object.create({
-      finishContext: function(contextId) {
+      finishContext: function(contextId, source) {
         assert.deepEqual(contextId, 'context', 'Wrong context id');
+        assert.deepEqual(source, 'source', 'Wrong source');
         return Ember.RSVP.resolve();
       },
-      moveToResource: function(resourceId, contextId, resourceResult) {
+      moveToResource: function(resourceId, contextId, resourceResult, source) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
+        assert.deepEqual(source, 'source', 'Wrong source');
         return Ember.RSVP.resolve({ score:100 });
       }
     })
@@ -49,7 +52,7 @@ test('submitAll on collection', function(assert) {
 });
 
 test('submitAll on assessment', function(assert) {
-  assert.expect(3);
+  assert.expect(4);
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Assessment Title',
     isCollection: false
@@ -63,12 +66,14 @@ test('submitAll on assessment', function(assert) {
   let component = this.subject({
     contextResult,
     resourceResult: questionResult,
+    source: 'source',
     contextService: Ember.Object.create({
-      moveToResource: function(resourceId, contextId, resourceResult) {
+      moveToResource: function(resourceId, contextId, resourceResult, source) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        return Ember.RSVP.resolve({score:100});
+        assert.deepEqual(source, 'source', 'Wrong source');
+        return Ember.RSVP.resolve({ score:100 });
       }
     })
   });
@@ -76,7 +81,7 @@ test('submitAll on assessment', function(assert) {
 });
 
 test('submitQuestion with next question available', function(assert) {
-  assert.expect(9);
+  assert.expect(10);
   let question = Resource.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question #1'
   });
@@ -109,11 +114,13 @@ test('submitQuestion with next question available', function(assert) {
     resource: question,
     resourceResult: questionResult,
     contextResult,
+    source: 'source',
     contextService: Ember.Object.create({
-      moveToResource: function(resourceId, contextId, resourceResult) {
+      moveToResource: function(resourceId, contextId, resourceResult, source) {
         assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
+        assert.deepEqual(source, 'source', 'Wrong source');
         return Ember.RSVP.resolve({score:100});
       }
     })
@@ -130,7 +137,7 @@ test('submitQuestion with next question available', function(assert) {
 });
 
 test('submitQuestion with next question unavailable', function(assert) {
-  assert.expect(4);
+  assert.expect(5);
   let question = Resource.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Question #1'
   });
@@ -145,18 +152,20 @@ test('submitQuestion with next question unavailable', function(assert) {
   let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
     contextId: 'context',
     collection,
-    context:{id:'context-id',attempts:'2'}
+    context:{ id:'context-id',attempts:'2' }
   });
 
   let component = this.subject({
     resource: question,
     resourceResult: questionResult,
     contextResult,
+    source: 'source',
     contextService: Ember.Object.create({
-      moveToResource: function(resourceId, contextId, resourceResult) {
+      moveToResource: function(resourceId, contextId, resourceResult, source) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
+        assert.deepEqual(source, 'source', 'Wrong source');
         return Ember.RSVP.resolve({score:100});
       }
     })
@@ -165,9 +174,80 @@ test('submitQuestion with next question unavailable', function(assert) {
     component.send('submitQuestion', question);
   });
 });
+test('previousResource', function(assert) {
+  assert.expect(7);
+  const question1 = Resource.create({
+    'id': '1',
+    type: 'hot_text_word',
+    body: 'The sun is yellow and the moon white',
+    description: 'Sample description text',
+    sequence:1,
+    hasAnswers: true
+  });
+
+  const question2 = Resource.create({
+    'id': '2',
+    type: 'hot_text_word',
+    body: 'The sun is yellow and the moon white',
+    description: 'Sample description text',
+    sequence:1,
+    hasAnswers: true
+  });
+
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: false,
+    resources: Ember.A([
+      question1,
+      question2
+    ]),
+    settings:{
+      bidirectional:true
+    }
+  });
+
+  let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
+
+  const resourceResults = Ember.A([
+    Resource.create({ resource: question1,resourceId:'1' }),
+    Resource.create({ resource: question2,resourceId:'2' })
+  ]);
+
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
+    collection,
+    currentResource:question2,
+    context:{id:'context-id',attempts:'2'},
+    resourceResults
+  });
+  let component = this.subject({
+    resourceResult: questionResult,
+    contextResult,
+    resource:question2,
+    resourceId:'2',
+    source: 'source',
+    contextService: Ember.Object.create({
+      moveToResource: function(resourceId, contextId, resourceResult, source) {
+        assert.deepEqual(resourceId, '1', 'Wrong resource id');
+        assert.deepEqual(contextId, 'context', 'Wrong context id');
+        assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
+        assert.deepEqual(source, 'source', 'Wrong source');
+        return Ember.RSVP.resolve({score:100});
+      }
+    })
+  });
+
+  Ember.run(function() {
+    component.send('previousResource', question2);
+  });
+
+  assert.notOk(component.get('showPrevious'), 'showPrevious should be false');
+  assert.deepEqual(component.get('resource'), question1, 'resource property updated');
+  assert.deepEqual(component.get('resourceId'), '1', 'resourceId property updated');
+});
 
 test('selectNavigatorItem', function(assert) {
-  assert.expect(8);
+  assert.expect(9);
   let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
     title: 'Assessment Title',
     isCollection: false
@@ -190,11 +270,13 @@ test('selectNavigatorItem', function(assert) {
   let component = this.subject({
     resourceResult: questionResult2,
     contextResult,
+    source: 'source',
     contextService: Ember.Object.create({
-      moveToResource: function(resourceId, contextId, resourceResult) {
+      moveToResource: function(resourceId, contextId, resourceResult, source) {
         assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult2, 'Wrong result object');
+        assert.deepEqual(source, 'source', 'Wrong source');
         return Ember.RSVP.resolve({score:100});
       }
     })
@@ -295,6 +377,66 @@ test('showFeedback', function(assert) {
   });
   component.set('collection',collection2);
   assert.equal(component.get('showFeedback'), false , 'Should not show feedback');
+});
+test('showPrevious', function(assert) {
+  assert.expect(3);
+  const question1 = Resource.create({
+    'id': '1',
+    type: 'hot_text_word',
+    body: 'The sun is yellow and the moon white',
+    description: 'Sample description text',
+    sequence:1,
+    hasAnswers: true
+  });
+
+  const question2 =Resource.create({
+    'id': '2',
+    type: 'hot_text_word',
+    body: 'The sun is yellow and the moon white',
+    description: 'Sample description text',
+    sequence:1,
+    hasAnswers: true
+  });
+
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: false,
+    resources: Ember.A([
+      question1,
+      question2
+    ]),
+    settings:{
+      bidirectional:true
+    }
+  });
+
+  let questionResult = QuestionResult.create(Ember.getOwner(this).ownerInjection());
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'}
+  });
+  let component = this.subject({
+    resourceResult: questionResult,
+    contextResult,
+    resource:question1
+  });
+
+  assert.equal(component.get('showPrevious'), false , 'Previous should not appear');
+
+  component.set('resource',question2);
+  assert.equal(component.get('showPrevious'), true , 'Previous should appear');
+
+  //Disabled navigation setting
+  let collection2 = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: false,
+    settings:{
+      bidirectional:false
+    }
+  });
+  component.set('collection',collection2);
+  assert.equal(component.get('showPrevious'), false , 'Previous should not appear');
 });
 
 test('isNotIframeUrl', function(assert) {

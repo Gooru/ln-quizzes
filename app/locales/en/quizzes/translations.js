@@ -527,7 +527,7 @@ export default {
     "assessments-info": "The assessments listed here <b>do not</b> belong to another lesson or course",
     "collections-info": "The collections listed here <b>do not</b> belong to another lesson or course"
   },
-  "gru-assessment-confirmation":{
+  "qz-assessment-confirmation":{
     "title": "You are about to start an assessment...",
     "description": "In this assessment, {{model.title}}",
     "setting-forward": "You can navigate forward only",
@@ -740,6 +740,7 @@ export default {
 
   "qz-question-viewer": {
     "answer": "Answer",
+    "previous": "Previous",
     "question": "Question"
   },
   "qz-true-false": {

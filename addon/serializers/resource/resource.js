@@ -16,8 +16,8 @@ export default Ember.Object.extend({
    */
   normalizeReadResource: function(resourceData) {
     const serializer = this;
-    const questionData = resourceData.metadata;
-    const interaction = questionData.interaction;
+    const questionData = resourceData.title || !resourceData.metadata ? resourceData : resourceData.metadata;
+    const interaction = questionData ? questionData.interaction : null;
 
     const resource = ResourceModel.create(Ember.getOwner(this).ownerInjection(), {
       id: resourceData.id,
@@ -28,14 +28,14 @@ export default Ember.Object.extend({
       correctAnswer: questionData.correctAnswer,
       title: questionData.title,
       thumbnail: questionData.thumbnail,
-      displayGuide: questionData['display_guide'] && (questionData['display_guide'].is_broken === 1
-      || questionData['display_guide'].is_frame_breaker === 1),
-      type: questionData.type
+      displayGuide: questionData.display_guide && (questionData.display_guide.is_broken === 1 ||
+        questionData.display_guide.is_frame_breaker === 1),
+      type: questionData.content_subformat || questionData.type
     });
 
     resource.set('displayGuide', resource.get('displayGuide') || this.checkURLProtocol(resource.body));
 
-    if(interaction){
+    if(interaction) {
       resource.setProperties({
         answers: serializer.normalizeAnswers(interaction.choices),
         maxChoices: interaction.maxChoices,

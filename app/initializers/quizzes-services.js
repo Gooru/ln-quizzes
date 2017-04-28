@@ -4,6 +4,7 @@ import AttemptService from 'quizzes-addon/services/quizzes/api-sdk/attempt';
 import CollectionService from 'quizzes-addon/services/quizzes/api-sdk/collection';
 import LookupService from 'quizzes-addon/services/quizzes/api-sdk/lookup';
 import ProfileService from 'quizzes-addon/services/quizzes/api-sdk/profile';
+import ResourceService from 'quizzes-addon/services/quizzes/api-sdk/resource';
 import NotificationsService from 'quizzes-addon/services/quizzes/notifications';
 
 export default {
@@ -15,6 +16,7 @@ export default {
     application.register('service:quizzes/collection', CollectionService);
     application.register('service:quizzes/lookup', LookupService);
     application.register('service:quizzes/profile', ProfileService);
+    application.register('service:quizzes/resource', ResourceService);
     application.register('service:quizzes/notifications', NotificationsService);
   }
 };

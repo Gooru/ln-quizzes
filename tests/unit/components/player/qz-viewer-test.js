@@ -8,77 +8,6 @@ moduleForComponent('player/qz-viewer', 'Unit | Component | player/qz viewer', {
   unit: true
 });
 
-test('resourceComponentSelected for non valid resource type', function (assert) {
-  assert.expect(1);
-
-  var component = this.subject({
-    resource: Ember.Object.create({
-      resourceType: 'any-non-valid-value'
-    })
-  });
-
-  assert.ok(!component.get('resourceComponentSelected'), 'It should return false|undefined');
-});
-
-test('resourceComponentSelected for image resource type', function (assert) {
-  assert.expect(1);
-
-  var component = this.subject({
-    resource: Ember.Object.create({
-      isImageResource: true
-    })
-  });
-
-  assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
-});
-
-test('resourceComponentSelected for text/pdf resource type', function (assert) {
-  assert.expect(1);
-
-  var component = this.subject({
-    resource: Ember.Object.create({
-      resourceType: QUIZZES_RESOURCE_TYPES.pdf
-    })
-  });
-
-  assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
-});
-
-test('resourceComponentSelected for youtube resource type', function (assert) {
-  assert.expect(1);
-
-  var component = this.subject({
-    resource: Ember.Object.create({
-      resourceType: QUIZZES_RESOURCE_TYPES.youtube
-    })
-  });
-
-  assert.equal(component.get('resourceComponentSelected'), 'player.resources.qz-youtube-resource', 'Wrong component name');
-});
-test('resourceComponentSelected for vimeo resource type', function (assert) {
-  assert.expect(1);
-
-  var component = this.subject({
-    resource: Ember.Object.create({
-      resourceType: QUIZZES_RESOURCE_TYPES.vimeo
-    })
-  });
-
-  assert.equal(component.get('resourceComponentSelected'), 'player.resources.qz-vimeo-resource', 'Wrong component name');
-});
-
-test('resourceComponentSelected for url resource type', function (assert) {
-  assert.expect(1);
-
-  var component = this.subject({
-    resource: Ember.Object.create({
-      resourceType: QUIZZES_RESOURCE_TYPES.url
-    })
-  });
-
-  assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
-});
-
 test('buttonTextKey when is not the last resource', function (assert) {
   assert.expect(1);
 
@@ -143,4 +72,24 @@ test('submitQuestion', function(assert) {
     return { scrollTop: () => 0 };
   });
   component.send('submitQuestion', question, questionResult);
+});
+test('previousResource', function(assert) {
+  assert.expect(1);
+  let component = this.subject();
+  let question =  Question.create({
+    'id': '1',
+    type:'question',
+    body: 'The sun is yellow and the moon white',
+    description: 'Sample description text',
+    sequence:1,
+    hasAnswers: true,
+    isResource:false
+  });
+  component.set('sendAction', function(actionName) {
+    assert.equal(actionName, 'onPreviousResource', 'Action sent should match');
+  });
+  component.set('$', function() {
+    return { scrollTop: () => 0 };
+  });
+  component.send('previousResource', question);
 });

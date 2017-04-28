@@ -71,6 +71,7 @@ export default Ember.Route.extend({
      const route = this;
      const resourceId = params.resourceId;
      const contextId = params.contextId;
+     const source = params.source;
      let type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
      let reportURL = params.routeURL || route.get('quizzesConfigurationService.configuration.properties.reportURL');
      let profileId = params.profileId || route.get('quizzesConfigurationService.configuration.properties.profileId');
@@ -78,14 +79,15 @@ export default Ember.Route.extend({
      let isTeacher = role === 'teacher';
      let isAnonymous = profileId === 'anonymous';
      if(type === 'collection' || isAnonymous || isTeacher) {
-       return route.get('quizzesContextService').startContext(contextId).then(function(contextResult){
+       return route.get('quizzesContextService').startContext(contextId, source).then(function(contextResult){
          return Ember.RSVP.hash({
            contextResult,
            collection: route.get('quizzesCollectionService').readCollection(contextResult.collectionId, type),
            reportURL,
            resourceId,
            isAnonymous,
-           role
+           role,
+           source
          });
        });
      } else {
@@ -97,10 +99,11 @@ export default Ember.Route.extend({
                  collection,
                  context,
                  reportURL,
-                 startContextFunction: () => route.startContext(context.id),
+                 startContextFunction: () => route.startContext(context.id, source),
                  resourceId,
                  isAnonymous,
-                 role
+                 role,
+                 source
                })
            )
          )
@@ -130,16 +133,18 @@ export default Ember.Route.extend({
     }
     controller.set('contextResult', contextResult);
     controller.set('reportURL', model.reportURL);
+    controller.set('source', model.source);
   },
 
   /**
    * @param {string} contextId
    * Starts context to show the player
    */
-  startContext:function(contextId){
+  startContext:function(contextId, source){
     const route = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      route.get('quizzesContextService').startContext(contextId).then(resolve, reject);
+      route.get('quizzesContextService').startContext(contextId, source)
+        .then(resolve, reject);
     });
   }
 });

@@ -21,13 +21,21 @@
     width: 100%;
     @media (min-width: $screen-sm) {
       width: 48%;
+      height: auto;
     }
     .panel-body {
       padding: 20px;
     }
+    .panel {
+      min-height: 266px;
+      margin-bottom: 0;
+    }
   }
 
   .question-panel {
+    .panel {
+      height: 100%;
+    }
     .question {
       span.text {
         display: block;
@@ -45,7 +53,6 @@
   }
 
   .answers-panel {
-    margin-bottom: 30px;
 
     .answer-choices {
       span.letter {

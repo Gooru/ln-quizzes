@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { ASSESSMENT_SHOW_VALUES, RESOURCE_COMPONENT_MAP } from 'quizzes-addon/config/quizzes-config';
+import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
 /**
  * Player viewer
  *
@@ -23,6 +23,15 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Actions
   actions: {
+    /***
+     * Return to previous resource
+     * @param {Resource} question
+     */
+    previousResource: function () {
+      const component = this;
+      component.$('.content').scrollTop(0);
+      component.sendAction('onPreviousResource',component.get('resource'));
+    },
     /***
      * When the user submits the question
      * @param {Resource} question
@@ -132,22 +141,6 @@ export default Ember.Component.extend({
    * @property {Resource} resource
    */
   resource: null,
-
-  /**
-   * The resource component selected
-   * @property {string}
-   */
-  resourceComponentSelected: Ember.computed('resource.id', function () {
-    const resourceType = (this.get('resource.isImageResource') ? 'image' : this.get('resource.resourceType'));
-    var component = RESOURCE_COMPONENT_MAP[resourceType];
-
-    if (!component) {
-      Ember.Logger.error(`Resources of type ${resourceType} are currently not supported`);
-    } else {
-      Ember.Logger.debug('Resources component selected: ', component);
-      return component;
-    }
-  }),
 
   /**
    * The resource or question result playing

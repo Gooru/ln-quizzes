@@ -63,8 +63,9 @@ export default Ember.Object.extend({
    * @property {Array} List of resources associated to the collection
    */
   resourcesSorted: Ember.computed('resources', function() {
-    let resources = this.get('resources');
-    return resources.sortBy('sequence');
+    let resources = this.get('resources').sortBy('sequence');
+    resources.forEach((resource, index) => resource.set('sequence', index + 1));
+    return resources;
   }),
 
   /**
@@ -95,7 +96,7 @@ export default Ember.Object.extend({
   nextResource: function(resource){
     let next;
     if (this.get('hasResources')){
-      const resources = this.get('resources'),
+      const resources = this.get('resourcesSorted'),
         index = resources.indexOf(resource);
       next = resources.objectAt(index + 1);
     }
@@ -110,7 +111,7 @@ export default Ember.Object.extend({
   prevResource: function(resource){
     let next;
     if (this.get('hasResources')){
-      const resources = this.get('resources'),
+      const resources = this.get('resourcesSorted'),
         index = resources.indexOf(resource);
       next = resources.objectAt(index - 1);
     }

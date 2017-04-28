@@ -30,6 +30,7 @@ export default Ember.Component.extend({
       totalTimeSpent: Ember.computed.alias('reportEvent.totalTimeSpent'),
       totalAttempts: 1,
       selectedAttempt: 1,
+      submittedAt: Ember.computed.alias('reportEvent.submittedAt'),
       resourceResults: Ember.computed.alias('reportEvent.resourceResults'),
       collection: this.get('collection'),
       isRealTime: this.get('isRealTime'),

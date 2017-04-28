@@ -95,6 +95,20 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
+     * Handle onPreviousResource event from qz-question-viewer
+     * @see components/player/qz-question-viewer.js
+     * @param {Resource} question
+     */
+    previousResource: function(resource){
+      const component = this;
+      const next = component.get('collection').prevResource(resource);
+      if (next) {
+        Ember.$(window).scrollTop(0);
+        component.moveToResource(next);
+      }
+    },
+
+    /**
      * Triggered when a navigator resource is selected
      * @param {Resource} resource
      */
@@ -218,8 +232,8 @@ export default Ember.Component.extend(ModalMixin, {
    * Return the list of resources available to show on the player
    * @property {ResourceResult[]}
    */
-  resourcesPlayer: Ember.computed('collection.resources','contextResult.sortedResourceResults', function(){
-    let availableResources = this.get('collection.resources').mapBy('id');
+  resourcesPlayer: Ember.computed('collection.resourcesSorted','contextResult.sortedResourceResults', function(){
+    let availableResources = this.get('collection.resourcesSorted').mapBy('id');
     return this.get('contextResult.sortedResourceResults').filter(function(item){
        return item.resourceId && availableResources.includes(item.resourceId);
     });
@@ -262,10 +276,25 @@ export default Ember.Component.extend(ModalMixin, {
   showFeedback: Ember.computed.alias('collection.immediateFeedback'),
 
   /**
+   * Indicates if the current resource type is resource
+   * @property {boolean}
+   */
+  showPrevious: Ember.computed('resource','isNavigationDisabled', function(){
+    const resource = this.get('resource');
+    return !!this.get('collection').prevResource(resource) && !this.get('isNavigationDisabled');
+  }),
+
+  /**
    * Indicates if the report should be displayed
    * @property {boolean} showReport
    */
   showReport: false,
+
+  /**
+   * Indicates the component of the application that is originating the events
+   * @property {String} source
+   */
+  source: null,
 
   /**
    * Query param indicating if it is a collection or assessment
@@ -282,8 +311,10 @@ export default Ember.Component.extend(ModalMixin, {
   finishCollection: function() {
     const component = this;
     let contextResult = component.get('contextResult');
+    let contextId = contextResult.get('contextId');
+    let source = component.get('source');
     let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
-        component.get('contextService').finishContext(contextResult.get('contextId'));
+        component.get('contextService').finishContext(contextId, source);
     return promise.then(() => this.get('onFinish') && this.sendAction('onFinish'));
   },
 
@@ -355,12 +386,13 @@ export default Ember.Component.extend(ModalMixin, {
     let promise = Ember.RSVP.resolve();
     let save = component.get('saveEnabled');
     if (save) {
+      let source = component.get('source');
       let contextId = contextResult.get('contextId');
       if(resourceResult) {
         resourceResult.set('stopTime', new Date().getTime());
       }
       promise = firstTime ? Ember.RSVP.resolve() :
-        component.get('contextService').moveToResource(resourceId, contextId, resourceResult)
+        component.get('contextService').moveToResource(resourceId, contextId, resourceResult, source)
           .then(result => resourceResult.set('score', result.score));
     }
     return promise;

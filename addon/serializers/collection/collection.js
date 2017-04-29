@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ResourceSerializer from 'quizzes-addon/serializers/resource/resource';
 import CollectionModel from 'quizzes-addon/models/collection/collection';
-import { ASSESSMENT_SHOW_VALUES,  DEFAULT_IMAGES } from 'quizzes-addon/config/quizzes-config';
+import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Serializer for Collection

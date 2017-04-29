@@ -100,8 +100,6 @@ export default Ember.Component.extend({
    * Set jquery effect to narration
    * */
   setNarrationEffect: function () {
-    var themeId = this.get('configuration.themeId');
-    var highlightColor = this.get(`configuration.themes.${themeId}.player.narration.highlightColor`) || '#84B7DD';
-    $('.narration').effect('highlight',{ color: highlightColor}, 2000);
+    $('.narration').effect('highlight',{ color:  '#84B7DD'}, 2000);
   }
 });

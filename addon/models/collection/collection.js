@@ -13,6 +13,11 @@ export default Ember.Object.extend({
   attempts: Ember.computed.alias('settings.attempts'),
 
   /**
+   * @property {string} Collection avatar
+   */
+  avatarUrl:null,
+
+  /**
    * @property {boolean} Bidirectional
    */
   bidirectional: Ember.computed.alias('settings.bidirectional'),
@@ -43,6 +48,10 @@ export default Ember.Object.extend({
   immediateFeedback: Ember.computed('showFeedback', function() {
     return this.get('showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
   }),
+  /**
+   * @property {Profile} Collection owner profile
+   */
+  owner:null,
 
   /**
    * @property {[]}

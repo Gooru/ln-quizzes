@@ -36,12 +36,16 @@ test('normalizeReadResource', function(assert) {
             value: 'answer1-value'
           }
         ]
-      }
+      },
+      narration:'narration-test',
+      ownerId:'owner-test'
     }
   };
   const resource = serializer.normalizeReadResource(resourceData);
   assert.equal(resource.get('id'), 'resource-id', 'Wrong id');
   assert.equal(resource.get('title'), 'question-title', 'Wrong title');
+  assert.equal(resource.get('narration'), 'narration-test', 'Wrong narration');
+  assert.equal(resource.get('ownerId'), 'owner-test', 'Wrong owner');
   assert.equal(resource.get('thumbnail'),  'question-thumbnail', 'Wrong thumbnail');
   assert.equal(resource.get('displayGuide'),  true , 'Wrong displayGuide');
   assert.equal(resource.get('type'), 'singleChoice', 'Wrong type');

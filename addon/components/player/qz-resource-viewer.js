@@ -26,6 +26,7 @@ export default Ember.Component.extend({
    * DidInsertElement ember event
    */
   didInsertElement: function() {
+    this.setNarrationEffect();
     this.calculateResourceContentHeight();
   },
 
@@ -94,5 +95,11 @@ export default Ember.Component.extend({
       // (Users should rely on the iframe scroll bar instead)
       this.set('calculatedResourceContentHeight', contentHeight - narrationHeight - 4);
     }
+  },
+  /**
+   * Set jquery effect to narration
+   * */
+  setNarrationEffect: function () {
+    $('.narration').effect('highlight',{ color:  '#84B7DD'}, 2000);
   }
 });

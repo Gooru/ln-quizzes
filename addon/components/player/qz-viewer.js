@@ -44,6 +44,15 @@ export default Ember.Component.extend({
       component.sendAction('onSubmitQuestion', question, questionResult);
     }
   },
+  // -------------------------------------------------------------------------
+  // Events
+  /**
+   * DidInsertElement ember event
+   */
+  didInsertElement: function() {
+    this.setNarrationEffect();
+    this.calculateResourceContentHeight();
+  },
 
   // -------------------------------------------------------------------------
   // Properties
@@ -82,6 +91,11 @@ export default Ember.Component.extend({
    * @property {Collection} collection
    */
   collection: null,
+  /**
+   * Indicates if collection has an author
+   * @property {string}
+   */
+  collectionHasAuthor: Ember.computed.notEmpty('collection.author'),
 
   /**
    * The text for the action in the instructions
@@ -135,6 +149,12 @@ export default Ember.Component.extend({
   resourceResult: null,
 
   /**
+   * Indicates if the collection author is visible
+   * @property {boolean} showCollectionAuthor
+   */
+  showCollectionAuthor: true,
+
+  /**
    * Indicates the user's role, could be 'student', 'teacher' or null
    * @property {string}
    */
@@ -144,5 +164,41 @@ export default Ember.Component.extend({
    * Indicates when the collection is already submitted
    * @property {boolean}
    */
-  submitted: false
+  submitted: false,
+
+  // -------------------------------------------------------------------------
+  // Observers
+  /**
+   * Observes for the resource change
+   */
+  resourceObserver: function() {
+    this.calculateResourceContentHeight();
+  }.observes('resource.id'),
+
+  // -------------------------------------------------------------------------
+  // Methods
+
+  /**
+   * Calculates the height of the content area (it will change depending on height
+   * of the narration -if there is one)
+   */
+  calculateResourceContentHeight: function() {
+    if (this.get('resource.isUrlResource') ||
+        this.get('resource.isPDFResource') ||
+        this.get('resource.isImageResource') &&
+        this.get('isNotIframeUrl')===false) {
+      var narrationHeight = this.$('.narration').innerHeight();
+      var contentHeight = this.$('.content').height();
+
+      // The 4 pixels subtracted are to make sure no scroll bar will appear for the content
+      // (Users should rely on the iframe scroll bar instead)
+      this.set('calculatedResourceContentHeight', contentHeight - narrationHeight - 4);
+    }
+  },
+  /**
+   * Set jquery effect to narration
+   * */
+  setNarrationEffect: function () {
+    $( '.narration' ).effect( 'highlight',{ color: '#84B7DD'}, 2000);
+  }
 });

@@ -15,6 +15,8 @@ export default Ember.Object.extend({
    */
   resourceSerializer: null,
 
+  session: Ember.inject.service('session'),
+
   init: function () {
     this._super(...arguments);
     this.set('resourceSerializer', ResourceSerializer.create(Ember.getOwner(this).ownerInjection()));
@@ -29,6 +31,7 @@ export default Ember.Object.extend({
     const serializer = this;
     return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.id,
+      ownerId:payload.ownerId,
       isCollection: payload.isCollection,
       resources: serializer.normalizeResources(payload.resources),
       settings: !payload.isCollection && payload.metadata ? serializer.normalizeSettings(payload.metadata.setting) : null,

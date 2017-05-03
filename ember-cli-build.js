@@ -137,6 +137,16 @@ module.exports = function(defaults) {
     production:  'bower_components/jt.timepicker/jquery.timepicker.css'
   });
 
+  app.import({
+    development: 'bower_components/jquery-ui/ui/effect.js',
+    production:  'bower_components/jquery-ui/ui/minified/effect.min.js'
+  });
+
+  app.import({
+    development: 'bower_components/jquery-ui/ui/effect-highlight.js',
+    production:  'bower_components/jquery-ui/ui/minified/effect-highlight.min.js'
+  });
+
   if (EmberAddon.env() === 'test') {
     app.import('vendor/wysihtml-dummy.js');
   } else {

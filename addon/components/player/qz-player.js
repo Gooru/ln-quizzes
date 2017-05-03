@@ -12,6 +12,12 @@ export default Ember.Component.extend(ModalMixin, {
   collectionService: Ember.inject.service('quizzes/collection'),
 
   /**
+   * @type {CollectionService} profileService
+   * @property {Ember.Service} Service to retrieve a profile
+   */
+  profileService: Ember.inject.service('quizzes/profile'),
+
+  /**
    * @type {ContextService} contextService
    * @property {Ember.Service} Service to send context related events
    */
@@ -352,21 +358,25 @@ export default Ember.Component.extend(ModalMixin, {
     let contextResult = component.get('contextResult');
     let resourceResult = component.get('resourceResult');
     let resourceId = resource.get('id');
-    if(resourceResult) {
-      resourceResult.set('skipped', false);
-    }
-    return component.saveResourceResult(resourceId, contextResult, resourceResult, firstTime)
-      .then(function() {
-        Ember.run(() => component.set('resource', null));
-        resourceResult = contextResult.getResultByResourceId(resourceId);
-        resourceResult.set('startTime', new Date().getTime());
-        component.setProperties({
+    let collection = component.get('collection');
+
+    component.getOwnerProfile(resource,collection) .then(function() {
+      if(resourceResult) {
+        resourceResult.set('skipped', false);
+      }
+      return component.saveResourceResult(resourceId, contextResult, resourceResult, firstTime)
+        .then(function() {
+          Ember.run(() => component.set('resource', null));
+          resourceResult = contextResult.getResultByResourceId(resourceId);
+          resourceResult.set('startTime', new Date().getTime());
+          component.setProperties({
           showReport: false,
           resourceId,
           resource,
           resourceResult
         }); //saves the resource status
       });
+    });
   },
 
   /**
@@ -418,5 +428,24 @@ export default Ember.Component.extend(ModalMixin, {
     if(resource) {
       component.moveToResource(resource, true);
     }
+  },
+  /**
+   * Find owner profile if the resource has narration
+   */
+  getOwnerProfile: function(resource,collection) {
+    const component = this;
+    let promise = Ember.RSVP.resolve();
+    let resourceId = resource.ownerId;
+    let collectionId = collection.ownerId;
+    if(resource.get('narration')){
+      let profiles = [resourceId,collectionId];
+      promise = component.get('profileService').readProfiles(profiles).then(
+        function(result) {
+          resource.set('owner', result[resourceId]);
+          collection.set('avatarUrl', result[collectionId].get('avatarUrl'));
+          collection.set('author', result[collectionId].get('username'));
+        });
+    }
+    return promise;
   }
 });

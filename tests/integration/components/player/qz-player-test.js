@@ -6,8 +6,39 @@ import ResourceResult from 'quizzes-addon/models/result/resource';
 import ResourceModel from 'quizzes-addon/models/resource/resource';
 import Ember from 'ember';
 
+const profileServiceStub = Ember.Service.extend({
+  readProfiles(data) {
+    if(data){
+      return Ember.RSVP.resolve({
+        'profile-id1': Ember.Object.create({
+          firstName: 'first-name',
+          id: 'profile-id1',
+          lastName: 'last-name',
+          username: 'author-username',
+          email: 'e@mail.com',
+          avatarUrl:'/avatar-url.png'
+        }),
+        'profile-id2': Ember.Object.create({
+          firstName: 'first-name',
+          id: 'profile-id2',
+          lastName: 'last-name',
+          username: 'username',
+          email: 'e@mail.com'
+        })
+      });
+    }else{
+      return Ember.RSVP.resolve({});
+    }
+  }
+});
+
 moduleForComponent('player/qz-player', 'Integration | Component | player/qz player', {
-  integration: true
+  integration: true,
+  beforeEach: function () {
+    this.inject.service('i18n');
+    this.register('service:quizzes/profile', profileServiceStub);
+    this.inject.service('quizzes/profile');
+  }
 });
 
 test('it renders', function(assert) {
@@ -209,4 +240,57 @@ test('Previous button at the second element of a assessment', function(assert) {
   this.render(hbs`{{player/qz-player contextResult=contextResult resourceResult=resourceResult}}`);
   var $component = this.$();
   assert.ok($component.find('.qz-player .qz-viewer .actions-section .previous.btn').length,'Previous button should appear');
+});
+test('Narration', function(assert) {
+  const resourceMockA = Ember.Object.create({
+    id: '1',
+    title: '<p>Resource #1</p>',
+    format: 'question',
+    'isQuestion': true,
+    narration:'narration for test',
+    hasOwner:true
+  });
+
+  const resourceMockB = ResourceModel.create({
+    id: '2',
+    body:'http://www.water4all.org/us/',
+    isResource: true,
+    narration:'narration for test',
+    hasOwner:true
+  });
+
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Collection Title',
+    isCollection: true,
+    resources: Ember.A([
+      resourceMockA,
+      resourceMockB
+    ]),
+    ownerId:'profile-id1'
+  });
+
+  const resourceResults = Ember.A([
+    ResourceResult.create({ resource: resourceMockA,resourceId:'1' }),
+    ResourceResult.create({ resource: resourceMockB,resourceId:'2' })
+  ]);
+
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'},
+    currentResource:resourceMockB,
+    resourceResults
+  });
+  let resourceResult =  ResourceResult.create({ resource: resourceMockB });
+
+  this.set('resourceResult', resourceResult);
+  this.set('contextResult', contextResult);
+  this.render(hbs`{{player/qz-player contextResult=contextResult resourceResult=resourceResult}}`);
+  var $component = this.$();
+  assert.ok($component.find('.qz-player .qz-viewer .qz-resource-viewer .narration').length,'Missing narration');
+  assert.ok($component.find('.qz-player .qz-viewer .qz-resource-viewer .narration .avatar').length,'Missing avatar');
+  assert.equal($component.find('.qz-player .qz-viewer .qz-resource-viewer .narration .avatar img').attr('src'),'/avatar-url.png','Incorrect avatar');
+  assert.ok($component.find('.qz-player .qz-viewer .qz-resource-viewer .narration .user').length,'Missing username');
+  assert.equal($component.find('.qz-player .qz-viewer .qz-resource-viewer .narration .user').text(),'author-username','Incorrect username');
+
 });

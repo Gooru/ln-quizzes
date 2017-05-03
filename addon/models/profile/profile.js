@@ -6,6 +6,10 @@ import Ember from 'ember';
  * @typedef {Object} ProfileModel
  */
 export default Ember.Object.extend({
+  /**
+   * @property {string} avatarUrl - The profile image
+   */
+  avatarUrl:null,
 
   /**
    * @property {string} email - The profile email

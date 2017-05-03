@@ -29,12 +29,9 @@ export default Ember.Object.extend({
    */
   normalizeReadCollection: function(payload) {
     const serializer = this;
-    const basePath = serializer.get('session.cdnUrls.content');
-    const avatarUrl = payload.thumbnail ? basePath + payload.thumbnail : null;
-
     return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.id,
-      avatarUrl:avatarUrl,
+      ownerId:payload.ownerId,
       isCollection: payload.isCollection,
       resources: serializer.normalizeResources(payload.resources),
       settings: !payload.isCollection && payload.metadata ? serializer.normalizeSettings(payload.metadata.setting) : null,

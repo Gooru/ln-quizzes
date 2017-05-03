@@ -37,7 +37,7 @@ export const QUIZZES_RESOURCE_TYPES = {
 };
 
 export const DEFAULT_IMAGES = {
-  USER_PROFILE: '/assets/quizzes/profile.png',
+  USER_PROFILE: 'assets/quizzes-addon/quizzes/profile.png',
   COURSE: '/assets/quizzes/course-default.png',
   COLLECTION: '/assets/quizzes/collection-default.png',
   ASSESSMENT: '/assets/quizzes/assessment-default.png',

@@ -1,7 +1,17 @@
 import Ember from 'ember';
 import Profile from 'quizzes-addon/models/profile/profile';
+import { DEFAULT_IMAGES } from 'quizzes-addon/config/quizzes-config';
 
 export default Ember.Object.extend({
+  /**
+   * @property {Ember.Service} Service to session
+   */
+  session: Ember.inject.service('session'),
+
+  /**
+   * @property {Ember.Service} Service to configuration properties
+   */
+  configurationService: Ember.inject.service('configuration'),
 
   /**
    * Normalizes a list of profiles
@@ -22,12 +32,19 @@ export default Ember.Object.extend({
    * @returns {Profile}
    */
    normalizeProfile: function(profile) {
+    let serializer = this;
+    const basePath = serializer.get('session.cdnUrls.user');
+    const appRootPath = serializer.get('configurationService.configuration.appRootPath'); //configuration appRootPath
+    const thumbnailUrl = profile['thumbnail'] ?
+    basePath + profile['thumbnail'] : appRootPath + DEFAULT_IMAGES.USER_PROFILE;
+
      return Profile.create({
        id: profile.id,
        email: profile.email,
        firstName: profile.first_name,
        lastName: profile.last_name,
-       username: profile.username
+       username: profile.username,
+       avatarUrl:thumbnailUrl
      });
    }
 });

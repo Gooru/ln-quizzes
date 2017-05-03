@@ -7,12 +7,14 @@ test('normalizeReadCollection', function(assert) {
   const collectionData = {
     id: 'collection-id',
     isCollection: true,
-    resources: null
+    resources: null,
+    ownerId:'1234'
   };
   const collection = serializer.normalizeReadCollection(collectionData);
   assert.equal(collection.get('id'), 'collection-id', 'Wrong id');
   assert.ok(collection.get('isCollection'), 'Wrong value for isCollection');
   assert.equal(collection.get('resources').length, 0, 'Wrong size for resources');
+  assert.equal(collection.get('ownerId'), '1234', 'Wrong ownerId');
 });
 
 test('normalizeReadCollection with resources', function(assert) {

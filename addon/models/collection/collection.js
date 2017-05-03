@@ -48,6 +48,10 @@ export default Ember.Object.extend({
   immediateFeedback: Ember.computed('showFeedback', function() {
     return this.get('showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
   }),
+  /**
+   * @property {Profile} Collection owner profile
+   */
+  owner:null,
 
   /**
    * @property {[]}

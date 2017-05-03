@@ -1,15 +1,23 @@
 import { moduleFor, test } from 'ember-qunit';
+import Ember from 'ember';
 
 moduleFor('serializer:profile/profile', 'Unit | Serializer | profile/profile');
 
 test('normalizeProfile', function(assert) {
-  const serializer = this.subject();
+  const serializer = this.subject({
+    session: Ember.Object.create({
+      cdnUrls:{
+        user:'cdn-test/'
+      }
+  })
+});
   const payload = {
     first_name: 'first-name',
     id: 'profile-id',
     last_name: 'last-name',
     username: 'username',
-    email: 'e@mail.com'
+    email: 'e@mail.com',
+    thumbnail:'image'
   };
   const response = serializer.normalizeProfile(payload);
 
@@ -18,17 +26,26 @@ test('normalizeProfile', function(assert) {
   assert.deepEqual(response.get('lastName'), 'last-name', 'Wrong profile last name');
   assert.deepEqual(response.get('username'), 'username', 'Wrong profile username');
   assert.deepEqual(response.get('email'), 'e@mail.com', 'Wrong profile email');
+  assert.deepEqual(response.get('avatarUrl'), 'cdn-test/image', 'Wrong profile image');
 });
 
 test('normalizeProfiles', function(assert) {
-  const serializer = this.subject();
+  const serializer =  this.subject({
+    session: Ember.Object.create({
+      cdnUrls:{
+        user:'cdn-test/'
+      }
+    })
+  });
+
   const payload = {
     users: [{
       first_name: 'first-name',
       id: 'profile-id',
       last_name: 'last-name',
       username: 'username',
-      email: 'e@mail.com'
+      email: 'e@mail.com',
+      thumbnail:'image'
     }]
   };
   const response = serializer.normalizeProfiles(payload);
@@ -38,4 +55,5 @@ test('normalizeProfiles', function(assert) {
   assert.deepEqual(response['profile-id'].get('lastName'), 'last-name', 'Wrong profile last name');
   assert.deepEqual(response['profile-id'].get('username'), 'username', 'Wrong profile username');
   assert.deepEqual(response['profile-id'].get('email'), 'e@mail.com', 'Wrong profile email');
+  assert.deepEqual(response['profile-id'].get('avatarUrl'), 'cdn-test/image', 'Wrong profile image');
 });

@@ -358,8 +358,9 @@ export default Ember.Component.extend(ModalMixin, {
     let contextResult = component.get('contextResult');
     let resourceResult = component.get('resourceResult');
     let resourceId = resource.get('id');
+    let collection = component.get('collection');
 
-    component.getOwnerProfile(resource) .then(function() {
+    component.getOwnerProfile(resource,collection) .then(function() {
       if(resourceResult) {
         resourceResult.set('skipped', false);
       }
@@ -431,15 +432,19 @@ export default Ember.Component.extend(ModalMixin, {
   /**
    * Find owner profile if the resource has narration
    */
-  getOwnerProfile: function(resource) {
+  getOwnerProfile: function(resource,collection) {
     const component = this;
     let promise = Ember.RSVP.resolve();
-    let id = resource.ownerId;
+    let resourceId = resource.ownerId;
+    let collectionId = collection.ownerId;
     if(resource.get('narration')){
-      let profile = [id];
-      promise = component.get('profileService').readProfiles(profile).then(
-          result => resource.set('owner', result[id])
-      );
+      let profiles = [resourceId,collectionId];
+      promise = component.get('profileService').readProfiles(profiles).then(
+        function(result) {
+          resource.set('owner', result[resourceId]);
+          collection.set('avatarUrl', result[collectionId].get('avatarUrl'));
+          collection.set('author', result[collectionId].get('username'));
+        });
     }
     return promise;
   }

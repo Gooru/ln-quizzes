@@ -40,9 +40,13 @@ export default Ember.Component.extend({
   collection: null,
 
   /**
+   * Indicates if the current resource type is a link out
    * @property {boolean}
    */
-  isNotIframeUrl: null,
+  isNotIframeUrl: Ember.computed('resource', function(){
+    const resource = this.get('resource');
+    return (resource && resource.displayGuide);
+  }),
 
   /**
    * The resource playing

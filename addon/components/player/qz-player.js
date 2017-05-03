@@ -430,7 +430,7 @@ export default Ember.Component.extend(ModalMixin, {
     }
   },
   /**
-   * Find owner profile if the resource has narration or us
+   * Find owner profile if the resource has narration or is a link out resource
    */
   getOwnerProfile: function(resource,collection) {
     const component = this;

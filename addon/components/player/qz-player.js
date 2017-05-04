@@ -430,14 +430,14 @@ export default Ember.Component.extend(ModalMixin, {
     }
   },
   /**
-   * Find owner profile if the resource has narration
+   * Find owner profile if the resource has narration or is a link out resource
    */
   getOwnerProfile: function(resource,collection) {
     const component = this;
     let promise = Ember.RSVP.resolve();
     let resourceId = resource.ownerId;
     let collectionId = collection.ownerId;
-    if(resource.get('narration')){
+    if(resource.get('narration') || resource.get('displayGuide')){
       let profiles = [resourceId,collectionId];
       promise = component.get('profileService').readProfiles(profiles).then(
         function(result) {

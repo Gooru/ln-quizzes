@@ -294,3 +294,66 @@ test('Narration', function(assert) {
   assert.equal($component.find('.qz-player .qz-viewer .qz-resource-viewer .narration .user').text(),'author-username','Incorrect username');
 
 });
+
+test('Link out', function(assert) {
+  const resourceMockA = Ember.Object.create({
+    id: '1',
+    title: '<p>Resource #1</p>',
+    format: 'question',
+    'isQuestion': true,
+    narration:'narration for test',
+    hasOwner:true,
+    ownerId:'profile-id1',
+    displayGuide: {
+      is_broken: 1,
+      is_frame_breaker: 1
+    }
+  });
+
+  const resourceMockB = ResourceModel.create({
+    id: '2',
+    body:'http://www.water4all.org/us/',
+    isResource: true,
+    narration:'narration for test',
+    hasOwner:true,
+    ownerId:'profile-id1',
+    displayGuide: {
+      is_broken: 1,
+      is_frame_breaker: 1
+    }
+  });
+
+  let collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Collection Title',
+    isCollection: true,
+    resources: Ember.A([
+      resourceMockA,
+      resourceMockB
+    ]),
+    ownerId:'profile-id1'
+  });
+
+  const resourceResults = Ember.A([
+    ResourceResult.create({ resource: resourceMockA,resourceId:'1' }),
+    ResourceResult.create({ resource: resourceMockB,resourceId:'2' })
+  ]);
+
+  let contextResult = ContextResult.create(Ember.getOwner(this).ownerInjection(), {
+    contextId: 'context',
+    collection,
+    context:{id:'context-id',attempts:'2'},
+    currentResource:resourceMockB,
+    resourceResults
+  });
+  let resourceResult =  ResourceResult.create({ resource: resourceMockB });
+
+  this.set('resourceResult', resourceResult);
+  this.set('contextResult', contextResult);
+  this.render(hbs`{{player/qz-player contextResult=contextResult resourceResult=resourceResult}}`);
+  var $component = this.$();
+  assert.ok($component.find('.qz-player .qz-viewer .qz-resource-viewer .not-iframe').length,'Missing link out panel');
+  assert.ok($component.find('.qz-player .qz-viewer .qz-resource-viewer .not-iframe .qz-resource-card').length,'Missing link out resource card');
+  assert.ok($component.find('.qz-player .qz-viewer .qz-resource-viewer .not-iframe .qz-resource-card .publisher').length,'Missing publisher section');
+  assert.equal($component.find('.qz-player .qz-viewer .qz-resource-viewer .not-iframe .qz-resource-card .publisher img').attr('src'),'/avatar-url.png','Missing publisher image');
+  assert.equal($component.find('.qz-player .qz-viewer .qz-resource-viewer .not-iframe .qz-resource-card .publisher .owner').text().trim(),'author-username','Incorrect username');
+});

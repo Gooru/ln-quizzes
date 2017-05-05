@@ -90,7 +90,7 @@ export default ApplicationAdapter.extend(TokenMixin, {
     const namespace = this.get('namespace');
     let data = previousResource ? { previousResource } : {};
     if(eventSource) {
-      data.eventSource = eventSource;
+      data.eventContext = { eventSource };
     }
     const options = {
       type: 'POST',
@@ -113,7 +113,7 @@ export default ApplicationAdapter.extend(TokenMixin, {
   sendFinishContextEvent: function(contextId, eventSource) {
     const namespace = this.get('namespace');
     const url = `${namespace}/${contextId}/finish`;
-    let data = eventSource ? { eventSource } : {};
+    let data = eventSource ? { eventContext: { eventSource } } : {};
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
@@ -132,7 +132,7 @@ export default ApplicationAdapter.extend(TokenMixin, {
   sendStartContextEvent: function(contextId, eventSource) {
     const namespace = this.get('namespace');
     const url = `${namespace}/${contextId}/start`;
-    let data = eventSource ? { eventSource } : {};
+    let data = eventSource ? { eventContext: { eventSource } } : {};
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',

@@ -139,7 +139,7 @@ test('moveToResource', function(assert) {
     this.post('/quizzes/api/v1/contexts/context-id/onResource/resource-id', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
       assert.deepEqual(requestBodyJson.previousResource, expectedPreviousResource, 'Wrong previous resource');
-      assert.deepEqual(requestBodyJson.eventSource, expectedSource, 'Wrong source value');
+      assert.deepEqual(requestBodyJson.eventContext.eventSource, expectedSource, 'Wrong source value');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify(expectedResponse)];
     }, false);
   };
@@ -216,7 +216,7 @@ test('sendStartContextEvent', function(assert) {
   const routes = function() {
     this.post('/quizzes/api/v1/contexts/context-id/start', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
-      assert.deepEqual(requestBodyJson.eventSource, expectedSource, 'Wrong source value');
+      assert.deepEqual(requestBodyJson.eventContext.eventSource, expectedSource, 'Wrong source value');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };
@@ -239,7 +239,7 @@ test('sendFinishContextEvent', function(assert) {
   const routes = function() {
     this.post('/quizzes/api/v1/contexts/context-id/finish', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
-      assert.deepEqual(requestBodyJson.eventSource, expectedSource, 'Wrong source value');
+      assert.deepEqual(requestBodyJson.eventContext.eventSource, expectedSource, 'Wrong source value');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify({})];
     }, false);
   };

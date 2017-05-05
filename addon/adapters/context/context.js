@@ -113,7 +113,7 @@ export default ApplicationAdapter.extend(TokenMixin, {
   sendFinishContextEvent: function(contextId, eventSource) {
     const namespace = this.get('namespace');
     const url = `${namespace}/${contextId}/finish`;
-    let data = eventSource ? { eventContext: { eventSource } } : {};
+    let data = eventSource ? { eventSource } : {};
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
@@ -132,7 +132,7 @@ export default ApplicationAdapter.extend(TokenMixin, {
   sendStartContextEvent: function(contextId, eventSource) {
     const namespace = this.get('namespace');
     const url = `${namespace}/${contextId}/start`;
-    let data = eventSource ? { eventContext: { eventSource } } : {};
+    let data = eventSource ? { eventSource } : {};
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',

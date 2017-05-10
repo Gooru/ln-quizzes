@@ -13,7 +13,7 @@ moduleForComponent('player/qz-navigator', 'Integration | Component | player/qz n
 
 test('Player Navigator', function(assert) {
 
-  assert.expect(9);
+  assert.expect(10);
 
   const resourceMockA = Ember.Object.create({
     id: '1',
@@ -65,6 +65,7 @@ test('Player Navigator', function(assert) {
   var $component = this.$(); //component dom element
   const $navigator = $component.find('.qz-navigator');
   T.exists(assert, $navigator, 'Missing navigator section');
+  T.exists(assert, $navigator.find('.back-button'), 'Missing back button');
 
   //$navigatorHeader
   const $navigatorHeader = $component.find('.qz-navigator .navigator-header');
@@ -84,8 +85,6 @@ test('Player Navigator', function(assert) {
   //$resourceItem Selected
   let $selected = $navigator.find('.list-group-item:eq(0).selected');
   T.exists(assert, $selected, 'Incorrect selected resource 1');
-
-
 });
 
 test('Layout when navigator is closed', function(assert) {
@@ -314,4 +313,66 @@ test('Show Feedback', function(assert) {
   assert.ok($component.find('.list-group-item:eq(0) span.score.correct i.radio_button_checked').length, 'Missing icon');
   assert.ok($component.find('.list-group-item:eq(1) span.score.incorrect').length, 'Second item should be incorrect');
   assert.ok($component.find('.list-group-item:eq(1) span.score.incorrect i.radio_button_checked').length, 'Missing icon');
+});
+
+test('Player Navigator - Back Button', function(assert) {
+
+  assert.expect(3);
+
+  const resourceMockA = Ember.Object.create({
+    id: '1',
+    title: '<p>Resource #1</p>',
+    format: 'question',
+    'isQuestion': true
+  });
+
+  const resourceMockB = Ember.Object.create({
+    id: '2',
+    title: 'Resource #2',
+    format: 'webpage',
+    'isQuestion': false
+  });
+
+  const collectionMock = Ember.Object.create({
+    id: '490ffa82-aa15-4101-81e7-e148002f90af',
+    title: 'Test collection',
+    resources: Ember.A([
+      resourceMockA,
+      resourceMockB
+    ]),
+    lastVisitedResource: resourceMockB,
+    getResourceById: function(id){
+      if(id === '1'){
+        return resourceMockA;
+      } else if (id ==='2') {
+        return resourceMockB;
+      }
+    }
+  });
+
+  const resourceResults = Ember.A([
+    QuestionResult.create({ resource: resourceMockA }),
+    QuestionResult.create({ resource: resourceMockB })
+  ]);
+
+  this.set('collection', collectionMock);
+  this.set('resourceResults', resourceResults);
+
+  this.on('itemSelected', function(/*resource*/) {
+    assert.ok(false, 'This should not be called');
+  });
+
+  this.on('onClosePlayer', function(/*resource*/) {
+    assert.ok(true, 'This should be called');
+  });
+
+  this.render(hbs`{{player.qz-navigator collection=collection
+      resourceResults=resourceResults lessonTitle='E-Lesson1'
+      selectedResourceId='1' onItemSelected='itemSelected' onClosePlayer='onClosePlayer'}}`);
+
+  var $component = this.$(); //component dom element
+  const $navigator = $component.find('.qz-navigator');
+  T.exists(assert, $navigator, 'Missing navigator section');
+  T.exists(assert, $navigator.find('.back-button'), 'Missing back button');
+  $navigator.find('.back-button').click();
 });

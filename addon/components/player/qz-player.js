@@ -308,6 +308,12 @@ export default Ember.Component.extend(ModalMixin, {
    */
   type: null,
 
+  /**
+   * If there is a back event to perform
+   * @property {function}
+   */
+  onClosePlayer: null,
+
   // -------------------------------------------------------------------------
   // Methods
 

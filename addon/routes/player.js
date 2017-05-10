@@ -37,6 +37,13 @@ export default Ember.Route.extend({
   // Actions
   actions:{
     /**
+     * Action triggered when the user closes the content player
+     */
+    onClosePlayer: function() {
+      // Empty, it does nothgin by default
+    },
+
+    /**
      * When the submission is complete
      */
     onFinish: function() {

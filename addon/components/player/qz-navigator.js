@@ -27,6 +27,13 @@ export default Ember.Component.extend(ModalMixin, {
   actions: {
 
     /**
+     * Action triggered when the user closes the content player
+     */
+    closePlayer:function(){
+      this.sendAction('onClosePlayer');
+    },
+
+    /**
      * Action triggered when the user close de navigator panel
      */
     closeNavigator: function() {
@@ -84,6 +91,11 @@ export default Ember.Component.extend(ModalMixin, {
   onItemSelected: null,
 
   /**
+   * @property {string} on content player close action
+   */
+  onClosePlayer: null,
+
+  /**
    * A convenient structure to render the menu
    * @property
    */
@@ -109,10 +121,14 @@ export default Ember.Component.extend(ModalMixin, {
   resourceResults: Ember.A([]),
 
   /**
+   * @property {String} if the back link is shown
+   */
+  showBackLink: Ember.computed.bool('onClosePlayer'),
+
+  /**
    * @property {String} selectedResourceId - resource Id selected
    */
-
-  selectedResourceId:null,
+  selectedResourceId: null,
 
   /**
    * Indicates when the collection is already submitted

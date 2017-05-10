@@ -36,6 +36,13 @@ export default Ember.Component.extend(ModalMixin, {
   actions: {
 
     /**
+     * Action triggered when the user closes the content player
+     */
+    closePlayer:function(){
+      this.sendAction('onClosePlayer');
+    },
+
+    /**
      * Triggered when an resource emotion is selected
      * @param {string} emotionScore
      */
@@ -262,6 +269,12 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean} indicates if the answer should be saved
    */
   saveEnabled: true, // save only when logged in
+
+  /**
+   * Indicates if it should show the back button
+   * @property {boolean}
+   */
+  showBackButton: true,
 
   /**
    * Indicates if content should be displayed

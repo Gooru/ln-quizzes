@@ -40,7 +40,7 @@ export default Ember.Route.extend({
      * Action triggered when the user closes the content player
      */
     onClosePlayer: function() {
-      // Empty, it does nothgin by default
+      // Empty, it does nothing by default
     },
 
     /**

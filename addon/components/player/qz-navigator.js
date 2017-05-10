@@ -123,7 +123,7 @@ export default Ember.Component.extend(ModalMixin, {
   /**
    * @property {String} if the back link is shown
    */
-  showBackLink: Ember.computed.bool('onClosePlayer'),
+  showBackButton: true,
 
   /**
    * @property {String} selectedResourceId - resource Id selected

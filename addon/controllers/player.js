@@ -30,5 +30,11 @@ export default Ember.Controller.extend({
    * Indicates the component of the application that is originating the events
    * @property {String} source
    */
-  source: null
+  source: null,
+
+  /**
+   * Indicates if it should show the back button
+   * @property {boolean}
+   */
+  showBackButton: true
 });

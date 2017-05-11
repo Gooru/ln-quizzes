@@ -89,6 +89,7 @@ export default ApplicationAdapter.extend(TokenMixin, {
   moveToResource: function(resourceId, contextId, previousResource, eventSource) {
     const namespace = this.get('namespace');
     let data = previousResource ? { previousResource } : {};
+    data.eventContext = {};
     if(eventSource) {
       data.eventContext = { eventSource };
     }

@@ -10,36 +10,36 @@ export default Ember.Component.extend({
     /**
      * Handle event triggered by qz-summary
      * Scroll to specific question
-     * TODO make this method generic
-     */
+     **/
     bubbleSelect: function(bubbleOption) {
       const animationSpeed = 1000;  // milliseconds
-      const selectorTable = $(`.qz-assessment-report .qz-questions table:visible tbody tr:nth-child(${bubbleOption.label})`);
-      const $elTable = $(selectorTable);
+      const trSelector = $(`.qz-assessment-report table:visible .tr-number-${bubbleOption.label}`);
+      const cardSelector = $(`.qz-assessment-report ul:visible .xs-number-${bubbleOption.label}`);
 
-      const selectorList = $(`.qz-assessment-report .qz-questions .question-cards-list:visible li:nth-child(${bubbleOption.label}) .question-card`);
-      const $elList = $(selectorList);
+      const $trTable = $(trSelector);
+      const $card = $(cardSelector);
 
       const isModal=$('.qz-assessment-report').parents('.qz-modal');
       //Check if the assessment report is showing into a modal
       if(isModal.length){
-        if ($elTable.length) {
+        if ($trTable.length) {
           $('.qz-modal').animate({
-            scrollTop: $elTable.offset().top -   $('.qz-modal').offset().top
+            scrollTop: $trTable.offset().top - $('.qz-modal').offset().top
           }, animationSpeed);
         }
-      }else{
+      }
+      else{
         //Check if the questions details are showing on table (md or sm devices) or  a list (xs devices)
-        if ($elTable.length) {
+        if ($trTable.length) {
           $('html,body').animate({
-            scrollTop: $elTable.offset().top - $('.controller.class.analytics.collection.student').offset().top
+            scrollTop: $($trTable).offset().top - $('.controller.class.analytics.collection.student').offset().top
           }, animationSpeed);
-        } else if ($elList.length) {
+        } else if ($card.length) {
           $('html,body').animate({
-            scrollTop: $elList.offset().top - $('.controller.class.analytics.collection.student').offset().top
+            scrollTop: $($card).offset().top - $('.controller.class.analytics.collection.student').offset().top
           }, animationSpeed);
         } else {
-          Ember.Logger.error(`No element was found for selectorTable: ${selectorTable}`);
+          Ember.Logger.error(`No element was found for selectorTable: ${$trTable}`);
         }
       }
     },

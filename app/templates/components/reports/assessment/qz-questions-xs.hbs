@@ -1,6 +1,6 @@
 <div class="question-card {{if showPerformance 'show-performance' 'show-correct-answer'}}">
   <div class="question-container">
-    <div class="question">
+    <div class="question xs-number-{{result.question.sequence}}">
       <span class="question-number">{{result.question.sequence}}</span>
       <span class="question-text">
         {{gru-math-text text=result.question.body}}

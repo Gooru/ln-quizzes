@@ -26,7 +26,7 @@
     </thead>
     <tbody>
     {{#each results as |result|}}
-        <tr id="resource-{{result.resource.order}}">
+        <tr class="tr-number-{{result.resource.sequence}}" id="resource-{{result.resource.order}}">
             <td class="number-resource top-left">
               {{result.resource.sequence}}
             </td>

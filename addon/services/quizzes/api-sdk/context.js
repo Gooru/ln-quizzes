@@ -86,13 +86,15 @@ export default Ember.Service.extend({
    * @param {String} source component originating events
    * @returns {Promise}
    */
-  moveToResource: function(resourceId, contextId, previousResult, source) {
+  moveToResource: function(resourceId, contextId, previousResult, source, pathId, collectionSubType) {
     const service = this;
     let serializedPreviousResult = previousResult ?
       this.get('contextSerializer').serializeResourceResult(previousResult) :
       null;
+    let eventContext = this.get('contextSerializer').serializeEventContext(source, pathId, collectionSubType);
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').moveToResource(resourceId, contextId, serializedPreviousResult, source)
+      service.get('contextAdapter')
+        .moveToResource(resourceId, contextId, serializedPreviousResult, eventContext)
         .then(resolve, reject);
     });
   },
@@ -103,10 +105,11 @@ export default Ember.Service.extend({
    * @param {String} source component originating events
    * @returns {Promise}
    */
-  startContext: function(contextId, source) {
+  startContext: function(contextId, source, pathId, collectionSubType) {
     const service = this;
+    let eventContext = this.get('contextSerializer').serializeEventContext(source, pathId, collectionSubType);
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').sendStartContextEvent(contextId, source)
+      service.get('contextAdapter').sendStartContextEvent(contextId, eventContext)
         .then(response => service.get('contextSerializer').normalizeContextResult(response))
         .then(resolve, reject);
     });
@@ -118,10 +121,11 @@ export default Ember.Service.extend({
    * @param {String} source component originating events
    * @returns {Promise}
    */
-  finishContext: function(contextId, source) {
+  finishContext: function(contextId, source, pathId, collectionSubType) {
     const service = this;
+    let eventContext = this.get('contextSerializer').serializeEventContext(source, pathId, collectionSubType);
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').sendFinishContextEvent(contextId, source)
+      service.get('contextAdapter').sendFinishContextEvent(contextId, eventContext)
         .then(resolve, reject);
     });
   },

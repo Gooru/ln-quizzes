@@ -103,6 +103,11 @@ module.exports = function(defaults) {
   });
 
   app.import({
+    development: 'bower_components/moment-timezone/builds/moment-timezone-with-data.js',
+    production:  'bower_components/moment-timezone/builds/moment-timezone-with-data.min.js'
+  });
+
+  app.import({
     development: 'bower_components/bootstrap-select/dist/css/bootstrap-select.min.css',
     production:  'bower_components/bootstrap-select/dist/css/bootstrap-select.min.css'
   });

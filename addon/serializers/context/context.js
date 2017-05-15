@@ -24,7 +24,7 @@ export default Ember.Object.extend({
    * Serializes read assignment
    ** @param {*[]} payload
    */
-   normalizeReadContext: function(payload) {
+  normalizeReadContext: function(payload) {
     const contextData = payload.contextData;
     const metadata = contextData ? contextData.metadata : {};
     return Context.create(Ember.getOwner(this).ownerInjection(), {
@@ -114,6 +114,20 @@ export default Ember.Object.extend({
           description: assignment.get('description')
         }
       }
+    };
+  },
+
+  /**
+   * Serializes the context params for analytics
+   * @param {String} source
+   ** @return {*} payload
+   */
+  serializeEventContext: function(eventSource, pathId, collectionSubType) {
+    return {
+      collectionSubType,
+      eventSource,
+      pathId,
+      timezone: moment.tz.guess()
     };
   }
 

@@ -338,8 +338,10 @@ export default Ember.Component.extend(ModalMixin, {
     let contextResult = component.get('contextResult');
     let contextId = contextResult.get('contextId');
     let source = component.get('source');
+    let collectionSubType = component.get('collectionSubType');
+    let pathId = component.get('pathId');
     let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
-        component.get('contextService').finishContext(contextId, source);
+        component.get('contextService').finishContext(contextId, source, pathId, collectionSubType);
     return promise.then(() => this.get('onFinish') && this.sendAction('onFinish'));
   },
 
@@ -417,11 +419,13 @@ export default Ember.Component.extend(ModalMixin, {
     if (save) {
       let source = component.get('source');
       let contextId = contextResult.get('contextId');
+      let collectionSubType = component.get('collectionSubType');
+      let pathId = component.get('pathId');
       if(resourceResult) {
         resourceResult.set('stopTime', new Date().getTime());
       }
       promise = firstTime ? Ember.RSVP.resolve() :
-        component.get('contextService').moveToResource(resourceId, contextId, resourceResult, source)
+        component.get('contextService').moveToResource(resourceId, contextId, resourceResult, source, pathId, collectionSubType)
           .then(result => resourceResult.set('score', result.score));
     }
     return promise;

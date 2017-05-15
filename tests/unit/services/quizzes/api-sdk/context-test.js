@@ -214,18 +214,25 @@ test('moveToResource', function(assert) {
   const expectedContextId = 'context-id';
   const expectedResourceId = 'resource-id';
   const expectedSource = 'source';
+  const expectedPathId = 1;
+  const expectedSubtype = 'pre-test';
   const previousResult =  {
     id: 'result-id'
   };
+  const expectedEventContext = {
+    eventSource: 'source',
+    pathId: 1,
+    collectionSubType: 'pre-test'
+  };
 
-  assert.expect(6);
+  assert.expect(9);
 
   service.set('contextAdapter', Ember.Object.create({
-    moveToResource: function(resourceId, contextId, previous, source) {
+    moveToResource: function(resourceId, contextId, previous, eventContext) {
       assert.deepEqual(resourceId, expectedResourceId, 'The resource id should match');
       assert.deepEqual(contextId, expectedContextId, 'The context id should match');
       assert.deepEqual(previous, previousResult, 'The previous result should match');
-      assert.deepEqual(source, expectedSource, 'The source should match');
+      assert.deepEqual(eventContext, expectedEventContext, 'The event context should match');
       return Ember.RSVP.resolve(previousResult);
     }
   }));
@@ -234,11 +241,17 @@ test('moveToResource', function(assert) {
     serializeResourceResult: function(result) {
       assert.deepEqual(result, previousResult, 'The resource result should match');
       return previousResult;
+    },
+    serializeEventContext: function(source, pathId, subtype){
+      assert.equal(source, expectedSource, 'Wrong source value');
+      assert.equal(pathId, expectedPathId, 'Wrong path id value');
+      assert.equal(subtype, expectedSubtype, 'Wrong sub type value');
+      return expectedEventContext;
     }
   }));
 
   let done = assert.async();
-  service.moveToResource(expectedResourceId, expectedContextId, previousResult, expectedSource)
+  service.moveToResource(expectedResourceId, expectedContextId, previousResult, expectedSource, expectedPathId, expectedSubtype)
     .then(function(result) {
       assert.deepEqual(result, previousResult, 'The result should match');
       done();
@@ -246,18 +259,25 @@ test('moveToResource', function(assert) {
 });
 
 test('startContext', function(assert) {
-  assert.expect(4);
+  assert.expect(7);
   const service = this.subject();
   const expectedContextId = 'context-id';
-  const expectedSource = 'source';
   const contextResult = {
     id: 'result-id'
   };
+  const expectedSource = 'source';
+  const expectedPathId = 1;
+  const expectedSubtype = 'pre-test';
+  const expectedEventContext = {
+    eventSource: 'source',
+    pathId: 1,
+    collectionSubType: 'pre-test'
+  };
 
   service.set('contextAdapter', Ember.Object.create({
-    sendStartContextEvent: function(contextId, source) {
+    sendStartContextEvent: function(contextId, eventContext) {
       assert.deepEqual(contextId, expectedContextId, 'The context id should match');
-      assert.deepEqual(source, expectedSource, 'The source should match');
+      assert.deepEqual(eventContext, expectedEventContext, 'The event context should match');
       return Ember.RSVP.resolve(contextResult);
     }
   }));
@@ -266,11 +286,17 @@ test('startContext', function(assert) {
     normalizeContextResult: function(response) {
       assert.deepEqual(response, contextResult, 'The context result should match');
       return contextResult;
+    },
+    serializeEventContext: function(source, pathId, subtype) {
+      assert.equal(source, expectedSource, 'Wrong source value');
+      assert.equal(pathId, expectedPathId, 'Wrong path id value');
+      assert.equal(subtype, expectedSubtype, 'Wrong sub type value');
+      return expectedEventContext;
     }
   }));
 
   let done = assert.async();
-  service.startContext(expectedContextId, expectedSource)
+  service.startContext(expectedContextId, expectedSource, expectedPathId, expectedSubtype)
     .then(function(result) {
       assert.deepEqual(result, contextResult, 'The result should match');
       done();
@@ -278,24 +304,40 @@ test('startContext', function(assert) {
 });
 
 test('finishContext', function(assert) {
-  assert.expect(3);
+  assert.expect(6);
   const service = this.subject();
   const expectedContextId = 'context-id';
-  const expectedSource = 'source';
   const assessmentResult = {
     id: 'result-id'
   };
+  const expectedSource = 'source';
+  const expectedPathId = 1;
+  const expectedSubtype = 'pre-test';
+  const expectedEventContext = {
+    eventSource: 'source',
+    pathId: 1,
+    collectionSubType: 'pre-test'
+  };
 
   service.set('contextAdapter', Ember.Object.create({
-    sendFinishContextEvent: function(contextId, source) {
+    sendFinishContextEvent: function(contextId, eventContext) {
       assert.deepEqual(contextId, expectedContextId, 'The context id should match');
-      assert.deepEqual(source, expectedSource, 'The source should match');
+      assert.deepEqual(eventContext, expectedEventContext, 'The event context should match');
       return Ember.RSVP.resolve(assessmentResult);
     }
   }));
 
+  service.set('contextSerializer', Ember.Object.create({
+    serializeEventContext: function(source, pathId, subtype) {
+      assert.equal(source, expectedSource, 'Wrong source value');
+      assert.equal(pathId, expectedPathId, 'Wrong path id value');
+      assert.equal(subtype, expectedSubtype, 'Wrong sub type value');
+      return expectedEventContext;
+    }
+  }));
+
   let done = assert.async();
-  service.finishContext(expectedContextId, expectedSource)
+  service.finishContext(expectedContextId, expectedSource, expectedPathId, expectedSubtype)
     .then(function(result) {
       assert.deepEqual(result, assessmentResult, 'The result should match');
       done();

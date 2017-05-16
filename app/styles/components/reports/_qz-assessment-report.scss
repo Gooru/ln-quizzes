@@ -1,16 +1,16 @@
 .reports.qz-assessment-report {
   width: 100%;
-  padding: 30px 20px;
+  padding: 10px 20px;
   background-color: $light-100;
 
   /* Small devices (tablets, 768px and up) */
   @media (min-width: $screen-sm-min) {
-    padding: 40px 10px;
+    padding: 20px 10px;
   }
 
   /* Medium devices (desktops, 992px and up) */
   @media (min-width: $screen-md-min) {
-    padding: 40px 50px;
+    padding: 20px 50px;
   }
 
   .hidden-report {

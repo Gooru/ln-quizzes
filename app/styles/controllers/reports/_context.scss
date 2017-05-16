@@ -15,7 +15,7 @@
   min-width: $screen-md-min;
 }
 
-.app-container > .controller.reports {
+.app-container .controller.reports {
   overflow: auto;
   height: 100%;
   $gutter-width: 30px;

@@ -51,11 +51,11 @@ export default Ember.Route.extend({
   getOwnerProfile: function(resource) {
     const component = this;
     let promise = Ember.RSVP.resolve();
-    let resourceId = resource.ownerId;
+    let ownerId = resource.ownerId;
     if(resource.get('narration') || resource.get('displayGuide')){
-      let profiles = [resourceId];
+      let profiles = [ownerId];
       promise = component.get('profileService').readProfiles(profiles)
-        .then(result => resource.set('owner', result[resourceId]));
+        .then(result => resource.set('owner', result[ownerId]));
     }
     return promise;
   },

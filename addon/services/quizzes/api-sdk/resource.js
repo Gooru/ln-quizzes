@@ -35,7 +35,10 @@ export default Ember.Service.extend({
     const service = this;
     return new Ember.RSVP.Promise((resolve, reject) => {
       service.get('resourceAdapter').readResource(resourceId)
-        .then(response => service.get('resourceSerializer').normalizeReadResource(response))
+        .then(response => {
+          response.isResource = true;
+          return service.get('resourceSerializer').normalizeReadResource(response);
+        })
         .then(resolve, reject);
     });
   }

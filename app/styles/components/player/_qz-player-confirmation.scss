@@ -12,8 +12,7 @@
   }
 
   .panel-body {
-    padding: 40px;
-
+    padding: 40px 40px 25px;
     div {
       display: block;
       width: 100%;
@@ -42,6 +41,9 @@
     .actions {
       margin-top: 15px;
       text-align: right;
+      .back{
+        border: 1px solid $gray-light;
+      }
     }
   }
 }

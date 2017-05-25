@@ -27,7 +27,9 @@ test('Player confirmation Layout No more attempts', function(assert) {
   assert.ok($component.find('.qz-player-confirmation .panel-heading h3').length,'Missing title');
   assert.ok($component.find('.qz-player-confirmation .panel-body .description').length,'Missing description');
   assert.ok($component.find('.qz-player-confirmation .panel-body .no-more-attempts').length,'Missing no more attempts lead');
-  assert.notOk($component.find('.qz-player-confirmation .panel-body .actions button').length,'Start button should not appear');
+  assert.ok($component.find('.qz-player-confirmation .panel-body .actions .back').length,'Back button should appear');
+  assert.notOk($component.find('.qz-player-confirmation .panel-body .actions .start').length,'Start button should not appear');
+  assert.notOk($component.find('.qz-player-confirmation .panel-body .actions .continue').length,'Continue button should not appear');
 });
 
 test('Player confirmation Layout has more attempts', function(assert) {
@@ -49,6 +51,7 @@ test('Player confirmation Layout has more attempts', function(assert) {
   var $component = this.$();
   assert.notOk($component.find('.qz-player-confirmation .panel-body .no-more-attempts').length,'Missing no more attempts lead');
   assert.equal($component.find('.qz-player-confirmation .panel-body .actions button').prop('disabled'),false,'Start button should not be disabled');
+  assert.notOk($component.find('.qz-player-confirmation .panel-body .actions .back').length,'Back button should not appear');
 });
 
 test('Player confirmation Layout Not bidirectional', function(assert) {

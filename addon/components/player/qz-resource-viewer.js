@@ -20,6 +20,20 @@ export default Ember.Component.extend({
   classNames:['qz-resource-viewer'],
 
   // -------------------------------------------------------------------------
+  // Actions
+
+  actions: {
+    /**
+     * Action triggered when the next button is clicked
+     */
+    next: function(){
+      this.set('isNextDisabled', true);
+      /* TODO: Add call quizzes's onResource event */
+      this.sendAction('onNext');
+    }
+  },
+
+  // -------------------------------------------------------------------------
   // Events
 
   /**
@@ -38,6 +52,12 @@ export default Ember.Component.extend({
    * @property {Collection} collection
    */
   collection: null,
+
+  /**
+   * Disable next button
+   * @property {Boolean} sendEvents
+   */
+  isNextDisabled: false,
 
   /**
    * Indicates if the current resource type is a link out
@@ -69,6 +89,12 @@ export default Ember.Component.extend({
       return component;
     }
   }),
+
+  /**
+   * Show the next button and send events
+   * @property {Boolean} sendEvents
+   */
+  sendEvents: false,
 
   // -------------------------------------------------------------------------
   // Observers

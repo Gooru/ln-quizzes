@@ -1,13 +1,22 @@
 .qz-resource-viewer {
+  @include flexbox;
+  @include flex-direction(row);
+  @include justify-content(space-between);
   width: 100%;
   height: 100%;
-  .narration {
-    @media (max-width: $screen-sm-max) {
-      margin-top: 30px;
-    }
+  .qz-resource-viewer-panel {
+    width: 100%;
+    height: 100%;
+  }
+  .btn-next {
+    width: 85px;
+    height: 35px;
+    margin: 0 auto;
     @media (max-width: $screen-xs-max) {
-      margin-top: 0;
+      width: 60px;
     }
+  }
+  .narration {
     .panel-body {
       padding: 10px 15px;
     }
@@ -43,10 +52,10 @@
       color: $text-color;
 
       .cards.qz-resource-card {
-        margin:0 auto;
+        margin: 0 auto;
 
         .panel-heading{
-          padding: 12px 15px 0 15px;
+          padding: 12px 15px 0;
           .header{
             padding:0;
             margin:0;
@@ -54,7 +63,7 @@
             }
         }
         .panel-body{
-          padding: 12px 15px 0 15px;
+          padding: 12px 15px 0;
           display: block;
 
           .publisher{
@@ -68,6 +77,17 @@
           text-align: left;
         }
       }
+    }
+  }
+}
+
+.resource-player {
+  .qz-resource-viewer-panel {
+    max-width: 70%;
+    margin: 0 0 0 15%;
+    @media (max-width: $screen-xs-max) {
+      max-width: 80%;
+      margin: 0 0 0 15px;
     }
   }
 }

@@ -76,3 +76,10 @@ test('resourceComponentSelected for url resource type', function (assert) {
 
   assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
 });
+
+test('next', function(assert) {
+  let component = this.subject({ isNextDisabled: false, onNext: 'onNext' });
+  component.set('sendAction', action => assert.equal(action, 'onNext', 'Action sent should match'));
+  component.send('next');
+  assert.ok(component.isNextDisabled, 'isNextDisabled should be updated');
+});

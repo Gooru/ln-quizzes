@@ -30,7 +30,7 @@ test('Layout with image resource', function (assert) {
 });
 
 test('Layout with text resource', function (assert) {
-  assert.expect(1);
+  assert.expect(2);
 
   const resource = ResourceModel.create({
     type: RESOURCE_TYPES.text
@@ -43,10 +43,11 @@ test('Layout with text resource', function (assert) {
   var $component = this.$(); //component dom element
   var $imageResourcePanel = $component.find('.qz-preview-url');
   T.exists(assert, $imageResourcePanel, 'Missing text resource panel');
+  T.notExists(assert, $component.find('.btn-next'), 'Missing next button');
 });
 
-test('Layout with webpage resource', function (assert) {
-  assert.expect(1);
+test('Layout with webpage resource with next button', function (assert) {
+  assert.expect(2);
 
   const resource = ResourceModel.create({
     type: RESOURCE_TYPES.webpage
@@ -54,11 +55,12 @@ test('Layout with webpage resource', function (assert) {
 
   this.set('resource', resource);
 
-  this.render(hbs`{{player/qz-resource-viewer resource=resource}}`);
+  this.render(hbs`{{player/qz-resource-viewer resource=resource sendEvents=true}}`);
 
   var $component = this.$(); //component dom element
   var $imageResourcePanel = $component.find('.qz-preview-url');
   T.exists(assert, $imageResourcePanel, 'Missing webpage resource panel');
+  T.exists(assert, $component.find('.btn-next'), 'Missing next button');
 });
 
 test('Layout with interactive resource', function (assert) {

@@ -23,6 +23,17 @@ export default Ember.Route.extend({
   profileService: Ember.inject.service('quizzes/profile'),
 
   // -------------------------------------------------------------------------
+  // Actions
+  actions:{
+    /**
+     * Action triggered when the user clicks on next
+     */
+    onNext: function() {
+      // Empty, it does nothing by default
+    }
+  },
+
+  // -------------------------------------------------------------------------
   // Methods
 
   /**

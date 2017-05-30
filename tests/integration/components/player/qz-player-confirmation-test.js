@@ -51,6 +51,7 @@ test('Player confirmation Layout has more attempts', function(assert) {
   var $component = this.$();
   assert.notOk($component.find('.qz-player-confirmation .panel-body .no-more-attempts').length,'Missing no more attempts lead');
   assert.equal($component.find('.qz-player-confirmation .panel-body .actions button').prop('disabled'),false,'Start button should not be disabled');
+  assert.ok($component.find('.qz-player-confirmation .panel-body .actions button.cancel').length,'Cancel button should be displayed');
   assert.notOk($component.find('.qz-player-confirmation .panel-body .actions .back').length,'Back button should not appear');
 });
 

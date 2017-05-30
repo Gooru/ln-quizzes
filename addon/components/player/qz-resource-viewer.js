@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { RESOURCE_COMPONENT_MAP } from 'quizzes-addon/config/quizzes-config';
+import ResourceResult from 'quizzes-addon/models/result/resource';
 
 /**
  * Player question viewer
@@ -20,6 +21,15 @@ export default Ember.Component.extend({
   classNames:['qz-resource-viewer'],
 
   // -------------------------------------------------------------------------
+  // Dependencies
+
+  /**
+   * @type {resourceService} resourceService
+   * @property {Ember.Service} Service to send resource events
+   */
+  quizzesResourceService: Ember.inject.service('quizzes/resource'),
+
+  // -------------------------------------------------------------------------
   // Actions
 
   actions: {
@@ -28,13 +38,29 @@ export default Ember.Component.extend({
      */
     next: function(){
       this.set('isNextDisabled', true);
-      /* TODO: Add call quizzes's onResource event */
+      let resourceResult = this.get('resourceResult');
+      resourceResult.set('stopTime', new Date().getTime());
+      this.get('quizzesResourceService').sendFinishResource(
+        this.get('resource.id'), resourceResult, this.get('pathId'),
+        this.get('source'), this.get('cul')
+      );
       this.sendAction('onNext');
     }
   },
 
   // -------------------------------------------------------------------------
   // Events
+
+  init: function() {
+    this._super(...arguments);
+    let resource = this.get('resource');
+    let resourceResult = ResourceResult.create(Ember.getOwner(this).ownerInjection(), {
+      resourceId: resource.resourceId,
+      reaction: 0,
+      startTime: new Date().getTime()
+    });
+    this.set('resourceResult', resourceResult);
+  },
 
   /**
    * DidInsertElement ember event
@@ -48,10 +74,52 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * The collection playing
-   * @property {Collection} collection
+   * @property {String} classId
    */
-  collection: null,
+  classId: null,
+
+  /**
+   * @property {String} courseId
+   */
+  courseId: null,
+
+  /**
+   * @property {String} unitId
+   */
+  unitId: null,
+
+  /**
+   * @property {String} lessonId
+   */
+  lessonId: null,
+
+  /**
+   * @property {String} collectionId
+   */
+  collectionId: null,
+
+  /**
+   * @property {Object} cul
+   */
+  cul: Ember.computed('classId', 'courseId', 'unitId', 'lessonId', 'collectionId', function() {
+    return {
+      classId: this.get('classId'),
+      courseId: this.get('courseId'),
+      unitId: this.get('unitId'),
+      lessonId: this.get('lessonId'),
+      collectionId: this.get('collectionId')
+    };
+  }),
+
+  /**
+   * @property {String} source
+   */
+  source: null,
+
+  /**
+   * @property {Number} pathId
+   */
+  pathId: null,
 
   /**
    * Disable next button
@@ -89,6 +157,11 @@ export default Ember.Component.extend({
       return component;
     }
   }),
+
+  /**
+   * @property {ResourceResult} resourceResult
+   */
+  resourceResult: null,
 
   /**
    * Show the next button and send events

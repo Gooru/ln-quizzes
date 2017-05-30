@@ -24,6 +24,7 @@ export default Ember.Route.extend({
 
   // -------------------------------------------------------------------------
   // Actions
+
   actions:{
     /**
      * Action triggered when the user clicks on next
@@ -47,11 +48,28 @@ export default Ember.Route.extend({
    * @param {{ contextId: string }} params
    */
   quizzesModel(params) {
-    const resourceId = params.resourceId;
+    const {
+      resourceId,
+      collectionSubType,
+      pathId,
+      source,
+      classId,
+      courseId,
+      unitId,
+      lessonId,
+      collectionId
+    } = params;
     return this.get('quizzesResourceService').readResource(resourceId).then(resource =>
       Ember.RSVP.hash({
         resource,
-        owner: this.getOwnerProfile(resource)
+        owner: this.getOwnerProfile(resource),
+        pathId,
+        source,
+        classId,
+        courseId,
+        unitId,
+        lessonId,
+        collectionId
       })
     );
   },
@@ -73,6 +91,15 @@ export default Ember.Route.extend({
 
   setupController(controller, model) {
     model.resource.set('owner', model.owner);
-    controller.set('resource', model.resource);
+    controller.setProperties({
+      resource: model.resource,
+      classId: model.classId,
+      courseId: model.courseId,
+      unitId: model.unitId,
+      lessonId: model.lessonId,
+      collectionId: model.collectionId,
+      pathId: model.pathId,
+      source: model.source
+    });
   }
 });

@@ -12,6 +12,30 @@ moduleFor('adapter:resource/resource', 'Unit | Adapter | resource/resource', {
   }
 });
 
+test('sendFinishResource', function(assert) {
+  const adapter = this.subject({
+    quizzesConfigurationService: Ember.Object.create({
+      configuration: Ember.Object.create(Configuration)
+    })
+  });
+
+  const routes = function() {
+    this.post('/quizzes/api/v1/resources/resource-id/finish',
+      request => {
+        let requestBodyJson = JSON.parse(request.requestBody);
+        assert.equal(requestBodyJson.resourceEventData, 'event-data', 'Wrong resource event data');
+        assert.equal(requestBodyJson.eventContext, 'event-context', 'Wrong event context');
+        return  [ 200, {'Content-Type': 'application/json'}, '{}' ]
+      }, false);
+  };
+
+  this.pretender.map(routes);
+  this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+  let done = assert.async();
+  adapter.sendFinishResource('resource-id', 'event-data', 'event-context')
+    .then(done);
+});
+
 test('readResource', function(assert) {
   const adapter = this.subject({
     quizzesConfigurationService: Ember.Object.create({

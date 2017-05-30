@@ -50,7 +50,6 @@ export default Ember.Route.extend({
   quizzesModel(params) {
     const {
       resourceId,
-      collectionSubType,
       pathId,
       source,
       classId,

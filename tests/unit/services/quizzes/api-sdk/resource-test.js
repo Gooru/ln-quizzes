@@ -10,7 +10,6 @@ test('sendFinishResource', function(assert) {
   const expectedData = 'data';
   const expectedContext = 'context';
   const expectedResult = 'result';
-  const expectedResourceId = 'resource-id';
   const expectedPathId = 'path-id';
   const expectedSource = 'source';
   const expectedCUL = 'cul';

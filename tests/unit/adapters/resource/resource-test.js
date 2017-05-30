@@ -25,7 +25,7 @@ test('sendFinishResource', function(assert) {
         let requestBodyJson = JSON.parse(request.requestBody);
         assert.equal(requestBodyJson.resourceEventData, 'event-data', 'Wrong resource event data');
         assert.equal(requestBodyJson.eventContext, 'event-context', 'Wrong event context');
-        return  [ 200, {'Content-Type': 'application/json'}, '{}' ]
+        return  [ 200, {'Content-Type': 'application/json'}, '{}' ];
       }, false);
   };
 

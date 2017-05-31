@@ -38,13 +38,13 @@ export default Ember.Service.extend({
    * @param {String} resourceId
    * @returns {Promise}
    */
-  sendFinishResource: function(resourceId, resourceResult, pathId, source, cul) {
+  sendFinishResource: function(resourceId, resourceResult, eventContext) {
     const service = this;
     let eventData = this.get('contextSerializer').serializeResourceResult(resourceResult, false);
-    let eventContext = this.get('contextSerializer').serializeEventContext(source, pathId, null, cul);
+    let context = this.get('contextSerializer').serializeEventContext(eventContext);
     return new Ember.RSVP.Promise((resolve, reject) =>
       service.get('resourceAdapter')
-        .sendFinishResource(resourceId, eventData, eventContext)
+        .sendFinishResource(resourceId, eventData, context)
         .then(resolve, reject)
     );
   },

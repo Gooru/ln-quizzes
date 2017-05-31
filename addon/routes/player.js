@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ContextResult from 'quizzes-addon/models/result/context';
+import EventContext from 'quizzes-addon/models/context/event-context';
 
 /**
  * @typedef { Ember.Route } PlayerRoute
@@ -76,25 +77,24 @@ export default Ember.Route.extend({
     */
    quizzesModel(params) {
      const route = this;
-     const resourceId = params.resourceId;
-     const contextId = params.contextId;
-     const source = params.source;
-     const collectionSubType = params.collectionSubType;
-     const pathId = params.pathId ? +params.pathId : null;
+     const { resourceId, contextId, source, sourceUrl, tenantId, partnerId, collectionSubType, pathId } = params;
      let type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
      let reportURL = params.routeURL || route.get('quizzesConfigurationService.configuration.properties.reportURL');
      let profileId = params.profileId || route.get('quizzesConfigurationService.configuration.properties.profileId');
      let role = params.role || route.get('quizzesConfigurationService.configuration.properties.role') || 'student';
      let isTeacher = role === 'teacher';
      let isAnonymous = profileId === 'anonymous';
+     let eventContext = EventContext.create({
+       collectionSubType, pathId, partnerId,
+       source, sourceUrl, tenantId
+     });
      let model = {
-       collectionSubType,
        isAnonymous,
        pathId,
        reportURL,
        resourceId,
        role,
-       source
+       eventContext
      };
      if(type === 'collection' || isAnonymous || isTeacher) {
        return route.get('quizzesContextService').startContext(contextId, source).then(function(contextResult){
@@ -111,7 +111,7 @@ export default Ember.Route.extend({
                  attempts,
                  collection,
                  context,
-                 startContextFunction: () => route.startContext(context.id, source, pathId, collectionSubType)
+                 startContextFunction: () => route.startContext(context.id, eventContext)
                }))
            )
          )
@@ -141,19 +141,17 @@ export default Ember.Route.extend({
     }
     controller.set('contextResult', contextResult);
     controller.set('reportURL', model.reportURL);
-    controller.set('source', model.source);
-    controller.set('collectionSubType', model.collectionSubType);
-    controller.set('pathId', model.pathId);
+    controller.set('eventContext', model.eventContext);
   },
 
   /**
    * @param {string} contextId
    * Starts context to show the player
    */
-  startContext:function(contextId, source, pathId, collectionSubType){
+  startContext:function(contextId, eventContext){
     const route = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      route.get('quizzesContextService').startContext(contextId, source, pathId, collectionSubType)
+      route.get('quizzesContextService').startContext(contextId, eventContext)
         .then(resolve, reject);
     });
   }

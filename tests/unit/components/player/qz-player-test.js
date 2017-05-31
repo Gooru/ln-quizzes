@@ -29,18 +29,18 @@ test('submitAll on collection', function(assert) {
     resourceResult: questionResult,
     onFinish: 'onFinish',
     sendAction,
-    source: 'source',
+    eventContext: 'eventContext',
     contextService: Ember.Object.create({
-      finishContext: function(contextId, source) {
+      finishContext: function(contextId, eventContext) {
         assert.deepEqual(contextId, 'context', 'Wrong context id');
-        assert.deepEqual(source, 'source', 'Wrong source');
+        assert.deepEqual(eventContext, 'eventContext', 'Wrong event context');
         return Ember.RSVP.resolve();
       },
-      moveToResource: function(resourceId, contextId, resourceResult, source) {
+      moveToResource: function(resourceId, contextId, resourceResult, eventContext) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        assert.deepEqual(source, 'source', 'Wrong source');
+        assert.deepEqual(eventContext, 'eventContext', 'Wrong event context');
         return Ember.RSVP.resolve({ score:100 });
       }
     })
@@ -66,13 +66,13 @@ test('submitAll on assessment', function(assert) {
   let component = this.subject({
     contextResult,
     resourceResult: questionResult,
-    source: 'source',
+    eventContext: 'eventContext',
     contextService: Ember.Object.create({
-      moveToResource: function(resourceId, contextId, resourceResult, source) {
+      moveToResource: function(resourceId, contextId, resourceResult, eventContext) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        assert.deepEqual(source, 'source', 'Wrong source');
+        assert.deepEqual(eventContext, 'eventContext', 'Wrong event context');
         return Ember.RSVP.resolve({ score:100 });
       }
     })
@@ -114,13 +114,13 @@ test('submitQuestion with next question available', function(assert) {
     resource: question,
     resourceResult: questionResult,
     contextResult,
-    source: 'source',
+    eventContext: 'eventContext',
     contextService: Ember.Object.create({
-      moveToResource: function(resourceId, contextId, resourceResult, source) {
+      moveToResource: function(resourceId, contextId, resourceResult, eventContext) {
         assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        assert.deepEqual(source, 'source', 'Wrong source');
+        assert.deepEqual(eventContext, 'eventContext', 'Wrong event context');
         return Ember.RSVP.resolve({score:100});
       }
     })
@@ -159,13 +159,13 @@ test('submitQuestion with next question unavailable', function(assert) {
     resource: question,
     resourceResult: questionResult,
     contextResult,
-    source: 'source',
+    eventContext: 'eventContext',
     contextService: Ember.Object.create({
-      moveToResource: function(resourceId, contextId, resourceResult, source) {
+      moveToResource: function(resourceId, contextId, resourceResult, eventContext) {
         assert.deepEqual(resourceId, null, 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        assert.deepEqual(source, 'source', 'Wrong source');
+        assert.deepEqual(eventContext, 'eventContext', 'Wrong event context');
         return Ember.RSVP.resolve({score:100});
       }
     })
@@ -174,6 +174,7 @@ test('submitQuestion with next question unavailable', function(assert) {
     component.send('submitQuestion', question);
   });
 });
+
 test('previousResource', function(assert) {
   assert.expect(7);
   const question1 = Resource.create({
@@ -225,13 +226,13 @@ test('previousResource', function(assert) {
     contextResult,
     resource:question2,
     resourceId:'2',
-    source: 'source',
+    eventContext: 'eventContext',
     contextService: Ember.Object.create({
-      moveToResource: function(resourceId, contextId, resourceResult, source) {
+      moveToResource: function(resourceId, contextId, resourceResult, eventContext) {
         assert.deepEqual(resourceId, '1', 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult, 'Wrong result object');
-        assert.deepEqual(source, 'source', 'Wrong source');
+        assert.deepEqual(eventContext, 'eventContext', 'Wrong event context');
         return Ember.RSVP.resolve({score:100});
       }
     })
@@ -270,13 +271,13 @@ test('selectNavigatorItem', function(assert) {
   let component = this.subject({
     resourceResult: questionResult2,
     contextResult,
-    source: 'source',
+    eventContext: 'eventContext',
     contextService: Ember.Object.create({
-      moveToResource: function(resourceId, contextId, resourceResult, source) {
+      moveToResource: function(resourceId, contextId, resourceResult, eventContext) {
         assert.deepEqual(resourceId, 'question-id', 'Wrong resource id');
         assert.deepEqual(contextId, 'context', 'Wrong context id');
         assert.deepEqual(resourceResult, questionResult2, 'Wrong result object');
-        assert.deepEqual(source, 'source', 'Wrong source');
+        assert.deepEqual(eventContext, 'eventContext', 'Wrong event context');
         return Ember.RSVP.resolve({score:100});
       }
     })

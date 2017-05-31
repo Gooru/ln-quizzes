@@ -77,27 +77,6 @@ test('resourceComponentSelected for url resource type', function (assert) {
   assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
 });
 
-test('cul', function (assert) {
-  assert.expect(1);
-  const expectedCUL = {
-    classId: 'class-id',
-    courseId: 'course-id',
-    unitId: 'unit-id',
-    lessonId: 'lesson-id',
-    collectionId: 'collection-id'
-  };
-  var component = this.subject({
-    resource: { id: 'resource-id' },
-    classId: 'class-id',
-    courseId: 'course-id',
-    unitId: 'unit-id',
-    lessonId: 'lesson-id',
-    collectionId: 'collection-id'
-  });
-
-  assert.deepEqual(component.get('cul'), expectedCUL, 'Wrong CUL value');
-});
-
 test('next', function(assert) {
   assert.expect(7);
   let component = this.subject({

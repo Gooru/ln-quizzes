@@ -5,14 +5,11 @@ import moduleForService from 'dummy/tests/helpers/module-for-service';
 moduleForService('service:quizzes/api-sdk/resource', 'Unit | Service | quizzes/api-sdk/resource');
 
 test('sendFinishResource', function(assert) {
-  assert.expect(10);
+  assert.expect(7);
   const service = this.subject();
   const expectedData = 'data';
   const expectedContext = 'context';
   const expectedResult = 'result';
-  const expectedPathId = 'path-id';
-  const expectedSource = 'source';
-  const expectedCUL = 'cul';
   const resourceId = 'resource-id';
   service.set('resourceAdapter', Ember.Object.create({
     sendFinishResource: function(id, data, context) {
@@ -28,17 +25,14 @@ test('sendFinishResource', function(assert) {
       assert.notOk(withResourceId, 'Expected to be false');
       return expectedData;
     },
-    serializeEventContext: (source, pathId, subtype, cul) => {
-      assert.equal(source, expectedSource, 'Source should match');
-      assert.equal(pathId, expectedPathId, 'Path id should match');
-      assert.notOk(subtype, 'Subtype should match');
-      assert.equal(cul, expectedCUL, 'CUL object should match');
+    serializeEventContext: (eventContext) => {
+      assert.deepEqual(eventContext, expectedContext, 'event context shoudl match');
       return expectedContext;
     }
   }));
 
   let done = assert.async();
-  service.sendFinishResource(resourceId, expectedResult, expectedPathId, expectedSource, expectedCUL)
+  service.sendFinishResource(resourceId, expectedResult, expectedContext)
     .then(response => {
       assert.deepEqual(response, {}, 'Wrong response');
       done();

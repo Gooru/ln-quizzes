@@ -87,12 +87,14 @@ export default Ember.Object.extend({
    * @param {ResourceResult} resourceResult
    * @returns {*}
    */
-  serializeResourceResult: function (resourceResult) {
+  serializeResourceResult: function (resourceResult, sendResourceId=true) {
     let serialized = {
       reaction: resourceResult.get('reaction'),
-      resourceId: resourceResult.get('resourceId'),
       timeSpent: resourceResult.get('timeSpentToSave')
     };
+    if(sendResourceId) {
+      serialized.resourceId = resourceResult.get('resourceId');
+    }
     if (resourceResult.get('isQuestion')) {
       serialized.answer = resourceResult.get('answer') ?
         resourceResult.get('answer').map(({ value }) => ({ value })) : null;
@@ -119,16 +121,25 @@ export default Ember.Object.extend({
 
   /**
    * Serializes the context params for analytics
-   * @param {String} source
+   * @param {String} eventSource
+   * @param {String} pathId
+   * @param {String} collectionSubType
+   * @param {Object} cul { classId, courseId, unitId, lessonId, collectionId }
    ** @return {*} payload
    */
-  serializeEventContext: function(eventSource, pathId, collectionSubType) {
-    return {
-      collectionSubType,
+  serializeEventContext: function(eventSource, pathId, collectionSubType, cul) {
+    let eventContext = {
       eventSource,
       pathId,
       timezone: moment.tz.guess()
     };
+    if(collectionSubType) {
+      eventContext.collectionSubType = collectionSubType;
+    }
+    if(cul) {
+      eventContext = Object.assign(eventContext, cul);
+    }
+    return eventContext;
   }
 
 });

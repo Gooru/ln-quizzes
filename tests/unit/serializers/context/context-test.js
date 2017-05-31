@@ -25,7 +25,7 @@ test('serializeResourceResult with a resource', function(assert) {
   assert.deepEqual(expected, response, 'Wrong response');
 });
 
-test('serializeResourceResult with a question', function(assert) {
+test('serializeResourceResult with a question and no resourceId', function(assert) {
   const serializer = this.subject();
   const questionResult = QuestionResult.create({
     resourceId: 'resource-id',
@@ -37,9 +37,8 @@ test('serializeResourceResult with a question', function(assert) {
     }],
     isQuestion: true
   });
-  const response = serializer.serializeResourceResult(questionResult);
+  const response = serializer.serializeResourceResult(questionResult, false);
   const expected = {
-    resourceId: 'resource-id',
     timeSpent: 10000,
     reaction: 2,
     answer: [{
@@ -48,6 +47,7 @@ test('serializeResourceResult with a question', function(assert) {
   };
   assert.deepEqual(expected, response, 'Wrong response');
 });
+
 test('serializeContext', function(assert) {
   const serializer = this.subject();
   const assignment = Context.create({
@@ -99,6 +99,31 @@ test('serializeUpdateContext', function(assert) {
     }
   };
   assert.deepEqual(expected, response, 'Serialize update assignment wrong response');
+});
+
+test('serializeEventContext', function(assert) {
+  const serializer = this.subject();
+  const expectedSource = 'source';
+  const expectedPathId = 1;
+  const expectedSubType = 'sub-type';
+  const response = serializer.serializeEventContext(expectedSource, expectedPathId, expectedSubType);
+  assert.equal(response.eventSource, expectedSource, 'Source should match');
+  assert.equal(response.pathId, expectedPathId, 'Path id should match');
+  assert.equal(response.collectionSubType, expectedSubType, 'Sub type should match');
+});
+
+test('serializeEventContext no subtype', function(assert) {
+  const serializer = this.subject();
+  const expectedSource = 'source';
+  const expectedPathId = 1;
+  const expectedCUL = {
+    classId: 'classId'
+  };
+  const response = serializer.serializeEventContext(expectedSource, expectedPathId, null, expectedCUL);
+  assert.equal(response.eventSource, expectedSource, 'Source should match');
+  assert.equal(response.pathId, expectedPathId, 'Path id should match');
+  assert.equal(response.collectionSubType, null, 'Sub type should match');
+  assert.equal(response.classId, expectedCUL.classId, 'Class id should match');
 });
 
 test('normalizeContextResult', function(assert) {

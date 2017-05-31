@@ -71,6 +71,12 @@ export default Ember.Object.extend({
       value: choice.value
     });
   },
+
+  /**
+   * Check if the current location protocol matches
+   * @param url
+   * @returns {Boolean}
+   */
   checkURLProtocol: function(url){
     return (window.location.protocol === 'https:'  && /^((http):\/\/)/.test(url));
   }

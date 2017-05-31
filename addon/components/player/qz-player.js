@@ -391,12 +391,12 @@ export default Ember.Component.extend(ModalMixin, {
           resourceResult = contextResult.getResultByResourceId(resourceId);
           resourceResult.set('startTime', new Date().getTime());
           component.setProperties({
-          showReport: false,
-          resourceId,
-          resource,
-          resourceResult
-        }); //saves the resource status
-      });
+            showReport: false,
+            resourceId,
+            resource,
+            resourceResult
+          }); //saves the resource status
+        });
     });
   },
 

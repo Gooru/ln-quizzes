@@ -240,7 +240,7 @@ test('moveToResource', function(assert) {
       return previousResult;
     },
     serializeEventContext: function(eventContext){
-      assert.equal(eventContext, expectedEventContext, 'Wrong event context value');
+      assert.deepEqual(eventContext, expectedEventContext, 'Wrong event context value');
       return expectedEventContext;
     }
   }));
@@ -280,7 +280,7 @@ test('startContext', function(assert) {
       return contextResult;
     },
     serializeEventContext: function(eventContext) {
-      assert.equal(eventContext, expectedEventContext, 'Wrong source value');
+      assert.deepEqual(eventContext, expectedEventContext, 'Wrong event context value');
       return expectedEventContext;
     }
   }));
@@ -316,7 +316,7 @@ test('finishContext', function(assert) {
 
   service.set('contextSerializer', Ember.Object.create({
     serializeEventContext: function(eventContext) {
-      assert.equal(eventContext, expectedEventContext, 'Wrong source value');
+      assert.deepEqual(eventContext, expectedEventContext, 'Wrong event context value');
       return expectedEventContext;
     }
   }));

@@ -47,7 +47,7 @@ export default Ember.Route.extend({
      * Navigate to the previous page
      */
     navigateBack: function () {
-      window.history.back();
+      // Empty, it does nothing by default
     }
   },
 

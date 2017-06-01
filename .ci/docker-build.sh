@@ -22,4 +22,4 @@ info "Running eslint..."
 silent grunt bamboo-eslint
 
 info "Running tests..."
-grunt bamboo-test
+silent grunt bamboo-test

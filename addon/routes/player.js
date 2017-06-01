@@ -142,6 +142,7 @@ export default Ember.Route.extend({
     controller.set('contextResult', contextResult);
     controller.set('reportURL', model.reportURL);
     controller.set('eventContext', model.eventContext);
+    controller.set('showConfirmation', true);
   },
 
   /**

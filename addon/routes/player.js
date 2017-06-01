@@ -97,7 +97,7 @@ export default Ember.Route.extend({
        eventContext
      };
      if(type === 'collection' || isAnonymous || isTeacher) {
-       return route.get('quizzesContextService').startContext(contextId, source).then(function(contextResult){
+       return route.get('quizzesContextService').startContext(contextId, eventContext).then(function(contextResult){
          return Ember.RSVP.hash(Object.assign(model, {
            contextResult,
            collection: route.get('quizzesCollectionService').readCollection(contextResult.collectionId, type)

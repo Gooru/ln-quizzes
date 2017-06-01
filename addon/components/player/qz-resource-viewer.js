@@ -39,10 +39,10 @@ export default Ember.Component.extend({
     next: function(){
       this.set('isNextDisabled', true);
       let resourceResult = this.get('resourceResult');
+      let eventContext = this.get('eventContext');
       resourceResult.set('stopTime', new Date().getTime());
       this.get('quizzesResourceService').sendFinishResource(
-        this.get('resource.id'), resourceResult, this.get('pathId'),
-        this.get('source'), this.get('cul')
+        this.get('resource.id'), resourceResult, eventContext
       );
       this.sendAction('onNext');
     }
@@ -54,12 +54,14 @@ export default Ember.Component.extend({
   init: function() {
     this._super(...arguments);
     let resource = this.get('resource');
-    let resourceResult = ResourceResult.create(Ember.getOwner(this).ownerInjection(), {
-      resourceId: resource.resourceId,
-      reaction: 0,
-      startTime: new Date().getTime()
-    });
-    this.set('resourceResult', resourceResult);
+    if(resource) {
+      let resourceResult = ResourceResult.create(Ember.getOwner(this).ownerInjection(), {
+        resourceId: resource.resourceId,
+        reaction: 0,
+        startTime: new Date().getTime()
+      });
+      this.set('resourceResult', resourceResult);
+    }
   },
 
   /**
@@ -74,52 +76,9 @@ export default Ember.Component.extend({
   // Properties
 
   /**
-   * @property {String} classId
+   * @property {EventContext} eventContext
    */
-  classId: null,
-
-  /**
-   * @property {String} courseId
-   */
-  courseId: null,
-
-  /**
-   * @property {String} unitId
-   */
-  unitId: null,
-
-  /**
-   * @property {String} lessonId
-   */
-  lessonId: null,
-
-  /**
-   * @property {String} collectionId
-   */
-  collectionId: null,
-
-  /**
-   * @property {Object} cul
-   */
-  cul: Ember.computed('classId', 'courseId', 'unitId', 'lessonId', 'collectionId', function() {
-    return {
-      classId: this.get('classId'),
-      courseId: this.get('courseId'),
-      unitId: this.get('unitId'),
-      lessonId: this.get('lessonId'),
-      collectionId: this.get('collectionId')
-    };
-  }),
-
-  /**
-   * @property {String} source
-   */
-  source: null,
-
-  /**
-   * @property {Number} pathId
-   */
-  pathId: null,
+  eventContext: null,
 
   /**
    * Disable next button

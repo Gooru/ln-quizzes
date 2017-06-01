@@ -77,44 +77,19 @@ test('resourceComponentSelected for url resource type', function (assert) {
   assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
 });
 
-test('cul', function (assert) {
-  assert.expect(1);
-  const expectedCUL = {
-    classId: 'class-id',
-    courseId: 'course-id',
-    unitId: 'unit-id',
-    lessonId: 'lesson-id',
-    collectionId: 'collection-id'
-  };
-  var component = this.subject({
-    resource: { id: 'resource-id' },
-    classId: 'class-id',
-    courseId: 'course-id',
-    unitId: 'unit-id',
-    lessonId: 'lesson-id',
-    collectionId: 'collection-id'
-  });
-
-  assert.deepEqual(component.get('cul'), expectedCUL, 'Wrong CUL value');
-});
-
 test('next', function(assert) {
-  assert.expect(7);
+  assert.expect(5);
   let component = this.subject({
     isNextDisabled: false,
     onNext: 'onNext',
     resource: { id: 'resource-id' },
-    pathId: 'path-id',
-    source: 'source',
-    cul: 'cul'
+    eventContext: 'event-context'
   });
   component.set('quizzesResourceService', {
-    sendFinishResource: (resourceId, result, pathId, source, cul) => {
+    sendFinishResource: (resourceId, result, eventContext) => {
       assert.equal(resourceId, 'resource-id', 'Resource id should match');
       assert.deepEqual(result, component.get('resourceResult'), 'Resource result should match');
-      assert.equal(pathId, 'path-id', 'Path id should match');
-      assert.equal(source, 'source', 'Source id should match');
-      assert.equal(cul, 'cul', 'CUL should match');
+      assert.equal(eventContext, 'event-context', 'Event context should match');
     }
   });
   component.set('sendAction', action => assert.equal(action, 'onNext', 'Action sent should match'));

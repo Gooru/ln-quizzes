@@ -180,6 +180,11 @@ export default Ember.Component.extend(ModalMixin, {
   context: Ember.computed.alias('contextResult.context'),
 
   /**
+   * @property {EventContext} eventContext
+   */
+  eventContext: null,
+
+  /**
    * Is Assessment
    * @property {boolean}
    */
@@ -310,12 +315,6 @@ export default Ember.Component.extend(ModalMixin, {
   showReport: false,
 
   /**
-   * Indicates the component of the application that is originating the events
-   * @property {String} source
-   */
-  source: null,
-
-  /**
    * Query param indicating if it is a collection or assessment
    * @property {string}
    */
@@ -337,11 +336,9 @@ export default Ember.Component.extend(ModalMixin, {
     const component = this;
     let contextResult = component.get('contextResult');
     let contextId = contextResult.get('contextId');
-    let source = component.get('source');
-    let collectionSubType = component.get('collectionSubType');
-    let pathId = component.get('pathId');
+    let eventContext = component.get('eventContext');
     let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
-        component.get('contextService').finishContext(contextId, source, pathId, collectionSubType);
+        component.get('contextService').finishContext(contextId, eventContext);
     return promise.then(() => this.get('onFinish') && this.sendAction('onFinish'));
   },
 
@@ -417,15 +414,13 @@ export default Ember.Component.extend(ModalMixin, {
     let promise = Ember.RSVP.resolve();
     let save = component.get('saveEnabled');
     if (save) {
-      let source = component.get('source');
       let contextId = contextResult.get('contextId');
-      let collectionSubType = component.get('collectionSubType');
-      let pathId = component.get('pathId');
+      let eventContext = component.get('eventContext');
       if(resourceResult) {
         resourceResult.set('stopTime', new Date().getTime());
       }
       promise = firstTime ? Ember.RSVP.resolve() :
-        component.get('contextService').moveToResource(resourceId, contextId, resourceResult, source, pathId, collectionSubType)
+        component.get('contextService').moveToResource(resourceId, contextId, resourceResult, eventContext)
           .then(result => resourceResult.set('score', result.score));
     }
     return promise;

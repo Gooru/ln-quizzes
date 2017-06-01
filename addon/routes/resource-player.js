@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import EventContext from 'quizzes-addon/models/context/event-context';
 
 /**
  * @typedef { Ember.Route } ResourcePlayerRoute
@@ -49,14 +50,8 @@ export default Ember.Route.extend({
    */
   quizzesModel(params) {
     const {
-      resourceId,
-      pathId,
-      source,
-      classId,
-      courseId,
-      unitId,
-      lessonId,
-      collectionId
+      resourceId, pathId, source, sourceUrl, partnerId, tenantId, classId,
+      courseId, unitId, lessonId, collectionId
     } = params;
     return this.get('quizzesResourceService').readResource(resourceId).then(resource =>
       Ember.RSVP.hash({
@@ -64,6 +59,9 @@ export default Ember.Route.extend({
         owner: this.getOwnerProfile(resource),
         pathId,
         source,
+        sourceUrl,
+        partnerId,
+        tenantId,
         classId,
         courseId,
         unitId,
@@ -97,8 +95,18 @@ export default Ember.Route.extend({
       unitId: model.unitId,
       lessonId: model.lessonId,
       collectionId: model.collectionId,
-      pathId: model.pathId,
-      source: model.source
+      eventContext: EventContext.create({
+        classId: model.classId,
+        courseId: model.courseId,
+        unitId: model.unitId,
+        lessonId: model.lessonId,
+        collectionId: model.collectionId,
+        pathId: model.pathId,
+        partnerId: model.partnerId,
+        source: model.source,
+        sourceUrl: model.sourceUrl,
+        tenantId: model.tenantId
+      })
     });
   }
 });

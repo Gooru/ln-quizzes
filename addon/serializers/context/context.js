@@ -127,17 +127,24 @@ export default Ember.Object.extend({
    * @param {Object} cul { classId, courseId, unitId, lessonId, collectionId }
    ** @return {*} payload
    */
-  serializeEventContext: function(eventSource, pathId, collectionSubType, cul) {
+  serializeEventContext: function(context) {
+    let {
+      source, sourceUrl, tenantId, partnerId, pathId, timezone,
+      classId, courseId, unitId, lessonId, collectionId, collectionSubType
+    } = context;
     let eventContext = {
-      eventSource,
-      pathId,
-      timezone: moment.tz.guess()
+      eventSource: source,
+      sourceUrl,
+      tenantId,
+      partnerId,
+      pathId: pathId ? +pathId : 0,
+      timezone,
+      collectionSubType
     };
-    if(collectionSubType) {
-      eventContext.collectionSubType = collectionSubType;
-    }
-    if(cul) {
-      eventContext = Object.assign(eventContext, cul);
+    if(classId) {
+      eventContext = Object.assign(eventContext, {
+        classId, courseId, unitId, lessonId, collectionId
+      });
     }
     return eventContext;
   }

@@ -2,6 +2,7 @@ import { moduleFor, test } from 'ember-qunit';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import ResourceResult from 'quizzes-addon/models/result/resource';
 import Context from 'quizzes-addon/models/context/context';
+import EventContext from 'quizzes-addon/models/context/event-context';
 
 moduleFor('serializer:context/context', 'Unit | Serializer | context/context');
 
@@ -103,27 +104,59 @@ test('serializeUpdateContext', function(assert) {
 
 test('serializeEventContext', function(assert) {
   const serializer = this.subject();
-  const expectedSource = 'source';
-  const expectedPathId = 1;
-  const expectedSubType = 'sub-type';
-  const response = serializer.serializeEventContext(expectedSource, expectedPathId, expectedSubType);
-  assert.equal(response.eventSource, expectedSource, 'Source should match');
-  assert.equal(response.pathId, expectedPathId, 'Path id should match');
-  assert.equal(response.collectionSubType, expectedSubType, 'Sub type should match');
+  const eventContext = EventContext.create({
+    source: 'source',
+    sourceUrl: 'source-url',
+    tenantId: 'tenant-id',
+    partnerId: 'partner-id',
+    pathId: '1',
+    timezone: 'timezone',
+    classId: 'class-id',
+    courseId: 'course-id',
+    unitId: 'unit-id',
+    lessonId: 'lesson-id',
+    collectionId: 'collection-id',
+    collectionSubType: 'sub-type'
+  });
+  const expectedEventContext = {
+    eventSource: 'source',
+    sourceUrl: 'source-url',
+    tenantId: 'tenant-id',
+    partnerId: 'partner-id',
+    pathId: 1,
+    timezone: 'timezone',
+    classId: 'class-id',
+    courseId: 'course-id',
+    unitId: 'unit-id',
+    lessonId: 'lesson-id',
+    collectionId: 'collection-id',
+    collectionSubType: 'sub-type'
+  };
+  const response = serializer.serializeEventContext(eventContext);
+  assert.deepEqual(response, expectedEventContext, 'Event context should match');
 });
 
-test('serializeEventContext no subtype', function(assert) {
+test('serializeEventContext no subtype and no cul', function(assert) {
   const serializer = this.subject();
-  const expectedSource = 'source';
-  const expectedPathId = 1;
-  const expectedCUL = {
-    classId: 'classId'
+  const eventContext = EventContext.create({
+    source: 'source',
+    sourceUrl: 'source-url',
+    tenantId: 'tenant-id',
+    partnerId: 'partner-id',
+    pathId: '1',
+    timezone: 'timezone'
+  });
+  const expectedEventContext = {
+    eventSource: 'source',
+    sourceUrl: 'source-url',
+    tenantId: 'tenant-id',
+    partnerId: 'partner-id',
+    pathId: 1,
+    timezone: 'timezone',
+    collectionSubType: null
   };
-  const response = serializer.serializeEventContext(expectedSource, expectedPathId, null, expectedCUL);
-  assert.equal(response.eventSource, expectedSource, 'Source should match');
-  assert.equal(response.pathId, expectedPathId, 'Path id should match');
-  assert.equal(response.collectionSubType, null, 'Sub type should match');
-  assert.equal(response.classId, expectedCUL.classId, 'Class id should match');
+  const response = serializer.serializeEventContext(eventContext);
+  assert.deepEqual(response, expectedEventContext, 'Event context should match');
 });
 
 test('normalizeContextResult', function(assert) {

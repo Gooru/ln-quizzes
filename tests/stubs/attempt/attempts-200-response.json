@@ -13,6 +13,16 @@
         "totalCorrect": 3,
         "totalTimeSpent": 32000
       },
+      "taxonomySummary":[{
+        "taxonomyId":"taxonomy-id",
+        "totalTimeSpent": 32000,
+        "averageReaction":1,
+        "averageScore":0,
+        "totalCorrect":0,
+        "totalAnswered":1,
+        "resources": ["resource-id"]
+      }
+      ],
       "events": [
         {
           "resourceId": "question1-id",
@@ -49,6 +59,16 @@
         "totalCorrect": 3,
         "totalTimeSpent": 10000
       },
+      "taxonomySummary":[{
+        "taxonomyId":"taxonomy-id",
+        "totalTimeSpent": 32000,
+        "averageReaction":1,
+        "averageScore":100,
+        "totalCorrect":3,
+        "totalAnswered":3,
+        "resources": ["resource-id"]
+      }
+      ],
       "events": [
         {
           "resourceId": "question1-id",

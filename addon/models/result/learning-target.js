@@ -29,9 +29,9 @@ export default Ember.Object.extend({
   relatedQuestions: [],
 
   /**
-   * @property {String} standard - Name/code of the standard this learning target belongs to
+   * @property {String} displayCode - Name/code of the standard this learning target belongs to
    */
-  standard: '',
+  displayCode: '',
 
   /*
    * @property {ResourceResult[]} suggestedResources

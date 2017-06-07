@@ -32,11 +32,11 @@ export default Ember.Component.extend({
         //Check if the questions details are showing on table (md or sm devices) or  a list (xs devices)
         if ($trTable.length) {
           $('html,body').animate({
-            scrollTop: $($trTable).offset().top - $('.controller.class.analytics.collection.student').offset().top
+            scrollTop: $($trTable).offset().top - $('.controller.analytics.collection.student').offset().top
           }, animationSpeed);
         } else if ($card.length) {
           $('html,body').animate({
-            scrollTop: $($card).offset().top - $('.controller.class.analytics.collection.student').offset().top
+            scrollTop: $($card).offset().top - $('.controller.analytics.collection.student').offset().top
           }, animationSpeed);
         } else {
           Ember.Logger.error(`No element was found for selectorTable: ${$trTable}`);

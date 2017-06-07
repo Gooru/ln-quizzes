@@ -34,7 +34,8 @@ export default Ember.Component.extend({
       resourceResults: Ember.computed.alias('reportEvent.resourceResults'),
       collection: this.get('collection'),
       isRealTime: this.get('isRealTime'),
-      showAttempts: this.get('showAttempts')
+      showAttempts: this.get('showAttempts'),
+      mastery:this.get('attemptData.mastery')
     });
   }),
 

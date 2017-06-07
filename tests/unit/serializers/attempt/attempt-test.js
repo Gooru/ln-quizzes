@@ -109,6 +109,11 @@ test('normalizeReportEvent', function(assert) {
       totalCorrect: 2,
       totalTimeSpent: 52868
     },
+    taxonomySummary: [{
+      taxonomyId:'taxonomyId',
+      averageScore:100,
+      resources:['resource-id']
+    }],
     events: [{
       resourceId: 'resource-id-1',
       timeSpent: 10000,
@@ -136,6 +141,11 @@ test('normalizeReportEvent', function(assert) {
   assert.equal(response.get('totalAnswered'), 3, 'Wrong total answered');
   assert.equal(response.get('totalCorrect'), 2, 'Wrong total correct');
   assert.equal(response.get('totalTimeSpent'), 52868, 'Wrong total time spent');
+  assert.equal(response.get('mastery').length, 1, 'Wrong total learning target');
+  assert.equal(response.get('mastery')[0].get('id'), 'taxonomyId', 'Wrong learning target id');
+  assert.equal(response.get('mastery')[0].get('mastery'), 100, 'Wrong learning target score');
+  assert.equal(response.get('mastery')[0].get('relatedQuestions').length, 1, 'Wrong learning target related questions');
+  assert.equal(response.get('mastery')[0].get('relatedQuestions')[0], 'resource-id', 'Wrong learning target related question id');
 });
 
 test('normalizeAttemptIds', function(assert) {

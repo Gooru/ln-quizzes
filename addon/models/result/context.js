@@ -65,9 +65,21 @@ export default Ember.Object.extend({
   }),
 
   /**
+   * Indicates if it has mastery
+   * @property {boolean} hasMastery
+   */
+  hasMastery: Ember.computed.bool('mastery.length'),
+
+  /**
    * @property {boolean} isRealTime
    */
   isRealTime: false,
+
+  /**
+   * TODO: TBD
+   * @property {Object[]} mastery - An array of learning target objects
+   */
+  mastery: [],
 
   /**
    * @property {QuestionResult[]} questionResults

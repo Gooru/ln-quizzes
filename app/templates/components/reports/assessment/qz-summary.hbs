@@ -8,10 +8,22 @@
     </span>
     </div>
   {{else}}
-    <div class="thumbnail">
-      <span class="title">{{t "qz-assessment-report.qz-summary.total-time-spent"}}</span>
-      <span class="time-spent">{{gru-icon name='av_timer'}}<span>{{format-time contextResult.totalTimeSpent}}</span></span>
-    </div>
+    {{#if hasQuestionScore}}
+      <div class="grade" style={{gradeStyle}}>
+        <span class="percentage">{{round-number contextResult.reportEvent.averageScore}}%</span>
+        <span class="attempts">
+          <span class="fractional fraction">
+            {{{fractional numerator=contextResult.reportEvent.totalCorrect denominator=contextResult.reportEvent.totalAnswered}}}
+          </span>
+          <span class="text">{{t 'common.correct'}}</span>
+        </span>
+      </div>
+    {{else}}
+      <div class="thumbnail">
+        <span class="title">{{t "qz-assessment-report.qz-summary.total-time-spent"}}</span>
+        <span class="time-spent">{{gru-icon name='av_timer'}}<span>{{format-time contextResult.totalTimeSpent}}</span></span>
+      </div>
+    {{/if}}
   {{/if}}
   <div class="overview">
     <h5>{{contextResult.title}}</h5>

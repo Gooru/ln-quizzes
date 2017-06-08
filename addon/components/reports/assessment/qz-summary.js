@@ -90,6 +90,9 @@ export default Ember.Component.extend({
    */
   showAttempts:true,
 
+  hasQuestionScore: Ember.computed('contextResult.reportEvent.totalAnswered', function() {
+    return this.get('contextResult.reportEvent.totalAnswered') > 0;
+  }),
 
 
   // -------------------------------------------------------------------------

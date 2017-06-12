@@ -58,7 +58,8 @@ export default Ember.Component.extend({
    * @property {String} gradeStyle style safe string for the grade
    */
   gradeStyle: Ember.computed('contextResult.correctPercentage', function() {
-    const color = getGradeColor(this.get('contextResult.correctPercentage'));
+    let contextResult = this.get('contextResult');
+    let color = getGradeColor(contextResult.correctPercentage || contextResult.reportEvent.averageScore);
     return Ember.String.htmlSafe(`background-color: ${color}`);
   }),
 

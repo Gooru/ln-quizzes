@@ -2,6 +2,7 @@ import Ember from 'ember';
 import ContextSerializer from 'quizzes-addon/serializers/context/context';
 import ReportData from 'quizzes-addon/models/result/report-data';
 import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
+import LearningTarget from 'quizzes-addon/models/result/learning-target';
 
 export default Ember.Object.extend({
 
@@ -34,6 +35,7 @@ export default Ember.Object.extend({
    */
   normalizeReportDataEvent: function (reportEvent) {
     let summary = reportEvent.eventSummary;
+    let taxonomySumary = reportEvent.taxonomySummary;
     let reportDataEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
       attemptId: reportEvent.attemptId,
       collectionId: reportEvent.collectionId,
@@ -52,6 +54,19 @@ export default Ember.Object.extend({
         averageScore: summary.averageScore,
         totalTimeSpent: summary.totalTimeSpent
       });
+    }
+    if (taxonomySumary) {
+      let learningTargets = [];
+      if (Ember.isArray(taxonomySumary)) {
+        learningTargets = taxonomySumary.map(function(standard) {
+          return LearningTarget.create({
+            id: standard.taxonomyId,
+            mastery: standard.averageScore,
+            relatedQuestions: standard.resources
+          });
+        });
+      }
+      reportDataEvent.set('mastery',learningTargets);
     }
     return reportDataEvent;
   },

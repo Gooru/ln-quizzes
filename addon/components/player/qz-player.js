@@ -145,7 +145,7 @@ export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Events
 
-  init: function() {
+  didInsertElement: function() {
     this._super(...arguments);
     if(this.get('collection.isCollection') || this.get('isAnonymous') || this.get('isTeacher')) {
       this.set('showConfirmation',false);

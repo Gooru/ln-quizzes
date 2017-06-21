@@ -46,12 +46,11 @@ export default Ember.Object.extend({
    */
   normalizeResources: function(payload) {
     let resources = [];
-    // Fix sequence value
     if (Ember.isArray(payload)) {
        resources = payload.map(resource => this.get('resourceSerializer').normalizeReadResource(resource));
-       let tempResources = resources.slice(0);
-       tempResources.sort((a, b) => b.get('sequence') - a.get('sequence'));
-       tempResources.forEach((resource, i) => resource.set('sequence', i+1));
+       // Fix sequence value
+       resources.sort((a, b) => a.get('sequence') - b.get('sequence'))
+        .forEach((resource, i) => resource.set('sequence', i+1));
     }
     return resources;
   },

@@ -45,9 +45,14 @@ export default Ember.Object.extend({
    * @returns {Resource}
    */
   normalizeResources: function(payload) {
-    return Ember.isArray(payload)
-      ? payload.map(resource => this.get('resourceSerializer').normalizeReadResource(resource))
-      : [];
+    let resources = [];
+    if (Ember.isArray(payload)) {
+       resources = payload.map(resource => this.get('resourceSerializer').normalizeReadResource(resource));
+       // Fix sequence value
+       resources.sort((a, b) => a.get('sequence') - b.get('sequence'))
+        .forEach((resource, i) => resource.set('sequence', i+1));
+    }
+    return resources;
   },
   /**
    * Normalize the settings from a collection

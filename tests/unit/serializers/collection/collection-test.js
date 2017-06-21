@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('serializer:collection/collection', 'Unit | Serializer | collection/collection');
@@ -20,21 +21,27 @@ test('normalizeReadCollection', function(assert) {
 test('normalizeReadCollection with resources', function(assert) {
   const serializer = this.subject();
   serializer.set('resourceSerializer', {
-    normalizeReadResource: resource => `${resource}-normalized`
+    normalizeReadResource: ({id, sequence}) => Ember.Object.create({
+      id: `${id}-normalized`,
+      sequence
+    })
   });
   const collectionData = {
     id: 'collection-id',
     isCollection: false,
-    resources: [
-      'resource1',
-      'resource2'
-    ]
+    resources: [{
+      id: 'resource1',
+      sequence: 1
+    }, {
+      id: 'resource2',
+      sequence: 2
+    }]
   };
   const collection = serializer.normalizeReadCollection(collectionData);
   assert.equal(collection.get('id'), 'collection-id', 'Wrong id');
   assert.notOk(collection.get('isCollection'), 'Wrong value for isCollection');
   assert.equal(collection.get('resources').length, 2, 'Wrong size for resources');
-  assert.equal(collection.get('resources')[0], 'resource1-normalized', 'Wrong value for resource');
+  assert.equal(collection.get('resources')[0].get('id'), 'resource1-normalized', 'Wrong value for resource');
 });
 
 test('normalizeReadCollection with settings and title', function(assert) {

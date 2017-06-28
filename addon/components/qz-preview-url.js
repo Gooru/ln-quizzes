@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { toAbsolutePath } from 'quizzes-addon/utils/utils';
 
 export default Ember.Component.extend({
 
@@ -33,18 +34,9 @@ export default Ember.Component.extend({
    */
   url: Ember.computed('resource.body', function () {
     let component = this;
-    let cdnUrl = component.get('quizzesConfigurationService.configuration.properties.cdnURL');
     let resourceUrl = component.get('resource.body');
-    if (resourceUrl) {
-      const protocolPattern = /^((http|https|ftp):\/\/)/;
-      if (!protocolPattern.test(resourceUrl)) {     //if no protocol add it
-        let containsCdnUrl = (resourceUrl.indexOf(cdnUrl) !== -1);
-        if (!containsCdnUrl) {
-          resourceUrl = 'https:' + cdnUrl + resourceUrl;
-        }
-      }
-    }
-    return resourceUrl;
+    let cdnUrl = component.get('quizzesConfigurationService.configuration.properties.cdnURL');
+    return toAbsolutePath(resourceUrl, cdnUrl);
   }),
 
   resource: null

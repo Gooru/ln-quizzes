@@ -2,6 +2,7 @@ import Ember from 'ember';
 import ModalMixin from 'quizzes-addon/mixins/modal';
 import TaxonomyTag from 'quizzes-addon/models/taxonomy/taxonomy-tag';
 import TaxonomyTagData from 'quizzes-addon/models/taxonomy/taxonomy-tag-data';
+import { toAbsolutePath } from 'quizzes-addon/utils/utils';
 
 /**
  * Resource and Question card
@@ -79,6 +80,11 @@ export default Ember.Component.extend(ModalMixin,{
   onRemixQuestion: null,
 
   /**
+   * @property {Service} Configuration service
+   */
+  quizzesConfigurationService: Ember.inject.service('quizzes/configuration'),
+
+  /**
    * @property {TaxonomyTag[]} List of taxonomy tags
    */
   tags: Ember.computed('resource.standards.[]', function() {
@@ -97,5 +103,16 @@ export default Ember.Component.extend(ModalMixin,{
    */
   showPublisher:Ember.computed('resource', function(){
     return this.get('resource').isPublished && this.get('resource').publisher;
+  }),
+
+  /**
+   * @property {string} Resource URL
+   */
+  url: Ember.computed('resource.body', function () {
+    let component = this;
+    let resourceUrl = component.get('resource.body');
+    let cdnUrl = component.get('quizzesConfigurationService.configuration.properties.cdnURL');
+    return toAbsolutePath(resourceUrl, cdnUrl);
   })
+
 });

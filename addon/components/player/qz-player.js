@@ -429,7 +429,7 @@ export default Ember.Component.extend(ModalMixin, {
   /**
    * Starts the assessment or collection
    */
-  startAssessment: function() {
+  startAssessment: function () {
     const component = this;
     const collection = component.get('collection');
     const contextResult = component.get('contextResult');
@@ -437,15 +437,19 @@ export default Ember.Component.extend(ModalMixin, {
     let resource = null;
 
     component.set('showContent', true);
-    if(hasResources) {
+    if (hasResources) {
       resource = contextResult.get('currentResource');
-      if(component.get('resourceId')) { //if has a resource id as query param
+      if (component.get('resourceId')) { //if has a resource id as query param
         resource = collection.getResourceById(component.get('resourceId'));
       }
     }
-    if(resource) {
-      component.moveToResource(resource, true);
+
+    // Verifies that the resource exist in the list of Collection resources
+    resource = collection.get('resources').findBy('id', resource.get('id'));
+    if (!resource) {
+      resource = collection.get('resources').firstObject;
     }
+    component.moveToResource(resource, true);
   },
   /**
    * Find owner profile if the resource has narration or is a link out resource

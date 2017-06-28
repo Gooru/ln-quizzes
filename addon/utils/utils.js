@@ -400,3 +400,19 @@ export function arrayIntoChunks(arr, chunkSize) {
   }
   return chunks;
 }
+
+/**
+ * Builds an absolute path for the cases where resource url is not absolute
+ */
+export function toAbsolutePath(resourceUrl, cdnUrl) {
+  if (resourceUrl) {
+    const protocolPattern = /^((http|https|ftp):\/\/)/;
+    if (!protocolPattern.test(resourceUrl)) {     //if no protocol add it
+      let containsCdnUrl = (resourceUrl.indexOf(cdnUrl) !== -1);
+      if (!containsCdnUrl) {
+        resourceUrl = 'https:' + cdnUrl + resourceUrl;
+      }
+    }
+  }
+  return resourceUrl;
+}

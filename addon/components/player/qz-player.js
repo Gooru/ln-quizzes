@@ -429,7 +429,7 @@ export default Ember.Component.extend(ModalMixin, {
   /**
    * Starts the assessment or collection
    */
-  startAssessment: function() {
+  startAssessment: function () {
     const component = this;
     const collection = component.get('collection');
     const contextResult = component.get('contextResult');

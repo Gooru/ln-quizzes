@@ -1,7 +1,7 @@
 #!/bin/bash
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/')
 
-if [ "$GIT_BRANCH" = "develop" ] || [[ "$GIT_BRANCH" =~ ^release.* ]]; then
+if [ "$GIT_BRANCH" = "develop" ] || [[ "$GIT_BRANCH" =~ ^release.* ]] || [[ "$GIT_BRANCH" =~ ^hotfix.* ]]; then
   set -e
 
   source .ci/common.sh

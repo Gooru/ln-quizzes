@@ -34,7 +34,9 @@ export default Ember.Object.extend({
       ownerId:payload.ownerId,
       isCollection: payload.isCollection,
       resources: serializer.normalizeResources(payload.resources),
-      settings: !payload.isCollection && payload.metadata ? serializer.normalizeSettings(payload.metadata.setting) : null,
+      settings: !payload.isCollection && payload.metadata ?
+        serializer.normalizeSettings(payload.metadata.setting || {}) :
+        null,
       title: payload.metadata ? payload.metadata.title : ''
     });
   },

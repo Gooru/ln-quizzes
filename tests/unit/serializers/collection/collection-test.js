@@ -79,3 +79,20 @@ test('normalizeReadCollection with settings and title', function(assert) {
   assert.equal(collection2.get('bidirectional'), true, 'Bidirectional should be true');
   assert.equal(collection2.get('showFeedback'), 'never', 'showFeedback should be never');
 });
+
+test('normalizeReadCollection with no settings', function(assert) {
+  const serializer = this.subject();
+  const collectionData = {
+    id: 'collection-id',
+    isCollection: false,
+    metadata: {
+      title: 'collection-title'
+    }
+  };
+  const collection = serializer.normalizeReadCollection(collectionData);
+  assert.equal(collection.get('title'), 'collection-title', 'Title should match');
+  assert.equal(collection.get('showKey'), false, 'Should be false');
+  assert.equal(collection.get('attempts'), -1, 'Incorrect attempts');
+  assert.equal(collection.get('bidirectional'), false, 'Bidirectional should be false');
+  assert.equal(collection.get('showFeedback'), 'summary', 'showFeedback value should be summary');
+});

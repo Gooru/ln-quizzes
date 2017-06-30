@@ -380,7 +380,7 @@ test('showFeedback', function(assert) {
   assert.equal(component.get('showFeedback'), false , 'Should not show feedback');
 });
 test('showPrevious', function(assert) {
-  assert.expect(3);
+  assert.expect(4);
   const question1 = Resource.create({
     'id': '1',
     type: 'hot_text_word',
@@ -437,6 +437,17 @@ test('showPrevious', function(assert) {
     }
   });
   component.set('collection',collection2);
+  assert.equal(component.get('showPrevious'), false , 'Previous should not appear');
+
+  //Disabled navigation setting
+  collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    title: 'Assessment Title',
+    isCollection: true,
+    settings:{
+      bidirectional: true
+    }
+  });
+  component.set('collection',collection);
   assert.equal(component.get('showPrevious'), false , 'Previous should not appear');
 });
 

@@ -148,7 +148,7 @@ test('Previous button at the second element of a collection', function(assert) {
   this.set('contextResult', contextResult);
   this.render(hbs`{{player/qz-player contextResult=contextResult resourceResult=resourceResult}}`);
   var $component = this.$();
-  assert.ok($component.find('.qz-player .qz-viewer .actions-section .previous.btn').length,'Previous button should appear');
+  assert.notOk($component.find('.qz-player .qz-viewer .actions-section .previous.btn').length,'Previous button should appear');
 });
 
 test('Previous button at the first element of the assessment', function(assert) {

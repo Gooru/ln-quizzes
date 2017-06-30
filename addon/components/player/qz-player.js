@@ -300,12 +300,14 @@ export default Ember.Component.extend(ModalMixin, {
   showFeedback: Ember.computed.alias('collection.immediateFeedback'),
 
   /**
-   * Indicates if the current resource type is resource
+   * If the previous button should be shown
    * @property {boolean}
    */
   showPrevious: Ember.computed('resource','isNavigationDisabled', function(){
     const resource = this.get('resource');
-    return !!this.get('collection').prevResource(resource) && !this.get('isNavigationDisabled');
+    return this.get('isAssessment') &&
+      !!this.get('collection').prevResource(resource) &&
+      !this.get('isNavigationDisabled');
   }),
 
   /**

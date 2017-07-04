@@ -47,11 +47,16 @@ export default Ember.Service.extend({
    * @param {string} type collection|assessment
    * @returns {Promise.<boolean>}
    */
-  notifyCollectionChange: function(collectionId, type){
-    return this.readCollection(collectionId, type, true).then(function(){
-      return true;
+  notifyCollectionChange: function (collectionId, type) {
+    let service = this;
+    return new Ember.RSVP.Promise(function (resolve) {
+      service.readCollection(collectionId, type, true)
+        .then(function () {
+          resolve();
+        }, function () {
+          resolve();
+        });
     });
   }
-
 
 });

@@ -86,12 +86,10 @@ export default ApplicationAdapter.extend(TokenMixin, {
    * @param {Object} previousResource resource to save
    * @returns {Promise}
    */
-  moveToResource: function(resourceId, contextId, previousResource, eventContext) {
+  moveToResource: function(resourceId, contextId, prevResource, eventContext) {
     const namespace = this.get('namespace');
-    let data = Object.assign(
-      { eventContext },
-      previousResource ? { previousResource } : {}
-    );
+    const previousResource = prevResource || {};
+    let data = { eventContext, previousResource };
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',

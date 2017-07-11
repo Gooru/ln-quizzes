@@ -195,7 +195,7 @@ test('moveToResource no previous resource', function(assert) {
   const routes = function() {
     this.post('/quizzes/api/v1/contexts/context-id/onResource/resource-id', function(request) {
       let requestBodyJson = JSON.parse(request.requestBody);
-      assert.notOk(requestBodyJson.previousResource, 'Wrong previous resource');
+      assert.deepEqual(requestBodyJson.previousResource, {}, 'Wrong previous resource');
       return [200, {'Content-Type': 'application/json'}, JSON.stringify(expectedResponse)];
     }, false);
   };

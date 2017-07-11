@@ -36,7 +36,7 @@ export default Ember.Component.extend(QuestionMixin, {
     let userAnswer = component.get('userAnswer') ? component.get('userAnswer')[0] : null;
     let userAnswerCorrect = question.get('correct');
     if (component.get('showCorrect')) {
-      userAnswer = question.get('question.correctAnswer')[0];
+      userAnswer = question.get('question.correctAnswer.firstObject');
       userAnswerCorrect = true;
     }
     let answerValue = userAnswer ? userAnswer.value : null;

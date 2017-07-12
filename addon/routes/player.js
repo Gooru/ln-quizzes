@@ -95,29 +95,30 @@ export default Ember.Route.extend({
        resourceId,
        role,
        eventContext
-     };
-     if(type === 'collection' || isAnonymous || isTeacher) {
-       return route.get('quizzesContextService').startContext(contextId, eventContext).then(function(contextResult){
-         return Ember.RSVP.hash(Object.assign(model, {
-           contextResult,
-           collection: route.get('quizzesCollectionService').readCollection(contextResult.collectionId, type)
-         }));
-       });
+    };
+    if(type === 'collection' || isAnonymous || isTeacher) {
+      return route.get('quizzesContextService').startContext(contextId, eventContext).then(function(contextResult){
+        return Ember.RSVP.hash(Object.assign(model, {
+          contextResult,
+          collection: route.get('quizzesCollectionService').readCollection(contextResult.collectionId, type)
+        }));
+      });
      } else {
-       return route.get('quizzesContextService').getAssignedContextById(contextId).then(
-           context => !context ? null : route.get('quizzesCollectionService').readCollection(context.collectionId, type).then(
-             collection => !collection ? null : route.get('quizzesAttemptService').getAttemptIds(contextId, profileId).then(
-               attempts => Ember.RSVP.hash(Object.assign(model, {
-                 attempts,
-                 collection,
-                 context,
-                 startContextFunction: () => route.startContext(context.id, eventContext)
-               }))
-           )
-         )
-       );
-     }
-   },
+      return route.get('quizzesContextService').getAssignedContextById(contextId)
+        .then(
+          context => !context ? null : route.get('quizzesCollectionService').readCollection(context.collectionId, type).then(
+            collection => !collection ? null : route.get('quizzesAttemptService').getAttemptIds(contextId, profileId).then(
+              attempts => Ember.RSVP.hash(Object.assign(model, {
+                attempts,
+                collection,
+                context,
+                startContextFunction: () => route.startContext(context.id, eventContext)
+              }))
+          )
+        )
+      );
+    }
+  },
 
   setupController(controller, model) {
     let collection = model.collection;

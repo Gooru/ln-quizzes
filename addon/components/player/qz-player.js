@@ -247,6 +247,12 @@ export default Ember.Component.extend(ModalMixin, {
   resourceId: null,
 
   /**
+   * Number of events currently running
+   * @property {Number} resourceEventCount
+   */
+  resourceEventCount: 0,
+
+  /**
    * Return the list of resources available to show on the player
    * @property {ResourceResult[]}
    */
@@ -339,8 +345,13 @@ export default Ember.Component.extend(ModalMixin, {
     let contextResult = component.get('contextResult');
     let contextId = contextResult.get('contextId');
     let eventContext = component.get('eventContext');
+    // Disable navigation so resource events are not called after finishing
+    component.set('isNavigationDisabled', true);
+    while(component.get('resourceEventCount') > 0) {
+      // Wait for resource events to finish before calling the context event
+    }
     let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
-        component.get('contextService').finishContext(contextId, eventContext);
+      component.get('contextService').finishContext(contextId, eventContext);
     return promise.then(() => this.get('onFinish') && this.sendAction('onFinish'));
   },
 
@@ -421,9 +432,11 @@ export default Ember.Component.extend(ModalMixin, {
       if(resourceResult) {
         resourceResult.set('stopTime', new Date().getTime());
       }
-      promise = firstTime ? Ember.RSVP.resolve() :
+      component.incrementProperty('resourceEventCount');
+      promise = (firstTime ? Ember.RSVP.resolve() :
         component.get('contextService').moveToResource(resourceId, contextId, resourceResult, eventContext)
-          .then(result => resourceResult.set('score', result.score));
+          .then(result => resourceResult.set('score', result.score)));
+      promise = promise.then(() => component.decrementProperty('resourceEventCount'));
     }
     return promise;
   },

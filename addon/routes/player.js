@@ -132,9 +132,8 @@ export default Ember.Route.extend({
       contextResult.merge(collection);
     } else {
       let context =  model.context;
-      let courseId = model.course.id;
-      if(courseId){
-        context.set('courseId', courseId);
+      if(model.course && model.course.id){
+        context.set('courseId', model.course.id);
       }
       context.set('attempts', model.attempts.length);
       contextResult.set('context', context);

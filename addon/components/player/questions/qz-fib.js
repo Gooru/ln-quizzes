@@ -34,7 +34,7 @@ export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
   // Properties
   /**
-   * Replace '[]' to an input
+   * Replace '[]' to an input, but not []{
    * @param question.body
    */
   answers: Ember.computed('question.body', function() {
@@ -42,20 +42,21 @@ export default QuestionComponent.extend({
     let answers = component.get('question.body');
     let readOnly = component.get('readOnly');
     let disabled = readOnly ? 'disabled': '';
+    // matches [] but not []{, which indicates a malformed sqrt
+    let regex = /\[](?!{)/;
 
     if (component.get('hasUserAnswer')) {
       let userAnswer = component.get('userAnswer');
       userAnswer.forEach(function(choice){
         let input = `<input type='text' value='${choice.value}' ${disabled}/>`;
-        answers = answers.replace('[]', input);
+        answers = answers.replace(regex, input);
       });
 
       return answers;
     }
     else {
       let input = `<input type='text' value='' ${disabled}/>`;
-      let regex = /\[]/g;
-      return answers.replace(regex, input);
+      return answers.replace(new RegExp(regex.source, "g"), input);
     }
   }),
 

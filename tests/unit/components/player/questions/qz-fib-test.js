@@ -28,3 +28,23 @@ test('answers with user answer', function(assert) {
   component.set('userAnswer', [{value:'yellow'}]);
   assert.equal(component.get('answers'),`The sun is <input type='text' value='yellow' />`);
 });
+
+test('answers with malformed sqrt math expression', function(assert) {
+  let component = this.subject();
+  component.set('question',ResourceModel.create({body:'sqrt[]{125} = []'}));
+  assert.equal(component.get('answers'),`sqrt[]{125} = <input type='text' value='' />`);
+});
+
+test('answers with user answer and malformed sqrt math expression', function(assert) {
+  let component = this.subject();
+  let question = ResourceModel.create({body:'sqrt[]{125} = []',answers: Ember.A([
+    AnswerModel.create({
+      value: '5',
+      text: '5'
+    })
+  ]),
+    hasAnswers: true});
+  component.set('question',question);
+  component.set('userAnswer', [{value:'5'}]);
+  assert.equal(component.get('answers'),`sqrt[]{125} = <input type='text' value='5' />`);
+});

@@ -170,7 +170,7 @@ export default Ember.Component.extend({
     }
 
     if(component.get('question.isFIB')) {
-      let regex = /\[]/g;
+      let regex = /\[](?!{)/g;
       text = component.get('question.body').replace(regex, '_______');
     }
     return text;

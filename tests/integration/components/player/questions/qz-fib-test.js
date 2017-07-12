@@ -188,6 +188,49 @@ test('Fill in the blanks layout - with user answer', function(assert) {
 
 });
 
+test('Fill in the blanks layout - with user answer and malformed math expression', function(assert) {
+  assert.expect(5);
+  const question = ResourceModel.create({
+    'id': '569906aacea8416665209d53',
+    type: QUESTION_TYPES.fib,
+    body: 'sqrt[]{25} = [] * []',
+    hints: [],
+    explanation: 'Sample explanation text',
+    answers: Ember.A([
+      AnswerModel.create({
+        value: '5',
+        text: '5'
+      }),
+      AnswerModel.create({
+        value: '1',
+        text: '1'
+      })
+    ]),
+    sequence:1,
+    hasAnswers: true
+  });
+
+  const answers = [{value:'3'},{value:'2'}];
+  this.on('changeAnswer', function (question, answer) {
+    assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
+  });
+  this.on('loadAnswer', function (question, answer) {
+    assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
+  });
+  this.set('question', question);
+  this.set('userAnswer', [{value:'3'},{value:'2'}]);
+  this.render(hbs`{{player/questions/qz-fib question=question
+                    userAnswer=userAnswer
+                    onAnswerChanged='changeAnswer'
+                    onAnswerLoaded='loadAnswer'}}`);
+
+  var $component = this.$(); //component dom element
+  assert.equal($component.find('.fib-answers input').length,2, 'Incorrect number of inputs');
+  assert.equal($component.find('.fib-answers input:eq(0)').val(), '3', 'Wrong answer for input 1');
+  assert.equal($component.find('.fib-answers input:eq(1)').val(), '2', 'Wrong answer for input 2');
+
+});
+
 test('Set two questions', function(assert) {
   assert.expect(2);
 

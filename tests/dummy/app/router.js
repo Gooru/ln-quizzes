@@ -25,6 +25,9 @@ Router.map(function() {
     this.route('class', { path: '/class/:classId' }, function() {
       this.route('course-map');
     });
+    this.route('independent', { path: '/course/:courseId'}, function() {
+      this.route('course-map');
+    });
   });
 });
 

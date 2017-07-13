@@ -208,3 +208,5 @@ export const RESERVED_WORDS = [
 
 export const DEFAULT_AVAILABLE_TIME = '12:00 am';
 export const DEFAULT_DUE_TIME = '11:30 pm';
+
+export const FIB_REGEX = /\[](?!{)/;

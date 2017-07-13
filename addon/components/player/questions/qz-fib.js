@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import QuestionComponent from 'quizzes-addon/components/player/questions/qz-question';
+import { FIB_REGEX } from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Fill in the blank
@@ -43,7 +44,7 @@ export default QuestionComponent.extend({
     let readOnly = component.get('readOnly');
     let disabled = readOnly ? 'disabled': '';
     // matches [] but not []{, which indicates a malformed sqrt
-    let regex = /\[](?!{)/;
+    let regex = FIB_REGEX;
 
     if (component.get('hasUserAnswer')) {
       let userAnswer = component.get('userAnswer');

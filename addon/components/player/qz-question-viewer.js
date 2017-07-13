@@ -2,8 +2,10 @@ import Ember from 'ember';
 import {
   KEY_CODES,
   ASSESSMENT_SHOW_VALUES,
-  FEEDBACK_EMOTION_VALUES
+  FEEDBACK_EMOTION_VALUES,
+  FIB_REGEX
 } from 'quizzes-addon/config/quizzes-config';
+
 
 /**
  * Player question viewer
@@ -170,7 +172,7 @@ export default Ember.Component.extend({
     }
 
     if(component.get('question.isFIB')) {
-      let regex = /\[](?!{)/g;
+      let regex = new RegExp(FIB_REGEX.source, 'g') ;
       text = component.get('question.body').replace(regex, '_______');
     }
     return text;

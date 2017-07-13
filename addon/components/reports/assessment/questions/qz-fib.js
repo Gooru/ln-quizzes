@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import QuestionMixin from 'quizzes-addon/mixins/reports/assessment/questions/question';
+import { FIB_REGEX } from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Fill in the blank
@@ -26,7 +27,7 @@ export default Ember.Component.extend(QuestionMixin, {
     let component = this;
     let question = component.get('question');
     let questionText = question.get('question.body');
-    let questionTextParts = questionText.split('[]');
+    let questionTextParts = questionText.split(FIB_REGEX);
     let userAnswers = component.get('userAnswer');
     let anonymous = component.get('anonymous');
     let correctAnswers = question.get('question.correctAnswer');

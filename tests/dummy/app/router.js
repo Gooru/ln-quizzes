@@ -22,7 +22,7 @@ Router.map(function() {
   this.route('assignments', { path: '/profile/:profileId' });
 
   this.route('student-independent-learning', function() {
-    this.route('courses');
+    this.route('assessments');
   });
 
   this.route('student', function() {

@@ -21,6 +21,10 @@ Router.map(function() {
   this.route('assign', { path: '/assessment/:assessmentId' });
   this.route('assignments', { path: '/profile/:profileId' });
 
+  this.route('student-independent-learning', function() {
+    this.route('courses');
+  });
+
   this.route('student', function() {
     this.route('class', { path: '/class/:classId' }, function() {
       this.route('course-map');

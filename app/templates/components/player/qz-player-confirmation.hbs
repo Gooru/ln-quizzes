@@ -37,14 +37,18 @@
       {{#if noMoreAttempts}}
         {{#if context.classId}}
           {{#link-to 'student.class.course-map' context.classId class="btn btn-default back" tagName='button'}} {{t 'common.back'}} {{/link-to}}
-        {{else}}
+        {{else if context.courseId}}
           {{#link-to 'student.independent.course-map' context.courseId class="btn btn-default back" tagName='button'}} {{t 'common.back'}} {{/link-to}}
+        {{else}}
+          {{#link-to 'student-independent-learning.courses' class="btn btn-default back" tagName='button'}} {{t 'common.back'}} {{/link-to}}
         {{/if}}
       {{else}}
         {{#if context.classId}}
           {{#link-to 'student.class.course-map' context.classId class="btn btn-default cancel" tagName='button'}} {{t 'common.cancel'}} {{/link-to}}
-        {{else}}
+        {{else if context.courseId}}
           {{#link-to 'student.independent.course-map' context.courseId class="btn btn-default cancel" tagName='button'}} {{t 'common.cancel'}} {{/link-to}}
+        {{else}}
+          {{#link-to 'student-independent-learning.courses' class="btn btn-default cancel" tagName='button'}} {{t 'common.cancel'}} {{/link-to}}
         {{/if}}
         <button type="button" class="btn btn-primary {{if context.hasStarted "continue" "start"}}" {{action 'start'}} disabled={{disableStart}}>{{if context.hasStarted (t 'qz-assessment-confirmation.continue') (t 'qz-assessment-confirmation.start')}}</button>
       {{/if}}

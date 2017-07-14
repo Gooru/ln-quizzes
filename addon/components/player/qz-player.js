@@ -76,14 +76,14 @@ export default Ember.Component.extend(ModalMixin, {
       const collection = component.get('collection');
       let contextResult = component.get('contextResult');
       let resourceResult = component.get('resourceResult');
-      component.saveResourceResult(null, contextResult, resourceResult).then(() => {
-        if (collection.get('isAssessment')) {
-          //open confirmation modal
-          component.finishConfirm();
-        } else {
-          //finishes the last resource
-          component.finishCollection();
-      }});
+      component.saveResourceResult(null, contextResult, resourceResult);
+      if (collection.get('isAssessment')) {
+        //open confirmation modal
+        component.finishConfirm();
+      } else {
+        //finishes the last resource
+        component.finishCollection();
+      }
     },
 
     /**
@@ -432,7 +432,10 @@ export default Ember.Component.extend(ModalMixin, {
       promise = (firstTime ? Ember.RSVP.resolve() :
         component.get('contextService').moveToResource(resourceId, contextId, resourceResult, eventContext)
           .then(result => resourceResult.set('score', result.score)));
-      promise = promise.then(() => component.decrementProperty('resourceEventCount'));
+      promise = promise.then(
+        () => component.decrementProperty('resourceEventCount'),
+        () => component.decrementProperty('resourceEventCount')
+      );
     }
     return promise;
   },

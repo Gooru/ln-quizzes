@@ -76,14 +76,14 @@ export default Ember.Component.extend(ModalMixin, {
       const collection = component.get('collection');
       let contextResult = component.get('contextResult');
       let resourceResult = component.get('resourceResult');
-      component.saveResourceResult(null, contextResult, resourceResult).then(() => {
-        if (collection.get('isAssessment')) {
-          //open confirmation modal
-          component.finishConfirm();
-        } else {
-          //finishes the last resource
-          component.finishCollection();
-      }});
+      component.saveResourceResult(null, contextResult, resourceResult);
+      if (collection.get('isAssessment')) {
+        //open confirmation modal
+        component.finishConfirm();
+      } else {
+        //finishes the last resource
+        component.finishCollection();
+      }
     },
 
     /**
@@ -183,6 +183,11 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {EventContext} eventContext
    */
   eventContext: null,
+
+  /**
+   * @property {Boolean} sendContextFinish
+   */
+  sendContextFinish: false,
 
   /**
    * Is Assessment
@@ -341,18 +346,9 @@ export default Ember.Component.extend(ModalMixin, {
    * Saves an assessment result
    */
   finishCollection: function() {
-    const component = this;
-    let contextResult = component.get('contextResult');
-    let contextId = contextResult.get('contextId');
-    let eventContext = component.get('eventContext');
     // Disable navigation so resource events are not called after finishing
-    component.set('isNavigationDisabled', true);
-    while(component.get('resourceEventCount') > 0) {
-      // Wait for resource events to finish before calling the context event
-    }
-    let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
-      component.get('contextService').finishContext(contextId, eventContext);
-    return promise.then(() => this.get('onFinish') && this.sendAction('onFinish'));
+    this.set('isNavigationDisabled', true);
+    this.set('sendContextFinish', true);
   },
 
   /**
@@ -436,7 +432,10 @@ export default Ember.Component.extend(ModalMixin, {
       promise = (firstTime ? Ember.RSVP.resolve() :
         component.get('contextService').moveToResource(resourceId, contextId, resourceResult, eventContext)
           .then(result => resourceResult.set('score', result.score)));
-      promise = promise.then(() => component.decrementProperty('resourceEventCount'));
+      promise = promise.then(
+        () => component.decrementProperty('resourceEventCount'),
+        () => component.decrementProperty('resourceEventCount')
+      );
     }
     return promise;
   },
@@ -480,5 +479,23 @@ export default Ember.Component.extend(ModalMixin, {
         });
     }
     return promise;
-  }
+  },
+
+  // -------------------------------------------------------------------------
+  // Observers
+  /**
+   * Observes to send the finish event when the event count reaches zero
+   */
+  onEventCountChange: function() {
+    const component = this;
+    if (component.get('resourceEventCount') === 0 && component.get('sendContextFinish')) {
+      let contextResult = component.get('contextResult');
+      let contextId = contextResult.get('contextId');
+      let eventContext = component.get('eventContext');
+      let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
+        component.get('contextService').finishContext(contextId, eventContext);
+      promise.then(() => component.get('onFinish') && component.sendAction('onFinish'));
+    }
+  }.observes('resourceEventCount', 'sendContextFinish')
+
 });

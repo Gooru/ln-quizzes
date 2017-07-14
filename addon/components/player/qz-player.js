@@ -185,6 +185,11 @@ export default Ember.Component.extend(ModalMixin, {
   eventContext: null,
 
   /**
+   * @property {Boolean} sendContextFinish
+   */
+  sendContextFinish: false,
+
+  /**
    * Is Assessment
    * @property {boolean}
    */
@@ -341,18 +346,9 @@ export default Ember.Component.extend(ModalMixin, {
    * Saves an assessment result
    */
   finishCollection: function() {
-    const component = this;
-    let contextResult = component.get('contextResult');
-    let contextId = contextResult.get('contextId');
-    let eventContext = component.get('eventContext');
     // Disable navigation so resource events are not called after finishing
-    component.set('isNavigationDisabled', true);
-    while(component.get('resourceEventCount') > 0) {
-      // Wait for resource events to finish before calling the context event
-    }
-    let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
-      component.get('contextService').finishContext(contextId, eventContext);
-    return promise.then(() => this.get('onFinish') && this.sendAction('onFinish'));
+    this.set('isNavigationDisabled', true);
+    this.set('sendContextFinish', true);
   },
 
   /**
@@ -480,5 +476,23 @@ export default Ember.Component.extend(ModalMixin, {
         });
     }
     return promise;
-  }
+  },
+
+  // -------------------------------------------------------------------------
+  // Observers
+  /**
+   * Observes to send the finish event when the event count reaches zero
+   */
+  onEventCountChange: function() {
+    const component = this;
+    if (component.get('resourceEventCount') === 0 && component.get('sendContextFinish')) {
+      let contextResult = component.get('contextResult');
+      let contextId = contextResult.get('contextId');
+      let eventContext = component.get('eventContext');
+      let promise = !component.get('saveEnabled') ? Ember.RSVP.resolve() :
+        component.get('contextService').finishContext(contextId, eventContext);
+      promise.then(() => component.get('onFinish') && component.sendAction('onFinish'));
+    }
+  }.observes('resourceEventCount', 'sendContextFinish')
+
 });

@@ -35,7 +35,7 @@ export default Ember.Object.extend({
    */
   normalizeReportDataEvent: function (reportEvent) {
     let summary = reportEvent.eventSummary;
-    let taxonomySumary = reportEvent.taxonomySummary;
+    let taxonomySummary = reportEvent.taxonomySummary;
     let reportDataEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
       attemptId: reportEvent.attemptId,
       collectionId: reportEvent.collectionId,
@@ -44,7 +44,7 @@ export default Ember.Object.extend({
       profileId: reportEvent.profileId,
       resourceResults: this.get('contextSerializer').normalizeResourceResults(reportEvent.events),
       isAttemptFinished: reportEvent.isComplete,
-      submittedAt: reportEvent.createdDate
+      submittedAt: reportEvent.updatedDate
     });
     if (summary) {
       reportDataEvent.setProperties({
@@ -55,10 +55,10 @@ export default Ember.Object.extend({
         totalTimeSpent: summary.totalTimeSpent
       });
     }
-    if (taxonomySumary) {
+    if (taxonomySummary) {
       let learningTargets = [];
-      if (Ember.isArray(taxonomySumary)) {
-        learningTargets = taxonomySumary.map(function(standard) {
+      if (Ember.isArray(taxonomySummary)) {
+        learningTargets = taxonomySummary.map(function(standard) {
           return LearningTarget.create({
             id: standard.taxonomyId,
             mastery: standard.averageScore,

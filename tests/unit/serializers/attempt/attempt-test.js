@@ -41,6 +41,7 @@ test('normalizeReportEvents', function(assert) {
     currentResourceId: 'current-resource-id',
     profileId: 'student-id-1',
     createdDate: 1,
+    updatedDate: 3,
     eventSummary: {
       averageReaction: 3,
       averageScore: 66,
@@ -62,6 +63,7 @@ test('normalizeReportEvents', function(assert) {
     isComplete: true
   }, {
     createdDate: 2,
+    updatedDate: 4,
     currentResourceId: 'current-resource-id',
     profileId: 'student-id-2',
     events: [],
@@ -75,7 +77,7 @@ test('normalizeReportEvents', function(assert) {
   assert.equal(response[0].get('resourceResults')[0].get('resourceId'), 'resource-id-1', 'Wrong first resource id');
   assert.equal(response[0].get('resourceResults')[1].get('resourceId'), 'resource-id-2', 'Wrong second resource id');
   assert.equal(response[0].get('averageReaction'), 3, 'Wrong first average reaction');
-  assert.equal(response[0].get('submittedAt'), 1, 'Wrong first submitted at value');
+  assert.equal(response[0].get('submittedAt'), 3, 'Wrong first submitted at value');
   assert.equal(response[0].get('averageScore'), 66, 'Wrong first average score');
   assert.equal(response[0].get('totalAnswered'), 3, 'Wrong first total answered');
   assert.equal(response[0].get('totalCorrect'), 2, 'Wrong first total correct');
@@ -84,7 +86,7 @@ test('normalizeReportEvents', function(assert) {
   assert.equal(response[1].get('currentResourceId'), 'current-resource-id', 'Wrong second current resource');
   assert.equal(response[1].get('profileId'), 'student-id-2', 'Wrong second student id');
   assert.equal(response[1].get('resourceResults').length, 0, 'Wrong second results length');
-  assert.equal(response[1].get('submittedAt'), 2, 'Wrong second submitted at value');
+  assert.equal(response[1].get('submittedAt'), 4, 'Wrong second submitted at value');
   assert.equal(response[1].get('averageReaction'), 0, 'Wrong second average reaction');
   assert.equal(response[1].get('averageScore'), 0, 'Wrong second average score');
   assert.equal(response[1].get('totalAnswered'), 0, 'Wrong second total answered');
@@ -102,6 +104,7 @@ test('normalizeReportEvent', function(assert) {
     currentResourceId: 'current-resource-id',
     profileId: 'student-id-1',
     createdDate: 1,
+    updatedDate: 2,
     eventSummary: {
       averageReaction: 3,
       averageScore: 66,
@@ -135,7 +138,7 @@ test('normalizeReportEvent', function(assert) {
   assert.equal(response.get('resourceResults').length, 2, 'Wrong results length');
   assert.equal(response.get('resourceResults')[0].get('resourceId'), 'resource-id-1', 'Wrong resource id');
   assert.equal(response.get('resourceResults')[1].get('resourceId'), 'resource-id-2', 'Wrong resource id');
-  assert.equal(response.get('submittedAt'), 1, 'Wrong submitted at value');
+  assert.equal(response.get('submittedAt'), 2, 'Wrong submitted at value');
   assert.equal(response.get('averageReaction'), 3, 'Wrong average reaction');
   assert.equal(response.get('averageScore'), 66, 'Wrong average score');
   assert.equal(response.get('totalAnswered'), 3, 'Wrong total answered');

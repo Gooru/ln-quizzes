@@ -4,6 +4,7 @@ import ContextResult from 'quizzes-addon/models/result/context';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import ResourceResult from 'quizzes-addon/models/result/resource';
 import Resource from 'quizzes-addon/models/resource/resource';
+import Collection from 'quizzes-addon/models/collection/collection';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 moduleForComponent('reports/qz-assessment-report', 'Unit | Component | reports/qz assessment report', {
@@ -110,4 +111,19 @@ test('resultsQuestions, resultsOpenEnded and resultsResources', function(assert)
   assert.equal(component.get('resultsOpenEnded')[0].get('resource.id'), 'open-ended-1', 'Open Ended question id should match');
   assert.equal(component.get('resultsResources').length, 1, 'Length of resultsResources should be 1');
   assert.equal(component.get('resultsResources')[0].get('resource.id'), 'resource-1', 'Resource id should match');
+});
+
+test('isAssessment', function(assert) {
+  const collection = Collection.create({
+    id: 'collection-id',
+    isAssessment: true,
+    title: 'Sample Assessment Name'
+  });
+
+  let contextResult = ContextResult.create({
+    isRealTime: true,
+    collection: collection
+  });
+  let component = this.subject({ contextResult });
+  assert.ok(component.get('isAssessment'), 'Should be true');
 });

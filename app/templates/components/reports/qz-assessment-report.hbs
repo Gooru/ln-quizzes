@@ -13,7 +13,7 @@
   </div>
 
 {{else}}
-  {{#if contextResult.hasMastery}}
+  {{#if (and contextResult.hasMastery isAssessment)}}
     {{reports.assessment.qz-mastery
     learningTargets=contextResult.mastery
     assessmentResult=contextResult

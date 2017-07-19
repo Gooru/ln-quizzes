@@ -8,6 +8,7 @@ moduleForComponent('player/qz-player-confirmation', 'Integration | Component | p
 });
 
 test('Player confirmation Layout No more attempts', function(assert) {
+  assert.expect(8);
   let attempts = 2;
   let collection = Collection.create({
     settings:{
@@ -18,22 +19,29 @@ test('Player confirmation Layout No more attempts', function(assert) {
   let context = Context.create({
     title:'context-title'
   });
+
+  this.on('closePlayer', function(){
+    assert.ok(true, 'Back should be called');
+  });
+
   this.set('attempts',attempts);
   this.set('context',context);
   this.set('collection',collection);
-  this.render(hbs`{{player/qz-player-confirmation attempts=attempts collection=collection context=context}}`);
+  this.render(hbs`{{player/qz-player-confirmation attempts=attempts collection=collection context=context onClosePlayer='closePlayer'}}`);
   var $component = this.$();
+  let $back = $component.find('.qz-player-confirmation .panel-body .actions .back');
   assert.ok($component.find('.qz-player-confirmation').length,'Player confirmation component should appear');
   assert.ok($component.find('.qz-player-confirmation .panel-heading h3').length,'Missing title');
   assert.ok($component.find('.qz-player-confirmation .panel-body .description').length,'Missing description');
   assert.ok($component.find('.qz-player-confirmation .panel-body .no-more-attempts').length,'Missing no more attempts lead');
-  assert.ok($component.find('.qz-player-confirmation .panel-body .actions .back').length,'Back button should appear');
+  assert.ok($back.length,'Back button should appear');
   assert.notOk($component.find('.qz-player-confirmation .panel-body .actions .start').length,'Start button should not appear');
   assert.notOk($component.find('.qz-player-confirmation .panel-body .actions .continue').length,'Continue button should not appear');
+  $back.click();
 });
 
 test('Player confirmation Layout has more attempts', function(assert) {
-
+  assert.expect(5);
   let attempts = 2;
   let collection = Collection.create({
     settings:{
@@ -47,12 +55,17 @@ test('Player confirmation Layout has more attempts', function(assert) {
   this.set('attempts',attempts);
   this.set('context',context);
   this.set('collection',collection);
-  this.render(hbs`{{player/qz-player-confirmation attempts=attempts collection=collection context=context}}`);
+  this.on('closePlayer', function(){
+    assert.ok(true, 'Cancel should be called');
+  });
+  this.render(hbs`{{player/qz-player-confirmation attempts=attempts collection=collection context=context onClosePlayer='closePlayer'}}`);
   var $component = this.$();
+  let $cancel = $component.find('.qz-player-confirmation .panel-body .actions button.cancel');
   assert.notOk($component.find('.qz-player-confirmation .panel-body .no-more-attempts').length,'Missing no more attempts lead');
   assert.equal($component.find('.qz-player-confirmation .panel-body .actions button').prop('disabled'),false,'Start button should not be disabled');
-  assert.ok($component.find('.qz-player-confirmation .panel-body .actions button.cancel').length,'Cancel button should be displayed');
+  assert.ok($cancel.length,'Cancel button should be displayed');
   assert.notOk($component.find('.qz-player-confirmation .panel-body .actions .back').length,'Back button should not appear');
+  $cancel.click();
 });
 
 test('Player confirmation Layout Not bidirectional', function(assert) {

@@ -1,5 +1,5 @@
 {{#if showConfirmation}}
-  {{player.qz-player-confirmation attempts=attempts collection=collection context=context onStartPlayer='openPlayer'}}
+  {{player.qz-player-confirmation attempts=attempts collection=collection context=context onStartPlayer='openPlayer' onClosePlayer="closePlayer"}}
 {{else}}
     <div class="component player">
       {{#unless showReport}}

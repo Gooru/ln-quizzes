@@ -34,12 +34,10 @@
       </p>
     </div>
     <div class="actions">
-      {{#if noMoreAttempts}}
-        <button type="button" class="btn btn-default back" {{action 'cancel'}} > {{t 'common.back'}}</button>
-      {{else}}
-        <button type="button" class="btn btn-default cancel" {{action 'cancel'}} > {{t 'common.cancel'}}</button>
+      <button type="button" class="btn btn-default {{if noMoreAttempts "back" "cancel"}}" {{action 'cancel'}} > {{if noMoreAttempts (t 'common.back') (t 'common.cancel')}}</button>
+      {{#unless noMoreAttempts}}
         <button type="button" class="btn btn-primary {{if context.hasStarted "continue" "start"}}" {{action 'start'}} disabled={{disableStart}}>{{if context.hasStarted (t 'qz-assessment-confirmation.continue') (t 'qz-assessment-confirmation.start')}}</button>
-      {{/if}}
+      {{/unless}}
     </div>
   </div>
 </div>

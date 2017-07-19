@@ -17,10 +17,6 @@ export default Ember.Component.extend({
     }
   },
 
-  didInsertElement: function(){
-    this.get('context');
-  },
-
   // -------------------------------------------------------------------------
   // Properties
 

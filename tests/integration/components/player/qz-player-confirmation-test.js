@@ -21,7 +21,7 @@ test('Player confirmation Layout No more attempts', function(assert) {
   });
 
   this.on('closePlayer', function(){
-    assert.ok(true, 'Back should be call');
+    assert.ok(true, 'Back should be called');
   });
 
   this.set('attempts',attempts);
@@ -56,7 +56,7 @@ test('Player confirmation Layout has more attempts', function(assert) {
   this.set('context',context);
   this.set('collection',collection);
   this.on('closePlayer', function(){
-    assert.ok(true, 'Cancel should be call');
+    assert.ok(true, 'Cancel should be called');
   });
   this.render(hbs`{{player/qz-player-confirmation attempts=attempts collection=collection context=context onClosePlayer='closePlayer'}}`);
   var $component = this.$();

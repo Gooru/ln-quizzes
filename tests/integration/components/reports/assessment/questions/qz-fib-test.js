@@ -10,7 +10,7 @@ moduleForComponent('reports/assessment/questions/qz-fib', 'Integration | Compone
   integration: true
 });
 
-test('Fill in the blank Correct Answer', function(assert) {
+test('Fill in the blank Correct Answer, even with case differences', function(assert) {
 
   var question = Ember.Object.create({
     question:ResourceModel.create({
@@ -29,8 +29,8 @@ test('Fill in the blank Correct Answer', function(assert) {
         })
       ]),
       correctAnswer:Ember.A([
-        AnswerModel.create({ value: 'green'}),
-        AnswerModel.create({ value: 'blue'})
+        AnswerModel.create({ value: 'Green'}),
+        AnswerModel.create({ value: 'Blue'})
       ]),
       sequence:1
     })

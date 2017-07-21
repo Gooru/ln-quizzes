@@ -91,7 +91,7 @@ test('answers show user answer anonymous', function(assert) {
   assert.equal(component.get('answer')[1].class,'answer anonymous','Class should be anonymous');
 });
 
-test('answers show user answer correct', function(assert) {
+test('answers show user answer correct, even with case differences', function(assert) {
   let component = this.subject();
   var question = Ember.Object.create({
     question:ResourceModel.create({
@@ -104,7 +104,7 @@ test('answers show user answer correct', function(assert) {
         })
       ]),
       correctAnswer:Ember.A([
-        AnswerModel.create({ value: 'green'})
+        AnswerModel.create({ value: 'Green'})
       ]),
       sequence:1
     })

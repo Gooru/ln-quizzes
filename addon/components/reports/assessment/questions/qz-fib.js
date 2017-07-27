@@ -36,9 +36,14 @@ export default Ember.Component.extend(QuestionMixin, {
       userAnswers = question.get('question.correctAnswer');
     }
 
+    correctAnswers = correctAnswers.map(function (correctAnswer) {
+      correctAnswer.normalizedValue = correctAnswer.value.toLowerCase();
+      return correctAnswer;
+    });
+
     let answers = userAnswers.map(function(answer){
       let userAnswer = userAnswers.findBy('value', answer.value);
-      let correctAnswer = correctAnswers.findBy('value', userAnswer.value);
+      let correctAnswer = correctAnswers.findBy('normalizedValue', userAnswer.value.toLowerCase());
       let correct = correctAnswer && correctAnswers.indexOf(correctAnswer) === userAnswers.indexOf(userAnswer);
       let elementClass = (anonymous) ? 'anonymous' : ((correct) ?'correct':'incorrect');
       return {

@@ -11,6 +11,9 @@ export default Ember.Component.extend({
   actions: {
     start(){
       this.sendAction('onStartPlayer');
+    },
+    cancel(){
+      this.sendAction('onClosePlayer');
     }
   },
 

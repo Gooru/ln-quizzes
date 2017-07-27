@@ -143,5 +143,10 @@ export default Ember.Component.extend({
   resultsResources: Ember.computed('orderedQuestions.@each.updated', function() {
     return this.get('orderedQuestions')
       .filter(resourceResult => resourceResult.get('isResource'));
-  })
+  }),
+
+  /**
+   * @property {boolean} isAssessment - if collection is an Assessment
+   */
+  isAssessment: Ember.computed.alias('contextResult.collection.isAssessment')
 });

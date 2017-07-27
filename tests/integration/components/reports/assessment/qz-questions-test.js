@@ -166,6 +166,7 @@ test('Questions Layout', function (assert) {
       score: 100,
       resource: Resource.create({
         body: 'This is a question 1',
+        description: 'description-1',
         type: QUESTION_TYPES.singleChoice,
         sequence: 1,
         correctAnswer: [{
@@ -182,6 +183,7 @@ test('Questions Layout', function (assert) {
       score: 100,
       resource: Resource.create({
         body: 'This is a question 2',
+        description: 'description-2',
         type: QUESTION_TYPES.singleChoice,
         sequence: 3,
         correctAnswer: [{
@@ -220,6 +222,8 @@ test('Questions Layout', function (assert) {
   T.exists(assert, $component.find('table thead th.header.reaction'), 'Missing reaction header');
   T.exists(assert, $component.find('table tbody td.number-question'), 'Missing number column');
   assert.equal(T.text($component.find('table tbody td.number-question:eq(1)')), '3', 'Wrong question number for question 2');
+  assert.equal(T.text($component.find('table tbody td.question-text:eq(0)')), 'description-1', 'First question description should match');
+  assert.equal(T.text($component.find('table tbody td.question-text:eq(1)')), 'description-2', 'Second question description should match');
   T.exists(assert, $component.find('table tbody td.question-text'), 'Missing text column');
   T.exists(assert, $component.find('table tbody td.question-answer'), 'Missing answer column');
   T.exists(assert, $component.find('table tbody td.question-answer:eq(0) .qz-single-choice'), 'Missing qz-single-choice component');

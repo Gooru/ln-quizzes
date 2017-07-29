@@ -1,24 +1,23 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['gru-slide-up-menu'],
 
-  actions:{
+  actions: {
     /**
      * Close mobile menu
      */
-    closeMenu:function(){
-      this.set('visible',false);
+    closeMenu: function() {
+      this.set('visible', false);
     },
     /**
      * Send option action to his parent
      */
-    sendOptionAction:function(option){
-      this.sendAction(option.action,option.object);
+    sendOptionAction: function(option) {
+      this.sendAction(option.action, option.object);
     }
   },
   // -------------------------------------------------------------------------
@@ -26,25 +25,32 @@ export default Ember.Component.extend({
   /**
    * DidInsertElement ember event
    */
-  didInsertElement: function(){
-    !this.get('visible') ? $('.gru-slide-up-menu').addClass('hide'): '';
+  didInsertElement: function() {
+    !this.get('visible') ? $('.gru-slide-up-menu').addClass('hide') : '';
   },
 
   setVisible: Ember.observer('visible', function() {
-    let $menu = $('.gru-slide-up-menu .slide-menu');
-    let component = this;
-    if(component.get('visible')) {
+    const $menu = $('.gru-slide-up-menu .slide-menu');
+    const component = this;
+    if (component.get('visible')) {
       component.toggleVisibility();
-      component.set('menuHeight',`-${$menu.innerHeight()}px`);
-      $menu.css('bottom',component.get('menuHeight')).animate({
-        bottom: '0'
-      }, 600);
+      component.set('menuHeight', `-${$menu.innerHeight()}px`);
+      $menu.css('bottom', component.get('menuHeight')).animate(
+        {
+          bottom: '0'
+        },
+        600
+      );
     } else {
-      $menu.animate({
-        bottom: component.get('menuHeight')
-      }, 600, function() {
-        component.toggleVisibility();
-      });
+      $menu.animate(
+        {
+          bottom: component.get('menuHeight')
+        },
+        600,
+        function() {
+          component.toggleVisibility();
+        }
+      );
     }
   }),
   // -------------------------------------------------------------------------
@@ -52,7 +58,7 @@ export default Ember.Component.extend({
   /**
    * Menu height on pixels
    */
-  menuHeight:0,
+  menuHeight: 0,
 
   /**
    * Indicate if the menu is visible
@@ -61,7 +67,7 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Methods
-  toggleVisibility:function(){
+  toggleVisibility: function() {
     $('.gru-slide-up-menu').toggleClass('hide');
     $('html,body').toggleClass('disabled-screen');
   }

@@ -37,12 +37,14 @@ import Ember from 'ember';
 export function splitWithIndex(text, delim) {
   const regex = new RegExp(delim);
   let remainingText = text;
-  let result = [];
+  const result = [];
   let index = 0;
   let nextSplit = regex.exec(remainingText);
-  while(nextSplit) {
-    let currentText = remainingText.slice(0, nextSplit.index);
-    remainingText = remainingText.slice(nextSplit.index).replace(nextSplit[0], '');
+  while (nextSplit) {
+    const currentText = remainingText.slice(0, nextSplit.index);
+    remainingText = remainingText
+      .slice(nextSplit.index)
+      .replace(nextSplit[0], '');
     result.push({
       text: currentText,
       index
@@ -50,7 +52,7 @@ export function splitWithIndex(text, delim) {
     index += nextSplit.index + nextSplit[0].length;
     nextSplit = regex.exec(remainingText);
   }
-  if(index < text.length) {
+  if (index < text.length) {
     result.push({
       text: remainingText,
       index
@@ -66,8 +68,8 @@ export function splitWithIndex(text, delim) {
  * @returns {{index: number, text: string, selected: boolean, correct: boolean}} items
  */
 export function toItems(textList) {
-  return textList.filter(item => !!item.text.trim()).map(
-    item => Ember.Object.create({
+  return textList.filter(item => !!item.text.trim()).map(item =>
+    Ember.Object.create({
       index: item.index + item.text.search(/\S/),
       text: item.text.trim(),
       selected: false

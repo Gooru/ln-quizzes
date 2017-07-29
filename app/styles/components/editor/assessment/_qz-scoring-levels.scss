@@ -1,18 +1,18 @@
-.editor.assessment.qz-scoring-levels{
+.editor.assessment.qz-scoring-levels {
   @include flexbox;
   width: 100%;
-  .level{
+  .level {
     width: 69%;
-    .levels{
+    .levels {
       @include flexbox;
       .scale {
         margin-top: 10px;
-        .line{
+        .line {
           border-left: 1px solid $gray-light;
           min-height: 134px;
           margin-left: 15px;
         }
-        .arrow-down{
+        .arrow-down {
           margin-left: 10px;
           width: 0;
           height: 0;
@@ -21,25 +21,25 @@
           border-top: 5px solid $gray-light;
         }
       }
-      .level-list{
+      .level-list {
         width: 100%;
         margin-left: 16px;
-        input{
+        input {
           font-size: $font-size-base;
         }
       }
     }
   }
-  .points{
+  .points {
     margin-left: 30px;
-    .point-list{
+    .point-list {
       padding-left: 45px;
-      div{
+      div {
         @include flexbox;
-        .gru-input.point{
+        .gru-input.point {
           width: 45%;
         }
-        .btn{
+        .btn {
           margin-left: 27%;
           background-color: transparent;
           font-size: 24px;
@@ -49,10 +49,10 @@
       }
     }
   }
-  .btn-new-level{
+  .btn-new-level {
     margin-left: 65px;
     font-size: $font-size-base;
-    i{
+    i {
       font-size: $font-size-h4;
       vertical-align: bottom;
     }

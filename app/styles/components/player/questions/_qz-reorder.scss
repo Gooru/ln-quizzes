@@ -2,17 +2,17 @@
   .sortable {
     list-style: none;
     padding: 0;
-    li{
+    li {
       cursor: move;
     }
-    &.disabled{
+    &.disabled {
       li {
         cursor: $cursor-disabled;
       }
     }
   }
   .ui-sortable-handle {
-    position:relative;
+    position: relative;
     border: 1px dashed $light-300;
     margin-top: 10px;
     border-radius: 3%;

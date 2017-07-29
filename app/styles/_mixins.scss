@@ -1,6 +1,5 @@
 @mixin make-padding($total, $class, $increaseBy) {
   @for $i from 0 through $total {
-
     @if $class == null {
       .pa-#{$i} {
         padding: $i * $increaseBy;
@@ -21,10 +20,10 @@
       .pa-right-#{$i} {
         padding-right: $i * $increaseBy;
       }
-    }
-    @else {
+    } @else {
       .pa-#{$class}-#{$i} {
-        padding: $i * $increaseBy $i * $increaseBy $i * $increaseBy $i * $increaseBy;
+        padding: $i * $increaseBy $i * $increaseBy $i * $increaseBy $i *
+          $increaseBy;
       }
 
       .pa-#{$class}-top-#{$i} {
@@ -48,7 +47,6 @@
 
 @mixin make-margin($total, $class, $increaseBy) {
   @for $i from 0 through $total {
-
     @if $class == null {
       .ma-#{$i} {
         margin: $i * $increaseBy;
@@ -69,10 +67,10 @@
       .ma-right-#{$i} {
         margin-right: $i * $increaseBy;
       }
-    }
-    @else {
+    } @else {
       .ma-#{$class}-#{$i} {
-        margin: $i * $increaseBy $i * $increaseBy $i * $increaseBy $i * $increaseBy;
+        margin: $i * $increaseBy $i * $increaseBy $i * $increaseBy $i *
+          $increaseBy;
       }
 
       .ma-#{$class}-top-#{$i} {
@@ -119,24 +117,44 @@
   transition: transform 0.5s ease-in 0s;
 }
 
-
 @mixin respond-to($media) {
   @if $media == xs {
-    @media only screen and (max-width: $screen-xs-max) { @content; }
+    @media only screen and (max-width: $screen-xs-max) {
+      @content;
+    }
   } @else if $media == sm {
-    @media only screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { @content; }
+    @media only screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      @content;
+    }
   } @else if $media == md {
-    @media only screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) { @content; }
+    @media only screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      @content;
+    }
   } @else if $media == lg {
-    @media only screen and (min-width: $screen-lg-min) { @content; }
+    @media only screen and (min-width: $screen-lg-min) {
+      @content;
+    }
   } @else if $media == xs-to-lg {
-    @media only screen and (min-width: $screen-xs-min) { @content; }
+    @media only screen and (min-width: $screen-xs-min) {
+      @content;
+    }
   } @else if $media == sm-to-lg {
-    @media only screen and (min-width: $screen-sm-min) { @content; }
+    @media only screen and (min-width: $screen-sm-min) {
+      @content;
+    }
   } @else if $media == md-to-lg {
-    @media only screen and (min-width: $screen-md-min) { @content; }
+    @media only screen and (min-width: $screen-md-min) {
+      @content;
+    }
   } @else {
-    @error '$media is not one of the supported media targets, supported media targets are: [xs,sm, md,lg,xs-to-lg,sm-to-lg, md-to-lg]'
+    @error '$media is not one of the supported media targets,
+      supported media targets are: [xs,
+      sm,
+      md,
+      lg,
+      xs-to-lg,
+      sm-to-lg,
+      md-to-lg]';
   }
 }
 //Multi-line Ellipsis using pure CSS as a work around - http://revelry.co/multi-line-ellipsis-using-pure-css
@@ -259,7 +277,6 @@
 
 // Flexbox "Flex" (shorthand)
 @mixin flex($fg: 1, $fs: null, $fb: null) {
-
   // Set a variable to be used by box-flex properties
   $fg-boxflex: $fg;
 
@@ -344,9 +361,17 @@
   align-content: $value;
 }
 
-@mixin linear-gradient($startColor, $endColor){
+@mixin linear-gradient($startColor, $endColor) {
   background: $startColor; /* Old browsers */
-  background: -moz-linear-gradient(left, $startColor 0%, $endColor 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, $startColor 0%,$endColor 100%); /* Chrome10-25,Safari5.1-6 */
+  background: -moz-linear-gradient(
+    left,
+    $startColor 0%,
+    $endColor 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    $startColor 0%,
+    $endColor 100%
+  ); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(-90deg, $startColor 0%, $endColor 100%);
 }

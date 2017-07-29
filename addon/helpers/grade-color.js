@@ -15,12 +15,11 @@ import { getGradeColor } from 'quizzes-addon/utils/utils';
  * @param value - score within the grading scale
  * @returns {String} - hex color string
  */
-
 export function gradeColor(value) {
-  if(value[1]){
-    let color = (value[0] || 'NA');
+  if (value[1]) {
+    const color = value[0] || 'NA';
     return Ember.String.htmlSafe(`${value[1]}: ${getGradeColor(color)}`);
-  }else{
+  } else {
     return Ember.String.htmlSafe(getGradeColor(value[0]));
   }
 }

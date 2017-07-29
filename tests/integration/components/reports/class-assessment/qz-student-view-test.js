@@ -8,12 +8,16 @@ import ReportData from 'quizzes-addon/models/result/report-data';
 import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 import T from 'dummy/tests/helpers/assert';
 
-moduleForComponent('reports/class-assessment/qz-student-view', 'Integration | Component | reports/class assessment/qz student view', {
-  integration: true
-});
+moduleForComponent(
+  'reports/class-assessment/qz-student-view',
+  'Integration | Component | reports/class assessment/qz student view',
+  {
+    integration: true
+  }
+);
 
-test('Layout', function (assert) {
-  let collection = Collection.create({
+test('Layout', function(assert) {
+  const collection = Collection.create({
     resources: [
       Resource.create({
         id: '56a120483b6e7b090501d3e7',
@@ -30,7 +34,7 @@ test('Layout', function (assert) {
     ]
   });
 
-  let reportData = ReportData.create({
+  const reportData = ReportData.create({
     collection,
     reportEvents: [
       ReportDataEvent.create({
@@ -107,35 +111,83 @@ test('Layout', function (assert) {
 
   this.set('reportData', reportData);
 
-  this.render(hbs`{{reports/class-assessment/qz-student-view reportData=reportData}}`);
+  this.render(
+    hbs`{{reports/class-assessment/qz-student-view reportData=reportData}}`
+  );
 
   const $component = this.$();
   T.exists(assert, $component.find('.sort-section'), 'Sort section missing');
-  const $avrgSortBtn =$component.find('.sort-section button.sort-average');
-  const $alphabeticalSortBtn =$component.find('.sort-section button.sort-alphabetical');
+  const $avrgSortBtn = $component.find('.sort-section button.sort-average');
+  const $alphabeticalSortBtn = $component.find(
+    '.sort-section button.sort-alphabetical'
+  );
   T.exists(assert, $avrgSortBtn, 'Missing sort by average');
   T.exists(assert, $alphabeticalSortBtn, 'Missing sort alphabetically');
-  assert.equal($component.find('.qz-student-performance-box').length, 3, 'It should displayed 3 boxes');
+  assert.equal(
+    $component.find('.qz-student-performance-box').length,
+    3,
+    'It should displayed 3 boxes'
+  );
 
-  let $firstStudentPerformanceBox = $component.find('.qz-student-performance-box:first-child');
+  let $firstStudentPerformanceBox = $component.find(
+    '.qz-student-performance-box:first-child'
+  );
   let $firstPanelHeading = $firstStudentPerformanceBox.find('.panel-heading');
-  assert.equal(T.text($firstPanelHeading.find('.name')), 'Lorena Prendas Chavarria', 'Wrong first name');
-  assert.equal(T.text($firstPanelHeading.find('.score')), '100%', 'Wrong first score');
+  assert.equal(
+    T.text($firstPanelHeading.find('.name')),
+    'Lorena Prendas Chavarria',
+    'Wrong first name'
+  );
+  assert.equal(
+    T.text($firstPanelHeading.find('.score')),
+    '100%',
+    'Wrong first score'
+  );
 
-  let $lastStudentPerformanceBox = $component.find('.qz-student-performance-box:last-child');
+  let $lastStudentPerformanceBox = $component.find(
+    '.qz-student-performance-box:last-child'
+  );
   let $lastPanelHeading = $lastStudentPerformanceBox.find('.panel-heading');
-  assert.equal(T.text($lastPanelHeading.find('.name')), 'David Zumbado Alfaro', 'Wrong last name');
-  assert.equal(T.text($lastPanelHeading.find('.score')), '33%', 'Wrong last score');
+  assert.equal(
+    T.text($lastPanelHeading.find('.name')),
+    'David Zumbado Alfaro',
+    'Wrong last name'
+  );
+  assert.equal(
+    T.text($lastPanelHeading.find('.score')),
+    '33%',
+    'Wrong last score'
+  );
 
   $alphabeticalSortBtn.click();
 
-  $firstStudentPerformanceBox = $component.find('.qz-student-performance-box:first-child');
+  $firstStudentPerformanceBox = $component.find(
+    '.qz-student-performance-box:first-child'
+  );
   $firstPanelHeading = $firstStudentPerformanceBox.find('.panel-heading');
-  assert.equal(T.text($firstPanelHeading.find('.name')), 'Andres Charpentier Zuñiga', 'Wrong first alphabetical name');
-  assert.equal(T.text($firstPanelHeading.find('.score')), '67%', 'Wrong first alphabetical score');
+  assert.equal(
+    T.text($firstPanelHeading.find('.name')),
+    'Andres Charpentier Zuñiga',
+    'Wrong first alphabetical name'
+  );
+  assert.equal(
+    T.text($firstPanelHeading.find('.score')),
+    '67%',
+    'Wrong first alphabetical score'
+  );
 
-  $lastStudentPerformanceBox = $component.find('.qz-student-performance-box:last-child');
+  $lastStudentPerformanceBox = $component.find(
+    '.qz-student-performance-box:last-child'
+  );
   $lastPanelHeading = $lastStudentPerformanceBox.find('.panel-heading');
-  assert.equal(T.text($lastPanelHeading.find('.name')), 'Lorena Prendas Chavarria', 'Wrong last alphabetical name');
-  assert.equal(T.text($lastPanelHeading.find('.score')), '100%', 'Wrong last alphabetical score');
+  assert.equal(
+    T.text($lastPanelHeading.find('.name')),
+    'Lorena Prendas Chavarria',
+    'Wrong last alphabetical name'
+  );
+  assert.equal(
+    T.text($lastPanelHeading.find('.score')),
+    '100%',
+    'Wrong last alphabetical score'
+  );
 });

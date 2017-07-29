@@ -17,14 +17,13 @@ export default ResourceComponent.extend({
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-vimeo-resource'],
+  classNames: ['qz-vimeo-resource'],
 
   // -------------------------------------------------------------------------
   // Actions
 
   // -------------------------------------------------------------------------
   // Events
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -42,7 +41,7 @@ export default ResourceComponent.extend({
     const Env = Ember.getOwner(this).resolveRegistration('config:environment');
     var vimeoPlayerUrl = Env.player.vimeoPlayerUrl;
 
-    return vimeoPlayerUrl+ component.getVimeoID(this.get('resource.body'));
+    return vimeoPlayerUrl + component.getVimeoID(this.get('resource.body'));
   }),
 
   // -------------------------------------------------------------------------
@@ -54,12 +53,12 @@ export default ResourceComponent.extend({
    * @returns {{id: number}} id
    */
   getVimeoID: function(text) {
-      const regex = /([^/.]+)$/gm;
+    const regex = /([^/.]+)$/gm;
 
     var match = regex.exec(text);
-    var id ='';
+    var id = '';
     if (match !== null) {
-     id = match[0];
+      id = match[0];
     }
     return id;
   }

@@ -3,7 +3,7 @@ import ModalMixin from 'quizzes-addon/mixins/modal';
 import Profile from 'quizzes-addon/models/profile/profile';
 import { getGradeColor } from 'quizzes-addon/utils/utils';
 
-export default Ember.Component.extend(ModalMixin,{
+export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Dependencies
   /**
@@ -24,44 +24,60 @@ export default Ember.Component.extend(ModalMixin,{
   // -------------------------------------------------------------------------
   // Actions
 
-  actions:{
+  actions: {
     /**
      * Open add student modal
      */
-    addStudent: function () {
-      let assigned = this.get('assignment.assignees');
+    addStudent: function() {
+      const assigned = this.get('assignment.assignees');
       let assignedStudents = [];
       let students = [];
-      if(assigned){
+      if (assigned) {
         assignedStudents = assigned.getEach('id');
-        if(this.get('studentList')){
+        if (this.get('studentList')) {
           students = this.get('studentList').map(function(student) {
-            let studentObject = Profile.create(student);
-            studentObject.set('isAssigned',assignedStudents.includes(student.id));
+            const studentObject = Profile.create(student);
+            studentObject.set(
+              'isAssigned',
+              assignedStudents.includes(student.id)
+            );
             return studentObject;
           });
         }
       }
       this.set('students', students);
 
-      let model = {
+      const model = {
         students: this.get('students'),
         assignment: this.get('assignment'),
-        width:'95%'
+        width: '95%'
       };
-      this.actions.showModal.call(this, 'gru-assign-student-modal',
-        model, null, null, null, false);
+      this.actions.showModal.call(
+        this,
+        'gru-assign-student-modal',
+        model,
+        null,
+        null,
+        null,
+        false
+      );
     },
 
     /**
      * Redirect to real time
      */
-    openRealTime: function () {
-      if(this.get('realTimeURL')){
-        let url = this.get('realTimeURL').replace('{context-id}', this.get('assignment.id'));
+    openRealTime: function() {
+      if (this.get('realTimeURL')) {
+        const url = this.get('realTimeURL').replace(
+          '{context-id}',
+          this.get('assignment.id')
+        );
         window.location.href = url;
       } else {
-        this.get('router').transitionTo('reports.context', this.get('assignment.id'));
+        this.get('router').transitionTo(
+          'reports.context',
+          this.get('assignment.id')
+        );
       }
     },
     /**
@@ -72,7 +88,7 @@ export default Ember.Component.extend(ModalMixin,{
       assignment.set('classId', null);
       this.get('contextService').createContext(assignment).then(({ id }) => {
         if (playerURL) {
-          let url = playerURL.replace('{context-id}', id);
+          const url = playerURL.replace('{context-id}', id);
           window.location.href = url;
         } else {
           this.get('router').transitionTo('player', id);
@@ -82,9 +98,12 @@ export default Ember.Component.extend(ModalMixin,{
     /**
      * Open player
      */
-    openPlayer:function(assignment){
-      if(this.get('playerURL')){
-        let url = this.get('playerURL').replace('{context-id}', assignment.get('id'));
+    openPlayer: function(assignment) {
+      if (this.get('playerURL')) {
+        const url = this.get('playerURL').replace(
+          '{context-id}',
+          assignment.get('id')
+        );
         window.location.href = url;
       } else {
         this.get('router').transitionTo('player', assignment.get('id'));
@@ -93,11 +112,10 @@ export default Ember.Component.extend(ModalMixin,{
     /**
      * View Report
      */
-    viewReport: function (assignment) {
+    viewReport: function(assignment) {
       Ember.Logger.log('View Report:', assignment);
     }
   },
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -110,9 +128,14 @@ export default Ember.Component.extend(ModalMixin,{
   /**
    *Indicate if the assignment has attempts left
    */
-  hasAttempts: Ember.computed('assignment.attempts', 'assignment.totalAttempts',
+  hasAttempts: Ember.computed(
+    'assignment.attempts',
+    'assignment.totalAttempts',
     function() {
-      return this.get('assignment.totalAttempts') - this.get('assignment.attempts') > 0;
+      return (
+        this.get('assignment.totalAttempts') - this.get('assignment.attempts') >
+        0
+      );
     }
   ),
 
@@ -134,5 +157,4 @@ export default Ember.Component.extend(ModalMixin,{
    * @property {Array} Students list
    */
   students: null
-
 });

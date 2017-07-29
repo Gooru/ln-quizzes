@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -37,5 +36,4 @@ export default Ember.Component.extend({
    * @property {String} title Header title
    */
   title: ''
-
 });

@@ -1,6 +1,6 @@
 .reports.assessment.qz-resources-xs {
   display: table;
-  width:100%;
+  width: 100%;
 
   .resource-card {
     display: table-row;
@@ -12,12 +12,12 @@
     }
     .resource-container {
       border-bottom: 1px solid $gray-lighter;
-      .resource-text{
+      .resource-text {
         max-height: 100px;
         margin: 5px 0;
-        .title-content{
+        .title-content {
           display: flex;
-          > *{
+          > * {
             display: flex;
             -webkit-align-items: center;
             align-items: center;
@@ -81,11 +81,11 @@
       }
     }
   }
- .time-spent{
-  display:inline-block;
-   padding: 8px 0 8px 20%;
-   > *{
-     display: block;
-   }
- }
+  .time-spent {
+    display: inline-block;
+    padding: 8px 0 8px 20%;
+    > * {
+      display: block;
+    }
+  }
 }

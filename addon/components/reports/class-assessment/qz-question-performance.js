@@ -1,7 +1,11 @@
 import Ember from 'ember';
 import QuestionUtil from 'quizzes-addon/utils/question/question';
 import { stats } from 'quizzes-addon/utils/question-result';
-import { CORRECT_COLOR, INCORRECT_COLOR, ANONYMOUS_COLOR } from 'quizzes-addon/config/quizzes-config';
+import {
+  CORRECT_COLOR,
+  INCORRECT_COLOR,
+  ANONYMOUS_COLOR
+} from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Question Performance Component
@@ -12,7 +16,6 @@ import { CORRECT_COLOR, INCORRECT_COLOR, ANONYMOUS_COLOR } from 'quizzes-addon/c
  * @augments Ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -34,9 +37,13 @@ export default Ember.Component.extend({
    * Indicates if is anonymous and show the performance Results
    * @property {boolean} anonymousAndShowResult
    */
-  anonymousAndNotShowResult: Ember.computed('anonymous', 'showResult', function() {
-    return this.get('anonymous') && !this.get('showResult');
-  }),
+  anonymousAndNotShowResult: Ember.computed(
+    'anonymous',
+    'showResult',
+    function() {
+      return this.get('anonymous') && !this.get('showResult');
+    }
+  ),
 
   /**
    * Indicates if is anonymous and show the performance Results
@@ -52,28 +59,37 @@ export default Ember.Component.extend({
     const component = this;
     const reportData = component.get('reportData');
     const question = component.get('question');
-    const questionUtil = QuestionUtil.create({question});
+    const questionUtil = QuestionUtil.create({ question });
     const distribution = questionUtil.distribution(this.get('questionResults'));
 
     const answersData = Ember.A([]);
-    distribution.forEach(function(answerDistribution){
-      let userAnswer = answerDistribution.get('answer');
-      let students = reportData.getStudentsByQuestionAndAnswer(question, userAnswer);
-      let correct = answerDistribution.get('correct');
-      let percentage = answerDistribution ? answerDistribution.get('percentage') : 0;
-      let result = answerDistribution.get('result');
+    distribution.forEach(function(answerDistribution) {
+      const userAnswer = answerDistribution.get('answer');
+      const students = reportData.getStudentsByQuestionAndAnswer(
+        question,
+        userAnswer
+      );
+      const correct = answerDistribution.get('correct');
+      const percentage = answerDistribution
+        ? answerDistribution.get('percentage')
+        : 0;
+      const result = answerDistribution.get('result');
       result.set('resource', question);
-      answersData.addObject(Ember.Object.create({
-        correct,
-        userAnswer,
-        percentage,
-        students,
-        result,
-        charData: Ember.A([Ember.Object.create({
-          color: correct ? CORRECT_COLOR : INCORRECT_COLOR,
-          percentage
-        })])
-      }));
+      answersData.addObject(
+        Ember.Object.create({
+          correct,
+          userAnswer,
+          percentage,
+          students,
+          result,
+          charData: Ember.A([
+            Ember.Object.create({
+              color: correct ? CORRECT_COLOR : INCORRECT_COLOR,
+              percentage
+            })
+          ])
+        })
+      );
     });
 
     return answersData;
@@ -87,38 +103,48 @@ export default Ember.Component.extend({
   /**
    * Returns a convenient structure to display the x-bar-chart
    */
-  questionBarChartData: Ember.computed('questionResults.[]', 'anonymousAndNotShowResult', function(){
-    const questionResults = this.get('questionResults');
+  questionBarChartData: Ember.computed(
+    'questionResults.[]',
+    'anonymousAndNotShowResult',
+    function() {
+      const questionResults = this.get('questionResults');
 
-    const totals = stats(questionResults);
-    const total = totals.get('total');
-    const anonymousAndNotShowResult = this.get('anonymousAndNotShowResult');
+      const totals = stats(questionResults);
+      const total = totals.get('total');
+      const anonymousAndNotShowResult = this.get('anonymousAndNotShowResult');
 
-    return Ember.Object.create({
-      data: [
-        {
-          color: anonymousAndNotShowResult ? ANONYMOUS_COLOR : INCORRECT_COLOR,
-          percentage: totals.get('incorrectPercentageFromTotal')
-        },
-        {
-          color: anonymousAndNotShowResult ? ANONYMOUS_COLOR : CORRECT_COLOR,
-          percentage: totals.get('correctPercentageFromTotal')
-        }
-      ],
-      completed: totals.get('totalCompleted'),
-      total
-    });
-  }),
+      return Ember.Object.create({
+        data: [
+          {
+            color: anonymousAndNotShowResult
+              ? ANONYMOUS_COLOR
+              : INCORRECT_COLOR,
+            percentage: totals.get('incorrectPercentageFromTotal')
+          },
+          {
+            color: anonymousAndNotShowResult ? ANONYMOUS_COLOR : CORRECT_COLOR,
+            percentage: totals.get('correctPercentageFromTotal')
+          }
+        ],
+        completed: totals.get('totalCompleted'),
+        total
+      });
+    }
+  ),
 
   /**
    * Question results for this question, all students
    *
    * @property {QuestionResult[]}
    */
-  questionResults: Ember.computed('question', 'reportData.reportEvents.@each.updated', function(){
-    const reportData = this.get('reportData');
-    return reportData.getResultsByQuestion(this.get('question.id'));
-  }),
+  questionResults: Ember.computed(
+    'question',
+    'reportData.reportEvents.@each.updated',
+    function() {
+      const reportData = this.get('reportData');
+      return reportData.getResultsByQuestion(this.get('question.id'));
+    }
+  ),
 
   /**
    * @prop { ReportData } reportData - Representation of the data to show in the reports as a 3D matrix
@@ -143,10 +169,9 @@ export default Ember.Component.extend({
   /**
    * willDestroyElement event
    */
-  willDestroyElement: function(){
+  willDestroyElement: function() {
     const component = this;
     component.set('showResult', false);
     component.set('anonymous', false);
   }
-
 });

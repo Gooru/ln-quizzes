@@ -17,7 +17,7 @@ export default Ember.Component.extend({
   /**
    * @requires service:taxonomy
    */
-  taxonomyService: Ember.inject.service("taxonomy"),
+  taxonomyService: Ember.inject.service('taxonomy'),
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -26,7 +26,7 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Events
-  onInit: Ember.on("init", function(){
+  onInit: Ember.on('init', function() {
     this.setupComponent();
   }),
 
@@ -42,8 +42,8 @@ export default Ember.Component.extend({
       component.set('selectedSubject', null);
       component.set('internalCategory', category);
       component.loadSubjects(category);
-      if (component.get("onCategorySelected")) {
-        component.sendAction("onCategorySelected", category);
+      if (component.get('onCategorySelected')) {
+        component.sendAction('onCategorySelected', category);
       }
     },
     /**
@@ -52,8 +52,8 @@ export default Ember.Component.extend({
     setSubject(subject) {
       const component = this;
       component.set('selectedSubject', subject);
-      if (component.get("onSubjectSelected")) {
-        component.sendAction("onSubjectSelected", subject);
+      if (component.get('onSubjectSelected')) {
+        component.sendAction('onSubjectSelected', subject);
       }
     },
 
@@ -63,8 +63,11 @@ export default Ember.Component.extend({
     selectTaxonomy(taxonomy) {
       const component = this;
       component.set('selectedTaxonomy', taxonomy);
-      if (component.get("onTaxonomySelected")) {
-        component.sendAction("onTaxonomySelected", this.get("selectedTaxonomy"));
+      if (component.get('onTaxonomySelected')) {
+        component.sendAction(
+          'onTaxonomySelected',
+          this.get('selectedTaxonomy')
+        );
       }
     },
 
@@ -73,12 +76,14 @@ export default Ember.Component.extend({
      */
     removeTag(tag) {
       const component = this;
-      component.removeTaxonomyTagData(tag.get("data.id"));
-      if (component.get("onTaxonomySelected")){
-        component.sendAction("onTaxonomySelected", this.get("selectedTaxonomy"));
+      component.removeTaxonomyTagData(tag.get('data.id'));
+      if (component.get('onTaxonomySelected')) {
+        component.sendAction(
+          'onTaxonomySelected',
+          this.get('selectedTaxonomy')
+        );
       }
     }
-
   },
 
   //
@@ -87,10 +92,10 @@ export default Ember.Component.extend({
    * Removes a taxonomy tag data from taxonomy
    * @param id
    */
-  removeTaxonomyTagData: function (taxonomyId){
-    const taxonomy = this.get("selectedTaxonomy");
-    let taxonomyTagData = taxonomy.findBy("id", taxonomyId);
-    if (taxonomyTagData){
+  removeTaxonomyTagData: function(taxonomyId) {
+    const taxonomy = this.get('selectedTaxonomy');
+    const taxonomyTagData = taxonomy.findBy('id', taxonomyId);
+    if (taxonomyTagData) {
       taxonomy.removeObject(taxonomyTagData);
     }
   },
@@ -98,22 +103,25 @@ export default Ember.Component.extend({
   /**
    * Loads subjects by category
    */
-  loadSubjects: function(category){
+  loadSubjects: function(category) {
     const component = this;
-    component.get('taxonomyService').getSubjects(category).then(function(subjects) {
-      component.set('subjects', subjects);
-    });
+    component
+      .get('taxonomyService')
+      .getSubjects(category)
+      .then(function(subjects) {
+        component.set('subjects', subjects);
+      });
   },
 
-  setupComponent: function(){
+  setupComponent: function() {
     const component = this;
     const subject = component.get('selectedSubject');
-    const category = component.get("selectedCategory");
-    if (category){
+    const category = component.get('selectedCategory');
+    if (category) {
       component.loadSubjects(category);
     }
 
-    if (subject){
+    if (subject) {
       if (!subject.get('hasCourses')) {
         component.get('taxonomyService').getCourses(subject);
       }
@@ -154,14 +162,18 @@ export default Ember.Component.extend({
    * @property {TaxonomyTag[]} List of taxonomy tags
    */
   tags: Ember.computed('selectedTaxonomy.[]', function() {
-    return TaxonomyTag.getTaxonomyTags(this.get("selectedTaxonomy"), false);
+    return TaxonomyTag.getTaxonomyTags(this.get('selectedTaxonomy'), false);
   }),
 
   /**
    * @property {TaxonomyTag[]} List of taxonomy tags
    */
   editableTags: Ember.computed('selectedTaxonomy.[]', function() {
-    return TaxonomyTag.getTaxonomyTags(this.get("selectedTaxonomy"), false, true);
+    return TaxonomyTag.getTaxonomyTags(
+      this.get('selectedTaxonomy'),
+      false,
+      true
+    );
   }),
 
   /**
@@ -169,7 +181,7 @@ export default Ember.Component.extend({
    */
   selectedTaxonomyIds: Ember.computed('selectedTaxonomy.[]', function() {
     return this.get('selectedTaxonomy').map(function(tagData) {
-      return tagData.get("id");
+      return tagData.get('id');
     });
   }),
 
@@ -187,9 +199,15 @@ export default Ember.Component.extend({
   /**
    * @type {String} the selected category
    */
-  selectedCategory: Ember.computed("selectedSubject.category", "internalCategory", function(){
-    return this.get("selectedSubject.category") || this.get("internalCategory");
-  }),
+  selectedCategory: Ember.computed(
+    'selectedSubject.category',
+    'internalCategory',
+    function() {
+      return (
+        this.get('selectedSubject.category') || this.get('internalCategory')
+      );
+    }
+  ),
 
   /**
    * the subject selected
@@ -201,7 +219,7 @@ export default Ember.Component.extend({
    * the subject courses to present
    * @property {[]}
    */
-  subjectCourses: Ember.computed.alias("selectedSubject.courses"),
+  subjectCourses: Ember.computed.alias('selectedSubject.courses'),
 
   /**
    * @property {TaxonomyTagData[]}
@@ -231,7 +249,6 @@ export default Ember.Component.extend({
    * @property {string}
    */
   onTaxonomySelected: null,
-
 
   // -------------------------------------------------------------------------
   // Observers

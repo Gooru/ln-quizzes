@@ -19,16 +19,18 @@ export default Ember.Component.extend(QuestionMixin, {
 
   // -------------------------------------------------------------------------
   // Properties
-  items: Ember.computed('question', function () {
-    let component = this;
-    let question = component.get('question');
-    let showCorrect = component.get('showCorrect');
-    let correctAnswers = question.get('question.correctAnswer');
-    let userAnswers = showCorrect ? correctAnswers : component.get('userAnswer');
-    let items = QuestionUtil.getItems(question.get('question'));
+  items: Ember.computed('question', function() {
+    const component = this;
+    const question = component.get('question');
+    const showCorrect = component.get('showCorrect');
+    const correctAnswers = question.get('question.correctAnswer');
+    const userAnswers = showCorrect
+      ? correctAnswers
+      : component.get('userAnswer');
+    const items = QuestionUtil.getItems(question.get('question'));
     items.forEach(item => {
-      let value = `${item.get('text')},${item.get('index')}`;
-      let selected = !!userAnswers.findBy('value', value);
+      const value = `${item.get('text')},${item.get('index')}`;
+      const selected = !!userAnswers.findBy('value', value);
       item.set('selected', selected);
       item.set('correct', !selected || !!correctAnswers.findBy('value', value));
     });

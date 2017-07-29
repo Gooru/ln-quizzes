@@ -5,7 +5,8 @@
     float: left;
     width: 84%;
     margin: 0 1% 5% 0;
-    &.anonymous { /** this is a quick fix for a demo, implemenation may change once the final mock is provided **/
+    &.anonymous {
+      /** this is a quick fix for a demo, implemenation may change once the final mock is provided **/
       width: 78%;
     }
   }
@@ -13,7 +14,8 @@
     color: $white;
     font-weight: bold;
     float: right;
-    &.anonymous { /** this is a quick fix for a demo, implemenation may change once the final mock is provided **/
+    &.anonymous {
+      /** this is a quick fix for a demo, implemenation may change once the final mock is provided **/
       font-size: $font-size-anonymous;
       margin-top: -18px;
     }
@@ -25,7 +27,8 @@
       background-color: $blue-400;
     }
 
-    &.anonymous { /** this is a quick fix for a demo, implemenation may change once the final mock is provided **/
+    &.anonymous {
+      /** this is a quick fix for a demo, implemenation may change once the final mock is provided **/
       font-size: $font-size-anonymous;
 
       .answer-chart {
@@ -59,7 +62,7 @@
 
   .answers-wrapper {
     padding: 10px;
-    >.answer {
+    > .answer {
       width: 100%;
       margin: 1% 2% 2% 0;
     }
@@ -70,7 +73,7 @@
         margin: 0 5px 5px 0;
         width: 31%;
         display: inline-block;
-        .label{
+        .label {
           background-color: $dark-300;
           padding: 5px;
           font-size: $font-size-small;
@@ -78,9 +81,8 @@
           font-weight: normal;
         }
       }
-
     }
-    .answer-chart{
+    .answer-chart {
       height: 25px;
       width: 85%;
       display: inline-block;

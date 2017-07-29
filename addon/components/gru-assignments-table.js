@@ -2,7 +2,7 @@ import Ember from 'ember';
 import ModalMixin from 'quizzes-addon/mixins/modal';
 import Profile from 'quizzes-addon/models/profile/profile';
 
-export default Ember.Component.extend(ModalMixin,{
+export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -21,24 +21,24 @@ export default Ember.Component.extend(ModalMixin,{
 
   classNames: ['gru-assignments-table'],
 
-
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     /**
      * Open add student modal
      */
-    addStudent: function (assignment) {
+    addStudent: function(assignment) {
       const component = this;
       let students = [];
-      let profilesList = assignment.get('assignees').map(profile => profile.id);
+      const profilesList = assignment
+        .get('assignees')
+        .map(profile => profile.id);
 
-      if(profilesList && component.get('studentList')) {
+      if (profilesList && component.get('studentList')) {
         students = component.get('studentList').map(function(student) {
-          let studentObject = Profile.create(student);
-          let containsStudent = profilesList.includes(student.id);
+          const studentObject = Profile.create(student);
+          const containsStudent = profilesList.includes(student.id);
           studentObject.set('isAssigned', containsStudent);
           studentObject.set('id', student.id);
           return studentObject;
@@ -46,43 +46,60 @@ export default Ember.Component.extend(ModalMixin,{
       }
       component.set('students', students);
 
-      let model = {
+      const model = {
         students: component.get('students'),
         assignment,
-        width:'95%',
-        callback:{
-          success: assignment => component.sendAction('onUpdateAssignment', assignment)
+        width: '95%',
+        callback: {
+          success: assignment =>
+            component.sendAction('onUpdateAssignment', assignment)
         }
       };
-      component.actions.showModal.call(component, 'gru-assign-student-modal',
-        model, null, null, null, false);
+      component.actions.showModal.call(
+        component,
+        'gru-assign-student-modal',
+        model,
+        null,
+        null,
+        null,
+        false
+      );
     },
     /**
      * Open slide up actions
      */
-    openActions:function(assignment){
-      this.set('actualAssignment',assignment);
-      this.set('showMenu',true);
+    openActions: function(assignment) {
+      this.set('actualAssignment', assignment);
+      this.set('showMenu', true);
     },
 
     /**
      * Redirect to real time
      */
-    openRealTime: function (assignment) {
-      if(this.get('realTimeURL')){
-        let url = this.get('realTimeURL').replace('{context-id}', assignment.get('id'));
+    openRealTime: function(assignment) {
+      if (this.get('realTimeURL')) {
+        const url = this.get('realTimeURL').replace(
+          '{context-id}',
+          assignment.get('id')
+        );
         window.location.href = url;
-      }else{
-        this.get('router').transitionTo('reports.context', assignment.get('id'));
+      } else {
+        this.get('router').transitionTo(
+          'reports.context',
+          assignment.get('id')
+        );
       }
     },
 
     /**
      * Open player
      */
-    openPlayer:function(assignment){
-      if(this.get('playerURL')){
-        let url = this.get('playerURL').replace('{context-id}', assignment.get('id'));
+    openPlayer: function(assignment) {
+      if (this.get('playerURL')) {
+        const url = this.get('playerURL').replace(
+          '{context-id}',
+          assignment.get('id')
+        );
         window.location.href = url;
       } else {
         this.get('router').transitionTo('player', assignment.get('id'));
@@ -92,7 +109,7 @@ export default Ember.Component.extend(ModalMixin,{
     /***
      * Search assignment
      */
-    selectAssignment: function (assignment) {
+    selectAssignment: function(assignment) {
       this.selectAssignment(assignment);
       this.sendAction('onSelectAssignment', assignment);
     },
@@ -101,7 +118,7 @@ export default Ember.Component.extend(ModalMixin,{
      * Sort assignment list
      */
     sortBy: function(criteria) {
-      if(criteria === this.get('sortBy')) {
+      if (criteria === this.get('sortBy')) {
         this.set('reverseSort', !this.get('reverseSort'));
       } else {
         this.set('sortBy', criteria);
@@ -115,7 +132,7 @@ export default Ember.Component.extend(ModalMixin,{
   /**
    * @property {Context} selected assignment
    */
-  actualAssignment:null,
+  actualAssignment: null,
 
   /**
    * @property {Boolean} Indicate if is a teacher view
@@ -126,11 +143,11 @@ export default Ember.Component.extend(ModalMixin,{
   /**
    * Return menu mobile options
    */
-  optionsMobile: Ember.computed('actualAssignment','isTeacher', function () {
-   let options;
-    if(this.get('isTeacher')){
+  optionsMobile: Ember.computed('actualAssignment', 'isTeacher', function() {
+    let options;
+    if (this.get('isTeacher')) {
       options = this.teacherOptions(this.get('actualAssignment'));
-    }else{
+    } else {
       //TODO STUDENT VIEW OPTIONS
     }
     return options;
@@ -144,12 +161,12 @@ export default Ember.Component.extend(ModalMixin,{
   /**
    * @property {Array} Total student list
    */
-  studentList:[],
+  studentList: [],
 
   /**
    *  @property {Boolean} show actions menu
    */
-  showMenu:false,
+  showMenu: false,
 
   // -------------------------------------------------------------------------
   // Methods
@@ -159,30 +176,33 @@ export default Ember.Component.extend(ModalMixin,{
    */
   selectAssignment: function(assignment) {
     this.unSelectAssignment();
-    assignment.set('selected',true);
+    assignment.set('selected', true);
   },
   /**
    * Return the teacher options for mobile menu
    */
-  teacherOptions:function(assignment){
-    return Ember.A([Ember.Object.create({
-      option:'assign',
-      action:'onAssign',
-      object:assignment
-    }),Ember.Object.create({
-      option:'preview',
-      action:'onPreview',
-      object:assignment
-    })]);
+  teacherOptions: function(assignment) {
+    return Ember.A([
+      Ember.Object.create({
+        option: 'assign',
+        action: 'onAssign',
+        object: assignment
+      }),
+      Ember.Object.create({
+        option: 'preview',
+        action: 'onPreview',
+        object: assignment
+      })
+    ]);
   },
 
   /**
    * Unselected assignment
    */
   unSelectAssignment: function() {
-    var selectedAssignment = this.get('assignments').findBy('selected',true);
-    if(selectedAssignment){
-      selectedAssignment.set('selected',false);
+    var selectedAssignment = this.get('assignments').findBy('selected', true);
+    if (selectedAssignment) {
+      selectedAssignment.set('selected', false);
     }
   }
 });

@@ -30,33 +30,47 @@ export default Ember.Component.extend({
     /***
      * Assign students
      */
-    createContext:function(){
-      let component = this;
-      component.get('contextService').createContext(component.get('assignment')).then(function () {
-        component.set('assignment', Context.create(Ember.getOwner(component).ownerInjection(), {
-          title: component.get('collection.title')
-        }));
-      });
+    createContext: function() {
+      const component = this;
+      component
+        .get('contextService')
+        .createContext(component.get('assignment'))
+        .then(function() {
+          component.set(
+            'assignment',
+            Context.create(Ember.getOwner(component).ownerInjection(), {
+              title: component.get('collection.title')
+            })
+          );
+        });
     },
     /***
      * Create context as anonymous
      */
-    createContextAnonymous:function(){
-      let component = this;
-      let assignment = component.get('assignment');
+    createContextAnonymous: function() {
+      const component = this;
+      const assignment = component.get('assignment');
       assignment.set('classId', null);
-      const collectionType = assignment.get('isCollection') ? 'collection' : 'assessment';
-      component.get('contextService').createContext(assignment).then(({ id }) => {
-        const configurationService = component.get('configurationService');
-        configurationService.addProperties({
-            type:collectionType,
-            profileId: component.get('configurationService.configuration.properties.profileId'),
-            token: component.get('configurationService.configuration.properties.token'),
-            reportURL:'student-report-embedded.html?context-id={context-id}&type=' + collectionType
-          }
-        );
-        component.get('router').transitionTo('player', id);
-      });
+      const collectionType = assignment.get('isCollection')
+        ? 'collection'
+        : 'assessment';
+      component
+        .get('contextService')
+        .createContext(assignment)
+        .then(({ id }) => {
+          const configurationService = component.get('configurationService');
+          configurationService.addProperties({
+            type: collectionType,
+            profileId: component.get(
+              'configurationService.configuration.properties.profileId'
+            ),
+            token: component.get(
+              'configurationService.configuration.properties.token'
+            ),
+            reportURL: `student-report-embedded.html?context-id={context-id}&type=${collectionType}`
+          });
+          component.get('router').transitionTo('player', id);
+        });
     }
   },
 
@@ -65,7 +79,7 @@ export default Ember.Component.extend({
 
   init() {
     this._super(...arguments);
-    let context = Context.create({});
+    const context = Context.create({});
     this.set('assignment', context);
   },
 
@@ -75,6 +89,5 @@ export default Ember.Component.extend({
   /**
    * Assignment
    */
-  assignment:null
-
+  assignment: null
 });

@@ -18,26 +18,26 @@ import PapaParse from 'papaparse';
  *
  *
  */
-export function download(fileName, data){
+export function download(fileName, data) {
   const csv = PapaParse.unparse(data);
   var ua = window.navigator.userAgent;
-  const isInternetExplorer = (ua.indexOf("MSIE ") > 0 ||
-    !!navigator.userAgent.match(/Trident.*rv:11\./)); // If Internet Explorer, return true
+  const isInternetExplorer =
+    ua.indexOf('MSIE ') > 0 || !!navigator.userAgent.match(/Trident.*rv:11\./); // If Internet Explorer, return true
 
-
-  if(isInternetExplorer){
+  if (isInternetExplorer) {
     var IEwindow = window.open();
-    IEwindow.document.write('sep=,\r\n' + data);
+    IEwindow.document.write(`sep=,\r\n${data}`);
     IEwindow.document.close();
-    IEwindow.document.execCommand('SaveAs', true, fileName + ".csv");
+    IEwindow.document.execCommand('SaveAs', true, `${fileName}.csv`);
     IEwindow.close();
-  }
-  else {
-    const uri = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
-    const $container = Ember.$("body");
+  } else {
+    const uri = `data:application/csv;charset=utf-8,${encodeURIComponent(csv)}`;
+    const $container = Ember.$('body');
 
-    $container.append(`<a id="gru-cvs-download" href="${uri}" download="${fileName}.csv" style="visibility:hidden">Download</a>`);
-    const $link = $container.find("#gru-cvs-download");
+    $container.append(
+      `<a id="gru-cvs-download" href="${uri}" download="${fileName}.csv" style="visibility:hidden">Download</a>`
+    );
+    const $link = $container.find('#gru-cvs-download');
     $link[0].click();
     $link.remove();
   }

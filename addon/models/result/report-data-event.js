@@ -9,7 +9,6 @@ import ResourceResult from 'quizzes-addon/models/result/resource';
  *
  */
 export default Ember.Object.extend({
-
   // -------------------------------------------------------------------------
   // Properties
 
@@ -61,9 +60,10 @@ export default Ember.Object.extend({
   /**
    * @property {QuestionResult[]} questionResults
    */
-  questionResults: Ember.computed('resourceResults.[]', function () {
-    return this.get('resourceResults')
-      .filter(resourceResult => resourceResult instanceof QuestionResult);
+  questionResults: Ember.computed('resourceResults.[]', function() {
+    return this.get('resourceResults').filter(
+      resourceResult => resourceResult instanceof QuestionResult
+    );
   }),
 
   /**
@@ -137,16 +137,17 @@ export default Ember.Object.extend({
     return this.get('resourceResults').reduce(
       (index, result, current) =>
         result.get('resourceId') === resourceId ? current : index,
-      -1);
+      -1
+    );
   },
 
   /**
    * Merge a new result with the corresponding resource result
    */
   merge: function(resourceId, newResult) {
-    let index = this.findIndexByResourceId(resourceId);
+    const index = this.findIndexByResourceId(resourceId);
     newResult.savedTime = newResult.savedTime || newResult.timeSpent;
-    let result = this.get('resourceResults').get(index);
+    const result = this.get('resourceResults').get(index);
     result.clear();
     result.setProperties({
       resourceId: newResult.resourceId,
@@ -167,13 +168,12 @@ export default Ember.Object.extend({
     this.set('collection', collection);
     this.set('collectionId', collection.get('id'));
     const resources = collection.get('resources');
-    let resourceResults = this.get('resourceResults');
+    const resourceResults = this.get('resourceResults');
     resources.forEach(resource => {
-      let resourceResult = resourceResults
-        .findBy('resourceId', resource.id);
-      if(resourceResult) {
-        if(resource.get('isResource')) {
-          let result = ResourceResult.create({
+      const resourceResult = resourceResults.findBy('resourceId', resource.id);
+      if (resourceResult) {
+        if (resource.get('isResource')) {
+          const result = ResourceResult.create({
             resourceId: resource.id,
             resource,
             savedTime: resourceResult.savedTime,
@@ -187,7 +187,9 @@ export default Ember.Object.extend({
         }
         resourceResult.set('resource', resource);
       } else {
-        let ResultModel = resource.get('isResource') ? ResourceResult : QuestionResult;
+        const ResultModel = resource.get('isResource')
+          ? ResourceResult
+          : QuestionResult;
         this.get('resourceResults').pushObject(
           ResultModel.create(Ember.getOwner(this).ownerInjection(), {
             resourceId: resource.id,
@@ -221,5 +223,4 @@ export default Ember.Object.extend({
     this.set('averageScore', summary.averageScore);
     this.set('totalTimeSpent', summary.totalTimeSpent);
   }
-
 });

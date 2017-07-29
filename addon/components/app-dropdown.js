@@ -4,7 +4,6 @@ import Ember from 'ember';
  * @typedef {object} AppDropdown
  */
 export default Ember.Component.extend({
-
   /**
    * @property {DropdownItem[]} dropdown items
    */
@@ -13,7 +12,7 @@ export default Ember.Component.extend({
   /**
    * @property {string} dropdown placeholder
    */
-  placeholder: "Select items",
+  placeholder: 'Select items',
 
   /**
    * @property {string} dropdown prompt
@@ -26,7 +25,6 @@ export default Ember.Component.extend({
    */
   split: true,
 
-
   /**
    * Indicates if the dropdown should display the selected items text
    * @property {bool}
@@ -38,44 +36,45 @@ export default Ember.Component.extend({
    * @property {string} size class
    * @see bootstrap button dropdown
    */
-  "btn-group-size": 'btn-group-lg',
+  'btn-group-size': 'btn-group-lg',
 
   /**
    * @property {string} button type class
    */
-  "btn-type": 'btn-primary',
+  'btn-type': 'btn-primary',
 
   /**
    * @property {bool} indicates if can select multiple
    */
   multiple: false,
 
-  "keep-open" : function() {
-    return this.get("multiple") ? 'keep-open-yes' : 'keep-open-no';
-  }.property("multiple"),
+  'keep-open': function() {
+    return this.get('multiple') ? 'keep-open-yes' : 'keep-open-no';
+  }.property('multiple'),
 
   /**
    * @property {bool} true when selection were made
    */
-  selectedItems: function () {
-    return this.get("items").filterBy("selected", true);
-  }.property("items.@each.selected"),
-
+  selectedItems: function() {
+    return this.get('items').filterBy('selected', true);
+  }.property('items.@each.selected'),
 
   /**
    * @property {string} selection text
    */
-  selectedText: function () {
+  selectedText: function() {
     const component = this,
-      selectedItems = component.get("selectedItems"),
-      showSelection = component.get("showSelection"),
-      names = selectedItems.map(function (item) {
-        return item.get("label");
-      }).toArray().join(",");
+      selectedItems = component.get('selectedItems'),
+      showSelection = component.get('showSelection'),
+      names = selectedItems
+        .map(function(item) {
+          return item.get('label');
+        })
+        .toArray()
+        .join(',');
 
-    return (showSelection && names.length) ? names : component.get("placeholder");
-
-  }.property("selectedItems.[]"),
+    return showSelection && names.length ? names : component.get('placeholder');
+  }.property('selectedItems.[]'),
 
   /**
    * This is triggered when the drop down selection changes
@@ -86,20 +85,20 @@ export default Ember.Component.extend({
   /**
    * DidInsertElement ember event
    */
-  didInsertElement: function(){
+  didInsertElement: function() {
     const component = this,
-      element = component.$(component.get("element"));
+      element = component.$(component.get('element'));
 
     var count = -1;
     element.find('.keep-open-yes').on({
-      "click":             function(e) {
+      click: function(e) {
         const $target = component.$(e.target);
-        if ($target.hasClass('item') || $target.hasClass('no-close')){
+        if ($target.hasClass('item') || $target.hasClass('no-close')) {
           count = 2; // the hide event is called twice per click
         }
       },
 
-      "hide.bs.dropdown":  function() {
+      'hide.bs.dropdown': function() {
         count -= 1;
         return count < 0;
       }
@@ -109,42 +108,38 @@ export default Ember.Component.extend({
   /**
    * willDestroyElement event
    */
-  willDestroyElement: function(){
+  willDestroyElement: function() {
     const component = this,
-      element = component.$(component.get("element"));
-    element.find('.keep-open-yes').off("click", "hide.bs.dropdown");
+      element = component.$(component.get('element'));
+    element.find('.keep-open-yes').off('click', 'hide.bs.dropdown');
   },
-
 
   /**
    * Marks all items as non selected
    */
-  unselectAll: function(){
-    this.get("items").forEach(function(item){
-      item.set("selected", false);
+  unselectAll: function() {
+    this.get('items').forEach(function(item) {
+      item.set('selected', false);
     });
   },
 
   actions: {
-
     /**
      * When an items is selected
      * @param {DropdownItem} item
      */
-    onItemSelected: function (item) {
+    onItemSelected: function(item) {
       const component = this,
-        selected = item.get("selected");
+        selected = item.get('selected');
 
-      if (!component.get("multiple")){
+      if (!component.get('multiple')) {
         component.unselectAll();
       }
-      item.set("selected", !selected);
+      item.set('selected', !selected);
 
-      if (component.get("onChangeAction")) {
-        component.sendAction("onChangeAction", component.get("selectedItems"));
+      if (component.get('onChangeAction')) {
+        component.sendAction('onChangeAction', component.get('selectedItems'));
       }
     }
   }
-
-
 });

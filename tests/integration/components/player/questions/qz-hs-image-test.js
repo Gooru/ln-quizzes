@@ -6,29 +6,32 @@ import AnswerModel from 'quizzes-addon/utils/question/answer-object';
 import ResourceModel from 'quizzes-addon/models/resource/resource';
 
 const configurationServiceStub = Ember.Service.extend({
-  configuration:{
-    properties:{
-      cdnURL:'cdnURL/'
+  configuration: {
+    properties: {
+      cdnURL: 'cdnURL/'
     }
   }
 });
 
-moduleForComponent('player/questions/qz-hs-image', 'Integration | Component | player/questions/qz hs image', {
-  integration: true,
-  beforeEach: function () {
-    this.container.lookup('service:i18n').set('locale', 'en');
-    this.register('service:quizzes/configuration', configurationServiceStub);
-    this.inject.service('quizzes/configuration');
+moduleForComponent(
+  'player/questions/qz-hs-image',
+  'Integration | Component | player/questions/qz hs image',
+  {
+    integration: true,
+    beforeEach: function() {
+      this.container.lookup('service:i18n').set('locale', 'en');
+      this.register('service:quizzes/configuration', configurationServiceStub);
+      this.inject.service('quizzes/configuration');
+    }
   }
-});
+);
 
-test('Layout', function (assert) {
-
-  let question = ResourceModel.create({
+test('Layout', function(assert) {
+  const question = ResourceModel.create({
     id: '569906aadfa0072204f7c7c7',
     type: QUESTION_TYPES.hotSpotImage,
     body: 'Hot spot image',
-    answers:  Ember.A([
+    answers: Ember.A([
       AnswerModel.create({
         value: '1',
         text: 'url1.jpg'
@@ -42,9 +45,8 @@ test('Layout', function (assert) {
         text: 'url3.jpg'
       })
     ]),
-    sequence:1
+    sequence: 1
   });
-
 
   this.set('question', question);
 
@@ -54,23 +56,40 @@ test('Layout', function (assert) {
   const $answersContainer = $component.find('.answer-choices');
 
   assert.ok($component.find('.instructions'), 'Missing instructions');
-  assert.equal($answersContainer.find('li.answer').length, 3, 'Incorrect number of answer choices');
+  assert.equal(
+    $answersContainer.find('li.answer').length,
+    3,
+    'Incorrect number of answer choices'
+  );
 
-  assert.equal($answersContainer.find('li.answer:first-child').data('id'), '1', 'First answer choice, data-id value is incorrect');
+  assert.equal(
+    $answersContainer.find('li.answer:first-child').data('id'),
+    '1',
+    'First answer choice, data-id value is incorrect'
+  );
   const $firstImage = $answersContainer.find('li.answer:first-child img');
-  assert.ok($firstImage.prop('src').indexOf('cdnURL/url1.jpg') >= 0, 'First image path is not set correctly');
-  assert.equal($answersContainer.find('li.answer:last-child').data('id'), '3', 'Last answer choice, data-id value is incorrect');
+  assert.ok(
+    $firstImage.prop('src').indexOf('cdnURL/url1.jpg') >= 0,
+    'First image path is not set correctly'
+  );
+  assert.equal(
+    $answersContainer.find('li.answer:last-child').data('id'),
+    '3',
+    'Last answer choice, data-id value is incorrect'
+  );
   const $image = $answersContainer.find('li.answer:last-child img');
-  assert.ok($image.prop('src').indexOf('cdnURL/url3.jpg') >= 0, 'Last image path is not set correctly');
+  assert.ok(
+    $image.prop('src').indexOf('cdnURL/url3.jpg') >= 0,
+    'Last image path is not set correctly'
+  );
 });
 
-test('Selecting answers', function (assert) {
-
-  let question = ResourceModel.create({
+test('Selecting answers', function(assert) {
+  const question = ResourceModel.create({
     id: '569906aadfa0072204f7c7c7',
     type: QUESTION_TYPES.hotSpotImage,
     body: 'Hot spot image',
-    answers:  Ember.A([
+    answers: Ember.A([
       AnswerModel.create({
         value: '1',
         text: 'url1.jpg'
@@ -84,7 +103,7 @@ test('Selecting answers', function (assert) {
         text: 'url3.jpg'
       })
     ]),
-    sequence:1
+    sequence: 1
   });
 
   this.set('question', question);
@@ -95,32 +114,60 @@ test('Selecting answers', function (assert) {
   const $firstAnswer = $answers.eq(0);
   const $secondAnswer = $answers.eq(1);
 
-  assert.equal(this.$('li.selected').length, 0, 'Initial number of answers selected is incorrect');
+  assert.equal(
+    this.$('li.selected').length,
+    0,
+    'Initial number of answers selected is incorrect'
+  );
 
   $firstAnswer.click();
-  assert.ok($firstAnswer.hasClass('selected'), 'First answer should have been selected');
+  assert.ok(
+    $firstAnswer.hasClass('selected'),
+    'First answer should have been selected'
+  );
 
   $secondAnswer.click();
-  assert.ok($secondAnswer.hasClass('selected'), 'Second answer should have been selected');
-  assert.equal(this.$('li.selected').length, 2, 'Incorrect number of answers selected');
+  assert.ok(
+    $secondAnswer.hasClass('selected'),
+    'Second answer should have been selected'
+  );
+  assert.equal(
+    this.$('li.selected').length,
+    2,
+    'Incorrect number of answers selected'
+  );
 
   $firstAnswer.click();
-  assert.ok(!$firstAnswer.hasClass('selected'), 'First answer should have been deselected');
-  assert.equal(this.$('li.selected').length, 1, 'Incorrect number of answers selected');
+  assert.ok(
+    !$firstAnswer.hasClass('selected'),
+    'First answer should have been deselected'
+  );
+  assert.equal(
+    this.$('li.selected').length,
+    1,
+    'Incorrect number of answers selected'
+  );
 
   $secondAnswer.click();
-  assert.ok(!$secondAnswer.hasClass('selected'), 'Second answer should have been deselected');
-  assert.equal(this.$('li.selected').length, 0, 'Incorrect number of answers selected');
+  assert.ok(
+    !$secondAnswer.hasClass('selected'),
+    'Second answer should have been deselected'
+  );
+  assert.equal(
+    this.$('li.selected').length,
+    0,
+    'Incorrect number of answers selected'
+  );
 });
 
-test('Notifications work after selecting questions', function (assert) {
+test('Notifications work after selecting questions', function(assert) {
   assert.expect(12);
   let answers = [];
-  let question = ResourceModel.create({
+  const question = ResourceModel.create({
     id: '569906aadfa0072204f7c7c7',
     type: QUESTION_TYPES.hotSpotImage,
     body: 'Hot spot image',
-    answers:  Ember.A([
+    answers: Ember.A([
       AnswerModel.create({
         value: '1',
         text: 'url1.jpg'
@@ -138,22 +185,33 @@ test('Notifications work after selecting questions', function (assert) {
         text: 'url4.jpg'
       })
     ]),
-    sequence:1
+    sequence: 1
   });
-
 
   this.set('question', question);
 
-  this.on('changeAnswer', function (question, answer) {
-    assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
+  this.on('changeAnswer', function(question, answer) {
+    assert.deepEqual(
+      answer,
+      answers,
+      'Answer changed, but the answers are not correct'
+    );
   });
 
-  this.on('completeAnswer', function (question, answer) {
-    assert.deepEqual(answer, answers, 'Answer completed, but the answers are not correct');
+  this.on('completeAnswer', function(question, answer) {
+    assert.deepEqual(
+      answer,
+      answers,
+      'Answer completed, but the answers are not correct'
+    );
   });
 
-  this.on('clearAnswer', function (question, answer) {
-    assert.deepEqual(answer, answers, 'Answer cleared, but the answers are not correct');
+  this.on('clearAnswer', function(question, answer) {
+    assert.deepEqual(
+      answer,
+      answers,
+      'Answer cleared, but the answers are not correct'
+    );
   });
 
   this.render(hbs`{{player/questions/qz-hs-image question=question
@@ -164,21 +222,21 @@ test('Notifications work after selecting questions', function (assert) {
   const $answers = this.$('li.answer');
 
   // Select first answer
-  answers = [{value:1}];
+  answers = [{ value: 1 }];
   $answers.eq(0).click();
 
-  answers = [{value:1},{value:3}];
+  answers = [{ value: 1 }, { value: 3 }];
   $answers.eq(2).click();
 
   // Three answers selected
-  answers = [{value:1},{value:3},{value:4}];
+  answers = [{ value: 1 }, { value: 3 }, { value: 4 }];
   $answers.eq(3).click();
 
   // Now, test deselecting all answers
-  answers = [{value:1}, {value:4}];
+  answers = [{ value: 1 }, { value: 4 }];
   $answers.eq(2).click();
 
-  answers = [{value:4}];
+  answers = [{ value: 4 }];
   $answers.eq(0).click();
 
   // Send onAnswerCleared notification
@@ -186,13 +244,12 @@ test('Notifications work after selecting questions', function (assert) {
   $answers.eq(3).click();
 });
 
-test('Layout - read only', function (assert) {
-
-  let question = ResourceModel.create({
+test('Layout - read only', function(assert) {
+  const question = ResourceModel.create({
     id: '569906aadfa0072204f7c7c7',
     type: QUESTION_TYPES.hotSpotImage,
     body: 'Hot spot image',
-    answers:  Ember.A([
+    answers: Ember.A([
       AnswerModel.create({
         value: '1',
         text: 'url1.jpg'
@@ -206,28 +263,32 @@ test('Layout - read only', function (assert) {
         text: 'url3.jpg'
       })
     ]),
-    sequence:1
+    sequence: 1
   });
-
 
   this.set('question', question);
 
-  this.render(hbs`{{player/questions/qz-hs-image question=question readOnly=true}}`);
+  this.render(
+    hbs`{{player/questions/qz-hs-image question=question readOnly=true}}`
+  );
 
   const $component = this.$(); //component dom element
   const $answersContainer = $component.find('.answer-choices');
 
-  assert.equal($answersContainer.find('li.answer.disabled').length, 3, 'Incorrect number of answer choices');
+  assert.equal(
+    $answersContainer.find('li.answer.disabled').length,
+    3,
+    'Incorrect number of answer choices'
+  );
 });
 
-
-test('Layout - with user answer', function (assert) {
+test('Layout - with user answer', function(assert) {
   assert.expect(4);
-  let question = ResourceModel.create({
+  const question = ResourceModel.create({
     id: '569906aadfa0072204f7c7c7',
     type: QUESTION_TYPES.hotSpotImage,
     body: 'Hot spot image',
-    answers:  Ember.A([
+    answers: Ember.A([
       AnswerModel.create({
         value: '1',
         text: 'url1.jpg'
@@ -241,19 +302,26 @@ test('Layout - with user answer', function (assert) {
         text: 'url3.jpg'
       })
     ]),
-    sequence:1
+    sequence: 1
   });
 
-
-  const answers = [{value:2}];
-  this.on('changeAnswer', function (question, answer) {
-    assert.deepEqual(answer, answers, 'Answer changed, but the answers are not correct');
+  const answers = [{ value: 2 }];
+  this.on('changeAnswer', function(question, answer) {
+    assert.deepEqual(
+      answer,
+      answers,
+      'Answer changed, but the answers are not correct'
+    );
   });
-  this.on('loadAnswer', function (question, answer) {
-    assert.deepEqual(answer, answers, 'Answer loaded, but the answers are not correct');
+  this.on('loadAnswer', function(question, answer) {
+    assert.deepEqual(
+      answer,
+      answers,
+      'Answer loaded, but the answers are not correct'
+    );
   });
   this.set('question', question);
-  this.set('userAnswer', [{value:2}]);
+  this.set('userAnswer', [{ value: 2 }]);
 
   this.render(hbs`{{player/questions/qz-hs-image question=question
                     userAnswer=userAnswer
@@ -263,6 +331,14 @@ test('Layout - with user answer', function (assert) {
   const $component = this.$(); //component dom element
   const $answersContainer = $component.find('.answer-choices');
 
-  assert.equal($answersContainer.find('li.answer').length, 3, 'Incorrect number of answer choices');
-  assert.equal($answersContainer.find('li.answer.selected').length, 1, 'One should be selected');
+  assert.equal(
+    $answersContainer.find('li.answer').length,
+    3,
+    'Incorrect number of answer choices'
+  );
+  assert.equal(
+    $answersContainer.find('li.answer.selected').length,
+    1,
+    'One should be selected'
+  );
 });

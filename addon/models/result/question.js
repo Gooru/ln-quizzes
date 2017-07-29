@@ -8,7 +8,6 @@ import ResourceResult from './resource';
  *
  */
 export default ResourceResult.extend({
-
   /**
    * @property {Object} answer - Answer provided by the user
    */
@@ -22,19 +21,25 @@ export default ResourceResult.extend({
    *
    * @property {String}
    */
-  attemptStatus: Ember.computed('correct', 'skipped', 'isResource', 'isOpenEnded', function () {
-    const correct = this.get('correct');
-    const skipped = this.get('skipped');
-    const isResource = this.get('isResource');
-    const isOpenEnded = this.get('isOpenEnded');
-    let status = 'started';
-    if(isResource || isOpenEnded) {
-      status = skipped ? 'skipped' : 'started';
-    } else {
-      status = correct ? 'correct' : (skipped ? 'skipped' : 'incorrect');
+  attemptStatus: Ember.computed(
+    'correct',
+    'skipped',
+    'isResource',
+    'isOpenEnded',
+    function() {
+      const correct = this.get('correct');
+      const skipped = this.get('skipped');
+      const isResource = this.get('isResource');
+      const isOpenEnded = this.get('isOpenEnded');
+      let status = 'started';
+      if (isResource || isOpenEnded) {
+        status = skipped ? 'skipped' : 'started';
+      } else {
+        status = correct ? 'correct' : skipped ? 'skipped' : 'incorrect';
+      }
+      return status;
     }
-    return status;
-  }),
+  ),
 
   /**
    * @property {boolean} correct - Was the answer provided for this question correct?

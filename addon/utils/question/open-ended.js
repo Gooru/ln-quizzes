@@ -26,10 +26,8 @@ import AnswerObject from 'quizzes-addon/utils/question/answer-object';
  * @typedef {Object} OpenEndedUtil
  */
 export default QuestionUtil.extend({
-
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods
@@ -43,7 +41,7 @@ export default QuestionUtil.extend({
    * @see '# User Answer' section at class comment
    *
    */
-  isCorrect: function (answer) {
+  isCorrect: function(answer) {
     return !!answer; //if answer exists, OE is not graded right now
   },
 
@@ -52,7 +50,7 @@ export default QuestionUtil.extend({
    *
    * @return {boolean} the correct answer choice id
    */
-  getCorrectAnswer: function () {
+  getCorrectAnswer: function() {
     return false; //there is no correct answer for OE
   },
 
@@ -63,7 +61,7 @@ export default QuestionUtil.extend({
    *
    * @see '# User Answer' section at class comment
    */
-  answerKey: function (answer) {
+  answerKey: function(answer) {
     return answer;
   },
 
@@ -77,13 +75,13 @@ export default QuestionUtil.extend({
    * @see '# Answer Object' section at class comment
    *
    */
-  toAnswerObjects: function (userAnswer) {
-    let answerObject = AnswerObject.create({
-      "text": userAnswer,
-      "status": null,
-      "order": 0,
-      "answerId": 0,
-      "skip": false
+  toAnswerObjects: function(userAnswer) {
+    const answerObject = AnswerObject.create({
+      text: userAnswer,
+      status: null,
+      order: 0,
+      answerId: 0,
+      skip: false
     });
     return Ember.A([answerObject]);
   },
@@ -97,14 +95,13 @@ export default QuestionUtil.extend({
    * @see '# User Answer' section at class comment
    * @see '# Answer Object' section at class comment
    */
-  toUserAnswer: function (answerObjects) {
+  toUserAnswer: function(answerObjects) {
     let userAnswer = null;
-    if (answerObjects.get("length")) {
-      let answerObject = answerObjects.get("firstObject");
-      userAnswer = answerObject.get("text");
+    if (answerObjects.get('length')) {
+      const answerObject = answerObjects.get('firstObject');
+      userAnswer = answerObject.get('text');
     }
 
     return userAnswer;
   }
-
 });

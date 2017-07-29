@@ -11,15 +11,14 @@ import Ember from 'ember';
  */
 
 export default Ember.Component.extend({
-
-  tagName: "span",
+  tagName: 'span',
 
   onLoad: null,
 
   // -------------------------------------------------------------------------
   // Events
 
-  didInsertElement: function(){
-    this.sendAction("onLoad");
+  didInsertElement: function() {
+    this.sendAction('onLoad');
   }
 });

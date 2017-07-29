@@ -14,18 +14,20 @@ import Ember from 'ember';
  * @param expression {String} example: "1/3" Have priority to get the numerator and denominator.
  * @returns {String} - fractional value is presented friendly
  */
-export function fractional(params,{ numerator, denominator,expression }) {
+export function fractional(params, { numerator, denominator, expression }) {
   var num = numerator;
   var den = denominator;
 
-  if(expression!==undefined){
-    var split = expression.split("/");
-    if( split.length === 2 ){
-      num =split[0];
-      den=split[1];
+  if (expression !== undefined) {
+    var split = expression.split('/');
+    if (split.length === 2) {
+      num = split[0];
+      den = split[1];
     }
   }
-  return Ember.String.htmlSafe('<span class="top">'+num+'</span><span class="bottom">'+den+'</span>');
+  return Ember.String.htmlSafe(
+    `<span class="top">${num}</span><span class="bottom">${den}</span>`
+  );
 }
 
 export default Ember.Helper.helper(fractional);

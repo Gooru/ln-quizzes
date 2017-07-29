@@ -14,7 +14,7 @@ Router.map(function() {
     this.route('assessment', { path: '/assessment/:assessmentId' });
   });
 
-  this.route('reports', function () {
+  this.route('reports', function() {
     this.route('context', { path: '/context/:contextId' });
     this.route('student-context', { path: '/student-context/:contextId' });
   });
@@ -29,7 +29,7 @@ Router.map(function() {
     this.route('class', { path: '/class/:classId' }, function() {
       this.route('course-map');
     });
-    this.route('independent', { path: '/course/:courseId'}, function() {
+    this.route('independent', { path: '/course/:courseId' }, function() {
       this.route('course-map');
     });
   });

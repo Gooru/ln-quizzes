@@ -2,7 +2,6 @@ import Ember from 'ember';
 import QuestionResult from 'quizzes-addon/models/result/question';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -11,12 +10,12 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Actions
 
-  actions:{
+  actions: {
     /**
      * @function actions:selectQuestion
      * @param {Number} questionId
      */
-    selectQuestion: function (questionId) {
+    selectQuestion: function(questionId) {
       this.get('onSelectQuestion')(questionId);
     },
 
@@ -34,14 +33,16 @@ export default Ember.Component.extend({
      */
     sortStudentView: function(sort) {
       this.set('sortAlphabetically', sort);
-      if(this.get('sortAlphabetically')) {
+      if (this.get('sortAlphabetically')) {
         this.set('studentPerformanceListSorting', ['student.profileName']);
       } else {
-        this.set('studentPerformanceListSorting', ['student.averageScore:desc','student.profileName']);
+        this.set('studentPerformanceListSorting', [
+          'student.averageScore:desc',
+          'student.profileName'
+        ]);
       }
     }
   },
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -55,7 +56,7 @@ export default Ember.Component.extend({
   /**
    * @prop { Collection } assessment
    */
-  assessment:  Ember.computed.alias('reportData.collection'),
+  assessment: Ember.computed.alias('reportData.collection'),
 
   /**
    * @prop { ReportData } reportData
@@ -74,46 +75,57 @@ export default Ember.Component.extend({
    *
    * @property {Ember.computed}
    */
-  sortedStudentPerformance: Ember.computed.sort('studentPerformanceList', 'studentPerformanceListSorting'),
+  sortedStudentPerformance: Ember.computed.sort(
+    'studentPerformanceList',
+    'studentPerformanceListSorting'
+  ),
 
   /**
    * Returns a convenient structure to display the student view
    * @return [] students performance info
    */
-  studentPerformanceList: Ember.computed('reportData.reportEvents.@each.updated', function(){
-    const component = this;
-    const reportEvents = component.get('reportData.reportEvents');
-    return reportEvents.map(function(studentData) {
-      let studentReportData = studentData.get('questionResults').reduce(
-        function(studentReport, result) {
-          studentReport[result.resourceId] = result;
-          return studentReport;
-        }, {}
-      );
+  studentPerformanceList: Ember.computed(
+    'reportData.reportEvents.@each.updated',
+    function() {
+      const component = this;
+      const reportEvents = component.get('reportData.reportEvents');
+      return reportEvents.map(function(studentData) {
+        const studentReportData = studentData
+          .get('questionResults')
+          .reduce(function(studentReport, result) {
+            studentReport[result.resourceId] = result;
+            return studentReport;
+          }, {});
 
-      component.get('assessment.resources').forEach(function(resource) {
-        if(!studentReportData[resource.id]) {
-          studentReportData[resource.id] = QuestionResult.create({
-            score: 0,
-            resourceId: resource.id
-          });
-        }
-      });
+        component.get('assessment.resources').forEach(function(resource) {
+          if (!studentReportData[resource.id]) {
+            studentReportData[resource.id] = QuestionResult.create({
+              score: 0,
+              resourceId: resource.id
+            });
+          }
+        });
 
-      let studentResourceResults = component.getReportDataResults(studentReportData);
-      return Ember.Object.create({
-        student: studentData,
-        reportData: studentResourceResults
+        const studentResourceResults = component.getReportDataResults(
+          studentReportData
+        );
+        return Ember.Object.create({
+          student: studentData,
+          reportData: studentResourceResults
+        });
       });
-    });
-  }),
+    }
+  ),
 
   /**
    * Array containing the criteria that controls the sorting, default is sort alphabetically, default is defined by property '@sortAlphabetically'
    *
    * @property {Array}
    */
-  studentPerformanceListSorting: ['student.averageScore:desc', 'student.profileName'],
+  studentPerformanceListSorting: [
+    'student.averageScore:desc',
+    'student.profileName'
+  ],
 
   // -------------------------------------------------------------------------
   // Methods
@@ -133,10 +145,9 @@ export default Ember.Component.extend({
    * @param {Object} studentReportData
    * @returns {QuestionResult[]}
    */
-   getReportDataResults: function(studentReportData) {
-     const component = this;
-     const questions = component.get('assessment.resources');
-     return questions.map(question => studentReportData[question.get('id')]);
-   }
-
+  getReportDataResults: function(studentReportData) {
+    const component = this;
+    const questions = component.get('assessment.resources');
+    return questions.map(question => studentReportData[question.get('id')]);
+  }
 });

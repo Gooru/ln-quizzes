@@ -13,7 +13,6 @@ import QuestionComponent from 'quizzes-addon/components/player/questions/qz-ques
  * @augments Ember/Component
  */
 export default QuestionComponent.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -31,8 +30,8 @@ export default QuestionComponent.extend({
    * When loading the user answer
    */
   updateUserAnswer: Ember.on('init', function() {
-   const component = this;
-   component.setAnswers();
+    const component = this;
+    component.setAnswers();
   }),
 
   // -------------------------------------------------------------------------
@@ -67,7 +66,7 @@ export default QuestionComponent.extend({
   /**
    * When the user changes the response
    */
-  updateAnswerObserver: function(){
+  updateAnswerObserver: function() {
     this.notify(false);
   },
 
@@ -83,7 +82,7 @@ export default QuestionComponent.extend({
       answer = [{ value: Ember.$.trim(component.get('answer')) }];
     component.notifyAnswerChanged(answer);
     if (component.get('isAnswerCompleted')) {
-      if(onLoad) {
+      if (onLoad) {
         component.notifyAnswerLoaded(answer);
       } else {
         component.notifyAnswerCompleted(answer);
@@ -98,7 +97,7 @@ export default QuestionComponent.extend({
    * */
   setAnswers: function() {
     if (this.get('hasUserAnswer')) {
-      let userAnswer = this.get('userAnswer.firstObject.value');
+      const userAnswer = this.get('userAnswer.firstObject.value');
       this.set('answer', userAnswer);
       this.notify(true);
     }

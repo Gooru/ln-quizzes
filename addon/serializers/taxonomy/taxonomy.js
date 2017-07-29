@@ -10,7 +10,6 @@ import { TAXONOMY_LEVELS } from 'quizzes-addon/config/quizzes-config';
  * @typedef {Object} ProfileSerializer
  */
 export default Ember.Object.extend({
-
   /**
    * Normalize the Fetch Taxonomy Subjects endpoint's response
    *
@@ -33,11 +32,14 @@ export default Ember.Object.extend({
     var serializer = this;
     return TaxonomyRoot.create(Ember.getOwner(serializer).ownerInjection(), {
       id: subjectPayload.id,
-      frameworkId: subjectPayload['standard_framework_id'],
+      frameworkId: subjectPayload.standard_framework_id,
       title: subjectPayload.title,
       subjectTitle: subjectPayload.title,
       code: subjectPayload.code,
-      frameworks: serializer.normalizeFrameworks(subjectPayload.frameworks, subjectPayload.title)
+      frameworks: serializer.normalizeFrameworks(
+        subjectPayload.frameworks,
+        subjectPayload.title
+      )
     });
   },
 
@@ -55,8 +57,8 @@ export default Ember.Object.extend({
   normalizeFramework: function(subjectPayload, parentTitle) {
     const serializer = this;
     return TaxonomyRoot.create(Ember.getOwner(serializer).ownerInjection(), {
-      id: subjectPayload['taxonomy_subject_id'],
-      frameworkId: subjectPayload['standard_framework_id'],
+      id: subjectPayload.taxonomy_subject_id,
+      frameworkId: subjectPayload.standard_framework_id,
       title: subjectPayload.title,
       subjectTitle: `${parentTitle}`
     });
@@ -138,8 +140,8 @@ export default Ember.Object.extend({
       id: codePayload.id,
       code: codePayload.code,
       title: codePayload.title,
-      parentTaxonomyCodeId: codePayload['parent_taxonomy_code_id'],
-      codeType: codePayload['code_type']
+      parentTaxonomyCodeId: codePayload.parent_taxonomy_code_id,
+      codeType: codePayload.code_type
     };
   },
 
@@ -151,16 +153,20 @@ export default Ember.Object.extend({
    */
   serializeTaxonomy: function(taxonomyData) {
     var taxonomyResult = null;
-    if (taxonomyData && Ember.isArray(taxonomyData) && taxonomyData.length > 0) {
+    if (
+      taxonomyData &&
+      Ember.isArray(taxonomyData) &&
+      taxonomyData.length > 0
+    ) {
       taxonomyResult = {};
       taxonomyData.forEach(function(taxonomy) {
         const taxonomyKey = taxonomy.get('id');
         taxonomyResult[taxonomyKey] = {
           code: taxonomy.get('code'),
           title: taxonomy.get('title'),
-          'parent_title': taxonomy.get('parentTitle'),
+          parent_title: taxonomy.get('parentTitle'),
           description: taxonomy.get('description'),
-          'framework_code': taxonomy.get('frameworkCode')
+          framework_code: taxonomy.get('frameworkCode')
         };
       });
     }
@@ -179,16 +185,24 @@ export default Ember.Object.extend({
 
     if (taxonomyArray && taxonomyArray.length) {
       taxonomyArray.forEach(function(taxonomyObject) {
-        let isMicroStandard = TaxonomyTagData.isMicroStandardId(taxonomyObject.internalCode);
+        const isMicroStandard = TaxonomyTagData.isMicroStandardId(
+          taxonomyObject.internalCode
+        );
 
-        taxonomyData.push(TaxonomyTagData.create({
-          id: taxonomyObject.internalCode,
-          code: taxonomyObject.code,
-          title: taxonomyObject.title,
-          parentTitle: taxonomyObject.parentTitle,
-          frameworkCode: taxonomyObject.frameworkCode,
-          taxonomyLevel: (level) ? level : isMicroStandard ? TAXONOMY_LEVELS.MICRO : TAXONOMY_LEVELS.STANDARD
-        }));
+        taxonomyData.push(
+          TaxonomyTagData.create({
+            id: taxonomyObject.internalCode,
+            code: taxonomyObject.code,
+            title: taxonomyObject.title,
+            parentTitle: taxonomyObject.parentTitle,
+            frameworkCode: taxonomyObject.frameworkCode,
+            taxonomyLevel: level
+              ? level
+              : isMicroStandard
+                ? TAXONOMY_LEVELS.MICRO
+                : TAXONOMY_LEVELS.STANDARD
+          })
+        );
       });
     }
     return Ember.A(taxonomyData);
@@ -206,17 +220,25 @@ export default Ember.Object.extend({
     if (taxonomyObject) {
       for (var key in taxonomyObject) {
         if (taxonomyObject.hasOwnProperty(key)) {
-          let taxonomy = taxonomyObject[key];
-          let isMicroStandard = (level) ? false : TaxonomyTagData.isMicroStandardId(key);
-          taxonomyData.push(TaxonomyTagData.create({
-            id: key,
-            code: taxonomy.code,
-            title: taxonomy.title,
-            parentTitle: taxonomy['parent_title'],
-            description: taxonomy.description ? taxonomy.description : '',
-            frameworkCode: taxonomy['framework_code'],
-            taxonomyLevel: (level) ? level : isMicroStandard ? TAXONOMY_LEVELS.MICRO : TAXONOMY_LEVELS.STANDARD
-          }));
+          const taxonomy = taxonomyObject[key];
+          const isMicroStandard = level
+            ? false
+            : TaxonomyTagData.isMicroStandardId(key);
+          taxonomyData.push(
+            TaxonomyTagData.create({
+              id: key,
+              code: taxonomy.code,
+              title: taxonomy.title,
+              parentTitle: taxonomy.parent_title,
+              description: taxonomy.description ? taxonomy.description : '',
+              frameworkCode: taxonomy.framework_code,
+              taxonomyLevel: level
+                ? level
+                : isMicroStandard
+                  ? TAXONOMY_LEVELS.MICRO
+                  : TAXONOMY_LEVELS.STANDARD
+            })
+          );
         }
       }
     }
@@ -231,7 +253,11 @@ export default Ember.Object.extend({
    */
   serializeTaxonomyForEvents: function(taxonomyData) {
     var taxonomyResult = null;
-    if (taxonomyData && Ember.isArray(taxonomyData) && taxonomyData.length > 0) {
+    if (
+      taxonomyData &&
+      Ember.isArray(taxonomyData) &&
+      taxonomyData.length > 0
+    ) {
       taxonomyResult = {};
       taxonomyData.forEach(function(taxonomy) {
         const taxonomyKey = taxonomy.get('id');
@@ -240,5 +266,4 @@ export default Ember.Object.extend({
     }
     return taxonomyResult;
   }
-
 });

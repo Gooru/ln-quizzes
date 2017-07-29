@@ -9,7 +9,6 @@ import ResourceResult from './resource';
  *
  */
 export default Ember.Object.extend({
-
   /**
    * @property {number} averageReaction sumarization of all reactions
    */
@@ -84,9 +83,10 @@ export default Ember.Object.extend({
   /**
    * @property {QuestionResult[]} questionResults
    */
-  questionResults: Ember.computed('resourceResults.@each.updated', function(){
+  questionResults: Ember.computed('resourceResults.@each.updated', function() {
     return this.get('resourceResults').filter(
-      resourceResult => resourceResult instanceof QuestionResult);
+      resourceResult => resourceResult instanceof QuestionResult
+    );
   }),
 
   /**
@@ -97,9 +97,12 @@ export default Ember.Object.extend({
   /**
    * @property {QuestionResult[]} questionResults
    */
-  sortedResourceResults: Ember.computed('resourceResults.@each.updated', function(){
-    return this.get('resourceResults').sortBy('resource.sequence');
-  }),
+  sortedResourceResults: Ember.computed(
+    'resourceResults.@each.updated',
+    function() {
+      return this.get('resourceResults').sortBy('resource.sequence');
+    }
+  ),
 
   /**
    * @property {boolean} showAttempts
@@ -159,18 +162,17 @@ export default Ember.Object.extend({
     const resources = collection.get('resources');
 
     if (resources.get('length')) {
-
-      resources.forEach(function (resource) {
-        let resourceId = resource.get('id');
-        let found = resourceResults.findBy('resourceId', resourceId);
+      resources.forEach(function(resource) {
+        const resourceId = resource.get('id');
+        const found = resourceResults.findBy('resourceId', resourceId);
         if (!found) {
-          let result = (resource.get('isQuestion')) ?
-            QuestionResult.create({ resourceId, resource }) :
-            ResourceResult.create({ resourceId, resource });
+          const result = resource.get('isQuestion')
+            ? QuestionResult.create({ resourceId, resource })
+            : ResourceResult.create({ resourceId, resource });
           resourceResults.pushObject(result);
         } else {
-          if(resource.get('isResource')) {
-            let result = ResourceResult.create({
+          if (resource.get('isResource')) {
+            const result = ResourceResult.create({
               resourceId,
               resource,
               savedTime: found.savedTime,
@@ -186,14 +188,19 @@ export default Ember.Object.extend({
         }
       });
 
-      let currentResourceId = this.get('currentResourceId');
-      if (!currentResourceId || resourceResults.findBy('id', currentResourceId)) {
+      const currentResourceId = this.get('currentResourceId');
+      if (
+        !currentResourceId ||
+        resourceResults.findBy('id', currentResourceId)
+      ) {
         this.set('currentResourceId', resources[0].get('id'));
       }
-
     } else {
-      Ember.Logger.error(`Collection with ID: ${collection.get('id')} does not have any resources. No resource results were set.`);
+      Ember.Logger.error(
+        `Collection with ID: ${collection.get(
+          'id'
+        )} does not have any resources. No resource results were set.`
+      );
     }
   }
-
 });

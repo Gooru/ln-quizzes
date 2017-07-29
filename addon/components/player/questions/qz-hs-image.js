@@ -13,7 +13,6 @@ import HSTextComponent from './qz-hs-text';
  * @augments components/player/questions/qz-hs-text.js
  */
 export default HSTextComponent.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
   i18n: Ember.inject.service(),
@@ -25,8 +24,7 @@ export default HSTextComponent.extend({
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-hs-image'],
-
+  classNames: ['qz-hs-image'],
 
   // -------------------------------------------------------------------------
   // Properties
@@ -37,7 +35,9 @@ export default HSTextComponent.extend({
    * @property {String} text - url string for an image
    */
   answers: Ember.computed.map('question.answers', function(answer) {
-    let cdnURL = this.get('configurationService.configuration.properties.cdnURL');
+    const cdnURL = this.get(
+      'configurationService.configuration.properties.cdnURL'
+    );
     return {
       value: answer.get('value'),
       text: cdnURL + answer.get('text')
@@ -48,8 +48,8 @@ export default HSTextComponent.extend({
    * @property {String} instructions - Question instructions
    */
   instructions: Ember.computed(function() {
-    var action = this.get('i18n').t(this.get('instructionsActionTextKey')).string;
-    return this.get('i18n').t('qz-hs-image.instructions', {action});
+    var action = this.get('i18n').t(this.get('instructionsActionTextKey'))
+      .string;
+    return this.get('i18n').t('qz-hs-image.instructions', { action });
   })
-
 });

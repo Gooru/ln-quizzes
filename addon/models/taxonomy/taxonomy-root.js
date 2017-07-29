@@ -1,5 +1,8 @@
 import Ember from 'ember';
-import { TAXONOMY_CATEGORIES, GOORU_DEFAULT_STANDARD } from 'quizzes-addon/config/quizzes-config';
+import {
+  TAXONOMY_CATEGORIES,
+  GOORU_DEFAULT_STANDARD
+} from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Taxonomy Root
@@ -7,7 +10,6 @@ import { TAXONOMY_CATEGORIES, GOORU_DEFAULT_STANDARD } from 'quizzes-addon/confi
  * @typedef {Object} TaxonomyRoot
  */
 const TaxonomyRoot = Ember.Object.extend({
-
   /**
    * @property {string} id - Item ID
    */
@@ -47,21 +49,21 @@ const TaxonomyRoot = Ember.Object.extend({
    * Category
    * @property {string}
    */
-  category: Ember.computed("id", function(){
-    const code = this.get("id").split(".")[1];
-    const category = Ember.A(TAXONOMY_CATEGORIES).findBy("apiCode", code);
+  category: Ember.computed('id', function() {
+    const code = this.get('id').split('.')[1];
+    const category = Ember.A(TAXONOMY_CATEGORIES).findBy('apiCode', code);
     return category ? category.value : null;
   }),
 
   /**
    * @property {boolean}
    */
-  hasCourses: Ember.computed.bool("courses.length"),
+  hasCourses: Ember.computed.bool('courses.length'),
 
   /**
    * @property {boolean}
    */
-  hasFrameworks: Ember.computed.bool("frameworks.length"),
+  hasFrameworks: Ember.computed.bool('frameworks.length'),
 
   /**
    * Indicates if the subject has standards
@@ -69,9 +71,9 @@ const TaxonomyRoot = Ember.Object.extend({
    * the Gooru Default Framework (GDF)
    * @property {boolean}
    */
-  hasStandards: Ember.computed("frameworks", function(){
-    const otherThanGDF = this.get("frameworkId") !== GOORU_DEFAULT_STANDARD;
-    const frameworksWithStandards = this.get("frameworksWithStandards");
+  hasStandards: Ember.computed('frameworks', function() {
+    const otherThanGDF = this.get('frameworkId') !== GOORU_DEFAULT_STANDARD;
+    const frameworksWithStandards = this.get('frameworksWithStandards');
     return otherThanGDF && frameworksWithStandards.length;
   }),
 
@@ -79,13 +81,12 @@ const TaxonomyRoot = Ember.Object.extend({
    * Returns all the frameworks having standards
    * @propery {TaxonomyRoot[]}
    */
-  frameworksWithStandards: Ember.computed("frameworks", function(){
-    const frameworks = this.get("frameworks");
-    return frameworks.filter(function(framework){
-      return framework.get("frameworkId") !== GOORU_DEFAULT_STANDARD; //Gooru default framework
+  frameworksWithStandards: Ember.computed('frameworks', function() {
+    const frameworks = this.get('frameworks');
+    return frameworks.filter(function(framework) {
+      return framework.get('frameworkId') !== GOORU_DEFAULT_STANDARD; //Gooru default framework
     });
   })
-
 });
 
 export default TaxonomyRoot;

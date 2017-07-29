@@ -16,7 +16,7 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-true-false'],
+  classNames: ['qz-true-false'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -28,11 +28,13 @@ export default QuestionComponent.extend({
      */
     selectAnswerChoice: function(answerId, onLoad) {
       const component = this;
-      let answer = [{
-        value: answerId
-      }];
+      const answer = [
+        {
+          value: answerId
+        }
+      ];
       component.notifyAnswerChanged(answer);
-      if(onLoad) {
+      if (onLoad) {
         component.notifyAnswerLoaded(answer);
       } else {
         component.notifyAnswerCompleted(answer);
@@ -45,9 +47,12 @@ export default QuestionComponent.extend({
 
   init: function() {
     this._super(...arguments);
-    if(this.get('hasUserAnswer')) {
+    if (this.get('hasUserAnswer')) {
       this.actions.selectAnswerChoice.call(
-        this, this.get('userAnswer.firstObject.value'), true);
+        this,
+        this.get('userAnswer.firstObject.value'),
+        true
+      );
     }
   },
 
@@ -58,8 +63,8 @@ export default QuestionComponent.extend({
    * Returns the 'false' answer value
    */
   falseAnswerId: Ember.computed('question.answers', function() {
-    let answers = this.get('question.answers');
-    let found = answers.filterBy('text', 'False');
+    const answers = this.get('question.answers');
+    const found = answers.filterBy('text', 'False');
     return found ? found.get('firstObject.value') : 'true'; //TODO, is this a data problem?
   }),
 
@@ -67,8 +72,8 @@ export default QuestionComponent.extend({
    * Returns the 'true' answer value
    */
   trueAnswerId: Ember.computed('question.answers', function() {
-    let answers = this.get('question.answers');
-    let found = answers.filterBy('text', 'True');
+    const answers = this.get('question.answers');
+    const found = answers.filterBy('text', 'True');
     return found ? found.get('firstObject.value') : 'true'; //TODO, is this a data problem?
   })
 
@@ -77,5 +82,4 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Methods
-
 });

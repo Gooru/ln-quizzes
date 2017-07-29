@@ -1,3 +1,4 @@
+/* eslint require-jsdoc: 0 */
 import { moduleFor } from 'ember-qunit';
 import Pretender from 'pretender';
 
@@ -5,7 +6,6 @@ export default function(name, moduleName, options = {}) {
   moduleFor(name, moduleName, {
     needs: options.needs,
     beforeEach() {
-
       //Starting the pretender
       this.pretender = new Pretender();
 

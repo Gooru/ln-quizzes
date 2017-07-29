@@ -14,17 +14,15 @@ import { radialProgress } from 'quizzes-addon/utils/d3/radial-progress';
  */
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['charts', 'gru-radial-chart'],
 
-
   // -------------------------------------------------------------------------
   // Events
 
-  didInsertElement: function(){
+  didInsertElement: function() {
     const $component = this.$();
     const minValue = this.get('minValue');
     const maxValue = this.get('maxValue');
@@ -34,7 +32,7 @@ export default Ember.Component.extend({
     const width = parseInt($component.css('width').split('px')[0]);
     const height = parseInt($component.css('height').split('px')[0]);
 
-    let radialChart = radialProgress(this.element)
+    const radialChart = radialProgress(this.element)
       .margin({ top: 0, right: 0, bottom: 0, left: 0 })
       .diameter(Math.min(height, width))
       .value(value)
@@ -68,7 +66,7 @@ export default Ember.Component.extend({
    */
   radialChart: null,
 
-  renderChart: Ember.observer('value', function () {
+  renderChart: Ember.observer('value', function() {
     const maxValue = this.get('maxValue');
     const value = this.get('value');
     const radialChart = this.get('radialChart');
@@ -93,5 +91,4 @@ export default Ember.Component.extend({
    * It should be between minValue and maxValue
    */
   value: 0
-
 });

@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -26,6 +25,7 @@ export default Ember.Mixin.create({
   /**
    * @property {String} token access token used for authorization on ajax requests
    */
-  token: Ember.computed.alias('quizzesConfigurationService.configuration.properties.token')
-
+  token: Ember.computed.alias(
+    'quizzesConfigurationService.configuration.properties.token'
+  )
 });

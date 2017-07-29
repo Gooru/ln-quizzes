@@ -10,10 +10,8 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -22,16 +20,17 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Actions
   actions: {
-    showMoreUsers: function(){
+    showMoreUsers: function() {
       const component = this;
-      const viewMoreIn = (this.get('viewMoreIn') === 'modal') ? 'modal' : 'tooltip';
+      const viewMoreIn =
+        this.get('viewMoreIn') === 'modal' ? 'modal' : 'tooltip';
 
-      if(!this.get('showOnlyNumbers')){
+      if (!this.get('showOnlyNumbers')) {
         if (viewMoreIn === 'modal') {
           component.$('.remaining').modal('toggle');
         } else {
           const openClass = component.get('tooltipOpenClass');
-          const anyTooltipSelector = '.gru-user-icons .' + openClass;
+          const anyTooltipSelector = `.gru-user-icons .${openClass}`;
           // The popovers are controlled manually so that only one popover
           // is visible at a time
           var $open = Ember.$(anyTooltipSelector);
@@ -51,8 +50,8 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Events
   setup: Ember.on('didInsertElement', function() {
-    const viewMoreIn = (this.get('viewMoreIn') === 'modal') ? 'modal' : 'tooltip';
-    if(!this.get('showOnlyNumbers')){
+    const viewMoreIn = this.get('viewMoreIn') === 'modal' ? 'modal' : 'tooltip';
+    if (!this.get('showOnlyNumbers')) {
       if (viewMoreIn !== 'modal') {
         this.setupTooltip();
       }
@@ -102,9 +101,13 @@ export default Ember.Component.extend({
   /**
    * @prop {Number} remainingUsersNumber - Number of users surpassing the view threshold
    */
-  remainingUsersNumber: Ember.computed('usersSorted.length', 'viewThreshold', function() {
-    return this.get('usersSorted.length') - (this.get('viewThreshold') - 1);
-  }),
+  remainingUsersNumber: Ember.computed(
+    'usersSorted.length',
+    'viewThreshold',
+    function() {
+      return this.get('usersSorted.length') - (this.get('viewThreshold') - 1);
+    }
+  ),
 
   /**
    * @prop {Bool} showMoreUsers - Should the user be allowed to require to view more users
@@ -127,9 +130,9 @@ export default Ember.Component.extend({
     var secondStatus = b.get('isActive');
     var secondName = b.get('user.lastName');
 
-    return (firstStatus > secondStatus) ? -1 :
-      (firstStatus < secondStatus) ? 1 :
-        (firstName <= secondName) ? -1 : 1;
+    return firstStatus > secondStatus
+      ? -1
+      : firstStatus < secondStatus ? 1 : firstName <= secondName ? -1 : 1;
   }),
 
   /**
@@ -147,7 +150,7 @@ export default Ember.Component.extend({
   /**
    * @prop {Bool} showOnlyNumbers - Shoy only the number of users
    */
-  showOnlyNumbers:false,
+  showOnlyNumbers: false,
 
   /**
    * @prop {Number} totalUsers - Number of total users
@@ -162,14 +165,13 @@ export default Ember.Component.extend({
   // Observers
 
   hideTooltip: Ember.observer('isTooltipHidden', function() {
-    const selector = 'a.first-view.' + this.get('tooltipOpenClass');
+    const selector = `a.first-view.${this.get('tooltipOpenClass')}`;
 
     if (this.get('isTooltipHidden')) {
       // Simulate a click on the anchor element to hide the tooltip
       this.$(selector).click();
     }
   }),
-
 
   // -------------------------------------------------------------------------
   // Methods
@@ -179,11 +181,10 @@ export default Ember.Component.extend({
     const $anchor = this.$('a.first-view');
 
     if (this.get('showMoreUsers')) {
-
       $anchor.addClass('clickable');
       $anchor.attr('data-html', 'true');
       $anchor.popover({
-        placement: "auto bottom",
+        placement: 'auto bottom',
         content: function() {
           return component.$('.remaining .modal-body').html();
         },

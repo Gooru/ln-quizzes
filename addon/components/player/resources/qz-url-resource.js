@@ -11,13 +11,12 @@ import Ember from 'ember';
  * @augments Ember/Component
  **/
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-url-resource']
+  classNames: ['qz-url-resource']
 
   // -------------------------------------------------------------------------
   // Actions
@@ -33,5 +32,4 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Methods
-
 });

@@ -13,10 +13,9 @@ import QuestionComponent from 'quizzes-addon/components/player/questions/qz-ques
  * @augments player/questions/qz-question.js
  */
 export default QuestionComponent.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-reorder'],
+  classNames: ['qz-reorder'],
 
   // -------------------------------------------------------------------------
   // Events
@@ -24,10 +23,10 @@ export default QuestionComponent.extend({
   initSortableList: Ember.on('didInsertElement', function() {
     const component = this;
     component.setAnswers();
-    if(!component.get('hasUserAnswer')) {
+    if (!component.get('hasUserAnswer')) {
       component.shuffle();
     }
-    this.set('areAnswersShuffled',true);
+    this.set('areAnswersShuffled', true);
   }),
 
   removeSubscriptions: Ember.on('willDestroyElement', function() {
@@ -44,7 +43,7 @@ export default QuestionComponent.extend({
   answers: Ember.computed('question.answers.@each.value', function() {
     let answers = this.get('question.answers');
     if (this.get('hasUserAnswer')) {
-      let userAnswer = this.get('userAnswer');
+      const userAnswer = this.get('userAnswer');
       answers = userAnswer.map(answer => answers.findBy('value', answer.value));
     }
     return answers;
@@ -63,8 +62,10 @@ export default QuestionComponent.extend({
    * Disorder elements
    */
   disorder: function(list) {
-    var j, x, i = list.length;
-    while(i) {
+    var j,
+      x,
+      i = list.length;
+    while (i) {
       j = parseInt(Math.random() * i);
       i -= 1;
       x = list[i];
@@ -83,10 +84,12 @@ export default QuestionComponent.extend({
     const $items = component.$('.sortable').find('li');
     const answers = Ember.A([]);
 
-    $items.map((idx, item) => answers.pushObject({value:$(item).data('id')}));
+    $items.map((idx, item) =>
+      answers.pushObject({ value: $(item).data('id') })
+    );
 
     component.notifyAnswerChanged(answers);
-    if(onLoad) {
+    if (onLoad) {
       component.notifyAnswerLoaded(answers);
     } else {
       component.notifyAnswerCompleted(answers);
@@ -106,7 +109,7 @@ export default QuestionComponent.extend({
       sortable.sortable('disable');
     }
 
-    if(component.get('hasUserAnswer')) {
+    if (component.get('hasUserAnswer')) {
       component.notify(true);
     }
     // Manually add subscriptions to sortable element -makes it easier to test
@@ -120,10 +123,10 @@ export default QuestionComponent.extend({
    */
   shuffle: function() {
     const component = this;
-    const $items = component.$('.sortable') ;
+    const $items = component.$('.sortable');
     $items.each(function() {
       var items = $items.children().clone(true);
-      if(items.length){
+      if (items.length) {
         while (!component.validateShuffle()) {
           $(this).html(component.disorder(items));
         }
@@ -133,10 +136,14 @@ export default QuestionComponent.extend({
   /**
    * Validate shuffle doesn't be equal than the correct order
    */
-  validateShuffle:function(){
+  validateShuffle: function() {
     const component = this;
     const $items = component.$('.sortable li').toArray();
-    let answers = component.get('answers');
-    return $items.reduce((isValid, item,idx) => isValid && answers[idx].get('value') !== $(item).data('id'), true);
+    const answers = component.get('answers');
+    return $items.reduce(
+      (isValid, item, idx) =>
+        isValid && answers[idx].get('value') !== $(item).data('id'),
+      true
+    );
   }
 });

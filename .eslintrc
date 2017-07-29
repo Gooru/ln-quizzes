@@ -29,51 +29,48 @@
     "sourceType": "module"
   },
   "rules": {
-    "comma-dangle": 2,
-    "curly": 2,
-    "dot-notation": 1,
+    "comma-dangle": "error",
+    "curly": "error",
+    "dot-notation": "error",
     "eqeqeq": [
-      2,
+      "error",
       "smart"
     ],
     "indent": [
-      0,
+      "error",
       2
     ],
     "linebreak-style": [
-      2,
+      "error",
       "unix"
     ],
-    "max-len": 0,
-    "no-caller": 2,
-    "no-duplicate-imports": 2,
-    "no-empty-function": 2,
-    "no-eval": 2,
-    "no-extra-bind": 2,
-    "no-multiple-empty-lines": 0,
-    "no-new-func": 2,
-    "no-new-wrappers": 2,
-    "no-plusplus": [
-      2,
+    "no-caller": "error",
+    "no-duplicate-imports": "error",
+    "no-empty-function": "error",
+    "no-eval": "error",
+    "no-extra-bind": "error",
+    "no-multiple-empty-lines": "error",
+    "no-new-func": "error",
+    "no-new-wrappers": "error",
+    "no-trailing-spaces": [
+      "error",
       {
-        "allowForLoopAfterthoughts": true
+        "ignoreComments": false
       }
     ],
-    "no-trailing-spaces": 2,
-    "no-unneeded-ternary": 2,
-    "no-use-before-define": 1,
-    "no-useless-call": 2,
-    "no-useless-concat": 2,
-    "no-useless-escape": 2,
-    "prefer-const": 0,
-    "prefer-template": 1,
+    "no-unneeded-ternary": "error",
+    "no-use-before-define": "error",
+    "no-useless-call": "error",
+    "no-useless-concat": "error",
+    "no-useless-escape": "error",
+    "prefer-template": "error",
     "quotes": [
-      0,
+      "error",
       "single"
     ],
-    "require-jsdoc": 1,
+    "require-jsdoc": "error",
     "semi": [
-      2,
+      "error",
       "always"
     ]
   }

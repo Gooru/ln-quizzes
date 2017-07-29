@@ -8,7 +8,6 @@ import AnswerModel from 'quizzes-addon/models/resource/answer';
  * @typedef {Object} ResourceSerializer
  */
 export default Ember.Object.extend({
-
   /**
    * Normalize the resource data into a Resource object
    * @param resourceData
@@ -16,28 +15,39 @@ export default Ember.Object.extend({
    */
   normalizeReadResource: function(resourceData) {
     const serializer = this;
-    const questionData = resourceData.title || !resourceData.metadata ? resourceData : resourceData.metadata;
+    const questionData =
+      resourceData.title || !resourceData.metadata
+        ? resourceData
+        : resourceData.metadata;
     const interaction = questionData ? questionData.interaction : null;
 
-    const resource = ResourceModel.create(Ember.getOwner(this).ownerInjection(), {
-      id: resourceData.id,
-      isResource: resourceData.isResource,
-      sequence: resourceData.sequence,
-      body: questionData.url || questionData.body,
-      description: questionData.description,
-      correctAnswer: questionData.correctAnswer,
-      narration:questionData.narration,
-      ownerId:questionData.creator_id || questionData.ownerId,
-      title: questionData.title,
-      thumbnail: questionData.thumbnail,
-      displayGuide: questionData.display_guide && (questionData.display_guide.is_broken === 1 ||
-        questionData.display_guide.is_frame_breaker === 1),
-      type: questionData.content_subformat || questionData.type
-    });
+    const resource = ResourceModel.create(
+      Ember.getOwner(this).ownerInjection(),
+      {
+        id: resourceData.id,
+        isResource: resourceData.isResource,
+        sequence: resourceData.sequence,
+        body: questionData.url || questionData.body,
+        description: questionData.description,
+        correctAnswer: questionData.correctAnswer,
+        narration: questionData.narration,
+        ownerId: questionData.creator_id || questionData.ownerId,
+        title: questionData.title,
+        thumbnail: questionData.thumbnail,
+        displayGuide:
+          questionData.display_guide &&
+          (questionData.display_guide.is_broken === 1 ||
+            questionData.display_guide.is_frame_breaker === 1),
+        type: questionData.content_subformat || questionData.type
+      }
+    );
 
-    resource.set('displayGuide', resource.get('displayGuide') || this.checkURLProtocol(resource.body));
+    resource.set(
+      'displayGuide',
+      resource.get('displayGuide') || this.checkURLProtocol(resource.body)
+    );
 
-    if(interaction) {
+    if (interaction) {
       resource.setProperties({
         answers: serializer.normalizeAnswers(interaction.choices),
         maxChoices: interaction.maxChoices,
@@ -77,7 +87,7 @@ export default Ember.Object.extend({
    * @param url
    * @returns {Boolean}
    */
-  checkURLProtocol: function(url){
-    return (window.location.protocol === 'https:'  && /^((http):\/\/)/.test(url));
+  checkURLProtocol: function(url) {
+    return window.location.protocol === 'https:' && /^((http):\/\/)/.test(url);
   }
 });

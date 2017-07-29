@@ -5,20 +5,24 @@ import TaxonomyRoot from 'quizzes-addon/models/taxonomy/taxonomy-root';
 import TaxonomyItem from 'quizzes-addon/models/taxonomy/taxonomy-item';
 import TaxonomyTagData from 'quizzes-addon/models/taxonomy/taxonomy-tag-data';
 
-moduleForComponent('gru-subject-course-picker', 'Integration | Component | taxonomy/gru subject course picker', {
-  integration: true,
-  beforeEach: function () {
-    this.inject.service('i18n');
+moduleForComponent(
+  'gru-subject-course-picker',
+  'Integration | Component | taxonomy/gru subject course picker',
+  {
+    integration: true,
+    beforeEach: function() {
+      this.inject.service('i18n');
+    }
   }
-});
+);
 
 test('Show courses - no selection', function(assert) {
   const t1 = TaxonomyRoot.create({
-    id: "subject-1",
-    frameworkId: "framework-1",
-    title: "Subject 1",
-    subjectTitle: "Subject 1.1",
-    code: "subject-1-code",
+    id: 'subject-1',
+    frameworkId: 'framework-1',
+    title: 'Subject 1',
+    subjectTitle: 'Subject 1.1',
+    code: 'subject-1-code',
     frameworks: []
   });
 
@@ -35,8 +39,8 @@ test('Show courses - no selection', function(assert) {
     })
   ];
 
-  this.set("selectedSubject", t1);
-  this.set("courses", courses);
+  this.set('selectedSubject', t1);
+  this.set('courses', courses);
 
   this.render(hbs`{{taxonomy/gru-subject-course-picker
       selectedSubject=selectedSubject
@@ -44,18 +48,25 @@ test('Show courses - no selection', function(assert) {
     }}`);
 
   const $component = this.$('.gru-subject-course-picker');
-  assert.equal($component.find("input[type=checkbox]").length, 2, "Missing course checkboxes");
-  assert.equal($component.find("input[type=checkbox]:checked").length, 0, "No courses should be selected");
-
+  assert.equal(
+    $component.find('input[type=checkbox]').length,
+    2,
+    'Missing course checkboxes'
+  );
+  assert.equal(
+    $component.find('input[type=checkbox]:checked').length,
+    0,
+    'No courses should be selected'
+  );
 });
 
 test('Show courses - with selection', function(assert) {
   const t1 = TaxonomyRoot.create({
-    id: "subject-1",
-    frameworkId: "framework-1",
-    title: "Subject 1",
-    subjectTitle: "Subject 1.1",
-    code: "subject-1-code",
+    id: 'subject-1',
+    frameworkId: 'framework-1',
+    title: 'Subject 1',
+    subjectTitle: 'Subject 1.1',
+    code: 'subject-1-code',
     frameworks: []
   });
 
@@ -82,9 +93,9 @@ test('Show courses - with selection', function(assert) {
     })
   ]);
 
-  this.set("selectedTaxonomy", selectedTaxonomy);
-  this.set("selectedSubject", t1);
-  this.set("courses", courses);
+  this.set('selectedTaxonomy', selectedTaxonomy);
+  this.set('selectedSubject', t1);
+  this.set('courses', courses);
 
   this.render(hbs`{{taxonomy/gru-subject-course-picker
       selectedTaxonomy=selectedTaxonomy
@@ -93,8 +104,14 @@ test('Show courses - with selection', function(assert) {
     }}`);
 
   const $component = this.$('.gru-subject-course-picker');
-  assert.equal($component.find("input[type=checkbox]").length, 2, "Missing course checkboxes");
-  assert.equal($component.find("input[type=checkbox]:checked").length, 1, "One course should be selected");
-
+  assert.equal(
+    $component.find('input[type=checkbox]').length,
+    2,
+    'Missing course checkboxes'
+  );
+  assert.equal(
+    $component.find('input[type=checkbox]:checked').length,
+    1,
+    'One course should be selected'
+  );
 });
-

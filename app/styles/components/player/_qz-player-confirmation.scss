@@ -1,7 +1,7 @@
 .qz-player-confirmation {
   max-width: 455px;
 
-  .panel-heading{
+  .panel-heading {
     text-align: left;
   }
 
@@ -23,7 +23,7 @@
       @include align-items(center);
       margin-top: 35px;
 
-      >* {
+      > * {
         float: left;
       }
 
@@ -41,7 +41,8 @@
     .actions {
       margin-top: 15px;
       text-align: right;
-      .back, .cancel{
+      .back,
+      .cancel {
         border: 1px solid $gray-light;
       }
     }

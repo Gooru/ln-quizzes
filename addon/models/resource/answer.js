@@ -4,7 +4,6 @@ import Ember from 'ember';
  * @typedef {Object} Answer
  */
 export default Ember.Object.extend({
-
   /**
    * if the answer should not be shuffled
    * @property {boolean} isFixed
@@ -22,5 +21,4 @@ export default Ember.Object.extend({
    * @property {string} value
    */
   value: null
-
 });

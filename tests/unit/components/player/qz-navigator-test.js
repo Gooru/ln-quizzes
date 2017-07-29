@@ -2,14 +2,18 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import Question from 'quizzes-addon/models/resource/resource';
 
-moduleForComponent('player/qz-navigator', 'Unit | Component | player/qz navigator', {
-  // Specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar'],
-  unit: true
-});
+moduleForComponent(
+  'player/qz-navigator',
+  'Unit | Component | player/qz navigator',
+  {
+    // Specify the other units that are required for this test
+    // needs: ['component:foo', 'helper:bar'],
+    unit: true
+  }
+);
 
 test('closeNavigator', function(assert) {
-  let component = this.subject();
+  const component = this.subject();
   component.set('sendAction', function(actionName) {
     assert.equal(actionName, 'onCloseNavigator', 'Action sent should match');
   });
@@ -17,7 +21,7 @@ test('closeNavigator', function(assert) {
 });
 
 test('finishCollection', function(assert) {
-  let component = this.subject();
+  const component = this.subject();
   component.set('sendAction', function(actionName) {
     assert.equal(actionName, 'onFinishCollection', 'Action sent should match');
   });
@@ -25,7 +29,7 @@ test('finishCollection', function(assert) {
 });
 
 test('seeUsageReport', function(assert) {
-  let component = this.subject();
+  const component = this.subject();
   component.set('sendAction', function(actionName) {
     assert.equal(actionName, 'onFinishCollection', 'Action sent should match');
   });
@@ -34,9 +38,9 @@ test('seeUsageReport', function(assert) {
 
 test('selectItem navigation disabled', function(assert) {
   assert.expect(0);
-  let component = this.subject();
-  let question = Question.create(Ember.getOwner(this).ownerInjection());
-  let item = {
+  const component = this.subject();
+  const question = Question.create(Ember.getOwner(this).ownerInjection());
+  const item = {
     resource: question
   };
   component.set('isNavigationDisabled', true);
@@ -48,8 +52,8 @@ test('selectItem navigation disabled', function(assert) {
 
 test('selectItem no resource', function(assert) {
   assert.expect(0);
-  let component = this.subject();
-  let item = {};
+  const component = this.subject();
+  const item = {};
   component.set('sendAction', function() {
     assert.ok(false, 'Send action should not be called');
   });
@@ -58,17 +62,17 @@ test('selectItem no resource', function(assert) {
 
 test('selectItem with item selected', function(assert) {
   assert.expect(2);
-  let component = this.subject();
-  let question = Question.create(Ember.getOwner(this).ownerInjection());
-  let item = {
+  const component = this.subject();
+  const question = Question.create(Ember.getOwner(this).ownerInjection());
+  const item = {
     resource: question
   };
   component.set('onItemSelected', {});
   component.set('sendAction', function(actionName, resource) {
-    if(actionName === 'onCloseNavigator') {
+    if (actionName === 'onCloseNavigator') {
       assert.ok(true, 'Close navigator action sent');
     }
-    if(actionName === 'onItemSelected') {
+    if (actionName === 'onItemSelected') {
       assert.deepEqual(resource, question, 'Resource param should match');
     }
   });
@@ -77,17 +81,17 @@ test('selectItem with item selected', function(assert) {
 
 test('selectItem with no item selected', function(assert) {
   assert.expect(1);
-  let component = this.subject();
-  let question = Question.create(Ember.getOwner(this).ownerInjection());
-  let item = {
+  const component = this.subject();
+  const question = Question.create(Ember.getOwner(this).ownerInjection());
+  const item = {
     resource: question
   };
   component.set('onItemSelected', null);
   component.set('sendAction', function(actionName) {
-    if(actionName === 'onCloseNavigator') {
+    if (actionName === 'onCloseNavigator') {
       assert.ok(true, 'Close navigator action sent');
     }
-    if(actionName === 'onItemSelected') {
+    if (actionName === 'onItemSelected') {
       assert.ok(false, 'On item selected action should not be sent');
     }
   });

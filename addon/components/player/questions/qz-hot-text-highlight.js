@@ -14,7 +14,6 @@ import QuestionUtil from 'quizzes-addon/utils/question/hot-text-highlight';
  * @augments Ember/Component
  */
 export default QuestionComponent.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -31,7 +30,7 @@ export default QuestionComponent.extend({
      */
     markItem: function(item) {
       const component = this;
-      if (!component.get('readOnly')){
+      if (!component.get('readOnly')) {
         item.set('selected', !item.get('selected'));
         component.notifyEvents(component.getSelectedItems(), false);
       }
@@ -45,7 +44,7 @@ export default QuestionComponent.extend({
    */
   initItems: function() {
     const component = this;
-    if(component.get('hasUserAnswer')) {
+    if (component.get('hasUserAnswer')) {
       component.notifyEvents(component.getSelectedItems(), true);
     }
   }.on('didInsertElement'),
@@ -58,12 +57,17 @@ export default QuestionComponent.extend({
    */
   items: Ember.computed('question.body', function() {
     const component = this;
-    let items = QuestionUtil.getItems(this.get('question'));
+    const items = QuestionUtil.getItems(this.get('question'));
     if (component.get('hasUserAnswer')) {
-      let userAnswer = component.get('userAnswer');
-      items.forEach(
-        item => item.set('selected',
-          !!userAnswer.findBy('value', `${item.get('text')},${item.get('index')}`))
+      const userAnswer = component.get('userAnswer');
+      items.forEach(item =>
+        item.set(
+          'selected',
+          !!userAnswer.findBy(
+            'value',
+            `${item.get('text')},${item.get('index')}`
+          )
+        )
       );
     }
     return items;
@@ -87,13 +91,13 @@ export default QuestionComponent.extend({
    */
   notifyEvents: function(selectedItems, onLoad) {
     const component = this;
-    const userAnswer = selectedItems.map(
-      item => ({ value: `${item.get('text')},${item.get('index')}` })
-    );
+    const userAnswer = selectedItems.map(item => ({
+      value: `${item.get('text')},${item.get('index')}`
+    }));
 
     component.notifyAnswerChanged(userAnswer);
     if (selectedItems.get('length')) {
-      if(onLoad) {
+      if (onLoad) {
         component.notifyAnswerLoaded(userAnswer);
       } else {
         component.notifyAnswerCompleted(userAnswer);
@@ -102,5 +106,4 @@ export default QuestionComponent.extend({
       component.notifyAnswerCleared(userAnswer);
     }
   }
-
 });

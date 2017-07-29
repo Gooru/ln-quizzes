@@ -16,7 +16,7 @@ export default ResourceComponent.extend({
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-image-resource']
+  classNames: ['qz-image-resource']
 
   // -------------------------------------------------------------------------
   // Actions
@@ -32,5 +32,4 @@ export default ResourceComponent.extend({
 
   // -------------------------------------------------------------------------
   // Methods
-
 });

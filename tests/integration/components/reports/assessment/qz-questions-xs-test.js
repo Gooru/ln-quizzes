@@ -6,9 +6,13 @@ import QuestionResult from 'quizzes-addon/models/result/question';
 import Resource from 'quizzes-addon/models/resource/resource';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
-moduleForComponent('reports/assessment/qz-questions-xs', 'Integration | Component | reports/assessment/qz questions xs', {
-  integration: true
-});
+moduleForComponent(
+  'reports/assessment/qz-questions-xs',
+  'Integration | Component | reports/assessment/qz questions xs',
+  {
+    integration: true
+  }
+);
 
 test('Questions Details Mobile Layout', function(assert) {
   assert.expect(6);
@@ -35,7 +39,8 @@ test('Questions Details Mobile Layout', function(assert) {
       savedTime: 25000, //seconds
       reaction: 2,
       answer: 'answer'
-    })]);
+    })
+  ]);
 
   this.set('questions', questions);
   this.render(hbs`{{reports/assessment/qz-questions-xs results=questions}}`);
@@ -43,9 +48,21 @@ test('Questions Details Mobile Layout', function(assert) {
   const $question = $component.find('.qz-questions-xs');
 
   T.exists(assert, $question, 'Missing questions-xs component');
-  T.exists(assert, $question.find('.question-number'), 'Missing question number column');
-  T.exists(assert, $question.find('.question-text'), 'Missing question text column');
-  T.exists(assert, $question.find('.question-container'), 'Missing question container');
+  T.exists(
+    assert,
+    $question.find('.question-number'),
+    'Missing question number column'
+  );
+  T.exists(
+    assert,
+    $question.find('.question-text'),
+    'Missing question text column'
+  );
+  T.exists(
+    assert,
+    $question.find('.question-container'),
+    'Missing question container'
+  );
   T.exists(assert, $question.find('.question'), 'Missing question section');
   T.exists(assert, $question.find('.answer'), 'Missing answer section');
 });

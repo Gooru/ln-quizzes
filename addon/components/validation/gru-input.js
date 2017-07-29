@@ -1,9 +1,5 @@
 import Ember from 'ember';
-const {
-  computed,
-  defineProperty
-  } = Ember;
-
+const { computed, defineProperty } = Ember;
 
 /**
  * Text field with validation
@@ -16,16 +12,18 @@ const {
  * @see ember-cp-validations
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['gru-input','validation'],
-  classNameBindings: ['showErrorClass:has-error', 'isValid:has-success','valuePath'],
+  classNames: ['gru-input', 'validation'],
+  classNameBindings: [
+    'showErrorClass:has-error',
+    'isValid:has-success',
+    'valuePath'
+  ],
 
   /**
    * @type {?string} string of classes (separated by a space) specific to the component instance
@@ -34,34 +32,42 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Actions
-  actions:{
+  actions: {
     inputValueChange: function() {
-      this.set('rawInputValue',this.removeWhiteSpaces(this.get('rawInputValue')));
+      this.set(
+        'rawInputValue',
+        this.removeWhiteSpaces(this.get('rawInputValue'))
+      );
       this.set('value', this.get('rawInputValue'));
       this.set('isTyping', false);
-      if (this.get("onFocusOut")){
-        this.sendAction("onFocusOut");
+      if (this.get('onFocusOut')) {
+        this.sendAction('onFocusOut');
       }
     },
 
     inputTyping: function() {
       this.set('isTyping', true);
-      if (this.get("onTyping")){
-        this.sendAction("onTyping");
+      if (this.get('onTyping')) {
+        this.sendAction('onTyping');
       }
     },
 
     enterPressed: function() {
-      this.set('rawInputValue',this.removeWhiteSpaces(this.get('rawInputValue')));
+      this.set(
+        'rawInputValue',
+        this.removeWhiteSpaces(this.get('rawInputValue'))
+      );
       this.set('value', this.get('rawInputValue'));
       this.set('isTyping', false);
-      this.get('onEnter') && this.get('isValid') === true && this.get("onEnter")(this.get('value'));
+      this.get('onEnter') &&
+        this.get('isValid') === true &&
+        this.get('onEnter')(this.get('value'));
     },
 
-    clearContent: function(){
-      this.set('rawInputValue','');
+    clearContent: function() {
+      this.set('rawInputValue', '');
       this.set('value', this.get('rawInputValue'));
-      this.sendAction("onClearContent");
+      this.sendAction('onClearContent');
     }
   },
 
@@ -71,7 +77,11 @@ export default Ember.Component.extend({
   init() {
     this._super(...arguments);
     var valuePath = this.get('valuePath');
-    defineProperty(this, 'attributeValidation', computed.oneWay(`model.validations.attrs.${valuePath}`));
+    defineProperty(
+      this,
+      'attributeValidation',
+      computed.oneWay(`model.validations.attrs.${valuePath}`)
+    );
     var value = this.removeTags(this.get(`model.${valuePath}`));
     this.set('rawInputValue', value);
     defineProperty(this, 'value', computed.alias(`model.${valuePath}`));
@@ -102,7 +112,7 @@ export default Ember.Component.extend({
   /**
    * @param {Number} type - max length of the input field.
    */
-  maxLength:1000,
+  maxLength: 1000,
   /**
    * @param {Object} attributeValidation - value used to set the rawInputValue
    */
@@ -118,7 +128,7 @@ export default Ember.Component.extend({
   /**
    * @param {Computed} showClearButton - Flag that determines when the button should be shown when flag is true
    */
-  showClearButton: computed('hasClearButton','hasContent', function(){
+  showClearButton: computed('hasClearButton', 'hasContent', function() {
     return this.get('hasContent') && this.get('hasClearButton');
   }),
 
@@ -146,9 +156,18 @@ export default Ember.Component.extend({
   /**
    * @param {Computed } showErrorClass - computed property that defines the
    */
-  showErrorClass: computed('showMessage', 'hasContent', 'attributeValidation', function() {
-    return this.get('attributeValidation') && this.get('showMessage') && this.get('hasContent');
-  }),
+  showErrorClass: computed(
+    'showMessage',
+    'hasContent',
+    'attributeValidation',
+    function() {
+      return (
+        this.get('attributeValidation') &&
+        this.get('showMessage') &&
+        this.get('hasContent')
+      );
+    }
+  ),
   /**
    * @param {Computed } hasContent - computed property that defines whether the rawInputValue is null or not.
    */
@@ -164,28 +183,36 @@ export default Ember.Component.extend({
   /**
    * @param {Computed } hasContent - computed property that defines what message to show
    */
-  showMessage: computed('attributeValidation.isDirty', 'isInvalid', 'didValidate', 'isTyping', function() {
-    return (this.get('attributeValidation.isDirty') || this.get('didValidate')) && this.get('isInvalid') && !this.get('isTyping');
-  }),
+  showMessage: computed(
+    'attributeValidation.isDirty',
+    'isInvalid',
+    'didValidate',
+    'isTyping',
+    function() {
+      return (
+        (this.get('attributeValidation.isDirty') || this.get('didValidate')) &&
+        this.get('isInvalid') &&
+        !this.get('isTyping')
+      );
+    }
+  ),
 
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods
   /*
   * Remove white spaces from input
   */
-  removeWhiteSpaces:function(value){
+  removeWhiteSpaces: function(value) {
     return $.trim(value);
   },
 
   /*
    * Remove html tags from value
    */
-  removeTags:function(value){
+  removeTags: function(value) {
     return $('<p>').html(value).text();
   }
-
 });

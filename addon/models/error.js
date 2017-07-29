@@ -6,7 +6,6 @@ import Ember from 'ember';
  * @typedef {Object} Error
  */
 export default Ember.Object.extend({
-
   /**
    * @property {string}
    */
@@ -37,5 +36,4 @@ export default Ember.Object.extend({
    * @property {string}
    */
   type: null
-
 });

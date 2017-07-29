@@ -1,6 +1,9 @@
 import Ember from 'ember';
-import {QUESTION_TYPES} from 'quizzes-addon/config/quizzes-question';
-import {RESOURCE_TYPES, QUIZZES_RESOURCE_TYPES} from 'quizzes-addon/config/quizzes-config';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
+import {
+  RESOURCE_TYPES,
+  QUIZZES_RESOURCE_TYPES
+} from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Resource Model
@@ -8,7 +11,6 @@ import {RESOURCE_TYPES, QUIZZES_RESOURCE_TYPES} from 'quizzes-addon/config/quizz
  * @typedef {Object} Resource
  */
 export default Ember.Object.extend({
-
   /**
    * List of possible answers/choices
    * @property {Answer[]} answers
@@ -63,7 +65,7 @@ export default Ember.Object.extend({
   /**
    * @property {string} ownerId
    */
-  ownerId:null,
+  ownerId: null,
 
   /**
    * @property {Profile} owner
@@ -110,7 +112,7 @@ export default Ember.Object.extend({
    * Indicates the resource format. i.e image, text, video, interaction, webpage, question
    * @property {string} format
    */
-  format: Ember.computed('isResource','type', function() {
+  format: Ember.computed('isResource', 'type', function() {
     return this.get('isResource') ? this.get('type') : 'question';
   }),
 
@@ -160,17 +162,26 @@ export default Ember.Object.extend({
    * @property {boolean} indicates if the question is hot spot text
    * @see components/player/qz-hot-text-highlight.js
    */
-  isHotTextHighlight: Ember.computed.or('isHotTextHighlightWord', 'isHotTextHighlightSentence'),
+  isHotTextHighlight: Ember.computed.or(
+    'isHotTextHighlightWord',
+    'isHotTextHighlightSentence'
+  ),
 
   /**
    * @property {boolean} indicates if the question is hot text word type
    */
-  isHotTextHighlightWord: Ember.computed.equal('type', QUESTION_TYPES.hotTextHighlightWord),
+  isHotTextHighlightWord: Ember.computed.equal(
+    'type',
+    QUESTION_TYPES.hotTextHighlightWord
+  ),
 
   /**
    * @property {boolean} indicates if the question is hot text sentence type
    */
-  isHotTextHighlightSentence: Ember.computed.equal('type', QUESTION_TYPES.hotTextHighlightSentence),
+  isHotTextHighlightSentence: Ember.computed.equal(
+    'type',
+    QUESTION_TYPES.hotTextHighlightSentence
+  ),
 
   /**
    * @property {boolean} indicates if the question is reorder
@@ -182,7 +193,7 @@ export default Ember.Object.extend({
    * Indicates if it is an image resource
    * @property {boolean}
    */
-  isImageResource: Ember.computed('resourceType', function(){
+  isImageResource: Ember.computed('resourceType', function() {
     var type = this.get('resourceType');
     return type && type.indexOf('image') >= 0;
   }),
@@ -209,7 +220,10 @@ export default Ember.Object.extend({
    * Indicates if it is an pdf resource
    * @property {boolean}
    */
-  isPDFResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.pdf),
+  isPDFResource: Ember.computed.equal(
+    'resourceType',
+    QUIZZES_RESOURCE_TYPES.pdf
+  ),
 
   /**
    * @property {boolean} indicates if the question is true false type
@@ -221,54 +235,65 @@ export default Ember.Object.extend({
    * Indicates if it is an url resource
    * @property {boolean}
    */
-  isUrlResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.url),
+  isUrlResource: Ember.computed.equal(
+    'resourceType',
+    QUIZZES_RESOURCE_TYPES.url
+  ),
 
   /**
    * Indicates if it is an vimeo resource
    * @property {boolean}
    */
-  isVimeoResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.vimeo),
+  isVimeoResource: Ember.computed.equal(
+    'resourceType',
+    QUIZZES_RESOURCE_TYPES.vimeo
+  ),
 
   /**
    * Indicates if it is an youtube resource
    * @property {boolean}
    */
-  isYoutubeResource: Ember.computed.equal('resourceType', QUIZZES_RESOURCE_TYPES.youtube),
+  isYoutubeResource: Ember.computed.equal(
+    'resourceType',
+    QUIZZES_RESOURCE_TYPES.youtube
+  ),
 
   /**
    * @property {String} Indicates the resource type. i.e video/youtube, assessment-question, image/png
    */
   resourceType: Ember.computed('type', function() {
-    let format = this.get('type');
-    let resourceUrl = this.get('body');
-    let youtubePattern = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-    let vimeoPattern = /(http|https)?:\/\/(www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^/]*)\/videos\/|)(\d+)(?:|\/\?)/;
-    let pdfPattern = /.*\.pdf/;
+    const format = this.get('type');
+    const resourceUrl = this.get('body');
+    const youtubePattern = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    const vimeoPattern = /(http|https)?:\/\/(www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^/]*)\/videos\/|)(\d+)(?:|\/\?)/;
+    const pdfPattern = /.*\.pdf/;
     let resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
     if (resourceUrl) {
       switch (format) {
-        case RESOURCE_TYPES.audio:
-        case RESOURCE_TYPES.interactive:
-        case RESOURCE_TYPES.webpage:
-          resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
-          break;
-        case RESOURCE_TYPES.image:
-          resourceType = pdfPattern.test(resourceUrl) ? QUIZZES_RESOURCE_TYPES.pdf : QUIZZES_RESOURCE_TYPES.image;
-          break;
-        case RESOURCE_TYPES.text:
-          resourceType = QUIZZES_RESOURCE_TYPES.pdf;
-          break;
-        case RESOURCE_TYPES.video:
-          if (youtubePattern.test(resourceUrl)) {
-            resourceType = QUIZZES_RESOURCE_TYPES.youtube;
-          } else if (vimeoPattern.test(resourceUrl)) {
-            resourceType = QUIZZES_RESOURCE_TYPES.vimeo;
-          } else {
-            resourceType = QUIZZES_RESOURCE_TYPES.url;
-          }
-          break;
-        default:
-          resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
+      case RESOURCE_TYPES.audio:
+      case RESOURCE_TYPES.interactive:
+      case RESOURCE_TYPES.webpage:
+        resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
+        break;
+      case RESOURCE_TYPES.image:
+        resourceType = pdfPattern.test(resourceUrl)
+          ? QUIZZES_RESOURCE_TYPES.pdf
+          : QUIZZES_RESOURCE_TYPES.image;
+        break;
+      case RESOURCE_TYPES.text:
+        resourceType = QUIZZES_RESOURCE_TYPES.pdf;
+        break;
+      case RESOURCE_TYPES.video:
+        if (youtubePattern.test(resourceUrl)) {
+          resourceType = QUIZZES_RESOURCE_TYPES.youtube;
+        } else if (vimeoPattern.test(resourceUrl)) {
+          resourceType = QUIZZES_RESOURCE_TYPES.vimeo;
+        } else {
+          resourceType = QUIZZES_RESOURCE_TYPES.url;
+        }
+        break;
+      default:
+        resourceType = QUIZZES_RESOURCE_TYPES.url; // Default type
       }
     }
     return resourceType;

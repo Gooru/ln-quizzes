@@ -8,13 +8,13 @@ export default Ember.Object.extend({
   /**
    * @property {string} URL
    */
-  url:'',
+  url: '',
   /**
    * @property {string} mimeType
    */
-  mimeType:'application/pdf,image/*',
+  mimeType: 'application/pdf,image/*',
   /**
    * @property {Category[]} categories
    */
-  categories:Ember.A([])
+  categories: Ember.A([])
 });

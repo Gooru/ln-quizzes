@@ -29,31 +29,37 @@ export default Ember.Component.extend(QuestionMixin, {
    * Convenient structure to render options
    * @property {[]}
    */
-  answers: Ember.computed('question', 'userAnswer',
-    'question.answers.@each.text', 'question.answers.@each.value', function () {
-    let component = this;
-    let question = component.get('question');
-    let userAnswer = component.get('userAnswer') ? component.get('userAnswer')[0] : null;
-    let userAnswerCorrect = question.get('correct');
-    if (component.get('showCorrect')) {
-      userAnswer = question.get('question.correctAnswer.firstObject');
-      userAnswerCorrect = true;
+  answers: Ember.computed(
+    'question',
+    'userAnswer',
+    'question.answers.@each.text',
+    'question.answers.@each.value',
+    function() {
+      const component = this;
+      const question = component.get('question');
+      let userAnswer = component.get('userAnswer')
+        ? component.get('userAnswer')[0]
+        : null;
+      let userAnswerCorrect = question.get('correct');
+      if (component.get('showCorrect')) {
+        userAnswer = question.get('question.correctAnswer.firstObject');
+        userAnswerCorrect = true;
+      }
+      const answerValue = userAnswer ? userAnswer.value : null;
+      const answers = question.get('question.answers');
+      return answers.map(function(answer) {
+        return {
+          text: answer.get('text'),
+          selected: answer.get('value') === answerValue,
+          correct: userAnswerCorrect
+        };
+      });
     }
-    let answerValue = userAnswer ? userAnswer.value : null;
-    let answers = question.get('question.answers');
-    return answers.map(function(answer) {
-      return {
-        text: answer.get('text'),
-        selected: answer.get('value') === answerValue,
-        correct: userAnswerCorrect
-      };
-    });
-  })
+  )
 
   // -------------------------------------------------------------------------
   // Observers
 
   // -------------------------------------------------------------------------
   // Methods
-
 });

@@ -9,7 +9,6 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -30,15 +29,22 @@ export default Ember.Component.extend({
   // Events
   init: function() {
     var component = this;
-    component._super( ...arguments );
+    component._super(...arguments);
 
-    component.get('lookupService').readDepthOfKnowledgeItems()
+    component
+      .get('lookupService')
+      .readDepthOfKnowledgeItems()
       .then(function(knowledge) {
         component.set('knowledge', knowledge);
-        component.set('editKnowledge', component.getOptionsArray(knowledge, component.get('srcSelectedKnowledge')));
+        component.set(
+          'editKnowledge',
+          component.getOptionsArray(
+            knowledge,
+            component.get('srcSelectedKnowledge')
+          )
+        );
       });
   },
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -62,8 +68,11 @@ export default Ember.Component.extend({
   /**
    * @type {Ember.A}
    */
-  srcKnowledge: Ember.computed('srcSelectedKnowledge', 'knowledge', function () {
-    return this.getOptionsArray(this.get('knowledge'), this.get('srcSelectedKnowledge'));
+  srcKnowledge: Ember.computed('srcSelectedKnowledge', 'knowledge', function() {
+    return this.getOptionsArray(
+      this.get('knowledge'),
+      this.get('srcSelectedKnowledge')
+    );
   }),
 
   /**
@@ -76,23 +85,33 @@ export default Ember.Component.extend({
    */
   knowledge: Ember.A(),
 
-
   // -------------------------------------------------------------------------
   // Observers
 
   /**
    * Observes if the selection has changed
    */
-  updateSelectedKnowledge: Ember.observer('editKnowledge.@each.checked', function () {
-    var selectedKnowledge = this.get('editKnowledge').filterBy('checked').map(function (knowledge) {
-      return (knowledge.get('checked')===true)? knowledge.get('id') : null;
-    });
-    this.set('editSelectedKnowledge', selectedKnowledge);
-  }),
+  updateSelectedKnowledge: Ember.observer(
+    'editKnowledge.@each.checked',
+    function() {
+      var selectedKnowledge = this.get('editKnowledge')
+        .filterBy('checked')
+        .map(function(knowledge) {
+          return knowledge.get('checked') === true ? knowledge.get('id') : null;
+        });
+      this.set('editSelectedKnowledge', selectedKnowledge);
+    }
+  ),
 
-  resetSelectedKnowledge: Ember.observer('isEditing', function () {
+  resetSelectedKnowledge: Ember.observer('isEditing', function() {
     if (this.get('isEditing')) {
-      this.set('editKnowledge', this.getOptionsArray(this.get('knowledge'), this.get('srcSelectedKnowledge')));
+      this.set(
+        'editKnowledge',
+        this.getOptionsArray(
+          this.get('knowledge'),
+          this.get('srcSelectedKnowledge')
+        )
+      );
     }
   }),
 
@@ -107,10 +126,10 @@ export default Ember.Component.extend({
    * @param {Number[]} selectedOptions - Array of values
    */
   getOptionsArray: function(allOptions, selectedOptions) {
-    return allOptions.slice(0).map(function (object) {
-      object.checked = selectedOptions && selectedOptions.indexOf(object.id) > -1;
+    return allOptions.slice(0).map(function(object) {
+      object.checked =
+        selectedOptions && selectedOptions.indexOf(object.id) > -1;
       return Ember.Object.create(object);
     });
   }
-
 });

@@ -11,14 +11,13 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['qz-navigation'],
+  classNames: ['qz-navigation'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -34,14 +33,13 @@ export default Ember.Component.extend({
     /**
      * Action triggered when the user open de navigator panel
      */
-    openNavigator:function(){
+    openNavigator: function() {
       this.sendAction('onOpenNavigator');
     }
   },
 
   // -------------------------------------------------------------------------
   // Events
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -69,5 +67,4 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Methods
-
 });

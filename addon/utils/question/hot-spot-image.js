@@ -30,10 +30,8 @@ import AnswerObject from 'quizzes-addon/utils/question/answer-object';
  * @typedef {Object} HotSpotImageUtil
  */
 export default MultipleAnswerUtil.extend({
-
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods
@@ -41,8 +39,8 @@ export default MultipleAnswerUtil.extend({
    * Indicates if the answer choice is correct
    * @param { string } answerChoice
    */
-  isAnswerChoiceCorrect: function (answerChoice) {
-    let correctAnswer = this.getCorrectAnswer();
+  isAnswerChoiceCorrect: function(answerChoice) {
+    const correctAnswer = this.getCorrectAnswer();
     return correctAnswer.includes(answerChoice);
   },
 
@@ -50,11 +48,11 @@ export default MultipleAnswerUtil.extend({
    * Gets the correct answer
    * @return {string[]} returns the correct answer choice ids
    */
-  getCorrectAnswer: function () {
-    let answers = this.get("question.answers");
-    let correctAnswers = answers.filterBy("isCorrect", true);
-    return correctAnswers.map(function (answer) {
-      return answer.get("id");
+  getCorrectAnswer: function() {
+    const answers = this.get('question.answers');
+    const correctAnswers = answers.filterBy('isCorrect', true);
+    return correctAnswers.map(function(answer) {
+      return answer.get('id');
     });
   },
 
@@ -64,7 +62,7 @@ export default MultipleAnswerUtil.extend({
    * @param { string[] } answer
    * @returns {string} i.e id1,id2,id3
    */
-  answerKey: function (answer) {
+  answerKey: function(answer) {
     return answer.sort().join();
   },
 
@@ -77,21 +75,21 @@ export default MultipleAnswerUtil.extend({
    * @see '# User Answer' section at class comment
    * @see '# Answer Object' section at class comment
    */
-  toAnswerObjects: function (userAnswer) {
-    let util = this;
-    let answers = this.get("question.answers");
-    return answers.map(function (answer) {
-      let answerId = answer.get("id");
-      let selected = userAnswer.includes(answerId);
-      let answerObject = AnswerObject.create({
-        "text": answer.get("text"),
-        "order": answer.get("order"),
-        "answerId": answerId,
-        "skip": !selected
+  toAnswerObjects: function(userAnswer) {
+    const util = this;
+    const answers = this.get('question.answers');
+    return answers.map(function(answer) {
+      const answerId = answer.get('id');
+      const selected = userAnswer.includes(answerId);
+      const answerObject = AnswerObject.create({
+        text: answer.get('text'),
+        order: answer.get('order'),
+        answerId: answerId,
+        skip: !selected
       });
 
-      if (selected){
-        answerObject.set("correct", util.isAnswerChoiceCorrect(answerId));
+      if (selected) {
+        answerObject.set('correct', util.isAnswerChoiceCorrect(answerId));
       }
 
       return answerObject;
@@ -107,15 +105,11 @@ export default MultipleAnswerUtil.extend({
    * @see '# User Answer' section at class comment
    * @see '# Answer Object' section at class comment
    */
-  toUserAnswer: function (answerObjects) {
-    return (!answerObjects || !answerObjects.length) ?
-      null : //if not respond is provided
-      answerObjects.filterBy("skip", false).map(function (answerObject) {
-        return answerObject.get("answerId");
+  toUserAnswer: function(answerObjects) {
+    return !answerObjects || !answerObjects.length
+      ? null //if not respond is provided
+      : answerObjects.filterBy('skip', false).map(function(answerObject) {
+        return answerObject.get('answerId');
       });
   }
-
-
-
-
 });

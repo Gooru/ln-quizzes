@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { EMOTION_VALUES } from "quizzes-addon/config/quizzes-config";
+import { EMOTION_VALUES } from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Emotion picker
@@ -11,7 +11,6 @@ import { EMOTION_VALUES } from "quizzes-addon/config/quizzes-config";
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -24,7 +23,6 @@ export default Ember.Component.extend({
   // Actions
 
   actions: {
-
     /**
      * Set a new emotion as selected and update the component appearance accordingly
      *
@@ -32,12 +30,18 @@ export default Ember.Component.extend({
      * @param {string} newEmotionValue - newly selected emotion
      * @returns {undefined}
      */
-    setEmotion: function (newEmotionValue) {
-      let component = this;
-      if (!component.get("readOnly")){
-        if (!component.get('selectedEmotion') || component.get('selectedEmotion') !== newEmotionValue) {
+    setEmotion: function(newEmotionValue) {
+      const component = this;
+      if (!component.get('readOnly')) {
+        if (
+          !component.get('selectedEmotion') ||
+          component.get('selectedEmotion') !== newEmotionValue
+        ) {
           component.selectEmotion(newEmotionValue);
-          component.sendAction("onChangeEmotion", component.get('selectedEmotion'));
+          component.sendAction(
+            'onChangeEmotion',
+            component.get('selectedEmotion')
+          );
         }
       }
     }
@@ -55,10 +59,10 @@ export default Ember.Component.extend({
     const startEmotion = this.get('startEmotion');
 
     // Adds tooltip to UI elements (elements with attribute 'data-toggle')
-    component.$('[data-toggle="tooltip"]').tooltip({trigger: 'hover'});
+    component.$('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
     // Sets the emotion icon if there is a score for this resource
     if (startEmotion) {
-      Ember.run.scheduleOnce('afterRender', this, function () {
+      Ember.run.scheduleOnce('afterRender', this, function() {
         component.selectEmotion(startEmotion);
       });
     }
@@ -105,13 +109,12 @@ export default Ember.Component.extend({
   // Methods
 
   selectEmotion: function(emotionValue) {
-    this.$(".emotions-list li").find(".active").removeClass("active");
+    this.$('.emotions-list li').find('.active').removeClass('active');
     this.set('selectedEmotion', 0);
 
     if (emotionValue) {
       this.set('selectedEmotion', emotionValue);
-      this.$(".emotion-" + emotionValue).toggleClass("active");
+      this.$(`.emotion-${emotionValue}`).toggleClass('active');
     }
   }
-
 });

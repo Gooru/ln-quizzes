@@ -13,12 +13,12 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['charts','gru-pie-chart'],
+  classNames: ['charts', 'gru-pie-chart'],
 
   // -------------------------------------------------------------------------
   // Events
 
-  didInsertElement: function(){
+  didInsertElement: function() {
     const $component = this.$();
 
     // Get the component dimensions from the css
@@ -47,14 +47,14 @@ export default Ember.Component.extend({
   /**
    * @property {Number} radius - Radius of the pie chart
    */
-  radius: Ember.computed('width', 'height', function () {
-    return (Math.min(this.get('width'), this.get('height')) / 2);
+  radius: Ember.computed('width', 'height', function() {
+    return Math.min(this.get('width'), this.get('height')) / 2;
   }),
 
   /**
    * @property {D3.Object} color
    */
-  colorScale : Ember.computed('colors', function() {
+  colorScale: Ember.computed('colors', function() {
     return d3.scale.ordinal().range(this.get('colors'));
   }),
 
@@ -62,7 +62,7 @@ export default Ember.Component.extend({
    * @property {Array} data
    * Data to graphic
    */
-  values: Ember.computed('data', function () {
+  values: Ember.computed('data', function() {
     return this.get('data').map(obj => {
       return { value: obj.value };
     });
@@ -72,7 +72,7 @@ export default Ember.Component.extend({
    * @property {Array} colors
    * List of color to graphic
    */
-  colors: Ember.computed('data', function () {
+  colors: Ember.computed('data', function() {
     return this.get('data').map(obj => obj.color);
   }),
 
@@ -82,42 +82,48 @@ export default Ember.Component.extend({
    */
   data: null,
 
-
   // -------------------------------------------------------------------------
   // Methods
 
   /**
    * Graphic a pie chart with d3 library
    */
-  renderChart: Ember.observer('values', function () {
-    let values = this.get('values');
+  renderChart: Ember.observer('values', function() {
+    const values = this.get('values');
 
     if (!this.validPercentages(values)) {
       Ember.Logger.warn('Graph values do not add up to 100');
     }
 
-    let color =  this.get('colorScale');
+    const color = this.get('colorScale');
 
     // Remove a previous pie-chart, if there is one
     this.$('svg').remove();
 
-    let radius = this.get('radius');
-    let vis = d3.select(`#${this.elementId}`).append('svg:svg')
+    const radius = this.get('radius');
+    const vis = d3
+      .select(`#${this.elementId}`)
+      .append('svg:svg')
       .data([values])
       .attr('width', this.get('width'))
       .attr('height', this.get('height'))
       .append('svg:g')
       .attr('transform', `translate(${radius},${radius})`);
 
-    let pie = d3.layout.pie().value(d => d.value);
+    const pie = d3.layout.pie().value(d => d.value);
 
     //Declare an arc generator function
-    let arc = d3.svg.arc().outerRadius(this.get('radius'));
+    const arc = d3.svg.arc().outerRadius(this.get('radius'));
 
     //Select paths, use arc generator to draw
-    let arcs = vis.selectAll('g.slice').data(pie).enter()
-      .append('svg:g').attr('class', 'slice');
-    arcs.append('svg:path')
+    const arcs = vis
+      .selectAll('g.slice')
+      .data(pie)
+      .enter()
+      .append('svg:g')
+      .attr('class', 'slice');
+    arcs
+      .append('svg:path')
       .attr('fill', (d, i) => color(i))
       .attr('d', d => arc(d));
   }),
@@ -125,11 +131,11 @@ export default Ember.Component.extend({
   /**
    * Check if the values are up 100%
    */
-  validPercentages: function (valuesArray) {
-    let sum = valuesArray.reduce(
-      (previousValue, value) => previousValue + parseInt(value.value), 0
+  validPercentages: function(valuesArray) {
+    const sum = valuesArray.reduce(
+      (previousValue, value) => previousValue + parseInt(value.value),
+      0
     );
     return sum === 100;
   }
-
 });

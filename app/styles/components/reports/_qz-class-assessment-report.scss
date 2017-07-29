@@ -23,19 +23,18 @@
         display: none;
       }
     }
-
   }
 }
 
 .qz-modal {
-  &.qz-questions-detail-modal{
+  &.qz-questions-detail-modal {
     .modal-dialog {
       width: 80%;
       height: 100%;
       display: table;
     }
   }
-  &.qz-assessment-report-modal{
+  &.qz-assessment-report-modal {
     .modal-dialog {
       width: 80%;
       height: 100%;

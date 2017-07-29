@@ -28,7 +28,6 @@ export default Ember.Component.extend({
     });
   },
 
-
   // -------------------------------------------------------------------------
   // Actions
 
@@ -48,8 +47,11 @@ export default Ember.Component.extend({
         taxonomyLevel: TAXONOMY_LEVELS.COURSE
       });
       component.addRemoveTaxonomyTagData(taxonomyTagData);
-      if (component.get("onTaxonomySelected")) {
-        component.sendAction("onTaxonomySelected", this.get("selectedTaxonomy"));
+      if (component.get('onTaxonomySelected')) {
+        component.sendAction(
+          'onTaxonomySelected',
+          this.get('selectedTaxonomy')
+        );
       }
     },
 
@@ -58,12 +60,14 @@ export default Ember.Component.extend({
      */
     removeTag(tag) {
       const component = this;
-      component.removeTaxonomyTagData(tag.get("data.id"));
-      if (component.get("onTaxonomySelected")){
-        component.sendAction("onTaxonomySelected", this.get("selectedTaxonomy"));
+      component.removeTaxonomyTagData(tag.get('data.id'));
+      if (component.get('onTaxonomySelected')) {
+        component.sendAction(
+          'onTaxonomySelected',
+          this.get('selectedTaxonomy')
+        );
       }
     }
-
   },
 
   //
@@ -72,10 +76,10 @@ export default Ember.Component.extend({
    * Removes a taxonomy tag data from taxonomy
    * @param id
    */
-  removeTaxonomyTagData: function (taxonomyId){
-    const taxonomy = this.get("selectedTaxonomy");
-    let taxonomyTagData = taxonomy.findBy("id", taxonomyId);
-    if (taxonomyTagData){
+  removeTaxonomyTagData: function(taxonomyId) {
+    const taxonomy = this.get('selectedTaxonomy');
+    const taxonomyTagData = taxonomy.findBy('id', taxonomyId);
+    if (taxonomyTagData) {
       taxonomy.removeObject(taxonomyTagData);
     }
   },
@@ -84,15 +88,14 @@ export default Ember.Component.extend({
    * Adds or removes a taxonomy tag data
    * @param {TaxonomyTagData} taxonomyTagData
    */
-  addRemoveTaxonomyTagData: function (taxonomyTagData){
-    let component = this;
-    const taxonomy = component.get("selectedTaxonomy");
-    const taxonomyId = taxonomyTagData.get("id");
-    let existingTaxonomyTagData = taxonomy.findBy("id", taxonomyId);
-    if (existingTaxonomyTagData){
+  addRemoveTaxonomyTagData: function(taxonomyTagData) {
+    const component = this;
+    const taxonomy = component.get('selectedTaxonomy');
+    const taxonomyId = taxonomyTagData.get('id');
+    const existingTaxonomyTagData = taxonomy.findBy('id', taxonomyId);
+    if (existingTaxonomyTagData) {
       taxonomy.removeObject(existingTaxonomyTagData);
-    }
-    else {
+    } else {
       taxonomy.pushObject(taxonomyTagData);
     }
   },
@@ -105,7 +108,7 @@ export default Ember.Component.extend({
    */
   selectedTaxonomyIds: Ember.computed('selectedTaxonomy.[]', function() {
     return this.get('selectedTaxonomy').map(function(tagData) {
-      return tagData.get("id");
+      return tagData.get('id');
     });
   }),
 
@@ -131,7 +134,6 @@ export default Ember.Component.extend({
    * @property {string}
    */
   onTaxonomySelected: null
-
 
   // -------------------------------------------------------------------------
   // Observers

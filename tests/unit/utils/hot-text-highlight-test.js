@@ -11,7 +11,7 @@ import { module, test } from 'qunit';
 
 module('Unit | Utility | hot text highlight');
 
-test('Hot Text Highlight - getWordItems', function (assert) {
+test('Hot Text Highlight - getWordItems', function(assert) {
   assert.expect(5);
   const mapItems = ({ index, text }) => ({ index, text });
 
@@ -37,11 +37,14 @@ test('Hot Text Highlight - getWordItems', function (assert) {
     { index: 33, text: 'extra' },
     { index: 39, text: 'spaces' }
   ];
-  assert.deepEqual(wordItems.map(mapItems), expectedItems, 'Wrong values for items');
+  assert.deepEqual(
+    wordItems.map(mapItems),
+    expectedItems,
+    'Wrong values for items'
+  );
 });
 
-
-test('Hot Text Highlight - getSentenceItems', function (assert) {
+test('Hot Text Highlight - getSentenceItems', function(assert) {
   assert.expect(12);
   const mapItems = ({ index, text }) => ({ index, text });
 
@@ -54,7 +57,11 @@ test('Hot Text Highlight - getSentenceItems', function (assert) {
   sentenceItems = getSentenceItems('Sentence 1');
   assert.equal(sentenceItems.length, 1, 'Wrong number of items');
   assert.equal(sentenceItems[0].get('index'), 0, 'Wrong id for first object');
-  assert.equal(sentenceItems[0].get('text'), 'Sentence 1', 'Wrong text for first object');
+  assert.equal(
+    sentenceItems[0].get('text'),
+    'Sentence 1',
+    'Wrong text for first object'
+  );
 
   //with many sentences, 1 correct
   expectedItems = [
@@ -64,7 +71,11 @@ test('Hot Text Highlight - getSentenceItems', function (assert) {
   ];
   sentenceItems = getSentenceItems('Sentence 1. Sentence 2. Sentence 3');
   assert.equal(sentenceItems.length, 3, 'Wrong number of items');
-  assert.deepEqual(sentenceItems.map(mapItems), expectedItems, 'Wrong values for sentence items');
+  assert.deepEqual(
+    sentenceItems.map(mapItems),
+    expectedItems,
+    'Wrong values for sentence items'
+  );
 
   //with many sentences, many correct
   expectedItems = [
@@ -74,9 +85,15 @@ test('Hot Text Highlight - getSentenceItems', function (assert) {
     { index: 37, text: 'Sentence 4.' },
     { index: 50, text: 'Sentence 5' }
   ];
-  sentenceItems = getSentenceItems('Sentence 1.  Sentence 2. Sentence 3. Sentence 4.  Sentence 5');
+  sentenceItems = getSentenceItems(
+    'Sentence 1.  Sentence 2. Sentence 3. Sentence 4.  Sentence 5'
+  );
   assert.equal(sentenceItems.length, 5, 'Wrong number of items');
-  assert.deepEqual(sentenceItems.map(mapItems), expectedItems, 'Wrong values for sentence items');
+  assert.deepEqual(
+    sentenceItems.map(mapItems),
+    expectedItems,
+    'Wrong values for sentence items'
+  );
 
   //with many sentences between correct answer
   expectedItems = [
@@ -88,9 +105,15 @@ test('Hot Text Highlight - getSentenceItems', function (assert) {
     { index: 63, text: 'Sentence 6.' },
     { index: 75, text: 'Sentence 7' }
   ];
-  sentenceItems = getSentenceItems(' Sentence 1. Sentence 2. Sentence 3.  Sentence 4. Sentence 5 . Sentence 6. Sentence 7');
+  sentenceItems = getSentenceItems(
+    ' Sentence 1. Sentence 2. Sentence 3.  Sentence 4. Sentence 5 . Sentence 6. Sentence 7'
+  );
   assert.equal(sentenceItems.length, 7, 'Wrong number of items');
-  assert.deepEqual(sentenceItems.map(mapItems), expectedItems, 'Wrong values for sentence items');
+  assert.deepEqual(
+    sentenceItems.map(mapItems),
+    expectedItems,
+    'Wrong values for sentence items'
+  );
 
   //with many sentences between correct answer having phrases using dot (.)
   expectedItems = [
@@ -102,12 +125,18 @@ test('Hot Text Highlight - getSentenceItems', function (assert) {
     { index: 62, text: 'Sentence 6.' },
     { index: 74, text: 'Sentence 7' }
   ];
-  sentenceItems = getSentenceItems('Sentence 1. Sentence 2. Sentence 3. 1.6 millions. Sentence 5. Sentence 6. Sentence 7');
+  sentenceItems = getSentenceItems(
+    'Sentence 1. Sentence 2. Sentence 3. 1.6 millions. Sentence 5. Sentence 6. Sentence 7'
+  );
   assert.equal(sentenceItems.length, 7, 'Wrong number of items');
-  assert.deepEqual(sentenceItems.map(mapItems), expectedItems, 'Wrong values for sentence items');
+  assert.deepEqual(
+    sentenceItems.map(mapItems),
+    expectedItems,
+    'Wrong values for sentence items'
+  );
 });
 
-test('Hot Text Highlight - getItems isHotTextHighlightWord', function (assert) {
+test('Hot Text Highlight - getItems isHotTextHighlightWord', function(assert) {
   assert.expect(2);
   const mapItems = ({ index, text }) => ({ index, text });
   const question = Ember.Object.create({
@@ -126,10 +155,16 @@ test('Hot Text Highlight - getItems isHotTextHighlightWord', function (assert) {
   ];
 
   assert.equal(items.length, 7, 'Missing items');
-  assert.deepEqual(items.map(mapItems), expectedItems, 'Wrong values for items');
+  assert.deepEqual(
+    items.map(mapItems),
+    expectedItems,
+    'Wrong values for items'
+  );
 });
 
-test('Hot Text Highlight - getItems isHotTextHighlightSentence', function (assert) {
+test('Hot Text Highlight - getItems isHotTextHighlightSentence', function(
+  assert
+) {
   assert.expect(2);
   const mapItems = ({ index, text }) => ({ index, text });
   const question = Ember.Object.create({
@@ -147,10 +182,14 @@ test('Hot Text Highlight - getItems isHotTextHighlightSentence', function (asser
   ];
 
   assert.equal(items.length, 5, 'Missing items');
-  assert.deepEqual(items.map(mapItems), expectedItems, 'Wrong values for items');
+  assert.deepEqual(
+    items.map(mapItems),
+    expectedItems,
+    'Wrong values for items'
+  );
 });
 
-test('Hot Text Highlight - transformText', function (assert) {
+test('Hot Text Highlight - transformText', function(assert) {
   assert.expect(4);
 
   //removing wrapping <p> tag for a normal text
@@ -158,7 +197,9 @@ test('Hot Text Highlight - transformText', function (assert) {
   assert.equal(text, 'This is a test [for] the transform text', 'Wrong text');
 
   //removing wrapping <p> tag for a text having more html tag inside
-  text = transformText('<p> This is a test [<p>for</p>] <b>the</b> transform text </p>');
+  text = transformText(
+    '<p> This is a test [<p>for</p>] <b>the</b> transform text </p>'
+  );
   assert.equal(text, 'This is a test [<p>for</p>] <b>the</b> transform text');
 
   //ignoring a text not having a wrapping <p> tag, but <p> tags inside
@@ -166,11 +207,16 @@ test('Hot Text Highlight - transformText', function (assert) {
   assert.equal(text, 'This is a test [<p>for</p>] <b>the</b> transform text');
 
   //ignoring a text a starting <p> tag which, but not wrapping the whole text
-  text = transformText('<p>This is a test</p> [<p>for</p>] <b>the</b> transform text');
-  assert.equal(text, '<p>This is a test</p> [<p>for</p>] <b>the</b> transform text');
+  text = transformText(
+    '<p>This is a test</p> [<p>for</p>] <b>the</b> transform text'
+  );
+  assert.equal(
+    text,
+    '<p>This is a test</p> [<p>for</p>] <b>the</b> transform text'
+  );
 });
 
-test('Hot Text Highlight - splitWithIndex', function (assert) {
+test('Hot Text Highlight - splitWithIndex', function(assert) {
   assert.expect(2);
 
   const expectedResult = [
@@ -183,9 +229,9 @@ test('Hot Text Highlight - splitWithIndex', function (assert) {
     { index: 25, text: 'with' },
     { index: 30, text: 'index' }
   ];
-  result = splitWithIndex('This is a test for split with index', ' ');
+  let result = splitWithIndex('This@is@a@test@for@split@with@index', /@/);
   assert.deepEqual(result, expectedResult, 'Wrong values for items');
 
-  let result = splitWithIndex('This@is@a@test@for@split@with@index', /@/);
+  result = splitWithIndex('This is a test for split with index', ' ');
   assert.deepEqual(result, expectedResult, 'Wrong values for items');
 });

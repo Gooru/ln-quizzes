@@ -17,7 +17,6 @@ import {
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -35,12 +34,11 @@ export default Ember.Component.extend({
   // Actions
 
   actions: {
-
     /**
      * @function actions:selectQuestion
      * @param {Number} questionId
      */
-    selectQuestion: function (questionId) {
+    selectQuestion: function(questionId) {
       this.get('onSelectQuestion')(questionId);
     },
 
@@ -48,23 +46,21 @@ export default Ember.Component.extend({
      * @function actions:selectStudent
      * @param {string} studentId
      */
-    selectStudent: function (studentId) {
+    selectStudent: function(studentId) {
       this.get('onSelectStudent')(studentId);
     }
-
   },
-
 
   // -------------------------------------------------------------------------
   // Events
 
-  init: function () {
+  init: function() {
     this._super(...arguments);
     this.set('questionProperties', this.initQuestionProperties());
     this.set('studentsHeader', this.initStudentsHeader());
   },
 
-  willDestroyElement: function () {
+  willDestroyElement: function() {
     this.set('questionProperties', null);
     this.set('studentsHeader', null);
   },
@@ -92,33 +88,42 @@ export default Ember.Component.extend({
    *
    * The questions will be ordered in the array in ascending order per the order value
    */
-  assessmentQuestions: Ember.computed('assessment.resources.@each.id', function () {
-    const labelPrefix = this.get('i18n').t('reports.qz-table-view.first-tier-header-prefix').string;
+  assessmentQuestions: Ember.computed(
+    'assessment.resources.@each.id',
+    function() {
+      const labelPrefix = this.get('i18n').t(
+        'reports.qz-table-view.first-tier-header-prefix'
+      ).string;
 
-    let questions = this.get('assessment.resources')
-      .sortBy('sequence')
-      .map(function (question, index) {
-        return {
-          value: question.get('id'),
-          label: labelPrefix + (index + 1)
-        };
+      const questions = this.get('assessment.resources')
+        .sortBy('sequence')
+        .map(function(question, index) {
+          return {
+            value: question.get('id'),
+            label: labelPrefix + (index + 1)
+          };
+        });
+
+      // Add column used for showing totals at the beginning of the array
+      questions.unshift({
+        value: -1,
+        label: this.get('i18n').t('reports.qz-table-view.totals').string
       });
 
-    // Add column used for showing totals at the beginning of the array
-    questions.unshift({
-      value: -1,
-      label: this.get('i18n').t('reports.qz-table-view.totals').string
-    });
-
-    return questions;
-  }),
+      return questions;
+    }
+  ),
 
   /**
    * @prop { String[] } assessmentQuestionsIds - An array with the ids of all the questions in the assessment
    */
-  assessmentQuestionsIds: Ember.computed('assessmentQuestions.@each.value', 'assessmentQuestions.@each.label', function () {
-    return this.get('assessmentQuestions').map(question => question.value);
-  }),
+  assessmentQuestionsIds: Ember.computed(
+    'assessmentQuestions.@each.value',
+    'assessmentQuestions.@each.label',
+    function() {
+      return this.get('assessmentQuestions').map(question => question.value);
+    }
+  ),
 
   /**
    * @prop { Object[] } questionProperties - An array made up of question properties
@@ -140,10 +145,14 @@ export default Ember.Component.extend({
   /**
    * @prop { String[] } questionPropertiesIds - An array with the ids of all the question properties
    */
-  questionPropertiesIds: Ember.computed('questionProperties.@each.value', function () {
-    return this.get('questionProperties')
-      .map(questionProperty => questionProperty.value);
-  }),
+  questionPropertiesIds: Ember.computed(
+    'questionProperties.@each.value',
+    function() {
+      return this.get('questionProperties').map(
+        questionProperty => questionProperty.value
+      );
+    }
+  ),
 
   /**
    * @prop { ReportData } reportData - Unordered 3D matrix of data to use as content for the table component
@@ -177,75 +186,94 @@ export default Ember.Component.extend({
    *   - output: table cell content formatted for output (the formatting is done by
    *             the question property's render function)
    */
-  tableData: Ember.computed('anonymous', 'tableFrame', 'reportData.reportEvents.@each.updated', function () {
-    const questionProperties = this.get('questionProperties');
-    const questionPropertiesIds = this.get('questionPropertiesIds');
-    const questionPropertiesIdsLen = questionPropertiesIds.length;
-    const reportDataEvents = this.get('reportData.reportEvents');
-    const assessmentQuestions = this.get('assessment.resources').sortBy('sequence');
+  tableData: Ember.computed(
+    'anonymous',
+    'tableFrame',
+    'reportData.reportEvents.@each.updated',
+    function() {
+      const questionProperties = this.get('questionProperties');
+      const questionPropertiesIds = this.get('questionPropertiesIds');
+      const questionPropertiesIdsLen = questionPropertiesIds.length;
+      const reportDataEvents = this.get('reportData.reportEvents');
+      const assessmentQuestions = this.get('assessment.resources').sortBy(
+        'sequence'
+      );
 
-    // Copy the table frame contents
-    let data = this.get('tableFrame').slice(0);
-    let propertyValues;
+      // Copy the table frame contents
+      const data = this.get('tableFrame').slice(0);
+      let propertyValues;
 
-    reportDataEvents.forEach(function(reportEvent, i) {
-      propertyValues = [];
-      for (let k = 0; k < questionPropertiesIdsLen; k++) {
-        // Put all values for the same property into an array
-        propertyValues[k] = [];
-      }
-      reportEvent.get('resourceResults').map(
-        questionResult => {
-          let question = assessmentQuestions.findBy('id', questionResult.get('resourceId'));
-          questionResult.set('resource', question);
-          return questionResult;
-        }
-      ).sortBy('resource.sequence').forEach(function(questionResult, l) {
-        let j = l + 1;
+      reportDataEvents.forEach(function(reportEvent, i) {
+        propertyValues = [];
         for (let k = 0; k < questionPropertiesIdsLen; k++) {
-          let renderFunction = questionProperties[k].renderFunction;
-          let value = questionResult.get(questionPropertiesIds[k]);
+          // Put all values for the same property into an array
+          propertyValues[k] = [];
+        }
+        reportEvent
+          .get('resourceResults')
+          .map(questionResult => {
+            const question = assessmentQuestions.findBy(
+              'id',
+              questionResult.get('resourceId')
+            );
+            questionResult.set('resource', question);
+            return questionResult;
+          })
+          .sortBy('resource.sequence')
+          .forEach(function(questionResult, l) {
+            const j = l + 1;
+            for (let k = 0; k < questionPropertiesIdsLen; k++) {
+              const renderFunction = questionProperties[k].renderFunction;
+              const value = questionResult.get(questionPropertiesIds[k]);
 
-          data[i].content[j * questionPropertiesIdsLen + k] = {
+              data[i].content[j * questionPropertiesIdsLen + k] = {
+                value,
+                output: !renderFunction ? value : renderFunction(value)
+              };
+              propertyValues[k].push(questionResult);
+            }
+          });
+        // Compute the aggregate values
+        for (let k = 0; k < questionPropertiesIdsLen; k++) {
+          // Set the value in the aggregate (totals) column;
+          const value = reportEvent.get(questionProperties[k].aggregateValue);
+          const aggregateRenderFunction =
+            questionProperties[k].aggregateRenderFunction;
+
+          // For displaying the aggregate value, use the question property's aggregateRenderFunction.
+          // If there's no aggregateRenderFunction, use the property's renderFunction by default.
+          data[i].content[k] = {
             value,
-            output: (!renderFunction) ? value : renderFunction(value)
+            output: aggregateRenderFunction
+              ? aggregateRenderFunction(value)
+              : questionProperties[k].renderFunction(value)
           };
-          propertyValues[k].push(questionResult);
         }
       });
-      // Compute the aggregate values
-      for (let k = 0; k < questionPropertiesIdsLen; k++) {
-        // Set the value in the aggregate (totals) column;
-        let value = reportEvent.get(questionProperties[k].aggregateValue);
-        let aggregateRenderFunction = questionProperties[k].aggregateRenderFunction;
 
-        // For displaying the aggregate value, use the question property's aggregateRenderFunction.
-        // If there's no aggregateRenderFunction, use the property's renderFunction by default.
-        data[i].content[k] = {
-          value,
-          output: (aggregateRenderFunction) ? aggregateRenderFunction(value) :
-            questionProperties[k].renderFunction(value)
-        };
-      }
-    });
-
-    return data;
-  }),
+      return data;
+    }
+  ),
 
   /**
    * @prop {Object[]} tableFrame - The table frame that encloses the table data
    * @return {Object[]}
    */
-  tableFrame: Ember.computed('anonymous', 'students.@each.fullName', 'students.@each.id', function () {
-    let anonymous = this.get('anonymous');
-    return this.get('students').map(function (student) {
-      return {
-        id: student.get('id'),
-        header: anonymous ? student.get('code') : student.get('fullName'),
-        content: []
-      };
-    });
-  }),
+  tableFrame: Ember.computed(
+    'anonymous',
+    'students.@each.fullName',
+    'students.@each.id',
+    function() {
+      const anonymous = this.get('anonymous');
+      return this.get('students').map(function(student) {
+        return {
+          id: student.get('id'),
+          header: anonymous ? student.get('code') : student.get('fullName'),
+          content: []
+        };
+      });
+    }
+  ),
 
   // -------------------------------------------------------------------------
   // Methods
@@ -254,7 +282,7 @@ export default Ember.Component.extend({
    * Initialize the question properties array with values -including i18n labels
    * @return {Object[]}
    */
-  initQuestionProperties: function () {
+  initQuestionProperties: function() {
     return [
       Ember.Object.create({
         filter: {
@@ -293,12 +321,11 @@ export default Ember.Component.extend({
    * Initialize the students header object with values including an i18n label
    * @return {Object[]}
    */
-  initStudentsHeader: function () {
+  initStudentsHeader: function() {
     return {
       label: this.get('i18n').t('reports.qz-table-view.student').string,
       value: 'fullName',
       sortFunction: alphabeticalStringSort
     };
   }
-
 });

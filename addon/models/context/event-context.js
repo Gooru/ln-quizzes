@@ -5,7 +5,6 @@ import Ember from 'ember';
  * typedef {Object} Context
  */
 const EventContext = Ember.Object.extend({
-
   /**
    * @property {String} classId
    */

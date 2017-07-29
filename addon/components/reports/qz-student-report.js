@@ -3,7 +3,6 @@ import ContextResult from 'quizzes-addon/models/result/context';
 import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -17,7 +16,7 @@ export default Ember.Component.extend({
    */
   attemptData: null,
 
-   /**
+  /**
     * @property {ContextResult} contextResult data normalized for report
     */
   contextResult: Ember.computed('attemptData', function() {
@@ -35,7 +34,7 @@ export default Ember.Component.extend({
       collection: this.get('collection'),
       isRealTime: this.get('isRealTime'),
       showAttempts: this.get('showAttempts'),
-      mastery:this.get('attemptData.mastery')
+      mastery: this.get('attemptData.mastery')
     });
   }),
 
@@ -47,16 +46,29 @@ export default Ember.Component.extend({
   /**
    * @property {boolean} areAnswersHidden - Should answer results be hidden?
    */
-  areAnswersHidden: Ember.computed('collection.isAssessment', 'collection.showFeedback', function() {
-    return (this.get('collection.isAssessment') && this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.NEVER);
-  }),
+  areAnswersHidden: Ember.computed(
+    'collection.isAssessment',
+    'collection.showFeedback',
+    function() {
+      return (
+        this.get('collection.isAssessment') &&
+        this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.NEVER
+      );
+    }
+  ),
 
   /**
    * @property {boolean} isAnswerKeyHidden - Should the answer key be hidden?
    */
-  isAnswerKeyHidden: Ember.computed('collection.isAssessment', 'collection.showKey', function() {
-    return (this.get('collection.isAssessment') && !this.get('collection.showKey'));
-  }),
+  isAnswerKeyHidden: Ember.computed(
+    'collection.isAssessment',
+    'collection.showKey',
+    function() {
+      return (
+        this.get('collection.isAssessment') && !this.get('collection.showKey')
+      );
+    }
+  ),
 
   /**
    * @property {boolean} isRealTime
@@ -71,5 +83,5 @@ export default Ember.Component.extend({
   /**
    * @property {Number} totalAttempts
    */
-   totalAttempts: 0
+  totalAttempts: 0
 });

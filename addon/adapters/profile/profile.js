@@ -1,8 +1,7 @@
 import TokenMixin from 'quizzes-addon/mixins/token';
 import ApplicationAdapter from 'quizzes-addon/adapters/application';
 
-export default ApplicationAdapter.extend(TokenMixin,  {
-
+export default ApplicationAdapter.extend(TokenMixin, {
   /**
    * @property {string} namespace End-point URI
    */

@@ -1,12 +1,11 @@
 import Ember from 'ember';
-import {UPLOADABLE_TYPES} from 'quizzes-addon/config/quizzes-config';
+import { UPLOADABLE_TYPES } from 'quizzes-addon/config/quizzes-config';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['editor','assessment','qz-rubric-creation'],
+  classNames: ['editor', 'assessment', 'qz-rubric-creation'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -24,15 +23,15 @@ export default Ember.Component.extend({
      */
     selectFile: function(file) {
       //TODO
-      this.set('rubric.file',file);
+      this.set('rubric.file', file);
     },
     /***
      * Add URL
      */
-    addURL: function(url){
-      if(this.get('showFromWeb')){
-        let resource = this.get('resource');
-        resource.set('url',url);
+    addURL: function(url) {
+      if (this.get('showFromWeb')) {
+        const resource = this.get('resource');
+        resource.set('url', url);
       }
     }
   },
@@ -42,7 +41,7 @@ export default Ember.Component.extend({
   /*** Indicates when then show from web option is visible
    * * @property {boolean}
    * */
-  resource:Ember.Object.create({}),
+  resource: Ember.Object.create({}),
   /**
    * Indicates when then show from web option is visible
    * @property {boolean}
@@ -59,7 +58,9 @@ export default Ember.Component.extend({
    * @type {String} list of all valid extension per quizzes/config/config#UPLOAD_TYPES
    */
   validExtensions: Ember.computed(function() {
-    var extensions = UPLOADABLE_TYPES.map(typeObject => typeObject.validExtensions);
+    var extensions = UPLOADABLE_TYPES.map(
+      typeObject => typeObject.validExtensions
+    );
     return extensions.join(' ');
   })
 });

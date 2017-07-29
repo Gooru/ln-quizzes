@@ -17,70 +17,70 @@ export const QUESTION_TYPES = {
 
 //Question type configuration
 export const QUESTION_CONFIG = {
-  'single_choice'    : Ember.Object.create({
+  single_choice: Ember.Object.create({
     apiType: 'single_choice_question',
     component: {
       player: 'player.questions.qz-single-choice',
       answer: 'reports.assessment.questions.qz-single-choice'
     }
   }),
-  'multiple_choice'    : Ember.Object.create({
+  multiple_choice: Ember.Object.create({
     apiType: 'multiple_choice_question',
     component: {
       player: 'player.questions.qz-multiple-answer',
       answer: 'reports.assessment.questions.qz-multiple-answer'
     }
   }),
-  'drag_and_drop' : Ember.Object.create({
+  drag_and_drop: Ember.Object.create({
     apiType: 'drag_and_drop',
     component: {
       player: 'player.questions.qz-reorder',
       answer: 'reports.assessment.questions.qz-reorder'
     }
   }),
-  'hot_text_word' : Ember.Object.create({
+  hot_text_word: Ember.Object.create({
     apiType: 'hot_text_highlight_question',
     component: {
       player: 'player.questions.qz-hot-text-highlight',
       answer: 'reports.assessment.questions.qz-hot-text-highlight'
     }
   }),
-  'hot_text_sentence' : Ember.Object.create({
+  hot_text_sentence: Ember.Object.create({
     apiType: 'hot_text_highlight_question',
     component: {
       player: 'player.questions.qz-hot-text-highlight',
       answer: 'reports.assessment.questions.qz-hot-text-highlight'
     }
   }),
-  'true_false'   : Ember.Object.create({
+  true_false: Ember.Object.create({
     apiType: 'true_false_question',
     component: {
       player: 'player.questions.qz-true-false',
       answer: 'reports.assessment.questions.qz-true-false'
     }
   }),
-  'text_entry'   : Ember.Object.create({
+  text_entry: Ember.Object.create({
     apiType: 'text_entry_question',
     component: {
       player: 'player.questions.qz-fib',
       answer: 'reports.assessment.questions.qz-fib'
     }
   }),
-  'multiple_choice_image': Ember.Object.create({
+  multiple_choice_image: Ember.Object.create({
     apiType: 'hot_spot_image_question',
     component: {
       player: 'player.questions.qz-hs-image',
       answer: 'reports.assessment.questions.qz-hs-image'
     }
   }),
-  'multiple_choice_text': Ember.Object.create({
+  multiple_choice_text: Ember.Object.create({
     apiType: 'multiple_choice_text_question',
     component: {
       player: 'player.questions.qz-hs-text',
       answer: 'reports.assessment.questions.qz-hs-text'
     }
   }),
-  'extended_text'    : Ember.Object.create({
+  extended_text: Ember.Object.create({
     apiType: 'open_ended_question',
     util: OpenEndedUtil,
     component: {
@@ -99,9 +99,13 @@ export function getQuestionConfig(questionType, propertyPath) {
   let config = QUESTION_CONFIG[questionType];
 
   if (!config) {
-    Ember.Logger.error(`Questions of type ${questionType} are currently not supported`);
-  } else if (propertyPath && !config.get(propertyPath)){
-    Ember.Logger.error(`Property not found ${propertyPath} for question type ${questionType}`);
+    Ember.Logger.error(
+      `Questions of type ${questionType} are currently not supported`
+    );
+  } else if (propertyPath && !config.get(propertyPath)) {
+    Ember.Logger.error(
+      `Property not found ${propertyPath} for question type ${questionType}`
+    );
   } else {
     config = propertyPath ? config.get(propertyPath) : config;
   }
@@ -113,11 +117,11 @@ export function getQuestionConfig(questionType, propertyPath) {
  * Returns the question type based on apiType
  * @param {string} apiType, a valid question apiType from API 3.0
  */
-export function getQuestionTypeByApiType(apiType){
+export function getQuestionTypeByApiType(apiType) {
   let type = null;
   for (var property in QUESTION_CONFIG) {
     if (QUESTION_CONFIG.hasOwnProperty(property)) {
-      if (QUESTION_CONFIG[property].apiType === apiType){
+      if (QUESTION_CONFIG[property].apiType === apiType) {
         type = property;
         break;
       }
@@ -131,7 +135,7 @@ export function getQuestionTypeByApiType(apiType){
  * @param {string} questionType
  * @returns {Object|*}
  */
-export function getQuestionUtil(questionType){
+export function getQuestionUtil(questionType) {
   return getQuestionConfig(questionType, 'util');
 }
 
@@ -140,7 +144,7 @@ export function getQuestionUtil(questionType){
  * @param {string} questionType
  * @returns {string}
  */
-export function getQuestionApiType(questionType){
+export function getQuestionApiType(questionType) {
   return getQuestionConfig(questionType, 'apiType');
 }
 
@@ -164,29 +168,29 @@ export const LATEX_EXPRESSIONS = {
   lambda: '\\Lambda',
   omega: '\\Omega',
   infinity: '\\infty',
-  subscript:'{}_{}',
-  superscript:'{}^{}',
-  'over-left-arrow':'\\overleftarrow{}',
-  'over-right-arrow':'\\overrightarrow{}',
-  div:'\\div',
-  plus:'\\+',
-  minus:'\\-',
-  mult:'\\times',
-  cdot:'\\cdot',
-  'not-equal':'\\neq',
-  lt:'\\lt',
-  le:'\\le',
-  sim:'\\sim',
-  approx:'\\approx',
-  alpha:'\\alpha',
-  pmatrix:'\\left({}\\right)',
-  Bmatrix:'\\left\\{{} \\right\\}',
-  vmatrix:'\\left|{} \\right|',
-  angle:'\\angle',
-  measuredangle:'\\measuredangle',
-  bot:'\\bot',
-  parallel:'\\parallel',
-  sigma:'\\Sigma',
-  theta:'\\Theta',
-  pi:'\\pi'
+  subscript: '{}_{}',
+  superscript: '{}^{}',
+  'over-left-arrow': '\\overleftarrow{}',
+  'over-right-arrow': '\\overrightarrow{}',
+  div: '\\div',
+  plus: '\\+',
+  minus: '\\-',
+  mult: '\\times',
+  cdot: '\\cdot',
+  'not-equal': '\\neq',
+  lt: '\\lt',
+  le: '\\le',
+  sim: '\\sim',
+  approx: '\\approx',
+  alpha: '\\alpha',
+  pmatrix: '\\left({}\\right)',
+  Bmatrix: '\\left\\{{} \\right\\}',
+  vmatrix: '\\left|{} \\right|',
+  angle: '\\angle',
+  measuredangle: '\\measuredangle',
+  bot: '\\bot',
+  parallel: '\\parallel',
+  sigma: '\\Sigma',
+  theta: '\\Theta',
+  pi: '\\pi'
 };

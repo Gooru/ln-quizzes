@@ -12,13 +12,12 @@ import ResourceComponent from 'quizzes-addon/components/player/resources/qz-reso
  * @augments Ember/Component
  **/
 export default ResourceComponent.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-pdf-resource'],
+  classNames: ['qz-pdf-resource'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -29,7 +28,7 @@ export default ResourceComponent.extend({
   // -------------------------------------------------------------------------
   // Properties
 
-  pdfURL:Ember.computed('resource.assetUrl',function() {
+  pdfURL: Ember.computed('resource.assetUrl', function() {
     return this.get('resource.assetUrl');
   })
 
@@ -38,5 +37,4 @@ export default ResourceComponent.extend({
 
   // -------------------------------------------------------------------------
   // Methods
-
 });

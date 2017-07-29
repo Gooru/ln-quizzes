@@ -14,19 +14,15 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
-
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['taxonomy', 'gru-browse-selector'],
 
-
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     /**
      * Select an item that is not in the last panel
      *
@@ -51,20 +47,19 @@ export default Ember.Component.extend({
         this.get('onUncheckItem')(item);
       }
     }
-
   },
 
   // -------------------------------------------------------------------------
   // Events
   didRender() {
-    this._super( ...arguments );
+    this._super(...arguments);
     this.$('button[data-toggle="collapse"]').on('click', function(e) {
       e.preventDefault();
     });
   },
 
   willRender() {
-    this._super( ...arguments );
+    this._super(...arguments);
     var $component = this.$();
 
     if ($component) {
@@ -72,10 +67,9 @@ export default Ember.Component.extend({
     }
   },
 
-  willDestroyElement: function () {
+  willDestroyElement: function() {
     this.$('button[data-toggle="collapse"]').off('click');
   },
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -110,23 +104,28 @@ export default Ember.Component.extend({
     this.clearActivePath(previousPath);
     this.set('previousSelectedPath', currentPath);
 
-    return headers.map(function(headerTitle, index) {
-      var itemId = currentPath[index];
+    return headers.map(
+      function(headerTitle, index) {
+        var itemId = currentPath[index];
 
-      currentList = (index === 0) ? this.get('data') :
-                      (browseItem) ? browseItem.get('children') : [];
-      browseItem = (currentList.length) ? currentList.findBy('id', itemId) : null;
+        currentList =
+          index === 0
+            ? this.get('data')
+            : browseItem ? browseItem.get('children') : [];
+        browseItem = currentList.length
+          ? currentList.findBy('id', itemId)
+          : null;
 
-      if (browseItem) {
-        browseItem.set('isActive', true);
-      }
+        if (browseItem) {
+          browseItem.set('isActive', true);
+        }
 
-      return Ember.Object.create({
-        title: headerTitle,
-        data: (currentList) ? currentList : []
-      });
-
-    }.bind(this));
+        return Ember.Object.create({
+          title: headerTitle,
+          data: currentList ? currentList : []
+        });
+      }.bind(this)
+    );
   }),
 
   /**
@@ -141,7 +140,6 @@ export default Ember.Component.extend({
    */
   previousSelectedPath: [],
 
-
   // -------------------------------------------------------------------------
   // Properties
 
@@ -153,15 +151,15 @@ export default Ember.Component.extend({
   clearActivePath: function(path) {
     var browseItem = [];
 
-    path.forEach(function(browseItemId, index) {
-      if (index === 0) {
-        browseItem = this.get('data').findBy('id', browseItemId);
-      } else {
-        browseItem = browseItem.get('children').findBy('id', browseItemId);
-      }
-      browseItem.set('isActive', false);
-    }.bind(this));
+    path.forEach(
+      function(browseItemId, index) {
+        if (index === 0) {
+          browseItem = this.get('data').findBy('id', browseItemId);
+        } else {
+          browseItem = browseItem.get('children').findBy('id', browseItemId);
+        }
+        browseItem.set('isActive', false);
+      }.bind(this)
+    );
   }
-
-
 });

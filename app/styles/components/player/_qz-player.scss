@@ -12,7 +12,7 @@
     @include flex-shrink(0);
     height: 100%;
     min-height: 400px;
-    background: #EEEEEE;
+    background: #eeeeee;
     width: 260px;
     @include translate-hide(-100%);
     @include position(absolute, 0, null, 0, 0);
@@ -35,7 +35,7 @@
     height: 100%;
     min-height: 400px;
   }
-  .qz-main.submission-confirm{
+  .qz-main.submission-confirm {
     @include align-items(center);
     margin: 27px;
   }
@@ -43,6 +43,6 @@
   &.confirmation {
     @include flexbox;
     @include justify-content(center);
-    margin-top:20px;
+    margin-top: 20px;
   }
 }

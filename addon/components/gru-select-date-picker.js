@@ -9,10 +9,8 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
@@ -21,66 +19,84 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Actions
 
-
   // -------------------------------------------------------------------------
   // Events
 
   /**
    * DidInsertElement ember event
    */
-  didInsertElement: function(){
-
+  didInsertElement: function() {
     $('.selectpicker').selectpicker();
 
-    $('.selectpicker').on('loaded.bs.select', function () {
+    $('.selectpicker').on(
+      'loaded.bs.select',
+      function() {
+        $('.birth-day-date').on(
+          'focusout',
+          function(e) {
+            e.stopPropagation();
+            this.set('focusLost', true);
+          }.bind(this)
+        );
 
-      $('.birth-day-date').on('focusout', function(e) {
-        e.stopPropagation();
-        this.set('focusLost', true);
+        $('.birth-day-date .bootstrap-select.months').on(
+          'focusin',
+          function(e) {
+            e.stopPropagation();
+            this.set('focusLost', false);
+          }.bind(this)
+        );
 
-      }.bind(this));
+        $('.birth-day-date .bootstrap-select.days').on(
+          'focusin',
+          function(e) {
+            e.stopPropagation();
+            this.set('focusLost', false);
+          }.bind(this)
+        );
 
-      $('.birth-day-date .bootstrap-select.months').on('focusin', function(e) {
-        e.stopPropagation();
-        this.set('focusLost', false);
-      }.bind(this));
+        $('.birth-day-date .bootstrap-select.years').on(
+          'focusin',
+          function(e) {
+            e.stopPropagation();
+            this.set('focusLost', false);
+          }.bind(this)
+        );
+      }.bind(this)
+    );
 
-      $('.birth-day-date .bootstrap-select.days').on('focusin', function(e) {
-        e.stopPropagation();
-        this.set('focusLost', false);
-      }.bind(this));
+    $('.birth-day-date select.selectpicker.months').on(
+      'change',
+      function() {
+        var monthSelected = $('.selectpicker.months option:selected').val();
+        this.set('birthMonthSelected', monthSelected);
+      }.bind(this)
+    );
 
-      $('.birth-day-date .bootstrap-select.years').on('focusin', function(e) {
-        e.stopPropagation();
-        this.set('focusLost', false);
-      }.bind(this));
+    $('.birth-day-date select.selectpicker.days').on(
+      'change',
+      function() {
+        var daySelected = $('.selectpicker.days option:selected').val();
+        this.set('birthDaySelected', daySelected);
+      }.bind(this)
+    );
 
-    }.bind(this));
-
-    $('.birth-day-date select.selectpicker.months').on('change', function(){
-      var monthSelected = $('.selectpicker.months option:selected').val();
-      this.set('birthMonthSelected', monthSelected);
-    }.bind(this));
-
-    $('.birth-day-date select.selectpicker.days').on('change', function(){
-      var daySelected = $('.selectpicker.days option:selected').val();
-      this.set('birthDaySelected', daySelected);
-    }.bind(this));
-
-    $('.birth-day-date select.selectpicker.years').on('change', function(){
-      var yearSelected = $('.selectpicker.years option:selected').val();
-      this.set('birthYearSelected', yearSelected);
-    }.bind(this));
+    $('.birth-day-date select.selectpicker.years').on(
+      'change',
+      function() {
+        var yearSelected = $('.selectpicker.years option:selected').val();
+        this.set('birthYearSelected', yearSelected);
+      }.bind(this)
+    );
   },
 
   /**
    * willDestroyElement event
    */
-  willDestroyElement: function(){
+  willDestroyElement: function() {
     this.set('birthDays', null);
     this.set('birthYears', null);
   },
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -94,7 +110,7 @@ export default Ember.Component.extend({
     var birthDays = [];
 
     for (let d = 1; d <= 31; d++) {
-      birthDays.push(("0"+d).slice(-2));
+      birthDays.push(`0${d}`.slice(-2));
     }
 
     return birthDays;
@@ -148,19 +164,37 @@ export default Ember.Component.extend({
    * Show error birth message or not, and tigger action when the gru-select-date-picker options are selected
    * @property {Boolean}
    */
-  showBirthMessage: Ember.computed('birthDaySelected', 'birthMonthSelected', 'birthYearSelected', 'focusLost', 'wasSubmitted', function() {
-    if(this.get('birthMonthSelected') && this.get('birthDaySelected') && this.get('birthYearSelected')) {
-      this.sendAction('onValidDate');
-    }
+  showBirthMessage: Ember.computed(
+    'birthDaySelected',
+    'birthMonthSelected',
+    'birthYearSelected',
+    'focusLost',
+    'wasSubmitted',
+    function() {
+      if (
+        this.get('birthMonthSelected') &&
+        this.get('birthDaySelected') &&
+        this.get('birthYearSelected')
+      ) {
+        this.sendAction('onValidDate');
+      }
 
-    return (((!this.get('birthMonthSelected') || !this.get('birthDaySelected') || !this.get('birthYearSelected')) && this.get('focusLost'))|| ((!this.get('birthMonthSelected') || !this.get('birthDaySelected') || !this.get('birthYearSelected')) && this.get('wasSubmitted')) && this.get('focusLost') !==false);
-  })
+      return (
+        ((!this.get('birthMonthSelected') ||
+          !this.get('birthDaySelected') ||
+          !this.get('birthYearSelected')) &&
+          this.get('focusLost')) ||
+        ((!this.get('birthMonthSelected') ||
+          !this.get('birthDaySelected') ||
+          !this.get('birthYearSelected')) &&
+          this.get('wasSubmitted') &&
+          this.get('focusLost') !== false)
+      );
+    }
+  )
   // -------------------------------------------------------------------------
   // Observers
 
-
   // -------------------------------------------------------------------------
   // Methods
-
-
 });

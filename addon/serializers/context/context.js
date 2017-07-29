@@ -4,13 +4,12 @@ import QuestionResult from 'quizzes-addon/models/result/question';
 import Context from 'quizzes-addon/models/context/context';
 
 export default Ember.Object.extend({
-
   /**
    * Normalizes a ContextResult
    * @param {ContextResult} contextResult
    * @returns {*[]}
    */
-  normalizeContextResult: function (payload) {
+  normalizeContextResult: function(payload) {
     const serializer = this;
     return ContextResult.create(Ember.getOwner(this).ownerInjection(), {
       contextId: payload.contextId,
@@ -53,11 +52,11 @@ export default Ember.Object.extend({
    * @param {*[]} payload
    * @returns {ResourceResult[]}
    */
-  normalizeResourceResults: function (payload) {
+  normalizeResourceResults: function(payload) {
     const serializer = this;
     payload = payload || [];
-    return payload.map(
-      resourceResult => QuestionResult.create(Ember.getOwner(serializer).ownerInjection(), {
+    return payload.map(resourceResult =>
+      QuestionResult.create(Ember.getOwner(serializer).ownerInjection(), {
         resourceId: resourceResult.resourceId,
         savedTime: resourceResult.timeSpent,
         reaction: resourceResult.reaction,
@@ -74,7 +73,7 @@ export default Ember.Object.extend({
    ** @return {*[]} payload
    */
   serializeContext: function(assignment) {
-    let serializedAssignment = this.serializeUpdateContext(assignment);
+    const serializedAssignment = this.serializeUpdateContext(assignment);
     serializedAssignment.collectionId = assignment.get('collectionId');
     serializedAssignment.classId = assignment.get('classId');
     serializedAssignment.isCollection = assignment.get('isCollection');
@@ -87,17 +86,18 @@ export default Ember.Object.extend({
    * @param {ResourceResult} resourceResult
    * @returns {*}
    */
-  serializeResourceResult: function (resourceResult, sendResourceId=true) {
-    let serialized = {
+  serializeResourceResult: function(resourceResult, sendResourceId = true) {
+    const serialized = {
       reaction: resourceResult.get('reaction'),
       timeSpent: resourceResult.get('timeSpentToSave')
     };
-    if(sendResourceId) {
+    if (sendResourceId) {
       serialized.resourceId = resourceResult.get('resourceId');
     }
     if (resourceResult.get('isQuestion')) {
-      serialized.answer = resourceResult.get('answer') ?
-        resourceResult.get('answer').map(({ value }) => ({ value })) : null;
+      serialized.answer = resourceResult.get('answer')
+        ? resourceResult.get('answer').map(({ value }) => ({ value }))
+        : null;
     }
     return serialized;
   },
@@ -128,9 +128,19 @@ export default Ember.Object.extend({
    ** @return {*} payload
    */
   serializeEventContext: function(context) {
-    let {
-      source, sourceUrl, tenantId, partnerId, pathId, timezone,
-      classId, courseId, unitId, lessonId, collectionId, collectionSubType
+    const {
+      source,
+      sourceUrl,
+      tenantId,
+      partnerId,
+      pathId,
+      timezone,
+      classId,
+      courseId,
+      unitId,
+      lessonId,
+      collectionId,
+      collectionSubType
     } = context;
     let eventContext = {
       eventSource: source,
@@ -141,12 +151,15 @@ export default Ember.Object.extend({
       timezone,
       collectionSubType
     };
-    if(classId) {
+    if (classId) {
       eventContext = Object.assign(eventContext, {
-        classId, courseId, unitId, lessonId, collectionId
+        classId,
+        courseId,
+        unitId,
+        lessonId,
+        collectionId
       });
     }
     return eventContext;
   }
-
 });

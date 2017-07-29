@@ -4,19 +4,27 @@ import { moduleFor, test } from 'ember-qunit';
 moduleFor('model:result/resource', 'Unit | Model | result/resource');
 
 test('attemptStatus', function(assert) {
-  let resourceResult = this.subject({
+  const resourceResult = this.subject({
     skipped: false,
     resource: Ember.Object.create({
       isResource: true
     })
   });
-  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The resource status should be skipped');
+  assert.equal(
+    resourceResult.get('attemptStatus'),
+    'started',
+    'The resource status should be skipped'
+  );
   resourceResult.set('skipped', true);
-  assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The resource status should be skipped');
+  assert.equal(
+    resourceResult.get('attemptStatus'),
+    'skipped',
+    'The resource status should be skipped'
+  );
 });
 
 test('timeSpent', function(assert) {
-  let resourceResult = this.subject({
+  const resourceResult = this.subject({
     savedTime: 0,
     startTime: 0,
     stopTime: 2000
@@ -31,7 +39,7 @@ test('timeSpent', function(assert) {
 });
 
 test('timeSpentToSave', function(assert) {
-  let resourceResult = this.subject({
+  const resourceResult = this.subject({
     savedTime: 0,
     startTime: 0,
     stopTime: 2000
@@ -46,7 +54,7 @@ test('timeSpentToSave', function(assert) {
 });
 
 test('clear', function(assert) {
-  let resourceResult = this.subject({
+  const resourceResult = this.subject({
     savedTime: 20,
     startTime: 20,
     stopTime: 20,
@@ -66,8 +74,8 @@ test('roundMilliseconds', function(assert) {
 });
 
 test('isCorrect', function(assert) {
-  let resourceResult = this.subject({
-    score:0
+  const resourceResult = this.subject({
+    score: 0
   });
   assert.equal(resourceResult.get('isCorrect'), false, 'Should be incorrect');
   resourceResult.set('score', 100);

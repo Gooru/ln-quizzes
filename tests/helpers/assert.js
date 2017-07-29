@@ -3,12 +3,13 @@ import Ember from 'ember';
 /**
  * @typedef {Object} Assert
  */
-var Assert = Ember.Object.extend({
-  //it only includes static methods
-});
+var Assert = Ember.Object.extend(
+  {
+    //it only includes static methods
+  }
+);
 
 Assert.reopenClass({
-
   /**
    * Asserts that the element exists
    *
@@ -18,7 +19,7 @@ Assert.reopenClass({
    * @param {jQuery} element jQuery element
    * @param {string} message The assert message
    */
-  exists : function (assert, element, message) {
+  exists: function(assert, element, message) {
     assert.ok(!!element.length, message);
   },
   /**
@@ -30,7 +31,7 @@ Assert.reopenClass({
    * @param {jQuery} element The jQuery element
    * @param {string} message The assert message
    */
-  notExists : function (assert, element, message) {
+  notExists: function(assert, element, message) {
     assert.ok(!element.length, message);
   },
 
@@ -39,7 +40,7 @@ Assert.reopenClass({
    * @param {jQuery} element The jQuery element
    * @returns {string} trimmed text
    */
-  text : function(element){
+  text: function(element) {
     return element.text().trim();
   },
 
@@ -48,10 +49,10 @@ Assert.reopenClass({
    * @returns {{t: Function}}
    */
   i18nServiceMock: {
-      t: function (key) { return key; }
+    t: function(key) {
+      return key;
+    }
   }
-
-
 });
 
 export default Assert;

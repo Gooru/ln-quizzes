@@ -41,21 +41,21 @@ module.exports = function(environment) {
    * Application themes configuration
    */
   ENV.themes = {
-    'default': null, /* when present it is not necessary to pass a query param */
-    'edify' : {
-      'translations': {
-        'locale': 'en-edify', /* this way it fallback to 'en' */
-        'url': '/themes/edify/translations.json'
+    default: null /* when present it is not necessary to pass a query param */,
+    edify: {
+      translations: {
+        locale: 'en-edify' /* this way it fallback to 'en' */,
+        url: '/themes/edify/translations.json'
       },
-      'styles': {
-        'url': '/themes/edify/styles.css'
+      styles: {
+        url: '/themes/edify/styles.css'
       }
     }
   };
 
   ENV.player = {
-    vimeoPlayerUrl:'//player.vimeo.com/video/',
-    youtubePlayerUrl:'https://www.youtube.com/embed/'
+    vimeoPlayerUrl: '//player.vimeo.com/video/',
+    youtubePlayerUrl: 'https://www.youtube.com/embed/'
   };
 
   if (environment === 'development') {
@@ -65,14 +65,17 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.contentSecurityPolicy = {
-      'default-src': "'none'",
-      'script-src': "'unsafe-eval' 'unsafe-inline' 'self' http://localhost:4200 http://localhost",
-      'font-src': "'self' https://www.gooru.org",
-      'connect-src': "'self' http://localhost:4200 wss://qa.api.quizzes.edify.cr http://localhost:8882 https://qa.api.quizzes.edify.cr https://nile-qa.gooru.org",
-      'img-src': "'self' data: http://qacdn.gooru.org http://profile-images.goorulearning.org.s3.amazonaws.com " +
-      "http://dev-content-gooru-org.s3-us-west-1.amazonaws.com http://dev-user-gooru-org.s3-us-west-1.amazonaws.com",
-      'style-src': "'self' 'unsafe-inline' https://www.gooru.org",
-      'media-src': "'self'"
+      'default-src': '\'none\'',
+      'script-src':
+        '\'unsafe-eval\' \'unsafe-inline\' \'self\' http://localhost:4200 http://localhost',
+      'font-src': '\'self\' https://www.gooru.org',
+      'connect-src':
+        '\'self\' http://localhost:4200 wss://qa.api.quizzes.edify.cr http://localhost:8882 https://qa.api.quizzes.edify.cr https://nile-qa.gooru.org',
+      'img-src':
+        '\'self\' data: http://qacdn.gooru.org http://profile-images.goorulearning.org.s3.amazonaws.com ' +
+        'http://dev-content-gooru-org.s3-us-west-1.amazonaws.com http://dev-user-gooru-org.s3-us-west-1.amazonaws.com',
+      'style-src': '\'self\' \'unsafe-inline\' https://www.gooru.org',
+      'media-src': '\'self\''
     };
   }
 

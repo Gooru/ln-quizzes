@@ -5,25 +5,28 @@ import hbs from 'htmlbars-inline-precompile';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
-moduleForComponent('player/qz-viewer', 'Integration | Component | player/qz viewer', {
-  integration: true,
-  beforeEach: function () {
-    this.container.lookup('service:i18n').set('locale', 'en');
+moduleForComponent(
+  'player/qz-viewer',
+  'Integration | Component | player/qz viewer',
+  {
+    integration: true,
+    beforeEach: function() {
+      this.container.lookup('service:i18n').set('locale', 'en');
+    }
   }
-});
+);
 
-test('On question submit', function (assert) {
+test('On question submit', function(assert) {
   assert.expect(3);
 
-  const resource = Ember.Object.create(
-    {
-      id: 10,
-      sequence: 2,
-      body: 'Dummy resource text',
-      media: 'test.jpg',
-      isQuestion: true,
-      type: QUESTION_TYPES.openEnded
-    });
+  const resource = Ember.Object.create({
+    id: 10,
+    sequence: 2,
+    body: 'Dummy resource text',
+    media: 'test.jpg',
+    isQuestion: true,
+    type: QUESTION_TYPES.openEnded
+  });
 
   const collection = Ember.Object.create({
     collectionType: 'assessment',
@@ -35,30 +38,35 @@ test('On question submit', function (assert) {
 
   this.set('resourceResult', resourceResult);
   this.set('resource', resource);
-  this.set('collection',collection);
+  this.set('collection', collection);
 
-  this.on('mySubmitQuestion', function(question){
+  this.on('mySubmitQuestion', function(question) {
     assert.equal(question.get('id'), 10, 'Wrong id');
   });
-  this.render(hbs`{{player/qz-viewer resource=resource resourceResult=resourceResult
+  this
+    .render(hbs`{{player/qz-viewer resource=resource resourceResult=resourceResult
     collection=collection onSubmitQuestion='mySubmitQuestion'}}`);
 
   var $component = this.$(); //component dom element
 
   var $answerPanel = $component.find('.answers-panel');
-  assert.ok($answerPanel.find('.actions button.save').attr('disabled'), 'Button should be disabled');
+  assert.ok(
+    $answerPanel.find('.actions button.save').attr('disabled'),
+    'Button should be disabled'
+  );
   var $openEndedComponent = $answerPanel.find('.qz-open-ended');
   $openEndedComponent.find('textarea').val('test');
   $openEndedComponent.find('textarea').change();
 
-  assert.ok(!$answerPanel.find('.actions button.save').attr('disabled'), 'Button should not be disabled');
+  assert.ok(
+    !$answerPanel.find('.actions button.save').attr('disabled'),
+    'Button should not be disabled'
+  );
 
   $answerPanel.find('.actions button.save').click();
 });
 
-test('Narration', function (assert) {
-
-
+test('Narration', function(assert) {
   assert.expect(3);
 
   const resourceMockA = Ember.Object.create({
@@ -78,16 +86,24 @@ test('Narration', function (assert) {
   this.set('resourceResult', resourceResult);
   this.set('resource', resourceMockA);
 
-  this.render(hbs`{{player/qz-viewer resource=resource resourceResult=resourceResult}}`);
+  this.render(
+    hbs`{{player/qz-viewer resource=resource resourceResult=resourceResult}}`
+  );
 
   var $component = this.$(); //component dom element
   const $gruViewer = $component.find('.qz-viewer');
   T.exists(assert, $gruViewer, 'Missing narration section');
-  T.exists(assert, $gruViewer.find('.narration .avatar img'), 'Missing autor image');
+  T.exists(
+    assert,
+    $gruViewer.find('.narration .avatar img'),
+    'Missing autor image'
+  );
   T.exists(assert, $gruViewer.find('.narration .message'), 'Missing narration');
 });
 
-test('Layout when a resource url cannot be showed in an iframe', function (assert) {
+test('Layout when a resource url cannot be showed in an iframe', function(
+  assert
+) {
   const resourceMockA = Ember.Object.create({
     id: '1',
     type: 'resource/url',
@@ -106,9 +122,24 @@ test('Layout when a resource url cannot be showed in an iframe', function (asser
   const $panel = $component.find('.not-iframe');
   assert.ok($panel.length, 'Missing not-iframe panel');
 
-  assert.ok($panel.find('.panel-header').length, 'panel-header of not-iframe panel');
-  assert.ok($panel.find('.panel-body').length, 'panel-body of not-iframe panel');
-  assert.ok($panel.find('.panel-body .qz-resource-card').length, 'Missing resource card');
-  assert.ok($panel.find('.panel-body .qz-resource-card a.play-btn').length, 'Missing play button');
-  assert.ok($panel.find('.panel-footer').length, 'panel-footer of not-iframe panel');
+  assert.ok(
+    $panel.find('.panel-header').length,
+    'panel-header of not-iframe panel'
+  );
+  assert.ok(
+    $panel.find('.panel-body').length,
+    'panel-body of not-iframe panel'
+  );
+  assert.ok(
+    $panel.find('.panel-body .qz-resource-card').length,
+    'Missing resource card'
+  );
+  assert.ok(
+    $panel.find('.panel-body .qz-resource-card a.play-btn').length,
+    'Missing play button'
+  );
+  assert.ok(
+    $panel.find('.panel-footer').length,
+    'panel-footer of not-iframe panel'
+  );
 });

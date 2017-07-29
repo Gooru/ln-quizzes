@@ -6,7 +6,6 @@ import Ember from 'ember';
  * @typedef {Object} TaxonomyItem
  */
 export default Ember.Object.extend({
-
   /**
    * @property {TaxonomyItem[]} children - List of item's children
    */
@@ -79,17 +78,19 @@ export default Ember.Object.extend({
     var result = null;
 
     if (path && path.length) {
-      let pathId = path[0];
+      const pathId = path[0];
 
       if (this.get('id') === pathId) {
         if (path.length === 1) {
           // This is it! There are no more elements in the path.
           result = this;
         } else {
-          let children = this.get('children');
-          for(let i = children.length - 1; i >= 0; --i) {
+          const children = this.get('children');
+          for (let i = children.length - 1; i >= 0; --i) {
             result = children[i].find(path.slice(1));
-            if (result) { break; }
+            if (result) {
+              break;
+            }
           }
         }
       }
@@ -110,13 +111,15 @@ export default Ember.Object.extend({
     if (this.get('id') === itemId) {
       result = this;
     } else {
-      let children = this.get('children');
+      const children = this.get('children');
       if (children.length) {
         for (let i = children.length - 1; i >= 0; --i) {
-          let item = children[i].isSimilar(itemId);
+          const item = children[i].isSimilar(itemId);
           if (item) {
             result = item.findItem(itemId);
-            if (result) { break; }
+            if (result) {
+              break;
+            }
           }
         }
       }
@@ -159,5 +162,4 @@ export default Ember.Object.extend({
     this.set('parent', null);
     this.destroy();
   }
-
 });

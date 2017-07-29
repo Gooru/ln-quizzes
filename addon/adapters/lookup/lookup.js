@@ -6,7 +6,6 @@ import Ember from 'ember';
  * @typedef {Object} LookupAdapter
  */
 export default Ember.Object.extend({
-
   namespace: '/api/nucleus/v1/lookups',
 
   /**
@@ -64,7 +63,7 @@ export default Ember.Object.extend({
     const adapter = this;
     const namespace = adapter.get('namespace');
     const url = `${namespace}/countries`;
-    const data = (keyword) ? { keyword: keyword } : {};
+    const data = keyword ? { keyword: keyword } : {};
 
     const options = {
       type: 'GET',
@@ -86,7 +85,7 @@ export default Ember.Object.extend({
     const adapter = this;
     const namespace = adapter.get('namespace');
     const url = `${namespace}/countries/${countryId}/states`;
-    const data = (keyword) ? { keyword: keyword } : {};
+    const data = keyword ? { keyword: keyword } : {};
 
     const options = {
       type: 'GET',
@@ -110,7 +109,7 @@ export default Ember.Object.extend({
     const url = `${namespace}/school-districts`;
     const data = {};
 
-    if (keyword){
+    if (keyword) {
       data.keyword = keyword;
     }
 
@@ -127,15 +126,13 @@ export default Ember.Object.extend({
     return Ember.$.ajax(url, options);
   },
 
-
   /**
    *
    * @returns {{Authorization: string}}
    */
   defineHeaders: function() {
     return {
-      'Authorization': 'Token '
+      Authorization: 'Token '
     };
   }
-
 });

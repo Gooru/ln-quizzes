@@ -1,1 +1,3 @@
-export { default } from 'quizzes-addon/components/validation/gru-input-mixed-validation';
+export {
+  default
+} from 'quizzes-addon/components/validation/gru-input-mixed-validation';

@@ -10,7 +10,6 @@ import Ember from 'ember';
  */
 
 export default Ember.Object.extend({
-
   // -------------------------------------------------------------------------
   // Properties
 
@@ -33,10 +32,10 @@ export default Ember.Object.extend({
    * @return {boolean}
    */
   isCorrect: function(answer) {
-    let utility = this;
-    let correctAnswer = this.getCorrectAnswer();
+    const utility = this;
+    const correctAnswer = this.getCorrectAnswer();
     let correct = answer.get('length') === correctAnswer.get('length');
-    answer.forEach(function (answerChoice, index) {
+    answer.forEach(function(answerChoice, index) {
       correct = correct && utility.isAnswerChoiceCorrect(answerChoice, index);
     });
 
@@ -47,8 +46,11 @@ export default Ember.Object.extend({
    * Indicates if the answer choice is correct
    * @param { * } answerChoice
    */
-  isAnswerChoiceCorrect: function (answerChoice) {
-    Ember.Logger.warning('The method getCorrectAnswer is not implemented', answerChoice);
+  isAnswerChoiceCorrect: function(answerChoice) {
+    Ember.Logger.warning(
+      'The method getCorrectAnswer is not implemented',
+      answerChoice
+    );
   },
 
   /**
@@ -56,7 +58,7 @@ export default Ember.Object.extend({
    *
    * @return {*} the correct answer choice id
    */
-  getCorrectAnswer: function () {
+  getCorrectAnswer: function() {
     Ember.Logger.warning('The method getCorrectAnswer is not implemented');
   },
 
@@ -66,18 +68,18 @@ export default Ember.Object.extend({
    * @param { [] } userAnswers, i.e [2,1,3,2,1]
    * @return { { answer: *, count: number, key: string }[] }
    */
-  distribution: function (resourceResults) {
+  distribution: function(resourceResults) {
     const util = this;
     const distributionMap = {};
     const distribution = Ember.A([]);
     const total = resourceResults.length;
-    resourceResults.forEach(function (result) {
-      let answer = result.get('answer');
-      if(result.get('started')) {
-        let answerKey = util.answerKey(answer);
+    resourceResults.forEach(function(result) {
+      const answer = result.get('answer');
+      if (result.get('started')) {
+        const answerKey = util.answerKey(answer);
         let answerDistribution = distributionMap[answerKey];
         let count = 0;
-        let percentage = 0;
+        const percentage = 0;
         if (!answerDistribution) {
           answerDistribution = Ember.Object.create({
             answer,
@@ -105,8 +107,10 @@ export default Ember.Object.extend({
    * @param answer
    * @returns {{}}
    */
-  answerKey: function (answer) {
-    return Ember.A(answer).sortBy('value').reduce((key, item) => `${key}${item.value}`, '');
+  answerKey: function(answer) {
+    return Ember.A(answer)
+      .sortBy('value')
+      .reduce((key, item) => `${key}${item.value}`, '');
   },
 
   /**
@@ -115,7 +119,7 @@ export default Ember.Object.extend({
    * @param answerB
    * @returns {boolean}
    */
-  sameAnswer: function (answerA, answerB) {
+  sameAnswer: function(answerA, answerB) {
     return this.answerKey(answerA) === this.answerKey(answerB);
   },
 
@@ -124,8 +128,11 @@ export default Ember.Object.extend({
    * @param {*} userAnswer
    * @return {AnswerObject[]}
    */
-  toAnswerObjects: function (userAnswer) {
-    Ember.Logger.warning('The method toAnswerObject is not implemented', userAnswer);
+  toAnswerObjects: function(userAnswer) {
+    Ember.Logger.warning(
+      'The method toAnswerObject is not implemented',
+      userAnswer
+    );
   },
 
   /**
@@ -134,31 +141,32 @@ export default Ember.Object.extend({
    * @param {*} userAnswer
    * @return {*[]}
    */
-  toJSONAnswerObjects: function (userAnswer) {
+  toJSONAnswerObjects: function(userAnswer) {
     let json = [];
     if (userAnswer) {
-      let answerObjects = this.toAnswerObjects(userAnswer);
-      json = answerObjects.map(function (answerObject) {
+      const answerObjects = this.toAnswerObjects(userAnswer);
+      json = answerObjects.map(function(answerObject) {
         return {
-          'text': answerObject.get('text'),
-          'status': answerObject.get('status'),
-          'order': answerObject.get('order'),
-          'answerId': answerObject.get('answerId'),
-          'skip': answerObject.get('skip')
+          text: answerObject.get('text'),
+          status: answerObject.get('status'),
+          order: answerObject.get('order'),
+          answerId: answerObject.get('answerId'),
+          skip: answerObject.get('skip')
         };
       });
     }
     return json;
   },
 
-
-
   /**
    * Converts an answerObject format to model userAnswer
    * @param {AnswerObject[]} answerObjects
    */
-  toUserAnswer: function (answerObjects) {
-    Ember.Logger.warning('The method toUserAnswer is not implemented', answerObjects);
+  toUserAnswer: function(answerObjects) {
+    Ember.Logger.warning(
+      'The method toUserAnswer is not implemented',
+      answerObjects
+    );
   },
 
   /**
@@ -166,7 +174,7 @@ export default Ember.Object.extend({
    * @param {string} answerId
    * @returns {Answer}
    */
-  getAnswerById: function (answerId) {
+  getAnswerById: function(answerId) {
     return this.getQuestionAnswers().findBy('id', answerId);
   },
 
@@ -175,7 +183,7 @@ export default Ember.Object.extend({
    * @param {string} text
    * @returns {Answer}
    */
-  getAnswerByText: function (text) {
+  getAnswerByText: function(text) {
     return this.getQuestionAnswers().findBy('text', text);
   },
 
@@ -186,5 +194,4 @@ export default Ember.Object.extend({
   getQuestionAnswers: function() {
     return this.get('question.answers');
   }
-
 });

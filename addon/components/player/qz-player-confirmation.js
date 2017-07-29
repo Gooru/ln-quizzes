@@ -4,15 +4,15 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['qz-player-confirmation'],
+  classNames: ['qz-player-confirmation'],
 
   // -------------------------------------------------------------------------
   // Actions
   actions: {
-    start(){
+    start() {
       this.sendAction('onStartPlayer');
     },
-    cancel(){
+    cancel() {
       this.sendAction('onClosePlayer');
     }
   },
@@ -25,7 +25,7 @@ export default Ember.Component.extend({
    */
   attempts: null,
 
-  attemptsLeft: Ember.computed('attempts','collection.attempts',function(){
+  attemptsLeft: Ember.computed('attempts', 'collection.attempts', function() {
     return this.get('collection.attempts') - this.get('attempts');
   }),
 
@@ -37,25 +37,33 @@ export default Ember.Component.extend({
   /**
    * @property {Context} context
    */
-  context:null,
+  context: null,
 
   /**
    * @property {boolean} flag for determining button behaviour
    */
-  disableStart: Ember.computed('unlimited', 'noMoreAttempts', function(){
+  disableStart: Ember.computed('unlimited', 'noMoreAttempts', function() {
     return !this.get('unlimited') && this.get('noMoreAttempts');
   }),
 
   /**
    * @property {Boolean} Indicate if the context has more attempts available
    */
-  noMoreAttempts: Ember.computed('collection.isAssessment','collection.attempts','attempts',function(){
-    return (this.get('collection.isAssessment') && this.get('collection.attempts') > 0
-    && this.get('attempts') && this.get('attempts') >= this.get('collection.attempts'));
-  }),
+  noMoreAttempts: Ember.computed(
+    'collection.isAssessment',
+    'collection.attempts',
+    'attempts',
+    function() {
+      return (
+        this.get('collection.isAssessment') &&
+        this.get('collection.attempts') > 0 &&
+        this.get('attempts') &&
+        this.get('attempts') >= this.get('collection.attempts')
+      );
+    }
+  ),
   /**
    * @property {boolean} flag for determining unlimited behaviour
    */
   unlimited: Ember.computed.equal('collection.attempts', -1)
-
 });

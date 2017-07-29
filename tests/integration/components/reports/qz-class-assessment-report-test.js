@@ -8,16 +8,19 @@ import QuestionResult from 'quizzes-addon/models/result/question';
 import ReportData from 'quizzes-addon/models/result/report-data';
 import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 
+moduleForComponent(
+  'reports/qz-class-assessment-report',
+  'Integration | Component | reports/qz class assessment report',
+  {
+    integration: true,
 
-moduleForComponent('reports/qz-class-assessment-report', 'Integration | Component | reports/qz class assessment report', {
-  integration: true,
-
-  beforeEach: function () {
-    this.container.lookup('service:i18n').set('locale', 'en');
+    beforeEach: function() {
+      this.container.lookup('service:i18n').set('locale', 'en');
+    }
   }
-});
+);
 
-test('Default Layout', function (assert) {
+test('Default Layout', function(assert) {
   const collection = Collection.create({
     id: 'collection-id',
     isCollection: false,
@@ -95,20 +98,48 @@ test('Default Layout', function (assert) {
 
   const $viewContainer = $component.find('.view-container');
   T.exists(assert, $viewContainer, 'Missing view container');
-  assert.ok(!$viewContainer.hasClass('table-view'), 'Table view should not be selected by default');
-  assert.ok($viewContainer.hasClass('student-view'), 'Student view should be selected by default');
+  assert.ok(
+    !$viewContainer.hasClass('table-view'),
+    'Table view should not be selected by default'
+  );
+  assert.ok(
+    $viewContainer.hasClass('student-view'),
+    'Student view should be selected by default'
+  );
 
-  T.exists(assert, $viewContainer.find('.gru-view-layout-picker'), 'Missing gru view layout picker');
+  T.exists(
+    assert,
+    $viewContainer.find('.gru-view-layout-picker'),
+    'Missing gru view layout picker'
+  );
   T.exists(assert, $viewContainer.find('.qz-table-view'), 'Missing table view');
-  T.exists(assert, $viewContainer.find('.qz-student-view'), 'Missing student view');
+  T.exists(
+    assert,
+    $viewContainer.find('.qz-student-view'),
+    'Missing student view'
+  );
 
   //click at the view layout picker - thumbnails view
-  $viewContainer.find('.gru-view-layout-picker .view-option.thumbnails a').click();
-  assert.ok(!$viewContainer.hasClass('table-view'), 'Table view should not be selected');
-  assert.ok($viewContainer.hasClass('student-view'), 'Student view should be selected');
+  $viewContainer
+    .find('.gru-view-layout-picker .view-option.thumbnails a')
+    .click();
+  assert.ok(
+    !$viewContainer.hasClass('table-view'),
+    'Table view should not be selected'
+  );
+  assert.ok(
+    $viewContainer.hasClass('student-view'),
+    'Student view should be selected'
+  );
 
   //click at the view layout picker - list view
   $viewContainer.find('.gru-view-layout-picker .view-option.list a').click();
-  assert.ok($viewContainer.hasClass('table-view'), 'Table view should be selected');
-  assert.ok(!$viewContainer.hasClass('student-view'), 'Student view should not be selected');
+  assert.ok(
+    $viewContainer.hasClass('table-view'),
+    'Table view should be selected'
+  );
+  assert.ok(
+    !$viewContainer.hasClass('student-view'),
+    'Student view should not be selected'
+  );
 });

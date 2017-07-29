@@ -2,11 +2,15 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import { QUIZZES_RESOURCE_TYPES } from 'quizzes-addon/config/quizzes-config';
 
-moduleForComponent('player/qz-resource-viewer', 'Unit | Component | player/qz resource viewer', {
-  unit: true
-});
+moduleForComponent(
+  'player/qz-resource-viewer',
+  'Unit | Component | player/qz resource viewer',
+  {
+    unit: true
+  }
+);
 
-test('resourceComponentSelected for non valid resource type', function (assert) {
+test('resourceComponentSelected for non valid resource type', function(assert) {
   assert.expect(1);
 
   var component = this.subject({
@@ -15,10 +19,13 @@ test('resourceComponentSelected for non valid resource type', function (assert) 
     })
   });
 
-  assert.notOk(component.get('resourceComponentSelected'), 'It should return false|undefined');
+  assert.notOk(
+    component.get('resourceComponentSelected'),
+    'It should return false|undefined'
+  );
 });
 
-test('resourceComponentSelected for image resource type', function (assert) {
+test('resourceComponentSelected for image resource type', function(assert) {
   assert.expect(1);
 
   var component = this.subject({
@@ -27,10 +34,14 @@ test('resourceComponentSelected for image resource type', function (assert) {
     })
   });
 
-  assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
+  assert.equal(
+    component.get('resourceComponentSelected'),
+    'qz-preview-url',
+    'Wrong component name'
+  );
 });
 
-test('resourceComponentSelected for text/pdf resource type', function (assert) {
+test('resourceComponentSelected for text/pdf resource type', function(assert) {
   assert.expect(1);
 
   var component = this.subject({
@@ -39,10 +50,14 @@ test('resourceComponentSelected for text/pdf resource type', function (assert) {
     })
   });
 
-  assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
+  assert.equal(
+    component.get('resourceComponentSelected'),
+    'qz-preview-url',
+    'Wrong component name'
+  );
 });
 
-test('resourceComponentSelected for youtube resource type', function (assert) {
+test('resourceComponentSelected for youtube resource type', function(assert) {
   assert.expect(1);
 
   var component = this.subject({
@@ -51,9 +66,13 @@ test('resourceComponentSelected for youtube resource type', function (assert) {
     })
   });
 
-  assert.equal(component.get('resourceComponentSelected'), 'player.resources.qz-youtube-resource', 'Wrong component name');
+  assert.equal(
+    component.get('resourceComponentSelected'),
+    'player.resources.qz-youtube-resource',
+    'Wrong component name'
+  );
 });
-test('resourceComponentSelected for vimeo resource type', function (assert) {
+test('resourceComponentSelected for vimeo resource type', function(assert) {
   assert.expect(1);
 
   var component = this.subject({
@@ -62,10 +81,14 @@ test('resourceComponentSelected for vimeo resource type', function (assert) {
     })
   });
 
-  assert.equal(component.get('resourceComponentSelected'), 'player.resources.qz-vimeo-resource', 'Wrong component name');
+  assert.equal(
+    component.get('resourceComponentSelected'),
+    'player.resources.qz-vimeo-resource',
+    'Wrong component name'
+  );
 });
 
-test('resourceComponentSelected for url resource type', function (assert) {
+test('resourceComponentSelected for url resource type', function(assert) {
   assert.expect(1);
 
   var component = this.subject({
@@ -74,12 +97,16 @@ test('resourceComponentSelected for url resource type', function (assert) {
     })
   });
 
-  assert.equal(component.get('resourceComponentSelected'), 'qz-preview-url', 'Wrong component name');
+  assert.equal(
+    component.get('resourceComponentSelected'),
+    'qz-preview-url',
+    'Wrong component name'
+  );
 });
 
 test('next', function(assert) {
   assert.expect(5);
-  let component = this.subject({
+  const component = this.subject({
     isNextDisabled: false,
     onNext: 'onNext',
     resource: { id: 'resource-id' },
@@ -88,11 +115,17 @@ test('next', function(assert) {
   component.set('quizzesResourceService', {
     sendFinishResource: (resourceId, result, eventContext) => {
       assert.equal(resourceId, 'resource-id', 'Resource id should match');
-      assert.deepEqual(result, component.get('resourceResult'), 'Resource result should match');
+      assert.deepEqual(
+        result,
+        component.get('resourceResult'),
+        'Resource result should match'
+      );
       assert.equal(eventContext, 'event-context', 'Event context should match');
     }
   });
-  component.set('sendAction', action => assert.equal(action, 'onNext', 'Action sent should match'));
+  component.set('sendAction', action =>
+    assert.equal(action, 'onNext', 'Action sent should match')
+  );
   component.send('next');
   assert.ok(component.isNextDisabled, 'isNextDisabled should be updated');
 });

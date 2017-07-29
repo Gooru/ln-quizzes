@@ -1,5 +1,4 @@
 .datepicker {
-
   padding: 0;
 
   .btn-default {
@@ -25,7 +24,8 @@
   }
 
   .datepicker-icon {
-    background: url("quizzes-addon/quizzes/icon-sprite.png") no-repeat scroll -7px -472px transparent;
+    background: url("quizzes-addon/quizzes/icon-sprite.png") no-repeat scroll -7px -472px
+      transparent;
     cursor: pointer;
     display: block;
     float: right;
@@ -33,5 +33,4 @@
     margin-left: -20px;
     width: 32px;
   }
-
 }

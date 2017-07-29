@@ -5,27 +5,31 @@ import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 import LearningTarget from 'quizzes-addon/models/result/learning-target';
 
 export default Ember.Object.extend({
-
   /**
    * @property {ContextSerializer} contextSerializer
    */
   contextSerializer: null,
 
-  init: function () {
+  init: function() {
     this._super(...arguments);
-    this.set('contextSerializer', ContextSerializer.create(Ember.getOwner(this).ownerInjection()));
+    this.set(
+      'contextSerializer',
+      ContextSerializer.create(Ember.getOwner(this).ownerInjection())
+    );
   },
 
   /**
    * Normalizes a ReportData
    * @returns {ReportData}
    */
-  normalizeReportData: function (payload) {
+  normalizeReportData: function(payload) {
     const serializer = this;
     return ReportData.create(Ember.getOwner(this).ownerInjection(), {
       contextId: payload.contextId,
       collectionId: payload.collectionId,
-      reportEvents: serializer.normalizeReportDataEvents(payload.profileAttempts)
+      reportEvents: serializer.normalizeReportDataEvents(
+        payload.profileAttempts
+      )
     });
   },
 
@@ -33,19 +37,24 @@ export default Ember.Object.extend({
    * Normalizes a ReportDataEvent
    * @returns {ReportDataEvent}
    */
-  normalizeReportDataEvent: function (reportEvent) {
-    let summary = reportEvent.eventSummary;
-    let taxonomySummary = reportEvent.taxonomySummary;
-    let reportDataEvent = ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
-      attemptId: reportEvent.attemptId,
-      collectionId: reportEvent.collectionId,
-      contextId: reportEvent.contextId,
-      currentResourceId: reportEvent.currentResourceId,
-      profileId: reportEvent.profileId,
-      resourceResults: this.get('contextSerializer').normalizeResourceResults(reportEvent.events),
-      isAttemptFinished: reportEvent.isComplete,
-      submittedAt: reportEvent.updatedDate
-    });
+  normalizeReportDataEvent: function(reportEvent) {
+    const summary = reportEvent.eventSummary;
+    const taxonomySummary = reportEvent.taxonomySummary;
+    const reportDataEvent = ReportDataEvent.create(
+      Ember.getOwner(this).ownerInjection(),
+      {
+        attemptId: reportEvent.attemptId,
+        collectionId: reportEvent.collectionId,
+        contextId: reportEvent.contextId,
+        currentResourceId: reportEvent.currentResourceId,
+        profileId: reportEvent.profileId,
+        resourceResults: this.get('contextSerializer').normalizeResourceResults(
+          reportEvent.events
+        ),
+        isAttemptFinished: reportEvent.isComplete,
+        submittedAt: reportEvent.updatedDate
+      }
+    );
     if (summary) {
       reportDataEvent.setProperties({
         totalAnswered: summary.totalAnswered,
@@ -66,7 +75,7 @@ export default Ember.Object.extend({
           });
         });
       }
-      reportDataEvent.set('mastery',learningTargets);
+      reportDataEvent.set('mastery', learningTargets);
     }
     return reportDataEvent;
   },
@@ -75,11 +84,11 @@ export default Ember.Object.extend({
    * Normalizes report data events
    * @returns {ReportDataEvent[]}
    */
-  normalizeReportDataEvents: function (payload) {
+  normalizeReportDataEvents: function(payload) {
     const serializer = this;
     payload = payload || [];
-    return payload.map(
-      reportEvent => serializer.normalizeReportDataEvent(reportEvent)
+    return payload.map(reportEvent =>
+      serializer.normalizeReportDataEvent(reportEvent)
     );
   },
 
@@ -87,7 +96,7 @@ export default Ember.Object.extend({
    * Normalizes attempt ids to an array
    * @returns {String[]}
    */
-  normalizeAttemptIds: function (payload) {
+  normalizeAttemptIds: function(payload) {
     return payload && payload.attempts ? payload.attempts : [];
   }
 });

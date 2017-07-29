@@ -2,7 +2,6 @@ import Ember from 'ember';
 import ModalMixin from 'quizzes-addon/mixins/modal';
 
 export default Ember.Component.extend(ModalMixin, {
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -37,9 +36,10 @@ export default Ember.Component.extend(ModalMixin, {
       onCancel: () => component.sendAction('onCancel')
     };
 
-    this.actions.showModal.call(this,
+    this.actions.showModal.call(
+      this,
       'content.modals.gru-assessment-confirmation',
-      model);
+      model
+    );
   }
-
 });

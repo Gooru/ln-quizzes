@@ -22,25 +22,33 @@ export default Ember.Component.extend(QuestionMixin, {
    * Return the drag and drop answers to show on the component, if is show correct: return the list
    * whit the correct answers, if not return the answers with the order as the user answered and if is correct or not.
    */
-  answers:Ember.computed('question', 'userAnswer',
-    'question.answers.@each.text', 'question.answers.@each.value', function () {
-    let component = this;
-    let question = component.get('question');
-    let userAnswers = component.get('userAnswer') || [];
-    let correctAnswers = question.get('question.correctAnswer');
-    if (component.get('showCorrect')){
-      userAnswers = correctAnswers;
+  answers: Ember.computed(
+    'question',
+    'userAnswer',
+    'question.answers.@each.text',
+    'question.answers.@each.value',
+    function() {
+      const component = this;
+      const question = component.get('question');
+      let userAnswers = component.get('userAnswer') || [];
+      const correctAnswers = question.get('question.correctAnswer');
+      if (component.get('showCorrect')) {
+        userAnswers = correctAnswers;
+      }
+      const answers = question.get('question.answers');
+      return answers.map(function(answer) {
+        const userAnswer = userAnswers.findBy('value', answer.value) || {};
+        const correctAnswer = correctAnswers.findBy('value', userAnswer.value);
+        const correct =
+          correctAnswer &&
+          correctAnswers.indexOf(correctAnswer) ===
+            userAnswers.indexOf(userAnswer);
+        return {
+          selectedOrder: userAnswers.indexOf(userAnswer) + 1,
+          text: answer.get('text'),
+          correct
+        };
+      });
     }
-    let answers = question.get('question.answers');
-    return answers.map(function(answer){
-      let userAnswer = userAnswers.findBy('value', answer.value) || {};
-      let correctAnswer = correctAnswers.findBy('value', userAnswer.value);
-      let correct = correctAnswer && correctAnswers.indexOf(correctAnswer) === userAnswers.indexOf(userAnswer);
-      return {
-        selectedOrder: userAnswers.indexOf(userAnswer)+1,
-        text: answer.get('text'),
-        correct
-      };
-    });
-  })
+  )
 });

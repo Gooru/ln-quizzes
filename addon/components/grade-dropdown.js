@@ -6,7 +6,6 @@ import AppDropdown from 'quizzes-addon/components/app-dropdown';
  * @typedef {object} GradeDropdown
  */
 export default AppDropdown.extend({
-
   /**
    * @property {[]} grades
    */
@@ -28,40 +27,38 @@ export default AppDropdown.extend({
   /**
    * @see AppDropdown.didInsertElement
    */
-  didInsertElement: function(){
-    this._super();//calling app-dropdown didInsertElement
+  didInsertElement: function() {
+    this._super(); //calling app-dropdown didInsertElement
     this.initDropdownItems();
   },
 
   /**
    * @see AppDropdown.willDestroyElement
    */
-  willDestroyElement: function(){
-    this._super();//calling app-dropdown didInsertElement
-    this.get("tree").clear();
-    this.get("items").clear();
+  willDestroyElement: function() {
+    this._super(); //calling app-dropdown didInsertElement
+    this.get('tree').clear();
+    this.get('items').clear();
   },
-
 
   /**
    * Initialize the dropdown items
    */
-  initDropdownItems: function () {
-    const
-      component = this,
-      grades = component.get("grades"),
-      items = component.get("items"),
-      tree = component.get("tree");
+  initDropdownItems: function() {
+    const component = this,
+      grades = component.get('grades'),
+      items = component.get('items'),
+      tree = component.get('tree');
 
-    this.get("tree").clear();
-    this.get("items").clear();
+    this.get('tree').clear();
+    this.get('items').clear();
 
-    grades.forEach(function (grade) {
-      const levels = grade.get("levels"),
+    grades.forEach(function(grade) {
+      const levels = grade.get('levels'),
         hasLevels = levels && levels.length,
         item = {
-          id: grade.get("id"),
-          label: grade.get("name"),
+          id: grade.get('id'),
+          label: grade.get('name'),
           data: {
             grade: grade, //grade
             levels: Ember.A() //more dropdown items for levels
@@ -73,7 +70,7 @@ export default AppDropdown.extend({
       tree.addObject(dropdownItem);
 
       if (hasLevels) {
-        Ember.$.each(levels, function (index, level) {
+        Ember.$.each(levels, function(index, level) {
           const levelItem = {
             id: level,
             label: level,
@@ -83,7 +80,7 @@ export default AppDropdown.extend({
           };
 
           var levelDropdownItem = DropdownItem.create(levelItem);
-          dropdownItem.get("data").levels.addObject(levelDropdownItem);
+          dropdownItem.get('data').levels.addObject(levelDropdownItem);
 
           //adding to items to control selections
           items.addObject(levelDropdownItem);
@@ -93,28 +90,27 @@ export default AppDropdown.extend({
   },
 
   actions: {
-
     /**
      * When an items is selected
      * @param {DropdownItem} item
      */
-    onItemSelected: function (item) {
+    onItemSelected: function(item) {
       const component = this,
-        selected = item.get("selected"),
-        levelDropdownItems = item.get("data").levels,
-        hasLevels = levelDropdownItems && levelDropdownItems.get("length");
+        selected = item.get('selected'),
+        levelDropdownItems = item.get('data').levels,
+        hasLevels = levelDropdownItems && levelDropdownItems.get('length');
 
-      item.set("selected", !selected);
-      if (hasLevels){ //when has levels
-        levelDropdownItems.map(function(levelDropdownItem){
-          levelDropdownItem.set("selected", !selected);
+      item.set('selected', !selected);
+      if (hasLevels) {
+        //when has levels
+        levelDropdownItems.map(function(levelDropdownItem) {
+          levelDropdownItem.set('selected', !selected);
         });
       }
 
-      if (component.get("onChangeAction")) {
-        component.sendAction("onChangeAction", component.get("selectedItems"));
+      if (component.get('onChangeAction')) {
+        component.sendAction('onChangeAction', component.get('selectedItems'));
       }
     }
   }
-
 });

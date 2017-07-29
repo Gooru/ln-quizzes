@@ -13,13 +13,12 @@ import QuestionComponent from 'quizzes-addon/components/player/questions/qz-ques
  * @augments Ember/Component
  */
 export default QuestionComponent.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-multiple-answer'],
+  classNames: ['qz-multiple-answer'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -40,15 +39,17 @@ export default QuestionComponent.extend({
   // Events
 
   init: function() {
-    this._super( ...arguments );
+    this._super(...arguments);
     const userAnswers = this.get('userAnswer');
     const answers = this.get('question.answers');
-    const userSelection = userAnswers ? answers.map(answer => ({
-      value: answer.value,
-      selection: !!userAnswers.findBy('value', answer.value)
-    })) : Ember.A();
+    const userSelection = userAnswers
+      ? answers.map(answer => ({
+        value: answer.value,
+        selection: !!userAnswers.findBy('value', answer.value)
+      }))
+      : Ember.A();
     this.set('userSelection', userSelection);
-    if(this.get('hasUserAnswer')) {
+    if (this.get('hasUserAnswer')) {
       this.notify(true);
     }
   },
@@ -61,15 +62,17 @@ export default QuestionComponent.extend({
    */
   answers: Ember.computed('question.answers', 'userSelection', function() {
     const component = this;
-    let answers = this.get('question.answers');
-    let userSelection = this.get('userSelection');
+    const answers = this.get('question.answers');
+    const userSelection = this.get('userSelection');
     return answers.map(function(answer) {
-      let answerId = answer.get('value');
-      let filteredUserAnswer = userSelection.findBy('value', answerId);
+      const answerId = answer.get('value');
+      const filteredUserAnswer = userSelection.findBy('value', answerId);
       return {
         value: answerId,
         text: answer.get('text'),
-        groupValue: filteredUserAnswer ? component.userSelectionItemToChoice(filteredUserAnswer) : null
+        groupValue: filteredUserAnswer
+          ? component.userSelectionItemToChoice(filteredUserAnswer)
+          : null
       };
     });
   }),
@@ -81,7 +84,6 @@ export default QuestionComponent.extend({
     this.set('userSelection', Ember.A());
   }),
 
-
   // -------------------------------------------------------------------------
   // Methods
 
@@ -91,9 +93,9 @@ export default QuestionComponent.extend({
    * @returns {{id: *, selection: boolean}}
      */
   choiceToUserSelectionItem: function(answerChoice) {
-    let values = answerChoice.split('|');
-    let value = values[1];
-    let selection = values[0] === 'yes';
+    const values = answerChoice.split('|');
+    const value = values[1];
+    const selection = values[0] === 'yes';
     return { value, selection };
   },
 
@@ -114,12 +116,13 @@ export default QuestionComponent.extend({
    */
   notify: function(onLoad) {
     const component = this;
-    let userSelection = component.get('userSelection')
+    const userSelection = component
+      .get('userSelection')
       .filter(answer => answer.selection)
       .map(answer => ({ value: answer.value }));
     component.notifyAnswerChanged(userSelection);
     if (component.isAnswerCompleted()) {
-      if(onLoad) {
+      if (onLoad) {
         component.notifyAnswerLoaded(userSelection);
       } else {
         component.notifyAnswerCompleted(userSelection);
@@ -132,11 +135,11 @@ export default QuestionComponent.extend({
    * @param {string} answerChoice containing the user selection yes|120202 or no|20200392
    */
   setUserAnswerChoice: function(answerChoice) {
-    let userSelection = this.get('userSelection');
-    let userSelectionItem = this.choiceToUserSelectionItem(answerChoice);
-    let value = userSelectionItem.value;
-    let selection = userSelectionItem.selection;
-    let found = userSelection.findBy('value', value);
+    const userSelection = this.get('userSelection');
+    const userSelectionItem = this.choiceToUserSelectionItem(answerChoice);
+    const value = userSelectionItem.value;
+    const selection = userSelectionItem.selection;
+    const found = userSelection.findBy('value', value);
     if (found) {
       found.selection = selection;
     } else {

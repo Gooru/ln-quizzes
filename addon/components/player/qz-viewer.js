@@ -11,7 +11,6 @@ import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -27,10 +26,10 @@ export default Ember.Component.extend({
      * Return to previous resource
      * @param {Resource} question
      */
-    previousResource: function () {
+    previousResource: function() {
       const component = this;
       component.$('.content').scrollTop(0);
-      component.sendAction('onPreviousResource',component.get('resource'));
+      component.sendAction('onPreviousResource', component.get('resource'));
     },
     /***
      * When the user submits the question
@@ -38,7 +37,7 @@ export default Ember.Component.extend({
      * @param {QuestionResult} questionResult
      * @returns {boolean}
      */
-    submitQuestion: function (question, questionResult) {
+    submitQuestion: function(question, questionResult) {
       const component = this;
       component.$('.content').scrollTop(0);
       component.sendAction('onSubmitQuestion', question, questionResult);
@@ -61,23 +60,33 @@ export default Ember.Component.extend({
    * The text for the submit button
    * @property {string}
    */
-  buttonTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submitted', function() {
-    let i18nKey = 'common.save-next';
-    let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    if(!showFeedback || this.get('isTeacher')) {
-      if (this.get('collection').isLastResource(this.get('resource'))) {
-        i18nKey = (this.get('collection').get('isAssessment')) ? 'common.save-submit' : 'common.save-finish';
-      }
-    } else {
-      if(this.get('resourceResult.submitted')) {
-        i18nKey = this.get('collection').isLastResource(this.get('resource')) ?
-          'common.finish' : 'common.next';
+  buttonTextKey: Ember.computed(
+    'collection',
+    'resource.id',
+    'resourceResult.submitted',
+    function() {
+      let i18nKey = 'common.save-next';
+      const showFeedback =
+        this.get('collection.showFeedback') ===
+        ASSESSMENT_SHOW_VALUES.IMMEDIATE;
+      if (!showFeedback || this.get('isTeacher')) {
+        if (this.get('collection').isLastResource(this.get('resource'))) {
+          i18nKey = this.get('collection').get('isAssessment')
+            ? 'common.save-submit'
+            : 'common.save-finish';
+        }
       } else {
-        i18nKey = 'common.submit';
+        if (this.get('resourceResult.submitted')) {
+          i18nKey = this.get('collection').isLastResource(this.get('resource'))
+            ? 'common.finish'
+            : 'common.next';
+        } else {
+          i18nKey = 'common.submit';
+        }
       }
+      return i18nKey;
     }
-    return i18nKey;
-  }),
+  ),
 
   /** Calculated height designated for the content area of a resource
    * @see components/player/resources/qz-url-resource.js
@@ -101,18 +110,27 @@ export default Ember.Component.extend({
    * The text for the action in the instructions
    * @property {string}
    */
-  instructionsActionTextKey: Ember.computed('collection', 'resource.id', 'resourceResult.submitted', function() {
-    let i18nKey = 'common.save-next';
-    let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    if(!showFeedback) {
-      if (this.get('collection').isLastResource(this.get('resource'))) {
-        return (this.get('collection').get('isAssessment')) ? 'common.save-submit' : 'common.save-finish';
+  instructionsActionTextKey: Ember.computed(
+    'collection',
+    'resource.id',
+    'resourceResult.submitted',
+    function() {
+      let i18nKey = 'common.save-next';
+      const showFeedback =
+        this.get('collection.showFeedback') ===
+        ASSESSMENT_SHOW_VALUES.IMMEDIATE;
+      if (!showFeedback) {
+        if (this.get('collection').isLastResource(this.get('resource'))) {
+          return this.get('collection').get('isAssessment')
+            ? 'common.save-submit'
+            : 'common.save-finish';
+        }
+      } else {
+        i18nKey = 'common.submit';
       }
-    } else {
-      i18nKey = 'common.submit';
+      return i18nKey;
     }
-    return i18nKey;
-  }),
+  ),
 
   /**
    * @property {boolean}
@@ -183,22 +201,27 @@ export default Ember.Component.extend({
    * of the narration -if there is one)
    */
   calculateResourceContentHeight: function() {
-    if (this.get('resource.isUrlResource') ||
-        this.get('resource.isPDFResource') ||
-        this.get('resource.isImageResource') &&
-        this.get('isNotIframeUrl')===false) {
+    if (
+      this.get('resource.isUrlResource') ||
+      this.get('resource.isPDFResource') ||
+      (this.get('resource.isImageResource') &&
+        this.get('isNotIframeUrl') === false)
+    ) {
       var narrationHeight = this.$('.narration').innerHeight();
       var contentHeight = this.$('.content').height();
 
       // The 4 pixels subtracted are to make sure no scroll bar will appear for the content
       // (Users should rely on the iframe scroll bar instead)
-      this.set('calculatedResourceContentHeight', contentHeight - narrationHeight - 4);
+      this.set(
+        'calculatedResourceContentHeight',
+        contentHeight - narrationHeight - 4
+      );
     }
   },
   /**
    * Set jquery effect to narration
    * */
-  setNarrationEffect: function () {
-    $( '.narration' ).effect( 'highlight',{ color: '#84B7DD'}, 2000);
+  setNarrationEffect: function() {
+    $('.narration').effect('highlight', { color: '#84B7DD' }, 2000);
   }
 });

@@ -1,1 +1,3 @@
-export { default } from 'quizzes-addon/components/assignment/qz-assessment-settings';
+export {
+  default
+} from 'quizzes-addon/components/assignment/qz-assessment-settings';

@@ -11,22 +11,18 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['gru-image-picker'],
 
-
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     /**
      * @function actions:enableButtons
      */
@@ -60,7 +56,6 @@ export default Ember.Component.extend({
       // TODO: Save the image by calling an endpoint
       Ember.Logger.log('Submit image: ', this.get('image'));
     }
-
   },
 
   init: function() {
@@ -94,5 +89,4 @@ export default Ember.Component.extend({
    * @prop {String[]}
    */
   filePickerErrors: null
-
 });

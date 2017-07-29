@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -9,7 +8,7 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Actions
-  actions:{
+  actions: {
     /**
      * Close Modal
      */
@@ -19,7 +18,7 @@ export default Ember.Component.extend({
     /**
      * Update Assignment
      */
-    updateAssignment:function(assignment){
+    updateAssignment: function(assignment) {
       this.get('model').callback.success(assignment);
       this.triggerAction({ action: 'closeModal' });
     }

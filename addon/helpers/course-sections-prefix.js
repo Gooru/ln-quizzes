@@ -17,9 +17,8 @@ import { courseSectionsPrefix } from 'quizzes-addon/utils/utils';
 export default Ember.Helper.extend({
   i18n: Ember.inject.service('i18n'),
 
-  compute(params,{index, type,longName}) {
-    let i18n = this.get('i18n');
-    return courseSectionsPrefix(index,type,i18n,longName);
+  compute(params, { index, type, longName }) {
+    const i18n = this.get('i18n');
+    return courseSectionsPrefix(index, type, i18n, longName);
   }
-
 });

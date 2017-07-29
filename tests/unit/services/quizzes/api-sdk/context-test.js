@@ -4,17 +4,20 @@ import moduleForService from 'dummy/tests/helpers/module-for-service';
 import Context from 'quizzes-addon/models/context/context';
 import Profile from 'quizzes-addon/models/profile/profile';
 
-moduleForService('service:quizzes/api-sdk/context', 'Unit | Service | quizzes/api-sdk/context');
+moduleForService(
+  'service:quizzes/api-sdk/context',
+  'Unit | Service | quizzes/api-sdk/context'
+);
 
 test('createContext', function(assert) {
   assert.expect(2);
   const service = this.subject();
-  let assignment = Context.create({
+  const assignment = Context.create({
     title: 'title',
     description: 'description',
     isActive: true,
     dueDate: 12340596,
-    attempts: [{ id:'attempt-1' }],
+    attempts: [{ id: 'attempt-1' }],
     learningObjective: 'learning objective'
   });
   const expectedData = {
@@ -31,20 +34,26 @@ test('createContext', function(assert) {
     }
   };
 
-  service.set('contextAdapter', Ember.Object.create({
-    createContext: function(data) {
-      assert.equal(data, expectedData, 'Wrong adapter data' );
-      return Ember.RSVP.resolve();
-    }
-  }));
-  service.set('contextSerializer', Ember.Object.create({
-    serializeContext: function(assignment){
-      assert.ok(assignment, 'Wrong assignment object');
-      return expectedData;
-    }
-  }));
+  service.set(
+    'contextAdapter',
+    Ember.Object.create({
+      createContext: function(data) {
+        assert.equal(data, expectedData, 'Wrong adapter data');
+        return Ember.RSVP.resolve();
+      }
+    })
+  );
+  service.set(
+    'contextSerializer',
+    Ember.Object.create({
+      serializeContext: function(assignment) {
+        assert.ok(assignment, 'Wrong assignment object');
+        return expectedData;
+      }
+    })
+  );
 
-  let done = assert.async();
+  const done = assert.async();
   service.createContext(assignment).then(done);
 });
 
@@ -52,17 +61,17 @@ test('getAssignedContextById', function(assert) {
   assert.expect(3);
   const service = this.subject();
   const expectedResponse = {
-    contextId:'context-id',
-    metadata:{
-      title:'title',
-      description:'description'
+    contextId: 'context-id',
+    metadata: {
+      title: 'title',
+      description: 'description'
     },
     classId: 'class-id',
-    collectionId:'collection-id',
+    collectionId: 'collection-id',
     isCollection: true,
     profileId: 'profile-id'
   };
-  const expectedData = Context.create( {
+  const expectedData = Context.create({
     id: 'context-id',
     title: 'title',
     description: 'description',
@@ -72,22 +81,36 @@ test('getAssignedContextById', function(assert) {
     profileId: 'profile-id'
   });
 
-  service.set('contextAdapter', Ember.Object.create({
-    getAssignedContextById: function(contextId) {
-      assert.equal(contextId,'context-id','Wrong adapter' );
-      return Ember.RSVP.resolve([{expectedResponse}]);
-    }
-  }));
-  service.set('contextSerializer', Ember.Object.create({
-    normalizeReadContext: function(payload){
-      assert.deepEqual(payload, [{expectedResponse}], 'Wrong assignment object');
-      return expectedData;
-    }
-  }));
+  service.set(
+    'contextAdapter',
+    Ember.Object.create({
+      getAssignedContextById: function(contextId) {
+        assert.equal(contextId, 'context-id', 'Wrong adapter');
+        return Ember.RSVP.resolve([{ expectedResponse }]);
+      }
+    })
+  );
+  service.set(
+    'contextSerializer',
+    Ember.Object.create({
+      normalizeReadContext: function(payload) {
+        assert.deepEqual(
+          payload,
+          [{ expectedResponse }],
+          'Wrong assignment object'
+        );
+        return expectedData;
+      }
+    })
+  );
 
-  let done = assert.async();
+  const done = assert.async();
   service.getAssignedContextById('context-id').then(function(contextsAssigned) {
-    assert.deepEqual(contextsAssigned, expectedData, 'Wrong context assigned by id object');
+    assert.deepEqual(
+      contextsAssigned,
+      expectedData,
+      'Wrong context assigned by id object'
+    );
     done();
   });
 });
@@ -96,13 +119,14 @@ test('getContextsCreated', function(assert) {
   assert.expect(3);
   const service = this.subject();
   const expectedResponse = {
-    assignees:[
+    assignees: [
       {
         id: 'profile-id',
         firstName: 'user first name',
         lastName: 'user last name',
         username: 'username'
-      }, {
+      },
+      {
         id: 'profile-id1',
         firstName: 'user first name1',
         lastName: 'user last name1',
@@ -116,7 +140,7 @@ test('getContextsCreated', function(assert) {
         description: 'description',
         isActive: true,
         dueDate: 12340596,
-        attempts: [{ id:'attempt-1' }],
+        attempts: [{ id: 'attempt-1' }],
         learningObjective: 'learning objective'
       }
     }
@@ -127,9 +151,9 @@ test('getContextsCreated', function(assert) {
       description: 'description',
       isActive: true,
       dueDate: 12340596,
-      attempts: [{id:'attempt-1'}],
-      learningObjective:'learning objective',
-      assignees:[
+      attempts: [{ id: 'attempt-1' }],
+      learningObjective: 'learning objective',
+      assignees: [
         Profile.create({
           id: 'profile-id',
           firstName: 'user first name',
@@ -146,22 +170,36 @@ test('getContextsCreated', function(assert) {
     })
   ];
 
-  service.set('contextAdapter', Ember.Object.create({
-    getContextsCreated: function() {
-      assert.ok(true,'Wrong adapter' );
-      return Ember.RSVP.resolve([{expectedResponse}]);
-    }
-  }));
-  service.set('contextSerializer', Ember.Object.create({
-    normalizeReadContexts: function(payload){
-      assert.deepEqual(payload, [{expectedResponse}], 'Wrong assignment object');
-      return expectedData;
-    }
-  }));
+  service.set(
+    'contextAdapter',
+    Ember.Object.create({
+      getContextsCreated: function() {
+        assert.ok(true, 'Wrong adapter');
+        return Ember.RSVP.resolve([{ expectedResponse }]);
+      }
+    })
+  );
+  service.set(
+    'contextSerializer',
+    Ember.Object.create({
+      normalizeReadContexts: function(payload) {
+        assert.deepEqual(
+          payload,
+          [{ expectedResponse }],
+          'Wrong assignment object'
+        );
+        return expectedData;
+      }
+    })
+  );
 
-  let done = assert.async();
+  const done = assert.async();
   service.getContextsCreated().then(function(contextsCreated) {
-    assert.deepEqual(contextsCreated, expectedData, 'Wrong contexts created object');
+    assert.deepEqual(
+      contextsCreated,
+      expectedData,
+      'Wrong contexts created object'
+    );
     done();
   });
 });
@@ -185,26 +223,40 @@ test('getContextsAssigned', function(assert) {
       description: 'description',
       isActive: true,
       dueDate: 12340596,
-      assignees:[]
+      assignees: []
     })
   ];
 
-  service.set('contextAdapter', Ember.Object.create({
-    getContextsAssigned: function() {
-      assert.ok(true,'Wrong adapter' );
-      return Ember.RSVP.resolve([{expectedResponse}]);
-    }
-  }));
-  service.set('contextSerializer', Ember.Object.create({
-    normalizeReadContexts: function(payload){
-      assert.deepEqual(payload, [{expectedResponse}], 'Wrong assignment object');
-      return expectedData;
-    }
-  }));
+  service.set(
+    'contextAdapter',
+    Ember.Object.create({
+      getContextsAssigned: function() {
+        assert.ok(true, 'Wrong adapter');
+        return Ember.RSVP.resolve([{ expectedResponse }]);
+      }
+    })
+  );
+  service.set(
+    'contextSerializer',
+    Ember.Object.create({
+      normalizeReadContexts: function(payload) {
+        assert.deepEqual(
+          payload,
+          [{ expectedResponse }],
+          'Wrong assignment object'
+        );
+        return expectedData;
+      }
+    })
+  );
 
-  let done = assert.async();
+  const done = assert.async();
   service.getContextsAssigned().then(function(contextsAssigned) {
-    assert.deepEqual(contextsAssigned, expectedData, 'Wrong contexts assigned object');
+    assert.deepEqual(
+      contextsAssigned,
+      expectedData,
+      'Wrong contexts assigned object'
+    );
     done();
   });
 });
@@ -213,7 +265,7 @@ test('moveToResource', function(assert) {
   const service = this.subject();
   const expectedContextId = 'context-id';
   const expectedResourceId = 'resource-id';
-  const previousResult =  {
+  const previousResult = {
     id: 'result-id'
   };
   const expectedEventContext = {
@@ -224,29 +276,65 @@ test('moveToResource', function(assert) {
 
   assert.expect(7);
 
-  service.set('contextAdapter', Ember.Object.create({
-    moveToResource: function(resourceId, contextId, previous, eventContext) {
-      assert.deepEqual(resourceId, expectedResourceId, 'The resource id should match');
-      assert.deepEqual(contextId, expectedContextId, 'The context id should match');
-      assert.deepEqual(previous, previousResult, 'The previous result should match');
-      assert.deepEqual(eventContext, expectedEventContext, 'The event context should match');
-      return Ember.RSVP.resolve(previousResult);
-    }
-  }));
+  service.set(
+    'contextAdapter',
+    Ember.Object.create({
+      moveToResource: function(resourceId, contextId, previous, eventContext) {
+        assert.deepEqual(
+          resourceId,
+          expectedResourceId,
+          'The resource id should match'
+        );
+        assert.deepEqual(
+          contextId,
+          expectedContextId,
+          'The context id should match'
+        );
+        assert.deepEqual(
+          previous,
+          previousResult,
+          'The previous result should match'
+        );
+        assert.deepEqual(
+          eventContext,
+          expectedEventContext,
+          'The event context should match'
+        );
+        return Ember.RSVP.resolve(previousResult);
+      }
+    })
+  );
 
-  service.set('contextSerializer', Ember.Object.create({
-    serializeResourceResult: function(result) {
-      assert.deepEqual(result, previousResult, 'The resource result should match');
-      return previousResult;
-    },
-    serializeEventContext: function(eventContext){
-      assert.deepEqual(eventContext, expectedEventContext, 'Wrong event context value');
-      return expectedEventContext;
-    }
-  }));
+  service.set(
+    'contextSerializer',
+    Ember.Object.create({
+      serializeResourceResult: function(result) {
+        assert.deepEqual(
+          result,
+          previousResult,
+          'The resource result should match'
+        );
+        return previousResult;
+      },
+      serializeEventContext: function(eventContext) {
+        assert.deepEqual(
+          eventContext,
+          expectedEventContext,
+          'Wrong event context value'
+        );
+        return expectedEventContext;
+      }
+    })
+  );
 
-  let done = assert.async();
-  service.moveToResource(expectedResourceId, expectedContextId, previousResult, expectedEventContext)
+  const done = assert.async();
+  service
+    .moveToResource(
+      expectedResourceId,
+      expectedContextId,
+      previousResult,
+      expectedEventContext
+    )
     .then(function(result) {
       assert.deepEqual(result, previousResult, 'The result should match');
       done();
@@ -266,27 +354,50 @@ test('startContext', function(assert) {
     collectionSubType: 'pre-test'
   };
 
-  service.set('contextAdapter', Ember.Object.create({
-    sendStartContextEvent: function(contextId, eventContext) {
-      assert.deepEqual(contextId, expectedContextId, 'The context id should match');
-      assert.deepEqual(eventContext, expectedEventContext, 'The event context should match');
-      return Ember.RSVP.resolve(contextResult);
-    }
-  }));
+  service.set(
+    'contextAdapter',
+    Ember.Object.create({
+      sendStartContextEvent: function(contextId, eventContext) {
+        assert.deepEqual(
+          contextId,
+          expectedContextId,
+          'The context id should match'
+        );
+        assert.deepEqual(
+          eventContext,
+          expectedEventContext,
+          'The event context should match'
+        );
+        return Ember.RSVP.resolve(contextResult);
+      }
+    })
+  );
 
-  service.set('contextSerializer', Ember.Object.create({
-    normalizeContextResult: function(response) {
-      assert.deepEqual(response, contextResult, 'The context result should match');
-      return contextResult;
-    },
-    serializeEventContext: function(eventContext) {
-      assert.deepEqual(eventContext, expectedEventContext, 'Wrong event context value');
-      return expectedEventContext;
-    }
-  }));
+  service.set(
+    'contextSerializer',
+    Ember.Object.create({
+      normalizeContextResult: function(response) {
+        assert.deepEqual(
+          response,
+          contextResult,
+          'The context result should match'
+        );
+        return contextResult;
+      },
+      serializeEventContext: function(eventContext) {
+        assert.deepEqual(
+          eventContext,
+          expectedEventContext,
+          'Wrong event context value'
+        );
+        return expectedEventContext;
+      }
+    })
+  );
 
-  let done = assert.async();
-  service.startContext(expectedContextId, expectedEventContext)
+  const done = assert.async();
+  service
+    .startContext(expectedContextId, expectedEventContext)
     .then(function(result) {
       assert.deepEqual(result, contextResult, 'The result should match');
       done();
@@ -306,23 +417,42 @@ test('finishContext', function(assert) {
     collectionSubType: 'pre-test'
   };
 
-  service.set('contextAdapter', Ember.Object.create({
-    sendFinishContextEvent: function(contextId, eventContext) {
-      assert.deepEqual(contextId, expectedContextId, 'The context id should match');
-      assert.deepEqual(eventContext, expectedEventContext, 'The event context should match');
-      return Ember.RSVP.resolve(assessmentResult);
-    }
-  }));
+  service.set(
+    'contextAdapter',
+    Ember.Object.create({
+      sendFinishContextEvent: function(contextId, eventContext) {
+        assert.deepEqual(
+          contextId,
+          expectedContextId,
+          'The context id should match'
+        );
+        assert.deepEqual(
+          eventContext,
+          expectedEventContext,
+          'The event context should match'
+        );
+        return Ember.RSVP.resolve(assessmentResult);
+      }
+    })
+  );
 
-  service.set('contextSerializer', Ember.Object.create({
-    serializeEventContext: function(eventContext) {
-      assert.deepEqual(eventContext, expectedEventContext, 'Wrong event context value');
-      return expectedEventContext;
-    }
-  }));
+  service.set(
+    'contextSerializer',
+    Ember.Object.create({
+      serializeEventContext: function(eventContext) {
+        assert.deepEqual(
+          eventContext,
+          expectedEventContext,
+          'Wrong event context value'
+        );
+        return expectedEventContext;
+      }
+    })
+  );
 
-  let done = assert.async();
-  service.finishContext(expectedContextId, expectedEventContext)
+  const done = assert.async();
+  service
+    .finishContext(expectedContextId, expectedEventContext)
     .then(function(result) {
       assert.deepEqual(result, assessmentResult, 'The result should match');
       done();
@@ -332,7 +462,7 @@ test('finishContext', function(assert) {
 test('updateContext', function(assert) {
   assert.expect(2);
   const service = this.subject();
-  let assignment = Context.create({
+  const assignment = Context.create({
     title: 'title',
     description: 'description',
     isActive: true,
@@ -361,7 +491,8 @@ test('updateContext', function(assert) {
         firstName: 'user first name',
         lastName: 'user last name',
         username: 'username'
-      }, {
+      },
+      {
         id: 'profile-id1',
         firstName: 'user first name1',
         lastName: 'user last name1',
@@ -381,14 +512,17 @@ test('updateContext', function(assert) {
     }
   };
 
-  service.set('contextAdapter', Ember.Object.create({
-    updateContext: function(data) {
-      assert.equal(data, expectedData, 'Wrong adapter data' );
-      return Ember.RSVP.resolve();
-    }
-  }));
+  service.set(
+    'contextAdapter',
+    Ember.Object.create({
+      updateContext: function(data) {
+        assert.equal(data, expectedData, 'Wrong adapter data');
+        return Ember.RSVP.resolve();
+      }
+    })
+  );
 
-  let expectedAssigneesList = [
+  const expectedAssigneesList = [
     Profile.create({
       id: 'profile-id',
       firstName: 'user first name',
@@ -403,13 +537,20 @@ test('updateContext', function(assert) {
     })
   ];
 
-  service.set('contextSerializer', Ember.Object.create({
-    serializeUpdateContext: function(assignment){
-      assert.deepEqual(assignment.assignees, expectedAssigneesList, 'Wrong assignees list object');
-      return expectedData;
-    }
-  }));
+  service.set(
+    'contextSerializer',
+    Ember.Object.create({
+      serializeUpdateContext: function(assignment) {
+        assert.deepEqual(
+          assignment.assignees,
+          expectedAssigneesList,
+          'Wrong assignees list object'
+        );
+        return expectedData;
+      }
+    })
+  );
 
-  let done = assert.async();
+  const done = assert.async();
   service.updateContext(assignment).then(done);
 });

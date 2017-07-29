@@ -3,12 +3,16 @@ import { moduleForComponent, test } from 'ember-qunit';
 import T from 'dummy/tests/helpers/assert';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('player/qz-navigation', 'Integration | Component | player/qz navigation', {
-  integration: true,
-  beforeEach: function () {
-    this.container.lookup('service:i18n').set('locale','en');
+moduleForComponent(
+  'player/qz-navigation',
+  'Integration | Component | player/qz navigation',
+  {
+    integration: true,
+    beforeEach: function() {
+      this.container.lookup('service:i18n').set('locale', 'en');
+    }
   }
-});
+);
 
 test('Not submitted layout', function(assert) {
   assert.expect(2);
@@ -23,7 +27,11 @@ test('Not submitted layout', function(assert) {
   var $component = this.$(); //component dom element
   const $navigation = $component.find('.qz-navigation');
   T.exists(assert, $navigation, 'Missing navigation section');
-  T.exists(assert, $navigation.find('.navigation-bar span'), 'Missing clickable span');
+  T.exists(
+    assert,
+    $navigation.find('.navigation-bar span'),
+    'Missing clickable span'
+  );
 });
 
 test('Submitted layout', function(assert) {
@@ -34,20 +42,29 @@ test('Submitted layout', function(assert) {
   });
 
   this.set('collection', collection);
-  this.render(hbs`{{player/qz-navigation submitted=true collection=collection}}`);
+  this.render(
+    hbs`{{player/qz-navigation submitted=true collection=collection}}`
+  );
 
   var $component = this.$(); //component dom element
   const $navigation = $component.find('.qz-navigation');
   T.exists(assert, $navigation, 'Missing navigation section');
-  T.exists(assert, $navigation.find('.navigation-bar span'), 'Missing clickable span');
-  T.notExists(assert, $navigation.find('button.finish-collection'), 'Finish collection button should be hidden');
+  T.exists(
+    assert,
+    $navigation.find('.navigation-bar span'),
+    'Missing clickable span'
+  );
+  T.notExists(
+    assert,
+    $navigation.find('button.finish-collection'),
+    'Finish collection button should be hidden'
+  );
 });
-
 
 test('Layout when navigator is opened', function(assert) {
   assert.expect(2);
 
-  this.on('parentAction', function(){
+  this.on('parentAction', function() {
     assert.ok(true, 'external Action was called!');
   });
 

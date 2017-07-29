@@ -12,14 +12,14 @@ moduleForAcceptance('Acceptance | reports/context', {
 
 test('Report context: websocket error', function(assert) {
   assert.expect(7);
-  let expectedUrl = 'realtimeURL/realtimeURI';
+  const expectedUrl = 'realtimeURL/realtimeURI';
   let connectTimes = 0;
-  let createSocket = () => {
+  const createSocket = () => {
     return {
       heartbeat: {},
       connect: function(headers, connectCallback, errorCallback) {
         assert.ok(true, 'Connect should be called');
-        if(!connectTimes) {
+        if (!connectTimes) {
           assert.deepEqual(headers, {}, 'Headers should match');
           errorCallback();
         }
@@ -30,24 +30,26 @@ test('Report context: websocket error', function(assert) {
       }
     };
   };
-  sinon.stub(Stomp, 'over').onFirstCall().returns(createSocket())
-    .onSecondCall().returns(createSocket());
+  sinon
+    .stub(Stomp, 'over')
+    .onFirstCall()
+    .returns(createSocket())
+    .onSecondCall()
+    .returns(createSocket());
   SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
   visit('/reports/context/context-id');
 
-  let done = assert.async();
+  const done = assert.async();
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-id');
     setTimeout(done, 5000);
   });
 });
 
-
-
 test('Report context: websocket success', function(assert) {
   assert.expect(7);
-  let expectedUrl = 'realtimeURL/realtimeURI';
-  let createSocket = () => {
+  const expectedUrl = 'realtimeURL/realtimeURI';
+  const createSocket = () => {
     return {
       heartbeat: {},
       connect: function(headers, connectCallback) {
@@ -55,7 +57,11 @@ test('Report context: websocket success', function(assert) {
         connectCallback();
       },
       subscribe: function(channel) {
-        assert.equal(channel, '/topic/context-simple-id', 'Channel should match.');
+        assert.equal(
+          channel,
+          '/topic/context-simple-id',
+          'Channel should match.'
+        );
       }
     };
   };
@@ -63,20 +69,32 @@ test('Report context: websocket success', function(assert) {
   SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
   visit('/reports/context/context-simple-id');
 
-  let done = assert.async();
+  const done = assert.async();
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
-    assert.equal(Ember.$('.qz-student-performance-box').length, 2, 'Should show 2 students');
-    assert.equal(Ember.$('.qz-student-performance-box:first .score').text(), '100%', 'Score for student 1 shows correctly');
-    assert.equal(Ember.$('.qz-student-performance-box:last .score').text(), '67%', 'Score for student 2 shows correctly');
+    assert.equal(
+      Ember.$('.qz-student-performance-box').length,
+      2,
+      'Should show 2 students'
+    );
+    assert.equal(
+      Ember.$('.qz-student-performance-box:first .score').text(),
+      '100%',
+      'Score for student 1 shows correctly'
+    );
+    assert.equal(
+      Ember.$('.qz-student-performance-box:last .score').text(),
+      '67%',
+      'Score for student 2 shows correctly'
+    );
     done();
   });
 });
 
 test('Report context: websocket start message', function(assert) {
   assert.expect(7);
-  let expectedUrl = 'realtimeURL/realtimeURI';
-  let createSocket = () => {
+  const expectedUrl = 'realtimeURL/realtimeURI';
+  const createSocket = () => {
     return {
       heartbeat: {},
       connect: function(headers, connectCallback) {
@@ -84,7 +102,11 @@ test('Report context: websocket start message', function(assert) {
         connectCallback();
       },
       subscribe: function(channel, callback) {
-        assert.equal(channel, '/topic/context-simple-id', 'Channel should match.');
+        assert.equal(
+          channel,
+          '/topic/context-simple-id',
+          'Channel should match.'
+        );
         callback({
           body: `{
            "contextId": "context-simple-id",
@@ -103,20 +125,32 @@ test('Report context: websocket start message', function(assert) {
   SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
   visit('/reports/context/context-simple-id');
 
-  let done = assert.async();
+  const done = assert.async();
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
-    assert.equal(Ember.$('.qz-student-performance-box').length, 3, 'Should show 3 students');
-    assert.equal(Ember.$('.qz-student-performance-box:first .score').text(), '100%', 'Score for student 1 shows correctly');
-    assert.equal(Ember.$('.qz-student-performance-box:last .score').text(), '0%', 'Score for student 2 shows correctly');
+    assert.equal(
+      Ember.$('.qz-student-performance-box').length,
+      3,
+      'Should show 3 students'
+    );
+    assert.equal(
+      Ember.$('.qz-student-performance-box:first .score').text(),
+      '100%',
+      'Score for student 1 shows correctly'
+    );
+    assert.equal(
+      Ember.$('.qz-student-performance-box:last .score').text(),
+      '0%',
+      'Score for student 2 shows correctly'
+    );
     done();
   });
 });
 
 test('Report context: websocket finish message', function(assert) {
   assert.expect(7);
-  let expectedUrl = 'realtimeURL/realtimeURI';
-  let createSocket = () => {
+  const expectedUrl = 'realtimeURL/realtimeURI';
+  const createSocket = () => {
     return {
       heartbeat: {},
       connect: function(headers, connectCallback) {
@@ -124,7 +158,11 @@ test('Report context: websocket finish message', function(assert) {
         connectCallback();
       },
       subscribe: function(channel, callback) {
-        assert.equal(channel, '/topic/context-simple-id', 'Channel should match.');
+        assert.equal(
+          channel,
+          '/topic/context-simple-id',
+          'Channel should match.'
+        );
         callback({
           body: `{
             "contextId": "context-simple-id",
@@ -148,20 +186,32 @@ test('Report context: websocket finish message', function(assert) {
   SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
   visit('/reports/context/context-simple-id');
 
-  let done = assert.async();
+  const done = assert.async();
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
-    assert.equal(Ember.$('.qz-student-performance-box').length, 2, 'Should show 2 students');
-    assert.equal(Ember.$('.qz-student-performance-box:first .score').text(), '100%', 'Score for student 1 shows correctly');
-    assert.equal(Ember.$('.qz-student-performance-box:last .score').text(), '75%', 'Score for student 2 shows correctly');
+    assert.equal(
+      Ember.$('.qz-student-performance-box').length,
+      2,
+      'Should show 2 students'
+    );
+    assert.equal(
+      Ember.$('.qz-student-performance-box:first .score').text(),
+      '100%',
+      'Score for student 1 shows correctly'
+    );
+    assert.equal(
+      Ember.$('.qz-student-performance-box:last .score').text(),
+      '75%',
+      'Score for student 2 shows correctly'
+    );
     done();
   });
 });
 
 test('Report context: websocket on resource message', function(assert) {
   assert.expect(7);
-  let expectedUrl = 'realtimeURL/realtimeURI';
-  let createSocket = () => {
+  const expectedUrl = 'realtimeURL/realtimeURI';
+  const createSocket = () => {
     return {
       heartbeat: {},
       connect: function(headers, connectCallback) {
@@ -169,7 +219,11 @@ test('Report context: websocket on resource message', function(assert) {
         connectCallback();
       },
       subscribe: function(channel, callback) {
-        assert.equal(channel, '/topic/context-simple-id', 'Channel should match.');
+        assert.equal(
+          channel,
+          '/topic/context-simple-id',
+          'Channel should match.'
+        );
         callback({
           body: `{
             "contextId": "context-simple-id",
@@ -203,12 +257,24 @@ test('Report context: websocket on resource message', function(assert) {
   SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
   visit('/reports/context/context-simple-id');
 
-  let done = assert.async();
+  const done = assert.async();
   andThen(function() {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
-    assert.equal(Ember.$('.qz-student-performance-box').length, 2, 'Should show 2 students');
-    assert.equal(Ember.$('.qz-student-performance-box:first .score').text(), '100%', 'Score for student 1 shows correctly');
-    assert.equal(Ember.$('.qz-student-performance-box:last .score').text(), '75%', 'Score for student 2 shows correctly');
+    assert.equal(
+      Ember.$('.qz-student-performance-box').length,
+      2,
+      'Should show 2 students'
+    );
+    assert.equal(
+      Ember.$('.qz-student-performance-box:first .score').text(),
+      '100%',
+      'Score for student 1 shows correctly'
+    );
+    assert.equal(
+      Ember.$('.qz-student-performance-box:last .score').text(),
+      '75%',
+      'Score for student 2 shows correctly'
+    );
     done();
   });
 });

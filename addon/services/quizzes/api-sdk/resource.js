@@ -4,12 +4,20 @@ import ResourceSerializer from 'quizzes-addon/serializers/resource/resource';
 import ResourceAdapter from 'quizzes-addon/adapters/resource/resource';
 
 export default Ember.Service.extend({
-
-  init: function () {
+  init: function() {
     this._super(...arguments);
-    this.set('resourceAdapter', ResourceAdapter.create(Ember.getOwner(this).ownerInjection()));
-    this.set('resourceSerializer', ResourceSerializer.create(Ember.getOwner(this).ownerInjection()));
-    this.set('contextSerializer', ContextSerializer.create(Ember.getOwner(this).ownerInjection()));
+    this.set(
+      'resourceAdapter',
+      ResourceAdapter.create(Ember.getOwner(this).ownerInjection())
+    );
+    this.set(
+      'resourceSerializer',
+      ResourceSerializer.create(Ember.getOwner(this).ownerInjection())
+    );
+    this.set(
+      'contextSerializer',
+      ContextSerializer.create(Ember.getOwner(this).ownerInjection())
+    );
   },
 
   // -------------------------------------------------------------------------
@@ -40,10 +48,16 @@ export default Ember.Service.extend({
    */
   sendFinishResource: function(resourceId, resourceResult, eventContext) {
     const service = this;
-    let eventData = this.get('contextSerializer').serializeResourceResult(resourceResult, false);
-    let context = this.get('contextSerializer').serializeEventContext(eventContext);
+    const eventData = this.get('contextSerializer').serializeResourceResult(
+      resourceResult,
+      false
+    );
+    const context = this.get('contextSerializer').serializeEventContext(
+      eventContext
+    );
     return new Ember.RSVP.Promise((resolve, reject) =>
-      service.get('resourceAdapter')
+      service
+        .get('resourceAdapter')
         .sendFinishResource(resourceId, eventData, context)
         .then(resolve, reject)
     );
@@ -57,10 +71,14 @@ export default Ember.Service.extend({
   readResource: function(resourceId) {
     const service = this;
     return new Ember.RSVP.Promise((resolve, reject) => {
-      service.get('resourceAdapter').readResource(resourceId)
+      service
+        .get('resourceAdapter')
+        .readResource(resourceId)
         .then(response => {
           response.isResource = true;
-          return service.get('resourceSerializer').normalizeReadResource(response);
+          return service
+            .get('resourceSerializer')
+            .normalizeReadResource(response);
         })
         .then(resolve, reject);
     });

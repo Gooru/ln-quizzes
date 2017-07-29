@@ -1,10 +1,6 @@
 import Ember from 'ember';
 import GruInput from 'quizzes-addon/components/validation/gru-input';
-const {
-  computed,
-  defineProperty
-  } = Ember;
-
+const { computed, defineProperty } = Ember;
 
 /**
  * Text field with async and sync validation
@@ -17,16 +13,18 @@ const {
  * @see ember-cp-validations
  */
 export default GruInput.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['gru-input-mixed-validation','validation'],
-  classNameBindings: ['showErrorClass:has-error', 'isValid:has-success','valuePath'],
+  classNames: ['gru-input-mixed-validation', 'validation'],
+  classNameBindings: [
+    'showErrorClass:has-error',
+    'isValid:has-success',
+    'valuePath'
+  ],
 
   /**
    * @type {?string} string of classes (separated by a space) specific to the component instance
@@ -37,7 +35,7 @@ export default GruInput.extend({
   // Actions
 
   actions: {
-    inputTyping: function () {
+    inputTyping: function() {
       this._super(...arguments);
       this.set('didSubmit', false);
     }
@@ -48,11 +46,19 @@ export default GruInput.extend({
 
   init() {
     this._super(...arguments);
-    var valuePathHidden = this.get('valuePath') + 'Async';
+    var valuePathHidden = `${this.get('valuePath')}Async`;
     this.set('valuePathHidden', valuePathHidden);
-    defineProperty(this, 'attributeValidationHidden', computed.oneWay(`model.validations.attrs.${valuePathHidden}`));
+    defineProperty(
+      this,
+      'attributeValidationHidden',
+      computed.oneWay(`model.validations.attrs.${valuePathHidden}`)
+    );
     this.set('rawInputValueHidden', this.get(`model.${valuePathHidden}`));
-    defineProperty(this, 'valueHidden', computed.alias(`model.${valuePathHidden}`));
+    defineProperty(
+      this,
+      'valueHidden',
+      computed.alias(`model.${valuePathHidden}`)
+    );
   },
   // -------------------------------------------------------------------------
   // Properties
@@ -87,11 +93,24 @@ export default GruInput.extend({
   /**
    * @param {Computed } showErrorClass - computed property that defines the
    */
-  showErrorClass: computed('showMessage', 'hasContent', 'attributeValidation',
-    'showMessageHidden', 'hasContentHidden', 'attributeValidationHidden', function() {
-    return (this.get('attributeValidation') && this.get('showMessage') && this.get('hasContent')) ||
-      (this.get('attributeValidationHidden') && this.get('showMessageHidden') && this.get('hasContentHidden'));
-  }),
+  showErrorClass: computed(
+    'showMessage',
+    'hasContent',
+    'attributeValidation',
+    'showMessageHidden',
+    'hasContentHidden',
+    'attributeValidationHidden',
+    function() {
+      return (
+        (this.get('attributeValidation') &&
+          this.get('showMessage') &&
+          this.get('hasContent')) ||
+        (this.get('attributeValidationHidden') &&
+          this.get('showMessageHidden') &&
+          this.get('hasContentHidden'))
+      );
+    }
+  ),
   /**
    * @param {Computed } hasContent - computed property that defines whether the rawInputValue is null or not.
    */
@@ -99,7 +118,12 @@ export default GruInput.extend({
   /**
    * @param {Computed } isValid -  A computed property that says whether the value is valid
    */
-  isValid: computed.and('hasContent', 'attributeValidation.isValid', 'hasContentHidden', 'attributeValidationHidden.isValid'),
+  isValid: computed.and(
+    'hasContent',
+    'attributeValidation.isValid',
+    'hasContentHidden',
+    'attributeValidationHidden.isValid'
+  ),
   /**
    * @param {Computed } isInvalid - A computed property that says whether the value is invalid
    */
@@ -107,15 +131,26 @@ export default GruInput.extend({
   /**
    * @param {Computed } showMessage - property that defines if the message should be shown
    */
-  showMessageHidden: computed('attributeValidationHidden.isDirty', 'isInvalidHidden', 'didValidateHidden', 'isTyping', 'didSubmit', function() {
-    return (this.get('attributeValidationHidden.isDirty') || this.get('didValidateHidden')) && this.get('isInvalidHidden') && !this.get('isTyping') && this.get('didSubmit');
-  })
+  showMessageHidden: computed(
+    'attributeValidationHidden.isDirty',
+    'isInvalidHidden',
+    'didValidateHidden',
+    'isTyping',
+    'didSubmit',
+    function() {
+      return (
+        (this.get('attributeValidationHidden.isDirty') ||
+          this.get('didValidateHidden')) &&
+        this.get('isInvalidHidden') &&
+        !this.get('isTyping') &&
+        this.get('didSubmit')
+      );
+    }
+  )
 
   // -------------------------------------------------------------------------
   // Observers
 
-
   // -------------------------------------------------------------------------
   // Methods
-
 });

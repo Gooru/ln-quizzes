@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getQuestionUtil } from  'quizzes-addon/config/quizzes-question';
+import { getQuestionUtil } from 'quizzes-addon/config/quizzes-question';
 
 /**
  * Quizzes question base component
@@ -13,8 +13,7 @@ import { getQuestionUtil } from  'quizzes-addon/config/quizzes-question';
  * @typedef {Object} QuestionComponent
  */
 export default Ember.Component.extend({
-
-// -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
@@ -33,7 +32,7 @@ export default Ember.Component.extend({
    * Indicate if the question has a user answer
    * @property {Boolean}
    */
-  hasUserAnswer: Ember.computed('userAnswer', function () {
+  hasUserAnswer: Ember.computed('userAnswer', function() {
     return this.get('userAnswer') && this.get('userAnswer.length');
   }),
 
@@ -73,9 +72,9 @@ export default Ember.Component.extend({
    * Question Util based on the question type
    * @property {QuestionUtil}
    */
-  questionUtil: Ember.computed('question', function(){
-    let question = this.get('question');
-    let type = question.get('type');
+  questionUtil: Ember.computed('question', function() {
+    const question = this.get('question');
+    const type = question.get('type');
     return getQuestionUtil(type).create({ question });
   }),
 
@@ -114,7 +113,7 @@ export default Ember.Component.extend({
    * @param {*} answer question answer
    * @param {boolean} correct
    */
-  notifyAnswerChanged: function(answer){
+  notifyAnswerChanged: function(answer) {
     const question = this.get('question');
     this.sendAction('onAnswerChanged', question, answer);
   },
@@ -123,7 +122,7 @@ export default Ember.Component.extend({
    * Notifies answer completion
    * @param {*} answer question answer
    */
-  notifyAnswerCleared: function(answer){
+  notifyAnswerCleared: function(answer) {
     const question = this.get('question');
     this.sendAction('onAnswerCleared', question, answer);
   },
@@ -133,7 +132,7 @@ export default Ember.Component.extend({
    * @param {*} answer question answer
    * @param {boolean} correct
    */
-  notifyAnswerCompleted: function(answer){
+  notifyAnswerCompleted: function(answer) {
     const question = this.get('question');
     this.sendAction('onAnswerCompleted', question, answer);
   },
@@ -141,9 +140,8 @@ export default Ember.Component.extend({
   /**
    * Notifies answer was loaded from BE
    */
-  notifyAnswerLoaded: function(answer){
+  notifyAnswerLoaded: function(answer) {
     const question = this.get('question');
     this.sendAction('onAnswerLoaded', question, answer);
   }
-
 });

@@ -6,7 +6,6 @@ import Ember from 'ember';
  * @typedef {Object} TaxonomyAdapter
  */
 export default Ember.Object.extend({
-
   namespace: '/api/nucleus/v1/taxonomy',
 
   /**
@@ -116,8 +115,7 @@ export default Ember.Object.extend({
 
   defineHeaders: function() {
     return {
-      'Authorization': 'Token '
+      Authorization: 'Token '
     };
   }
-
 });

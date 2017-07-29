@@ -1,40 +1,41 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-
   quizzesConfigurationService: Ember.inject.service('quizzes/configuration'),
 
-  getEndpointUrl: function () {
+  getEndpointUrl: function() {
     const configuration = this.get('quizzesConfigurationService.configuration');
     return configuration.get('endpoint.url');
   },
 
-  getEndpointProviderUrl: function () {
+  getEndpointProviderUrl: function() {
     const configuration = this.get('quizzesConfigurationService.configuration');
     return configuration.get('endpoint.providerUrl');
   },
 
-  getEndpointSecureUrl () {
+  getEndpointSecureUrl() {
     const configuration = this.get('quizzesConfigurationService.configuration');
     return configuration.get('endpoint.secureUrl');
   },
 
-  getRealTimeWebServiceUrl: function () {
+  getRealTimeWebServiceUrl: function() {
     const configuration = this.get('quizzesConfigurationService.configuration');
     return configuration.get('realTime.webServiceUrl');
   },
 
-  getRealTimeWebServiceUri: function () {
+  getRealTimeWebServiceUri: function() {
     const configuration = this.get('quizzesConfigurationService.configuration');
     return configuration.get('realTime.webServiceUri');
   },
 
-  getRealTimeWebSocketUrl: function () {
+  getRealTimeWebSocketUrl: function() {
     const configuration = this.get('quizzesConfigurationService.configuration');
-    return `${configuration.get('realTime.webSocketUrl')}${this.getRealTimeWebSocketUri()}`;
+    return `${configuration.get(
+      'realTime.webSocketUrl'
+    )}${this.getRealTimeWebSocketUri()}`;
   },
 
-  getRealTimeWebSocketUri: function () {
+  getRealTimeWebSocketUri: function() {
     const configuration = this.get('quizzesConfigurationService.configuration');
     return configuration.get('realTime.webSocketUri');
   }

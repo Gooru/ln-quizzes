@@ -6,7 +6,6 @@ import Ember from 'ember';
  * @typedef {Object} DepthOfKnowledge
  */
 export default Ember.Object.extend({
-
   /**
    * @property {string}
    */
@@ -21,5 +20,4 @@ export default Ember.Object.extend({
    * @property {number}
    */
   order: null
-
 });

@@ -10,34 +10,37 @@ export default Ember.Object.extend({
    *Init the scoring levels default on each category
    */
   initLevels: function() {
-    this.set('scoringLevels',Ember.A([
-      Level.create({
-        id:'exemplary'
-      }),
-      Level.create({
-        id:'proficient'
-      }),
-      Level.create({
-        id:'basic'
-      }),
-      Level.create({
-        id:'below-basic'
-     })
-   ]));
+    this.set(
+      'scoringLevels',
+      Ember.A([
+        Level.create({
+          id: 'exemplary'
+        }),
+        Level.create({
+          id: 'proficient'
+        }),
+        Level.create({
+          id: 'basic'
+        }),
+        Level.create({
+          id: 'below-basic'
+        })
+      ])
+    );
     return this;
   },
   /**
    * @property {string} Category Title
    */
-  title:'',
+  title: '',
   /**
    * @property {string} Feedback guidance
    */
-  feedbackGuidance:'',
+  feedbackGuidance: '',
   /**
    * @property {Boolean} Required Feedback
    */
-  requiredFeedback:false,
+  requiredFeedback: false,
   /**
    * @property {Array[Levels]} scoringLevels
    */
@@ -51,7 +54,9 @@ export default Ember.Object.extend({
   copy: function() {
     var properties = this.getProperties(this.modelProperties());
     // Copy array values
-    properties.scoringLevels = this.get('scoringLevels').map(level => level.copy());
+    properties.scoringLevels = this.get('scoringLevels').map(level =>
+      level.copy()
+    );
     return this.get('constructor').create(properties);
   },
 
@@ -77,8 +82,8 @@ export default Ember.Object.extend({
     var properties = [];
     const enumerableKeys = Object.keys(this);
     for (let i = 0; i < enumerableKeys.length; i++) {
-      let key = enumerableKeys[i];
-      let value = Ember.typeOf(this.get(key));
+      const key = enumerableKeys[i];
+      const value = Ember.typeOf(this.get(key));
       if (value === 'string' || value === 'number' || value === 'boolean') {
         properties.push(key);
       }

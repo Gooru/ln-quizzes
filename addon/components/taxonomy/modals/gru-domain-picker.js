@@ -10,7 +10,6 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -22,31 +21,30 @@ export default Ember.Component.extend({
   /**
    * @requires service:api-sdk/taxonomy
    */
-  taxonomyService: Ember.inject.service("taxonomy"),
-
+  taxonomyService: Ember.inject.service('taxonomy'),
 
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['taxonomy', 'modals', 'gru-domain-picker'],
 
-
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     loadTaxonomyData(path) {
-      return new Ember.RSVP.Promise(function(resolve) {
-        var subject = this.get('model.subject');
-        var courseId = path[0];
+      return new Ember.RSVP.Promise(
+        function(resolve) {
+          var subject = this.get('model.subject');
+          var courseId = path[0];
 
-        return this.get('taxonomyService')
-          .getCourseDomains(subject, courseId)
-          .then(function(domains) {
-            resolve(domains);
-          });
-      }.bind(this));
+          return this.get('taxonomyService')
+            .getCourseDomains(subject, courseId)
+            .then(function(domains) {
+              resolve(domains);
+            });
+        }.bind(this)
+      );
     },
 
     updateSelectedTags(selectedTags) {
@@ -55,12 +53,11 @@ export default Ember.Component.extend({
     }
   },
 
-
   // -------------------------------------------------------------------------
   // Events
 
   init() {
-    this._super( ...arguments );
+    this._super(...arguments);
 
     this.set('panelHeaders', [
       this.get('i18n').t('common.course').string,
@@ -87,5 +84,4 @@ export default Ember.Component.extend({
    * @prop {String[]}
    */
   panelHeaders: []
-
 });

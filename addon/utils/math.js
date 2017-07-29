@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 
 /**
  * Rounds a float number and fixes the decimals to a specified number of digits.
@@ -30,7 +30,7 @@ export function average(values) {
   var result = null;
 
   if (typeof values.reduce === 'function' && values.length) {
-    let sum = values.reduce(function (a, b) {
+    const sum = values.reduce(function(a, b) {
       return a + b;
     });
     result = sum / values.length;

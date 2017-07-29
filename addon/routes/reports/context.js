@@ -10,9 +10,8 @@ import Ember from 'ember';
  * @augments ember/Route
  */
 export default Ember.Route.extend({
-
   queryParams: {
-    anonymous : {}
+    anonymous: {}
   },
 
   /**
@@ -42,11 +41,10 @@ export default Ember.Route.extend({
   // Actions
 
   actions: {
-
     /**
      * Navigate to the previous page
      */
-    navigateBack: function () {
+    navigateBack: function() {
       // Empty, it does nothing by default
     }
   },
@@ -57,7 +55,7 @@ export default Ember.Route.extend({
   /**
    * @param {{ contextId: string }} params
    */
-  model: function (params) {
+  model: function(params) {
     return this.quizzesModel(params);
   },
 
@@ -68,27 +66,36 @@ export default Ember.Route.extend({
     const route = this;
     const contextId = params.contextId;
     const anonymous = params.anonymous;
-    const type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
+    const type =
+      params.type ||
+      route.get('quizzesConfigurationService.configuration.properties.type');
 
-    return route.get('quizzesAttemptService').getReportData(contextId).then(
-      reportData => Ember.RSVP.hash({
-        anonymous,
-        reportData,
-        collection: route.get('quizzesCollectionService').readCollection(reportData.collectionId, type),
-        profiles: route.get('quizzesProfileService').readProfiles(
-          reportData.get('reportEvents').map(({ profileId }) => profileId)
-        )
-      })
-    );
+    return route
+      .get('quizzesAttemptService')
+      .getReportData(contextId)
+      .then(reportData =>
+        Ember.RSVP.hash({
+          anonymous,
+          reportData,
+          collection: route
+            .get('quizzesCollectionService')
+            .readCollection(reportData.collectionId, type),
+          profiles: route
+            .get('quizzesProfileService')
+            .readProfiles(
+              reportData.get('reportEvents').map(({ profileId }) => profileId)
+            )
+        })
+      );
   },
 
   setupController(controller, model) {
-    let anonymous = model.anonymous;
-    let collection = model.collection;
-    let reportData = model.reportData;
-    let profiles = model.profiles;
+    const anonymous = model.anonymous;
+    const collection = model.collection;
+    const reportData = model.reportData;
+    const profiles = model.profiles;
     reportData.get('reportEvents').forEach(function(reportEvent) {
-      let profile = profiles[reportEvent.get('profileId')];
+      const profile = profiles[reportEvent.get('profileId')];
       reportEvent.setProfileProperties(profile);
     });
     reportData.setCollection(collection);

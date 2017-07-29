@@ -5,7 +5,6 @@ import Ember from 'ember';
  * typedef {Object} Context
  */
 const Context = Ember.Object.extend({
-
   /**
    * @property {number} attempts
    */

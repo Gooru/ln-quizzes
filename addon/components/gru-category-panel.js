@@ -9,17 +9,12 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: [
-    'gru-category-panel'
-  ],
+  classNames: ['gru-category-panel'],
 
-  classNameBindings: [
-    'component-class'
-  ],
+  classNameBindings: ['component-class'],
 
   /**
    * Specific component classes
@@ -53,5 +48,4 @@ export default Ember.Component.extend({
    * @type {String}
    */
   'cta-link': ''
-
 });

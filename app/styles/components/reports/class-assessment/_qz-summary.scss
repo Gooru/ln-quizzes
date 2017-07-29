@@ -15,14 +15,14 @@
       @include justify-content(space-between);
       width: 100%;
       padding: 0;
-      @media(min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) {
         width: 50%;
         padding: 0 15px 0 0;
       }
-      @media(min-width: $screen-md-min) {
+      @media (min-width: $screen-md-min) {
         width: 40%;
       }
-      @media(min-width: $screen-lg-min) {
+      @media (min-width: $screen-lg-min) {
         width: 35%;
       }
       list-style: none;
@@ -38,7 +38,7 @@
         display: inline-block;
         margin: 0 12px 0 0;
         background: $white;
-        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.07);
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
         border-radius: 5px;
         &.completion {
           margin: 0;
@@ -48,7 +48,7 @@
           height: $chart-diameter;
           width: $chart-diameter;
           margin: 20px auto 10px;
-       }
+        }
 
         > span {
           display: block;
@@ -66,13 +66,12 @@
       z-index: 1;
       flex: 1;
       background: $white;
-      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.07);
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
       border-radius: 5px;
       padding: 15px 20px 10px;
     }
 
     &.all-questions {
-
       .overview {
         display: none;
         padding: 0;
@@ -82,7 +81,7 @@
         &.small.visible {
           display: block;
           background: $white;
-          box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.07);
+          box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
           border-radius: 5px;
           font-size: inherit;
 
@@ -127,7 +126,8 @@
   .grading-scale {
     display: table;
     height: 24px;
-    span, ul {
+    span,
+    ul {
       display: table-cell;
       vertical-align: middle;
     }

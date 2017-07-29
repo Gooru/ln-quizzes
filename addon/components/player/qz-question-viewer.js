@@ -6,7 +6,6 @@ import {
   FIB_REGEX
 } from 'quizzes-addon/config/quizzes-config';
 
-
 /**
  * Player question viewer
  *
@@ -19,7 +18,6 @@ import {
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -36,12 +34,11 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['qz-question-viewer'],
+  classNames: ['qz-question-viewer'],
 
   // -------------------------------------------------------------------------
   // Actions
   actions: {
-
     /**
      * When the question answer has been changed
      * @param {Resource} question the question
@@ -70,9 +67,9 @@ export default Ember.Component.extend({
      * @param {Resource} question the question
      * @param { { answer: Object, correct: boolean } } stats
      */
-    completeAnswer: function(question, answer){
+    completeAnswer: function(question, answer) {
       if (!this.get('submitted')) {
-        let questionResult = this.get('questionResult');
+        const questionResult = this.get('questionResult');
         questionResult.set('answer', answer);
 
         this.set('question', question);
@@ -85,9 +82,9 @@ export default Ember.Component.extend({
      * @param {Resource} question the question
      * @param { { answer: Object, correct: boolean } } stats
      */
-    loadedAnswer: function(question, answer){
+    loadedAnswer: function(question, answer) {
       if (!this.get('submitted')) {
-        let questionResult = this.get('questionResult');
+        const questionResult = this.get('questionResult');
         questionResult.set('answer', answer);
 
         this.set('question', question);
@@ -107,7 +104,9 @@ export default Ember.Component.extend({
     showHint: function() {
       var actualHint = this.get('actualHint');
 
-      this.get('hintsToDisplay').pushObject(this.get('question.hints').objectAt(actualHint));
+      this.get('hintsToDisplay').pushObject(
+        this.get('question.hints').objectAt(actualHint)
+      );
       actualHint += 1;
       this.set('actualHint', actualHint);
     },
@@ -125,7 +124,7 @@ export default Ember.Component.extend({
   /**
    * Removed keyup handler when the component will destroy
    */
-  disableListenToEnter: Ember.on('willDestroyElement',function(){
+  disableListenToEnter: Ember.on('willDestroyElement', function() {
     $(document).off('keyup');
   }),
 
@@ -133,11 +132,11 @@ export default Ember.Component.extend({
    * Listen to enter in order to submit the question when the user press enter
    */
   listenToEnter: Ember.on('didInsertElement', function() {
-    let component = this;
+    const component = this;
     $(document).on('keyup', function(e) {
       if (e.which === KEY_CODES.ENTER) {
-        if(!component.get('isSubmitDisabled')){
-          if(!component.get('question.isOpenEnded')){
+        if (!component.get('isSubmitDisabled')) {
+          if (!component.get('question.isOpenEnded')) {
             component.submitQuestion();
           }
         }
@@ -163,20 +162,24 @@ export default Ember.Component.extend({
    * @property {string} Return the question body and modified the text if the question is
    * FIB to show the correct format.
    */
-  questionBody: Ember.computed('question.body', 'question.description',function(){
-    let component = this;
-    let text = this.get('question.body');
+  questionBody: Ember.computed(
+    'question.body',
+    'question.description',
+    function() {
+      const component = this;
+      let text = this.get('question.body');
 
-    if(component.get('question.isHotTextHighlight')) {
-      text = this.get('question.description');
-    }
+      if (component.get('question.isHotTextHighlight')) {
+        text = this.get('question.description');
+      }
 
-    if(component.get('question.isFIB')) {
-      let regex = new RegExp(FIB_REGEX.source, 'g') ;
-      text = component.get('question.body').replace(regex, '_______');
+      if (component.get('question.isFIB')) {
+        const regex = new RegExp(FIB_REGEX.source, 'g');
+        text = component.get('question.body').replace(regex, '_______');
+      }
+      return text;
     }
-    return text;
-  }),
+  ),
 
   /**
    * Hits available for a question
@@ -209,7 +212,9 @@ export default Ember.Component.extend({
    * @property {boolean}
    */
   feedbackUnicode: Ember.computed('questionResult.correct', function() {
-    return this.get('questionResult.correct') ? FEEDBACK_EMOTION_VALUES.CORRECT : FEEDBACK_EMOTION_VALUES.INCORRECT;
+    return this.get('questionResult.correct')
+      ? FEEDBACK_EMOTION_VALUES.CORRECT
+      : FEEDBACK_EMOTION_VALUES.INCORRECT;
   }),
 
   /**
@@ -229,14 +234,19 @@ export default Ember.Component.extend({
    * @property {String} isCorrectMessageKey
    */
   isCorrectMessageKey: Ember.computed('questionResult.correct', function() {
-    return this.get('questionResult.correct') ? 'common.answer-correct' : 'common.answer-incorrect';
+    return this.get('questionResult.correct')
+      ? 'common.answer-correct'
+      : 'common.answer-incorrect';
   }),
 
   /**
    * Is the explanation button disabled?
    * @property {boolean} disableHint
    */
-  isExplanationButtonDisabled: Ember.computed.or('isExplanationShown', 'doesNotHaveExplanation'),
+  isExplanationButtonDisabled: Ember.computed.or(
+    'isExplanationShown',
+    'doesNotHaveExplanation'
+  ),
 
   /**
    * Is the explanation shown?
@@ -253,10 +263,21 @@ export default Ember.Component.extend({
   /**
    * @property {boolean} indicates when the inputs are enabled
    */
-  isInputDisabled: Ember.computed('questionResult.submitted', 'collection.showFeedback', function(){
-    let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    return (showFeedback && this.get('isStudent') && this.get('questionResult.submitted')) || this.get('submitted');
-  }),
+  isInputDisabled: Ember.computed(
+    'questionResult.submitted',
+    'collection.showFeedback',
+    function() {
+      const showFeedback =
+        this.get('collection.showFeedback') ===
+        ASSESSMENT_SHOW_VALUES.IMMEDIATE;
+      return (
+        (showFeedback &&
+          this.get('isStudent') &&
+          this.get('questionResult.submitted')) ||
+        this.get('submitted')
+      );
+    }
+  ),
 
   /**
    * Indicates if the student is playing the collection
@@ -267,13 +288,25 @@ export default Ember.Component.extend({
   /**
    * @property {boolean} indicates when the submit functionality is enabled
    */
-  isSubmitDisabled: Ember.computed('answerCompleted', 'submitted', 'questionResult.submitted', 'collection.showFeedback', function() {
-    let showFeedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    if(!showFeedback || this.get('isTeacher') || !this.get('questionResult.submitted')) {
-      return this.get('submitted') || !this.get('answerCompleted');
+  isSubmitDisabled: Ember.computed(
+    'answerCompleted',
+    'submitted',
+    'questionResult.submitted',
+    'collection.showFeedback',
+    function() {
+      const showFeedback =
+        this.get('collection.showFeedback') ===
+        ASSESSMENT_SHOW_VALUES.IMMEDIATE;
+      if (
+        !showFeedback ||
+        this.get('isTeacher') ||
+        !this.get('questionResult.submitted')
+      ) {
+        return this.get('submitted') || !this.get('answerCompleted');
+      }
+      return false;
     }
-    return false;
-  }),
+  ),
 
   /**
    * Indicates if the teacher is playing this collection
@@ -308,10 +341,20 @@ export default Ember.Component.extend({
    * Indicates if feedback should be shown
    * @property {boolean}
    */
-  showFeedback: Ember.computed('collection.showFeedback', 'questionResult.submitted', function() {
-    let feedback = this.get('collection.showFeedback') === ASSESSMENT_SHOW_VALUES.IMMEDIATE;
-    return feedback && this.get('isStudent') && this.get('questionResult.submitted');
-  }),
+  showFeedback: Ember.computed(
+    'collection.showFeedback',
+    'questionResult.submitted',
+    function() {
+      const feedback =
+        this.get('collection.showFeedback') ===
+        ASSESSMENT_SHOW_VALUES.IMMEDIATE;
+      return (
+        feedback &&
+        this.get('isStudent') &&
+        this.get('questionResult.submitted')
+      );
+    }
+  ),
 
   /**
    * Indicates when the collection is already submitted
@@ -324,9 +367,12 @@ export default Ember.Component.extend({
    * @property {String}
    */
   thumbnail: Ember.computed('question.thumbnail', function() {
-    let cdnURL = this.get('configurationService.configuration.properties.cdnURL');
-    return this.get('question.thumbnail') ?
-      `${cdnURL}${this.get('question.thumbnail')}` : null;
+    const cdnURL = this.get(
+      'configurationService.configuration.properties.cdnURL'
+    );
+    return this.get('question.thumbnail')
+      ? `${cdnURL}${this.get('question.thumbnail')}`
+      : null;
   }),
 
   // -------------------------------------------------------------------------
@@ -350,7 +396,7 @@ export default Ember.Component.extend({
 
   submitQuestion: function() {
     if (!this.get('submitted')) {
-      let questionResult = this.get('questionResult');
+      const questionResult = this.get('questionResult');
       this.sendAction('onSubmitQuestion', this.get('question'), questionResult);
     }
   }

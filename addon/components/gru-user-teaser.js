@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['gru-user-teaser'],
+  classNames: ['gru-user-teaser'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -16,13 +16,13 @@ export default Ember.Component.extend({
    * List of users to show
    * @property {Array}
    */
-  'users': null,
+  users: null,
 
   /**
    * Get the first user from the users list
    * @property {Ember.Object}
    */
-  firstUser: Ember.computed('users', function(){
+  firstUser: Ember.computed('users', function() {
     return this.get('users.firstObject');
   }),
 
@@ -30,8 +30,7 @@ export default Ember.Component.extend({
    * Get the first user from the users list
    * @property {Ember.Object}
    */
-  usersLeft: Ember.computed('users', function(){
+  usersLeft: Ember.computed('users', function() {
     return this.get('users.length') - 1;
   })
-
 });

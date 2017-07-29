@@ -1,1 +1,3 @@
-export { default } from 'quizzes-addon/components/reports/assessment/questions/qz-fib';
+export {
+  default
+} from 'quizzes-addon/components/reports/assessment/questions/qz-fib';

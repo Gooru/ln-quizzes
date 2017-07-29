@@ -1,20 +1,24 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import Collection from 'quizzes-addon/models/collection/collection';
-moduleForComponent('player/qz-player-confirmation', 'Unit | Component | player/qz player confirmation', {
-  unit: true
-});
+moduleForComponent(
+  'player/qz-player-confirmation',
+  'Unit | Component | player/qz player confirmation',
+  {
+    unit: true
+  }
+);
 
 test('attemptsLeft', function(assert) {
   assert.expect(1);
-  let collection = Collection.create({
+  const collection = Collection.create({
     title: 'Assessment Title',
-    settings:{
+    settings: {
       attempts: 3
     }
   });
-  let attempts = 2;
+  const attempts = 2;
 
-  let component = this.subject({
+  const component = this.subject({
     collection,
     attempts
   });
@@ -24,59 +28,63 @@ test('attemptsLeft', function(assert) {
 
 test('unlimited', function(assert) {
   assert.expect(2);
-  let collection = Collection.create({
+  const collection = Collection.create({
     title: 'Assessment Title',
-    settings:{
+    settings: {
       attempts: -1
     }
   });
-  let component = this.subject({
+  const component = this.subject({
     collection
   });
 
   assert.equal(component.get('unlimited'), true, 'Should be unlimited');
 
-  let collection2 = Collection.create({
+  const collection2 = Collection.create({
     title: 'Assessment Title',
-    settings:{
+    settings: {
       attempts: 2
     }
   });
 
-  component.set('collection',collection2);
+  component.set('collection', collection2);
 
   assert.equal(component.get('unlimited'), false, 'Should not be unlimited');
 });
 
 test('noMoreAttempts', function(assert) {
   assert.expect(1);
-  let collection = Collection.create({
+  const collection = Collection.create({
     title: 'Assessment Title',
-    settings:{
+    settings: {
       attempts: 2
     }
   });
-  let attempts = 2;
+  const attempts = 2;
 
-  let component = this.subject({
+  const component = this.subject({
     collection,
     attempts
   });
 
-  assert.equal(component.get('noMoreAttempts'), true, 'Should not have more attempts');
+  assert.equal(
+    component.get('noMoreAttempts'),
+    true,
+    'Should not have more attempts'
+  );
 });
 
 test('disableStart', function(assert) {
   assert.expect(1);
-  let collection = Collection.create({
+  const collection = Collection.create({
     title: 'Assessment Title',
-    settings:{
+    settings: {
       attempts: 2
     }
   });
-  let attempts = 2;
+  const attempts = 2;
 
-  let component = this.subject({
+  const component = this.subject({
     collection,
     attempts
   });

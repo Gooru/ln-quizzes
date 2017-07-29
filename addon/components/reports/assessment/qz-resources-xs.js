@@ -22,5 +22,4 @@ export default Ember.Component.extend({
    * @property {Ember.Object}
    */
   resource: null
-
 });

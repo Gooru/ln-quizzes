@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import QuestionMixin from 'quizzes-addon/mixins/reports/assessment/questions/question';
-import {DEFAULT_IMAGES} from 'quizzes-addon/config/quizzes-config';
+import { DEFAULT_IMAGES } from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Hot spot image
@@ -12,7 +12,6 @@ import {DEFAULT_IMAGES} from 'quizzes-addon/config/quizzes-config';
  * @augments ember/Component
  */
 export default Ember.Component.extend(QuestionMixin, {
-
   // -------------------------------------------------------------------------
   // Dependencies
   /**
@@ -25,40 +24,44 @@ export default Ember.Component.extend(QuestionMixin, {
 
   classNames: ['reports', 'assessment', 'questions', 'qz-hs-image'],
 
-
   // -------------------------------------------------------------------------
   // Properties
   /**
    * Return the hot spot image answers array to show on the component, indicating if the user select the answer and
    * if is correct or not.
    */
-  answers: Ember.computed('question', 'anonymous', function () {
-    let component = this;
-    let question = component.get('question');
+  answers: Ember.computed('question', 'anonymous', function() {
+    const component = this;
+    const question = component.get('question');
     let userAnswers = component.get('userAnswer');
-    let correctAnswers = question.get('question.correctAnswer');
-    let anonymous = component.get('anonymous');
-    if (component.get('showCorrect')){
+    const correctAnswers = question.get('question.correctAnswer');
+    const anonymous = component.get('anonymous');
+    if (component.get('showCorrect')) {
       userAnswers = correctAnswers;
     }
-    let answers = question.get('question.answers');
+    const answers = question.get('question.answers');
 
-    return answers.map(function(answer){
+    return answers.map(function(answer) {
       let userAnswerCorrect = false;
       let selected = false;
-      if (userAnswers.findBy('value', answer.value)){
-        userAnswerCorrect =  correctAnswers.findBy('value', answer.value);
+      if (userAnswers.findBy('value', answer.value)) {
+        userAnswerCorrect = correctAnswers.findBy('value', answer.value);
         selected = true;
       }
 
-      let elementClass = (anonymous) ? 'anonymous' :
-        ((userAnswerCorrect) ? 'correct' : 'incorrect');
+      const elementClass = anonymous
+        ? 'anonymous'
+        : userAnswerCorrect ? 'correct' : 'incorrect';
 
-      let cdnURL = component.get('configurationService.configuration.properties.cdnURL');
+      const cdnURL = component.get(
+        'configurationService.configuration.properties.cdnURL'
+      );
       return {
-        image: answer.get('text') ? cdnURL + answer.get('text') : DEFAULT_IMAGES.QUESTION_PLACEHOLDER_IMAGE,
+        image: answer.get('text')
+          ? cdnURL + answer.get('text')
+          : DEFAULT_IMAGES.QUESTION_PLACEHOLDER_IMAGE,
         selected,
-        'class': elementClass
+        class: elementClass
       };
     });
   })

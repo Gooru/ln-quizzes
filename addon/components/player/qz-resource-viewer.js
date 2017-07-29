@@ -14,11 +14,10 @@ import ResourceResult from 'quizzes-addon/models/result/resource';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['qz-resource-viewer'],
+  classNames: ['qz-resource-viewer'],
 
   // -------------------------------------------------------------------------
   // Dependencies
@@ -36,13 +35,15 @@ export default Ember.Component.extend({
     /**
      * Action triggered when the next button is clicked
      */
-    next: function(){
+    next: function() {
       this.set('isNextDisabled', true);
-      let resourceResult = this.get('resourceResult');
-      let eventContext = this.get('eventContext');
+      const resourceResult = this.get('resourceResult');
+      const eventContext = this.get('eventContext');
       resourceResult.set('stopTime', new Date().getTime());
       this.get('quizzesResourceService').sendFinishResource(
-        this.get('resource.id'), resourceResult, eventContext
+        this.get('resource.id'),
+        resourceResult,
+        eventContext
       );
       this.sendAction('onNext');
     }
@@ -53,13 +54,16 @@ export default Ember.Component.extend({
 
   init: function() {
     this._super(...arguments);
-    let resource = this.get('resource');
-    if(resource) {
-      let resourceResult = ResourceResult.create(Ember.getOwner(this).ownerInjection(), {
-        resourceId: resource.resourceId,
-        reaction: 0,
-        startTime: new Date().getTime()
-      });
+    const resource = this.get('resource');
+    if (resource) {
+      const resourceResult = ResourceResult.create(
+        Ember.getOwner(this).ownerInjection(),
+        {
+          resourceId: resource.resourceId,
+          reaction: 0,
+          startTime: new Date().getTime()
+        }
+      );
       this.set('resourceResult', resourceResult);
     }
   },
@@ -90,9 +94,9 @@ export default Ember.Component.extend({
    * Indicates if the current resource type is a link out
    * @property {boolean}
    */
-  isNotIframeUrl: Ember.computed('resource', function(){
+  isNotIframeUrl: Ember.computed('resource', function() {
     const resource = this.get('resource');
-    return (resource && resource.displayGuide);
+    return resource && resource.displayGuide;
   }),
 
   /**
@@ -105,12 +109,16 @@ export default Ember.Component.extend({
    * The resource component selected
    * @property {string}
    */
-  resourceComponentSelected: Ember.computed('resource.id', function () {
-    const resourceType = (this.get('resource.isImageResource') ? 'image' : this.get('resource.resourceType'));
+  resourceComponentSelected: Ember.computed('resource.id', function() {
+    const resourceType = this.get('resource.isImageResource')
+      ? 'image'
+      : this.get('resource.resourceType');
     var component = RESOURCE_COMPONENT_MAP[resourceType];
 
     if (!component) {
-      Ember.Logger.error(`Resources of type ${resourceType} are currently not supported`);
+      Ember.Logger.error(
+        `Resources of type ${resourceType} are currently not supported`
+      );
     } else {
       Ember.Logger.debug('Resources component selected: ', component);
       return component;
@@ -146,22 +154,27 @@ export default Ember.Component.extend({
    * of the narration -if there is one)
    */
   calculateResourceContentHeight: function() {
-    if (this.get('resource.isUrlResource') ||
-        this.get('resource.isPDFResource') ||
-        this.get('resource.isImageResource') &&
-        this.get('isNotIframeUrl') === false) {
+    if (
+      this.get('resource.isUrlResource') ||
+      this.get('resource.isPDFResource') ||
+      (this.get('resource.isImageResource') &&
+        this.get('isNotIframeUrl') === false)
+    ) {
       var narrationHeight = this.$('.narration').innerHeight();
       var contentHeight = $('.qz-content').height();
 
       // The 4 pixels subtracted are to make sure no scroll bar will appear for the content
       // (Users should rely on the iframe scroll bar instead)
-      this.set('calculatedResourceContentHeight', contentHeight - narrationHeight - 4);
+      this.set(
+        'calculatedResourceContentHeight',
+        contentHeight - narrationHeight - 4
+      );
     }
   },
   /**
    * Set jquery effect to narration
    * */
-  setNarrationEffect: function () {
-    $('.narration').effect('highlight',{ color:  '#84B7DD'}, 2000);
+  setNarrationEffect: function() {
+    $('.narration').effect('highlight', { color: '#84B7DD' }, 2000);
   }
 });

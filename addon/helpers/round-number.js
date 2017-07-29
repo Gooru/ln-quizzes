@@ -1,6 +1,9 @@
 import Ember from 'ember';
-import { roundFloat } from "quizzes-addon/utils/math";
+import { roundFloat } from 'quizzes-addon/utils/math';
 
+/**
+ * Return a rounded number
+ */
 export function roundNumber(value) {
   return roundFloat(value[0]);
 }

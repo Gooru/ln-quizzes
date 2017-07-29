@@ -10,23 +10,20 @@ import { numberSort } from 'quizzes-addon/utils/utils';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['gru-two-tier-header-table'],
 
-
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     /**
      * @function actions:selectFirstTierColHeader
      * @param {string} headerId
      */
-    selectFirstTierColHeader: function (headerId) {
+    selectFirstTierColHeader: function(headerId) {
       this.get('onSelectFirstTierHeader')(headerId);
     },
 
@@ -34,7 +31,7 @@ export default Ember.Component.extend({
      * @function actions:selectRowHeader
      * @param {string} headerId
      */
-    selectRowHeader: function (headerId) {
+    selectRowHeader: function(headerId) {
       this.get('onSelectRowHeader')(headerId);
     },
 
@@ -43,18 +40,20 @@ export default Ember.Component.extend({
      * @param {number} firstTierIndex
      * @param {number} secondTierIndex
      */
-    updateSortCriteria: function (firstTierIndex, secondTierIndex) {
-      let sortCriteria = this.get('sortCriteria');
-      let newSortCriteria = {
+    updateSortCriteria: function(firstTierIndex, secondTierIndex) {
+      const sortCriteria = this.get('sortCriteria');
+      const newSortCriteria = {
         firstTierIndex: firstTierIndex,
         secondTierIndex: secondTierIndex
       };
 
-      if (sortCriteria.firstTierIndex === firstTierIndex && sortCriteria.secondTierIndex === secondTierIndex) {
+      if (
+        sortCriteria.firstTierIndex === firstTierIndex &&
+        sortCriteria.secondTierIndex === secondTierIndex
+      ) {
         // Reverse the sort order if the same column has been selected
         newSortCriteria.order = sortCriteria.order * -1;
         this.set('sortCriteria', newSortCriteria);
-
       } else {
         newSortCriteria.order = this.get('defaultSortOrder');
         this.set('sortCriteria', newSortCriteria);
@@ -68,7 +67,7 @@ export default Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
 
-    Ember.run.scheduleOnce('afterRender', this, function () {
+    Ember.run.scheduleOnce('afterRender', this, function() {
       this.set('sortCriteria', this.initSortCriteria());
     });
   },
@@ -77,7 +76,6 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.updateColumnVisibility();
   },
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -141,9 +139,14 @@ export default Ember.Component.extend({
    * @prop { Number } secondTierHeadersVisible - Total number of second tier headers
    * that are visible
    */
-  secondTierHeadersVisible: Ember.computed('secondTierHeaders.@each.visible', function () {
-    return this.get('secondTierHeaders').filterBy('visible', true).get('length');
-  }),
+  secondTierHeadersVisible: Ember.computed(
+    'secondTierHeaders.@each.visible',
+    function() {
+      return this.get('secondTierHeaders')
+        .filterBy('visible', true)
+        .get('length');
+    }
+  ),
 
   /**
    * @prop { Object } sortCriteria - Object with information on how the data should be sorted
@@ -156,28 +159,37 @@ export default Ember.Component.extend({
   /**
    * @prop { Object[] } sortedData - Ordered representation of 'data'
    */
-  sortedData: Ember.computed('data.length', 'sortCriteria', function () {
+  sortedData: Ember.computed('data.length', 'sortCriteria', function() {
     const sortCriteria = this.get('sortCriteria');
     const data = this.get('data');
     let sortedData = data;
 
     if (sortCriteria) {
-      let secondTierHeaders = this.get('secondTierHeaders');
-      let firstTierIndex = sortCriteria.firstTierIndex;
-      let secondTierIndex = sortCriteria.secondTierIndex;
-      let sortColumn = sortCriteria.firstTierIndex * secondTierHeaders.length + secondTierIndex;
+      const secondTierHeaders = this.get('secondTierHeaders');
+      const firstTierIndex = sortCriteria.firstTierIndex;
+      const secondTierIndex = sortCriteria.secondTierIndex;
+      const sortColumn =
+        sortCriteria.firstTierIndex * secondTierHeaders.length +
+        secondTierIndex;
       let sortFunction;
       sortedData = Ember.copy(data, true);
 
-      if (firstTierIndex === -1 || secondTierIndex  === -1) {
+      if (firstTierIndex === -1 || secondTierIndex === -1) {
         // Sort alphabetically by row headers
-        let rowHeadersHeader = this.get('rowHeadersHeader');
+        const rowHeadersHeader = this.get('rowHeadersHeader');
         sortFunction = rowHeadersHeader.sortFunction || numberSort;
-        sortedData.sort((a, b) => sortFunction(a.header, b.header) * sortCriteria.order);
-      } else if (firstTierIndex >= 0) {
-        sortFunction = secondTierHeaders[secondTierIndex].sortFunction || numberSort;
         sortedData.sort(
-          (a, b) => sortFunction(a.content[sortColumn].value, b.content[sortColumn].value) * sortCriteria.order
+          (a, b) => sortFunction(a.header, b.header) * sortCriteria.order
+        );
+      } else if (firstTierIndex >= 0) {
+        sortFunction =
+          secondTierHeaders[secondTierIndex].sortFunction || numberSort;
+        sortedData.sort(
+          (a, b) =>
+            sortFunction(
+              a.content[sortColumn].value,
+              b.content[sortColumn].value
+            ) * sortCriteria.order
         );
       }
     }
@@ -189,7 +201,6 @@ export default Ember.Component.extend({
    */
   rowHeadersHeader: null,
 
-
   // -------------------------------------------------------------------------
   // Observers
 
@@ -199,49 +210,62 @@ export default Ember.Component.extend({
    * @function
    * @returns {undefined}
    */
-  updateColumnVisibility: Ember.observer('secondTierHeaders.@each.visible', function () {
-    const secondTierHeaders = this.get('secondTierHeaders');
-    const secondTierHeadersLen = secondTierHeaders.length;
-    const secondTierHeadersVisible = secondTierHeaders.filterBy('visible', true).length;
-    const removeColumns = secondTierHeadersVisible < this.get('currentVisibleHeadersLen');
-    let selectors = [];
-    let cssSelector;
+  updateColumnVisibility: Ember.observer(
+    'secondTierHeaders.@each.visible',
+    function() {
+      const secondTierHeaders = this.get('secondTierHeaders');
+      const secondTierHeadersLen = secondTierHeaders.length;
+      const secondTierHeadersVisible = secondTierHeaders.filterBy(
+        'visible',
+        true
+      ).length;
+      const removeColumns =
+        secondTierHeadersVisible < this.get('currentVisibleHeadersLen');
+      const selectors = [];
+      let cssSelector;
 
-    secondTierHeaders.forEach(function (header, index) {
-      if ((removeColumns && !header.visible) || (!removeColumns && header.visible)) {
-        let offset = index - 1;
-        let offsetStr = (offset < 0) ? offset : `+${offset}`;
+      secondTierHeaders.forEach(function(header, index) {
+        if (
+          (removeColumns && !header.visible) ||
+          (!removeColumns && header.visible)
+        ) {
+          const offset = index - 1;
+          const offsetStr = offset < 0 ? offset : `+${offset}`;
 
-        selectors.push(`table tr.second-tier th.${header.value}`);
-        selectors.push(`table tr.data td:nth-child(${secondTierHeadersLen}n${offsetStr})`);
+          selectors.push(`table tr.second-tier th.${header.value}`);
+          selectors.push(
+            `table tr.data td:nth-child(${secondTierHeadersLen}n${offsetStr})`
+          );
+        }
+      });
+      cssSelector = selectors.join(',');
+
+      if (removeColumns) {
+        // There are less second tier headers visible now so the class 'hidden'
+        // will be added to the second tier headers that are no longer visible.
+        // Otherwise, if there are more second tier headers visible now, the
+        // class 'hidden' will be removed from them.
+        this.$(cssSelector).addClass('hidden');
+      } else {
+        this.$(cssSelector).removeClass('hidden');
       }
-    });
-    cssSelector = selectors.join(',');
 
-    if (removeColumns) {
-      // There are less second tier headers visible now so the class 'hidden'
-      // will be added to the second tier headers that are no longer visible.
-      // Otherwise, if there are more second tier headers visible now, the
-      // class 'hidden' will be removed from them.
-      this.$(cssSelector).addClass('hidden');
-    } else {
-      this.$(cssSelector).removeClass('hidden');
+      this.set('currentVisibleHeadersLen', secondTierHeadersVisible);
     }
+  ),
 
-    this.set('currentVisibleHeadersLen', secondTierHeadersVisible);
-  }),
-
-  updateSortClasses: Ember.observer('sortCriteria', function () {
+  updateSortClasses: Ember.observer('sortCriteria', function() {
     const sortCriteria = this.get('sortCriteria');
     const totalSecondTierHeaders = this.get('secondTierHeaders').length;
     const rowHeadersHeader = !!this.get('rowHeadersHeader');
     const headers = this.$('.second-tier th');
 
-    let currentHeaderIndex = rowHeadersHeader +
-      (sortCriteria.firstTierIndex * totalSecondTierHeaders + sortCriteria.secondTierIndex);
+    const currentHeaderIndex =
+      rowHeadersHeader +
+      (sortCriteria.firstTierIndex * totalSecondTierHeaders +
+        sortCriteria.secondTierIndex);
 
-    headers.removeClass('ascending')
-      .removeClass('descending');
+    headers.removeClass('ascending').removeClass('descending');
 
     if (currentHeaderIndex >= 0 && sortCriteria.order > 0) {
       headers.eq(currentHeaderIndex).addClass('ascending');
@@ -257,7 +281,7 @@ export default Ember.Component.extend({
    * Initialize the table's sort criteria
    * @return {Object}
    */
-  initSortCriteria: function () {
+  initSortCriteria: function() {
     // No columns will be sorted by default
     return {
       firstTierIndex: -1,
@@ -265,5 +289,4 @@ export default Ember.Component.extend({
       order: this.get('defaultSortOrder')
     };
   }
-
 });

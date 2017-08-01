@@ -1156,5 +1156,10 @@ export default {
       audio_resource: 'Audio',
       question: 'Question'
     }
+  },
+  'qz-free-response-viewer': {
+    prompt: 'Task Prompt',
+    'preview-submission': 'Preview Submission',
+    'full-rubric': 'Full Rubric'
   }
 };

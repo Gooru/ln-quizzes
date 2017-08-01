@@ -1,0 +1,75 @@
+.player.qz-free-response-viewer {
+  @include flexbox();
+  width: 100%;
+  height: 100%;
+  .rubric-response {
+    &.rubric {
+      width: 70%;
+    }
+    padding-right: 20px;
+
+    .prompt {
+      .panel-body {
+        @include flexbox();
+        padding: 0;
+      }
+      .icon {
+        border-right: 1px solid $light-300;
+        padding: 10px;
+        i {
+          display: block;
+          vertical-align: top;
+          margin: 5px 0 0;
+          background: url("quizzes-addon/quizzes/images/question-resource-green.svg");
+          -webkit-background-size: 30px 30px;
+          background-size: 30px 30px;
+          height: 30px;
+          width: 30px;
+        }
+      }
+      .question-text {
+        padding: 10px;
+        margin-bottom: 0px;
+        .title {
+          font-size: $font-size-large;
+        }
+      }
+    }
+    .question-response {
+      margin-bottom: 0;
+      .rich-editor {
+        height: 500px;
+      }
+    }
+    .actions {
+      margin-top: 15px;
+      @include flexbox();
+      @include justify-content(flex-end);
+      .save {
+        margin: 0 5px;
+      }
+    }
+  }
+
+  .rubric-information {
+    width: 30%;
+    background-color: $dark-400;
+    height: auto;
+    .header {
+      cursor: pointer;
+      background-color: $dark-500;
+      color: $white;
+      padding: 14px;
+
+      i {
+        font-size: $emotion-icon-size;
+      }
+      @include flexbox();
+      font-size: $font-size-large;
+    }
+    &.full-rubric {
+      width: 100%;
+      height: 700px;
+    }
+  }
+}

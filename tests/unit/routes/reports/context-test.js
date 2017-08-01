@@ -47,18 +47,27 @@ test('model', function(assert) {
     id: 'collection-id'
   };
   const done = assert.async();
-  route.model({ contextId: 'context-id' }).then(function(hash) {
-    assert.ok(hash.reportData, 'Report data is added to the model');
-    assert.ok(hash.collection, 'Collection is added to the model');
-    assert.ok(hash.profiles, 'Profiles object is added to the model');
-    assert.deepEqual(
-      hash.collection,
-      expectedCollection,
-      'Collection should match'
-    );
-    assert.equal(hash.profiles, 'profiles', 'Profiles object should match');
-    done();
-  });
+  route
+    .model({
+      contextId: 'context-id',
+      students: [Ember.Object.create({ id: 'profile3' })]
+    })
+    .then(hash => {
+      assert.ok(hash.reportData, 'Report data is added to the model');
+      assert.ok(
+        hash.reportData.get('reportEvents').findBy('profileId', 'profile3'),
+        'Student that has not started is not found'
+      );
+      assert.ok(hash.collection, 'Collection is added to the model');
+      assert.ok(hash.profiles, 'Profiles object is added to the model');
+      assert.deepEqual(
+        hash.collection,
+        expectedCollection,
+        'Collection should match'
+      );
+      assert.equal(hash.profiles, 'profiles', 'Profiles object should match');
+      done();
+    });
 });
 
 test('setupController', function(assert) {

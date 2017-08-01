@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 
 /**
  * Route for collection/assessment report
@@ -66,6 +67,7 @@ export default Ember.Route.extend({
     const route = this;
     const contextId = params.contextId;
     const anonymous = params.anonymous;
+    const students = params.students || [];
     const type =
       params.type ||
       route.get('quizzesConfigurationService.configuration.properties.type');
@@ -73,6 +75,24 @@ export default Ember.Route.extend({
     return route
       .get('quizzesAttemptService')
       .getReportData(contextId)
+      .then(reportData => {
+        students
+          .filter(
+            student =>
+              !reportData.get('reportEvents').findBy('profileId', student.id)
+          )
+          .forEach(student => {
+            reportData.get('reportEvents').push(
+              ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
+                profileId: student.get('id'),
+                profileName: student.get('fullName'),
+                isAttemptStarted: false,
+                isAttemptFinished: false
+              })
+            );
+          });
+        return reportData;
+      })
       .then(reportData =>
         Ember.RSVP.hash({
           anonymous,

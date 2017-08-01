@@ -222,9 +222,7 @@ export default Ember.Component.extend({
    * Indicate if the question is a free response question
    * @property {boolean}
    */
-  freeResponse: Ember.computed('question', function() {
-    return this.get('question.type') === QUESTION_TYPES.openEnded;
-  }),
+  freeResponse: Ember.computed.equal('question.type', QUESTION_TYPES.openEnded),
 
   /**
    * Hints to display

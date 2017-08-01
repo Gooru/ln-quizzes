@@ -47,9 +47,7 @@ export default QuestionComponent.extend({
    * Indicates if the question has a rubric assigned
    * @return {bool}
    */
-  hasRubric: Ember.computed('question', function() {
-    return this.get('question.rubric');
-  }),
+  hasRubric: Ember.computed.bool('question.rubric'),
 
   /**
    * Indicates when the answer is completed

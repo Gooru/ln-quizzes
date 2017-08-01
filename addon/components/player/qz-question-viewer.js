@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 import {
   KEY_CODES,
   ASSESSMENT_SHOW_VALUES,
@@ -215,6 +216,14 @@ export default Ember.Component.extend({
     return this.get('questionResult.correct')
       ? FEEDBACK_EMOTION_VALUES.CORRECT
       : FEEDBACK_EMOTION_VALUES.INCORRECT;
+  }),
+
+  /**
+   * Indicate if the question is a free response question
+   * @property {boolean}
+   */
+  freeResponse: Ember.computed('question', function() {
+    return this.get('question.type') === QUESTION_TYPES.openEnded;
   }),
 
   /**

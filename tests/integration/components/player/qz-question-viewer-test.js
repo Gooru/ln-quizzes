@@ -24,9 +24,22 @@ test('Layout', function(assert) {
 
   const question = Ember.Object.create({
     id: 10,
-    sequence: 2,
-    body: 'Dummy question text',
-    type: QUESTION_TYPES.openEnded
+    type: QUESTION_TYPES.multipleAnswer,
+    body: 'Sample Question SC',
+    answers: Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'An aquifer'
+      }),
+      AnswerModel.create({
+        value: '2',
+        text: 'A well'
+      }),
+      AnswerModel.create({
+        value: '3',
+        text: 'A pump'
+      })
+    ])
   });
 
   const questionResult = QuestionResult.create();
@@ -54,8 +67,8 @@ test('Layout', function(assert) {
   T.exists(assert, $answerPanel.find('h2'), 'Missing answer header');
   T.exists(
     assert,
-    $answerPanel.find('.qz-open-ended'),
-    'Missing open ended question component'
+    $answerPanel.find('.qz-multiple-answer'),
+    'Missing MA question component'
   );
   T.exists(
     assert,
@@ -85,7 +98,17 @@ test('Submit button should become enabled and call action on submit', function(
     id: 10,
     sequence: 2,
     body: 'Dummy question text',
-    type: QUESTION_TYPES.openEnded
+    type: QUESTION_TYPES.trueFalse,
+    answers: Ember.A([
+      AnswerModel.create({
+        value: '1',
+        text: 'True'
+      }),
+      AnswerModel.create({
+        value: '2',
+        text: 'False'
+      })
+    ])
   });
 
   const questionResult = QuestionResult.create();
@@ -97,7 +120,7 @@ test('Submit button should become enabled and call action on submit', function(
     assert.equal(question.get('id'), 10, 'Wrong id');
     assert.equal(
       questionResult.get('answer.firstObject.value'),
-      'test',
+      '2',
       'Wrong answer'
     );
   });
@@ -112,9 +135,8 @@ test('Submit button should become enabled and call action on submit', function(
     $answerPanel.find('.actions button.save').attr('disabled'),
     'Button should be disabled'
   );
-  var $openEndedComponent = $answerPanel.find('.qz-open-ended');
-  $openEndedComponent.find('textarea').val('test');
-  $openEndedComponent.find('textarea').change();
+  var $trueFalse = $answerPanel.find('.qz-true-false');
+  $trueFalse.find('.answer-choices .radio input[type=radio]:eq(1)').click();
 
   assert.ok(
     !$answerPanel.find('.actions button.save').attr('disabled'),
@@ -207,8 +229,12 @@ test('Clicking on the "Hints" button should display a certain number of hints an
     id: 10,
     sequence: 2,
     text: 'Dummy question text',
-    type: QUESTION_TYPES.openEnded,
+    type: QUESTION_TYPES.trueFalse,
     hasMedia: false,
+    answers: Ember.A([
+      AnswerModel.create({ value: '1', text: 'True' }),
+      AnswerModel.create({ value: '2', text: 'False' })
+    ]),
     hints: [
       {
         hintId: 790,
@@ -279,8 +305,12 @@ test('Clicking on the "Explanation" button should display an explanation and the
     id: 11,
     sequence: 2,
     text: 'Dummy question text',
-    type: QUESTION_TYPES.openEnded,
+    type: QUESTION_TYPES.trueFalse,
     hasMedia: false,
+    answers: Ember.A([
+      AnswerModel.create({ value: '1', text: 'True' }),
+      AnswerModel.create({ value: '2', text: 'False' })
+    ]),
     hints: [],
     explanation: '<p>This is a test explanation</p>'
   });
@@ -331,9 +361,13 @@ test('Save Button Text key', function(assert) {
     sequence: 2,
     text: 'Dummy question text',
     mediaUrl: 'test.jpg',
-    type: QUESTION_TYPES.openEnded,
+    type: QUESTION_TYPES.trueFalse,
     hasMedia: true,
-    hints: []
+    hints: [],
+    answers: Ember.A([
+      AnswerModel.create({ value: '1', text: 'True' }),
+      AnswerModel.create({ value: '2', text: 'False' })
+    ])
   });
 
   const questionResult = QuestionResult.create();
@@ -363,7 +397,11 @@ test('Submit button disabled when submitted', function(assert) {
     sequence: 2,
     text: 'Dummy question text',
     mediaUrl: 'test.jpg',
-    type: QUESTION_TYPES.openEnded,
+    type: QUESTION_TYPES.trueFalse,
+    answers: Ember.A([
+      AnswerModel.create({ value: '1', text: 'True' }),
+      AnswerModel.create({ value: '2', text: 'False' })
+    ]),
     hasMedia: true
   });
 
@@ -420,9 +458,13 @@ test('Open ended question try submit by enter', function(assert) {
     sequence: 2,
     text: 'Dummy question text',
     mediaUrl: 'test.jpg',
-    type: QUESTION_TYPES.openEnded,
+    type: QUESTION_TYPES.trueFalse,
     isOpenEnded: true,
-    hasMedia: true
+    hasMedia: true,
+    answers: Ember.A([
+      AnswerModel.create({ value: '1', text: 'True' }),
+      AnswerModel.create({ value: '2', text: 'False' })
+    ])
   });
 
   const questionResult = QuestionResult.create();
@@ -498,5 +540,26 @@ test('Question viewer body when question type is FIB', function(assert) {
     $questionViewer.find('.question .gru-math-text').text(),
     'Sample description text',
     'Incorrect text'
+  );
+});
+
+test('Question viewer when question type is Free Response', function(assert) {
+  const question = ResourceModel.create({
+    id: '569906aacea8416665209d53',
+    type: QUESTION_TYPES.openEnded,
+    body: '',
+    description: 'Sample description text',
+    sequence: 1,
+    hasAnswers: true
+  });
+
+  this.set('question', question);
+
+  this.render(hbs`{{player/qz-question-viewer question=question }}`);
+  const $component = this.$();
+  const $questionViewer = $component.find('.qz-question-viewer');
+  assert.ok(
+    $questionViewer.find('.qz-free-response-viewer').length,
+    'Missing free response viewer'
   );
 });

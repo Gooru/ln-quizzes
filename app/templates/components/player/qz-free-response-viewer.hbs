@@ -17,8 +17,7 @@
       </div>
     </div>
     <div class="actions">
-      <button class="btn btn-primary save" disabled="{{if isSubmitDisabled true null}}" {{action 'submitQuestion'}}> {{t 'common.save'}}</button>
-      <button class="btn btn-primary preview"> {{t 'qz-free-response-viewer.preview-submission'}}</button>
+      <button type="submit" class="save btn btn-success" disabled="{{if isSubmitDisabled true null}}" {{action 'submitQuestion'}}>{{t buttonTextKey}}</button>
     </div>
   </div>
 {{/unless}}

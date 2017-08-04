@@ -56,11 +56,6 @@ test('Layout without rubric', function(assert) {
       .length,
     'Missing save button'
   );
-  assert.ok(
-    $freeResponseViewer.find('.rubric-response.no-rubric .actions .preview')
-      .length,
-    'Missing preview button'
-  );
   assert.notOk(
     $freeResponseViewer.find('.rubric-response.rubric').length,
     'Rubric should not appear'
@@ -118,11 +113,6 @@ test('Layout with rubric', function(assert) {
   assert.ok(
     $freeResponseViewer.find('.rubric-response.rubric .actions .save').length,
     'Missing save button'
-  );
-  assert.ok(
-    $freeResponseViewer.find('.rubric-response.rubric .actions .preview')
-      .length,
-    'Missing preview button'
   );
   assert.ok(
     $freeResponseViewer.find('.rubric-information').length,

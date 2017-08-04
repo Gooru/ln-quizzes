@@ -1,5 +1,7 @@
 {{#if freeResponse}}
-  {{player.qz-free-response-viewer question=question questionText=questionBody isSubmitDisabled=isSubmitDisabled
+  {{player.qz-free-response-viewer question=question questionText=questionBody
+  isSubmitDisabled=isSubmitDisabled
+  buttonTextKey=buttonTextKey
   userAnswer=questionResult.answer
   onAnswerChanged="changeAnswer"
   onAnswerCleared="clearAnswer"

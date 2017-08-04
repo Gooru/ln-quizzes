@@ -5,8 +5,11 @@
   .rubric-response {
     &.rubric {
       width: 70%;
+      padding-right: 20px;
     }
-    padding-right: 20px;
+    &.no-rubric {
+      width: 100%;
+    }
 
     .prompt {
       .panel-body {
@@ -30,6 +33,8 @@
       .question-text {
         padding: 10px;
         margin-bottom: 0px;
+        @include flexbox();
+        @include flex-direction(column);
         .title {
           font-size: $font-size-large;
         }

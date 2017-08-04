@@ -91,3 +91,27 @@ test('Open ended Layout when no answer provided', function(assert) {
   T.exists(assert, $answer, 'Missing answer');
   assert.equal(T.text($answer), '', 'Wrong answer text');
 });
+
+test('Open ended Layout showing user answer support math expression', function(
+  assert
+) {
+  const questionResult = QuestionResult.create({
+    resource: ResourceModel.create({
+      id: '569906aa20b7dfae1bcd5',
+      type: QUESTION_TYPES.openEnded,
+      body: 'Sample Question MA',
+      correctAnswer: Ember.A([AnswerModel.create({ value: 'Correct answer' })])
+    })
+  });
+  this.set('question', questionResult);
+  this.set('answer', [{ value: 'My Answer' }]);
+
+  this.render(
+    hbs`{{reports/assessment/questions/qz-open-ended question=question userAnswer=answer}}`
+  );
+
+  const $component = this.$();
+  const $mathExpression = $component.find('.gru-math-text');
+
+  T.exists(assert, $mathExpression, 'Missing support to math expression');
+});

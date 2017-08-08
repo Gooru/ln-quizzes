@@ -148,3 +148,61 @@ test('normalizeReadResource from Nile', function(assert) {
   assert.equal(newResource.get('description'), null, 'Wrong description');
   assert.notOk(newResource.get('answers').length, 'Wrong answers length');
 });
+
+test('normalizeReadResource Question Open Ended with rubric', function(assert) {
+  const serializer = this.subject();
+  const resourceData = {
+    id: 'd60beb17-a9b6-4189-ad57-e39cd8586b18',
+    isResource: false,
+    sequence: 4,
+    metadata: {
+      title: 'Free response!',
+      description: 'Enter your response',
+      type: 'extended_text',
+      body: 'Enter your response',
+      ownerId: '874b47a1-c226-47f6-90a3-be5731551706'
+    },
+    rubric: {
+      id: 'cca382f4-248b-4fb7-82a0-dbee0108f116',
+      title: 'JCZ Rubric',
+      url:
+        'https://pbs.twimg.com/profile_images/553328508173172737/I6-Xy7rw.png',
+      gradingType: 'self',
+      tenant: 'ba956a97-ae15-11e5-a302-f8a963065976',
+      creatorId: '874b47a1-c226-47f6-90a3-be5731551706',
+      createdAt: 'Aug 3, 2017 3:54:04 PM',
+      modifierId: '874b47a1-c226-47f6-90a3-be5731551706',
+      updatedAt: 'Aug 7, 2017 2:13:55 PM',
+      publishStatus: 'unpublished',
+      categories: [
+        {
+          title: 'Test Category',
+          level: false,
+          scoring: false,
+          requiredFeedback: true,
+          levels: [
+            {
+              name: 'Best',
+              score: 1.0
+            },
+            {
+              name: 'Worst',
+              score: 0.0
+            }
+          ]
+        }
+      ],
+      isRemote: false,
+      isRubric: true,
+      overallFeedbackRequired: true
+    }
+  };
+  const resource = serializer.normalizeReadResource(resourceData);
+  assert.equal(resource.get('rubric.title'), 'JCZ Rubric', 'Incorrect Rubric');
+  assert.equal(resource.get('rubric.categories').length, 1, 'Wrong categories');
+  assert.equal(
+    resource.get('rubric.categories')[0].get('levels').length,
+    2,
+    'Wrong Category Levels'
+  );
+});

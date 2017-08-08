@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import ResourceModel from 'quizzes-addon/models/resource/resource';
 import AnswerModel from 'quizzes-addon/models/resource/answer';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
+import RubricSerializer from 'quizzes-addon/serializers/rubric/rubric';
 
 /**
  * Serializer for Resource
@@ -8,6 +10,18 @@ import AnswerModel from 'quizzes-addon/models/resource/answer';
  * @typedef {Object} ResourceSerializer
  */
 export default Ember.Object.extend({
+  /**
+   * @property {rubricSerializer} taxonomySerializer
+   */
+  rubricSerializer: null,
+
+  init: function() {
+    this._super(...arguments);
+    this.set(
+      'rubricSerializer',
+      RubricSerializer.create(Ember.getOwner(this).ownerInjection())
+    );
+  },
   /**
    * Normalize the resource data into a Resource object
    * @param resourceData
@@ -54,6 +68,15 @@ export default Ember.Object.extend({
         prompt: interaction.prompt,
         shuffle: interaction.isShuffle
       });
+    }
+    if (
+      resource.get('type') === QUESTION_TYPES.openEnded &&
+      resourceData.rubric
+    ) {
+      resource.set(
+        'rubric',
+        this.get('rubricSerializer').normalizeRubric(resourceData.rubric)
+      );
     }
     return resource;
   },

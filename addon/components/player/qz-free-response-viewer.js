@@ -44,7 +44,7 @@ export default QuestionComponent.extend({
   answer: '',
 
   /**
-   * @property {Number} categories
+   * @property {Array[RubricCategory]} categories
    */
   categories: Ember.computed('hasRubric', function() {
     return this.get('question.rubric').get('categories');

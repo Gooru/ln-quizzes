@@ -81,9 +81,14 @@ export default Ember.Object.extend({
   standards: Ember.A([]),
 
   /**
+   * @property {Array} Categories total points
+   */
+  categoriesPoints: Ember.computed.mapBy('categories', 'totalPoints'),
+
+  /**
    * @property {number} total points
    */
-  totalPoints: null,
+  totalPoints: Ember.computed.sum('categoriesPoints'),
 
   /**
    * @property {boolean} true when the rubric requires feedback

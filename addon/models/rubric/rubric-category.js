@@ -73,6 +73,15 @@ export default Ember.Object.extend({
   levels: [],
 
   /**
+   * @property {Array} level scores
+   */
+  scores: Ember.computed.mapBy('levels', 'score'),
+  /**
+   * @property {number} total points
+   */
+  totalPoints: Ember.computed.sum('scores'),
+
+  /**
    * Return a copy of the category
    *
    * @function

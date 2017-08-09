@@ -61,7 +61,11 @@
           onAnswerCompleted="completeAnswer"
           onAnswerLoaded="loadedAnswer"}}
           <div class="actions">
-            <button type="submit" class="save btn btn-success" disabled="{{if isSubmitDisabled true null}}">{{t buttonTextKey}}</button>
+            {{#if isSubmitDisabled}}
+              <button type="submit" class="save btn btn-success" disabled="disabled">{{t buttonTextKey}}</button>
+            {{else}}
+              <button type="submit" class="save btn btn-success">{{t buttonTextKey}}</button>
+            {{/if}}
           </div>
         </form>
       </div>

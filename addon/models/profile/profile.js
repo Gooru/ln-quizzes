@@ -48,6 +48,11 @@ export default Ember.Object.extend({
   /**
    * @property {string} username - The user username
    */
-  username: null
+  username: null,
+
+  /**
+   * @property {string} studentId - The user student id
+   */
+  studentId: null
 
 });

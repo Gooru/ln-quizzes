@@ -36,3 +36,27 @@ test('hasCategories True', function(assert) {
   });
   assert.ok(model.get('hasCategories'), 'Should have categories');
 });
+
+test('categoriesPoints', function(assert) {
+  var model = this.subject({
+    categories: Ember.A([
+      Category.create({ id: 'categoryId', levels: [{ score: 2 }] }),
+      Category.create({ id: 'categoryId2', levels: [{ score: 2 }] })
+    ])
+  });
+  assert.equal(
+    model.get('categoriesPoints').length,
+    2,
+    'Should have 2 total counts'
+  );
+});
+
+test('totalPoints', function(assert) {
+  var model = this.subject({
+    categories: Ember.A([
+      Category.create({ id: 'categoryId', levels: [{ score: 2 }] }),
+      Category.create({ id: 'categoryId2', levels: [{ score: 2 }] })
+    ])
+  });
+  assert.equal(model.get('totalPoints'), 4, 'Should have 4 total points');
+});

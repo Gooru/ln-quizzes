@@ -1160,6 +1160,8 @@ export default {
   'qz-free-response-viewer': {
     prompt: 'Task Prompt',
     'preview-submission': 'Preview Submission',
-    'full-rubric': 'Full Rubric'
+    'full-rubric': 'Full Rubric',
+    'total-score': 'Total Score ({{total}} pts)',
+    points: '({{total}}pts)'
   }
 };

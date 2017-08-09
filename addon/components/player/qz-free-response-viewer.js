@@ -44,6 +44,13 @@ export default QuestionComponent.extend({
   answer: '',
 
   /**
+   * @property {Number} categories
+   */
+  categories: Ember.computed('hasRubric', function() {
+    return this.get('question.rubric').get('categories');
+  }),
+
+  /**
    * Indicates if the question has a rubric assigned
    * @return {bool}
    */
@@ -68,6 +75,13 @@ export default QuestionComponent.extend({
    * @property {Boolean} showFullRubric
    */
   showFullRubric: false,
+
+  /**
+   * @property {Number} totalPoints
+   */
+  totalPoints: Ember.computed('hasRubric', function() {
+    return this.get('question.rubric').get('totalPoints');
+  }),
 
   // -------------------------------------------------------------------------
   // Observers

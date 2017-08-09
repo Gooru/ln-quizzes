@@ -18,23 +18,34 @@ test('questionResults', function(assert) {
   assert.equal(contextResult.get('questionResults').length, 1, 'Wrong question results');
 });
 
-test('profileCode', function(assert) {
+test('generate profileCode without studentId', function(assert) {
   let contextResult = this.subject({
-    profileId: 'test-profile-id'
+      profileId: 'test-profile-id'
   });
   assert.equal(contextResult.get('profileCode'), 'test', 'Wrong profile code');
 });
 
+test('generate profileCode with studentId', function(assert) {
+  let contextResult = this.subject({
+      profileId: 'test-profile-id',
+      studentId: 'gcc'
+  });
+  assert.equal(contextResult.get('profileCode'), 'gcc', 'Wrong profile code');
+});
+
 test('setProfileProperties', function(assert) {
   let contextResult = this.subject({
-    profileId: 'profile-id'
+    profileId: 'profile-id',
+    studentId: 'gcc001'
   });
   contextResult.setProfileProperties(Profile.create({
     firstName: 'first-name',
-    lastName: 'last-name'
+    lastName:  'last-name',
+    studentId: 'gcc001'
   }));
 
   assert.equal(contextResult.get('profileName'), 'first-name last-name', 'Wrong profile name');
+  assert.equal(contextResult.get('studentId'), 'gcc001', 'Wrong profile student id');
 });
 
 test('totalIncorrect', function(assert) {

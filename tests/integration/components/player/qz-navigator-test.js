@@ -379,7 +379,7 @@ test('Player Navigator - Back Button', function(assert) {
 
 test('Player Navigator - Remix Button', function(assert) {
 
-  assert.expect(2);
+  assert.expect(3);
 
   const resourceMockA = Ember.Object.create({
     id: '1',
@@ -429,7 +429,7 @@ test('Player Navigator - Remix Button', function(assert) {
   });
 
   this.render(hbs`{{player.qz-navigator collection=collection
-      resourceResults=resourceResults lessonTitle='E-Lesson1'
+      resourceResults=resourceResults lessonTitle='E-Lesson1' showRemix=true
       selectedResourceId='1' onItemSelected='itemSelected' onRemixCollection='onRemixCollection'}}`);
 
   var $component = this.$(); //component dom element

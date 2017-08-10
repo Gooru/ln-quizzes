@@ -158,11 +158,21 @@ test('Full rubric', function(assert) {
     $information.find('.header .keyboard_arrow_left').length,
     'Rubric information should not be on full screen'
   );
+  assert.equal(
+    $information.find('.header span').text(),
+    'Full Rubric',
+    'Rubric information should be on full screen'
+  );
   const $header = $information.find('.header');
   $header.click();
   return wait().then(function() {
     assert.ok(
       $information.find('.header .keyboard_arrow_right').length,
+      'Rubric information should be on full screen'
+    );
+    assert.equal(
+      $information.find('.header span').text(),
+      'Rubric',
       'Rubric information should be on full screen'
     );
     assert.ok(

@@ -92,6 +92,17 @@ export default Ember.Component.extend(ModalMixin, {
   onFinishCollection: null,
 
   /**
+   * Indicates if the student is playing the collection
+   * @property {boolean}
+   */
+  isStudent: Ember.computed.equal('role', 'student'),
+  /**
+   * Indicates if the teacher is playing this collection
+   * @property {boolean}
+   */
+  isTeacher: Ember.computed.not('isStudent'),
+
+  /**
    * @property {string|function} onItemSelected - event handler for when an item is selected
    */
   onItemSelected: null,
@@ -101,7 +112,7 @@ export default Ember.Component.extend(ModalMixin, {
    */
   onClosePlayer: null,
     /**
-   * @property {string} on content player close action
+   * @property {string} on content player remix action
    */
   onRemixCollection:null,
 

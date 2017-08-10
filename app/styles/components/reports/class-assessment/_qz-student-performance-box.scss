@@ -20,6 +20,16 @@
         font-size:$in-progress-icon-size;
       }
 
+      &.anonymous{
+        font-size: $font-size-anonymous;
+        line-height: $font-size-anonymous;
+        height: 40px;
+        padding: 0;
+        .name {
+          max-width: 100%;
+        }
+      }
+
       &.not-started{
         background-color: $dark-300;
         .name {

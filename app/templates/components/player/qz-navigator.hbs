@@ -1,9 +1,14 @@
 <div class="navigator-header" >
-  {{#if showBackButton}}
-    <div class="back-button" {{action 'closePlayer'}}>
-      <span> {{gru-icon name='keyboard_arrow_left'}}{{t 'common.back'}}</span>
+    <div class="back-button" >
+      {{#if showBackButton}}
+      <div class="backSpan" {{action 'closePlayer'}}>
+      <span> {{gru-icon name='keyboard_arrow_left'}}{{t 'common.back'}}</span></div>
+      {{/if}}
+        <div class="remixSpan">
+        <button class="remix-btn btn btn-success btn-sm" {{action 'remixCollection' collection}}>{{t 'common.remix'}}</button>
+      </div>
     </div>
-  {{/if}}
+
   <div class="collection-info">
     <p class="collection-type">{{#if collection.isAssessment}}{{t 'common.assessment'}}{{else}}{{t 'common.collection'}}{{/if}}:</p>
     <p class="collection-title">{{collection.title}}</p>

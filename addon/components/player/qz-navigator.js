@@ -25,7 +25,13 @@ export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Actions
   actions: {
-
+    /**
+     * Action triggered to remix the collection
+     * @param content
+     */
+    remixCollection:function(){
+       this.sendAction('onRemixCollection');
+    },
     /**
      * Action triggered when the user closes the content player
      */
@@ -94,6 +100,10 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {string} on content player close action
    */
   onClosePlayer: null,
+    /**
+   * @property {string} on content player close action
+   */
+  onRemixCollection:null,
 
   /**
    * A convenient structure to render the menu

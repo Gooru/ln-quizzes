@@ -43,6 +43,14 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
+     * Action triggered to remix the collection
+     * @param content
+     */
+    remixCollection:function(){
+       this.sendAction('onRemixCollection');
+    },
+
+    /**
      * Triggered when an resource emotion is selected
      * @param {string} emotionScore
      */

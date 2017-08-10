@@ -44,6 +44,13 @@ export default Ember.Route.extend({
       // Empty, it does nothing by default
     },
 
+      /**
+     * Action triggered when the user hits remix on the content player
+     */
+    onRemixCollection: function() {
+      // Empty, it does nothing by default
+    },
+
     /**
      * When the submission is complete
      */

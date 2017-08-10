@@ -1,5 +1,5 @@
 {{#if showConfirmation}}
-  {{player.qz-player-confirmation attempts=attempts collection=collection context=context onStartPlayer='openPlayer' onClosePlayer="closePlayer"}}
+  {{player.qz-player-confirmation attempts=attempts collection=collection context=context onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection"}}
 {{else}}
     <div class="component player">
       {{#unless showReport}}
@@ -16,6 +16,7 @@
             onItemSelected="selectNavigatorItem"
             onCloseNavigator="closeNavigator"
             onClosePlayer="closePlayer"
+            onRemixCollection="remixCollection"
             onFinishCollection="submitAll"
             showBackButton=showBackButton
             }}

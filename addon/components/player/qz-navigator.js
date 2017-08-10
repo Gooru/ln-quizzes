@@ -101,7 +101,11 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean}
    */
   isTeacher: Ember.computed.not('isStudent'),
-
+   /**
+   * Indicates if the teacher is playing this collection
+   * @property {boolean}
+   */
+  showRemix: Ember.computed.and('showBackButton', 'isTeacher'),
   /**
    * @property {string|function} onItemSelected - event handler for when an item is selected
    */

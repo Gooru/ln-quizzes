@@ -155,7 +155,12 @@ export default Ember.Component.extend(ModalMixin, {
 
   didInsertElement: function() {
     this._super(...arguments);
-    if(this.get('collection.isCollection') || this.get('isAnonymous') || this.get('isTeacher')) {
+    if(
+      this.get('collection.isCollection') ||
+      this.get('isAnonymous') ||
+      this.get('isTeacher') ||
+      this.get('checkAttempts')
+    ) {
       this.set('showConfirmation',false);
       this.startAssessment();
     }
@@ -196,6 +201,12 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {Boolean} sendContextFinish
    */
   sendContextFinish: false,
+
+  /**
+   * Indicates if the player needs to check the attempts
+   * @property {boolean}
+   */
+  checkAttempts: true,
 
   /**
    * Is Assessment

@@ -84,7 +84,7 @@ export default Ember.Route.extend({
     */
    quizzesModel(params) {
      const route = this;
-     const { resourceId, contextId, source, sourceUrl, tenantId, partnerId, collectionSubType, pathId } = params;
+     const { resourceId, contextId, source, sourceUrl, tenantId, partnerId, collectionSubType, pathId, checkAttempts } = params;
      let type = params.type || route.get('quizzesConfigurationService.configuration.properties.type');
      let reportURL = params.routeURL || route.get('quizzesConfigurationService.configuration.properties.reportURL');
      let profileId = params.profileId || route.get('quizzesConfigurationService.configuration.properties.profileId');
@@ -101,9 +101,10 @@ export default Ember.Route.extend({
        reportURL,
        resourceId,
        role,
-       eventContext
+       eventContext,
+       checkAttempts
     };
-    if(type === 'collection' || isAnonymous || isTeacher) {
+    if(type === 'collection' || isAnonymous || isTeacher || checkAttempts) {
       return route.get('quizzesContextService').startContext(contextId, eventContext).then(function(contextResult){
         return Ember.RSVP.hash(Object.assign(model, {
           contextResult,
@@ -131,11 +132,12 @@ export default Ember.Route.extend({
     let collection = model.collection;
     const isAnonymous = model.isAnonymous;
     const isTeacher = model.role === 'teacher';
+    const checkAttempts = model.checkAttempts;
     let contextResult =  ContextResult.create();
     if(model.resourceId) {
       contextResult.set('currentResourceId', model.resourceId);
     }
-    if (collection.get('isCollection') || isAnonymous || isTeacher) {
+    if (collection.get('isCollection') || isAnonymous || isTeacher || checkAttempts) {
       contextResult = model.contextResult;
       contextResult.merge(collection);
     } else {
@@ -153,6 +155,7 @@ export default Ember.Route.extend({
     controller.set('contextResult', contextResult);
     controller.set('reportURL', model.reportURL);
     controller.set('eventContext', model.eventContext);
+    controller.set('checkAttempts', checkAttempts);
     controller.set('showConfirmation', true);
   },
 

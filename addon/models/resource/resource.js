@@ -272,5 +272,16 @@ export default Ember.Object.extend({
       }
     }
     return resourceType;
-  })
+  }),
+
+  /**
+   * @property {String}
+   */
+  mediaUrl: null,
+
+  /**
+   * @type {Boolean}
+   */
+  hasMedia: Ember.computed.bool('mediaUrl')
+
 });

@@ -48,7 +48,12 @@
           {{result.question.sequence}}
       </td>
       <td class="question-text top-left">
-        {{gru-math-text text=result.question.description}}
+        <div class="text">
+          {{gru-math-text text=result.question.description}}
+          {{#if result.question.hasMedia}}
+              <img class="img-responsive" src="{{result.question.mediaUrl}}"/>
+          {{/if}}
+        </div>
       </td>
       <td class="question-answer top-left">
         {{#if result.started}}

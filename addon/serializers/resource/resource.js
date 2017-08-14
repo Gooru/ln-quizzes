@@ -15,12 +15,10 @@ export default Ember.Object.extend({
   session: Ember.inject.service('session'),
 
   /**
-   * Return's the content CDN url from authenticated session object
-   * @return {String}
+   * Assign the content CDN url from authenticated session object
+   * @type {String}
    */
-  contentCDNUrl: Ember.computed('contentCDNUrl', function() {
-    return this.get('session.cdnUrls.content');
-  }),
+  contentCDNUrl: Ember.computed.alias('session.cdnUrls.content'),
 
   /**
    * Normalize the resource data into a Resource object

@@ -79,7 +79,7 @@ export default Ember.Object.extend({
   /**
    * @property {number} total points
    */
-  totalPoints: Ember.computed.sum('scores'),
+  totalPoints: Ember.computed.max('scores'),
 
   /**
    * Return a copy of the category

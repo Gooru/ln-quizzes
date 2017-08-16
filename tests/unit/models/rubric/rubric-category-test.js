@@ -17,7 +17,7 @@ test('scores', function(assert) {
 
 test('totalPoints', function(assert) {
   var model = this.subject({
-    levels: [{ score: 2 }, { score: 2 }, { score: 2 }]
+    levels: [{ score: 6 }, { score: 2 }, { score: 2 }]
   });
   assert.equal(model.get('totalPoints'), 6, 'Should have 6 total points');
 });

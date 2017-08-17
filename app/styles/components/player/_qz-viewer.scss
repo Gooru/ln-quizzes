@@ -11,7 +11,7 @@
   }
   .qz-content {
     width: 100%;
-    padding:0;
+    padding: 0;
     .avatar {
       text-align: center;
       padding-right: 15px;
@@ -29,20 +29,20 @@
     }
     .message {
       * {
-        font-size: $font-size-base!important;
+        font-size: $font-size-base !important;
       }
     }
   }
-  .qz-content.question{
+  .qz-content.question {
     height: auto;
   }
-  .qz-content.resource{
+  .qz-content.resource {
     height: 85%;
   }
 
-  .actions-section{
+  .actions-section {
     height: 50px;
-    margin:10px 20px;
+    margin: 10px 20px;
   }
   .btn.previous {
     border-radius: 15px;

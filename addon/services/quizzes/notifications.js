@@ -8,25 +8,24 @@ const defaultOptions = {
   debug: false,
   newestOnTop: true,
   progressBar: false,
-  positionClass: "toast-top-full-width",
+  positionClass: 'toast-top-full-width',
   preventDuplicates: false,
   onclick: null,
   showDuration: 300,
   hideDuration: 1000,
   timeOut: 3000,
   extendedTimeOut: 1000,
-  showEasing: "swing",
-  hideEasing: "linear",
-  showMethod: "fadeIn",
-  hideMethod: "fadeOut"
+  showEasing: 'swing',
+  hideEasing: 'linear',
+  showMethod: 'fadeIn',
+  hideMethod: 'fadeOut'
 };
 
 /*
  * Wrapper for the toastr library: https://github.com/CodeSeven/toastr
  */
 export default Service.extend({
-
-  initToaster: on('init', function () {
+  initToaster: on('init', function() {
     toastr.options = defaultOptions;
   }),
 
@@ -109,5 +108,4 @@ export default Service.extend({
   restoreOptions() {
     toastr.options = defaultOptions;
   }
-
 });

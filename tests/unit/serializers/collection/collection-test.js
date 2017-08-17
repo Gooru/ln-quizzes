@@ -1,7 +1,10 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('serializer:collection/collection', 'Unit | Serializer | collection/collection');
+moduleFor(
+  'serializer:collection/collection',
+  'Unit | Serializer | collection/collection'
+);
 
 test('normalizeReadCollection', function(assert) {
   const serializer = this.subject();
@@ -9,39 +12,55 @@ test('normalizeReadCollection', function(assert) {
     id: 'collection-id',
     isCollection: true,
     resources: null,
-    ownerId:'1234'
+    ownerId: '1234'
   };
   const collection = serializer.normalizeReadCollection(collectionData);
   assert.equal(collection.get('id'), 'collection-id', 'Wrong id');
   assert.ok(collection.get('isCollection'), 'Wrong value for isCollection');
-  assert.equal(collection.get('resources').length, 0, 'Wrong size for resources');
+  assert.equal(
+    collection.get('resources').length,
+    0,
+    'Wrong size for resources'
+  );
   assert.equal(collection.get('ownerId'), '1234', 'Wrong ownerId');
 });
 
 test('normalizeReadCollection with resources', function(assert) {
   const serializer = this.subject();
   serializer.set('resourceSerializer', {
-    normalizeReadResource: ({id, sequence}) => Ember.Object.create({
-      id: `${id}-normalized`,
-      sequence
-    })
+    normalizeReadResource: ({ id, sequence }) =>
+      Ember.Object.create({
+        id: `${id}-normalized`,
+        sequence
+      })
   });
   const collectionData = {
     id: 'collection-id',
     isCollection: false,
-    resources: [{
-      id: 'resource1',
-      sequence: 1
-    }, {
-      id: 'resource2',
-      sequence: 2
-    }]
+    resources: [
+      {
+        id: 'resource1',
+        sequence: 1
+      },
+      {
+        id: 'resource2',
+        sequence: 2
+      }
+    ]
   };
   const collection = serializer.normalizeReadCollection(collectionData);
   assert.equal(collection.get('id'), 'collection-id', 'Wrong id');
   assert.notOk(collection.get('isCollection'), 'Wrong value for isCollection');
-  assert.equal(collection.get('resources').length, 2, 'Wrong size for resources');
-  assert.equal(collection.get('resources')[0].get('id'), 'resource1-normalized', 'Wrong value for resource');
+  assert.equal(
+    collection.get('resources').length,
+    2,
+    'Wrong size for resources'
+  );
+  assert.equal(
+    collection.get('resources')[0].get('id'),
+    'resource1-normalized',
+    'Wrong value for resource'
+  );
 });
 
 test('normalizeReadCollection with settings and title', function(assert) {
@@ -52,7 +71,7 @@ test('normalizeReadCollection with settings and title', function(assert) {
     metadata: {
       title: 'collection-title',
       setting: {
-        show_key:'never'
+        show_key: 'never'
       }
     }
   };
@@ -76,8 +95,16 @@ test('normalizeReadCollection with settings and title', function(assert) {
   const collection2 = serializer.normalizeReadCollection(collectionData2);
   assert.equal(collection2.get('showKey'), true, 'Should be true');
   assert.equal(collection2.get('attempts'), -1, 'Incorrect attempts');
-  assert.equal(collection2.get('bidirectional'), true, 'Bidirectional should be true');
-  assert.equal(collection2.get('showFeedback'), 'never', 'showFeedback should be never');
+  assert.equal(
+    collection2.get('bidirectional'),
+    true,
+    'Bidirectional should be true'
+  );
+  assert.equal(
+    collection2.get('showFeedback'),
+    'never',
+    'showFeedback should be never'
+  );
 });
 
 test('normalizeReadCollection with no settings', function(assert) {
@@ -90,9 +117,21 @@ test('normalizeReadCollection with no settings', function(assert) {
     }
   };
   const collection = serializer.normalizeReadCollection(collectionData);
-  assert.equal(collection.get('title'), 'collection-title', 'Title should match');
+  assert.equal(
+    collection.get('title'),
+    'collection-title',
+    'Title should match'
+  );
   assert.equal(collection.get('showKey'), false, 'Should be false');
   assert.equal(collection.get('attempts'), -1, 'Incorrect attempts');
-  assert.equal(collection.get('bidirectional'), false, 'Bidirectional should be false');
-  assert.equal(collection.get('showFeedback'), 'summary', 'showFeedback value should be summary');
+  assert.equal(
+    collection.get('bidirectional'),
+    false,
+    'Bidirectional should be false'
+  );
+  assert.equal(
+    collection.get('showFeedback'),
+    'summary',
+    'showFeedback value should be summary'
+  );
 });

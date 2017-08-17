@@ -4,16 +4,15 @@ import Ember from 'ember';
  * @typedef {object} DropdownItem
  */
 export default Ember.Object.extend({
-
   /**
    * @property {string} identifier
    */
-  id : null,
+  id: null,
 
   /**
    * @property {string} label
    */
-  label : null,
+  label: null,
 
   /**
    * @property {bool} disabled
@@ -25,11 +24,8 @@ export default Ember.Object.extend({
    */
   selected: false,
 
-
   /**
    * @property {object} data
    */
   data: null
-
 });
-

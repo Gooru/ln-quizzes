@@ -6,14 +6,12 @@ import Ember from 'ember';
  * @typedef {Object} LookupAdapter
  */
 export default Ember.Object.extend({
-
   namespace: 'config',
-
   /**
    * Gets custom configuration
    * @returns {Promise.<[]>}
    */
-  loadConfiguration: function (key) {
+  loadConfiguration: function(key) {
     const adapter = this;
     const namespace = adapter.get('namespace');
     const url = `${namespace}/${key}.json`;
@@ -21,11 +19,12 @@ export default Ember.Object.extend({
       type: 'GET',
       cache: false
     };
-    return Ember.RSVP.hashSettled({
-      configuration: Ember.$.ajax(url, options)
-    }).then(function(hash) {
-      return hash.configuration.value;
-    });
+    return Ember.RSVP
+      .hashSettled({
+        configuration: Ember.$.ajax(url, options)
+      })
+      .then(function(hash) {
+        return hash.configuration.value;
+      });
   }
-
 });

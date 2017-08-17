@@ -1,18 +1,26 @@
 import { moduleForComponent, test } from 'ember-qunit';
 
-moduleForComponent('player/resources/qz-youtube-resource', 'Unit | Component | player/resources/ qz youtube resource', {
-  integration: false
-});
+moduleForComponent(
+  'player/resources/qz-youtube-resource',
+  'Unit | Component | player/resources/ qz youtube resource',
+  {
+    integration: false
+  }
+);
 
-test('getYoutubeIdFromUrl', function (assert) {
+test('getYoutubeIdFromUrl', function(assert) {
   assert.expect(2);
 
   var component = this.subject();
 
-  var id = component.getYoutubeIdFromUrl('https://www.youtube.com/watch?v=3HMjvnCjc24&list=PL7302FBCD1366292D');
+  var id = component.getYoutubeIdFromUrl(
+    'https://www.youtube.com/watch?v=3HMjvnCjc24&list=PL7302FBCD1366292D'
+  );
   assert.equal(id, '3HMjvnCjc24', 'Incorrect ID');
 
-  id = component.getYoutubeIdFromUrl('https://www.youtube.com/watch?v=1_43zbexW7w');
+  id = component.getYoutubeIdFromUrl(
+    'https://www.youtube.com/watch?v=1_43zbexW7w'
+  );
   assert.equal(id, '1_43zbexW7w', 'Incorrect ID');
 
   /*

@@ -1,60 +1,60 @@
-.gru-assignments-table{
+.gru-assignments-table {
   height: 100%;
-  table{
+  table {
     height: 100%;
     @include flexbox;
     @include flex-direction(column);
-    thead{
+    thead {
       width: 100%;
-      tr{
+      tr {
         @include flexbox;
-        th{
+        th {
           line-height: 38px;
           height: 56px;
           text-align: center;
           background-color: $dark-400;
           color: $white;
           border-bottom: 0;
-          a{
-            color:$white;
+          a {
+            color: $white;
           }
-          &.title-header{
+          &.title-header {
             text-align: left;
           }
-          i{
+          i {
             vertical-align: middle;
           }
         }
       }
     }
-    tbody{
+    tbody {
       overflow-y: auto;
       width: 100%;
       height: 100%;
       display: block;
-      tr{
+      tr {
         cursor: pointer;
         @include flexbox;
-        td{
+        td {
           line-height: 32px;
           text-align: center;
           background-color: $white;
-           &.title{
-             text-align: left;
-            }
-            span.score{
-              width: 46px;
-              height: 36px;
-              text-align: center;
-              line-height: 36px;
-              border-radius: 5px;
-              color: #fff;
-              display: inline-block;
-            }
-          &.actions{
-            button{
+          &.title {
+            text-align: left;
+          }
+          span.score {
+            width: 46px;
+            height: 36px;
+            text-align: center;
+            line-height: 36px;
+            border-radius: 5px;
+            color: #fff;
+            display: inline-block;
+          }
+          &.actions {
+            button {
               margin: 0 2px;
-              i{
+              i {
                 font-size: 24px;
               }
               span.real-time-icon {
@@ -66,25 +66,26 @@
                 width: 24px;
               }
             }
-            i.more_vert{
+            i.more_vert {
               vertical-align: middle;
             }
           }
         }
-        &.selected{
-          td{
-              background-color:$sky-100;
+        &.selected {
+          td {
+            background-color: $sky-100;
           }
         }
-        &:hover{
-          td{
-            background-color:$sky-100;
+        &:hover {
+          td {
+            background-color: $sky-100;
           }
         }
       }
     }
   }
-  .table-fixed tbody td, .table-fixed thead > tr> th {
+  .table-fixed tbody td,
+  .table-fixed thead > tr > th {
     float: left;
   }
 }

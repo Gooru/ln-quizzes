@@ -10,19 +10,15 @@ import Ember from 'ember';
  * @typedef {object} GruIcon
  */
 export default Ember.Component.extend({
-
-
-
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['gru-icon', 'material-icons'],
+  classNames: ['gru-icon', 'material-icons'],
 
-  classNameBindings: [ 'name' ],
+  classNameBindings: ['name'],
 
   tagName: 'i',
 
@@ -31,7 +27,6 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Events
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -42,10 +37,8 @@ export default Ember.Component.extend({
    */
   name: null
 
-
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods

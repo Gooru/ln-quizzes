@@ -1,8 +1,7 @@
 import Ember from 'ember';
 export default Ember.Route.extend({
-
   queryParams: {
-    isTeacher : {}
+    isTeacher: {}
   },
   // -------------------------------------------------------------------------
   // Dependencies
@@ -18,17 +17,23 @@ export default Ember.Route.extend({
    * Get model for the controller
    */
   model: function(params) {
-    let profileId = params.profileId;
+    const profileId = params.profileId;
     let assignments;
-    let studentList = this.get('quizzesConfigurationService.configuration.properties.students');
-    let playerURL = this.get('quizzesConfigurationService.configuration.properties.playerURL');
-    let realTimeURL = this.get('quizzesConfigurationService.configuration.properties.realTimeURL');
+    const studentList = this.get(
+      'quizzesConfigurationService.configuration.properties.students'
+    );
+    const playerURL = this.get(
+      'quizzesConfigurationService.configuration.properties.playerURL'
+    );
+    const realTimeURL = this.get(
+      'quizzesConfigurationService.configuration.properties.realTimeURL'
+    );
 
-    let isTeacher = params.isTeacher  === 'true';
+    const isTeacher = params.isTeacher === 'true';
 
-    assignments = isTeacher ?
-      this.get('quizzesContextService').getContextsCreated() :
-      this.get('quizzesContextService').getContextsAssigned();
+    assignments = isTeacher
+      ? this.get('quizzesContextService').getContextsCreated()
+      : this.get('quizzesContextService').getContextsAssigned();
 
     return Ember.RSVP.hash({
       profileId,
@@ -46,11 +51,11 @@ export default Ember.Route.extend({
    * @param model
    */
   setupController: function(controller, model) {
-    controller.set('profileId',model.profileId);
-    controller.set('isTeacher',model.isTeacher);
-    controller.set('assignments',model.assignments);
-    controller.set('studentList',model.studentList);
-    controller.set('playerURL',model.playerURL);
-    controller.set('realTimeURL',model.realTimeURL);
+    controller.set('profileId', model.profileId);
+    controller.set('isTeacher', model.isTeacher);
+    controller.set('assignments', model.assignments);
+    controller.set('studentList', model.studentList);
+    controller.set('playerURL', model.playerURL);
+    controller.set('realTimeURL', model.realTimeURL);
   }
 });

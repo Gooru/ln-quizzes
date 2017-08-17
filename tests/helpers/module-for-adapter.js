@@ -1,3 +1,4 @@
+/* eslint require-jsdoc: 0 */
 import { moduleFor } from 'ember-qunit';
 import Pretender from 'pretender';
 

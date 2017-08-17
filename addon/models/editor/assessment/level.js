@@ -8,15 +8,15 @@ export default Ember.Object.extend({
   /**
    * @property {string} id
    */
-  id:'',
+  id: '',
   /**
    * @property {string} Description
    */
-  description:'',
+  description: '',
   /**
    * @property {Integer} Points
    */
-  points:0,
+  points: 0,
 
   /**
    * Return a copy of the level
@@ -51,8 +51,8 @@ export default Ember.Object.extend({
     var properties = [];
     const enumerableKeys = Object.keys(this);
     for (let i = 0; i < enumerableKeys.length; i++) {
-      let key = enumerableKeys[i];
-      let value = Ember.typeOf(this.get(key));
+      const key = enumerableKeys[i];
+      const value = Ember.typeOf(this.get(key));
       if (value === 'string' || value === 'number' || value === 'boolean') {
         properties.push(key);
       }

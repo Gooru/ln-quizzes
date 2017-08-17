@@ -18,8 +18,8 @@ export default BaseValidator.extend({
     const validator = this;
     const highlightType = model.get('highlightType');
     if (highlightType) {
-      let containsOpeningBracket = value.indexOf('[') >= 0;
-      let containsEndingBracket = value.indexOf(']') >= 0;
+      const containsOpeningBracket = value.indexOf('[') >= 0;
+      const containsEndingBracket = value.indexOf(']') >= 0;
       if (!containsOpeningBracket && !containsEndingBracket) {
         return validator.get('i18n').t(options.answerNotSelectedKey).string;
       } else {
@@ -40,15 +40,16 @@ export default BaseValidator.extend({
    * @returns {Boolean} String is bracket balanced
    */
   bracketsAreBalanced(string) {
-    var count = 0, temp;
-    for (var i=0; i<string.length; i++){
+    var count = 0,
+      temp;
+    for (var i = 0; i < string.length; i++) {
       temp = string[i];
-      if(temp === '[') {
+      if (temp === '[') {
         count += 1;
       }
-      if(temp === ']') {
+      if (temp === ']') {
         count -= 1;
-        if(count < 0) {
+        if (count < 0) {
           return false;
         }
       }
@@ -67,16 +68,18 @@ export default BaseValidator.extend({
     const regExp = /\[(.*?)]/gi;
     const matchedAnswers = string.match(regExp);
     for (var i = 0; i < matchedAnswers.length; i++) {
-      let selection = matchedAnswers[i].substring(1, matchedAnswers[i].length - 1).trim();
+      const selection = matchedAnswers[i]
+        .substring(1, matchedAnswers[i].length - 1)
+        .trim();
       if (selection === '') {
         return false;
       }
-      if (type === "word") {
+      if (type === 'word') {
         if (selection.match(/(\.|\s)/)) {
           return false;
         }
       } else {
-        if (selection.indexOf(" ") === -1 || selection.indexOf(".") === -1) {
+        if (selection.indexOf(' ') === -1 || selection.indexOf('.') === -1) {
           return false;
         }
       }

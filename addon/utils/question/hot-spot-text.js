@@ -26,13 +26,11 @@ import HotSpotImageUtil from 'quizzes-addon/utils/question/hot-spot-image';
  *
  * @typedef {Object} HotSpotTextUtil
  */
-export default HotSpotImageUtil.extend({
-
-  // -------------------------------------------------------------------------
-  // Observers
-
-
-  // -------------------------------------------------------------------------
-  // Methods
-
-});
+export default HotSpotImageUtil.extend(
+  {
+    // -------------------------------------------------------------------------
+    // Observers
+    // -------------------------------------------------------------------------
+    // Methods
+  }
+);

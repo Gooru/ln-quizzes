@@ -8,13 +8,12 @@ import Serializable from 'quizzes-addon/mixins/serializable';
  *
  */
 export default Ember.Object.extend(Serializable, {
-
   /**
    * Values: started / skipped
    *
    * @property {String}
    */
-  attemptStatus: Ember.computed('correct', 'skipped', function () {
+  attemptStatus: Ember.computed('correct', 'skipped', function() {
     const skipped = this.get('skipped');
     return skipped ? 'skipped' : 'started';
   }),
@@ -79,19 +78,24 @@ export default Ember.Object.extend(Serializable, {
   /**
    * @property {number} timeSpent - Time spent in this resource
    */
-  timeSpentToSave: Ember.computed('startTime', 'stopTime', 'savedTime', function() {
-    let startTime = this.get('startTime') || 0;
-    let stopTime = this.get('stopTime') || startTime;
-    return this.roundMilliseconds(stopTime - startTime);
-  }),
+  timeSpentToSave: Ember.computed(
+    'startTime',
+    'stopTime',
+    'savedTime',
+    function() {
+      const startTime = this.get('startTime') || 0;
+      const stopTime = this.get('stopTime') || startTime;
+      return this.roundMilliseconds(stopTime - startTime);
+    }
+  ),
 
   /**
    * @property {number} timeSpent - Time spent in this resource
    */
   timeSpent: Ember.computed('startTime', 'stopTime', 'savedTime', function() {
-    let savedTime = this.get('savedTime') || 0;
-    let startTime = this.get('startTime') || 0;
-    let stopTime = this.get('stopTime') || startTime;
+    const savedTime = this.get('savedTime') || 0;
+    const startTime = this.get('startTime') || 0;
+    const stopTime = this.get('stopTime') || startTime;
     return this.roundMilliseconds(savedTime + (stopTime - startTime));
   }),
 
@@ -116,8 +120,7 @@ export default Ember.Object.extend(Serializable, {
   /**
    * Round milliseconds
    */
-  roundMilliseconds: function(milliseconds){
-   return (milliseconds - milliseconds % 1000);
+  roundMilliseconds: function(milliseconds) {
+    return milliseconds - milliseconds % 1000;
   }
-
 });

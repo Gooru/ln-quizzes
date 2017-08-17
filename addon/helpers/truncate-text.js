@@ -14,10 +14,10 @@ import { truncate as truncateString } from 'quizzes-addon/utils/utils';
  * @returns {*}
  */
 export function truncateText(params, hash) {
-  let text = hash.text;
-  let maxLength = hash.maxLength;
-  let type = hash.type;
-  let suffix = hash.suffix;
+  const text = hash.text;
+  const maxLength = hash.maxLength;
+  const type = hash.type;
+  const suffix = hash.suffix;
 
   return truncateString(text, maxLength, type, suffix);
 }

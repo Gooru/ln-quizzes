@@ -17,7 +17,7 @@
     display: inline-block;
     margin: 0 3px 0 0;
     vertical-align: middle;
-    color:$gray;
+    color: $gray;
 
     img {
       height: $profile-image-height - 4px;
@@ -45,13 +45,13 @@
       text-align: center;
       line-height: $profile-image-height - 2px;
       background-color: $item-background;
-      color:$white;
+      color: $white;
     }
 
     &.active {
       border-color: $brand-primary;
     }
-    >*{
+    > * {
       display: block;
       margin: 0 auto;
     }

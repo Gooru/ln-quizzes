@@ -18,22 +18,30 @@ export default Ember.Component.extend({
   classNames: ['gru-assignments-list'],
   // -------------------------------------------------------------------------
   // Actions
-  actions:{
+  actions: {
     /**
      * Select assignment
      */
-    selectAssignment:function(assignment){
-      this.set('selectedAssignment',assignment);
+    selectAssignment: function(assignment) {
+      this.set('selectedAssignment', assignment);
     },
 
     /**
      * Update assignment
      */
-    updateAssignment: function (assignmentUpdated) {
-      this.set('selectedAssignment',assignmentUpdated);
-      let assignment = this.get('assignments').findBy('id',assignmentUpdated.get('id'));
-      this.get('assignments').removeAt(this.get('assignments').indexOf(assignment));
-      this.get('assignments').insertAt(this.get('assignments').indexOf(assignment),assignmentUpdated);
+    updateAssignment: function(assignmentUpdated) {
+      this.set('selectedAssignment', assignmentUpdated);
+      const assignment = this.get('assignments').findBy(
+        'id',
+        assignmentUpdated.get('id')
+      );
+      this.get('assignments').removeAt(
+        this.get('assignments').indexOf(assignment)
+      );
+      this.get('assignments').insertAt(
+        this.get('assignments').indexOf(assignment),
+        assignmentUpdated
+      );
     }
   },
 
@@ -45,29 +53,31 @@ export default Ember.Component.extend({
    */
   didInsertElement: function() {
     const component = this;
-    $('.gru-assignments-table tbody tr').each(function(){
-      $(this).attr('data-search-term', $(this).find('td.title').text().toLowerCase());
+    $('.gru-assignments-table tbody tr').each(function() {
+      $(this).attr(
+        'data-search-term',
+        $(this).find('td.title').text().toLowerCase()
+      );
     });
-    $('.search-box').on('keyup', function(){
+    $('.search-box').on('keyup', function() {
       component.searchAssignment();
     });
-
   },
   // -------------------------------------------------------------------------
   // Properties
   /**
    * Selected assignment
    */
-  selectedAssignment:null,
+  selectedAssignment: null,
 
   /**
    * Assignments List
    */
-  assignments:[],
+  assignments: [],
   /**
    * Indicate if is a teacher view
    */
-  isTeacher:false,
+  isTeacher: false,
   /**
    * Sort order
    */
@@ -84,27 +94,29 @@ export default Ember.Component.extend({
   /**
    * Sort definition
    */
-  sortDefinition: Ember.computed('sortBy','reverseSort', function() {
-    let sortOrder = this.get('reverseSort') ? 'desc' : 'asc';
-    return [ `${this.get('sortBy')}:${sortOrder}` ];
+  sortDefinition: Ember.computed('sortBy', 'reverseSort', function() {
+    const sortOrder = this.get('reverseSort') ? 'desc' : 'asc';
+    return [`${this.get('sortBy')}:${sortOrder}`];
   }),
 
   /**
    *Total students available
    */
-  studentList:[],
-
+  studentList: [],
 
   // -------------------------------------------------------------------------
   // Methods
   /**
    * Filter assignment by title
    */
-  searchAssignment:function(){
+  searchAssignment: function() {
     var searchTerm = $('.gru-assignments-list .search-box').val().toLowerCase();
 
-    $('.gru-assignments-table tbody tr').each(function(){
-      if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {
+    $('.gru-assignments-table tbody tr').each(function() {
+      if (
+        $(this).filter(`[data-search-term *= ${searchTerm}]`).length > 0 ||
+        searchTerm.length < 1
+      ) {
         $(this).show();
       } else {
         $(this).hide();

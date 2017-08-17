@@ -4,8 +4,7 @@ import TaxonomyItem from 'quizzes-addon/models/taxonomy/taxonomy-item';
 
 module('Unit | Utility | taxonomy');
 
-test('Create taxonomy test tree: one node', function (assert) {
-
+test('Create taxonomy test tree: one node', function(assert) {
   var tree = generateTaxonomyTestTree();
 
   var result = TaxonomyItem.create({
@@ -19,8 +18,7 @@ test('Create taxonomy test tree: one node', function (assert) {
   assert.deepEqual(tree, [result], 'One node');
 });
 
-test('Create taxonomy test tree: one node with 2 children', function (assert) {
-
+test('Create taxonomy test tree: one node with 2 children', function(assert) {
   var tree = generateTaxonomyTestTree(2);
 
   var parent = TaxonomyItem.create({
@@ -54,8 +52,9 @@ test('Create taxonomy test tree: one node with 2 children', function (assert) {
   assert.deepEqual(tree, [parent], 'One node with 2 children');
 });
 
-test('Create taxonomy test tree: one node, 2 children, 3 grandchildren (per child)', function (assert) {
-
+test('Create taxonomy test tree: one node, 2 children, 3 grandchildren (per child)', function(
+  assert
+) {
   var tree = generateTaxonomyTestTree(3);
 
   var parent = TaxonomyItem.create({
@@ -138,11 +137,16 @@ test('Create taxonomy test tree: one node, 2 children, 3 grandchildren (per chil
   children2B[1].set('parent', children[1]);
   children2B[2].set('parent', children[1]);
 
-  assert.deepEqual(tree, [parent], 'One node, 2 children, 3 grandchildren (per child)');
+  assert.deepEqual(
+    tree,
+    [parent],
+    'One node, 2 children, 3 grandchildren (per child)'
+  );
 });
 
-test('Create taxonomy test tree: two nodes with 4 children each', function (assert) {
-
+test('Create taxonomy test tree: two nodes with 4 children each', function(
+  assert
+) {
   var tree = generateTaxonomyTestTree(2, null, 2);
 
   var parent1 = TaxonomyItem.create({

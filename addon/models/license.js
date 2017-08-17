@@ -6,7 +6,6 @@ import Ember from 'ember';
  * @typedef {Object} License
  */
 export default Ember.Object.extend({
-
   /**
    * @property {string}
    */
@@ -26,5 +25,4 @@ export default Ember.Object.extend({
    * @property {string}
    */
   code: null
-
 });

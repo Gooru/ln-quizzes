@@ -8,7 +8,6 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -25,12 +24,12 @@ export default Ember.Component.extend({
    * @property {string} Return the question body and modified the text if the question is
    * FIB to show the correct format.
    */
-  questionBody:Ember.computed('question.body',function(){
-    let component = this;
+  questionBody: Ember.computed('question.body', function() {
+    const component = this;
     let text = this.get('question.body');
 
-    if(component.get('question.isFIB')){
-      let regex = /\[]/g;
+    if (component.get('question.isFIB')) {
+      const regex = /\[]/g;
       text = component.get('question.body').replace(regex, '_______');
     }
     return text;
@@ -39,14 +38,14 @@ export default Ember.Component.extend({
   /**
    * @prop { String[]} hints - Question hints
    */
-  hints: Ember.computed('question.hints',function(){
+  hints: Ember.computed('question.hints', function() {
     return this.get('question.hints');
   }),
 
   /**
    * @prop { String[]} explanation - Question explanation
    */
-  explanation: Ember.computed('question.explanation',function(){
+  explanation: Ember.computed('question.explanation', function() {
     return this.get('question.explanation');
   }),
   /**
@@ -54,5 +53,4 @@ export default Ember.Component.extend({
    * @property {boolean} anonymous
    */
   anonymous: null
-
 });

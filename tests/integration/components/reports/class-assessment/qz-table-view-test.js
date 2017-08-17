@@ -7,15 +7,19 @@ import QuestionResult from 'quizzes-addon/models/result/question';
 import ReportData from 'quizzes-addon/models/result/report-data';
 import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 
-moduleForComponent('reports/class-assessment/qz-table-view', 'Integration | Component | reports/class assessment/qz table view', {
-  integration: true,
-  beforeEach: function () {
-    this.inject.service('i18n');
+moduleForComponent(
+  'reports/class-assessment/qz-table-view',
+  'Integration | Component | reports/class assessment/qz table view',
+  {
+    integration: true,
+    beforeEach: function() {
+      this.inject.service('i18n');
+    }
   }
-});
+);
 
-test('it renders', function (assert) {
-  let collection = Collection.create({
+test('it renders', function(assert) {
+  const collection = Collection.create({
     id: 'collection-id',
     resources: [
       Resource.create({
@@ -33,7 +37,7 @@ test('it renders', function (assert) {
     ]
   });
 
-  let reportData = ReportData.create({
+  const reportData = ReportData.create({
     collection,
     collectionId: collection.id,
     reportEvents: Ember.A([
@@ -108,36 +112,81 @@ test('it renders', function (assert) {
 
   this.set('reportData', reportData);
 
-  this.render(hbs`{{reports/class-assessment/qz-table-view reportData=reportData}}`);
+  this.render(
+    hbs`{{reports/class-assessment/qz-table-view reportData=reportData}}`
+  );
 
   const $component = this.$('.reports.class-assessment.qz-table-view');
   assert.ok($component.length, 'Component classes');
-  assert.equal($component.find('.filters .checkbox').length, 3, 'Number of filter boxes');
-  assert.equal($component.find('.filters .checkbox input[disabled]').length, 1, 'Filter boxes disabled');
-  assert.equal($component.find('.filters .checkbox .correct').attr('disabled'), 'disabled', 'Score filter checkbox is disabled');
-  assert.ok($component.find('.filters .checkbox .correct').prop('checked'), 'Score filter checkbox is checked by default');
+  assert.equal(
+    $component.find('.filters .checkbox').length,
+    3,
+    'Number of filter boxes'
+  );
+  assert.equal(
+    $component.find('.filters .checkbox input[disabled]').length,
+    1,
+    'Filter boxes disabled'
+  );
+  assert.equal(
+    $component.find('.filters .checkbox .correct').attr('disabled'),
+    'disabled',
+    'Score filter checkbox is disabled'
+  );
+  assert.ok(
+    $component.find('.filters .checkbox .correct').prop('checked'),
+    'Score filter checkbox is checked by default'
+  );
 
   const $table = $component.find('.gru-two-tier-header-table');
   const $firstTierHeader = $table.find('tr.first-tier');
 
-  assert.equal($firstTierHeader.find('th').length, 4, 'First tier: Number of header columns');
-  assert.equal($firstTierHeader.find('th:eq(0)').text().trim(), this.get('i18n').t('reports.qz-table-view.totals').string, 'First tier: First header is for aggregate values');
+  assert.equal(
+    $firstTierHeader.find('th').length,
+    4,
+    'First tier: Number of header columns'
+  );
+  assert.equal(
+    $firstTierHeader.find('th:eq(0)').text().trim(),
+    this.get('i18n').t('reports.qz-table-view.totals').string,
+    'First tier: First header is for aggregate values'
+  );
 
   const $secondTierHeader = $table.find('tr.second-tier');
-  assert.equal($secondTierHeader.find('th').length, 13, 'Second tier: Total column headers');
-  assert.equal($secondTierHeader.find('th.hidden').length, 8, 'Second tier: Hidden column headers');
-  assert.ok($secondTierHeader.find('th:eq(0)').hasClass('row-header'), 'Second tier: Row header present');
-  assert.ok($secondTierHeader.find('th:eq(1)').hasClass('correct'), 'Second tier: Question first column');
-  assert.ok($secondTierHeader.find('th:eq(2)').hasClass('timeSpent'), 'Second tier: Question second column');
-  assert.ok($secondTierHeader.find('th:eq(3)').hasClass('reaction'), 'Second tier: Question third column');
+  assert.equal(
+    $secondTierHeader.find('th').length,
+    13,
+    'Second tier: Total column headers'
+  );
+  assert.equal(
+    $secondTierHeader.find('th.hidden').length,
+    8,
+    'Second tier: Hidden column headers'
+  );
+  assert.ok(
+    $secondTierHeader.find('th:eq(0)').hasClass('row-header'),
+    'Second tier: Row header present'
+  );
+  assert.ok(
+    $secondTierHeader.find('th:eq(1)').hasClass('correct'),
+    'Second tier: Question first column'
+  );
+  assert.ok(
+    $secondTierHeader.find('th:eq(2)').hasClass('timeSpent'),
+    'Second tier: Question second column'
+  );
+  assert.ok(
+    $secondTierHeader.find('th:eq(3)').hasClass('reaction'),
+    'Second tier: Question third column'
+  );
 
   const $dataRows = $table.find('tr.data');
   assert.equal($dataRows.length, 3, 'Number of data rows');
 });
 
-test('it triggers event when clicking on questions', function (assert) {
+test('it triggers event when clicking on questions', function(assert) {
   assert.expect(3);
-  let collection = Collection.create({
+  const collection = Collection.create({
     id: 'collection-id',
     resources: [
       Resource.create({
@@ -155,7 +204,7 @@ test('it triggers event when clicking on questions', function (assert) {
     ]
   });
 
-  let reportData = ReportData.create({
+  const reportData = ReportData.create({
     collection,
     collectionId: collection.id,
     reportEvents: Ember.A([
@@ -230,13 +279,21 @@ test('it triggers event when clicking on questions', function (assert) {
 
   let numClicks = 1;
 
-  this.on('externalAction', function (itemId) {
+  this.on('externalAction', function(itemId) {
     if (numClicks === 1) {
       assert.equal(itemId, '-1', 'First click: aggregate column selected');
     } else if (numClicks === 2) {
-      assert.equal(itemId, '56a120483b6e7b090501d3e7', 'Second click: first question selected');
+      assert.equal(
+        itemId,
+        '56a120483b6e7b090501d3e7',
+        'Second click: first question selected'
+      );
     } else {
-      assert.equal(itemId, '56a1204886b2e565e1b2c230', 'Second click: last question selected');
+      assert.equal(
+        itemId,
+        '56a1204886b2e565e1b2c230',
+        'Second click: last question selected'
+      );
     }
     numClicks += 1;
   });

@@ -13,13 +13,12 @@ import ResourceComponent from 'quizzes-addon/components/player/resources/qz-reso
  **/
 
 export default ResourceComponent.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-youtube-resource'],
+  classNames: ['qz-youtube-resource'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -40,8 +39,9 @@ export default ResourceComponent.extend({
    */
   start: Ember.computed('resource.displayGuide.start_time', function() {
     const component = this;
-    return component.get('resource.displayGuide.start_time') ?
-      component.convertToSeconds(this.get('resource.displayGuide.start_time')) : null;
+    return component.get('resource.displayGuide.start_time')
+      ? component.convertToSeconds(this.get('resource.displayGuide.start_time'))
+      : null;
   }),
 
   /**
@@ -49,8 +49,9 @@ export default ResourceComponent.extend({
    */
   stop: Ember.computed('resource.displayGuide.end_time', function() {
     const component = this;
-    return component.get('resource.displayGuide.end_time') ?
-      component.convertToSeconds(this.get('resource.displayGuide.end_time')) : 0;
+    return component.get('resource.displayGuide.end_time')
+      ? component.convertToSeconds(this.get('resource.displayGuide.end_time'))
+      : 0;
   }),
 
   /**
@@ -75,9 +76,13 @@ export default ResourceComponent.extend({
   /**
    * Convert the time in this format 00:00:00 to seconds
    */
-  convertToSeconds:function(time) {
+  convertToSeconds: function(time) {
     var sections = time.split(':');
-    return parseInt(sections[0] * 3600) + parseInt(sections[1] * 60) + parseInt(sections[2]);
+    return (
+      parseInt(sections[0] * 3600) +
+      parseInt(sections[1] * 60) +
+      parseInt(sections[2])
+    );
   },
 
   /**

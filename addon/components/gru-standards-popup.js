@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   classNames: ['gru-standards-popup'],
 
   classNameBindings: ['component-class'],
@@ -9,7 +8,7 @@ export default Ember.Component.extend({
   /**
    * @type {?String} specific class
    */
-  'component-class':null,
+  'component-class': null,
 
   /**
    * List of standards

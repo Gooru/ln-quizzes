@@ -4,7 +4,7 @@
   table {
     font-size: $font-size-h6;
     background: $white;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.07);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.07);
     border-top: 15px solid $dark-400;
     border-radius: 0 5px 0 0;
     border-collapse: inherit;
@@ -15,15 +15,18 @@
       left: 0;
     }
 
-    th, td {
+    th,
+    td {
       border: none;
       height: 32px;
       padding: 0px 4px;
       font-weight: normal;
     }
 
-    .first-tier, .second-tier {
-      th, td {
+    .first-tier,
+    .second-tier {
+      th,
+      td {
         background-color: $dark-300;
         color: $white;
         border-color: $dark-400;
@@ -32,14 +35,15 @@
 
     > .first-tier {
       height: 32px;
-      td, th {
+      td,
+      th {
         border-bottom: 1px solid $dark-200;
-      &.fixed {
+        &.fixed {
           border-top: 15px solid $dark-400;
           border-radius: 5px 0 0;
           border-collapse: inherit;
           height: 47px;
-          top: 0
+          top: 0;
         }
       }
       th {
@@ -58,12 +62,11 @@
           min-width: 80px;
         }
         &.correct {
-          min-width: 50px
+          min-width: 50px;
         }
         &.timeSpent {
           min-width: 62px;
         }
-
 
         > span {
           display: block;
@@ -74,7 +77,8 @@
         i.gru-icon {
           font-size: 13px;
         }
-        i.gru-icon.arrow_upward, i.gru-icon.arrow_downward {
+        i.gru-icon.arrow_upward,
+        i.gru-icon.arrow_downward {
           display: none;
         }
 
@@ -93,7 +97,8 @@
           i.gru-icon.arrow_upward {
             display: inline-block;
           }
-          i.gru-icon.arrow_downward, i.gru-icon.swap_vert {
+          i.gru-icon.arrow_downward,
+          i.gru-icon.swap_vert {
             display: none;
           }
         }
@@ -101,7 +106,8 @@
           i.gru-icon.arrow_downward {
             display: inline-block;
           }
-          i.gru-icon.arrow_upward, i.gru-icon.swap_vert {
+          i.gru-icon.arrow_upward,
+          i.gru-icon.swap_vert {
             display: none;
           }
         }
@@ -109,7 +115,6 @@
     }
 
     > .data {
-
       th {
         border-left: 0;
         border-bottom: 1px solid $gray-lighter;

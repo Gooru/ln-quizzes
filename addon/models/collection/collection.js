@@ -6,7 +6,6 @@ import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
  */
 
 export default Ember.Object.extend({
-
   /**
    * @property {number} Attempts allowed
    */
@@ -15,7 +14,7 @@ export default Ember.Object.extend({
   /**
    * @property {string} Collection avatar
    */
-  avatarUrl:null,
+  avatarUrl: null,
 
   /**
    * @property {boolean} Bidirectional
@@ -51,7 +50,7 @@ export default Ember.Object.extend({
   /**
    * @property {Profile} Collection owner profile
    */
-  owner:null,
+  owner: null,
 
   /**
    * @property {[]}
@@ -72,7 +71,7 @@ export default Ember.Object.extend({
    * @property {Array} List of resources associated to the collection
    */
   resourcesSorted: Ember.computed('resources', function() {
-    let resources = this.get('resources').sortBy('sequence');
+    const resources = this.get('resources').sortBy('sequence');
     resources.forEach((resource, index) => resource.set('sequence', index + 1));
     return resources;
   }),
@@ -102,9 +101,9 @@ export default Ember.Object.extend({
    * @param {Resource} resource
    * @returns {Resource|undefined} next resource
    */
-  nextResource: function(resource){
+  nextResource: function(resource) {
     let next;
-    if (this.get('hasResources')){
+    if (this.get('hasResources')) {
       const resources = this.get('resourcesSorted'),
         index = resources.indexOf(resource);
       next = resources.objectAt(index + 1);
@@ -117,9 +116,9 @@ export default Ember.Object.extend({
    * @param {Resource} resource
    * @returns {Resource|undefined} previous resource
    */
-  prevResource: function(resource){
+  prevResource: function(resource) {
     let next;
-    if (this.get('hasResources')){
+    if (this.get('hasResources')) {
       const resources = this.get('resourcesSorted'),
         index = resources.indexOf(resource);
       next = resources.objectAt(index - 1);
@@ -132,7 +131,7 @@ export default Ember.Object.extend({
    * @param {string }resourceId
    * @returns {Resource|undefined}
    */
-  getResourceById: function(resourceId){
+  getResourceById: function(resourceId) {
     let resource;
     if (this.get('hasResources')) {
       const resources = this.get('resources').filterBy('id', resourceId);
@@ -152,7 +151,6 @@ export default Ember.Object.extend({
     const resources = this.get('resources');
     var index = resources.indexOf(resource);
     var collectionLength = this.get('resourceCount');
-    return ((index + 1) === collectionLength);
+    return index + 1 === collectionLength;
   }
-
 });

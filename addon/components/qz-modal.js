@@ -10,12 +10,11 @@ import ModalMixin from 'quizzes-addon/mixins/modal';
  * @augments ember/Component
  */
 export default Ember.Component.extend(ModalMixin, {
-
   // -------------------------------------------------------------------------
   // Attributes
 
   /** @type {String[]} */
-  classNames:['qz-modal', 'fade', 'modal'],
+  classNames: ['qz-modal', 'fade', 'modal'],
 
   /** @type {String[]} */
   classNameBindings: ['component-class'],
@@ -29,7 +28,7 @@ export default Ember.Component.extend(ModalMixin, {
     // Add event listener
     this.$().on('hidden.bs.modal', function() {
       // Force the ember run loop to run right away
-      Ember.run( function() {
+      Ember.run(function() {
         // The property 'is-visible' controls the visibility of a particular modal instance
         // However, all modals in the app must be controlled simultaneously. That is what
         // the modal mixin is for: to keep all modal instances in sync; therefore,
@@ -72,21 +71,20 @@ export default Ember.Component.extend(ModalMixin, {
    * Modal width
    * @type {String}
    */
-  width:Ember.computed('modal.width',function(){
+  width: Ember.computed('modal.width', function() {
     let width = this.get('modal.width');
-    if (window.outerHeight < 768){
+    if (window.outerHeight < 768) {
       width = '93%';
     }
     return Ember.String.htmlSafe(`width: ${width}`);
   }),
-
 
   /**
    * Name of the channel this modal component will be listening to.
    * A global modal component will not have a channel value.
    * @type {String}
    */
-  'channel': null,
+  channel: null,
 
   /**
    * Whether the modal window should be visible or not
@@ -100,9 +98,9 @@ export default Ember.Component.extend(ModalMixin, {
 
     if (!activeChannel) {
       // Addressing the global modal
-      return (!modalChannel) ? isVisible : false;
+      return !modalChannel ? isVisible : false;
     } else {
-      return (activeChannel === modalChannel) ? isVisible : false;
+      return activeChannel === modalChannel ? isVisible : false;
     }
   }.property('modal.isVisible', 'modal.activeChannel', 'channel'),
 
@@ -115,18 +113,15 @@ export default Ember.Component.extend(ModalMixin, {
    */
   controlVisibility: function() {
     if (this.get('is-visible')) {
-      this.$().modal("show");
+      this.$().modal('show');
     } else {
-      this.$().modal("hide");
+      this.$().modal('hide');
     }
   }.observes('is-visible'),
 
   actions: {
-
     closeModal: function() {
       this.set('modal.isVisible', false);
     }
-
   }
-
 });

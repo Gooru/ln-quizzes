@@ -8,7 +8,6 @@ import Ember from 'ember';
  * @typedef {Object} TaxonomyTag
  */
 const TaxonomyTag = Ember.Object.extend({
-
   /**
    * @property {boolean} isActive - Is the state of the tag active or not?
    */
@@ -29,7 +28,6 @@ const TaxonomyTag = Ember.Object.extend({
    * @property {TaxonomyTagData} data - Data for the taxonomy tag
    */
   data: null
-
 });
 
 TaxonomyTag.reopenClass({
@@ -39,7 +37,11 @@ TaxonomyTag.reopenClass({
    * @param editable
    * @returns {Array}
    */
-  getTaxonomyTags: function (taxonomy = [], editable = false, removable = false) {
+  getTaxonomyTags: function(
+    taxonomy = [],
+    editable = false,
+    removable = false
+  ) {
     return taxonomy.map(function(tagData) {
       return TaxonomyTag.create({
         isActive: false,
@@ -49,8 +51,6 @@ TaxonomyTag.reopenClass({
       });
     });
   }
-
 });
-
 
 export default TaxonomyTag;

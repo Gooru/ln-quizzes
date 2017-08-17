@@ -1,1 +1,3 @@
-export { default } from 'quizzes-addon/components/player/qz-player-confirmation';
+export {
+  default
+} from 'quizzes-addon/components/player/qz-player-confirmation';

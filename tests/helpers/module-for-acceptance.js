@@ -1,3 +1,4 @@
+/* eslint require-jsdoc: 0 */
 import { module } from 'qunit';
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
@@ -17,8 +18,11 @@ export default function(name, options = {}) {
     },
 
     afterEach() {
-      let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
-      return Promise.resolve(afterEach).then(() => destroyApp(this.application));
+      let afterEach =
+        options.afterEach && options.afterEach.apply(this, arguments);
+      return Promise.resolve(afterEach).then(() =>
+        destroyApp(this.application)
+      );
     }
   });
 }

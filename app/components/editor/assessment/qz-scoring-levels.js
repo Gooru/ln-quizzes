@@ -1,1 +1,3 @@
-export { default } from 'quizzes-addon/components/editor/assessment/qz-scoring-levels';
+export {
+  default
+} from 'quizzes-addon/components/editor/assessment/qz-scoring-levels';

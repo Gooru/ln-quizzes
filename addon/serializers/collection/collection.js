@@ -9,7 +9,6 @@ import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
  * @typedef {Object} CollectionSerializer
  */
 export default Ember.Object.extend({
-
   /**
    * @property {ResourceSerializer} resourceSerializer
    */
@@ -17,9 +16,12 @@ export default Ember.Object.extend({
 
   session: Ember.inject.service('session'),
 
-  init: function () {
+  init: function() {
     this._super(...arguments);
-    this.set('resourceSerializer', ResourceSerializer.create(Ember.getOwner(this).ownerInjection()));
+    this.set(
+      'resourceSerializer',
+      ResourceSerializer.create(Ember.getOwner(this).ownerInjection())
+    );
   },
 
   /**
@@ -31,12 +33,13 @@ export default Ember.Object.extend({
     const serializer = this;
     return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.id,
-      ownerId:payload.ownerId,
+      ownerId: payload.ownerId,
       isCollection: payload.isCollection,
       resources: serializer.normalizeResources(payload.resources),
-      settings: !payload.isCollection && payload.metadata ?
-        serializer.normalizeSettings(payload.metadata.setting || {}) :
-        null,
+      settings:
+        !payload.isCollection && payload.metadata
+          ? serializer.normalizeSettings(payload.metadata.setting || {})
+          : null,
       title: payload.metadata ? payload.metadata.title : ''
     });
   },
@@ -49,10 +52,13 @@ export default Ember.Object.extend({
   normalizeResources: function(payload) {
     let resources = [];
     if (Ember.isArray(payload)) {
-       resources = payload.map(resource => this.get('resourceSerializer').normalizeReadResource(resource));
-       // Fix sequence value
-       resources.sort((a, b) => a.get('sequence') - b.get('sequence'))
-        .forEach((resource, i) => resource.set('sequence', i+1));
+      resources = payload.map(resource =>
+        this.get('resourceSerializer').normalizeReadResource(resource)
+      );
+      // Fix sequence value
+      resources
+        .sort((a, b) => a.get('sequence') - b.get('sequence'))
+        .forEach((resource, i) => resource.set('sequence', i + 1));
     }
     return resources;
   },

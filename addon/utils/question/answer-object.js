@@ -6,7 +6,6 @@ import Ember from 'ember';
  * @typedef {Object} AnswerObject
  */
 export default Ember.Object.extend({
-
   /**
    * Answer text
    * @property {string}
@@ -16,9 +15,9 @@ export default Ember.Object.extend({
   /**
    * @property {boolean}
    */
-  correct: Ember.computed("status", {
+  correct: Ember.computed('status', {
     get() {
-      return this.get("status") === 'correct';
+      return this.get('status') === 'correct';
     },
     set(key, value) {
       this.set('status', value ? 'correct' : 'incorrect');
@@ -48,5 +47,4 @@ export default Ember.Object.extend({
    * @property {boolean}
    */
   skip: null
-
 });

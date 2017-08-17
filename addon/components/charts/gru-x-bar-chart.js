@@ -35,25 +35,30 @@ export default Ember.Component.extend({
    */
   data: null,
 
-  isFull: Ember.computed('data.@each.color', 'data.@each.percentage', function(){
-    let sum = this.get('data').reduce(
-      (previousValue, value) => previousValue + value.percentage, 0
-    );
-    return (sum >= 100);
-  }),
+  isFull: Ember.computed(
+    'data.@each.color',
+    'data.@each.percentage',
+    function() {
+      const sum = this.get('data').reduce(
+        (previousValue, value) => previousValue + value.percentage,
+        0
+      );
+      return sum >= 100;
+    }
+  ),
 
-  styles: Ember.computed('data', function () {
-    return this.get('data').map(
-      questionData => Ember.String.htmlSafe(
-        `background-color: ${questionData.color}; width: ${questionData.percentage}%;`)
+  styles: Ember.computed('data', function() {
+    return this.get('data').map(questionData =>
+      Ember.String.htmlSafe(
+        `background-color: ${questionData.color}; width: ${questionData.percentage}%;`
+      )
     );
   }),
 
   // -------------------------------------------------------------------------
   // Events
 
-
-  didInsertElement: function () {
+  didInsertElement: function() {
     if (!this.validValues()) {
       Ember.Logger.warn('Graph values sum more than 100');
     }
@@ -62,10 +67,11 @@ export default Ember.Component.extend({
   /*
    * Check if the values are up 100%
    */
-  validValues: function () {
-    let sum = this.get('data').reduce(
-      (previousValue, value) => previousValue + parseInt(value.percentage), 0
+  validValues: function() {
+    const sum = this.get('data').reduce(
+      (previousValue, value) => previousValue + parseInt(value.percentage),
+      0
     );
-    return (sum <= 100);
+    return sum <= 100;
   }
 });

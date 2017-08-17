@@ -18,7 +18,6 @@
 
   &-inverse {
     .navbar-form {
-
       input[type=text],
       input[type=password] {
         color: #fff;
@@ -42,7 +41,7 @@
 
 // Buttons ====================================================================
 
-@mixin btn($class,$bg,$bg-hover: $bg){
+@mixin btn($class,$bg,$bg-hover: $bg) {
   .btn-#{$class} {
     background-size: 200%;
     background-position: 50%;
@@ -100,7 +99,6 @@
   }
 
   &-default {
-
     &.disabled {
       background-color: rgba(0, 0, 0, 0.1);
       color: rgba(0, 0, 0, 0.4);
@@ -269,7 +267,8 @@ select.form-control {
   }
 }
 
-input[type="radio"] + label, input[type="checkbox"] + label{
+input[type="radio"] + label,
+input[type="checkbox"] + label {
   min-height: $line-height-computed; // Ensure the input doesn't jump when there is no text
   padding-left: 20px;
   margin-bottom: 0;
@@ -449,7 +448,9 @@ input[type="checkbox"],
 
 // Remove the Bootstrap feedback styles for input addons
 .input-group-addon {
-  .has-warning &, .has-error &, .has-success & {
+  .has-warning &,
+  .has-error &,
+  .has-success & {
     color: $input-color;
     border-color: $input-group-addon-border-color;
     background-color: $input-group-addon-bg;
@@ -499,7 +500,6 @@ input[type="checkbox"],
   }
 
   &.nav-justified {
-
     & > li > a,
     & > li > a:hover,
     & > li > a:focus,
@@ -615,7 +615,6 @@ input[type="checkbox"],
 }
 
 .list-group {
-
   &-item {
     padding: 15px;
   }
@@ -651,7 +650,12 @@ input[type="checkbox"],
 
 .carousel {
   &-caption {
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: inherit;
     }
   }
@@ -661,17 +665,16 @@ input[type="checkbox"],
 
 @include text-emphasis-variant('.text-danger', $pink-400);
 
-.lead{
+.lead {
   font-size: 19.5px;
   line-height: 30px;
 }
 
 // Modal =====================================================================
 
-.modal-backdrop{
+.modal-backdrop {
   background-color: $dark-500;
-  &.in{
+  &.in {
     opacity: 0.93;
   }
 }
-

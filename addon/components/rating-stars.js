@@ -3,14 +3,14 @@ import Ember from 'ember';
  * Max rating
  * @property
  */
-const maxRating=  5;
+const maxRating = 5;
 
 export default Ember.Component.extend({
   /**
    * Selected rating
    * @property {int between 0-5}
    */
-  rating:     0,
+  rating: 0,
   /**
    * This is triggered when the rating change
    * @property {string} on selection action
@@ -22,7 +22,7 @@ export default Ember.Component.extend({
    * @property {string} size class
    *
    */
-  "rating-star-size": 'rating-stars-lg',
+  'rating-star-size': 'rating-stars-lg',
 
   /**
    *
@@ -30,7 +30,6 @@ export default Ember.Component.extend({
    *
    */
   isClickable: true,
-
 
   /**
    * Return array with empty and full stars
@@ -63,18 +62,17 @@ export default Ember.Component.extend({
      * Triggered when change the rating
      * @param newRating
      */
-    onSetRating: function(newRating,isClickable) {
-      if(isClickable){
-        if(this.get("rating") === newRating){
-          this.set("rating",0);
-        }else{
-          this.set("rating",newRating);
-          if (this.get("onChangeAction")) {
-            this.sendAction("onChangeAction", newRating);
+    onSetRating: function(newRating, isClickable) {
+      if (isClickable) {
+        if (this.get('rating') === newRating) {
+          this.set('rating', 0);
+        } else {
+          this.set('rating', newRating);
+          if (this.get('onChangeAction')) {
+            this.sendAction('onChangeAction', newRating);
           }
         }
       }
-
     }
   }
 });

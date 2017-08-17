@@ -10,10 +10,10 @@
     }
   }
 
-  table{
+  table {
     width: 100%;
     background: $white;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
     border-radius: 5px;
     padding: 20px 0 40px 0;
     display: block;
@@ -27,17 +27,17 @@
       font-size: $font-size-h6;
       font-weight: normal;
     }
-    td, th {
+    td,
+    th {
       height: 30px;
       text-align: center;
       border-bottom: 1px solid $gray-lighter;
-
     }
     th.number {
       width: 2%;
     }
-    th.resource-type{
-      width:6%;
+    th.resource-type {
+      width: 6%;
     }
     th.resource {
       width: 37%;
@@ -45,7 +45,7 @@
     th.timeSpent {
       width: 24%;
     }
-    .resource-type-icon{
+    .resource-type-icon {
       .image {
         display: inline-block;
         margin-right: 10px;
@@ -112,7 +112,7 @@
   .resource-cards {
     width: 100%;
     background: $white;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.10);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
     border-radius: 5px;
     padding: 20px;
     display: block;
@@ -134,7 +134,7 @@
     }
     ul {
       padding: 0;
-      list-style:none;
+      list-style: none;
     }
   }
 }

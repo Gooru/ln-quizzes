@@ -6,8 +6,7 @@ moduleFor('model:taxonomy/browse-item', 'Unit | Model | taxonomy/browse-item', {
   unit: true
 });
 
-test('createFromTaxonomyItem -copy up to one level', function (assert) {
-
+test('createFromTaxonomyItem -copy up to one level', function(assert) {
   var children = [
     TaxonomyItem.create({
       id: '20',
@@ -62,8 +61,7 @@ test('createFromTaxonomyItem -copy up to one level', function (assert) {
   assert.equal(browseItem.children.length, 0, 'Browse item children');
 });
 
-test('createFromTaxonomyItem -copy up to two levels', function (assert) {
-
+test('createFromTaxonomyItem -copy up to two levels', function(assert) {
   var children = [
     TaxonomyItem.create({
       id: '20',
@@ -118,14 +116,21 @@ test('createFromTaxonomyItem -copy up to two levels', function (assert) {
   assert.equal(browseItem.get('children').length, 2, 'Browse item children');
 
   assert.equal(browseItem.children[0].get('id'), '20', 'First child ID');
-  assert.equal(browseItem.children[0].get('children').length, 0, 'First child children');
+  assert.equal(
+    browseItem.children[0].get('children').length,
+    0,
+    'First child children'
+  );
 
   assert.equal(browseItem.children[1].get('id'), '21', 'Second child ID');
-  assert.equal(browseItem.children[1].get('children').length, 0, 'Second child children');
+  assert.equal(
+    browseItem.children[1].get('children').length,
+    0,
+    'Second child children'
+  );
 });
 
-test('createFromTaxonomyItem -copy up to three levels', function (assert) {
-
+test('createFromTaxonomyItem -copy up to three levels', function(assert) {
   var children = [
     TaxonomyItem.create({
       id: '20',
@@ -180,11 +185,27 @@ test('createFromTaxonomyItem -copy up to three levels', function (assert) {
   assert.equal(browseItem.get('children').length, 2, 'Browse item children');
 
   assert.equal(browseItem.children[0].get('id'), '20', 'First child ID');
-  assert.equal(browseItem.children[0].get('children').length, 2, 'First child children');
+  assert.equal(
+    browseItem.children[0].get('children').length,
+    2,
+    'First child children'
+  );
 
   assert.equal(browseItem.children[1].get('id'), '21', 'Second child ID');
-  assert.equal(browseItem.children[1].get('children').length, 2, 'Second child children');
+  assert.equal(
+    browseItem.children[1].get('children').length,
+    2,
+    'Second child children'
+  );
 
-  assert.equal(browseItem.find(['10', '20', '30A']).get('id'), '30A', 'Third level child -first branch');
-  assert.equal(browseItem.find(['10', '21', '31B']).get('id'), '31B', 'Third level child -second branch');
+  assert.equal(
+    browseItem.find(['10', '20', '30A']).get('id'),
+    '30A',
+    'Third level child -first branch'
+  );
+  assert.equal(
+    browseItem.find(['10', '21', '31B']).get('id'),
+    '31B',
+    'Third level child -second branch'
+  );
 });

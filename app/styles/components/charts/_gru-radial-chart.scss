@@ -27,7 +27,7 @@
   width: inherit;
 
   .background {
-    fill: #FFFFFF;
+    fill: #ffffff;
     fill-opacity: 0.01;
   }
 
@@ -42,16 +42,14 @@
   }
 
   .arc {
-    stroke-weight:0.1;
+    stroke-weight: 0.1;
     fill: $blue-300;
   }
 
-
   .arc2 {
-    stroke-weight:0.1;
+    stroke-weight: 0.1;
     fill: $blue-200;
   }
-
 
   .label {
     text-anchor: middle;
@@ -62,5 +60,4 @@
     display: block;
     margin: 0 auto;
   }
-
 }

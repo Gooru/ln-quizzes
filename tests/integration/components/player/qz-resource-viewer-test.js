@@ -4,15 +4,19 @@ import T from 'dummy/tests/helpers/assert';
 import ResourceModel from 'quizzes-addon/models/resource/resource';
 import { RESOURCE_TYPES } from 'quizzes-addon/config/quizzes-config';
 
-moduleForComponent('player/qz-resource-viewer', 'Integration | Component | player/qz resource viewer', {
-  integration: true,
-  beforeEach: function () {
-    this.i18n = this.container.lookup('service:i18n');
-    this.i18n.set('locale','en');
+moduleForComponent(
+  'player/qz-resource-viewer',
+  'Integration | Component | player/qz resource viewer',
+  {
+    integration: true,
+    beforeEach: function() {
+      this.i18n = this.container.lookup('service:i18n');
+      this.i18n.set('locale', 'en');
+    }
   }
-});
+);
 
-test('Layout with image resource', function (assert) {
+test('Layout with image resource', function(assert) {
   assert.expect(1);
 
   const resource = ResourceModel.create({
@@ -29,7 +33,7 @@ test('Layout with image resource', function (assert) {
   T.exists(assert, $imageResourcePanel, 'Missing image resource panel');
 });
 
-test('Layout with text resource', function (assert) {
+test('Layout with text resource', function(assert) {
   assert.expect(2);
 
   const resource = ResourceModel.create({
@@ -46,7 +50,7 @@ test('Layout with text resource', function (assert) {
   T.notExists(assert, $component.find('.btn-next'), 'Missing next button');
 });
 
-test('Layout with webpage resource with next button', function (assert) {
+test('Layout with webpage resource with next button', function(assert) {
   assert.expect(2);
 
   const resource = ResourceModel.create({
@@ -55,7 +59,9 @@ test('Layout with webpage resource with next button', function (assert) {
 
   this.set('resource', resource);
 
-  this.render(hbs`{{player/qz-resource-viewer resource=resource sendEvents=true}}`);
+  this.render(
+    hbs`{{player/qz-resource-viewer resource=resource sendEvents=true}}`
+  );
 
   var $component = this.$(); //component dom element
   var $imageResourcePanel = $component.find('.qz-preview-url');
@@ -63,7 +69,7 @@ test('Layout with webpage resource with next button', function (assert) {
   T.exists(assert, $component.find('.btn-next'), 'Missing next button');
 });
 
-test('Layout with interactive resource', function (assert) {
+test('Layout with interactive resource', function(assert) {
   assert.expect(1);
 
   const resource = ResourceModel.create({
@@ -79,7 +85,7 @@ test('Layout with interactive resource', function (assert) {
   T.exists(assert, $imageResourcePanel, 'Missing interactive resource panel');
 });
 
-test('Layout with audio resource', function (assert) {
+test('Layout with audio resource', function(assert) {
   assert.expect(1);
 
   const resource = ResourceModel.create({
@@ -95,7 +101,7 @@ test('Layout with audio resource', function (assert) {
   T.exists(assert, $imageResourcePanel, 'Missing audio resource panel');
 });
 
-test('Layout with youtube resource', function (assert) {
+test('Layout with youtube resource', function(assert) {
   assert.expect(1);
 
   const resource = ResourceModel.create({
@@ -112,7 +118,7 @@ test('Layout with youtube resource', function (assert) {
   T.exists(assert, $imageResourcePanel, 'Missing youtube resource panel');
 });
 
-test('Layout with vimeo resource', function (assert) {
+test('Layout with vimeo resource', function(assert) {
   assert.expect(1);
 
   const resource = ResourceModel.create({
@@ -129,7 +135,9 @@ test('Layout with vimeo resource', function (assert) {
   T.exists(assert, $imageResourcePanel, 'Missing vimeo resource panel');
 });
 
-test('Layout when a resource url cannot be showed in an iframe', function (assert) {
+test('Layout when a resource url cannot be showed in an iframe', function(
+  assert
+) {
   const resource = ResourceModel.create({
     displayGuide: {
       is_broken: 1,
@@ -139,16 +147,33 @@ test('Layout when a resource url cannot be showed in an iframe', function (asser
 
   this.set('resource', resource);
 
-  this.render(hbs`{{player/qz-resource-viewer resource=resource isNotIframeUrl=true}}`);
+  this.render(
+    hbs`{{player/qz-resource-viewer resource=resource isNotIframeUrl=true}}`
+  );
 
   var $component = this.$(); //component dom element
 
   const $panel = $component.find('.not-iframe');
   assert.ok($panel.length, 'Missing not-iframe panel');
 
-  assert.ok($panel.find('.panel-header').length, 'panel-header of not-iframe panel');
-  assert.ok($panel.find('.panel-body').length, 'panel-body of not-iframe panel');
-  assert.ok($panel.find('.panel-body .qz-resource-card').length, 'Missing resource card');
-  assert.ok($panel.find('.panel-body .qz-resource-card a.play-btn').length, 'Missing play button');
-  assert.ok($panel.find('.panel-footer').length, 'panel-footer of not-iframe panel');
+  assert.ok(
+    $panel.find('.panel-header').length,
+    'panel-header of not-iframe panel'
+  );
+  assert.ok(
+    $panel.find('.panel-body').length,
+    'panel-body of not-iframe panel'
+  );
+  assert.ok(
+    $panel.find('.panel-body .qz-resource-card').length,
+    'Missing resource card'
+  );
+  assert.ok(
+    $panel.find('.panel-body .qz-resource-card a.play-btn').length,
+    'Missing play button'
+  );
+  assert.ok(
+    $panel.find('.panel-footer').length,
+    'panel-footer of not-iframe panel'
+  );
 });

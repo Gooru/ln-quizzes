@@ -13,5 +13,4 @@ export default Ember.Component.extend({
    * @property {[]} actions List of action buttons to show in the footer
    */
   footerActions: []
-
 });

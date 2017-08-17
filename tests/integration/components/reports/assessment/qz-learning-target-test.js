@@ -3,24 +3,27 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'dummy/tests/helpers/assert';
 import Ember from 'ember';
 
-moduleForComponent('reports/assessment/qz-learning-target', 'Integration | Component | reports/assessment/qz learning target', {
-  integration: true
-});
+moduleForComponent(
+  'reports/assessment/qz-learning-target',
+  'Integration | Component | reports/assessment/qz learning target',
+  {
+    integration: true
+  }
+);
 
 test('Learning Target Layout', function(assert) {
-
   assert.expect(6);
 
   const learningTarget = Ember.Object.create({
-    description: 'I will understand how to create a ruler and with 1 inch, 1/2 inch, 1/4 inch intervals and generate' +
-    'measurement data',
+    description:
+      'I will understand how to create a ruler and with 1 inch, 1/2 inch, 1/4 inch intervals and generate' +
+      'measurement data',
     mastery: 75,
     relatedQuestions: [601, 602],
     standard: '3.MD.7',
     suggestedResources: [
-
       Ember.Object.create({
-        resource:{
+        resource: {
           title: 'Learn the MEAN Stack',
           resourceType: 'video/youtube'
         },
@@ -69,14 +72,28 @@ test('Learning Target Layout', function(assert) {
 
   this.set('learningTarget', learningTarget);
   this.set('assessmentResult', assessmentResult);
-  this.render(hbs`{{reports/assessment/qz-learning-target learningTarget=learningTarget assessmentResult=assessmentResult}}`);
+  this.render(
+    hbs`{{reports/assessment/qz-learning-target learningTarget=learningTarget assessmentResult=assessmentResult}}`
+  );
   const $component = this.$(); //component dom element
   const $learningTarget = $component.find('.qz-learning-target');
 
   T.exists(assert, $learningTarget, 'Missing learning target component');
-  T.exists(assert, $learningTarget.find('.learning-target'), 'Missing learning target wrapper');
-  T.exists(assert, $learningTarget.find('.header-content'), 'Missing learning target header');
+  T.exists(
+    assert,
+    $learningTarget.find('.learning-target'),
+    'Missing learning target wrapper'
+  );
+  T.exists(
+    assert,
+    $learningTarget.find('.header-content'),
+    'Missing learning target header'
+  );
   T.exists(assert, $learningTarget.find('.score'), 'Missing score box');
-  T.exists(assert, $learningTarget.find('.learning-target-description'), 'Missing learning target');
+  T.exists(
+    assert,
+    $learningTarget.find('.learning-target-description'),
+    'Missing learning target'
+  );
   T.exists(assert, $learningTarget.find('.questions'), 'Missing questions');
 });

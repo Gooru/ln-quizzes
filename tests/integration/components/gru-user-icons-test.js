@@ -2,19 +2,23 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
 
-moduleForComponent('gru-user-icons', 'Integration | Component | gru user icons', {
-  integration: true
-});
+moduleForComponent(
+  'gru-user-icons',
+  'Integration | Component | gru user icons',
+  {
+    integration: true
+  }
+);
 
-
-test('it renders all users when the number of users is less than the view threshold', function(assert) {
-
+test('it renders all users when the number of users is less than the view threshold', function(
+  assert
+) {
   var users = [
     Ember.Object.create({
       user: Ember.Object.create({
         id: 1,
-        firstName: "Bobby",
-        lastName: "Fisher"
+        firstName: 'Bobby',
+        lastName: 'Fisher'
       })
     })
   ];
@@ -27,26 +31,37 @@ test('it renders all users when the number of users is less than the view thresh
   const $firstView = $component.find('.first-view');
 
   assert.ok($component, 'Component does not have the component class');
-  assert.equal($firstView.find('.user').length, 1, 'Incorrect number of users at first view');
-  assert.ok(!$firstView.find('.num-left').length, 'User number indicator should not be present');
-  assert.ok(!$firstView.hasClass('clickable'), 'First view container should not have class "clickable"');
+  assert.equal(
+    $firstView.find('.user').length,
+    1,
+    'Incorrect number of users at first view'
+  );
+  assert.ok(
+    !$firstView.find('.num-left').length,
+    'User number indicator should not be present'
+  );
+  assert.ok(
+    !$firstView.hasClass('clickable'),
+    'First view container should not have class "clickable"'
+  );
 });
 
-test('it renders all users when the number of users is equal to the view threshold', function(assert) {
-
+test('it renders all users when the number of users is equal to the view threshold', function(
+  assert
+) {
   const users = [
     Ember.Object.create({
       user: Ember.Object.create({
         id: 1,
-        firstName: "Bobby",
-        lastName: "Fisher"
+        firstName: 'Bobby',
+        lastName: 'Fisher'
       })
     }),
     Ember.Object.create({
       user: Ember.Object.create({
         id: 2,
-        firstName: "John",
-        lastName: "Doe"
+        firstName: 'John',
+        lastName: 'Doe'
       })
     })
   ];
@@ -59,40 +74,51 @@ test('it renders all users when the number of users is equal to the view thresho
   const $firstView = $component.find('.first-view');
 
   assert.ok($component, 'Component does not have the component class');
-  assert.equal($firstView.find('.user').length, 2, 'Incorrect number of users at first view');
-  assert.ok(!$firstView.find('.num-left').length, 'User number indicator should not be present');
-  assert.ok(!$firstView.hasClass('clickable'), 'First view container should not have class "clickable"');
+  assert.equal(
+    $firstView.find('.user').length,
+    2,
+    'Incorrect number of users at first view'
+  );
+  assert.ok(
+    !$firstView.find('.num-left').length,
+    'User number indicator should not be present'
+  );
+  assert.ok(
+    !$firstView.hasClass('clickable'),
+    'First view container should not have class "clickable"'
+  );
 });
 
-test('it renders all users when the number of users is greater than the view threshold', function(assert) {
-
+test('it renders all users when the number of users is greater than the view threshold', function(
+  assert
+) {
   const users = [
     Ember.Object.create({
       user: Ember.Object.create({
         id: 1,
-        firstName: "Bobby",
-        lastName: "Fisher"
+        firstName: 'Bobby',
+        lastName: 'Fisher'
       })
     }),
     Ember.Object.create({
       user: Ember.Object.create({
         id: 2,
-        firstName: "John",
-        lastName: "Doe"
+        firstName: 'John',
+        lastName: 'Doe'
       })
     }),
     Ember.Object.create({
       user: Ember.Object.create({
         id: 3,
-        firstName: "Martha",
-        lastName: "Stewart"
+        firstName: 'Martha',
+        lastName: 'Stewart'
       })
     }),
     Ember.Object.create({
       user: Ember.Object.create({
         id: 4,
-        firstName: "John",
-        lastName: "Fitzgerald"
+        firstName: 'John',
+        lastName: 'Fitzgerald'
       })
     })
   ];
@@ -106,7 +132,6 @@ test('it renders all users when the number of users is greater than the view thr
   assert.equal($component.find('.first-view .num-left').length, 1);
   assert.equal($component.find('.remaining .user').length, 4);
 });
-
 
 /* TODO
 test('users are sorted first by state (active first), then ascending alphabetically by last name', function(assert) {

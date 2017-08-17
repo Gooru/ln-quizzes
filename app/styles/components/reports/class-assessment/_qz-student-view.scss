@@ -1,22 +1,21 @@
 .reports.class-assessment.qz-student-view {
-  .sort-section{
+  .sort-section {
     margin-top: -5px;
 
-    .btn-group button{
+    .btn-group button {
       @include flexbox;
-      @include align-content(stretch)
-      @include align-items(center);
+      @include align-content(stretch) @include align-items(center);
       @include justify-content(flex-start);
       @include flex-wrap(nowrap);
       @include flex-direction(row);
-      i{
+      i {
         vertical-align: middle;
         padding: 0 10px 0 0;
         font-size: $font-size-h4;
       }
     }
   }
-  .student-performance-list{
+  .student-performance-list {
     @include flexbox;
     @include flex-wrap(wrap);
     margin-top: 24px;

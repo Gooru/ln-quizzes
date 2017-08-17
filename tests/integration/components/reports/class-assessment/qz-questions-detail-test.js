@@ -10,40 +10,47 @@ import hbs from 'htmlbars-inline-precompile';
 import T from 'dummy/tests/helpers/assert';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
-moduleForComponent('reports/class-assessment/qz-questions-detail', 'Integration | Component | reports/class assessment/qz questions detail', {
-  integration: true
-});
+moduleForComponent(
+  'reports/class-assessment/qz-questions-detail',
+  'Integration | Component | reports/class assessment/qz questions detail',
+  {
+    integration: true
+  }
+);
 
 test('Layout', function(assert) {
-  const selectedQuestion = Resource.create({ //Single Choice
+  const selectedQuestion = Resource.create({
+    //Single Choice
     id: '56b120483b6e7b090501d3e7',
     isResource: false,
     type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers: Ember.A([
-      Answer.create({value: 1, text: 'Answer 1'}),
-      Answer.create({value: 2, text: 'Answer 2'}),
-      Answer.create({value: 3, text: 'Answer 3'})
+      Answer.create({ value: 1, text: 'Answer 1' }),
+      Answer.create({ value: 2, text: 'Answer 2' }),
+      Answer.create({ value: 3, text: 'Answer 3' })
     ]),
     sequence: 1
   });
 
-  let assessment = Collection.create({
+  const assessment = Collection.create({
     resources: [
       selectedQuestion,
-      Resource.create({ //Single Choice
+      Resource.create({
+        //Single Choice
         id: '56a1204886b2e565e1b2c230',
         isResource: false,
         type: QUESTION_TYPES.singleChoice,
         body: 'Sample Question SC',
         answers: Ember.A([
-          Answer.create({value: 1, text: 'Answer 1'}),
-          Answer.create({value: 2, text: 'Answer 2'}),
-          Answer.create({value: 3, text: 'Answer 3'})
+          Answer.create({ value: 1, text: 'Answer 1' }),
+          Answer.create({ value: 2, text: 'Answer 2' }),
+          Answer.create({ value: 3, text: 'Answer 3' })
         ]),
         sequence: 2
       }),
-      Resource.create({ //Single Choice
+      Resource.create({
+        //Single Choice
         id: '56a12048ddee2022a741356a',
         isResource: false,
         type: QUESTION_TYPES.trueFalse,
@@ -57,7 +64,7 @@ test('Layout', function(assert) {
     ]
   });
 
-  let reportData = ReportData.create({
+  const reportData = ReportData.create({
     collection: assessment,
     reportEvents: [
       ReportDataEvent.create({
@@ -114,60 +121,96 @@ test('Layout', function(assert) {
     ]
   });
 
-  let model = Ember.Object.create({
+  const model = Ember.Object.create({
     selectedQuestion,
     reportData
   });
 
   this.set('model', model);
 
-  this.render(hbs`{{reports/class-assessment/qz-questions-detail model=model }}`);
+  this.render(
+    hbs`{{reports/class-assessment/qz-questions-detail model=model }}`
+  );
 
   const $component = this.$();
   const $navigation = $component.find('.navigation');
   T.exists(assert, $navigation, 'Missing navigation');
-  T.exists(assert, $navigation.find('.gru-bubbles'), 'Missing navigation bubbles');
-  assert.equal($navigation.find('.gru-bubbles .bubble').length, 3, 'Wrong number of questions');
-  assert.equal($navigation.find('.gru-bubbles .bubble:eq(1)').text(), '2', 'Wrong question number for second question');
+  T.exists(
+    assert,
+    $navigation.find('.gru-bubbles'),
+    'Missing navigation bubbles'
+  );
+  assert.equal(
+    $navigation.find('.gru-bubbles .bubble').length,
+    3,
+    'Wrong number of questions'
+  );
+  assert.equal(
+    $navigation.find('.gru-bubbles .bubble:eq(1)').text(),
+    '2',
+    'Wrong question number for second question'
+  );
 
-  assert.ok($navigation.find('.gru-bubbles .bubble:eq(0)').hasClass('selected'), 'First question should be selected');
+  assert.ok(
+    $navigation.find('.gru-bubbles .bubble:eq(0)').hasClass('selected'),
+    'First question should be selected'
+  );
 
-  T.exists(assert, $component.find('.body .question-info'), 'Missing question information panel');
-  T.exists(assert, $component.find('.body .question-info .qz-question-information'), 'Missing question information component');
-  T.exists(assert, $component.find('.body .question-metrics'), 'Missing question metrics panel');
-  T.exists(assert, $component.find('.body .question-metrics .qz-question-performance'), 'Missing question performance component');
+  T.exists(
+    assert,
+    $component.find('.body .question-info'),
+    'Missing question information panel'
+  );
+  T.exists(
+    assert,
+    $component.find('.body .question-info .qz-question-information'),
+    'Missing question information component'
+  );
+  T.exists(
+    assert,
+    $component.find('.body .question-metrics'),
+    'Missing question metrics panel'
+  );
+  T.exists(
+    assert,
+    $component.find('.body .question-metrics .qz-question-performance'),
+    'Missing question performance component'
+  );
 });
 
 test('Layout Anonymous', function(assert) {
-  const selectedQuestion = Resource.create({ //Single Choice
+  const selectedQuestion = Resource.create({
+    //Single Choice
     id: '56b120483b6e7b090501d3e7',
     isResource: false,
     type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers: Ember.A([
-      Answer.create({value: 1, text: 'Answer 1'}),
-      Answer.create({value: 2, text: 'Answer 2'}),
-      Answer.create({value: 3, text: 'Answer 3'})
+      Answer.create({ value: 1, text: 'Answer 1' }),
+      Answer.create({ value: 2, text: 'Answer 2' }),
+      Answer.create({ value: 3, text: 'Answer 3' })
     ]),
     sequence: 1
   });
 
-  let assessment = Collection.create({
+  const assessment = Collection.create({
     resources: [
       selectedQuestion,
-      Resource.create({ //Single Choice
+      Resource.create({
+        //Single Choice
         id: '56a1204886b2e565e1b2c230',
         isResource: false,
         type: QUESTION_TYPES.singleChoice,
         body: 'Sample Question SC',
         answers: Ember.A([
-          Answer.create({value: 1, text: 'Answer 1'}),
-          Answer.create({value: 2, text: 'Answer 2'}),
-          Answer.create({value: 3, text: 'Answer 3'})
+          Answer.create({ value: 1, text: 'Answer 1' }),
+          Answer.create({ value: 2, text: 'Answer 2' }),
+          Answer.create({ value: 3, text: 'Answer 3' })
         ]),
         sequence: 2
       }),
-      Resource.create({ //Single Choice
+      Resource.create({
+        //Single Choice
         id: '56a12048ddee2022a741356a',
         isResource: false,
         type: QUESTION_TYPES.trueFalse,
@@ -181,7 +224,7 @@ test('Layout Anonymous', function(assert) {
     ]
   });
 
-  let reportData = ReportData.create({
+  const reportData = ReportData.create({
     collection: assessment,
     reportEvents: [
       ReportDataEvent.create({
@@ -238,7 +281,7 @@ test('Layout Anonymous', function(assert) {
     ]
   });
 
-  let model = Ember.Object.create({
+  const model = Ember.Object.create({
     selectedQuestion,
     reportData,
     anonymous: true
@@ -246,43 +289,52 @@ test('Layout Anonymous', function(assert) {
 
   this.set('model', model);
 
-  this.render(hbs`{{reports/class-assessment/qz-questions-detail model=model}}`);
+  this.render(
+    hbs`{{reports/class-assessment/qz-questions-detail model=model}}`
+  );
 
   const $component = this.$();
   const $navigation = $component.find('.navigation');
-  T.exists(assert, $navigation.find('.btn-results'), 'Missing Show Results Button');
+  T.exists(
+    assert,
+    $navigation.find('.btn-results'),
+    'Missing Show Results Button'
+  );
 });
 
 test('Layout Anonymous and Show Results', function(assert) {
-  const selectedQuestion = Resource.create({ //Single Choice
+  const selectedQuestion = Resource.create({
+    //Single Choice
     id: '56b120483b6e7b090501d3e7',
     isResource: false,
     type: QUESTION_TYPES.singleChoice,
     body: 'Sample Question SC',
     answers: Ember.A([
-      Answer.create({value: 1, text: 'Answer 1'}),
-      Answer.create({value: 2, text: 'Answer 2'}),
-      Answer.create({value: 3, text: 'Answer 3'})
+      Answer.create({ value: 1, text: 'Answer 1' }),
+      Answer.create({ value: 2, text: 'Answer 2' }),
+      Answer.create({ value: 3, text: 'Answer 3' })
     ]),
     sequence: 1
   });
 
-  let assessment = Collection.create({
+  const assessment = Collection.create({
     resources: [
       selectedQuestion,
-      Resource.create({ //Single Choice
+      Resource.create({
+        //Single Choice
         id: '56a1204886b2e565e1b2c230',
         isResource: false,
         type: QUESTION_TYPES.singleChoice,
         body: 'Sample Question SC',
         answers: Ember.A([
-          Answer.create({value: 1, text: 'Answer 1'}),
-          Answer.create({value: 2, text: 'Answer 2'}),
-          Answer.create({value: 3, text: 'Answer 3'})
+          Answer.create({ value: 1, text: 'Answer 1' }),
+          Answer.create({ value: 2, text: 'Answer 2' }),
+          Answer.create({ value: 3, text: 'Answer 3' })
         ]),
         sequence: 2
       }),
-      Resource.create({ //Single Choice
+      Resource.create({
+        //Single Choice
         id: '56a12048ddee2022a741356a',
         isResource: false,
         type: QUESTION_TYPES.trueFalse,
@@ -296,7 +348,7 @@ test('Layout Anonymous and Show Results', function(assert) {
     ]
   });
 
-  let reportData = ReportData.create({
+  const reportData = ReportData.create({
     collection: assessment,
     reportEvents: [
       ReportDataEvent.create({
@@ -353,20 +405,26 @@ test('Layout Anonymous and Show Results', function(assert) {
     ]
   });
 
-  let model = Ember.Object.create({
+  const model = Ember.Object.create({
     selectedQuestion,
     reportData,
     anonymous: true
   });
 
-  let showResult=true;
+  const showResult = true;
 
   this.set('model', model);
   this.set('showResult', showResult);
 
-  this.render(hbs`{{reports/class-assessment/qz-questions-detail model=model showResult=showResult}}`);
+  this.render(
+    hbs`{{reports/class-assessment/qz-questions-detail model=model showResult=showResult}}`
+  );
 
   const $component = this.$();
   const $navigation = $component.find('.navigation');
-  assert.equal(T.text($navigation.find('.btn-results')), 'Hide Results', 'Incorrect button');
+  assert.equal(
+    T.text($navigation.find('.btn-results')),
+    'Hide Results',
+    'Incorrect button'
+  );
 });

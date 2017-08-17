@@ -21,21 +21,19 @@ export default Ember.Component.extend({
   // Actions
 
   actions: {
-
     /**
      * Select a option
      * @function actions:selectOption
      */
-    selectOption: function () {
-      if(this.get('isChecked')){
-        this.set('isChecked',false);
+    selectOption: function() {
+      if (this.get('isChecked')) {
+        this.set('isChecked', false);
         this.sendAction('onOptionSwitch', this.get('isChecked'));
-      }else{
-        this.set('isChecked',true);
+      } else {
+        this.set('isChecked', true);
         this.sendAction('onOptionSwitch', this.get('isChecked'));
       }
     }
-
   },
   // -------------------------------------------------------------------------
   // Events
@@ -45,14 +43,18 @@ export default Ember.Component.extend({
    */
   didInsertElement: function() {
     this.$('input[type=checkbox][data-toggle^=toggle]').bootstrapToggle();
-    if(this.get('isChecked')){
-      this.$('input[type=checkbox][data-toggle^=toggle]').prop('checked', true).change();
-    }else{
-      this.$('input[type=checkbox][data-toggle^=toggle]').prop('checked', false).change();
+    if (this.get('isChecked')) {
+      this.$('input[type=checkbox][data-toggle^=toggle]')
+        .prop('checked', true)
+        .change();
+    } else {
+      this.$('input[type=checkbox][data-toggle^=toggle]')
+        .prop('checked', false)
+        .change();
     }
   },
-// -------------------------------------------------------------------------
-// Properties
+  // -------------------------------------------------------------------------
+  // Properties
   /**
    * List of options to show in the switch
    *
@@ -64,14 +66,14 @@ export default Ember.Component.extend({
    * Option in the left side of the switch
    * @property {Array} Option A
    */
-  optionA:Ember.computed('switchOptions.[]', function() {
+  optionA: Ember.computed('switchOptions.[]', function() {
     return this.get('switchOptions')[0];
   }),
   /**
    * Option in the right side of the switch
    * @property {Array} Option B
    */
-  optionB:Ember.computed('switchOptions.[]', function() {
+  optionB: Ember.computed('switchOptions.[]', function() {
     return this.get('switchOptions')[1];
   }),
   /**
@@ -79,7 +81,4 @@ export default Ember.Component.extend({
    * @property {Boolean} isChecked
    */
   isChecked: false
-
 });
-
-

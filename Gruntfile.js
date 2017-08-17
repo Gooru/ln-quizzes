@@ -1,14 +1,14 @@
-module.exports = function (grunt) {
-
+module.exports = function(grunt) {
   grunt.initConfig({
     exec: {
-      'run': {
-        cmd: function (command) {
+      run: {
+        cmd: function(command) {
           return command;
         }
       },
       'ember-serve': 'QUIZZES_EMBEDDED=true ember serve',
-      'build-prod-bamboo': 'QUIZZES_EMBEDDED=true ember build --environment=production --output-path quizzes'
+      'build-prod-bamboo':
+        'QUIZZES_EMBEDDED=true ember build --environment=production --output-path quizzes'
     },
     stubby: {
       test: {
@@ -16,32 +16,36 @@ module.exports = function (grunt) {
           relativeFilesPath: true,
           persistent: false,
           mute: true,
-          location: "0.0.0.0"
+          location: '0.0.0.0'
         },
-        files: [{
-          src: ['tests/stubs/**/*-endpoint.json']
-        }]
+        files: [
+          {
+            src: ['tests/stubs/**/*-endpoint.json']
+          }
+        ]
       },
       server: {
         options: {
           relativeFilesPath: true,
           persistent: true,
           mute: false,
-          location: "0.0.0.0"
+          location: '0.0.0.0'
         },
-        files: [{
-          src: ['tests/stubs/**/*-endpoint.json']
-        }]
+        files: [
+          {
+            src: ['tests/stubs/**/*-endpoint.json']
+          }
+        ]
       }
     },
     svgstore: {
       options: {
         svg: {
           xmlns: 'http://www.w3.org/2000/svg',
-          style: "display: none"
+          style: 'display: none'
         }
       },
-      default : {
+      default: {
         files: {
           'public/assets/emoji-one/emoji.svg': ['vendor/emoji-one/*.svg']
         }
@@ -50,9 +54,17 @@ module.exports = function (grunt) {
     eslint: {
       options: {
         configFile: '.eslintrc',
-        quiet: grunt.option('quiet')
+        quiet: grunt.option('quiet'),
+        fix: grunt.option('fix')
       },
-      target: ['addon', 'app', 'config', 'tests/integration', 'tests/unit', 'tests/acceptance']
+      target: [
+        'addon',
+        'app',
+        'config',
+        'tests/integration',
+        'tests/unit',
+        'tests/acceptance'
+      ]
     }
   });
 
@@ -68,26 +80,29 @@ module.exports = function (grunt) {
     grunt.task.run(['eslint']);
   });
 
-  grunt.registerTask('test', function () {
+  grunt.registerTask('test', function() {
     //for development
-    var noStubby = grunt.option("no-stubby") || grunt.option("ns"),
-      server = grunt.option("server") || grunt.option("s");
+    var noStubby = grunt.option('no-stubby') || grunt.option('ns'),
+      server = grunt.option('server') || grunt.option('s');
 
     var command = 'ember exam --split=4 --parallel';
     if (server) {
-      command += " --server";
+      command += ' --server';
     }
-    var testExecTask = 'exec:run:' + command;
+    var testExecTask = `exec:run:${command}`;
 
     var tasks = noStubby ? [testExecTask] : ['stubby:test', testExecTask];
     grunt.task.run(tasks);
   });
 
-  grunt.registerTask('bamboo-test', function () {
-    grunt.task.run(['stubby:test', 'exec:run:ember exam --split=4 --parallel --silent -r xunit > report-xunit.xml']);
+  grunt.registerTask('bamboo-test', function() {
+    grunt.task.run([
+      'stubby:test',
+      'exec:run:ember exam --split=4 --parallel --silent -r xunit > report-xunit.xml'
+    ]);
   });
 
-  grunt.registerTask('run', function () {
+  grunt.registerTask('run', function() {
     var serverExecTask = 'exec:ember-serve';
 
     var tasks = ['generateSVG'];
@@ -96,8 +111,8 @@ module.exports = function (grunt) {
   });
 
   // Wrapper for ember build, this runs generateSVG before the build
-  grunt.registerTask('build', function (target) {
-    var buildExecTask = 'exec:build-' + (target || 'dev');
+  grunt.registerTask('build', function(target) {
+    var buildExecTask = `exec:build-${target || 'dev'}`;
     grunt.task.run(['generateSVG', buildExecTask]);
   });
 

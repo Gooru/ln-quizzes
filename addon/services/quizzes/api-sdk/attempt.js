@@ -3,11 +3,16 @@ import AttemptSerializer from 'quizzes-addon/serializers/attempt/attempt';
 import AttemptAdapter from 'quizzes-addon/adapters/attempt/attempt';
 
 export default Ember.Service.extend({
-
-  init: function () {
+  init: function() {
     this._super(...arguments);
-    this.set('attemptAdapter', AttemptAdapter.create(Ember.getOwner(this).ownerInjection()));
-    this.set('attemptSerializer', AttemptSerializer.create(Ember.getOwner(this).ownerInjection()));
+    this.set(
+      'attemptAdapter',
+      AttemptAdapter.create(Ember.getOwner(this).ownerInjection())
+    );
+    this.set(
+      'attemptSerializer',
+      AttemptSerializer.create(Ember.getOwner(this).ownerInjection())
+    );
   },
 
   // -------------------------------------------------------------------------
@@ -34,8 +39,12 @@ export default Ember.Service.extend({
   getReportData: function(contextId) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('attemptAdapter').getReportData(contextId)
-        .then(response => service.get('attemptSerializer').normalizeReportData(response))
+      service
+        .get('attemptAdapter')
+        .getReportData(contextId)
+        .then(response =>
+          service.get('attemptSerializer').normalizeReportData(response)
+        )
         .then(resolve, reject);
     });
   },
@@ -48,8 +57,12 @@ export default Ember.Service.extend({
   getAttemptData: function(attemptId) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('attemptAdapter').getAttemptData(attemptId)
-        .then(response => service.get('attemptSerializer').normalizeReportDataEvent(response))
+      service
+        .get('attemptAdapter')
+        .getAttemptData(attemptId)
+        .then(response =>
+          service.get('attemptSerializer').normalizeReportDataEvent(response)
+        )
         .then(resolve, reject);
     });
   },
@@ -63,8 +76,12 @@ export default Ember.Service.extend({
   getAttemptIds: function(contextIds, profileIds) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('attemptAdapter').getAttemptIds(contextIds, profileIds)
-        .then(response => service.get('attemptSerializer').normalizeAttemptIds(response))
+      service
+        .get('attemptAdapter')
+        .getAttemptIds(contextIds, profileIds)
+        .then(response =>
+          service.get('attemptSerializer').normalizeAttemptIds(response)
+        )
         .then(resolve, reject);
     });
   }

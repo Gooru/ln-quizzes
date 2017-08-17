@@ -26,7 +26,7 @@ export default Ember.Route.extend({
   // -------------------------------------------------------------------------
   // Actions
 
-  actions:{
+  actions: {
     /**
      * Action triggered when the user clicks on next
      */
@@ -50,25 +50,36 @@ export default Ember.Route.extend({
    */
   quizzesModel(params) {
     const {
-      resourceId, pathId, source, sourceUrl, partnerId, tenantId, classId,
-      courseId, unitId, lessonId, collectionId
+      resourceId,
+      pathId,
+      source,
+      sourceUrl,
+      partnerId,
+      tenantId,
+      classId,
+      courseId,
+      unitId,
+      lessonId,
+      collectionId
     } = params;
-    return this.get('quizzesResourceService').readResource(resourceId).then(resource =>
-      Ember.RSVP.hash({
-        resource,
-        owner: this.getOwnerProfile(resource),
-        pathId,
-        source,
-        sourceUrl,
-        partnerId,
-        tenantId,
-        classId,
-        courseId,
-        unitId,
-        lessonId,
-        collectionId
-      })
-    );
+    return this.get('quizzesResourceService')
+      .readResource(resourceId)
+      .then(resource =>
+        Ember.RSVP.hash({
+          resource,
+          owner: this.getOwnerProfile(resource),
+          pathId,
+          source,
+          sourceUrl,
+          partnerId,
+          tenantId,
+          classId,
+          courseId,
+          unitId,
+          lessonId,
+          collectionId
+        })
+      );
   },
 
   /**
@@ -77,10 +88,12 @@ export default Ember.Route.extend({
   getOwnerProfile: function(resource) {
     const component = this;
     let promise = Ember.RSVP.resolve();
-    let ownerId = resource.ownerId;
-    if(resource.get('narration') || resource.get('displayGuide')){
-      let profiles = [ownerId];
-      promise = component.get('profileService').readProfiles(profiles)
+    const ownerId = resource.ownerId;
+    if (resource.get('narration') || resource.get('displayGuide')) {
+      const profiles = [ownerId];
+      promise = component
+        .get('profileService')
+        .readProfiles(profiles)
         .then(result => resource.set('owner', result[ownerId]));
     }
     return promise;

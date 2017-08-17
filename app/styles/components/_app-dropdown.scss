@@ -4,7 +4,7 @@
       color: $white;
     }
 
-    .selected-text{
+    .selected-text {
       width: 120px;
     }
   }
@@ -13,7 +13,8 @@
     li:not(.disabled) {
       &.selected {
         background-color: $brand-primary;
-        a, a:hover {
+        a,
+        a:hover {
           background-color: $brand-primary;
           color: $white;
         }

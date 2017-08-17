@@ -1,5 +1,8 @@
 import Ember from 'ember';
-import { REAL_TIME_CLIENT, CONTEXT_EVENT_TYPES } from 'quizzes-addon/config/quizzes-config';
+import {
+  REAL_TIME_CLIENT,
+  CONTEXT_EVENT_TYPES
+} from 'quizzes-addon/config/quizzes-config';
 import ConfigMixin from 'quizzes-addon/mixins/endpoint-config';
 
 /**
@@ -13,7 +16,6 @@ import ConfigMixin from 'quizzes-addon/mixins/endpoint-config';
  * @augments ember/Route
  */
 export default Ember.Controller.extend(ConfigMixin, {
-
   queryParams: ['anonymous'],
 
   /**
@@ -45,19 +47,21 @@ export default Ember.Controller.extend(ConfigMixin, {
     /**
      * Navigate to the previous page
      */
-    goBack: function () {
+    goBack: function() {
       this.send('navigateBack');
     },
 
     /**
      * Launch report with anonymous codes
      */
-    launchAnonymous: function () {
-      let url = window.location.href;
-      let separator = !url.includes('?') ? '?' : '&';
+    launchAnonymous: function() {
+      const url = window.location.href;
+      const separator = !url.includes('?') ? '?' : '&';
       window.open(
-        `${url}${separator}anonymous=true`, 'realTimeAnonymous',
-        `width=${window.screen.width}, height=${window.screen.height}, left=0, top=0, scrollbars=1`,
+        `${url}${separator}anonymous=true`,
+        'realTimeAnonymous',
+        `width=${window.screen.width}, height=${window.screen
+          .height}, left=0, top=0, scrollbars=1`,
         true
       );
     }
@@ -108,7 +112,7 @@ export default Ember.Controller.extend(ConfigMixin, {
    * websocket to communicate with the real time server and safely merge
    * any initialization data from the real time server as well
    */
-  reportDataLoaded: Ember.observer('reportData', function () {
+  reportDataLoaded: Ember.observer('reportData', function() {
     const reportData = this.get('reportData');
     const contextId = reportData.get('contextId');
 
@@ -123,66 +127,74 @@ export default Ember.Controller.extend(ConfigMixin, {
   /**
    * Create web socket connection
    */
-   connectWithWebSocket: function (contextId, reportData) {
-     const controller = this;
+  connectWithWebSocket: function(contextId, reportData) {
+    const controller = this;
 
-     // Create a new web socket connection
-     let url = this.getRealTimeWebSocketUrl();
-     let socket = new SockJS(url);
-     let webSocketClient = Stomp.over(socket);
-     webSocketClient.heartbeat.outgoing = REAL_TIME_CLIENT.OUTGOING_HEARTBEAT;
-     webSocketClient.heartbeat.incoming = REAL_TIME_CLIENT.INCOMING_HEARTBEAT;
+    // Create a new web socket connection
+    const url = this.getRealTimeWebSocketUrl();
+    const socket = new SockJS(url);
+    let webSocketClient = Stomp.over(socket);
+    webSocketClient.heartbeat.outgoing = REAL_TIME_CLIENT.OUTGOING_HEARTBEAT;
+    webSocketClient.heartbeat.incoming = REAL_TIME_CLIENT.INCOMING_HEARTBEAT;
 
-     controller.set('webSocketClient', webSocketClient);
+    controller.set('webSocketClient', webSocketClient);
 
-     webSocketClient.connect({}, function () {
-       // Clear a failed connection notification, if there was one
-       controller.clearNotification();
+    webSocketClient.connect(
+      {},
+      function() {
+        // Clear a failed connection notification, if there was one
+        controller.clearNotification();
 
-       // A web socket connection was made to the RT server. Before subscribing
-       // for live messages, a request will be made to fetch any initialization data
-       // from the RT server (to avoid overriding data from live messages with init data)
-       const channel = contextId;
+        // A web socket connection was made to the RT server. Before subscribing
+        // for live messages, a request will be made to fetch any initialization data
+        // from the RT server (to avoid overriding data from live messages with init data)
+        const channel = contextId;
 
-       // Subscribe to listen for live messages
-       webSocketClient.subscribe(`/topic/${channel}`, function (message) {
-         let eventMessage = JSON.parse(message.body);
-         let profilePromise = Ember.RSVP.resolve();
-         let profileId = eventMessage.profileId;
-         if(eventMessage.eventName === CONTEXT_EVENT_TYPES.START) {
-           profilePromise = controller.get('quizzesProfileService').readProfiles([ profileId ]);
-         }
-         profilePromise.then(profiles => {
-           let profile = profiles ? profiles[profileId] : null;
-           if(profile) {
-             eventMessage.profileName = profile.get('fullName');
-           }
-           reportData.parseEvent(eventMessage);
-         });
-       });
+        // Subscribe to listen for live messages
+        webSocketClient.subscribe(`/topic/${channel}`, function(message) {
+          const eventMessage = JSON.parse(message.body);
+          let profilePromise = Ember.RSVP.resolve();
+          const profileId = eventMessage.profileId;
+          if (eventMessage.eventName === CONTEXT_EVENT_TYPES.START) {
+            profilePromise = controller
+              .get('quizzesProfileService')
+              .readProfiles([profileId]);
+          }
+          profilePromise.then(profiles => {
+            const profile = profiles ? profiles[profileId] : null;
+            if (profile) {
+              eventMessage.profileName = profile.get('fullName');
+            }
+            reportData.parseEvent(eventMessage);
+          });
+        });
+      },
+      function() {
+        const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
 
-     }, function () {
-       const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
+        controller.showNotification();
+        webSocketClient.disconnect();
+        webSocketClient = null;
 
-       controller.showNotification();
-       webSocketClient.disconnect();
-       webSocketClient = null;
-
-       setTimeout(
-        () => controller.connectWithWebSocket(contextId, reportData),
-        connectAttemptDelay);
-     });
-   },
+        setTimeout(
+          () => controller.connectWithWebSocket(contextId, reportData),
+          connectAttemptDelay
+        );
+      }
+    );
+  },
 
   /**
    * Show a connection lost notification
    */
-  showNotification: function () {
-    let isDisplayed = this.get('isNotificationDisplayed');
+  showNotification: function() {
+    const isDisplayed = this.get('isNotificationDisplayed');
 
     if (!isDisplayed) {
-      let notifications = this.get('quizzesNotifications');
-      let message = this.get('i18n').t('common.warnings.on-air-connection-lost').string;
+      const notifications = this.get('quizzesNotifications');
+      const message = this.get('i18n').t(
+        'common.warnings.on-air-connection-lost'
+      ).string;
 
       // Use custom options for the notification
       notifications.setOptions({
@@ -208,7 +220,7 @@ export default Ember.Controller.extend(ConfigMixin, {
   /**
    * Remove all notifications
    */
-  clearNotification: function () {
+  clearNotification: function() {
     this.get('quizzesNotifications').clear();
     this.set('isNotificationDisplayed', false);
   }

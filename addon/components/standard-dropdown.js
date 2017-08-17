@@ -10,7 +10,7 @@ export default Ember.Component.extend({
    * @property {string} size class
    * @see bootstrap button dropdown
    */
-  "btn-group-size": 'btn-group-lg',
+  'btn-group-size': 'btn-group-lg',
   /**
    * @property {[]} standards
    */
@@ -25,24 +25,21 @@ export default Ember.Component.extend({
   /**
    * @property {DropdownItem[]} items
    */
-  dropdownItems: function(){
-    const standards = this.get("standards");
-    return standards.map(function(standard){
+  dropdownItems: function() {
+    const standards = this.get('standards');
+    return standards.map(function(standard) {
       return DropdownItem.create({
         data: standard,
-        id: standard.get("id"),
-        label: standard.get("name"),
-        disabled: standard.get("disabled")
+        id: standard.get('id'),
+        label: standard.get('name'),
+        disabled: standard.get('disabled')
       });
     });
-  }.property("standards"),
+  }.property('standards'),
 
   actions: {
-
     onStandardSelected: function(items) {
-      this.sendAction("onStandardSelectedAction", items);
+      this.sendAction('onStandardSelectedAction', items);
     }
-
   }
-
 });

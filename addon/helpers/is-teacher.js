@@ -1,5 +1,8 @@
 import Ember from 'ember';
 
+/**
+ * Check if a user is teacher
+ */
 export function isTeacher(params) {
   /**
    * @property {Class}

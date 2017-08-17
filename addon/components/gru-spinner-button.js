@@ -9,16 +9,13 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
-
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['gru-spinner-button'],
+  classNames: ['gru-spinner-button'],
 
   tagName: 'div',
 
@@ -27,7 +24,6 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Events
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -41,11 +37,10 @@ export default Ember.Component.extend({
    * isLoading
    * @property {boolean}
    */
-  isLoading:false
+  isLoading: false
 
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods

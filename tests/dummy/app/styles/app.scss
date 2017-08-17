@@ -1,8 +1,8 @@
 @import 'quizzes';
 
-
 #quizzes-application-container {
-  .quizzes, > .ember-view {
+  .quizzes,
+  > .ember-view {
     height: 100%;
   }
   .app-container {

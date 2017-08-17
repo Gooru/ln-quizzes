@@ -1,8 +1,10 @@
 import Ember from 'ember';
-import { ASSESSMENT_SHOW_VALUES, MAX_ATTEMPTS } from 'quizzes-addon/config/quizzes-config';
+import {
+  ASSESSMENT_SHOW_VALUES,
+  MAX_ATTEMPTS
+} from 'quizzes-addon/config/quizzes-config';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
   /**
@@ -26,7 +28,7 @@ export default Ember.Component.extend({
     onAttemptsChange: function(newValue) {
       Ember.Logger.log('onAttemptsChange', newValue);
     },
-    onClassroomPlayEnabledChange: function(){
+    onClassroomPlayEnabledChange: function() {
       Ember.Logger.log('onClassroomPlayEnabledChange');
     },
     onBackwardsChange: function(isChecked) {
@@ -45,13 +47,16 @@ export default Ember.Component.extend({
    * @property {Array}
    */
   attemptsOptions: Ember.computed(function() {
-    let options = [{
-      id: -1,
-      name: this.get('i18n').t('gru-settings-edit.attempts-unlimited')
-    }];
-    for (let i=1; i<=MAX_ATTEMPTS; i+=1) {
+    const options = [
+      {
+        id: -1,
+        name: this.get('i18n').t('gru-settings-edit.attempts-unlimited')
+      }
+    ];
+    for (let i = 1; i <= MAX_ATTEMPTS; i += 1) {
       options.push({
-        id: i, name: i
+        id: i,
+        name: i
       });
     }
     return options;
@@ -73,11 +78,14 @@ export default Ember.Component.extend({
    * Toggle Options
    * @property {Ember.Array}
    */
-  switchOptions: Ember.A([Ember.Object.create({
-    'label': 'On',
-    'value': true
-  }),Ember.Object.create({
-    'label': 'Off',
-    'value': false
-  })])
+  switchOptions: Ember.A([
+    Ember.Object.create({
+      label: 'On',
+      value: true
+    }),
+    Ember.Object.create({
+      label: 'Off',
+      value: false
+    })
+  ])
 });

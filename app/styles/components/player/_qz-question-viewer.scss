@@ -47,13 +47,13 @@
         max-height: 100%;
       }
     }
-    .hints, .explanation{
+    .hints,
+    .explanation {
       display: block;
     }
   }
 
   .answers-panel {
-
     .answer-choices {
       span.letter {
         vertical-align: top;
@@ -65,7 +65,7 @@
       text-align: center;
       .save {
         @media (min-width: $screen-sm) {
-          float:right;
+          float: right;
         }
       }
     }
@@ -89,7 +89,7 @@
     .feedback-emotion {
       height: 50px;
       width: 50px;
-      float:left;
+      float: left;
     }
     .correct {
       margin-top: -14px;
@@ -117,16 +117,15 @@
         }
       }
     }
-    .btn-group{
-      button{
-        span i{
+    .btn-group {
+      button {
+        span i {
           vertical-align: middle;
         }
       }
-      & .explanation{
+      & .explanation {
         margin-left: 1px;
       }
-
     }
 
     > .hints {

@@ -1,5 +1,5 @@
-.gru-bubbles{
-  .bubble{
+.gru-bubbles {
+  .bubble {
     width: 23px;
     height: 23px;
     border-radius: 3px;
@@ -9,23 +9,23 @@
     vertical-align: middle;
     line-height: 18px;
   }
-  .incorrect{
+  .incorrect {
     border-color: $brand-incorrect;
     background-color: $brand-incorrect;
   }
-  .correct{
+  .correct {
     border-color: $brand-success;
     background-color: $brand-success;
   }
-  .skipped{
+  .skipped {
     border-color: $dark-300;
     background-color: $dark-300;
   }
-  .started{
+  .started {
     border-color: $blue-400;
     background-color: $blue-400;
   }
-  .bubbles-list{
+  .bubbles-list {
     list-style: none;
     padding: 10px 0 0 0;
     margin: 0;
@@ -35,8 +35,8 @@
       padding: 0;
       margin: 0 0 5px 0;
     }
-    a{
-      color:$white;
+    a {
+      color: $white;
     }
   }
 }

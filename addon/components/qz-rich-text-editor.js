@@ -11,29 +11,33 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['qz-rich-text-editor'],
+  classNames: ['qz-rich-text-editor'],
 
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
     toggleExpressionsPanel() {
-      if(this.get('showExpressionsPanel')){
+      if (this.get('showExpressionsPanel')) {
         this.cancelExpression();
       }
       this.toggleProperty('showExpressionsPanel');
     },
     insertExpression() {
       var component = this;
-      var editorClass = '.editor-box'+component.get('editorIndex');
+      var editorClass = `.editor-box${component.get('editorIndex')}`;
 
       if (component.get('editor') && component.get('mathField')) {
-        let latex = component.get('mathField').latex();
-        let html = "<span class='gru-math-expression'><span class='source' hidden>" + latex + "</span>" + katex.renderToString(latex) + "</span>";
+        const latex = component.get('mathField').latex();
+        const html = `<span class='gru-math-expression'><span class='source' hidden>${latex}</span>${katex.renderToString(
+          latex
+        )}</span>`;
         component.get('editor').focus();
 
         if (component.get('cursor')) {
-          component.get('editor').composer.selection.setBookmark(component.get('cursor'));
+          component
+            .get('editor')
+            .composer.selection.setBookmark(component.get('cursor'));
         }
         if (component.get('editor').composer) {
           component.get('editor').composer.commands.exec('insertHTML', html);
@@ -48,12 +52,16 @@ export default Ember.Component.extend({
     },
     updateExpression() {
       var component = this;
-      var editorClass = '.editor-box'+component.get('editorIndex');
-      if (component.get('editingExpression') && component.get('editor') && component.get('mathField')) {
-        let latex = component.get('mathField').latex();
-        let source = component.get('editingExpression').find('.source');
+      var editorClass = `.editor-box${component.get('editorIndex')}`;
+      if (
+        component.get('editingExpression') &&
+        component.get('editor') &&
+        component.get('mathField')
+      ) {
+        const latex = component.get('mathField').latex();
+        const source = component.get('editingExpression').find('.source');
         if (source && source.length && latex !== source.text()) {
-          let html = katex.renderToString(latex);
+          const html = katex.renderToString(latex);
           source.text(latex);
           component.get('editingExpression').find('.katex').replaceWith(html);
           var editorElement = component.$(editorClass);
@@ -72,11 +80,13 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     var component = this;
-    var editorId = 'wysihtml-editor'+component.get('editorIndex');
-    var editorClass = '.editor-box'+component.get('editorIndex');
-    var toolbarId = 'wysihtml-toolbar'+component.get('editorIndex');
-    var mathExp = '#wysihtml-editor'+component.get('editorIndex')+'.editable .gru-math-expression';
-    var mathFieldClass = '.math-field'+component.get('editorIndex');
+    var editorId = `wysihtml-editor${component.get('editorIndex')}`;
+    var editorClass = `.editor-box${component.get('editorIndex')}`;
+    var toolbarId = `wysihtml-toolbar${component.get('editorIndex')}`;
+    var mathExp = `#wysihtml-editor${component.get(
+      'editorIndex'
+    )}.editable .gru-math-expression`;
+    var mathFieldClass = `.math-field${component.get('editorIndex')}`;
 
     var mathFieldSpan = component.$(mathFieldClass)[0];
     // Initialize Mathquill
@@ -94,16 +104,18 @@ export default Ember.Component.extend({
 
     component.set('editor', editor);
 
-    // observe load Event
-    editor.on('load', onLoad);
-
+    /**
+     * Function to run on load
+     */
     function onLoad() {
-      Ember.run (function(){
-        if (editor.composer && editor.composer.commands)
-        {
+      Ember.run(function() {
+        if (editor.composer && editor.composer.commands) {
           editor.focus();
           if (component.get('content')) {
-            editor.composer.commands.exec('insertHTML', component.get('content'));
+            editor.composer.commands.exec(
+              'insertHTML',
+              component.get('content')
+            );
             component.renderMathExpressions();
             component.makeExpressionsReadOnly();
             component.setCursor();
@@ -111,8 +123,11 @@ export default Ember.Component.extend({
         }
       });
       // unobserve load Event
-      editor.stopObserving("onLoad", onLoad);
+      editor.stopObserving('onLoad', onLoad);
     }
+
+    // observe load Event
+    editor.on('load', onLoad);
 
     // Add expression to MathQuill field
     component.$().on('click', '.tab-pane a', function(e) {
@@ -139,7 +154,7 @@ export default Ember.Component.extend({
     component.$().on('click', mathExp, function(e) {
       e.preventDefault();
       var sourceLatex = $(mathExp).find('.source').text();
-      if (sourceLatex && sourceLatex !== "") {
+      if (sourceLatex && sourceLatex !== '') {
         component.set('editingExpression', $(mathExp).closest(mathExp));
         component.set('showExpressionsPanel', true);
         Ember.run.later(function() {
@@ -147,7 +162,6 @@ export default Ember.Component.extend({
         }, 100);
       }
     });
-
   },
 
   /**
@@ -155,8 +169,10 @@ export default Ember.Component.extend({
    */
   willDestroyElement: function() {
     const component = this;
-    var editorClass = '.editor-box' + component.get('editorIndex');
-    var mathExp = '#wysihtml-editor' + component.get('editorIndex') + '.editable .gru-math-expression';
+    var editorClass = `.editor-box${component.get('editorIndex')}`;
+    var mathExp = `#wysihtml-editor${component.get(
+      'editorIndex'
+    )}.editable .gru-math-expression`;
 
     component.$().off('click', '.tab-pane a');
     component.$().off('click', editorClass);
@@ -229,7 +245,7 @@ export default Ember.Component.extend({
    */
   showMessage: Ember.computed('content', function() {
     var contentEditor = removeHtmlTags(this.get('content'));
-    if ($.trim(contentEditor)==='') {
+    if ($.trim(contentEditor) === '') {
       this.set('content', contentEditor);
       return true;
     }
@@ -240,9 +256,9 @@ export default Ember.Component.extend({
    * @param {Computed } editorIndex - computed property that generate an UUID for the editor index
    */
 
-  editorIndex: Ember.computed(function(){
+  editorIndex: Ember.computed(function() {
     let editorIndex = this.get('uuid');
-    if (!editorIndex){
+    if (!editorIndex) {
       editorIndex = generateUUID();
     }
 
@@ -294,14 +310,10 @@ export default Ember.Component.extend({
   /**
    * It searches all of the text nodes in a given element for the given delimiters, and renders the math in place.
    */
-  renderMathExpressions(){
-    var editorId = 'wysihtml-editor'+this.get('editorIndex');
-    window.renderMathInElement(
-      document.getElementById(editorId),
-      {
-        delimiters: [
-          {left: '$$', right: '$$', display: false}
-        ]
-      });
+  renderMathExpressions() {
+    var editorId = `wysihtml-editor${this.get('editorIndex')}`;
+    window.renderMathInElement(document.getElementById(editorId), {
+      delimiters: [{ left: '$$', right: '$$', display: false }]
+    });
   }
 });

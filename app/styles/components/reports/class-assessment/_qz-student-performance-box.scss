@@ -3,7 +3,7 @@
   margin-right: 5px;
   .panel {
     margin-bottom: 5px;
-    .panel-heading{
+    .panel-heading {
       padding: 5px;
       cursor: pointer;
       color: $white;
@@ -17,10 +17,10 @@
         display: inline-block;
       }
       .material-icons {
-        font-size:$in-progress-icon-size;
+        font-size: $in-progress-icon-size;
       }
 
-      &.anonymous{
+      &.anonymous {
         font-size: $font-size-anonymous;
         line-height: $font-size-anonymous;
         height: 40px;
@@ -29,14 +29,13 @@
           max-width: 100%;
         }
       }
-
-      &.not-started{
+      &.not-started {
         background-color: $dark-300;
         .name {
           max-width: 100%;
         }
       }
-      .question-in-progress{
+      .question-in-progress {
         padding-top: 2px;
       }
     }
@@ -58,7 +57,8 @@
         margin-left: 7px;
         margin-bottom: 5px;
         border-radius: 4px;
-        &.skipped, &.not-started {
+        &.skipped,
+        &.not-started {
           background-color: $light-200;
         }
         &.correct {

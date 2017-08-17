@@ -1,13 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-resource'],
+  classNames: ['qz-resource'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -15,9 +14,9 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Events
 
-  didInsertElement: function () {
-    if(this.get('aspectRatio')) {
-      const delay = 300;  // milliseconds
+  didInsertElement: function() {
+    if (this.get('aspectRatio')) {
+      const delay = 300; // milliseconds
       var timer = null;
 
       // Get the component dimensions from the css
@@ -30,7 +29,6 @@ export default Ember.Component.extend({
       });
     }
   },
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -60,12 +58,13 @@ export default Ember.Component.extend({
     const widthString = width > 0 ? `${width}px` : '100%';
     const height = this.get('height');
     const heightString = height > 0 ? `${height}px` : '100%';
-    return Ember.String.htmlSafe(`width: ${widthString}; height: ${heightString};`);
+    return Ember.String.htmlSafe(
+      `width: ${widthString}; height: ${heightString};`
+    );
   }),
 
   // -------------------------------------------------------------------------
   // Observers
-
 
   // -------------------------------------------------------------------------
   // Methods
@@ -73,22 +72,25 @@ export default Ember.Component.extend({
   /**
    * Update the width value of the component per the css width value
    */
-  updateHeight: function () {
+  updateHeight: function() {
     const component = this;
     const aspectRatio = component.get('aspectRatio');
     const $element = Ember.$(component.element);
-    const height = $element.css('height') ? parseInt($element.css('height').split('px')[0]) : 0;
-    const width = $element.css('width') ? parseInt($element.css('width').split('px')[0]) : 0;
+    const height = $element.css('height')
+      ? parseInt($element.css('height').split('px')[0])
+      : 0;
+    const width = $element.css('width')
+      ? parseInt($element.css('width').split('px')[0])
+      : 0;
     let newWidth = height * aspectRatio.width / aspectRatio.height;
     let newHeight = 0;
-    if(newWidth > width) {
+    if (newWidth > width) {
       newWidth = 0;
       newHeight = width * aspectRatio.height / aspectRatio.width;
     }
-    if(!component.isDestroyed) {
+    if (!component.isDestroyed) {
       component.set('width', newWidth);
       component.set('height', newHeight);
     }
   }
-
 });

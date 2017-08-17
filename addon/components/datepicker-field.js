@@ -9,7 +9,6 @@ import Ember from 'ember';
  * @typedef {object} DatepickerField
  */
 export default Ember.Component.extend({
-
   /**
    * @property {string} placeholder
    */
@@ -18,7 +17,7 @@ export default Ember.Component.extend({
   /**
    * @property {string} on select date action
    */
-  onSelectDateAction: "onSelectDate",
+  onSelectDateAction: 'onSelectDate',
 
   didInsertElement: function() {
     var component = this;
@@ -26,11 +25,10 @@ export default Ember.Component.extend({
     $component.datepicker({
       autoclose: true
     });
-    $component.on("changeDate", function() {
+    $component.on('changeDate', function() {
       var dateValue = $component.datepicker('getFormattedDate');
       component.$('#datepicker').val(dateValue);
-      component.sendAction("onSelectDateAction", dateValue);
+      component.sendAction('onSelectDateAction', dateValue);
     });
   }
-
 });

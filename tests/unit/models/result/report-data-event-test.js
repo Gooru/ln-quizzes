@@ -4,10 +4,13 @@ import ResourceResult from 'quizzes-addon/models/result/resource';
 import Profile from 'quizzes-addon/models/profile/profile';
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('model:result/report-data-event', 'Unit | Model | result/report-data-event');
+moduleFor(
+  'model:result/report-data-event',
+  'Unit | Model | result/report-data-event'
+);
 
 test('questionResults', function(assert) {
-  let contextResult = this.subject({
+  const contextResult = this.subject({
     resourceResults: Ember.A([
       ResourceResult.create(),
       ResourceResult.create(),
@@ -15,20 +18,24 @@ test('questionResults', function(assert) {
     ])
   });
 
-  assert.equal(contextResult.get('questionResults').length, 1, 'Wrong question results');
+  assert.equal(
+    contextResult.get('questionResults').length,
+    1,
+    'Wrong question results'
+  );
 });
 
 test('generate profileCode without studentId', function(assert) {
   let contextResult = this.subject({
-      profileId: 'test-profile-id'
+    profileId: 'test-profile-id'
   });
   assert.equal(contextResult.get('profileCode'), 'test', 'Wrong profile code');
 });
 
 test('generate profileCode with studentId', function(assert) {
   let contextResult = this.subject({
-      profileId: 'test-profile-id',
-      studentId: 'gcc'
+    profileId: 'test-profile-id',
+    studentId: 'gcc'
   });
   assert.equal(contextResult.get('profileCode'), 'gcc', 'Wrong profile code');
 });
@@ -38,56 +45,112 @@ test('setProfileProperties', function(assert) {
     profileId: 'profile-id',
     studentId: 'gcc001'
   });
-  contextResult.setProfileProperties(Profile.create({
-    firstName: 'first-name',
-    lastName:  'last-name',
-    studentId: 'gcc001'
-  }));
+  contextResult.setProfileProperties(
+    Profile.create({
+      firstName: 'first-name',
+      lastName: 'last-name',
+      studentId: 'gcc001'
+    })
+  );
 
-  assert.equal(contextResult.get('profileName'), 'first-name last-name', 'Wrong profile name');
-  assert.equal(contextResult.get('studentId'), 'gcc001', 'Wrong profile student id');
+  assert.equal(
+    contextResult.get('profileName'),
+    'first-name last-name',
+    'Wrong profile name'
+  );
+  assert.equal(
+    contextResult.get('studentId'),
+    'gcc001',
+    'Wrong profile student id'
+  );
 });
 
 test('totalIncorrect', function(assert) {
-  let contextResult = this.subject({
+  const contextResult = this.subject({
     totalAnswered: 12,
     totalCorrect: 10
   });
-  assert.equal(contextResult.get('totalIncorrect'), 2, 'Wrong first total incorrect');
+  assert.equal(
+    contextResult.get('totalIncorrect'),
+    2,
+    'Wrong first total incorrect'
+  );
   contextResult.set('totalCorrect', 2);
-  assert.equal(contextResult.get('totalIncorrect'), 10, 'Wrong second total incorrect');
+  assert.equal(
+    contextResult.get('totalIncorrect'),
+    10,
+    'Wrong second total incorrect'
+  );
   contextResult.set('totalAnswered', 2);
-  assert.equal(contextResult.get('totalIncorrect'), 0, 'Wrong third total incorrect');
+  assert.equal(
+    contextResult.get('totalIncorrect'),
+    0,
+    'Wrong third total incorrect'
+  );
 });
 
 test('setProfileSummary', function(assert) {
-  let contextResult = this.subject({
+  const contextResult = this.subject({
     profileId: 'profile-id'
   });
-  let summary = {
+  const summary = {
     totalAnswered: 10,
     totalCorrect: 7,
     averageReaction: 2,
     averageScore: 90,
     totalTimeSpent: 1000
   };
-  assert.equal(contextResult.get('totalAnswered'), 0, 'Wrong before call total answered');
-  assert.equal(contextResult.get('totalCorrect'), 0, 'Wrong before call total correct');
-  assert.equal(contextResult.get('totalTimeSpent'), 0, 'Wrong before call total time spent');
-  assert.equal(contextResult.get('averageReaction'), 0, 'Wrong before call average reaction');
-  assert.equal(contextResult.get('averageScore'), 0, 'Wrong before call average score');
-  assert.notOk(contextResult.get('isAttemptFinished'), 'Wrong before call is attempt finished');
+  assert.equal(
+    contextResult.get('totalAnswered'),
+    0,
+    'Wrong before call total answered'
+  );
+  assert.equal(
+    contextResult.get('totalCorrect'),
+    0,
+    'Wrong before call total correct'
+  );
+  assert.equal(
+    contextResult.get('totalTimeSpent'),
+    0,
+    'Wrong before call total time spent'
+  );
+  assert.equal(
+    contextResult.get('averageReaction'),
+    0,
+    'Wrong before call average reaction'
+  );
+  assert.equal(
+    contextResult.get('averageScore'),
+    0,
+    'Wrong before call average score'
+  );
+  assert.notOk(
+    contextResult.get('isAttemptFinished'),
+    'Wrong before call is attempt finished'
+  );
   contextResult.setProfileSummary(summary, true);
   assert.equal(contextResult.get('totalAnswered'), 10, 'Wrong total answered');
   assert.equal(contextResult.get('totalCorrect'), 7, 'Wrong total correct');
-  assert.equal(contextResult.get('totalTimeSpent'), 1000, 'Wrong total time spent');
-  assert.equal(contextResult.get('averageReaction'), 2, 'Wrong average reaction');
+  assert.equal(
+    contextResult.get('totalTimeSpent'),
+    1000,
+    'Wrong total time spent'
+  );
+  assert.equal(
+    contextResult.get('averageReaction'),
+    2,
+    'Wrong average reaction'
+  );
   assert.equal(contextResult.get('averageScore'), 90, 'Wrong average score');
-  assert.ok(contextResult.get('isAttemptFinished'), 'Wrong is attempt finished');
+  assert.ok(
+    contextResult.get('isAttemptFinished'),
+    'Wrong is attempt finished'
+  );
 });
 
 test('findIndexByResourceId', function(assert) {
-  let contextResult = this.subject({
+  const contextResult = this.subject({
     resourceResults: Ember.A([
       ResourceResult.create({
         resourceId: 'id1'
@@ -101,11 +164,15 @@ test('findIndexByResourceId', function(assert) {
     ])
   });
 
-  assert.equal(contextResult.findIndexByResourceId('id2'), 1, 'Wrong resource index');
+  assert.equal(
+    contextResult.findIndexByResourceId('id2'),
+    1,
+    'Wrong resource index'
+  );
 });
 
 test('merge with saved time', function(assert) {
-  let contextResult = this.subject({
+  const contextResult = this.subject({
     resourceResults: Ember.A([
       ResourceResult.create({
         resourceId: 'id1'
@@ -119,7 +186,7 @@ test('merge with saved time', function(assert) {
     ])
   });
 
-  let newResult = QuestionResult.create({
+  const newResult = QuestionResult.create({
     resourceId: 'new',
     savedTime: 10,
     reaction: 1,
@@ -128,17 +195,45 @@ test('merge with saved time', function(assert) {
   });
   contextResult.merge('id3', newResult);
 
-  assert.equal(contextResult.get('resourceResults').get(2).get('resourceId'), 'new', 'Wrong resource id');
-  assert.equal(contextResult.get('resourceResults').get(2).get('savedTime'), 10, 'Wrong saved time');
-  assert.equal(contextResult.get('resourceResults').get(2).get('startTime'), 0, 'Wrong start time');
-  assert.equal(contextResult.get('resourceResults').get(2).get('stopTime'), 0, 'Wrong stop time');
-  assert.equal(contextResult.get('resourceResults').get(2).get('reaction'), 1, 'Wrong reaction');
-  assert.equal(contextResult.get('resourceResults').get(2).get('answer'), 'answer', 'Wrong answer');
-  assert.equal(contextResult.get('resourceResults').get(2).get('score'), 0, 'Wrong score');
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('resourceId'),
+    'new',
+    'Wrong resource id'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('savedTime'),
+    10,
+    'Wrong saved time'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('startTime'),
+    0,
+    'Wrong start time'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('stopTime'),
+    0,
+    'Wrong stop time'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('reaction'),
+    1,
+    'Wrong reaction'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('answer'),
+    'answer',
+    'Wrong answer'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('score'),
+    0,
+    'Wrong score'
+  );
 });
 
 test('merge with time spent', function(assert) {
-  let contextResult = this.subject({
+  const contextResult = this.subject({
     resourceResults: Ember.A([
       ResourceResult.create({
         resourceId: 'id1'
@@ -152,7 +247,7 @@ test('merge with time spent', function(assert) {
     ])
   });
 
-  let newResult = QuestionResult.create({
+  const newResult = QuestionResult.create({
     resourceId: 'new',
     timeSpent: 10,
     reaction: 1,
@@ -161,11 +256,39 @@ test('merge with time spent', function(assert) {
   });
   contextResult.merge('id3', newResult);
 
-  assert.equal(contextResult.get('resourceResults').get(2).get('resourceId'), 'new', 'Wrong resource id');
-  assert.equal(contextResult.get('resourceResults').get(2).get('savedTime'), 10, 'Wrong saved time');
-  assert.equal(contextResult.get('resourceResults').get(2).get('startTime'), 0, 'Wrong start time');
-  assert.equal(contextResult.get('resourceResults').get(2).get('stopTime'), 0, 'Wrong stop time');
-  assert.equal(contextResult.get('resourceResults').get(2).get('reaction'), 1, 'Wrong reaction');
-  assert.equal(contextResult.get('resourceResults').get(2).get('answer'), 'answer', 'Wrong answer');
-  assert.equal(contextResult.get('resourceResults').get(2).get('score'), 0, 'Wrong score');
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('resourceId'),
+    'new',
+    'Wrong resource id'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('savedTime'),
+    10,
+    'Wrong saved time'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('startTime'),
+    0,
+    'Wrong start time'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('stopTime'),
+    0,
+    'Wrong stop time'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('reaction'),
+    1,
+    'Wrong reaction'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('answer'),
+    'answer',
+    'Wrong answer'
+  );
+  assert.equal(
+    contextResult.get('resourceResults').get(2).get('score'),
+    0,
+    'Wrong score'
+  );
 });

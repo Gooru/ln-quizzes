@@ -30,8 +30,8 @@ export default Ember.Component.extend({
     setSubject(subject) {
       const component = this;
       component.set('selectedSubject', subject);
-      if (component.get("onSubjectSelected")) {
-        component.sendAction("onSubjectSelected", subject);
+      if (component.get('onSubjectSelected')) {
+        component.sendAction('onSubjectSelected', subject);
       }
     }
   },
@@ -50,9 +50,9 @@ export default Ember.Component.extend({
   /**
    * @type {Array} List of subjects
    */
-  subjectsWithStandards: Ember.computed("subjects", function(){
-    return this.get("subjects").filter(function(subject){
-      return subject.get("hasStandards");
+  subjectsWithStandards: Ember.computed('subjects', function() {
+    return this.get('subjects').filter(function(subject) {
+      return subject.get('hasStandards');
     });
   }),
 
@@ -82,5 +82,4 @@ export default Ember.Component.extend({
    * @property {string} dropdown alignment, right | left
    */
   alignment: null
-
 });

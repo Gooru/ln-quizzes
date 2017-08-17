@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -25,5 +24,4 @@ export default Ember.Component.extend({
    * @property {boolean}
    */
   showReactionBar: true
-
 });

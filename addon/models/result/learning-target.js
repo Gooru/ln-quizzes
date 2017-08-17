@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 
 /**
  * Model for a learning target result.
@@ -7,7 +7,6 @@ import Ember from "ember";
  *
  */
 export default Ember.Object.extend({
-
   /**
    * @property {String} id - The standard|learningTarget ID
    */
@@ -37,5 +36,4 @@ export default Ember.Object.extend({
    * @property {ResourceResult[]} suggestedResources
    */
   suggestedResources: []
-
 });

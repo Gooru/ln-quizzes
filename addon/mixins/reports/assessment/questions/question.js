@@ -6,7 +6,6 @@ import Ember from 'ember';
  * @see reports/assessment/questions/qz-single-choice.js
  */
 export default Ember.Mixin.create({
-
   // -------------------------------------------------------------------------
   // Properties
 
@@ -30,5 +29,4 @@ export default Ember.Mixin.create({
    * @property {boolean} indicates if it is in anonymous mode
    */
   anonymous: null
-
 });

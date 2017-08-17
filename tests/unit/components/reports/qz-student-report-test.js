@@ -5,11 +5,15 @@ import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 import Collection from 'quizzes-addon/models/collection/collection';
 import Resource from 'quizzes-addon/models/resource/resource';
 
-moduleForComponent('reports/qz-student-report', 'Unit | Component | reports/qz student report', {
-  // Specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar'],
-  unit: true
-});
+moduleForComponent(
+  'reports/qz-student-report',
+  'Unit | Component | reports/qz student report',
+  {
+    // Specify the other units that are required for this test
+    // needs: ['component:foo', 'helper:bar'],
+    unit: true
+  }
+);
 test('contextResult', function(assert) {
   const collection = Collection.create({
     id: 'collection-id',
@@ -27,8 +31,8 @@ test('contextResult', function(assert) {
         title: 'Resource 2'
       })
     ],
-    settings:{
-      showKey:false
+    settings: {
+      showKey: false
     }
   });
   const attemptData = ReportDataEvent.create({
@@ -53,10 +57,14 @@ test('contextResult', function(assert) {
       })
     ])
   });
-  let component = this.subject({
+  const component = this.subject({
     attemptData
   });
-  assert.deepEqual(component.get('contextResult.reportEvent'),attemptData, 'Attempt Data should match');
+  assert.deepEqual(
+    component.get('contextResult.reportEvent'),
+    attemptData,
+    'Attempt Data should match'
+  );
 });
 
 test('collection', function(assert) {
@@ -76,8 +84,8 @@ test('collection', function(assert) {
         title: 'Resource 2'
       })
     ],
-    settings:{
-      showKey:false
+    settings: {
+      showKey: false
     }
   });
   const attemptData = ReportDataEvent.create({
@@ -102,10 +110,14 @@ test('collection', function(assert) {
       })
     ])
   });
-  let component = this.subject({
+  const component = this.subject({
     attemptData
   });
-  assert.deepEqual(component.get('collection'),collection, 'Collection should match');
+  assert.deepEqual(
+    component.get('collection'),
+    collection,
+    'Collection should match'
+  );
 });
 test('isAnswerKeyHidden', function(assert) {
   const collection = Collection.create({
@@ -124,8 +136,8 @@ test('isAnswerKeyHidden', function(assert) {
         title: 'Resource 2'
       })
     ],
-    settings:{
-      showKey:false
+    settings: {
+      showKey: false
     }
   });
   const attemptData = ReportDataEvent.create({
@@ -150,10 +162,14 @@ test('isAnswerKeyHidden', function(assert) {
       })
     ])
   });
-  let component = this.subject({
+  const component = this.subject({
     attemptData
   });
-  assert.equal(component.get('isAnswerKeyHidden'),true, 'Answer key should be hidden');
+  assert.equal(
+    component.get('isAnswerKeyHidden'),
+    true,
+    'Answer key should be hidden'
+  );
 });
 
 test('areAnswersHidden', function(assert) {
@@ -173,8 +189,8 @@ test('areAnswersHidden', function(assert) {
         title: 'Resource 2'
       })
     ],
-    settings:{
-      showFeedback:'never'
+    settings: {
+      showFeedback: 'never'
     }
   });
   const attemptData = ReportDataEvent.create({
@@ -199,8 +215,12 @@ test('areAnswersHidden', function(assert) {
       })
     ])
   });
-  let component = this.subject({
+  const component = this.subject({
     attemptData
   });
-  assert.equal(component.get('areAnswersHidden'),true, 'Answers should be hidden');
+  assert.equal(
+    component.get('areAnswersHidden'),
+    true,
+    'Answers should be hidden'
+  );
 });

@@ -20,19 +20,32 @@ test('sendFinishResource', function(assert) {
   });
 
   const routes = function() {
-    this.post('/quizzes/api/v1/resources/resource-id/finish',
+    this.post(
+      '/quizzes/api/v1/resources/resource-id/finish',
       request => {
-        let requestBodyJson = JSON.parse(request.requestBody);
-        assert.equal(requestBodyJson.resourceEventData, 'event-data', 'Wrong resource event data');
-        assert.equal(requestBodyJson.eventContext, 'event-context', 'Wrong event context');
-        return  [ 200, {'Content-Type': 'application/json'}, '{}' ];
-      }, false);
+        const requestBodyJson = JSON.parse(request.requestBody);
+        assert.equal(
+          requestBodyJson.resourceEventData,
+          'event-data',
+          'Wrong resource event data'
+        );
+        assert.equal(
+          requestBodyJson.eventContext,
+          'event-context',
+          'Wrong event context'
+        );
+        return [200, { 'Content-Type': 'application/json' }, '{}'];
+      },
+      false
+    );
   };
 
   this.pretender.map(routes);
-  this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
-  let done = assert.async();
-  adapter.sendFinishResource('resource-id', 'event-data', 'event-context')
+  this.pretender.unhandledRequest = (verb, path) =>
+    assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+  const done = assert.async();
+  adapter
+    .sendFinishResource('resource-id', 'event-data', 'event-context')
     .then(done);
 });
 
@@ -44,19 +57,24 @@ test('readResource', function(assert) {
   });
 
   const routes = function() {
-    this.get('/api/nucleus/v1/resources/resource-id',
+    this.get(
+      '/api/nucleus/v1/resources/resource-id',
       () => [
         200,
-        {'Content-Type': 'application/json'},
+        { 'Content-Type': 'application/json' },
         JSON.stringify({
           id: 'resource-id'
         })
-      ], false);
+      ],
+      false
+    );
   };
 
   this.pretender.map(routes);
-  this.pretender.unhandledRequest = (verb, path) => assert.ok(false, `Wrong request [${verb}] url: ${path}`);
-  adapter.readResource('resource-id')
+  this.pretender.unhandledRequest = (verb, path) =>
+    assert.ok(false, `Wrong request [${verb}] url: ${path}`);
+  adapter
+    .readResource('resource-id')
     .then(response =>
       assert.deepEqual(response.id, 'resource-id', 'Wrong response')
     );

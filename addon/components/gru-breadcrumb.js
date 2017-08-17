@@ -14,28 +14,25 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Dependencies
 
-
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['gru-breadcrumb'],
+  classNames: ['gru-breadcrumb'],
 
   // -------------------------------------------------------------------------
   // Actions
 
-  actions:{
-
+  actions: {
     /**
      * selectItem selects breadcrumb item
      */
-    selectItem: function(item){
-      this.sendAction("onSelectedItem", item);
+    selectItem: function(item) {
+      this.sendAction('onSelectedItem', item);
     }
   },
 
   // -------------------------------------------------------------------------
   // Events
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -53,16 +50,14 @@ export default Ember.Component.extend({
   /**
    * Determine the column class name based on the length of items
    */
-  itemClassName: Ember.computed('items.[]', function(){
-    const length = this.get("items.length");
+  itemClassName: Ember.computed('items.[]', function() {
+    const length = this.get('items.length');
     return `breadcrumb-col-${length}`;
   })
 
   // -------------------------------------------------------------------------
   // Observers
 
-
   // -------------------------------------------------------------------------
   // Methods
-
 });

@@ -2,23 +2,21 @@ import Ember from 'ember';
 import { getGradeColor } from 'quizzes-addon/utils/utils';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     /**
      * Handle event triggered by gru-bubbles
      */
-    bubbleSelect:function(bubbleOption) {
+    bubbleSelect: function(bubbleOption) {
       this.sendAction('onBubbleSelect', bubbleOption);
     },
 
     /**
      * Handle event triggered by gru-bubbles
      */
-    selectAttempt:function(attempt) {
+    selectAttempt: function(attempt) {
       this.set('selectedAttempt', attempt);
       this.sendAction('onSelectAttempt', attempt);
     }
@@ -31,7 +29,7 @@ export default Ember.Component.extend({
 
   // -------------------------------------------------------------------------
   // Events
-  init: function () {
+  init: function() {
     this._super(...arguments);
     this.set('selectedAttempt', this.get('contextResult.totalAttempts'));
   },
@@ -58,8 +56,10 @@ export default Ember.Component.extend({
    * @property {String} gradeStyle style safe string for the grade
    */
   gradeStyle: Ember.computed('contextResult.correctPercentage', function() {
-    let color = getGradeColor(this.get('contextResult.correctPercentage') ||
-      this.get('contextResult.reportEvent.averageScore'));
+    const color = getGradeColor(
+      this.get('contextResult.correctPercentage') ||
+        this.get('contextResult.reportEvent.averageScore')
+    );
     return Ember.String.htmlSafe(`background-color: ${color}`);
   }),
 
@@ -76,25 +76,32 @@ export default Ember.Component.extend({
   /**
    * @property {[]}
    */
-  resourceLinks: Ember.computed('contextResult.sortedResourceResults.@each.updated', function(){
-    return this.getResourceLinks(this.get('contextResult.sortedResourceResults'));
-  }),
+  resourceLinks: Ember.computed(
+    'contextResult.sortedResourceResults.@each.updated',
+    function() {
+      return this.getResourceLinks(
+        this.get('contextResult.sortedResourceResults')
+      );
+    }
+  ),
 
   /**
    * @property {[]}
    */
-  attempts: Ember.computed('contextResult.totalAttempts', function(){
+  attempts: Ember.computed('contextResult.totalAttempts', function() {
     return this.getAttemptList();
   }),
   /**
    * @property {boolean}showAttempts
    */
-  showAttempts:true,
+  showAttempts: true,
 
-  hasQuestionScore: Ember.computed('contextResult.reportEvent.totalAnswered', function() {
-    return this.get('contextResult.reportEvent.totalAnswered') > 0;
-  }),
-
+  hasQuestionScore: Ember.computed(
+    'contextResult.reportEvent.totalAnswered',
+    function() {
+      return this.get('contextResult.reportEvent.totalAnswered') > 0;
+    }
+  ),
 
   // -------------------------------------------------------------------------
   // Methods
@@ -103,8 +110,8 @@ export default Ember.Component.extend({
    * Create list of attempts to show on the UI
    * @returns {Array}
    */
-  getAttemptList: function () {
-    let attempts = [];
+  getAttemptList: function() {
+    const attempts = [];
     let totalAttempts = this.get('contextResult.totalAttempts');
 
     for (; totalAttempts > 0; totalAttempts--) {
@@ -121,14 +128,13 @@ export default Ember.Component.extend({
    * @param resourceResults
    * @returns {Array}
    */
-  getResourceLinks: function (resourceResults) {
-    return resourceResults.map(
-      (resourceResult, index) => Ember.Object.create({
+  getResourceLinks: function(resourceResults) {
+    return resourceResults.map((resourceResult, index) =>
+      Ember.Object.create({
         label: index + 1,
         status: resourceResult.get('attemptStatus'),
         value: resourceResult.get('id')
       })
     );
   }
-
 });

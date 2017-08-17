@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
   /**
@@ -16,9 +15,12 @@ export default Ember.Route.extend({
    * Get model for the controller
    */
   model: function() {
-
-    let teacherConfig = this.get('configurationService.configuration.properties.teacher');
-    let context = this.get('configurationService.configuration.properties.context');
+    const teacherConfig = this.get(
+      'configurationService.configuration.properties.teacher'
+    );
+    const context = this.get(
+      'configurationService.configuration.properties.context'
+    );
 
     return Ember.RSVP.hash({
       teacherConfig,
@@ -32,8 +34,7 @@ export default Ember.Route.extend({
    * @param model
    */
   setupController: function(controller, model) {
-    controller.set('teacherConfig',model.teacherConfig);
-    controller.set('context',model.context);
+    controller.set('teacherConfig', model.teacherConfig);
+    controller.set('context', model.context);
   }
-
 });

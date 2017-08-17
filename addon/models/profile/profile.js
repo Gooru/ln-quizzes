@@ -9,7 +9,7 @@ export default Ember.Object.extend({
   /**
    * @property {string} avatarUrl - The profile image
    */
-  avatarUrl:null,
+  avatarUrl: null,
 
   /**
    * @property {string} email - The profile email
@@ -54,5 +54,4 @@ export default Ember.Object.extend({
    * @property {string} studentId - The user student id
    */
   studentId: null
-
 });

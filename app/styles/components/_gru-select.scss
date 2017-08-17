@@ -14,15 +14,15 @@
       &:hover,
       &:active,
       &:active:hover {
-        background-color: $white!important;
+        background-color: $white !important;
         background-image: none;
         color: $gray !important;
       }
     }
   }
-  &.open > .btn-default.dropdown-toggle{
+  &.open > .btn-default.dropdown-toggle {
     box-shadow: none;
-    background-color: $white!important;
+    background-color: $white !important;
   }
 }
 .bootstrap-select.btn-group {
@@ -54,7 +54,7 @@
     }
   }
   .dropdown-menu.inner {
-    max-height: 300px!important;
+    max-height: 300px !important;
     position: relative;
     padding-bottom: 5px;
     width: 100%;

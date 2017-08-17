@@ -1,13 +1,16 @@
 import Ember from 'ember';
-import { averageReaction, correctAnswers, correctPercentage, totalTimeSpent}
-  from 'quizzes-addon/utils/question-result';
+import {
+  averageReaction,
+  correctAnswers,
+  correctPercentage,
+  totalTimeSpent
+} from 'quizzes-addon/utils/question-result';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import { module, test } from 'qunit';
 
-
 module('Unit | Utility | question-result');
 
-test('Average Reaction', function (assert) {
+test('Average Reaction', function(assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},
@@ -27,7 +30,7 @@ test('Average Reaction', function (assert) {
   assert.equal(averageReaction(questions), 4, 'Average reaction should be 4');
 });
 
-test('Correct Answers', function (assert) {
+test('Correct Answers', function(assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},
@@ -47,7 +50,7 @@ test('Correct Answers', function (assert) {
   assert.equal(correctAnswers(questions), 1, 'Correct answer should be 1');
 });
 
-test('Correct Percentage', function (assert) {
+test('Correct Percentage', function(assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},
@@ -71,10 +74,14 @@ test('Correct Percentage', function (assert) {
       answer: null //skipped
     })
   ]);
-  assert.equal(correctPercentage(questions), 33, 'Correct Percentage should be 33');
+  assert.equal(
+    correctPercentage(questions),
+    33,
+    'Correct Percentage should be 33'
+  );
 });
 
-test('Total Time Spent', function (assert) {
+test('Total Time Spent', function(assert) {
   const questions = Ember.A([
     QuestionResult.create({
       question: {},

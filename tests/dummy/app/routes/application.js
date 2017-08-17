@@ -8,7 +8,6 @@ import Error from 'quizzes-addon/models/error';
  * @typedef {object} ApplicationRoute
  */
 export default Ember.Route.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -27,24 +26,24 @@ export default Ember.Route.extend({
   // -------------------------------------------------------------------------
   // Methods
 
-  setupGlobalErrorHandling: Ember.on('init', function () {
+  setupGlobalErrorHandling: Ember.on('init', function() {
     const route = this;
 
     // Ultimately all server and javascript errors will be caught by this handler
-    Ember.onerror = function (error) {
-      if(error.status !== 401) {
-        const errorMessage = route.get('i18n').t('common.unexpectedError').string;
+    Ember.onerror = function(error) {
+      if (error.status !== 401) {
+        const errorMessage = route.get('i18n').t('common.unexpectedError')
+          .string;
         route.get('notifications').error(errorMessage);
         route.trackAppError(error);
       }
     };
 
     Ember.$(document).ajaxError(function(event, jqXHR, settings) {
-      if(jqXHR.status !== 401) {
+      if (jqXHR.status !== 401) {
         route.trackEndPointError(event, jqXHR, settings);
       }
     });
-
   }),
 
   beforeModel: function() {
@@ -63,7 +62,7 @@ export default Ember.Route.extend({
     const themeId = params.themeId || Env.themes.default;
 
     var theme = null;
-    if (themeId && themeConfig[themeId]){
+    if (themeId && themeConfig[themeId]) {
       theme = GruTheme.create(themeConfig[themeId]);
       theme.set('id', themeId);
     }
@@ -74,13 +73,13 @@ export default Ember.Route.extend({
     });
   },
 
-  afterModel: function(){
+  afterModel: function() {
     this.handleLegacyUrlIfNecessary();
   },
 
   setupController: function(controller, model) {
     const theme = model.theme;
-    if (theme){
+    if (theme) {
       controller.set('theme', theme);
       this.setupTheme(theme, model.translations);
     }
@@ -91,7 +90,7 @@ export default Ember.Route.extend({
    * @param {GruTheme} theme
    * @param {*} translations
    */
-  setupTheme: function(theme, translations){
+  setupTheme: function(theme, translations) {
     this.setupThemeStyles(theme);
     this.setupThemeTranslations(theme.get('translations.locale'), translations);
   },
@@ -101,13 +100,13 @@ export default Ember.Route.extend({
    * @param {string} locale theme locale
    * @param {{}} translations theme translations
    */
-  setupThemeTranslations: function(locale, translations){
+  setupThemeTranslations: function(locale, translations) {
     const i18n = this.get('i18n');
     //sets the theme locale
     i18n.set('locale', locale);
 
     //Add the translations
-    Object.keys(translations).forEach((locale) => {
+    Object.keys(translations).forEach(locale => {
       i18n.addTranslations(locale, translations[locale]);
     });
   },
@@ -116,13 +115,15 @@ export default Ember.Route.extend({
    * Sets the theme styles if available
    * @param {GruTheme} theme
    */
-  setupThemeStyles: function(theme){
+  setupThemeStyles: function(theme) {
     //setting theme id at html tag
     Ember.$('html').attr('id', theme.get('id'));
     //adding theme styles to head tag
     const themeStylesUrl = theme.get('styles.url');
-    if (themeStylesUrl){
-      Ember.$('head').append(`<link id="theme-style-link" rel="stylesheet" type="text/css" href="${themeStylesUrl}">`);
+    if (themeStylesUrl) {
+      Ember.$('head').append(
+        `<link id="theme-style-link" rel="stylesheet" type="text/css" href="${themeStylesUrl}">`
+      );
     }
   },
 
@@ -134,7 +135,8 @@ export default Ember.Route.extend({
     const legacyUrl = GooruLegacyUrl.create({
       url: route.get('router.url')
     });
-    if (legacyUrl.get('isLegacyUrl')) { //checking for a legacy legacyUrl
+    if (legacyUrl.get('isLegacyUrl')) {
+      //checking for a legacy legacyUrl
       const routeParams = legacyUrl.get('routeParams');
       if (routeParams) {
         route.transitionTo.apply(route, routeParams);
@@ -148,17 +150,19 @@ export default Ember.Route.extend({
    * @param jqXHR
    * @param settings
      */
-  trackEndPointError : function(event, jqXHR, settings){
+  trackEndPointError: function(event, jqXHR, settings) {
     const route = this;
-    const targetElement = event.currentTarget && event.currentTarget.activeElement ?
-      event.currentTarget.activeElement : false;
+    const targetElement =
+      event.currentTarget && event.currentTarget.activeElement
+        ? event.currentTarget.activeElement
+        : false;
     const model = Error.create({
       type: 'url',
       timestamp: new Date().getTime(),
       details: {
         route: route.get('router.url'),
         userAgent: navigator.userAgent,
-        'element-selector': (targetElement ? targetElement.className: null),
+        'element-selector': targetElement ? targetElement.className : null,
         endpoint: {
           url: settings.url,
           response: jqXHR.responseText,
@@ -178,11 +182,14 @@ export default Ember.Route.extend({
    * Tracks application/js errors
    * @param error
    */
-  trackAppError : function(error){
+  trackAppError: function(error) {
     const route = this;
 
     // do not track errors at the user-error api, this to prevent a loop
-    if (error.responseText && error.responseText.indexOf('api/nucleus-utils/v1/user-error') >= 0 ) {
+    if (
+      error.responseText &&
+      error.responseText.indexOf('api/nucleus-utils/v1/user-error') >= 0
+    ) {
       return;
     }
 
@@ -201,7 +208,7 @@ export default Ember.Route.extend({
     Ember.Logger.error(error);
   },
 
-  deactivate: function () {
+  deactivate: function() {
     Ember.$(document).off('ajaxError');
   },
 
@@ -209,7 +216,7 @@ export default Ember.Route.extend({
    * Handle the logic for the embedded application
    * @returns {Promise.<TResult>}
    */
-  handleEmbeddedApplication: function () {
+  handleEmbeddedApplication: function() {
     const route = this;
     const transition = Env.APP.transition;
     const configurationService = route.get('configurationService');

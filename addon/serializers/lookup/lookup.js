@@ -12,16 +12,19 @@ import LicenseModel from 'quizzes-addon/models/license';
  * @typedef {Object} ProfileSerializer
  */
 export default Ember.Object.extend({
-
   /**
    * Normalizes audiences
    * @param {} payload
    * @returns {Audience[]}
    */
-  normalizeReadAudiences: function (payload) {
+  normalizeReadAudiences: function(payload) {
     const items = payload.audience || [];
-    return items.map(function(audience){
-      return AudienceModel.create({ id: audience.id, name: audience.label, order: audience.sequence_id });
+    return items.map(function(audience) {
+      return AudienceModel.create({
+        id: audience.id,
+        name: audience.label,
+        order: audience.sequence_id
+      });
     });
   },
 
@@ -30,10 +33,14 @@ export default Ember.Object.extend({
    * @param {} payload
    * @returns {DepthOfKnowledge[]}
    */
-  normalizeReadDepthOfKnowledgeItems: function (payload) {
+  normalizeReadDepthOfKnowledgeItems: function(payload) {
     const items = payload.depth_of_knowledge || [];
-    return items.map(function(dok){
-      return DepthOfKnowledgeModel.create({ id: dok.id, name: dok.label, order: dok.sequence_id });
+    return items.map(function(dok) {
+      return DepthOfKnowledgeModel.create({
+        id: dok.id,
+        name: dok.label,
+        order: dok.sequence_id
+      });
     });
   },
 
@@ -42,10 +49,14 @@ export default Ember.Object.extend({
    * @param {} payload
    * @returns {License[]}
    */
-  normalizeReadLicenses: function (payload) {
+  normalizeReadLicenses: function(payload) {
     const items = payload.license || [];
-    return items.map(function(license){
-      return LicenseModel.create({ id: license.id, name: license.label, order: license.sequence_id });
+    return items.map(function(license) {
+      return LicenseModel.create({
+        id: license.id,
+        name: license.label,
+        order: license.sequence_id
+      });
     });
   },
 
@@ -54,10 +65,14 @@ export default Ember.Object.extend({
    * @param {} payload
    * @returns {Country[]}
    */
-  normalizeReadCountries: function (payload) {
+  normalizeReadCountries: function(payload) {
     const countries = payload.countries || [];
-    return countries.map(function(country){
-      return CountryModel.create({ id: country.id, name: country.name, code: country.code });
+    return countries.map(function(country) {
+      return CountryModel.create({
+        id: country.id,
+        name: country.name,
+        code: country.code
+      });
     });
   },
 
@@ -66,10 +81,14 @@ export default Ember.Object.extend({
    * @param {} payload
    * @returns {State[]}
    */
-  normalizeReadStates: function (payload) {
+  normalizeReadStates: function(payload) {
     const states = payload.states || [];
-    return states.map(function(state){
-      return StateModel.create({ id: state.id, name: state.name, code: state.code });
+    return states.map(function(state) {
+      return StateModel.create({
+        id: state.id,
+        name: state.name,
+        code: state.code
+      });
     });
   },
 
@@ -78,10 +97,14 @@ export default Ember.Object.extend({
    * @param {} payload
    * @returns {District[]}
    */
-  normalizeReadDistricts: function (payload) {
+  normalizeReadDistricts: function(payload) {
     const districts = payload['school-districts'] || [];
-    return districts.map(function(district){
-      return DistrictModel.create({ id: district.id, name: district.name, code: district.code });
+    return districts.map(function(district) {
+      return DistrictModel.create({
+        id: district.id,
+        name: district.name,
+        code: district.code
+      });
     });
   }
 });

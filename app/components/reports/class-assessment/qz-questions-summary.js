@@ -1,1 +1,3 @@
-export { default } from 'quizzes-addon/components/reports/class-assessment/qz-questions-summary';
+export {
+  default
+} from 'quizzes-addon/components/reports/class-assessment/qz-questions-summary';

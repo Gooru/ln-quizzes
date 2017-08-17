@@ -4,30 +4,58 @@ import { moduleFor, test } from 'ember-qunit';
 moduleFor('model:result/question', 'Unit | Model | result/question');
 
 test('attemptStatus', function(assert) {
-  let resourceResult = this.subject({
+  const resourceResult = this.subject({
     score: 100,
     skipped: false,
     resource: Ember.Object.create({
       isResource: false
     })
   });
-  assert.equal(resourceResult.get('attemptStatus'), 'correct', 'The status should be correct');
+  assert.equal(
+    resourceResult.get('attemptStatus'),
+    'correct',
+    'The status should be correct'
+  );
   resourceResult.set('score', 0);
-  assert.equal(resourceResult.get('attemptStatus'), 'incorrect', 'The status should be incorrect');
+  assert.equal(
+    resourceResult.get('attemptStatus'),
+    'incorrect',
+    'The status should be incorrect'
+  );
   resourceResult.set('resource.isOpenEnded', true);
-  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The question status should be started');
+  assert.equal(
+    resourceResult.get('attemptStatus'),
+    'started',
+    'The question status should be started'
+  );
   resourceResult.set('skipped', true);
-  assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The status should be skipped');
+  assert.equal(
+    resourceResult.get('attemptStatus'),
+    'skipped',
+    'The status should be skipped'
+  );
   resourceResult.set('resource.isOpenEnded', false);
-  assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The status should be skipped');
+  assert.equal(
+    resourceResult.get('attemptStatus'),
+    'skipped',
+    'The status should be skipped'
+  );
   resourceResult.set('resource.isResource', true);
-  assert.equal(resourceResult.get('attemptStatus'), 'skipped', 'The resource status should be skipped');
+  assert.equal(
+    resourceResult.get('attemptStatus'),
+    'skipped',
+    'The resource status should be skipped'
+  );
   resourceResult.set('skipped', false);
-  assert.equal(resourceResult.get('attemptStatus'), 'started', 'The resource status should be started');
+  assert.equal(
+    resourceResult.get('attemptStatus'),
+    'started',
+    'The resource status should be started'
+  );
 });
 
 test('clear', function(assert) {
-  let resourceResult = this.subject({
+  const resourceResult = this.subject({
     answer: [],
     score: 100,
     reaction: 2,
@@ -46,7 +74,7 @@ test('clear', function(assert) {
 });
 
 test('correct/incorrect', function(assert) {
-  let resourceResult = this.subject({
+  const resourceResult = this.subject({
     score: 100
   });
   assert.ok(resourceResult.get('correct'), 'Correct should be true');
@@ -57,18 +85,21 @@ test('correct/incorrect', function(assert) {
 });
 
 test('started', function(assert) {
-  let resourceResult = this.subject();
+  const resourceResult = this.subject();
   assert.notOk(resourceResult.get('started'), 'Started should be false');
   resourceResult.set('answer', [{}]);
   assert.ok(resourceResult.get('started'), 'Started should be true');
 });
 
 test('isOpenEnded', function(assert) {
-  let resource = Ember.Object.create({
+  const resource = Ember.Object.create({
     isOpenEnded: false
   });
-  let resourceResult = this.subject({ resource });
-  assert.notOk(resourceResult.get('isOpenEnded'), 'isOpenEnded should be false');
+  const resourceResult = this.subject({ resource });
+  assert.notOk(
+    resourceResult.get('isOpenEnded'),
+    'isOpenEnded should be false'
+  );
   resource.set('isOpenEnded', true);
   assert.ok(resourceResult.get('isOpenEnded'), 'isOpenEnded should be true');
 });

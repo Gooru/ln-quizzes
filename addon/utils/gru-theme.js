@@ -7,7 +7,6 @@ import Ember from 'ember';
  * @typedef {object} GruTheme
  */
 export default Ember.Object.extend({
-
   // -------------------------------------------------------------------------
   // Properties
   /**
@@ -45,10 +44,10 @@ export default Ember.Object.extend({
    * }
    *
    */
-  loadTranslations: function(){
+  loadTranslations: function() {
     const theme = this;
-    const url = theme.get("translations.url");
-    return (url) ? theme._loadTranslations(url) : Ember.A();
+    const url = theme.get('translations.url');
+    return url ? theme._loadTranslations(url) : Ember.A();
   },
 
   /**
@@ -57,11 +56,9 @@ export default Ember.Object.extend({
    * @returns {Promise}
    * @private
    */
-  _loadTranslations: function(url){
+  _loadTranslations: function(url) {
     return new Ember.RSVP.Promise(function(resolve) {
       Ember.$.get(url, null, resolve);
     });
   }
-
 });
-

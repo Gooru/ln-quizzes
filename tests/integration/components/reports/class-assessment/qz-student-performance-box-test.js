@@ -4,12 +4,15 @@ import QuestionResult from 'quizzes-addon/models/result/question';
 import T from 'dummy/tests/helpers/assert';
 import Ember from 'ember';
 
-moduleForComponent('reports/class-assessment/qz-student-performance-box', 'Integration | Component | reports/class assessment/qz student performance box', {
-  integration: true
-});
+moduleForComponent(
+  'reports/class-assessment/qz-student-performance-box',
+  'Integration | Component | reports/class assessment/qz student performance box',
+  {
+    integration: true
+  }
+);
 
-test('Layout when all completed', function (assert) {
-
+test('Layout when all completed', function(assert) {
   assert.expect(10);
 
   const student = Ember.Object.create({
@@ -56,7 +59,7 @@ test('Layout when all completed', function (assert) {
   this.set('student', student);
   this.set('reportData', reportData);
 
-  this.on('selectStudent', function(){
+  this.on('selectStudent', function() {
     assert.ok(true, 'This should be called once');
   });
 
@@ -77,16 +80,31 @@ test('Layout when all completed', function (assert) {
   const $questions = $component.find('.panel .questions');
   T.exists(assert, $questions, 'Missing questions area');
 
-  assert.equal($questions.find('span.correct').length, 2, 'It should displayed 2 correct questions');
-  assert.equal($questions.find('span.incorrect').length, 1, 'It should displayed 1 incorrect question');
-  assert.equal($questions.find('span.not-started').length, 0, 'It should displayed 0 not started questions');
-  assert.equal($questions.find('span.skipped').length, 1, 'It should displayed 1 skipped question');
+  assert.equal(
+    $questions.find('span.correct').length,
+    2,
+    'It should displayed 2 correct questions'
+  );
+  assert.equal(
+    $questions.find('span.incorrect').length,
+    1,
+    'It should displayed 1 incorrect question'
+  );
+  assert.equal(
+    $questions.find('span.not-started').length,
+    0,
+    'It should displayed 0 not started questions'
+  );
+  assert.equal(
+    $questions.find('span.skipped').length,
+    1,
+    'It should displayed 1 skipped question'
+  );
 
   $component.find('.panel').click();
 });
 
-test('Layout having not started questions', function (assert) {
-
+test('Layout having not started questions', function(assert) {
   assert.expect(9);
 
   const student = Ember.Object.create({
@@ -130,7 +148,7 @@ test('Layout having not started questions', function (assert) {
   this.set('student', student);
   this.set('reportData', reportData);
 
-  this.on('selectStudent', function(){
+  this.on('selectStudent', function() {
     assert.ok(true, 'This should be called once');
   });
 
@@ -145,21 +163,40 @@ test('Layout having not started questions', function (assert) {
   const $header = $component.find('.panel .panel-heading');
   T.exists(assert, $header, 'Missing student box title');
   T.exists(assert, $header.find('.score'), 'Missing student box score');
-  T.exists(assert, $header.find('.question-in-progress'), 'Missing in progress icon');
+  T.exists(
+    assert,
+    $header.find('.question-in-progress'),
+    'Missing in progress icon'
+  );
 
   const $questions = $component.find('.panel .questions');
   T.exists(assert, $questions, 'Missing questions area');
 
-  assert.equal($questions.find('span.correct').length, 2, 'It should displayed 2 correct questions');
-  assert.equal($questions.find('span.incorrect').length, 1, 'It should displayed 1 incorrect questions');
-  assert.equal($questions.find('span.not-started').length, 1, 'It should displayed 1 not started question');
-  assert.equal($questions.find('span.skipped').length, 0, 'It should displayed 0 skipped questions, they are treated as incorrect');
+  assert.equal(
+    $questions.find('span.correct').length,
+    2,
+    'It should displayed 2 correct questions'
+  );
+  assert.equal(
+    $questions.find('span.incorrect').length,
+    1,
+    'It should displayed 1 incorrect questions'
+  );
+  assert.equal(
+    $questions.find('span.not-started').length,
+    1,
+    'It should displayed 1 not started question'
+  );
+  assert.equal(
+    $questions.find('span.skipped').length,
+    0,
+    'It should displayed 0 skipped questions, they are treated as incorrect'
+  );
 
   $component.find('.panel').click();
 });
 
-test('Showing student code in anonymous mode', function (assert) {
-
+test('Showing student code in anonymous mode', function(assert) {
   assert.expect(3);
 
   const student = Ember.Object.create({
@@ -194,5 +231,9 @@ test('Showing student code in anonymous mode', function (assert) {
 
   const $header = $component.find('.panel .panel-heading');
   T.exists(assert, $header, 'Missing student box title');
-  assert.equal(T.text($header), 'abcde', 'Wrong title, it should use students code');
+  assert.equal(
+    T.text($header),
+    'abcde',
+    'Wrong title, it should use students code'
+  );
 });

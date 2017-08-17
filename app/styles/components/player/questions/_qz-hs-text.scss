@@ -1,5 +1,4 @@
 .player .qz-hs-text {
-
   .answer-choices {
     margin-top: 20px;
     ul {
@@ -16,28 +15,28 @@
 
         &.selected {
           border-color: $blue-400;
-          div{
+          div {
             @include flexbox();
           }
         }
 
-        &.disabled{
+        &.disabled {
           cursor: $cursor-disabled;
         }
 
-        &:not(.disabled):hover{
-          border-color:$dark-300;
+        &:not(.disabled):hover {
+          border-color: $dark-300;
         }
-        >*{
+        > * {
           display: inline-block;
         }
-        .answer-text{
+        .answer-text {
           min-width: 94%;
         }
-        div{
+        div {
           display: none;
           @include align-items(center);
-          i{
+          i {
             color: $blue-400;
           }
         }

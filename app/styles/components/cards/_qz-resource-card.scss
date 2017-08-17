@@ -13,7 +13,7 @@
 
       .header {
         width: 100%;
-        > *{
+        > * {
           display: inline-block;
         }
         .image {
@@ -21,70 +21,70 @@
           vertical-align: top;
         }
         i {
-            display: block;
-            height: 36px;
-            width: 28px;
+          display: block;
+          height: 36px;
+          width: 28px;
+          vertical-align: top;
+          margin: 5px 0 0 0;
+          &.video_resource-icon {
+            background: url("quizzes-addon/quizzes/images/video-resource-green.svg");
+            -webkit-background-size: 31px 30px;
+            background-size: 31px 30px;
+            height: 30px;
+            width: 31px;
+          }
+          &.webpage_resource-icon {
+            background: url("quizzes-addon/quizzes/images/website-resource-green.svg");
+            -webkit-background-size: 29px 30px;
+            background-size: 29px 30px;
+            height: 30px;
+            width: 29px;
+          }
+          &.interactive_resource-icon {
+            background: url("quizzes-addon/quizzes/images/interactive-resource-green.svg");
+            -webkit-background-size: 34px 30px;
+            background-size: 34px 30px;
+            height: 30px;
+            width: 34px;
             vertical-align: top;
             margin: 5px 0 0 0;
-            &.video_resource-icon {
-              background: url("quizzes-addon/quizzes/images/video-resource-green.svg");
-              -webkit-background-size: 31px 30px;
-              background-size: 31px 30px;
-              height: 30px;
-              width: 31px;
-            }
-            &.webpage_resource-icon {
-              background: url("quizzes-addon/quizzes/images/website-resource-green.svg");
-              -webkit-background-size: 29px 30px;
-              background-size: 29px 30px;
-              height: 30px;
-              width: 29px;
-            }
-            &.interactive_resource-icon {
-              background: url("quizzes-addon/quizzes/images/interactive-resource-green.svg");
-              -webkit-background-size: 34px 30px;
-              background-size: 34px 30px;
-              height: 30px;
-              width: 34px;
-              vertical-align: top;
-              margin: 5px 0 0 0;
-            }
-            &.question-icon {
-              background: url("quizzes-addon/quizzes/images/question-resource-green.svg");
-              -webkit-background-size: 30px 30px;
-              background-size: 30px 30px;
-              height: 30px;
-              width: 30px;
-            }
-            &.image_resource-icon {
-              background: url("quizzes-addon/quizzes/images/image-resource-green.svg");
-              -webkit-background-size: 30px 30px;
-              background-size: 30px 30px;
-              height: 30px;
-              width: 30px;
-            }
-            &.text_resource-icon {
-              background: url("quizzes-addon/quizzes/images/text-resource-green.svg");
-              -webkit-background-size: 31px 30px;
-              background-size: 31px 30px;
-              height: 30px;
-              width: 31px;
-            }
-            &.audio_resource-icon {
-              background: url("quizzes-addon/quizzes/images/audio-resource-green.svg");
-              -webkit-background-size: 34px 30px;
-              background-size: 34px 30px;
-              height: 30px;
-              width: 34px;
-            }
+          }
+          &.question-icon {
+            background: url("quizzes-addon/quizzes/images/question-resource-green.svg");
+            -webkit-background-size: 30px 30px;
+            background-size: 30px 30px;
+            height: 30px;
+            width: 30px;
+          }
+          &.image_resource-icon {
+            background: url("quizzes-addon/quizzes/images/image-resource-green.svg");
+            -webkit-background-size: 30px 30px;
+            background-size: 30px 30px;
+            height: 30px;
+            width: 30px;
+          }
+          &.text_resource-icon {
+            background: url("quizzes-addon/quizzes/images/text-resource-green.svg");
+            -webkit-background-size: 31px 30px;
+            background-size: 31px 30px;
+            height: 30px;
+            width: 31px;
+          }
+          &.audio_resource-icon {
+            background: url("quizzes-addon/quizzes/images/audio-resource-green.svg");
+            -webkit-background-size: 34px 30px;
+            background-size: 34px 30px;
+            height: 30px;
+            width: 34px;
           }
         }
+      }
       .resource-info {
         margin-left: 5px;
         width: 77%;
         line-height: $line-height;
         $lines-to-show: 2;
-        > *{
+        > * {
           display: block;
         }
         h6 {
@@ -92,18 +92,19 @@
           cursor: pointer;
           @include ellipsis($font-size: $font-size-base, $line-height: $line-height, $lines-to-show: $lines-to-show, $excerpt-bg: $white);
         }
-        .resource-type, .question-type {
+        .resource-type,
+        .question-type {
           span {
             color: $text-color;
           }
         }
-        .title-section{
-          h6.title{
+        .title-section {
+          h6.title {
             display: inline-block;
             width: 88%;
-            color:$blue-400;
+            color: $blue-400;
           }
-          .publish-icon{
+          .publish-icon {
             display: inline-block;
             float: right;
             vertical-align: top;
@@ -132,7 +133,7 @@
         > * {
           display: inline-block;
         }
-        .publisher-name{
+        .publisher-name {
           max-width: 165px;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -140,7 +141,7 @@
           vertical-align: middle;
           > a {
             margin-left: 5px;
-            color:$blue-400;
+            color: $blue-400;
           }
         }
       }
@@ -155,7 +156,7 @@
     .panel-footer {
       background-color: $white;
       padding: 10px 15px 10px 15px;
-      .buttons{
+      .buttons {
         display: inline-block;
       }
       .visibility {

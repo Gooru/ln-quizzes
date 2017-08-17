@@ -29,28 +29,33 @@ export default Ember.Component.extend(QuestionMixin, {
    * Convenient structure to render options
    * @property {[]}
    */
-  answers: Ember.computed('question', 'userAnswer',
-    'question.answers.@each.text', 'question.answers.@each.value', function () {
-    let component = this;
-    let question = component.get('question');
-    let userAnswers = component.get('userAnswer') || [];
-    let correctAnswers = question.get('question.correctAnswer');
-    if (component.get('showCorrect')){
-      userAnswers = correctAnswers;
-    }
+  answers: Ember.computed(
+    'question',
+    'userAnswer',
+    'question.answers.@each.text',
+    'question.answers.@each.value',
+    function() {
+      const component = this;
+      const question = component.get('question');
+      let userAnswers = component.get('userAnswer') || [];
+      const correctAnswers = question.get('question.correctAnswer');
+      if (component.get('showCorrect')) {
+        userAnswers = correctAnswers;
+      }
 
-    let answers = question.get('question.answers');
-    return answers.map(answer => {
-      let userAnswer = userAnswers.filterBy('value', answer.value) || [];
-      let correctAnswer = correctAnswers.filterBy('value', answer.value);
-      let correct = userAnswer.length === correctAnswer.length;
-      return {
-        text: answer.text,
-        selected: !!userAnswer.length,
-        correct
-      };
-    });
-  })
+      const answers = question.get('question.answers');
+      return answers.map(answer => {
+        const userAnswer = userAnswers.filterBy('value', answer.value) || [];
+        const correctAnswer = correctAnswers.filterBy('value', answer.value);
+        const correct = userAnswer.length === correctAnswer.length;
+        return {
+          text: answer.text,
+          selected: !!userAnswer.length,
+          correct
+        };
+      });
+    }
+  )
 
   // -------------------------------------------------------------------------
   // Observers

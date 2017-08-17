@@ -1,1 +1,3 @@
-export { default } from 'quizzes-addon/components/taxonomy/gru-taxonomy-selector';
+export {
+  default
+} from 'quizzes-addon/components/taxonomy/gru-taxonomy-selector';

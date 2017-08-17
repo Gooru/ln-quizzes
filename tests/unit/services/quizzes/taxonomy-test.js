@@ -4,158 +4,188 @@ import moduleForService from 'dummy/tests/helpers/module-for-service';
 import TaxonomyRoot from 'quizzes-addon/models/taxonomy/taxonomy-root';
 import TaxonomyItem from 'quizzes-addon/models/taxonomy/taxonomy-item';
 
-moduleForService('service:quizzes/taxonomy', 'Unit | Service | quizzes/taxonomy', {
-  beforeEach: function() {
-    this.taxonomySubjects = Ember.A([
-      TaxonomyRoot.create(Ember.getOwner(this).ownerInjection(), {
-        id: 'GDF.K12.VPA',
-        frameworkId: 'GDF',
-        title: 'Visual & Performing Arts',
-        subjectTitle: 'Visual & Performing Arts',
-        code: 'GDF.K12.VPA',
-        frameworks:  Ember.A([
-          TaxonomyRoot.create(Ember.getOwner(this).ownerInjection(), {
-            id: 'TEKS.K12.FA',
-            frameworkId: 'TEKS',
-            title: 'Texas Essential Knowledge and Skills',
-            subjectTitle: 'TEKS Visual & Performing Arts',
-            courses:  Ember.A([
-              TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
-                id: 'TEKS.K12.PE-K',
-                code: 'TEKS.K12.PE-K',
-                title: 'Kindergarten',
-                children: Ember.A([
-                  TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
-                    id: 'TEKS.K12.PE-K-MOV',
-                    code: 'TEKS.K12.PE-K-MOV',
-                    title: 'Movement',
-                    children: Ember.A([
-                      TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
-                        id: 'TEKS.K12.PE-K-MOV-01',
-                        code: 'TEKS.PE.K.1',
-                        title: 'The student demonstrates competency in fundamental movement patterns and proficiency in a few specialized movement forms.',
-                        codeType: 'standard_level_1'
-                      }),
-                      TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
-                        id: 'TEKS.K12.PE-K-MOV-02',
-                        code: 'TEKS.PE.K.2',
-                        title: 'The student applies movement concepts and principles to the learning and development of motor skills.',
-                        codeType: 'standard_level_1'
-                      })
-                    ])
-                  }),
-                  TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
-                    id: 'TEKS.K12.PE-K-PAH',
-                    code: 'TEKS.K12.PE-K-PAH',
-                    title: 'Physical activity and health'
-                  })
-                ])
-              }),
-              TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
-                id: 'TEKS.K12.PE-1',
-                code: 'TEKS.K12.PE-1',
-                title: 'Grade 1'
-              })
-            ])
-          })
-        ])
-      }),
-      TaxonomyRoot.create(Ember.getOwner(this).ownerInjection(), {
-        id: 'GDF.K12.CS',
-        frameworkId: 'GDF',
-        title: 'Computer Science',
-        subjectTitle: 'Computer Science',
-        code: 'GDF.K12.CS',
-        courses: []
-      })
-    ]);
+moduleForService(
+  'service:quizzes/taxonomy',
+  'Unit | Service | quizzes/taxonomy',
+  {
+    beforeEach: function() {
+      this.taxonomySubjects = Ember.A([
+        TaxonomyRoot.create(Ember.getOwner(this).ownerInjection(), {
+          id: 'GDF.K12.VPA',
+          frameworkId: 'GDF',
+          title: 'Visual & Performing Arts',
+          subjectTitle: 'Visual & Performing Arts',
+          code: 'GDF.K12.VPA',
+          frameworks: Ember.A([
+            TaxonomyRoot.create(Ember.getOwner(this).ownerInjection(), {
+              id: 'TEKS.K12.FA',
+              frameworkId: 'TEKS',
+              title: 'Texas Essential Knowledge and Skills',
+              subjectTitle: 'TEKS Visual & Performing Arts',
+              courses: Ember.A([
+                TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
+                  id: 'TEKS.K12.PE-K',
+                  code: 'TEKS.K12.PE-K',
+                  title: 'Kindergarten',
+                  children: Ember.A([
+                    TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
+                      id: 'TEKS.K12.PE-K-MOV',
+                      code: 'TEKS.K12.PE-K-MOV',
+                      title: 'Movement',
+                      children: Ember.A([
+                        TaxonomyItem.create(
+                          Ember.getOwner(this).ownerInjection(),
+                          {
+                            id: 'TEKS.K12.PE-K-MOV-01',
+                            code: 'TEKS.PE.K.1',
+                            title:
+                              'The student demonstrates competency in fundamental movement patterns and proficiency in a few specialized movement forms.',
+                            codeType: 'standard_level_1'
+                          }
+                        ),
+                        TaxonomyItem.create(
+                          Ember.getOwner(this).ownerInjection(),
+                          {
+                            id: 'TEKS.K12.PE-K-MOV-02',
+                            code: 'TEKS.PE.K.2',
+                            title:
+                              'The student applies movement concepts and principles to the learning and development of motor skills.',
+                            codeType: 'standard_level_1'
+                          }
+                        )
+                      ])
+                    }),
+                    TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
+                      id: 'TEKS.K12.PE-K-PAH',
+                      code: 'TEKS.K12.PE-K-PAH',
+                      title: 'Physical activity and health'
+                    })
+                  ])
+                }),
+                TaxonomyItem.create(Ember.getOwner(this).ownerInjection(), {
+                  id: 'TEKS.K12.PE-1',
+                  code: 'TEKS.K12.PE-1',
+                  title: 'Grade 1'
+                })
+              ])
+            })
+          ])
+        }),
+        TaxonomyRoot.create(Ember.getOwner(this).ownerInjection(), {
+          id: 'GDF.K12.CS',
+          frameworkId: 'GDF',
+          title: 'Computer Science',
+          subjectTitle: 'Computer Science',
+          code: 'GDF.K12.CS',
+          courses: []
+        })
+      ]);
+    }
   }
-});
+);
 
-test('getSubjects when taxonomy container has not been loaded', function(assert) {
+test('getSubjects when taxonomy container has not been loaded', function(
+  assert
+) {
   const test = this;
   const service = this.subject();
   assert.expect(3); // Just the first time the taxonomy data should be loaded for every category.
   service.set('taxonomyContainer', {});
-  service.set('apiTaxonomyService', Ember.Object.create({
-    fetchSubjects: function() {
-      assert.ok(true);  // This assert should be evaluated for every subject category
-      return Ember.RSVP.resolve(test.taxonomySubjects);
-    }
-  }));
+  service.set(
+    'apiTaxonomyService',
+    Ember.Object.create({
+      fetchSubjects: function() {
+        assert.ok(true); // This assert should be evaluated for every subject category
+        return Ember.RSVP.resolve(test.taxonomySubjects);
+      }
+    })
+  );
   var done = assert.async();
-  service.getSubjects('k_12')
-    .then(function() {
-      service.getSubjects('higher_education') // The second call should not be calling the API fetchSubject method. The taxonomy subjects should be already loaded.
-        .then(function() {
-          done();
-        });
-    });
+  service.getSubjects('k_12').then(function() {
+    service
+      .getSubjects('higher_education') // The second call should not be calling the API fetchSubject method. The taxonomy subjects should be already loaded.
+      .then(function() {
+        done();
+      });
+  });
 });
 
 test('getSubjects when taxonomy is already loaded', function(assert) {
   const service = this.subject();
   const taxonomyContainer = {
-    'k_12': this.taxonomySubjects
+    k_12: this.taxonomySubjects
   };
   service.set('taxonomyContainer', taxonomyContainer);
-  service.set('apiTaxonomyService', Ember.Object.create({
-    fetchSubjects: function() {
-      assert.ok(false, 'Method fetchSubjects() should not be called.');
-      return Ember.RSVP.resolve([]);
-    }
-  }));
+  service.set(
+    'apiTaxonomyService',
+    Ember.Object.create({
+      fetchSubjects: function() {
+        assert.ok(false, 'Method fetchSubjects() should not be called.');
+        return Ember.RSVP.resolve([]);
+      }
+    })
+  );
   var done = assert.async();
-  service.getSubjects('k_12')
-    .then(function(subjects) {
-      assert.equal(subjects.length, 2, 'Wrong number of subject elements');
-      done();
-    });
+  service.getSubjects('k_12').then(function(subjects) {
+    assert.equal(subjects.length, 2, 'Wrong number of subject elements');
+    done();
+  });
 });
 
-test('getCourses when taxonomy courses does not exist for subject', function(assert) {
+test('getCourses when taxonomy courses does not exist for subject', function(
+  assert
+) {
   const test = this;
   const service = this.subject();
-  service.set('apiTaxonomyService', Ember.Object.create({
-    fetchCourses: function() {
-      const courses = [
-        TaxonomyItem.create(Ember.getOwner(test).ownerInjection(), {
-          id: 'TEKS.K12.PE-2',
-          code: 'TEKS.K12.PE-2',
-          title: 'Grade 2'
-        }),
-        TaxonomyItem.create(Ember.getOwner(test).ownerInjection(), {
-          id: 'TEKS.K12.PE-3',
-          code: 'TEKS.K12.PE-3',
-          title: 'Grade 3'
-        })
-      ];
-      return Ember.RSVP.resolve(courses);
-    }
-  }));
+  service.set(
+    'apiTaxonomyService',
+    Ember.Object.create({
+      fetchCourses: function() {
+        const courses = [
+          TaxonomyItem.create(Ember.getOwner(test).ownerInjection(), {
+            id: 'TEKS.K12.PE-2',
+            code: 'TEKS.K12.PE-2',
+            title: 'Grade 2'
+          }),
+          TaxonomyItem.create(Ember.getOwner(test).ownerInjection(), {
+            id: 'TEKS.K12.PE-3',
+            code: 'TEKS.K12.PE-3',
+            title: 'Grade 3'
+          })
+        ];
+        return Ember.RSVP.resolve(courses);
+      }
+    })
+  );
   var done = assert.async();
   const subject = TaxonomyRoot.create(Ember.getOwner(test).ownerInjection(), {
     id: 'GDF.K12.CS',
     frameworkId: 'GDF',
     courses: []
   });
-  service.getCourses(subject)
-    .then(function(courses) {
-      assert.equal(courses.length, 2, 'Wrong number of courses');
-      assert.equal(courses.objectAt(0).get('id'), 'TEKS.K12.PE-2', 'Wrong course id');
-      done();
-    });
+  service.getCourses(subject).then(function(courses) {
+    assert.equal(courses.length, 2, 'Wrong number of courses');
+    assert.equal(
+      courses.objectAt(0).get('id'),
+      'TEKS.K12.PE-2',
+      'Wrong course id'
+    );
+    done();
+  });
 });
 
 test('getCourses when taxonomy courses exist for subject', function(assert) {
   const test = this;
   const service = this.subject();
-  service.set('apiTaxonomyService', Ember.Object.create({
-    fetchCourses: function() {
-      assert.ok(false, 'Method fetchCourses() should not be called.');
-      return Ember.RSVP.resolve([]);
-    }
-  }));
+  service.set(
+    'apiTaxonomyService',
+    Ember.Object.create({
+      fetchCourses: function() {
+        assert.ok(false, 'Method fetchCourses() should not be called.');
+        return Ember.RSVP.resolve([]);
+      }
+    })
+  );
   var done = assert.async();
   const subject = TaxonomyRoot.create(Ember.getOwner(test).ownerInjection(), {
     id: 'TEKS.K12.FA',
@@ -173,12 +203,15 @@ test('getCourses when taxonomy courses exist for subject', function(assert) {
       })
     ]
   });
-  service.getCourses(subject)
-    .then(function(courses) {
-      assert.equal(courses.length, 2, 'Wrong number of courses');
-      assert.equal(courses.objectAt(0).get('id'), 'TEKS.K12.PE-K', 'Wrong course id');
-      done();
-    });
+  service.getCourses(subject).then(function(courses) {
+    assert.equal(courses.length, 2, 'Wrong number of courses');
+    assert.equal(
+      courses.objectAt(0).get('id'),
+      'TEKS.K12.PE-K',
+      'Wrong course id'
+    );
+    done();
+  });
 });
 
 /*
@@ -412,39 +445,46 @@ test('organizeCodes', function(assert) {
 test('findSubjectById for a loaded category and subject', function(assert) {
   const service = this.subject();
   const taxonomyContainer = {
-    'k_12': this.taxonomySubjects
+    k_12: this.taxonomySubjects
   };
 
   service.set('taxonomyContainer', taxonomyContainer);
 
   var done = assert.async();
-  service.findSubjectById('GDF.K12.VPA')
-    .then(function(subject) {
-      assert.equal(subject.get('id'), 'GDF.K12.VPA', 'Invalid subject id');
-      assert.equal(subject.get('frameworkId'), 'GDF', 'Invalid subject frameworkId');
-      service.findSubjectById('TEKS.K12.FA')
-        .then(function(framework) {
-          assert.equal(framework.get('id'), 'TEKS.K12.FA', 'Invalid framework id');
-          assert.equal(framework.get('frameworkId'), 'TEKS', 'Invalid framework frameworkId');
-          done();
-        });
+  service.findSubjectById('GDF.K12.VPA').then(function(subject) {
+    assert.equal(subject.get('id'), 'GDF.K12.VPA', 'Invalid subject id');
+    assert.equal(
+      subject.get('frameworkId'),
+      'GDF',
+      'Invalid subject frameworkId'
+    );
+    service.findSubjectById('TEKS.K12.FA').then(function(framework) {
+      assert.equal(framework.get('id'), 'TEKS.K12.FA', 'Invalid framework id');
+      assert.equal(
+        framework.get('frameworkId'),
+        'TEKS',
+        'Invalid framework frameworkId'
+      );
+      done();
     });
+  });
 });
 
-test('findSubjectById for a loaded category and non-loaded subject', function(assert) {
+test('findSubjectById for a loaded category and non-loaded subject', function(
+  assert
+) {
   const service = this.subject();
   const taxonomyContainer = {
-    'k_12': this.taxonomySubjects
+    k_12: this.taxonomySubjects
   };
 
   service.set('taxonomyContainer', taxonomyContainer);
 
   const done = assert.async();
-  service.findSubjectById('non-existing-subject-id')
-    .then(function(subject) {
-      assert.equal(subject, null, 'Invalid subject. Should be null');
-      done();
-    });
+  service.findSubjectById('non-existing-subject-id').then(function(subject) {
+    assert.equal(subject, null, 'Invalid subject. Should be null');
+    done();
+  });
 });
 
 // TODO Fix this!!
@@ -472,17 +512,20 @@ test('findSubjectById for a non-loaded category', function(assert) {
 test('Create standards hierarchy -all in L0', function(assert) {
   const service = this.subject();
 
-  const codes = [{
-    "id": "0A",
-    "code": "C0A",
-    "title": "Item 0A",
-    "codeType": "standard_level_0"
-  }, {
-    "id": "0B",
-    "code": "code_0B",
-    "title": "Item 0B",
-    "codeType": "standard_level_0"
-  }];
+  const codes = [
+    {
+      id: '0A',
+      code: 'C0A',
+      title: 'Item 0A',
+      codeType: 'standard_level_0'
+    },
+    {
+      id: '0B',
+      code: 'code_0B',
+      title: 'Item 0B',
+      codeType: 'standard_level_0'
+    }
+  ];
 
   var standards = service.createStandardsHierarchy(codes);
   assert.equal(standards.length, 3, 'Number of level 0 standards');
@@ -495,33 +538,42 @@ test('Create standards hierarchy -all in L0', function(assert) {
 test('Create standards hierarchy -L1 with parent', function(assert) {
   const service = this.subject();
 
-  const codes = [{
-    "id": "0A",
-    "code": "C0A",
-    "title": "Item 0A",
-    "codeType": "standard_level_0"
-  }, {
-    "id": "0B",
-    "code": "C0B",
-    "title": "Item 0B",
-    "codeType": "standard_level_0"
-  }, {
-    "id": "1A",
-    "code": "C1A",
-    "title": "Item 1A",
-    "parentTaxonomyCodeId": "0A",
-    "codeType": "standard_level_1"
-  }, {
-    "id": "1B",
-    "code": "C1B",
-    "title": "Item 1B",
-    "parentTaxonomyCodeId": "0A",
-    "codeType": "standard_level_1"
-  }];
+  const codes = [
+    {
+      id: '0A',
+      code: 'C0A',
+      title: 'Item 0A',
+      codeType: 'standard_level_0'
+    },
+    {
+      id: '0B',
+      code: 'C0B',
+      title: 'Item 0B',
+      codeType: 'standard_level_0'
+    },
+    {
+      id: '1A',
+      code: 'C1A',
+      title: 'Item 1A',
+      parentTaxonomyCodeId: '0A',
+      codeType: 'standard_level_1'
+    },
+    {
+      id: '1B',
+      code: 'C1B',
+      title: 'Item 1B',
+      parentTaxonomyCodeId: '0A',
+      codeType: 'standard_level_1'
+    }
+  ];
 
   const standards = service.createStandardsHierarchy(codes);
   assert.equal(standards.length, 3, 'Number of level 0 standards');
-  assert.equal(standards[0].get('children').length, 2, 'Number of level 1 standards');
+  assert.equal(
+    standards[0].get('children').length,
+    2,
+    'Number of level 1 standards'
+  );
 
   const L1item = standards[0].get('children')[0];
   assert.equal(L1item.get('id'), '1A', 'ID');
@@ -533,33 +585,46 @@ test('Create standards hierarchy -L1 with parent', function(assert) {
 test('Create standards hierarchy -L1 with/without parent', function(assert) {
   const service = this.subject();
 
-  const codes = [{
-    "id": "0A",
-    "code": "C0A",
-    "title": "Item 0A",
-    "codeType": "standard_level_0"
-  }, {
-    "id": "0B",
-    "code": "C0B",
-    "title": "Item 0B",
-    "codeType": "standard_level_0"
-  }, {
-    "id": "1A",
-    "code": "C1A",
-    "title": "Item 1A",
-    "parentTaxonomyCodeId": "0A",
-    "codeType": "standard_level_1"
-  }, {
-    "id": "1B",
-    "code": "C1B",
-    "title": "Item 1B",
-    "codeType": "standard_level_1"
-  }];
+  const codes = [
+    {
+      id: '0A',
+      code: 'C0A',
+      title: 'Item 0A',
+      codeType: 'standard_level_0'
+    },
+    {
+      id: '0B',
+      code: 'C0B',
+      title: 'Item 0B',
+      codeType: 'standard_level_0'
+    },
+    {
+      id: '1A',
+      code: 'C1A',
+      title: 'Item 1A',
+      parentTaxonomyCodeId: '0A',
+      codeType: 'standard_level_1'
+    },
+    {
+      id: '1B',
+      code: 'C1B',
+      title: 'Item 1B',
+      codeType: 'standard_level_1'
+    }
+  ];
 
   const standards = service.createStandardsHierarchy(codes);
   assert.equal(standards.length, 3, 'Number of level 0 standards');
-  assert.equal(standards[0].get('children').length, 1, 'Number of level 1 standards');
-  assert.equal(standards[2].get('children').length, 1, 'Number of level 1 standards in default standard category');
+  assert.equal(
+    standards[0].get('children').length,
+    1,
+    'Number of level 1 standards'
+  );
+  assert.equal(
+    standards[2].get('children').length,
+    1,
+    'Number of level 1 standards in default standard category'
+  );
 
   const L1item = standards[0].get('children')[0];
   assert.equal(L1item.get('id'), '1A', 'ID');
@@ -571,26 +636,35 @@ test('Create standards hierarchy -L1 with/without parent', function(assert) {
 test('Create standards hierarchy -one learning target', function(assert) {
   const service = this.subject();
 
-  const codes = [{
-    "id": "0A",
-    "codeType": "standard_level_0"
-  }, {
-    "id": "1A",
-    "parentTaxonomyCodeId": "0A",
-    "codeType": "standard_level_1"
-  }, {
-    "id": "2A",
-    "parentTaxonomyCodeId": "1A",
-    "codeType": "standard_level_2"
-  }, {
-    "id": "3A",
-    "parentTaxonomyCodeId": "2A",
-    "codeType": 'learning_target_level_0'
-  }];
+  const codes = [
+    {
+      id: '0A',
+      codeType: 'standard_level_0'
+    },
+    {
+      id: '1A',
+      parentTaxonomyCodeId: '0A',
+      codeType: 'standard_level_1'
+    },
+    {
+      id: '2A',
+      parentTaxonomyCodeId: '1A',
+      codeType: 'standard_level_2'
+    },
+    {
+      id: '3A',
+      parentTaxonomyCodeId: '2A',
+      codeType: 'learning_target_level_0'
+    }
+  ];
 
   const standards = service.createStandardsHierarchy(codes);
   assert.equal(standards.length, 2, 'Number of level 0 standards');
-  assert.equal(standards[0].get('children').length, 1, 'Number of level 1 standards');
+  assert.equal(
+    standards[0].get('children').length,
+    1,
+    'Number of level 1 standards'
+  );
 
   const L1item = standards[0].get('children')[0];
   assert.equal(L1item.get('children').length, 1, 'Number of level 2 standards');
@@ -599,41 +673,55 @@ test('Create standards hierarchy -one learning target', function(assert) {
   assert.equal(L2item.get('children').length, 1, 'Number of learning targets');
 });
 
-test('Create standards hierarchy -multi-level learning targets', function(assert) {
+test('Create standards hierarchy -multi-level learning targets', function(
+  assert
+) {
   const service = this.subject();
 
-  const codes = [{
-    "id": "0A",
-    "codeType": "standard_level_0"
-  }, {
-    "id": "1A",
-    "parentTaxonomyCodeId": "0A",
-    "codeType": "standard_level_1"
-  }, {
-    "id": "2A",
-    "parentTaxonomyCodeId": "1A",
-    "codeType": "standard_level_2"
-  }, {
-    "id": "3A",
-    "parentTaxonomyCodeId": "2A",
-    "codeType": 'learning_target_level_0'
-  }, {
-    "id": "4A",
-    "parentTaxonomyCodeId": "2A",
-    "codeType": 'learning_target_level_1'
-  }, {
-    "id": "4B",
-    "parentTaxonomyCodeId": "2A",
-    "codeType": 'learning_target_level_1'
-  }, {
-    "id": "5A",
-    "parentTaxonomyCodeId": "2A",
-    "codeType": 'learning_target_level_2'
-  }];
+  const codes = [
+    {
+      id: '0A',
+      codeType: 'standard_level_0'
+    },
+    {
+      id: '1A',
+      parentTaxonomyCodeId: '0A',
+      codeType: 'standard_level_1'
+    },
+    {
+      id: '2A',
+      parentTaxonomyCodeId: '1A',
+      codeType: 'standard_level_2'
+    },
+    {
+      id: '3A',
+      parentTaxonomyCodeId: '2A',
+      codeType: 'learning_target_level_0'
+    },
+    {
+      id: '4A',
+      parentTaxonomyCodeId: '2A',
+      codeType: 'learning_target_level_1'
+    },
+    {
+      id: '4B',
+      parentTaxonomyCodeId: '2A',
+      codeType: 'learning_target_level_1'
+    },
+    {
+      id: '5A',
+      parentTaxonomyCodeId: '2A',
+      codeType: 'learning_target_level_2'
+    }
+  ];
 
   const standards = service.createStandardsHierarchy(codes);
   assert.equal(standards.length, 2, 'Number of level 0 standards');
-  assert.equal(standards[0].get('children').length, 1, 'Number of level 1 standards');
+  assert.equal(
+    standards[0].get('children').length,
+    1,
+    'Number of level 1 standards'
+  );
 
   const L1item = standards[0].get('children')[0];
   assert.equal(L1item.get('children').length, 1, 'Number of level 2 standards');

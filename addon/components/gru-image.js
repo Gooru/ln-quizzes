@@ -12,24 +12,26 @@ import GruImagePicker from 'quizzes-addon/components/gru-image-picker';
  * @augments components/gru-image-picker.js
  */
 export default GruImagePicker.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['content', 'gru-image'],
 
-  classNameBindings: ['isEditing:is-editing:is-viewing', 'srcImage:has-src-image', 'editImage:has-edit-image', 'hasErrors:picker-error'],
-
+  classNameBindings: [
+    'isEditing:is-editing:is-viewing',
+    'srcImage:has-src-image',
+    'editImage:has-edit-image',
+    'hasErrors:picker-error'
+  ],
 
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     /**
      * @function actions:resetImage
      */
-    resetImage: function () {
+    resetImage: function() {
       this.set('editImage', null);
       this.actions.resetPicker.call(this);
     }
@@ -59,16 +61,14 @@ export default GruImagePicker.extend({
    */
   srcImage: null,
 
-
   // -------------------------------------------------------------------------
   // Observers
 
-  resetOnSave : function() {
+  resetOnSave: function() {
     if (!this.get('isEditing')) {
       // Clear any previous errors
       this.get('filePickerErrors').clear();
       this.actions.resetPicker.call(this);
     }
   }.observes('isEditing')
-
 });

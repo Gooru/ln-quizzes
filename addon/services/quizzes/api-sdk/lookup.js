@@ -10,16 +10,20 @@ import LookupAdapter from 'quizzes-addon/adapters/lookup/lookup';
  * @typedef {Object} LookupService
  */
 export default Ember.Service.extend({
-
   lookupSerializer: null,
 
   lookupAdapter: null,
 
-
-  init: function () {
+  init: function() {
     this._super(...arguments);
-    this.set('lookupSerializer', LookupSerializer.create(Ember.getOwner(this).ownerInjection()));
-    this.set('lookupAdapter', LookupAdapter.create(Ember.getOwner(this).ownerInjection()));
+    this.set(
+      'lookupSerializer',
+      LookupSerializer.create(Ember.getOwner(this).ownerInjection())
+    );
+    this.set(
+      'lookupAdapter',
+      LookupAdapter.create(Ember.getOwner(this).ownerInjection())
+    );
   },
 
   /**
@@ -29,10 +33,11 @@ export default Ember.Service.extend({
   readAudiences: function() {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('lookupAdapter').readAudiences()
-        .then(function(response) {
-          resolve(service.get('lookupSerializer').normalizeReadAudiences(response));
-        }, reject);
+      service.get('lookupAdapter').readAudiences().then(function(response) {
+        resolve(
+          service.get('lookupSerializer').normalizeReadAudiences(response)
+        );
+      }, reject);
     });
   },
 
@@ -43,9 +48,15 @@ export default Ember.Service.extend({
   readDepthOfKnowledgeItems: function() {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('lookupAdapter').readDepthOfKnowledgeItems()
+      service
+        .get('lookupAdapter')
+        .readDepthOfKnowledgeItems()
         .then(function(response) {
-          resolve(service.get('lookupSerializer').normalizeReadDepthOfKnowledgeItems(response));
+          resolve(
+            service
+              .get('lookupSerializer')
+              .normalizeReadDepthOfKnowledgeItems(response)
+          );
         }, reject);
     });
   },
@@ -57,10 +68,11 @@ export default Ember.Service.extend({
   readLicenses: function() {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('lookupAdapter').readLicenses()
-        .then(function(response) {
-          resolve(service.get('lookupSerializer').normalizeReadLicenses(response));
-        }, reject);
+      service.get('lookupAdapter').readLicenses().then(function(response) {
+        resolve(
+          service.get('lookupSerializer').normalizeReadLicenses(response)
+        );
+      }, reject);
     });
   },
 
@@ -71,11 +83,10 @@ export default Ember.Service.extend({
   readAudienceItems: function() {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('lookupAdapter').readAudienceItems()
-        .then(function(response) {
-          resolve(response);
-          //resolve(service.get('lookupSerializer').normalizeReadCountries(response));
-        }, reject);
+      service.get('lookupAdapter').readAudienceItems().then(function(response) {
+        resolve(response);
+        //resolve(service.get('lookupSerializer').normalizeReadCountries(response));
+      }, reject);
     });
   },
 
@@ -88,9 +99,13 @@ export default Ember.Service.extend({
   readCountries: function(keyword) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('lookupAdapter').readCountries(keyword)
+      service
+        .get('lookupAdapter')
+        .readCountries(keyword)
         .then(function(response) {
-          resolve(service.get('lookupSerializer').normalizeReadCountries(response));
+          resolve(
+            service.get('lookupSerializer').normalizeReadCountries(response)
+          );
         }, reject);
     });
   },
@@ -105,9 +120,13 @@ export default Ember.Service.extend({
   readStates: function(countryId, keyword) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('lookupAdapter').readStates(countryId, keyword)
+      service
+        .get('lookupAdapter')
+        .readStates(countryId, keyword)
         .then(function(response) {
-          resolve(service.get('lookupSerializer').normalizeReadStates(response));
+          resolve(
+            service.get('lookupSerializer').normalizeReadStates(response)
+          );
         }, reject);
     });
   },
@@ -122,11 +141,14 @@ export default Ember.Service.extend({
   readDistricts: function(stateId, keyword) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('lookupAdapter').readDistricts(stateId, keyword)
+      service
+        .get('lookupAdapter')
+        .readDistricts(stateId, keyword)
         .then(function(response) {
-          resolve(service.get('lookupSerializer').normalizeReadDistricts(response));
+          resolve(
+            service.get('lookupSerializer').normalizeReadDistricts(response)
+          );
         }, reject);
     });
   }
-
 });

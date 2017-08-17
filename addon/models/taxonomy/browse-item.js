@@ -8,7 +8,6 @@ import TaxonomyItem from 'quizzes-addon/models/taxonomy/taxonomy-item';
  */
 
 var BrowseItem = TaxonomyItem.extend({
-
   // -------------------------------------------------------------------------
   // Properties
 
@@ -17,7 +16,7 @@ var BrowseItem = TaxonomyItem.extend({
    * path or not? @see gru-browse-selector
    */
   accordionId: Ember.computed('id', function() {
-    return 'accordion-' + this.get('id').replace(/\./g, '');
+    return `accordion-${this.get('id').replace(/\./g, '')}`;
   }),
 
   /**
@@ -41,12 +40,11 @@ var BrowseItem = TaxonomyItem.extend({
    */
   totalChildrenSelected: 0,
 
-
   // -------------------------------------------------------------------------
   // Events
 
   init() {
-    this._super( ...arguments );
+    this._super(...arguments);
 
     if (this.get('isSelected')) {
       this.increaseSelected();
@@ -64,7 +62,6 @@ var BrowseItem = TaxonomyItem.extend({
     }
   }),
 
-
   // -------------------------------------------------------------------------
   // Methods
 
@@ -76,9 +73,11 @@ var BrowseItem = TaxonomyItem.extend({
    */
   addChildren: function(browseItems) {
     if (!this.get('children').length) {
-      browseItems.forEach(function(browseItem) {
-        browseItem.set('parent', this);
-      }.bind(this));
+      browseItems.forEach(
+        function(browseItem) {
+          browseItem.set('parent', this);
+        }.bind(this)
+      );
 
       this.set('children', browseItems);
     }
@@ -111,12 +110,9 @@ var BrowseItem = TaxonomyItem.extend({
       parent.increaseSelected();
     }
   }
-
 });
 
-
 BrowseItem.reopenClass({
-
   /**
    * @function Create a browse item from an existing taxonomy item
    * @static
@@ -126,29 +122,36 @@ BrowseItem.reopenClass({
    * @return {BrowseItem}
    */
   createFromTaxonomyItem: function(taxonomyItem, untilLevel) {
-
-    // Converts a taxonomy item (@see TaxonomyItem) and all its descendants
-    // to browse items
+    /**
+     * Converts a taxonomy item (@see TaxonomyItem) and all its descendants
+     * to browse items
+     */
     function convertToBrowseItem(taxonomyItem, untilLevel, parent = null) {
       var children = [];
 
-      var properties = $.extend(taxonomyItem.getProperties([
-        'id',
-        'code',
-        'title',
-        'description',
-        'level'
-      ]), { "parent": parent });
+      var properties = $.extend(
+        taxonomyItem.getProperties([
+          'id',
+          'code',
+          'title',
+          'description',
+          'level'
+        ]),
+        { parent: parent }
+      );
 
       var browseItem = BrowseItem.create(properties);
 
       // Restrict the number of children levels that will be copied
       // onto the browse item
       if (!untilLevel || browseItem.get('level') < untilLevel) {
-
         taxonomyItem.get('children').forEach(function(child) {
           // Convert all the children to browse items
-          var browseItemChild = convertToBrowseItem(child, untilLevel, browseItem);
+          var browseItemChild = convertToBrowseItem(
+            child,
+            untilLevel,
+            browseItem
+          );
           children.push(browseItemChild);
         });
       }
@@ -160,7 +163,6 @@ BrowseItem.reopenClass({
 
     return convertToBrowseItem(taxonomyItem, untilLevel);
   }
-
 });
 
 export default BrowseItem;

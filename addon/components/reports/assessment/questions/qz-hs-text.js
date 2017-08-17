@@ -23,30 +23,32 @@ export default Ember.Component.extend(QuestionMixin, {
    * Return the hot spot answers to show on the component, indicating if the user select the answer and
    * if is correct or not.
    */
-  answers: Ember.computed('question', 'anonymous', function () {
-    let component = this;
-    let question = component.get('question');
+  answers: Ember.computed('question', 'anonymous', function() {
+    const component = this;
+    const question = component.get('question');
     let userAnswers = component.get('userAnswer');
-    let correctAnswers = question.get('question.correctAnswer');
-    let anonymous = component.get('anonymous');
-    if (component.get('showCorrect')){
+    const correctAnswers = question.get('question.correctAnswer');
+    const anonymous = component.get('anonymous');
+    if (component.get('showCorrect')) {
       userAnswers = question.get('question.correctAnswer');
     }
 
-    let answers = question.get('question.answers');
-    return answers.map(function(answer){
+    const answers = question.get('question.answers');
+    return answers.map(function(answer) {
       let userAnswerCorrect = false;
       let selected = false;
-      if (userAnswers.findBy('value', answer.value)){
-        userAnswerCorrect =  correctAnswers.findBy('value', answer.value);
+      if (userAnswers.findBy('value', answer.value)) {
+        userAnswerCorrect = correctAnswers.findBy('value', answer.value);
         selected = true;
       }
 
-      let elementClass = (anonymous) ? 'anonymous' : ((userAnswerCorrect) ? 'correct' : 'incorrect');
+      const elementClass = anonymous
+        ? 'anonymous'
+        : userAnswerCorrect ? 'correct' : 'incorrect';
       return {
         text: answer.get('text'),
         selected,
-        'class': elementClass
+        class: elementClass
       };
     });
   })

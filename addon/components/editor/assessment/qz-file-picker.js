@@ -11,21 +11,18 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
-
 
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['editor','assessment', 'qz-file-picker'],
+  classNames: ['editor', 'assessment', 'qz-file-picker'],
 
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     /**
      * @function actions:enableButtons
      */
@@ -81,7 +78,6 @@ export default Ember.Component.extend({
    */
   validMimeType: '',
 
-
   // -------------------------------------------------------------------------
   // Observers
 
@@ -89,5 +85,4 @@ export default Ember.Component.extend({
     // Clear any previous errors
     this.get('filePickerErrors').clear();
   })
-
 });

@@ -11,13 +11,12 @@ import QuestionComponent from 'quizzes-addon/components/player/questions/qz-ques
  * @augments Ember/Component
  */
 export default QuestionComponent.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-single-choice'],
+  classNames: ['qz-single-choice'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -29,11 +28,13 @@ export default QuestionComponent.extend({
      */
     selectAnswerChoice: function(answerId, onLoad) {
       const component = this;
-      let answer = [{
-        value: answerId
-      }];
+      const answer = [
+        {
+          value: answerId
+        }
+      ];
       component.notifyAnswerChanged(answer);
-      if(onLoad) {
+      if (onLoad) {
         component.notifyAnswerLoaded(answer);
       } else {
         component.notifyAnswerCompleted(answer);
@@ -46,12 +47,14 @@ export default QuestionComponent.extend({
 
   init: function() {
     this._super(...arguments);
-    if(this.get('userAnswer')) {
+    if (this.get('userAnswer')) {
       this.actions.selectAnswerChoice.call(
-        this, this.get('userAnswer.firstObject.value'), true);
+        this,
+        this.get('userAnswer.firstObject.value'),
+        true
+      );
     }
   }
-
 
   // -------------------------------------------------------------------------
   // Properties
@@ -61,5 +64,4 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Methods
-
 });

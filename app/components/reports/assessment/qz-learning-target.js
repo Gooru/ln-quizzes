@@ -1,1 +1,3 @@
-export { default } from 'quizzes-addon/components/reports/assessment/qz-learning-target';
+export {
+  default
+} from 'quizzes-addon/components/reports/assessment/qz-learning-target';

@@ -10,38 +10,37 @@ import { toAbsolutePath } from 'quizzes-addon/utils/utils';
  * Component responsible of showing the resource or question information in cards, so that most useful information is summarized there.
  * @module
  */
-export default Ember.Component.extend(ModalMixin,{
+export default Ember.Component.extend(ModalMixin, {
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames:['cards','qz-resource-card'],
+  classNames: ['cards', 'qz-resource-card'],
 
   // -------------------------------------------------------------------------
   // Actions
   actions: {
-
     /**
      * Action triggered to edit the resource/question
      */
-    editResource: function(){
-      this.sendAction("onEditResource", this.get("resource"));
+    editResource: function() {
+      this.sendAction('onEditResource', this.get('resource'));
     },
     /**
      * Action triggered to play the resource/question
      */
-    playResource:function(){
-      this.sendAction("onPlayResource", this.get("resource"));
+    playResource: function() {
+      this.sendAction('onPlayResource', this.get('resource'));
     }
   },
 
   // -------------------------------------------------------------------------
   // Events
 
-  didRender(){
+  didRender() {
     var component = this;
-    component.$('[data-toggle="tooltip"]').tooltip({trigger: 'hover'});
+    component.$('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
   },
 
   // -------------------------------------------------------------------------
@@ -55,7 +54,7 @@ export default Ember.Component.extend(ModalMixin,{
    * Indicates if this resource is a question
    * @property {boolean}
    */
-  isQuestion: Ember.computed.equal("resource.format", "question"),
+  isQuestion: Ember.computed.equal('resource.format', 'question'),
 
   /**
    * Indicates if the edit functionality is enabled
@@ -89,7 +88,7 @@ export default Ember.Component.extend(ModalMixin,{
    */
   tags: Ember.computed('resource.standards.[]', function() {
     var standards = this.get('resource.standards');
-    if(standards){
+    if (standards) {
       standards = standards.filter(function(standard) {
         // Filter out learning targets (they're too long for the card)
         return !TaxonomyTagData.isMicroStandardId(standard.get('id'));
@@ -101,18 +100,19 @@ export default Ember.Component.extend(ModalMixin,{
    * Show the publisher if the resource has publisher and is publish
    * @property {boolean}
    */
-  showPublisher:Ember.computed('resource', function(){
+  showPublisher: Ember.computed('resource', function() {
     return this.get('resource').isPublished && this.get('resource').publisher;
   }),
 
   /**
    * @property {string} Resource URL
    */
-  url: Ember.computed('resource.body', function () {
-    let component = this;
-    let resourceUrl = component.get('resource.body');
-    let cdnUrl = component.get('quizzesConfigurationService.configuration.properties.cdnURL');
+  url: Ember.computed('resource.body', function() {
+    const component = this;
+    const resourceUrl = component.get('resource.body');
+    const cdnUrl = component.get(
+      'quizzesConfigurationService.configuration.properties.cdnURL'
+    );
     return toAbsolutePath(resourceUrl, cdnUrl);
   })
-
 });

@@ -9,33 +9,33 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['taxonomy', 'gru-taxonomy-tag'],
 
-  classNameBindings: ['model.isActive:active', 'model.isReadonly:read-only', 'model.isRemovable:remove'],
-
+  classNameBindings: [
+    'model.isActive:active',
+    'model.isReadonly:read-only',
+    'model.isRemovable:remove'
+  ],
 
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     selectTag: function() {
-      if (this.get('onSelect')){
+      if (this.get('onSelect')) {
         this.get('onSelect')(this.get('model'));
       }
     },
 
     removeTag: function() {
-      if (this.get('onRemove')){
+      if (this.get('onRemove')) {
         this.get('onRemove')(this.get('model'));
       }
     }
   },
-
 
   // -------------------------------------------------------------------------
   // Events
@@ -79,14 +79,13 @@ export default Ember.Component.extend({
    */
   onSelect: null,
 
-
   // -------------------------------------------------------------------------
   // Methods
 
   setupTooltip: function() {
     var component = this;
     var $anchor = this.$('> .content');
-    var isMobile = window.matchMedia("only screen and (max-width: 768px)");
+    var isMobile = window.matchMedia('only screen and (max-width: 768px)');
 
     $anchor.attr('data-html', 'true');
     $anchor.popover({
@@ -101,7 +100,6 @@ export default Ember.Component.extend({
       $anchor.on('click', function() {
         var $this = $(this);
         if (!$this.hasClass('list-open')) {
-
           // Close all tag tooltips by simulating a click on them
           $('.gru-taxonomy-tag > .content.list-open').click();
           $this.addClass('list-open').popover('show');
@@ -119,5 +117,4 @@ export default Ember.Component.extend({
       });
     }
   }
-
 });

@@ -7,7 +7,6 @@ import { getReactionIcon } from 'quizzes-addon/utils/utils';
  * @param {Number} reactionValue
  * @returns {String} - html string
  */
-
 export function reactionIcon(reactionValue) {
   return Ember.String.htmlSafe(getReactionIcon(reactionValue[0]));
 }

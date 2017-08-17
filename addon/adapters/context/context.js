@@ -2,7 +2,6 @@ import TokenMixin from 'quizzes-addon/mixins/token';
 import ApplicationAdapter from 'quizzes-addon/adapters/application';
 
 export default ApplicationAdapter.extend(TokenMixin, {
-
   /**
    * @property {Object} namespace base url for context endpoints
    */
@@ -89,7 +88,7 @@ export default ApplicationAdapter.extend(TokenMixin, {
   moveToResource: function(resourceId, contextId, prevResource, eventContext) {
     const namespace = this.get('namespace');
     const previousResource = prevResource || {};
-    let data = { eventContext, previousResource };
+    const data = { eventContext, previousResource };
     const options = {
       type: 'POST',
       contentType: 'application/json; charset=utf-8',
@@ -102,8 +101,7 @@ export default ApplicationAdapter.extend(TokenMixin, {
     return this.sendAjaxRequest(url, options);
   },
 
-
-/**
+  /**
    * Send event to notify the student submitted all questions in an assignment
    * @param {String} contextId
    * @returns {Promise}

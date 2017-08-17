@@ -9,7 +9,7 @@ moduleFor('model:resource/resource', 'Unit | Model | resource/resource', {
 
 test('isQuestion', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     isResource: false
   });
 
@@ -18,7 +18,7 @@ test('isQuestion', function(assert) {
 
 test('format question', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     isResource: false
   });
 
@@ -27,7 +27,7 @@ test('format question', function(assert) {
 
 test('format resource', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     isResource: false
   });
 
@@ -36,7 +36,7 @@ test('format resource', function(assert) {
 
 test('isSingleChoice', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.singleChoice
   });
 
@@ -45,7 +45,7 @@ test('isSingleChoice', function(assert) {
 
 test('isMultipleAnswer', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.multipleAnswer
   });
 
@@ -54,7 +54,7 @@ test('isMultipleAnswer', function(assert) {
 
 test('isTrueFalse', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.trueFalse
   });
 
@@ -63,7 +63,7 @@ test('isTrueFalse', function(assert) {
 
 test('isOpenEnded', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.openEnded
   });
 
@@ -72,7 +72,7 @@ test('isOpenEnded', function(assert) {
 
 test('isFIB', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.fib
   });
 
@@ -81,7 +81,7 @@ test('isFIB', function(assert) {
 
 test('isHotSpotText', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.hotSpotText
   });
 
@@ -90,7 +90,7 @@ test('isHotSpotText', function(assert) {
 
 test('isHotSpotImage', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.hotSpotImage
   });
 
@@ -99,7 +99,7 @@ test('isHotSpotImage', function(assert) {
 
 test('isHotTextReorder', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.hotTextReorder
   });
 
@@ -108,16 +108,19 @@ test('isHotTextReorder', function(assert) {
 
 test('isHotTextHighlight', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.hotTextHighlightSentence
   });
 
-  assert.ok(model.get('isHotTextHighlight'), 'It should be hot text high light');
+  assert.ok(
+    model.get('isHotTextHighlight'),
+    'It should be hot text high light'
+  );
 });
 
 test('isImageResource', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     resourceType: QUIZZES_RESOURCE_TYPES.image
   });
 
@@ -126,16 +129,19 @@ test('isImageResource', function(assert) {
 
 test('isYoutubeResource', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     resourceType: QUIZZES_RESOURCE_TYPES.youtube
   });
 
-  assert.ok(model.get('isYoutubeResource'), 'It should be youtube resource type');
+  assert.ok(
+    model.get('isYoutubeResource'),
+    'It should be youtube resource type'
+  );
 });
 
 test('isPDFResource', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     resourceType: QUIZZES_RESOURCE_TYPES.pdf
   });
 
@@ -143,7 +149,7 @@ test('isPDFResource', function(assert) {
 });
 test('isVimeoResource', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     resourceType: QUIZZES_RESOURCE_TYPES.vimeo
   });
 
@@ -152,7 +158,7 @@ test('isVimeoResource', function(assert) {
 
 test('isHotTextHighlightWord', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.hotTextHighlightWord
   });
 
@@ -161,36 +167,43 @@ test('isHotTextHighlightWord', function(assert) {
 
 test('isHotTextHighlightSentence', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUESTION_TYPES.hotTextHighlightSentence
   });
 
-  assert.ok(model.get('isHotTextHighlightSentence'), 'It should be hot text sentence');
+  assert.ok(
+    model.get('isHotTextHighlightSentence'),
+    'It should be hot text sentence'
+  );
 });
 
 test('hasAnswers', function(assert) {
   assert.expect(1);
 
   var answers = Ember.A();
-  Ember.run(function () {
+  Ember.run(function() {
     answers.pushObject(Ember.Object.create({ id: 1 }));
   });
 
-  let model = this.subject({ answers });
+  const model = this.subject({ answers });
   assert.ok(model.get('hasAnswers'), 'It should have answers');
 });
 
 test('assetUrl', function(assert) {
-  let model = this.subject({
-    assetUrl:'/basePath/url'
+  const model = this.subject({
+    assetUrl: '/basePath/url'
   });
 
-  assert.equal(model.get('assetUrl'), '/basePath/url', 'Wrong value for assetUrl');
+  assert.equal(
+    model.get('assetUrl'),
+    '/basePath/url',
+    'Wrong value for assetUrl'
+  );
 });
 
 test('isUrlResource', function(assert) {
   assert.expect(1);
-  let model = this.subject({
+  const model = this.subject({
     type: QUIZZES_RESOURCE_TYPES.url
   });
 
@@ -204,5 +217,9 @@ test('Resource image url', function(assert) {
   });
 
   assert.ok(model.get('hasMedia'), 'Wrong value for hasMedia field');
-  assert.equal(model.get('mediaUrl'), '//dev.cdn.url/question-img.png' , "Wrong value set for media url");
+  assert.equal(
+    model.get('mediaUrl'),
+    '//dev.cdn.url/question-img.png',
+    'Wrong value set for media url'
+  );
 });

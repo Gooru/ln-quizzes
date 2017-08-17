@@ -3,11 +3,16 @@ import ContextSerializer from 'quizzes-addon/serializers/context/context';
 import ContextAdapter from 'quizzes-addon/adapters/context/context';
 
 export default Ember.Service.extend({
-
-  init: function () {
+  init: function() {
     this._super(...arguments);
-    this.set('contextAdapter', ContextAdapter.create(Ember.getOwner(this).ownerInjection()));
-    this.set('contextSerializer', ContextSerializer.create(Ember.getOwner(this).ownerInjection()));
+    this.set(
+      'contextAdapter',
+      ContextAdapter.create(Ember.getOwner(this).ownerInjection())
+    );
+    this.set(
+      'contextSerializer',
+      ContextSerializer.create(Ember.getOwner(this).ownerInjection())
+    );
   },
 
   // -------------------------------------------------------------------------
@@ -33,9 +38,14 @@ export default Ember.Service.extend({
    */
   createContext: function(assignment) {
     const service = this;
-    let serializedAssignment = service.get('contextSerializer').serializeContext(assignment);
+    const serializedAssignment = service
+      .get('contextSerializer')
+      .serializeContext(assignment);
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').createContext(serializedAssignment).then(resolve, reject);
+      service
+        .get('contextAdapter')
+        .createContext(serializedAssignment)
+        .then(resolve, reject);
     });
   },
 
@@ -46,8 +56,12 @@ export default Ember.Service.extend({
   getAssignedContextById: function(contextId) {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').getAssignedContextById(contextId)
-        .then(response => service.get('contextSerializer').normalizeReadContext(response))
+      service
+        .get('contextAdapter')
+        .getAssignedContextById(contextId)
+        .then(response =>
+          service.get('contextSerializer').normalizeReadContext(response)
+        )
         .then(resolve, reject);
     });
   },
@@ -59,8 +73,12 @@ export default Ember.Service.extend({
   getContextsAssigned: function() {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').getContextsAssigned()
-        .then(response => service.get('contextSerializer').normalizeReadContexts(response))
+      service
+        .get('contextAdapter')
+        .getContextsAssigned()
+        .then(response =>
+          service.get('contextSerializer').normalizeReadContexts(response)
+        )
         .then(resolve, reject);
     });
   },
@@ -72,8 +90,12 @@ export default Ember.Service.extend({
   getContextsCreated: function() {
     const service = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').getContextsCreated()
-        .then(response => service.get('contextSerializer').normalizeReadContexts(response))
+      service
+        .get('contextAdapter')
+        .getContextsCreated()
+        .then(response =>
+          service.get('contextSerializer').normalizeReadContexts(response)
+        )
         .then(resolve, reject);
     });
   },
@@ -86,15 +108,28 @@ export default Ember.Service.extend({
    * @param {String} source component originating events
    * @returns {Promise}
    */
-  moveToResource: function(resourceId, contextId, previousResult, eventContext) {
+  moveToResource: function(
+    resourceId,
+    contextId,
+    previousResult,
+    eventContext
+  ) {
     const service = this;
-    let serializedPreviousResult = previousResult ?
-      this.get('contextSerializer').serializeResourceResult(previousResult) :
-      null;
-    let context = this.get('contextSerializer').serializeEventContext(eventContext);
+    const serializedPreviousResult = previousResult
+      ? this.get('contextSerializer').serializeResourceResult(previousResult)
+      : null;
+    const context = this.get('contextSerializer').serializeEventContext(
+      eventContext
+    );
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter')
-        .moveToResource(resourceId, contextId, serializedPreviousResult, context)
+      service
+        .get('contextAdapter')
+        .moveToResource(
+          resourceId,
+          contextId,
+          serializedPreviousResult,
+          context
+        )
         .then(resolve, reject);
     });
   },
@@ -107,10 +142,16 @@ export default Ember.Service.extend({
    */
   startContext: function(contextId, eventContext) {
     const service = this;
-    let context = this.get('contextSerializer').serializeEventContext(eventContext);
+    const context = this.get('contextSerializer').serializeEventContext(
+      eventContext
+    );
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').sendStartContextEvent(contextId, context)
-        .then(response => service.get('contextSerializer').normalizeContextResult(response))
+      service
+        .get('contextAdapter')
+        .sendStartContextEvent(contextId, context)
+        .then(response =>
+          service.get('contextSerializer').normalizeContextResult(response)
+        )
         .then(resolve, reject);
     });
   },
@@ -123,9 +164,13 @@ export default Ember.Service.extend({
    */
   finishContext: function(contextId, eventContext) {
     const service = this;
-    let context = this.get('contextSerializer').serializeEventContext(eventContext);
+    const context = this.get('contextSerializer').serializeEventContext(
+      eventContext
+    );
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').sendFinishContextEvent(contextId, context)
+      service
+        .get('contextAdapter')
+        .sendFinishContextEvent(contextId, context)
         .then(resolve, reject);
     });
   },
@@ -137,10 +182,14 @@ export default Ember.Service.extend({
    */
   updateContext: function(assignment) {
     const service = this;
-    let serializedAssignment = this.get('contextSerializer').serializeUpdateContext(assignment);
+    const serializedAssignment = this.get(
+      'contextSerializer'
+    ).serializeUpdateContext(assignment);
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      service.get('contextAdapter').updateContext(
-        serializedAssignment, assignment.get('id')).then(resolve, reject);
+      service
+        .get('contextAdapter')
+        .updateContext(serializedAssignment, assignment.get('id'))
+        .then(resolve, reject);
     });
   }
 });

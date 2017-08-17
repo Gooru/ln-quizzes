@@ -7,13 +7,16 @@ import Resource from 'quizzes-addon/models/resource/resource';
 import Collection from 'quizzes-addon/models/collection/collection';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
-moduleForComponent('reports/qz-assessment-report', 'Integration | Component | reports/qz assessment report', {
-  integration: true
-});
+moduleForComponent(
+  'reports/qz-assessment-report',
+  'Integration | Component | reports/qz assessment report',
+  {
+    integration: true
+  }
+);
 
-test('Layout when answer results are shown', function (assert) {
-
-  let resourceResults = [
+test('Layout when answer results are shown', function(assert) {
+  const resourceResults = [
     QuestionResult.create({
       resource: Resource.create({
         id: 'question-1',
@@ -24,10 +27,13 @@ test('Layout when answer results are shown', function (assert) {
     })
   ];
 
-  this.set('contextResult', ContextResult.create({
-    totalAttempts: 0,
-    resourceResults
-  }));
+  this.set(
+    'contextResult',
+    ContextResult.create({
+      totalAttempts: 0,
+      resourceResults
+    })
+  );
 
   this.render(hbs`
   {{reports/qz-assessment-report
@@ -37,14 +43,23 @@ test('Layout when answer results are shown', function (assert) {
   const $component = this.$('.reports.qz-assessment-report');
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-summary').length, 'Top Summary');
-  assert.equal($component.find('> .qz-questions').length, 1, 'Questions Summary');
-  assert.notOk($component.find('> .qz-mastery').length, 'Mastery Summary -hidden');
-  assert.notOk($component.find('> .qz-resources').length, 'Resources Summary -hidden');
+  assert.equal(
+    $component.find('> .qz-questions').length,
+    1,
+    'Questions Summary'
+  );
+  assert.notOk(
+    $component.find('> .qz-mastery').length,
+    'Mastery Summary -hidden'
+  );
+  assert.notOk(
+    $component.find('> .qz-resources').length,
+    'Resources Summary -hidden'
+  );
 });
 
-test('Layout when answer results are not shown', function (assert) {
-
-  let resourceResults = [
+test('Layout when answer results are not shown', function(assert) {
+  const resourceResults = [
     QuestionResult.create({
       resource: Resource.create({
         id: 'question-1',
@@ -55,10 +70,13 @@ test('Layout when answer results are not shown', function (assert) {
     })
   ];
 
-  this.set('contextResult', ContextResult.create({
-    totalAttempts: 0,
-    resourceResults
-  }));
+  this.set(
+    'contextResult',
+    ContextResult.create({
+      totalAttempts: 0,
+      resourceResults
+    })
+  );
 
   this.render(hbs`
   {{reports/qz-assessment-report
@@ -70,14 +88,22 @@ test('Layout when answer results are not shown', function (assert) {
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-summary').length, 'Top Summary');
   assert.ok($component.find('> .hidden-report').length, 'Top Summary');
-  assert.notOk($component.find('> .qz-mastery').length, 'Mastery Summary -hidden');
-  assert.notOk($component.find('> .qz-questions').length, 'Questions Summary -hidden');
-  assert.notOk($component.find('> .qz-resources').length, 'Resources Summary -hidden');
+  assert.notOk(
+    $component.find('> .qz-mastery').length,
+    'Mastery Summary -hidden'
+  );
+  assert.notOk(
+    $component.find('> .qz-questions').length,
+    'Questions Summary -hidden'
+  );
+  assert.notOk(
+    $component.find('> .qz-resources').length,
+    'Resources Summary -hidden'
+  );
 });
 
-test('Layout with open ended and resources', function (assert) {
-
-  let resourceResults = [
+test('Layout with open ended and resources', function(assert) {
+  const resourceResults = [
     QuestionResult.create({
       resource: Resource.create({
         id: 'question-1',
@@ -106,10 +132,13 @@ test('Layout with open ended and resources', function (assert) {
     })
   ];
 
-  this.set('contextResult', ContextResult.create({
-    totalAttempts: 0,
-    resourceResults
-  }));
+  this.set(
+    'contextResult',
+    ContextResult.create({
+      totalAttempts: 0,
+      resourceResults
+    })
+  );
 
   this.render(hbs`
   {{reports/qz-assessment-report
@@ -119,29 +148,38 @@ test('Layout with open ended and resources', function (assert) {
   const $component = this.$('.reports.qz-assessment-report');
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-summary').length, 'Top Summary');
-  assert.equal($component.find('> .qz-questions').length, 2, 'Questions Summary');
+  assert.equal(
+    $component.find('> .qz-questions').length,
+    2,
+    'Questions Summary'
+  );
   assert.ok($component.find('> .qz-resources').length, 'Resources Summary');
-  assert.notOk($component.find('> .qz-mastery').length, 'Mastery Summary -hidden');
+  assert.notOk(
+    $component.find('> .qz-mastery').length,
+    'Mastery Summary -hidden'
+  );
 });
 
-test('Layout when mastery results are shown', function (assert) {
-
-  this.set('contextResult', ContextResult.create({
-    totalAttempts: 0,
-    mastery : [
-      {
-        id: 'CA.K12.SC-LS-G-03.01'
-      },
-      {
-        id: 'CA.K12.SC-LS-G-03.03'
-      }
-    ],
-    collection: Collection.create({
-      id: 'collection-id',
-      isAssessment: true,
-      title: 'Sample Assessment Name'
+test('Layout when mastery results are shown', function(assert) {
+  this.set(
+    'contextResult',
+    ContextResult.create({
+      totalAttempts: 0,
+      mastery: [
+        {
+          id: 'CA.K12.SC-LS-G-03.01'
+        },
+        {
+          id: 'CA.K12.SC-LS-G-03.03'
+        }
+      ],
+      collection: Collection.create({
+        id: 'collection-id',
+        isAssessment: true,
+        title: 'Sample Assessment Name'
+      })
     })
-  }));
+  );
 
   this.render(hbs`
   {{reports/qz-assessment-report

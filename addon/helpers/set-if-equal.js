@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-/*
+/**
  * Return a string if two values are the same
  *
  * @param {String[]} value

@@ -10,21 +10,25 @@ import { TAXONOMY_CATEGORIES } from 'quizzes-addon/config/quizzes-config';
  * @param {Number} currentLevel - current tree level being built (starts at 1)
  * @return {TaxonomyItem[][] ...} - the list of taxonomy items in the first level
  */
-export function generateTaxonomyTestTree(levels = 1, parent = null, inc = 1, currentLevel = 1) {
+export function generateTaxonomyTestTree(
+  levels = 1,
+  parent = null,
+  inc = 1,
+  currentLevel = 1
+) {
   var totalItems = currentLevel * inc;
   var items = [];
 
   if (currentLevel <= levels) {
-
     for (let i = 0; i < totalItems; i++) {
-      let parentId = (parent) ? parent.get('id') : '0';
-      let parentIdNum = parentId.charAt(parentId.length - 1);
-      let itemId = currentLevel + parentIdNum + i;
+      const parentId = parent ? parent.get('id') : '0';
+      const parentIdNum = parentId.charAt(parentId.length - 1);
+      const itemId = currentLevel + parentIdNum + i;
 
-      let taxonomyItem = TaxonomyItem.create({
-        id: parentId + '-' + itemId,
-        code: 'Code : ' + currentLevel + ' : ' + parentIdNum + ' : ' + i,
-        title: 'Item : ' + currentLevel + ' : ' + parentIdNum + ' : ' + i,
+      const taxonomyItem = TaxonomyItem.create({
+        id: `${parentId}-${itemId}`,
+        code: `Code : ${currentLevel} : ${parentIdNum} : ${i}`,
+        title: `Item : ${currentLevel} : ${parentIdNum} : ${i}`,
         level: currentLevel,
         parent: parent
       });
@@ -53,10 +57,18 @@ export function generateBrowseTestTree(levels = 1, lastLevels = 0, inc = 1) {
   const startLevel = 1;
   var browseItems = [];
 
-  var taxonomyItems = generateTaxonomyTestTree(levels + lastLevels, null, inc, startLevel);
+  var taxonomyItems = generateTaxonomyTestTree(
+    levels + lastLevels,
+    null,
+    inc,
+    startLevel
+  );
 
   taxonomyItems.forEach(function(rootTaxonomyItem) {
-    var item = BrowseItem.createFromTaxonomyItem(rootTaxonomyItem, levels + lastLevels);
+    var item = BrowseItem.createFromTaxonomyItem(
+      rootTaxonomyItem,
+      levels + lastLevels
+    );
     browseItems.push(item);
   });
 
@@ -71,9 +83,9 @@ export function generateBrowseTestTree(levels = 1, lastLevels = 0, inc = 1) {
 export function getCategoryFromSubjectId(subjectId) {
   var result = TAXONOMY_CATEGORIES[0].value; // Default to K12 category
   if (subjectId) {
-    let keys = subjectId.split('.');
+    const keys = subjectId.split('.');
     if (keys.length > 1) {
-      let categoryCode = keys[1];
+      const categoryCode = keys[1];
       for (var i = TAXONOMY_CATEGORIES.length - 1; i >= 0; i--) {
         // The second part of the subjectId represents the category
         if (categoryCode === TAXONOMY_CATEGORIES[i].apiCode) {

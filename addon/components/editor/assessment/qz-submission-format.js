@@ -14,13 +14,12 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Actions
 
-
   actions: {
     /**
      * Selected format type
      */
-    selectType:function(type){
-      this.set('selectedType',type);
+    selectType: function(type) {
+      this.set('selectedType', type);
     }
   },
   // -------------------------------------------------------------------------
@@ -36,11 +35,10 @@ export default Ember.Component.extend({
    */
   submissionFormats: Ember.A([
     Ember.Object.create({
-      format:'textbox'
+      format: 'textbox'
     }),
     Ember.Object.create({
-      format:'upload'
+      format: 'upload'
     })
   ])
-
 });

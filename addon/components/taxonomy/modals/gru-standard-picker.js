@@ -10,7 +10,6 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -22,42 +21,45 @@ export default Ember.Component.extend({
   /**
    * @requires service:api-sdk/taxonomy
    */
-  taxonomyService: Ember.inject.service("taxonomy"),
-
+  taxonomyService: Ember.inject.service('taxonomy'),
 
   // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['taxonomy', 'modals', 'gru-standard-picker'],
 
-
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     loadTaxonomyData(path) {
-      return new Ember.RSVP.Promise(function(resolve) {
-        var subject = this.get('model.subject');
-        var taxonomyService = this.get('taxonomyService');
+      return new Ember.RSVP.Promise(
+        function(resolve) {
+          var subject = this.get('model.subject');
+          var taxonomyService = this.get('taxonomyService');
 
-        if (path.length > 1) {
-          let courseId = path[0];
-          let domainId = path[1];
-          taxonomyService.getCourseDomains(subject, courseId).then(function() {
-            taxonomyService.getDomainCodes(subject, courseId, domainId)
-              .then(function(standards) {
-                resolve(standards);
+          if (path.length > 1) {
+            const courseId = path[0];
+            const domainId = path[1];
+            taxonomyService
+              .getCourseDomains(subject, courseId)
+              .then(function() {
+                taxonomyService
+                  .getDomainCodes(subject, courseId, domainId)
+                  .then(function(standards) {
+                    resolve(standards);
+                  });
               });
-          });
-        } else {
-          let courseId = path[0];
-          taxonomyService.getCourseDomains(subject, courseId)
-            .then(function(domains) {
-              resolve(domains);
-            });
-        }
-      }.bind(this));
+          } else {
+            const courseId = path[0];
+            taxonomyService
+              .getCourseDomains(subject, courseId)
+              .then(function(domains) {
+                resolve(domains);
+              });
+          }
+        }.bind(this)
+      );
     },
 
     updateSelectedTags(selectedTags) {
@@ -66,12 +68,11 @@ export default Ember.Component.extend({
     }
   },
 
-
   // -------------------------------------------------------------------------
   // Events
 
   init() {
-    this._super( ...arguments );
+    this._super(...arguments);
 
     this.set('panelHeaders', [
       this.get('i18n').t('common.course').string,
@@ -99,5 +100,4 @@ export default Ember.Component.extend({
    * @prop {String[]}
    */
   panelHeaders: []
-
 });

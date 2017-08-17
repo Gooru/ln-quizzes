@@ -16,18 +16,20 @@ export default Ember.Component.extend({
     /**
      * When the user clicks at the box
      */
-    selectStudent: function(){
+    selectStudent: function() {
       const component = this;
       component.get('onSelectStudent')(component.get('student.profileId'));
-      Ember.Logger.debug(`Clicking at student: ${component.get('student.profileId')}`);
+      Ember.Logger.debug(
+        `Clicking at student: ${component.get('student.profileId')}`
+      );
     },
 
     /**
      * @function actions:selectQuestion
      * @param {Number} questionId
      */
-    selectQuestion: function (questionId) {
-      if(questionId) {
+    selectQuestion: function(questionId) {
+      if (questionId) {
         this.get('onSelectQuestion')(questionId);
       }
     }
@@ -52,8 +54,8 @@ export default Ember.Component.extend({
    * @property {[]} questions
    */
   questions: Ember.computed('reportData.@each.answer', function() {
-    let component = this;
-    let reportData = component.get('reportData');
+    const component = this;
+    const reportData = component.get('reportData');
     return reportData.map(item => component.getQuestionStatus(item));
   }),
 
@@ -73,7 +75,9 @@ export default Ember.Component.extend({
    * @property {String} startedStyle style safe string for started
    */
   startedStyle: Ember.computed('score', function() {
-    return Ember.String.htmlSafe(`background-color: ${getGradeColor(this.get('score'))}`);
+    return Ember.String.htmlSafe(
+      `background-color: ${getGradeColor(this.get('score'))}`
+    );
   }),
 
   /**
@@ -88,13 +92,14 @@ export default Ember.Component.extend({
    * Gets the question status
    * @param {QuestionResult} questionResult
    */
-  getQuestionStatus: function(questionResult){
+  getQuestionStatus: function(questionResult) {
     let status = 'not-started';
     let questionId;
-    if (questionResult.get('started')) { //if it has been started
-      let correct = questionResult.get('correct');
-      let skipped = questionResult.get('skipped');
-      status = (correct ? 'correct' : (skipped ? 'skipped' : 'incorrect'));
+    if (questionResult.get('started')) {
+      //if it has been started
+      const correct = questionResult.get('correct');
+      const skipped = questionResult.get('skipped');
+      status = correct ? 'correct' : skipped ? 'skipped' : 'incorrect';
       questionId = questionResult.get('questionId');
     }
     return Ember.Object.create({

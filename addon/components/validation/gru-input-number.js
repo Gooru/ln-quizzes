@@ -11,19 +11,21 @@ import GruInput from 'quizzes-addon/components/validation/gru-input';
  * @see ember-cp-validations
  */
 export default GruInput.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Actions
-  actions:{
+  actions: {
     inputValueChange: function() {
-      this.set('rawInputValue', this.get('rawInputValue') ? +this.get('rawInputValue') : null);
+      this.set(
+        'rawInputValue',
+        this.get('rawInputValue') ? +this.get('rawInputValue') : null
+      );
       this.set('value', this.get('rawInputValue'));
       this.set('isTyping', false);
-      if (this.get("onFocusOut")){
-        this.sendAction("onFocusOut");
+      if (this.get('onFocusOut')) {
+        this.sendAction('onFocusOut');
       }
     },
 
@@ -36,8 +38,12 @@ export default GruInput.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['gru-input-number','validation'],
-  classNameBindings: ['showErrorClass:has-error', 'isValid:has-success','valuePath'],
+  classNames: ['gru-input-number', 'validation'],
+  classNameBindings: [
+    'showErrorClass:has-error',
+    'isValid:has-success',
+    'valuePath'
+  ],
 
   // -------------------------------------------------------------------------
   // Events
@@ -53,15 +59,19 @@ export default GruInput.extend({
     // only accept numbers
     component.$('input[type=number]').keypress(function(event) {
       // 0 means key without character input, 8 is backspace, 48-57 are numbers
-      let keyCode = (typeof event.which === "number") ? event.which : event.keyCode;
+      const keyCode =
+        typeof event.which === 'number' ? event.which : event.keyCode;
       return keyCode === 0 || keyCode === 8 || (keyCode >= 48 && keyCode <= 57);
     });
     // check that it is between min and max
     component.$('input[type=number]').on('input', function() {
       // accept the empty value
-      if(this.value) {
+      if (this.value) {
         var tempValue = +this.value;
-        if(tempValue < component.get('min') || tempValue > component.get('max')) {
+        if (
+          tempValue < component.get('min') ||
+          tempValue > component.get('max')
+        ) {
           this.value = component.get('oldValue');
         }
       }
@@ -90,5 +100,4 @@ export default GruInput.extend({
    * @param {String} oldValue - before the value has changed / before the input event
    */
   oldValue: null
-
 });

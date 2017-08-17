@@ -8,7 +8,7 @@ import Ember from 'ember';
  * @augments ember/Component
  */
 export default Ember.Component.extend({
-// -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
@@ -20,19 +20,17 @@ export default Ember.Component.extend({
   // Actions
 
   actions: {
-
     /**
      * Select a option in the bubble list
      * @function actions:selectBubbleOption
      * @param {Ember.Object} option i.e { label: string, status: string, value: Object, selected: boolean }
      */
     selectBubbleOption: function(option) {
-      let component = this;
+      const component = this;
       component.clearSelection();
       option.set('selected', true);
       component.sendAction('onBubbleSelect', option);
     }
-
   },
   // -------------------------------------------------------------------------
   // Properties
@@ -49,12 +47,10 @@ export default Ember.Component.extend({
   /**
    * Clears current selection
    */
-  clearSelection: function(){
+  clearSelection: function() {
     const options = this.get('bubbleOptions');
-    options.forEach(function(option){
+    options.forEach(function(option) {
       option.set('selected', false);
     });
   }
-
-
 });

@@ -1,8 +1,6 @@
-import Ember from "ember";
+import Ember from 'ember';
 
 export default Ember.Controller.extend({
-
-
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -20,5 +18,4 @@ export default Ember.Controller.extend({
    * @property {GruTheme} application theme
    */
   theme: null
-
 });

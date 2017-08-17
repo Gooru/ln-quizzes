@@ -14,13 +14,12 @@ import ModalMixin from 'quizzes-addon/mixins/modal';
  * @augments ember/Component
  */
 export default Ember.Component.extend(ModalMixin, {
-
   // -------------------------------------------------------------------------
   // Dependencies
 
   // -------------------------------------------------------------------------
   // Attributes
-  classNames:['qz-navigator'],
+  classNames: ['qz-navigator'],
 
   // -------------------------------------------------------------------------
   // Actions
@@ -29,13 +28,13 @@ export default Ember.Component.extend(ModalMixin, {
      * Action triggered to remix the collection
      * @param content
      */
-    remixCollection:function(){
-       this.sendAction('onRemixCollection');
+    remixCollection: function() {
+      this.sendAction('onRemixCollection');
     },
     /**
      * Action triggered when the user closes the content player
      */
-    closePlayer:function(){
+    closePlayer: function() {
       this.sendAction('onClosePlayer');
     },
 
@@ -101,7 +100,7 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean}
    */
   isTeacher: Ember.computed.not('isStudent'),
-   /**
+  /**
    * Indicates if the teacher is playing this collection
    * @property {boolean}
    */
@@ -115,29 +114,35 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {string} on content player close action
    */
   onClosePlayer: null,
-    /**
+  /**
    * @property {string} on content player remix action
    */
-  onRemixCollection:null,
+  onRemixCollection: null,
 
   /**
    * A convenient structure to render the menu
    * @property
    */
-  resourceItems: Ember.computed('collection', 'resourceResults.@each.value', 'selectedResourceId','showFinishConfirmation', function(){
-    let component = this;
-    let collection = component.get('collection');
-    let resourceResults = component.get('resourceResults');
-    return resourceResults.map(function(resourceResult) {
-      let resourceId = resourceResult.get('resource.id');
-      return {
-        resource: collection.getResourceById(resourceId),
-        started: resourceResult.get('started'),
-        isCorrect: resourceResult.get('isCorrect'),
-        selected: resourceId === component.get('selectedResourceId')
-      };
-    });
-  }),
+  resourceItems: Ember.computed(
+    'collection',
+    'resourceResults.@each.value',
+    'selectedResourceId',
+    'showFinishConfirmation',
+    function() {
+      const component = this;
+      const collection = component.get('collection');
+      const resourceResults = component.get('resourceResults');
+      return resourceResults.map(function(resourceResult) {
+        const resourceId = resourceResult.get('resource.id');
+        return {
+          resource: collection.getResourceById(resourceId),
+          started: resourceResult.get('started'),
+          isCorrect: resourceResult.get('isCorrect'),
+          selected: resourceId === component.get('selectedResourceId')
+        };
+      });
+    }
+  ),
 
   /**
    * Resource result for the selected resource
@@ -173,7 +178,7 @@ export default Ember.Component.extend(ModalMixin, {
    */
   selectItem: function(resource) {
     if (resource && !this.get('isNavigationDisabled')) {
-      if (this.get('onItemSelected')){
+      if (this.get('onItemSelected')) {
         this.sendAction('onItemSelected', resource);
       }
       this.sendAction('onCloseNavigator');

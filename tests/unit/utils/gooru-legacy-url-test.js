@@ -3,121 +3,188 @@ import { module, test } from 'qunit';
 
 module('Unit | Utility | gooru legacy url');
 
-test('isCollectionPlayer', function (assert) {
+test('isCollectionPlayer', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#collection-play&id=120"
+    url: '#collection-play&id=120'
   });
-  assert.ok(legacyUrl.get("isCollectionPlayer"), "Should be a collection player url");
+  assert.ok(
+    legacyUrl.get('isCollectionPlayer'),
+    'Should be a collection player url'
+  );
 });
 
-test('isAssessmentPlayer', function (assert) {
+test('isAssessmentPlayer', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#assessment-play&id=120"
+    url: '#assessment-play&id=120'
   });
-  assert.ok(legacyUrl.get("isAssessmentPlayer"), "Should be a assessment player url");
+  assert.ok(
+    legacyUrl.get('isAssessmentPlayer'),
+    'Should be a assessment player url'
+  );
 });
 
-test('isResourcePlayer', function (assert) {
+test('isResourcePlayer', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#resource-play&id=120"
+    url: '#resource-play&id=120'
   });
-  assert.ok(legacyUrl.get("isResourcePlayer"), "Should be a resource player url");
+  assert.ok(
+    legacyUrl.get('isResourcePlayer'),
+    'Should be a resource player url'
+  );
 });
 
-test('module', function (assert) {
+test('module', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#collection-play&id=120"
+    url: '#collection-play&id=120'
   });
-  assert.equal(legacyUrl.get("module"), "collection-play", "Wrong module, it should be collection-player");
+  assert.equal(
+    legacyUrl.get('module'),
+    'collection-play',
+    'Wrong module, it should be collection-player'
+  );
 });
 
-test('id', function (assert) {
+test('id', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#collection-play&id=120"
+    url: '#collection-play&id=120'
   });
-  assert.equal(legacyUrl.get("id"), "120", "Wrong id, it should be 120");
+  assert.equal(legacyUrl.get('id'), '120', 'Wrong id, it should be 120');
 });
 
-test('contentId', function (assert) {
+test('contentId', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#collection-play&id=120&cid=1130"
+    url: '#collection-play&id=120&cid=1130'
   });
-  assert.equal(legacyUrl.get("contentId"), "1130", "Wrong cid, it should be 1130");
+  assert.equal(
+    legacyUrl.get('contentId'),
+    '1130',
+    'Wrong cid, it should be 1130'
+  );
 });
 
-test('isLegacyUrl', function (assert) {
+test('isLegacyUrl', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#collection-play&id=120&cid=1130"
+    url: '#collection-play&id=120&cid=1130'
   });
-  assert.ok(legacyUrl.get("isLegacyUrl"), "it should be a legacy url");
+  assert.ok(legacyUrl.get('isLegacyUrl'), 'it should be a legacy url');
 });
 
-test('isLegacyUrl - not so', function (assert) {
+test('isLegacyUrl - not so', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "collection-play&id=120&cid=1130"
+    url: 'collection-play&id=120&cid=1130'
   });
-  assert.ok(!legacyUrl.get("isLegacyUrl"), "it should not be a legacy url, missing #");
+  assert.ok(
+    !legacyUrl.get('isLegacyUrl'),
+    'it should not be a legacy url, missing #'
+  );
 });
 
-test('isLegacyUrl - google sign url', function (assert) {
+test('isLegacyUrl - google sign url', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "access_token=1220304#"
+    url: 'access_token=1220304#'
   });
-  assert.ok(!legacyUrl.get("isLegacyUrl"), "it should not be a legacy url, # is at the end");
+  assert.ok(
+    !legacyUrl.get('isLegacyUrl'),
+    'it should not be a legacy url, # is at the end'
+  );
 });
 
-test('routeParams for collection-play with no content id', function (assert) {
+test('routeParams for collection-play with no content id', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#collection-play&id=120"
+    url: '#collection-play&id=120'
   });
-  assert.deepEqual(legacyUrl.get("routeParams"), ["player", "120", { queryParams: { type: "collection" }}], "Wrong params");
+  assert.deepEqual(
+    legacyUrl.get('routeParams'),
+    ['player', '120', { queryParams: { type: 'collection' } }],
+    'Wrong params'
+  );
 });
 
-test('routeParams for collection-play with content id', function (assert) {
+test('routeParams for collection-play with content id', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#collection-play&id=120&cid=100"
+    url: '#collection-play&id=120&cid=100'
   });
-  assert.deepEqual(legacyUrl.get("routeParams"), ["player", "120", { queryParams: { resourceId: "100", type: "collection" }}], "Wrong params");
+  assert.deepEqual(
+    legacyUrl.get('routeParams'),
+    [
+      'player',
+      '120',
+      { queryParams: { resourceId: '100', type: 'collection' } }
+    ],
+    'Wrong params'
+  );
 });
 
-test('routeParams for collection-play with invalid content id, cid={1}', function (assert) {
+test('routeParams for collection-play with invalid content id, cid={1}', function(
+  assert
+) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#collection-play&id=120&cid={1}"
+    url: '#collection-play&id=120&cid={1}'
   });
-  assert.deepEqual(legacyUrl.get("routeParams"), ["player", "120", { queryParams: { type: "collection" }}], "Wrong params");
+  assert.deepEqual(
+    legacyUrl.get('routeParams'),
+    ['player', '120', { queryParams: { type: 'collection' } }],
+    'Wrong params'
+  );
 });
 
-test('routeParams for assessment-play with no content id', function (assert) {
+test('routeParams for assessment-play with no content id', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#assessment-play&id=120"
+    url: '#assessment-play&id=120'
   });
-  assert.deepEqual(legacyUrl.get("routeParams"), ["player", "120", { queryParams: { type: "assessment" }}], "Wrong params");
+  assert.deepEqual(
+    legacyUrl.get('routeParams'),
+    ['player', '120', { queryParams: { type: 'assessment' } }],
+    'Wrong params'
+  );
 });
 
-test('routeParams for assessment-play with content id', function (assert) {
+test('routeParams for assessment-play with content id', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#assessment-play&id=120&cid=100"
+    url: '#assessment-play&id=120&cid=100'
   });
-  assert.deepEqual(legacyUrl.get("routeParams"), ["player", "120", { queryParams: { resourceId: "100", type: "assessment" }}], "Wrong params");
+  assert.deepEqual(
+    legacyUrl.get('routeParams'),
+    [
+      'player',
+      '120',
+      { queryParams: { resourceId: '100', type: 'assessment' } }
+    ],
+    'Wrong params'
+  );
 });
 
-test('routeParams for assessment-play with invalid content id, cid={1}', function (assert) {
+test('routeParams for assessment-play with invalid content id, cid={1}', function(
+  assert
+) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#assessment-play&id=120&cid={1}"
+    url: '#assessment-play&id=120&cid={1}'
   });
-  assert.deepEqual(legacyUrl.get("routeParams"), ["player", "120", { queryParams: { type: "assessment" }}], "Wrong params");
+  assert.deepEqual(
+    legacyUrl.get('routeParams'),
+    ['player', '120', { queryParams: { type: 'assessment' } }],
+    'Wrong params'
+  );
 });
 
-test('routeParams for resource-play', function (assert) {
+test('routeParams for resource-play', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#resource-play&id=120"
+    url: '#resource-play&id=120'
   });
-  assert.deepEqual(legacyUrl.get("routeParams"), ["content.resources.play", "120"], "Wrong params");
+  assert.deepEqual(
+    legacyUrl.get('routeParams'),
+    ['content.resources.play', '120'],
+    'Wrong params'
+  );
 });
 
-test('routeParams for profile', function (assert) {
+test('routeParams for profile', function(assert) {
   const legacyUrl = GooruLegacyUrl.create({
-    url : "#perezedify"
+    url: '#perezedify'
   });
-  assert.deepEqual(legacyUrl.get("routeParams"), ["profile", "perezedify"], "Wrong params");
+  assert.deepEqual(
+    legacyUrl.get('routeParams'),
+    ['profile', 'perezedify'],
+    'Wrong params'
+  );
 });

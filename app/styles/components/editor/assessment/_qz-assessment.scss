@@ -1,18 +1,18 @@
 .edit_assessment {
   overflow: hidden;
   height: 100%;
- > .ember-view,
- .quizzes,
- .app-container {
-   height: 100%;
- }
+  > .ember-view,
+  .quizzes,
   .app-container {
-  margin: 0;
-  padding: 0;
-  position: relative;
- }
+    height: 100%;
+  }
+  .app-container {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
 }
-.qz-assessment{
+.qz-assessment {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -30,10 +30,10 @@
         border-top-right-radius: 6px;
         border-top-left-radius: 6px;
         h3 {
-          color:$gray;
+          color: $gray;
           display: inline-block;
         }
-        div.border-bottom{
+        div.border-bottom {
           padding-bottom: 15px;
           border-bottom: 1px solid $gray-lighter;
           margin-bottom: 0;
@@ -60,8 +60,8 @@
     }
 
     .panel {
-
-      .panel-heading, .panel-body {
+      .panel-heading,
+      .panel-body {
         padding-left: 25px;
         padding-right: 25px;
       }
@@ -71,78 +71,77 @@
         padding-top: 10px;
         padding-bottom: 0;
       }
-
     }
   }
-  #prompt{
+  #prompt {
     .panel-borderless {
       border: 0;
       box-shadow: none;
-      .panel-heading{
+      .panel-heading {
         padding-left: 16px;
         padding-right: 16px;
       }
     }
-    .math-editor{
+    .math-editor {
       margin-top: 25px;
     }
   }
-  #information{
+  #information {
     height: 100%;
     padding-bottom: 40px;
-    margin-bottom:40px;
-    .content{
+    margin-bottom: 40px;
+    .content {
       @include flexbox;
-      .gru-image{
+      .gru-image {
         float: left;
         margin-right: 20px;
       }
-      .panel.information{
+      .panel.information {
         @include flex(1);
         border-radius: 6px;
-        .title{
-          .form-group{
+        .title {
+          .form-group {
             width: 300px;
           }
         }
-        .learning-objective{
-          .form-group{
+        .learning-objective {
+          .form-group {
             width: 700px;
           }
         }
       }
     }
   }
-  #rubric{
-    .overall-score{
-      .feedback{
-        label{
+  #rubric {
+    .overall-score {
+      .feedback {
+        label {
           @include flexbox;
           @include align-items(center);
-          .feedbackGuidance{
+          .feedbackGuidance {
             width: 88%;
           }
-          textarea{
+          textarea {
             margin-left: 15px;
             font-size: $font-size-base;
           }
         }
       }
-      .total-points{
+      .total-points {
         display: inline-block;
-        .label-pts{
-          margin-left: 10px
+        .label-pts {
+          margin-left: 10px;
         }
       }
-      .required-feedback{
-        float:right;
+      .required-feedback {
+        float: right;
         @include flexbox;
-        .check_box{
-          color:$blue-500;
+        .check_box {
+          color: $blue-500;
         }
       }
     }
-    .add-category{
+    .add-category {
       margin-bottom: 15px;
       display: block;
       border: 2px dashed #bbb;
@@ -157,4 +156,3 @@
     }
   }
 }
-

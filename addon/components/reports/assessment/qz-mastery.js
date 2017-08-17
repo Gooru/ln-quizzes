@@ -5,11 +5,10 @@ export default Ember.Component.extend({
   // Actions
 
   actions: {
-
     /**
      * Handle event triggered by gru-learning-target
      */
-    bubbleSelect:function(bubbleOption) {
+    bubbleSelect: function(bubbleOption) {
       this.sendAction('onBubbleSelect', bubbleOption);
     }
   },
@@ -30,6 +29,5 @@ export default Ember.Component.extend({
    *
    * @constant {Array}
    */
-  learningTargets:null
-
+  learningTargets: null
 });

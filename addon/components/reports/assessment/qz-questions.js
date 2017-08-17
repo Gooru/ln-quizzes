@@ -1,17 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   // -------------------------------------------------------------------------
   // Actions
 
   actions: {
-
     /**
      * Selects Performance Option or not
      * @function actions:selectPerformanceOption
      */
-    selectPerformanceOption:function(showPerformance) {
+    selectPerformanceOption: function(showPerformance) {
       if (!this.get('isAnswerKeyHidden')) {
         this.set('showPerformance', showPerformance);
       }
@@ -30,7 +28,10 @@ export default Ember.Component.extend({
 
   classNames: ['reports', 'assessment', 'qz-questions'],
 
-  classNameBindings: ['isAnswerKeyHidden:key-hidden', 'showPerformance:performance-view'],
+  classNameBindings: [
+    'isAnswerKeyHidden:key-hidden',
+    'showPerformance:performance-view'
+  ],
 
   // -------------------------------------------------------------------------
   // Properties

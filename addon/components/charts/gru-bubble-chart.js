@@ -11,7 +11,7 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  classNames: ['charts','gru-bubble-chart'],
+  classNames: ['charts', 'gru-bubble-chart'],
 
   // -------------------------------------------------------------------------
   // Properties
@@ -32,5 +32,4 @@ export default Ember.Component.extend({
   style: Ember.computed('color', function() {
     return Ember.String.htmlSafe(`background-color: ${this.get('color')}`);
   })
-
 });

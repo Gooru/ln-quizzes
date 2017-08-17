@@ -12,7 +12,6 @@ import QuestionComponent from 'quizzes-addon/components/player/questions/qz-ques
  * @augments Ember/Component
  */
 export default QuestionComponent.extend({
-
   // -------------------------------------------------------------------------
   // Dependencies
   i18n: Ember.inject.service(),
@@ -51,8 +50,8 @@ export default QuestionComponent.extend({
 
     component.setUserAnswer();
 
-    if (!readOnly){
-      if(component.get('userAnswer')) {
+    if (!readOnly) {
+      if (component.get('userAnswer')) {
         component.notify(true);
       }
       this.$('li.answer').on('click', function() {
@@ -60,12 +59,12 @@ export default QuestionComponent.extend({
         const answerId = $this.data('id');
 
         var selected = component.get('selectedAnswers');
-        let answer = selected.findBy('value',answerId);
+        const answer = selected.findBy('value', answerId);
 
         $this.toggleClass('selected');
 
         if (!answer) {
-          selected.push({value:answerId});
+          selected.push({ value: answerId });
         } else {
           var idx = selected.indexOf(answer);
           selected.splice(idx, 1);
@@ -74,7 +73,6 @@ export default QuestionComponent.extend({
         component.notify(false);
       });
     }
-
   }),
 
   // -------------------------------------------------------------------------
@@ -116,14 +114,14 @@ export default QuestionComponent.extend({
    */
   notify: function(onLoad) {
     const component = this;
-    let selected = component.get('selectedAnswers');
-    let cleared = !selected.length;
+    const selected = component.get('selectedAnswers');
+    const cleared = !selected.length;
 
     component.notifyAnswerChanged(selected);
     if (cleared) {
       component.notifyAnswerCleared(selected);
     } else {
-      if(onLoad) {
+      if (onLoad) {
         component.notifyAnswerLoaded(selected);
       } else {
         component.notifyAnswerCompleted(selected);
@@ -135,7 +133,7 @@ export default QuestionComponent.extend({
    * Set answers
    */
   setAnswers: function() {
-    let userAnswer = this.get('userAnswer');
+    const userAnswer = this.get('userAnswer');
     this.set('selectedAnswers', userAnswer || []);
   },
 
@@ -145,9 +143,9 @@ export default QuestionComponent.extend({
   setUserAnswer: function() {
     if (this.get('hasUserAnswer')) {
       const userAnswer = this.get('userAnswer');
-      userAnswer.forEach(function(answer){
-        let selector = `li.answer[data-id='${answer.value}']`;
-        let $answer = Ember.$(selector);
+      userAnswer.forEach(function(answer) {
+        const selector = `li.answer[data-id='${answer.value}']`;
+        const $answer = Ember.$(selector);
         $answer.toggleClass('selected');
       });
     }

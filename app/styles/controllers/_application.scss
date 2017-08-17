@@ -4,7 +4,6 @@
 }
 
 .app-container {
-
   > .controller,
   > .ember-view > .component {
     @include flexbox;

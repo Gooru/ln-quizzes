@@ -25,7 +25,13 @@ export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Actions
   actions: {
-
+    /**
+     * Action triggered to remix the collection
+     * @param content
+     */
+    remixCollection:function(){
+       this.sendAction('onRemixCollection');
+    },
     /**
      * Action triggered when the user closes the content player
      */
@@ -86,6 +92,21 @@ export default Ember.Component.extend(ModalMixin, {
   onFinishCollection: null,
 
   /**
+   * Indicates if the student is playing the collection
+   * @property {boolean}
+   */
+  isStudent: Ember.computed.equal('role', 'student'),
+  /**
+   * Indicates if the teacher is playing this collection
+   * @property {boolean}
+   */
+  isTeacher: Ember.computed.not('isStudent'),
+   /**
+   * Indicates if the teacher is playing this collection
+   * @property {boolean}
+   */
+  showRemix: Ember.computed.and('showBackButton', 'isTeacher'),
+  /**
    * @property {string|function} onItemSelected - event handler for when an item is selected
    */
   onItemSelected: null,
@@ -94,6 +115,10 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {string} on content player close action
    */
   onClosePlayer: null,
+    /**
+   * @property {string} on content player remix action
+   */
+  onRemixCollection:null,
 
   /**
    * A convenient structure to render the menu

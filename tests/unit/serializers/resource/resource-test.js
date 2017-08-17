@@ -62,6 +62,7 @@ test('normalizeReadResource', function(assert) {
     assert.equal(answer.get('value'), `answer${index}-value`, `Wrong answer ${index} value`);
     assert.notOk(answer.get('isFixed'), 'Wrong answer ${index} isFixed');
   });
+  assert.ok(resource.get('mediaUrl'), 'Media Url does not set when thumbnail field is not null');
 });
 
 test('normalizeReadResource without interaction', function(assert) {

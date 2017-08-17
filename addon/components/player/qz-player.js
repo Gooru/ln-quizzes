@@ -43,6 +43,14 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
+     * Action triggered to remix the collection
+     * @param content
+     */
+    remixCollection:function(){
+       this.sendAction('onRemixCollection');
+    },
+
+    /**
      * Triggered when an resource emotion is selected
      * @param {string} emotionScore
      */
@@ -147,7 +155,12 @@ export default Ember.Component.extend(ModalMixin, {
 
   didInsertElement: function() {
     this._super(...arguments);
-    if(this.get('collection.isCollection') || this.get('isAnonymous') || this.get('isTeacher')) {
+    if(
+      this.get('collection.isCollection') ||
+      this.get('isAnonymous') ||
+      this.get('isTeacher') ||
+      this.get('notCheckAttempts')
+    ) {
       this.set('showConfirmation',false);
       this.startAssessment();
     }
@@ -188,6 +201,12 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {Boolean} sendContextFinish
    */
   sendContextFinish: false,
+
+  /**
+   * Indicates if the player needs to check the attempts
+   * @property {boolean}
+   */
+  notCheckAttempts: true,
 
   /**
    * Is Assessment

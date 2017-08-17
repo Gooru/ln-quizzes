@@ -17,7 +17,8 @@ test('normalizeProfile', function(assert) {
     last_name: 'last-name',
     username: 'username',
     email: 'e@mail.com',
-    thumbnail:'image'
+    thumbnail:'image',
+    roster_global_userid:'gcc001'
   };
   const response = serializer.normalizeProfile(payload);
 
@@ -27,6 +28,7 @@ test('normalizeProfile', function(assert) {
   assert.deepEqual(response.get('username'), 'username', 'Wrong profile username');
   assert.deepEqual(response.get('email'), 'e@mail.com', 'Wrong profile email');
   assert.deepEqual(response.get('avatarUrl'), 'cdn-test/image', 'Wrong profile image');
+  assert.deepEqual(response.get('studentId'), 'gcc001', 'Wrong profile student id');
 });
 
 test('normalizeProfiles', function(assert) {
@@ -45,7 +47,8 @@ test('normalizeProfiles', function(assert) {
       last_name: 'last-name',
       username: 'username',
       email: 'e@mail.com',
-      thumbnail:'image'
+      thumbnail:'image',
+      roster_global_userid:'gcc001'
     }]
   };
   const response = serializer.normalizeProfiles(payload);
@@ -56,4 +59,5 @@ test('normalizeProfiles', function(assert) {
   assert.deepEqual(response['profile-id'].get('username'), 'username', 'Wrong profile username');
   assert.deepEqual(response['profile-id'].get('email'), 'e@mail.com', 'Wrong profile email');
   assert.deepEqual(response['profile-id'].get('avatarUrl'), 'cdn-test/image', 'Wrong profile image');
+  assert.deepEqual(response['profile-id'].get('studentId'), 'gcc001', 'Wrong profile student id');
 });

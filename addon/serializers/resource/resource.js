@@ -10,6 +10,17 @@ import AnswerModel from 'quizzes-addon/models/resource/answer';
 export default Ember.Object.extend({
 
   /**
+   * @property {Ember.Service} Service to session
+   */
+  session: Ember.inject.service('session'),
+
+  /**
+   * Assign the content CDN url from authenticated session object
+   * @type {String}
+   */
+  contentCDNUrl: Ember.computed.alias('session.cdnUrls.content'),
+
+  /**
    * Normalize the resource data into a Resource object
    * @param resourceData
    * @returns {Resource}
@@ -18,7 +29,6 @@ export default Ember.Object.extend({
     const serializer = this;
     const questionData = resourceData.title || !resourceData.metadata ? resourceData : resourceData.metadata;
     const interaction = questionData ? questionData.interaction : null;
-
     const resource = ResourceModel.create(Ember.getOwner(this).ownerInjection(), {
       id: resourceData.id,
       isResource: resourceData.isResource,
@@ -32,7 +42,8 @@ export default Ember.Object.extend({
       thumbnail: questionData.thumbnail,
       displayGuide: questionData.display_guide && (questionData.display_guide.is_broken === 1 ||
         questionData.display_guide.is_frame_breaker === 1),
-      type: questionData.content_subformat || questionData.type
+      type: questionData.content_subformat || questionData.type,
+      mediaUrl: (questionData.thumbnail ? (serializer.get('contentCDNUrl') + questionData.thumbnail) : null)
     });
 
     resource.set('displayGuide', resource.get('displayGuide') || this.checkURLProtocol(resource.body));

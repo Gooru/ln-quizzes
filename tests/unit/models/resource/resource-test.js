@@ -196,3 +196,13 @@ test('isUrlResource', function(assert) {
 
   assert.ok(model.get('isUrlResource'), 'It should be url resource type');
 });
+
+test('Resource image url', function(assert) {
+  assert.expect(2);
+  let model = this.subject({
+    mediaUrl: '//dev.cdn.url/question-img.png'
+  });
+
+  assert.ok(model.get('hasMedia'), 'Wrong value for hasMedia field');
+  assert.equal(model.get('mediaUrl'), '//dev.cdn.url/question-img.png' , "Wrong value set for media url");
+});

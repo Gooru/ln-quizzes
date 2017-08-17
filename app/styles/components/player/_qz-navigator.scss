@@ -36,6 +36,15 @@
       width: 100%;
       background-color: $dark-500;
     }
+    .back-button .backSpan{
+      width: 75%;
+      float:left;
+    }
+    .back-button .remixSpan{
+      width: 25%;
+      float:right;
+    }
+
     .lead {
       cursor: pointer;
     }

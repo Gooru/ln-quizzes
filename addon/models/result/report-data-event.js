@@ -80,7 +80,7 @@ export default Ember.Object.extend({
    * @property {string} profileCode student's anonymous code
    */
   profileCode: Ember.computed('profileId', function() {
-    return this.get('profileId').slice(0, 4);
+    return this.get('studentId') ? this.get('studentId') : this.get('profileId').slice(0, 4);
   }),
 
   /**
@@ -114,6 +114,11 @@ export default Ember.Object.extend({
    * @property {Number} updated keep track of updated to redraw realtime dashboard
    */
   updated: 0,
+
+  /**
+   * @property {string} profile student's ID
+   */
+  studentId: null,
 
   // -------------------------------------------------------------------------
   // Methods
@@ -208,6 +213,7 @@ export default Ember.Object.extend({
    */
   setProfileProperties: function(profile) {
     this.set('profileName', profile.get('fullName'));
+    this.set('studentId', profile.get('studentId'));
   },
 
   /**

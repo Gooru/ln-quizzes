@@ -44,7 +44,8 @@ export default Ember.Object.extend({
        firstName: profile.first_name,
        lastName: profile.last_name,
        username: profile.username,
-       avatarUrl:thumbnailUrl
+       avatarUrl:thumbnailUrl,
+       studentId: profile.roster_global_userid
      });
    }
 });

@@ -373,6 +373,68 @@ test('Player Navigator - Back Button', function(assert) {
   var $component = this.$(); //component dom element
   const $navigator = $component.find('.qz-navigator');
   T.exists(assert, $navigator, 'Missing navigator section');
-  T.exists(assert, $navigator.find('.back-button'), 'Missing back button');
-  $navigator.find('.back-button').click();
+  T.exists(assert, $navigator.find('.back-button').find('.backSpan'), 'Missing back button');
+  $navigator.find('.back-button').find('.backSpan').click();
+});
+
+test('Player Navigator - Remix Button', function(assert) {
+
+  assert.expect(3);
+
+  const resourceMockA = Ember.Object.create({
+    id: '1',
+    title: '<p>Resource #1</p>',
+    format: 'question',
+    'isQuestion': true
+  });
+
+  const resourceMockB = Ember.Object.create({
+    id: '2',
+    title: 'Resource #2',
+    format: 'webpage',
+    'isQuestion': false
+  });
+
+  const collectionMock = Ember.Object.create({
+    id: '490ffa82-aa15-4101-81e7-e148002f90af',
+    title: 'Test collection',
+    resources: Ember.A([
+      resourceMockA,
+      resourceMockB
+    ]),
+    lastVisitedResource: resourceMockB,
+    getResourceById: function(id){
+      if(id === '1'){
+        return resourceMockA;
+      } else if (id ==='2') {
+        return resourceMockB;
+      }
+    }
+  });
+
+  const resourceResults = Ember.A([
+    QuestionResult.create({ resource: resourceMockA }),
+    QuestionResult.create({ resource: resourceMockB })
+  ]);
+
+  this.set('collection', collectionMock);
+  this.set('resourceResults', resourceResults);
+
+  this.on('itemSelected', function(/*resource*/) {
+    assert.ok(false, 'This should not be called');
+  });
+
+  this.on('onRemixCollection', function(/*resource*/) {
+    assert.ok(true, 'This should be called');
+  });
+
+  this.render(hbs`{{player.qz-navigator collection=collection
+      resourceResults=resourceResults lessonTitle='E-Lesson1' showRemix=true
+      selectedResourceId='1' onItemSelected='itemSelected' onRemixCollection='onRemixCollection'}}`);
+
+  var $component = this.$(); //component dom element
+  const $navigator = $component.find('.qz-navigator');
+  T.exists(assert, $navigator, 'Missing navigator section');
+  T.exists(assert, $navigator.find('.back-button').find('.remixSpan').find('.remix-btn'), 'Missing remix button');
+  $navigator.find('.back-button').find('.remixSpan').find('.remix-btn').click();
 });

@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import ResourceResult from 'quizzes-addon/models/result/resource';
+import Resource from 'quizzes-addon/models/resource/resource';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('model:result/context', 'Unit | Model | result/context');
@@ -17,6 +19,28 @@ test('questionResults', function(assert) {
   assert.equal(
     contextResult.get('questionResults').length,
     1,
+    'Wrong question results'
+  );
+});
+
+test('nonOpenEndedQuestionResults', function(assert) {
+  const contextResult = this.subject({
+    resourceResults: Ember.A([
+      QuestionResult.create({
+        resource: Resource.create({ type: QUESTION_TYPES.trueFalse })
+      }),
+      QuestionResult.create({
+        resource: Resource.create({ type: QUESTION_TYPES.fib })
+      }),
+      QuestionResult.create({
+        resource: Resource.create({ type: QUESTION_TYPES.openEnded })
+      })
+    ])
+  });
+
+  assert.equal(
+    contextResult.get('nonOpenEndedQuestionResults').length,
+    2,
     'Wrong question results'
   );
 });

@@ -90,6 +90,18 @@ export default Ember.Object.extend({
   }),
 
   /**
+   * @property {QuestionResult[]} nonOpenEndedQuestionResults
+   */
+  nonOpenEndedQuestionResults: Ember.computed(
+    'questionResults.@each.updated',
+    function() {
+      return this.get('questionResults').filter(function(questionResult) {
+        return !questionResult.get('question.isOpenEnded');
+      });
+    }
+  ),
+
+  /**
    * @property {ResourceResult[]} resourceResults
    */
   resourceResults: Ember.A([]),
@@ -133,6 +145,13 @@ export default Ember.Object.extend({
    * @property {number} totalResources
    */
   totalResources: Ember.computed.alias('resourceResults.length'),
+
+  /**
+   * @property {number} totalQuestions that aren't open ended
+   */
+  totalNonOpenEndedQuestions: Ember.computed.alias(
+    'nonOpenEndedQuestionResults.length'
+  ),
 
   /**
    * @property {number} totalTimeSpent sum of all the time spent

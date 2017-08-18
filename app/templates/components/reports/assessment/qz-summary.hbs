@@ -3,7 +3,7 @@
     <div class="grade" style={{gradeStyle}}>
       <span class="percentage">{{round-number contextResult.correctPercentage}}%</span>
     <span class="attempts">
-      <span class="fractional fraction"> {{{fractional numerator=contextResult.correctAnswers denominator=contextResult.totalResources}}}</span>
+      <span class="fractional fraction"> {{{fractional numerator=contextResult.correctAnswers denominator=contextResult.totalNonOpenEndedQuestions}}}</span>
       <span class="text">{{t 'common.correct'}}</span>
     </span>
     </div>

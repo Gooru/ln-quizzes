@@ -193,7 +193,7 @@ test('Layout with rubric ON with categories', function(assert) {
   );
   assert.ok(
     $freeResponseViewer.find('.rubric-information').length,
-    'Rubric information menu should not appear'
+    'Rubric information menu should appear'
   );
 });
 

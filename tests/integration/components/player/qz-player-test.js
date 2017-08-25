@@ -4,6 +4,7 @@ import Collection from 'quizzes-addon/models/collection/collection';
 import ContextResult from 'quizzes-addon/models/result/context';
 import ResourceResult from 'quizzes-addon/models/result/resource';
 import ResourceModel from 'quizzes-addon/models/resource/resource';
+import RubricModel from 'quizzes-addon/models/rubric/rubric';
 import Ember from 'ember';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
@@ -474,7 +475,10 @@ test('Open ended question submit button text when have more questions', function
     body: '',
     description: 'Sample description text',
     sequence: 1,
-    hasAnswers: true
+    hasAnswers: true,
+    rubric: RubricModel.create({
+      id: 'rubric-1'
+    })
   });
 
   const question2 = ResourceModel.create({
@@ -483,7 +487,10 @@ test('Open ended question submit button text when have more questions', function
     body: 'The sun is yellow and the moon white',
     description: 'Sample description text',
     sequence: 1,
-    hasAnswers: true
+    hasAnswers: true,
+    rubric: RubricModel.create({
+      id: 'rubric-2'
+    })
   });
 
   const collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
@@ -541,7 +548,10 @@ test('Open ended question submit button text when is the last question', functio
     body: 'The sun is yellow and the moon white',
     description: 'Sample description text',
     sequence: 1,
-    hasAnswers: true
+    hasAnswers: true,
+    rubric: RubricModel.create({
+      id: 'rubric-1'
+    })
   });
 
   const question2 = ResourceModel.create({
@@ -550,7 +560,10 @@ test('Open ended question submit button text when is the last question', functio
     body: 'The sun is yellow and the moon white',
     description: 'Sample description text',
     sequence: 1,
-    hasAnswers: true
+    hasAnswers: true,
+    rubric: RubricModel.create({
+      id: 'rubric-2'
+    })
   });
 
   const collection = Collection.create(Ember.getOwner(this).ownerInjection(), {

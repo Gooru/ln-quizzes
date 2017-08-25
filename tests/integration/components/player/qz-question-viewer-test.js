@@ -4,6 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import T from 'dummy/tests/helpers/assert';
 import AnswerModel from 'quizzes-addon/models/resource/answer';
+import RubricModel from 'quizzes-addon/models/rubric/rubric';
 import ResourceModel from 'quizzes-addon/models/resource/resource';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
@@ -550,7 +551,10 @@ test('Question viewer when question type is Free Response', function(assert) {
     body: '',
     description: 'Sample description text',
     sequence: 1,
-    hasAnswers: true
+    hasAnswers: true,
+    rubric: RubricModel.create({
+      id: '1234'
+    })
   });
 
   this.set('question', question);

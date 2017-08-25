@@ -15,14 +15,17 @@ moduleForComponent(
   }
 );
 
-test('Layout without rubric', function(assert) {
+test('Layout with rubric OFF', function(assert) {
   const question = ResourceModel.create({
     id: '569906aacea8416665209d53',
     type: QUESTION_TYPES.openEnded,
     body: '',
     description: 'Sample description text',
     sequence: 1,
-    hasAnswers: true
+    hasAnswers: true,
+    rubric: RubricModel.create({
+      id: '1234'
+    })
   });
 
   this.set('question', question);
@@ -66,11 +69,11 @@ test('Layout without rubric', function(assert) {
   );
   assert.notOk(
     $freeResponseViewer.find('.rubric-information').length,
-    'Rubric information menu should not appear'
+    'Rubric information menu should notappear'
   );
 });
 
-test('Layout with rubric', function(assert) {
+test('Layout with rubric ON without categories', function(assert) {
   const question = ResourceModel.create({
     id: '569906aacea8416665209d53',
     type: QUESTION_TYPES.openEnded,
@@ -122,8 +125,77 @@ test('Layout with rubric', function(assert) {
     'Missing save button'
   );
   assert.ok(
+    !$freeResponseViewer.find('.rubric-information').length,
+    'Rubric information menu should not appear'
+  );
+});
+
+test('Layout with rubric ON with categories', function(assert) {
+  const question = ResourceModel.create({
+    id: '569906aacea8416665209d53',
+    type: QUESTION_TYPES.openEnded,
+    body: '',
+    description: 'Sample description text',
+    sequence: 1,
+    hasAnswers: true,
+    rubric: RubricModel.create({
+      id: '1234',
+      title: 'TitleRubric',
+      categories: Ember.A([
+        RubricCategoryModel.create({
+          id: 'category-1',
+          title: 'title',
+          score: 2
+        }),
+        RubricCategoryModel.create({
+          id: 'category-2',
+          title: 'title',
+          score: 3
+        })
+      ])
+    })
+  });
+
+  this.set('question', question);
+
+  this.render(hbs`{{player/qz-free-response-viewer question=question}}`);
+
+  var $component = this.$();
+  const $freeResponseViewer = $component.find('.qz-free-response-viewer');
+  assert.notOk(
+    $freeResponseViewer.find('.rubric-response.no-rubric').length,
+    'Should have rubric'
+  );
+  assert.ok(
+    $freeResponseViewer.find('.rubric-response.rubric').length,
+    'Rubric Response should appear'
+  );
+  assert.ok(
+    $freeResponseViewer.find('.rubric-response.rubric .prompt').length,
+    'Missing prompt'
+  );
+  assert.ok(
+    $freeResponseViewer.find('.rubric-response.rubric .prompt .icon').length,
+    'Missing prompt question icon'
+  );
+  assert.ok(
+    $freeResponseViewer.find('.rubric-response.rubric .prompt .question-text')
+      .length,
+    'Missing question text'
+  );
+  assert.ok(
+    $freeResponseViewer.find(
+      '.rubric-response.rubric .question-response .qz-rich-text-editor'
+    ).length,
+    'Missing rich text editor'
+  );
+  assert.ok(
+    $freeResponseViewer.find('.rubric-response.rubric .actions .save').length,
+    'Missing save button'
+  );
+  assert.ok(
     $freeResponseViewer.find('.rubric-information').length,
-    'Rubric information menu should appear'
+    'Rubric information menu should not appear'
   );
 });
 

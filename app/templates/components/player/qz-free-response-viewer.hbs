@@ -21,7 +21,7 @@
     </div>
   </div>
 {{/unless}}
-{{#if hasRubric}}
+{{#if (and hasRubric categories)}}
   <div class="rubric-information {{if showFullRubric 'full-rubric'}}">
     <div class="header" {{action 'showFullRubric'}}>
       {{gru-icon name=(if showFullRubric "keyboard_arrow_right" "keyboard_arrow_left")}}

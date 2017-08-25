@@ -35,41 +35,39 @@ test('Layout with rubric OFF', function(assert) {
   var $component = this.$();
   const $freeResponseViewer = $component.find('.qz-free-response-viewer');
   assert.ok(
-    $freeResponseViewer.find('.rubric-response.no-rubric').length,
+    $freeResponseViewer.find('.rubric-response.rubric').length,
     'Missing response section'
   );
   assert.ok(
-    $freeResponseViewer.find('.rubric-response.no-rubric .prompt').length,
+    $freeResponseViewer.find('.rubric-response.rubric .prompt').length,
     'Missing prompt'
   );
   assert.ok(
-    $freeResponseViewer.find('.rubric-response.no-rubric .prompt .icon').length,
+    $freeResponseViewer.find('.rubric-response.rubric .prompt .icon').length,
     'Missing prompt question icon'
   );
   assert.ok(
-    $freeResponseViewer.find(
-      '.rubric-response.no-rubric .prompt .question-text'
-    ).length,
+    $freeResponseViewer.find('.rubric-response.rubric .prompt .question-text')
+      .length,
     'Missing question text'
   );
   assert.ok(
     $freeResponseViewer.find(
-      '.rubric-response.no-rubric .question-response .qz-rich-text-editor'
+      '.rubric-response.rubric .question-response .qz-rich-text-editor'
     ).length,
     'Missing rich text editor'
   );
   assert.ok(
-    $freeResponseViewer.find('.rubric-response.no-rubric .actions .save')
-      .length,
+    $freeResponseViewer.find('.rubric-response.rubric .actions .save').length,
     'Missing save button'
   );
   assert.notOk(
-    $freeResponseViewer.find('.rubric-response.rubric').length,
-    'Rubric should not appear'
+    $freeResponseViewer.find('.rubric-response.no-rubric').length,
+    'No-Rubric should not appear'
   );
   assert.notOk(
     $freeResponseViewer.find('.rubric-information').length,
-    'Rubric information menu should notappear'
+    'Rubric information menu should not appear'
   );
 });
 
@@ -209,7 +207,19 @@ test('Full rubric', function(assert) {
     hasAnswers: true,
     rubric: RubricModel.create({
       id: '1234',
-      title: 'TitleRubric'
+      title: 'TitleRubric',
+      categories: Ember.A([
+        RubricCategoryModel.create({
+          id: 'category-1',
+          title: 'title',
+          score: 2
+        }),
+        RubricCategoryModel.create({
+          id: 'category-2',
+          title: 'title',
+          score: 3
+        })
+      ])
     })
   });
 

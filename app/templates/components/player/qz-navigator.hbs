@@ -4,7 +4,7 @@
       <div class="backSpan" {{action 'closePlayer'}}>
       <span> {{gru-icon name='keyboard_arrow_left'}}{{t 'common.back'}}</span></div>
       {{/if}}
-      {{#if showRemix}}     
+      {{#if showRemix}}
         <div class="remixSpan">
         <button class="remix-btn btn btn-success btn-sm" {{action 'remixCollection' collection}}>{{t 'common.remix'}}</button>
       </div>
@@ -32,7 +32,7 @@
         <h6 class="title visible-sm visible-md">
           {{truncate-text text=(no-tags text=item.resource.title) type='player-nav-sm'}}
         </h6>
-        {{#if showFeedback}}
+        {{#if (and showFeedback (not item.resource.isOpenEnded))}}
           {{#if item.started}}
             <span class="score {{if item.isCorrect 'correct' 'incorrect'}}">
               {{gru-icon name='radio_button_checked'}}

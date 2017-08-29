@@ -76,10 +76,13 @@ export default Ember.Object.extend({
    * @property {Array} level scores
    */
   scores: Ember.computed.mapBy('levels', 'score'),
+
   /**
    * @property {number} total points
    */
-  totalPoints: Ember.computed.max('scores'),
+  totalPoints: Ember.computed('scores', function() {
+    return Math.max(0, ...this.get('scores'));
+  }),
 
   /**
    * Return a copy of the category

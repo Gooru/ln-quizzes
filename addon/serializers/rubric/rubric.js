@@ -85,7 +85,7 @@ export default Ember.Object.extend({
       allowsLevels: data.level,
       allowsScoring: data.scoring,
       levels: levels.map(function(level) {
-        return { name: level.name, score: level.score };
+        return { name: level.name, score: level.score || null };
       })
     });
   }

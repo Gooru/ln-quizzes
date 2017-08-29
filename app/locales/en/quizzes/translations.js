@@ -1161,7 +1161,7 @@ export default {
     prompt: 'Task Prompt',
     'preview-submission': 'Preview Submission',
     'full-rubric': 'Full Rubric',
-    'total-score': 'Total Score ({{total}} pts)',
-    points: '({{total}}pts)'
+    'total-score': 'Total Score',
+    points: 'pts'
   }
 };

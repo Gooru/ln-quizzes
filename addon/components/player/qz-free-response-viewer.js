@@ -54,27 +54,47 @@ export default QuestionComponent.extend({
    * Indicates if the question has a rubric assigned
    * @return {bool}
    */
-  hasRubric: Ember.computed.bool('question.rubric'),
+  hasRubric: Ember.computed.bool('question.rubric.rubricOn'),
+
+  /**
+   * Indicates if rubric contains a url
+   * @return {bool}
+   */
+  hasUrl: Ember.computed.bool('question.rubric.url'),
 
   /**
    * Indicates when the answer is completed
    * @return {bool}
    */
   isAnswerCompleted: Ember.computed.bool('answer.length'),
+
   /**
    * Free Response Question
    * @property {Question} question
    */
   question: null,
+
   /**
    * Parsed Question Text
    * @property {String} questionText
    */
   questionText: null,
+
   /**
    * @property {Boolean} showFullRubric
    */
   showFullRubric: false,
+
+  /**
+   * Indicates when the answer is completed
+   * @return {bool}
+   */
+  showPanel: Ember.computed('hasRubric', 'hasUrl', 'categories', function() {
+    return (
+      this.get('hasRubric') &&
+      (this.get('categories.length') || this.get('hasUrl'))
+    );
+  }),
 
   /**
    * @property {Number} totalPoints

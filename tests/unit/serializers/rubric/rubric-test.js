@@ -87,7 +87,7 @@ test('normalizeRubric', function(assert) {
     },
     taxonomy: {},
     url: 'https://en.wikipedia.org/wiki/Rubric_(academic)',
-    isRemote: true,
+    isRemote: false,
     isRubric: false,
     feedback: 'Summarize your feedback on the essay as a whole',
     overallFeedbackRequired: true,
@@ -130,7 +130,7 @@ test('normalizeRubric', function(assert) {
     'https://en.wikipedia.org/wiki/Rubric_(academic)',
     'Wrong url'
   );
-  assert.equal(rubric.get('uploaded'), true, 'Wrong url');
+  assert.notOk(rubric.get('uploaded'), 'Wrong uploaded value');
   assert.equal(
     rubric.get('feedback'),
     'Summarize your feedback on the essay as a whole',
@@ -146,4 +146,88 @@ test('normalizeRubric', function(assert) {
   assert.equal(rubric.get('categories.length'), 2, 'Wrong categories length');
   assert.equal(rubric.get('rubricOn'), false, 'Rubric should be off');
   assert.equal(rubric.get('grader'), 'teacher', 'Incorrect grader');
+});
+
+test('normalizeRubric with uploaded file', function(assert) {
+  const serializer = this.subject();
+  const contentCdnUrl = 'content-url/';
+  serializer.set(
+    'session',
+    Ember.Object.create({
+      cdnUrls: {
+        content: contentCdnUrl
+      }
+    })
+  );
+
+  const rubricData = {
+    id: '2c185398-d0e6-42d8-9926-572939fc0784',
+    title: 'Rubric - 1',
+    description: 'This is the example question for the rubrics association',
+    thumbnail: '2c185398-d0e6-42d8-9926-572939fc0784.png',
+    publishDate: '2017-02-24T05:55:42Z',
+    publishStatus: 'published',
+    metadata: {
+      audience: [12, 45]
+    },
+    taxonomy: {},
+    url: '2c185398-d0e6-42d8-9926-572939fc0784.pdf',
+    isRemote: true,
+    isRubric: true,
+    feedback: 'Summarize your feedback on the essay as a whole',
+    overallFeedbackRequired: true,
+    categories: [
+      {
+        title: 'Thesis and Sub-claims'
+      },
+      {
+        title: 'Thesis and Sub-claims'
+      }
+    ],
+    createdAt: '2017-02-24T05:55:42Z',
+    updatedAt: '2017-02-24T05:55:42Z',
+    tenant: 'ba956a97-ae15-11e5-a302-f8a963065976',
+    gradingType: 'teacher'
+  };
+
+  const rubric = serializer.normalizeRubric(rubricData);
+
+  assert.equal(
+    rubric.get('id'),
+    '2c185398-d0e6-42d8-9926-572939fc0784',
+    'Wrong id'
+  );
+  assert.equal(rubric.get('title'), 'Rubric - 1', 'Wrong title');
+  assert.equal(
+    rubric.get('description'),
+    'This is the example question for the rubrics association',
+    'Wrong description'
+  );
+  assert.equal(
+    rubric.get('thumbnail'),
+    `${contentCdnUrl}2c185398-d0e6-42d8-9926-572939fc0784.png`,
+    'Wrong thumbnail'
+  );
+  assert.deepEqual(rubric.get('audience'), [12, 45], 'Wrong audience');
+  assert.equal(rubric.get('standards.length'), 0, 'Wrong taxonomy');
+  assert.equal(
+    rubric.get('url'),
+    `${contentCdnUrl}2c185398-d0e6-42d8-9926-572939fc0784.pdf`,
+    'Wrong url'
+  );
+  assert.ok(rubric.get('uploaded'), 'Wrong uploaded value');
+  assert.equal(
+    rubric.get('feedback'),
+    'Summarize your feedback on the essay as a whole',
+    'Wrong feedback'
+  );
+  assert.ok(rubric.get('isPublished'), 'Should be published');
+  assert.equal(
+    rubric.get('publishDate'),
+    '2017-02-24T05:55:42Z',
+    'Incorrect publish date'
+  );
+  assert.ok(rubric.get('requiresFeedback'), 'Wrong requires feedback');
+  assert.equal(rubric.get('categories.length'), 2, 'Wrong categories length');
+  assert.ok(rubric.get('rubricOn'), 'Rubric should be on');
 });

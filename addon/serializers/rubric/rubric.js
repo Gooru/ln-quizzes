@@ -36,6 +36,8 @@ export default Ember.Object.extend({
     const categories = data.categories;
     const basePath = serializer.get('session.cdnUrls.content');
     const thumbnail = data.thumbnail ? basePath + data.thumbnail : null;
+    const url =
+      data.url && data.isRemote ? basePath + data.url : data.url || null;
 
     return Rubric.create(Ember.getOwner(this).ownerInjection(), {
       id: data.id,
@@ -46,7 +48,7 @@ export default Ember.Object.extend({
         .get('taxonomySerializer')
         .normalizeTaxonomyObject(data.taxonomy),
       audience: metadata.audience,
-      url: data.url,
+      url: url,
       isPublished: data.publishStatus === 'published',
       publishDate: data.publishDate,
       rubricOn: data.isRubric,

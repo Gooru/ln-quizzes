@@ -37,7 +37,7 @@ export default Ember.Object.extend({
     const basePath = serializer.get('session.cdnUrls.content');
     const thumbnail = data.thumbnail ? basePath + data.thumbnail : null;
     const url =
-      data.url && data.isRemote ? basePath + data.url : data.url || null;
+      data.url && !data.isRemote ? basePath + data.url : data.url || null;
 
     return Rubric.create(Ember.getOwner(this).ownerInjection(), {
       id: data.id,
@@ -52,7 +52,7 @@ export default Ember.Object.extend({
       isPublished: data.publishStatus === 'published',
       publishDate: data.publishDate,
       rubricOn: data.isRubric,
-      uploaded: data.isRemote,
+      uploaded: !data.isRemote,
       feedback: data.feedback,
       requiresFeedback: data.overallFeedbackRequired,
       categories: categories

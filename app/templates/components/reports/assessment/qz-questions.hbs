@@ -2,14 +2,16 @@
   <div class="title">
       <h4>{{title}}</h4>
   </div>
-  {{#if isAnswerKeyHidden}}
-    <em>{{t "common.answer-key-was-hidden"}}</em>
-  {{else}}
-    <div class="btn-group" role="group">
-      <button type="button" {{action 'selectPerformanceOption' true}} class="performance btn {{if showPerformance 'btn-primary' 'btn-info'}}">{{t "common.performance"}}</button>
-      <button type="button" {{action 'selectPerformanceOption' false}} class="correct-answer btn {{unless showPerformance 'btn-primary' 'btn-info' }}">{{t "common.show-correct-answer"}}</button>
-    </div>
-  {{/if}}
+  {{#unless isOpenEnded}}
+    {{#if isAnswerKeyHidden}}
+      <em>{{t "common.answer-key-was-hidden"}}</em>
+    {{else}}
+      <div class="btn-group" role="group">
+        <button type="button" {{action 'selectPerformanceOption' true}} class="performance btn {{if showPerformance 'btn-primary' 'btn-info'}}">{{t "common.performance"}}</button>
+        <button type="button" {{action 'selectPerformanceOption' false}} class="correct-answer btn {{unless showPerformance 'btn-primary' 'btn-info' }}">{{t "common.show-correct-answer"}}</button>
+      </div>
+    {{/if}}
+  {{/unless}}
 </div>
 <table class="hidden-xs">
   <thead>

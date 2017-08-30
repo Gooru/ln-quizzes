@@ -23,10 +23,11 @@
   table {
     width: 100%;
     background: $white;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
     border-radius: 5px;
     padding: 20px 0 40px 0;
     display: block;
+    clear: both;
 
     @media (min-width: $screen-md) {
       padding: 20px 15px 40px 15px;
@@ -102,10 +103,11 @@
   .question-cards {
     width: 100%;
     background: $white;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
     border-radius: 5px;
     padding: 20px;
     display: block;
+    clear: both;
     .header {
       color: $gray-base;
       font-size: $font-size-h6;

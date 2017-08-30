@@ -17,7 +17,7 @@ moduleForComponent(
   }
 );
 
-test('Questions Layout', function(assert) {
+test('Questions Layout - non open ended', function(assert) {
   const questionResults = Ember.A([
     QuestionResult.create({
       score: 100,
@@ -165,6 +165,41 @@ test('Questions Layout', function(assert) {
 
   this.set('isAnswerKeyHidden', true);
   assert.ok($component.hasClass('key-hidden'), 'Answer key class');
+});
+
+test('Questions Layout - open ended', function(assert) {
+  const questionResults = Ember.A([
+    QuestionResult.create({
+      score: 100,
+      resource: Resource.create({
+        body: 'This is a question 1',
+        type: QUESTION_TYPES.openEnded,
+        sequence: 1
+      }),
+      reaction: 4,
+      savedTime: 2096,
+      userAnswer: 'Student Open Ended answer 1'
+    })
+  ]);
+
+  this.set('questionResults', questionResults);
+  this.set('isAnswerKeyHidden', undefined);
+
+  this.render(hbs`
+    {{reports/assessment/qz-questions
+      isAnswerKeyHidden=isAnswerKeyHidden
+      results=questionResults
+      viewMode='open-ended'
+    }}`);
+
+  const $component = this.$('.reports.assessment.qz-questions');
+
+  T.exists(assert, $component, 'Missing questions component');
+  T.notExists(
+    assert,
+    $component.find('.btn-group'),
+    'Missing btn-group section'
+  );
 });
 
 test('Buttons Options', function(assert) {

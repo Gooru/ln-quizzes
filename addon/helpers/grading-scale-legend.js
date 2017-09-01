@@ -1,5 +1,8 @@
 import Ember from 'ember';
-import { GRADING_SCALE } from 'quizzes-addon/config/quizzes-config';
+import {
+  GRADING_SCALE,
+  OPEN_ENDED_COLOR
+} from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Generate the legend to show the grading scale used throughout the app
@@ -16,6 +19,7 @@ import { GRADING_SCALE } from 'quizzes-addon/config/quizzes-config';
  */
 export function gradingScaleLegend(params, hash) {
   const notStarted = hash && hash.notStarted;
+  const notScored = hash && hash.notScored;
 
   const $el = $('<div><ul class="grading-scale-legend"></ul></div>');
   const $legend = $el.find('.grading-scale-legend');
@@ -41,6 +45,15 @@ export function gradingScaleLegend(params, hash) {
                       <i style="background-color: ${bracket.COLOR};"></i>
                       <span>${bracket.LOWER_LIMIT} - ${upperLimit}%</span>
                    </li>`);
+  }
+
+  if (notScored) {
+    $legend.append(
+      `<li class="not-scored"> \
+                      <i style="background-color: ${OPEN_ENDED_COLOR};"></i> \
+                      <span>${notScored}</span>\
+                   </li>`
+    );
   }
 
   return Ember.String.htmlSafe($el.html());

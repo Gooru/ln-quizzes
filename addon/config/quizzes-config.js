@@ -130,6 +130,8 @@ export const INCORRECT_COLOR = GRADING_SCALE[0].COLOR; //red-400
 
 export const ANONYMOUS_COLOR = '#0072BC'; //blue-400
 
+export const OPEN_ENDED_COLOR = '#0072BC'; //blue-400
+
 export const NO_ANSWER_COLOR = '#FFFFFF'; //white
 
 // Height of the application header in pixels

@@ -12,6 +12,7 @@
       @include flexbox;
       @include justify-content(space-between);
       @include align-items(center);
+      background-color: $dark-300;
       .name {
         max-width: 90px;
         display: inline-block;
@@ -30,7 +31,6 @@
         }
       }
       &.not-started {
-        background-color: $dark-300;
         .name {
           max-width: 100%;
         }
@@ -66,6 +66,9 @@
         }
         &.incorrect {
           background-color: $brand-incorrect;
+        }
+        &.started {
+          background-color: $blue-400;
         }
       }
     }

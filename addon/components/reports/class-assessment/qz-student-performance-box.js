@@ -74,10 +74,12 @@ export default Ember.Component.extend({
   /**
    * @property {String} startedStyle style safe string for started
    */
-  startedStyle: Ember.computed('score', function() {
-    return Ember.String.htmlSafe(
-      `background-color: ${getGradeColor(this.get('score'))}`
-    );
+  startedStyle: Ember.computed('score', 'student.totalAnswered', function() {
+    return this.get('student.totalAnswered')
+      ? Ember.String.htmlSafe(
+        `background-color: ${getGradeColor(this.get('score'))}`
+      )
+      : '';
   }),
 
   /**
@@ -97,9 +99,7 @@ export default Ember.Component.extend({
     let questionId;
     if (questionResult.get('started')) {
       //if it has been started
-      const correct = questionResult.get('correct');
-      const skipped = questionResult.get('skipped');
-      status = correct ? 'correct' : skipped ? 'skipped' : 'incorrect';
+      status = questionResult.get('attemptStatus');
       questionId = questionResult.get('questionId');
     }
     return Ember.Object.create({

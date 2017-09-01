@@ -65,7 +65,10 @@ test('Report context: websocket success', function(assert) {
       }
     };
   };
-  sinon.stub(Stomp, 'over').onFirstCall().returns(createSocket());
+  sinon
+    .stub(Stomp, 'over')
+    .onFirstCall()
+    .returns(createSocket());
   SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
   visit('/reports/context/context-simple-id');
 
@@ -121,7 +124,10 @@ test('Report context: websocket start message', function(assert) {
       }
     };
   };
-  sinon.stub(Stomp, 'over').onFirstCall().returns(createSocket());
+  sinon
+    .stub(Stomp, 'over')
+    .onFirstCall()
+    .returns(createSocket());
   SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
   visit('/reports/context/context-simple-id');
 
@@ -140,7 +146,7 @@ test('Report context: websocket start message', function(assert) {
     );
     assert.equal(
       Ember.$('.qz-student-performance-box:last .score').text(),
-      '0%',
+      '',
       'Score for student 2 shows correctly'
     );
     done();
@@ -182,7 +188,10 @@ test('Report context: websocket finish message', function(assert) {
       }
     };
   };
-  sinon.stub(Stomp, 'over').onFirstCall().returns(createSocket());
+  sinon
+    .stub(Stomp, 'over')
+    .onFirstCall()
+    .returns(createSocket());
   SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
   visit('/reports/context/context-simple-id');
 
@@ -253,7 +262,10 @@ test('Report context: websocket on resource message', function(assert) {
       }
     };
   };
-  sinon.stub(Stomp, 'over').onFirstCall().returns(createSocket());
+  sinon
+    .stub(Stomp, 'over')
+    .onFirstCall()
+    .returns(createSocket());
   SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
   visit('/reports/context/context-simple-id');
 

@@ -1,5 +1,8 @@
 import Ember from 'ember';
-import { GRADING_SCALE } from 'quizzes-addon/config/quizzes-config';
+import {
+  GRADING_SCALE,
+  OPEN_ENDED_COLOR
+} from 'quizzes-addon/config/quizzes-config';
 import { roundFloat } from 'quizzes-addon/utils/math';
 
 /**
@@ -131,9 +134,16 @@ export default Ember.Component.extend({
               {
                 color: correctColor,
                 percentage: roundFloat(dataObj.correct / dataObj.total * 100, 1)
+              },
+              {
+                color: OPEN_ENDED_COLOR,
+                percentage: roundFloat(
+                  dataObj.openEnded / dataObj.total * 100,
+                  1
+                )
               }
             ],
-            completed: dataObj.correct + dataObj.incorrect,
+            completed: dataObj.correct + dataObj.incorrect + dataObj.openEnded,
             total: dataObj.total
           };
           processedData.push(questionObj);

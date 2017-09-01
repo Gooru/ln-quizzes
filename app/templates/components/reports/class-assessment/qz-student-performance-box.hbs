@@ -7,7 +7,9 @@
         {{#unless student.isAttemptFinished}}
           <span class="question-in-progress">{{gru-icon name='av_timer'}}</span>
         {{/unless}}
-        <span class="score">{{score}}%</span>
+        {{#if student.totalAnswered}}
+          <span class="score">{{score}}%</span>
+        {{/if}}
       {{/unless}}
     </div>
   {{else}}

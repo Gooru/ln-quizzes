@@ -19,7 +19,8 @@ test('Layout when all completed', function(assert) {
     profileId: '56983a9060a68052c1ed934c',
     profileName: 'Rocha, Perez',
     isAttemptStarted: true,
-    averageScore: 50
+    averageScore: 50,
+    totalAnswered: 4
   });
 
   const reportData = Ember.A([
@@ -111,7 +112,8 @@ test('Layout having not started questions', function(assert) {
     profileId: '56983a9060a68052c1ed934c',
     profileName: 'Rocha, Perez',
     isAttemptStarted: true,
-    averageScore: 50
+    averageScore: 50,
+    totalAnswered: 4
   });
 
   const reportData = Ember.A([

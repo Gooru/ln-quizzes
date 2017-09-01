@@ -186,7 +186,10 @@ test('it renders', function(assert) {
     'Overview section has a colored circle with the average class score'
   );
   assert.equal(
-    $overview.find('.average-score .gru-bubble-chart').text().trim(),
+    $overview
+      .find('.average-score .gru-bubble-chart')
+      .text()
+      .trim(),
     '71%',
     'Average class score is computed correctly'
   );
@@ -201,7 +204,10 @@ test('it renders', function(assert) {
     'Overview section has a radial chart with the proportion of students that have completed the assessment'
   );
   assert.ok(
-    $overview.find('.completion .gru-radial-chart').text().trim(),
+    $overview
+      .find('.completion .gru-radial-chart')
+      .text()
+      .trim(),
     '3/4',
     'Radial chart label shows the correct proportion of students that have completed the assessment'
   );
@@ -227,7 +233,10 @@ test('it renders', function(assert) {
     'Overview section has a colored circle with the average class score'
   );
   assert.equal(
-    $overview.find('.average-score .gru-bubble-chart').text().trim(),
+    $overview
+      .find('.average-score .gru-bubble-chart')
+      .text()
+      .trim(),
     '71%',
     'Average class score is computed correctly'
   );
@@ -237,7 +246,10 @@ test('it renders', function(assert) {
     'Overview section has a radial chart with the proportion of students that have completed the assessment'
   );
   assert.ok(
-    $overview.find('.completion .gru-radial-chart').text().trim(),
+    $overview
+      .find('.completion .gru-radial-chart')
+      .text()
+      .trim(),
     '3/4',
     'Radial chart label shows the correct proportion of students that have completed the assessment'
   );
@@ -255,16 +267,23 @@ test('it renders', function(assert) {
 
   let $incorrectBar = $firstQuestion.find('.gru-x-bar-chart .segment:first');
   assert.ok(
-    $incorrectBar.attr('style').split(';')[0].indexOf(GRADING_SCALE[0].COLOR) >
-      0,
+    $incorrectBar
+      .attr('style')
+      .split(';')[0]
+      .indexOf(GRADING_SCALE[0].COLOR) > 0,
     'First question -first segment, correct color'
   );
   assert.ok(
-    $incorrectBar.attr('style').split(';')[1].indexOf('75%') > 0,
+    $incorrectBar
+      .attr('style')
+      .split(';')[1]
+      .indexOf('75%') > 0,
     'First question -first segment, correct percentage'
   );
 
-  let $correctBar = $firstQuestion.find('.gru-x-bar-chart .segment:last');
+  let $correctBar = $firstQuestion.find(
+    '.gru-x-bar-chart .segment:nth-child(2)'
+  );
   assert.ok(
     $correctBar
       .attr('style')
@@ -273,7 +292,10 @@ test('it renders', function(assert) {
     'First question -second segment, correct color'
   );
   assert.ok(
-    $correctBar.attr('style').split(';')[1].indexOf('25%') > 0,
+    $correctBar
+      .attr('style')
+      .split(';')[1]
+      .indexOf('25%') > 0,
     'First question -second segment, correct percentage'
   );
 
@@ -294,13 +316,19 @@ test('it renders', function(assert) {
 
   $incorrectBar = $lastQuestion.find('.gru-x-bar-chart .segment:first');
   assert.ok(
-    $incorrectBar.attr('style').split(';')[1].indexOf('0%') > 0,
+    $incorrectBar
+      .attr('style')
+      .split(';')[1]
+      .indexOf('0%') > 0,
     'Second question -first segment, correct percentage'
   );
 
-  $correctBar = $lastQuestion.find('.gru-x-bar-chart .segment:last');
+  $correctBar = $lastQuestion.find('.gru-x-bar-chart .segment:nth-child(2)');
   assert.ok(
-    $correctBar.attr('style').split(';')[1].indexOf('75%') > 0,
+    $correctBar
+      .attr('style')
+      .split(';')[1]
+      .indexOf('75%') > 0,
     'Second question -second segment, correct percentage'
   );
 

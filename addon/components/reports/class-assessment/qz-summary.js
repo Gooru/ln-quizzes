@@ -153,6 +153,7 @@ export default Ember.Component.extend({
           id: questionId,
           correct: 0,
           incorrect: 0,
+          openEnded: 0,
           total: totalStudents
         };
         questions.push(questionCounter);
@@ -163,10 +164,16 @@ export default Ember.Component.extend({
             .filter(result => result.resourceId === questionId);
           resourceResults.forEach(questionResult => {
             if (questionResult.get('started')) {
-              questionCounter.correct += questionResult.get('correct') ? 1 : 0;
-              questionCounter.incorrect += questionResult.get('incorrect')
-                ? 1
-                : 0;
+              if (questionResult.get('isOpenEnded')) {
+                questionCounter.openEnded += 1;
+              } else {
+                questionCounter.correct += questionResult.get('correct')
+                  ? 1
+                  : 0;
+                questionCounter.incorrect += questionResult.get('incorrect')
+                  ? 1
+                  : 0;
+              }
             }
           });
         });

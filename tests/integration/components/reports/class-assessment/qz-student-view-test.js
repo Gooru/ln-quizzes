@@ -42,6 +42,7 @@ test('Layout', function(assert) {
         profileName: 'Lorena Prendas Chavarria',
         profileCode: 'student-code-1',
         averageScore: 100,
+        totalAnswered: 4,
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -65,6 +66,7 @@ test('Layout', function(assert) {
         profileName: 'Andres Charpentier Zuñiga',
         profileCode: 'student-code-2',
         averageScore: 67,
+        totalAnswered: 4,
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',
@@ -88,6 +90,7 @@ test('Layout', function(assert) {
         profileName: 'David Zumbado Alfaro',
         profileCode: 'student-code-3',
         averageScore: 33,
+        totalAnswered: 4,
         resourceResults: Ember.A([
           QuestionResult.create({
             resourceId: '56a120483b6e7b090501d3e7',

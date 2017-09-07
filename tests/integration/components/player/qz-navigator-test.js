@@ -427,7 +427,10 @@ test('Player Navigator - Back Button', function(assert) {
     $navigator.find('.back-button').find('.backSpan'),
     'Missing back button'
   );
-  $navigator.find('.back-button').find('.backSpan').click();
+  $navigator
+    .find('.back-button')
+    .find('.backSpan')
+    .click();
 });
 
 test('Player Navigator - Remix Button', function(assert) {
@@ -484,7 +487,7 @@ test('Player Navigator - Remix Button', function(assert) {
   );
 
   this.render(hbs`{{player.qz-navigator collection=collection
-      resourceResults=resourceResults lessonTitle='E-Lesson1' showRemix=true
+      resourceResults=resourceResults lessonTitle='E-Lesson1' isTeacher=true
       selectedResourceId='1' onItemSelected='itemSelected' onRemixCollection='onRemixCollection'}}`);
 
   var $component = this.$(); //component dom element
@@ -492,8 +495,15 @@ test('Player Navigator - Remix Button', function(assert) {
   T.exists(assert, $navigator, 'Missing navigator section');
   T.exists(
     assert,
-    $navigator.find('.back-button').find('.remixSpan').find('.remix-btn'),
+    $navigator
+      .find('.back-button')
+      .find('.remixSpan')
+      .find('.remix-btn'),
     'Missing remix button'
   );
-  $navigator.find('.back-button').find('.remixSpan').find('.remix-btn').click();
+  $navigator
+    .find('.back-button')
+    .find('.remixSpan')
+    .find('.remix-btn')
+    .click();
 });

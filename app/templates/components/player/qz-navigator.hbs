@@ -4,7 +4,7 @@
       <div class="backSpan" {{action 'closePlayer'}}>
       <span> {{gru-icon name='keyboard_arrow_left'}}{{t 'common.back'}}</span></div>
       {{/if}}
-      {{#if showRemix}}
+      {{#if isTeacher}}
         <div class="remixSpan">
         <button class="remix-btn btn btn-success btn-sm" {{action 'remixCollection' collection}}>{{t 'common.remix'}}</button>
       </div>

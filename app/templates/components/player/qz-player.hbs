@@ -27,14 +27,6 @@
             {{#if showFinishConfirmation}}
               {{player.qz-submit-confirmation onConfirmFinish='finishCollection'}}
             {{else}}
-              {{player.qz-navigation
-              collection=collection
-              ratingScore=resourceResult.reaction
-              readOnly=contextResult.submitted
-              onFinishCollection="finishCollection"
-              onOpenNavigator="openNavigator"
-              onChangeEmotion="changeEmotion"}}
-
               {{#if resource}}
                 {{player.qz-viewer
                 isNotIframeUrl=isNotIframeUrl

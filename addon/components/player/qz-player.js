@@ -50,15 +50,6 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Triggered when an resource emotion is selected
-     * @param {string} emotionScore
-     */
-    changeEmotion: function(emotionScore) {
-      const resourceResult = this.get('resourceResult');
-      resourceResult.set('reaction', emotionScore);
-    },
-
-    /**
      * Action triggered when the user close de navigator panel
      */
     closeNavigator: function() {
@@ -136,6 +127,7 @@ export default Ember.Component.extend(ModalMixin, {
       const component = this;
       component.set('showFinishConfirmation', false);
       component.moveToResource(resource);
+      component.sendAction('onSelectNavigatorItem', resource);
     },
 
     /**
@@ -504,6 +496,7 @@ export default Ember.Component.extend(ModalMixin, {
     if (resource) {
       component.moveToResource(resource, true);
     }
+    component.sendAction('onStartPlayer');
   },
   /**
    * Find owner profile if the resource has narration or is a link out resource

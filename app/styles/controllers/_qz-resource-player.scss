@@ -2,6 +2,10 @@
   height: 100%;
   width: 100%;
   min-height: 100%;
+  padding-top: 130px;
+  @media (max-width: $screen-xs) {
+    padding-top: 230px;
+  }
   .resource-player {
     overflow: hidden;
   }

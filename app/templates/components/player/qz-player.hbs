@@ -19,6 +19,12 @@
             onRemixCollection="remixCollection"
             onFinishCollection="submitAll"
             showBackButton=showBackButton
+            classId=classId
+            courseId=courseId
+            showPrevious=showPrevious
+            previousResource=previousResource
+            resource=resource
+            onPreviousResource='onPreviousResource'
             }}
           </div>
       {{/unless}}
@@ -36,7 +42,6 @@
                 role=role
                 showPrevious=showPrevious
                 submitted=contextResult.submitted
-                onPreviousResource="previousResource"
                 onSubmitQuestion="submitQuestion"}}
               {{/if}}
             {{/if}}

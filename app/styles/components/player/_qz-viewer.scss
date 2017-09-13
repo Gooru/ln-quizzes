@@ -35,19 +35,11 @@
   }
   .qz-content.question {
     height: auto;
+    .actions {
+      padding-bottom: 25px;
+    }
   }
   .qz-content.resource {
-    height: 85%;
-  }
-
-  .actions-section {
-    height: 50px;
-    margin: 10px 20px;
-  }
-  .btn.previous {
-    border-radius: 15px;
-    border: 1px solid $light-500;
-    color: $blue-500;
-    background-color: $white;
+    height: 80%;
   }
 }

@@ -110,7 +110,7 @@ export default Ember.Component.extend(ModalMixin, {
      * @see components/player/qz-question-viewer.js
      * @param {Resource} question
      */
-    previousResource: function(resource) {
+    onPreviousResource: function(resource) {
       const component = this;
       const next = component.get('collection').prevResource(resource);
       if (next) {
@@ -127,6 +127,10 @@ export default Ember.Component.extend(ModalMixin, {
       const component = this;
       component.set('showFinishConfirmation', false);
       component.moveToResource(resource);
+      component.set(
+        'previousResource',
+        component.get('collection').prevResource(resource)
+      );
       component.sendAction('onSelectNavigatorItem', resource);
     },
 
@@ -358,6 +362,15 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {function}
    */
   onClosePlayer: null,
+
+  classId: null,
+
+  courseId: null,
+
+  previousResource: Ember.computed(function() {
+    let resource = this.get('resource');
+    return this.get('collection').prevResource(resource);
+  }),
 
   // -------------------------------------------------------------------------
   // Methods

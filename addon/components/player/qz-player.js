@@ -363,8 +363,16 @@ export default Ember.Component.extend(ModalMixin, {
    */
   onClosePlayer: null,
 
+  /**
+   * It contains class id
+   * @property {String}
+   */
   classId: null,
 
+  /**
+   * It contains course id
+   * @property {String}
+   */
   courseId: null,
 
   previousResource: Ember.computed(function() {

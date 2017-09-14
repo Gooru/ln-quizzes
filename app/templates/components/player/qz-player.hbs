@@ -21,10 +21,8 @@
             showBackButton=showBackButton
             classId=classId
             courseId=courseId
-            showPrevious=showPrevious
             previousResource=previousResource
             resource=resource
-            onPreviousResource='onPreviousResource'
             }}
           </div>
       {{/unless}}
@@ -41,6 +39,7 @@
                 resourceResult=resourceResult
                 role=role
                 showPrevious=showPrevious
+                onPreviousResource="previousResource"
                 submitted=contextResult.submitted
                 onSubmitQuestion="submitQuestion"}}
               {{/if}}

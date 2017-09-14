@@ -85,16 +85,6 @@ export default Ember.Component.extend(ModalMixin, {
           queryParams: { refresh: true }
         });
       }
-    },
-
-    /**
-     * Return to previous resource
-     * @param {Resource} question
-     */
-    onPreviousResource: function() {
-      const component = this;
-      component.$('.content').scrollTop(0);
-      component.sendAction('onPreviousResource', component.get('resource'));
     }
   },
 

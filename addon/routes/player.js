@@ -199,6 +199,7 @@ export default Ember.Route.extend({
     ) {
       contextResult = model.contextResult;
       contextResult.merge(collection);
+      controller.set('role', model.role);
     } else {
       const context = model.context;
       if (model.course && model.course.id) {

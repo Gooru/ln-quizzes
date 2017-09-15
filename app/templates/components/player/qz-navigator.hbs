@@ -21,11 +21,11 @@
 </div>
 {{#unless (or isTeacher isAnonymous)}}
   <div class="course-map" {{action 'redirectCourseMap'}}>
-    {{gru-icon name="ic_play_arrow" class="course-map-play-icon on-slide-close"}}
-     <span class="on-slide-open">GO TO COURSE MAP</span>
+    {{gru-icon name="ic_play_arrow" class="course-map-play-icon"}}
+     <span>GO TO COURSE MAP</span>
   </div>
 {{/unless}}
-<ul class="list-group resources {{if isNavigationDisabled 'disabled' }} on-slide-open">
+<ul class="list-group resources {{if isNavigationDisabled 'disabled' }}">
   {{#each resourceItems as |item index|}}
     <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}"
         {{action 'selectItem' item}}>
@@ -51,14 +51,14 @@
 </ul>
 {{#if collection.isCollection}}
   <div class="navigator-subheader">
-    <div class="see-usage-report on-slide-open" {{action 'seeUsageReport'}}>
+    <div class="see-usage-report" {{action 'seeUsageReport'}}>
       <span class="collection-title"> {{t 'qz-navigator.see-usage-report'}} </span>
       {{gru-icon name='keyboard_arrow_right'}}
     </div>
   </div>
 {{else}}
   {{#unless showFinishConfirmation}}
-  <div class="submit-all on-slide-open">
+  <div class="submit-all">
     {{#unless submitted}}
       <button tabindex=-1 class="btn btn-success finish-collection" {{action "finishCollection"}}>{{t "common.submit-all"}}</button>
     {{/unless}}

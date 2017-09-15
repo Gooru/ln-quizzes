@@ -50,6 +50,15 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
+     * Triggered when an resource emotion is selected
+     * @param {string} emotionScore
+     */
+    changeEmotion: function(emotionScore) {
+      const resourceResult = this.get('resourceResult');
+      resourceResult.set('reaction', emotionScore);
+    },
+
+    /**
      * Action triggered when the user close de navigator panel
      */
     closeNavigator: function() {
@@ -127,10 +136,6 @@ export default Ember.Component.extend(ModalMixin, {
       const component = this;
       component.set('showFinishConfirmation', false);
       component.moveToResource(resource);
-      component.set(
-        'previousResource',
-        component.get('collection').prevResource(resource)
-      );
       component.sendAction('onSelectNavigatorItem', resource);
     },
 
@@ -313,6 +318,12 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean}
    */
   showBackButton: true,
+
+  /**
+   * Indicates if it should show the react widget in content area
+   * @property {boolean}
+   */
+  showReactButton: true,
 
   /**
    * Indicates if content should be displayed

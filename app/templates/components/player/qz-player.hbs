@@ -21,8 +21,6 @@
             showBackButton=showBackButton
             classId=classId
             courseId=courseId
-            previousResource=previousResource
-            resource=resource
             }}
           </div>
       {{/unless}}
@@ -31,6 +29,15 @@
             {{#if showFinishConfirmation}}
               {{player.qz-submit-confirmation onConfirmFinish='finishCollection'}}
             {{else}}
+              {{player.qz-navigation
+              collection=collection
+              ratingScore=resourceResult.reaction
+              readOnly=contextResult.submitted
+              onFinishCollection="finishCollection"
+              onOpenNavigator="openNavigator"
+              onChangeEmotion="changeEmotion"
+              showReactButton=showReactButton
+              }}
               {{#if resource}}
                 {{player.qz-viewer
                 isNotIframeUrl=isNotIframeUrl

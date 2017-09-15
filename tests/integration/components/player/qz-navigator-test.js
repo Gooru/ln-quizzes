@@ -487,7 +487,7 @@ test('Player Navigator - Remix Button', function(assert) {
   );
 
   this.render(hbs`{{player.qz-navigator collection=collection
-      resourceResults=resourceResults lessonTitle='E-Lesson1' showRemix=true
+      resourceResults=resourceResults lessonTitle='E-Lesson1' isTeacher=true
       selectedResourceId='1' onItemSelected='itemSelected' onRemixCollection='onRemixCollection'}}`);
 
   var $component = this.$(); //component dom element

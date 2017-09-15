@@ -108,6 +108,7 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {string} on finish collection, having type = 'collection'
    */
   onFinishCollection: null,
+
   /**
    * @property {string|function} onItemSelected - event handler for when an item is selected
    */

@@ -111,7 +111,10 @@ export default Ember.Route.extend({
       route.get(
         'quizzesConfigurationService.configuration.properties.profileId'
       );
-    let role = params.role;
+    let role =
+      params.role ||
+      route.get('quizzesConfigurationService.configuration.properties.role') ||
+      'student';
     let isTeacher = role === 'teacher';
     let isAnonymous = profileId === 'anonymous';
     let eventContext = EventContext.create({
@@ -205,9 +208,9 @@ export default Ember.Route.extend({
       contextResult.set('context', context);
       contextResult.set('collection', collection);
       controller.set('isAnonymous', isAnonymous);
+      controller.set('role', model.role);
       controller.set('startContextFunction', model.startContextFunction);
     }
-    controller.set('role', model.role);
     controller.set('contextResult', contextResult);
     controller.set('reportURL', model.reportURL);
     controller.set('eventContext', model.eventContext);

@@ -200,6 +200,7 @@ export default Ember.Object.extend({
         currentResourceId: eventData.eventBody.currentResourceId,
         profileId: eventData.profileId,
         profileName: eventData.profileName,
+        isAttemptStarted: true,
         resourceResults: this.get('collection.resources').map(res =>
           QuestionResult.create(Ember.getOwner(this).ownerInjection(), {
             resourceId: res.id,

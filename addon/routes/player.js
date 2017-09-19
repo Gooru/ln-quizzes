@@ -127,7 +127,8 @@ export default Ember.Route.extend({
       );
     let role =
       params.role ||
-      route.get('quizzesConfigurationService.configuration.properties.role');
+      route.get('quizzesConfigurationService.configuration.properties.role') ||
+      'student';
     let isTeacher = role === 'teacher';
     let isAnonymous = profileId === 'anonymous';
     let eventContext = EventContext.create({

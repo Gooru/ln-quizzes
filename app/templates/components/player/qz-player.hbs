@@ -19,6 +19,8 @@
             onRemixCollection="remixCollection"
             onFinishCollection="submitAll"
             showBackButton=showBackButton
+            classId=classId
+            courseId=courseId
             }}
           </div>
       {{/unless}}
@@ -33,8 +35,9 @@
               readOnly=contextResult.submitted
               onFinishCollection="finishCollection"
               onOpenNavigator="openNavigator"
-              onChangeEmotion="changeEmotion"}}
-
+              onChangeEmotion="changeEmotion"
+              showReactButton=showReactButton
+              }}
               {{#if resource}}
                 {{player.qz-viewer
                 isNotIframeUrl=isNotIframeUrl
@@ -43,8 +46,8 @@
                 resourceResult=resourceResult
                 role=role
                 showPrevious=showPrevious
-                submitted=contextResult.submitted
                 onPreviousResource="previousResource"
+                submitted=contextResult.submitted
                 onSubmitQuestion="submitQuestion"}}
               {{/if}}
             {{/if}}

@@ -15,7 +15,7 @@ moduleForComponent(
 );
 
 test('Not submitted layout', function(assert) {
-  assert.expect(2);
+  assert.expect(1);
 
   const collection = Ember.Object.create({
     isAssessment: true
@@ -27,15 +27,10 @@ test('Not submitted layout', function(assert) {
   var $component = this.$(); //component dom element
   const $navigation = $component.find('.qz-navigation');
   T.exists(assert, $navigation, 'Missing navigation section');
-  T.exists(
-    assert,
-    $navigation.find('.navigation-bar span'),
-    'Missing clickable span'
-  );
 });
 
 test('Submitted layout', function(assert) {
-  assert.expect(3);
+  assert.expect(2);
 
   const collection = Ember.Object.create({
     isAssessment: true
@@ -49,11 +44,6 @@ test('Submitted layout', function(assert) {
   var $component = this.$(); //component dom element
   const $navigation = $component.find('.qz-navigation');
   T.exists(assert, $navigation, 'Missing navigation section');
-  T.exists(
-    assert,
-    $navigation.find('.navigation-bar span'),
-    'Missing clickable span'
-  );
   T.notExists(
     assert,
     $navigation.find('button.finish-collection'),
@@ -62,7 +52,7 @@ test('Submitted layout', function(assert) {
 });
 
 test('Layout when navigator is opened', function(assert) {
-  assert.expect(2);
+  assert.expect(1);
 
   this.on('parentAction', function() {
     assert.ok(true, 'external Action was called!');

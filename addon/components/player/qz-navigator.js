@@ -170,6 +170,12 @@ export default Ember.Component.extend(ModalMixin, {
    */
   submitted: false,
 
+  /**
+   * It has the resource object.
+   * @property {Resource}
+   */
+  resource: null,
+
   // -------------------------------------------------------------------------
   // Observers
 

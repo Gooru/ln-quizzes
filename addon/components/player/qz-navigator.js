@@ -87,7 +87,7 @@ export default Ember.Component.extend(ModalMixin, {
       }
     },
 
-    /**
+    /***
      * Return to previous resource
      * @param {Resource} question
      */
@@ -180,10 +180,6 @@ export default Ember.Component.extend(ModalMixin, {
    */
   submitted: false,
 
-  /**
-   * It has the resource object.
-   * @property {Resource}
-   */
   resource: null,
 
   // -------------------------------------------------------------------------

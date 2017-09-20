@@ -19,18 +19,16 @@
     <button class="btn btn-link hamburger-icon"{{action 'closeNavigator'}}>{{gru-icon name='menu'}}</button>
   </div>
 </div>
-{{#unless (or isTeacher isAnonymous)}}
-  <div class="course-map" {{action 'redirectCourseMap'}}>
-    {{gru-icon name="ic_play_arrow" class="course-map-play-icon on-slide-close"}}
-     <span class="on-slide-open">GO TO COURSE MAP</span>
+<div class="course-map" {{action 'redirectCourseMap'}}>
+  {{gru-icon name="ic_play_arrow" class="course-map-play-icon on-slide-close"}}
+   <span class="on-slide-open">GO TO COURSE MAP</span>
+</div>
+{{#if (and showPrevious previousResource)}}
+  <div class="pervious-resource" {{action 'onPreviousResource'}}>
+    {{gru-icon name="ic_navigate_before"}}
+    <h6 class="on-slide-open ellipsis">{{truncate-text text=(no-tags text=previousResource.title) type='medium'}}</h6>
   </div>
-  {{#if (and showPrevious previousResource)}}
-    <div class="pervious-resource" {{action 'onPreviousResource'}}>
-      {{gru-icon name="ic_navigate_before"}}
-      <h6 class="on-slide-open ellipsis">{{truncate-text text=(no-tags text=previousResource.title) type='medium'}}</h6>
-    </div>
-  {{/if}}
-{{/unless}}
+{{/if}}
 <ul class="list-group resources {{if isNavigationDisabled 'disabled' }} on-slide-open">
   {{#each resourceItems as |item index|}}
     <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}"

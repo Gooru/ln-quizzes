@@ -110,7 +110,7 @@ export default Ember.Component.extend(ModalMixin, {
      * @see components/player/qz-question-viewer.js
      * @param {Resource} question
      */
-    previousResource: function(resource) {
+    onPreviousResource: function(resource) {
       const component = this;
       const next = component.get('collection').prevResource(resource);
       if (next) {
@@ -374,6 +374,11 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {String}
    */
   courseId: null,
+
+  previousResource: Ember.computed(function() {
+    let resource = this.get('resource');
+    return this.get('collection').prevResource(resource);
+  }),
 
   // -------------------------------------------------------------------------
   // Methods

@@ -45,13 +45,6 @@ export default Ember.Route.extend({
     },
 
     /**
-     * Action triggered when the user start the content player
-     */
-    onStartPlayer: function() {
-      // Empty, it does nothing by default
-    },
-
-    /**
      * Action triggered when the user hits remix on the content player
      */
     onRemixCollection: function() {

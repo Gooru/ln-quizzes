@@ -1,10 +1,8 @@
 .player .qz-navigator {
   overflow-x: hidden;
-  width: 65px;
-  min-height: 83vh;
-  max-height: 83vh;
+  height: 100%;
+  width: 260px;
   background-color: $dark-400;
-  transition: width 1s;
   @include flexbox();
   @include flex-direction(column);
   .navigator-header {
@@ -60,7 +58,7 @@
 
   .resources {
     position: relative;
-    max-height: 65vh;
+    height: auto;
     overflow-y: auto;
     padding: 0;
     .bgd-line {
@@ -252,63 +250,5 @@
         float: right;
       }
     }
-  }
-  .course-map {
-    text-align: center;
-    color: #fff;
-    background: #48a5ed;
-    height: 50px;
-    width: inherit;
-    cursor: pointer;
-    span {
-      position: relative;
-      top: 15px;
-    }
-  }
-  .course-map-play-icon {
-    font-size: 40px;
-    position: relative;
-    left: -111px;
-    top: 6px;
-  }
-  .pervious-resource {
-    height: 50px;
-    background-color: #555e65;
-    cursor: pointer;
-    h6 {
-      color: #fff;
-      float: left;
-      position: relative;
-      top: 8px;
-      width: 190px;
-    }
-    i {
-      font-size: 40px;
-      color: #fff;
-      width: 65px;
-      height: 50px;
-      position: relative;
-      left: -111px;
-      top: 6px;
-      float: left;
-    }
-  }
-  .on-slide-open {
-    visibility: hidden;
-  }
-  .on-slide-close {
-    visibility: visible;
-  }
-  &:hover {
-    .on-slide-open {
-      visibility: visible;
-    }
-    .on-slide-close {
-      visibility: hidden;
-    }
-    .course-map-play-icon {
-      display: none;
-    }
-    width: 260px;
   }
 }

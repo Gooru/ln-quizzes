@@ -66,35 +66,6 @@ export default Ember.Component.extend(ModalMixin, {
      */
     selectItem: function(item) {
       this.selectItem(item.resource);
-    },
-
-    /**
-     * Redirect to course map
-     */
-    redirectCourseMap() {
-      if (this.get('classId')) {
-        this.get('router').transitionTo(
-          'student.class.course-map',
-          this.get('classId'),
-          { queryParams: { refresh: true } }
-        );
-      } else {
-        this.get(
-          'router'
-        ).transitionTo('student.independent.course-map', this.get('courseId'), {
-          queryParams: { refresh: true }
-        });
-      }
-    },
-
-    /***
-     * Return to previous resource
-     * @param {Resource} question
-     */
-    onPreviousResource: function() {
-      const component = this;
-      component.$('.content').scrollTop(0);
-      component.sendAction('onPreviousResource', component.get('resource'));
     }
   },
 
@@ -179,8 +150,6 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {boolean}
    */
   submitted: false,
-
-  resource: null,
 
   // -------------------------------------------------------------------------
   // Observers

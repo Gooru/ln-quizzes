@@ -136,6 +136,7 @@ export default Ember.Component.extend(ModalMixin, {
       const component = this;
       component.set('showFinishConfirmation', false);
       component.moveToResource(resource);
+      component.sendAction('onSelectNavigatorItem', resource);
     },
 
     /**
@@ -319,6 +320,12 @@ export default Ember.Component.extend(ModalMixin, {
   showBackButton: true,
 
   /**
+   * Indicates if it should show the react widget in content area
+   * @property {boolean}
+   */
+  showReactButton: true,
+
+  /**
    * Indicates if content should be displayed
    * @property {boolean} showContent
    */
@@ -366,6 +373,18 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {function}
    */
   onClosePlayer: null,
+
+  /**
+   * It contains class id
+   * @property {String}
+   */
+  classId: null,
+
+  /**
+   * It contains course id
+   * @property {String}
+   */
+  courseId: null,
 
   // -------------------------------------------------------------------------
   // Methods
@@ -504,6 +523,7 @@ export default Ember.Component.extend(ModalMixin, {
     if (resource) {
       component.moveToResource(resource, true);
     }
+    component.sendAction('onStartPlayer');
   },
   /**
    * Find owner profile if the resource has narration or is a link out resource

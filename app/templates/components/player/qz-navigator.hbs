@@ -19,6 +19,12 @@
     <button class="btn btn-link hamburger-icon"{{action 'closeNavigator'}}>{{gru-icon name='menu'}}</button>
   </div>
 </div>
+{{#unless (or isTeacher isAnonymous)}}
+  <div class="course-map" {{action 'redirectCourseMap'}}>
+    {{gru-icon name="ic_play_arrow" class="course-map-play-icon"}}
+     <span>GO TO COURSE MAP</span>
+  </div>
+{{/unless}}
 <ul class="list-group resources {{if isNavigationDisabled 'disabled' }}">
   {{#each resourceItems as |item index|}}
     <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}"

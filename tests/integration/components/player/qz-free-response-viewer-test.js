@@ -15,7 +15,7 @@ moduleForComponent(
   }
 );
 
-test('Layout with rubric OFF', function(assert) {
+test('Layout with rubric OFF and thumbnail', function(assert) {
   const question = ResourceModel.create({
     id: '569906aacea8416665209d53',
     type: QUESTION_TYPES.openEnded,
@@ -23,6 +23,7 @@ test('Layout with rubric OFF', function(assert) {
     description: 'Sample description text',
     sequence: 1,
     hasAnswers: true,
+    thumbnail: 'thumbnail.png',
     rubric: RubricModel.create({
       id: '1234'
     })
@@ -51,6 +52,12 @@ test('Layout with rubric OFF', function(assert) {
       '.rubric-response.no-rubric .prompt .question-text'
     ).length,
     'Missing question text'
+  );
+  assert.ok(
+    $freeResponseViewer.find(
+      '.rubric-response.no-rubric .prompt .question-text .question-thumbnail'
+    ).length,
+    'Missing question thumbnail'
   );
   assert.ok(
     $freeResponseViewer.find(
@@ -115,6 +122,12 @@ test('Layout with rubric ON without categories and no url', function(assert) {
       '.rubric-response.no-rubric .prompt .question-text'
     ).length,
     'Missing question text'
+  );
+  assert.notOk(
+    $freeResponseViewer.find(
+      '.rubric-response.no-rubric .prompt .question-text .question-thumbnail'
+    ).length,
+    'Question thumbnail should be hidden'
   );
   assert.ok(
     $freeResponseViewer.find(

@@ -8,6 +8,9 @@
         <div class="question-text">
           <span class="title">{{t 'qz-free-response-viewer.prompt'}}</span>
           {{gru-math-text text=questionText}}
+          {{#if thumbnail}}
+            <img class="question-thumbnail" src="{{thumbnail}}"/>
+          {{/if}}
         </div>
       </div>
     </div>

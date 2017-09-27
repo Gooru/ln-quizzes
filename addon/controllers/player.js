@@ -34,11 +34,5 @@ export default Ember.Controller.extend({
    * Indicates if it should show the back button
    * @property {boolean}
    */
-  showBackButton: true,
-
-  /**
-   * Indicates if it should show the react widget or not
-   * @property {boolean}
-   */
-  showReactButton: true
+  showBackButton: true
 });

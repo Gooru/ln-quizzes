@@ -1,23 +1,11 @@
-<div class="qz-resource-player">
-	<div class="qz-aside">
-		{{player.qz-resource-navigator
-	        collection=collection
-	        classId=classId
-	        courseId=courseId
-	        collectionUrl=collectionUrl
-		}}
-	</div>
-	<div class="qz-main">
-		{{player.qz-resource-viewer
-		  resource=resource
-		  sendEvents=sendEvents
-		  onNext="onNext"
-		  classId=classId
-		  courseId=courseId
-		  unitId=unitId
-		  lessonId=lessonId
-		  collectionId=collectionId
-		  eventContext=eventContext
-		}}
-	</div>
-</div>
+{{player.qz-resource-viewer
+  resource=resource
+  sendEvents=sendEvents
+  onNext="onNext"
+  classId=classId
+  courseId=courseId
+  unitId=unitId
+  lessonId=lessonId
+  collectionId=collectionId
+  eventContext=eventContext
+}}

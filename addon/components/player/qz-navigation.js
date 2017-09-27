@@ -63,12 +63,7 @@ export default Ember.Component.extend({
   /**
    * @property {Collection
    */
-  collection: null,
-
-  /**
-   * @property {String} It will decided to show react widget or not
-   */
-  showReactButton: true
+  collection: null
 
   // -------------------------------------------------------------------------
   // Methods

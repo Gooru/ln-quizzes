@@ -66,25 +66,6 @@ export default Ember.Component.extend(ModalMixin, {
      */
     selectItem: function(item) {
       this.selectItem(item.resource);
-    },
-
-    /**
-     * Redirect to course map
-     */
-    redirectCourseMap() {
-      if (this.get('classId')) {
-        this.get('router').transitionTo(
-          'student.class.course-map',
-          this.get('classId'),
-          { queryParams: { refresh: true } }
-        );
-      } else {
-        this.get(
-          'router'
-        ).transitionTo('student.independent.course-map', this.get('courseId'), {
-          queryParams: { refresh: true }
-        });
-      }
     }
   },
 

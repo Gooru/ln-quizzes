@@ -176,5 +176,39 @@ export default Ember.Component.extend({
    * */
   setNarrationEffect: function() {
     $('.narration').effect('highlight', { color: '#84B7DD' }, 2000);
-  }
+  },
+
+  /**
+   * The protocol the user is using to access the page (http or https)
+   * @property {String}
+   */
+  currentProtocol: window.location.protocol,
+
+  /**
+   * The protocol for the resource url
+   * @property {String}
+   */
+  resourceProtocol: Ember.computed('resource.url', function() {
+    const httpsPattern = /^(https:\/\/)/;
+    return httpsPattern.test(this.get('resource.url')) ? 'https:' : 'http:';
+  }),
+
+  /**
+  * Check it can be render inside player or not
+  * @property {boolean}
+  */
+
+  isLinkOut: Ember.computed('resource', function() {
+    let isWebPage = Ember.computed.equal('resource.format', 'webpage');
+    let currentProtocol = this.get('currentProtocol');
+    let resourceProtocol = this.get('resourceProtocol');
+    if (
+      isWebPage &&
+      currentProtocol === 'https:' &&
+      resourceProtocol === 'http:'
+    ) {
+      return true;
+    }
+    return false;
+  })
 });

@@ -11,6 +11,8 @@ $green-200: #a3ca9f !default;
 $green-300: #76b072 !default;
 $green-400: #4b9741 !default;
 $green-500: #00793e !default;
+$green-600: #4c9639 !default;
+$green-700: #4b9740 !default;
 //** Blue
 $blue-100: #c1dbee !default;
 $blue-200: #84b7dd !default;
@@ -24,6 +26,7 @@ $dark-200: #67727b !default;
 $dark-300: #535e67 !default;
 $dark-400: #37424b !default;
 $dark-500: #29323a !default;
+$dark-600: #35424b !default;
 //** Light
 $light-100: #f1f3f7 !default;
 $light-200: #e3e5ea !default;
@@ -114,7 +117,7 @@ $font-family-monospace: Menlo, Monaco, Consolas, "Courier New",
   monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 //** Default for google sign in button
-$font-family-roboto: 'Roboto', sans-serif !default;
+$font-family-roboto: "Roboto", sans-serif !default;
 
 $font-size-base: 13px !default;
 $font-size-large: ceil(($font-size-base * 1.25)) !default; // ~18px
@@ -299,7 +302,7 @@ $cursor-disabled: not-allowed !default;
 //** Background for the dropdown menu.
 $dropdown-bg: #fff !default;
 //** Dropdown menu `border-color`.
-$dropdown-border: rgba(0, 0, 0, .15) !default;
+$dropdown-border: rgba(0, 0, 0, 0.15) !default;
 //** Dropdown menu `border-color` **for IE8**.
 $dropdown-fallback-border: #ccc !default;
 //** Divider color for between dropdown items.
@@ -657,7 +660,7 @@ $modal-content-fallback-border-color: #999 !default;
 //** Modal backdrop background color
 $modal-backdrop-bg: #000 !default;
 //** Modal backdrop opacity
-$modal-backdrop-opacity: .5 !default;
+$modal-backdrop-opacity: 0.5 !default;
 //** Modal header border color
 $modal-header-border-color: transparent !default;
 //** Modal footer border color
@@ -848,11 +851,11 @@ $breadcrumb-separator: "/" !default;
 //
 //##
 
-$carousel-text-shadow: 0 1px 2px rgba(0, 0, 0, .6) !default;
+$carousel-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !default;
 
 $carousel-control-color: #fff !default;
 $carousel-control-width: 15% !default;
-$carousel-control-opacity: .5 !default;
+$carousel-control-opacity: 0.5 !default;
 $carousel-control-font-size: 20px !default;
 
 $carousel-indicator-active-bg: #fff !default;

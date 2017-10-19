@@ -5,9 +5,6 @@ import ModalMixin from 'quizzes-addon/mixins/modal';
  * Player navigator
  *
  * Component responsible for enabling more flexible navigation options for the player.
- * For example, where {@link player/qz-navigation.js}} allows selecting only
- * the previous or the next content item, the navigator allows navigation to
- * any of the content items available.
  *
  * @module
  * @see controllers/player.js
@@ -31,6 +28,7 @@ export default Ember.Component.extend(ModalMixin, {
     remixCollection: function() {
       this.sendAction('onRemixCollection');
     },
+
     /**
      * Action triggered when the user closes the content player
      */
@@ -39,134 +37,139 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Action triggered when the user close de navigator panel
+     * Redirect to course map
      */
-    closeNavigator: function() {
-      this.sendAction('onCloseNavigator');
+    redirectCourseMap() {
+      if (this.get('classId')) {
+        this.get('router').transitionTo(
+          'student.class.course-map',
+          this.get('classId'),
+          {
+            queryParams: {
+              refresh: true
+            }
+          }
+        );
+      } else {
+        this.get('router').transitionTo(
+          'student.independent.course-map',
+          this.get('course.id'),
+          {
+            queryParams: {
+              refresh: true
+            }
+          }
+        );
+      }
     },
 
     /**
-     * Action triggered when the user wants to finish the collection
+     * Go back to collection
      */
-    finishCollection: function() {
-      this.sendAction('onFinishCollection');
+    backToCollection() {
+      window.location.href = this.get('collectionUrl');
     },
 
-    /**
-     * Action triggered when the user clicks at see usage report
-     */
-    seeUsageReport: function() {
-      this.sendAction('onFinishCollection');
+    onLeftNavigatorSlideOpen() {
+      let component = this;
+      component.$('.nav-menu-titles').animate({
+        left: '60px'
+      });
     },
 
-    /**
-     *
-     * Triggered when an item is selected
-     * @param item
-     */
-    selectItem: function(item) {
-      this.selectItem(item.resource);
+    onLeftNavigatorSlideClose() {
+      let component = this;
+      component.$('.nav-menu-titles').animate({
+        left: '-300px'
+      });
     }
   },
 
   // -------------------------------------------------------------------------
-  // Events
-
-  // -------------------------------------------------------------------------
   // Properties
-  /**
-   * @property {Collection} collection
-   */
-  collection: null,
 
   /**
-   * Should resource links in the navigator be disabled?
-   * @property {boolean}
+   *  @property {Object} Extracted the unit title from unit
    */
-  isNavigationDisabled: false,
-
-  /**
-   * @property {string} on finish collection, having type = 'collection'
-   */
-  onFinishCollection: null,
-
-  /**
-   * @property {string|function} onItemSelected - event handler for when an item is selected
-   */
-  onItemSelected: null,
-
-  /**
-   * @property {string} on content player close action
-   */
-  onClosePlayer: null,
-  /**
-   * @property {string} on content player remix action
-   */
-  onRemixCollection: null,
-
-  /**
-   * A convenient structure to render the menu
-   * @property
-   */
-  resourceItems: Ember.computed(
-    'collection',
-    'resourceResults.@each.value',
-    'selectedResourceId',
-    'showFinishConfirmation',
-    function() {
-      const component = this;
-      const collection = component.get('collection');
-      const resourceResults = component.get('resourceResults');
-      return resourceResults.map(function(resourceResult) {
-        const resourceId = resourceResult.get('resource.id');
-        return {
-          resource: collection.getResourceById(resourceId),
-          started: resourceResult.get('started'),
-          isCorrect: resourceResult.get('isCorrect'),
-          selected: resourceId === component.get('selectedResourceId')
-        };
+  unitTitle: Ember.computed(function() {
+    let unit = this.get('unit');
+    if (unit) {
+      return Ember.Object.create({
+        shortname: `U${unit.get('sequence')}`,
+        fullname: unit.get('title')
       });
     }
-  ),
+    return null;
+  }),
 
   /**
-   * Resource result for the selected resource
-   * @property {ResourceResult}
+   *  @property {Object} Extracted the lesson title from lesson
    */
-  resourceResults: Ember.A([]),
+  lessonTitle: Ember.computed(function() {
+    let lesson = this.get('lesson');
+    if (lesson) {
+      return Ember.Object.create({
+        shortname: `L${lesson.get('sequence')}`,
+        fullname: lesson.get('title')
+      });
+    }
+    return null;
+  }),
 
   /**
-   * @property {String} if the back link is shown
+   *  @property {Object} Extracted the collection title from unit, lesson and/or collection
    */
-  showBackButton: true,
+  collectionTitle: Ember.computed(function() {
+    let collection = this.get('collection');
+    let lesson = this.get('lesson');
+    let title = {};
+    if (lesson) {
+      let lessonChildren = lesson.children;
+      let isChild = lessonChildren.findBy('id', collection.id);
+      if (collection && isChild) {
+        if (collection.isCollection) {
+          let collections = lessonChildren.filter(
+            collection => collection.format === 'collection'
+          );
+          collections.forEach((child, index) => {
+            if (child.id === collection.id) {
+              let collectionSequence = index + 1;
+              title = Ember.Object.create({
+                shortname: `C${collectionSequence}`,
+                fullname: collection.get('title')
+              });
+            }
+          });
+        } else {
+          let assessments = lessonChildren.filter(
+            assessment => assessment.format === 'assessment'
+          );
+          assessments.forEach((child, index) => {
+            if (child.id === collection.id) {
+              let assessmentSequence = index + 1;
+              title = Ember.Object.create({
+                shortname: `A${assessmentSequence}`,
+                fullname: collection.get('title')
+              });
+            }
+          });
+        }
+      }
+    } else {
+      title = Ember.Object.create({
+        shortname: collection.isCollection ? 'C' : 'A',
+        fullname: collection.get('title')
+      });
+    }
+    return title;
+  })
 
-  /**
-   * @property {String} selectedResourceId - resource Id selected
-   */
-  selectedResourceId: null,
-
-  /**
-   * Indicates when the collection is already submitted
-   * @property {boolean}
-   */
-  submitted: false,
+  // -------------------------------------------------------------------------
+  // Events
 
   // -------------------------------------------------------------------------
   // Observers
 
   // -------------------------------------------------------------------------
   // Methods
-
-  /**
-   * Triggered when a resource item is selected
-   * @param {Resource} resource
-   */
-  selectItem: function(resource) {
-    if (resource && !this.get('isNavigationDisabled')) {
-      if (this.get('onItemSelected')) {
-        this.sendAction('onItemSelected', resource);
-      }
-      this.sendAction('onCloseNavigator');
-    }
-  }
 });

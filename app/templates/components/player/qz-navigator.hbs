@@ -1,61 +1,93 @@
-<div class="navigator-header" >
-    <div class="back-button" >
-      {{#if showBackButton}}
-      <div class="backSpan" {{action 'closePlayer'}}>
-      <span> {{gru-icon name='keyboard_arrow_left'}}{{t 'common.back'}}</span></div>
-      {{/if}}
-      {{#if (or isTeacher isAnonymous)}}
-        <div class="remixSpan">
-        <button class="remix-btn btn btn-success btn-sm" {{action 'remixCollection' collection}}>{{t 'common.remix'}}</button>
+<div class="navigator-panel" {{action 'onLeftNavigatorSlideOpen' on='mouseEnter'}} {{action 'onLeftNavigatorSlideClose' on='mouseLeave'}}>
+  <div class="nav-menu-icons">
+    {{#if showBackToCourseMap}}
+      <div class="course-map sub-header" {{action 'redirectCourseMap'}}>
+        <div class="nav-icon-container">
+          {{gru-icon name="sort"}}
+        </div>
       </div>
-       {{/if}}
-    </div>
-
-  <div class="collection-info">
-    <p class="collection-type">{{#if collection.isAssessment}}{{t 'common.assessment'}}{{else}}{{t 'common.collection'}}{{/if}}:</p>
-    <p class="collection-title">{{collection.title}}</p>
+    {{/if}}
+    {{#if showBackButton}}
+      <div class="back-to-collection sub-header" {{action 'closePlayer'}}>
+        <div class="nav-icon-container">
+          {{gru-icon name='keyboard_arrow_left'}}
+        </div>
+      </div>
+    {{/if}}
+    {{#if unitTitle}}
+      <div class="course-unit sub-header">
+        <div class="nav-icon-container">
+          <i class="icon"></i>
+          <span class="short-title">{{unitTitle.shortname}}</span>
+        </div>
+      </div>
+    {{/if}}
+    {{#if lessonTitle}}
+      <div class="course-lesson sub-header">
+        <div class="nav-icon-container">
+          <i class="icon"></i>
+          <span class="short-title">{{lessonTitle.shortname}}</span>
+        </div>
+      </div>
+    {{/if}}
+    {{#if collectionTitle}}
+      <div class="collection sub-header {{unless collection.isCollection 'assessment'}}">
+        <div class="nav-icon-container">
+          <i class="icon"></i>
+          <span class="short-title">{{collectionTitle.shortname}}</span>
+        </div>
+      </div>
+    {{/if}}
+    {{#if showBackToCollection}}
+      <div class="back-to-collection sub-header" {{action 'backToCollection'}}>
+        <div class="nav-icon-container">
+          {{gru-icon name='keyboard_arrow_left'}}
+        </div>
+      </div>
+    {{/if}}
+    {{#if (or isTeacher isAnonymous)}}
+      <div class="remix sub-header" {{action 'backToCollection'}}>
+        <div class="nav-icon-container">
+          {{gru-icon name='ic_content_copy'}}
+        </div>
+      </div>
+      {{/if}}
   </div>
-  <div class="pull-right close-navigator hidden-md hidden-lg">
-    <button class="btn btn-link hamburger-icon"{{action 'closeNavigator'}}>{{gru-icon name='menu'}}</button>
+  <div class="nav-menu-titles">
+    {{#if showBackToCourseMap}}
+    <div class="course-map sub-header" {{action 'redirectCourseMap'}}>
+      <span class="title">{{t 'common.back-to-course-map'}}</span>
+    </div>
+  {{/if}}
+  {{#if showBackButton}}
+    <div class="back-to-collection sub-header" {{action 'closePlayer'}}>
+      <span class="title">{{t 'common.back'}}</span>
+    </div>
+  {{/if}}
+  {{#if unitTitle}}
+    <div class="course-unit sub-header">
+      <span class="title">{{unitTitle.fullname}}</span>
+    </div>
+  {{/if}}
+  {{#if lessonTitle}}
+    <div class="course-lesson sub-header">
+      <span class="title">{{lessonTitle.fullname}}</span>
+    </div>
+  {{/if}}
+  {{#if collectionTitle}}
+    <div class="collection sub-header {{unless collection.isCollection 'assessment'}}">
+      <span class="title">{{collectionTitle.fullname}}</span>
+    </div>
+  {{/if}}
+  {{#if showBackToCollection}}
+    <div class="back-to-collection sub-header" {{action 'backToCollection'}}>
+      <span class="title">{{t 'common.back-to-collection'}}</span>
+    </div>
+  {{/if}}
+  {{#if (or isTeacher isAnonymous)}}
+    <div class="remix sub-header" {{action 'remixCollection' collection}}>
+      <span class="title">{{t 'common.remix'}}</span>
+    </div>
+  {{/if}}
   </div>
 </div>
-<ul class="list-group resources {{if isNavigationDisabled 'disabled' }}">
-  {{#each resourceItems as |item index|}}
-    <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}"
-        {{action 'selectItem' item}}>
-      <div class="resources-info">
-        <span class="number">{{plus-one index}}</span>
-        <i class="bubble-type {{item.resource.format}}"></i>
-        <h6 class="title hidden-sm hidden-md">
-          {{truncate-text text=(no-tags text=item.resource.title) type='medium'}}
-        </h6>
-        <h6 class="title visible-sm visible-md">
-          {{truncate-text text=(no-tags text=item.resource.title) type='player-nav-sm'}}
-        </h6>
-        {{#if (and showFeedback (not item.resource.isOpenEnded))}}
-          {{#if item.started}}
-            <span class="score {{if item.isCorrect 'correct' 'incorrect'}}">
-              {{gru-icon name='radio_button_checked'}}
-            </span>
-          {{/if}}
-        {{/if}}
-      </div>
-    </li>
-  {{/each}}
-</ul>
-{{#if collection.isCollection}}
-  <div class="navigator-subheader">
-    <div class="see-usage-report" {{action 'seeUsageReport'}}>
-      <span class="collection-title"> {{t 'qz-navigator.see-usage-report'}} </span>
-      {{gru-icon name='keyboard_arrow_right'}}
-    </div>
-  </div>
-{{else}}
-  {{#unless showFinishConfirmation}}
-  <div class="submit-all">
-    {{#unless submitted}}
-      <button tabindex=-1 class="btn btn-success finish-collection" {{action "finishCollection"}}>{{t "common.submit-all"}}</button>
-    {{/unless}}
-  </div>
-  {{/unless}}
-{{/if}}

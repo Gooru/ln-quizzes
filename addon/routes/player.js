@@ -38,9 +38,16 @@ export default Ember.Route.extend({
   // Actions
   actions: {
     /**
-     * Action triggered when the user closes the content player
+     * Action triggered when click the course map.
      */
-    onClosePlayer: function() {
+    onRedirectCourseMap: function() {
+      // Empty, it does nothing by default
+    },
+
+    /**
+     * Action triggered when  click the back to collection.
+     */
+    onBackToCollection: function() {
       // Empty, it does nothing by default
     },
 

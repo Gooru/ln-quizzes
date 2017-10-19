@@ -126,7 +126,7 @@ export default Ember.Component.extend({
   readOnly: false,
 
   /**
-   * @property {Collection
+   * @property {Collection}
    */
   collection: null,
 

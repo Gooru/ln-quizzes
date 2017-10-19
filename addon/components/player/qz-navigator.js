@@ -122,12 +122,15 @@ export default Ember.Component.extend(ModalMixin, {
   collectionTitle: Ember.computed(function() {
     let collection = this.get('collection');
     let lesson = this.get('lesson');
-    let title = {};
+    let title = null;
     if (lesson) {
       let lessonChildren = lesson.children;
       let isChild = lessonChildren.findBy('id', collection.id);
       if (collection && isChild) {
-        if (collection.isCollection) {
+        if (
+          collection.isCollection === true ||
+          collection.collectionType === 'collection'
+        ) {
           let collections = lessonChildren.filter(
             collection => collection.format === 'collection'
           );
@@ -155,12 +158,18 @@ export default Ember.Component.extend(ModalMixin, {
           });
         }
       }
-    } else {
+    }
+    if (!title) {
       title = Ember.Object.create({
-        shortname: collection.isCollection ? 'C' : 'A',
+        shortname:
+          collection.isCollection === true ||
+          collection.collectionType === 'collection'
+            ? 'C'
+            : 'A',
         fullname: collection.get('title')
       });
     }
+
     return title;
   })
 

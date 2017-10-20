@@ -129,14 +129,21 @@
 
               .title {
                 background-color: $light-300;
+                &:before,
+                &:after {
+                  background-color: $light-300;
+                }
               }
             }
 
             &.selected {
               background-color: $light-100;
-
               .title {
                 background-color: $light-100;
+                &:before,
+                &:after {
+                  background-color: $light-100;
+                }
               }
 
               .resource-icon {

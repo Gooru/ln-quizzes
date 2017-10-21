@@ -1,15 +1,26 @@
-<div class="learning-target" style={{safe-html (concat "border-color:" (grade-color learningTarget.mastery))}}>
-    <div class="header-content">
-        <div class="score"  style={{safe-html (concat "background-color:" (grade-color learningTarget.mastery))}}>
-            <div><span>{{learningTarget.mastery}}%</span></div>
+<div class="learning-target" style= {{safe-html (concat "border-color:" (grade-color learningTarget.mastery))}}>
+  <div class="header-content">
+    <div class="learning-target-description">
+      <div class="standard-tags">
+        <span class="title">{{learningTarget.displayCode}}</span>
+      </div>
+      <div class="standard-score">
+        {{#if (gt learningTarget.mastery 0)}}
+          <span class="percentage" style= {{safe-html (concat "color:" (grade-color 80))}}>{{learningTarget.mastery}}%</span>
+        {{else}}
+          <div class="performance">
+            <span class="no-percentage">_</span>
+          </div>
+        {{/if}}
+      </div>
+      <div class="description">
+        <div class="desc-align">{{learningTarget.description}} </div>
         </div>
-        <div class="learning-target-description">
-            <span class="title">{{learningTarget.displayCode}}</span>
-            <div class="description">{{learningTarget.description}}</div>
-        </div>
-        <div class="questions">
-            <span class="title">{{t "common.questions"}}</span>
-          {{gru-bubbles bubbleOptions=bubbleQuestions onBubbleSelect='bubbleSelect'}}
-        </div>
+        
     </div>
+    <div class="questions">
+      <!-- <span class="title">{{t "common.questions"}}</span> -->
+       {{gru-bubbles bubbleOptions=bubbleQuestions onBubbleSelect='bubbleSelect'}}
+    </div>
+  </div>
 </div>

@@ -111,18 +111,18 @@
       color: $brand-success;
       i {
         background: url("quizzes-addon/quizzes/images/correct-answer.svg");
-        width: 13px;
-        height: 13px;
-        display: block;
+        width: 24px;
+        height: 14px;
+        display: inline-flex;
       }
     }
     .question-score span.incorrect {
       color: $brand-incorrect;
       i {
         background: url("quizzes-addon/quizzes/images/wrong-answer.svg");
-        width: 13px;
-        height: 13px;
-        display: block;
+        width: 14px;
+        height: 14px;
+        display: inline-flex;
       }
     }
     .question-reaction div {

@@ -1,17 +1,14 @@
 .reports.assessment.qz-mastery .qz-learning-target {
   .learning-target {
-    // float: left;
     border-radius: 5px;
     background-color: $white;
     margin: 20px 0;
     display: flex;
     .header-content {
       display: inline-block;
-      // @include flexbox;
       font-size: $font-size-h6;
       line-height: $font-size-h6;
       width: 100%;
-      // width: 300px;
       margin: 0 0 30px;
 
       .score {
@@ -34,7 +31,7 @@
         .description {
           margin: 12px 0 0;
           height: 40px;
-          border-bottom: 1px solid #e3e4ea;
+          border-bottom: 1px solid $light-600;
           .desc-align {
             margin-left: 10px;
             width: 246px;
@@ -62,7 +59,7 @@
               font-size: 35px;
               font-weight: 600;
               line-height: 3px;
-              color: #cdd2d6;
+              color: $light-300;
             }
           }
 
@@ -78,7 +75,6 @@
       .questions {
         min-width: 165px;
         display: none;
-        // border-left: 1px solid $gray-lighter;
         @media (min-width: $screen-xs) {
           display: block;
         }
@@ -91,7 +87,7 @@
         border-radius: 3px;
         float: left;
         margin-left: 10px;
-        background-color: #cdd2d6;
+        background-color: $light-300;
       }
 
       .stadard-score {

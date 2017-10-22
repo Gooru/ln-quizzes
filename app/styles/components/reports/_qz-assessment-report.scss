@@ -2,25 +2,38 @@
   width: 100%;
   padding: 10px 20px;
   background-color: $light-100;
+
   .qz-assessment-summary {
     .reports-owner {
       height: 24px;
-      border-bottom: 1px solid #e3e5ea;
+      border-bottom: 1px solid $light-200;
+
       span {
         margin-left: 14px;
       }
     }
+
     .summary-mastry-question {
       max-height: 400px;
       overflow: auto;
     }
-  }
 
+    .summary-mastry-question::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .summary-mastry-question::-webkit-scrollbar-track {
+    }
+
+    .summary-mastry-question::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: #d8d8d8;
+    }
+  }
   /* Small devices (tablets, 768px and up) */
   @media (min-width: $screen-sm-min) {
     padding: 20px 10px;
   }
-
   /* Medium devices (desktops, 992px and up) */
   @media (min-width: $screen-md-min) {
     padding: 20px 50px;

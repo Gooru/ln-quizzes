@@ -51,24 +51,18 @@
     {{/if}}
   </div>
   {{#if collection.isAssessment}}
-    <div class="grade" >
+    <div class="grade">
       <span class="percentage">{{round-number contextResult.correctPercentage}}%</span>
       <span class="attempts">
-      <!-- <span class="fractional fraction"> {{{fractional numerator=contextResult.correctAnswers denominator=contextResult.totalNonOpenEndedQuestions}}}</span> -->
-      <span class="text">PERFORMANCE</span>
+              <span class="text">PERFORMANCE</span>
       </span>
     </div>
   {{else}}
     {{#if hasQuestionScore}}
 
       <div class="grade">
-        <!-- style= {{gradeStyle}} -->
         <span class="percentage">{{round-number contextResult.reportEvent.averageScore}}%</span>
         <span class="attempts">
-          <!-- <span class="fractional fraction">
-            {{{fractional numerator=contextResult.r￼eportEvent.totalCorrect denominator=contextResult.reportEvent.totalAnswered}}}
-          </span>
-        <span class="text">{{t 'common.correct'}}</span> -->
         <span class="text">PERFORMANCE</span>
 
         </span>

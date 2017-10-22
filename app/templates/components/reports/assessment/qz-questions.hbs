@@ -1,8 +1,5 @@
 <div class="summary-report-questions" id="scrolls">
   <div class="questions-header">
-    <!-- <div class="title">
-      <h4>{{title}}</h4>
-  </div> -->
     {{#unless isOpenEnded}}
       {{#if isAnswerKeyHidden}}
         <em>{{t "common.answer-key-was-hidden"}}</em>
@@ -66,8 +63,12 @@
           {{#if showScore}}
             <td class="question-score {{if showPerformance 'visible' 'hide'}}">
               <span class="{{if result.started (if result.correct 'correct' 'incorrect') 'not-started'}}">
-            {{gru-icon name='radio_button_checked'}}
-          </span>
+                    {{#if result.started}}
+                           <i class="icon"> </i>
+                     {{else}}
+                            {{gru-icon name='radio_button_checked'}}
+                   {{/if}}                 
+             </span>
             </td>
           {{/if}}
           <td class="question-time {{if showPerformance 'visible' 'hide'}}">

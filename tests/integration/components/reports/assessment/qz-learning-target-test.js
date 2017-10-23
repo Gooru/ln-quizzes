@@ -12,7 +12,7 @@ moduleForComponent(
 );
 
 test('Learning Target Layout', function(assert) {
-  assert.expect(6);
+  assert.expect(5);
 
   const learningTarget = Ember.Object.create({
     description:
@@ -89,7 +89,6 @@ test('Learning Target Layout', function(assert) {
     $learningTarget.find('.header-content'),
     'Missing learning target header'
   );
-  T.exists(assert, $learningTarget.find('.score'), 'Missing score box');
   T.exists(
     assert,
     $learningTarget.find('.learning-target-description'),

@@ -53,7 +53,8 @@ export default Ember.Object.extend({
       Ember.Object.create({
         id: student.get('profileId'),
         code: student.get('profileCode'),
-        fullName: student.get('profileName')
+        fullName: student.get('profileName'),
+        lastFirstName: student.get('lastFirstName')
       })
     );
   }),

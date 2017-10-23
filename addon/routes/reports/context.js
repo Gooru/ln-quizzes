@@ -86,6 +86,7 @@ export default Ember.Route.extend({
               ReportDataEvent.create(Ember.getOwner(this).ownerInjection(), {
                 profileId: student.get('id'),
                 profileName: student.get('fullName'),
+                lastFirstName: student.get('lastFirstName'),
                 isAttemptStarted: false,
                 isAttemptFinished: false
               })

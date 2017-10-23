@@ -269,6 +269,9 @@ export default Ember.Component.extend({
         return {
           id: student.get('id'),
           header: anonymous ? student.get('code') : student.get('fullName'),
+          lastFirstName: anonymous
+            ? student.get('code')
+            : student.get('lastFirstName'),
           content: []
         };
       });

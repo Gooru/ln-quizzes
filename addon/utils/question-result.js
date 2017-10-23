@@ -18,14 +18,15 @@ export function stats(questionResults) {
   let started = 0;
   let timeSpent = 0;
   const reactions = [];
-
+  let isOpenEnded = false;
+  let openEndedPercentageTotal = 0;
   questionResults.forEach(function(item) {
     correct += item.get('correct') ? 1 : 0;
     incorrect += item.get('incorrect') ? 1 : 0;
     skipped += item.get('skipped') ? 1 : 0;
     started += item.get('started') ? 1 : 0;
     timeSpent += item.get('timeSpent');
-
+    isOpenEnded = item.get('resource.type') === 'extended_text';
     if (item.get('reaction')) {
       reactions.push(item.get('reaction'));
     }
@@ -33,6 +34,12 @@ export function stats(questionResults) {
 
   const notStarted = total - started;
   const completed = correct + incorrect; //incorrect should include skipped ones
+  //OE question should not be calculated
+  if (isOpenEnded) {
+    correct = incorrect = 0;
+    //show full blue panel bar
+    openEndedPercentageTotal = 100;
+  }
 
   return Ember.Object.create({
     total,
@@ -51,7 +58,9 @@ export function stats(questionResults) {
     totalCompleted: completed,
     completedPercentage: roundFloat(completed / total * 100),
     averageReaction: reactions.length ? roundFloat(average(reactions)) : null,
-    totalTimeSpent: timeSpent
+    totalTimeSpent: timeSpent,
+    isOpenEnded,
+    openEndedPercentageTotal
   });
 }
 

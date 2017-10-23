@@ -8,8 +8,8 @@
 {{#each answersData as |answerData|}}
   <div class="panel-answer panel {{if anonymous 'anonymous'}}
     {{if answerData.correct 'panel-success' 'panel-danger'}}">
-      <div class="panel-heading {{if anonymousAndNotShowResult 'panel-heading-anonymous'}}">
-        {{#unless anonymous}}
+      <div class="panel-heading {{if anonymousAndNotShowResult 'panel-heading-anonymous'}} {{if answerData.isOpenEndedQuestion 'panel-blue'}}">
+        {{#unless (or anonymous answerData.isOpenEndedQuestion)}}
             <span class="percentage">{{answerData.percentage}}%</span>
         {{else}}
             &nbsp;

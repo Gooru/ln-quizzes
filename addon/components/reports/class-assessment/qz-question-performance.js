@@ -4,7 +4,8 @@ import { stats } from 'quizzes-addon/utils/question-result';
 import {
   CORRECT_COLOR,
   INCORRECT_COLOR,
-  ANONYMOUS_COLOR
+  ANONYMOUS_COLOR,
+  OPEN_ENDED_COLOR
 } from 'quizzes-addon/config/quizzes-config';
 
 /**
@@ -74,6 +75,7 @@ export default Ember.Component.extend({
         ? answerDistribution.get('percentage')
         : 0;
       const result = answerDistribution.get('result');
+      const isOpenEndedQuestion = answerDistribution.get('isOpenEndedQuestion');
       result.set('resource', question);
       answersData.addObject(
         Ember.Object.create({
@@ -82,6 +84,7 @@ export default Ember.Component.extend({
           percentage,
           students,
           result,
+          isOpenEndedQuestion,
           charData: Ember.A([
             Ember.Object.create({
               color: correct ? CORRECT_COLOR : INCORRECT_COLOR,
@@ -112,9 +115,13 @@ export default Ember.Component.extend({
       const totals = stats(questionResults);
       const total = totals.get('total');
       const anonymousAndNotShowResult = this.get('anonymousAndNotShowResult');
-
+      let isOpenEnded = totals.get('isOpenEnded');
       return Ember.Object.create({
         data: [
+          {
+            color: isOpenEnded ? OPEN_ENDED_COLOR : ANONYMOUS_COLOR,
+            percentage: totals.get('openEndedPercentageTotal')
+          },
           {
             color: anonymousAndNotShowResult
               ? ANONYMOUS_COLOR

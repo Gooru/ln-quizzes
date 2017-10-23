@@ -29,6 +29,7 @@ export default Ember.Object.extend({
     const lastName = this.get('lastName');
     return `${firstName} ${lastName}`.trim();
   }),
+
   /**
   * @property {String} fullName - The user lastname, firstname
   */
@@ -37,6 +38,7 @@ export default Ember.Object.extend({
     const lastName = this.get('lastName');
     return `${lastName}, ${firstName}`.trim();
   }),
+
   /**
    * @property {string} id - The profile id
    */

@@ -23,6 +23,16 @@ export default Ember.Component.extend(ModalMixin, {
    */
   contextService: Ember.inject.service('quizzes/context'),
 
+  /**
+   * @requires service:notifications
+   */
+  quizzesNotifications: Ember.inject.service('quizzes/notifications'),
+
+  /**
+   * @requires service:i18n
+   */
+  i18n: Ember.inject.service(),
+
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -445,17 +455,25 @@ export default Ember.Component.extend(ModalMixin, {
           resourceResult,
           firstTime
         )
-        .then(function() {
-          Ember.run(() => component.set('resource', null));
-          resourceResult = contextResult.getResultByResourceId(resourceId);
-          resourceResult.set('startTime', new Date().getTime());
-          component.setProperties({
-            showReport: false,
-            resourceId,
-            resource,
-            resourceResult
-          }); //saves the resource status
-        });
+        .then(
+          function() {
+            Ember.run(() => component.set('resource', null));
+            resourceResult = contextResult.getResultByResourceId(resourceId);
+            resourceResult.set('startTime', new Date().getTime());
+            component.setProperties({
+              showReport: false,
+              resourceId,
+              resource,
+              resourceResult
+            }); //saves the resource status
+          },
+          function() {
+            const message = component
+              .get('i18n')
+              .t('common.errors.getting-next-resource').string;
+            component.get('quizzesNotifications').error(message);
+          }
+        );
     });
   },
 
@@ -492,10 +510,23 @@ export default Ember.Component.extend(ModalMixin, {
         : component
           .get('contextService')
           .moveToResource(resourceId, contextId, resourceResult, eventContext)
+          .catch(() =>
+            component
+              .get('contextService')
+              .moveToResource(
+                resourceId,
+                contextId,
+                resourceResult,
+                eventContext
+              )
+          )
           .then(result => resourceResult.set('score', result.score));
       promise = promise.then(
         () => component.decrementProperty('resourceEventCount'),
-        () => component.decrementProperty('resourceEventCount')
+        () => {
+          component.decrementProperty('resourceEventCount');
+          return Ember.RSVP.reject();
+        }
       );
     }
     return promise;

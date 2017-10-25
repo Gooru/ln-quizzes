@@ -5,20 +5,17 @@
       {{#unless showReport}}
           <div class="qz-aside">
             {{player.qz-navigator
-            isNavigationDisabled=isNavigationDisabled
-            isTeacher=isTeacher
-            submitted=contextResult.submitted
-            collection=collection
-            resourceResults=resourcesPlayer
-            selectedResourceId=resourceId
-            showFeedback=showFeedback
-            showFinishConfirmation=showFinishConfirmation
-            onItemSelected="selectNavigatorItem"
-            onCloseNavigator="closeNavigator"
-            onClosePlayer="closePlayer"
-            onRemixCollection="remixCollection"
-            onFinishCollection="submitAll"
-            showBackButton=showBackButton
+              isTeacher=isTeacher
+              collection=collection
+              unit=unit
+              lesson=lesson
+              classId=classId
+              course=course
+              onRemixCollection="remixCollection"
+              showBackToCourseMap=showBackToCourseMap
+              showBackToCollection=showBackToCollection
+              showBackButton=showBackButton
+              onClosePlayer="closePlayer"
             }}
           </div>
       {{/unless}}
@@ -27,14 +24,6 @@
             {{#if showFinishConfirmation}}
               {{player.qz-submit-confirmation onConfirmFinish='finishCollection'}}
             {{else}}
-              {{player.qz-navigation
-              collection=collection
-              ratingScore=resourceResult.reaction
-              readOnly=contextResult.submitted
-              onFinishCollection="finishCollection"
-              onOpenNavigator="openNavigator"
-              onChangeEmotion="changeEmotion"}}
-
               {{#if resource}}
                 {{player.qz-viewer
                 isNotIframeUrl=isNotIframeUrl
@@ -42,10 +31,28 @@
                 resource=resource
                 resourceResult=resourceResult
                 role=role
-                showPrevious=showPrevious
                 submitted=contextResult.submitted
-                onPreviousResource="previousResource"
                 onSubmitQuestion="submitQuestion"}}
+                {{player.qz-player-footer
+                  resource=resource
+                  isNavigationDisabled=isNavigationDisabled
+                  isTeacher=isTeacher
+                  submitted=contextResult.submitted
+                  collection=collection
+                  resourceResults=resourcesPlayer
+                  selectedResourceId=resourceId
+                  showFeedback=showFeedback
+                  ratingScore=resourceResult.reaction
+                  readOnly=contextResult.submitted
+                  onChangeEmotion="changeEmotion"
+                  onFinishCollection="submitAll"
+                  showFinishConfirmation=showFinishConfirmation
+                  onItemSelected="selectNavigatorItem"
+                  showPrevious=showPrevious
+                  showNext=showNext
+                  onPreviousResource="previousResource"
+                  onNextResource="nextResource"
+                }}
               {{/if}}
             {{/if}}
           {{else}}

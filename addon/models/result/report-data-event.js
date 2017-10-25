@@ -218,6 +218,7 @@ export default Ember.Object.extend({
   setProfileProperties: function(profile) {
     this.set('profileName', profile.get('fullName'));
     this.set('studentId', profile.get('studentId'));
+    this.set('lastFirstName', profile.get('lastFirstName'));
   },
 
   /**

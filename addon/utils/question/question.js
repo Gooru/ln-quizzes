@@ -74,6 +74,8 @@ export default Ember.Object.extend({
     const distribution = Ember.A([]);
     const total = resourceResults.length;
     resourceResults.forEach(function(result) {
+      const questionType = result.get('resource.type');
+      let isOpenEndedQuestion = questionType === 'extended_text';
       const answer = result.get('answer');
       if (result.get('started')) {
         const answerKey = util.answerKey(answer);
@@ -83,11 +85,12 @@ export default Ember.Object.extend({
         if (!answerDistribution) {
           answerDistribution = Ember.Object.create({
             answer,
-            correct: result.get('correct'),
+            correct: isOpenEndedQuestion ? true : result.get('correct'),
             count,
             percentage,
             key: answerKey,
-            result
+            result,
+            isOpenEndedQuestion
           });
           distribution.addObject(answerDistribution);
           distributionMap[answerKey] = answerDistribution;

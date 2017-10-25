@@ -1,0 +1,94 @@
+<div class="nav-player-container">
+  {{#if showPrevious}}
+    <div class="prev" {{action 'previousResource'}}>
+      {{gru-icon name="ic_skip_previous"}}
+      <span>{{t "qz-question-viewer.previous"}}</span>
+    </div>
+  {{else}}
+    <div class="prev disabled">
+      {{gru-icon name="ic_skip_previous"}}
+      <span>{{t "qz-question-viewer.previous"}}</span>
+    </div>
+  {{/if}}
+
+  <div class="player-container">
+    <div class="player-info">
+    {{#if isNavigatorOpen}}
+      <div class="list-resource-nav pull-left" {{action 'onCloseNavigator'}}>
+        {{gru-icon name="ic_keyboard_arrow_up"}}
+      </div>
+    {{else}}
+      <div class="list-resource-nav pull-left" {{action 'onOpenNavigator'}}>
+        {{gru-icon name="ic_keyboard_arrow_down"}}
+      </div>
+    {{/if}}
+      <div class="pull-left">
+        <i class="{{resource.format}} resource-icon"></i>
+      </div>
+      <div class="pull-left resource-title">
+        <span>{{resource.title}}</span>
+      </div>
+    </div>
+    <div class="reaction-bar pull-right">
+      {{qz-emotion-picker startEmotion=ratingScore onChangeEmotion="changeEmotion" readOnly=submitted}}
+    </div>
+    <div class="list-resources">
+      <ul class="list-group resources {{if isNavigationDisabled 'disabled' }}">
+          {{#each resourceItems as |item index|}}
+            <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}"
+                {{action 'selectItem' item}}>
+              <div class="resources-info">
+                <i class="resource-icon {{item.resource.format}} pull-left"></i>
+                <span class="title pull-left">
+                  {{no-tags text=item.resource.title}}
+                </span>
+                <span class="selected-reaction pull-left" id="resource-{{item.resource.id}}">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/quizzes-addon/emoji-one/emoji.svg#{{item.unicode}}"></use>
+                    </svg>
+                </span>
+
+                {{#if (and showFeedback (not item.resource.isOpenEnded))}}
+                  {{#if item.started}}
+                    {{#if item.isCorrect}}
+                      <span class="score correct">
+                        {{gru-icon name='ic_done_all'}}
+                      </span>
+                    {{else}}
+                      <span class="score pull-left incorrect">
+                        {{gru-icon name='ic_close'}}
+                      </span>
+                    {{/if}}
+                  {{/if}}
+                {{/if}}
+              </div>
+            </li>
+          {{/each}}
+          {{#if collection.isCollection}}
+            {{#unless (or showFinishConfirmation submitted)}}
+              <li class="list-group-item">
+                <div class="usage-report" {{action 'seeUsageReport'}}>
+                  {{t 'qz-player-footer.usage-report'}}
+                </div>
+              </li>
+            {{/unless}}
+          {{else}}
+              <li class="list-group-item" {{action "finishCollection"}} >
+                <div class="submit-all">
+                  {{t 'common.submit-all'}}
+                </div>
+              </li>
+          {{/if}}
+      </ul>
+    </div>
+  </div>
+  {{#if showNext}}
+    <div class="next" {{action 'nextResource'}}>
+      <span>{{t 'common.next'}}</span> {{gru-icon name="ic_skip_next"}}
+    </div>
+  {{else}}
+    <div class="next disabled">
+      <span>{{t 'common.next'}}</span> {{gru-icon name="ic_skip_next"}}
+    </div>
+  {{/if}}
+</div>

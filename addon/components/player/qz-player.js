@@ -23,6 +23,16 @@ export default Ember.Component.extend(ModalMixin, {
    */
   contextService: Ember.inject.service('quizzes/context'),
 
+  /**
+   * @requires service:notifications
+   */
+  quizzesNotifications: Ember.inject.service('quizzes/notifications'),
+
+  /**
+   * @requires service:i18n
+   */
+  i18n: Ember.inject.service(),
+
   // -------------------------------------------------------------------------
   // Attributes
 
@@ -59,16 +69,6 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Action triggered when the user close de navigator panel
-     */
-    closeNavigator: function() {
-      const $appContainer = Ember.$('.app-container');
-      if ($appContainer.hasClass('navigator-on')) {
-        $appContainer.removeClass('navigator-on');
-      }
-    },
-
-    /**
      * Finish from the confirmation
      */
     finishCollection: function() {
@@ -94,13 +94,6 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Action triggered when the user open the navigator panel
-     */
-    openNavigator: function() {
-      Ember.$('.app-container').addClass('navigator-on');
-    },
-
-    /**
      * Action triggered when the user open the player
      */
     openPlayer: function() {
@@ -115,13 +108,27 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Handle onPreviousResource event from qz-question-viewer
-     * @see components/player/qz-question-viewer.js
+     * Handle onPreviousResource event from qz-player-footer
+     * @see components/player/qz-player-footer.js
      * @param {Resource} question
      */
     previousResource: function(resource) {
       const component = this;
       const next = component.get('collection').prevResource(resource);
+      if (next) {
+        Ember.$(window).scrollTop(0);
+        component.moveToResource(next);
+      }
+    },
+
+    /**
+     * Handle onNextResource event from qz-player-footer
+     * @see components/player/qz-player-footer.js
+     * @param {Resource} question
+     */
+    nextResource: function(resource) {
+      const component = this;
+      const next = component.get('collection').nextResource(resource);
       if (next) {
         Ember.$(window).scrollTop(0);
         component.moveToResource(next);
@@ -337,14 +344,35 @@ export default Ember.Component.extend(ModalMixin, {
   showFeedback: Ember.computed.alias('collection.immediateFeedback'),
 
   /**
+   * @property {String} It decide to show the back to collection or not.
+   */
+  showBackToCollection: true,
+
+  /**
+   * @property {String} It decide to show the back to course map or not.
+   */
+  showBackToCourseMap: true,
+
+  /**
    * If the previous button should be shown
    * @property {boolean}
    */
   showPrevious: Ember.computed('resource', 'isNavigationDisabled', function() {
     const resource = this.get('resource');
     return (
-      this.get('isAssessment') &&
       !!this.get('collection').prevResource(resource) &&
+      !this.get('isNavigationDisabled')
+    );
+  }),
+
+  /**
+   * If the next button should be shown
+   * @property {boolean}
+   */
+  showNext: Ember.computed('resource', 'isNavigationDisabled', function() {
+    const resource = this.get('resource');
+    return (
+      !!this.get('collection').nextResource(resource) &&
       !this.get('isNavigationDisabled')
     );
   }),
@@ -427,17 +455,25 @@ export default Ember.Component.extend(ModalMixin, {
           resourceResult,
           firstTime
         )
-        .then(function() {
-          Ember.run(() => component.set('resource', null));
-          resourceResult = contextResult.getResultByResourceId(resourceId);
-          resourceResult.set('startTime', new Date().getTime());
-          component.setProperties({
-            showReport: false,
-            resourceId,
-            resource,
-            resourceResult
-          }); //saves the resource status
-        });
+        .then(
+          function() {
+            Ember.run(() => component.set('resource', null));
+            resourceResult = contextResult.getResultByResourceId(resourceId);
+            resourceResult.set('startTime', new Date().getTime());
+            component.setProperties({
+              showReport: false,
+              resourceId,
+              resource,
+              resourceResult
+            }); //saves the resource status
+          },
+          function() {
+            const message = component
+              .get('i18n')
+              .t('common.errors.getting-next-resource').string;
+            component.get('quizzesNotifications').error(message);
+          }
+        );
     });
   },
 
@@ -474,10 +510,23 @@ export default Ember.Component.extend(ModalMixin, {
         : component
           .get('contextService')
           .moveToResource(resourceId, contextId, resourceResult, eventContext)
+          .catch(() =>
+            component
+              .get('contextService')
+              .moveToResource(
+                resourceId,
+                contextId,
+                resourceResult,
+                eventContext
+              )
+          )
           .then(result => resourceResult.set('score', result.score));
       promise = promise.then(
         () => component.decrementProperty('resourceEventCount'),
-        () => component.decrementProperty('resourceEventCount')
+        () => {
+          component.decrementProperty('resourceEventCount');
+          return Ember.RSVP.reject();
+        }
       );
     }
     return promise;

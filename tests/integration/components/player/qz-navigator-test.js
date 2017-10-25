@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import T from 'dummy/tests/helpers/assert';
-import QuestionResult from 'quizzes-addon/models/result/question';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent(
@@ -15,495 +14,228 @@ moduleForComponent(
   }
 );
 
-test('Player Navigator', function(assert) {
-  assert.expect(10);
-
-  const resourceMockA = Ember.Object.create({
-    id: '1',
-    title: '<p>Resource #1</p>',
-    format: 'question',
-    isQuestion: true
-  });
-
-  const resourceMockB = Ember.Object.create({
-    id: '2',
-    title: 'Resource #2',
-    format: 'webpage',
-    isQuestion: false
-  });
-
+test('Player Left Navigator: when course map visible', function(assert) {
   const collectionMock = Ember.Object.create({
     id: '490ffa82-aa15-4101-81e7-e148002f90af',
     title: 'Test collection',
-    resources: Ember.A([resourceMockA, resourceMockB]),
-    lastVisitedResource: resourceMockB,
-    getResourceById: function(id) {
-      if (id === '1') {
-        return resourceMockA;
-      } else if (id === '2') {
-        return resourceMockB;
-      }
-    }
+    format: 'collection',
+    sequence: 1
   });
 
-  const resourceResults = Ember.A([
-    QuestionResult.create({ resource: resourceMockA }),
-    QuestionResult.create({ resource: resourceMockB })
-  ]);
+  const courseMock = Ember.Object.create({
+    id: '490ffa82-aa15-4101-81e7-e148002f90ac',
+    title: 'Test course'
+  });
 
+  const unitMock = Ember.Object.create({
+    id: '490ffa82-aa15-4101-81e7-e148002f90au',
+    title: 'Test unit',
+    sequence: 1
+  });
+
+  const lessonMock = Ember.Object.create({
+    id: '490ffa82-aa15-4101-81e7-e148002f90al',
+    title: 'Test lesson',
+    sequence: 1,
+    children: Ember.A([collectionMock])
+  });
+
+  this.set('course', courseMock);
+  this.set('unit', unitMock);
+  this.set('lesson', lessonMock);
   this.set('collection', collectionMock);
-  this.set('resourceResults', resourceResults);
 
-  this.on(
-    'itemSelected',
-    function(/*resource*/) {
-      assert.ok(false, 'This should not be called');
-    }
+  this.render(
+    hbs`{{player.qz-navigator collection=collection course=course unit=unit lesson=lesson showBackToCourseMap=true}}`
   );
-
-  this.render(hbs`{{player.qz-navigator collection=collection
-      resourceResults=resourceResults lessonTitle='E-Lesson1'
-      selectedResourceId='1' onItemSelected='itemSelected'}}`);
 
   var $component = this.$(); //component dom element
   const $navigator = $component.find('.qz-navigator');
   T.exists(assert, $navigator, 'Missing navigator section');
-  T.exists(assert, $navigator.find('.back-button'), 'Missing back button');
-
-  //$navigatorHeader
-  const $navigatorHeader = $component.find('.qz-navigator .navigator-header');
   T.exists(
     assert,
-    $navigatorHeader.find('.collection-type'),
-    'Missing collection type'
+    $navigator.find('.nav-menu-icons .course-map'),
+    'Missing course map icon'
   );
   T.exists(
     assert,
-    $navigatorHeader.find('.collection-title'),
+    $navigator.find('.nav-menu-titles .course-map'),
+    'Missing course map title'
+  );
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-icons .course-unit'),
+    'Missing course map unit icon'
+  );
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-titles .course-unit'),
+    'Missing course map unit title'
+  );
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-icons .course-lesson'),
+    'Missing course map lesson icon'
+  );
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-titles .course-lesson'),
+    'Missing course map lesson title'
+  );
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-icons .collection'),
+    'Missing collection icon'
+  );
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-titles .collection'),
     'Missing collection title'
   );
-
-  //$collectionResources list
-  const $collectionResources = $navigator.find('.resources');
-  T.exists(assert, $collectionResources, 'Missing collection resources');
-  const $resourceItems = $collectionResources.find('li.list-group-item');
-  assert.equal(
-    $resourceItems.length,
-    2,
-    'Missing resources with list-group-item class'
-  );
-  const $firstResourceItem = $collectionResources.find(
-    'li.list-group-item:eq(0)'
-  );
-  T.exists(
-    assert,
-    $firstResourceItem.find('.resources-info'),
-    'Missing resources info'
-  );
-  T.exists(
-    assert,
-    $firstResourceItem.find('.resources-info .bubble-type.question'),
-    'Missing question class type'
-  );
-  assert.equal(
-    T.text($firstResourceItem.find('.resources-info .title.visible-sm')),
-    'Resource #1',
-    'Wrong item text'
-  );
-
-  //$resourceItem Selected
-  const $selected = $navigator.find('.list-group-item:eq(0).selected');
-  T.exists(assert, $selected, 'Incorrect selected resource 1');
 });
 
-test('Layout when navigator is closed', function(assert) {
-  assert.expect(2);
-
-  this.on('parentAction', function() {
-    assert.ok(true, 'external Action was called!');
+test('Player Left Navigator: When course map not visible', function(assert) {
+  const collectionMock = Ember.Object.create({
+    id: '490ffa82-aa15-4101-81e7-e148002f90af',
+    title: 'Test collection',
+    format: 'collection',
+    sequence: 1
   });
 
-  this.render(
-    hbs`{{player/qz-navigator onCloseNavigator='parentAction' lessonTitle='E-Lesson1'}}`
-  );
-  var $component = this.$(); //component dom element
-  var $menuButton = $component.find('.hamburger-icon');
+  this.set('collection', collectionMock);
 
-  assert.ok($menuButton, 'Missing menu button');
-  $menuButton.click();
+  this.render(hbs`{{player.qz-navigator collection=collection }}`);
+
+  var $component = this.$(); //component dom element
+  const $navigator = $component.find('.qz-navigator');
+  T.exists(assert, $navigator, 'Missing navigator section');
+  T.notExists(
+    assert,
+    $navigator.find('.nav-menu-icons .course-map'),
+    'Should not show course map icon'
+  );
+  T.notExists(
+    assert,
+    $navigator.find('.nav-menu-titles .course-map'),
+    'Should not show course map title'
+  );
+  T.notExists(
+    assert,
+    $navigator.find('.nav-menu-icons .course-unit'),
+    'Should not show course map unit icon'
+  );
+  T.notExists(
+    assert,
+    $navigator.find('.nav-menu-titles .course-unit'),
+    'Should not show course map unit title'
+  );
+  T.notExists(
+    assert,
+    $navigator.find('.nav-menu-icons .course-lesson'),
+    'Should not show course map lesson icon'
+  );
+  T.notExists(
+    assert,
+    $navigator.find('.nav-menu-titles .course-lesson'),
+    'Should not show course map lesson title'
+  );
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-icons .collection'),
+    'Missing collection icon'
+  );
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-titles .collection'),
+    'Missing collection title'
+  );
 });
 
-test('it allows navigation between resource links -by default', function(
+test('Player Left Navigator: When remix button visible', function(assert) {
+  const collectionMock = Ember.Object.create({
+    id: '490ffa82-aa15-4101-81e7-e148002f90af',
+    title: 'Test collection',
+    format: 'collection',
+    sequence: 1
+  });
+
+  this.set('collection', collectionMock);
+
+  this.render(
+    hbs`{{player.qz-navigator collection=collection isTeacher=true}}`
+  );
+
+  var $component = this.$(); //component dom element
+  const $navigator = $component.find('.qz-navigator');
+  T.exists(assert, $navigator, 'Missing navigator section');
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-icons .remix'),
+    'Missing remix icon'
+  );
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-titles .remix'),
+    'Missing remix title'
+  );
+});
+
+test('Player Left Navigator: When back to collection visible', function(
   assert
 ) {
-  assert.expect(3);
-  var selectCtr = 0;
-
-  const resourceMockA = Ember.Object.create({
-    id: '1',
-    title: 'Resource #1'
-  });
-
-  const resourceMockB = Ember.Object.create({
-    id: '2',
-    title: 'Resource #2'
-  });
-
-  const collectionMock = Ember.Object.create({
-    id: 'collection-id',
-    resources: Ember.A([resourceMockA, resourceMockB]),
-    getResourceById: function(id) {
-      if (id === '1') {
-        return resourceMockA;
-      } else {
-        return resourceMockB;
-      }
-    }
-  });
-
-  this.on('externalAction', function(item) {
-    if (selectCtr === 0) {
-      assert.equal(item.get('id'), '2', 'Resource item selected');
-    } else {
-      assert.equal(item.get('id'), '1', 'Resource item selected');
-    }
-    selectCtr += 1;
-  });
-
-  const resourceResults = Ember.A([
-    QuestionResult.create({ resource: resourceMockA }),
-    QuestionResult.create({ resource: resourceMockB })
-  ]);
-
-  this.set('resourceResults', resourceResults);
-  this.set('collection', collectionMock);
-
-  this.render(hbs`
-    {{player.qz-navigator
-      resourceResults=resourceResults
-      onItemSelected='externalAction'
-      collection=collection
-      selectedResourceId='1'}}`);
-
-  const $component = this.$('.qz-navigator');
-  assert.ok(
-    $component.find('.list-group-item:eq(0).selected').length,
-    'First item selected'
-  );
-
-  // Click on the second resource
-  $component.find('.list-group-item:eq(1)').click();
-
-  // Click on the first resource
-  $component.find('.list-group-item:eq(0)').click();
-});
-
-test('resource link navigation is disabled', function(assert) {
-  assert.expect(0);
-
-  const resourceMockA = Ember.Object.create({
-    id: '1',
-    title: 'Resource #1'
-  });
-
-  const resourceMockB = Ember.Object.create({
-    id: '2',
-    title: 'Resource #2'
-  });
-
-  const collectionMock = Ember.Object.create({
-    id: 'collection-id',
-    resources: Ember.A([resourceMockA, resourceMockB]),
-    getResourceById: function(id) {
-      if (id === '1') {
-        return resourceMockA;
-      } else {
-        return resourceMockB;
-      }
-    }
-  });
-
-  this.on('externalAction', function() {
-    assert.notOk(true, 'Resource item selected');
-  });
-
-  const resourceResults = Ember.A([
-    QuestionResult.create({ resource: resourceMockA }),
-    QuestionResult.create({ resource: resourceMockB })
-  ]);
-
-  this.set('resourceResults', resourceResults);
-  this.set('collection', collectionMock);
-
-  this.render(hbs`
-    {{player.qz-navigator
-      isNavigationDisabled=true
-      resourceResults=resourceResults
-      onItemSelected='externalAction'
-      collection=collection
-      selectedResourceId='1'}}`);
-
-  const $component = this.$('.qz-navigator');
-
-  // Click on the second resource
-  $component.find('.list-group-item:eq(1)').click();
-
-  // Click on the first resource
-  $component.find('.list-group-item:eq(0)').click();
-});
-
-test('See usage report', function(assert) {
-  assert.expect(2);
-
-  const collection = Ember.Object.create({
-    isCollection: true
-  });
-
-  this.set('collection', collection);
-  this.on('parentAction', function() {
-    assert.ok(true, 'external Action was called!');
-  });
-
-  this.render(
-    hbs`{{player/qz-navigator collection=collection onFinishCollection='parentAction' lessonTitle='E-Lesson1'}}`
-  );
-  var $component = this.$(); //component dom element
-  var $seeReportButton = $component.find('.qz-navigator .see-usage-report');
-  assert.ok($seeReportButton.length, 'Missing button');
-  $seeReportButton.click();
-});
-
-test('Finish collection', function(assert) {
-  assert.expect(2);
-
-  const collection = Ember.Object.create({
-    isAssessment: true
-  });
-
-  this.set('collection', collection);
-
-  this.on('parentAction', function() {
-    assert.ok(true, 'external Action was called!');
-  });
-
-  this.render(
-    hbs`{{player/qz-navigator onFinishCollection='parentAction' submitted=false collection=collection}}`
-  );
-  var $component = this.$(); //component dom element
-  var $finishButton = $component.find('button.finish-collection');
-
-  assert.ok($finishButton, 'Missing finish button');
-  $finishButton.click();
-});
-test('Show Feedback', function(assert) {
-  assert.expect(4);
-
-  const resourceMockA = Ember.Object.create({
-    id: '1',
-    title: 'Resource #1'
-  });
-
-  const resourceMockB = Ember.Object.create({
-    id: '2',
-    title: 'Resource #2'
-  });
-
-  const collectionMock = Ember.Object.create({
-    id: 'collection-id',
-    resources: Ember.A([resourceMockA, resourceMockB]),
-    getResourceById: function(id) {
-      if (id === '1') {
-        return resourceMockA;
-      } else {
-        return resourceMockB;
-      }
-    }
-  });
-
-  const resourceResults = Ember.A([
-    QuestionResult.create({
-      resource: resourceMockA,
-      started: true,
-      score: 100
-    }),
-    QuestionResult.create({ resource: resourceMockB, started: true, score: 0 })
-  ]);
-
-  this.set('resourceResults', resourceResults);
-  this.set('collection', collectionMock);
-
-  this.render(hbs`
-    {{player.qz-navigator
-      resourceResults=resourceResults
-      showFeedback=true
-      collection=collection
-      selectedResourceId='1'}}`);
-
-  const $component = this.$('.qz-navigator');
-  assert.ok(
-    $component.find('.list-group-item:eq(0) span.score.correct').length,
-    'First item should be correct'
-  );
-  assert.ok(
-    $component.find(
-      '.list-group-item:eq(0) span.score.correct i.radio_button_checked'
-    ).length,
-    'Missing icon'
-  );
-  assert.ok(
-    $component.find('.list-group-item:eq(1) span.score.incorrect').length,
-    'Second item should be incorrect'
-  );
-  assert.ok(
-    $component.find(
-      '.list-group-item:eq(1) span.score.incorrect i.radio_button_checked'
-    ).length,
-    'Missing icon'
-  );
-});
-
-test('Player Navigator - Back Button', function(assert) {
-  assert.expect(3);
-
-  const resourceMockA = Ember.Object.create({
-    id: '1',
-    title: '<p>Resource #1</p>',
-    format: 'question',
-    isQuestion: true
-  });
-
-  const resourceMockB = Ember.Object.create({
-    id: '2',
-    title: 'Resource #2',
-    format: 'webpage',
-    isQuestion: false
-  });
-
   const collectionMock = Ember.Object.create({
     id: '490ffa82-aa15-4101-81e7-e148002f90af',
     title: 'Test collection',
-    resources: Ember.A([resourceMockA, resourceMockB]),
-    lastVisitedResource: resourceMockB,
-    getResourceById: function(id) {
-      if (id === '1') {
-        return resourceMockA;
-      } else if (id === '2') {
-        return resourceMockB;
-      }
-    }
+    format: 'collection',
+    sequence: 1
   });
 
-  const resourceResults = Ember.A([
-    QuestionResult.create({ resource: resourceMockA }),
-    QuestionResult.create({ resource: resourceMockB })
-  ]);
-
   this.set('collection', collectionMock);
-  this.set('resourceResults', resourceResults);
 
-  this.on(
-    'itemSelected',
-    function(/*resource*/) {
-      assert.ok(false, 'This should not be called');
-    }
+  this.render(
+    hbs`{{player.qz-navigator collection=collection showBackToCollection=true}}`
   );
-
-  this.on(
-    'onClosePlayer',
-    function(/*resource*/) {
-      assert.ok(true, 'This should be called');
-    }
-  );
-
-  this.render(hbs`{{player.qz-navigator collection=collection
-      resourceResults=resourceResults lessonTitle='E-Lesson1'
-      selectedResourceId='1' onItemSelected='itemSelected' onClosePlayer='onClosePlayer'}}`);
 
   var $component = this.$(); //component dom element
   const $navigator = $component.find('.qz-navigator');
   T.exists(assert, $navigator, 'Missing navigator section');
   T.exists(
     assert,
-    $navigator.find('.back-button').find('.backSpan'),
-    'Missing back button'
+    $navigator.find('.nav-menu-icons .back-to-collection'),
+    'Missing back to collection icon'
   );
-  $navigator
-    .find('.back-button')
-    .find('.backSpan')
-    .click();
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-titles .back-to-collection'),
+    'Missing back to collection title'
+  );
 });
 
-test('Player Navigator - Remix Button', function(assert) {
-  assert.expect(3);
-
-  const resourceMockA = Ember.Object.create({
-    id: '1',
-    title: '<p>Resource #1</p>',
-    format: 'question',
-    isQuestion: true
-  });
-
-  const resourceMockB = Ember.Object.create({
-    id: '2',
-    title: 'Resource #2',
-    format: 'webpage',
-    isQuestion: false
-  });
-
+test('Player Left Navigator: When back button visible', function(assert) {
   const collectionMock = Ember.Object.create({
     id: '490ffa82-aa15-4101-81e7-e148002f90af',
     title: 'Test collection',
-    resources: Ember.A([resourceMockA, resourceMockB]),
-    lastVisitedResource: resourceMockB,
-    getResourceById: function(id) {
-      if (id === '1') {
-        return resourceMockA;
-      } else if (id === '2') {
-        return resourceMockB;
-      }
-    }
+    format: 'collection',
+    sequence: 1
   });
 
-  const resourceResults = Ember.A([
-    QuestionResult.create({ resource: resourceMockA }),
-    QuestionResult.create({ resource: resourceMockB })
-  ]);
-
   this.set('collection', collectionMock);
-  this.set('resourceResults', resourceResults);
 
-  this.on(
-    'itemSelected',
-    function(/*resource*/) {
-      assert.ok(false, 'This should not be called');
-    }
+  this.render(
+    hbs`{{player.qz-navigator collection=collection showBackButton=true}}`
   );
-
-  this.on(
-    'onRemixCollection',
-    function(/*resource*/) {
-      assert.ok(true, 'This should be called');
-    }
-  );
-
-  this.render(hbs`{{player.qz-navigator collection=collection
-      resourceResults=resourceResults lessonTitle='E-Lesson1' isTeacher=true
-      selectedResourceId='1' onItemSelected='itemSelected' onRemixCollection='onRemixCollection'}}`);
 
   var $component = this.$(); //component dom element
   const $navigator = $component.find('.qz-navigator');
   T.exists(assert, $navigator, 'Missing navigator section');
   T.exists(
     assert,
-    $navigator
-      .find('.back-button')
-      .find('.remixSpan')
-      .find('.remix-btn'),
-    'Missing remix button'
+    $navigator.find('.nav-menu-icons .back-to-collection'),
+    'Missing back to collection icon'
   );
-  $navigator
-    .find('.back-button')
-    .find('.remixSpan')
-    .find('.remix-btn')
-    .click();
+  T.exists(
+    assert,
+    $navigator.find('.nav-menu-titles .back-to-collection'),
+    'Missing back to collection title'
+  );
 });

@@ -34,5 +34,35 @@ export default Ember.Controller.extend({
    * Indicates if it should show the back button
    * @property {boolean}
    */
-  showBackButton: true
+  showBackButton: true,
+
+  /**
+   * @property {unit} unit
+   */
+  unit: null,
+
+  /**
+   * @property {lesson} lesson
+   */
+  lesson: null,
+
+  /**
+   * @property {class} classId
+   */
+  classId: null,
+
+  /**
+   * @property {class} class
+   */
+  course: null,
+
+  /**
+   * @property {String} It decide to show the back to collection or not.
+   */
+  showBackToCollection: false,
+
+  /**
+   * @property {String} It decide to show the back to course map or not.
+   */
+  showBackToCourseMap: false
 });

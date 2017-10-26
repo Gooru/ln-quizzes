@@ -1,64 +1,110 @@
-.reports.assessment.qz-learning-target {
+.reports.assessment.qz-mastery .qz-learning-target {
   .learning-target {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
     border-radius: 5px;
-    border-left: 5px solid;
     background-color: $white;
-    padding: 25px 15px;
     margin: 20px 0;
     display: flex;
-    padding: 25px 20px 25px 40px;
-    @media (min-width: $screen-sm) {
-      padding: 25px 20px 0 40px;
-    }
-
     .header-content {
-      @include flexbox;
+      display: inline-block;
       font-size: $font-size-h6;
       line-height: $font-size-h6;
       width: 100%;
-      margin: 0 0 30px 0;
+      margin: 0 0 30px;
+
       .score {
         width: 61px;
         height: 57px;
         border-radius: 5px;
         color: $white;
         display: table;
+
         div {
           text-align: center;
           vertical-align: middle;
           display: table-cell;
         }
       }
-      .learning-target-description {
-        width: 80%;
-        overflow: hidden;
 
+      .learning-target-description {
+        width: 100%;
+        overflow: hidden;
         .description {
-          margin: 12px 0 0 0;
+          margin: 12px 0 0;
+          height: 40px;
+          border-bottom: 1px solid $light-600;
+          .desc-align {
+            @include ellipsis($font-size: 13px, $line-height: 1.5, $lines-to-show: 2, $excerpt-bg: $white);
+            margin-left: 10px;
+            width: 246px;
+          }
         }
         @media (max-width: $screen-xs) {
           padding: 0 5px 0 10px;
           width: 90%;
         }
+
+        .standard-score {
+          .performance {
+            height: 29px;
+            .no-percentage {
+              margin-left: 24px;
+              font-size: 35px;
+              font-weight: 600;
+              line-height: 3px;
+              color: $light-300;
+            }
+          }
+
+          .percentage {
+            margin-left: 24px;
+            font-size: 25px;
+            font-weight: 600;
+            line-height: 31px;
+          }
+        }
       }
+
       .questions {
         min-width: 165px;
         display: none;
-        border-left: 1px solid $gray-lighter;
         @media (min-width: $screen-xs) {
           display: block;
         }
       }
+
+      .standard-tags {
+        width: 75px;
+        height: 36px;
+        object-fit: contain;
+        border-radius: 3px;
+        float: left;
+        margin-left: 10px;
+        background-color: $light-300;
+      }
+
+      .stadard-score {
+      }
+
       .title {
-        color: $gray-base;
-        font-size: $font-size-h6;
+        color: $white;
+        padding: 4px 4px 0;
+        font-size: 12px;
+        // font-size: $font-size-h6;
       }
     }
 
     .learning-target-description,
     .questions {
       padding: 0 10px 0 20px;
+      .gru-bubbles {
+        .bubbles-list {
+          flex-direction: row;
+          height: 20px;
+          padding: 0px;
+          margin-left: 10px;
+          width: auto;
+        }
+      }
     }
 
     .resource-cards-section {
@@ -70,11 +116,21 @@
           margin-right: 10px;
           display: block;
         }
+
         &:nth-child(1),
         &:nth-child(2) {
           display: block;
         }
       }
+    }
+  }
+}
+
+.reports.assessment.qz-mastery {
+  .qz-learning-target {
+    .learning-target {
+      width: 300px;
+      float: left;
     }
   }
 }

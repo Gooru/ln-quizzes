@@ -1,7 +1,8 @@
 .reports.assessment.qz-questions {
-  margin-top: 20px;
   .questions-header {
-    margin: 30px 0;
+    text-align: right;
+    margin-right: 75px;
+    margin-top: 10px;
     .title {
       float: left;
       margin: 0 20px 10px 0;
@@ -13,9 +14,30 @@
     .btn-group {
       button {
         margin: 0 2px 0 0;
+        border-radius: 10px;
         @media (max-width: $screen-xs) {
           padding: 6px 10px;
         }
+      }
+    }
+    .summary-report-btn {
+      border: 1px solid #b8bfc4;
+      border-radius: 15px;
+      background: #b8bfc4;
+      .performance {
+        color: black;
+        height: 20px;
+        line-height: 9px;
+        background-color: #b8bfc4;
+      }
+      .correct-answer {
+        color: black;
+        height: 20px;
+        line-height: 9px;
+        background-color: #b8bfc4;
+      }
+      .btn-primary {
+        background: #ffffff;
       }
     }
   }
@@ -23,14 +45,14 @@
   table {
     width: 100%;
     background: $white;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 20px 0 40px 0;
     display: block;
     clear: both;
 
     @media (min-width: $screen-md) {
-      padding: 20px 15px 40px 15px;
+      padding: 5px 15px 40px 15px;
     }
 
     th {
@@ -87,9 +109,21 @@
     }
     .question-score span.correct {
       color: $brand-success;
+      i {
+        background: url("quizzes-addon/quizzes/images/correct-answer.svg");
+        width: 24px;
+        height: 14px;
+        display: inline-flex;
+      }
     }
     .question-score span.incorrect {
       color: $brand-incorrect;
+      i {
+        background: url("quizzes-addon/quizzes/images/wrong-answer.svg");
+        width: 14px;
+        height: 14px;
+        display: inline-flex;
+      }
     }
     .question-reaction div {
       margin: 10px auto;
@@ -103,7 +137,7 @@
   .question-cards {
     width: 100%;
     background: $white;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 20px;
     display: block;

@@ -1,7 +1,10 @@
 .reports.assessment.qz-mastery {
-  margin-top: 30px;
+  margin-top: 7px;
+  display: flow-root;
+  box-shadow: 0 6px 7px 0 rgba(0, 0, 0, 0.2);
 
   .header {
+    border-bottom: 1px solid #e3e5ea;
     @media (max-width: $screen-xs) {
       border-bottom: 1px solid $light-300;
       padding: 0 0 20px 0;
@@ -36,6 +39,11 @@
         margin: 5px 0;
       }
       @include clearfix();
+    }
+    .hidden-xs {
+      margin-left: 20px;
+      font-size: 14px;
+      font-weight: 100;
     }
   }
 }

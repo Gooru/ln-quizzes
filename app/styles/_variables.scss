@@ -33,6 +33,7 @@ $light-200: #e3e5ea !default;
 $light-300: #cdd2d6 !default;
 $light-400: #b8bfc4 !default;
 $light-500: #959a9e !default;
+$light-600: #e3e4ea !default;
 //** Teal
 $teal-100: #bbe1dd !default;
 $teal-200: #91cdc7 !default;
@@ -79,7 +80,7 @@ $gray: #666 !default;
 $gray-light: #bbb !default;
 $gray-lighter: lighten($gray-base, 93.5%) !default; // #eee
 $white: #fff;
-
+$gray-harder: #d8d8d8 !default;
 $brand-primary: $blue-400 !default;
 $brand-success: $green-400 !default;
 $brand-info: $dark-300 !default;

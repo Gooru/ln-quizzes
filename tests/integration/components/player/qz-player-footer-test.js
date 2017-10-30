@@ -66,7 +66,11 @@ test('Player Footer Navigator', function(assert) {
     $playerFooter.find('.prev'),
     'Missing player previous button.'
   );
-  T.exists(assert, $playerFooter.find('.next'), 'Missing player next button.');
+  T.exists(
+    assert,
+    $playerFooter.find('.submit-all'),
+    'Missing submit all button.'
+  );
 
   const $playerInfo = $component.find('.player-info');
   T.exists(assert, $playerInfo, 'Missing player footer info section.');
@@ -95,7 +99,7 @@ test('Player Footer Navigator', function(assert) {
   const $resourceItems = $collectionResources.find('li.list-group-item');
   assert.equal(
     $resourceItems.length,
-    3,
+    2,
     'Missing resources with list-group-item class'
   );
   const $firstResourceItem = $collectionResources.find(

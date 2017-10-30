@@ -107,6 +107,13 @@
   transform: translateX($value);
 }
 
+@mixin translateY($value) {
+  -webkit-transform: translateY($value);
+  -ms-transform: translateY($value);
+  -o-transform: translateY($value);
+  transform: translateY($value);
+}
+
 @mixin translate-show {
   @include translateX(0);
   transition: transform 0.6s ease-out 0.5s;
@@ -179,12 +186,12 @@
       position: absolute;
       right: 0;
       float: right;
-      content: '\2026';
+      content: "\2026";
       margin-left: -3rem;
       width: 3rem;
     }
     &:after {
-      content: '';
+      content: "";
       background: $excerpt-bg;
       position: absolute;
       height: 50px;
@@ -282,7 +289,7 @@
 
   // Box-Flex only supports a flex-grow value so let's grab the
   // first item in the list and just return that.
-  @if type-of($fg) == 'list' {
+  @if type-of($fg) == "list" {
     $fg-boxflex: nth($fg, 1);
   }
 

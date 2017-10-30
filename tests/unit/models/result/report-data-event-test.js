@@ -63,6 +63,12 @@ test('setProfileProperties', function(assert) {
     'gcc001',
     'Wrong profile student id'
   );
+
+  assert.equal(
+    contextResult.get('lastFirstName'),
+    'last-name, first-name',
+    'Wrong profile name format'
+  );
 });
 
 test('totalIncorrect', function(assert) {
@@ -196,37 +202,58 @@ test('merge with saved time', function(assert) {
   contextResult.merge('id3', newResult);
 
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('resourceId'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('resourceId'),
     'new',
     'Wrong resource id'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('savedTime'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('savedTime'),
     10,
     'Wrong saved time'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('startTime'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('startTime'),
     0,
     'Wrong start time'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('stopTime'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('stopTime'),
     0,
     'Wrong stop time'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('reaction'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('reaction'),
     1,
     'Wrong reaction'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('answer'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('answer'),
     'answer',
     'Wrong answer'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('score'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('score'),
     0,
     'Wrong score'
   );
@@ -257,37 +284,58 @@ test('merge with time spent', function(assert) {
   contextResult.merge('id3', newResult);
 
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('resourceId'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('resourceId'),
     'new',
     'Wrong resource id'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('savedTime'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('savedTime'),
     10,
     'Wrong saved time'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('startTime'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('startTime'),
     0,
     'Wrong start time'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('stopTime'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('stopTime'),
     0,
     'Wrong stop time'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('reaction'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('reaction'),
     1,
     'Wrong reaction'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('answer'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('answer'),
     'answer',
     'Wrong answer'
   );
   assert.equal(
-    contextResult.get('resourceResults').get(2).get('score'),
+    contextResult
+      .get('resourceResults')
+      .get(2)
+      .get('score'),
     0,
     'Wrong score'
   );

@@ -40,20 +40,24 @@ test('Layout when answer results are shown', function(assert) {
     contextResult=contextResult
   }}`);
 
-  const $component = this.$('.reports.qz-assessment-report');
+  const $component = this.$(
+    '.reports.qz-assessment-report .qz-assessment-summary'
+  );
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-summary').length, 'Top Summary');
   assert.equal(
-    $component.find('> .qz-questions').length,
+    $component.find(
+      '> .summary-mastry-question .qz-questions .summary-report-questions'
+    ).length,
     1,
     'Questions Summary'
   );
   assert.notOk(
-    $component.find('> .qz-mastery').length,
+    $component.find('> .summary-report-questions .qz-mastery').length,
     'Mastery Summary -hidden'
   );
   assert.notOk(
-    $component.find('> .qz-resources').length,
+    $component.find('> .summary-mastry-question  .qz-resources').length,
     'Resources Summary -hidden'
   );
 });
@@ -84,7 +88,9 @@ test('Layout when answer results are not shown', function(assert) {
     contextResult=contextResult
   }}`);
 
-  const $component = this.$('.reports.qz-assessment-report');
+  const $component = this.$(
+    '.reports.qz-assessment-report .qz-assessment-summary'
+  );
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-summary').length, 'Top Summary');
   assert.ok($component.find('> .hidden-report').length, 'Top Summary');
@@ -145,15 +151,22 @@ test('Layout with open ended and resources', function(assert) {
     contextResult=contextResult
   }}`);
 
-  const $component = this.$('.reports.qz-assessment-report');
+  const $component = this.$(
+    '.reports.qz-assessment-report .qz-assessment-summary'
+  );
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-summary').length, 'Top Summary');
   assert.equal(
-    $component.find('> .qz-questions').length,
+    $component.find(
+      '> .summary-mastry-question .qz-questions .summary-report-questions'
+    ).length,
     2,
     'Questions Summary'
   );
-  assert.ok($component.find('> .qz-resources').length, 'Resources Summary');
+  assert.ok(
+    $component.find('> .summary-mastry-question .qz-resources ').length,
+    'Resources Summary'
+  );
   assert.notOk(
     $component.find('> .qz-mastery').length,
     'Mastery Summary -hidden'
@@ -186,7 +199,9 @@ test('Layout when mastery results are shown', function(assert) {
     contextResult=contextResult
   }}`);
 
-  const $component = this.$('.reports.qz-assessment-report');
+  const $component = this.$(
+    '.reports.qz-assessment-report .qz-assessment-summary .summary-mastry-question'
+  );
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-mastery').length, 'mastery results');
 });

@@ -840,8 +840,8 @@ export default {
   'qz-navigation': {
     'view-report': 'View Report'
   },
-  'qz-navigator': {
-    'see-usage-report': 'See Usage Report'
+  'qz-player-footer': {
+    'usage-report': 'Usage Report'
   },
   'qz-viewer': {
     'not-iframe-url': {

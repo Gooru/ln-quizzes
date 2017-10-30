@@ -80,7 +80,6 @@ test('Questions Layout - non open ended', function(assert) {
   );
 
   T.exists(assert, $component, 'Missing questions component');
-  T.exists(assert, $component.find('.title h4'), 'Missing questions title');
   T.exists(assert, $component.find('.btn-group'), 'Missing btn-group section');
   T.exists(
     assert,
@@ -418,7 +417,6 @@ test('Questions Layout', function(assert) {
   );
 
   T.exists(assert, $component, 'Missing questions component');
-  T.exists(assert, $component.find('.title h4'), 'Missing questions title');
   T.exists(assert, $component.find('.btn-group'), 'Missing btn-group section');
   T.exists(
     assert,

@@ -1,4 +1,8 @@
-{{reports.assessment.qz-summary
+<div class="qz-assessment-summary">
+  <div class="reports-owner">
+    <span> Test Name</span>
+  </div>
+  {{reports.assessment.qz-summary
   contextResult=contextResult
   areQuestionLinksHidden=areAnswersHidden
   onSelectAttempt='selectAttempt'
@@ -6,42 +10,45 @@
   isRealTime=isRealTime
   showAttempts=showAttempts}}
 
-{{#if areAnswersHidden}}
+  {{#if areAnswersHidden}}
+    <div class="hidden-report">
+      <span>{{t "qz-assessment-report.hidden-report"}}</span>
+    </div>
 
-  <div class="hidden-report">
-    <span>{{t "qz-assessment-report.hidden-report"}}</span>
-  </div>
-
-{{else}}
-  {{#if (and contextResult.hasMastery isAssessment)}}
-    {{reports.assessment.qz-mastery
+  {{else}}
+  <div class="summary-mastry-question">
+    {{#if (and contextResult.hasMastery isAssessment)}}
+      {{reports.assessment.qz-mastery
     learningTargets=contextResult.mastery
     assessmentResult=contextResult
     onBubbleSelect='bubbleSelect'}}
-  {{/if}}
+    {{/if}}
 
-  {{#if resultsQuestions.length}}
-    {{reports.assessment.qz-questions
+    {{#if resultsQuestions.length}}
+      {{reports.assessment.qz-questions
       title=(t "qz-assessment-report.questions")
       isAnswerKeyHidden=isAnswerKeyHidden
       results=resultsQuestions}}
-  {{/if}}
+    {{/if}}
 
-  {{#if resultsOpenEnded.length}}
-    {{reports.assessment.qz-questions
+    {{#if resultsOpenEnded.length}}
+      {{reports.assessment.qz-questions
       title=(t "qz-assessment-report.open-ended")
       isAnswerKeyHidden=isAnswerKeyHidden
       results=resultsOpenEnded
       showScore=false
       viewMode='open-ended'}}
-  {{/if}}
+    {{/if}}
 
-  {{#if resultsResources.length}}
-    {{reports.assessment.qz-resources
+    {{#if resultsResources.length}}
+      {{reports.assessment.qz-resources
       title=(t "qz-assessment-report.resources")
       isAnswerKeyHidden=isAnswerKeyHidden
       results=resultsResources
       showReactionBar=true}}
+    {{/if}}
+  </div>
+
   {{/if}}
 
-{{/if}}
+</div>

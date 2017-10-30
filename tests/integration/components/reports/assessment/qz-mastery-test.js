@@ -16,7 +16,7 @@ moduleForComponent(
 );
 
 test('Mastery Layout', function(assert) {
-  assert.expect(4);
+  assert.expect(3);
 
   const learningTargets = Ember.A([
     LearningTargetResult.create({
@@ -66,11 +66,6 @@ test('Mastery Layout', function(assert) {
 
   T.exists(assert, $mastery, 'Missing mastery component');
   T.exists(assert, $mastery.find('h4'), 'Missing mastery title');
-  T.exists(
-    assert,
-    $mastery.find('.grading-scale-legend'),
-    'Missing grading scale legend'
-  );
   T.exists(
     assert,
     $mastery.find('.qz-learning-target'),

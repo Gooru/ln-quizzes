@@ -1,27 +1,31 @@
 .reports.assessment.qz-summary {
   padding-bottom: 10px;
+
   .summary-container {
     display: block;
+    width: auto;
+    height: 106px;
+    padding: 0 0 0 13px;
+    object-fit: contain;
+    background-color: $white;
+    box-shadow: 0 6px 7px 0 rgba(0, 0, 0, 0.2);
     @media (min-width: $screen-xs) {
       display: -ms-flexbox;
       display: -webkit-flex;
       display: flex;
     }
+
     .thumbnail {
       width: 100%;
       height: 88px;
       padding: 0;
-      border-radius: 12px;
-      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
-
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
       -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
       flex: 0 1 auto;
-
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
-
       background-image: url("quizzes-addon/quizzes/collection-default.png");
       background-color: #3671b5;
       background-position: 0;
@@ -29,14 +33,13 @@
       background-size: contain;
       text-align: center;
       color: $white;
-
       @media (min-width: $screen-xs) {
-        width: 143px;
-        height: 164px;
+        width: 112px;
+        height: 106px;
       }
-
       @media (min-width: $screen-lg-min) {
-        height: 133px;
+        height: 106px;
+        width: 112px;
       }
 
       span {
@@ -44,17 +47,18 @@
           display: block;
           font-size: $font-size-h6;
           padding-top: 10px;
-
           @media (min-width: $screen-xs) {
             padding-top: 16px;
             padding-bottom: 20px;
           }
         }
+
         &.time-spent {
           span {
             font-size: $font-size-h4;
             line-height: $font-size-h4;
           }
+
           i {
             font-size: $font-size-h3;
             line-height: $font-size-h3;
@@ -64,44 +68,70 @@
         }
       }
     }
-    .grade {
-      width: 100%;
-      height: 88px;
-      padding: 10px 25px;
-      text-align: left;
-      border-radius: 5px;
-      color: $white;
-      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
 
+    .profile-image {
+      width: 71px;
+      height: 71px;
+      padding: 0;
+      margin-top: 12px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
       -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
       flex: 0 1 auto;
-
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
+      background-image: url("quizzes-addon/quizzes/profile.png");
+      background-position: 0;
+      background-repeat: no-repeat;
+      background-size: contain;
+      text-align: center;
+      color: $white;
+      @media (min-width: $screen-xs) {
+        width: 71px;
+        height: 71px;
+      }
+      @media (min-width: $screen-lg-min) {
+        height: 71px;
+      }
+    }
 
+    .grade {
+      width: 143px;
+      height: 106px;
+      padding: 10px 25px;
+      text-align: left;
+      border-left: 2px solid $yellow-400;
+      color: $white;
+      -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto;
       @media (min-width: $screen-xs) {
         width: 143px;
-        height: 164px;
-        padding: 23px 0 0 0;
+        height: 106px;
+        padding: 23px 0 0;
         text-align: center;
       }
-
       @media (min-width: $screen-lg-min) {
-        height: 133px;
+        height: 106px;
       }
 
       span {
         &.percentage {
           font-size: $font-size-h3;
           line-height: $font-size-h3;
+          color: $yellow-400;
           @media (min-width: $screen-xs) {
             display: inline-block;
             font-size: $font-size-h2;
             line-height: $font-size-h2;
           }
         }
+
         &.attempts {
           font-size: $font-size-h6;
           display: inline-block;
@@ -111,16 +141,17 @@
           .fractional {
             width: 25px;
             margin: 0 10px 0 0;
+
             .bottom {
               border-color: $white;
             }
           }
+
           .text {
-            display: table-cell;
-            vertical-align: middle;
+            font-size: 12px;
+            color: $yellow-400;
             line-height: $font-size-h6;
           }
-
           @media (min-width: $screen-xs) {
             display: table;
             margin: 0 auto;
@@ -130,56 +161,60 @@
     }
 
     .overview {
-      -webkit-flex: 1 1 auto;
       -ms-flex: 1 1 auto;
-      flex: 1 1 auto;
-
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
-
-      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.10);
       border-radius: 5px;
-      background-color: $white;
-      padding: 20px 0 15px 15px;
-      margin: 10px 0 0 0;
+      padding: 10px 0 15px 15px;
+      margin: 0;
       min-height: 133px;
-
       @media (min-width: $screen-xs) {
-        margin: 0 0 0 12px;
+        margin: 0;
+        width: 425px;
         height: 164px;
       }
       @media (min-width: $screen-lg-min) {
         height: 133px;
+        width: 425px;
       }
 
       h5 {
         margin: 0;
+        width: 232px;
+        height: 40px;
+        font-size: 16px;
+        line-height: 1.25;
+        color: #0072bc;
       }
+
       .information {
-        margin: 10px 0 0 0;
+        margin: 10px 0 0;
         height: 30px;
         font-size: $font-size-h6;
-        width: 100%;
         display: table;
+
         i {
           vertical-align: middle;
           margin: 0 5px 0 0;
         }
+
         span {
-          display: inline-block;
+          font-size: 13px;
         }
 
         .attempt {
-          margin: 0 135px 0 0;
+          margin: 0 35px 0 0;
 
           .attempt-selector {
             display: inline-block;
 
             .current-attempt {
               display: inline-block;
+
               button {
                 line-height: 1;
+
                 .caret {
                   margin-left: 10px;
                 }
@@ -188,22 +223,28 @@
             }
           }
         }
+
         .date {
-          margin: 0 50px 0 0;
+          margin: 0 25px 0 0;
         }
+
         .time {
           margin: 0 25px 0 0;
         }
+
         .reaction {
           margin: 0 25px 0 0;
           float: right;
+
           .emotion {
             vertical-align: middle;
+
             &:hover {
               svg {
                 @include scale(1);
               }
             }
+
             &.active {
               svg {
                 @include scale(1);
@@ -214,18 +255,32 @@
 
         .attempt,
         .date,
-        .time,
-        .reaction {
+        .reaction,
+        .time {
           @media (max-width: $screen-xs) {
-            width: 100%;
             display: block;
-            margin: 0 0 10px 0;
+            margin: 0 0 10px;
           }
           @media (max-width: $screen-md) {
             margin: 0 10px 0 0;
           }
         }
       }
+    }
+
+    .bubbles {
+      width: 400px;
+      max-width: 400px;
+      display: inline-block;
+      overflow: auto;
+      overflow-y: hidden;
+    }
+    .bubbles::-webkit-scrollbar {
+      height: 6px;
+    }
+    .bubbles::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: $gray-harder;
     }
   }
 }

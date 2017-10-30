@@ -3,6 +3,14 @@ import QuestionComponent from 'quizzes-addon/components/player/questions/qz-ques
 
 export default QuestionComponent.extend({
   // -------------------------------------------------------------------------
+  // Dependencies
+
+  /**
+   * @requires service:quizzes/configuration
+   */
+  configurationService: Ember.inject.service('quizzes/configuration'),
+
+  // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['player', 'qz-free-response-viewer'],
@@ -101,6 +109,19 @@ export default QuestionComponent.extend({
    */
   totalPoints: Ember.computed('hasRubric', function() {
     return this.get('question.rubric').get('totalPoints');
+  }),
+
+  /**
+   * Returns the thumbnail url if it exists
+   * @property {String}
+   */
+  thumbnail: Ember.computed('question.thumbnail', function() {
+    const cdnURL = this.get(
+      'configurationService.configuration.properties.cdnURL'
+    );
+    return this.get('question.thumbnail')
+      ? `${cdnURL}${this.get('question.thumbnail')}`
+      : null;
   }),
 
   // -------------------------------------------------------------------------

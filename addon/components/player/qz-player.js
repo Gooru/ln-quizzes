@@ -24,13 +24,13 @@ export default Ember.Component.extend(ModalMixin, {
   contextService: Ember.inject.service('quizzes/context'),
 
   /**
-  * @requires service:notifications
-  */
+   * @requires service:notifications
+   */
   quizzesNotifications: Ember.inject.service('quizzes/notifications'),
-
+  
   /**
-  * @requires service:i18n
-  */
+   * @requires service:i18n
+   */
   i18n: Ember.inject.service(),
 
   // -------------------------------------------------------------------------
@@ -69,16 +69,6 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Action triggered when the user close de navigator panel
-     */
-    closeNavigator: function() {
-      const $appContainer = Ember.$('.app-container');
-      if ($appContainer.hasClass('navigator-on')) {
-        $appContainer.removeClass('navigator-on');
-      }
-    },
-
-    /**
      * Finish from the confirmation
      */
     finishCollection: function() {
@@ -104,13 +94,6 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Action triggered when the user open the navigator panel
-     */
-    openNavigator: function() {
-      Ember.$('.app-container').addClass('navigator-on');
-    },
-
-    /**
      * Action triggered when the user open the player
      */
     openPlayer: function() {
@@ -125,13 +108,27 @@ export default Ember.Component.extend(ModalMixin, {
     },
 
     /**
-     * Handle onPreviousResource event from qz-question-viewer
-     * @see components/player/qz-question-viewer.js
+     * Handle onPreviousResource event from qz-player-footer
+     * @see components/player/qz-player-footer.js
      * @param {Resource} question
      */
     previousResource: function(resource) {
       const component = this;
       const next = component.get('collection').prevResource(resource);
+      if (next) {
+        Ember.$(window).scrollTop(0);
+        component.moveToResource(next);
+      }
+    },
+
+    /**
+     * Handle onNextResource event from qz-player-footer
+     * @see components/player/qz-player-footer.js
+     * @param {Resource} question
+     */
+    nextResource: function(resource) {
+      const component = this;
+      const next = component.get('collection').nextResource(resource);
       if (next) {
         Ember.$(window).scrollTop(0);
         component.moveToResource(next);
@@ -347,14 +344,35 @@ export default Ember.Component.extend(ModalMixin, {
   showFeedback: Ember.computed.alias('collection.immediateFeedback'),
 
   /**
+   * @property {String} It decide to show the back to collection or not.
+   */
+  showBackToCollection: true,
+
+  /**
+   * @property {String} It decide to show the back to course map or not.
+   */
+  showBackToCourseMap: true,
+
+  /**
    * If the previous button should be shown
    * @property {boolean}
    */
   showPrevious: Ember.computed('resource', 'isNavigationDisabled', function() {
     const resource = this.get('resource');
     return (
-      this.get('isAssessment') &&
       !!this.get('collection').prevResource(resource) &&
+      !this.get('isNavigationDisabled')
+    );
+  }),
+
+  /**
+   * If the next button should be shown
+   * @property {boolean}
+   */
+  showNext: Ember.computed('resource', 'isNavigationDisabled', function() {
+    const resource = this.get('resource');
+    return (
+      !!this.get('collection').nextResource(resource) &&
       !this.get('isNavigationDisabled')
     );
   }),

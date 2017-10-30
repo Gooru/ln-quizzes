@@ -27,7 +27,7 @@ export default Ember.Component.extend(ModalMixin, {
    * @requires service:notifications
    */
   quizzesNotifications: Ember.inject.service('quizzes/notifications'),
-
+  
   /**
    * @requires service:i18n
    */

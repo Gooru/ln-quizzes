@@ -221,5 +221,90 @@ export default Ember.Component.extend({
       return selectedEmotion.unicode;
     }
     return 'no-reaction';
-  }
+  },
+
+  /**
+   *  @property {Object} Extracted the unit title from unit
+   */
+  unitTitle: Ember.computed(function() {
+    let unit = this.get('unit');
+    if (unit) {
+      return Ember.Object.create({
+        shortname: `U${unit.get('sequence')}`,
+        fullname: unit.get('title')
+      });
+    }
+    return null;
+  }),
+
+  /**
+   *  @property {Object} Extracted the lesson title from lesson
+   */
+  lessonTitle: Ember.computed(function() {
+    let lesson = this.get('lesson');
+    if (lesson) {
+      return Ember.Object.create({
+        shortname: `L${lesson.get('sequence')}`,
+        fullname: lesson.get('title')
+      });
+    }
+    return null;
+  }),
+
+  /**
+   *  @property {Object} Extracted the collection title from unit, lesson and/or collection
+   */
+  collectionTitle: Ember.computed(function() {
+    let collection = this.get('collection');
+    let lesson = this.get('lesson');
+    let title = null;
+    if (lesson) {
+      let lessonChildren = lesson.children;
+      let isChild = lessonChildren.findBy('id', collection.id);
+      if (collection && isChild) {
+        if (
+          collection.isCollection === true ||
+          collection.collectionType === 'collection'
+        ) {
+          let collections = lessonChildren.filter(
+            collection => collection.format === 'collection'
+          );
+          collections.forEach((child, index) => {
+            if (child.id === collection.id) {
+              let collectionSequence = index + 1;
+              title = Ember.Object.create({
+                shortname: `C${collectionSequence}`,
+                fullname: collection.get('title')
+              });
+            }
+          });
+        } else {
+          let assessments = lessonChildren.filter(
+            assessment => assessment.format === 'assessment'
+          );
+          assessments.forEach((child, index) => {
+            if (child.id === collection.id) {
+              let assessmentSequence = index + 1;
+              title = Ember.Object.create({
+                shortname: `A${assessmentSequence}`,
+                fullname: collection.get('title')
+              });
+            }
+          });
+        }
+      }
+    }
+    if (!title) {
+      title = Ember.Object.create({
+        shortname:
+          collection.isCollection === true ||
+          collection.collectionType === 'collection'
+            ? 'C'
+            : 'A',
+        fullname: collection.get('title')
+      });
+    }
+
+    return title;
+  })
 });

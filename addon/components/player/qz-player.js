@@ -75,6 +75,10 @@ export default Ember.Component.extend(ModalMixin, {
       this.finishCollection();
     },
 
+    resumeCollection: function() {
+      this.set('showFinishConfirmation', false);
+    },
+
     /**
      * When clicking at submit all or end
      */

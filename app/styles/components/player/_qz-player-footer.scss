@@ -279,6 +279,24 @@
           text-align: right;
           cursor: pointer;
         }
+        .usage-report {
+          background-color: $dark-300;
+          color: $white;
+          text-align: left;
+          > span {
+            display: flex;
+            > span {
+              background-color: $white;
+              height: 24px;
+              width: 24px;
+              margin: 8px 20px 0 92px;
+              border-radius: 3px;
+              i {
+                color: $dark-300;
+              }
+            }
+          }
+        }
       }
     }
 

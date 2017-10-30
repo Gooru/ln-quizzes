@@ -85,12 +85,12 @@
       {{#if collection.isCollection}}
         {{#unless (or showFinishConfirmation submitted)}}
           <div class="usage-report" {{action 'seeUsageReport'}}>
-            {{t 'qz-player-footer.usage-report'}}
+            <span><span>{{gru-icon name="subject"}}</span>{{t 'qz-player-footer.usage-report'}}</span>
           </div>
         {{/unless}}
       {{else}}
         <div class="submit-all" {{action "finishCollection"}}>
-          {{t 'common.submit-all'}}
+          {{t 'common.submitAll'}}
         </div>
       {{/if}}
     </div>
@@ -109,7 +109,7 @@
         {{/unless}}
       {{else}}
         <div class="submit-all" {{action "finishCollection"}}>
-          <span>{{t 'common.submit-all'}}</span>
+          <span>{{t 'common.submitAll'}}</span>
         </div>
       {{/if}}
     {{/if}}

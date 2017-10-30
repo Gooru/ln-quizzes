@@ -5,7 +5,7 @@ import T from 'dummy/tests/helpers/assert';
 moduleForAcceptance('Acceptance | player');
 
 test('Layout', function(assert) {
-  assert.expect(5);
+  assert.expect(4);
   visit('/player/context-simple-id');
 
   andThen(function() {

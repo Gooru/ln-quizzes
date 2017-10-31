@@ -64,5 +64,11 @@ export default Ember.Controller.extend({
   /**
    * @property {String} It decide to show the back to course map or not.
    */
-  showBackToCourseMap: false
+  showBackToCourseMap: false,
+
+  /**
+   * Indicates if it should default player header
+   * @property {boolean}
+   */
+  showPlayerHeader: true
 });

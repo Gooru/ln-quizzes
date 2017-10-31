@@ -274,6 +274,11 @@
       display: inline-block;
       overflow: auto;
       overflow-y: hidden;
+      .gru-bubbles {
+        .bubbles-list {
+          height: 100px;
+        }
+      }
     }
     .bubbles::-webkit-scrollbar {
       height: 6px;

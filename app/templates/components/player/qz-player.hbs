@@ -32,7 +32,8 @@
                 resourceResult=resourceResult
                 role=role
                 submitted=contextResult.submitted
-                onSubmitQuestion="submitQuestion"}}
+                onSubmitQuestion="submitQuestion"
+                isNextEnabled="isNextEnabled"}}
                 {{player.qz-player-footer
                   resource=resource
                   isNavigationDisabled=isNavigationDisabled
@@ -56,6 +57,7 @@
                   showNext=showNext
                   onPreviousResource="previousResource"
                   onNextResource="nextResource"
+                  isNextEnabled=isNextEnabled
                 }}
               {{/if}}
             {{/if}}

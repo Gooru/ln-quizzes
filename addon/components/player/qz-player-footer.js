@@ -306,5 +306,10 @@ export default Ember.Component.extend({
     }
 
     return title;
-  })
+  }),
+
+  /**
+  * @property {boolean} isNextEnabled check whether next button is enabled or not
+  */
+  isNextEnabled: true
 });

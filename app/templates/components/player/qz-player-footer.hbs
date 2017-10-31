@@ -97,18 +97,18 @@
   </div>
   <div class="next-action">
     {{#if showNext}}
-      <div class="next" {{action 'nextResource'}}>
+      <div class="next {{unless isNextEnabled 'disabled'}}" {{action 'nextResource'}}>
         <span>{{t 'common.next'}}</span> {{gru-icon name="ic_skip_next"}}
       </div>
     {{else}}
       {{#if collection.isCollection}}
         {{#unless (or showFinishConfirmation submitted)}}
-          <div class="usage-report" {{action 'seeUsageReport'}}>
+          <div class="usage-report {{unless isNextEnabled 'disabled'}}" {{action 'seeUsageReport'}}>
             <span>{{t 'qz-player-footer.usage-report'}}</span>
           </div>
         {{/unless}}
       {{else}}
-        <div class="submit-all" {{action "finishCollection"}}>
+        <div class="submit-all {{unless isNextEnabled 'disabled'}}" {{action "finishCollection"}}>
           <span>{{t 'common.submitAll'}}</span>
         </div>
       {{/if}}

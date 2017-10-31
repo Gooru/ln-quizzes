@@ -339,8 +339,8 @@
       border-left: 1px solid $green-700;
 
       &.disabled {
-        opacity: 0.6;
         cursor: default;
+        color: $breadcrumb-color;
       }
 
       i {
@@ -374,6 +374,10 @@
         > span {
           margin: auto;
         }
+      }
+      .disabled {
+        cursor: default;
+        color: $breadcrumb-color;
       }
     }
   }

@@ -97,7 +97,7 @@
   </div>
   <div class="next-action">
     {{#if showNext}}
-      <div class="next {{unless isNextEnabled 'disabled'}}" {{action 'nextResource'}}>
+      <div class="next {{unless isNextEnabled 'disabled'}}" data-toggle="tooltip" title="{{t 'common.save-next'}}" {{action 'nextResource'}}>
         <span>{{t 'common.next'}}</span> {{gru-icon name="ic_skip_next"}}
       </div>
     {{else}}
@@ -108,7 +108,7 @@
           </div>
         {{/unless}}
       {{else}}
-        <div class="submit-all {{unless isNextEnabled 'disabled'}}" {{action "finishCollection"}}>
+        <div class="submit-all {{unless isNextEnabled 'disabled'}}" data-toggle="tooltip" title="{{t 'common.save-submit'}}" {{action "finishCollection"}}>
           <span>{{t 'common.submitAll'}}</span>
         </div>
       {{/if}}

@@ -22,6 +22,11 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Dependencies
 
+  //Show next button and enable/disable it by checking answer text, once every question loaded
+  didInsertElement() {
+    this.enableNextButton();
+  },
+
   /**
    * @requires service:i18n
    */
@@ -36,10 +41,6 @@ export default Ember.Component.extend({
   // Attributes
 
   classNames: ['qz-question-viewer'],
-
-  didInsertElement() {
-    this.enableNextButton();
-  },
 
   // -------------------------------------------------------------------------
   // Actions

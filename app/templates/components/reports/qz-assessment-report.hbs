@@ -1,6 +1,6 @@
 <div class="qz-assessment-summary">
   <div class="reports-owner">
-    <span> Test Name</span>
+    <span>{{profile.username}}</span>
   </div>
   {{reports.assessment.qz-summary
   contextResult=contextResult
@@ -8,7 +8,8 @@
   onSelectAttempt='selectAttempt'
   onBubbleSelect='bubbleSelect'
   isRealTime=isRealTime
-  showAttempts=showAttempts}}
+  showAttempts=showAttempts
+  profile=profile}}
 
   {{#if areAnswersHidden}}
     <div class="hidden-report">

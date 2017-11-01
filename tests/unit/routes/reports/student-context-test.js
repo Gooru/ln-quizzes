@@ -31,6 +31,13 @@ test('model', function(assert) {
       })
   });
 
+  route.set('quizzesProfileService', {
+    readUserProfile: () =>
+      new Ember.RSVP.resolve({
+        username: 'username'
+      })
+  });
+
   const expectedCollection = {
     id: 'collection-id'
   };

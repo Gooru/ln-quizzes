@@ -30,7 +30,7 @@ export default Ember.Route.extend({
   /**
    * @property {Service} profile service
    */
-  profileService: Ember.inject.service('api-sdk/profile'),
+  quizzesProfileService: Ember.inject.service('quizzes/profile'),
 
   // -------------------------------------------------------------------------
   // Actions
@@ -86,7 +86,7 @@ export default Ember.Route.extend({
                     .get('quizzesCollectionService')
                     .readCollection(attemptData.collectionId, type),
                   profile: route
-                    .get('profileService')
+                    .get('quizzesProfileService')
                     .readUserProfile(profileId)
                 })
               )

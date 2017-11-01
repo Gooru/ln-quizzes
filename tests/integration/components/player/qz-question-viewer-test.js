@@ -21,7 +21,7 @@ moduleForComponent(
 );
 
 test('Layout', function(assert) {
-  assert.expect(10);
+  assert.expect(8);
 
   const question = Ember.Object.create({
     id: 10,
@@ -71,14 +71,6 @@ test('Layout', function(assert) {
     $answerPanel.find('.qz-multiple-answer'),
     'Missing MA question component'
   );
-  T.exists(
-    assert,
-    $answerPanel.find('.actions button.save'),
-    'Missing submit button'
-  );
-
-  const $saveButton = $answerPanel.find('.actions button.save');
-  assert.ok($saveButton.attr('disabled'), 'Button should be disabled');
 
   // There will be two question information sections in the page; however, only one will be
   // visible depending on a screen width breakpoint
@@ -93,7 +85,7 @@ test('Layout', function(assert) {
 test('Submit button should become enabled and call action on submit', function(
   assert
 ) {
-  assert.expect(4);
+  assert.expect(1);
 
   const question = Ember.Object.create({
     id: 10,
@@ -132,10 +124,7 @@ test('Submit button should become enabled and call action on submit', function(
   var $component = this.$(); //component dom element
 
   var $answerPanel = $component.find('.answers-panel');
-  assert.ok(
-    $answerPanel.find('.actions button.save').attr('disabled'),
-    'Button should be disabled'
-  );
+
   var $trueFalse = $answerPanel.find('.qz-true-false');
   $trueFalse.find('.answer-choices .radio input[type=radio]:eq(1)').click();
 
@@ -145,82 +134,6 @@ test('Submit button should become enabled and call action on submit', function(
   );
 
   $answerPanel.find('.actions button.save').click();
-});
-
-test('Multiple Answer - Submit button should become enabled by clicking 1 radio button when user answer if provided', function(
-  assert
-) {
-  assert.expect(6);
-
-  const question = ResourceModel.create({
-    id: '569906aa20b7dfae1bcd5',
-    type: QUESTION_TYPES.multipleAnswer,
-    body: 'Sample Question SC',
-    answers: Ember.A([
-      AnswerModel.create({
-        value: '1',
-        text: 'An aquifer'
-      }),
-      AnswerModel.create({
-        value: '2',
-        text: 'A well'
-      }),
-      AnswerModel.create({
-        value: '3',
-        text: 'A pump'
-      })
-    ])
-  });
-
-  const userAnswer = [{ value: '1' }];
-  this.set('question', question);
-
-  const questionResult = QuestionResult.create({
-    answer: userAnswer,
-    question: question
-  });
-
-  this.set('questionResult', questionResult);
-
-  this.render(
-    hbs`{{player/qz-question-viewer question=question questionResult=questionResult }}`
-  );
-
-  var $component = this.$(); //component dom element
-
-  var $answerPanel = $component.find('.answers-panel');
-  assert.ok(
-    $answerPanel.find('.actions button.save').attr('disabled'),
-    'Button should be disabled'
-  );
-
-  assert.equal(
-    $component.find('.answer-choices tbody tr input').length,
-    6,
-    'Missing answer choices radio inputs'
-  );
-  assert.equal(
-    $component.find('.answer-choices tbody tr:eq(0) input:checked').val(),
-    'yes|1',
-    'Wrong selection for answer 1'
-  );
-  assert.equal(
-    $component.find('.answer-choices tbody tr:eq(1) input:checked').val(),
-    'no|2',
-    'Wrong selection for answer 2'
-  );
-  assert.equal(
-    $component.find('.answer-choices tbody tr:eq(2) input:checked').val(),
-    'no|3',
-    'Wrong selection for answer 3'
-  );
-
-  $answerPanel.find('.answer-choices tbody tr:eq(2) input:eq(0)').click(); //clicking yes at last answer choice
-
-  assert.ok(
-    !$answerPanel.find('.actions button.save').attr('disabled'),
-    'Button should not be disabled'
-  );
 });
 
 test('Clicking on the "Hints" button should display a certain number of hints and then become disabled', function(
@@ -273,7 +186,10 @@ test('Clicking on the "Hints" button should display a certain number of hints an
     'Hint should be displayed'
   );
   assert.equal(
-    $infoSection.find('.hints li:first-child').text().trim(),
+    $infoSection
+      .find('.hints li:first-child')
+      .text()
+      .trim(),
     'Hints text 1',
     'Hint\'s content is incorrect'
   );
@@ -289,7 +205,10 @@ test('Clicking on the "Hints" button should display a certain number of hints an
     'Hints should be displayed'
   );
   assert.equal(
-    $infoSection.find('.hints li:last-child').text().trim(),
+    $infoSection
+      .find('.hints li:last-child')
+      .text()
+      .trim(),
     'Hints text 2',
     'Hint\'s content is incorrect'
   );
@@ -351,76 +270,6 @@ test('Clicking on the "Explanation" button should display an explanation and the
   assert.ok(
     $infoSection.find('.btn-group .explanation').attr('disabled'),
     'Explanation button should be disabled'
-  );
-});
-
-test('Save Button Text key', function(assert) {
-  assert.expect(1);
-
-  const question = Ember.Object.create({
-    id: 10,
-    sequence: 2,
-    text: 'Dummy question text',
-    mediaUrl: 'test.jpg',
-    type: QUESTION_TYPES.trueFalse,
-    hasMedia: true,
-    hints: [],
-    answers: Ember.A([
-      AnswerModel.create({ value: '1', text: 'True' }),
-      AnswerModel.create({ value: '2', text: 'False' })
-    ])
-  });
-
-  const questionResult = QuestionResult.create();
-
-  this.set('questionResult', questionResult);
-  this.set('question', question);
-
-  this.render(
-    hbs`{{player/qz-question-viewer question=question questionResult=questionResult buttonTextKey='common.save-next'}}`
-  );
-
-  var $component = this.$(); //component dom element
-  var $answerPanel = $component.find('.answers-panel');
-  const $saveButton = $answerPanel.find('.actions button.save');
-  assert.equal(
-    T.text($saveButton),
-    this.i18n.t('common.save-next').toString(),
-    'Wrong button text'
-  );
-});
-
-test('Submit button disabled when submitted', function(assert) {
-  assert.expect(1);
-
-  const question = Ember.Object.create({
-    id: 10,
-    sequence: 2,
-    text: 'Dummy question text',
-    mediaUrl: 'test.jpg',
-    type: QUESTION_TYPES.trueFalse,
-    answers: Ember.A([
-      AnswerModel.create({ value: '1', text: 'True' }),
-      AnswerModel.create({ value: '2', text: 'False' })
-    ]),
-    hasMedia: true
-  });
-
-  const questionResult = QuestionResult.create();
-
-  this.set('questionResult', questionResult);
-  this.set('question', question);
-
-  this
-    .render(hbs`{{player/qz-question-viewer question=question questionResult=questionResult
-      submitted=true}}`);
-
-  var $component = this.$(); //component dom element
-
-  var $answerPanel = $component.find('.answers-panel');
-  assert.ok(
-    $answerPanel.find('.actions button.save').attr('disabled'),
-    'Button should be disabled'
   );
 });
 

@@ -65,11 +65,6 @@ test('Layout with rubric OFF and thumbnail', function(assert) {
     ).length,
     'Missing rich text editor'
   );
-  assert.ok(
-    $freeResponseViewer.find('.rubric-response.no-rubric .actions .save')
-      .length,
-    'Missing save button'
-  );
   assert.notOk(
     $freeResponseViewer.find('.rubric-response.rubric').length,
     'Rubric should not appear'
@@ -136,11 +131,6 @@ test('Layout with rubric ON without categories and no url', function(assert) {
     'Missing rich text editor'
   );
   assert.ok(
-    $freeResponseViewer.find('.rubric-response.no-rubric .actions .save')
-      .length,
-    'Missing save button'
-  );
-  assert.ok(
     !$freeResponseViewer.find('.rubric-information').length,
     'Rubric information menu should not appear'
   );
@@ -194,10 +184,6 @@ test('Layout with rubric ON without categories and with url', function(assert) {
       '.rubric-response.rubric .question-response .qz-rich-text-editor'
     ).length,
     'Missing rich text editor'
-  );
-  assert.ok(
-    $freeResponseViewer.find('.rubric-response.rubric .actions .save').length,
-    'Missing save button'
   );
   assert.ok(
     $freeResponseViewer.find('.rubric-information').length,
@@ -264,10 +250,6 @@ test('Layout with rubric ON with categories', function(assert) {
       '.rubric-response.rubric .question-response .qz-rich-text-editor'
     ).length,
     'Missing rich text editor'
-  );
-  assert.ok(
-    $freeResponseViewer.find('.rubric-response.rubric .actions .save').length,
-    'Missing save button'
   );
   assert.ok(
     $freeResponseViewer.find('.rubric-information').length,

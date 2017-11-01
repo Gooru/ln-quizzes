@@ -22,6 +22,11 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Dependencies
 
+  //Show next button and enable/disable it by checking answer text, once every question loaded
+  didInsertElement() {
+    this.enableNextButton();
+  },
+
   /**
    * @requires service:i18n
    */
@@ -48,6 +53,7 @@ export default Ember.Component.extend({
       if (!this.get('submitted')) {
         //todo track analytics
         this.set('question', question);
+        this.enableNextButton();
       }
     },
 
@@ -60,6 +66,7 @@ export default Ember.Component.extend({
         //todo track analytics
         this.set('question', question);
         this.set('answerCompleted', false);
+        this.enableNextButton();
       }
     },
 
@@ -75,6 +82,7 @@ export default Ember.Component.extend({
 
         this.set('question', question);
         this.set('answerCompleted', true);
+        this.enableNextButton();
       }
     },
 
@@ -90,6 +98,7 @@ export default Ember.Component.extend({
 
         this.set('question', question);
         this.set('answerCompleted', false);
+        this.enableNextButton();
       }
     },
 
@@ -406,5 +415,11 @@ export default Ember.Component.extend({
       const questionResult = this.get('questionResult');
       this.sendAction('onSubmitQuestion', this.get('question'), questionResult);
     }
+  },
+
+  enableNextButton: function() {
+    let answer = this.get('questionResult.answer');
+    let isAnswerExist = answer != null;
+    this.sendAction('isNextEnabled', isAnswerExist);
   }
 });

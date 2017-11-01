@@ -45,6 +45,12 @@ export default Ember.Component.extend(ModalMixin, {
 
   actions: {
     /**
+    * Action triggered when the user completed a answer
+    */
+    isNextEnabled: function(isAnswerCompleted) {
+      this.set('isNextEnabled', isAnswerCompleted);
+    },
+    /**
      * Action triggered when the user closes the content player
      */
     closePlayer: function() {
@@ -73,6 +79,10 @@ export default Ember.Component.extend(ModalMixin, {
      */
     finishCollection: function() {
       this.finishCollection();
+    },
+
+    resumeCollection: function() {
+      this.set('showFinishConfirmation', false);
     },
 
     /**
@@ -394,6 +404,11 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {function}
    */
   onClosePlayer: null,
+
+  /**
+  * Check whether next button is enabled or not
+  */
+  isNextEnabled: true,
 
   // -------------------------------------------------------------------------
   // Methods

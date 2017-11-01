@@ -22,22 +22,39 @@
         {{gru-icon name="ic_keyboard_arrow_down"}}
       </div>
     {{/if}}
-      <div class="pull-left">
-        <i class="{{resource.format}} resource-icon"></i>
-      </div>
-      <div class="pull-left resource-title">
-        <span>{{resource.title}}</span>
+      <div class="current-resource-info">
+        <div class="resource-sequence pull-left">
+          <span>{{resource.sequence}}</span>
+        </div>
+        <div class="pull-left">
+          <i class="{{resource.format}} resource-icon"></i>
+        </div>
+        <div class="pull-left resource-title">
+          <span>{{resource.title}}</span>
+        </div>
       </div>
     </div>
     <div class="reaction-bar pull-right">
       {{qz-emotion-picker startEmotion=ratingScore onChangeEmotion="changeEmotion" readOnly=submitted}}
     </div>
     <div class="list-resources">
+      <div class="breadcrumb-title">
+        {{#if unitTitle}}
+          <div class="title-item"><span>{{unitTitle.shortname}}:</span><span class="title-fullname">{{unitTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
+        {{/if}}
+        {{#if lessonTitle}}
+          <div class="title-item"><span>{{lessonTitle.shortname}}:</span><span class="title-fullname">{{lessonTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
+        {{/if}}
+        {{#if collectionTitle}}
+          <div class="title-item"><span>{{collectionTitle.shortname}}:</span><span class="title-fullname">{{collectionTitle.fullname}}</span></div>
+        {{/if}}
+      </div>
       <ul class="list-group resources {{if isNavigationDisabled 'disabled' }}">
           {{#each resourceItems as |item index|}}
             <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}"
                 {{action 'selectItem' item}}>
               <div class="resources-info">
+                <span class="resource-index pull-left">{{plus-one index}}</span>
                 <i class="resource-icon {{item.resource.format}} pull-left"></i>
                 <span class="title pull-left">
                   {{no-tags text=item.resource.title}}
@@ -64,31 +81,37 @@
               </div>
             </li>
           {{/each}}
-          {{#if collection.isCollection}}
-            {{#unless (or showFinishConfirmation submitted)}}
-              <li class="list-group-item">
-                <div class="usage-report" {{action 'seeUsageReport'}}>
-                  {{t 'qz-player-footer.usage-report'}}
-                </div>
-              </li>
-            {{/unless}}
-          {{else}}
-              <li class="list-group-item" {{action "finishCollection"}} >
-                <div class="submit-all">
-                  {{t 'common.submit-all'}}
-                </div>
-              </li>
-          {{/if}}
       </ul>
+      {{#if collection.isCollection}}
+        {{#unless (or showFinishConfirmation submitted)}}
+          <div class="usage-report" {{action 'seeUsageReport'}}>
+            <span><span>{{gru-icon name="subject"}}</span>{{t 'qz-player-footer.usage-report'}}</span>
+          </div>
+        {{/unless}}
+      {{else}}
+        <div class="submit-all" {{action "finishCollection"}}>
+          {{t 'common.submitAll'}}
+        </div>
+      {{/if}}
     </div>
   </div>
-  {{#if showNext}}
-    <div class="next" {{action 'nextResource'}}>
-      <span>{{t 'common.next'}}</span> {{gru-icon name="ic_skip_next"}}
-    </div>
-  {{else}}
-    <div class="next disabled">
-      <span>{{t 'common.next'}}</span> {{gru-icon name="ic_skip_next"}}
-    </div>
-  {{/if}}
+  <div class="next-action">
+    {{#if showNext}}
+      <div class="next {{unless isNextEnabled 'disabled'}}" data-toggle="tooltip" title="{{t 'common.save-next'}}" {{action 'nextResource'}}>
+        <span>{{t 'common.next'}}</span> {{gru-icon name="ic_skip_next"}}
+      </div>
+    {{else}}
+      {{#if collection.isCollection}}
+        {{#unless (or showFinishConfirmation submitted)}}
+          <div class="usage-report {{unless isNextEnabled 'disabled'}}" {{action 'seeUsageReport'}}>
+            <span>{{t 'qz-player-footer.usage-report'}}</span>
+          </div>
+        {{/unless}}
+      {{else}}
+        <div class="submit-all {{unless isNextEnabled 'disabled'}}" data-toggle="tooltip" title="{{t 'common.save-submit'}}" {{action "finishCollection"}}>
+          <span>{{t 'common.submitAll'}}</span>
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
 </div>

@@ -68,9 +68,15 @@ export default Ember.Component.extend({
   getBubblesQuestions: function(questionResults) {
     const results = this.getQuestions(questionResults);
     return results.map(function(questionResult) {
+      var status = '';
+      if (questionResult.skipped) {
+        status = 'skipped';
+      } else {
+        status = questionResult.get('correct') ? 'correct' : 'incorrect';
+      }
       return Ember.Object.create({
         label: questionResult.get('resource.sequence'),
-        status: questionResult.get('correct') ? 'correct' : 'incorrect',
+        status: status,
         value: questionResult.get('resourceId')
       });
     });

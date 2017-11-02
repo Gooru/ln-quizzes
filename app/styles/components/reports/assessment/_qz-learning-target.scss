@@ -75,6 +75,8 @@
       .standard-tags {
         width: 75px;
         height: 36px;
+        padding: 2px;
+        overflow: hidden;
         object-fit: contain;
         border-radius: 3px;
         float: left;
@@ -87,9 +89,7 @@
 
       .title {
         color: $white;
-        padding: 4px 4px 0;
         font-size: 12px;
-        // font-size: $font-size-h6;
       }
     }
 

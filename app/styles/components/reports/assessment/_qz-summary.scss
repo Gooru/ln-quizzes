@@ -55,15 +55,15 @@
 
         &.time-spent {
           span {
-            font-size: $font-size-h4;
+            font-size: 20px;
             line-height: $font-size-h4;
           }
 
           i {
-            font-size: $font-size-h3;
-            line-height: $font-size-h3;
+            font-size: 20px;
+            line-height: 64px;
             vertical-align: middle;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
           }
         }
       }
@@ -73,16 +73,13 @@
       width: 71px;
       height: 71px;
       padding: 0;
-      margin-top: 12px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+      margin-top: 18px;
       -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
       flex: 0 1 auto;
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
-      background-image: url("quizzes-addon/quizzes/profile.png");
       background-position: 0;
       background-repeat: no-repeat;
       background-size: contain;
@@ -98,7 +95,7 @@
     }
 
     .grade {
-      width: 143px;
+      width: 160px;
       height: 106px;
       padding: 10px 25px;
       text-align: left;
@@ -111,9 +108,9 @@
       -ms-flex-item-align: auto;
       align-self: auto;
       @media (min-width: $screen-xs) {
-        width: 143px;
+        width: 160px;
         height: 106px;
-        padding: 23px 0 0;
+        padding: 20px 0 0;
         text-align: center;
       }
       @media (min-width: $screen-lg-min) {
@@ -274,15 +271,18 @@
       display: inline-block;
       overflow: auto;
       overflow-y: hidden;
+
       .gru-bubbles {
         .bubbles-list {
           height: 100px;
         }
       }
     }
+
     .bubbles::-webkit-scrollbar {
       height: 6px;
     }
+
     .bubbles::-webkit-scrollbar-thumb {
       border-radius: 3px;
       background-color: $gray-harder;

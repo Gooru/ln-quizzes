@@ -97,6 +97,7 @@ export default Ember.Route.extend({
     if (model && model.attemptData) {
       model.attemptData.setCollection(model.collection);
       controller.set('attemptData', model.attemptData);
+      controller.set('profile', model.profile);
     }
   }
 });

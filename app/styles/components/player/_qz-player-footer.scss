@@ -258,6 +258,11 @@
             }
           }
         }
+        .disabled {
+          > li {
+            cursor: default !important;
+          }
+        }
         .resources::-webkit-scrollbar {
           width: 8px;
           border-radius: 3px;
@@ -340,6 +345,7 @@
 
       &.disabled {
         cursor: default;
+        pointer-events: none;
         color: $breadcrumb-color;
       }
 
@@ -377,6 +383,7 @@
       }
       .disabled {
         cursor: default;
+        pointer-events: none;
         color: $breadcrumb-color;
       }
     }

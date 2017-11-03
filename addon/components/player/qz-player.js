@@ -379,12 +379,9 @@ export default Ember.Component.extend(ModalMixin, {
    * If the next button should be shown
    * @property {boolean}
    */
-  showNext: Ember.computed('resource', 'isNavigationDisabled', function() {
+  showNext: Ember.computed('resource', function() {
     const resource = this.get('resource');
-    return (
-      !!this.get('collection').nextResource(resource) &&
-      !this.get('isNavigationDisabled')
-    );
+    return this.get('collection').nextResource(resource);
   }),
 
   /**

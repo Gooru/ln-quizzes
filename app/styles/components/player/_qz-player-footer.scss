@@ -317,6 +317,8 @@
       &.disabled {
         opacity: 0.6;
         cursor: default;
+        color: $breadcrumb-color;
+        border-right: 1px solid $breadcrumb-color;
       }
 
       i {
@@ -347,6 +349,7 @@
         cursor: default;
         pointer-events: none;
         color: $breadcrumb-color;
+        border-left: 1px solid $breadcrumb-color;
       }
 
       i {
@@ -385,6 +388,7 @@
         cursor: default;
         pointer-events: none;
         color: $breadcrumb-color;
+        border-left: 1px solid $breadcrumb-color;
       }
     }
   }

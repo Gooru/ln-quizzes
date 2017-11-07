@@ -10,7 +10,8 @@ import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
  */
 export default Ember.Object.extend({
   /**
-   * @property {ResourceSerializer} resourceSerializer
+   * @property {ResourceSerializer} resourceaddon/routes/reports/student-context.js
+Serializer
    */
   resourceSerializer: null,
 

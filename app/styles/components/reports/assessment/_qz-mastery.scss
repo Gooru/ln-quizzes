@@ -46,4 +46,21 @@
       font-weight: 100;
     }
   }
+
+  .standard-root {
+    display: inline-block;
+    width: 90%;
+  }
+
+  .view-more {
+    float: right;
+    margin: 27px 35px 0px 0px;
+    cursor: pointer;
+  }
+
+  .show-less {
+    float: right;
+    margin: 27px 35px 0px 0px;
+    cursor: pointer;
+  }
 }

@@ -46,9 +46,7 @@ test('Layout when answer results are shown', function(assert) {
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-summary').length, 'Top Summary');
   assert.equal(
-    $component.find(
-      '> .summary-mastry-question .qz-questions .summary-report-questions'
-    ).length,
+    $component.find('> .qz-questions .summary-report-questions').length,
     1,
     'Questions Summary'
   );
@@ -57,7 +55,7 @@ test('Layout when answer results are shown', function(assert) {
     'Mastery Summary -hidden'
   );
   assert.notOk(
-    $component.find('> .summary-mastry-question  .qz-resources').length,
+    $component.find('> .qz-resources').length,
     'Resources Summary -hidden'
   );
 });
@@ -157,16 +155,11 @@ test('Layout with open ended and resources', function(assert) {
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-summary').length, 'Top Summary');
   assert.equal(
-    $component.find(
-      '> .summary-mastry-question .qz-questions .summary-report-questions'
-    ).length,
+    $component.find('> .qz-questions .summary-report-questions').length,
     2,
     'Questions Summary'
   );
-  assert.ok(
-    $component.find('> .summary-mastry-question .qz-resources ').length,
-    'Resources Summary'
-  );
+  assert.ok($component.find('> .qz-resources ').length, 'Resources Summary');
   assert.notOk(
     $component.find('> .qz-mastery').length,
     'Mastery Summary -hidden'
@@ -200,7 +193,7 @@ test('Layout when mastery results are shown', function(assert) {
   }}`);
 
   const $component = this.$(
-    '.reports.qz-assessment-report .qz-assessment-summary .summary-mastry-question'
+    '.reports.qz-assessment-report .qz-assessment-summary'
   );
   assert.ok($component.length, 'Component');
   assert.ok($component.find('> .qz-mastery').length, 'mastery results');

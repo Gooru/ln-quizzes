@@ -1,6 +1,8 @@
 .reports.qz-assessment-report {
   width: 100%;
   background-color: $light-100;
+  margin-top: 40px;
+  margin-bottom: 30px;
 
   .qz-assessment-summary {
     background: $white;
@@ -11,20 +13,6 @@
       span {
         margin-left: 14px;
       }
-    }
-
-    .summary-mastry-question {
-      max-height: 400px;
-      overflow: auto;
-    }
-
-    .summary-mastry-question::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .summary-mastry-question::-webkit-scrollbar-thumb {
-      border-radius: 3px;
-      background-color: $gray-harder;
     }
   }
   /* Small devices (tablets, 768px and up) */

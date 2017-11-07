@@ -49,7 +49,7 @@
           padding-top: 10px;
           @media (min-width: $screen-xs) {
             padding-top: 16px;
-            padding-bottom: 20px;
+            padding-bottom: 9px;
           }
         }
 
@@ -61,7 +61,7 @@
 
           i {
             font-size: 20px;
-            line-height: 64px;
+            line-height: 19px;
             vertical-align: middle;
             margin-bottom: 6px;
           }
@@ -73,7 +73,7 @@
       width: 71px;
       height: 71px;
       padding: 0;
-      margin-top: 18px;
+      margin-top: 15px;
       -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
       flex: 0 1 auto;
@@ -92,6 +92,9 @@
       @media (min-width: $screen-lg-min) {
         height: 71px;
       }
+      .img-responsive {
+        height: 100%;
+      }
     }
 
     .grade {
@@ -99,7 +102,7 @@
       height: 106px;
       padding: 10px 25px;
       text-align: left;
-      border-left: 2px solid $yellow-400;
+      border-left: 2px solid;
       color: $white;
       -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
@@ -121,7 +124,6 @@
         &.percentage {
           font-size: $font-size-h3;
           line-height: $font-size-h3;
-          color: $yellow-400;
           @media (min-width: $screen-xs) {
             display: inline-block;
             font-size: $font-size-h2;
@@ -146,7 +148,6 @@
 
           .text {
             font-size: 12px;
-            color: $yellow-400;
             line-height: $font-size-h6;
           }
           @media (min-width: $screen-xs) {

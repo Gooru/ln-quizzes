@@ -2,14 +2,14 @@
   .learning-target {
     border-radius: 5px;
     background-color: $white;
-    margin: 20px 0;
+    margin: 15px 0;
     display: flex;
     .header-content {
       display: inline-block;
       font-size: $font-size-h6;
       line-height: $font-size-h6;
       width: 100%;
-      margin: 0 0 30px;
+      margin: 0 0 10px;
 
       .score {
         width: 61px;
@@ -29,9 +29,10 @@
         width: 100%;
         overflow: hidden;
         .description {
-          margin: 12px 0 0;
           height: 40px;
-          border-bottom: 1px solid $light-600;
+          float: left;
+          width: 250px;
+          margin: 0px 25px;
           .desc-align {
             @include ellipsis($font-size: 13px, $line-height: 1.5, $lines-to-show: 2, $excerpt-bg: $white);
             margin-left: 10px;
@@ -44,6 +45,7 @@
         }
 
         .standard-score {
+          float: left;
           .performance {
             height: 29px;
             .no-percentage {
@@ -84,9 +86,6 @@
         background-color: $light-300;
       }
 
-      .stadard-score {
-      }
-
       .title {
         color: $white;
         font-size: 12px;
@@ -122,15 +121,6 @@
           display: block;
         }
       }
-    }
-  }
-}
-
-.reports.assessment.qz-mastery {
-  .qz-learning-target {
-    .learning-target {
-      width: 300px;
-      float: left;
     }
   }
 }

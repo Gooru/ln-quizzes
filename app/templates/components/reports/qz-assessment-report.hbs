@@ -17,7 +17,6 @@
     </div>
 
   {{else}}
-  <div class="summary-mastry-question">
     {{#if (and contextResult.hasMastery isAssessment)}}
       {{reports.assessment.qz-mastery
     learningTargets=contextResult.mastery
@@ -48,8 +47,6 @@
       results=resultsResources
       showReactionBar=true}}
     {{/if}}
-  </div>
-
   {{/if}}
 
 </div>

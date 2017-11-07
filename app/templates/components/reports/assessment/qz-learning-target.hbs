@@ -9,17 +9,17 @@
           <span class="percentage" style= {{safe-html (concat "color:" (grade-color learningTarget.mastery))}}>{{learningTarget.mastery}}%</span>
         {{else}}
           <div class="performance">
-            <span class="no-percentage">_</span>
+            <span class="no-percentage">__</span>
           </div>
         {{/if}}
       </div>
       <div class="description">
         <div class="desc-align">{{learningTarget.description}} </div>
-        </div>
+      </div>
+      <div class="questions">
+        {{gru-bubbles bubbleOptions=bubbleQuestions onBubbleSelect='bubbleSelect'}}
+      </div>
+    </div>
 
-    </div>
-    <div class="questions">
-       {{gru-bubbles bubbleOptions=bubbleQuestions onBubbleSelect='bubbleSelect'}}
-    </div>
   </div>
 </div>

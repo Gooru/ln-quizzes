@@ -1,8 +1,7 @@
 <div class="summary-container">
   <div class="profile-image">
-    <img class="img-responsive" src="{{profile.avatarUrl}}" alt="Avatar for {{profile.username}}">
+    <img class="img-responsive" src="{{collection.thumbnailUrl}}" alt="Avatar for {{profile.username}}">
   </div>
-
   <div class="overview">
     <h5>{{contextResult.title}}</h5>
     <div class="information">
@@ -34,7 +33,7 @@
       {{/if}}
       {{#if contextResult.submittedAt}}
         <span class="date">
-          {{gru-icon name='event'}}<span>{{format-date contextResult.submittedAt 'h:mm a MMM DD'}}</span>
+          {{gru-icon name='event'}}<span>{{format-date contextResult.submittedAt 'h:mm a MMM. Do, YYYY'}}</span>
         </span>
       {{/if}}
       <span class="time">
@@ -52,15 +51,14 @@
     {{/if}}
   </div>
   {{#if collection.isAssessment}}
-    <div class="grade">
-      <span class="percentage">{{round-number contextResult.correctPercentage}}%</span>
+    <div class="grade" style={{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
+      <span class="percentage" >{{round-number contextResult.correctPercentage}}%</span>
       <span class="attempts">
               <span class="text">PERFORMANCE</span>
       </span>
     </div>
   {{else}}
     {{#if hasQuestionScore}}
-
       <div class="grade">
         <span class="percentage">{{round-number contextResult.reportEvent.averageScore}}%</span>
         <span class="attempts">
@@ -75,6 +73,4 @@
       </div>
     {{/if}}
   {{/if}}
-
-
 </div>

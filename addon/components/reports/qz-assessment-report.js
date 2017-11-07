@@ -35,7 +35,7 @@ export default Ember.Component.extend({
       } else {
         //Check if the questions details are showing on table (md or sm devices) or  a list (xs devices)
         if ($trTable.length) {
-          $('.summary-mastry-question').animate(
+          $('html,body').animate(
             {
               scrollTop:
                 $($trTable).offset().top -

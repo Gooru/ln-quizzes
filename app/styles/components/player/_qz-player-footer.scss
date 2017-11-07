@@ -27,47 +27,45 @@
 
       .resource-icon {
         display: inline-block;
-        background-color: $dark-600;
-        -webkit-mask-size: 25px 25px;
-        mask-size: 25px 25px;
+        background-size: 25px 25px;
         height: 25px;
         width: 25px;
         margin: 14px 20px 0 26px;
       }
 
       .video_resource {
-        -webkit-mask-image: url("quizzes-addon/quizzes/images/video-resource.svg");
-        mask-image: url("quizzes-addon/quizzes/images/video-resource.svg");
+        background: url("quizzes-addon/quizzes/images/video-resource-dark.svg");
+        background-size: 25px 25px;
       }
 
       .webpage_resource {
-        -webkit-mask-image: url("quizzes-addon/quizzes/images/website-resource.svg");
-        mask-image: url("quizzes-addon/quizzes/images/website-resource.svg");
+        background: url("quizzes-addon/quizzes/images/website-resource-dark.svg");
+        background-size: 25px 25px;
       }
 
       .interactive_resource {
-        -webkit-mask-image: url("quizzes-addon/quizzes/images/interactive-resource.svg");
-        mask-image: url("quizzes-addon/quizzes/images/interactive-resource.svg");
+        background: url("quizzes-addon/quizzes/images/interactive-resource-dark.svg");
+        background-size: 25px 25px;
       }
 
       .question {
-        -webkit-mask-image: url("quizzes-addon/quizzes/images/question-resource.svg");
-        mask-image: url("quizzes-addon/quizzes/images/question-resource.svg");
+        background: url("quizzes-addon/quizzes/images/question-resource-dark.svg");
+        background-size: 25px 25px;
       }
 
       .image_resource {
-        -webkit-mask-image: url("quizzes-addon/quizzes/images/image-resource.svg");
-        mask-image: url("quizzes-addon/quizzes/images/image-resource.svg");
+        background: url("quizzes-addon/quizzes/images/image-resource-dark.svg");
+        background-size: 25px 25px;
       }
 
       .text_resource {
-        -webkit-mask-image: url("quizzes-addon/quizzes/images/text-resource.svg");
-        mask-image: url("quizzes-addon/quizzes/images/text-resource.svg");
+        background: url("quizzes-addon/quizzes/images/text-resource-dark.svg");
+        background-size: 25px 25px;
       }
 
       .audio_resource {
-        -webkit-mask-image: url("quizzes-addon/quizzes/images/audio-resource.svg");
-        mask-image: url("quizzes-addon/quizzes/images/audio-resource.svg");
+        background: url("quizzes-addon/quizzes/images/audio-resource-dark.svg");
+        background-size: 25px 25px;
       }
 
       .player-info {
@@ -77,8 +75,11 @@
           cursor: pointer;
 
           i {
+            pointer-events: none;
             margin-left: -60px;
             margin-top: 15px;
+            width: 40px;
+            height: 50px;
           }
         }
         .current-resource-info {
@@ -126,9 +127,11 @@
           border-bottom: 1px solid $dark-100;
           .title-item {
             display: flex;
+            max-width: calc(100% / 3);
             span.title-fullname {
               margin-left: 3px;
-              @include ellipsis($font-size: 16px, $line-height: 3, $lines-to-show: 1, $excerpt-bg: $white);
+              font-size: 16px;
+              line-height: 3;
             }
             span {
               font-size: 16px;
@@ -214,9 +217,7 @@
             }
             .resource-icon {
               display: inline-block;
-              background-color: $dark-600;
-              -webkit-mask-size: 25px 25px;
-              mask-size: 25px 25px;
+              background-size: 25px 25px;
               height: 25px;
               width: 25px;
               margin: 9px 20px 0 0;

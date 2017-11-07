@@ -15,11 +15,11 @@
     <div class="player-info">
     {{#if isNavigatorOpen}}
       <div class="list-resource-nav pull-left" {{action 'onCloseNavigator'}}>
-        {{gru-icon name="ic_keyboard_arrow_up"}}
+        {{gru-icon name="ic_keyboard_arrow_down"}}
       </div>
     {{else}}
       <div class="list-resource-nav pull-left" {{action 'onOpenNavigator'}}>
-        {{gru-icon name="ic_keyboard_arrow_down"}}
+        {{gru-icon name="ic_keyboard_arrow_up"}}
       </div>
     {{/if}}
       <div class="current-resource-info">
@@ -40,13 +40,13 @@
     <div class="list-resources">
       <div class="breadcrumb-title">
         {{#if unitTitle}}
-          <div class="title-item"><span>{{unitTitle.shortname}}:</span><span class="title-fullname">{{unitTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
+          <div class="title-item"><span>{{unitTitle.shortname}}:</span><span class="title-fullname ellipsis">{{unitTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
         {{/if}}
         {{#if lessonTitle}}
-          <div class="title-item"><span>{{lessonTitle.shortname}}:</span><span class="title-fullname">{{lessonTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
+          <div class="title-item"><span>{{lessonTitle.shortname}}:</span><span class="title-fullname ellipsis">{{lessonTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
         {{/if}}
         {{#if collectionTitle}}
-          <div class="title-item"><span>{{collectionTitle.shortname}}:</span><span class="title-fullname">{{collectionTitle.fullname}}</span></div>
+          <div class="title-item"><span>{{collectionTitle.shortname}}:</span><span class="title-fullname ellipsis">{{collectionTitle.fullname}}</span></div>
         {{/if}}
       </div>
       <ul class="list-group resources {{if isNavigationDisabled 'disabled' }}">

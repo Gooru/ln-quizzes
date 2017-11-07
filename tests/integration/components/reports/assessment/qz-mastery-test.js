@@ -68,7 +68,7 @@ test('Mastery Layout', function(assert) {
   T.exists(assert, $mastery.find('h4'), 'Missing mastery title');
   T.exists(
     assert,
-    $mastery.find('.qz-learning-target'),
+    $mastery.find('.standard-root .qz-learning-target'),
     'Missing learning target component'
   );
 });

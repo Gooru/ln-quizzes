@@ -59,7 +59,7 @@
     </div>
   {{else}}
     {{#if hasQuestionScore}}
-      <div class="grade">
+      <div class="grade"  style={{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
         <span class="percentage">{{round-number contextResult.reportEvent.averageScore}}%</span>
         <span class="attempts">
         <span class="text">PERFORMANCE</span>

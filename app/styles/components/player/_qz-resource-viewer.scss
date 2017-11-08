@@ -11,7 +11,8 @@
   .btn-next {
     width: 85px;
     height: 35px;
-    margin: 0 auto;
+    margin-left: 10px;
+    margin-top: 20px;
     @media (max-width: $screen-xs-max) {
       width: 60px;
     }

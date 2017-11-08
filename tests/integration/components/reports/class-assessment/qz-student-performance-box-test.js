@@ -18,6 +18,7 @@ test('Layout when all completed', function(assert) {
   const student = Ember.Object.create({
     profileId: '56983a9060a68052c1ed934c',
     profileName: 'Rocha, Perez',
+    lastFirstName: 'Perez, Rocha',
     isAttemptStarted: true,
     averageScore: 50,
     totalAnswered: 4
@@ -75,7 +76,7 @@ test('Layout when all completed', function(assert) {
   const $header = $component.find('.panel .panel-heading');
   T.exists(assert, $header, 'Missing student box title');
   T.exists(assert, $header.find('.score'), 'Missing student box score');
-  assert.equal(T.text($header.find('.name')), 'Rocha, Perez', 'Wrong name');
+  assert.equal(T.text($header.find('.name')), 'Perez, Rocha', 'Wrong name');
   assert.equal(T.text($header.find('.score')), '50%', 'Wrong score');
 
   const $questions = $component.find('.panel .questions');

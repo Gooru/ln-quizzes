@@ -31,12 +31,12 @@
         .description {
           height: 40px;
           float: left;
-          width: 250px;
+          width: 357px;
           margin: 0px 25px;
           .desc-align {
             @include ellipsis($font-size: 13px, $line-height: 1.5, $lines-to-show: 2, $excerpt-bg: $white);
             margin-left: 10px;
-            width: 246px;
+            width: 350px;
           }
         }
         @media (max-width: $screen-xs) {
@@ -83,7 +83,6 @@
         border-radius: 3px;
         float: left;
         margin-left: 10px;
-        background-color: $light-300;
       }
 
       .title {

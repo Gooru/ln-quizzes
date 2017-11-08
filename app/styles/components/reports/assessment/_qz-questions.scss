@@ -8,6 +8,7 @@
       margin: 0 20px 10px 0;
       h4 {
         margin-top: 0;
+        margin-left: 21px;
       }
     }
 
@@ -123,6 +124,14 @@
         width: 14px;
         height: 14px;
         display: inline-flex;
+      }
+    }
+    .question-score span.skipped {
+      color: $gray-icon;
+
+      i {
+        display: inline-flex;
+        margin-right: 67px;
       }
     }
     .question-reaction div {

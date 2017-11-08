@@ -40,6 +40,7 @@ test('Layout', function(assert) {
       ReportDataEvent.create({
         profileId: '56983a9060a68052c1ed934c',
         profileName: 'Lorena Prendas Chavarria',
+        lastFirstName: 'Chavarria, Lorena Prendas',
         profileCode: 'student-code-1',
         averageScore: 100,
         totalAnswered: 4,
@@ -64,6 +65,7 @@ test('Layout', function(assert) {
       ReportDataEvent.create({
         profileId: '56983a90fb01fecc328e2388',
         profileName: 'Andres Charpentier Zuñiga',
+        lastFirstName: 'Zuñiga, Andres Charpentier',
         profileCode: 'student-code-2',
         averageScore: 67,
         totalAnswered: 4,
@@ -88,6 +90,7 @@ test('Layout', function(assert) {
       ReportDataEvent.create({
         profileId: '56983a906596902edadedc7c',
         profileName: 'David Zumbado Alfaro',
+        lastFirstName: 'Alfaro, David Zumbado',
         profileCode: 'student-code-3',
         averageScore: 33,
         totalAnswered: 4,
@@ -113,9 +116,8 @@ test('Layout', function(assert) {
   });
 
   this.set('reportData', reportData);
-
   this.render(
-    hbs`{{reports/class-assessment/qz-student-view reportData=reportData}}`
+    hbs`{{reports/class-assessment/qz-student-view reportData=reportData student=reportData.reportEvents}}`
   );
 
   const $component = this.$();
@@ -138,7 +140,7 @@ test('Layout', function(assert) {
   let $firstPanelHeading = $firstStudentPerformanceBox.find('.panel-heading');
   assert.equal(
     T.text($firstPanelHeading.find('.name')),
-    'Lorena Prendas Chavarria',
+    'Chavarria, Lorena Prendas',
     'Wrong first name'
   );
   assert.equal(
@@ -153,7 +155,7 @@ test('Layout', function(assert) {
   let $lastPanelHeading = $lastStudentPerformanceBox.find('.panel-heading');
   assert.equal(
     T.text($lastPanelHeading.find('.name')),
-    'David Zumbado Alfaro',
+    'Alfaro, David Zumbado',
     'Wrong last name'
   );
   assert.equal(
@@ -170,7 +172,7 @@ test('Layout', function(assert) {
   $firstPanelHeading = $firstStudentPerformanceBox.find('.panel-heading');
   assert.equal(
     T.text($firstPanelHeading.find('.name')),
-    'Andres Charpentier Zuñiga',
+    'Zuñiga, Andres Charpentier',
     'Wrong first alphabetical name'
   );
   assert.equal(
@@ -185,7 +187,7 @@ test('Layout', function(assert) {
   $lastPanelHeading = $lastStudentPerformanceBox.find('.panel-heading');
   assert.equal(
     T.text($lastPanelHeading.find('.name')),
-    'Lorena Prendas Chavarria',
+    'Chavarria, Lorena Prendas',
     'Wrong last alphabetical name'
   );
   assert.equal(

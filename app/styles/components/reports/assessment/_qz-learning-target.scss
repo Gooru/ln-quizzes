@@ -10,6 +10,7 @@
       line-height: $font-size-h6;
       width: 100%;
       margin: 0 0 10px;
+      border-left: 2px solid;
 
       .score {
         width: 61px;
@@ -31,12 +32,12 @@
         .description {
           height: 40px;
           float: left;
-          width: 357px;
+          width: 490px;
           margin: 0px 25px;
           .desc-align {
             @include ellipsis($font-size: 13px, $line-height: 1.5, $lines-to-show: 2, $excerpt-bg: $white);
             margin-left: 10px;
-            width: 350px;
+            width: 490px;
           }
         }
         @media (max-width: $screen-xs) {
@@ -75,14 +76,15 @@
       }
 
       .standard-tags {
-        width: 75px;
-        height: 36px;
+        width: 90px;
+        height: 35px;
         padding: 2px;
         overflow: hidden;
         object-fit: contain;
+        text-align: center;
+        text-overflow: ellipsis;
         border-radius: 3px;
         float: left;
-        margin-left: 10px;
       }
 
       .title {

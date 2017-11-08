@@ -1,9 +1,16 @@
-<div class="learning-target" style= {{safe-html (concat "border-color:" (grade-color learningTarget.mastery))}}>
-  <div class="header-content">
+<div class="learning-target">
+  <div class="header-content" style="border-color:{{grade-color (if (gt learningTarget.mastery 0) learningTarget.mastery 'NA')}}">
     <div class="learning-target-description">
-      <div class="standard-tags" style= {{safe-html (concat "color:" (grade-color learningTarget.mastery))}}>
-        <span class="title">{{learningTarget.displayCode}}</span>
-      </div>
+      {{#if (gt learningTarget.mastery 0)}}
+        <div class="standard-tags" style= {{safe-html (concat "background-color:" (grade-color learningTarget.mastery))}}>
+          <span class="title">{{learningTarget.displayCode}}</span>
+        </div>
+      {{else}}
+        <div class="standard-tags" style="background-color:{{grade-color 'NA'}}">
+          <span class="title">{{learningTarget.displayCode}}</span>
+        </div>
+      {{/if}}
+
       <div class="standard-score">
         {{#if (gt learningTarget.mastery 0)}}
           <span class="percentage" style= {{safe-html (concat "color:" (grade-color learningTarget.mastery))}}>{{learningTarget.mastery}}%</span>

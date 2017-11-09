@@ -4,6 +4,7 @@
     background-color: $white;
     margin: 15px 0;
     display: flex;
+
     .header-content {
       display: inline-block;
       font-size: $font-size-h6;
@@ -14,6 +15,8 @@
 
       .score {
         width: 61px;
+        width: 380px;
+        margin: 0 15px;
         height: 57px;
         border-radius: 5px;
         color: $white;
@@ -28,16 +31,17 @@
 
       .learning-target-description {
         width: 100%;
-        overflow: hidden;
+
         .description {
-          height: 40px;
+          height: 60px;
           float: left;
-          width: 490px;
-          margin: 0px 25px;
+          width: 430px;
+
           .desc-align {
-            @include ellipsis($font-size: 13px, $line-height: 1.5, $lines-to-show: 2, $excerpt-bg: $white);
+            @include ellipsis($font-size: 13px, $line-height: 1.5, $lines-to-show: 3);
             margin-left: 10px;
-            width: 490px;
+            width: 430px;
+            position: absolute;
           }
         }
         @media (max-width: $screen-xs) {
@@ -47,10 +51,15 @@
 
         .standard-score {
           float: left;
+          width: 80px;
+          margin-right: 10px;
+          height: 35px;
+          text-align: center;
+
           .performance {
             height: 29px;
+
             .no-percentage {
-              margin-left: 24px;
               font-size: 35px;
               font-weight: 600;
               line-height: 3px;
@@ -59,7 +68,6 @@
           }
 
           .percentage {
-            margin-left: 24px;
             font-size: 25px;
             font-weight: 600;
             line-height: 31px;
@@ -68,15 +76,25 @@
       }
 
       .questions {
-        min-width: 165px;
-        display: none;
+        max-width: 330px;
+        display: block;
+        float: left;
+        max-width: 330px;
+        margin-left: 10px;
+        height: 50px;
+        border-left: 1px solid #b8bfc4;
         @media (min-width: $screen-xs) {
           display: block;
+        }
+        span {
+          font-size: 13px;
+          margin-left: 11px;
         }
       }
 
       .standard-tags {
         width: 90px;
+        margin: 4px 0 0 0px;
         height: 35px;
         padding: 2px;
         overflow: hidden;
@@ -96,13 +114,20 @@
     .learning-target-description,
     .questions {
       padding: 0 10px 0 20px;
+
       .gru-bubbles {
         .bubbles-list {
           flex-direction: row;
           height: 20px;
-          padding: 0px;
+          padding: 0;
           margin-left: 10px;
           width: auto;
+
+          li {
+            display: inline-block;
+            padding: 0;
+            margin: 0 4px 3px 0;
+          }
         }
       }
     }

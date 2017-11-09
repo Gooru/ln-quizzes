@@ -110,6 +110,9 @@
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
+      &.only-oe {
+        color: $light-200 !important;
+      }
       @media (min-width: $screen-xs) {
         width: 160px;
         height: 106px;

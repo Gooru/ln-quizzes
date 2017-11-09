@@ -175,7 +175,7 @@ export function getReactionIcon(reactionValue) {
  */
 export function getGradeColor(grade) {
   var bracket = GRADING_SCALE.length - 1;
-  var color = '#949A9F'; // Default color - $dark-100
+  var color = '#E3E5EA'; // Default color
 
   if (isNumeric(grade)) {
     for (; bracket >= 0; bracket--) {
@@ -184,8 +184,6 @@ export function getGradeColor(grade) {
         break;
       }
     }
-  } else {
-    Ember.Logger.error(`Grade value: ${grade} is not a numeric value`);
   }
   return color;
 }
@@ -370,10 +368,14 @@ export function replaceMathExpression(text) {
   var questionText = $.parseHTML(text);
   var newQuestionText = '';
   $.each(questionText, function(i, el) {
-    const latex = $(el).find('.source').text();
+    const latex = $(el)
+      .find('.source')
+      .text();
     if (latex.length > 0) {
       const mathToSave = `<span class='gru-math-expression'><span class='source' hidden>${latex}</span>$$${latex}$$</span>`;
-      $(el).empty().append(mathToSave);
+      $(el)
+        .empty()
+        .append(mathToSave);
     }
     if (el.outerHTML) {
       newQuestionText = newQuestionText.concat(el.outerHTML);

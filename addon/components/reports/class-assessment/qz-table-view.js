@@ -329,7 +329,7 @@ export default Ember.Component.extend({
   initStudentsHeader: function() {
     return {
       label: this.get('i18n').t('reports.qz-table-view.student').string,
-      value: 'fullName',
+      value: 'lastFirstName',
       sortFunction: alphabeticalStringSort
     };
   }

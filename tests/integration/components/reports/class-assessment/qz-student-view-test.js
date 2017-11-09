@@ -172,12 +172,12 @@ test('Layout', function(assert) {
   $firstPanelHeading = $firstStudentPerformanceBox.find('.panel-heading');
   assert.equal(
     T.text($firstPanelHeading.find('.name')),
-    'Zuñiga, Andres Charpentier',
+    'Alfaro, David Zumbado',
     'Wrong first alphabetical name'
   );
   assert.equal(
     T.text($firstPanelHeading.find('.score')),
-    '67%',
+    '33%',
     'Wrong first alphabetical score'
   );
 
@@ -187,12 +187,12 @@ test('Layout', function(assert) {
   $lastPanelHeading = $lastStudentPerformanceBox.find('.panel-heading');
   assert.equal(
     T.text($lastPanelHeading.find('.name')),
-    'Chavarria, Lorena Prendas',
+    'Zuñiga, Andres Charpentier',
     'Wrong last alphabetical name'
   );
   assert.equal(
     T.text($lastPanelHeading.find('.score')),
-    '100%',
+    '67%',
     'Wrong last alphabetical score'
   );
 });

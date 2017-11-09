@@ -136,8 +136,8 @@ test('Report context: websocket start message', function(assert) {
     assert.equal(currentURL(), '/reports/context/context-simple-id');
     assert.equal(
       Ember.$('.qz-student-performance-box').length,
-      3,
-      'Should show 3 students'
+      2,
+      'Should show 2 students'
     );
     assert.equal(
       Ember.$('.qz-student-performance-box:first .score').text(),
@@ -146,7 +146,7 @@ test('Report context: websocket start message', function(assert) {
     );
     assert.equal(
       Ember.$('.qz-student-performance-box:last .score').text(),
-      '',
+      '67%',
       'Score for student 2 shows correctly'
     );
     done();

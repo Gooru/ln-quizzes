@@ -268,7 +268,9 @@ export default Ember.Component.extend({
       return this.get('students').map(function(student) {
         return {
           id: student.get('id'),
-          header: anonymous ? student.get('code') : student.get('fullName'),
+          header: anonymous
+            ? student.get('code')
+            : student.get('lastFirstName'),
           lastFirstName: anonymous
             ? student.get('code')
             : student.get('lastFirstName'),

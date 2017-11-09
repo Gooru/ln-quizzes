@@ -268,7 +268,9 @@ export default Ember.Component.extend({
       return this.get('students').map(function(student) {
         return {
           id: student.get('id'),
-          header: anonymous ? student.get('code') : student.get('fullName'),
+          header: anonymous
+            ? student.get('code')
+            : student.get('lastFirstName'),
           lastFirstName: anonymous
             ? student.get('code')
             : student.get('lastFirstName'),
@@ -327,7 +329,7 @@ export default Ember.Component.extend({
   initStudentsHeader: function() {
     return {
       label: this.get('i18n').t('reports.qz-table-view.student').string,
-      value: 'fullName',
+      value: 'lastFirstName',
       sortFunction: alphabeticalStringSort
     };
   }

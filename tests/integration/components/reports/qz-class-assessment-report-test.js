@@ -47,6 +47,7 @@ test('Default Layout', function(assert) {
         currentResourceId: 'resource-1-id',
         profileId: 'user-1-id',
         profileName: 'user-1-name',
+        lastFirstName: 'user-1-name',
         profileCode: 'user-1-code',
         resourceResults: Ember.A([
           QuestionResult.create({
@@ -67,6 +68,7 @@ test('Default Layout', function(assert) {
         currentResourceId: 'resource-1-id',
         profileId: 'user-2-id',
         profileName: 'user-2-name',
+        lastFirstName: 'user-2-name',
         profileCode: 'user-2-code',
         resourceResults: Ember.A([
           QuestionResult.create({
@@ -90,9 +92,7 @@ test('Default Layout', function(assert) {
   this.render(hbs`{{reports/qz-class-assessment-report
     reportData=reportData
   }}`);
-
   const $component = this.$();
-
   const $summary = $component.find('.qz-summary');
   T.exists(assert, $summary, 'Missing question summary');
 

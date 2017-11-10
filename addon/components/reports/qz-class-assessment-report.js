@@ -66,8 +66,7 @@ export default Ember.Component.extend(ModalMixin, {
         resourceResults: Ember.computed.alias('reportEvent.resourceResults'),
         collection: assessment,
         isRealTime: this.get('isRealTime'),
-        showAttempts: this.get('showAttempts'),
-        output: 'RESULT NAME'
+        showAttempts: this.get('showAttempts')
       });
 
       let isCollection = contextResult.reportEvent.collection.isCollection;

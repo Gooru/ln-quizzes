@@ -15,8 +15,6 @@ export default ApplicationAdapter.extend(TokenMixin, {
    * Reads a Collection by id
    *
    * @param {string} collectionId
-   * @param {string} type collection|assessment
-   * @param {boolean} refresh indicates if the data should be refreshed from the repository
    * @returns {Promise}
    */
   readCollection: function(collectionId, type, refresh = false) {
@@ -34,13 +32,11 @@ export default ApplicationAdapter.extend(TokenMixin, {
   },
 
   /**
-     * Reads a Collection by id
-     *
-     * @param {string} collectionId
-     * @param {string} type collection
-     * @param {boolean} refresh indicates if the data should be refreshed from the repository
-     * @returns {Promise}
-     */
+   * Reads a Collection by id
+   *
+   * @param {string} collectionId
+   * @returns {Promise}
+   */
   getCollection: function(collectionId) {
     const adapter = this;
     const namespace = adapter.get('collectionNameSpace');
@@ -54,13 +50,13 @@ export default ApplicationAdapter.extend(TokenMixin, {
   },
 
   /**
-     * Reads a Assesment by id
-     *
-     * @param {string} collectionId
-     * @param {string} type assessment
-     * @param {boolean} refresh indicates if the data should be refreshed from the repository
-     * @returns {Promise}
-     */
+   * Reads a Assesment by id
+   *
+   * @param {string} collectionId
+   * @param {string} type assessment
+   * @param {boolean} refresh indicates if the data should be refreshed from the repository
+   * @returns {Promise}
+   */
   getAssessment: function(collectionId) {
     const adapter = this;
     const namespace = adapter.get('assessmentNameSpace');

@@ -51,19 +51,26 @@
     {{/if}}
   </div>
   {{#if collection.isAssessment}}
-    <div class="grade" style={{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
-      <span class="percentage" >{{round-number contextResult.correctPercentage}}%</span>
+    <div class="grade {{if hasOnlyOEQuestion 'only-oe' ''}}" style={{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
+      {{#unless hasOnlyOEQuestion}}
+        <span class="percentage" >{{round-number contextResult.correctPercentage}}%</span>
+      {{else}}
+        <span class="percentage">--</span>
+      {{/unless}}
       <span class="attempts">
-              <span class="text">PERFORMANCE</span>
+        <span class="text">PERFORMANCE</span>
       </span>
     </div>
   {{else}}
-    {{#if hasQuestionScore}}
-      <div class="grade"  style={{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
-        <span class="percentage">{{round-number contextResult.reportEvent.averageScore}}%</span>
+    {{#if (or hasQuestionScore hasOnlyOEQuestion)}}
+      <div class="grade {{if hasOnlyOEQuestion 'only-oe' ''}}"  style={{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
+        {{#unless hasOnlyOEQuestion}}
+          <span class="percentage">{{round-number contextResult.correctPercentage}}%</span>
+        {{else}}
+          <span class="percentage">--</span>
+        {{/unless}}
         <span class="attempts">
-        <span class="text">PERFORMANCE</span>
-
+          <span class="text">PERFORMANCE</span>
         </span>
       </div>
     {{else}}

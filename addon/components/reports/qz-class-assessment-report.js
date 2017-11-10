@@ -5,6 +5,14 @@ import ContextResult from 'quizzes-addon/models/result/context';
 
 export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
+  // Dependencies
+  /**
+   * @type {CollectionService} collectionService
+   * @property {Ember.Service} Service to retrieve a collection
+   */
+  quizzesCollectionService: Ember.inject.service('quizzes/collection'),
+
+  // -------------------------------------------------------------------------
   // Attributes
 
   classNames: ['reports', 'qz-class-assessment-report'],
@@ -44,7 +52,6 @@ export default Ember.Component.extend(ModalMixin, {
           .findBy('id', resourceResult.get('resourceId'));
         resourceResult.set('resource', resource);
       });
-
       const contextResult = ContextResult.create({
         reportEvent,
         averageReaction: Ember.computed.alias('reportEvent.averageReaction'),
@@ -62,18 +69,53 @@ export default Ember.Component.extend(ModalMixin, {
         showAttempts: this.get('showAttempts')
       });
 
-      const modalModel = {
-        contextResult,
-        width: '80%'
-      };
-      this.actions.showModal.call(
-        this,
-        'reports.qz-assessment-report',
-        modalModel,
-        null,
-        'qz-assessment-report-modal',
-        true
-      );
+      let isCollection = contextResult.reportEvent.collection.isCollection;
+
+      const profile = Ember.Object.create({
+        username: contextResult.reportEvent.profileName
+      });
+
+      if (isCollection) {
+        this.get('quizzesCollectionService')
+          .getCollection(contextResult.reportEvent.collectionId)
+          .then(collectionData => {
+            contextResult.collection.thumbnailUrl = collectionData.thumbnailUrl;
+            const modalModel = {
+              contextResult,
+              width: '80%',
+              profile: profile
+            };
+
+            this.actions.showModal.call(
+              this,
+              'reports.qz-assessment-report',
+              modalModel,
+              null,
+              'qz-assessment-report-modal',
+              true
+            );
+          });
+      } else {
+        this.get('quizzesCollectionService')
+          .getAssessment(contextResult.reportEvent.collectionId)
+          .then(collectionData => {
+            contextResult.collection.thumbnailUrl = collectionData.thumbnailUrl;
+            const modalModel = {
+              contextResult,
+              width: '80%',
+              profile: profile
+            };
+
+            this.actions.showModal.call(
+              this,
+              'reports.qz-assessment-report',
+              modalModel,
+              null,
+              'qz-assessment-report-modal',
+              true
+            );
+          });
+      }
     },
 
     /**

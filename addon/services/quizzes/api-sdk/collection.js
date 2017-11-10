@@ -51,6 +51,13 @@ export default Ember.Service.extend({
     });
   },
 
+  /**
+   * Gets a Collection by id
+   * @param {string} collectionId
+   * @param {string} type collection
+   * @param {boolean} refresh
+   * @returns {Promise.<Collection>}
+   */
   getCollection: function(collectionId) {
     const service = this;
 
@@ -67,6 +74,14 @@ export default Ember.Service.extend({
         }, reject);
     });
   },
+
+  /**
+   * Gets a Assesment by id
+   * @param {string} collectionId
+   * @param {string} type assessment
+   * @param {boolean} refresh
+   * @returns {Promise.<Collection>}
+   */
 
   getAssessment: function(collectionId) {
     const service = this;

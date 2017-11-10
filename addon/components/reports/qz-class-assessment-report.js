@@ -70,17 +70,16 @@ export default Ember.Component.extend(ModalMixin, {
         output: 'RESULT NAME'
       });
 
-      let IsCollection = contextResult.reportEvent.collection.isCollection;
+      let isCollection = contextResult.reportEvent.collection.isCollection;
 
       const profile = Ember.Object.create({
         username: contextResult.reportEvent.profileName
       });
 
-      if (IsCollection) {
+      if (isCollection) {
         this.get('quizzesCollectionService')
           .getCollection(contextResult.reportEvent.collectionId)
           .then(collectionData => {
-            // this.get('contextResult.collection').set('thumbnailUrl', collectionData.thumbnailUrl);
             contextResult.collection.thumbnailUrl = collectionData.thumbnailUrl;
             const modalModel = {
               contextResult,
@@ -101,8 +100,6 @@ export default Ember.Component.extend(ModalMixin, {
         this.get('quizzesCollectionService')
           .getAssessment(contextResult.reportEvent.collectionId)
           .then(collectionData => {
-            // this.get('contextResult.collection').set('thumbnailUrl', collectionData.thumbnailUrl);
-
             contextResult.collection.thumbnailUrl = collectionData.thumbnailUrl;
             const modalModel = {
               contextResult,

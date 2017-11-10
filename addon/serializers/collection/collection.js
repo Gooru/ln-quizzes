@@ -47,6 +47,11 @@ export default Ember.Object.extend({
     });
   },
 
+  /**
+   * Normalize the Collection data into a Collection object
+   * @param payload
+   * @returns {Collection}
+   */
   normalizeGetCollection: function(payload) {
     const serializer = this;
     const basePath = serializer.get('session.cdnUrls.content');
@@ -80,6 +85,11 @@ export default Ember.Object.extend({
     });
   },
 
+  /**
+   * Normalize the Assesment data into Assesment object
+   * @param payload
+   * @returns {Assesment}
+   */
   normalizeGetAssessment: function(payload) {
     const serializer = this;
     const basePath = serializer.get('session.cdnUrls.content');

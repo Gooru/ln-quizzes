@@ -33,6 +33,14 @@ export default ApplicationAdapter.extend(TokenMixin, {
     return this.sendAjaxRequest(url, options);
   },
 
+  /**
+     * Reads a Collection by id
+     *
+     * @param {string} collectionId
+     * @param {string} type collection
+     * @param {boolean} refresh indicates if the data should be refreshed from the repository
+     * @returns {Promise}
+     */
   getCollection: function(collectionId) {
     const adapter = this;
     const namespace = adapter.get('collectionNameSpace');
@@ -45,6 +53,14 @@ export default ApplicationAdapter.extend(TokenMixin, {
     return this.sendAjaxRequest(url, options);
   },
 
+  /**
+     * Reads a Assesment by id
+     *
+     * @param {string} collectionId
+     * @param {string} type assessment
+     * @param {boolean} refresh indicates if the data should be refreshed from the repository
+     * @returns {Promise}
+     */
   getAssessment: function(collectionId) {
     const adapter = this;
     const namespace = adapter.get('assessmentNameSpace');

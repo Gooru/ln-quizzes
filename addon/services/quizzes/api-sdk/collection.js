@@ -51,6 +51,39 @@ export default Ember.Service.extend({
     });
   },
 
+  getCollection: function(collectionId) {
+    const service = this;
+
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service
+        .get('collectionAdapter')
+        .getCollection(collectionId)
+        .then(function(responseData) {
+          resolve(
+            service
+              .get('collectionSerializer')
+              .normalizeGetCollection(responseData)
+          );
+        }, reject);
+    });
+  },
+
+  getAssessment: function(collectionId) {
+    const service = this;
+
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service
+        .get('collectionAdapter')
+        .getAssessment(collectionId)
+        .then(function(responseData) {
+          resolve(
+            service
+              .get('collectionSerializer')
+              .normalizeGetAssessment(responseData)
+          );
+        }, reject);
+    });
+  },
   /**
    * Notifies a collection change
    * @param {string} collectionId

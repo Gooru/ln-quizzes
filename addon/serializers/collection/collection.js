@@ -1,7 +1,10 @@
 import Ember from 'ember';
 import ResourceSerializer from 'quizzes-addon/serializers/resource/resource';
 import CollectionModel from 'quizzes-addon/models/collection/collection';
-import { ASSESSMENT_SHOW_VALUES } from 'quizzes-addon/config/quizzes-config';
+import {
+  ASSESSMENT_SHOW_VALUES,
+  DEFAULT_IMAGES
+} from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Serializer for Collection
@@ -41,6 +44,72 @@ export default Ember.Object.extend({
           ? serializer.normalizeSettings(payload.metadata.setting || {})
           : null,
       title: payload.metadata ? payload.metadata.title : ''
+    });
+  },
+
+  normalizeGetCollection: function(payload) {
+    const serializer = this;
+    const basePath = serializer.get('session.cdnUrls.content');
+    const appRootPath = this.get('appRootPath'); //configuration appRootPath
+    const thumbnailUrl = payload.thumbnail
+      ? basePath + payload.thumbnail
+      : appRootPath + DEFAULT_IMAGES.COLLECTION;
+    const metadata = payload.metadata || {};
+    return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
+      id: payload.target_collection_id || payload.id,
+      pathId: payload.id,
+      title: payload.title,
+      learningObjectives: payload.learning_objective,
+      isVisibleOnProfile:
+        typeof payload.visible_on_profile !== 'undefined'
+          ? payload.visible_on_profile
+          : true,
+      courseId: payload.target_course_id || payload.course_id,
+      unitId: payload.target_unit_id || payload.unit_id,
+      lessonId: payload.target_lesson_id || payload.lesson_id,
+      creatorId: payload.creator_id,
+      ownerId: payload.owner_id,
+      collectionSubType: payload.target_content_subtype,
+      metadata,
+      centurySkills:
+        metadata['21_century_skills'] && metadata['21_century_skills'].length
+          ? metadata['21_century_skills']
+          : [],
+      format: payload.format || payload.target_content_type,
+      thumbnailUrl: thumbnailUrl
+    });
+  },
+
+  normalizeGetAssessment: function(payload) {
+    const serializer = this;
+    const basePath = serializer.get('session.cdnUrls.content');
+    const appRootPath = this.get('appRootPath'); //configuration appRootPath
+    const thumbnailUrl = payload.thumbnail
+      ? basePath + payload.thumbnail
+      : appRootPath + DEFAULT_IMAGES.COLLECTION;
+    const metadata = payload.metadata || {};
+    return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
+      id: payload.target_collection_id || payload.id,
+      pathId: payload.id,
+      title: payload.title,
+      learningObjectives: payload.learning_objective,
+      isVisibleOnProfile:
+        typeof payload.visible_on_profile !== 'undefined'
+          ? payload.visible_on_profile
+          : true,
+      courseId: payload.target_course_id || payload.course_id,
+      unitId: payload.target_unit_id || payload.unit_id,
+      lessonId: payload.target_lesson_id || payload.lesson_id,
+      creatorId: payload.creator_id,
+      ownerId: payload.owner_id,
+      collectionSubType: payload.target_content_subtype,
+      metadata,
+      centurySkills:
+        metadata['21_century_skills'] && metadata['21_century_skills'].length
+          ? metadata['21_century_skills']
+          : [],
+      format: payload.format || payload.target_content_type,
+      thumbnailUrl: thumbnailUrl
     });
   },
 

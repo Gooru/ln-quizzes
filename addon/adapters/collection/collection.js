@@ -7,6 +7,10 @@ export default ApplicationAdapter.extend(TokenMixin, {
    */
   namespace: '/quizzes/api/v1/collections',
 
+  collectionNameSpace: '/api/nucleus/v1/collections',
+
+  assessmentNameSpace: '/api/nucleus/v1/assessments',
+
   /**
    * Reads a Collection by id
    *
@@ -24,6 +28,30 @@ export default ApplicationAdapter.extend(TokenMixin, {
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
       processData: false,
+      headers: this.get('headers')
+    };
+    return this.sendAjaxRequest(url, options);
+  },
+
+  getCollection: function(collectionId) {
+    const adapter = this;
+    const namespace = adapter.get('collectionNameSpace');
+    const url = `${namespace}/${collectionId}`;
+    const options = {
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      headers: this.get('headers')
+    };
+    return this.sendAjaxRequest(url, options);
+  },
+
+  getAssessment: function(collectionId) {
+    const adapter = this;
+    const namespace = adapter.get('assessmentNameSpace');
+    const url = `${namespace}/${collectionId}`;
+    const options = {
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
       headers: this.get('headers')
     };
     return this.sendAjaxRequest(url, options);

@@ -40,7 +40,7 @@
           .desc-align {
             @include ellipsis($font-size: 13px, $line-height: 1.5, $lines-to-show: 3);
             margin-left: 10px;
-            width: 430px;
+            width: 420px;
             position: absolute;
           }
         }
@@ -88,7 +88,6 @@
         }
         span {
           font-size: 13px;
-          margin-left: 11px;
         }
       }
 
@@ -120,7 +119,6 @@
           flex-direction: row;
           height: 20px;
           padding: 0;
-          margin-left: 10px;
           width: auto;
 
           li {

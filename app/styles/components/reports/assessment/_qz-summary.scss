@@ -94,6 +94,7 @@
       }
       .img-responsive {
         height: 100%;
+        width: 100%;
       }
     }
 
@@ -270,11 +271,10 @@
     }
 
     .bubbles {
-      width: 300px;
-      max-width: 300px;
+      width: 310px;
+      max-width: 310px;
       display: inline-block;
       overflow: auto;
-      overflow-y: hidden;
 
       .gru-bubbles {
         .bubbles-list {
@@ -295,6 +295,7 @@
 
     .bubbles::-webkit-scrollbar {
       height: 6px;
+      width: 3px;
     }
 
     .bubbles::-webkit-scrollbar-thumb {

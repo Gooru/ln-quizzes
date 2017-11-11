@@ -55,10 +55,9 @@ export default Ember.Object.extend({
   normalizeGetCollection: function(payload) {
     const serializer = this;
     const basePath = serializer.get('session.cdnUrls.content');
-    const appRootPath = this.get('appRootPath'); //configuration appRootPath
     const thumbnailUrl = payload.thumbnail
       ? basePath + payload.thumbnail
-      : appRootPath + DEFAULT_IMAGES.COLLECTION;
+      : DEFAULT_IMAGES.COLLECTION;
     const metadata = payload.metadata || {};
     return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.target_collection_id || payload.id,
@@ -93,10 +92,9 @@ export default Ember.Object.extend({
   normalizeGetAssessment: function(payload) {
     const serializer = this;
     const basePath = serializer.get('session.cdnUrls.content');
-    const appRootPath = this.get('appRootPath'); //configuration appRootPath
     const thumbnailUrl = payload.thumbnail
       ? basePath + payload.thumbnail
-      : appRootPath + DEFAULT_IMAGES.COLLECTION;
+      : DEFAULT_IMAGES.ASSESSMENT;
     const metadata = payload.metadata || {};
     return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.target_collection_id || payload.id,

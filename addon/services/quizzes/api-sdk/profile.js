@@ -55,5 +55,19 @@ export default Ember.Service.extend({
         .then(responses => Object.assign({}, ...responses))
         .then(resolve, reject)
     );
+  },
+
+  /**
+   * Gets the user Profile information of a given user id
+   *
+   * @returns {Promise}
+   */
+  readUserProfile: function(profileId) {
+    const service = this;
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      service.readProfiles([profileId]).then(function(profiles) {
+        resolve(profiles[profileId]);
+      }, reject);
+    });
   }
 });

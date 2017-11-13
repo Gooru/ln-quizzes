@@ -4,7 +4,7 @@
   @include justify-content(space-between);
   height: 100%;
   overflow-y: scroll;
-  margin: 0 0 15px 15px;
+  margin: 0 0 52px 15px;
 
   &::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -38,7 +38,7 @@
     height: auto;
   }
   .qz-content.resource {
-    height: 85%;
+    height: 100%;
   }
   .qz-resource-viewer-panel {
     .narration {

@@ -2,6 +2,7 @@
   min-height: 100%;
   overflow: hidden;
   height: 100%;
+  padding-top: 60px;
   .player {
     @include flexbox;
     @include flex-direction(row);

@@ -13,6 +13,9 @@ export default Ember.Component.extend({
   actions: {
     confirm() {
       this.sendAction('onConfirmFinish');
+    },
+    cancel() {
+      this.sendAction('onCancelFinish');
     }
   }
 });

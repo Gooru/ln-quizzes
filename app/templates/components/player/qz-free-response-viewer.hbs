@@ -19,9 +19,7 @@
         {{qz-rich-text-editor content=answer model=answer valuePath='description' didValidate=didValidate}}
       </div>
     </div>
-    <div class="actions">
-      <button type="submit" class="save btn btn-success" disabled="{{if isSubmitDisabled true null}}" {{action 'submitQuestion'}}>{{t buttonTextKey}}</button>
-    </div>
+    
   </div>
 {{/unless}}
 {{#if showPanel}}

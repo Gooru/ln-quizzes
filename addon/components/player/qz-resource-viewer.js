@@ -205,5 +205,10 @@ export default Ember.Component.extend({
       return true;
     }
     return false;
-  })
+  }),
+
+  /**
+  * @property {boolean} isNextEnabled make ture by default for resource types
+  */
+  isNextEnabled: true
 });

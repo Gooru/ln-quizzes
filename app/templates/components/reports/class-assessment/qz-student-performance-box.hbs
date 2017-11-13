@@ -2,7 +2,7 @@
 
   {{#if student.isAttemptStarted}}
     <div class="panel-heading {{ if anonymous 'anonymous'}}" style={{startedStyle}} {{action 'selectStudent'}}>
-      <span class="name ellipsis">{{ if anonymous student.profileCode student.profileName }}</span>
+      <span class="name ellipsis">{{ if anonymous student.profileCode student.lastFirstName }}</span>
       {{#unless anonymous}}
         {{#unless student.isAttemptFinished}}
           <span class="question-in-progress">{{gru-icon name='av_timer'}}</span>
@@ -14,7 +14,7 @@
     </div>
   {{else}}
     <div class="panel-heading {{ if anonymous 'anonymous'}} not-started" {{action 'selectStudent'}}>
-        <span class="name ellipsis">{{ if anonymous student.profileCode student.profileName }}</span>
+        <span class="name ellipsis">{{ if anonymous student.profileCode student.lastFirstName }}</span>
     </div>
   {{/if}}
 

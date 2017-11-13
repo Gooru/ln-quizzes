@@ -70,7 +70,7 @@ export default Ember.Component.extend({
     return results.map(function(questionResult) {
       return Ember.Object.create({
         label: questionResult.get('resource.sequence'),
-        status: questionResult.get('correct') ? 'correct' : 'incorrect',
+        status: questionResult.get('attemptStatus'),
         value: questionResult.get('resourceId')
       });
     });

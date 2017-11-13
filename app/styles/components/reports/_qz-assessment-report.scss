@@ -1,9 +1,11 @@
 .reports.qz-assessment-report {
   width: 100%;
-  padding: 10px 20px;
   background-color: $light-100;
+  margin-top: 65px;
+  margin-bottom: 30px;
 
   .qz-assessment-summary {
+    background: $white;
     .reports-owner {
       height: 24px;
       border-bottom: 1px solid $light-200;
@@ -12,28 +14,12 @@
         margin-left: 14px;
       }
     }
-
-    .summary-mastry-question {
-      max-height: 400px;
-      overflow: auto;
-    }
-
-    .summary-mastry-question::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .summary-mastry-question::-webkit-scrollbar-thumb {
-      border-radius: 3px;
-      background-color: $gray-harder;
-    }
   }
   /* Small devices (tablets, 768px and up) */
   @media (min-width: $screen-sm-min) {
-    padding: 20px 10px;
   }
   /* Medium devices (desktops, 992px and up) */
   @media (min-width: $screen-md-min) {
-    padding: 20px 50px;
   }
 
   .hidden-report {

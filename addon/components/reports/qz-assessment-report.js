@@ -78,6 +78,9 @@ export default Ember.Component.extend({
   onInit: Ember.on('init', function() {
     if (this.get('model')) {
       this.set('contextResult', this.get('model').contextResult);
+      if (this.get('model').profile) {
+        this.set('profile', this.get('model').profile);
+      }
     }
   }),
 

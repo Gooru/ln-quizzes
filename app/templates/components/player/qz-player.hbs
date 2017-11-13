@@ -1,28 +1,20 @@
 {{#if showConfirmation}}
   {{player.qz-player-confirmation attempts=attempts collection=collection context=context onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection"}}
 {{else}}
+  {{#if showPlayerHeader}}
+      {{player.qz-player-header
+        collection=collection
+        onRemixCollection="remixCollection"
+        onClosePlayer="closePlayer"
+        isTeacher=isTeacher
+        isAnonymous=isAnonymous
+      }}
+  {{/if}}
     <div class="component player">
-      {{#unless showReport}}
-          <div class="qz-aside">
-            {{player.qz-navigator
-              isTeacher=isTeacher
-              collection=collection
-              unit=unit
-              lesson=lesson
-              classId=classId
-              course=course
-              onRemixCollection="remixCollection"
-              showBackToCourseMap=showBackToCourseMap
-              showBackToCollection=showBackToCollection
-              showBackButton=showBackButton
-              onClosePlayer="closePlayer"
-            }}
-          </div>
-      {{/unless}}
         <div class="qz-main {{if showFinishConfirmation 'submission-confirm'}}" role="main">
           {{#if collection.hasResources }}
             {{#if showFinishConfirmation}}
-              {{player.qz-submit-confirmation onConfirmFinish='finishCollection'}}
+              {{player.qz-submit-confirmation onConfirmFinish='finishCollection' onCancelFinish='resumeCollection'}}
             {{else}}
               {{#if resource}}
                 {{player.qz-viewer
@@ -32,13 +24,18 @@
                 resourceResult=resourceResult
                 role=role
                 submitted=contextResult.submitted
-                onSubmitQuestion="submitQuestion"}}
+                onSubmitQuestion="submitQuestion"
+                isNextEnabled="isNextEnabled"}}
                 {{player.qz-player-footer
                   resource=resource
                   isNavigationDisabled=isNavigationDisabled
                   isTeacher=isTeacher
                   submitted=contextResult.submitted
                   collection=collection
+                  unit=unit
+                  lesson=lesson
+                  classId=classId
+                  course=course
                   resourceResults=resourcesPlayer
                   selectedResourceId=resourceId
                   showFeedback=showFeedback
@@ -52,6 +49,7 @@
                   showNext=showNext
                   onPreviousResource="previousResource"
                   onNextResource="nextResource"
+                  isNextEnabled=isNextEnabled
                 }}
               {{/if}}
             {{/if}}

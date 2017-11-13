@@ -5,7 +5,7 @@ import T from 'dummy/tests/helpers/assert';
 moduleForAcceptance('Acceptance | player');
 
 test('Layout', function(assert) {
-  assert.expect(5);
+  assert.expect(4);
   visit('/player/context-simple-id');
 
   andThen(function() {
@@ -20,15 +20,11 @@ test('Layout', function(assert) {
         $playerContainer.find('.qz-main .qz-viewer'),
         'Missing player viewer'
       );
-      T.exists(
-        assert,
-        $playerContainer.find('.qz-aside .qz-navigator'),
-        'Missing player navigator'
-      );
+
       T.exists(
         assert,
         $playerContainer.find('.qz-player-footer'),
-        'Missing player navigator'
+        'Missing player footer'
       );
     });
   });

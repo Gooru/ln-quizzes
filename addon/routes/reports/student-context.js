@@ -27,6 +27,11 @@ export default Ember.Route.extend({
    */
   quizzesConfigurationService: Ember.inject.service('quizzes/configuration'),
 
+  /**
+   * @property {Service} profile service
+   */
+  quizzesProfileService: Ember.inject.service('quizzes/profile'),
+
   // -------------------------------------------------------------------------
   // Actions
 
@@ -79,7 +84,10 @@ export default Ember.Route.extend({
                   attemptData,
                   collection: route
                     .get('quizzesCollectionService')
-                    .readCollection(attemptData.collectionId, type)
+                    .readCollection(attemptData.collectionId, type),
+                  profile: route
+                    .get('quizzesProfileService')
+                    .readUserProfile(profileId)
                 })
               )
       );
@@ -89,6 +97,7 @@ export default Ember.Route.extend({
     if (model && model.attemptData) {
       model.attemptData.setCollection(model.collection);
       controller.set('attemptData', model.attemptData);
+      controller.set('profile', model.profile);
     }
   }
 });

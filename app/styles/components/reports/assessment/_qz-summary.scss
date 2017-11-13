@@ -49,21 +49,21 @@
           padding-top: 10px;
           @media (min-width: $screen-xs) {
             padding-top: 16px;
-            padding-bottom: 20px;
+            padding-bottom: 9px;
           }
         }
 
         &.time-spent {
           span {
-            font-size: $font-size-h4;
+            font-size: 20px;
             line-height: $font-size-h4;
           }
 
           i {
-            font-size: $font-size-h3;
-            line-height: $font-size-h3;
+            font-size: 20px;
+            line-height: 19px;
             vertical-align: middle;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
           }
         }
       }
@@ -73,16 +73,13 @@
       width: 71px;
       height: 71px;
       padding: 0;
-      margin-top: 12px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+      margin-top: 15px;
       -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
       flex: 0 1 auto;
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
-      background-image: url("quizzes-addon/quizzes/profile.png");
       background-position: 0;
       background-repeat: no-repeat;
       background-size: contain;
@@ -95,14 +92,18 @@
       @media (min-width: $screen-lg-min) {
         height: 71px;
       }
+      .img-responsive {
+        height: 100%;
+        width: 100%;
+      }
     }
 
     .grade {
-      width: 143px;
+      width: 160px;
       height: 106px;
       padding: 10px 25px;
       text-align: left;
-      border-left: 2px solid $yellow-400;
+      border-left: 2px solid;
       color: $white;
       -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
@@ -110,10 +111,13 @@
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
+      &.only-oe {
+        color: $light-200 !important;
+      }
       @media (min-width: $screen-xs) {
-        width: 143px;
+        width: 160px;
         height: 106px;
-        padding: 23px 0 0;
+        padding: 20px 0 0;
         text-align: center;
       }
       @media (min-width: $screen-lg-min) {
@@ -124,7 +128,6 @@
         &.percentage {
           font-size: $font-size-h3;
           line-height: $font-size-h3;
-          color: $yellow-400;
           @media (min-width: $screen-xs) {
             display: inline-block;
             font-size: $font-size-h2;
@@ -149,7 +152,6 @@
 
           .text {
             font-size: 12px;
-            color: $yellow-400;
             line-height: $font-size-h6;
           }
           @media (min-width: $screen-xs) {
@@ -171,17 +173,17 @@
       min-height: 133px;
       @media (min-width: $screen-xs) {
         margin: 0;
-        width: 425px;
+        width: 600px;
         height: 164px;
       }
       @media (min-width: $screen-lg-min) {
         height: 133px;
-        width: 425px;
+        width: 600px;
       }
 
       h5 {
         margin: 0;
-        width: 232px;
+        width: 450px;
         height: 40px;
         font-size: 16px;
         line-height: 1.25;
@@ -269,15 +271,33 @@
     }
 
     .bubbles {
-      width: 400px;
-      max-width: 400px;
+      width: 310px;
+      max-width: 310px;
       display: inline-block;
       overflow: auto;
-      overflow-y: hidden;
+
+      .gru-bubbles {
+        .bubbles-list {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          list-style: none;
+          padding: 10px 0 0 0;
+          margin: 0;
+          li {
+            display: inline-block;
+            padding: 0;
+            margin: 0px 7px 10px 0;
+          }
+        }
+      }
     }
+
     .bubbles::-webkit-scrollbar {
       height: 6px;
+      width: 3px;
     }
+
     .bubbles::-webkit-scrollbar-thumb {
       border-radius: 3px;
       background-color: $gray-harder;

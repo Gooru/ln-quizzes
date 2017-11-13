@@ -85,9 +85,11 @@ export default Ember.Component.extend(QuestionMixin, {
    * @return {Array}
    */
   mergeArrays: function(sentences, answers) {
+    let mergeArrays = Ember.A();
     answers.forEach(function(item, index) {
-      sentences.insertAt(index * 2 + 1, item);
+      mergeArrays.pushObject(sentences.get(index));
+      mergeArrays.pushObject(item);
     });
-    return sentences;
+    return mergeArrays;
   }
 });

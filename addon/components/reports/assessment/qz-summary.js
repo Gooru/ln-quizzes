@@ -103,6 +103,37 @@ export default Ember.Component.extend({
     }
   ),
 
+  /**
+   * It has the total number of  question count.
+   * @property {Number}
+   */
+  questionCount: 0,
+
+  /**
+   * It has the total number of  resource count.
+   * @property {Number}
+   */
+  resourceCount: 0,
+
+  /**
+   * It has the total number of  OE question count.
+   * @property {Number}
+   */
+  oeQuestionCount: 0,
+
+  hasOnlyOEQuestion: Ember.computed(
+    'questionCount',
+    'resourceCount',
+    'oeQuestionCount',
+    function() {
+      return (
+        this.get('oeQuestionCount') > 0 &&
+        this.get('resourceCount') === 0 &&
+        this.get('questionCount') === 0
+      );
+    }
+  ),
+
   // -------------------------------------------------------------------------
   // Methods
 

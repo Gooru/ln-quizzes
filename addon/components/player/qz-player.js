@@ -27,7 +27,7 @@ export default Ember.Component.extend(ModalMixin, {
    * @requires service:notifications
    */
   quizzesNotifications: Ember.inject.service('quizzes/notifications'),
-  
+
   /**
    * @requires service:i18n
    */
@@ -44,6 +44,12 @@ export default Ember.Component.extend(ModalMixin, {
   // Actions
 
   actions: {
+    /**
+    * Action triggered when the user completed a answer
+    */
+    isNextEnabled: function(isAnswerCompleted) {
+      this.set('isNextEnabled', isAnswerCompleted);
+    },
     /**
      * Action triggered when the user closes the content player
      */
@@ -73,6 +79,10 @@ export default Ember.Component.extend(ModalMixin, {
      */
     finishCollection: function() {
       this.finishCollection();
+    },
+
+    resumeCollection: function() {
+      this.set('showFinishConfirmation', false);
     },
 
     /**
@@ -369,12 +379,9 @@ export default Ember.Component.extend(ModalMixin, {
    * If the next button should be shown
    * @property {boolean}
    */
-  showNext: Ember.computed('resource', 'isNavigationDisabled', function() {
+  showNext: Ember.computed('resource', function() {
     const resource = this.get('resource');
-    return (
-      !!this.get('collection').nextResource(resource) &&
-      !this.get('isNavigationDisabled')
-    );
+    return this.get('collection').nextResource(resource);
   }),
 
   /**
@@ -394,6 +401,11 @@ export default Ember.Component.extend(ModalMixin, {
    * @property {function}
    */
   onClosePlayer: null,
+
+  /**
+  * Check whether next button is enabled or not
+  */
+  isNextEnabled: true,
 
   // -------------------------------------------------------------------------
   // Methods

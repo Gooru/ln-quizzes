@@ -8,6 +8,7 @@
       margin: 0 20px 10px 0;
       h4 {
         margin-top: 0;
+        margin-left: 21px;
       }
     }
 
@@ -125,6 +126,14 @@
         display: inline-flex;
       }
     }
+    .question-score span.skipped {
+      color: $gray-lighter;
+
+      i {
+        display: inline-flex;
+        margin-right: 67px;
+      }
+    }
     .question-reaction div {
       margin: 10px auto;
     }
@@ -178,6 +187,7 @@
 
         h4 {
           margin-bottom: 5px;
+          float: left;
         }
       }
     }

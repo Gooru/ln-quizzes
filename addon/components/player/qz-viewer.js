@@ -22,6 +22,14 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Actions
   actions: {
+    /**
+    * Action triggered when the user completed a answer
+    * @param {boolean} isAnswerCompleted
+    * Return to parent component
+    */
+    isNextEnabled: function(isAnswerCompleted) {
+      this.sendAction('isNextEnabled', isAnswerCompleted);
+    },
     /***
      * Return to previous resource
      * @param {Resource} question

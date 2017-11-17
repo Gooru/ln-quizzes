@@ -12,9 +12,8 @@ import {
  * @returns {number} - -1 if 'a' should go before 'b'; 1 if 'b' should go before 'a'; or else, 0.
  */
 export function alphabeticalStringSort(a, b) {
-  const lowerCaseA = a.toLowerCase();
-  const lowerCaseB = b.toLowerCase();
-
+  const lowerCaseA = a ? a.toLowerCase() : a;
+  const lowerCaseB = b ? b.toLowerCase() : b;
   return lowerCaseA < lowerCaseB ? -1 : lowerCaseA > lowerCaseB ? 1 : 0;
 }
 

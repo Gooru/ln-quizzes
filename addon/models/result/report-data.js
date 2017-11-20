@@ -10,12 +10,6 @@ import QuestionResult from 'quizzes-addon/models/result/question';
  *
  */
 export default Ember.Object.extend({
-  /**
-   * @type {ProfileService} profileService
-   * @property {Ember.Service} Service to send profile related events
-   */
-  quizzesProfileService: Ember.inject.service('quizzes/profile'),
-
   // -------------------------------------------------------------------------
   // Events
 

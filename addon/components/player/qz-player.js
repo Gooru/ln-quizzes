@@ -257,7 +257,7 @@ export default Ember.Component.extend(ModalMixin, {
    * Indicates if the teacher is playing this collection
    * @property {boolean}
    */
-  isTeacher: Ember.computed.not('isStudent'),
+  isTeacher: Ember.computed.equal('role', 'teacher'),
 
   /**
    * Indicates if the current resource type is resource

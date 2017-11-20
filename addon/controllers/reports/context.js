@@ -115,7 +115,6 @@ export default Ember.Controller.extend(ConfigMixin, {
   reportDataLoaded: Ember.observer('reportData', function() {
     const reportData = this.get('reportData');
     const contextId = reportData.get('contextId');
-
     if (reportData) {
       this.connectWithWebSocket(contextId, reportData);
     }
@@ -153,9 +152,18 @@ export default Ember.Controller.extend(ConfigMixin, {
         // Subscribe to listen for live messages
         webSocketClient.subscribe(`/topic/${channel}`, function(message) {
           const eventMessage = JSON.parse(message.body);
+          reportData.parseEvent(eventMessage);
           let profilePromise = Ember.RSVP.resolve();
           const profileId = eventMessage.profileId;
-          if (eventMessage.eventName === CONTEXT_EVENT_TYPES.START) {
+          const profileData = reportData.reportEvents.findBy(
+            'profileId',
+            profileId
+          );
+          const isProfileNameExists = profileData.get('lastFirstName');
+          if (
+            eventMessage.eventName === CONTEXT_EVENT_TYPES.START &&
+            !isProfileNameExists
+          ) {
             profilePromise = controller
               .get('quizzesProfileService')
               .readProfiles([profileId]);
@@ -163,9 +171,8 @@ export default Ember.Controller.extend(ConfigMixin, {
           profilePromise.then(profiles => {
             const profile = profiles ? profiles[profileId] : null;
             if (profile) {
-              eventMessage.profileName = profile.get('fullName');
+              reportData.updatedProfileName(profileId, profile);
             }
-            reportData.parseEvent(eventMessage);
           });
         });
       },

@@ -171,6 +171,13 @@ export default Ember.Object.extend({
     }
   },
 
+  updatedProfileName: function(profileId, profile) {
+    const oldReportEvents = this.findByProfileId(profileId);
+    oldReportEvents[0].set('lastFirstName', profile.get('lastFirstName'));
+    oldReportEvents[0].set('profileName', profile.get('fullName'));
+    oldReportEvents[0].incrementProperty('updated');
+  },
+
   /**
    * Parse on resource event data from web socket
    * @param {Object} eventData
@@ -197,10 +204,11 @@ export default Ember.Object.extend({
   parseStartEvent: function(eventData) {
     if (eventData.eventBody.isNewAttempt) {
       const oldReportEvents = this.findByProfileId(eventData.profileId);
+
       const properties = {
         currentResourceId: eventData.eventBody.currentResourceId,
         profileId: eventData.profileId,
-        profileName: eventData.profileName,
+        profileName: '',
         isAttemptStarted: true,
         resourceResults: this.get('collection.resources').map(res =>
           QuestionResult.create(Ember.getOwner(this).ownerInjection(), {

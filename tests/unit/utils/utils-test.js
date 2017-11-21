@@ -169,24 +169,24 @@ test('formatTimeInSeconds', function(assert) {
 
 test('getAnswerResultIcon', function(assert) {
   assert.equal(
-    getAnswerResultIcon(true),
-    '<span class="score answer-correct"><i class="gru-icon material-icons">done</i></span>'
+    getAnswerResultIcon('correct'),
+    '<span class="score answer-correct"><i class="gru-icon material-icons">ic_done_all</i></span>'
   );
   assert.equal(
-    getAnswerResultIcon(false),
+    getAnswerResultIcon('incorrect'),
     '<span class="score answer-incorrect"><i class="gru-icon material-icons">clear</i></span>'
   );
   assert.equal(
-    getAnswerResultIcon(null),
-    '<span class="score answer-undefined"></span>'
+    getAnswerResultIcon('skipped'),
+    '<span class="score answer-skipped"></span>'
   );
   assert.equal(
-    getAnswerResultIcon(undefined),
-    '<span class="score answer-undefined"></span>'
+    getAnswerResultIcon('extended_text'),
+    '<span class="score answer-extended_text"></span>'
   );
   assert.equal(
     getAnswerResultIcon(''),
-    '<span class="score answer-undefined"></span>'
+    '<span class="score answer-not-started"></span>'
   );
 });
 
@@ -201,11 +201,11 @@ test('getScoreString', function(assert) {
   );
   assert.equal(
     getAnswerResultIcon(undefined),
-    '<span class="score answer-undefined"></span>'
+    '<span class="score answer-not-started"></span>'
   );
   assert.equal(
     getAnswerResultIcon(''),
-    '<span class="score answer-undefined"></span>'
+    '<span class="score answer-not-started"></span>'
   );
 });
 

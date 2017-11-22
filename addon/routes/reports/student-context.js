@@ -85,9 +85,12 @@ export default Ember.Route.extend({
                   collection: route
                     .get('quizzesCollectionService')
                     .readCollection(attemptData.collectionId, type),
-                  profile: route
-                    .get('quizzesProfileService')
-                    .readUserProfile(profileId)
+                  profile:
+                      profileId !== 'anonymous'
+                        ? route
+                          .get('quizzesProfileService')
+                          .readUserProfile(profileId)
+                        : {}
                 })
               )
       );

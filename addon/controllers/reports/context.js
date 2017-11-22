@@ -4,6 +4,7 @@ import {
   CONTEXT_EVENT_TYPES
 } from 'quizzes-addon/config/quizzes-config';
 import ConfigMixin from 'quizzes-addon/mixins/endpoint-config';
+import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 
 /**
  *
@@ -39,6 +40,18 @@ export default Ember.Controller.extend(ConfigMixin, {
    * @property {Ember.Service} Service to send profile related events
    */
   quizzesProfileService: Ember.inject.service('quizzes/profile'),
+
+  /**
+   * @type {ClassService} classService
+   * @property {Ember.Service} Service to send class related events
+   */
+  quizzesClassService: Ember.inject.service('quizzes/class'),
+
+  /**
+   * @type {AttemptService} attemptService
+   * @property {Ember.Service} Service to send context related events
+   */
+  quizzesAttemptService: Ember.inject.service('quizzes/attempt'),
 
   // -------------------------------------------------------------------------
   // Actions
@@ -114,6 +127,18 @@ export default Ember.Controller.extend(ConfigMixin, {
     * @property {[type]}
     */
   numberOfRetry: 0,
+
+  /**
+   * It has the list params in object
+   * @property {Object}
+   */
+  modelParams: null,
+
+  /**
+   * It has the collection
+   * @property {Collection}
+   */
+  collection: null,
 
   // -------------------------------------------------------------------------
   // Observers
@@ -191,7 +216,7 @@ export default Ember.Controller.extend(ConfigMixin, {
         const numberOfRetry = controller.get('numberOfRetry');
         const maxNumberOfRetry = controller.get('maxNumberOfRetry');
         if (numberOfRetry <= maxNumberOfRetry) {
-          controller.send('reloadReportData');
+          controller.loadReportData();
         }
       }
     );
@@ -238,12 +263,12 @@ export default Ember.Controller.extend(ConfigMixin, {
     this.set('isNotificationDisplayed', false);
   },
 
-  onReloadData: function() {
+  onReloadDataComplete: function() {
     const controller = this;
     controller.incrementProperty('numberOfRetry');
     const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
     const webSocketClient = controller.get('webSocketClient');
-    if (webSocketClient) {
+    if (webSocketClient && webSocketClient.connected) {
       webSocketClient.disconnect();
       controller.get('webSocketClient', null);
     }
@@ -253,5 +278,67 @@ export default Ember.Controller.extend(ConfigMixin, {
       () => controller.connectWithWebSocket(contextId, reportData),
       connectAttemptDelay
     );
+  },
+
+  loadReportData: function() {
+    const controller = this;
+    const params = controller.get('modelParams');
+    const contextId = params.contextId;
+    const classId = params.classId;
+    controller
+      .get('quizzesClassService')
+      .readClassMembers(classId)
+      .then(data => {
+        const students = data.members;
+        controller
+          .get('quizzesAttemptService')
+          .getReportData(contextId)
+          .then(reportData => {
+            students
+              .filter(
+                student =>
+                  !reportData
+                    .get('reportEvents')
+                    .findBy('profileId', student.id)
+              )
+              .forEach(student => {
+                reportData.get('reportEvents').push(
+                  ReportDataEvent.create(
+                    Ember.getOwner(this).ownerInjection(),
+                    {
+                      profileId: student.get('id'),
+                      profileName: student.get('fullName'),
+                      lastFirstName: student.get('lastFirstName'),
+                      isAttemptStarted: false,
+                      isAttemptFinished: false
+                    }
+                  )
+                );
+              });
+            return reportData;
+          })
+          .then(reportData => {
+            Ember.RSVP
+              .hash({
+                reportData,
+                profiles: controller
+                  .get('quizzesProfileService')
+                  .readProfiles(
+                    reportData
+                      .get('reportEvents')
+                      .map(({ profileId }) => profileId)
+                  )
+              })
+              .then(({ reportData, profiles }) => {
+                reportData.get('reportEvents').forEach(function(reportEvent) {
+                  const profile = profiles[reportEvent.get('profileId')];
+                  reportEvent.setProfileProperties(profile);
+                });
+                reportData.setCollection(controller.get('collection'));
+                controller.set('reportData', reportData);
+                controller.onReloadDataComplete();
+              });
+          });
+      });
   }
 });

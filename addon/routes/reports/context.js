@@ -38,27 +38,6 @@ export default Ember.Route.extend({
    */
   quizzesProfileService: Ember.inject.service('quizzes/profile'),
 
-  /**
-   * @type {ClassService} classService
-   * @property {Ember.Service} Service to send class related events
-   */
-  quizzesClassService: Ember.inject.service('quizzes/class'),
-
-  // -------------------------------------------------------------------------
-  //  Properties
-
-  /**
-   * It has the list params in object
-   * @property {Object}
-   */
-  modelParams: null,
-
-  /**
-   * It has the collection
-   * @property {Collection}
-   */
-  collection: null,
-
   // -------------------------------------------------------------------------
   // Actions
 
@@ -68,10 +47,6 @@ export default Ember.Route.extend({
      */
     navigateBack: function() {
       // Empty, it does nothing by default
-    },
-
-    reloadReportData: function() {
-      this.loadReportData();
     }
   },
 
@@ -97,7 +72,7 @@ export default Ember.Route.extend({
       params.type ||
       route.get('quizzesConfigurationService.configuration.properties.type');
     params.type = type;
-    route.set('modelParams', params);
+
     return route
       .get('quizzesAttemptService')
       .getReportData(contextId)
@@ -131,7 +106,8 @@ export default Ember.Route.extend({
             .get('quizzesProfileService')
             .readProfiles(
               reportData.get('reportEvents').map(({ profileId }) => profileId)
-            )
+            ),
+          modelParams: params
         })
       );
   },
@@ -145,7 +121,8 @@ export default Ember.Route.extend({
       const profile = profiles[reportEvent.get('profileId')];
       reportEvent.setProfileProperties(profile);
     });
-    this.set('collection', collection);
+    controller.set('modelParams', model.modelParams);
+    controller.set('collection', collection);
     reportData.setCollection(collection);
     controller.set('reportData', reportData);
     controller.set('anonymous', anonymous);
@@ -153,70 +130,8 @@ export default Ember.Route.extend({
 
   deactivate: function() {
     const webSocketClient = this.get('controller').get('webSocketClient');
-    if (webSocketClient) {
+    if (webSocketClient && webSocketClient.connected) {
       webSocketClient.disconnect();
     }
-  },
-
-  loadReportData: function() {
-    const route = this;
-    const params = route.get('modelParams');
-    const contextId = params.contextId;
-    const classId = params.classId;
-    route
-      .get('quizzesClassService')
-      .readClassMembers(classId)
-      .then(data => {
-        const students = data.members;
-        route
-          .get('quizzesAttemptService')
-          .getReportData(contextId)
-          .then(reportData => {
-            students
-              .filter(
-                student =>
-                  !reportData
-                    .get('reportEvents')
-                    .findBy('profileId', student.id)
-              )
-              .forEach(student => {
-                reportData.get('reportEvents').push(
-                  ReportDataEvent.create(
-                    Ember.getOwner(this).ownerInjection(),
-                    {
-                      profileId: student.get('id'),
-                      profileName: student.get('fullName'),
-                      lastFirstName: student.get('lastFirstName'),
-                      isAttemptStarted: false,
-                      isAttemptFinished: false
-                    }
-                  )
-                );
-              });
-            return reportData;
-          })
-          .then(reportData => {
-            Ember.RSVP
-              .hash({
-                reportData,
-                profiles: route
-                  .get('quizzesProfileService')
-                  .readProfiles(
-                    reportData
-                      .get('reportEvents')
-                      .map(({ profileId }) => profileId)
-                  )
-              })
-              .then(({ reportData, profiles }) => {
-                reportData.get('reportEvents').forEach(function(reportEvent) {
-                  const profile = profiles[reportEvent.get('profileId')];
-                  reportEvent.setProfileProperties(profile);
-                });
-                reportData.setCollection(route.get('collection'));
-                route.get('controller').set('reportData', reportData);
-                route.get('controller').onReloadData();
-              });
-          });
-      });
   }
 });

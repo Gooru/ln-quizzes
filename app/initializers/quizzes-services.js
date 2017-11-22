@@ -6,6 +6,7 @@ import LookupService from 'quizzes-addon/services/quizzes/api-sdk/lookup';
 import ProfileService from 'quizzes-addon/services/quizzes/api-sdk/profile';
 import ResourceService from 'quizzes-addon/services/quizzes/api-sdk/resource';
 import NotificationsService from 'quizzes-addon/services/quizzes/notifications';
+import ClassService from 'quizzes-addon/services/quizzes/api-sdk/class';
 
 export default {
   name: 'quizzes-services',
@@ -18,5 +19,6 @@ export default {
     application.register('service:quizzes/profile', ProfileService);
     application.register('service:quizzes/resource', ResourceService);
     application.register('service:quizzes/notifications', NotificationsService);
+    application.register('service:quizzes/class', ClassService);
   }
 };

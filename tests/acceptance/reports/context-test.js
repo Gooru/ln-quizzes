@@ -10,42 +10,6 @@ moduleForAcceptance('Acceptance | reports/context', {
   }
 });
 
-test('Report context: websocket error', function(assert) {
-  assert.expect(7);
-  const expectedUrl = 'realtimeURL/realtimeURI';
-  let connectTimes = 0;
-  const createSocket = () => {
-    return {
-      heartbeat: {},
-      connect: function(headers, connectCallback, errorCallback) {
-        assert.ok(true, 'Connect should be called');
-        if (!connectTimes) {
-          assert.deepEqual(headers, {}, 'Headers should match');
-          errorCallback();
-        }
-        connectTimes += 1;
-      },
-      disconnect: function() {
-        assert.ok(true, 'Disconnect should be called');
-      }
-    };
-  };
-  sinon
-    .stub(Stomp, 'over')
-    .onFirstCall()
-    .returns(createSocket())
-    .onSecondCall()
-    .returns(createSocket());
-  SockJS = url => assert.equal(url, expectedUrl, 'URL should match');
-  visit('/reports/context/context-id');
-
-  const done = assert.async();
-  andThen(function() {
-    assert.equal(currentURL(), '/reports/context/context-id');
-    setTimeout(done, 5000);
-  });
-});
-
 test('Report context: websocket success', function(assert) {
   assert.expect(7);
   const expectedUrl = 'realtimeURL/realtimeURI';

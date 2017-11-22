@@ -124,7 +124,7 @@ export default Ember.Controller.extend(ConfigMixin, {
 
   /**
     * Number of attempts tried to reconnect web scoket
-    * @property {[type]}
+    * @property {Number}
     */
   numberOfRetry: 0,
 

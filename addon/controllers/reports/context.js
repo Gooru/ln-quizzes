@@ -103,6 +103,18 @@ export default Ember.Controller.extend(ConfigMixin, {
    */
   webSocketClient: null,
 
+  /**
+   * Max Number of attempts  to reconnect web scoket
+   * @property {Number}
+   */
+  maxNumberOfRetry: 20,
+
+  /**
+    * Number of attempts tried to reconnect web scoket
+    * @property {[type]}
+    */
+  numberOfRetry: 0,
+
   // -------------------------------------------------------------------------
   // Observers
 
@@ -137,13 +149,11 @@ export default Ember.Controller.extend(ConfigMixin, {
     webSocketClient.heartbeat.incoming = REAL_TIME_CLIENT.INCOMING_HEARTBEAT;
 
     controller.set('webSocketClient', webSocketClient);
-
     webSocketClient.connect(
       {},
       function() {
         // Clear a failed connection notification, if there was one
-        controller.clearNotification();
-
+        controller.set('numberOfRetry', 0);
         // A web socket connection was made to the RT server. Before subscribing
         // for live messages, a request will be made to fetch any initialization data
         // from the RT server (to avoid overriding data from live messages with init data)
@@ -176,17 +186,13 @@ export default Ember.Controller.extend(ConfigMixin, {
           });
         });
       },
-      function() {
-        const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
-
-        controller.showNotification();
-        webSocketClient.disconnect();
-        webSocketClient = null;
-
-        setTimeout(
-          () => controller.connectWithWebSocket(contextId, reportData),
-          connectAttemptDelay
-        );
+      function(error) {
+        Ember.Logger.error(error);
+        const numberOfRetry = controller.get('numberOfRetry');
+        const maxNumberOfRetry = controller.get('maxNumberOfRetry');
+        if (numberOfRetry <= maxNumberOfRetry) {
+          controller.send('reloadReportData');
+        }
       }
     );
   },
@@ -230,5 +236,22 @@ export default Ember.Controller.extend(ConfigMixin, {
   clearNotification: function() {
     this.get('quizzesNotifications').clear();
     this.set('isNotificationDisplayed', false);
+  },
+
+  onReloadData: function() {
+    const controller = this;
+    controller.incrementProperty('numberOfRetry');
+    const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
+    const webSocketClient = controller.get('webSocketClient');
+    if (webSocketClient) {
+      webSocketClient.disconnect();
+      controller.get('webSocketClient', null);
+    }
+    const reportData = controller.get('reportData');
+    const contextId = reportData.get('contextId');
+    setTimeout(
+      () => controller.connectWithWebSocket(contextId, reportData),
+      connectAttemptDelay
+    );
   }
 });

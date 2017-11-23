@@ -207,6 +207,7 @@ export default Ember.Controller.extend(ConfigMixin, {
             const profile = profiles ? profiles[profileId] : null;
             if (profile) {
               reportData.updatedProfileName(profileId, profile);
+              reportData.setCollection(controller.get('collection'));
             }
           });
         });

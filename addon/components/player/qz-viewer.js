@@ -123,9 +123,18 @@ export default Ember.Component.extend({
     'resource.id',
     'resourceResult.submitted',
     function() {
-      let i18nKey = 'common.next';
-      if (this.get('collection').isLastResource(this.get('resource'))) {
-        i18nKey = 'common.submitAll';
+      let i18nKey = 'common.save-next';
+      const showFeedback =
+        this.get('collection.showFeedback') ===
+        ASSESSMENT_SHOW_VALUES.IMMEDIATE;
+      if (!showFeedback) {
+        if (this.get('collection').isLastResource(this.get('resource'))) {
+          return this.get('collection').get('isAssessment')
+            ? 'common.save-submit'
+            : 'common.save-finish';
+        }
+      } else {
+        i18nKey = 'common.submit';
       }
       return i18nKey;
     }

@@ -71,6 +71,7 @@ export default Ember.Route.extend({
     const type =
       params.type ||
       route.get('quizzesConfigurationService.configuration.properties.type');
+    params.type = type;
 
     return route
       .get('quizzesAttemptService')
@@ -105,7 +106,8 @@ export default Ember.Route.extend({
             .get('quizzesProfileService')
             .readProfiles(
               reportData.get('reportEvents').map(({ profileId }) => profileId)
-            )
+            ),
+          modelParams: params
         })
       );
   },
@@ -119,8 +121,17 @@ export default Ember.Route.extend({
       const profile = profiles[reportEvent.get('profileId')];
       reportEvent.setProfileProperties(profile);
     });
+    controller.set('modelParams', model.modelParams);
+    controller.set('collection', collection);
     reportData.setCollection(collection);
     controller.set('reportData', reportData);
     controller.set('anonymous', anonymous);
+  },
+
+  deactivate: function() {
+    const webSocketClient = this.get('controller').get('webSocketClient');
+    if (webSocketClient && webSocketClient.connected) {
+      webSocketClient.disconnect();
+    }
   }
 });

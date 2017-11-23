@@ -4,6 +4,7 @@ import {
   CONTEXT_EVENT_TYPES
 } from 'quizzes-addon/config/quizzes-config';
 import ConfigMixin from 'quizzes-addon/mixins/endpoint-config';
+import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
 
 /**
  *
@@ -39,6 +40,18 @@ export default Ember.Controller.extend(ConfigMixin, {
    * @property {Ember.Service} Service to send profile related events
    */
   quizzesProfileService: Ember.inject.service('quizzes/profile'),
+
+  /**
+   * @type {ClassService} classService
+   * @property {Ember.Service} Service to send class related events
+   */
+  quizzesClassService: Ember.inject.service('quizzes/class'),
+
+  /**
+   * @type {AttemptService} attemptService
+   * @property {Ember.Service} Service to send context related events
+   */
+  quizzesAttemptService: Ember.inject.service('quizzes/attempt'),
 
   // -------------------------------------------------------------------------
   // Actions
@@ -103,6 +116,30 @@ export default Ember.Controller.extend(ConfigMixin, {
    */
   webSocketClient: null,
 
+  /**
+   * Max Number of attempts  to reconnect web scoket
+   * @property {Number}
+   */
+  maxNumberOfRetry: 20,
+
+  /**
+    * Number of attempts tried to reconnect web scoket
+    * @property {Number}
+    */
+  numberOfRetry: 0,
+
+  /**
+   * It has the list params in object
+   * @property {Object}
+   */
+  modelParams: null,
+
+  /**
+   * It has the collection
+   * @property {Collection}
+   */
+  collection: null,
+
   // -------------------------------------------------------------------------
   // Observers
 
@@ -137,13 +174,11 @@ export default Ember.Controller.extend(ConfigMixin, {
     webSocketClient.heartbeat.incoming = REAL_TIME_CLIENT.INCOMING_HEARTBEAT;
 
     controller.set('webSocketClient', webSocketClient);
-
     webSocketClient.connect(
       {},
       function() {
         // Clear a failed connection notification, if there was one
-        controller.clearNotification();
-
+        controller.set('numberOfRetry', 0);
         // A web socket connection was made to the RT server. Before subscribing
         // for live messages, a request will be made to fetch any initialization data
         // from the RT server (to avoid overriding data from live messages with init data)
@@ -176,17 +211,13 @@ export default Ember.Controller.extend(ConfigMixin, {
           });
         });
       },
-      function() {
-        const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
-
-        controller.showNotification();
-        webSocketClient.disconnect();
-        webSocketClient = null;
-
-        setTimeout(
-          () => controller.connectWithWebSocket(contextId, reportData),
-          connectAttemptDelay
-        );
+      function(error) {
+        Ember.Logger.error(error);
+        const numberOfRetry = controller.get('numberOfRetry');
+        const maxNumberOfRetry = controller.get('maxNumberOfRetry');
+        if (numberOfRetry <= maxNumberOfRetry) {
+          controller.loadReportData();
+        }
       }
     );
   },
@@ -230,5 +261,84 @@ export default Ember.Controller.extend(ConfigMixin, {
   clearNotification: function() {
     this.get('quizzesNotifications').clear();
     this.set('isNotificationDisplayed', false);
+  },
+
+  onReloadDataComplete: function() {
+    const controller = this;
+    controller.incrementProperty('numberOfRetry');
+    const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
+    const webSocketClient = controller.get('webSocketClient');
+    if (webSocketClient && webSocketClient.connected) {
+      webSocketClient.disconnect();
+      controller.get('webSocketClient', null);
+    }
+    const reportData = controller.get('reportData');
+    const contextId = reportData.get('contextId');
+    setTimeout(
+      () => controller.connectWithWebSocket(contextId, reportData),
+      connectAttemptDelay
+    );
+  },
+
+  loadReportData: function() {
+    const controller = this;
+    const params = controller.get('modelParams');
+    const contextId = params.contextId;
+    const classId = params.classId;
+    controller
+      .get('quizzesClassService')
+      .readClassMembers(classId)
+      .then(data => {
+        const students = data.members;
+        controller
+          .get('quizzesAttemptService')
+          .getReportData(contextId)
+          .then(reportData => {
+            students
+              .filter(
+                student =>
+                  !reportData
+                    .get('reportEvents')
+                    .findBy('profileId', student.id)
+              )
+              .forEach(student => {
+                reportData.get('reportEvents').push(
+                  ReportDataEvent.create(
+                    Ember.getOwner(this).ownerInjection(),
+                    {
+                      profileId: student.get('id'),
+                      profileName: student.get('fullName'),
+                      lastFirstName: student.get('lastFirstName'),
+                      isAttemptStarted: false,
+                      isAttemptFinished: false
+                    }
+                  )
+                );
+              });
+            return reportData;
+          })
+          .then(reportData => {
+            Ember.RSVP
+              .hash({
+                reportData,
+                profiles: controller
+                  .get('quizzesProfileService')
+                  .readProfiles(
+                    reportData
+                      .get('reportEvents')
+                      .map(({ profileId }) => profileId)
+                  )
+              })
+              .then(({ reportData, profiles }) => {
+                reportData.get('reportEvents').forEach(function(reportEvent) {
+                  const profile = profiles[reportEvent.get('profileId')];
+                  reportEvent.setProfileProperties(profile);
+                });
+                reportData.setCollection(controller.get('collection'));
+                controller.set('reportData', reportData);
+                controller.onReloadDataComplete();
+              });
+          });
+      });
   }
 });

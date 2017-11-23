@@ -150,7 +150,7 @@ export default Ember.Controller.extend(ConfigMixin, {
    * Wait time to reload the report data
    * @property {Object}
    */
-  waitForReloadReportData: 30000,
+  waitTimeToReloadReportData: 30000,
 
   // -------------------------------------------------------------------------
   // Observers
@@ -226,15 +226,15 @@ export default Ember.Controller.extend(ConfigMixin, {
           if (controller.get('reportReloadScheduler')) {
             Ember.run.cancel(controller.get('reportReloadScheduler'));
           }
-          let waitForReloadReportData = controller.get(
-            'waitForReloadReportData'
+          let waitTimeToReloadReportData = controller.get(
+            'waitTimeToReloadReportData'
           );
           let reportReloadScheduler = Ember.run.later(
             controller,
             function() {
               controller.loadReportData(controller);
             },
-            waitForReloadReportData
+            waitTimeToReloadReportData
           );
           controller.set('reportReloadScheduler', reportReloadScheduler);
         });

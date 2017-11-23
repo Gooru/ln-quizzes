@@ -172,6 +172,11 @@ export default Ember.Object.extend({
   },
 
   updatedProfileName: function(profileId, profile) {
+    let student = this.get('students').findBy('id', profileId);
+    if (student) {
+      student.set('lastFirstName', profile.get('lastFirstName'));
+      student.set('fullName', profile.get('fullName'));
+    }
     const oldReportEvents = this.findByProfileId(profileId);
     if (oldReportEvents.length) {
       oldReportEvents[0].set('lastFirstName', profile.get('lastFirstName'));

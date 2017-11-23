@@ -200,6 +200,7 @@ export default Ember.Object.extend({
         'currentResourceId',
         eventData.eventBody.currentResourceId
       );
+      previousResource.skipped = previousResource.isSkipped;
       profileEvent.merge(previousResource.resourceId, previousResource);
       profileEvent.incrementProperty('updated');
     }

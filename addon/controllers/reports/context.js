@@ -344,12 +344,14 @@ export default Ember.Controller.extend(ConfigMixin, {
                   reportEvent.setProfileProperties(profile);
                 });
                 reportData.setCollection(controller.get('collection'));
-                controller.set(
-                  'reportData.reportEvents',
-                  reportData.get('reportEvents')
-                );
+
                 if (isTryToReconnect) {
                   controller.set('reportData', reportData);
+                } else {
+                  controller.set(
+                    'reportData.reportEvents',
+                    reportData.get('reportEvents')
+                  );
                 }
               });
           });

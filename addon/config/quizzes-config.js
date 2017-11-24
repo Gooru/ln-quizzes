@@ -39,8 +39,8 @@ export const QUIZZES_RESOURCE_TYPES = {
 export const DEFAULT_IMAGES = {
   USER_PROFILE: 'assets/quizzes-addon/quizzes/profile.png',
   COURSE: '/assets/quizzes/course-default.png',
-  COLLECTION: '/assets/quizzes/collection-default.png',
-  ASSESSMENT: '/assets/quizzes/assessment-default.png',
+  COLLECTION: '/assets/gooru/collection-default.png',
+  ASSESSMENT: '/assets/gooru/assessment-default.png',
   QUESTION_PLACEHOLDER_IMAGE: '/assets/quizzes/question-placeholder-image.png'
 };
 

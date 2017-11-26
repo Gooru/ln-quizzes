@@ -91,10 +91,12 @@ export default QuestionComponent.extend({
    */
   notifyEvents: function(selectedItems, onLoad) {
     const component = this;
+    selectedItems.forEach(item => {
+      item.set('text', item.get('text').replace(/,(?=[^,]*$)/, ''));
+    });
     const userAnswer = selectedItems.map(item => ({
       value: `${item.get('text')},${item.get('index')}`
     }));
-
     component.notifyAnswerChanged(userAnswer);
     if (selectedItems.get('length')) {
       if (onLoad) {

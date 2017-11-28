@@ -29,7 +29,8 @@ export default Ember.Component.extend(QuestionMixin, {
       : component.get('userAnswer');
     const items = QuestionUtil.getItems(question.get('question'));
     items.forEach(item => {
-      const value = `${item.get('text')},${item.get('index')}`;
+      let removeCommaFromText = item.get('text').replace(/,(?=[^,]*$)/, '');
+      const value = `${removeCommaFromText},${item.get('index')}`;
       const selected = !!userAnswers.findBy('value', value);
       item.set('selected', selected);
       item.set('correct', !selected || !!correctAnswers.findBy('value', value));

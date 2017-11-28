@@ -272,7 +272,7 @@ export default Ember.Component.extend({
    */
   tableFrame: Ember.computed(
     'anonymous',
-    'students.@each.fullName',
+    'students.@each.lastFirstName',
     'students.@each.id',
     function() {
       const anonymous = this.get('anonymous');

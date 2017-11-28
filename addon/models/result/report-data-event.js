@@ -176,6 +176,7 @@ export default Ember.Object.extend({
     this.set('collectionId', collection.get('id'));
     const resources = collection.get('resources');
     const resourceResults = this.get('resourceResults');
+    const resourceResultSet = Ember.A();
     resources.forEach(resource => {
       const resourceResult = resourceResults.findBy('resourceId', resource.id);
       if (resourceResult) {
@@ -193,12 +194,14 @@ export default Ember.Object.extend({
           resourceResults.pushObject(result);
         }
         resourceResult.set('resource', resource);
+        resourceResultSet.pushObject(resourceResult);
       } else {
         const ResultModel = resource.get('isResource')
           ? ResourceResult
           : QuestionResult;
-        this.get('resourceResults').pushObject(
-          ResultModel.create(Ember.getOwner(this).ownerInjection(), {
+        const newResourceData = ResultModel.create(
+          Ember.getOwner(this).ownerInjection(),
+          {
             resourceId: resource.id,
             resource: resource,
             savedTime: 0,
@@ -206,10 +209,12 @@ export default Ember.Object.extend({
             answer: null,
             score: 0,
             skipped: true
-          })
+          }
         );
+        resourceResultSet.pushObject(newResourceData);
       }
     });
+    this.set('resourceResults', resourceResultSet);
   },
 
   /**

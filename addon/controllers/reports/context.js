@@ -140,6 +140,18 @@ export default Ember.Controller.extend(ConfigMixin, {
    */
   collection: null,
 
+  /**
+   * scheduler properties to reload the data from server in order to avoid the data loss.
+   * @property {Object}
+   */
+  reportReloadScheduler: null,
+
+  /**
+   * Wait time to reload the report data
+   * @property {Object}
+   */
+  waitTimeToReloadReportData: 20000,
+
   // -------------------------------------------------------------------------
   // Observers
 
@@ -207,8 +219,23 @@ export default Ember.Controller.extend(ConfigMixin, {
             const profile = profiles ? profiles[profileId] : null;
             if (profile) {
               reportData.updatedProfileName(profileId, profile);
+              reportData.setCollection(controller.get('collection'));
             }
           });
+          if (controller.get('reportReloadScheduler')) {
+            Ember.run.cancel(controller.get('reportReloadScheduler'));
+          }
+          let waitTimeToReloadReportData = controller.get(
+            'waitTimeToReloadReportData'
+          );
+          let reportReloadScheduler = Ember.run.later(
+            controller,
+            function() {
+              controller.loadReportData(controller, false);
+            },
+            waitTimeToReloadReportData
+          );
+          controller.set('reportReloadScheduler', reportReloadScheduler);
         });
       },
       function(error) {
@@ -216,7 +243,7 @@ export default Ember.Controller.extend(ConfigMixin, {
         const numberOfRetry = controller.get('numberOfRetry');
         const maxNumberOfRetry = controller.get('maxNumberOfRetry');
         if (numberOfRetry <= maxNumberOfRetry) {
-          controller.loadReportData();
+          controller.loadReportData(controller, true);
         }
       }
     );
@@ -263,25 +290,7 @@ export default Ember.Controller.extend(ConfigMixin, {
     this.set('isNotificationDisplayed', false);
   },
 
-  onReloadDataComplete: function() {
-    const controller = this;
-    controller.incrementProperty('numberOfRetry');
-    const connectAttemptDelay = REAL_TIME_CLIENT.CONNECTION_ATTEMPT_DELAY;
-    const webSocketClient = controller.get('webSocketClient');
-    if (webSocketClient && webSocketClient.connected) {
-      webSocketClient.disconnect();
-      controller.get('webSocketClient', null);
-    }
-    const reportData = controller.get('reportData');
-    const contextId = reportData.get('contextId');
-    setTimeout(
-      () => controller.connectWithWebSocket(contextId, reportData),
-      connectAttemptDelay
-    );
-  },
-
-  loadReportData: function() {
-    const controller = this;
+  loadReportData: function(controller, isTryToReconnect) {
     const params = controller.get('modelParams');
     const contextId = params.contextId;
     const classId = params.classId;
@@ -335,8 +344,15 @@ export default Ember.Controller.extend(ConfigMixin, {
                   reportEvent.setProfileProperties(profile);
                 });
                 reportData.setCollection(controller.get('collection'));
-                controller.set('reportData', reportData);
-                controller.onReloadDataComplete();
+
+                if (isTryToReconnect) {
+                  controller.set('reportData', reportData);
+                } else {
+                  controller.set(
+                    'reportData.reportEvents',
+                    reportData.get('reportEvents')
+                  );
+                }
               });
           });
       });

@@ -172,10 +172,18 @@ export default Ember.Object.extend({
   },
 
   updatedProfileName: function(profileId, profile) {
+    let student = this.get('students').findBy('id', profileId);
+    if (student) {
+      student.set('lastFirstName', profile.get('lastFirstName'));
+      student.set('fullName', profile.get('fullName'));
+    }
     const oldReportEvents = this.findByProfileId(profileId);
-    oldReportEvents[0].set('lastFirstName', profile.get('lastFirstName'));
-    oldReportEvents[0].set('profileName', profile.get('fullName'));
-    oldReportEvents[0].incrementProperty('updated');
+    if (oldReportEvents.length) {
+      oldReportEvents[0].set('lastFirstName', profile.get('lastFirstName'));
+      oldReportEvents[0].set('profileName', profile.get('fullName'));
+      oldReportEvents[0].set('profileCode', profile.get('profileCode'));
+      oldReportEvents[0].incrementProperty('updated');
+    }
   },
 
   /**
@@ -192,6 +200,7 @@ export default Ember.Object.extend({
         'currentResourceId',
         eventData.eventBody.currentResourceId
       );
+      previousResource.skipped = previousResource.isSkipped;
       profileEvent.merge(previousResource.resourceId, previousResource);
       profileEvent.incrementProperty('updated');
     }

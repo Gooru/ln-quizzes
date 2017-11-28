@@ -150,7 +150,7 @@ export default Ember.Controller.extend(ConfigMixin, {
    * Wait time to reload the report data
    * @property {Object}
    */
-  waitTimeToReloadReportData: 30000,
+  waitTimeToReloadReportData: 20000,
 
   // -------------------------------------------------------------------------
   // Observers

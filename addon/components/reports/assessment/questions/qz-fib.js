@@ -71,7 +71,6 @@ export default Ember.Component.extend(QuestionMixin, {
           class: 'sentence'
         };
       });
-
       sentences = userAnswers && userAnswers.length ? sentences : [];
 
       return this.mergeArrays(sentences, answers);
@@ -90,6 +89,7 @@ export default Ember.Component.extend(QuestionMixin, {
       mergeArrays.pushObject(sentences.get(index));
       mergeArrays.pushObject(item);
     });
+    mergeArrays.pushObject(sentences[sentences.length - 1]);
     return mergeArrays;
   }
 });

@@ -195,6 +195,7 @@ export default Ember.Object.extend({
     if (oldReportEvents.length) {
       const profileEvent = oldReportEvents[0];
       const previousResource = eventData.eventBody.previousResource;
+      profileEvent.set('isAttemptStarted', true);
       profileEvent.setProfileSummary(eventData.eventBody.eventSummary, false);
       profileEvent.set(
         'currentResourceId',

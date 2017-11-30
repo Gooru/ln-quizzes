@@ -40,12 +40,22 @@
     }
     .answer-correct {
       background-color: $brand-success;
+      i {
+        margin-left: -72px;
+        pointer-events: none;
+      }
     }
     .answer-incorrect {
       background-color: $brand-incorrect;
     }
-    .answer-undefined {
-      background-color: $light-100;
+    .answer-not-started {
+      background-color: $light-200;
+    }
+    .answer-skipped {
+      background-color: $light-200;
+    }
+    .answer-extended_text {
+      background-color: $blue-400;
     }
 
     table {

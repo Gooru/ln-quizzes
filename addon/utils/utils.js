@@ -12,9 +12,8 @@ import {
  * @returns {number} - -1 if 'a' should go before 'b'; 1 if 'b' should go before 'a'; or else, 0.
  */
 export function alphabeticalStringSort(a, b) {
-  const lowerCaseA = a.toLowerCase();
-  const lowerCaseB = b.toLowerCase();
-
+  const lowerCaseA = a ? a.toLowerCase() : a;
+  const lowerCaseB = b ? b.toLowerCase() : b;
   return lowerCaseA < lowerCaseB ? -1 : lowerCaseA > lowerCaseB ? 1 : 0;
 }
 
@@ -118,21 +117,23 @@ export function formatTimeInSeconds(timeInSeconds) {
 
 /**
  * Get an icon depending on whether an answer was correct or not.
- * @param {boolean} isCorrect - was the answer correct or not?
+ * @param {String} status - It has the status of answer
  * @returns {String} - html string
  */
-export function getAnswerResultIcon(isCorrect) {
+export function getAnswerResultIcon(status) {
   var html;
-
-  if (isCorrect) {
+  if (status === 'correct') {
     html =
-      '<span class="score answer-correct"><i class="gru-icon material-icons">done</i></span>';
-  } else if (isCorrect === false) {
+      '<span class="score answer-correct"><i class="gru-icon material-icons">ic_done_all</i></span>';
+  } else if (status === 'incorrect') {
     html =
       '<span class="score answer-incorrect"><i class="gru-icon material-icons">clear</i></span>';
+  } else if (status === 'skipped') {
+    html = '<span class="score answer-skipped"></span>';
+  } else if (status === 'extended_text') {
+    html = '<span class="score answer-extended_text"></span>';
   } else {
-    // Null or any other falsy value
-    html = '<span class="score answer-undefined"></span>';
+    html = '<span class="score answer-not-started"></span>';
   }
   return html;
 }

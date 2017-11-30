@@ -171,6 +171,21 @@ export default Ember.Object.extend({
     }
   },
 
+  updatedProfileName: function(profileId, profile) {
+    let student = this.get('students').findBy('id', profileId);
+    if (student) {
+      student.set('lastFirstName', profile.get('lastFirstName'));
+      student.set('fullName', profile.get('fullName'));
+    }
+    const oldReportEvents = this.findByProfileId(profileId);
+    if (oldReportEvents.length) {
+      oldReportEvents[0].set('lastFirstName', profile.get('lastFirstName'));
+      oldReportEvents[0].set('profileName', profile.get('fullName'));
+      oldReportEvents[0].set('profileCode', profile.get('profileCode'));
+      oldReportEvents[0].incrementProperty('updated');
+    }
+  },
+
   /**
    * Parse on resource event data from web socket
    * @param {Object} eventData
@@ -180,11 +195,13 @@ export default Ember.Object.extend({
     if (oldReportEvents.length) {
       const profileEvent = oldReportEvents[0];
       const previousResource = eventData.eventBody.previousResource;
+      profileEvent.set('isAttemptStarted', true);
       profileEvent.setProfileSummary(eventData.eventBody.eventSummary, false);
       profileEvent.set(
         'currentResourceId',
         eventData.eventBody.currentResourceId
       );
+      previousResource.skipped = previousResource.isSkipped;
       profileEvent.merge(previousResource.resourceId, previousResource);
       profileEvent.incrementProperty('updated');
     }
@@ -197,10 +214,11 @@ export default Ember.Object.extend({
   parseStartEvent: function(eventData) {
     if (eventData.eventBody.isNewAttempt) {
       const oldReportEvents = this.findByProfileId(eventData.profileId);
+
       const properties = {
         currentResourceId: eventData.eventBody.currentResourceId,
         profileId: eventData.profileId,
-        profileName: eventData.profileName,
+        profileName: '',
         isAttemptStarted: true,
         resourceResults: this.get('collection.resources').map(res =>
           QuestionResult.create(Ember.getOwner(this).ownerInjection(), {

@@ -225,14 +225,25 @@ export default Ember.Component.extend({
             for (let k = 0; k < questionPropertiesIdsLen; k++) {
               const renderFunction = questionProperties[k].renderFunction;
               const value = questionResult.get(questionPropertiesIds[k]);
+              let status = 'not-started';
+              if (questionResult.get('skipped')) {
+                status = 'skipped';
+              } else if (
+                questionResult.get('resource.type') === 'extended_text'
+              ) {
+                status = 'extended_text';
+              } else if (questionResult.get('answer')) {
+                status = value ? 'correct' : 'incorrect';
+              }
 
               data[i].content[j * questionPropertiesIdsLen + k] = {
                 value,
-                output: !renderFunction ? value : renderFunction(value)
+                output: !renderFunction ? value : renderFunction(status)
               };
               propertyValues[k].push(questionResult);
             }
           });
+
         // Compute the aggregate values
         for (let k = 0; k < questionPropertiesIdsLen; k++) {
           // Set the value in the aggregate (totals) column;
@@ -261,7 +272,7 @@ export default Ember.Component.extend({
    */
   tableFrame: Ember.computed(
     'anonymous',
-    'students.@each.fullName',
+    'students.@each.lastFirstName',
     'students.@each.id',
     function() {
       const anonymous = this.get('anonymous');

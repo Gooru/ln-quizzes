@@ -29,8 +29,8 @@ test('mergeArrays', function(assert) {
   var merge = component.mergeArrays(sentences, answers);
   assert.equal(
     merge.length,
-    4,
-    'Should have 4 items, empty items are excluded'
+    5,
+    'Should have 5 items, empty items are excluded'
   );
   assert.equal(merge[0].get('text'), 'The mountain is', 'Wrong item text');
   assert.equal(merge[0].get('class'), 'sentence', 'Wrong item class');

@@ -273,8 +273,8 @@
     }
 
     .bubbles {
-      width: 317px;
-      max-width: 317px;
+      width: 325px;
+      max-width: 325px;
       display: inline-block;
       overflow: auto;
 
@@ -298,12 +298,13 @@
 
     .bubbles::-webkit-scrollbar {
       height: 6px;
-      width: 4px;
+      width: 8px;
     }
 
     .bubbles::-webkit-scrollbar-thumb {
-      border-radius: 3px;
-      background-color: $gray;
+      background: $gray-light;
+      border: 1px solid $gray-light;
+      border-radius: 5px;
     }
   }
 }

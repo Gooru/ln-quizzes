@@ -35,12 +35,12 @@
         .description {
           height: 60px;
           float: left;
-          width: 430px;
+          width: 370px;
 
           .desc-align {
             @include ellipsis($font-size: 13px, $line-height: 1.5, $lines-to-show: 3);
             margin-left: 10px;
-            width: 420px;
+            width: 370px;
             position: absolute;
           }
         }
@@ -119,7 +119,7 @@
           flex-direction: row;
           height: 20px;
           padding: 0;
-          width: auto;
+          width: 270px;
 
           li {
             display: inline-block;

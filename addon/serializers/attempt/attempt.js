@@ -39,6 +39,7 @@ export default Ember.Object.extend({
    */
   normalizeReportDataEvent: function(reportEvent) {
     const summary = reportEvent.eventSummary;
+    const eventQuestion = reportEvent.events;
     const taxonomySummary = reportEvent.taxonomySummary;
     const reportDataEvent = ReportDataEvent.create(
       Ember.getOwner(this).ownerInjection(),
@@ -68,6 +69,19 @@ export default Ember.Object.extend({
       let learningTargets = [];
       if (Ember.isArray(taxonomySummary)) {
         learningTargets = taxonomySummary.map(function(standard) {
+          //standard score  set -1 if all questions is skipped in taxonomySummary
+          let skippedQuestioncount = 0;
+          standard.resources.forEach(function(resourceId) {
+            eventQuestion.forEach(function(event) {
+              if (event.resourceId === resourceId && event.isSkipped === true) {
+                skippedQuestioncount = skippedQuestioncount + 1;
+              }
+            });
+          });
+          // minus one (-1) consider as not scored
+          if (standard.resources.length === skippedQuestioncount) {
+            standard.averageScore = -1;
+          }
           return LearningTarget.create({
             id: standard.taxonomyId,
             mastery: standard.averageScore,

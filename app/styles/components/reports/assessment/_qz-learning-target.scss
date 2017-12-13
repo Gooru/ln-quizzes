@@ -10,7 +10,7 @@
       font-size: $font-size-h6;
       line-height: $font-size-h6;
       width: 100%;
-      margin: 0 0 10px;
+      margin: 0 0 5px;
       border-left: 2px solid;
 
       .score {
@@ -31,6 +31,7 @@
 
       .learning-target-description {
         width: 100%;
+        display: inline;
 
         .description {
           height: 60px;
@@ -81,7 +82,7 @@
         float: left;
         max-width: 330px;
         margin-left: 10px;
-        height: 50px;
+        min-height: 50px;
         border-left: 1px solid #b8bfc4;
         @media (min-width: $screen-xs) {
           display: block;

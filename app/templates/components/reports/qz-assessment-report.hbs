@@ -1,7 +1,7 @@
 <div class="qz-assessment-summary">
   <div class="reports-owner">
-    {{#if (and profile.firstName profile.lastName)}}
-      <span>{{profile.firstName}}  {{profile.lastName}}</span>
+    {{#if profile.fullName }}
+      <span> {{profile.fullName}} </span>
     {{else}}
         <span>{{profile.username}}</span>
     {{/if}}

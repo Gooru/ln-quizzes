@@ -1,6 +1,10 @@
 <div class="qz-assessment-summary">
   <div class="reports-owner">
-    <span>{{profile.firstName}}  {{profile.lastName}}</span>
+    {{#if (and profile.firstName profile.lastName)}}
+      <span>{{profile.firstName}}  {{profile.lastName}}</span>
+    {{else}}
+        <span>{{profile.username}}</span>
+    {{/if}}
   </div>
   {{reports.assessment.qz-summary
   contextResult=contextResult

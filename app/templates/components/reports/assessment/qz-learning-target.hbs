@@ -1,5 +1,5 @@
 <div class="learning-target">
-  <div class="header-content" style="border-color:{{grade-color (if (gt learningTarget.mastery 0) learningTarget.mastery 'NA')}}">
+  <div class="header-content" style="border-color:{{grade-color (if (gte learningTarget.mastery 0) learningTarget.mastery 'NA')}}">
     <div class="learning-target-description">
 
       <div class="standard-score">

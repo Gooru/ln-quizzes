@@ -70,8 +70,8 @@
     }
 
     .profile-image {
-      width: 71px;
-      height: 71px;
+      width: 115px;
+      height: 68px;
       padding: 0;
       margin-top: 15px;
       -webkit-flex: 0 1 auto;
@@ -86,12 +86,13 @@
       text-align: center;
       color: $white;
       @media (min-width: $screen-xs) {
-        width: 71px;
-        height: 71px;
+        height: 68px;
+        width: 115px;
       }
       @media (min-width: $screen-lg-min) {
-        height: 71px;
+        height: 68px;
       }
+
       .img-responsive {
         height: 100%;
         width: 100%;
@@ -111,6 +112,7 @@
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
+
       &.only-oe {
         color: $light-200 !important;
       }
@@ -194,7 +196,7 @@
         margin: 10px 0 0;
         height: 30px;
         font-size: $font-size-h6;
-        display: table;
+        display: inline-block;
 
         i {
           vertical-align: middle;
@@ -227,15 +229,15 @@
         }
 
         .date {
-          margin: 0 25px 0 0;
+          margin: 0 3px 0 0;
         }
 
         .time {
-          margin: 0 25px 0 0;
+          margin: 0 4px 0 0;
         }
 
         .reaction {
-          margin: 0 25px 0 0;
+          margin: 0 5px 0 0;
           float: right;
 
           .emotion {
@@ -271,8 +273,8 @@
     }
 
     .bubbles {
-      width: 310px;
-      max-width: 310px;
+      width: 325px;
+      max-width: 325px;
       display: inline-block;
       overflow: auto;
 
@@ -282,12 +284,13 @@
           flex-direction: row;
           flex-wrap: wrap;
           list-style: none;
-          padding: 10px 0 0 0;
+          padding: 10px 0 0;
           margin: 0;
+
           li {
             display: inline-block;
             padding: 0;
-            margin: 0px 7px 10px 0;
+            margin: 0 5px 10px 0;
           }
         }
       }
@@ -295,12 +298,13 @@
 
     .bubbles::-webkit-scrollbar {
       height: 6px;
-      width: 3px;
+      width: 8px;
     }
 
     .bubbles::-webkit-scrollbar-thumb {
-      border-radius: 3px;
-      background-color: $gray-harder;
+      background: $gray-light;
+      border: 1px solid $gray-light;
+      border-radius: 5px;
     }
   }
 }

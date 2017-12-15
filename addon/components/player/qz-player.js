@@ -45,8 +45,8 @@ export default Ember.Component.extend(ModalMixin, {
 
   actions: {
     /**
-    * Action triggered when the user completed a answer
-    */
+     * Action triggered when the user completed a answer
+     */
     isNextEnabled: function(isAnswerCompleted) {
       this.set('isNextEnabled', isAnswerCompleted);
     },
@@ -403,8 +403,8 @@ export default Ember.Component.extend(ModalMixin, {
   onClosePlayer: null,
 
   /**
-  * Check whether next button is enabled or not
-  */
+   * Check whether next button is enabled or not
+   */
   isNextEnabled: true,
 
   // -------------------------------------------------------------------------
@@ -560,6 +560,9 @@ export default Ember.Component.extend(ModalMixin, {
       if (component.get('resourceId')) {
         //if has a resource id as query param
         resource = collection.getResourceById(component.get('resourceId'));
+      }
+      if (!resource) {
+        resource = collection.get('resources').objectAt(0);
       }
     }
     if (resource) {

@@ -209,6 +209,7 @@ export default Ember.Component.extend({
           // Put all values for the same property into an array
           propertyValues[k] = [];
         }
+
         reportEvent
           .get('resourceResults')
           .map(questionResult => {
@@ -224,7 +225,7 @@ export default Ember.Component.extend({
             const j = l + 1;
             for (let k = 0; k < questionPropertiesIdsLen; k++) {
               const renderFunction = questionProperties[k].renderFunction;
-              const value = questionResult.get(questionPropertiesIds[k]);
+              let value = questionResult.get(questionPropertiesIds[k]);
               let status = 'not-started';
               if (questionResult.get('skipped')) {
                 status = 'skipped';
@@ -235,10 +236,12 @@ export default Ember.Component.extend({
               } else if (questionResult.get('answer')) {
                 status = value ? 'correct' : 'incorrect';
               }
-
+              if (k === 0) {
+                value = status;
+              }
               data[i].content[j * questionPropertiesIdsLen + k] = {
                 value,
-                output: !renderFunction ? value : renderFunction(status)
+                output: !renderFunction ? value : renderFunction(value)
               };
               propertyValues[k].push(questionResult);
             }

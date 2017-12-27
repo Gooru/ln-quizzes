@@ -117,6 +117,7 @@ test('serializeEventContext', function(assert) {
   const eventContext = EventContext.create({
     source: 'source',
     sourceUrl: 'source-url',
+    sourceId: 'source-id',
     tenantId: 'tenant-id',
     partnerId: 'partner-id',
     pathId: '1',
@@ -131,6 +132,7 @@ test('serializeEventContext', function(assert) {
   const expectedEventContext = {
     eventSource: 'source',
     sourceUrl: 'source-url',
+    sourceId: 'source-id',
     tenantId: 'tenant-id',
     partnerId: 'partner-id',
     pathId: 1,
@@ -155,6 +157,7 @@ test('serializeEventContext no subtype and no cul', function(assert) {
   const eventContext = EventContext.create({
     source: 'source',
     sourceUrl: 'source-url',
+    sourceId: 'source-id',
     tenantId: 'tenant-id',
     partnerId: 'partner-id',
     pathId: '1',
@@ -163,6 +166,7 @@ test('serializeEventContext no subtype and no cul', function(assert) {
   const expectedEventContext = {
     eventSource: 'source',
     sourceUrl: 'source-url',
+    sourceId: 'source-id',
     tenantId: 'tenant-id',
     partnerId: 'partner-id',
     pathId: 1,

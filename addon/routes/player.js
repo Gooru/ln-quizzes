@@ -90,14 +90,15 @@ export default Ember.Route.extend({
   },
 
   /**
-    * @param {{ contextId: string }} params
-    */
+   * @param {{ contextId: string }} params
+   */
   quizzesModel(params) {
     const route = this;
     const {
       resourceId,
       contextId,
       source,
+      sourceId,
       sourceUrl,
       tenantId,
       partnerId,
@@ -128,6 +129,7 @@ export default Ember.Route.extend({
       collectionSubType,
       pathId,
       partnerId,
+      sourceId,
       source,
       sourceUrl,
       tenantId

@@ -131,6 +131,7 @@ export default Ember.Object.extend({
     const {
       source,
       sourceUrl,
+      sourceId,
       tenantId,
       partnerId,
       pathId,
@@ -145,6 +146,7 @@ export default Ember.Object.extend({
     let eventContext = {
       eventSource: source,
       sourceUrl,
+      sourceId,
       tenantId,
       partnerId,
       pathId: pathId ? +pathId : 0,

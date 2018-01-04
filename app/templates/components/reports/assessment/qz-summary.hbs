@@ -39,10 +39,14 @@
       <span class="time">
         {{gru-icon name='av_timer'}}<span>{{format-time contextResult.totalTimeSpent}}</span>
       </span>
-      <span class="reaction">
-        {{qz-reaction-icon contextResult.averageReaction}}
-      </span>
+
     </div>
+  </div>
+
+  <div class="reactions">
+    <span class="reaction">
+      {{qz-reaction-icon contextResult.averageReaction}}
+    </span>
   </div>
 
   <div class="bubbles">
@@ -51,11 +55,11 @@
     {{/if}}
   </div>
   {{#if collection.isAssessment}}
-    <div class="grade {{if hasOnlyOEQuestion 'only-oe' ''}}" style={{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
+    <div class="grade {{if hasOnlyOEQuestion 'only-oe' ''}}" style= {{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
       {{#unless hasOnlyOEQuestion}}
-        <span class="percentage" >{{round-number contextResult.correctPercentage}}%</span>
-      {{else}}
-        <span class="percentage">--</span>
+        <span class="percentage">{{round-number contextResult.correctPercentage}}%</span>
+  {{else}}
+    <span class="percentage">--</span>
       {{/unless}}
       <span class="attempts">
         <span class="text">PERFORMANCE</span>
@@ -63,11 +67,11 @@
     </div>
   {{else}}
     {{#if (or hasQuestionScore hasOnlyOEQuestion)}}
-      <div class="grade {{if hasOnlyOEQuestion 'only-oe' ''}}"  style={{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
+      <div class="grade {{if hasOnlyOEQuestion 'only-oe' ''}}" style= {{safe-html (concat "color:" (grade-color contextResult.correctPercentage))}}>
         {{#unless hasOnlyOEQuestion}}
           <span class="percentage">{{round-number contextResult.correctPercentage}}%</span>
-        {{else}}
-          <span class="percentage">--</span>
+    {{else}}
+      <span class="percentage">--</span>
         {{/unless}}
         <span class="attempts">
           <span class="text">PERFORMANCE</span>

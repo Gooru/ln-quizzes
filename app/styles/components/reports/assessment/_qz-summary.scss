@@ -175,17 +175,17 @@
       min-height: 133px;
       @media (min-width: $screen-xs) {
         margin: 0;
-        width: 600px;
+        width: 450px;
         height: 164px;
       }
       @media (min-width: $screen-lg-min) {
         height: 133px;
-        width: 600px;
+        width: 450px;
       }
 
       h5 {
         margin: 0;
-        width: 450px;
+        width: 350px;
         height: 40px;
         font-size: 16px;
         line-height: 1.25;
@@ -268,6 +268,24 @@
           @media (max-width: $screen-md) {
             margin: 0 10px 0 0;
           }
+        }
+      }
+    }
+
+    .reactions {
+      width: 150px;
+      text-align: center;
+      margin-top: 18px;
+
+      .reaction {
+        .emotion {
+          width: 55px;
+          height: 55px;
+          text-align: center;
+        }
+
+        .align-center {
+          font-size: 30px;
         }
       }
     }

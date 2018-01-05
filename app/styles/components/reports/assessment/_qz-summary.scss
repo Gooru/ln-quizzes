@@ -175,12 +175,12 @@
       min-height: 133px;
       @media (min-width: $screen-xs) {
         margin: 0;
-        width: 450px;
+        width: 490px;
         height: 164px;
       }
       @media (min-width: $screen-lg-min) {
         height: 133px;
-        width: 450px;
+        width: 490px;
       }
 
       h5 {
@@ -236,27 +236,6 @@
           margin: 0 4px 0 0;
         }
 
-        .reaction {
-          margin: 0 5px 0 0;
-          float: right;
-
-          .emotion {
-            vertical-align: middle;
-
-            &:hover {
-              svg {
-                @include scale(1);
-              }
-            }
-
-            &.active {
-              svg {
-                @include scale(1);
-              }
-            }
-          }
-        }
-
         .attempt,
         .date,
         .reaction,
@@ -273,7 +252,7 @@
     }
 
     .reactions {
-      width: 150px;
+      width: 110px;
       text-align: center;
       margin-top: 18px;
 
@@ -282,6 +261,7 @@
           width: 55px;
           height: 55px;
           text-align: center;
+          cursor: default;
         }
 
         .align-center {

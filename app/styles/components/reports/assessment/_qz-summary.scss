@@ -175,12 +175,12 @@
       min-height: 133px;
       @media (min-width: $screen-xs) {
         margin: 0;
-        width: 490px;
+        width: 500px;
         height: 164px;
       }
       @media (min-width: $screen-lg-min) {
         height: 133px;
-        width: 490px;
+        width: 500px;
       }
 
       h5 {
@@ -200,7 +200,7 @@
 
         i {
           vertical-align: middle;
-          margin: 0 5px 0 0;
+          margin: 0 3px 0 0;
         }
 
         span {
@@ -208,7 +208,7 @@
         }
 
         .attempt {
-          margin: 0 35px 0 0;
+          margin: 0 13px 0 0;
 
           .attempt-selector {
             display: inline-block;
@@ -252,9 +252,10 @@
     }
 
     .reactions {
-      width: 110px;
+      width: 70px;
       text-align: center;
       margin-top: 18px;
+      margin-right: 10px;
 
       .reaction {
         .emotion {
@@ -288,7 +289,7 @@
           li {
             display: inline-block;
             padding: 0;
-            margin: 0 5px 10px 0;
+            margin: 0 4px 10px 0;
           }
         }
       }

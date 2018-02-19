@@ -182,7 +182,7 @@ export default Ember.Component.extend({
    * The protocol the user is using to access the page (http or https)
    * @property {String}
    */
-  currentProtocol: 'https:',
+  currentProtocol: window.location.protocol,
 
   /**
    * The protocol for the resource url

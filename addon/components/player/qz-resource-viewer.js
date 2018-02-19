@@ -182,7 +182,7 @@ export default Ember.Component.extend({
    * The protocol the user is using to access the page (http or https)
    * @property {String}
    */
-  currentProtocol: window.location.protocol,
+  currentProtocol: 'https:',
 
   /**
    * The protocol for the resource url
@@ -190,13 +190,13 @@ export default Ember.Component.extend({
    */
   resourceProtocol: Ember.computed('resource.url', function() {
     const httpsPattern = /^(https:\/\/)/;
-    return httpsPattern.test(this.get('resource.url')) ? 'https:' : 'http:';
+    return httpsPattern.test(this.get('resource.body')) ? 'https:' : 'http:';
   }),
 
   /**
-  * Check it can be render inside player or not
-  * @property {boolean}
-  */
+   * Check it can be render inside player or not
+   * @property {boolean}
+   */
 
   isLinkOut: Ember.computed('resource', function() {
     let currentProtocol = this.get('currentProtocol');
@@ -208,7 +208,7 @@ export default Ember.Component.extend({
   }),
 
   /**
-  * @property {boolean} isNextEnabled make ture by default for resource types
-  */
+   * @property {boolean} isNextEnabled make ture by default for resource types
+   */
   isNextEnabled: true
 });

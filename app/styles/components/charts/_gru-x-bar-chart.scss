@@ -5,7 +5,7 @@
   width: 100%;
   .segment {
     height: 100%;
-    float: left;
+    float: $tab-float-dir;
     &:first-child {
       border-bottom-left-radius: 4px;
       border-top-left-radius: 4px;

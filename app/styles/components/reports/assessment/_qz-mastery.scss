@@ -35,7 +35,7 @@
       .grading-scale-legend {
         display: table-cell;
         vertical-align: middle;
-        float: right;
+        float: $menu-float-dir;
         margin: 5px 0;
       }
       @include clearfix();
@@ -53,13 +53,13 @@
   }
 
   .view-more {
-    float: right;
+    float: $menu-float-dir;
     margin: 20px 20px 0px 0px;
     cursor: pointer;
   }
 
   .show-less {
-    float: right;
+    float: $menu-float-dir;
     margin: 20px 20px 0px 0px;
     cursor: pointer;
   }

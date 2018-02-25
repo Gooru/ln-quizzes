@@ -12,7 +12,7 @@
   .nav-player-container {
     .player-container {
       width: calc(100% - 276px);
-      float: left;
+      float: $tab-float-dir;
       height: 50px;
 
       .reaction-bar {
@@ -308,7 +308,7 @@
     }
 
     .prev {
-      float: left;
+      float: $tab-float-dir;
       width: 138px;
       height: 50px;
       font-size: 16px;
@@ -324,13 +324,13 @@
 
       i {
         font-size: 35px;
-        float: left;
+        float: $tab-float-dir;
         margin-left: -92px;
         margin-top: 10px;
       }
 
       span {
-        float: left;
+        float: $tab-float-dir;
         line-height: 54px;
         font-size: 16px;
       }
@@ -342,7 +342,7 @@
       font-size: 16px;
       color: $green-700;
       background-color: $white;
-      float: left;
+      float: $tab-float-dir;
       cursor: pointer;
       border-left: 1px solid $green-700;
 
@@ -354,14 +354,14 @@
       }
 
       i {
-        float: left;
+        float: $tab-float-dir;
         font-size: 35px;
         margin-left: -102px;
         margin-top: 10px;
       }
 
       span {
-        float: left;
+        float: $tab-float-dir;
         line-height: 54px;
         margin-left: 40px;
         font-size: 16px;
@@ -369,7 +369,7 @@
     }
 
     .next-action {
-      float: right;
+      float: $menu-float-dir;
       width: 138px;
       height: 50px;
       .usage-report,

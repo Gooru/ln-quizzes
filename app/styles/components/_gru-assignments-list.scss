@@ -31,7 +31,7 @@
       }
       .options {
         @media (min-width: $screen-sm) {
-          float: right;
+          float: $menu-float-dir;
         }
         .btn-group {
           i {

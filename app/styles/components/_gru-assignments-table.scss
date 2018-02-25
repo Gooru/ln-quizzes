@@ -86,6 +86,6 @@
   }
   .table-fixed tbody td,
   .table-fixed thead > tr > th {
-    float: left;
+    float: $tab-float-dir;
   }
 }

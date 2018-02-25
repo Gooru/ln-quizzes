@@ -10,7 +10,7 @@
       height: 88px;
       padding: 10px 5px;
       .card-icon {
-        float: left;
+        float: $tab-float-dir;
         margin: 0 5px;
         > i {
           height: 36px;
@@ -69,7 +69,7 @@
         }
       }
       .resource-description {
-        float: left;
+        float: $tab-float-dir;
         max-width: 140px;
         line-height: $font-size-base;
         .title {

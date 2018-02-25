@@ -2,7 +2,7 @@
   .chart {
     height: 28px;
     vertical-align: middle;
-    float: left;
+    float: $tab-float-dir;
     width: 84%;
     margin: 0 1% 5% 0;
     &.anonymous {
@@ -13,7 +13,7 @@
   .overall-completion {
     color: $white;
     font-weight: bold;
-    float: right;
+    float: $menu-float-dir;
     &.anonymous {
       /** this is a quick fix for a demo, implemenation may change once the final mock is provided **/
       font-size: $font-size-anonymous;
@@ -94,7 +94,7 @@
       }
     }
     .answer-percentage {
-      float: right;
+      float: $menu-float-dir;
       &.success {
         color: $green-400;
       }

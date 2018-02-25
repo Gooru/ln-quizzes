@@ -57,13 +57,13 @@
       padding: 0 15px;
 
       input {
-        float: left;
+        float: $tab-float-dir;
         width: 65%;
         padding: 3px 5px;
         margin-top: 2px;
       }
       button {
-        float: right;
+        float: $menu-float-dir;
         width: 30%;
       }
     }

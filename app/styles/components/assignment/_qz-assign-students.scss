@@ -82,7 +82,7 @@
     }
     .search-navigation {
       @media (min-width: $screen-sm-min) {
-        float: right;
+        float: $menu-float-dir;
       }
       .search-keyword {
         @include flexbox;

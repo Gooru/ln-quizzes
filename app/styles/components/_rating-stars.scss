@@ -2,7 +2,7 @@
   ul {
     list-style: none;
     li {
-      float: left;
+      float: $tab-float-dir;
       cursor: pointer;
     }
   }

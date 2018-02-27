@@ -4,7 +4,7 @@
     margin-right: 75px;
     margin-top: 10px;
     .title {
-      float: left;
+      float: $tab-float-dir;
       margin: 0 20px 10px 0;
       h4 {
         margin-top: 0;
@@ -187,7 +187,7 @@
 
         h4 {
           margin-bottom: 5px;
-          float: left;
+          float: $tab-float-dir;
         }
       }
     }

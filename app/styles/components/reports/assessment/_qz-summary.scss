@@ -175,17 +175,17 @@
       min-height: 133px;
       @media (min-width: $screen-xs) {
         margin: 0;
-        width: 600px;
+        width: 500px;
         height: 164px;
       }
       @media (min-width: $screen-lg-min) {
         height: 133px;
-        width: 600px;
+        width: 500px;
       }
 
       h5 {
         margin: 0;
-        width: 450px;
+        width: 350px;
         height: 40px;
         font-size: 16px;
         line-height: 1.25;
@@ -200,7 +200,7 @@
 
         i {
           vertical-align: middle;
-          margin: 0 5px 0 0;
+          margin: 0 3px 0 0;
         }
 
         span {
@@ -208,7 +208,7 @@
         }
 
         .attempt {
-          margin: 0 35px 0 0;
+          margin: 0 13px 0 0;
 
           .attempt-selector {
             display: inline-block;
@@ -236,27 +236,6 @@
           margin: 0 4px 0 0;
         }
 
-        .reaction {
-          margin: 0 5px 0 0;
-          float: $menu-float-dir;
-
-          .emotion {
-            vertical-align: middle;
-
-            &:hover {
-              svg {
-                @include scale(1);
-              }
-            }
-
-            &.active {
-              svg {
-                @include scale(1);
-              }
-            }
-          }
-        }
-
         .attempt,
         .date,
         .reaction,
@@ -268,6 +247,26 @@
           @media (max-width: $screen-md) {
             margin: 0 10px 0 0;
           }
+        }
+      }
+    }
+
+    .reactions {
+      width: 70px;
+      text-align: center;
+      margin-top: 18px;
+      margin-right: 10px;
+
+      .reaction {
+        .emotion {
+          width: 55px;
+          height: 55px;
+          text-align: center;
+          cursor: default;
+        }
+
+        .align-center {
+          font-size: 30px;
         }
       }
     }
@@ -290,7 +289,7 @@
           li {
             display: inline-block;
             padding: 0;
-            margin: 0 5px 10px 0;
+            margin: 0 4px 10px 0;
           }
         }
       }

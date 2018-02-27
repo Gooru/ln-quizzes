@@ -101,6 +101,8 @@ test('it renders for assessment', function(assert) {
   assert.ok($fractional, 'Fractional not found');
 
   const $overviewContainer = $component.find('.summary-container .overview');
+  const $reactionContainer = $component.find('.summary-container .reactions');
+
   assert.ok($overviewContainer.length, 'Overview container is missing');
   assert.ok($overviewContainer.find('h5').length, 'Header element is missing');
   assert.equal(
@@ -155,9 +157,9 @@ test('it renders for assessment', function(assert) {
   );
 
   // Reaction
-  $overviewSection = $overviewContainer.find('.information .reaction');
+  var $reactionSection = $reactionContainer.find('.reaction');
   assert.ok(
-    $overviewSection.find('.emotion').hasClass('emotion-2'),
+    $reactionSection.find('.emotion').hasClass('emotion-2'),
     'Emotion icon should have the class \'emotion-2\''
   );
 
@@ -453,9 +455,10 @@ test('it renders for collection', function(assert) {
   );
 
   // Reaction
-  $overviewSection = $overviewContainer.find('.information .reaction');
+  var $reactionContainer = $component.find('.summary-container .reactions');
+  var $reactionSection = $reactionContainer.find('.reaction');
   assert.ok(
-    $overviewSection.find('.emotion').hasClass('emotion-2'),
+    $reactionSection.find('.emotion').hasClass('emotion-2'),
     'Emotion icon should have the class \'emotion-2\''
   );
 

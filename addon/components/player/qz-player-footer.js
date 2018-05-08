@@ -64,6 +64,12 @@ export default Ember.Component.extend({
       component.$('.list-resources').slideUp();
     },
 
+    onToggleResourceNav() {
+      let component = this;
+      component.$('.list-resources').slideToggle();
+      component.toggleProperty('isNavigatorOpen');
+    },
+
     /**
      *
      * Triggered when an item is selected

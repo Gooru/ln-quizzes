@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { PLAYER_EVENT_SOURCE } from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Default Player header
@@ -27,7 +28,13 @@ export default Ember.Component.extend({
     * Action triggered when the user closes the content player
     */
     closePlayer: function() {
-      this.sendAction('onClosePlayer');
+      let component = this;
+      let isEventFromRGO = component.get('isEventFromRGO');
+      if (isEventFromRGO) {
+        window.close();
+      } else {
+        this.sendAction('onClosePlayer');
+      }
     },
 
     /**
@@ -53,7 +60,17 @@ export default Ember.Component.extend({
   /**
    * @property {collection} collection - The current Collection
    */
-  collection: null
+  collection: null,
+
+  /**
+   * @property {isEventFromRGO}
+   * To determine whether the player event was triggered from the RGO app
+   */
+  isEventFromRGO: Ember.computed('source', function() {
+    let component = this;
+    let source = component.get('source');
+    return source === PLAYER_EVENT_SOURCE.RGO;
+  })
 
   // -------------------------------------------------------------------------
   // Methods

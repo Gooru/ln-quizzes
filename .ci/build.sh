@@ -9,9 +9,9 @@ chmod 0777 /tmp/yarn-cache-bamboo
 
 docker login \
   -u $ARTIFACTORY_USERNAME \
-  -p $ARTIFACTORY_PASSWORD edify-dkr.jfrog.io
+  -p $ARTIFACTORY_PASSWORD
 
 docker run -t --rm \
   -v $PWD:/build \
   -v /tmp/yarn-cache-bamboo:/tmp/yarn-cache \
-  -w /build edify-dkr.jfrog.io/gooru-fe-builder ./.ci/docker-build.sh
+  -w /build dockergooru/fe-build ./.ci/docker-build.sh

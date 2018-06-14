@@ -1,0 +1,15 @@
+<div class="related-content-tabs">
+  <div class="related-content-tab" {{action 'onToggleRelatedContent'}}>
+    <div class="tab-info">
+      <span>Related Content</span> {{gru-icon name="explore"}}
+    </div>
+    <div class="related-content-tab-box"></div>
+  </div>
+</div>
+<div class="related-content-body">
+  <div class="resource-cards">
+    {{#each suggestedResources as |resource|}}
+      {{cards.resource-card resource=resource onPlayResource='onPlayResource'}}
+    {{/each}}
+  </div>
+</div>

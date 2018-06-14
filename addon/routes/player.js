@@ -226,6 +226,7 @@ export default Ember.Route.extend({
     controller.set('eventContext', model.eventContext);
     controller.set('notCheckAttempts', notCheckAttempts);
     controller.set('showConfirmation', true);
+    controller.set('suggestedResources', model.suggestedResources);
   },
 
   /**

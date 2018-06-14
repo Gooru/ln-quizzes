@@ -70,5 +70,10 @@ export default Ember.Controller.extend({
    * Indicates if it should default player header
    * @property {boolean}
    */
-  showPlayerHeader: true
+  showPlayerHeader: true,
+
+  /**
+   * @property {Array} list of suggested resources of a collection
+   */
+  suggestedResources: null
 });

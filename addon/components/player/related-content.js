@@ -103,14 +103,14 @@ export default Ember.Component.extend({
       );
     } else {
       let component = this;
-      let bottom = 300 - Ember.$(window).height();
+      let bottom = -384;
       component.$().animate(
         {
           bottom: `${bottom}px`
         },
         {
           complete: function() {
-            component.$().css('bottom', 'calc(300px - 100vh)');
+            component.$().css('bottom', '-384px');
           }
         }
       );

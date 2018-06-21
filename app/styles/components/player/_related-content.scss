@@ -1,10 +1,10 @@
 .related-content {
-  width: 100%;
-  height: calc(100vh - 205px);
+  width: 80%;
   position: fixed;
   z-index: 1;
-  bottom: calc(300px - 100vh);
-
+  bottom: -384px;
+  left: 10%;
+  max-height: 480px;
   .related-content-tabs {
     height: 45px;
     padding: 0;
@@ -45,7 +45,7 @@
 
   .related-content-body {
     z-index: 1;
-    height: calc(100vh - 250px);
+    max-height: 435px;
     background: $dark-600;
     position: relative;
     overflow: auto;

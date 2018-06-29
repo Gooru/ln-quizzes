@@ -1,10 +1,10 @@
 .related-content {
-  width: 80%;
   position: fixed;
   z-index: 1;
   bottom: -384px;
-  left: 10%;
   max-height: 480px;
+  right: 137px;
+
   .related-content-tabs {
     height: 45px;
     padding: 0;
@@ -50,6 +50,9 @@
     position: relative;
     overflow: auto;
     padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
     .resource-cards {
       grid-template-columns: 1fr 1fr 1fr;
       grid-gap: 45px;

@@ -109,12 +109,17 @@ export default Ember.Component.extend(ModalMixin, {
     openPlayer: function() {
       const component = this;
       const startContext = component.get('startContextFunction');
-      startContext().then(function(contextResult) {
-        contextResult.merge(component.get('collection'));
-        component.set('contextResult', contextResult);
+      if (component.get('collection.isCollection')) {
         component.set('showConfirmation', false);
         component.startAssessment();
-      });
+      } else {
+        startContext().then(function(contextResult) {
+          contextResult.merge(component.get('collection'));
+          component.set('contextResult', contextResult);
+          component.set('showConfirmation', false);
+          component.startAssessment();
+        });
+      }
     },
 
     /**
@@ -172,7 +177,6 @@ export default Ember.Component.extend(ModalMixin, {
   didInsertElement: function() {
     this._super(...arguments);
     if (
-      this.get('collection.isCollection') ||
       this.get('isAnonymous') ||
       this.get('isTeacher') ||
       this.get('notCheckAttempts')

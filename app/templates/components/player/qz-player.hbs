@@ -1,5 +1,5 @@
 {{#if showConfirmation}}
-  {{player.qz-player-confirmation attempts=attempts collection=collection context=context onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection"}}
+  {{player.qz-player-confirmation attempts=attempts collection=collection context=context onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection" collectionSource=collectionSource collectionSubType=collectionSubType}}
 {{else}}
   {{#if showPlayerHeader}}
     {{player.qz-player-header

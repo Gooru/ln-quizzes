@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import ResourceSerializer from 'quizzes-addon/serializers/resource/resource';
 import CollectionModel from 'quizzes-addon/models/collection/collection';
+import TaxonomySerializer from 'quizzes-addon/serializers/taxonomy/taxonomy';
 import {
   ASSESSMENT_SHOW_VALUES,
   DEFAULT_IMAGES
@@ -19,11 +20,17 @@ export default Ember.Object.extend({
 
   session: Ember.inject.service('session'),
 
+  taxonomySerializer: null,
+
   init: function() {
     this._super(...arguments);
     this.set(
       'resourceSerializer',
       ResourceSerializer.create(Ember.getOwner(this).ownerInjection())
+    );
+    this.set(
+      'taxonomySerializer',
+      TaxonomySerializer.create(Ember.getOwner(this).ownerInjection())
     );
   },
 
@@ -54,6 +61,7 @@ export default Ember.Object.extend({
    */
   normalizeGetCollection: function(payload) {
     const serializer = this;
+    const taxonomySerializer = serializer.get('taxonomySerializer');
     const basePath = serializer.get('session.cdnUrls.content');
     const thumbnailUrl = payload.thumbnail
       ? basePath + payload.thumbnail
@@ -80,6 +88,9 @@ export default Ember.Object.extend({
           ? metadata['21_century_skills']
           : [],
       format: payload.format || payload.target_content_type,
+      taxonomy: payload.taxonomy
+        ? taxonomySerializer.normalizeTaxonomyObject(payload.taxonomy)
+        : [],
       thumbnailUrl: thumbnailUrl
     });
   },
@@ -91,6 +102,7 @@ export default Ember.Object.extend({
    */
   normalizeGetAssessment: function(payload) {
     const serializer = this;
+    const taxonomySerializer = serializer.get('taxonomySerializer');
     const basePath = serializer.get('session.cdnUrls.content');
     const thumbnailUrl = payload.thumbnail
       ? basePath + payload.thumbnail
@@ -117,6 +129,10 @@ export default Ember.Object.extend({
           ? metadata['21_century_skills']
           : [],
       format: payload.format || payload.target_content_type,
+      taxonomy: payload.taxonomy
+        ? taxonomySerializer.normalizeTaxonomyObject(payload.taxonomy)
+        : [],
+      questionCount: payload.question ? payload.question.length : 0,
       thumbnailUrl: thumbnailUrl
     });
   },
@@ -139,6 +155,7 @@ export default Ember.Object.extend({
     }
     return resources;
   },
+
   /**
    * Normalize the settings from a collection
    * @param setting

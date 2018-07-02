@@ -11,7 +11,7 @@ const collectionServiceStub = Ember.Service.extend({
         Ember.getOwner(this).ownerInjection(),
         {
           id: 'collection-123',
-          title: 'Sample Course Name'
+          title: 'Sample Assessment Name'
         }
       );
       return Ember.RSVP.resolve(collection);

@@ -32,6 +32,37 @@ const profileServiceStub = Ember.Service.extend({
   }
 });
 
+const collectionServiceStub = Ember.Service.extend({
+  getAssessment(assessmentId) {
+    if (assessmentId) {
+      let collection = Collection.create(
+        Ember.getOwner(this).ownerInjection(),
+        {
+          id: 'collection-123',
+          title: 'Sample Assessment Name'
+        }
+      );
+      return Ember.RSVP.resolve(collection);
+    } else {
+      return Ember.RSVP.reject('Fetch failed');
+    }
+  },
+  getCollection(assessmentId) {
+    if (assessmentId) {
+      let collection = Collection.create(
+        Ember.getOwner(this).ownerInjection(),
+        {
+          id: 'collection-123',
+          title: 'Sample Collection Name'
+        }
+      );
+      return Ember.RSVP.resolve(collection);
+    } else {
+      return Ember.RSVP.reject('Fetch failed');
+    }
+  }
+});
+
 moduleForComponent(
   'player/qz-player',
   'Integration | Component | player/qz player',
@@ -41,12 +72,15 @@ moduleForComponent(
       this.inject.service('i18n');
       this.register('service:quizzes/profile', profileServiceStub);
       this.inject.service('quizzes/profile');
+      this.register('service:quizzes/collection', collectionServiceStub);
+      this.inject.service('quizzes/collection', { as: 'collectionService' });
     }
   }
 );
 
 test('it renders', function(assert) {
   const collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    id: 'collection-123',
     title: 'Assessment Title',
     isCollection: false
   });
@@ -69,6 +103,7 @@ test('it renders', function(assert) {
 
 test('Show finish Confirmation', function(assert) {
   const collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    id: 'collection-123',
     title: 'Assessment Title',
     isCollection: false,
     hasResources: true
@@ -113,6 +148,7 @@ test('Narration', function(assert) {
   });
 
   const collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    id: 'collection-123',
     title: 'Collection Title',
     isCollection: true,
     resources: Ember.A([resourceMockA, resourceMockB]),
@@ -204,6 +240,7 @@ test('Link out', function(assert) {
   });
 
   const collection = Collection.create(Ember.getOwner(this).ownerInjection(), {
+    id: 'collection-123',
     title: 'Collection Title',
     isCollection: true,
     resources: Ember.A([resourceMockA, resourceMockB]),

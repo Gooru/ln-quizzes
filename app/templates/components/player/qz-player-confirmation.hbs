@@ -51,12 +51,12 @@
             <div class="direction">
               {{#if collection.bidirectional}}
                 {{gru-icon name='swap_horiz'}}
-                <div class="info">
+                <div class="info bidirectional">
                   {{t "qz-assessment-confirmation.forward-backward"}}
                 </div>
               {{else}}
                 {{gru-icon name='trending_flat'}}
-                <div class="info">
+                <div class="info not-bidirectional">
                   {{t "qz-assessment-confirmation.forward"}}
                 </div>
               {{/if}}

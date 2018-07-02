@@ -1,43 +1,88 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="title">{{t "qz-assessment-confirmation.title"}}</h3>
-  </div>
-  <div class="panel-body">
-    <span class="lead description">{{t 'qz-assessment-confirmation.description'}} {{context.title}}</span>
-    {{#unless noMoreAttempts}}
-      <div class="setting info">
-        {{#if collection.bidirectional}}
-          {{gru-icon name='swap_horiz'}}
-          <p class="lead bidirectional">
-            {{t "qz-assessment-confirmation.setting-forward-backward"}}
-          </p>
-        {{else}}
-          {{gru-icon name='trending_flat'}}
-          <p class="lead not-bidirectional">
-            {{t "qz-assessment-confirmation.setting-forward"}}
-          </p>
-        {{/if}}
-      </div>
-    {{/unless}}
-    <div class="attempts info">
-      {{gru-icon name='history'}}
-      <p class="lead">
-        {{#if unlimited}}
-          {{t "qz-assessment-confirmation.unlimited-attempts-left"}}
-        {{else}}
-          {{#if noMoreAttempts}}
-            <span class="no-more-attempts">{{t "qz-assessment-confirmation.attempts-left.no-attempts"}}</span>
-          {{else}}
-            {{t "qz-assessment-confirmation.attempts-left" count=attemptsLeft}}
+<div class="confirmation-panel {{if isSuggestedContent 'suggested-content'}}">
+  <div class="header">
+    <div class="thumbnail" style="background-image: url({{confirmationInfo.thumbnailUrl}})"></div>
+    <div class="collection-info">
+      <div class="content-info">
+        <div class="content-count">
+          <div class="question">
+            <span class="icon"></span>
+            <span>{{confirmationInfo.questionCount}}</span>
+          </div>
+          {{#if collection.isCollection}}
+            <div class="resource">
+              <span class="icon"></span>
+              <span>{{confirmationInfo.resourceCount}}</span>
+            </div>
           {{/if}}
-        {{/if}}
-      </p>
+        </div>
+        <div class="taxonomy">
+          {{#if tags.length}}
+            {{taxonomy.gru-taxonomy-tag-list tags=tags tagsVisible=1 isInCard=true showDescription=true}}
+          {{/if}}
+        </div>
+      </div>
+      <div class="description">
+        {{confirmationInfo.learningObjectives}}
+      </div>
     </div>
-    <div class="actions">
-      <button type="button" class="btn btn-default {{if noMoreAttempts "back" "cancel"}}" {{action 'cancel'}} > {{if noMoreAttempts (t 'common.back') (t 'common.cancel')}}</button>
-      {{#unless noMoreAttempts}}
-        <button type="button" class="btn btn-primary {{if context.hasStarted "continue" "start"}}" {{action 'start'}} disabled={{disableStart}}>{{if context.hasStarted (t 'qz-assessment-confirmation.continue') (t 'qz-assessment-confirmation.start')}}</button>
-      {{/unless}}
+  </div>
+  {{#if isSuggestedContent}}
+    <div class="suggestion-icon">
+      {{#if (eq collectionSource 'system_suggestions')}}
+        {{gru-icon name="explore" class="system_suggestions icon"}}
+      {{else }}
+        <span class="teacher_suggestions icon"></span>
+      {{/if}}
     </div>
+  {{/if}}
+  <div class="body">
+    <div class="title-info">
+      <div class="info {{unless isSuggestedContent 'normal-content'}}">You’re about to start studying</div>
+      <div class="title">{{confirmationInfo.title}}</div>
+      {{#if (not collection.isCollection)}}
+        <div class="note">In this quiz, you can</div>
+      {{/if}}
+    </div>
+
+    {{#if (not collection.isCollection)}}
+      <div class="action-info">
+        {{#unless noMoreAttempts}}
+          <div class="navigation">
+            <div class="direction">
+              {{#if collection.bidirectional}}
+                {{gru-icon name='swap_horiz'}}
+                <div class="info bidirectional">
+                  {{t "qz-assessment-confirmation.forward-backward"}}
+                </div>
+              {{else}}
+                {{gru-icon name='trending_flat'}}
+                <div class="info not-bidirectional">
+                  {{t "qz-assessment-confirmation.forward"}}
+                </div>
+              {{/if}}
+            </div>
+          </div>
+        {{/unless}}
+        <div class="attempts">
+          {{#if unlimited}}
+            <div class="info unlimited">{{t "qz-assessment-confirmation.unlimited-attempts-left"}}</div>
+          {{else}}
+            {{#if noMoreAttempts}}
+              <div class="info no-more">{{t "qz-assessment-confirmation.attempts-left.no-attempts"}}</div>
+            {{else}}
+            <div class="attempt">{{attemptsLeft}}</div>
+              <div class="info">{{t "qz-assessment-confirmation.attempts-left" count=attemptsLeft}}</div>
+            {{/if}}
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+
+  </div>
+  <div class="footer">
+    <div class="cancel {{if noMoreAttempts "back" "cancel"}}" {{action 'cancel'}}>{{if noMoreAttempts (t 'common.back') (t 'common.cancel')}}</div>
+    {{#unless noMoreAttempts}}
+      <div class="start" {{action 'start'}} disabled={{disableStart}}>{{if context.hasStarted (t 'qz-assessment-confirmation.continue') (t 'qz-assessment-confirmation.start')}}</div>
+    {{/unless}}
   </div>
 </div>

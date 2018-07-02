@@ -605,6 +605,8 @@ export default {
     'setting-forward': 'You can navigate forward only',
     'setting-forward-backward':
       'You can navigate forward and backwards to answer questions',
+    'forward-backward': 'Navigate forward and backwards to answer questions',
+    forward: 'Navigate forward only',
     'unlimited-attempts-left': 'You have unlimited attempts',
     'attempts-left': {
       one: 'You have 1 attempt left',

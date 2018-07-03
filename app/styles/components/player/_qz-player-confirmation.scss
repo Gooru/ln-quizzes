@@ -3,14 +3,14 @@
     width: 499px;
     height: 458px;
     border-radius: 4px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 13px 6px #8d8c8b;
+    background-color: $white;
+    box-shadow: 0 2px 13px 6px $heathered-gray;
     &.suggested-content {
-      box-shadow: 0 2px 13px 6px #ed8e36;
+      box-shadow: 0 2px 13px 6px $orange-400;
     }
     .header {
       height: 161px;
-      border-bottom: 1px solid #979797;
+      border-bottom: 1px solid $nobel-gray;
       display: flex;
 
       .thumbnail {
@@ -55,7 +55,7 @@
           .taxonomy {
             .gru-taxonomy-tag-list {
               .gru-taxonomy-tag {
-                background-color: #37424b;
+                background-color: $dark-400;
                 .standard-tag {
                   .tag-label,
                   .tag-caption {
@@ -74,7 +74,7 @@
           $font-size: 13px;
           $line-height: 1.6;
           $lines-to-show: 4;
-          color: #37424b;
+          color: $dark-400;
           padding: 0 15px;
           @include ellipsis($font-size: $font-size, $line-height: $line-height, $lines-to-show: $lines-to-show);
         }
@@ -88,7 +88,7 @@
         margin-top: -25px;
         background-color: white;
         border-radius: 50%;
-        color: #ed8e36;
+        color: $orange-400;
         border: 2px solid $white;
       }
       .teacher_suggestions {
@@ -116,7 +116,7 @@
         .info,
         .note {
           font-size: 13px;
-          color: #666666;
+          color: $gray;
 
           &.normal-content {
             margin-top: 15px;
@@ -127,7 +127,7 @@
           $font-size: 34px;
           $line-height: 1.09;
           $lines-to-show: 2;
-          color: #29323a;
+          color: $dark-500;
           @include ellipsis($font-size: $font-size, $line-height: $line-height, $lines-to-show: $lines-to-show);
         }
       }
@@ -143,7 +143,7 @@
             font-size: 13px;
             line-height: 1.15;
             text-align: center;
-            color: #666666;
+            color: $gray;
 
             &.unlimited,
             &.no-more {
@@ -157,7 +157,7 @@
           .direction {
             i {
               font-size: 45px;
-              color: #37424b;
+              color: $dark-400;
             }
           }
         }
@@ -166,7 +166,7 @@
           padding-left: 37px;
           .attempt {
             font-size: 28px;
-            color: #37424b;
+            color: $dark-400;
           }
         }
       }
@@ -184,13 +184,13 @@
         cursor: pointer;
       }
       .cancel {
-        background-color: #e3e5ea;
-        color: #535e66;
+        background-color: $light-200;
+        color: $elephant-dark;
         margin-left: 164px;
         margin-right: 20px;
       }
       .start {
-        background-color: #ed8e36;
+        background-color: $orange-400;
         color: $white;
       }
     }

@@ -6,19 +6,10 @@
   </div>
   <div class="resource-format-container">
     <span>{{resource.format}}</span>
-    {{#if (not resource.isVisibleOnProfile)}}
-      <div class="visibility  visible_false" title="{{t 'common.visibility-tooltip'}}" data-toggle="tooltip" data-placement="top" data-trigger="hover">
-        {{gru-icon name="visibility" class='pull-right cca-eye-icon'}}
-      </div>
-    {{else}}
-      <div class="visibility visible_true" title="{{t 'common.visibility-available'}}" data-toggle="tooltip" data-placement="top" data-trigger="hover">
-        {{gru-icon name="visibility" class='pull-right cca-eye-icon'}}
-      </div>
-    {{/if}}
   </div>
   <div class="resource-info-container">
     <div class="resource-user-info">
-      <div class="created-by">{{t (if resource.sameOwnerAndCreator "common.created-by" "common.remixed-by")}}</div>
+      <div class="created-by">{{t 'common.created-by'}}</div>
       <div class="img-container pull-left">
         <img class="img-responsive" src="{{resource.owner.avatarUrl}}">
       </div>

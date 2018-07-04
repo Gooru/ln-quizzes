@@ -11,6 +11,7 @@
       .gru-taxonomy-tag {
         background-color: $dark-600;
         border: none;
+
         .standard-tag {
           b {
             color: $white;
@@ -127,6 +128,7 @@
           font-style: italic;
           margin-right: 10px;
           line-height: 15px;
+          padding-top: 3px;
         }
 
         .img-container {
@@ -172,6 +174,8 @@
         .non-visible-tags {
           padding: 2px;
           font-size: 12px;
+          margin-left: 20px;
+          margin-top: 5px;
         }
       }
     }

@@ -1,53 +1,49 @@
-<div class="confirmation-panel {{if isSuggestedContent 'suggested-content'}}">
+<div class="confirmation-panel {{unless isCollectionConfirmation 'assessment'}} {{if isSuggestedContent 'suggested-content'}}">
   <div class="header">
-    <div class="thumbnail" style="background-image: url({{confirmationInfo.thumbnailUrl}})"></div>
-    <div class="collection-info">
-      <div class="content-info">
-        <div class="content-count">
-          <div class="question">
-            <span class="icon"></span>
-            <span>{{confirmationInfo.questionCount}}</span>
-          </div>
-          {{#if collection.isCollection}}
+    <div class="title-info">
+      <div class="collection-info">
+        <div class="title">
+          {{confirmationInfo.title}}
+        </div>
+        <div class="content-info">
+          {{#if isCollectionConfirmation}}
             <div class="resource">
-              <span class="icon"></span>
+              <span class="icon" data-toggle="tooltip" title="{{t 'common.resource'}}"></span>
               <span>{{confirmationInfo.resourceCount}}</span>
             </div>
           {{/if}}
+          <div class="question">
+            <span class="icon" data-toggle="tooltip" title="{{t 'common.question'}}"></span>
+            <span>{{confirmationInfo.questionCount}}</span>
+          </div>
+          <div class="taxonomy">
+            {{#if tags.length}}
+              {{taxonomy.gru-taxonomy-tag-list tags=tags tagsVisible=1 isInCard=true showDescription=true}}
+            {{/if}}
+          </div>
         </div>
-        <div class="taxonomy">
-          {{#if tags.length}}
-            {{taxonomy.gru-taxonomy-tag-list tags=tags tagsVisible=1 isInCard=true showDescription=true}}
+      </div>
+    </div>
+    {{#if isSuggestedContent}}
+      <div class="suggestion-badge">
+        <div class="suggestion-icon">
+          {{#if (eq collectionSource 'system_suggestions')}}
+            {{gru-icon name="explore" class="system_suggestions icon"}}
+          {{else }}
+            <span class="teacher_suggestions icon"></span>
           {{/if}}
         </div>
       </div>
-      <div class="description">
-        {{confirmationInfo.learningObjectives}}
-      </div>
-    </div>
+    {{/if}}
   </div>
-  {{#if isSuggestedContent}}
-    <div class="suggestion-icon">
-      {{#if (eq collectionSource 'system_suggestions')}}
-        {{gru-icon name="explore" class="system_suggestions icon"}}
-      {{else }}
-        <span class="teacher_suggestions icon"></span>
-      {{/if}}
-    </div>
-  {{/if}}
   <div class="body">
-    <div class="title-info">
-      <div class="info {{unless isSuggestedContent 'normal-content'}}">You’re about to start studying</div>
-      <div class="title">{{confirmationInfo.title}}</div>
-      {{#if (not collection.isCollection)}}
-        <div class="note">In this quiz, you can</div>
-      {{/if}}
+    <div class="description">
+      {{confirmationInfo.learningObjectives}}
     </div>
-
-    {{#if (not collection.isCollection)}}
-      <div class="action-info">
-        {{#unless noMoreAttempts}}
-          <div class="navigation">
+    {{#unless isCollectionConfirmation}}
+      <div class="properties {{if (eq collection.showFeedback 'immediate') 'answers-available'}}">
+        <div class="navigation">
+          {{#unless noMoreAttempts}}
             <div class="direction">
               {{#if collection.bidirectional}}
                 {{gru-icon name='swap_horiz'}}
@@ -61,13 +57,23 @@
                 </div>
               {{/if}}
             </div>
+          {{/unless}}
+        </div>
+        {{#if (eq collection.showFeedback 'immediate')}}
+          <div class="answers">
+            {{gru-icon name='visibility'}}
+            <div class="info">
+              See correct answers within the assessment
+            </div>
           </div>
-        {{/unless}}
+        {{/if}}
         <div class="attempts">
           {{#if unlimited}}
+            {{gru-icon name='cached'}}
             <div class="info unlimited">{{t "qz-assessment-confirmation.unlimited-attempts-left"}}</div>
           {{else}}
             {{#if noMoreAttempts}}
+              {{gru-icon name='highlight_off'}}
               <div class="info no-more">{{t "qz-assessment-confirmation.attempts-left.no-attempts"}}</div>
             {{else}}
             <div class="attempt">{{attemptsLeft}}</div>
@@ -76,8 +82,7 @@
           {{/if}}
         </div>
       </div>
-    {{/if}}
-
+    {{/unless}}
   </div>
   <div class="footer">
     <div class="cancel {{if noMoreAttempts "back" "cancel"}}" {{action 'cancel'}}>{{if noMoreAttempts (t 'common.back') (t 'common.cancel')}}</div>

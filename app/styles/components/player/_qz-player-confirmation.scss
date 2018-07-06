@@ -1,35 +1,51 @@
+.show-confirmation {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-position: inherit;
+  margin-top: 0;
+  .qz-player {
+    &.confirmation {
+      margin: 0;
+    }
+  }
+  &.assessment {
+    background-image: url("gooru/assessment-start-page.jpg");
+  }
+  &.collection {
+    background-image: url("gooru/collection-start-page.jpg");
+  }
+}
 .qz-player-confirmation {
+  left: 75px;
+  top: 165px;
+  position: fixed;
   .confirmation-panel {
     width: 499px;
-    height: 458px;
     border-radius: 4px;
     background-color: $white;
     box-shadow: 0 2px 13px 6px $heathered-gray;
-    &.suggested-content {
-      box-shadow: 0 2px 13px 6px $orange-400;
-    }
+    opacity: 0.9;
+    padding: 26px 30px 10px 31px;
+    color: $dark-500;
+    min-height: 245px;
+
     .header {
-      height: 161px;
-      border-bottom: 1px solid $nobel-gray;
+      max-height: 125px;
       display: flex;
 
-      .thumbnail {
-        width: 247px;
-        height: 161px;
-        object-fit: contain;
-        background-color: transparent;
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-
-      .collection-info {
-        width: 247px;
-        .content-info {
-          display: flex;
-          height: 60px;
-          padding: 15px 0 0 15px;
-          .content-count {
-            width: 50px;
+      .title-info {
+        .collection-info {
+          .title {
+            $font-size: 34px;
+            $line-height: 1.09;
+            $lines-to-show: 2;
+            @include ellipsis($font-size: $font-size, $line-height: $line-height, $lines-to-show: $lines-to-show);
+          }
+          .content-info {
+            display: flex;
+            padding: 15px 0;
             .icon {
               height: 17px;
               width: 17px;
@@ -44,6 +60,9 @@
               line-height: 17px;
               margin-bottom: 5px;
             }
+            .resource {
+              margin-right: 10px;
+            }
             .question .icon {
               background-image: url("gooru/images/add_question.svg");
             }
@@ -53,120 +72,98 @@
           }
 
           .taxonomy {
+            margin: -1px 0 0 5px;
             .gru-taxonomy-tag-list {
               .gru-taxonomy-tag {
-                background-color: $dark-400;
-                .standard-tag {
-                  .tag-label,
-                  .tag-caption {
-                    color: $white;
-                  }
-                  .tag-caption {
-                    opacity: 0.7;
-                  }
+                background-color: $charcoal-grey;
+                .tag-label {
+                  color: $white;
+                  font-size: 12px;
+                  font-weight: bold;
                 }
+                .tag-caption {
+                  display: none;
+                }
+              }
+              .non-visible-tags {
+                padding: 0;
               }
             }
           }
         }
+      }
 
-        .description {
-          $font-size: 13px;
-          $line-height: 1.6;
-          $lines-to-show: 4;
-          color: $dark-400;
-          padding: 0 15px;
-          @include ellipsis($font-size: $font-size, $line-height: $line-height, $lines-to-show: $lines-to-show);
+      .thumbnail {
+        width: 247px;
+        height: 161px;
+        object-fit: contain;
+        background-color: transparent;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .suggestion-badge {
+        .suggestion-icon {
+          width: 100px;
+          i {
+            font-size: 95px;
+            background-color: #101316;
+            border-radius: 50%;
+            color: $orange-400;
+            border: 1px solid $charcoal-grey-two;
+          }
+          .teacher_suggestions {
+            background-image: url("gooru/images/account-cirlce-orange.svg");
+            width: 100px;
+            height: 100px;
+            background-size: 100px;
+            color: $orange-400;
+            display: block;
+            border-radius: 50%;
+            background-color: $dark;
+          }
         }
-      }
-    }
-
-    .suggestion-icon {
-      margin-left: 218px;
-      i {
-        font-size: 54px;
-        margin-top: -25px;
-        background-color: white;
-        border-radius: 50%;
-        color: $orange-400;
-        border: 2px solid $white;
-      }
-      .teacher_suggestions {
-        position: relative;
-        background-image: url("gooru/images/account-cirlce-orange.svg");
-        width: 54px;
-        height: 54px;
-        background-size: 54px;
-        color: $orange-400;
-        display: block;
-        border-radius: 50%;
-        background-color: $white;
-        margin-top: -29px;
-        border: 2px solid $white;
       }
     }
 
     .body {
-      height: 215px;
-      .title-info {
-        height: 123px;
-        padding: 0 30px;
-        text-align: center;
-
-        .info,
-        .note {
-          font-size: 13px;
-          color: $gray;
-
-          &.normal-content {
-            margin-top: 15px;
-          }
-        }
-
-        .title {
-          $font-size: 34px;
-          $line-height: 1.09;
-          $lines-to-show: 2;
-          color: $dark-500;
-          @include ellipsis($font-size: $font-size, $line-height: $line-height, $lines-to-show: $lines-to-show);
-        }
+      .description {
+        color: $charcoal-grey-two;
+        $font-size: 13px;
+        $line-height: 1.6;
+        $lines-to-show: 6;
+        @include ellipsis($font-size: $font-size, $line-height: $line-height, $lines-to-show: $lines-to-show);
+        padding-bottom: 23px;
+        min-height: 69px;
       }
-      .action-info {
+      .properties {
         display: flex;
-        height: 85px;
-        .navigation,
-        .attempts {
-          width: 50%;
-          text-align: center;
-
-          .info {
-            font-size: 13px;
-            line-height: 1.15;
-            text-align: center;
-            color: $gray;
-
-            &.unlimited,
-            &.no-more {
-              margin-top: 52px;
-            }
-          }
-        }
+        padding-bottom: 23px;
         .navigation {
-          padding-left: 41px;
-          padding-right: 21px;
-          .direction {
-            i {
-              font-size: 45px;
-              color: $dark-400;
-            }
-          }
+          padding: 0;
         }
         .attempts {
-          padding-right: 41px;
-          padding-left: 37px;
           .attempt {
-            font-size: 28px;
-            color: $dark-400;
+            font-size: 29px;
+          }
+        }
+        .navigation,
+        .answers,
+        .attempts {
+          padding: 0 15px;
+          font-size: 10px;
+          line-height: 1.5;
+          text-align: center;
+          width: calc(100% / 2);
+          i {
+            font-size: 39px;
+          }
+        }
+        &.answers-available {
+          .navigation,
+          .answers,
+          .attempts {
+            width: calc(100% / 3);
           }
         }
       }
@@ -174,6 +171,7 @@
 
     .footer {
       display: flex;
+      margin-bottom: 15px;
       .cancel,
       .start {
         width: 76px;
@@ -186,12 +184,62 @@
       .cancel {
         background-color: $light-200;
         color: $elephant-dark;
-        margin-left: 164px;
+        margin-left: 135px;
         margin-right: 20px;
       }
       .start {
-        background-color: $orange-400;
+        background-color: $blue-400;
         color: $white;
+      }
+    }
+
+    &.suggested-content {
+      background-color: $charcoal-grey-two;
+      color: $pale-grey-two;
+      opacity: 0.9;
+      .header {
+        .title-info {
+          .collection-info {
+            .title {
+              color: $white;
+            }
+            .content-info {
+              .question .icon {
+                background-image: url("gooru/images/question-white.svg");
+              }
+              .resource .icon {
+                background-image: url("gooru/images/resource-white.svg");
+              }
+            }
+          }
+        }
+
+        .taxonomy {
+          .gru-taxonomy-tag-list {
+            .gru-taxonomy-tag {
+              background-color: $pale-grey-two !important;
+              .tag-label {
+                color: $dark !important;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+      .body {
+        .description {
+          color: $white;
+        }
+        .properties {
+          i {
+            color: $pale-grey-two;
+          }
+        }
+      }
+      .footer {
+        .start {
+          background-color: $orange-400;
+        }
       }
     }
   }

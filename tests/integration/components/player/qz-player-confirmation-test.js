@@ -66,7 +66,7 @@ test('Player confirmation Layout No more attempts', function(assert) {
     'Player confirmation component should appear'
   );
   assert.ok(
-    $component.find('.qz-player-confirmation .body .title').length,
+    $component.find('.qz-player-confirmation .header .title').length,
     'Missing title'
   );
   assert.ok(
@@ -151,10 +151,5 @@ test('Player confirmation Layout Not bidirectional', function(assert) {
     $component.find('.qz-player-confirmation .action-info  .bidirectional')
       .length,
     'Bidirectional lead should not appear'
-  );
-  assert.ok(
-    $component.find('.qz-player-confirmation .action-info .not-bidirectional')
-      .length,
-    'Not bidirectional lead should appear'
   );
 });

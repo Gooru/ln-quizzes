@@ -23,6 +23,11 @@ export default Ember.Component.extend({
     component.fetchConfirmationInfo();
   },
 
+  didRender() {
+    var component = this;
+    component.$('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+  },
+
   // -------------------------------------------------------------------------
   // Actions
   actions: {

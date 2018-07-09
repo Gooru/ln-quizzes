@@ -3,7 +3,7 @@
   bottom: -384px;
   max-height: 480px;
   right: 137px;
-  z-index: 9999;
+  z-index: 1;
 
   .related-content-tabs {
     height: 45px;
@@ -63,7 +63,4 @@
       align-items: center;
     }
   }
-}
-.popover {
-  z-index: 99999 !important;
 }

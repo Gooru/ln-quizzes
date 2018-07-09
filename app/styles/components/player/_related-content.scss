@@ -1,9 +1,9 @@
 .related-content {
   position: fixed;
-  z-index: 1;
   bottom: -384px;
   max-height: 480px;
   right: 137px;
+  z-index: 9999;
 
   .related-content-tabs {
     height: 45px;
@@ -52,6 +52,7 @@
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
+    width: auto;
 
     .resource-cards {
       grid-template-columns: 1fr 1fr 1fr;
@@ -62,4 +63,7 @@
       align-items: center;
     }
   }
+}
+.popover {
+  z-index: 99999 !important;
 }

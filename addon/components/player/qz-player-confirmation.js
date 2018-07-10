@@ -31,11 +31,16 @@ export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Actions
   actions: {
+    //Action triggered when click on the start
     start() {
       this.sendAction('onStartPlayer');
     },
+
+    //Action triggered when click on the cancel
     cancel() {
-      this.sendAction('onClosePlayer');
+      let component = this;
+      let transitionTo = 'course-map';
+      component.sendAction('onClosePlayer', transitionTo);
     }
   },
 

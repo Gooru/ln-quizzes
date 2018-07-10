@@ -179,9 +179,8 @@ test('Narration', function(assert) {
   );
   var $component = this.$();
   assert.ok(
-    $component.find('.qz-player .qz-viewer .qz-resource-viewer .narration')
-      .length,
-    'Missing narration'
+    $component.find('.qz-player .qz-viewer .qz-resource-viewer').length,
+    'Missing Resource Viewer'
   );
   assert.ok(
     $component.find(
@@ -270,11 +269,7 @@ test('Link out', function(assert) {
     hbs`{{player/qz-player contextResult=contextResult resourceResult=resourceResult}}`
   );
   var $component = this.$();
-  assert.ok(
-    $component.find('.qz-player .qz-viewer .qz-resource-viewer .not-iframe')
-      .length,
-    'Missing link out panel'
-  );
+
   assert.ok(
     $component.find(
       '.qz-player .qz-viewer .qz-resource-viewer .not-iframe .qz-resource-card'

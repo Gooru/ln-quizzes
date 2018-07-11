@@ -108,8 +108,10 @@ export default Ember.Component.extend(ModalMixin, {
      */
     openPlayer: function() {
       const component = this;
+      let isStudyPlayer = component.get('isStudyPlayer');
+      let isCollection = component.get('collection.isCollection');
       const startContext = component.get('startContextFunction');
-      if (component.get('collection.isCollection')) {
+      if (isCollection || (isStudyPlayer && !isCollection)) {
         component.set('showConfirmation', false);
         component.startAssessment();
       } else {
@@ -176,7 +178,11 @@ export default Ember.Component.extend(ModalMixin, {
 
   didInsertElement: function() {
     this._super(...arguments);
-    if (this.get('isAnonymous') || this.get('isTeacher')) {
+    if (
+      this.get('isAnonymous') ||
+      this.get('isTeacher') ||
+      !this.get('isStudyPlayer')
+    ) {
       this.set('showConfirmation', false);
       this.startAssessment();
     }

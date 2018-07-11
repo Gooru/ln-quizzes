@@ -67,20 +67,22 @@
             </div>
           </div>
         {{/if}}
-        <div class="attempts">
-          {{#if unlimited}}
-            {{gru-icon name='cached'}}
-            <div class="info unlimited">{{t "qz-assessment-confirmation.unlimited-attempts-left"}}</div>
-          {{else}}
-            {{#if noMoreAttempts}}
-              {{gru-icon name='highlight_off'}}
-              <div class="info no-more">{{t "qz-assessment-confirmation.attempts-left.no-attempts"}}</div>
+        {{#unless notCheckAttempts}}
+          <div class="attempts">
+            {{#if unlimited}}
+              {{gru-icon name='cached'}}
+              <div class="info unlimited">{{t "qz-assessment-confirmation.unlimited-attempts-left"}}</div>
             {{else}}
-            <div class="attempt">{{attemptsLeft}}</div>
-              <div class="info">{{t "qz-assessment-confirmation.attempts-left" count=attemptsLeft}}</div>
+              {{#if noMoreAttempts}}
+                {{gru-icon name='highlight_off'}}
+                <div class="info no-more">{{t "qz-assessment-confirmation.attempts-left.no-attempts"}}</div>
+              {{else}}
+              <div class="attempt">{{attemptsLeft}}</div>
+                <div class="info">{{t "qz-assessment-confirmation.attempts-left" count=attemptsLeft}}</div>
+              {{/if}}
             {{/if}}
-          {{/if}}
-        </div>
+          </div>
+        {{/unless}}
       </div>
     {{/unless}}
   </div>

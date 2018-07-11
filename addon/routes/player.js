@@ -143,7 +143,7 @@ export default Ember.Route.extend({
       eventContext,
       notCheckAttempts
     };
-    if (type === 'collection' || isAnonymous || isTeacher || notCheckAttempts) {
+    if (type === 'collection' || isAnonymous || isTeacher) {
       return route
         .get('quizzesContextService')
         .startContext(contextId, eventContext)
@@ -200,12 +200,7 @@ export default Ember.Route.extend({
     if (model.resourceId) {
       contextResult.set('currentResourceId', model.resourceId);
     }
-    if (
-      collection.get('isCollection') ||
-      isAnonymous ||
-      isTeacher ||
-      notCheckAttempts
-    ) {
+    if (collection.get('isCollection') || isAnonymous || isTeacher) {
       contextResult = model.contextResult;
       contextResult.merge(collection);
       controller.set('role', model.role);

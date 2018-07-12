@@ -39,7 +39,7 @@ export default Ember.Component.extend({
     //Action triggered when click on the cancel
     cancel() {
       let component = this;
-      let transitionTo = 'course-map';
+      let transitionTo = this.get('source');
       component.sendAction('onClosePlayer', transitionTo);
     }
   },

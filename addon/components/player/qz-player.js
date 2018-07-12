@@ -54,7 +54,9 @@ export default Ember.Component.extend(ModalMixin, {
      * Action triggered when the user closes the content player
      */
     closePlayer: function(transitionTo) {
-      this.sendAction('onClosePlayer', transitionTo);
+      let component = this;
+      let courseId = component.get('course.id') || null;
+      component.sendAction('onClosePlayer', transitionTo, courseId);
     },
 
     /**

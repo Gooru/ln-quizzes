@@ -150,6 +150,11 @@
         .navigation,
         .answers,
         .attempts {
+          width: calc(100% / 3);
+        }
+        .navigation,
+        .answers,
+        .attempts {
           padding: 0 15px;
           font-size: 10px;
           line-height: 1.5;
@@ -159,12 +164,10 @@
             font-size: 39px;
           }
         }
-        &.answers-available {
-          .navigation,
-          .answers,
-          .attempts {
-            width: calc(100% / 3);
-          }
+        .navigation,
+        .answers,
+        .attempts {
+          width: 100%;
         }
       }
     }
@@ -186,6 +189,9 @@
         color: $elephant-dark;
         margin-left: 135px;
         margin-right: 20px;
+        &.back {
+          margin-left: 180px;
+        }
       }
       .start {
         background-color: $blue-400;

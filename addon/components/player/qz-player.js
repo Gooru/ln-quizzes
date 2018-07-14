@@ -110,20 +110,13 @@ export default Ember.Component.extend(ModalMixin, {
      */
     openPlayer: function() {
       const component = this;
-      let isStudyPlayer = component.get('isStudyPlayer');
-      let isCollection = component.get('collection.isCollection');
       const startContext = component.get('startContextFunction');
-      if (isCollection || (isStudyPlayer && !isCollection)) {
+      startContext().then(function(contextResult) {
+        contextResult.merge(component.get('collection'));
+        component.set('contextResult', contextResult);
         component.set('showConfirmation', false);
         component.startAssessment();
-      } else {
-        startContext().then(function(contextResult) {
-          contextResult.merge(component.get('collection'));
-          component.set('contextResult', contextResult);
-          component.set('showConfirmation', false);
-          component.startAssessment();
-        });
-      }
+      });
     },
 
     /**

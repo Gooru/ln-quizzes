@@ -1,8 +1,9 @@
 {{#if showConfirmation}}
-  {{player.qz-player-confirmation attempts=attempts collection=collection context=context onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection"}}
+  {{player.qz-player-confirmation attempts=attempts collection=collection context=context notCheckAttempts=notCheckAttempts onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection" collectionSource=collectionSource collectionSubType=collectionSubType source=source}}
 {{else}}
   {{#if showPlayerHeader}}
-      {{player.qz-player-header
+    {{player.qz-player-header
+        source=source
         collection=collection
         onRemixCollection="remixCollection"
         onClosePlayer="closePlayer"
@@ -10,14 +11,14 @@
         isAnonymous=isAnonymous
       }}
   {{/if}}
-    <div class="component player">
-        <div class="qz-main {{if showFinishConfirmation 'submission-confirm'}}" role="main">
-          {{#if collection.hasResources }}
-            {{#if showFinishConfirmation}}
-              {{player.qz-submit-confirmation onConfirmFinish='finishCollection' onCancelFinish='resumeCollection'}}
-            {{else}}
-              {{#if resource}}
-                {{player.qz-viewer
+  <div class="component player">
+    <div class="qz-main {{if showFinishConfirmation 'submission-confirm'}}" role="main">
+      {{#if collection.hasResources }}
+        {{#if showFinishConfirmation}}
+          {{player.qz-submit-confirmation onConfirmFinish='finishCollection' onCancelFinish='resumeCollection'}}
+        {{else}}
+          {{#if resource}}
+            {{player.qz-viewer
                 isNotIframeUrl=isNotIframeUrl
                 collection=collection
                 resource=resource
@@ -26,7 +27,12 @@
                 submitted=contextResult.submitted
                 onSubmitQuestion="submitQuestion"
                 isNextEnabled="isNextEnabled"}}
-                {{player.qz-player-footer
+            {{#if suggestedResources}}
+              {{player.related-content
+                suggestedResources=suggestedResources
+                classId=classId courseId=course.id}}
+            {{/if}}
+            {{player.qz-player-footer
                   resource=resource
                   isNavigationDisabled=isNavigationDisabled
                   isTeacher=isTeacher
@@ -51,11 +57,11 @@
                   onNextResource="nextResource"
                   isNextEnabled=isNextEnabled
                 }}
-              {{/if}}
-            {{/if}}
-          {{else}}
-          {{! TODO add the not found component here}}
           {{/if}}
-        </div>
+        {{/if}}
+      {{else}}
+        {{! TODO add the not found component here}}
+      {{/if}}
     </div>
+  </div>
 {{/if}}

@@ -60,7 +60,8 @@ export default Ember.Route.extend({
       courseId,
       unitId,
       lessonId,
-      collectionId
+      collectionId,
+      pathType
     } = params;
     return this.get('quizzesResourceService')
       .readResource(resourceId)
@@ -77,7 +78,8 @@ export default Ember.Route.extend({
           courseId,
           unitId,
           lessonId,
-          collectionId
+          collectionId,
+          pathType
         })
       );
   },
@@ -118,7 +120,8 @@ export default Ember.Route.extend({
         partnerId: model.partnerId,
         source: model.source,
         sourceUrl: model.sourceUrl,
-        tenantId: model.tenantId
+        tenantId: model.tenantId,
+        pathType: model.pathType
       })
     });
   }

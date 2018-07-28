@@ -104,6 +104,7 @@ export default Ember.Route.extend({
       partnerId,
       collectionSubType,
       pathId,
+      pathType,
       notCheckAttempts,
       isStudyPlayer
     } = params;
@@ -133,7 +134,8 @@ export default Ember.Route.extend({
       sourceId,
       source,
       sourceUrl,
-      tenantId
+      tenantId,
+      pathType
     });
     let model = {
       isAnonymous,

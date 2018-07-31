@@ -1,4 +1,4 @@
-import { moduleFor, test } from 'ember-qunit';
+import { moduleFor, test, skip } from 'ember-qunit';
 import QuestionResult from 'quizzes-addon/models/result/question';
 import ResourceResult from 'quizzes-addon/models/result/resource';
 import Context from 'quizzes-addon/models/context/context';
@@ -110,7 +110,7 @@ test('serializeUpdateContext', function(assert) {
   );
 });
 
-test('serializeEventContext', function(assert) {
+skip('serializeEventContext', function(assert) {
   const serializer = this.subject();
   const eventContext = EventContext.create({
     source: 'source',
@@ -151,7 +151,7 @@ test('serializeEventContext', function(assert) {
   );
 });
 
-test('serializeEventContext no subtype and no cul', function(assert) {
+skip('serializeEventContext no subtype and no cul', function(assert) {
   const serializer = this.subject();
   const eventContext = EventContext.create({
     source: 'source',

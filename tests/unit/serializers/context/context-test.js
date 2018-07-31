@@ -26,9 +26,7 @@ test('serializeResourceResult with a resource', function(assert) {
   assert.deepEqual(expected, response, 'Wrong response');
 });
 
-test('serializeResourceResult with a question and no resourceId', function(
-  assert
-) {
+test('serializeResourceResult with a question and no resourceId', function(assert) {
   const serializer = this.subject();
   const questionResult = QuestionResult.create({
     resourceId: 'resource-id',
@@ -136,6 +134,7 @@ test('serializeEventContext', function(assert) {
     tenantId: 'tenant-id',
     partnerId: 'partner-id',
     pathId: 1,
+    pathType: null,
     timezone: 'timezone',
     classId: 'class-id',
     courseId: 'course-id',
@@ -170,6 +169,7 @@ test('serializeEventContext no subtype and no cul', function(assert) {
     tenantId: 'tenant-id',
     partnerId: 'partner-id',
     pathId: 1,
+    pathType: null,
     timezone: 'timezone',
     collectionSubType: null
   };

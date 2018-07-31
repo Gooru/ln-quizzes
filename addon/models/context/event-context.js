@@ -41,6 +41,11 @@ const EventContext = Ember.Object.extend({
   pathId: null,
 
   /**
+   * @property {String} pathType
+   */
+  pathType: null,
+
+  /**
    * @property {String} source
    */
   source: null,

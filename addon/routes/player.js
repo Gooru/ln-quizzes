@@ -127,6 +127,10 @@ export default Ember.Route.extend({
       'student';
     let isTeacher = role === 'teacher';
     let isAnonymous = profileId === 'anonymous';
+    //Keept this for 2 release and remove this with 4.4.4
+    console.log('pathType', pathType); //eslint-disable-line
+    var pathTypeEvtCtx = pathType === '' ? null : pathType;
+    console.log('pathTypeEvtCtx', pathTypeEvtCtx); //eslint-disable-line
     let eventContext = EventContext.create({
       collectionSubType,
       pathId,
@@ -135,7 +139,7 @@ export default Ember.Route.extend({
       source,
       sourceUrl,
       tenantId,
-      pathType
+      pathTypeEvtCtx
     });
     let model = {
       isAnonymous,

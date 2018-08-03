@@ -111,6 +111,15 @@ export default Ember.Component.extend({
       const component = this;
       component.$('.content').scrollTop(0);
       component.sendAction('onNextResource', component.get('resource'));
+    },
+
+    /**
+     * Action triggered when toggle screen mode
+     */
+    onToggleScreen() {
+      let component = this;
+      Ember.$('body.study-player').toggleClass('fullscreen');
+      component.toggleProperty('isFullScreen');
     }
   },
 

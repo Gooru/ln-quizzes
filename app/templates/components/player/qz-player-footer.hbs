@@ -34,6 +34,16 @@
         {{gru-icon name="ic_keyboard_arrow_up"}}
       </div>
     {{/if}}
+
+    {{#if isStudyPlayer}}
+      <div class="toggle-screen pull-right" {{action 'onToggleScreen'}}>
+        {{#if isFullScreen}}
+          {{gru-icon name="fullscreen_exit"}}
+        {{else}}
+          {{gru-icon name="fullscreen"}}
+        {{/if}}
+      </div>
+    {{/if}}
     <div class="reaction-bar pull-right">
       {{qz-emotion-picker startEmotion=ratingScore onChangeEmotion="changeEmotion" readOnly=submitted}}
     </div>
@@ -99,7 +109,12 @@
   <div class="next-action">
     {{#if showNext}}
       <div class="next {{unless isNextEnabled 'disabled'}}" data-toggle="tooltip" title="{{t 'common.save-next'}}" {{action 'nextResource'}}>
-        <span>{{t 'common.next'}}</span> {{gru-icon name="ic_skip_next"}}
+        <div class="label">
+          {{t 'common.next'}}
+        </div>
+        <div class="icon">
+          {{gru-icon name="skip_next"}}
+        </div>
       </div>
     {{else}}
       {{#if collection.isCollection}}

@@ -83,14 +83,18 @@ export default Ember.Component.extend({
      * Action triggered when the user wants to finish the collection
      */
     finishCollection: function() {
-      this.sendAction('onFinishCollection');
+      let component = this;
+      component.toggleScreenMode();
+      component.sendAction('onFinishCollection');
     },
 
     /**
      * Action triggered when the user clicks at see usage report
      */
     seeUsageReport: function() {
-      this.sendAction('onFinishCollection');
+      let component = this;
+      component.toggleScreenMode();
+      component.sendAction('onFinishCollection');
     },
 
     /***
@@ -118,8 +122,7 @@ export default Ember.Component.extend({
      */
     onToggleScreen() {
       let component = this;
-      Ember.$('body.study-player').toggleClass('fullscreen');
-      component.toggleProperty('isFullScreen');
+      component.toggleScreenMode();
     }
   },
 
@@ -241,6 +244,16 @@ export default Ember.Component.extend({
       return selectedEmotion.unicode;
     }
     return 'no-reaction';
+  },
+
+  /**
+   * @function toggleScreenMode
+   * Method to toggle fullscreen mode
+   */
+  toggleScreenMode() {
+    let component = this;
+    Ember.$('body.study-player').toggleClass('fullscreen');
+    component.toggleProperty('isFullScreen');
   },
 
   /**

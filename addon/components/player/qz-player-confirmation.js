@@ -103,9 +103,10 @@ export default Ember.Component.extend({
    * @property {Boolean}
    * Is suggested content
    */
-  isSuggestedContent: Ember.computed('collectionSubType', function() {
+  isSuggestedContent: Ember.computed('pathType', function() {
     let component = this;
-    return !!component.get('collectionSubType');
+    let pathType = component.get('pathType');
+    return pathType === 'teacher' || pathType === 'system';
   }),
 
   /**

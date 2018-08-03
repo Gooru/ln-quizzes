@@ -232,6 +232,7 @@ export default Ember.Route.extend({
     controller.set('notCheckAttempts', notCheckAttempts);
     controller.set('showConfirmation', false);
     controller.set('suggestedResources', model.suggestedResources);
+    controller.set('pathType', model.eventContext.pathType);
     controller.set('isStudyPlayer', isStudyPlayer);
   },
 

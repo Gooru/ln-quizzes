@@ -36,6 +36,7 @@
       display: flex;
 
       .title-info {
+        width: calc(100% - 110px);
         .collection-info {
           .title {
             $font-size: 34px;
@@ -103,6 +104,8 @@
       }
 
       .suggestion-badge {
+        position: absolute;
+        right: 15px;
         .suggestion-icon {
           width: 100px;
           i {

@@ -84,7 +84,6 @@ export default Ember.Component.extend({
      */
     finishCollection: function() {
       let component = this;
-      component.toggleScreenMode();
       component.sendAction('onFinishCollection');
     },
 
@@ -93,7 +92,6 @@ export default Ember.Component.extend({
      */
     seeUsageReport: function() {
       let component = this;
-      component.toggleScreenMode();
       component.sendAction('onFinishCollection');
     },
 

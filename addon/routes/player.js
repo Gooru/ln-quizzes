@@ -94,7 +94,7 @@ export default Ember.Route.extend({
    */
   quizzesModel(params) {
     const route = this;
-    const {
+    var {
       resourceId,
       contextId,
       source,
@@ -131,6 +131,7 @@ export default Ember.Route.extend({
     console.log('pathType', pathType); //eslint-disable-line
     var pathTypeEvtCtx = pathType === '' ? null : pathType;
     console.log('pathTypeEvtCtx', pathTypeEvtCtx); //eslint-disable-line
+    pathType = pathTypeEvtCtx;
     let eventContext = EventContext.create({
       collectionSubType,
       pathId,
@@ -139,7 +140,7 @@ export default Ember.Route.extend({
       source,
       sourceUrl,
       tenantId,
-      pathTypeEvtCtx
+      pathType
     });
     let model = {
       isAnonymous,
@@ -231,6 +232,7 @@ export default Ember.Route.extend({
     controller.set('notCheckAttempts', notCheckAttempts);
     controller.set('showConfirmation', false);
     controller.set('suggestedResources', model.suggestedResources);
+    controller.set('pathType', model.eventContext.pathType);
     controller.set('isStudyPlayer', isStudyPlayer);
   },
 

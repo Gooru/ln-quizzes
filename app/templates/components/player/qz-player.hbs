@@ -1,5 +1,5 @@
 {{#if showConfirmation}}
-  {{player.qz-player-confirmation attempts=attempts collection=collection context=context notCheckAttempts=notCheckAttempts onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection" collectionSource=collectionSource collectionSubType=collectionSubType source=source}}
+  {{player.qz-player-confirmation attempts=attempts collection=collection context=context notCheckAttempts=notCheckAttempts onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection" collectionSource=collectionSource collectionSubType=collectionSubType source=source pathType=pathType}}
 {{else}}
   {{#if showPlayerHeader}}
     {{player.qz-player-header
@@ -56,6 +56,8 @@
                   onPreviousResource="previousResource"
                   onNextResource="nextResource"
                   isNextEnabled=isNextEnabled
+                  isFullScreen=isFullScreen
+                  isStudyPlayer=isStudyPlayer
                 }}
           {{/if}}
         {{/if}}

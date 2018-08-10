@@ -19,6 +19,12 @@
   oeQuestionCount=resultsOpenEnded.length
   }}
 
+  {{#if tags.length}}
+    <div class="standard-tags">
+      {{taxonomy.gru-taxonomy-tag-list tags=tags  showDescription=true }}
+    </div>
+  {{/if}}
+
   {{#if areAnswersHidden}}
     <div class="hidden-report">
       <span>{{t "qz-assessment-report.hidden-report"}}</span>

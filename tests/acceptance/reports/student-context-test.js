@@ -19,7 +19,7 @@ test('Layout', function(assert) {
     );
     assert.equal(
       $studentReport.find('.bubbles-list').children().length,
-      3,
+      2,
       'Wrong length of questions'
     );
     const $questions = $studentReport.find('.qz-questions.performance-view');

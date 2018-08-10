@@ -5,7 +5,7 @@ import T from 'dummy/tests/helpers/assert';
 moduleForAcceptance('Acceptance | reports/student-context');
 
 test('Layout', function(assert) {
-  assert.expect(7);
+  assert.expect(6);
   visit('/reports/student-context/context-simple-id');
 
   andThen(function() {
@@ -19,7 +19,7 @@ test('Layout', function(assert) {
     );
     assert.equal(
       $studentReport.find('.bubbles-list').children().length,
-      2,
+      3,
       'Wrong length of questions'
     );
     const $questions = $studentReport.find('.qz-questions.performance-view');

@@ -25,12 +25,6 @@
     </div>
 
   {{else}}
-    {{#if (and contextResult.hasMastery isAssessment)}}
-      {{reports.assessment.qz-mastery
-    learningTargets=contextResult.mastery
-    assessmentResult=contextResult
-    onBubbleSelect='bubbleSelect'}}
-    {{/if}}
 
     {{#if resultsQuestions.length}}
       {{reports.assessment.qz-questions

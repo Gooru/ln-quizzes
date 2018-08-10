@@ -5,7 +5,7 @@ import T from 'dummy/tests/helpers/assert';
 moduleForAcceptance('Acceptance | reports/student-context');
 
 test('Layout', function(assert) {
-  assert.expect(8);
+  assert.expect(7);
   visit('/reports/student-context/context-simple-id');
 
   andThen(function() {
@@ -32,14 +32,6 @@ test('Layout', function(assert) {
       assert,
       $questions.find('table tr:last-child .question-score .correct'),
       'Wrong score value for last answer'
-    );
-
-    const $mastery = $studentReport.find('.qz-assessment-report .qz-mastery');
-    T.exists(assert, $mastery, 'Missing Mastery Section');
-    assert.equal(
-      $mastery.find('.qz-learning-target').length,
-      1,
-      'Incorrect number of learning targets'
     );
   });
 });

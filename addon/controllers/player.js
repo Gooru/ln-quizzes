@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  queryParams: ['resourceId', 'sourceId', 'source'],
+  queryParams: ['resourceId', 'sourceId', 'source', 'isStudyPlayer'],
 
   // -------------------------------------------------------------------------
   // Properties
@@ -70,5 +70,16 @@ export default Ember.Controller.extend({
    * Indicates if it should default player header
    * @property {boolean}
    */
-  showPlayerHeader: true
+  showPlayerHeader: true,
+
+  /**
+   * @property {Array} list of suggested resources of a collection
+   */
+  suggestedResources: null,
+
+  /**
+   * @property {Boolean}
+   * Property to find out whether study-player rendered or not
+   */
+  isStudyPlayer: false
 });

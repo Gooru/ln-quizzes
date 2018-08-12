@@ -64,6 +64,12 @@ export default Ember.Component.extend({
       component.$('.list-resources').slideUp();
     },
 
+    onToggleResourceNav() {
+      let component = this;
+      component.$('.list-resources').slideToggle();
+      component.toggleProperty('isNavigatorOpen');
+    },
+
     /**
      *
      * Triggered when an item is selected
@@ -77,14 +83,16 @@ export default Ember.Component.extend({
      * Action triggered when the user wants to finish the collection
      */
     finishCollection: function() {
-      this.sendAction('onFinishCollection');
+      let component = this;
+      component.sendAction('onFinishCollection');
     },
 
     /**
      * Action triggered when the user clicks at see usage report
      */
     seeUsageReport: function() {
-      this.sendAction('onFinishCollection');
+      let component = this;
+      component.sendAction('onFinishCollection');
     },
 
     /***
@@ -105,6 +113,14 @@ export default Ember.Component.extend({
       const component = this;
       component.$('.content').scrollTop(0);
       component.sendAction('onNextResource', component.get('resource'));
+    },
+
+    /**
+     * Action triggered when toggle screen mode
+     */
+    onToggleScreen() {
+      let component = this;
+      component.toggleScreenMode();
     }
   },
 
@@ -226,6 +242,16 @@ export default Ember.Component.extend({
       return selectedEmotion.unicode;
     }
     return 'no-reaction';
+  },
+
+  /**
+   * @function toggleScreenMode
+   * Method to toggle fullscreen mode
+   */
+  toggleScreenMode() {
+    let component = this;
+    Ember.$('body.study-player').toggleClass('fullscreen');
+    component.toggleProperty('isFullScreen');
   },
 
   /**

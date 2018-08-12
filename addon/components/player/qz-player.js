@@ -53,8 +53,10 @@ export default Ember.Component.extend(ModalMixin, {
     /**
      * Action triggered when the user closes the content player
      */
-    closePlayer: function() {
-      this.sendAction('onClosePlayer');
+    closePlayer: function(transitionTo) {
+      let component = this;
+      let courseId = component.get('course.id') || null;
+      component.sendAction('onClosePlayer', transitionTo, courseId);
     },
 
     /**
@@ -172,10 +174,9 @@ export default Ember.Component.extend(ModalMixin, {
   didInsertElement: function() {
     this._super(...arguments);
     if (
-      this.get('collection.isCollection') ||
       this.get('isAnonymous') ||
       this.get('isTeacher') ||
-      this.get('notCheckAttempts')
+      !this.get('isStudyPlayer')
     ) {
       this.set('showConfirmation', false);
       this.startAssessment();

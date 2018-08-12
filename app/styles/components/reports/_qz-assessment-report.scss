@@ -4,8 +4,30 @@
   margin-top: 65px;
   margin-bottom: 30px;
 
+  .standard-tags {
+    padding: 15px 15px 0;
+    background: #fff;
+
+    .gru-taxonomy-tag {
+      border: none;
+      max-width: 150px;
+
+      .standard-tag {
+        background: #37424b;
+        padding: 4px;
+        border-radius: 4px;
+
+        .tag-caption,
+        .tag-label {
+          color: #fff;
+        }
+      }
+    }
+  }
+
   .qz-assessment-summary {
     background: $white;
+
     .reports-owner {
       height: 24px;
       border-bottom: 1px solid $light-200;

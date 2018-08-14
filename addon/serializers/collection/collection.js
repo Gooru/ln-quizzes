@@ -41,6 +41,7 @@ export default Ember.Object.extend({
    */
   normalizeReadCollection: function(payload) {
     const serializer = this;
+    const taxonomySerializer = serializer.get('taxonomySerializer');
     return CollectionModel.create(Ember.getOwner(this).ownerInjection(), {
       id: payload.id,
       ownerId: payload.ownerId,
@@ -50,7 +51,13 @@ export default Ember.Object.extend({
         !payload.isCollection && payload.metadata
           ? serializer.normalizeSettings(payload.metadata.setting || {})
           : null,
-      title: payload.metadata ? payload.metadata.title : ''
+      title: payload.metadata ? payload.metadata.title : '',
+      standards:
+        payload.metadata && payload.metadata.taxonomy
+          ? taxonomySerializer.normalizeTaxonomyObject(
+            payload.metadata.taxonomy
+          )
+          : []
     });
   },
 

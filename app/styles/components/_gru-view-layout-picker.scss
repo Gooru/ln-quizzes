@@ -6,7 +6,7 @@
     div {
       cursor: pointer;
       display: block;
-      float: left;
+      float: $tab-float-dir;
       padding-left: 5px;
       padding-right: 5px;
       span {

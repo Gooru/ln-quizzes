@@ -199,7 +199,7 @@
 }
 .mq-math-mode .mq-supsub .mq-sub {
   display: block;
-  float: left;
+  float: $tab-float-dir;
 }
 .mq-math-mode .mq-supsub.mq-limit .mq-sub {
   margin-left: -0.25em;
@@ -277,7 +277,7 @@
 }
 .mq-math-mode .mq-denominator {
   border-top: 1px solid;
-  float: right;
+  float: $menu-float-dir;
   width: 100%;
   padding: 0.1em;
 }
@@ -323,7 +323,7 @@
   font-size: 80%;
 }
 .mq-math-mode .mq-large-operator .mq-from {
-  float: right;
+  float: $menu-float-dir;
   /* take out of normal flow to manipulate baseline */
   width: 100%;
 }

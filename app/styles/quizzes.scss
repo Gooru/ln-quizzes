@@ -1,4 +1,9 @@
 @import "variables";
+
+// Variable which are specific to rtl & ltr languages
+$tab-float-dir: right;
+$menu-float-dir: left;
+
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap";
 @import "gooru-theme";
 

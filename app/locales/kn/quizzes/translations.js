@@ -2,1167 +2,1039 @@ export default {
   /*
    * COMMON: Translations used globally in the app or shared between components
    */
-  common: {
-    'a-collection': 'a collection',
-    'a-course': 'a course',
-    'a-question': 'a question',
-    'a-resource': 'a resource',
-    'an-assessment': 'an assessment',
-    about: 'About',
-    'about-you': 'About You',
-    add: 'Add',
-    'add-assessment': 'Add New Assessment',
-    'add-collaborator': 'Add Collaborator',
-    'add-collection': 'Create New Collection',
-    'add-collection-item': 'Create Resource or Question',
-    'add-content-prompt':
-      'You haven\'t created <span>{{type}}</span> yet. Go on, be bold.',
-    'add-course': 'Create New Course',
-    'add-domains-to-unit': 'Add Domains to Unit',
-    'add-url': 'Add URL',
-    'add-from-url': 'Add from URL',
-    'add-lessons': 'Add Lessons',
-    'add-new-lesson': 'Create New Lesson',
-    'add-new-unit': 'Create New Unit',
-    'add-new-resource': 'Create New Resource',
-    'add-new-question': 'Create a new question',
-    'add-question': 'Create Question',
-    'add-question-image': 'Add Question Image',
-    'add-standard': 'Add Standard',
-    'add-standards': 'Add Standards',
-    'add-standards-to-collection': 'Add Standards to Collection',
-    'add-to': 'Add To',
-    'add-to-collection-success':
-      'You\'ve added {{contentTitle}} to {{collectionTitle}}. Do you want to edit that {{collectionType}}?',
-    'add-to-lesson-success':
-      'You\'ve added {{collectionTitle}} to {{lessonTitle}}. Do you want to edit that {{collectionType}}?',
-    'add-type-question': 'What type of question would you like to add?',
-    'add-type-resource': 'What type of resource is this?',
-    'add-units': 'Add Units',
-    'advanced-editing': 'Advanced Editing',
-    anonymous_mode: 'Anonymous Mode',
-    answer: 'Your Answer',
-    'answer-correct': 'You are correct!',
-    'answer-incorrect': 'You are incorrect...',
-    'answer-key-was-hidden': 'Note: Your teacher has hidden the answer key.',
-    approved: 'Approved',
-    assessment: 'Assessment',
-    'assessment-disabled': 'You can\'t attempt this assessment',
-    'assessment-external': 'Assessment-External',
-    'assessment-pl': {
-      one: 'Assessment',
-      other: 'Assessments'
+  "common": {
+    "a-collection": "ಸಂಗ್ರಹ",
+    "a-course": "ಒಂದು ಕೋರ್ಸ್",
+    "a-question": "ಒಂದು ಪ್ರಶ್ನೆ",
+    "a-resource": "ಒಂದು ಸಂಪನ್ಮೂಲ",
+    "an-assessment": "ಒಂದು ಮೌಲ್ಯಮಾಪನ",
+    "about": "ಸುಮಾರು",
+    "about-you": "ನಿನ್ನ ಬಗ್ಗೆ",
+    "add": "ಸೇರಿಸಿ",
+    "add-assessment": "ಹೊಸ ಮೌಲ್ಯಮಾಪನವನ್ನು ಸೇರಿಸಿ",
+    "add-collaborator": "ಸಹಯೋಗಿ ಸೇರಿಸಿ",
+    "add-collection": "ಹೊಸ ಸಂಗ್ರಹಣೆಯನ್ನು ರಚಿಸಿ",
+    "add-collection-item": "ಸಂಪನ್ಮೂಲ ಅಥವಾ ಪ್ರಶ್ನೆಯನ್ನು ರಚಿಸಿ",
+    "add-content-prompt": "ನೀವು ಇನ್ನೂ [1] {{type}} [2] ಅನ್ನು ರಚಿಸಲಿಲ್ಲ. ಮುಂದುವರಿಯಿರಿ, ದಪ್ಪವಾಗಿರಿ.",
+    "add-course": "ಹೊಸ ಕೋರ್ಸ್ ರಚಿಸಿ",
+    "add-domains-to-unit": "ಘಟಕಕ್ಕೆ ಡೊಮೇನ್ಗಳನ್ನು ಸೇರಿಸಿ",
+    "add-url": "url ಸೇರಿಸಿ",
+    "add-from-url": "url ನಿಂದ ಸೇರಿಸಿ",
+    "add-lessons": "ಪಾಠಗಳನ್ನು ಸೇರಿಸಿ",
+    "add-new-lesson": "ಹೊಸ ಪಾಠವನ್ನು ರಚಿಸಿ",
+    "add-new-unit": "ಹೊಸ ಘಟಕವನ್ನು ರಚಿಸಿ",
+    "add-new-resource": "ಹೊಸ ಸಂಪನ್ಮೂಲವನ್ನು ರಚಿಸಿ",
+    "add-new-question": "ಹೊಸ ಪ್ರಶ್ನೆಯನ್ನು ರಚಿಸಿ",
+    "add-question": "ಪ್ರಶ್ನೆ ರಚಿಸಿ",
+    "add-question-image": "ಪ್ರಶ್ನೆ ಚಿತ್ರ ಸೇರಿಸಿ",
+    "add-standard": "ಪ್ರಮಾಣಿತ ಸೇರಿಸಿ",
+    "add-standards": "ಗುಣಮಟ್ಟವನ್ನು ಸೇರಿಸಿ",
+    "add-standards-to-collection": "ಸಂಗ್ರಹಣೆಗೆ ಮಾನದಂಡಗಳನ್ನು ಸೇರಿಸಿ",
+    "add-to": "ಸೇರಿಸು",
+    "add-to-collection-success": "ನೀವು {{contenttitle}} ಗೆ {{collectiontitle}} ಗೆ ಸೇರಿಸಿದ್ದೀರಿ. ನೀವು {{ಸಂಗ್ರಹತೆ}} ಅನ್ನು ಸಂಪಾದಿಸಲು ಬಯಸುತ್ತೀರಾ?",
+    "add-to-lesson-success": "ನೀವು {{collectiontitle}} ಅನ್ನು {{lessantitle}} ಗೆ ಸೇರಿಸಿದ್ದೀರಿ. ನೀವು {{ಸಂಗ್ರಹತೆ}} ಅನ್ನು ಸಂಪಾದಿಸಲು ಬಯಸುತ್ತೀರಾ?",
+    "add-type-question": "ಯಾವ ರೀತಿಯ ಪ್ರಶ್ನೆಯನ್ನು ನೀವು ಸೇರಿಸಲು ಬಯಸುತ್ತೀರಿ?",
+    "add-type-resource": "ಇದು ಯಾವ ರೀತಿಯ ಸಂಪನ್ಮೂಲವಾಗಿದೆ?",
+    "add-units": "ಘಟಕಗಳನ್ನು ಸೇರಿಸಿ",
+    "advanced-editing": "ಸುಧಾರಿತ ಸಂಪಾದನೆ",
+    "anonymous_mode": "ಅನಾಮಧೇಯ ಮೋಡ್",
+    "answer": "ನಿಮ್ಮ ಉತ್ತರ",
+    "answer-correct": "ನೀನು ಸರಿ!",
+    "answer-incorrect": "ನೀವು ತಪ್ಪಾಗಿರುವಿರಿ ...",
+    "answer-key-was-hidden": "ಗಮನಿಸಿ: ನಿಮ್ಮ ಶಿಕ್ಷಕ ಉತ್ತರ ಕೀಲಿಯನ್ನು ಮರೆಮಾಡಿದ್ದಾರೆ.",
+    "approved": "ಅನುಮೋದಿಸಲಾಗಿದೆ",
+    "assessment": "ಮೌಲ್ಯಮಾಪನ",
+    "assessment-disabled": "ನೀವು ಈ ಮೌಲ್ಯಮಾಪನವನ್ನು ಪ್ರಯತ್ನಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ",
+    "assessment-external": "ಮೌಲ್ಯಮಾಪನ-ಬಾಹ್ಯ",
+    "assessment-pl": {
+      "one": "ಮೌಲ್ಯಮಾಪನ",
+      "other": "ಮೌಲ್ಯಮಾಪನಗಳು"
     },
-    'assessment-task': 'Assessment Task',
-    'assessment-title': 'Assessment Title',
-    assessmentInitial: 'A',
-    assessments: 'Assessments',
-    assign: 'Assign',
-    'assign-to-class': 'Assign to Class',
-    'assign-to-course': 'Assign to Course',
-    attempt: 'Attempt number',
-    audience: 'Audience',
-    avatarFor: 'Avatar for',
-    averageScore: 'Average Score',
-    back: 'Back',
-    'back-to-course-map': 'Back to Course Map',
-    'back-to-data': 'Back to Data',
-    'best-practices': 'Best Practices',
-    beta: 'Beta',
-    'big-ideas': 'Big Ideas',
-    biography: 'Biography',
-    cancel: 'Cancel',
-    category: 'Category',
-    categoryOptions: {
-      k12: 'K-12',
-      'higher-ed': 'Higher Education',
-      'professional-dev': 'Professional Development'
+    "assessment-task": "ಮೌಲ್ಯಮಾಪನ ಕಾರ್ಯ",
+    "assessment-title": "ಮೌಲ್ಯಮಾಪನ ಶೀರ್ಷಿಕೆ",
+    "assessmentInitial": "a",
+    "assessments": "ಮೌಲ್ಯಮಾಪನಗಳು",
+    "assign": "ನಿಯೋಜಿಸಿ",
+    "assign-to-class": "ವರ್ಗಕ್ಕೆ ನಿಯೋಜಿಸಿ",
+    "assign-to-course": "ಕೋರ್ಸ್ಗೆ ನಿಯೋಜಿಸಿ",
+    "attempt": "ಪ್ರಯತ್ನ ಸಂಖ್ಯೆ",
+    "audience": "ಪ್ರೇಕ್ಷಕರು",
+    "avatarFor": "ಫಾರ್ ಅವತಾರ",
+    "averageScore": "ಸರಾಸರಿ ಸ್ಕೋರ್",
+    "back": "ಹಿಂದೆ",
+    "back-to-course-map": "ಕೋರ್ಸ್ ನಕ್ಷೆಗೆ ಮರಳಿ",
+    "back-to-data": "ಡೇಟಾಕ್ಕೆ ಹಿಂತಿರುಗಿ",
+    "best-practices": "ಒಳ್ಳೆಯ ಅಭ್ಯಾಸಗಳು",
+    "beta": "ಬೀಟಾ",
+    "big-ideas": "ದೊಡ್ಡ ವಿಚಾರಗಳು",
+    "biography": "ಜೀವನಚರಿತ್ರೆ",
+    "cancel": "ರದ್ದುಮಾಡಿ",
+    "category": "ವರ್ಗದಲ್ಲಿ",
+    "categoryOptions": {
+      "k12": "ಕೆ -12",
+      "higher-ed": "ಉನ್ನತ ಶಿಕ್ಷಣ",
+      "professional-dev": "ವೃತ್ತಿಪರ ಅಭಿವೃದ್ಧಿ"
     },
-    class: 'Classroom',
-    classes: 'Classrooms',
-    classScores: 'Class Scores',
-    close: 'Close',
-    collection: 'Collection',
-    'collection-pl': {
-      one: 'Collection',
-      other: 'Collections'
+    "class": "ತರಗತಿಯ",
+    "classes": "ತರಗತಿ ಕೊಠಡಿಗಳು",
+    "classScores": "ವರ್ಗ ಸ್ಕೋರ್ಗಳು",
+    "close": "ಮುಚ್ಚಿ",
+    "collection": "ಸಂಗ್ರಹ",
+    "collection-pl": {
+      "one": "ಸಂಗ್ರಹ",
+      "other": "ಸಂಗ್ರಹಣೆಗಳು"
     },
-    'collection-title': 'Collection Title',
-    collections: 'Collections',
-    collectionInitial: 'C',
-    completed: 'Completed',
-    'confirm-copy': 'Confirm & Copy',
-    content: 'Content',
-    'content-publishing': 'Content Visibility',
-    contentUnavailable: 'Content not available',
-    'contributed-by': 'Contributed by',
-    copy: 'Copy',
-    'copy-to': 'Copy To',
-    correct: 'Correct',
-    'correct-answer': 'Correct Answer',
-    country: 'Country',
-    'course-map': 'Course Map',
-    course: 'Course',
-    'course-title': 'Course Title',
-    courses: 'Courses',
-    create: 'Create',
-    'create-class': '+ Create classroom',
-    'created-by': 'Created by',
-    'current-attempt': 'Current Attempt',
-    delete: 'Delete',
-    'delete-instructions': {
-      'links-inaccessible': 'All share links will be inaccessible',
-      'content-inaccessible':
-        'All content will be inaccessible to the classrooms tied to it'
+    "collection-title": "ಸಂಗ್ರಹ ಶೀರ್ಷಿಕೆ",
+    "collections": "ಸಂಗ್ರಹಣೆಗಳು",
+    "collectionInitial": "ಸಿ",
+    "completed": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+    "confirm-copy": "ದೃಢೀಕರಿಸಿ & ನಕಲಿಸಿ",
+    "content": "ವಿಷಯ",
+    "content-publishing": "ವಿಷಯ ಗೋಚರತೆ",
+    "contentUnavailable": "ವಿಷಯ ಲಭ್ಯವಿಲ್ಲ",
+    "contributed-by": "ಕೊಡುಗೆ",
+    "copy": "ನಕಲಿಸಿ",
+    "copy-to": "ನಕಲಿಸಿ",
+    "correct": "ಸರಿಯಾಗಿ",
+    "correct-answer": "ಸರಿಯಾದ ಉತ್ತರ",
+    "country": "ದೇಶ",
+    "course-map": "ಕೋರ್ಸ್ ಮ್ಯಾಪ್",
+    "course": "ಕೋರ್ಸ್",
+    "course-title": "ಪಠ್ಯ ಶೀರ್ಷಿಕೆ",
+    "courses": "ಶಿಕ್ಷಣ",
+    "create": "ರಚಿಸಿ",
+    "create-class": "+ ತರಗತಿಯನ್ನು ರಚಿಸಿ",
+    "created-by": "ರಚಿಸಿದವರು",
+    "current-attempt": "ಪ್ರಸ್ತುತ ಪ್ರಯತ್ನ",
+    "delete": "ಅಳಿಸು",
+    "delete-instructions": {
+      "links-inaccessible": "ಎಲ್ಲಾ ಪಾಲು ಲಿಂಕ್ಗಳು ​​ಪ್ರವೇಶಿಸಲಾಗುವುದಿಲ್ಲ",
+      "content-inaccessible": "ಎಲ್ಲಾ ವಿಷಯವು ಅದಕ್ಕೆ ಒಳಪಟ್ಟ ಪಾಠದ ಕೊಠಡಿಗಳಿಗೆ ಪ್ರವೇಶಿಸಲಾಗುವುದಿಲ್ಲ"
     },
-    'depth-of-knowledge': 'Depth of Knowledge',
-    description: 'Description',
-    district: 'District',
-    domain: 'Domain',
-    domains: 'Domains',
-    'drag-drop-suggestions': 'Or Drag and Drop Suggestions ...',
-    'download-report': 'Download Report',
-    edit: 'Edit',
-    'edit-assessment': 'Edit Assessment',
-    'edit-collection': 'Edit Collection',
-    'edit-course': 'Edit Course',
-    'edit-question': 'Edit Question',
-    'edit-resource': 'Edit Resource',
-    editor: 'Editor',
-    email_support: 'support@gooru.org',
-    emotions: {
-      'emotion-1': 'I need help',
-      'emotion-2': 'I don\'t understand',
-      'emotion-3': 'Meh...',
-      'emotion-4': 'I understand',
-      'emotion-5': 'I can explain'
+    "depth-of-knowledge": "ಜ್ಞಾನದ ಆಳ",
+    "description": "ವಿವರಣೆ",
+    "district": "ಜಿಲ್ಲೆ",
+    "domain": "ಡೊಮೇನ್",
+    "domains": "ಡೊಮೇನ್ಗಳು",
+    "drag-drop-suggestions": "ಅಥವಾ ಸಲಹೆಗಳನ್ನು ಎಳೆಯಿರಿ ಮತ್ತು ಬಿಡಿ ...",
+    "download-report": "ಡೌನ್ಲೋಡ್ ವರದಿ",
+    "edit": "ಸಂಪಾದಿಸು",
+    "edit-assessment": "ಸಂಪಾದನೆ ಮೌಲ್ಯಮಾಪನ",
+    "edit-collection": "ಸಂಗ್ರಹ ಸಂಪಾದಿಸಿ",
+    "edit-course": "ಪಠ್ಯವನ್ನು ಸಂಪಾದಿಸಿ",
+    "edit-question": "ಪ್ರಶ್ನೆ ಸಂಪಾದಿಸಿ",
+    "edit-resource": "ಸಂಪನ್ಮೂಲ ಸಂಪಾದಿಸಿ",
+    "editor": "ಸಂಪಾದಕ",
+    "email_support": "support@gooru.org",
+    "emotions": {
+      "emotion-1": "ನನಗೆ ಸಹಾಯ ಬೇಕು",
+      "emotion-2": "ನನಗೆ ಅರ್ಥವಾಗಲಿಲ್ಲ",
+      "emotion-3": "ಮೆಹ್ ...",
+      "emotion-4": "ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿದ್ದೇನೆ",
+      "emotion-5": "ನಾನು ವಿವರಿಸಬಲ್ಲೆ"
     },
-    'enter-url': 'Enter URL',
-    errors: {
-      'join-class-code': 'Please enter the classroom code.',
-      'answer-has-no-image': 'Please upload an answer image.',
-      'add-username': 'Please enter a username.',
-      'add-course-title': 'Please enter the course title.',
-      'add-question-answer-text': 'Please enter the answer choice text.',
-      'add-question-description': 'Please enter the question.',
-      'add-question-title': 'Please enter the question title.',
-      'assessment-title-presence': 'Please enter the assessment title.',
-      'assignees-error':
-        'You must select at least one student for creating the assignment.',
-      'available-date-error': 'You must complete the available date',
-      'can-not-join-class':
-        'Oops! Unable to join classroom. Please try again shortly.',
-      'assessment-not-added-to':
-        'Oops! Unable to add assessment to lesson right now. Please try again shortly.',
-      'assessment-not-copied':
-        'Oops! Unable to copy assessment right now. Please try again shortly.',
-      'assessment-not-created':
-        'Oops! Unable to create assessment right now. Please try again shortly.',
-      'assessment-not-updated':
-        'Oops! Unable to update assessment right now. Please try again shortly.',
-      'class-min-score':
-        'The minimum score should be a number between 1 and 100',
-      'class-not-created':
-        'Oops! Unable to create classroom right now. Please try again shortly.',
-      'class-title-presence': 'Please give your classroom a name.',
-      'collection-not-added-to':
-        'Oops! Unable to add collection to lesson right now. Please try again shortly.',
-      'collection-not-copied':
-        'Oops! Unable to copy collection right now. Please try again shortly.',
-      'collection-not-created':
-        'Oops! Unable to create collection right now. Please try again shortly.',
-      'collection-not-updated':
-        'Oops! Unable to update collection right now. Please try again shortly.',
-      'collection-title-presence': 'Please enter the collection title.',
-      'correct-answer-presence': 'Please indicate the correct answer.',
-      'course-not-copied':
-        'Oops! Unable to copy course right now. Please try again shortly.',
-      'course-not-created':
-        'Oops! Unable to create course right now. Please try again shortly.',
-      'course-not-updated':
-        'Oops! Unable to update course right now. Please try again shortly.',
-      'due-date-error': 'The due date must be greater than the available date',
-      'due-date-presence-error': 'You must complete the due date',
-      'highlight-text-not-selected': 'Please indicate the correct answer.',
-      'highlight-text-wrong-format': 'Incorrect question format.',
-      'hotspot-text-max-choices':
-        'You have reached the limit of answer choices.',
-      'file-max-size': 'Only files of size smaller than 5MB are supported',
-      'file-upload-missing':
-        'Please select a file with any of the following extensions: {{extensions}}',
-      'lesson-not-copied':
-        'Oops! Unable to copy lesson right now. Please try again shortly.',
-      'lesson-not-created':
-        'Oops! Unable to create lesson right now. Please try again shortly.',
-      'lesson-not-loaded':
-        'Oops! Unable to load lesson right now. Please try again shortly.',
-      'lesson-title-required': 'Please enter the lesson title.',
-      'password-confirm': 'Please confirm your password.',
-      'password-length': 'Password must be between 5 and 14 characters.',
-      'password-not-match': 'Passwords do not match.',
-      'password-required': 'Please enter a password.',
-      'password-special-characters': 'Please don\'t use special characters.',
-      'profile-not-updated':
-        'Oops! Unable to update profile right now. Please try again shortly.',
-      'question-not-added-to':
-        'Oops! Unable to add question to {{collectionType}} right now. Please try again shortly.',
-      'question-not-copied':
-        'Oops! Unable to copy question right now. Please try again shortly.',
-      'question-not-created':
-        'Oops! Unable to create question right now. Please try again shortly.',
-      'question-not-updated':
-        'Oops! Unable to update question right now. Please try again shortly.',
-      'reset-password-error':
-        'Uh oh! Something’s not right. Unable to reset password. Please try again shortly.',
-      'reset-google-account-exists':
-        'Your email login was created with a Google account and we cannot reset a Google password. If you forgot your Google password, you will need to reset it through your Google apps.',
-      'resource-description-length':
-        'The description cannot be longer than 500 characters.',
-      'resource-invalid-url': 'Invalid URL.',
-      'resource-missing-title': 'Please enter a resource title.',
-      'resource-missing-type': 'Please select a resource type.',
-      'resource-missing-url': 'Please enter a valid URL.',
-      'resource-not-added-to-collection':
-        'Oops! Unable to add resource to collection right now. Please try again shortly.',
-      'resource-not-copied':
-        'Oops! Unable to copy resource right now. Please try again shortly.',
-      'resource-not-created':
-        'Oops! Unable to create resource right now. Please try again shortly.',
-      'resource-not-updated':
-        'Oops! Unable to update resource right now. Please try again shortly.',
-      'resource-same-host-url': 'Resources cannot be Gooru URLs.',
-      'resource-title-length': 'The title cannot be longer than 50 characters.',
-      'select-correct-answer': 'Please select the correct answer.',
-      'search-collections-length': 'Please enter at least 3 characters.',
-      'sign-in-credentials-not-valid':
-        'Uh oh! Something\'s not right. Please double check your username and password and try again.',
-      'sign-in-google-account-exists':
-        'Please use Google signin. We can\'t reset your password.',
-      'sign-up-error':
-        'Oops! Unable to sign up right now. Please try again shortly.',
-      'sign-up-first-name': 'Please enter your first name.',
-      'sign-up-last-name': 'Please enter your last name.',
-      'sign-up-name-length': 'Last name must have at least 2 letters.',
-      'sign-up-name-only-letters': 'Please enter only letters.',
-      'sign-up-valid-email': 'Please enter a valid email address.',
-      'special-characters': 'You cannot use special characters or spaces.',
-      'unit-not-copied':
-        'Oops! Unable to copy unit right now. Please try again shortly.',
-      'unit-not-created':
-        'Oops! Unable to create unit right now. Please try again shortly.',
-      'unit-not-loaded':
-        'Oops! Unable to load unit right now. Please try again shortly.',
-      'unit-title-required': 'Please enter the unit title.',
-      'user-email-presence': 'Please enter a valid email.',
-      'username-length': 'Username must be between 4 and 16 characters.',
-      'forgot-password-gmail':
-        'Please use Google signin. We can\'t reset your password.'
+    "enter-url": "url ನಮೂದಿಸಿ",
+    "errors": {
+      "join-class-code": "ದಯವಿಟ್ಟು ತರಗತಿ ಸಂಕೇತವನ್ನು ನಮೂದಿಸಿ.",
+      "answer-has-no-image": "ದಯವಿಟ್ಟು ಉತ್ತರ ಚಿತ್ರ ಅಪ್ಲೋಡ್ ಮಾಡಿ.",
+      "add-username": "ದಯವಿಟ್ಟು ಬಳಕೆದಾರ ಹೆಸರನ್ನು ನಮೂದಿಸಿ.",
+      "add-course-title": "ದಯವಿಟ್ಟು ಕೋರ್ಸ್ ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ.",
+      "add-question-answer-text": "ದಯವಿಟ್ಟು ಉತ್ತರ ಆಯ್ಕೆಯ ಪಠ್ಯವನ್ನು ನಮೂದಿಸಿ.",
+      "add-question-description": "ದಯವಿಟ್ಟು ಪ್ರಶ್ನೆಯನ್ನು ನಮೂದಿಸಿ.",
+      "add-question-title": "ದಯವಿಟ್ಟು ಪ್ರಶ್ನೆಯ ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ.",
+      "assessment-title-presence": "ದಯವಿಟ್ಟು ಮೌಲ್ಯಮಾಪನ ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ.",
+      "assignees-error": "ನಿಯೋಜನೆಯನ್ನು ರಚಿಸುವುದಕ್ಕಾಗಿ ಕನಿಷ್ಠ ಒಬ್ಬ ವಿದ್ಯಾರ್ಥಿಯನ್ನಾದರೂ ನೀವು ಆಯ್ಕೆ ಮಾಡಬೇಕು.",
+      "available-date-error": "ನೀವು ಲಭ್ಯವಿರುವ ದಿನಾಂಕವನ್ನು ಪೂರ್ಣಗೊಳಿಸಬೇಕು",
+      "can-not-join-class": "ಓಹ್! ತರಗತಿಯಲ್ಲಿ ಸೇರಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "assessment-not-added-to": "ಓಹ್! ಇದೀಗ ಪಾಠಕ್ಕೆ ಮೌಲ್ಯಮಾಪನವನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "assessment-not-copied": "ಓಹ್! ಇದೀಗ ಮೌಲ್ಯಮಾಪನವನ್ನು ನಕಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "assessment-not-created": "ಓಹ್! ಇದೀಗ ಮೌಲ್ಯಮಾಪನವನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "assessment-not-updated": "ಓಹ್! ಇದೀಗ ಮೌಲ್ಯಮಾಪನವನ್ನು ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "class-min-score": "ಕನಿಷ್ಠ ಸ್ಕೋರ್ 1 ರಿಂದ 100 ರ ನಡುವಿನ ಸಂಖ್ಯೆಯಾಗಿರಬೇಕು",
+      "class-not-created": "ಓಹ್! ಇದೀಗ ತರಗತಿಯನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "class-title-presence": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ತರಗತಿಯಲ್ಲಿ ಹೆಸರನ್ನು ನೀಡಿ.",
+      "collection-not-added-to": "ಓಹ್! ಇದೀಗ ಪಾಠಕ್ಕೆ ಸಂಗ್ರಹಣೆಯನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "collection-not-copied": "ಓಹ್! ಇದೀಗ ಸಂಗ್ರಹಣೆಯನ್ನು ನಕಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "collection-not-created": "ಓಹ್! ಇದೀಗ ಸಂಗ್ರಹಣೆಯನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "collection-not-updated": "ಓಹ್! ಇದೀಗ ಸಂಗ್ರಹಣೆಯನ್ನು ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "collection-title-presence": "ದಯವಿಟ್ಟು ಸಂಗ್ರಹದ ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ.",
+      "correct-answer-presence": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಸೂಚಿಸಿ.",
+      "course-not-copied": "ಓಹ್! ಇದೀಗ ಪಠ್ಯವನ್ನು ನಕಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "course-not-created": "ಓಹ್! ಇದೀಗ ಪಠ್ಯವನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "course-not-updated": "ಓಹ್! ಇದೀಗ ಪಠ್ಯ ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "due-date-error": "ಕಾರಣ ದಿನಾಂಕ ಲಭ್ಯವಿರುವ ದಿನಾಂಕಕ್ಕಿಂತ ಹೆಚ್ಚಿನದಾಗಿರಬೇಕು",
+      "due-date-presence-error": "ನೀವು ದಿನಾಂಕವನ್ನು ಪೂರ್ಣಗೊಳಿಸಬೇಕು",
+      "highlight-text-not-selected": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಸೂಚಿಸಿ.",
+      "highlight-text-wrong-format": "ತಪ್ಪಾದ ಪ್ರಶ್ನೆ ಸ್ವರೂಪ.",
+      "hotspot-text-max-choices": "ನೀವು ಉತ್ತರ ಆಯ್ಕೆಗಳ ಮಿತಿಯನ್ನು ತಲುಪಿದ್ದೀರಿ.",
+      "file-max-size": "5mb ಕ್ಕಿಂತ ಕಡಿಮೆ ಗಾತ್ರದ ಫೈಲ್ಗಳನ್ನು ಮಾತ್ರ ಬೆಂಬಲಿಸಲಾಗುತ್ತದೆ",
+      "file-upload-missing": "ದಯವಿಟ್ಟು ಕೆಳಗಿನ ಯಾವುದೇ ವಿಸ್ತರಣೆಗಳೊಂದಿಗೆ ಫೈಲ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿ: {{ವಿಸ್ತರಣೆಗಳು}}",
+      "lesson-not-copied": "ಓಹ್! ಇದೀಗ ಪಾಠವನ್ನು ನಕಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "lesson-not-created": "ಓಹ್! ಇದೀಗ ಪಾಠವನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "lesson-not-loaded": "ಓಹ್! ಇದೀಗ ಪಾಠ ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "lesson-title-required": "ದಯವಿಟ್ಟು ಪಾಠ ಶೀರ್ಷಿಕೆ ನಮೂದಿಸಿ.",
+      "password-confirm": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಪಾಸ್ವರ್ಡ್ ಅನ್ನು ದೃಢೀಕರಿಸಿ.",
+      "password-length": "ಪಾಸ್ವರ್ಡ್ 5 ಮತ್ತು 14 ಅಕ್ಷರಗಳ ನಡುವೆ ಇರಬೇಕು.",
+      "password-not-match": "ಗುಪ್ತಪದಗಳುತಾಳೆಯಾಗುತ್ತಿಲ್ಲ.",
+      "password-required": "ದಯವಿಟ್ಟು ಪಾಸ್ವರ್ಡ್ ನಮೂದಿಸಿ.",
+      "password-special-characters": "ದಯವಿಟ್ಟು ವಿಶೇಷ ಅಕ್ಷರಗಳನ್ನು ಬಳಸಬೇಡಿ.",
+      "profile-not-updated": "ಓಹ್! ಇದೀಗ ಪ್ರೊಫೈಲ್ ಅನ್ನು ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "question-not-added-to": "ಓಹ್! ಇದೀಗ {{collectiontype}} ಗೆ ಪ್ರಶ್ನೆಯನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "question-not-copied": "ಓಹ್! ಇದೀಗ ಪ್ರಶ್ನೆಯನ್ನು ನಕಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "question-not-created": "ಓಹ್! ಇದೀಗ ಪ್ರಶ್ನೆಯನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "question-not-updated": "ಓಹ್! ಇದೀಗ ಪ್ರಶ್ನೆಯನ್ನು ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "reset-password-error": "ಓಹ್! ಏನೋ ಸರಿಯಾಗಿಲ್ಲ. ಪಾಸ್ವರ್ಡ್ ಮರುಹೊಂದಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "reset-google-account-exists": "ನಿಮ್ಮ ಇಮೇಲ್ ಲಾಗಿನ್ ಅನ್ನು Google ಖಾತೆಯೊಂದಿಗೆ ರಚಿಸಲಾಗಿದೆ ಮತ್ತು ನಾವು google ಪಾಸ್ವರ್ಡ್ ಅನ್ನು ಮರುಹೊಂದಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ನಿಮ್ಮ google ಪಾಸ್ವರ್ಡ್ ಅನ್ನು ನೀವು ಮರೆತಿದ್ದರೆ, ನಿಮ್ಮ google ಅಪ್ಲಿಕೇಶನ್ಗಳ ಮೂಲಕ ಅದನ್ನು ಮರುಹೊಂದಿಸಬೇಕಾಗುತ್ತದೆ.",
+      "resource-description-length": "ವಿವರಣೆ 500 ಅಕ್ಷರಗಳಿಗಿಂತ ಉದ್ದವಾಗಿರಬಾರದು.",
+      "resource-invalid-url": "ಅಮಾನ್ಯವಾದ url.",
+      "resource-missing-title": "ದಯವಿಟ್ಟು ಸಂಪನ್ಮೂಲ ಶೀರ್ಷಿಕೆ ನಮೂದಿಸಿ.",
+      "resource-missing-type": "ದಯವಿಟ್ಟು ಸಂಪನ್ಮೂಲ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+      "resource-missing-url": "ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ url ಅನ್ನು ನಮೂದಿಸಿ.",
+      "resource-not-added-to-collection": "ಓಹ್! ಇದೀಗ ಸಂಗ್ರಹಕ್ಕೆ ಸಂಪನ್ಮೂಲವನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "resource-not-copied": "ಓಹ್! ಇದೀಗ ಸಂಪನ್ಮೂಲ ನಕಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "resource-not-created": "ಓಹ್! ಇದೀಗ ಸಂಪನ್ಮೂಲವನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "resource-not-updated": "ಓಹ್! ಇದೀಗ ಸಂಪನ್ಮೂಲ ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "resource-same-host-url": "ಸಂಪನ್ಮೂಲಗಳು gooru url ಆಗಿರಬಾರದು.",
+      "resource-title-length": "ಶೀರ್ಷಿಕೆಯು 50 ಅಕ್ಷರಗಳಿಗಿಂತ ಉದ್ದವಾಗಿರಬಾರದು.",
+      "select-correct-answer": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.",
+      "search-collections-length": "ದಯವಿಟ್ಟು ಕನಿಷ್ಠ 3 ಅಕ್ಷರಗಳನ್ನು ನಮೂದಿಸಿ.",
+      "sign-in-credentials-not-valid": "ಓಹ್! ಏನೋ ಸರಿಯಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಬಳಕೆದಾರ ಹೆಸರು ಮತ್ತು ಪಾಸ್ವರ್ಡ್ ಅನ್ನು ಎರಡು ಬಾರಿ ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "sign-in-google-account-exists": "ದಯವಿಟ್ಟು Google ಸೈನ್ಇನ್ ಅನ್ನು ಬಳಸಿ. ನಿಮ್ಮ ಪಾಸ್ವರ್ಡ್ ಮರುಹೊಂದಿಸಲು ನಮಗೆ ಸಾಧ್ಯವಿಲ್ಲ.",
+      "sign-up-error": "ಓಹ್! ಇದೀಗ ಸೈನ್ ಅಪ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "sign-up-first-name": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಮೊದಲ ಹೆಸರನ್ನು ನಮೂದಿಸಿ.",
+      "sign-up-last-name": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಕೊನೆಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ.",
+      "sign-up-name-length": "ಕೊನೆಯ ಹೆಸರಿನಲ್ಲಿ ಕನಿಷ್ಠ 2 ಅಕ್ಷರಗಳು ಇರಬೇಕು.",
+      "sign-up-name-only-letters": "ದಯವಿಟ್ಟು ಅಕ್ಷರಗಳನ್ನು ಮಾತ್ರ ನಮೂದಿಸಿ.",
+      "sign-up-valid-email": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ.",
+      "special-characters": "ನೀವು ವಿಶೇಷ ಅಕ್ಷರಗಳು ಅಥವಾ ಸ್ಥಳಗಳನ್ನು ಬಳಸಲಾಗುವುದಿಲ್ಲ.",
+      "unit-not-copied": "ಓಹ್! ಇದೀಗ ಘಟಕವನ್ನು ನಕಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "unit-not-created": "ಓಹ್! ಇದೀಗ ಘಟಕವನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "unit-not-loaded": "ಓಹ್! ಇದೀಗ ಘಟಕವನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+      "unit-title-required": "ದಯವಿಟ್ಟು ಯುನಿಟ್ ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ.",
+      "user-email-presence": "ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಇಮೇಲ್ ಅನ್ನು ನಮೂದಿಸಿ.",
+      "username-length": "ಬಳಕೆದಾರಹೆಸರು 4 ಮತ್ತು 16 ಅಕ್ಷರಗಳ ನಡುವೆ ಇರಬೇಕು.",
+      "forgot-password-gmail": "ದಯವಿಟ್ಟು Google ಸೈನ್ಇನ್ ಅನ್ನು ಬಳಸಿ. ನಿಮ್ಮ ಪಾಸ್ವರ್ಡ್ ಮರುಹೊಂದಿಸಲು ನಮಗೆ ಸಾಧ್ಯವಿಲ್ಲ."
     },
-    'essential-questions': 'Essential Questions',
-    explanation: 'Explanation',
-    false: 'False',
-    'featured-courses': 'Featured&ensp;Courses',
-    'file-name': 'File name',
-    finish: 'Finish',
-    'first-name': 'First Name',
-    follow: 'Follow',
-    followers: 'Followers',
-    following: 'Following',
-    forgotPassword: 'Forgot Password',
-    from: 'from',
-    'from-my-assessments': 'From My Assessments',
-    'from-my-collections': 'From My Collections',
-    'from-my-questions': 'From My Questions',
-    'from-my-resources': 'From My Resources',
-    'hide-results': 'Hide Results',
-    hints: 'Hints',
-    home: 'Home',
-    if_questions: 'If you have any questions,',
-    information: 'Information',
-    'last-name': 'Last Name',
-    'last-updated': 'Last Updated',
-    'latest-attempt': 'Latest attempt',
-    'launch-anonymous': 'Launch Anonymous',
-    'launch-on-air': 'Go Live',
-    'learning-objective': 'Learning Objective',
-    'learning-objectives': 'Learning Objectives',
-    'learning-target': 'Micro-standard',
-    'learning-target-mobile': 'Micro-standard in Standard',
-    lesson: 'Lesson',
-    lessonInitial: 'L',
-    'lesson-title': 'Lesson Title',
-    lessonObj: {
-      one: 'Lesson',
-      other: 'Lessons'
+    "essential-questions": "ಅಗತ್ಯ ಪ್ರಶ್ನೆಗಳನ್ನು",
+    "explanation": "ವಿವರಣೆ",
+    "false": "ಸುಳ್ಳು",
+    "featured-courses": "ವೈಶಿಷ್ಟ್ಯಗೊಳಿಸಿದ ಮತ್ತು ಕಡ್ಡಾಯ; ಶಿಕ್ಷಣ",
+    "file-name": "ಕಡತದ ಹೆಸರು",
+    "finish": "ಮುಗಿಸಿ",
+    "first-name": "ಮೊದಲ ಹೆಸರು",
+    "follow": "ಅನುಸರಿಸಿ",
+    "followers": "ಅನುಯಾಯಿಗಳು",
+    "following": "ಅನುಸರಿಸುತ್ತದೆ",
+    "forgotPassword": "ಪಾಸ್ವರ್ಡ್ ಮರೆತಿರಾ",
+    "from": "ನಿಂದ",
+    "from-my-assessments": "ನನ್ನ ಮೌಲ್ಯಮಾಪನಗಳಿಂದ",
+    "from-my-collections": "ನನ್ನ ಸಂಗ್ರಹಣೆಯಿಂದ",
+    "from-my-questions": "ನನ್ನ ಪ್ರಶ್ನೆಗಳಿಂದ",
+    "from-my-resources": "ನನ್ನ ಸಂಪನ್ಮೂಲಗಳಿಂದ",
+    "hide-results": "ಫಲಿತಾಂಶಗಳನ್ನು ಮರೆಮಾಡಿ",
+    "hints": "ಸುಳಿವುಗಳು",
+    "home": "ಮನೆ",
+    "if_questions": "ನಿಮಗೇನಾದರೂ ಪ್ರಶ್ನೆಗಳಿದ್ದರೆ,",
+    "information": "ಮಾಹಿತಿ",
+    "last-name": "ಕೊನೆಯ ಹೆಸರು",
+    "last-updated": "ಕೊನೆಯದಾಗಿ ನವೀಕರಿಸಲಾಗಿದೆ",
+    "latest-attempt": "ಇತ್ತೀಚಿನ ಪ್ರಯತ್ನ",
+    "launch-anonymous": "ಅನಾಮಿಕ ಪ್ರಾರಂಭಿಸಿ",
+    "launch-on-air": "ಲೈವ್ ಆಗಿ",
+    "learning-objective": "ಕಲಿಕೆಯ ಉದ್ದೇಶ",
+    "learning-objectives": "ಕಲಿಕೆ ಉದ್ದೇಶಗಳು",
+    "learning-target": "ಸೂಕ್ಷ್ಮ ಗುಣಮಟ್ಟದ",
+    "learning-target-mobile": "ಮಾನದಂಡದಲ್ಲಿ ಸೂಕ್ಷ್ಮ-ಗುಣಮಟ್ಟದ",
+    "lesson": "ಪಾಠ",
+    "lessonInitial": "ಎಲ್",
+    "lesson-title": "ಪಾಠ ಶೀರ್ಷಿಕೆ",
+    "lessonObj": {
+      "one": "ಪಾಠ",
+      "other": "ಪಾಠಗಳನ್ನು"
     },
-    libraries: 'Libraries',
-    license: 'License',
-    'link-out': 'Link-out',
-    'link-out-message':
-      '*If your resource is not rendering in the preview above, it may need a “link-out” and cannot be viewed within the Gooru player.',
-    loading: 'Loading ...',
-    login: 'Log In',
-    logout: 'Logout',
-    mastery: 'Mastery',
-    menu: 'Menu',
-    'more-details': 'More Details',
-    'modify-settings': 'Modify assessment settings',
-    move: 'Move',
-    myContent: 'My Content',
-    'edit-narration': 'Edit Narration',
-    narration: 'Narration',
-    'new-assessment': 'New Assessment',
-    'new-collection': 'New Collection',
-    'new-question': 'New Question',
-    'new-question-text': 'Enter question text here',
-    'new-resource': 'New Resource',
-    next: 'Next',
-    no: 'No',
-    'no-content': 'No content available',
-    'no-assessments-to-display': 'No <span>assessments</span> to display.',
-    'no-collections-to-display': 'No <span>collections</span> to display.',
-    'no-courses-to-display': 'No <span>courses</span> to display.',
-    'no-questions-to-display': 'No <span>questions</span> to display.',
-    'no-resources-to-display': 'No <span>resources</span> to display.',
-    'no-followers': 'You don\'t have followers yet.',
-    'no-results': 'No results found',
-    'no-results-message':
-      'Check your spelling. We all make mistakes!<br/>Go broader and remove some filters.<br/> Or try searching for a similar word instead.',
-    'no-more-attempts': 'No more attempts',
-    notScored: 'Unscored',
-    notStarted: 'Not started',
-    'not-added': 'Not Added',
-    'not-following': 'You\'re not following anyone.',
-    'not-provided': 'Not provided',
-    'not-specified': 'Not specified',
-    'nothing-to-display': 'Nothing to display.',
-    number: 'No.',
-    numberStudents: {
-      one: '{{count}} Student',
-      other: '{{count}} Students'
+    "libraries": "ಗ್ರಂಥಾಲಯಗಳು",
+    "license": "ಪರವಾನಗಿ",
+    "link-out": "ಲಿಂಕ್ ಔಟ್",
+    "link-out-message": "* ನಿಮ್ಮ ಸಂಪನ್ಮೂಲವು ಮೇಲಿನ ಪೂರ್ವವೀಕ್ಷಣೆಯಲ್ಲಿ ರೆಂಡರಿಂಗ್ ಮಾಡದಿದ್ದರೆ, ಅದು \\\"ಲಿಂಕ್-ಔಟ್\\\" ಮಾಡಬೇಕಾಗಬಹುದು ಮತ್ತು ಗೂರು ಪ್ಲೇಯರ್ನಲ್ಲಿ ವೀಕ್ಷಿಸಲಾಗುವುದಿಲ್ಲ.",
+    "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ ...",
+    "login": "ಲಾಗ್ ಇನ್ ಮಾಡಿ",
+    "logout": "ಲಾಗ್ ಔಟ್",
+    "mastery": "ಪಾಂಡಿತ್ಯ",
+    "menu": "ಮೆನು",
+    "more-details": "ಹೆಚ್ಚಿನ ವಿವರಗಳಿಗಾಗಿ",
+    "modify-settings": "ಮೌಲ್ಯಮಾಪನ ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಮಾರ್ಪಡಿಸಿ",
+    "move": "ಸರಿಸಲು",
+    "myContent": "ನನ್ನ ವಿಷಯ",
+    "edit-narration": "ಸಂಪಾದನೆ ನಿರೂಪಣೆ",
+    "narration": "ನಿರೂಪಣೆ",
+    "new-assessment": "ಹೊಸ ಮೌಲ್ಯಮಾಪನ",
+    "new-collection": "ಹೊಸ ಸಂಗ್ರಹ",
+    "new-question": "ಹೊಸ ಪ್ರಶ್ನೆ",
+    "new-question-text": "ಪ್ರಶ್ನೆ ಪಠ್ಯವನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಿ",
+    "new-resource": "ಹೊಸ ಸಂಪನ್ಮೂಲ",
+    "next": "ಮುಂದಿನ",
+    "no": "ಇಲ್ಲ",
+    "no-content": "ಯಾವುದೇ ವಿಷಯ ಲಭ್ಯವಿಲ್ಲ",
+    "no-assessments-to-display": "ಯಾವುದೇ [1] ಮೌಲ್ಯಮಾಪನಗಳನ್ನು [2] ಪ್ರದರ್ಶಿಸಲು.",
+    "no-collections-to-display": "ಯಾವುದೇ [1] ಸಂಗ್ರಹಣೆಗಳು [2] ಪ್ರದರ್ಶಿಸಲು.",
+    "no-courses-to-display": "ಪ್ರದರ್ಶಿಸಲು ಯಾವುದೇ [1] ಶಿಕ್ಷಣ [2] ಇಲ್ಲ.",
+    "no-questions-to-display": "ಯಾವುದೇ [1] ಪ್ರಶ್ನೆಗಳನ್ನು [2] ಪ್ರದರ್ಶಿಸಲು ಇಲ್ಲ.",
+    "no-resources-to-display": "ಯಾವುದೇ [1] ಸಂಪನ್ಮೂಲಗಳನ್ನು [2] ಪ್ರದರ್ಶಿಸಲು.",
+    "no-followers": "ನಿಮಗೆ ಇನ್ನೂ ಅನುಯಾಯಿಗಳು ಇಲ್ಲ.",
+    "no-results": "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬರಲಿಲ್ಲ",
+    "no-results-message": "ನಿಮ್ಮ ಕಾಗುಣಿತವನ್ನು ಪರಿಶೀಲಿಸಿ. ನಾವೆಲ್ಲರೂ ತಪ್ಪುಗಳನ್ನು ಮಾಡಿದ್ದೇವೆ! [1] ವಿಶಾಲವಾಗಿ ಹೋಗಿ ಕೆಲವು ಶೋಧಕಗಳನ್ನು ತೆಗೆದುಹಾಕಿ. [2] ಅಥವಾ ಬದಲಿಗೆ ಇದೇ ಪದವನ್ನು ಹುಡುಕಲು ಪ್ರಯತ್ನಿಸಿ.",
+    "no-more-attempts": "ಯಾವುದೇ ಪ್ರಯತ್ನಗಳಿಲ್ಲ",
+    "notScored": "ಅಸಮಂಜಸವಾಗಿದೆ",
+    "notStarted": "ಪ್ರಾರಂಭಿಸಲಿಲ್ಲ",
+    "not-added": "ಸೇರಿಸಲಾಗಿಲ್ಲ",
+    "not-following": "ನೀವು ಯಾರನ್ನಾದರೂ ಅನುಸರಿಸುತ್ತಿಲ್ಲ.",
+    "not-provided": "ಒದಗಿಸಿಲ್ಲ",
+    "not-specified": "ನಿರ್ದಿಷ್ಟಪಡಿಸಲಾಗಿಲ್ಲ",
+    "nothing-to-display": "ಪ್ರದರ್ಶಿಸಲು ಏನೂ ಇಲ್ಲ.",
+    "number": "ಇಲ್ಲ.",
+    "numberStudents": {
+      "one": "{{count}} ವಿದ್ಯಾರ್ಥಿ",
+      "other": "{{count}} ವಿದ್ಯಾರ್ಥಿಗಳು"
     },
-    of: 'of',
-    off: 'OFF',
-    on: 'ON',
-    other: 'Other',
-    password: 'Password',
-    pending: 'Pending',
-    performance: 'Show Performance',
-    play: 'Play',
-    please_contact: 'Please contact',
-    preview: 'Preview',
-    profile: 'Profile',
-    prompt: 'Prompt',
-    'publish-to': ' Make this visible to others on my profile library',
-    'published-by': 'Published by',
-    'published-tooltip': 'Badged Content',
-    publisher: 'Publisher',
-    question: 'Question',
-    questions: 'Questions',
-    'question-pl': {
-      one: 'Question',
-      other: 'Questions'
+    "of": "ಆಫ್",
+    "off": "ಆಫ್",
+    "on": "ಆನ್",
+    "other": "ಇತರ",
+    "password": "ಪಾಸ್ವರ್ಡ್",
+    "pending": "ಬಾಕಿ ಉಳಿದಿದೆ",
+    "performance": "ಪ್ರದರ್ಶನ ಪ್ರದರ್ಶನ",
+    "play": "ಆಡಲು",
+    "please_contact": "ದಯವಿಟ್ಟು ಸಂಪರ್ಕಿಸಿ",
+    "preview": "ಮುನ್ನೋಟ",
+    "profile": "ಪ್ರೊಫೈಲ್",
+    "prompt": "ಪ್ರಾಂಪ್ಟ್",
+    "publish-to": " ನನ್ನ ಪ್ರೊಫೈಲ್ ಲೈಬ್ರರಿಯಲ್ಲಿ ಇತರರಿಗೆ ಇದನ್ನು ಗೋಚರಿಸುತ್ತದೆ",
+    "published-by": "ಪ್ರಕಟಿಸಿದ",
+    "published-tooltip": "ಕೆಟ್ಟ ವಿಷಯ",
+    "publisher": "ಪ್ರಕಾಶಕ",
+    "question": "ಪ್ರಶ್ನೆ",
+    "questions": "ಪ್ರಶ್ನೆಗಳು",
+    "question-pl": {
+      "one": "ಪ್ರಶ್ನೆ",
+      "other": "ಪ್ರಶ್ನೆಗಳು"
     },
-    'question-title': 'Question Title',
-    'question-type': {
-      SA: 'Single Answer',
-      single_choice: 'Single Choice',
-      FIB: 'Fill In the Blank',
-      true_false: 'True or False',
-      T_F: 'True or False',
-      MA: 'Multiple Answer',
-      OE: 'Free Response',
-      HS_TXT: 'Multiple Select - Text',
-      HS_IMG: 'Multiple Select - Image ',
-      HT_TO: 'Drag and Drop Order',
-      HT_RO: 'Drag and Drop Order',
-      HT_HL: 'Highlight Text'
+    "question-title": "ಪ್ರಶ್ನೆ ಶೀರ್ಷಿಕೆ",
+    "question-type": {
+      "SA": "ಒಂದೇ ಉತ್ತರ",
+      "single_choice": "ಒಂದೇ ಆಯ್ಕೆ",
+      "FIB": "ಬಿಟ್ಟ ಸ್ಥಳದಲ್ಲಿ ಭರ್ತಿ ಮಾಡಿ",
+      "true_false": "ಸರಿ ಅಥವಾ ತಪ್ಪು",
+      "T_F": "ಸರಿ ಅಥವಾ ತಪ್ಪು",
+      "MA": "ಬಹು ಉತ್ತರ",
+      "OE": "ಉಚಿತ ಪ್ರತಿಕ್ರಿಯೆ",
+      "HS_TXT": "ಬಹು ಆಯ್ಕೆ - ಪಠ್ಯ",
+      "HS_IMG": "ಬಹು ಆಯ್ಕೆ - ಚಿತ್ರ",
+      "HT_TO": "ಡ್ರ್ಯಾಗ್ ಮತ್ತು ಡ್ರಾಪ್ ಆರ್ಡರ್",
+      "HT_RO": "ಡ್ರ್ಯಾಗ್ ಮತ್ತು ಡ್ರಾಪ್ ಆರ್ಡರ್",
+      "HT_HL": "ಹೈಲೈಟ್ ಪಠ್ಯ"
     },
-    reaction: 'Reaction',
-    remaining: '{{number}} Left',
-    remix: 'Remix',
-    'remix-assessment': 'Remix Assessment',
-    'remix-assessment-lead': 'You are about to remix an assessment.',
-    'remix-assessment-success':
-      'You\'ve remixed an assessment {{assessmentTitle}}. Do you want to edit that assessment?',
-    'remix-collection': 'Remix Collection',
-    'remix-collection-lead': 'You are about to remix a collection.',
-    'remix-collection-success':
-      'You\'ve remixed a collection {{collectionTitle}}. Do you want to edit that collection?',
-    'remix-course': 'Remix Course',
-    'remix-course-lead': 'You are about to remix a course.',
-    'remix-course-success':
-      'You\'ve remixed a course {{courseTitle}}. Do you want to edit that course?',
-    'remix-lesson': 'Remix Lesson',
-    'remix-lesson-lead': 'You are about to remix an lesson.',
-    'remix-lesson-success': 'You\'ve remixed a lesson {{lessonTitle}}.',
-    'remix-question': 'Remix Question',
-    'remix-question-lead': 'You are about to remix a question.',
-    'remix-question-success':
-      'You\'ve remixed a question {{questionTitle}}. Do you want to edit that question?',
-    'remix-resource': 'Remix Resource',
-    'remix-resource-lead': 'You are about to remix a resource.',
-    'remix-resource-success':
-      'You\'ve remixed a resource {{resourceTitle}}. Do you want to edit that resource?',
-    'remix-unit': 'Remix Unit',
-    'remix-unit-lead': 'You are about to remix a unit.',
-    'remix-unit-success': 'You\'ve remixed a unit {{unitTitle}}.',
-    'remixed-by': 'Remixed by',
-    'remix-warning':
-      'Heads up! There’s a lot of awesome content in this course and making a copy will take time. Confirm you want to start the process and in 15 minutes you will find your copy of this course on your <b>Profile.</b>',
-    remove: 'Remove',
-    'report-in-progress': 'Report in progress',
-    'request-to': 'Request to be reviewed for a badge',
-    'request-report': 'Request Report',
-    resource: 'Resource',
-    resources: 'Resources',
-    'resource-format': {
-      image: 'Image',
-      text: 'Text',
-      video: 'Video',
-      interactive: 'Interactive',
-      webpage: 'Webpage',
-      audio: 'Audio',
-      question: 'Question'
+    "reaction": "ಪ್ರತಿಕ್ರಿಯೆ",
+    "remaining": "{{ಸಂಖ್ಯೆ}} ಉಳಿದಿದೆ",
+    "remix": "ರೀಮಿಕ್ಸ್",
+    "remix-assessment": "ರೀಮಿಕ್ಸ್ ಮೌಲ್ಯಮಾಪನ",
+    "remix-assessment-lead": "ನೀವು ಮೌಲ್ಯಮಾಪನವನ್ನು ರೀಮಿಕ್ಸ್ ಮಾಡಲಿದ್ದೀರಿ.",
+    "remix-assessment-success": "ನೀವು ಮೌಲ್ಯಮಾಪನವನ್ನು {{assessmenttitle}} ರೀಮಿಕ್ಸ್ ಮಾಡಿದ್ದೀರಿ. ಆ ಮೌಲ್ಯಮಾಪನವನ್ನು ಸಂಪಾದಿಸಲು ನೀವು ಬಯಸುವಿರಾ?",
+    "remix-collection": "ರೀಮಿಕ್ಸ್ ಸಂಗ್ರಹ",
+    "remix-collection-lead": "ನೀವು ಸಂಗ್ರಹವನ್ನು ರೀಮಿಕ್ಸ್ ಮಾಡಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದೀರಿ.",
+    "remix-collection-success": "ನೀವು {{collectiontitle}} ಸಂಗ್ರಹವನ್ನು ರೀಮಿಕ್ಸ್ ಮಾಡಿದ್ದೀರಿ. ನೀವು ಆ ಸಂಗ್ರಹವನ್ನು ಸಂಪಾದಿಸಲು ಬಯಸುವಿರಾ?",
+    "remix-course": "ರೀಮಿಕ್ಸ್ ಕೋರ್ಸ್",
+    "remix-course-lead": "ನೀವು ಕೋರ್ಸ್ ರೀಮಿಕ್ಸ್ ಮಾಡಲಿದ್ದೀರಿ.",
+    "remix-course-success": "ನೀವು ಕೋರ್ಸ್ ಅನ್ನು {{coursetitle}} ರೀಮಿಕ್ಸ್ ಮಾಡಿದ್ದೀರಿ. ಆ ಕೋರ್ಸ್ ಸಂಪಾದಿಸಲು ನೀವು ಬಯಸುವಿರಾ?",
+    "remix-lesson": "ರೀಮಿಕ್ಸ್ ಪಾಠ",
+    "remix-lesson-lead": "ನೀವು ಪಾಠವನ್ನು ರೀಮಿಕ್ಸ್ ಮಾಡಲಿದ್ದೀರಿ.",
+    "remix-lesson-success": "ನೀವು ಪಾಠವನ್ನು {{lessontitle}} ರೀಮಿಕ್ಸ್ ಮಾಡಿದ್ದೀರಿ.",
+    "remix-question": "ರೀಮಿಕ್ಸ್ ಪ್ರಶ್ನೆ",
+    "remix-question-lead": "ನೀವು ಪ್ರಶ್ನೆಯನ್ನು ರೀಮಿಕ್ಸ್ ಮಾಡಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದೀರಿ.",
+    "remix-question-success": "ನೀವು ಪ್ರಶ್ನೆಯನ್ನು {{questiontitle}} ರೀಮಿಕ್ಸ್ ಮಾಡಿದ್ದೀರಿ. ನೀವು ಆ ಪ್ರಶ್ನೆಯನ್ನು ಸಂಪಾದಿಸಲು ಬಯಸುವಿರಾ?",
+    "remix-resource": "ರೀಮಿಕ್ಸ್ ಸಂಪನ್ಮೂಲ",
+    "remix-resource-lead": "ನೀವು ಸಂಪನ್ಮೂಲವನ್ನು ರೀಮಿಕ್ಸ್ ಮಾಡಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದೀರಿ.",
+    "remix-resource-success": "ನೀವು ಸಂಪನ್ಮೂಲ {{resourcetitle}} ಅನ್ನು ರೀಮಿಕ್ಸ್ ಮಾಡಿದ್ದೀರಿ. ನೀವು ಆ ಸಂಪನ್ಮೂಲವನ್ನು ಸಂಪಾದಿಸಲು ಬಯಸುವಿರಾ?",
+    "remix-unit": "ರೀಮಿಕ್ಸ್ ಘಟಕ",
+    "remix-unit-lead": "ನೀವು ಒಂದು ಘಟಕವನ್ನು ರೀಮಿಕ್ಸ್ ಮಾಡಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದೀರಿ.",
+    "remix-unit-success": "ನೀವು {{unittitle}} ಒಂದು ಘಟಕವನ್ನು ರೀಮಿಕ್ಸ್ ಮಾಡಿದ್ದೀರಿ.",
+    "remixed-by": "ಅದಕ್ಕೆ ರೀಮಿಕ್ಸ್ ಮಾಡಲಾಗಿದೆ",
+    "remix-warning": "ಮುಖ್ಯಸ್ಥರು! ಈ ಕೋರ್ಸ್ನಲ್ಲಿ ಸಾಕಷ್ಟು ಆಕರ್ಷಕ ವಿಷಯವಿದೆ ಮತ್ತು ನಕಲು ಮಾಡುವ ಸಮಯ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ನೀವು ಪ್ರಕ್ರಿಯೆಯನ್ನು ಪ್ರಾರಂಭಿಸಲು ಬಯಸುವಿರಾ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ ಮತ್ತು 15 ನಿಮಿಷಗಳಲ್ಲಿ ನಿಮ್ಮ [1] ಪ್ರೊಫೈಲ್ನಲ್ಲಿ ಈ ಕೋರ್ಸ್ನ ನಿಮ್ಮ ನಕಲನ್ನು ನೀವು ಕಾಣಬಹುದು. [2]",
+    "remove": "ತೆಗೆದುಹಾಕಿ",
+    "report-in-progress": "ವರದಿ ಪ್ರಗತಿಯಲ್ಲಿದೆ",
+    "request-to": "ಬ್ಯಾಡ್ಜ್ಗಾಗಿ ಪರಿಶೀಲಿಸಬೇಕಾದ ವಿನಂತಿಯನ್ನು",
+    "request-report": "ವಿನಂತಿಯನ್ನು ವರದಿ",
+    "resource": "ಸಂಪನ್ಮೂಲ",
+    "resources": "ಸಂಪನ್ಮೂಲಗಳು",
+    "resource-format": {
+      "image": "ಚಿತ್ರ",
+      "text": "ಪಠ್ಯ",
+      "video": "ವೀಡಿಯೊ",
+      "interactive": "ಸಂವಾದಾತ್ಮಕ",
+      "webpage": "ಅಂತರ್ಜಾಲ ಪುಟ",
+      "audio": "ಆಡಿಯೋ",
+      "question": "ಪ್ರಶ್ನೆ"
     },
-    'resource-pl': {
-      one: 'Resource',
-      other: 'Resources'
+    "resource-pl": {
+      "one": "ಸಂಪನ್ಮೂಲ",
+      "other": "ಸಂಪನ್ಮೂಲಗಳು"
     },
-    'resource-title': 'Resource Title',
-    'resource-url': 'Resource URL',
-    rubric: 'Rubric',
-    'rubric-creation': 'Rubric Creation',
-    role: 'Role',
-    save: 'Save',
-    'save-next': 'Save and Next',
-    'save-submit': 'Save and Submit All',
-    'save-finish': 'Save and Finish',
-    school: 'School',
-    'school-info': 'School Information',
-    score: 'Score',
-    select: 'Select',
-    'select-a-framework':
-      'Please first select a Standards Framework in the Course Information section above.',
-    sentence: 'Sentence',
-    settings: 'Settings',
-    search: 'Search',
-    'search-placeholder': 'Search...',
-    'search-error-message': 'Search terms need to be at least 3 letters.',
-    'search-400-error-message': 'Please enter a valid search term',
-    'search-standards': 'Search Standards',
-    'select-question-type': 'Select Question Type',
-    'select-resource-type': 'Select Resource Type',
-    'send-request': 'Send Request',
-    'show-correct-answer': 'Show Correct Answer',
-    'show-more-results': 'Show More Results',
-    'show-results': 'Show Results',
-    signUp: 'Sign Up',
-    sortAlphabetical: 'Sort Alphabetically',
-    sortAverage: 'Sort by Average',
-    state: 'State or Territory',
-    standard: 'Standard',
-    standards: 'Standards',
-    study: 'Study',
-    student: 'Student',
-    'student-id': 'Student ID (not displayed on Profile)',
-    'student-submission-format': 'Student Submission Format (Select one)',
-    'subject-and-framework': 'Subject and Framework',
-    submit: 'Submit',
-    'submit-all': 'Submit all',
-    swap: 'Re-order',
-    'suggested-resources': 'Suggested Resources',
-    support: 'Support',
-    'start-tour': 'Take a tour',
-    teach: 'Teach',
-    teacher: 'Teacher',
-    timeSpent: 'Time Spent',
-    'toggle-dropdown': 'Toggle Dropdown',
-    true: 'True',
-    type: 'Type',
-    unexpectedError:
-      'An unexpected error has occurred and has been reported. We\'re sorry for the inconvenience!',
-    unfollow: 'Unfollow',
-    unit: 'Unit',
-    'unit-title': 'Unit Title',
-    unitInitial: 'U',
-    unitObj: {
-      one: 'Unit',
-      other: 'Units'
+    "resource-title": "ಸಂಪನ್ಮೂಲ ಶೀರ್ಷಿಕೆ",
+    "resource-url": "ಸಂಪನ್ಮೂಲ url",
+    "rubric": "ರಬ್ರಿಕ್",
+    "rubric-creation": "ರಬ್ರಿಕ್ ಸೃಷ್ಟಿ",
+    "role": "ಪಾತ್ರ",
+    "save": "ಉಳಿಸು",
+    "save-next": "ಉಳಿಸಿ ಮತ್ತು ಮುಂದಿನದು",
+    "save-submit": "ಉಳಿಸಿ ಮತ್ತು ಎಲ್ಲವನ್ನೂ ಸಲ್ಲಿಸಿ",
+    "save-finish": "ಉಳಿಸಿ ಮತ್ತು ಮುಗಿಸಿ",
+    "school": "ಶಾಲೆ",
+    "school-info": "ಶಾಲಾ ಮಾಹಿತಿ",
+    "score": "ಸ್ಕೋರ್",
+    "select": "ಆಯ್ಕೆಮಾಡಿ",
+    "select-a-framework": "ಮೊದಲು ಕೋರ್ಸ್ ಮಾಹಿತಿ ವಿಭಾಗದಲ್ಲಿ ಮಾನದಂಡಗಳ ಚೌಕಟ್ಟನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+    "sentence": "ವಾಕ್ಯ",
+    "settings": "ಸೆಟ್ಟಿಂಗ್ಗಳು",
+    "search": "ಹುಡುಕು",
+    "search-placeholder": "ಹುಡುಕಿ ...",
+    "search-error-message": "ಹುಡುಕಾಟ ಪದಗಳು ಕನಿಷ್ಠ 3 ಅಕ್ಷರಗಳು ಇರಬೇಕು.",
+    "search-400-error-message": "ದಯವಿಟ್ಟು ಮಾನ್ಯ ಹುಡುಕಾಟ ಪದವನ್ನು ನಮೂದಿಸಿ",
+    "search-standards": "ಹುಡುಕಾಟ ಮಾನದಂಡಗಳು",
+    "select-question-type": "ಪ್ರಶ್ನೆ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ",
+    "select-resource-type": "ಸಂಪನ್ಮೂಲ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "send-request": "ಕೊರಿಕೆ ಕಳಿಸು",
+    "show-correct-answer": "ಸರಿಯಾದ ಉತ್ತರವನ್ನು ತೋರಿಸು",
+    "show-more-results": "ಹೆಚ್ಚಿನ ಫಲಿತಾಂಶಗಳನ್ನು ತೋರಿಸಿ",
+    "show-results": "ಫಲಿತಾಂಶಗಳನ್ನು ತೋರಿಸು",
+    "signUp": "ಸೈನ್ ಅಪ್ ಮಾಡಿ",
+    "sortAlphabetical": "ವರ್ಣಮಾಲೆಯ ಪ್ರಕಾರ",
+    "sortAverage": "ಸರಾಸರಿ ಪ್ರಕಾರ",
+    "state": "ರಾಜ್ಯ ಅಥವಾ ಪ್ರದೇಶ",
+    "standard": "ಪ್ರಮಾಣಿತ",
+    "standards": "ಮಾನದಂಡಗಳು",
+    "study": "ಅಧ್ಯಯನ",
+    "student": "ವಿದ್ಯಾರ್ಥಿ",
+    "student-id": "ವಿದ್ಯಾರ್ಥಿ ಐಡಿ (ಪ್ರೊಫೈಲ್ನಲ್ಲಿ ಪ್ರದರ್ಶಿಸುವುದಿಲ್ಲ)",
+    "student-submission-format": "ವಿದ್ಯಾರ್ಥಿ ಸಲ್ಲಿಕೆ ರೂಪ (ಒಂದು ಆಯ್ಕೆ)",
+    "subject-and-framework": "ವಿಷಯ ಮತ್ತು ಚೌಕಟ್ಟು",
+    "submit": "ಸಲ್ಲಿಸಲು",
+    "submit-all": "ಎಲ್ಲವನ್ನೂ ಸಲ್ಲಿಸಿ",
+    "swap": "ಮರು-ಆದೇಶ",
+    "suggested-resources": "ಸೂಚಿಸಿದ ಸಂಪನ್ಮೂಲಗಳು",
+    "support": "ಬೆಂಬಲ",
+    "start-tour": "ಪ್ರವಾಸ ಕೈಗೊಳ್ಳಿ",
+    "teach": "ಕಲಿಸು",
+    "teacher": "ಶಿಕ್ಷಕ",
+    "timeSpent": "ಸಮಯ ಕಳೆದರು",
+    "toggle-dropdown": "ಟಾಗಲ್ ಡ್ರಾಪ್ಡೌನ್",
+    "true": "ನಿಜ",
+    "type": "ಮಾದರಿ",
+    "unexpectedError": "ಅನಿರೀಕ್ಷಿತ ದೋಷ ಸಂಭವಿಸಿದೆ ಮತ್ತು ವರದಿಯಾಗಿದೆ. ಅನಾನುಕೂಲತೆಗಾಗಿ ನಾವು ವಿಷಾದಿಸುತ್ತೇವೆ!",
+    "unfollow": "ಅನುಸರಿಸಬೇಡಿ",
+    "unit": "ಘಟಕ",
+    "unit-title": "ಘಟಕ ಶೀರ್ಷಿಕೆ",
+    "unitInitial": "u",
+    "unitObj": {
+      "one": "ಘಟಕ",
+      "other": "ಘಟಕಗಳು"
     },
-    'untitled-course': 'Course 1',
-    'untitled-lesson': 'Untitled Lesson',
-    'untitled-unit': 'Untitled Unit',
-    'update-thumbnail': 'Update Thumbnail',
-    upload: 'Upload',
-    'upload-file': 'Upload File',
-    'upload-thumbnail': 'Upload Thumbnail',
-    'use-case': 'Use Case',
-    'valid-extensions': 'Valid file extensions are: {{extensions}}',
-    verified: 'Verified',
-    'visibility-tooltip': 'Not visible to others',
-    warnings: {
-      'on-air-connection-lost':
-        'The Go Live dashboard has lost connection and is retrying automatically. It\'s tempting, but please don\'t refresh your screen!',
-      'character-limit': 'You\'ve reached the character limit.'
+    "untitled-course": "ಕೋರ್ಸ್ 1",
+    "untitled-lesson": "ಹೆಸರಿಸದ ಪಾಠ",
+    "untitled-unit": "ಹೆಸರಿಸದ ಘಟಕ",
+    "update-thumbnail": "ಥಂಬ್ನೇಲ್ ನವೀಕರಿಸಿ",
+    "upload": "ಅಪ್ಲೋಡ್ ಮಾಡಿ",
+    "upload-file": "ಫೈಲ್ ಅಪ್ಲೋಡ್ ಮಾಡಿ",
+    "upload-thumbnail": "ಥಂಬ್ನೇಲ್ ಅಪ್ಲೋಡ್ ಮಾಡಿ",
+    "use-case": "ಬಳಕೆ ಪ್ರಕರಣ",
+    "valid-extensions": "ಮಾನ್ಯವಾದ ಫೈಲ್ ವಿಸ್ತರಣೆಗಳು: {{ವಿಸ್ತರಣೆಗಳು}}",
+    "verified": "ಪರಿಶೀಲಿಸಲಾಗಿದೆ",
+    "visibility-tooltip": "ಇತರರಿಗೆ ಗೋಚರಿಸುವುದಿಲ್ಲ",
+    "warnings": {
+      "on-air-connection-lost": "ಹೋಗಿ ಲೈವ್ ಡ್ಯಾಶ್ಬೋರ್ಡ್ ಸಂಪರ್ಕವನ್ನು ಕಳೆದುಕೊಂಡಿದೆ ಮತ್ತು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಮರುಪ್ರಯತ್ನಿಸುತ್ತಿದೆ. ಇದು ಪ್ರಲೋಭನಗೊಳಿಸುವ, ಆದರೆ ನಿಮ್ಮ ಪರದೆಯನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಬೇಡಿ!",
+      "character-limit": "ನೀವು ಅಕ್ಷರ ಮಿತಿಯನ್ನು ತಲುಪಿದ್ದೀರಿ."
     },
-    word: 'Word',
-    yes: 'Yes'
+    "word": "ಪದ",
+    "yes": "ಹೌದು"
   },
-
-  /*
-   * CONTROLLERS: Translations used in a specific controller
-   */
-  content: {
-    questions: {
-      edit: {
-        'add-to': 'Add to',
-        'best-practices':
-          '<p>A question is a resource that requires an answer from the student, and we offer a variety of question types to support the kinds of questions your students will see on SBAC, PARCC and other assessments.</p><p>Consider alternating the kinds of questions you use to offer students exposure to these question types and to provide multiple formats for demonstrating knowledge.</p><p>Tag your questions to standards, micro-standards, and Webb\'s Depth of Knowledge. You can see how your students are interacting with questions through the teacher dashboard.</p>',
-        information: {
-          'question-title': 'Question Title',
-          'question-type': 'Question Type'
+  "content": {
+    "questions": {
+      "edit": {
+        "add-to": "ಸೇರಿಸು",
+        "best-practices": "[1] ಪ್ರಶ್ನೆಯು ವಿದ್ಯಾರ್ಥಿಯ ಉತ್ತರಕ್ಕೆ ಅಗತ್ಯವಿರುವ ಒಂದು ಸಂಪನ್ಮೂಲವಾಗಿದೆ, ಮತ್ತು ನಿಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳು sbac, parcc ಮತ್ತು ಇತರ ಮೌಲ್ಯಮಾಪನಗಳಲ್ಲಿ ನೋಡಿದ ರೀತಿಯ ಪ್ರಶ್ನೆಗಳನ್ನು ಬೆಂಬಲಿಸಲು ನಾವು ಹಲವಾರು ಪ್ರಶ್ನೆ ಪ್ರಕಾರಗಳನ್ನು ಒದಗಿಸುತ್ತೇವೆ. [2] [3] ಈ ಪ್ರಶ್ನೆ ಪ್ರಕಾರಗಳಿಗೆ ಒಡ್ಡಿಕೊಳ್ಳುವ ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ನೀಡಲು ಮತ್ತು ಜ್ಞಾನವನ್ನು ಪ್ರದರ್ಶಿಸಲು ಬಹು ಸ್ವರೂಪಗಳನ್ನು ಒದಗಿಸಲು ನೀವು ಬಳಸುವ ಪ್ರಶ್ನೆಗಳ ಪ್ರಕಾರಗಳು. [4] [5] ಮಾನದಂಡಗಳು, ಸೂಕ್ಷ್ಮ ಗುಣಮಟ್ಟ ಮತ್ತು ಜ್ಞಾನದ ಆಳದ ಮಟ್ಟಕ್ಕೆ ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳನ್ನು ಟ್ಯಾಗ್ ಮಾಡಿ. ಶಿಕ್ಷಕ ಡ್ಯಾಶ್ಬೋರ್ಡ್ ಮೂಲಕ ನಿಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳು ಪ್ರಶ್ನೆಗಳನ್ನು ಹೇಗೆ ಸಂವಹಿಸುತ್ತಿದ್ದಾರೆ ಎಂಬುದನ್ನು ನೀವು ನೋಡಬಹುದು. [6]",
+        "information": {
+          "question-title": "ಪ್ರಶ್ನೆ ಶೀರ್ಷಿಕೆ",
+          "question-type": "ಪ್ರಶ್ನೆ ಪ್ರಕಾರ"
         },
-        builder: {
-          'add-answer-choice': '+ Add Answer Choice',
-          'add-hint': 'Add Hints',
-          'add-explanation': 'Add Explanation',
-          answer: 'Answer',
-          'answer-instructions': {
-            FIB: 'Add up to 5 hints for answer and an explanation.',
-            HS_IMG:
-              'You can add up to ten answer images and select one or more correct answers.',
-            HS_TXT:
-              'You can add up to ten answer choices and select one or more correct answers.',
-            HT_HL_ST:
-              'As you write the question, use brackets to indicate the highlighted sentences. One bracket can only contain one sentence at a time, using a period inside the bracket. For example, The first little pig built his house of straw. [The big bad wolf blew down the house.] The second pig built his house of wood. Character limit: 5000.',
-            HT_HL_WD:
-              'As you write the question, use brackets for the highlighted words. One bracket can only contain one word at a time. For example, The [big] bad wolf blew [down] the house. Character limit: 5000.',
-            HT_RO:
-              'You can add up to ten answer choices in the correct order. The order will be scrambled for students.',
-            MA:
-              'You can add up to ten answers, an image, an explanation, and up to five hints.',
-            single_choice:
-              'You can add up to ten answer choices and indicate one correct answer. Character Limit: 200.',
-            OE: 'Write the correct response. Character limit: 5000.',
-            true_false: 'Select the correct answer.'
+        "builder": {
+          "add-answer-choice": "+ ಉತ್ತರ ಆಯ್ಕೆ ಸೇರಿಸಿ",
+          "add-hint": "ಸುಳಿವುಗಳನ್ನು ಸೇರಿಸಿ",
+          "add-explanation": "ವಿವರಣೆಯನ್ನು ಸೇರಿಸಿ",
+          "answer": "ಉತ್ತರ",
+          "answer-instructions": {
+            "FIB": "ಉತ್ತರ ಮತ್ತು ವಿವರಣೆಯ 5 ಸುಳಿವುಗಳನ್ನು ಸೇರಿಸಿ.",
+            "HS_IMG": "ನೀವು ಹತ್ತು ಉತ್ತರ ಚಿತ್ರಗಳಿಗೆ ಸೇರಿಸಬಹುದು ಮತ್ತು ಒಂದು ಅಥವಾ ಹೆಚ್ಚು ಸರಿಯಾದ ಉತ್ತರಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಬಹುದು.",
+            "HS_TXT": "ನೀವು ಹತ್ತು ಉತ್ತರ ಆಯ್ಕೆಗಳನ್ನು ಸೇರಿಸಬಹುದು ಮತ್ತು ಒಂದು ಅಥವಾ ಹೆಚ್ಚು ಸರಿಯಾದ ಉತ್ತರಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಬಹುದು.",
+            "HT_HL_ST": "ನೀವು ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯುತ್ತಿದ್ದಂತೆ, ಹೈಲೈಟ್ ಮಾಡಿದ ವಾಕ್ಯಗಳನ್ನು ಸೂಚಿಸಲು ಬ್ರಾಕೆಟ್ಗಳನ್ನು ಬಳಸಿ. ಒಂದು ಬ್ರಾಕೆಟ್ ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದು ವಾಕ್ಯವನ್ನು ಮಾತ್ರ ಹೊಂದಿರುತ್ತದೆ, ಬ್ರಾಕೆಟ್ ಒಳಗೆ ಒಂದು ಅವಧಿಯನ್ನು ಬಳಸಿ. ಉದಾಹರಣೆಗೆ, ಮೊದಲ ಪುಟ್ಟ ಹಂದಿ ಅವನ ಹುಲ್ಲಿನ ಮನೆ ನಿರ್ಮಿಸಿದ. [ದೊಡ್ಡದಾದ ಕೆಟ್ಟ ತೋಳವು ಮನೆಯ ಮೇಲೆ ಬೀಸಿತು.] ಎರಡನೇ ಹಂದಿ ತನ್ನ ಮರದ ಮರದ ಕಟ್ಟಡವನ್ನು ನಿರ್ಮಿಸಿತು. ಅಕ್ಷರ ಮಿತಿ: 5000.",
+            "HT_HL_WD": "ನೀವು ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯುತ್ತಿದ್ದಂತೆ, ಹೈಲೈಟ್ ಮಾಡಿದ ಪದಗಳಿಗಾಗಿ ಬ್ರಾಕೆಟ್ಗಳನ್ನು ಬಳಸಿ. ಒಂದು ಬ್ರಾಕೆಟ್ ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದೇ ಪದವನ್ನು ಮಾತ್ರ ಹೊಂದಿರುತ್ತದೆ. ಉದಾಹರಣೆಗೆ, [ದೊಡ್ಡ] ಕೆಟ್ಟ ತೋಳವು ಮನೆ ಕೆಳಗೆ ಬೀಳಿಸಿತು. ಅಕ್ಷರ ಮಿತಿ: 5000.",
+            "HT_RO": "ನೀವು ಸರಿಯಾದ ಕ್ರಮದಲ್ಲಿ ಹತ್ತು ಉತ್ತರ ಆಯ್ಕೆಗಳನ್ನು ಸೇರಿಸಬಹುದು. ಈ ಆದೇಶವನ್ನು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ scrambled ಮಾಡಲಾಗುತ್ತದೆ.",
+            "MA": "ನೀವು ಹತ್ತು ಉತ್ತರಗಳು, ಚಿತ್ರ, ವಿವರಣೆಯನ್ನು ಮತ್ತು ಐದು ಸುಳಿವುಗಳನ್ನು ಸೇರಿಸಬಹುದು.",
+            "single_choice": "ನೀವು ಹತ್ತು ಉತ್ತರ ಆಯ್ಕೆಗಳನ್ನು ಸೇರಿಸಬಹುದು ಮತ್ತು ಒಂದು ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಸೂಚಿಸಬಹುದು. ಅಕ್ಷರ ಮಿತಿ: 200.",
+            "OE": "ಸರಿಯಾದ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಬರೆಯಿರಿ. ಅಕ್ಷರ ಮಿತಿ: 5000.",
+            "true_false": "ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ."
           },
-          'question-instructions': {
-            FIB:
-              'As you write the question, use brackets for your fill-in-the-blank answers. For example: “The big bad [wolf] blew down the [house].” You can also add an image.',
-            HS_TXT: 'Write your question.',
-            HS_IMG: 'Write your question.',
-            HT_RO: 'Write your question.',
-            HT_HL: 'Write your question prompt.',
-            single_choice: 'Write your question.',
-            MA: 'Write your question.',
-            OE: 'Write your question.',
-            true_false: 'Write your question.'
+          "question-instructions": {
+            "FIB": "ನೀವು ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯುತ್ತಿದ್ದಂತೆ, ನಿಮ್ಮ ಫಿಲ್-ಇನ್ ದಿ-ಖಾಲಿ ಉತ್ತರಗಳಿಗಾಗಿ ಆವರಣಗಳನ್ನು ಬಳಸಿ. ಉದಾಹರಣೆಗೆ: \\\"ದೊಡ್ಡ ಕೆಟ್ಟ [ತೋಳ] [ಮನೆ] ಬೀಸಿದ.\\\" ನೀವು ಚಿತ್ರವನ್ನು ಸೇರಿಸಬಹುದು.",
+            "HS_TXT": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯಿರಿ.",
+            "HS_IMG": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯಿರಿ.",
+            "HT_RO": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯಿರಿ.",
+            "HT_HL": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯ ಪ್ರಾಂಪ್ಟ್ ಬರೆಯಿರಿ.",
+            "single_choice": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯಿರಿ.",
+            "MA": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯಿರಿ.",
+            "OE": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯಿರಿ.",
+            "true_false": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಬರೆಯಿರಿ."
           }
         }
       }
     },
-    resources: {
-      edit: {
-        'best-practices':
-          '<p>Resources are multimedia content in a variety of formats such as videos, interactives, websites, images, Google docs, and more. Get creative and use your own resources or get “resourceful” and search our ample supply in Gooru.</p><p>Use a variety of resource types to engage your students and include narration so you can help guide your students through the resource.</p><p>We recommend tagging each question to standards, micro-standards and 21st century skills. You can see how your students are interacting with resources through the teacher dashboard.</p>',
-        'placeholder-message':
-          'Add a resource to <span>preview it here.</span>',
-        'not-implemented':
-          'Resource format preview <span>not implemented yet.</span>',
-        information: {
-          'im-publisher': 'I\'m the publisher',
-          'select-a-license': 'Please select a license'
+    "resources": {
+      "edit": {
+        "best-practices": "[1] ಸಂಪನ್ಮೂಲಗಳು ವೀಡಿಯೊಗಳು, ಸಂವಹನ, ವೆಬ್ಸೈಟ್ಗಳು, ಚಿತ್ರಗಳು, Google ಡಾಕ್ಸ್ ಮತ್ತು ಹೆಚ್ಚಿನವುಗಳಂತಹ ವಿವಿಧ ಸ್ವರೂಪಗಳಲ್ಲಿ ಮಲ್ಟಿಮೀಡಿಯಾ ವಿಷಯವಾಗಿದೆ. ಸೃಜನಶೀಲತೆ ಪಡೆದುಕೊಳ್ಳಿ ಮತ್ತು ನಿಮ್ಮ ಸ್ವಂತ ಸಂಪನ್ಮೂಲಗಳನ್ನು ಬಳಸಿ ಅಥವಾ \\\"ತಾರಕ್\\\" ಅನ್ನು ಪಡೆದುಕೊಳ್ಳಿ ಮತ್ತು ಗೊರೂನಲ್ಲಿ ನಮ್ಮ ಸಾಕಷ್ಟು ಪೂರೈಕೆಯನ್ನು ಹುಡುಕಿ. [2] [3] ನಿಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ತೊಡಗಿಸಿಕೊಳ್ಳಲು ಮತ್ತು ಸಂಪನ್ಮೂಲವನ್ನು ಸೇರಿಸಿಕೊಳ್ಳುವುದಕ್ಕಾಗಿ ವಿವಿಧ ಸಂಪನ್ಮೂಲ ಪ್ರಕಾರಗಳನ್ನು ಬಳಸಿ, ಆದ್ದರಿಂದ ನೀವು ಸಂಪನ್ಮೂಲಗಳ ಮೂಲಕ ನಿಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡಬಹುದು. [4] [5] ಗುಣಮಟ್ಟ, ಸೂಕ್ಷ್ಮ ಗುಣಮಟ್ಟ ಮತ್ತು 21 ನೇ ಶತಮಾನದ ಕೌಶಲಗಳಿಗೆ ಪ್ರತಿ ಪ್ರಶ್ನೆಗೆ ನಾವು ಟ್ಯಾಗ್ ಮಾಡುವಂತೆ ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ. ಶಿಕ್ಷಕ ಡ್ಯಾಶ್ಬೋರ್ಡ್ ಮೂಲಕ ನಿಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳು ಸಂಪನ್ಮೂಲಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸುತ್ತಿದ್ದಾರೆ ಎಂಬುದನ್ನು ನೀವು ನೋಡಬಹುದು. [6]",
+        "placeholder-message": "ಇಲ್ಲಿ ಅದನ್ನು ಪೂರ್ವವೀಕ್ಷಣೆ ಮಾಡಲು [1] ಒಂದು ಸಂಪನ್ಮೂಲವನ್ನು ಸೇರಿಸಿ. [2]",
+        "not-implemented": "ಸಂಪನ್ಮೂಲ ಸ್ವರೂಪ ಪೂರ್ವವೀಕ್ಷಣೆ [1] ಇನ್ನೂ ಕಾರ್ಯರೂಪಕ್ಕೆ ಬಂದಿಲ್ಲ. [2]",
+        "information": {
+          "im-publisher": "ನಾನು ಪ್ರಕಾಶಕ",
+          "select-a-license": "ದಯವಿಟ್ಟು ಪರವಾನಗಿ ಆಯ್ಕೆಮಾಡಿ"
         }
       }
     }
   },
-
-  /*
-   * COMPONENTS: Translations used in a specific component
-   */
-  'gru-add-to': {
-    'add-assessment-to-lesson': 'Add from my assessments',
-    'add-assessment-to-lesson-lead':
-      'Select an assessment to add to this lesson.',
-    'add-collection-to-lesson': 'Add from my collections',
-    'add-collection-to-lesson-lead':
-      'Select a collection to add to this lesson.',
-    'add-to-collection': 'Add to collection',
-    'add-to-collection-lead':
-      'Choose a collection you want to add {{contentTitle}} to',
-    'add-to-assessment': 'Add to assessment or collection',
-    'add-to-assessment-lead':
-      'Choose an assessment you want to add {{contentTitle}} to',
-    'assessments-info':
-      'The assessments listed here <b>do not</b> belong to another lesson or course',
-    'collections-info':
-      'The collections listed here <b>do not</b> belong to another lesson or course'
+  "gru-add-to": {
+    "add-assessment-to-lesson": "ನನ್ನ ಮೌಲ್ಯಮಾಪನಗಳಿಂದ ಸೇರಿಸಿ",
+    "add-assessment-to-lesson-lead": "ಈ ಪಾಠಕ್ಕೆ ಸೇರಿಸಲು ಮೌಲ್ಯಮಾಪನವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+    "add-collection-to-lesson": "ನನ್ನ ಸಂಗ್ರಹಣೆಯಿಂದ ಸೇರಿಸಿ",
+    "add-collection-to-lesson-lead": "ಈ ಪಾಠಕ್ಕೆ ಸೇರಿಸಲು ಸಂಗ್ರಹವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+    "add-to-collection": "ಸಂಗ್ರಹಕ್ಕೆ ಸೇರಿಸಿ",
+    "add-to-collection-lead": "ನೀವು {{contenttitle}} ಅನ್ನು ಸೇರಿಸಲು ಬಯಸುವ ಸಂಗ್ರಹವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ",
+    "add-to-assessment": "ಮೌಲ್ಯಮಾಪನ ಅಥವಾ ಸಂಗ್ರಹಕ್ಕೆ ಸೇರಿಸಿ",
+    "add-to-assessment-lead": "ನೀವು {{contenttitle}} ಅನ್ನು ಸೇರಿಸಲು ಬಯಸುವ ಮೌಲ್ಯಮಾಪನವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ",
+    "assessments-info": "ಇಲ್ಲಿ ಪಟ್ಟಿ ಮಾಡಲಾದ ಮೌಲ್ಯಮಾಪನಗಳು [1] ಮತ್ತೊಂದು ಪಾಠ ಅಥವಾ ಕೋರ್ಸ್ಗೆ ಸೇರಿಲ್ಲ [2]",
+    "collections-info": "ಇಲ್ಲಿ ಪಟ್ಟಿ ಮಾಡಲಾದ ಸಂಗ್ರಹಣೆಗಳು [1] ಮತ್ತೊಂದು ಪಾಠ ಅಥವಾ ಕೋರ್ಸ್ಗೆ ಸೇರಿಲ್ಲ [2]"
   },
-  'qz-assessment-confirmation': {
-    title: 'You are about to start an assessment...',
-    description: 'In this assessment, {{model.title}}',
-    'setting-forward': 'You can navigate forward only',
-    'setting-forward-backward':
-      'You can navigate forward and backwards to answer questions',
-    'unlimited-attempts-left': 'You have unlimited attempts',
-    'attempts-left': {
-      one: 'You have 1 attempt left',
-      other: 'You have {{count}} attempts',
-      'no-attempts': 'You have no attempts left'
+  "qz-assessment-confirmation": {
+    "title": "ನೀವು ಮೌಲ್ಯಮಾಪನವನ್ನು ಪ್ರಾರಂಭಿಸಲಿದ್ದೀರಿ ...",
+    "description": "ಈ ಮೌಲ್ಯಮಾಪನದಲ್ಲಿ, {{model.title}}",
+    "setting-forward": "ನೀವು ಮುಂದೆ ಮಾತ್ರ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಬಹುದು",
+    "setting-forward-backward": "ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಲು ನೀವು ಮುಂದೆ ಮತ್ತು ಹಿಂದಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಬಹುದು",
+    "unlimited-attempts-left": "ನಿಮಗೆ ಅಪರಿಮಿತ ಪ್ರಯತ್ನಗಳಿವೆ",
+    "attempts-left": {
+      "one": "ನಿಮ್ಮಲ್ಲಿ 1 ಪ್ರಯತ್ನ ಉಳಿದಿದೆ",
+      "other": "ನಿಮ್ಮಲ್ಲಿ {{count}} ಪ್ರಯತ್ನಗಳಿವೆ",
+      "no-attempts": "ನಿಮ್ಮಲ್ಲಿ ಯಾವುದೇ ಪ್ರಯತ್ನವಿಲ್ಲ"
     },
-    'unlimited-attempts': 'You have unlimited attempts',
-    cancel: 'Cancel',
-    continue: 'Continue',
-    start: 'Start!'
+    "unlimited-attempts": "ನಿಮಗೆ ಅಪರಿಮಿತ ಪ್ರಯತ್ನಗಳಿವೆ",
+    "cancel": "ರದ್ದುಮಾಡಿ",
+    "continue": "ಮುಂದುವರೆಯಿರಿ",
+    "start": "ಪ್ರಾರಂಭಿಸು!"
   },
-  'gru-submit-confirmation': {
-    title: 'Are you sure you want to Submit All?',
-    description:
-      'You are about to end this attempt and submit all responses. Any skipped questions will be counted as incorrect.',
-    cancel: 'Cancel',
-    confirm: 'Submit All'
+  "gru-submit-confirmation": {
+    "title": "ಎಲ್ಲವನ್ನು ಸಲ್ಲಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ?",
+    "description": "ನೀವು ಈ ಪ್ರಯತ್ನವನ್ನು ಅಂತ್ಯಗೊಳಿಸಲು ಮತ್ತು ಎಲ್ಲಾ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಸಲ್ಲಿಸುವಿರಿ. ಯಾವುದೇ ಸ್ಕಿಪ್ಡ್ ಪ್ರಶ್ನೆಗಳನ್ನು ತಪ್ಪಾಗಿ ಪರಿಗಣಿಸಲಾಗುವುದು.",
+    "cancel": "ರದ್ದುಮಾಡಿ",
+    "confirm": "ಎಲ್ಲವನ್ನೂ ಸಲ್ಲಿಸಿ"
   },
-  'gru-quick-course-search': {
-    'add-from-course': 'Add from Existing Course',
-    'view-featured-courses': 'View Featured Courses',
-    assign: 'Assign'
+  "gru-quick-course-search": {
+    "add-from-course": "ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಪಠ್ಯದಿಂದ ಸೇರಿಸಿ",
+    "view-featured-courses": "ವೈಶಿಷ್ಟ್ಯಗೊಳಿಸಿದ ಪಠ್ಯಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+    "assign": "ನಿಯೋಜಿಸಿ"
   },
-  'gru-share-pop-over': {
-    copy: 'Copy',
-    'ios-tooltip': 'Hold tap to copy!',
-    'multiarch-tooltip': 'Press Ctrl + C to copy!',
-    'safari-osx-tooltip': 'Press Cmd + C to copy!',
-    'share-course': 'Share your course with link',
-    'share-question': 'Share your question with link',
-    'share-resource': 'Share your resource with link',
-    'share-assessment': 'Share your assessment with link',
-    'share-collection': 'Share your collection with link'
+  "gru-share-pop-over": {
+    "copy": "ನಕಲಿಸಿ",
+    "ios-tooltip": "ನಕಲಿಸಲು ಸ್ಪರ್ಶಿಸಿ!",
+    "multiarch-tooltip": "ನಕಲಿಸಲು ctrl + c ಅನ್ನು ಒತ್ತಿರಿ!",
+    "safari-osx-tooltip": "ನಕಲಿಸಲು cmd + c ಅನ್ನು ಒತ್ತಿರಿ!",
+    "share-course": "ಲಿಂಕ್ನೊಂದಿಗೆ ನಿಮ್ಮ ಕೋರ್ಸ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಿ",
+    "share-question": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಲಿಂಕ್ನೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ",
+    "share-resource": "ಲಿಂಕ್ನೊಂದಿಗೆ ನಿಮ್ಮ ಸಂಪನ್ಮೂಲವನ್ನು ಹಂಚಿಕೊಳ್ಳಿ",
+    "share-assessment": "ಲಿಂಕ್ನೊಂದಿಗೆ ನಿಮ್ಮ ಮೌಲ್ಯಮಾಪನವನ್ನು ಹಂಚಿಕೊಳ್ಳಿ",
+    "share-collection": "ನಿಮ್ಮ ಸಂಗ್ರಹವನ್ನು ಲಿಂಕ್ನೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ"
   },
-  'gru-category-panel': {
-    teacher: {
-      title: 'For Teachers',
-      body:
-        'Discover standards-aligned content, customize content, and track student progress through data analytics.',
-      cta: 'See Stories'
+  "gru-category-panel": {
+    "teacher": {
+      "title": "ಶಿಕ್ಷಕರು",
+      "body": "ಗುಣಮಟ್ಟವನ್ನು ಜೋಡಿಸಿದ ವಿಷಯವನ್ನು ಕಂಡುಹಿಡಿಯಿರಿ, ವಿಷಯವನ್ನು ಕಸ್ಟಮೈಸ್ ಮಾಡಿ ಮತ್ತು ಡೇಟಾ ಅನಾಲಿಟಿಕ್ಸ್ ಮೂಲಕ ವಿದ್ಯಾರ್ಥಿ ಪ್ರಗತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ.",
+      "cta": "ಕಥೆಗಳನ್ನು ನೋಡಿ"
     },
-    student: {
-      title: 'For Students',
-      body:
-        'Explore interests, build, and monitor progress through learning materials.',
-      cta: 'Enter',
-      'text-placeholder': 'Enter Classroom Code'
+    "student": {
+      "title": "ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ",
+      "body": "ಕಲಿಕೆಯ ಸಾಮಗ್ರಿಗಳ ಮೂಲಕ ಆಸಕ್ತಿಗಳನ್ನು ಅನ್ವೇಷಿಸಿ, ನಿರ್ಮಿಸಿ ಮತ್ತು ಮೇಲ್ವಿಚಾರಣೆ ನಡೆಸುತ್ತದೆ.",
+      "cta": "ನಮೂದಿಸಿ",
+      "text-placeholder": "ತರಗತಿಯ ಕೋಡ್ ಅನ್ನು ನಮೂದಿಸಿ"
     },
-    district: {
-      title: 'For Districts',
-      body:
-        'Collaborate with Gooru to unleash personalized learning and share a district-vetted curriculum.',
-      cta: 'See Our Impact'
+    "district": {
+      "title": "ಜಿಲ್ಲೆಗಳಿಗೆ",
+      "body": "ವೈಯಕ್ತೀಕರಿಸಿದ ಕಲಿಕೆ ಸಡಿಲಿಸಲು ಮತ್ತು ಜಿಲ್ಲೆಯ ಪರಿಶೀಲನಾ ಪಠ್ಯಕ್ರಮವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಗೂರು ಜೊತೆ ಸಹಯೋಗ.",
+      "cta": "ನಮ್ಮ ಪ್ರಭಾವವನ್ನು ನೋಡಿ"
     },
-    partner: {
-      title: 'For Partners',
-      body:
-        'Collaborate with mission-aligned partners to increase our collective impact on the education ecosystem.',
-      cta: 'Learn More'
+    "partner": {
+      "title": "ಪಾಲುದಾರರಿಗೆ",
+      "body": "ಶಿಕ್ಷಣ ಪರಿಸರ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ನಮ್ಮ ಸಾಮೂಹಿಕ ಪ್ರಭಾವವನ್ನು ಹೆಚ್ಚಿಸಲು ಮಿಷನ್-ಸಂಯೋಜಿತ ಪಾಲುದಾರರೊಂದಿಗೆ ಸಹಯೋಗ.",
+      "cta": "ಇನ್ನಷ್ಟು ತಿಳಿದುಕೊಳ್ಳಿ"
     }
   },
-  'class.gru-class-navigation': {
-    active: 'Active:',
-    members: 'Members',
-    greetings: 'Announcements',
-    overview: 'Course Map',
-    analytics: 'Data',
-    teams: 'Teams',
-    information: 'Classroom Information'
+  "class.gru-class-navigation": {
+    "active": "ಸಕ್ರಿಯ:",
+    "members": "ಸದಸ್ಯರು",
+    "greetings": "ಪ್ರಕಟಣೆಗಳು",
+    "overview": "ಕೋರ್ಸ್ ಮ್ಯಾಪ್",
+    "analytics": "ಡೇಟಾ",
+    "teams": "ತಂಡಗಳು",
+    "information": "ತರಗತಿಯ ಮಾಹಿತಿ"
   },
-  'sign-up': {
-    'step-1-title': 'Hello!',
-    'step-1-description': 'We’re glad you’ve decided to join us.',
-    'step-child-title': 'Not so fast!',
-    'step-child-subtitle': 'We cannot complete your registration.',
-    'step-child-description-1':
-      'Gooru could not create your account due to our ',
-    'step-child-age-requirements': 'Terms & Conditions',
-    'step-child-description-2': '. Keep learning and see you in a few years!',
-    'step-2-title': 'Basic Info',
-    'step-2-description': 'You’re not basic, but this info is.',
-    'log-in': 'Log In',
-    'log-in-description': 'if you already have an account.',
-    'google-button': 'Sign Up with Google',
-    username: 'Username',
-    dateOfBirth: {
-      title: 'Birthday',
-      day: 'Day',
-      month: 'Month',
-      months: {
-        january: 'January',
-        february: 'February',
-        march: 'March',
-        april: 'April',
-        may: 'May',
-        june: 'June',
-        july: 'July',
-        august: 'August',
-        september: 'September',
-        october: 'October',
-        november: 'November',
-        december: 'December'
+  "sign-up": {
+    "step-1-title": "ಹಲೋ!",
+    "step-1-description": "ನೀವು ನಮ್ಮೊಂದಿಗೆ ಸೇರಲು ನಿರ್ಧರಿಸಿದ್ದೇವೆ ಎಂದು ನಾವು ಖುಷಿಯಾಗಿದ್ದೇವೆ.",
+    "step-child-title": "ಅಷ್ಟು ವೇಗವಾಗಿಲ್ಲ!",
+    "step-child-subtitle": "ನಿಮ್ಮ ನೋಂದಣಿ ಪೂರ್ಣಗೊಳಿಸಲು ನಮಗೆ ಸಾಧ್ಯವಿಲ್ಲ.",
+    "step-child-description-1": "ನಮ್ಮ ಕಾರಣದಿಂದಾಗಿ ಗೋರು ನಿಮ್ಮ ಖಾತೆಯನ್ನು ರಚಿಸಲಾಗಲಿಲ್ಲ",
+    "step-child-age-requirements": "ನಿಯಮ ಮತ್ತು ಶರತ್ತುಗಳು",
+    "step-child-description-2": ". ಕಲಿಯಲು ಮತ್ತು ಕೆಲವು ವರ್ಷಗಳಲ್ಲಿ ನಿಮ್ಮನ್ನು ನೋಡಿ!",
+    "step-2-title": "ಮೂಲ ಮಾಹಿತಿ",
+    "step-2-description": "ನೀವು ಮೂಲ ಅಲ್ಲ, ಆದರೆ ಈ ಮಾಹಿತಿ.",
+    "log-in": "ಲಾಗ್ ಇನ್ ಮಾಡಿ",
+    "log-in-description": "ನೀವು ಈಗಾಗಲೇ ಖಾತೆಯನ್ನು ಹೊಂದಿದ್ದರೆ.",
+    "google-button": "google ನೊಂದಿಗೆ ಸೈನ್ ಅಪ್ ಮಾಡಿ",
+    "username": "ಬಳಕೆದಾರ ಹೆಸರು",
+    "dateOfBirth": {
+      "title": "ಹುಟ್ಟುಹಬ್ಬ",
+      "day": "ದಿನ",
+      "month": "ತಿಂಗಳು",
+      "months": {
+        "january": "ಜನವರಿ",
+        "february": "ಫೆಬ್ರುವರಿ",
+        "march": "ಮಾರ್ಚ್",
+        "april": "ಏಪ್ರಿಲ್",
+        "may": "ಮೇ",
+        "june": "ಜೂನ್",
+        "july": "ಜುಲೈ",
+        "august": "ಆಗಸ್ಟ್",
+        "september": "ಸೆಪ್ಟೆಂಬರ್",
+        "october": "ಅಕ್ಟೋಬರ್",
+        "november": "ನವೆಂಬರ್",
+        "december": "ಡಿಸೆಂಬರ್"
       },
-      year: 'Year',
-      'error-message': 'Please enter your birth date.'
+      "year": "ವರ್ಷ",
+      "error-message": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಜನ್ಮ ದಿನಾಂಕವನ್ನು ನಮೂದಿಸಿ."
     },
-    email: 'Email',
-    password: 'Password',
-    rePassword: 'Confirm Password',
-    state: 'State or Territory',
-    district: 'District or Charter Organization',
-    'error-username-taken': 'Aww, this username is taken. Try another.',
-    'error-email-taken': 'This email is taken. Try another.',
-    'error-role-message': 'Please select a role.',
-    'error-country-message': 'Please select your country.',
-    'error-state-message': 'Please select your state or territory.',
-    'error-district-message':
-      'Please select your district/charter from the list or provide it in "Other".'
+    "email": "ಇಮೇಲ್",
+    "password": "ಪಾಸ್ವರ್ಡ್",
+    "rePassword": "ಪಾಸ್ವರ್ಡ್ ದೃಢೀಕರಿಸಿ",
+    "state": "ರಾಜ್ಯ ಅಥವಾ ಪ್ರದೇಶ",
+    "district": "ಜಿಲ್ಲೆಯ ಅಥವಾ ಚಾರ್ಟರ್ ಸಂಘಟನೆ",
+    "error-username-taken": "ಎಲ್ಲಾ, ಈ ಬಳಕೆದಾರಹೆಸರು ತೆಗೆದುಕೊಳ್ಳಲಾಗಿದೆ. ಇನ್ನೊಂದನ್ನು ಪ್ರಯತ್ನಿಸಿ.",
+    "error-email-taken": "ಈ ಇಮೇಲ್ ತೆಗೆದುಕೊಳ್ಳಲಾಗಿದೆ. ಇನ್ನೊಂದನ್ನು ಪ್ರಯತ್ನಿಸಿ.",
+    "error-role-message": "ದಯವಿಟ್ಟು ಒಂದು ಪಾತ್ರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.",
+    "error-country-message": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ರಾಷ್ಟ್ರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.",
+    "error-state-message": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ರಾಜ್ಯ ಅಥವಾ ಪ್ರದೇಶವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.",
+    "error-district-message": "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿಮ್ಮ ಜಿಲ್ಲೆಯ / ಚಾರ್ಟರ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ಅಥವಾ \\\"ಇತರ\\\" ನಲ್ಲಿ ಅದನ್ನು ಒದಗಿಸಿ."
   },
-
-  footer: {
-    footerDescription:
-      'Gooru is committed to keeping its platform open-source and community created content CC0.',
-    company: 'Company',
-    community: 'Community',
-    legal: 'Legal',
-    connect: 'Connect',
-    aboutGooru: 'About Gooru',
-    careers: 'Careers',
-    supportCenter: 'Support Center',
-    contactUs: 'Contact Us',
-    districts: 'Districts',
-    partners: 'Partners',
-    coaches: 'Coaches',
-    events: 'Events',
-    terms: 'Terms',
-    privacy: 'Privacy',
-    Copyright: 'Copyright'
+  "footer": {
+    "footerDescription": "ಗೋರು ಅದರ ಪ್ಲಾಟ್ಫಾರ್ಮ್ ತೆರೆದ ಮೂಲವನ್ನು ಮತ್ತು ಸಮುದಾಯವನ್ನು ವಿಷಯವನ್ನು cc0 ಅನ್ನು ಸೃಷ್ಟಿಸಲು ಬದ್ಧವಾಗಿದೆ.",
+    "company": "ಕಂಪನಿ",
+    "community": "ಸಮುದಾಯ",
+    "legal": "ಕಾನೂನುಬದ್ಧ",
+    "connect": "ಸಂಪರ್ಕ",
+    "aboutGooru": "ಗೂರು ಬಗ್ಗೆ",
+    "careers": "ವೃತ್ತಿಗಳು",
+    "supportCenter": "ಬೆಂಬಲ ಕೇಂದ್ರ",
+    "contactUs": "ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ",
+    "districts": "ಜಿಲ್ಲೆಗಳು",
+    "partners": "ಪಾಲುದಾರರು",
+    "coaches": "ತರಬೇತುದಾರರು",
+    "events": "ಕಾರ್ಯಕ್ರಮಗಳು",
+    "terms": "ಪದಗಳು",
+    "privacy": "ಗೌಪ್ಯತೆ",
+    "Copyright": "ಕೃತಿಸ್ವಾಮ್ಯ"
   },
-
-  'grade-dropdown': {
-    placeholder: 'grade(s)',
-    prompt: 'Select a grade',
-    'pre-k': 'Pre-K',
-    elementary: 'Elementary',
-    'middle-school': 'Middle School',
-    'high-school': 'High School',
-    'higher-ed': 'Higher Ed',
-    k: 'K',
-    first: '1',
-    second: '2',
-    third: '3',
-    fourth: '4',
-    fifth: '5',
-    sixth: '6',
-    seventh: '7',
-    eighth: '8',
-    ninth: '9',
-    tenth: '10',
-    eleventh: '11',
-    twelfth: '12'
+  "grade-dropdown": {
+    "placeholder": "ದರ್ಜೆಯ (ರು)",
+    "prompt": "ಗ್ರೇಡ್ ಆಯ್ಕೆಮಾಡಿ",
+    "pre-k": "ಪ್ರೀ-ಕೆ",
+    "elementary": "ಪ್ರಾಥಮಿಕ",
+    "middle-school": "ಮಧ್ಯಮ ಶಾಲೆ",
+    "high-school": "ಪ್ರೌಢಶಾಲೆ",
+    "higher-ed": "ಉನ್ನತ ಆವೃತ್ತಿ",
+    "k": "ಕೆ",
+    "first": "1",
+    "second": "2",
+    "third": "3",
+    "fourth": "4",
+    "fifth": "5",
+    "sixth": "6",
+    "seventh": "7",
+    "eighth": "8",
+    "ninth": "9",
+    "tenth": "10",
+    "eleventh": "11",
+    "twelfth": "12"
   },
-
-  'standard-dropdown': {
-    placeholder: 'Browse by Standard'
+  "standard-dropdown": {
+    "placeholder": "ಪ್ರಮಾಣಿತ ಮೂಲಕ ಬ್ರೌಸ್ ಮಾಡಿ"
   },
-
-  'subject-dropdown': {
-    placeholder: 'subject(s)',
-    prompt: 'Select a subject'
+  "subject-dropdown": {
+    "placeholder": "ವಿಷಯಗಳ)",
+    "prompt": "ವಿಷಯ ಆಯ್ಕೆಮಾಡಿ"
   },
-
-  resource: {
-    video: 'Video',
-    webpage: 'Webpage',
-    interactive: 'Interactive',
-    question: 'Question',
-    image: 'Image',
-    text: 'Text',
-    audio: 'Audio',
-    oer: 'OER'
+  "resource": {
+    "video": "ವೀಡಿಯೊ",
+    "webpage": "ಅಂತರ್ಜಾಲ ಪುಟ",
+    "interactive": "ಸಂವಾದಾತ್ಮಕ",
+    "question": "ಪ್ರಶ್ನೆ",
+    "image": "ಚಿತ್ರ",
+    "text": "ಪಠ್ಯ",
+    "audio": "ಆಡಿಯೋ",
+    "oer": "ಮೇಲೆ"
   },
-
-  'gru-image-picker': {
-    chooseFile: 'Choose a file ...',
-    instruction: 'Upload an image from a file on your computer.',
-    restriction: 'The image must be a JPG, GIF or PNG file smaller than 5 MB.',
-    submit: 'Use Image'
+  "gru-image-picker": {
+    "chooseFile": "ಫೈಲ್ ಆಯ್ಕೆ ಮಾಡಿ ...",
+    "instruction": "ನಿಮ್ಮ ಕಂಪ್ಯೂಟರ್ನಲ್ಲಿ ಫೈಲ್ನಿಂದ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ.",
+    "restriction": "ಚಿತ್ರವು JPG, gif ಅಥವಾ png ಫೈಲ್ 5 mb ಗಿಂತ ಚಿಕ್ಕದಾಗಿರಬೇಕು.",
+    "submit": "ಚಿತ್ರವನ್ನು ಬಳಸಿ"
   },
-  'qz-fib': {
-    instructions:
-      'Please type your answer(s) in the blank(s) provided, and click "{{action}}".'
+  "qz-fib": {
+    "instructions": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಉತ್ತರವನ್ನು (ಗಳು) ಖಾಲಿ (ಗಳು) ನಲ್ಲಿ ನಮೂದಿಸಿ ಮತ್ತು \\\"{{action}}\\\" ಕ್ಲಿಕ್ ಮಾಡಿ."
   },
-
-  'qz-hs-image': {
-    instructions: 'Please select the correct image(s), and click "{{action}}".'
+  "qz-hs-image": {
+    "instructions": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಚಿತ್ರ (ಗಳು) ಆಯ್ಕೆ ಮಾಡಿ, ಮತ್ತು \\\"{{action}}\\\" ಕ್ಲಿಕ್ ಮಾಡಿ."
   },
-  'qz-hs-text': {
-    instructions: 'Please select the correct answer(s), and click "{{action}}".'
+  "qz-hs-text": {
+    "instructions": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ, ಮತ್ತು \\\"{{action}}\\\" ಕ್ಲಿಕ್ ಮಾಡಿ."
   },
-  'qz-hot-text': {
-    instructions: 'Please select the correct answer, and click "{{action}}".'
+  "qz-hot-text": {
+    "instructions": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ, ಮತ್ತು \\\"{{action}}\\\" ಕ್ಲಿಕ್ ಮಾಡಿ."
   },
-  'qz-multiple-answer': {
-    instructions: 'Please select the correct answer, and click "{{action}}".'
+  "qz-multiple-answer": {
+    "instructions": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ, ಮತ್ತು \\\"{{action}}\\\" ಕ್ಲಿಕ್ ಮಾಡಿ."
   },
-  'qz-single-choice': {
-    instructions: 'Please select the correct answer, and click "{{action}}".'
+  "qz-single-choice": {
+    "instructions": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ, ಮತ್ತು \\\"{{action}}\\\" ಕ್ಲಿಕ್ ಮಾಡಿ."
   },
-
-  'qz-open-ended': {
-    instructions:
-      'Please type your answer in the field below, and click the "{{action}}" button to save your response when you\'re done.',
-    characterLimit: 'Character Limit'
+  "qz-open-ended": {
+    "instructions": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಕೆಳಗಿನ ಕ್ಷೇತ್ರದಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ ಮತ್ತು ನೀವು ಮುಗಿಸಿದಾಗ ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಉಳಿಸಲು \\\"{{action}}\\\" ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.",
+    "characterLimit": "ಅಕ್ಷರ ಮಿತಿ"
   },
-
-  'qz-question-viewer': {
-    answer: 'Answer',
-    previous: 'Previous',
-    question: 'Question'
+  "qz-question-viewer": {
+    "answer": "ಉತ್ತರ",
+    "previous": "ಹಿಂದಿನದು",
+    "question": "ಪ್ರಶ್ನೆ"
   },
-  'qz-true-false': {
-    instructions: 'Please select the correct answer, and click "{{action}}".',
-    true: 'True',
-    false: 'False'
+  "qz-true-false": {
+    "instructions": "ದಯವಿಟ್ಟು ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ, ಮತ್ತು \\\"{{action}}\\\" ಕ್ಲಿಕ್ ಮಾಡಿ.",
+    "true": "ನಿಜ",
+    "false": "ಸುಳ್ಳು"
   },
-
-  'qz-reorder': {
-    instructions:
-      'Please reorder the answers in correct order, and click "{{action}}".'
+  "qz-reorder": {
+    "instructions": "ಸರಿಯಾದ ಕ್ರಮದಲ್ಲಿ ಉತ್ತರಗಳನ್ನು ಮರುಕ್ರಮಗೊಳಿಸಿ, ಮತ್ತು \\\"{{action}}\\\" ಕ್ಲಿಕ್ ಮಾಡಿ."
   },
-
-  'qz-navigation': {
-    'view-report': 'View Report'
+  "qz-navigation": {
+    "view-report": "ವೀಕ್ಷಣೆ ವರದಿ"
   },
-  'qz-player-footer': {
-    'usage-report': 'Usage Report'
+  "qz-player-footer": {
+    "usage-report": "ಬಳಕೆಯ ವರದಿ"
   },
-  'qz-viewer': {
-    'not-iframe-url': {
-      header_1: 'This resource cannot be viewed within Gooru.',
-      header_2: 'Click the button below to open the resource in a new tab.',
-      'view-resource': 'View Resource',
-      footer_1: 'Why am I seeing this blank page?',
-      footer_2:
-        'Resources added in Gooru come from thousands of different publishers who',
-      footer_3:
-        'create and share their content. Resources have variety of settings, including',
-      footer_4:
-        'requirements that take you to another page to view the content.'
+  "qz-viewer": {
+    "not-iframe-url": {
+      "header_1": "ಗೂರು ಒಳಗೆ ಈ ಸಂಪನ್ಮೂಲವನ್ನು ವೀಕ್ಷಿಸಲಾಗುವುದಿಲ್ಲ.",
+      "header_2": "ಹೊಸ ಟ್ಯಾಬ್ನಲ್ಲಿ ಸಂಪನ್ಮೂಲವನ್ನು ತೆರೆಯಲು ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.",
+      "view-resource": "ಸಂಪನ್ಮೂಲವನ್ನು ವೀಕ್ಷಿಸಿ",
+      "footer_1": "ನಾನು ಈ ಖಾಲಿ ಪುಟವನ್ನು ಯಾಕೆ ನೋಡುತ್ತಿದ್ದೇನೆ?",
+      "footer_2": "ಗೊರೂನಲ್ಲಿ ಸೇರಿಸಲಾದ ಸಂಪನ್ಮೂಲಗಳು ಸಾವಿರಾರು ವಿವಿಧ ಪ್ರಕಾಶಕರಿಂದ ಬಂದವು",
+      "footer_3": "ತಮ್ಮ ವಿಷಯವನ್ನು ರಚಿಸಿ ಮತ್ತು ಹಂಚಿಕೊಳ್ಳಿ. ಸಂಪನ್ಮೂಲಗಳು ಸೇರಿದಂತೆ ವಿವಿಧ ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಹೊಂದಿವೆ",
+      "footer_4": "ವಿಷಯವನ್ನು ವೀಕ್ಷಿಸಲು ಮತ್ತೊಂದು ಪುಟಕ್ಕೆ ಕರೆದೊಯ್ಯುವ ಅವಶ್ಯಕತೆಗಳು."
     }
   },
-
-  'gru-data-picker': {
-    score: 'Score',
-    completion: 'Completion',
-    timeSpent: 'Time',
-    'study-time': 'Time',
-    reaction: 'Reaction',
-    attempts: 'Attempt'
+  "gru-data-picker": {
+    "score": "ಸ್ಕೋರ್",
+    "completion": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+    "timeSpent": "ಸಮಯ",
+    "study-time": "ಸಮಯ",
+    "reaction": "ಪ್ರತಿಕ್ರಿಯೆ",
+    "attempts": "ಪ್ರಯತ್ನ"
   },
-  'gru-performance-summary': {
-    title: 'Title',
-    scores: 'Scores',
-    completion: 'Completion',
-    'time-spent': 'Total Time',
-    reaction: 'Reaction',
-    attempts: 'Attempts',
-    redo: 'Redo',
-    resume: 'Resume',
-    study: 'Study Now',
-    'view-report': 'View Report',
-    'not-applicable': 'N/A',
-    'not-started': 'Not started yet'
+  "gru-performance-summary": {
+    "title": "ಶೀರ್ಷಿಕೆ",
+    "scores": "ಅಂಕಗಳು",
+    "completion": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+    "time-spent": "ಒಟ್ಟು ಸಮಯ",
+    "reaction": "ಪ್ರತಿಕ್ರಿಯೆ",
+    "attempts": "ಪ್ರಯತ್ನಗಳು",
+    "redo": "ಸಿದ್ಧ",
+    "resume": "ಪುನರಾರಂಭಿಸು",
+    "study": "ಈಗ ಅಧ್ಯಯನ",
+    "view-report": "ವೀಕ್ಷಣೆ ವರದಿ",
+    "not-applicable": "ಎನ್ / ಎ",
+    "not-started": "ಇನ್ನೂ ಪ್ರಾರಂಭಿಸಲಾಗಿಲ್ಲ"
   },
-  'gru-performance': {
-    'no-content': 'No content available'
+  "gru-performance": {
+    "no-content": "ಯಾವುದೇ ವಿಷಯ ಲಭ್ಯವಿಲ್ಲ"
   },
-  'gru-metrics-sub-header': {
-    student: 'Student',
-    score: 'Score',
-    completion: 'Completion',
-    'study-time': 'Time'
+  "gru-metrics-sub-header": {
+    "student": "ವಿದ್ಯಾರ್ಥಿ",
+    "score": "ಸ್ಕೋರ್",
+    "completion": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+    "study-time": "ಸಮಯ"
   },
-  'qz-assessment-report': {
-    'open-ended': 'Free Response Questions',
-    questions: 'Questions',
-    resources: 'Resources',
-    'qz-summary': {
-      'total-time-spent': 'Total Time Spent'
+  "qz-assessment-report": {
+    "open-ended": "ಉಚಿತ ಪ್ರತಿಕ್ರಿಯೆ ಪ್ರಶ್ನೆಗಳು",
+    "questions": "ಪ್ರಶ್ನೆಗಳು",
+    "resources": "ಸಂಪನ್ಮೂಲಗಳು",
+    "qz-summary": {
+      "total-time-spent": "ಒಟ್ಟು ಸಮಯ ಕಳೆದರು"
     },
-    'hidden-report':
-      'Your teacher has selected to hide your summary report for this assessment.'
+    "hidden-report": "ಈ ಮೌಲ್ಯಮಾಪನಕ್ಕಾಗಿ ನಿಮ್ಮ ಸಾರಾಂಶ ವರದಿಯನ್ನು ಮರೆಮಾಡಲು ನಿಮ್ಮ ಶಿಕ್ಷಕ ಆಯ್ಕೆ ಮಾಡಿದ್ದಾನೆ."
   },
-  cards: {
-    'gru-resource-card': {
-      add: 'Add to'
+  "cards": {
+    "gru-resource-card": {
+      "add": "ಸೇರಿಸು"
     },
-    'gru-resource-result-card': {
-      skipped: 'Skipped'
+    "gru-resource-result-card": {
+      "skipped": "ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ"
     }
   },
-  'reports.qz-table-view': {
-    'first-tier-header-prefix': 'Q',
-    student: 'Student',
-    reaction: 'Reaction',
-    reactions: 'Reactions',
-    score: 'Score',
-    scores: 'Scores',
-    'study-time': 'Time',
-    'time-spent': 'Time Spent',
-    totals: 'Total'
+  "reports.qz-table-view": {
+    "first-tier-header-prefix": "q",
+    "student": "ವಿದ್ಯಾರ್ಥಿ",
+    "reaction": "ಪ್ರತಿಕ್ರಿಯೆ",
+    "reactions": "ಪ್ರತಿಕ್ರಿಯೆಗಳು",
+    "score": "ಸ್ಕೋರ್",
+    "scores": "ಅಂಕಗಳು",
+    "study-time": "ಸಮಯ",
+    "time-spent": "ಸಮಯ ಕಳೆದರು",
+    "totals": "ಒಟ್ಟು"
   },
-  'qz-emotion-picker': {
-    'react-to-resource': 'React to this resource'
+  "qz-emotion-picker": {
+    "react-to-resource": "ಈ ಸಂಪನ್ಮೂಲಕ್ಕೆ ಪ್ರತಿಕ್ರಿಯಿಸಿ"
   },
-  taxonomy: {
-    'gru-taxonomy-selector': {
-      'add-secondary': 'Add secondary',
-      'choose-subject': 'Choose Subject',
-      'primary-subject-and-course': 'Standards Framework and Course'
+  "taxonomy": {
+    "gru-taxonomy-selector": {
+      "add-secondary": "ಎರಡನೆಯದನ್ನು ಸೇರಿಸಿ",
+      "choose-subject": "ವಿಷಯ ಆಯ್ಕೆಮಾಡಿ",
+      "primary-subject-and-course": "ಗುಣಮಟ್ಟ ಚೌಕಟ್ಟು ಮತ್ತು ಕೋರ್ಸ್"
     }
   },
-  validations: {
-    unsavedChanges:
-      'Your changes haven\'t been saved yet. Would you like to leave this page?'
+  "validations": {
+    "unsavedChanges": "ನಿಮ್ಮ ಬದಲಾವಣೆಗಳನ್ನು ಇನ್ನೂ ಉಳಿಸಲಾಗಿಲ್ಲ. ನೀವು ಈ ಪುಟವನ್ನು ಬಿಡಲು ಬಯಸುತ್ತೀರಾ?"
   },
-
-  'taxonomy.modals': {
-    'gru-domain-picker': {
-      browseSelectorText: 'What domains will this unit cover?',
-      selectedText: {
-        one: '{{count}} domain selected',
-        other: '{{count}} domains selected'
+  "taxonomy.modals": {
+    "gru-domain-picker": {
+      "browseSelectorText": "ಯಾವ ಘಟಕವು ಈ ಘಟಕವನ್ನು ಒಳಗೊಂಡಿದೆ?",
+      "selectedText": {
+        "one": "{{count}} ಡೊಮೇನ್ ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ",
+        "other": "{{count}} ಡೊಮೇನ್ಗಳು ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ"
       },
-      shortcutText: 'Course is in'
+      "shortcutText": "ಕೋರ್ಸ್ ಇದೆ"
     },
-    'gru-standard-picker': {
-      browseSelectorText: 'What standards will be covered?',
-      selectedText: {
-        one: '{{count}} standard selected',
-        other: '{{count}} standards selected'
+    "gru-standard-picker": {
+      "browseSelectorText": "ಯಾವ ಮಾನದಂಡಗಳನ್ನು ಒಳಗೊಂಡಿದೆ?",
+      "selectedText": {
+        "one": "{{count}} ಮಾನದಂಡವನ್ನು ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ",
+        "other": "{{count}} ಗುಣಮಟ್ಟವನ್ನು ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ"
       },
-      shortcutText: 'Unit is tagged to'
+      "shortcutText": "ಘಟಕವನ್ನು ಟ್ಯಾಗ್ ಮಾಡಲಾಗಿದೆ"
     }
   },
-
-  'qz-rich-text-editor': {
-    bold: 'Bold',
-    expression: 'Expression',
-    italic: 'Italic',
-    subscript: 'Subscript',
-    superscript: 'Superscript',
-    underline: 'Underline',
-    'expressions-panel': {
-      tabs: {
-        calculus: 'Calculus',
-        'greek-letters': 'Greek Letters',
-        layout: 'Layout',
-        relation: 'Relation',
-        'set-theory': 'Set Theory',
-        symbols: 'Symbols',
-        trigonometry: 'Trigonometry'
+  "qz-rich-text-editor": {
+    "bold": "ದಪ್ಪ",
+    "expression": "ಅಭಿವ್ಯಕ್ತಿ",
+    "italic": "ಇಟಾಲಿಕ್",
+    "subscript": "ಸಬ್ಸ್ಕ್ರಿಪ್ಟ್",
+    "superscript": "ಸೂಪರ್ಸ್ಕ್ರಿಪ್ಟ್",
+    "underline": "ಅಂಡರ್ಲೈನ್",
+    "expressions-panel": {
+      "tabs": {
+        "calculus": "ಕಲನಶಾಸ್ತ್ರ",
+        "greek-letters": "ಗ್ರೀಕ್ ಅಕ್ಷರಗಳು",
+        "layout": "ಲೇಔಟ್",
+        "relation": "ಸಂಬಂಧ",
+        "set-theory": "ಸೆಟ್ ಸಿದ್ಧಾಂತ",
+        "symbols": "ಚಿಹ್ನೆಗಳು",
+        "trigonometry": "ತ್ರಿಕೋನಮಿತಿ"
       },
-      'insert-expression': 'Insert',
-      'update-expression': 'Update',
-      'create-expression': 'Create Expression'
+      "insert-expression": "ಸೇರಿಸಿ",
+      "update-expression": "ಅಪ್ಡೇಟ್",
+      "create-expression": "ಅಭಿವ್ಯಕ್ತಿ ರಚಿಸಿ"
     }
   },
-
-  'gru-settings-edit': {
-    'answerkey-attempts': 'Answer Key and Attempts',
-    'answer-key': 'Students can see the answer key at the end',
-    attempts: 'Attempts',
-    'attempts-unlimited': 'Unlimited',
-    backwards: 'Students can navigate backwards and change responses',
-    feedback: 'Students see if they are correct/incorrect',
-    'feedback-immediate': 'Per question & at the end',
-    'feedback-never': 'Never',
-    'feedback-summary': 'At the end',
-    'navigation-scoring': 'Navigation and Scoring',
-    'disable-heading': 'Activate Assessment in Course Map',
-    'disable-legend': 'Students can play the assessment from their course map',
-    performance: 'Students see their performance'
+  "gru-settings-edit": {
+    "answerkey-attempts": "ಉತ್ತರ ಕೀ ಮತ್ತು ಪ್ರಯತ್ನಗಳು",
+    "answer-key": "ಕೊನೆಯಲ್ಲಿ ವಿದ್ಯಾರ್ಥಿಗಳು ಉತ್ತರ ಕೀಲಿಯನ್ನು ನೋಡಬಹುದು",
+    "attempts": "ಪ್ರಯತ್ನಗಳು",
+    "attempts-unlimited": "ಅನಿಯಮಿತ",
+    "backwards": "ವಿದ್ಯಾರ್ಥಿಗಳು ಹಿಂದಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಬಹುದು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಬದಲಾಯಿಸಬಹುದು",
+    "feedback": "ವಿದ್ಯಾರ್ಥಿಗಳು ಸರಿಯಾಗಿ / ತಪ್ಪಾಗಿವೆಯೇ ಎಂದು ನೋಡುತ್ತಾರೆ",
+    "feedback-immediate": "ಪ್ರತಿ ಪ್ರಶ್ನೆಗೆ ಮತ್ತು ಕೊನೆಯಲ್ಲಿ",
+    "feedback-never": "ಎಂದಿಗೂ",
+    "feedback-summary": "ಕೊನೆಯಲ್ಲಿ",
+    "navigation-scoring": "ಸಂಚರಣೆ ಮತ್ತು ಸ್ಕೋರಿಂಗ್",
+    "disable-heading": "ಪಠ್ಯ ನಕ್ಷೆಯಲ್ಲಿ ಮೌಲ್ಯಮಾಪನವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ",
+    "disable-legend": "ವಿದ್ಯಾರ್ಥಿಗಳು ತಮ್ಮ ಕೋರ್ಸ್ ಮ್ಯಾಪ್ನಿಂದ ಮೌಲ್ಯಮಾಪನವನ್ನು ವಹಿಸಬಹುದು",
+    "performance": "ವಿದ್ಯಾರ್ಥಿಗಳು ತಮ್ಮ ಕಾರ್ಯಕ್ಷಮತೆಯನ್ನು ನೋಡುತ್ತಾರೆ"
   },
-
-  'gru-tour': {
-    overview: {
-      stepOne: {
-        title: 'Course Map',
-        description:
-          'The course map provides your students access to all assessments and collections you assign to them.'
+  "gru-tour": {
+    "overview": {
+      "stepOne": {
+        "title": "ಕೋರ್ಸ್ ಮ್ಯಾಪ್",
+        "description": "ಕೋರ್ಸ್ ಮ್ಯಾಪ್ ನಿಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ನೀವು ನಿಗದಿಪಡಿಸಿದ ಎಲ್ಲಾ ಮೌಲ್ಯಮಾಪನಗಳು ಮತ್ತು ಸಂಗ್ರಹಣೆಗಳಿಗೆ ಪ್ರವೇಶವನ್ನು ಒದಗಿಸುತ್ತದೆ."
       },
-      stepTwo: {
-        title: 'Class Code',
-        description:
-          'Each classroom you create has a unique class code. You will give this code to students when you are ready for them to join your classroom and access your content.'
+      "stepTwo": {
+        "title": "ವರ್ಗ ಕೋಡ್",
+        "description": "ನೀವು ರಚಿಸುವ ಪ್ರತಿ ತರಗತಿಯಲ್ಲೂ ಅನನ್ಯವಾದ ವರ್ಗ ಕೋಡ್ ಇದೆ. ನಿಮ್ಮ ತರಗತಿಯಲ್ಲಿ ಸೇರಲು ಮತ್ತು ನಿಮ್ಮ ವಿಷಯವನ್ನು ಪ್ರವೇಶಿಸಲು ನೀವು ಸಿದ್ಧರಾಗಿರುವಾಗ ನೀವು ಈ ಕೋಡ್ ಅನ್ನು ನೀಡುತ್ತೀರಿ."
       },
-      stepThree: {
-        title: 'Monitor Student and Class Data',
-        description:
-          'This allows you to see class and individual student assessment data when students complete assessments that are part of a course.'
+      "stepThree": {
+        "title": "ಮಾನಿಟರ್ ವಿದ್ಯಾರ್ಥಿ ಮತ್ತು ವರ್ಗ ಡೇಟಾ",
+        "description": "ಕೋರ್ಸ್ ಭಾಗವಾಗಿರುವ ವಿದ್ಯಾರ್ಥಿಗಳು ಪೂರ್ಣ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು ಮಾಡಿದಾಗ ವರ್ಗ ಮತ್ತು ಮಾಲಿಕ ವಿದ್ಯಾರ್ಥಿ ಮೌಲ್ಯಮಾಪನ ಡೇಟಾವನ್ನು ವೀಕ್ಷಿಸಲು ಇದು ನಿಮ್ಮನ್ನು ಅನುಮತಿಸುತ್ತದೆ."
       },
-      stepFour: {
-        title: 'Classroom Information',
-        description:
-          'Here you can edit your classroom name, post announcements for your students, see the names of students enrolled in your class, and delete your classroom.'
+      "stepFour": {
+        "title": "ತರಗತಿಯ ಮಾಹಿತಿ",
+        "description": "ಇಲ್ಲಿ ನೀವು ನಿಮ್ಮ ತರಗತಿಯ ಹೆಸರನ್ನು ಸಂಪಾದಿಸಬಹುದು, ನಿಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಪೋಸ್ಟ್ ಪ್ರಕಟಣೆಗಳು, ನಿಮ್ಮ ತರಗತಿಯಲ್ಲಿ ದಾಖಲಾದ ವಿದ್ಯಾರ್ಥಿಗಳ ಹೆಸರುಗಳನ್ನು ನೋಡಿ, ಮತ್ತು ನಿಮ್ಮ ತರಗತಿಯನ್ನು ಅಳಿಸಬಹುದು."
       },
-      stepFive: {
-        title: 'Editing Your Course Content',
-        description:
-          'When you are in a classroom, click here to edit any of the course content assigned to your students.'
+      "stepFive": {
+        "title": "ನಿಮ್ಮ ಕೋರ್ಸ್ ವಿಷಯವನ್ನು ಸಂಪಾದಿಸಿ",
+        "description": "ನೀವು ತರಗತಿಯಲ್ಲಿರುವಾಗ, ನಿಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ನಿಗದಿಪಡಿಸಲಾದ ಕೋರ್ಸ್ ವಿಷಯವನ್ನು ಸಂಪಾದಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ."
       },
-      stepSix: {
-        title: 'Monitor Progress in Real-time!',
-        description:
-          'Use the real-time dashboard to monitor class progress on an assessment in real-time.<br><br>Click on the "Go Live" icon found to the left of every assessment to launch a real-time assessment for students. <br><br><i class="real-time-icon">'
+      "stepSix": {
+        "title": "ನೈಜ ಸಮಯದಲ್ಲಿ ಪ್ರಗತಿ ಮೇಲ್ವಿಚಾರಣೆ!",
+        "description": "ನೈಜ ಸಮಯದಲ್ಲಿ ಮೌಲ್ಯಮಾಪನದಲ್ಲಿ ವರ್ಗ ಪ್ರಗತಿಯನ್ನು ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡಲು ನೈಜ ಸಮಯದ ಡ್ಯಾಶ್ಬೋರ್ಡ್ ಅನ್ನು ಬಳಸಿ. [1] [2] ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ನೈಜ ಸಮಯದ ಮೌಲ್ಯಮಾಪನವನ್ನು ಪ್ರಾರಂಭಿಸಲು ಪ್ರತಿ ಮೌಲ್ಯಮಾಪನದ ಎಡಭಾಗದಲ್ಲಿ ಕಂಡುಬರುವ \\\"ಗೋ ಲೈವ್\\\" ಐಕಾನ್ ಕ್ಲಿಕ್ ಮಾಡಿ. [3] [4] <i class = \\\"real-time-icon\\\">"
       }
     },
-    'quick-start': {
-      stepOne: {
-        title: 'Navigating Your Classrooms',
-        description:
-          'This is a view of a newly created classroom. To get back to a classroom at any time, click on "Classrooms" and use the drop down menu to select the classroom you wish to enter.'
+    "quick-start": {
+      "stepOne": {
+        "title": "ನಿಮ್ಮ ತರಗತಿ ಕೊಠಡಿಗಳನ್ನು ನ್ಯಾವಿಗೇಟ್ ಮಾಡಲಾಗುತ್ತಿದೆ",
+        "description": "ಇದು ಹೊಸದಾಗಿ ರಚಿಸಲಾದ ತರಗತಿಯ ಒಂದು ನೋಟ. ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ತರಗತಿಯನ್ನು ಮರಳಿ ಪಡೆಯಲು, \\\"ವರ್ಗ ಕೊಠಡಿ\\\" ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ನೀವು ಪ್ರವೇಶಿಸಲು ಬಯಸುವ ತರಗತಿಯನ್ನು ಆಯ್ಕೆ ಮಾಡಲು ಡ್ರಾಪ್ ಡೌನ್ ಮೆನು ಬಳಸಿ."
       },
-      stepTwo: {
-        title: 'Getting Started? Create an Assessment!',
-        description:
-          'We suggest creating an assessment as a way to get started with Gooru and to assess current levels of student understanding in your class.'
+      "stepTwo": {
+        "title": "ಶುರುವಾಗುತ್ತಿದೆ? ಮೌಲ್ಯಮಾಪನವನ್ನು ರಚಿಸಿ!",
+        "description": "ಗೋರು ಜೊತೆ ಪ್ರಾರಂಭಿಸಲು ಮತ್ತು ನಿಮ್ಮ ತರಗತಿಯಲ್ಲಿ ವಿದ್ಯಾರ್ಥಿ ತಿಳುವಳಿಕೆಯ ಪ್ರಸ್ತುತ ಮಟ್ಟವನ್ನು ನಿರ್ಣಯಿಸಲು ಒಂದು ಮೌಲ್ಯಮಾಪನವನ್ನು ರಚಿಸಲು ನಾವು ಸಲಹೆ ನೀಡುತ್ತೇವೆ."
       }
     },
-    home: {
-      stepOne: {
-        title: 'Your Homepage',
-        description:
-          'Welcome to your Gooru homepage! Here you can find a list of the classrooms you create in Gooru. Classrooms allow you to share content directly with students. You can always come back to your homepage by clicking on the Gooru icon.'
+    "home": {
+      "stepOne": {
+        "title": "ನಿಮ್ಮ ಮುಖಪುಟ",
+        "description": "ನಿಮ್ಮ ಗೋರ್ರು ಮುಖಪುಟಕ್ಕೆ ಸ್ವಾಗತ! ಇಲ್ಲಿ ನೀವು ಗೊರೂರಿನಲ್ಲಿ ರಚಿಸುವ ತರಗತಿಗಳ ಪಟ್ಟಿಯನ್ನು ಕಾಣಬಹುದು. ತರಗತಿ ಕೊಠಡಿಗಳು ನಿಮ್ಮನ್ನು ವಿದ್ಯಾರ್ಥಿಗಳೊಂದಿಗೆ ನೇರವಾಗಿ ವಿಷಯವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಅವಕಾಶ ನೀಡುತ್ತದೆ. ಗೂರು ಐಕಾನ್ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡುವುದರ ಮೂಲಕ ನೀವು ಯಾವಾಗಲೂ ನಿಮ್ಮ ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಬಹುದು."
       },
-      stepTwo: {
-        title: 'Classes You Teach or Join',
-        description:
-          'Any classrooms you teach or join this school year will appear here under Active Classrooms.'
+      "stepTwo": {
+        "title": "ತರಗತಿಗಳು ನೀವು ಕಲಿಸಲು ಅಥವಾ ಸೇರಲು",
+        "description": "ಈ ಶಾಲೆಯ ವರ್ಷವನ್ನು ನೀವು ಕಲಿಸುವ ಅಥವಾ ಸೇರ್ಪಡೆಗೊಳ್ಳುವ ಯಾವುದೇ ಪಾಠದ ಕೊಠಡಿಗಳು ಇಲ್ಲಿ ಸಕ್ರಿಯ ಪಾಠದ ಕೊಠಡಿಗಳಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ."
       },
-      stepThree: {
-        title: 'Previous Classes',
-        description:
-          'Any classrooms you created or joined in past school years can be found in Archived Classrooms. Content used in these classrooms can be found in your Profile, and it can be re-assigned to new classrooms for this school year.'
+      "stepThree": {
+        "title": "ಹಿಂದಿನ ತರಗತಿಗಳು",
+        "description": "ಹಿಂದಿನ ಶಾಲಾ ವರ್ಷಗಳಲ್ಲಿ ನೀವು ರಚಿಸಿದ ಅಥವಾ ಸೇರಿಸಿದ ಯಾವುದೇ ಪಾಠದ ಕೊಠಡಿಗಳನ್ನು ಆರ್ಕೈವ್ಡ್ ಕ್ಲಾಸ್ ರೂಮ್ಗಳಲ್ಲಿ ಕಾಣಬಹುದು. ಈ ಪಾಠದ ಕೋಣೆಗಳಲ್ಲಿ ಬಳಸಲಾಗುವ ವಿಷಯವು ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ನಲ್ಲಿ ಕಂಡುಬರಬಹುದು ಮತ್ತು ಈ ಶಾಲೆಯ ವರ್ಷದ ಹೊಸ ಪಾಠದ ಕೊಠಡಿಗಳಿಗೆ ಅದನ್ನು ಮರು-ನಿಯೋಜಿಸಬಹುದು."
       },
-      stepFour: {
-        title: 'Create a Classroom',
-        description:
-          'Click here to create a new classroom. Once you have content to share with students, you will assign it to them via a classroom.'
+      "stepFour": {
+        "title": "ಒಂದು ತರಗತಿಯ ರಚಿಸಿ",
+        "description": "ಹೊಸ ತರಗತಿಯನ್ನು ರಚಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ. ಒಮ್ಮೆ ನೀವು ವಿದ್ಯಾರ್ಥಿಗಳೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಲು ವಿಷಯವನ್ನು ಹೊಂದಿರುವಿರಿ, ತರಗತಿಯ ಮೂಲಕ ನೀವು ಅವರಿಗೆ ಅದನ್ನು ನಿಯೋಜಿಸಿರುತ್ತೀರಿ."
       },
-      stepFive: {
-        title: 'Your Profile',
-        description:
-          'This is your Profile. Click on your profile at any time to access content you create or remix in Gooru.'
+      "stepFive": {
+        "title": "ನಿಮ್ಮ ಪ್ರೊಫೈಲ್",
+        "description": "ಇದು ನಿಮ್ಮ ಪ್ರೊಫೈಲ್. ಗೊರೂರಿನಲ್ಲಿ ನೀವು ರಚಿಸುವ ಅಥವಾ ರೀಮಿಕ್ಸ್ ವಿಷಯವನ್ನು ಪ್ರವೇಶಿಸಲು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ."
       }
     }
   },
-  'assign-students': {
-    'assessment-settings': 'Assessments Settings',
-    'assign-assessment-modal-title': 'Assign assessments to Students',
-    'available-from': 'Available from:',
-    date: 'date',
-    'due-date': 'Due date:',
-    time: 'time',
-    title: 'Title: {{title}}',
-    'search-by-name': 'Search by name',
-    'select-all': 'Select all ({{count}})',
-    'select-students': 'Select student(s)',
-    'selected-count': 'Selected {{selected}} of {{total}}',
-    'students-roster': 'Students Roster'
+  "assign-students": {
+    "assessment-settings": "ಮೌಲ್ಯಮಾಪನಗಳ ಸೆಟ್ಟಿಂಗ್ಗಳು",
+    "assign-assessment-modal-title": "ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಮೌಲ್ಯಮಾಪನಗಳನ್ನು ನಿಯೋಜಿಸಿ",
+    "available-from": "ಇವರಿಂದ ಲಭ್ಯವಿದೆ:",
+    "date": "ದಿನಾಂಕ",
+    "due-date": "ಕಾರಣ ದಿನಾಂಕ:",
+    "time": "ಸಮಯ",
+    "title": "ಶೀರ್ಷಿಕೆ: {{title}}",
+    "search-by-name": "ಹೆಸರಿನಿಂದ ಹುಡುಕಿ",
+    "select-all": "ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ ({{count}})",
+    "select-students": "ವಿದ್ಯಾರ್ಥಿ (ರು) ಆಯ್ಕೆ ಮಾಡಿ",
+    "selected-count": "{{total}} ನ {{ಆಯ್ಕೆ}} ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ",
+    "students-roster": "ವಿದ್ಯಾರ್ಥಿಗಳು ರೋಸ್ಟರ್"
   },
-  'assignments-view': {
-    actions: 'Actions',
-    attempts: 'Attempts left',
-    date: 'Date assigned',
-    dateModified: 'Date modified',
-    dueDate: 'Due Date',
-    search: 'Search...',
-    standards: 'Standards',
-    studentsAssigned: 'Students Assigned',
-    title: 'Title'
+  "assignments-view": {
+    "actions": "ಕ್ರಮಗಳು",
+    "attempts": "ಪ್ರಯತ್ನಗಳು ಉಳಿದಿವೆ",
+    "date": "ದಿನಾಂಕವನ್ನು ನಿಗದಿಪಡಿಸಲಾಗಿದೆ",
+    "dateModified": "ಮಾರ್ಪಡಿಸಿದ ದಿನಾಂಕ",
+    "dueDate": "ಕಾರಣ ದಿನಾಂಕ",
+    "search": "ಹುಡುಕಿ ...",
+    "standards": "ಮಾನದಂಡಗಳು",
+    "studentsAssigned": "ವಿದ್ಯಾರ್ಥಿಗಳು ನಿಯೋಜಿಸಲಾಗಿದೆ",
+    "title": "ಶೀರ್ಷಿಕೆ"
   },
-  'assignment-details': {
-    assign: 'Assign',
-    'answer-key': 'Answer Key',
-    attempts: 'Attempts',
-    'attempts-left': '<b>Attempts left:</b> {{attempts}} of {{count}}',
-    lastAttempt: '<b>Last Attempt:</b>',
-    launch: 'Launch',
-    learningObjective: 'Learning Objective',
-    navigation: 'Navigation',
-    'no-attempts': 'No attempts left',
-    off: 'Off',
-    on: 'On',
-    preview: 'Preview',
-    questions: 'Questions',
-    redo: 'Redo',
-    'show-score': 'Show Score',
-    'view-report': 'View Report'
+  "assignment-details": {
+    "assign": "ನಿಯೋಜಿಸಿ",
+    "answer-key": "ಉತ್ತರ ಕೀ",
+    "attempts": "ಪ್ರಯತ್ನಗಳು",
+    "attempts-left": "[1] ಉಳಿದಿರುವ ಪ್ರಯತ್ನಗಳು: [2] {{count}} ನ {{ಪ್ರಯತ್ನಗಳು}}",
+    "lastAttempt": "[1] ಕೊನೆಯ ಪ್ರಯತ್ನ: [2]",
+    "launch": "ಪ್ರಾರಂಭಿಸು",
+    "learningObjective": "ಕಲಿಕೆಯ ಉದ್ದೇಶ",
+    "navigation": "ಸಂಚರಣೆ",
+    "no-attempts": "ಯಾವುದೇ ಪ್ರಯತ್ನಗಳು ಉಳಿದಿಲ್ಲ",
+    "off": "ಆಫ್",
+    "on": "ಆನ್",
+    "preview": "ಮುನ್ನೋಟ",
+    "questions": "ಪ್ರಶ್ನೆಗಳು",
+    "redo": "ಸಿದ್ಧ",
+    "show-score": "ಪ್ರದರ್ಶನ ಸ್ಕೋರ್",
+    "view-report": "ವೀಕ್ಷಣೆ ವರದಿ"
   },
-  'qz-submission-format': {
-    textbox: 'Text Box',
-    upload: 'Upload (URL or File)'
+  "qz-submission-format": {
+    "textbox": "ಪಠ್ಯ ಪೆಟ್ಟಿಗೆ",
+    "upload": "ಅಪ್ಲೋಡ್ ಮಾಡಿ (url ಅಥವಾ ಫೈಲ್)"
   },
-  'qz-rubric-creation': {
-    'from-web': 'From Web',
-    'from-computer': 'From Your Computer',
-    url: 'URL',
-    'qz-preview-url': {
-      add: 'Add a rubric above'
+  "qz-rubric-creation": {
+    "from-web": "ವೆಬ್ನಿಂದ",
+    "from-computer": "ನಿಮ್ಮ ಕಂಪ್ಯೂಟರ್ನಿಂದ",
+    "url": "url",
+    "qz-preview-url": {
+      "add": "ಮೇಲಿರುವ ಒಂದು ರಬ್ರಿಕ್ ಸೇರಿಸಿ"
     },
-    'qz-category': {
-      'feedback-guidance': 'Feedback Guidance',
-      'feedback-guidance-placeholder':
-        'ex. As you are reviewing this category, pay careful attention to the author\'s purpose',
-      'required-feedback': 'Required Feedback',
-      scoring: 'Scoring',
-      title: 'Category Title',
-      'title-placeholder': 'ex. Grammar, Ideas, Thesis',
-      'new-category': 'Add New Category',
-      'qz-scoring-levels': {
-        basic: 'ex. Basic',
-        'below-basic': 'ex. Below Basic',
-        best: 'Best',
-        exemplary: 'ex. Exemplary',
-        levels: 'Levels',
-        'new-level': 'Add New Level',
-        points: 'Points',
-        proficient: 'ex. Proficient',
-        worst: 'Worst'
+    "qz-category": {
+      "feedback-guidance": "ಪ್ರತಿಕ್ರಿಯೆ ಮಾರ್ಗದರ್ಶನ",
+      "feedback-guidance-placeholder": "ಮಾಜಿ. ನೀವು ಈ ವರ್ಗವನ್ನು ಪರಿಶೀಲಿಸುತ್ತಿರುವ ಕಾರಣ, ಲೇಖಕರ ಉದ್ದೇಶಕ್ಕೆ ಜಾಗರೂಕರಾಗಿರಿ",
+      "required-feedback": "ಅಗತ್ಯ ಪ್ರತಿಕ್ರಿಯೆ",
+      "scoring": "ಸ್ಕೋರಿಂಗ್",
+      "title": "ವರ್ಗದಲ್ಲಿ ಶೀರ್ಷಿಕೆ",
+      "title-placeholder": "ಮಾಜಿ. ವ್ಯಾಕರಣ, ಕಲ್ಪನೆಗಳು, ಪ್ರಬಂಧ",
+      "new-category": "ಹೊಸ ವರ್ಗವನ್ನು ಸೇರಿಸಿ",
+      "qz-scoring-levels": {
+        "basic": "ಮಾಜಿ. ಮೂಲಭೂತ",
+        "below-basic": "ಮಾಜಿ. ಮೂಲ ಕೆಳಗೆ",
+        "best": "ಅತ್ಯುತ್ತಮ",
+        "exemplary": "ಮಾಜಿ. ಅನುಕರಣೀಯ",
+        "levels": "ಮಟ್ಟಗಳು",
+        "new-level": "ಹೊಸ ಮಟ್ಟವನ್ನು ಸೇರಿಸಿ",
+        "points": "ಅಂಕಗಳು",
+        "proficient": "ಮಾಜಿ. ಪ್ರವೀಣ",
+        "worst": "ಕೆಟ್ಟದಾಗಿದೆ"
       }
     }
   },
-  'over-all-score': {
-    title: 'Overall Score & Feedback',
-    'total-points': 'Total Points Possible',
-    points: 'pts',
-    'feedback-guidance-placeholder':
-      'ex. As you are reviewing this essay as a whole, provide feedback on consistency of author’s voice from beginning to end'
+  "over-all-score": {
+    "title": "ಒಟ್ಟಾರೆ ಸ್ಕೋರ್ & ಪ್ರತಿಕ್ರಿಯೆ",
+    "total-points": "ಒಟ್ಟು ಅಂಕಗಳು ಸಾಧ್ಯ",
+    "points": "ಅಂಕಗಳು",
+    "feedback-guidance-placeholder": "ಮಾಜಿ. ನೀವು ಈ ಪ್ರಬಂಧವನ್ನು ಪೂರ್ತಿಯಾಗಿ ಪರಿಶೀಲಿಸುತ್ತಿದ್ದರೆ, ಲೇಖಕರ ಧ್ವನಿಯ ಆರಂಭದಿಂದ ಕೊನೆಯವರೆಗೆ ಸ್ಥಿರತೆ ಬಗ್ಗೆ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡಿ"
   },
-  'qz-player': {
-    'resource-format': {
-      image_resource: 'Image',
-      text_resource: 'Text',
-      video_resource: 'Video',
-      interactive_resource: 'Interactive',
-      webpage_resource: 'Webpage',
-      audio_resource: 'Audio',
-      question: 'Question'
+  "qz-player": {
+    "resource-format": {
+      "image_resource": "ಚಿತ್ರ",
+      "text_resource": "ಪಠ್ಯ",
+      "video_resource": "ವೀಡಿಯೊ",
+      "interactive_resource": "ಸಂವಾದಾತ್ಮಕ",
+      "webpage_resource": "ಅಂತರ್ಜಾಲ ಪುಟ",
+      "audio_resource": "ಆಡಿಯೋ",
+      "question": "ಪ್ರಶ್ನೆ"
     }
   },
-  'qz-free-response-viewer': {
-    prompt: 'Task Prompt',
-    'preview-submission': 'Preview Submission',
-    'full-rubric': 'Full Rubric',
-    'total-score': 'Total Score',
-    points: 'pts'
+  "qz-free-response-viewer": {
+    "prompt": "ಕಾರ್ಯ ಪ್ರಾಂಪ್ಟ್",
+    "preview-submission": "ಮುನ್ನೋಟ ಸಲ್ಲಿಕೆ",
+    "full-rubric": "ಪೂರ್ಣ ರಬ್ರಿಕ್",
+    "total-score": "ಒಟ್ಟು ಅಂಕ",
+    "points": "ಅಂಕಗಳು"
   }
 };

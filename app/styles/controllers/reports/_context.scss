@@ -62,7 +62,7 @@
       @include clearfix();
 
       .title {
-        float: left;
+        float: $tab-float-dir;
         margin-left: $gutter-width;
 
         > i {
@@ -71,7 +71,7 @@
       }
       .mode {
         font-size: $font-size-base;
-        float: right;
+        float: $menu-float-dir;
         margin-right: $gutter-width + 20px;
         margin-top: 18px;
 

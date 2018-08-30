@@ -14,13 +14,13 @@
   <div class="player-container">
     <div class="player-info">
       <div class="current-resource-info">
-        <div class="resource-sequence pull-left">
+        <div class="resource-sequence">
           <span>{{resource.sequence}}</span>
         </div>
-        <div class="pull-left">
+        <div class="resource-question">
           <i class="{{resource.format}} resource-icon"></i>
         </div>
-        <div class="pull-left resource-title" {{action "onToggleResourceNav"}}>
+        <div class="resource-title" {{action "onToggleResourceNav"}}>
           <span>{{no-tags text=resource.title}}</span>
         </div>
       </div>

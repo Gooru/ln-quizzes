@@ -89,7 +89,10 @@
   <div class="footer">
     <div class="cancel {{if noMoreAttempts "back" "cancel"}}" {{action 'cancel'}}>{{if noMoreAttempts (t 'common.back') (t 'common.cancel')}}</div>
     {{#unless noMoreAttempts}}
-      <div class="start" {{action 'start'}} disabled={{disableStart}}>{{if context.hasStarted (t 'qz-assessment-confirmation.continue') (t 'qz-assessment-confirmation.start')}}</div>
+      <!-- <div class="start" {{action 'start'}} disabled={{disableStart}}>{{if context.hasStarted (t 'qz-assessment-confirmation.continue') (t 'qz-assessment-confirmation.start')}}</div> -->
+      <div class="start" {{action 'start'}} disabled={{disableStart}}>
+        {{t 'qz-assessment-confirmation.continue'}}
+      </div>
     {{/unless}}
   </div>
 </div>

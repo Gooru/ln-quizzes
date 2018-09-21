@@ -25,7 +25,9 @@ export default Ember.Component.extend({
 
   didRender() {
     var component = this;
-    component.$('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+    component.$('[data-toggle="tooltip"]').tooltip({
+      trigger: 'hover'
+    });
   },
 
   // -------------------------------------------------------------------------
@@ -123,6 +125,28 @@ export default Ember.Component.extend({
     }
   }),
 
+  /**
+   * Property used to  identify whether collection object has items to play.
+   */
+  hasCollectionItems: Ember.computed('confirmationInfo', function() {
+    let resourceCount = this.get('confirmationInfo.resourceCount');
+    let questionCount = this.get('confirmationInfo.questionCount');
+    let hasCollectionItems = false;
+    let isCollection = this.get('isCollectionConfirmation');
+    if (isCollection && (resourceCount > 0 || questionCount > 0)) {
+      hasCollectionItems = true;
+    } else if (questionCount > 0) {
+      hasCollectionItems = true;
+    }
+    return hasCollectionItems;
+  }),
+
+  /**
+   * Maintains the state of data loading
+   * @type {Boolean}
+   */
+  isLoading: false,
+
   // -------------------------------------------------------------------------
   // Methods
 
@@ -134,18 +158,25 @@ export default Ember.Component.extend({
     let component = this;
     let collection = component.get('collection');
     let isCollectionConfirmation = component.get('isCollectionConfirmation');
+    component.set('isLoading', true);
     if (isCollectionConfirmation) {
       component.getCollection(collection.id).then(function(collectionInfo) {
-        let contentCount = component.getResourceQuestionCount(
-          collection.resources
-        );
-        collectionInfo.questionCount = contentCount.questionCount;
-        collectionInfo.resourceCount = contentCount.resourceCount;
-        component.set('confirmationInfo', collectionInfo);
+        if (!component.get('isDestroyed')) {
+          let contentCount = component.getResourceQuestionCount(
+            collection.resources
+          );
+          collectionInfo.questionCount = contentCount.questionCount;
+          collectionInfo.resourceCount = contentCount.resourceCount;
+          component.set('confirmationInfo', collectionInfo);
+          component.set('isLoading', false);
+        }
       });
     } else {
       component.getAssessment(collection.id).then(function(assessmentInfo) {
-        component.set('confirmationInfo', assessmentInfo);
+        if (!component.get('isDestroyed')) {
+          component.set('confirmationInfo', assessmentInfo);
+          component.set('isLoading', false);
+        }
       });
     }
   },
@@ -159,13 +190,11 @@ export default Ember.Component.extend({
     const collectionPromise = Ember.RSVP.resolve(
       component.get('collectionService').getCollection(collectionId)
     );
-    return Ember.RSVP
-      .hash({
-        collection: collectionPromise
-      })
-      .then(function(hash) {
-        return hash.collection;
-      });
+    return Ember.RSVP.hash({
+      collection: collectionPromise
+    }).then(function(hash) {
+      return hash.collection;
+    });
   },
 
   /**
@@ -177,13 +206,11 @@ export default Ember.Component.extend({
     const assessmentPromise = Ember.RSVP.resolve(
       component.get('collectionService').getAssessment(assessmentId)
     );
-    return Ember.RSVP
-      .hash({
-        assessment: assessmentPromise
-      })
-      .then(function(hash) {
-        return hash.assessment;
-      });
+    return Ember.RSVP.hash({
+      assessment: assessmentPromise
+    }).then(function(hash) {
+      return hash.assessment;
+    });
   },
 
   /**

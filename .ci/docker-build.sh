@@ -2,11 +2,11 @@
 
 source .ci/common.sh
 
-#if [ $UID -eq 0 ]; then
- # info "Running as root dropping privileges"
-  #/usr/local/bin/su-exec builder $0
-  #exit $?
-#fi
+if [ $UID -eq 0 ]; then
+  info "Running as root dropping privileges"
+  /usr/local/bin/su-exec builder $0
+  exit $?
+fi
 
 GIT_COMMIT_HASH=$(git rev-parse HEAD)
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/')

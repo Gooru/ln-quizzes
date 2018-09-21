@@ -57,7 +57,7 @@ test('Player confirmation Layout No more attempts', function(assert) {
   this.set('context', context);
   this.set('collection', collection);
   this.render(
-    hbs`{{player/qz-player-confirmation attempts=attempts collection=collection context=context onClosePlayer='closePlayer'}}`
+    hbs`{{player/qz-player-confirmation hasCollectionItems=true attempts=attempts collection=collection context=context onClosePlayer='closePlayer'}}`
   );
   var $component = this.$();
   const $back = $component.find('.qz-player-confirmation .footer .back');

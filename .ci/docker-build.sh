@@ -16,7 +16,7 @@ info "Installing npm dependencies..."
 silent yarn install
 
 info "Installing bower dependencies..."
-silent bower install --allow-root
+silent bower install
 
 info "Running eslint..."
 silent grunt bamboo-eslint

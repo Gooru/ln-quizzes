@@ -1,0 +1,8 @@
+/** Responsive Web Design styles will goes here
+    Source Path: app-rwd/*
+    Example: @import "app-rwd/components/filename";
+  */
+@import "variables";
+
+// Components
+@import "app-rwd/components/player/_qz-player-confirmation-rwd.scss";

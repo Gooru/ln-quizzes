@@ -1,0 +1,45 @@
+.qz-player-footer {
+  @media only screen and (max-width: 767px) {
+    .nav-player-container {
+      grid-template-columns: 30px 1fr 30px;
+
+      .prev {
+        i {
+          margin-left: -108px;
+        }
+
+        span {
+          display: none;
+        }
+      }
+
+      .player-container {
+        grid-template-columns: 1fr 50px 40px 40px;
+
+        .list-resource-nav {
+          i {
+            margin-left: -66px;
+          }
+        }
+
+        .reaction-bar {
+          width: 50px;
+          margin-right: 0;
+          border-left: 1px solid $breadcrumb-color;
+        }
+
+        .list-resources {
+          width: 85%;
+        }
+      }
+
+      .next-action {
+        .next {
+          .label {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -30,13 +30,15 @@ export default Ember.Component.extend({
      * @param {string} newEmotionValue - newly selected emotion
      * @returns {undefined}
      */
-    setEmotion: function(newEmotionValue) {
+    setEmotion: function(newEmotion) {
       const component = this;
+      let newEmotionValue = newEmotion.value;
       if (!component.get('readOnly')) {
         if (
           !component.get('selectedEmotion') ||
           component.get('selectedEmotion') !== newEmotionValue
         ) {
+          component.set('defaultEmoji', newEmotion.unicode);
           component.selectEmotion(newEmotionValue);
           component.sendAction(
             'onChangeEmotion',
@@ -44,6 +46,18 @@ export default Ember.Component.extend({
           );
         }
       }
+    },
+
+    onOpenNavigator() {
+      let component = this;
+      component.set('isNavigatorOpen', true);
+      $('.emotions-list').slideDown();
+    },
+
+    onCloseNavigator() {
+      let component = this;
+      component.set('isNavigatorOpen', false);
+      $('.emotions-list').slideUp();
     }
   },
 
@@ -59,7 +73,9 @@ export default Ember.Component.extend({
     const startEmotion = this.get('startEmotion');
 
     // Adds tooltip to UI elements (elements with attribute 'data-toggle')
-    component.$('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+    component.$('[data-toggle="tooltip"]').tooltip({
+      trigger: 'hover'
+    });
     // Sets the emotion icon if there is a score for this resource
     if (startEmotion) {
       Ember.run.scheduleOnce('afterRender', this, function() {
@@ -105,6 +121,13 @@ export default Ember.Component.extend({
    */
   readOnly: false,
 
+  /**
+   * Shows default emoji for mobile view
+   * @property {String}
+   */
+  defaultEmoji: '1f625-inactive',
+
+  isNavigatorOpen: false,
   // -------------------------------------------------------------------------
   // Methods
 

@@ -1,0 +1,28 @@
+.related-content {
+  @media only screen and (max-width: 600px) {
+    right: 0;
+
+    .related-content-tabs {
+      .related-content-tab {
+        width: 100px;
+        margin-right: 0;
+
+        .tab-info {
+          margin-left: 27px;
+
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .related-content-body {
+      .resource-cards {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: max-content;
+      }
+    }
+  }
+}

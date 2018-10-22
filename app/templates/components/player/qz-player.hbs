@@ -13,10 +13,12 @@
   {{/if}}
   <div class="component player">
     <div class="qz-main {{if showFinishConfirmation 'submission-confirm'}}" role="main">
+      {{log 'player- cheking collection -1' collection }}
       {{#if collection.hasResources }}
         {{#if showFinishConfirmation}}
           {{player.qz-submit-confirmation onConfirmFinish='finishCollection' onCancelFinish='resumeCollection'}}
         {{else}}
+        {{log 'player- cheking resource - 2' resource }}
           {{#if resource}}
             {{player.qz-viewer
                 isNotIframeUrl=isNotIframeUrl

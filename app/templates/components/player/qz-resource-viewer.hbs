@@ -15,6 +15,8 @@
     </div>
   {{/if}}
 
+  {{log 'isNotIframeUrl' isNotIframeUrl }}
+  {{log 'isLinkOut'  isLinkOut}}
   {{#if (or isNotIframeUrl isLinkOut)}}
       <div class="panel panel-default not-iframe">
           <div class="panel-header">

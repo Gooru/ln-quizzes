@@ -1,5 +1,6 @@
 .related-content {
-  @media only screen and (max-width: 600px) {
+  /* mobile view */
+  @media only screen and (max-width: 767px) {
     right: 0;
 
     .related-content-tabs {
@@ -23,6 +24,28 @@
         grid-template-rows: 1fr 1fr 1fr;
         width: max-content;
       }
+    }
+  }
+
+  /*tablets view */
+  @media only screen and (min-width: 767px) and (max-width: 992px) {
+    right: 0;
+
+    .related-content-body {
+      .resource-cards {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        width: max-content;
+      }
+    }
+  }
+
+  /* mobile view orientation */
+  @media only screen and (max-width: 767px) and (orientation: landscape) {
+    bottom: -150px;
+
+    .related-content-body {
+      max-height: 200px;
     }
   }
 }

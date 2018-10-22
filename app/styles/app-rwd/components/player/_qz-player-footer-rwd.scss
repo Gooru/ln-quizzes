@@ -1,7 +1,8 @@
 .qz-player-footer {
+  /*mobile view */
   @media only screen and (max-width: 767px) {
     .nav-player-container {
-      grid-template-columns: 30px 1fr 30px;
+      grid-template-columns: 40px 1fr 40px;
 
       .prev {
         i {
@@ -29,7 +30,7 @@
         }
 
         .list-resources {
-          width: 85%;
+          width: 80%;
         }
       }
 

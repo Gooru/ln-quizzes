@@ -38,7 +38,6 @@ export default Ember.Component.extend({
           !component.get('selectedEmotion') ||
           component.get('selectedEmotion') !== newEmotionValue
         ) {
-          component.set('defaultEmoji', newEmotion.unicode);
           component.selectEmotion(newEmotionValue);
           component.sendAction(
             'onChangeEmotion',
@@ -146,6 +145,7 @@ export default Ember.Component.extend({
       this.set('selectedEmotion', emotionValue);
       this.$(`.emotion-${emotionValue}`).toggleClass('active');
       let emotion = this.get('emotionValues').findBy('value', emotionValue);
+      this.set('defaultEmoji', emotion.unicode);
       this.$('.emotions-list li')
         .find('.active svg use')
         .attr(

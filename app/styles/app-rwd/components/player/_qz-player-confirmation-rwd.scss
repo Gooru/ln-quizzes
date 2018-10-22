@@ -1,2 +1,43 @@
-.show-confirmation {
+.qz-player-confirmation {
+  @media screen and (max-width: $sm-width-max) {
+    left: auto;
+    right: auto;
+    .confirmation-panel {
+      width: 300px;
+    }
+    .confirmation-panel {
+      .header {
+        .title-info {
+          .collection-info {
+            .title {
+              font-size: 16px;
+              width: 283px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
+    top: 98px;
+    left: auto;
+    right: auto;
+    .confirmation-panel {
+      width: 450px;
+      height: 200px;
+    }
+
+    .confirmation-panel {
+      .header {
+        .title-info {
+          .collection-info {
+            .title {
+              font-size: 16px;
+              width: 314px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -195,9 +195,6 @@ export default Ember.Component.extend({
     let cdnResult = cdnPattern.test(this.get('resource.body'));
     let resultProtocol =
       httpsResult === true || cdnResult === true ? 'https:' : 'http:';
-
-    console.log('resultProtocol', resultProtocol); //eslint-disable-line
-    console.log('resource.body', this.get('resource.body')); //eslint-disable-line
     return resultProtocol;
   }),
 

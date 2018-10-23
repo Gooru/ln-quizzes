@@ -3,6 +3,7 @@
     left: auto;
     right: auto;
     .confirmation-panel {
+      padding: 23px 23px 6px 9px;
       width: 300px;
     }
     .confirmation-panel {
@@ -19,20 +20,32 @@
     }
   }
   @media only screen and (min-device-width: 375px) and (max-device-width: 824px) and (orientation: landscape) {
-    top: 98px;
+    top: 125px;
     left: auto;
     right: auto;
+    zoom: 0.9;
     .confirmation-panel {
       width: 450px;
       height: 200px;
+      .body .description {
+        min-height: max-content;
+        padding-bottom: 4px;
+      }
     }
 
     .confirmation-panel {
+      .body .properties {
+        padding-bottom: 6px;
+      }
       .header {
         .title-info {
           .collection-info {
+            .content-info {
+              padding: 12px 0;
+            }
             .title {
-              font-size: 16px;
+              margin-top: -16px;
+              font-size: 13px;
               width: 314px;
             }
           }

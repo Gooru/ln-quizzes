@@ -1,5 +1,22 @@
 .qz-player-footer {
-  /*mobile view */
+  /*mobile view portrait*/
+  @media only screen and (max-width: 600px) {
+    .nav-player-container {
+      .player-container {
+        .player-info {
+          .current-resource-info {
+            .resource-title {
+              span {
+                width: 85px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /*mobile view landscape and portrait*/
   @media only screen and (max-width: 767px) {
     .nav-player-container {
       grid-template-columns: 40px 1fr 40px;
@@ -38,6 +55,17 @@
         .next {
           .label {
             display: none;
+          }
+        }
+
+        .submit-all,
+        .usage-report {
+          span {
+            display: none;
+          }
+
+          span.icon {
+            display: block;
           }
         }
       }

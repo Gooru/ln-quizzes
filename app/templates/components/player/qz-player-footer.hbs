@@ -48,7 +48,7 @@
         {{gru-icon name="ic_keyboard_arrow_up"}}
       </div>
     {{/if}}
-    
+
     <div class="list-resources">
       <div class="breadcrumb-title">
         {{#if unitTitle}}
@@ -121,11 +121,13 @@
         {{#unless (or showFinishConfirmation submitted)}}
           <div class="usage-report {{unless isNextEnabled 'disabled'}}" {{action 'seeUsageReport'}}>
             <span>{{t 'qz-player-footer.usage-report'}}</span>
+            <span class="icon"> {{gru-icon name="subject"}}</span>
           </div>
         {{/unless}}
       {{else}}
         <div class="submit-all {{unless isNextEnabled 'disabled'}}" data-toggle="tooltip" title="{{t 'common.save-submit'}}" {{action "finishCollection"}}>
           <span>{{t 'common.submitAll'}}</span>
+          <span class="icon"> {{gru-icon name="skip_next"}}</span>
         </div>
       {{/if}}
     {{/if}}

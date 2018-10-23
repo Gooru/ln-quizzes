@@ -460,6 +460,12 @@
         > span {
           margin: auto;
         }
+
+        > span.icon {
+          margin-left: 7px;
+          margin-top: 5px;
+          display: none;
+        }
       }
 
       .disabled {

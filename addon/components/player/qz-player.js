@@ -266,12 +266,6 @@ export default Ember.Component.extend(ModalMixin, {
    */
   isNotIframeUrl: Ember.computed('resource', function() {
     const resource = this.get('resource');
-    console.log('isNotIframeUrl > resource', resource); //eslint-disable-line
-    //eslint-disable-next-line
-    console.log(
-      'isNotIframeUrl > resource && resource.displayGuide',
-      resource && resource.displayGuide
-    );
     return resource && resource.displayGuide;
   }),
 

@@ -190,7 +190,12 @@ export default Ember.Component.extend({
    */
   resourceProtocol: Ember.computed('resource.url', function() {
     const httpsPattern = /^(https:\/\/)/;
-    return httpsPattern.test(this.get('resource.body')) ? 'https:' : 'http:';
+    const cdnPattern = /^(\/\/cdn.gooru.org\/)/;
+    let httpsResult = httpsPattern.test(this.get('resource.body'));
+    let cdnResult = cdnPattern.test(this.get('resource.body'));
+    let resultProtocol =
+      httpsResult === true || cdnResult === true ? 'https:' : 'http:';
+    return resultProtocol;
   }),
 
   /**

@@ -1,5 +1,6 @@
-@media only screen and (max-width: 767px) {
-  .qz-emotion-picker {
+.qz-emotion-picker {
+  /* mobile view */
+  @media only screen and (max-width: 767px) {
     .emotion-picker {
       .emotions-list {
         display: none;

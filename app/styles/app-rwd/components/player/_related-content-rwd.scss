@@ -1,6 +1,6 @@
 .related-content {
   /* mobile view */
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: $screen-sm - 1) {
     right: 0;
 
     .related-content-tabs {
@@ -26,9 +26,8 @@
       }
     }
   }
-
   /*tablets view */
-  @media only screen and (min-width: 767px) and (max-width: 992px) {
+  @media only screen and (min-width: $screen-sm - 1) and (max-width: $screen-md) {
     right: 0;
 
     .related-content-body {
@@ -39,9 +38,8 @@
       }
     }
   }
-
   /* mobile view orientation */
-  @media only screen and (max-width: 767px) and (orientation: landscape) {
+  @media only screen and (max-width: $screen-sm - 1) and (orientation: landscape) {
     bottom: -150px;
 
     .related-content-body {

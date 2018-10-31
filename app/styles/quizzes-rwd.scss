@@ -4,9 +4,7 @@
   */
 @import "variables";
 // Components
-@import "app-rwd/components/player/_qz-player-confirmation-rwd";
-@import "app-rwd/components/player/_qz-player-footer-rwd";
-@import "app-rwd/components/player/_qz-emotion-picker-rwd";
-@import "app-rwd/components/player/_related-content-rwd";
-@import "app-rwd/components/player/_qz-player-rwd";
-@import "app-rwd/components/player/_qz-viewer-rwd";
+@import "app-rwd/components/player/_qz-player-confirmation-rwd.scss";
+@import "app-rwd/components/player/_qz-player-footer-rwd.scss";
+@import "app-rwd/components/player/_qz-emotion-picker-rwd.scss";
+@import "app-rwd/components/player/_related-content-rwd.scss";

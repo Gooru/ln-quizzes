@@ -4,7 +4,11 @@
   */
 @import "variables";
 // Components
-@import "app-rwd/components/player/_qz-player-confirmation-rwd.scss";
-@import "app-rwd/components/player/_qz-player-footer-rwd.scss";
-@import "app-rwd/components/player/_qz-emotion-picker-rwd.scss";
-@import "app-rwd/components/player/_related-content-rwd.scss";
+@import "app-rwd/components/player/_qz-player-confirmation-rwd";
+@import "app-rwd/components/player/_qz-player-footer-rwd";
+@import "app-rwd/components/player/_qz-emotion-picker-rwd";
+@import "app-rwd/components/player/_related-content-rwd";
+@import "app-rwd/components/reports/assessment/_qz-questions-rwd";
+@import "app-rwd/components/reports/assessment/_qz-assessment-report-rwd";
+@import "app-rwd/components/reports/assessment/_qz-summary-rwd";
+@import "app-rwd/components/reports/assessment/_qz-resources-rwd";

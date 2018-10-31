@@ -1,6 +1,6 @@
 .qz-player-footer {
   /*mobile view portrait*/
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: $sm-width-max) {
     .nav-player-container {
       .player-container {
         .player-info {
@@ -15,9 +15,8 @@
       }
     }
   }
-
   /*mobile view landscape and portrait*/
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: $screen-sm - 1) {
     .nav-player-container {
       grid-template-columns: 40px 1fr 40px;
 

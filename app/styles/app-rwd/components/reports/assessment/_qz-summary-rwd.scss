@@ -1,0 +1,40 @@
+.reports.assessment.qz-summary {
+  @media only screen and (max-width: $screen-md - 1) {
+    .summary-container {
+      grid-template-columns: auto auto;
+
+      .bubbles,
+      .profile-image,
+      .reactions {
+        display: none;
+      }
+
+      .overview {
+        padding: 0;
+
+        h5 {
+          width: max-content;
+          height: 30px;
+        }
+
+        .information {
+          margin: 0;
+        }
+      }
+
+      .grade {
+        text-align: center;
+      }
+    }
+  }
+  @media only screen and (max-width: $screen-lg) and (min-width: $screen-md - 1) {
+    .summary-container {
+      .overview {
+        h5 {
+          width: max-content;
+          height: max-content;
+        }
+      }
+    }
+  }
+}

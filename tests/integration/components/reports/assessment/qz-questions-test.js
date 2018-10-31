@@ -151,11 +151,6 @@ test('Questions Layout - non open ended', function(assert) {
     $component.find('table tbody td.question-reaction'),
     'Missing reaction column'
   );
-  T.exists(
-    assert,
-    $component.find('.question-cards.visible-xs'),
-    'Missing mobile question cards'
-  );
   assert.equal(
     $component.find('table tbody tr').length,
     2,
@@ -497,11 +492,6 @@ test('Questions Layout', function(assert) {
     assert,
     $component.find('table tbody td.question-reaction'),
     'Missing reaction column'
-  );
-  T.exists(
-    assert,
-    $component.find('.question-cards.visible-xs'),
-    'Missing mobile question cards'
   );
   assert.equal(
     $component.find('table tbody tr').length,

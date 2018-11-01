@@ -1,3 +1,17 @@
+@media screen and (min-width: $screen-1024) and (min-height: $screen-sm) and (orientation: landscape) {
+  .app-container {
+    .show-confirmation {
+      background-position: top;
+    }
+  }
+}
+@media screen and (min-width: $screen-1024) and (min-height: $screen-1366) {
+  .app-container {
+    .show-confirmation {
+      background-position: left;
+    }
+  }
+}
 .show-confirmation {
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,7 +61,11 @@
             $font-size: 34px;
             $line-height: 1.09;
             $lines-to-show: 2;
-            @include ellipsis($font-size: $font-size, $line-height: $line-height, $lines-to-show: $lines-to-show);
+            @include ellipsis(
+              $font-size: $font-size,
+              $line-height: $line-height,
+              $lines-to-show: $lines-to-show
+            );
           }
 
           .content-info {
@@ -154,7 +172,11 @@
         $font-size: 13px;
         $line-height: 1.6;
         $lines-to-show: 6;
-        @include ellipsis($font-size: $font-size, $line-height: $line-height, $lines-to-show: $lines-to-show);
+        @include ellipsis(
+          $font-size: $font-size,
+          $line-height: $line-height,
+          $lines-to-show: $lines-to-show
+        );
         padding-bottom: 23px;
         min-height: 69px;
       }

@@ -885,6 +885,7 @@ $kbd-color: #fff !default;
 $kbd-bg: #333 !default;
 
 $pre-bg: #f5f5f5 !default;
+$course-bg: #dddddd !default;
 $pre-color: $gray-dark !default;
 $pre-border-color: #ccc !default;
 $pre-scrollable-max-height: 340px !default;
@@ -965,3 +966,5 @@ $pale-grey-two: #dfe1e7;
 /*mobile and tablets responsive width*/
 $sm-width-max: 600px !default; //Extra small devices (phones)
 $lg-width-min: 600px !default; //Small devices (portrait tablets and large phones)
+$screen-1024: 1024px !default;
+$screen-1366: 1366px !default;

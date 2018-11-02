@@ -9,7 +9,7 @@
     object-fit: contain;
     background-color: $white;
     box-shadow: 0 6px 7px 0 rgba(0, 0, 0, 0.2);
-    grid-template-columns: auto auto auto max-content auto;
+    grid-template-columns: auto 28% auto max-content auto;
 
     .thumbnail {
       width: 100%;
@@ -172,9 +172,12 @@
 
       h5 {
         margin: 0;
-        width: max-content;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
         height: 20px;
         font-size: 16px;
+        white-space: nowrap;
         line-height: 1.25;
         color: #0072bc;
       }

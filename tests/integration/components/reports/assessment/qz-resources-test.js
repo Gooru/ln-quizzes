@@ -102,11 +102,6 @@ test('Resources Layout', function(assert) {
     $component.find('table tbody td.reaction'),
     'Missing reaction column'
   );
-  T.exists(
-    assert,
-    $component.find('.resource-cards.visible-xs'),
-    'Missing mobile resource cards'
-  );
   assert.equal(
     $component.find('table tbody tr').length,
     2,

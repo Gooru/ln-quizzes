@@ -103,14 +103,15 @@ export default Ember.Component.extend({
       );
     } else {
       let component = this;
-      let bottom = -384;
+      //check height and set bottom position based on orientation for mobile view
+      let bottom = component.$().height() > 245 ? -385 : -150;
       component.$().animate(
         {
           bottom: `${bottom}px`
         },
         {
           complete: function() {
-            component.$().css('bottom', '-384px');
+            component.$().css('bottom', `${bottom}px`);
           }
         }
       );

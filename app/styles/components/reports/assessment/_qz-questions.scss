@@ -3,9 +3,11 @@
     text-align: right;
     margin-right: 75px;
     margin-top: 10px;
+
     .title {
       float: $tab-float-dir;
       margin: 0 20px 10px 0;
+
       h4 {
         margin-top: 0;
         margin-left: 21px;
@@ -21,24 +23,29 @@
         }
       }
     }
+
     .summary-report-btn {
       border: 1px solid #b8bfc4;
       border-radius: 15px;
       background: #b8bfc4;
+
       .performance {
         color: black;
         height: 20px;
         line-height: 9px;
         background-color: #b8bfc4;
       }
+
       .correct-answer {
         color: black;
         height: 20px;
         line-height: 9px;
         background-color: #b8bfc4;
       }
+
       .btn-primary {
         background: #ffffff;
+        z-index: 0;
       }
     }
   }
@@ -48,12 +55,11 @@
     background: $white;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    padding: 20px 0 40px 0;
+    padding: 20px 0 40px;
     display: block;
     clear: both;
-
     @media (min-width: $screen-md) {
-      padding: 5px 15px 40px 15px;
+      padding: 5px 15px 40px;
     }
 
     th {
@@ -61,33 +67,64 @@
       font-size: $font-size-h6;
       font-weight: normal;
     }
+
     td,
     th {
       height: 30px;
       text-align: center;
       border-bottom: 1px solid $gray-lighter;
     }
+
+    .header {
+      .title {
+        display: block;
+      }
+
+      %background-container {
+        background-size: contain !important;
+        width: 20px;
+        height: 23px;
+      }
+
+      .icon {
+        display: none;
+
+        &.question {
+          background: url("gooru/images/navigation_question_selected.svg")
+            no-repeat;
+          @extend %background-container;
+        }
+      }
+    }
+
     th.number {
       width: 2%;
     }
+
     th.question {
       width: 25%;
     }
+
     th.answer {
       width: 36%;
     }
+
     th.score {
       width: 12%;
     }
+
     th.time-spent {
       width: 15%;
     }
+
     th.reaction {
       width: 12%;
     }
+
     th.correct-answer {
       width: 36%;
     }
+
     .question-text {
       .text {
         word-wrap: break-word;
@@ -98,18 +135,22 @@
           max-width: 10em;
         }
       }
+
       img {
         max-height: 100px;
         margin: 5px 0;
       }
     }
+
     .question-score span {
       .mdi {
         font-size: $font-size-h3;
       }
     }
+
     .question-score span.correct {
       color: $brand-success;
+
       i {
         background: url("quizzes-addon/quizzes/images/correct-answer.svg");
         width: 24px;
@@ -117,8 +158,10 @@
         display: inline-flex;
       }
     }
+
     .question-score span.incorrect {
       color: $brand-incorrect;
+
       i {
         background: url("quizzes-addon/quizzes/images/wrong-answer.svg");
         width: 14px;
@@ -126,6 +169,7 @@
         display: inline-flex;
       }
     }
+
     .question-score span.skipped {
       color: $gray-lighter;
 
@@ -134,15 +178,18 @@
         margin-right: 67px;
       }
     }
+
     .question-reaction div {
       margin: 10px auto;
     }
+
     .top-left {
       text-align: left;
       vertical-align: top;
       padding: 10px 15px;
     }
   }
+
   .question-cards {
     width: 100%;
     background: $white;
@@ -151,22 +198,26 @@
     padding: 20px;
     display: block;
     clear: both;
+
     .header {
       color: $gray-base;
       font-size: $font-size-h6;
-      padding: 0 0 15px 0;
+      padding: 0 0 15px;
       border-bottom: 1px solid $gray-lighter;
     }
+
     .question-number {
       width: 15%;
       display: inline-block;
       padding: 0 0 0 5px;
     }
+
     .question-text {
       width: 82%;
       display: inline-block;
       padding: 0 5px 0 0;
     }
+
     ul {
       padding: 0;
       list-style: none;

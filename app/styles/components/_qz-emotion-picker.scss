@@ -1,11 +1,36 @@
 .qz-emotion-picker {
   text-align: center;
   width: 100%;
+
+  .reaction-sm {
+    display: none;
+
+    .default-emotion {
+      width: 27px;
+      height: 27px;
+      margin: auto;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .close-nav {
+      i {
+        margin-left: -66px;
+        margin-top: 5px;
+      }
+    }
+  }
+
   .emotions-list {
+    display: block;
     line-height: 1;
     list-style: none;
     margin: 0;
     padding: 0;
+    z-index: 1;
     white-space: nowrap;
 
     li {
@@ -24,7 +49,6 @@
           width: 100%;
         }
       }
-
       @media (min-width: $screen-sm) {
         padding: 0 1%;
       }

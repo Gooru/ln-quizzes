@@ -1,0 +1,7 @@
+@media only screen and (max-width: $screen-sm - 1) {
+  .qz-modal.qz-assessment-report-modal {
+    .modal-dialog {
+      width: 100% !important;
+    }
+  }
+}

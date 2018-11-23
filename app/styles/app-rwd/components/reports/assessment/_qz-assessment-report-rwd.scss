@@ -1,5 +1,5 @@
 .reports.qz-assessment-report {
-  @media only screen and (max-width: $sm-width-max) {
+  @media only screen and (max-width: $screen-sm - 1) {
     width: 100%;
   }
 }

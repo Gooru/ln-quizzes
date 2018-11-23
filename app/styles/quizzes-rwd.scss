@@ -3,7 +3,6 @@
     Example: @import "app-rwd/components/filename";
   */
 @import "variables";
-
 // Components
 @import "app-rwd/components/player/_qz-player-confirmation-rwd";
 @import "app-rwd/components/player/_qz-player-footer-rwd";
@@ -15,4 +14,7 @@
 @import "app-rwd/components/reports/assessment/_qz-assessment-report-rwd";
 @import "app-rwd/components/reports/assessment/_qz-summary-rwd";
 @import "app-rwd/components/reports/assessment/_qz-resources-rwd";
-@import "app-rwd/components/reports/assessment/_qz-class-assessment-report-rwd";
+@import "app-rwd/components/reports/class-assessment/_qz-class-assessment-report-rwd";
+@import "app-rwd/components/reports/class-assessment/_qz-student-view-rwd";
+@import "app-rwd/components/reports/class-assessment/_qz-summary-rwd";
+@import "app-rwd/components/_gru-two-tier-header-table-rwd";

@@ -29,11 +29,12 @@
 
     .confirmation-panel {
       width: 450px;
-      height: 200px;
+      height: max-content;
 
       .body .description {
         min-height: max-content;
         padding-bottom: 4px;
+        -webkit-line-clamp: 3;
       }
     }
 

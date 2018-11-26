@@ -1,0 +1,17 @@
+.qz-resource-viewer {
+  @media only screen and (max-width: $screen-xs) {
+    .narration {
+      height: 100px;
+
+      .panel-body {
+        display: flex;
+        height: 100%;
+        overflow-y: auto;
+      }
+    }
+
+    .not-iframe {
+      height: calc(100% - 120px);
+    }
+  }
+}

@@ -28,7 +28,7 @@
         font-size: 21px;
       }
       button.launch {
-        float: left;
+        float: $tab-float-dir;
       }
       button.delete,
       button.add-student {

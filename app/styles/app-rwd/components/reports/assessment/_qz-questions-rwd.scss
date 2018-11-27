@@ -1,0 +1,24 @@
+.reports.assessment.qz-questions {
+  @media only screen and (max-width: $screen-md - 1) {
+    .questions-header {
+      margin-right: 0;
+      text-align: center;
+
+      .title {
+        float: none;
+        margin: 0;
+      }
+    }
+  }
+  @media only screen and (max-width: $screen-sm - 1) {
+    .header {
+      .title {
+        display: none !important;
+      }
+
+      .icon {
+        display: block !important;
+      }
+    }
+  }
+}

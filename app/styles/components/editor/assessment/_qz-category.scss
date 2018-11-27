@@ -60,7 +60,7 @@
       border-bottom-right-radius: 6px;
       padding-top: 0;
       .actions {
-        float: right;
+        float: $menu-float-dir;
         .btn {
           background-color: transparent;
           font-size: 24px;

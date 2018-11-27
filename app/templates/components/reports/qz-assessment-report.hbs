@@ -19,18 +19,18 @@
   oeQuestionCount=resultsOpenEnded.length
   }}
 
+  {{#if tags.length}}
+    <div class="standard-tags">
+      {{taxonomy.gru-taxonomy-tag-list tags=tags tagsVisible=4  showDescription=true }}
+    </div>
+  {{/if}}
+
   {{#if areAnswersHidden}}
     <div class="hidden-report">
       <span>{{t "qz-assessment-report.hidden-report"}}</span>
     </div>
 
   {{else}}
-    {{#if (and contextResult.hasMastery isAssessment)}}
-      {{reports.assessment.qz-mastery
-    learningTargets=contextResult.mastery
-    assessmentResult=contextResult
-    onBubbleSelect='bubbleSelect'}}
-    {{/if}}
 
     {{#if resultsQuestions.length}}
       {{reports.assessment.qz-questions

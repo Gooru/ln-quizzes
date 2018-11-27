@@ -131,6 +131,7 @@ export default Ember.Object.extend({
     const {
       source,
       sourceUrl,
+      sourceId,
       tenantId,
       partnerId,
       pathId,
@@ -140,16 +141,19 @@ export default Ember.Object.extend({
       unitId,
       lessonId,
       collectionId,
-      collectionSubType
+      collectionSubType,
+      pathType
     } = context;
     let eventContext = {
       eventSource: source,
       sourceUrl,
+      sourceId,
       tenantId,
       partnerId,
       pathId: pathId ? +pathId : 0,
       timezone,
-      collectionSubType
+      collectionSubType,
+      pathType
     };
     if (classId) {
       eventContext = Object.assign(eventContext, {

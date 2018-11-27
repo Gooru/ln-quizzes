@@ -90,20 +90,23 @@ export default Ember.Route.extend({
   },
 
   /**
-    * @param {{ contextId: string }} params
-    */
+   * @param {{ contextId: string }} params
+   */
   quizzesModel(params) {
     const route = this;
-    const {
+    var {
       resourceId,
       contextId,
       source,
+      sourceId,
       sourceUrl,
       tenantId,
       partnerId,
       collectionSubType,
       pathId,
-      notCheckAttempts
+      pathType,
+      notCheckAttempts,
+      isStudyPlayer
     } = params;
     let type =
       params.type ||
@@ -124,13 +127,20 @@ export default Ember.Route.extend({
       'student';
     let isTeacher = role === 'teacher';
     let isAnonymous = profileId === 'anonymous';
+    //Keept this for 2 release and remove this with 4.4.4
+    console.log('pathType', pathType); //eslint-disable-line
+    var pathTypeEvtCtx = pathType === '' ? null : pathType;
+    console.log('pathTypeEvtCtx', pathTypeEvtCtx); //eslint-disable-line
+    pathType = pathTypeEvtCtx;
     let eventContext = EventContext.create({
       collectionSubType,
       pathId,
       partnerId,
+      sourceId,
       source,
       sourceUrl,
-      tenantId
+      tenantId,
+      pathType
     });
     let model = {
       isAnonymous,
@@ -139,9 +149,10 @@ export default Ember.Route.extend({
       resourceId,
       role,
       eventContext,
-      notCheckAttempts
+      notCheckAttempts,
+      isStudyPlayer
     };
-    if (type === 'collection' || isAnonymous || isTeacher || notCheckAttempts) {
+    if (isAnonymous || isTeacher || !isStudyPlayer) {
       return route
         .get('quizzesContextService')
         .startContext(contextId, eventContext)
@@ -194,16 +205,12 @@ export default Ember.Route.extend({
     const isAnonymous = model.isAnonymous;
     const isTeacher = model.role === 'teacher';
     const notCheckAttempts = model.notCheckAttempts;
+    const isStudyPlayer = model.isStudyPlayer;
     let contextResult = ContextResult.create();
     if (model.resourceId) {
       contextResult.set('currentResourceId', model.resourceId);
     }
-    if (
-      collection.get('isCollection') ||
-      isAnonymous ||
-      isTeacher ||
-      notCheckAttempts
-    ) {
+    if (isAnonymous || isTeacher || !isStudyPlayer) {
       contextResult = model.contextResult;
       contextResult.merge(collection);
       controller.set('role', model.role);
@@ -223,7 +230,10 @@ export default Ember.Route.extend({
     controller.set('reportURL', model.reportURL);
     controller.set('eventContext', model.eventContext);
     controller.set('notCheckAttempts', notCheckAttempts);
-    controller.set('showConfirmation', true);
+    controller.set('showConfirmation', false);
+    controller.set('suggestedResources', model.suggestedResources);
+    controller.set('pathType', model.eventContext.pathType);
+    controller.set('isStudyPlayer', isStudyPlayer);
   },
 
   /**

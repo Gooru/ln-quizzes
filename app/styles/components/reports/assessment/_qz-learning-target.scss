@@ -35,7 +35,7 @@
 
         .description {
           height: 60px;
-          float: left;
+          float: $tab-float-dir;
           width: 370px;
 
           .desc-align {
@@ -51,11 +51,12 @@
         }
 
         .standard-score {
-          float: left;
+          float: $tab-float-dir;
           width: 80px;
           margin-right: 10px;
           height: 35px;
           text-align: center;
+          line-height: 3.8;
 
           .performance {
             height: 29px;
@@ -79,7 +80,7 @@
       .questions {
         max-width: 330px;
         display: block;
-        float: left;
+        float: $tab-float-dir;
         max-width: 330px;
         margin-left: 10px;
         min-height: 50px;
@@ -102,7 +103,7 @@
         text-align: center;
         text-overflow: ellipsis;
         border-radius: 3px;
-        float: left;
+        float: $tab-float-dir;
       }
 
       .title {
@@ -132,7 +133,7 @@
 
     .resource-cards-section {
       .gru-resource-result-card {
-        float: left;
+        float: $tab-float-dir;
         margin-top: 10px;
         display: none;
         @media (min-width: $screen-sm) {

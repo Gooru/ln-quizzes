@@ -1,50 +1,319 @@
+@media screen and (min-width: $screen-1024) and (min-height: $screen-sm) and (orientation: landscape) {
+  .app-container {
+    .show-confirmation {
+      background-position: top;
+    }
+  }
+}
+@media screen and (min-width: $screen-1024) and (min-height: $screen-1366) {
+  .app-container {
+    .show-confirmation {
+      background-position: left;
+    }
+  }
+}
+.show-confirmation {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-position: inherit;
+
+  .qz-player {
+    &.confirmation {
+      margin: 0;
+    }
+  }
+
+  &.assessment {
+    background-image: url("gooru/assessment-start-page.jpg");
+  }
+
+  &.collection {
+    background-image: url("gooru/collection-start-page.jpg");
+  }
+}
+
 .qz-player-confirmation {
-  max-width: 455px;
+  left: 75px;
+  top: 168px;
+  position: fixed;
 
-  .panel-heading {
-    text-align: left;
-  }
+  .confirmation-panel {
+    width: 499px;
+    border-radius: 4px;
+    background-color: $white;
+    box-shadow: 0 2px 13px 6px $heathered-gray;
+    opacity: 0.9;
+    padding: 26px 30px 10px 31px;
+    color: $dark-500;
+    min-height: 245px;
 
-  .title {
-    color: $white;
-    font-size: 17px;
-    margin: 0;
-  }
+    .header {
+      max-height: 125px;
+      display: flex;
 
-  .panel-body {
-    padding: 40px 40px 25px;
-    div {
-      display: block;
-      width: 100%;
+      .title-info {
+        width: calc(100% - 110px);
+
+        .collection-info {
+          .title {
+            $font-size: 34px;
+            $line-height: 1.09;
+            $lines-to-show: 2;
+            @include ellipsis(
+              $font-size: $font-size,
+              $line-height: $line-height,
+              $lines-to-show: $lines-to-show
+            );
+          }
+
+          .content-info {
+            display: flex;
+            padding: 15px 0;
+
+            .icon {
+              height: 17px;
+              width: 17px;
+              display: block;
+              background-size: cover;
+              background-repeat: no-repeat;
+              margin-right: 9px;
+            }
+
+            .question,
+            .resource {
+              display: flex;
+              line-height: 17px;
+              margin-bottom: 5px;
+            }
+
+            .resource {
+              margin-right: 10px;
+            }
+
+            .question .icon {
+              background-image: url("gooru/images/add_question.svg");
+            }
+
+            .resource .icon {
+              background-image: url("gooru/images/add_resource_icon.svg");
+            }
+          }
+
+          .taxonomy {
+            margin: -1px 0 0 5px;
+
+            .gru-taxonomy-tag-list {
+              .gru-taxonomy-tag {
+                background-color: $charcoal-grey;
+
+                .tag-label {
+                  color: $white;
+                  font-size: 12px;
+                  font-weight: bold;
+                }
+
+                .tag-caption {
+                  display: none;
+                }
+              }
+
+              .non-visible-tags {
+                padding: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .thumbnail {
+        width: 247px;
+        height: 161px;
+        object-fit: contain;
+        background-color: transparent;
+        background-size: cover;
+        background-repeat: no-repeat;
+        float: $tab-float-dir;
+      }
+
+      .suggestion-badge {
+        position: absolute;
+        right: 15px;
+
+        .suggestion-icon {
+          width: 100px;
+
+          i {
+            font-size: 95px;
+            background-color: #101316;
+            border-radius: 50%;
+            color: $orange-400;
+            border: 1px solid $charcoal-grey-two;
+          }
+
+          .teacher_suggestions {
+            background-image: url("gooru/images/account-cirlce-orange.svg");
+            width: 100px;
+            height: 100px;
+            background-size: 100px;
+            color: $orange-400;
+            display: block;
+            border-radius: 50%;
+            background-color: $dark;
+          }
+        }
+      }
     }
 
-    .info {
-      @include flexbox;
-      @include align-items(center);
-      margin-top: 35px;
-
-      > * {
-        float: left;
+    .body {
+      .description {
+        color: $charcoal-grey-two;
+        $font-size: 13px;
+        $line-height: 1.6;
+        $lines-to-show: 6;
+        @include ellipsis(
+          $font-size: $font-size,
+          $line-height: $line-height,
+          $lines-to-show: $lines-to-show
+        );
+        padding-bottom: 23px;
+        min-height: 69px;
       }
 
-      p {
-        line-height: 22px;
-        margin: 0;
-      }
+      .properties {
+        display: flex;
+        padding-bottom: 23px;
 
-      i {
-        font-size: $font-size-h2;
+        .navigation {
+          padding: 0;
+        }
+
+        .attempts {
+          .attempt {
+            font-size: 29px;
+          }
+        }
+
+        .answers,
+        .attempts,
+        .navigation {
+          width: calc(100% / 3);
+        }
+
+        .answers,
+        .attempts,
+        .navigation {
+          padding: 0 15px;
+          font-size: 10px;
+          line-height: 1.5;
+          text-align: center;
+          width: calc(100% / 2);
+
+          i {
+            font-size: 39px;
+          }
+        }
+
+        .answers,
+        .attempts,
+        .navigation {
+          width: 100%;
+        }
+      }
+    }
+
+    .footer {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      .cancel,
+      .start {
+        width: 76px;
+        height: 36px;
+        border-radius: 3px;
+        text-align: center;
+        line-height: 36px;
+        cursor: pointer;
+        margin-left: 10px;
         margin-right: 10px;
       }
-    }
 
-    .actions {
-      margin-top: 15px;
-      text-align: right;
-      .back,
       .cancel {
-        border: 1px solid $gray-light;
+        background-color: $light-200;
+        color: $elephant-dark;
+      }
+
+      .start {
+        background-color: $blue-400;
+        color: $white;
       }
     }
+
+    &.suggested-content {
+      background-color: $charcoal-grey-two;
+      color: $pale-grey-two;
+      opacity: 0.9;
+
+      .header {
+        .title-info {
+          .collection-info {
+            .title {
+              color: $white;
+            }
+
+            .content-info {
+              .question .icon {
+                background-image: url("gooru/images/question-white.svg");
+              }
+
+              .resource .icon {
+                background-image: url("gooru/images/resource-white.svg");
+              }
+            }
+          }
+        }
+
+        .taxonomy {
+          .gru-taxonomy-tag-list {
+            .gru-taxonomy-tag {
+              background-color: $pale-grey-two !important;
+
+              .tag-label {
+                color: $dark !important;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+
+      .body {
+        .description {
+          color: $white;
+        }
+
+        .properties {
+          i {
+            color: $pale-grey-two;
+          }
+        }
+      }
+
+      .footer {
+        .start {
+          background-color: $orange-400;
+        }
+      }
+    }
+  }
+
+  .no-content-info-message {
+    font-size: 18px;
+    padding-bottom: 20px;
+    line-height: 1.3;
+    text-align: center;
   }
 }

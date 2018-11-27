@@ -73,10 +73,11 @@ test('Player Footer Navigator', function(assert) {
   );
 
   const $playerInfo = $component.find('.player-info');
+  const $playerContainer = $component.find('.player-container');
   T.exists(assert, $playerInfo, 'Missing player footer info section.');
   T.exists(
     assert,
-    $playerInfo.find('.list-resource-nav i'),
+    $playerContainer.find('.list-resource-nav i'),
     'Missing player footer resources list pull up/down button.'
   );
   T.exists(

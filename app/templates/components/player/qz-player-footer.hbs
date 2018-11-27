@@ -13,30 +13,42 @@
 
   <div class="player-container">
     <div class="player-info">
-    {{#if isNavigatorOpen}}
-      <div class="list-resource-nav pull-left" {{action 'onCloseNavigator'}}>
-        {{gru-icon name="ic_keyboard_arrow_down"}}
-      </div>
-    {{else}}
-      <div class="list-resource-nav pull-left" {{action 'onOpenNavigator'}}>
-        {{gru-icon name="ic_keyboard_arrow_up"}}
-      </div>
-    {{/if}}
       <div class="current-resource-info">
-        <div class="resource-sequence pull-left">
+        <div class="resource-sequence">
           <span>{{resource.sequence}}</span>
         </div>
-        <div class="pull-left">
+        <div class="resource-question">
           <i class="{{resource.format}} resource-icon"></i>
         </div>
-        <div class="pull-left resource-title">
+        <div class="resource-title" {{action "onToggleResourceNav"}}>
           <span>{{no-tags text=resource.title}}</span>
         </div>
       </div>
     </div>
-    <div class="reaction-bar pull-right">
+    <div class="reaction-bar">
       {{qz-emotion-picker startEmotion=ratingScore onChangeEmotion="changeEmotion" readOnly=submitted}}
     </div>
+
+    {{#if isStudyPlayer}}
+      <div class="toggle-screen" {{action 'onToggleScreen'}}>
+        {{#if isFullScreen}}
+          {{gru-icon name="fullscreen_exit"}}
+        {{else}}
+          {{gru-icon name="fullscreen"}}
+        {{/if}}
+      </div>
+    {{/if}}
+
+    {{#if isNavigatorOpen}}
+      <div class="list-resource-nav" {{action 'onCloseNavigator'}}>
+        {{gru-icon name="ic_keyboard_arrow_down"}}
+      </div>
+    {{else}}
+      <div class="list-resource-nav" {{action 'onOpenNavigator'}}>
+        {{gru-icon name="ic_keyboard_arrow_up"}}
+      </div>
+    {{/if}}
+
     <div class="list-resources">
       <div class="breadcrumb-title">
         {{#if unitTitle}}
@@ -50,37 +62,36 @@
         {{/if}}
       </div>
       <ul class="list-group resources {{if isNavigationDisabled 'disabled' }}">
-          {{#each resourceItems as |item index|}}
-            <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}"
-                {{action 'selectItem' item}}>
-              <div class="resources-info">
-                <span class="resource-index pull-left">{{plus-one index}}</span>
-                <i class="resource-icon {{item.resource.format}} pull-left"></i>
-                <span class="title pull-left">
+        {{#each resourceItems as |item index|}}
+          <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}" {{action 'selectItem' item}}>
+            <div class="resources-info">
+              <span class="resource-index pull-left">{{plus-one index}}</span>
+              <i class="resource-icon {{item.resource.format}} pull-left"></i>
+              <span class="title pull-left">
                   {{no-tags text=item.resource.title}}
                 </span>
-                <span class="selected-reaction pull-left" id="resource-{{item.resource.id}}">
+              <span class="selected-reaction pull-left" id="resource-{{item.resource.id}}">
                     <svg>
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/quizzes-addon/emoji-one/emoji.svg#{{item.unicode}}"></use>
                     </svg>
                 </span>
 
-                {{#if (and showFeedback (not item.resource.isOpenEnded))}}
-                  {{#if item.started}}
-                    {{#if item.isCorrect}}
-                      <span class="score correct pull-left">
+              {{#if (and showFeedback (not item.resource.isOpenEnded))}}
+                {{#if item.started}}
+                  {{#if item.isCorrect}}
+                    <span class="score correct pull-left">
                         {{gru-icon name='ic_done_all'}}
                       </span>
-                    {{else}}
-                      <span class="score pull-left incorrect">
+                  {{else}}
+                    <span class="score pull-left incorrect">
                         {{gru-icon name='ic_close'}}
                       </span>
-                    {{/if}}
                   {{/if}}
                 {{/if}}
-              </div>
-            </li>
-          {{/each}}
+              {{/if}}
+            </div>
+          </li>
+        {{/each}}
       </ul>
       {{#if collection.isCollection}}
         {{#unless (or showFinishConfirmation submitted)}}
@@ -98,18 +109,25 @@
   <div class="next-action">
     {{#if showNext}}
       <div class="next {{unless isNextEnabled 'disabled'}}" data-toggle="tooltip" title="{{t 'common.save-next'}}" {{action 'nextResource'}}>
-        <span>{{t 'common.next'}}</span> {{gru-icon name="ic_skip_next"}}
+        <div class="label">
+          {{t 'common.next'}}
+        </div>
+        <div class="icon">
+          {{gru-icon name="skip_next"}}
+        </div>
       </div>
     {{else}}
       {{#if collection.isCollection}}
         {{#unless (or showFinishConfirmation submitted)}}
           <div class="usage-report {{unless isNextEnabled 'disabled'}}" {{action 'seeUsageReport'}}>
             <span>{{t 'qz-player-footer.usage-report'}}</span>
+            <span class="icon"> {{gru-icon name="subject"}}</span>
           </div>
         {{/unless}}
       {{else}}
         <div class="submit-all {{unless isNextEnabled 'disabled'}}" data-toggle="tooltip" title="{{t 'common.save-submit'}}" {{action "finishCollection"}}>
           <span>{{t 'common.submitAll'}}</span>
+          <span class="icon"> {{gru-icon name="skip_next"}}</span>
         </div>
       {{/if}}
     {{/if}}

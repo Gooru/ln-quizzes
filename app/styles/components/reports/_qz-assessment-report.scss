@@ -1,11 +1,66 @@
 .reports.qz-assessment-report {
-  width: 100%;
+  width: 98%;
   background-color: $light-100;
   margin-top: 65px;
   margin-bottom: 30px;
 
+  .standard-tags {
+    padding: 15px 15px 0;
+    background: #fff;
+
+    .gru-taxonomy-tag-list {
+      .gru-taxonomy-tag {
+        border: none;
+        max-width: 150px;
+
+        .standard-tag {
+          background: #37424b;
+          padding: 4px;
+          border-radius: 4px;
+
+          .tag-caption,
+          .tag-label {
+            color: #fff;
+          }
+        }
+      }
+
+      .non-visible-tags {
+        margin-left: 10px;
+        background: #37434d;
+        width: 35px;
+        color: #fff;
+        border-radius: 4px;
+        margin-top: 1px;
+      }
+
+      .popover {
+        background: #fff;
+        margin-left: 5px;
+
+        .arrow::after {
+          border-left-color: #fff;
+          border-right-color: #fff;
+        }
+
+        .popover-content {
+          .gru-taxonomy-tag {
+            max-width: 300px;
+            width: 270px;
+            border-radius: 4px;
+
+            .standard-tag {
+              width: 270px;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .qz-assessment-summary {
     background: $white;
+
     .reports-owner {
       height: 24px;
       border-bottom: 1px solid $light-200;

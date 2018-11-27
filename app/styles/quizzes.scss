@@ -1,4 +1,9 @@
 @import "variables";
+
+// Variable which are specific to rtl & ltr languages
+$tab-float-dir: left;
+$menu-float-dir: right;
+
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap";
 @import "gooru-theme";
 
@@ -52,6 +57,7 @@
 
 @import "components/cards/qz-resource-card";
 @import "components/cards/gru-resource-result-card";
+@import "components/cards/resource-card";
 
 @import "components/charts/gru-bubble-chart";
 @import "components/charts/gru-pie-chart";
@@ -71,6 +77,7 @@
 @import "components/editor/assessment/qz-category";
 @import "components/editor/assessment/qz-scoring-levels";
 
+@import "components/player/related-content";
 @import "components/player/qz-player";
 @import "components/player/qz-player-confirmation";
 @import "components/player/qz-player-footer";
@@ -99,8 +106,6 @@
 @import "components/reports/assessment/qz-resources";
 @import "components/reports/assessment/qz-resources-xs";
 @import "components/reports/assessment/qz-summary";
-@import "components/reports/assessment/qz-mastery";
-@import "components/reports/assessment/qz-learning-target";
 @import "components/reports/assessment/questions/qz-single-choice";
 @import "components/reports/assessment/questions/qz-multiple-answer";
 @import "components/reports/assessment/questions/qz-true-false";

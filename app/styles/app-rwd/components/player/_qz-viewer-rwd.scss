@@ -1,0 +1,11 @@
+.qz-viewer {
+  @media only screen and (max-width: $sm-width-max) {
+    height: 100% !important;
+    overflow-y: hidden !important;
+    margin: 0 0 52px !important;
+
+    .qz-content.question {
+      overflow-y: auto;
+    }
+  }
+}

@@ -15,7 +15,7 @@
     </div>
   {{/if}}
   {{#if (or isNotIframeUrl isLinkOut)}}
-    <div class="panel panel-default not-iframe">
+    <div class="panel panel-default not-iframe {{if resource.hasNarration 'has-narration'}}">
       <div class="panel-header">
         <p class="title">
           {{t 'qz-viewer.not-iframe-url.header_1'}}<br> {{t 'qz-viewer.not-iframe-url.header_2'}}

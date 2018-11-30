@@ -1,0 +1,15 @@
+.player {
+  @media only screen and (max-width: $screen-sm) {
+  .qz-viewer {
+    .qz-content.question {
+      margin-top: 0;
+    }
+  }
+  .qz-question-viewer {
+      .question-panel .panel {
+        margin-top: 0;
+        min-height: auto;
+      }
+    }
+  }
+}

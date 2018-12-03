@@ -1,4 +1,4 @@
-<div class="qz-resource-viewer-panel">
+<div class="qz-resource-viewer-panel  {{if resource.hasNarration 'has-narration'}}">
   {{#if resource.hasNarration}}
     <div class="panel panel-default narration">
       <div class="panel-body">
@@ -15,7 +15,7 @@
     </div>
   {{/if}}
   {{#if (or isNotIframeUrl isLinkOut)}}
-    <div class="panel panel-default not-iframe {{if resource.hasNarration 'has-narration'}}">
+    <div class="panel panel-default not-iframe">
       <div class="panel-header">
         <p class="title">
           {{t 'qz-viewer.not-iframe-url.header_1'}}<br> {{t 'qz-viewer.not-iframe-url.header_2'}}

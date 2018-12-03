@@ -1,17 +1,29 @@
 .qz-resource-viewer {
   @media only screen and (max-width: $screen-xs) {
-    .narration {
-      height: 100px;
+    .qz-resource-viewer-panel {
+      .narration {
+        height: 100px;
 
-      .panel-body {
-        display: flex;
-        height: 100%;
-        overflow-y: auto;
+        .panel-body {
+          display: flex;
+          height: 100%;
+          overflow-y: auto;
+        }
       }
-    }
 
-    .has-narration {
-      height: calc(100% - 120px);
+      &.has-narration {
+        .qz-preview-url {
+          height: calc(100% - 160px);
+        }
+
+        .not-iframe {
+          height: calc(100% - 120px);
+        }
+      }
+
+      .qz-preview-url {
+        height: calc(100% - 40px);
+      }
     }
   }
 }

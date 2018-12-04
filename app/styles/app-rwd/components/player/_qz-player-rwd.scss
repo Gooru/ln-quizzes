@@ -1,8 +1,83 @@
 .qz-player {
-  @media only screen and (max-width: $sm-width-max) {
-    .player {
-      .qz-main {
-        min-height: 100%;
+  .player {
+    .qz-main {
+      min-height: 100%;
+
+      &.suggest-content {
+        .qz-viewer {
+          .resource {
+            .qz-resource-viewer {
+              .qz-resource-viewer-panel {
+                &.has-narration {
+                  .qz-preview-url {
+                    height: calc(100% - 160px);
+                    .qz-youtube-resource {
+                      iframe {
+                        height: calc(100% - 40px);
+                      }
+                    }
+                  }
+                  .suggest-content {
+                    height: 100%;
+                  }
+
+                  .not-iframe {
+                    height: calc(100% - 120px);
+                  }
+                }
+
+                .qz-preview-url {
+                  height: calc(100% - 40px);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.study-player.fullscreen {
+  .container-fluid {
+    .player-container  {
+      .qz-player {
+        .player {
+          .qz-main {
+            &.suggest-content {
+              .qz-viewer {
+                .resource {
+                  .qz-resource-viewer {
+                    .qz-resource-viewer-panel {
+                      &.has-narration {
+                        .qz-preview-url {
+                          height: 100%;
+                          .preview {
+                            iframe {
+                              height: calc(100% - 40px);
+                            }
+                          }
+                        }
+                        .qz-youtube-resource {
+                          height: calc(100vh - 140px) !important;
+                          iframe {
+                            height: 100% !important;
+                          }
+                        }
+                        .suggest-content {
+                          height: 100%;
+                        }
+
+                        .not-iframe {
+                          height: calc(100% - 120px);
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

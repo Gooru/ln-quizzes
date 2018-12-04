@@ -470,7 +470,6 @@ export default Ember.Component.extend(ModalMixin, {
         )
         .then(
           function() {
-            Ember.run(() => component.set('resource', null));
             resourceResult = contextResult.getResultByResourceId(resourceId);
             resourceResult.set('startTime', new Date().getTime());
             component.setProperties({

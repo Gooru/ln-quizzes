@@ -1,3 +1,10 @@
+.container-fluid {
+  .qz-player {
+    min-height: unset;
+    height: 100vh;
+  }
+}
+
 .qz-viewer {
   @media only screen and (max-width: $sm-width-max) {
     height: 100% !important;
@@ -6,6 +13,75 @@
 
     .qz-content.question {
       overflow-y: auto;
+    }
+  }
+  @media only screen and (max-width: $screen-sm) {
+    margin: auto;
+  }
+
+  .container-fluid {
+    .qz-player {
+      min-height: unset;
+      height: 100vh;
+    }
+  }
+
+  .qz-viewer {
+    @media only screen and (max-width: $sm-width-max) {
+      height: 100% !important;
+      overflow-y: hidden !important;
+      margin: 0 0 52px !important;
+
+      .qz-content.question {
+        overflow-y: auto;
+      }
+    }
+    @media only screen and (max-width: $screen-sm) {
+      margin: auto;
+    }
+  }
+
+  .container-fluid {
+    .qz-player {
+      min-height: unset;
+      height: 100vh;
+    }
+  }
+
+  .qz-viewer {
+    @media only screen and (max-width: $sm-width-max) {
+      height: 100% !important;
+      overflow-y: hidden !important;
+      margin: 0 0 52px !important;
+
+      .qz-content.question {
+        overflow-y: auto;
+      }
+    }
+    @media only screen and (max-width: $screen-sm) {
+      margin: auto;
+    }
+  }
+
+  .container-fluid {
+    .qz-player {
+      min-height: unset;
+      height: 100vh;
+    }
+  }
+
+  .qz-viewer {
+    @media only screen and (max-width: $sm-width-max) {
+      height: 100% !important;
+      overflow-y: hidden !important;
+      margin: 0 0 52px !important;
+
+      .qz-content.question {
+        overflow-y: auto;
+      }
+    }
+    @media only screen and (max-width: $screen-sm) {
+      margin: auto;
     }
   }
 }

@@ -3,6 +3,28 @@
     .qz-main {
       min-height: 100%;
 
+      .qz-viewer {
+        .resource {
+          .qz-resource-viewer {
+            .qz-resource-viewer-panel {
+              .qz-preview-url {
+                height: 100%;
+              }
+
+              .qz-youtube-resource {
+                iframe {
+                  height: 100% !important;
+                }
+              }
+
+              .not-iframe {
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+
       &.suggest-content {
         .qz-viewer {
           .resource {
@@ -11,22 +33,30 @@
                 &.has-narration {
                   .qz-preview-url {
                     height: calc(100% - 160px);
-                    .qz-youtube-resource {
-                      iframe {
-                        height: calc(100% - 40px);
-                      }
-                    }
                   }
-                  .suggest-content {
-                    height: 100%;
+
+                  .qz-youtube-resource {
+                    iframe {
+                      height: calc(100% - 160px) !important;
+                    }
                   }
 
                   .not-iframe {
-                    height: calc(100% - 120px);
+                    height: calc(100% - 160px);
                   }
                 }
 
                 .qz-preview-url {
+                  height: calc(100% - 40px);
+                }
+
+                .qz-youtube-resource {
+                  iframe {
+                    height: calc(100% - 40px) !important;
+                  }
+                }
+
+                .not-iframe {
                   height: calc(100% - 40px);
                 }
               }
@@ -37,9 +67,10 @@
     }
   }
 }
+
 .study-player.fullscreen {
   .container-fluid {
-    .player-container  {
+    .player-container {
       .qz-player {
         .player {
           .qz-main {
@@ -47,28 +78,27 @@
               .qz-viewer {
                 .resource {
                   .qz-resource-viewer {
+                    .qz-youtube-resource {
+                      height: 100% !important;
+                    }
                     .qz-resource-viewer-panel {
                       &.has-narration {
                         .qz-preview-url {
                           height: 100%;
+
                           .preview {
                             iframe {
                               height: calc(100% - 40px);
                             }
                           }
                         }
-                        .qz-youtube-resource {
-                          height: calc(100vh - 140px) !important;
-                          iframe {
-                            height: 100% !important;
-                          }
-                        }
-                        .suggest-content {
-                          height: 100%;
-                        }
-
                         .not-iframe {
                           height: calc(100% - 120px);
+                        }
+                      }
+                      .qz-youtube-resource {
+                        iframe {
+                          height: calc(100% - 40px) !important;
                         }
                       }
                     }

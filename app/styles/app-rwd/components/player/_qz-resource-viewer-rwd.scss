@@ -10,20 +10,6 @@
           overflow-y: auto;
         }
       }
-
-      &.has-narration {
-        .qz-preview-url {
-          height: calc(100% - 160px);
-        }
-
-        .not-iframe {
-          height: calc(100% - 120px);
-        }
-      }
-
-      .qz-preview-url {
-        height: calc(100% - 40px);
-      }
     }
   }
 }

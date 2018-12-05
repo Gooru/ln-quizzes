@@ -1,3 +1,10 @@
+.container-fluid {
+  .qz-player {
+    min-height: unset;
+    height: 100vh;
+  }
+}
+
 .qz-viewer {
   @media only screen and (max-width: $sm-width-max) {
     height: 100% !important;
@@ -7,5 +14,8 @@
     .qz-content.question {
       overflow-y: auto;
     }
+  }
+  @media only screen and (max-width: $screen-sm) {
+    margin: auto;
   }
 }

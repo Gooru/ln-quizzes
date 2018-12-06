@@ -22,6 +22,7 @@ export default Ember.Component.extend({
   // Properties
 
   showRelatedContent: false,
+  isShowBackdrop:false,
 
   /**
    * @property {Array} list of suggested resources of a collection
@@ -98,6 +99,7 @@ export default Ember.Component.extend({
         {
           complete: function() {
             component.$().css('bottom', '50px');
+            component.set('isShowBackdrop', true);
           }
         }
       );
@@ -112,6 +114,7 @@ export default Ember.Component.extend({
         {
           complete: function() {
             component.$().css('bottom', `${bottom}px`);
+            component.set('isShowBackdrop', false);
           }
         }
       );

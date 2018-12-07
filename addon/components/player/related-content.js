@@ -22,6 +22,9 @@ export default Ember.Component.extend({
   // Properties
 
   showRelatedContent: false,
+  /**
+  *Back drop for the related content
+  */
   isShowBackdrop:false,
 
   /**

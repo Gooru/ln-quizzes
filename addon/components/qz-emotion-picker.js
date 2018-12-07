@@ -45,6 +45,10 @@ export default Ember.Component.extend({
           );
         }
       }
+
+      if (component.$('.close-nav').length > 0) {
+        component.send('onCloseNavigator');
+      }
     },
 
     onOpenNavigator() {

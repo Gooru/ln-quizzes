@@ -1,25 +1,32 @@
-.qz-player {
-  .player {
-    .qz-main {
-      min-height: 100%;
-      height: 100vh;
+.study-player {
+  .qz-player {
+    .player {
+      height: calc(100% - 50px);
+      overflow-x: auto;
+      overflow-y: hidden;
 
-      .qz-viewer {
-        .resource {
-          .qz-resource-viewer {
-            .qz-resource-viewer-panel {
-              .qz-preview-url {
-                height: 100%;
-              }
+      .qz-main {
+        min-height: 100%;
 
-              .qz-youtube-resource {
-                iframe {
-                  height: 100% !important;
+        .qz-viewer {
+          margin: 0;
+
+          .resource {
+            .qz-resource-viewer {
+              .qz-resource-viewer-panel {
+                .qz-preview-url {
+                  height: 100%;
                 }
-              }
 
-              .not-iframe {
-                height: 100%;
+                .qz-youtube-resource {
+                  iframe {
+                    height: 100% !important;
+                  }
+                }
+
+                .not-iframe {
+                  height: auto;
+                }
               }
             }
           }

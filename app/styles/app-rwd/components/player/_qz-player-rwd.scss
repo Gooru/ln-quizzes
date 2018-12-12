@@ -2,14 +2,13 @@
   .qz-player {
     .player {
       height: calc(100% - 50px);
-      overflow-x: auto;
-      overflow-y: hidden;
 
       .qz-main {
         min-height: 100%;
 
         .qz-viewer {
           margin: 0;
+          padding-bottom: 50px;
 
           .resource {
             .qz-resource-viewer {

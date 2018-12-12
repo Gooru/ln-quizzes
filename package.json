@@ -1,6 +1,6 @@
 {
   "name": "quizzes-addon",
-  "version": "4.4.31",
+  "version": "4.4.31-m-2",
   "description": "Small description for quizzes goes here.",
   "directories": {
     "doc": "doc",

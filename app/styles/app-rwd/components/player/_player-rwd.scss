@@ -1,0 +1,27 @@
+.player {
+  .container-fluid {
+    .qz-player {
+      .player {
+        .qz-main {
+          .qz-viewer {
+            margin: 0;
+
+            .qz-content {
+              .qz-resource-viewer {
+                .qz-resource-viewer-panel {
+                  @media only screen and (max-width: $screen-sm) {
+                    .qz-resource.qz-youtube-resource {
+                      iframe {
+                        height: 100% !important;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

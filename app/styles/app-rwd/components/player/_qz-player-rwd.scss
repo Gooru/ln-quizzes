@@ -1,8 +1,35 @@
-.qz-player {
-  @media only screen and (max-width: $sm-width-max) {
+.study-player {
+  .qz-player {
     .player {
+      height: calc(100% - 50px);
+
       .qz-main {
         min-height: 100%;
+
+        .qz-viewer {
+          margin: 0;
+          padding-bottom: 50px;
+
+          .resource {
+            .qz-resource-viewer {
+              .qz-resource-viewer-panel {
+                .qz-preview-url {
+                  height: 100%;
+                }
+
+                .qz-youtube-resource {
+                  iframe {
+                    height: 100% !important;
+                  }
+                }
+
+                .not-iframe {
+                  height: auto;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

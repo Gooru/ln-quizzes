@@ -12,7 +12,7 @@
       }}
   {{/if}}
   <div class="component player">
-    <div class="qz-main {{if showFinishConfirmation 'submission-confirm'}}" role="main">
+    <div class="qz-main {{if showFinishConfirmation 'submission-confirm'}} {{if suggestedResources 'suggest-content'}}"  role="main">
       {{#if collection.hasResources }}
         {{#if showFinishConfirmation}}
           {{player.qz-submit-confirmation onConfirmFinish='finishCollection' onCancelFinish='resumeCollection'}}

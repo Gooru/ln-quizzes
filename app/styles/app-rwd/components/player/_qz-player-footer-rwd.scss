@@ -5,9 +5,25 @@
       .player-container {
         .player-info {
           .current-resource-info {
+            grid-template-columns: 18px 18px 1fr;
+
+            .resource-question {
+              i {
+                background-size: 18px 18px;
+              }
+
+              .resource-icon {
+                height: 18px;
+                width: 18px;
+              }
+            }
+
             .resource-title {
+              max-width: 100%;
+              min-width: 80px;
+
               span {
-                width: 85px;
+                max-width: max-content;
               }
             }
           }

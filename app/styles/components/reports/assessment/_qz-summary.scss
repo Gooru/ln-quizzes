@@ -99,7 +99,7 @@
       width: 100%;
       height: 106px;
       padding: 10px 25px;
-      text-align: left;
+      text-align: center;
       border-left: 2px solid;
       color: $white;
       -webkit-flex: 0 1 auto;
@@ -112,15 +112,6 @@
 
       &.only-oe {
         color: $light-200 !important;
-      }
-      @media (min-width: $screen-xs) {
-        width: 160px;
-        height: 106px;
-        padding: 20px 0 0;
-        text-align: center;
-      }
-      @media (min-width: $screen-lg-min) {
-        height: 106px;
       }
 
       span {
@@ -224,19 +215,6 @@
 
         .time {
           margin: 0 4px 0 0;
-        }
-
-        .attempt,
-        .date,
-        .reaction,
-        .time {
-          @media (max-width: $screen-xs) {
-            display: block;
-            margin: 0 0 10px;
-          }
-          @media (max-width: $screen-md) {
-            margin: 0 10px 0 0;
-          }
         }
       }
     }

@@ -1,3 +1,12 @@
+.backdrop-close {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.5;
+}
 .related-content {
   position: fixed;
   bottom: -385px;
@@ -57,10 +66,35 @@
     .resource-cards {
       grid-template-columns: 1fr 1fr 1fr;
       grid-gap: 45px;
-      width: 792px;
+      width: max-content;
       margin: 0 auto;
       display: grid;
       align-items: center;
+
+      &.cards-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      &.cards-1 {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+.study-player.fullscreen {
+  .app-container {
+    .player-container {
+      .qz-player {
+        .player {
+          .qz-main {
+            .related-content {
+              .backdrop-close {
+                top: 0px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

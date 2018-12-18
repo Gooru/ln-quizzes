@@ -1,3 +1,6 @@
+{{#if isShowBackdrop }}
+<div class="backdrop-close" {{action 'onToggleRelatedContent'}}></div>
+{{/if}}
 <div class="related-content-tabs">
   <div class="related-content-tab" {{action 'onToggleRelatedContent'}}>
     <div class="tab-info">
@@ -7,7 +10,7 @@
   </div>
 </div>
 <div class="related-content-body">
-  <div class="resource-cards">
+  <div class="resource-cards {{concat 'cards-'  suggestedResources.length}}">
     {{#each suggestedResources as |resource|}}
       {{cards.resource-card resource=resource onPlayResource='onPlayResource'}}
     {{/each}}

@@ -1,10 +1,18 @@
 .player {
   .container-fluid {
     .qz-player {
+      overflow: auto;
+      height: 100vh;
+
       .player {
+        height: calc(100% - 50px);
+
         .qz-main {
+          min-height: 100%;
+
           .qz-viewer {
             margin: 0;
+            padding-bottom: 50px;
 
             .qz-content {
               .qz-resource-viewer {

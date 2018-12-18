@@ -1,0 +1,15 @@
+.qz-resource-viewer {
+  @media only screen and (max-width: $screen-xs) {
+    .qz-resource-viewer-panel {
+      .narration {
+        height: 100px;
+
+        .panel-body {
+          display: flex;
+          height: 100%;
+          overflow-y: auto;
+        }
+      }
+    }
+  }
+}

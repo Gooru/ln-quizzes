@@ -19,10 +19,14 @@
 
         .information {
           margin: 0;
+          .date {
+              margin: 0 20px 0 0;
+          }
         }
       }
 
       .grade {
+        padding: 10px;
         text-align: center;
       }
     }

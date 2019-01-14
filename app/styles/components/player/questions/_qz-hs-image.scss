@@ -3,22 +3,26 @@
     max-width: 400px;
 
     ul {
+      display: grid;
+
       li.answer {
         float: $tab-float-dir;
-        padding: 0;
         margin: 3px;
         cursor: default;
-        width: 126px;
-        height: 126px;
         text-align: center;
         border: 3px solid $white;
         position: relative;
         border-radius: 0px;
+        padding-top: 75%;
+
 
         img {
+          height: 100%;
+          width: 100%;
+          left: 0;
+          top: 0;
+          position: absolute;
           border: 0 none;
-          width: auto;
-          max-height: 100%;
         }
 
         &.disabled {
@@ -41,8 +45,11 @@
         div {
           display: none;
           position: absolute;
-          top: 35%;
-          left: 35%;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
           width: 30px;
           height: 30px;
           border-radius: 50%;
@@ -53,7 +60,7 @@
             color: $dark-300;
           }
         }
+        }
       }
     }
-  }
 }

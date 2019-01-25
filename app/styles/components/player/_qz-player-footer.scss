@@ -425,6 +425,7 @@
           cursor: default;
           pointer-events: none;
           color: $breadcrumb-color;
+          margin-left: 6px;
         }
       }
 
@@ -444,7 +445,7 @@
 
     .next-action {
       float: $menu-float-dir;
-      width: 138px;
+      width: 150px;
       height: 50px;
 
       .submit-all,

@@ -1,7 +1,4 @@
 export default {
-  /*
-   * COMMON: Translations used globally in the app or shared between components
-   */
   common: {
     'a-collection': 'a collection',
     'a-course': 'a course',
@@ -509,10 +506,6 @@ export default {
     word: 'Word',
     yes: 'Yes'
   },
-
-  /*
-   * CONTROLLERS: Translations used in a specific controller
-   */
   content: {
     questions: {
       edit: {
@@ -577,10 +570,6 @@ export default {
       }
     }
   },
-
-  /*
-   * COMPONENTS: Translations used in a specific component
-   */
   'gru-add-to': {
     'add-assessment-to-lesson': 'Add from my assessments',
     'add-assessment-to-lesson-lead':
@@ -605,6 +594,8 @@ export default {
     'setting-forward': 'You can navigate forward only',
     'setting-forward-backward':
       'You can navigate forward and backwards to answer questions',
+    'forward-backward': 'Navigate forward and backwards to answer questions',
+    forward: 'Navigate forward only',
     'unlimited-attempts-left': 'You have unlimited attempts',
     'attempts-left': {
       one: 'You have 1 attempt left',
@@ -614,7 +605,9 @@ export default {
     'unlimited-attempts': 'You have unlimited attempts',
     cancel: 'Cancel',
     continue: 'Continue',
-    start: 'Start!'
+    start: 'Start!',
+    'no-content-info-message':
+      'This {{collectionType}} is under development. Please check back again later.'
   },
   'gru-submit-confirmation': {
     title: 'Are you sure you want to Submit All?',
@@ -724,7 +717,6 @@ export default {
     'error-district-message':
       'Please select your district/charter from the list or provide it in "Other".'
   },
-
   footer: {
     footerDescription:
       'Gooru is committed to keeping its platform open-source and community created content CC0.',
@@ -744,7 +736,6 @@ export default {
     privacy: 'Privacy',
     Copyright: 'Copyright'
   },
-
   'grade-dropdown': {
     placeholder: 'grade(s)',
     prompt: 'Select a grade',
@@ -767,16 +758,13 @@ export default {
     eleventh: '11',
     twelfth: '12'
   },
-
   'standard-dropdown': {
     placeholder: 'Browse by Standard'
   },
-
   'subject-dropdown': {
     placeholder: 'subject(s)',
     prompt: 'Select a subject'
   },
-
   resource: {
     video: 'Video',
     webpage: 'Webpage',
@@ -787,7 +775,6 @@ export default {
     audio: 'Audio',
     oer: 'OER'
   },
-
   'gru-image-picker': {
     chooseFile: 'Choose a file ...',
     instruction: 'Upload an image from a file on your computer.',
@@ -798,7 +785,6 @@ export default {
     instructions:
       'Please type your answer(s) in the blank(s) provided, and click "{{action}}".'
   },
-
   'qz-hs-image': {
     instructions: 'Please select the correct image(s), and click "{{action}}".'
   },
@@ -814,13 +800,11 @@ export default {
   'qz-single-choice': {
     instructions: 'Please select the correct answer, and click "{{action}}".'
   },
-
   'qz-open-ended': {
     instructions:
       'Please type your answer in the field below, and click the "{{action}}" button to save your response when you\'re done.',
     characterLimit: 'Character Limit'
   },
-
   'qz-question-viewer': {
     answer: 'Answer',
     previous: 'Previous',
@@ -831,12 +815,10 @@ export default {
     true: 'True',
     false: 'False'
   },
-
   'qz-reorder': {
     instructions:
       'Please reorder the answers in correct order, and click "{{action}}".'
   },
-
   'qz-navigation': {
     'view-report': 'View Report'
   },
@@ -857,7 +839,6 @@ export default {
         'requirements that take you to another page to view the content.'
     }
   },
-
   'gru-data-picker': {
     score: 'Score',
     completion: 'Completion',
@@ -932,7 +913,6 @@ export default {
     unsavedChanges:
       'Your changes haven\'t been saved yet. Would you like to leave this page?'
   },
-
   'taxonomy.modals': {
     'gru-domain-picker': {
       browseSelectorText: 'What domains will this unit cover?',
@@ -951,7 +931,6 @@ export default {
       shortcutText: 'Unit is tagged to'
     }
   },
-
   'qz-rich-text-editor': {
     bold: 'Bold',
     expression: 'Expression',
@@ -974,7 +953,6 @@ export default {
       'create-expression': 'Create Expression'
     }
   },
-
   'gru-settings-edit': {
     'answerkey-attempts': 'Answer Key and Attempts',
     'answer-key': 'Students can see the answer key at the end',
@@ -990,7 +968,6 @@ export default {
     'disable-legend': 'Students can play the assessment from their course map',
     performance: 'Students see their performance'
   },
-
   'gru-tour': {
     overview: {
       stepOne: {

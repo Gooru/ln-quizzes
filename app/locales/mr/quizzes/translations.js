@@ -1,7 +1,4 @@
 export default {
-  /*
-   * COMMON: Translations used globally in the app or shared between components
-   */
   common: {
     'a-collection': 'एक संग्रह',
     'a-course': 'एक कोर्स',
@@ -592,6 +589,8 @@ export default {
     'setting-forward': 'आपण फक्त पुढे नॅव्हिगेट करू शकता',
     'setting-forward-backward':
       'आपण प्रश्नांची उत्तरे देण्यासाठी अग्रेषित व मागे नेव्हिगेट करू शकता',
+    'forward-backward': 'Navigate forward and backwards to answer questions',
+    forward: 'Navigate forward only',
     'unlimited-attempts-left': 'आपल्याकडे अमर्यादित प्रयत्न आहेत',
     'attempts-left': {
       one: 'आपल्याकडे 1 प्रयत्न शिल्लक आहे',
@@ -601,7 +600,9 @@ export default {
     'unlimited-attempts': 'आपल्याकडे अमर्यादित प्रयत्न आहेत',
     cancel: 'रद्द करा',
     continue: 'सुरू',
-    start: 'प्रारंभ!'
+    start: 'प्रारंभ!',
+    'no-content-info-message':
+      'This {{collectionType}} is under development. Please check back again later.'
   },
   'gru-submit-confirmation': {
     title: 'आपल्याला खात्री आहे की आपण सर्व सबमिट करू इच्छिता?',
@@ -710,7 +711,7 @@ export default {
     'error-country-message': 'कृपया आपला देश निवडा.',
     'error-state-message': 'कृपया आपले राज्य किंवा प्रदेश निवडा.',
     'error-district-message':
-      'कृपया सूचीतून आपला जिल्हा / चार्टर निवडा किंवा तो \\\'इतर\\\' मध्ये प्रदान करा'
+      'कृपया सूचीतून आपला जिल्हा  चार्टर निवडा किंवा तो \'इतर\' मध्ये प्रदान करा'
   },
   footer: {
     footerDescription:
@@ -854,7 +855,7 @@ export default {
     resume: 'पुन्हा सुरू करा',
     study: 'आता अभ्यास करा',
     'view-report': 'अहवाल पहा',
-    'not-applicable': 'n / a',
+    'not-applicable': 'n/a',
     'not-started': 'अद्याप प्रारंभ झाला नाही'
   },
   'gru-performance': {
@@ -955,7 +956,7 @@ export default {
     attempts: 'प्रयत्न',
     'attempts-unlimited': 'अमर्यादित',
     backwards: 'विद्यार्थी मागे व नेव्हिगेट करू शकतात आणि प्रतिसाद बदलू शकतात',
-    feedback: 'विद्यार्थी योग्य / चुकीचे आहेत का ते पहा',
+    feedback: 'विद्यार्थी योग्य  चुकीचे आहेत का ते पहा',
     'feedback-immediate': 'प्रति प्रश्न आणि शेवटी',
     'feedback-never': 'कधीही नाही',
     'feedback-summary': 'शेवटी',

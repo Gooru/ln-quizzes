@@ -1,7 +1,4 @@
 export default {
-  /*
-   * COMMON: Translations used globally in the app or shared between components
-   */
   common: {
     'a-collection': 'संग्रह',
     'a-course': 'एक पाठ्यक्रम',
@@ -596,6 +593,8 @@ export default {
     'setting-forward': 'आप केवल आगे नेविगेट कर सकते हैं',
     'setting-forward-backward':
       'आप सवालों के जवाब देने के लिए आगे और पीछे नेविगेट कर सकते हैं',
+    'forward-backward': 'Navigate forward and backwards to answer questions',
+    forward: 'Navigate forward only',
     'unlimited-attempts-left': 'आपके पास असीमित प्रयास हैं',
     'attempts-left': {
       one: 'आपके पास 1 प्रयास शेष है',
@@ -605,7 +604,9 @@ export default {
     'unlimited-attempts': 'आपके पास असीमित प्रयास हैं',
     cancel: 'रद्द करना',
     continue: 'जारी रहना',
-    start: 'प्रारंभ!'
+    start: 'प्रारंभ!',
+    'no-content-info-message':
+      'This {{collectionType}} is under development. Please check back again later.'
   },
   'gru-submit-confirmation': {
     title: 'क्या आप वाकई सब जमा करना चाहते हैं?',
@@ -713,7 +714,7 @@ export default {
     'error-country-message': 'कृपया अपना देश चुनें।',
     'error-state-message': 'कृपया अपना राज्य या क्षेत्र चुनें।',
     'error-district-message':
-      'कृपया सूची से अपना जिला / चार्टर चुनें या इसे \\\'अन्य\\\' में प्रदान करें।'
+      'कृपया सूची से अपना जिला  चार्टर चुनें या इसे \'अन्य\' में प्रदान करें।'
   },
   footer: {
     footerDescription:
@@ -861,7 +862,7 @@ export default {
     resume: 'बायोडाटा',
     study: 'अभी पढाई करो',
     'view-report': 'रिपोर्ट देखें',
-    'not-applicable': 'n / a',
+    'not-applicable': 'n/a',
     'not-started': 'अभी तक शुरू नहीं हुआ'
   },
   'gru-performance': {
@@ -963,7 +964,7 @@ export default {
     'attempts-unlimited': 'असीमित',
     backwards:
       'छात्र पीछे की ओर नेविगेट कर सकते हैं और प्रतिक्रिया बदल सकते हैं',
-    feedback: 'छात्र देखते हैं कि वे सही / गलत हैं या नहीं',
+    feedback: 'छात्र देखते हैं कि वे सही  गलत हैं या नहीं',
     'feedback-immediate': 'प्रति सवाल और अंत में',
     'feedback-never': 'कभी नहीँ',
     'feedback-summary': 'अतं मै',

@@ -1,7 +1,4 @@
 export default {
-  /*
-   * COMMON: Translations used globally in the app or shared between components
-   */
   common: {
     'a-collection': 'ಸಂಗ್ರಹ',
     'a-course': 'ಒಂದು ಕೋರ್ಸ್',
@@ -602,6 +599,8 @@ export default {
     'setting-forward': 'ನೀವು ಮುಂದೆ ಮಾತ್ರ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಬಹುದು',
     'setting-forward-backward':
       'ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಲು ನೀವು ಮುಂದೆ ಮತ್ತು ಹಿಂದಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಬಹುದು',
+    'forward-backward': 'Navigate forward and backwards to answer questions',
+    forward: 'Navigate forward only',
     'unlimited-attempts-left': 'ನಿಮಗೆ ಅಪರಿಮಿತ ಪ್ರಯತ್ನಗಳಿವೆ',
     'attempts-left': {
       one: 'ನಿಮ್ಮಲ್ಲಿ 1 ಪ್ರಯತ್ನ ಉಳಿದಿದೆ',
@@ -611,7 +610,9 @@ export default {
     'unlimited-attempts': 'ನಿಮಗೆ ಅಪರಿಮಿತ ಪ್ರಯತ್ನಗಳಿವೆ',
     cancel: 'ರದ್ದುಮಾಡಿ',
     continue: 'ಮುಂದುವರೆಯಿರಿ',
-    start: 'ಪ್ರಾರಂಭಿಸು!'
+    start: 'ಪ್ರಾರಂಭಿಸು!',
+    'no-content-info-message':
+      'This {{collectionType}} is under development. Please check back again later.'
   },
   'gru-submit-confirmation': {
     title: 'ಎಲ್ಲವನ್ನು ಸಲ್ಲಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ?',
@@ -722,7 +723,7 @@ export default {
     'error-country-message': 'ದಯವಿಟ್ಟು ನಿಮ್ಮ ರಾಷ್ಟ್ರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.',
     'error-state-message': 'ದಯವಿಟ್ಟು ನಿಮ್ಮ ರಾಜ್ಯ ಅಥವಾ ಪ್ರದೇಶವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.',
     'error-district-message':
-      'ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿಮ್ಮ ಜಿಲ್ಲೆಯ / ಚಾರ್ಟರ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ಅಥವಾ \\\'ಇತರ\\\' ನಲ್ಲಿ ಅದನ್ನು ಒದಗಿಸಿ.'
+      'ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ನಿಮ್ಮ ಜಿಲ್ಲೆಯ  ಚಾರ್ಟರ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ಅಥವಾ \'ಇತರ\' ನಲ್ಲಿ ಅದನ್ನು ಒದಗಿಸಿ.'
   },
   footer: {
     footerDescription:
@@ -871,7 +872,7 @@ export default {
     resume: 'ಪುನರಾರಂಭಿಸು',
     study: 'ಈಗ ಅಧ್ಯಯನ',
     'view-report': 'ವೀಕ್ಷಣೆ ವರದಿ',
-    'not-applicable': 'ಎನ್ / ಎ',
+    'not-applicable': 'ಎನ್  ಎ',
     'not-started': 'ಇನ್ನೂ ಪ್ರಾರಂಭಿಸಲಾಗಿಲ್ಲ'
   },
   'gru-performance': {
@@ -973,7 +974,7 @@ export default {
     'attempts-unlimited': 'ಅನಿಯಮಿತ',
     backwards:
       'ವಿದ್ಯಾರ್ಥಿಗಳು ಹಿಂದಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಬಹುದು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಬದಲಾಯಿಸಬಹುದು',
-    feedback: 'ವಿದ್ಯಾರ್ಥಿಗಳು ಸರಿಯಾಗಿ / ತಪ್ಪಾಗಿವೆಯೇ ಎಂದು ನೋಡುತ್ತಾರೆ',
+    feedback: 'ವಿದ್ಯಾರ್ಥಿಗಳು ಸರಿಯಾಗಿ ತಪ್ಪಾಗಿವೆಯೇ ಎಂದು ನೋಡುತ್ತಾರೆ',
     'feedback-immediate': 'ಪ್ರತಿ ಪ್ರಶ್ನೆಗೆ ಮತ್ತು ಕೊನೆಯಲ್ಲಿ',
     'feedback-never': 'ಎಂದಿಗೂ',
     'feedback-summary': 'ಕೊನೆಯಲ್ಲಿ',

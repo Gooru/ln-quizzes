@@ -1,7 +1,4 @@
 export default {
-  /*
-   * COMMON: Translations used globally in the app or shared between components
-   */
   common: {
     'a-collection': 'مجموعة',
     'a-course': 'مساق دراسي',
@@ -587,6 +584,8 @@ export default {
     'setting-forward': 'يمكنك التنقل إلى الأمام فقط',
     'setting-forward-backward':
       'يمكنك التنقل إلى الأمام وإلى الخلف للإجابة على الأسئلة',
+    'forward-backward': 'Navigate forward and backwards to answer questions',
+    forward: 'Navigate forward only',
     'unlimited-attempts-left': 'لديك عدد غير محدد من المحاولات',
     'attempts-left': {
       one: 'تبقى لديك محاولة واحدة فقط',
@@ -596,7 +595,9 @@ export default {
     'unlimited-attempts': 'لديك عدد غير محدد من المحاولات',
     cancel: 'إلغاء',
     continue: 'استمرار',
-    start: 'ابدأ!'
+    start: 'ابدأ!',
+    'no-content-info-message':
+      'This {{collectionType}} is under development. Please check back again later.'
   },
   'gru-submit-confirmation': {
     title: 'هل أنت متأكد من إرسال الكل؟ ',
@@ -985,14 +986,14 @@ export default {
       stepSix: {
         title: 'رصد التقدم المحرز في الوقت الحقيقي!',
         description:
-          'استخدم لوحة تحكم "الوقت الحقيقي" لرصد تقدم الصف المحرز على التقييم في نفس وقت عمله.\n\t\nانقر على أيقونة \u0027التقييم المباشر\u0027 -الموجودة إلى يسار كل تقييم- لبدء تقييم الطلاب في نفس وقت عملهم'
+          'استخدم لوحة تحكم "الوقت الحقيقي" لرصد تقدم الصف المحرز على التقييم في نفس وقت عمله.\n\t\nانقر على أيقونة \'التقييم المباشر\' -الموجودة إلى يسار كل تقييم- لبدء تقييم الطلاب في نفس وقت عملهم'
       }
     },
     'quick-start': {
       stepOne: {
         title: 'التنقل بين الصفوف الدراسية',
         description:
-          'هذا هو شكل الصف الدراسي الذي تم إنشاؤه حديثاً. للرجوع إلى الصف الدراسي في أي وقت، انقر على \u0027الصفوف الدراسية\u0027 واستخدم القائمة المنسدلة لتحديد الصفوف الدراسية التي ترغب في دخولها.'
+          'هذا هو شكل الصف الدراسي الذي تم إنشاؤه حديثاً. للرجوع إلى الصف الدراسي في أي وقت، انقر على \'الصفوف الدراسية\' واستخدم القائمة المنسدلة لتحديد الصفوف الدراسية التي ترغب في دخولها.'
       },
       stepTwo: {
         title: 'هل تريد البدء؟ أنشئ تقييم!',

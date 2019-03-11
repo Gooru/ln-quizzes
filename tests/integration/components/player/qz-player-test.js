@@ -1,4 +1,4 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { moduleForComponent, test, skip } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Collection from 'quizzes-addon/models/collection/collection';
 import ContextResult from 'quizzes-addon/models/result/context';
@@ -129,7 +129,7 @@ test('Show finish Confirmation', function(assert) {
   );
 });
 
-test('Player Integration', function() {
+skip('Player Integration', function() {
   const resourceMockA = Ember.Object.create({
     id: '1',
     title: '<p>Resource #1</p>',

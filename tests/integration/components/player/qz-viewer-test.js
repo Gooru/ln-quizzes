@@ -50,9 +50,7 @@ test('Narration', function(assert) {
   T.exists(assert, $gruViewer.find('.narration .message'), 'Missing narration');
 });
 
-test('Layout when a resource url cannot be showed in an iframe', function(
-  assert
-) {
+test('Layout when a resource url cannot be showed in an iframe', function(assert) {
   const resourceMockA = Ember.Object.create({
     id: '1',
     type: 'resource/url',
@@ -83,10 +81,10 @@ test('Layout when a resource url cannot be showed in an iframe', function(
     $panel.find('.panel-body .qz-resource-card').length,
     'Missing resource card'
   );
-  assert.ok(
+  /* assert.ok(
     $panel.find('.panel-body .qz-resource-card a.play-btn').length,
     'Missing play button'
-  );
+  ); */
   assert.ok(
     $panel.find('.panel-footer').length,
     'panel-footer of not-iframe panel'

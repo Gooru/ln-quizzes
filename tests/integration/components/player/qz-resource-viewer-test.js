@@ -148,7 +148,7 @@ test('Layout when a resource url cannot be showed in an iframe', function(assert
   this.set('resource', resource);
 
   this.render(
-    hbs`{{player/qz-resource-viewer resource=resource isNotIframeUrl=true}}`
+    hbs`{{player/qz-resource-viewer-linkout resource=resource isNotIframeUrl=true}}`
   );
 
   var $component = this.$(); //component dom element
@@ -168,17 +168,10 @@ test('Layout when a resource url cannot be showed in an iframe', function(assert
     $panel.find('.panel-body .qz-resource-card').length,
     'Missing resource card'
   );
-  /*
-  ToDo: Set the correct element required.
-  assert.ok(
-    $panel.find('.panel-body .qz-resource-card a.play-btn').length,
-    'Missing play button'
-  );
-  // Can be an external browser
   assert.ok(
     $panel.find('.panel-body .external-browser a.play-btn').length,
     'Missing play button'
-  ); */
+  );
   assert.ok(
     $panel.find('.panel-footer').length,
     'panel-footer of not-iframe panel'

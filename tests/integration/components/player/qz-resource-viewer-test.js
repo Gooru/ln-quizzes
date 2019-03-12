@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'dummy/tests/helpers/assert';
@@ -140,7 +141,8 @@ test('Layout when a resource url cannot be showed in an iframe', function(assert
     displayGuide: {
       is_broken: 1,
       is_frame_breaker: 1
-    }
+    },
+    content: Ember.A([])
   });
 
   this.set('resource', resource);
@@ -166,8 +168,15 @@ test('Layout when a resource url cannot be showed in an iframe', function(assert
     $panel.find('.panel-body .qz-resource-card').length,
     'Missing resource card'
   );
-  /* assert.ok(
+  /*
+  ToDo: Set the correct element required.
+  assert.ok(
     $panel.find('.panel-body .qz-resource-card a.play-btn').length,
+    'Missing play button'
+  );
+  // Can be an external browser
+  assert.ok(
+    $panel.find('.panel-body .external-browser a.play-btn').length,
     'Missing play button'
   ); */
   assert.ok(

@@ -1,4 +1,4 @@
-import { moduleForComponent, test, skip } from 'ember-qunit';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Collection from 'quizzes-addon/models/collection/collection';
 import ContextResult from 'quizzes-addon/models/result/context';
@@ -129,7 +129,7 @@ test('Show finish Confirmation', function(assert) {
   );
 });
 
-skip('Player Integration', function() {
+test('Player Integration', function(assert) {
   const resourceMockA = Ember.Object.create({
     id: '1',
     title: '<p>Resource #1</p>',
@@ -153,7 +153,8 @@ skip('Player Integration', function() {
     ownerId: 'profile-id1',
     displayGuide: {
       is_broken: 1,
-      is_frame_breaker: 1
+      is_frame_breaker: 1,
+      content: Ember.A([])
     }
   });
 
@@ -187,7 +188,7 @@ skip('Player Integration', function() {
   this.render(
     hbs`{{player/qz-player contextResult=contextResult resourceResult=resourceResult}}`
   );
-  // var $component = this.$();
+  var $component = this.$();
 
-  /* assert.ok($component.find('.qz-player ').length, 'Missing qz-player'); */
+  assert.ok($component.find('.qz-player ').length, 'Missing qz-player');
 });

@@ -1,10 +1,10 @@
-import { skip } from 'qunit';
+import { test } from 'qunit';
 import moduleForAcceptance from 'dummy/tests/helpers/module-for-acceptance';
 import T from 'dummy/tests/helpers/assert';
 
 moduleForAcceptance('Acceptance | reports/student-context');
 
-skip('Layout', function(assert) {
+test('Layout', function(assert) {
   assert.expect(6);
   visit('/reports/student-context/context-simple-id');
 

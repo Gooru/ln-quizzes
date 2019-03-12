@@ -31,6 +31,8 @@ export default Ember.Object.extend({
    */
   hasResources: Ember.computed.bool('resources.length'),
 
+  content: Ember.A([]),
+
   /**
    * @property {boolean} Return true if the collection is an assessment
    */

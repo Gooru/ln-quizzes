@@ -47,6 +47,7 @@
         display: block;
         margin-bottom: 10px;
         word-wrap: break-word;
+        color: $gray-dark;
       }
       img {
         max-width: 100%;
@@ -60,12 +61,12 @@
   }
 
   .answers-panel {
+    color: $gray-dark;
     .answer-choices {
       span.letter {
         vertical-align: top;
       }
     }
-
     .actions {
       margin-top: 30px;
       text-align: center;

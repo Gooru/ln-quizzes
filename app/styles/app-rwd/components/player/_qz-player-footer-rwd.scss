@@ -34,11 +34,11 @@
   /*mobile view landscape and portrait*/
   @media only screen and (max-width: $screen-sm - 1) {
     .nav-player-container {
-      grid-template-columns: 40px 1fr 40px;
+      grid-template-columns: 50px 1fr 50px;
 
       .prev {
         i {
-          margin-left: -108px;
+          margin-left: -100px;
         }
 
         span {
@@ -81,6 +81,18 @@
 
           span.icon {
             display: block;
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    .nav-player-container {
+      grid-template-columns: 40px 1fr 40px;
+      .next {
+        &.disabled {
+          .icon i {
+            margin-left: 0px;
           }
         }
       }

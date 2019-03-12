@@ -22,7 +22,7 @@
     "stomp-websocket": "~2.3.4",
     "toastr": "~2.1.2",
     "bootstrap-toggle": "^2.2.1",
-    "bootstrap-select": "^1.10.0",
+    "bootstrap-select": "1.13.5",
     "clipboard": "^1.5.10",
     "wysihtml": "^0.5.5",
     "mathquill": "mathquill#^0.10.1",

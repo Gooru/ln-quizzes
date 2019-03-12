@@ -737,6 +737,9 @@ export default {
   'qz-viewer.not-iframe-url.header_1': 'لا يمكن عرض هذا المصدر باستخدام جورو.',
   'qz-viewer.not-iframe-url.header_2':
     'انقر على الزر أدناه لفتح المصدر في صفحة تبويب جديدة.',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'عرض المصدر',
   'qz-viewer.not-iframe-url.footer_1': 'لماذا أرى هذه الصفحة الفارغة؟',
   'qz-viewer.not-iframe-url.footer_2':
@@ -745,6 +748,9 @@ export default {
     'ينشؤون ويشاركون المحتوى الخاص بهم. تحتوي المصادر على إعدادت مختلفة تتضمن',
   'qz-viewer.not-iframe-url.footer_4':
     'المتطلبات التي تنقلك إلى صفحة أخرى لعرض المحتوى.',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'العلامة',
   'gru-data-picker.completion': 'إنجاز',
   'gru-data-picker.timeSpent': 'الوقت',

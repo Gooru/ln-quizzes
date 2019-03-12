@@ -782,6 +782,9 @@ export default {
     'ಗೂರು ಒಳಗೆ ಈ ಸಂಪನ್ಮೂಲವನ್ನು ವೀಕ್ಷಿಸಲಾಗುವುದಿಲ್ಲ.',
   'qz-viewer.not-iframe-url.header_2':
     'ಹೊಸ ಟ್ಯಾಬ್ನಲ್ಲಿ ಸಂಪನ್ಮೂಲವನ್ನು ತೆರೆಯಲು ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'ಸಂಪನ್ಮೂಲವನ್ನು ವೀಕ್ಷಿಸಿ',
   'qz-viewer.not-iframe-url.footer_1':
     'ನಾನು ಈ ಖಾಲಿ ಪುಟವನ್ನು ಯಾಕೆ ನೋಡುತ್ತಿದ್ದೇನೆ?',
@@ -791,6 +794,9 @@ export default {
     'ತಮ್ಮ ವಿಷಯವನ್ನು ರಚಿಸಿ ಮತ್ತು ಹಂಚಿಕೊಳ್ಳಿ. ಸಂಪನ್ಮೂಲಗಳು ಸೇರಿದಂತೆ ವಿವಿಧ ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಹೊಂದಿವೆ',
   'qz-viewer.not-iframe-url.footer_4':
     'ವಿಷಯವನ್ನು ವೀಕ್ಷಿಸಲು ಮತ್ತೊಂದು ಪುಟಕ್ಕೆ ಕರೆದೊಯ್ಯುವ ಅವಶ್ಯಕತೆಗಳು.',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'ಸ್ಕೋರ್',
   'gru-data-picker.completion': 'ಪೂರ್ಣಗೊಂಡಿದೆ',
   'gru-data-picker.timeSpent': 'ಸಮಯ',

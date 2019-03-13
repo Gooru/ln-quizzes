@@ -61,11 +61,6 @@
     <div class="description">
       <p class="truncate">{{gru-math-text text=(if resource.isFIB resource.fibText resource.description)}}</p>
     </div>
-    {{#if isLinkOut}}
-      <div class="description">
-        <p class="truncate">{{resource.description}}</p>
-      </div>
-    {{/if}}
   </div>
   <div class="panel-footer">
     {{#if isLinkOut}}

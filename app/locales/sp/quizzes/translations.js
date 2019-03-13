@@ -756,6 +756,9 @@ export default {
     'This resource cannot be viewed within Gooru.',
   'qz-viewer.not-iframe-url.header_2':
     'Click the button below to open the resource in a new tab.',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'View Resource',
   'qz-viewer.not-iframe-url.footer_1': 'Why am I seeing this blank page?',
   'qz-viewer.not-iframe-url.footer_2':
@@ -764,6 +767,9 @@ export default {
     'create and share their content. Resources have variety of settings, including',
   'qz-viewer.not-iframe-url.footer_4':
     'requirements that take you to another page to view the content.',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'Score',
   'gru-data-picker.completion': 'Completion',
   'gru-data-picker.timeSpent': 'Time',

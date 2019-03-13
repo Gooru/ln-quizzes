@@ -98,7 +98,8 @@ export default Ember.Object.extend({
       taxonomy: payload.taxonomy
         ? taxonomySerializer.normalizeTaxonomyObject(payload.taxonomy)
         : [],
-      thumbnailUrl: thumbnailUrl
+      thumbnailUrl: thumbnailUrl,
+      content: payload.content
     });
   },
 

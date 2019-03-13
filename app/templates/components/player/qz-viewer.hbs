@@ -12,11 +12,20 @@
       isNextEnabled="isNextEnabled"
     }}
   {{else}}
-    {{player.qz-resource-viewer
+    {{#if isNotIframeUrl}}
+      {{player.qz-resource-viewer-linkout
       resource=resource
       sendEvents=false
       collection=collection
       isNotIframeUrl=isNotIframeUrl
     }}
+    {{else}}
+      {{player.qz-resource-viewer
+      resource=resource
+      sendEvents=false
+      collection=collection
+      isNotIframeUrl=isNotIframeUrl
+    }}
+    {{/if}}
   {{/if}}
 </div>

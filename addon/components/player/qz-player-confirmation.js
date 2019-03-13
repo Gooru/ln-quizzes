@@ -165,6 +165,14 @@ export default Ember.Component.extend({
           let contentCount = component.getResourceQuestionCount(
             collection.resources
           );
+          collection.resources.forEach(r => {
+            let taxonomy = collectionInfo.content.findBy('id', r.id);
+            if (taxonomy) {
+              r.standards = component.tempSerializeResourceTaxonomy(
+                taxonomy.taxonomy
+              );
+            }
+          });
           collectionInfo.questionCount = contentCount.questionCount;
           collectionInfo.resourceCount = contentCount.resourceCount;
           component.set('confirmationInfo', collectionInfo);
@@ -177,6 +185,19 @@ export default Ember.Component.extend({
           component.set('confirmationInfo', assessmentInfo);
           component.set('isLoading', false);
         }
+      });
+    }
+  },
+
+  tempSerializeResourceTaxonomy(taxonomy) {
+    if (taxonomy) {
+      return Array.from(Object.keys(taxonomy), function(k) {
+        var taxonomyObject = taxonomy[k];
+        taxonomyObject.id = k;
+        taxonomyObject.title = taxonomyObject.code;
+        taxonomyObject.caption = taxonomyObject.code;
+        taxonomyObject.data = taxonomyObject;
+        return Ember.Object.create(taxonomyObject);
       });
     }
   },

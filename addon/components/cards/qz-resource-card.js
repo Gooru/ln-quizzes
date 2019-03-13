@@ -18,6 +18,19 @@ export default Ember.Component.extend(ModalMixin, {
 
   classNames: ['cards', 'qz-resource-card'],
 
+  startTimer: null,
+
+  timer: null,
+
+  timerValue: 0,
+
+  timerChanged: Ember.computed('startTimer', function() {
+    if (this.startTimer === true) {
+      this.timer = setInterval(() => {
+        this.timerValue += 1;
+      }, 1000);
+    }
+  }),
   // -------------------------------------------------------------------------
   // Actions
   actions: {
@@ -114,5 +127,12 @@ export default Ember.Component.extend(ModalMixin, {
       'quizzesConfigurationService.configuration.properties.cdnURL'
     );
     return toAbsolutePath(resourceUrl, cdnUrl);
-  })
+  }),
+  destroy() {
+    this._super(...arguments);
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
 });

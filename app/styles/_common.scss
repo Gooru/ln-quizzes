@@ -14,7 +14,8 @@ h1 {
 }
 
 h2 {
-  font-size: $font-size-h2;
+  font-size: 20px;
+  font-weight: bold;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -105,7 +106,7 @@ span.validation.warning {
   align-items: center;
 }
 
-.no-gutter > [class*='col-'] {
+.no-gutter > [class*="col-"] {
   padding-right: 0;
   padding-left: 0;
 }
@@ -170,7 +171,7 @@ span.validation.warning {
 .img-question {
   width: 15px;
   height: 15px;
-  background: url('quizzes-addon/quizzes/questionmark.png') no-repeat;
+  background: url("quizzes-addon/quizzes/questionmark.png") no-repeat;
 }
 .border-gray {
   border-right: 1px solid $gray;
@@ -355,7 +356,7 @@ span.validation.warning {
 
     > * {
       color: $white;
-      opacity: .6;
+      opacity: 0.6;
     }
 
     i {
@@ -390,7 +391,7 @@ span.validation.warning {
 label {
   span.required {
     &:after {
-      content: ' *';
+      content: " *";
     }
   }
 }
@@ -448,6 +449,6 @@ label {
     display: inline-table !important;
   }
   .mtable .vertical-separator {
-    margin: 0 -.025em !important;
+    margin: 0 -0.025em !important;
   }
 }

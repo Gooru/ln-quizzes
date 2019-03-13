@@ -62,8 +62,8 @@
       <p class="truncate">{{gru-math-text text=(if resource.isFIB resource.fibText resource.description)}}</p>
     </div>
     {{#if isLinkOut}}
-      <div class="externalMsg">
-        {{t 'qz-viewer.not-iframe-url.linkout_desc'}}
+      <div class="description">
+        <p class="truncate">{{resource.description}}</p>
       </div>
     {{/if}}
   </div>

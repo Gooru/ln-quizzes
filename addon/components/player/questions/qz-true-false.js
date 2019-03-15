@@ -64,14 +64,11 @@ export default QuestionComponent.extend({
    */
   falseAnswerId: Ember.computed('question.answers', function() {
     const answers = this.get('question.answers');
-    const correctAnswerValue = this.get('correctAnswerValue');
-    var found;
-    answers.map(ans => {
-      if (ans.value !== correctAnswerValue) {
-        found = ans;
-      }
+    const correctAnswerValue = this.get('question.correctAnswer')[0].value;
+    var found = answers.filter(ans => {
+      return ans.value !== correctAnswerValue;
     });
-    return found ? found.get('firstObject.value') : 'true'; //TODO, is this a data problem?
+    return found ? found.get('firstObject.value') : 'False'; //TODO, is this a data problem?
   }),
 
   /**
@@ -79,17 +76,9 @@ export default QuestionComponent.extend({
    */
   trueAnswerId: Ember.computed('question.answers', function() {
     const answers = this.get('question.answers');
-    const correctAnswerValue = this.get('correctAnswerValue');
+    const correctAnswerValue = this.get('question.correctAnswer')[0].value;
     const found = answers.filterBy('value', correctAnswerValue);
-    return found ? found.get('firstObject.value') : 'true'; //TODO, is this a data problem?
-  }),
-
-  /**
-   * Returns the 'correct' answer value
-   */
-  correctAnswerValue: Ember.computed('question', function() {
-    const correctAnswer = this.get('question.correctAnswer');
-    return correctAnswer[0].value;
+    return found ? found.get('firstObject.value') : 'True'; //TODO, is this a data problem?
   })
 
   // -------------------------------------------------------------------------

@@ -82,9 +82,7 @@ test('Layout', function(assert) {
   );
 });
 
-test('Submit button should become enabled and call action on submit', function(
-  assert
-) {
+test('Submit button should become enabled and call action on submit', function(assert) {
   assert.expect(1);
 
   const question = Ember.Object.create({
@@ -136,15 +134,14 @@ test('Submit button should become enabled and call action on submit', function(
   $answerPanel.find('.actions button.save').click();
 });
 
-test('Clicking on the "Hints" button should display a certain number of hints and then become disabled', function(
-  assert
-) {
+test('Clicking on the "Hints" button should display a certain number of hints and then become disabled', function(assert) {
   const question = Ember.Object.create({
     id: 10,
     sequence: 2,
     text: 'Dummy question text',
     type: QUESTION_TYPES.trueFalse,
     hasMedia: false,
+    correctAnswer: Ember.A([AnswerModel.create({ value: '1', text: 'True' })]),
     answers: Ember.A([
       AnswerModel.create({ value: '1', text: 'True' }),
       AnswerModel.create({ value: '2', text: 'False' })
@@ -218,15 +215,14 @@ test('Clicking on the "Hints" button should display a certain number of hints an
   );
 });
 
-test('Clicking on the "Explanation" button should display an explanation and then it should become disabled', function(
-  assert
-) {
+test('Clicking on the "Explanation" button should display an explanation and then it should become disabled', function(assert) {
   const question = Ember.Object.create({
     id: 11,
     sequence: 2,
     text: 'Dummy question text',
     type: QUESTION_TYPES.trueFalse,
     hasMedia: false,
+    correctAnswer: Ember.A([AnswerModel.create({ value: '1', text: 'True' })]),
     answers: Ember.A([
       AnswerModel.create({ value: '1', text: 'True' }),
       AnswerModel.create({ value: '2', text: 'False' })

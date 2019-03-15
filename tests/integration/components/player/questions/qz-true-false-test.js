@@ -26,6 +26,7 @@ test('True or false question layout', function(assert) {
     id: '569906aa3ec3bb39969acbe6',
     type: QUESTION_TYPES.trueFalse,
     body: 'True False Question',
+    correctAnswer: Ember.A([AnswerModel.create({ value: '1', text: 'True' })]),
     answers: Ember.A([
       AnswerModel.create({ value: '1', text: 'True' }),
       AnswerModel.create({ value: '2', text: 'False' })
@@ -69,12 +70,18 @@ test('True or false question layout', function(assert) {
     'Missing answer choices radio inputs'
   );
   assert.equal(
-    $component.find('.answer-choices .radio:eq(0)').text().trim(),
+    $component
+      .find('.answer-choices .radio:eq(0)')
+      .text()
+      .trim(),
     '(A)True',
     'Incorrect Message'
   );
   assert.equal(
-    $component.find('.answer-choices .radio:eq(1)').text().trim(),
+    $component
+      .find('.answer-choices .radio:eq(1)')
+      .text()
+      .trim(),
     '(B)False',
     'Incorrect Message'
   );
@@ -95,6 +102,7 @@ test('True or false question layout - read only', function(assert) {
     id: '569906aa3ec3bb39969acbe6',
     type: QUESTION_TYPES.trueFalse,
     body: 'True False Question',
+    correctAnswer: Ember.A([AnswerModel.create({ value: '1', text: 'True' })]),
     answers: Ember.A([
       AnswerModel.create({ value: '1', text: 'True' }),
       AnswerModel.create({ value: '2', text: 'False' })
@@ -129,6 +137,7 @@ test('True or false question layout - with user answer', function(assert) {
     id: '569906aa3ec3bb39969acbe6',
     type: QUESTION_TYPES.trueFalse,
     body: 'True False Question',
+    correctAnswer: Ember.A([AnswerModel.create({ value: '1', text: 'True' })]),
     answers: Ember.A([
       AnswerModel.create({ value: '1', text: 'True' }),
       AnswerModel.create({ value: '2', text: 'False' })
@@ -170,9 +179,7 @@ test('True or false question layout - with user answer', function(assert) {
   );
 });
 
-test('True or false question layout - False as correct answer', function(
-  assert
-) {
+test('True or false question layout - False as correct answer', function(assert) {
   assert.expect(2);
 
   const question = ResourceModel.create({
@@ -180,6 +187,7 @@ test('True or false question layout - False as correct answer', function(
     id: '569906aa3ec3bb39969acbe6',
     type: QUESTION_TYPES.trueFalse,
     body: 'True False Question',
+    correctAnswer: Ember.A([AnswerModel.create({ value: '1', text: 'True' })]),
     answers: Ember.A([
       AnswerModel.create({ value: '1', text: 'True' }),
       AnswerModel.create({ value: '2', text: 'False' })

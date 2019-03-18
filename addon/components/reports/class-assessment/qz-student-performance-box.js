@@ -97,10 +97,18 @@ export default Ember.Component.extend({
   getQuestionStatus: function(questionResult) {
     let status = 'not-started';
     let questionId;
-    if (questionResult.get('started')) {
-      //if it has been started
-      status = questionResult.get('attemptStatus');
+    if (
+      questionResult.get('isResource') === true &&
+      questionResult.get('skipped') === false
+    ) {
+      status = 'started';
       questionId = questionResult.get('questionId');
+    } else {
+      if (questionResult.get('started')) {
+        //if it has been started
+        status = questionResult.get('attemptStatus');
+        questionId = questionResult.get('questionId');
+      }
     }
     return Ember.Object.create({
       status,

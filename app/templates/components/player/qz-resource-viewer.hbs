@@ -1,5 +1,5 @@
 <div class="qz-resource-viewer-panel  {{if resource.hasNarration 'has-narration'}}">
-  {{#if resource.hasNarration}}
+  {{#if (and resource.hasNarration showNarration)}}
     <div class="panel panel-default narration">
       <div class="panel-body">
         {{#if resource.hasOwner}}

@@ -1,3 +1,4 @@
+{{!-- 
 {{#if question.hasNarration}}
   <div class="panel panel-default narration">
     <div class="panel-body">
@@ -5,26 +6,21 @@
     </div>
   </div>
 {{/if}}
+--}}
+
 <div class="panel panel-default question">
   <div class="panel-body">
     {{#if question.isResource}}
       <h3>{{t "common.resource" }} </h3>
+      <div class='resource-view'>
+        {{player.qz-resource-viewer resource=question sendEvents=false showNarration=false collection=null}}
+      </div>
     {{else}}
       <h3>{{t "common.question" }} </h3>
-    {{/if}}
-    <span>{{gru-math-text text=questionBody}}</span>
-    {{#if question.hasMedia}}
-      <img class="img-responsive" src="{{question.mediaUrl}}" />
-    {{/if}}
-    {{#if question.isResource}}
-      <div class='resource-view'>
-        {{player.qz-resource-viewer
-      resource=question
-      sendEvents=false
-      collection=null
-      isNotIframeUrl=false
-    }}
-      </div>
+      <span>{{gru-math-text text=questionBody}}</span>
+      {{#if question.hasMedia}}
+        <img class="img-responsive" src="{{question.mediaUrl}}" />
+      {{/if}}
     {{/if}}
   </div>
 </div>

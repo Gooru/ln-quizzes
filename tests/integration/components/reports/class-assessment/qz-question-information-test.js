@@ -13,9 +13,7 @@ moduleForComponent(
   }
 );
 
-test('Question Information With Narration Hints Explanation Media', function(
-  assert
-) {
+test('Question Information With Narration Hints Explanation Media', function(assert) {
   const question = Ember.Object.create({
     id: '56a120483b6e7b090501d3e7',
     text: 'Resource 1',
@@ -51,16 +49,6 @@ test('Question Information With Narration Hints Explanation Media', function(
     assert,
     $questionInformation,
     'Missing question information component'
-  );
-  T.exists(
-    assert,
-    $questionInformation.find('.narration'),
-    'Narration should be visible'
-  );
-  T.exists(
-    assert,
-    $questionInformation.find('.narration span'),
-    'Missing narration'
   );
   T.exists(
     assert,
@@ -104,9 +92,7 @@ test('Question Information With Narration Hints Explanation Media', function(
   );
 });
 
-test('Question Information Without Narration Hints Explanation Media', function(
-  assert
-) {
+test('Question Information Without Narration Hints Explanation Media', function(assert) {
   const question = Ember.Object.create({
     id: '56a120483b6e7b090501d3e7',
     text: 'Resource 1',

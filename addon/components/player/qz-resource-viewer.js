@@ -136,6 +136,12 @@ export default Ember.Component.extend({
    */
   sendEvents: false,
 
+  /**
+   * Show the narration section
+   * @property {Boolean} showNarration
+   */
+  showNarration: true,
+
   // -------------------------------------------------------------------------
   // Observers
 
@@ -160,7 +166,11 @@ export default Ember.Component.extend({
       (this.get('resource.isImageResource') &&
         this.get('isNotIframeUrl') === false)
     ) {
-      var narrationHeight = this.$('.narration').innerHeight();
+      var narrationHeight = 0;
+      if (this.get('showNarration') === true) {
+        narrationHeight = this.$('.narration').innerHeight();
+      }
+
       var contentHeight = $('.qz-content').height();
 
       // The 4 pixels subtracted are to make sure no scroll bar will appear for the content

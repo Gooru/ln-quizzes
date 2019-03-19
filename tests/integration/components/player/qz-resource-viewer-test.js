@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import T from 'dummy/tests/helpers/assert';
@@ -135,20 +136,19 @@ test('Layout with vimeo resource', function(assert) {
   T.exists(assert, $imageResourcePanel, 'Missing vimeo resource panel');
 });
 
-test('Layout when a resource url cannot be showed in an iframe', function(
-  assert
-) {
+test('Layout when a resource url cannot be showed in an iframe', function(assert) {
   const resource = ResourceModel.create({
     displayGuide: {
       is_broken: 1,
       is_frame_breaker: 1
-    }
+    },
+    content: Ember.A([])
   });
 
   this.set('resource', resource);
 
   this.render(
-    hbs`{{player/qz-resource-viewer resource=resource isNotIframeUrl=true}}`
+    hbs`{{player/qz-resource-viewer-linkout resource=resource isNotIframeUrl=true}}`
   );
 
   var $component = this.$(); //component dom element
@@ -169,7 +169,7 @@ test('Layout when a resource url cannot be showed in an iframe', function(
     'Missing resource card'
   );
   assert.ok(
-    $panel.find('.panel-body .qz-resource-card a.play-btn').length,
+    $panel.find('.panel-body .external-browser a.play-btn').length,
     'Missing play button'
   );
   assert.ok(

@@ -153,7 +153,8 @@ test('Player Integration', function(assert) {
     ownerId: 'profile-id1',
     displayGuide: {
       is_broken: 1,
-      is_frame_breaker: 1
+      is_frame_breaker: 1,
+      content: Ember.A([])
     }
   });
 

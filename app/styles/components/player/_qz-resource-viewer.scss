@@ -156,6 +156,10 @@
           }
         }
       }
+
+      .external-browser-img {
+        @extend .external-browser;
+      }
     }
   }
 }

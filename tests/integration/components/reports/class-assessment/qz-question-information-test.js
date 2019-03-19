@@ -52,11 +52,6 @@ test('Question Information With Narration Hints Explanation Media', function(ass
   );
   T.exists(
     assert,
-    $questionInformation.find('.narration span'),
-    'Missing narration'
-  );
-  T.exists(
-    assert,
     $questionInformation.find('.question'),
     'Question should be visible'
   );

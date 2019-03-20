@@ -12,4 +12,45 @@
       }
     }
   }
+  @media (max-width: $screen-xs) {
+    .linkout {
+      .panel-body {
+        display: grid !important;
+
+        .cards.qz-resource-card {
+          margin: unset;
+          height: 30vh;
+          width: 80vw;
+          .panel {
+            height: 48vh;
+            .panel-body {
+              .externalMsg {
+                height: 10vh;
+                font-size: 1.55vh;
+                color: black;
+              }
+            }
+          }
+        }
+        .external-browser {
+          width: 100% !important;
+          height: 25vh;
+          .msg-container {
+            height: unset;
+            width: 79%;
+          }
+          .external-browser-img,
+          .external-res-msg1,
+          .external-res-msg2,
+          .external-res-msg3 {
+            display: none;
+          }
+          .btn-dark {
+            font-size: 3vw !important;
+            width: 30vw !important;
+          }
+        }
+      }
+    }
+  }
 }

@@ -60,25 +60,35 @@ export default QuestionComponent.extend({
   // Properties
 
   /**
-   * Returns the 'false' answer value
+   * Returns the answer value of first answer option
    */
-  falseAnswerId: Ember.computed('question.answers', function() {
+  firstAnswerId: Ember.computed('question.answers', function() {
     const answers = this.get('question.answers');
-    const correctAnswerValue = this.get('question.correctAnswer')[0].value;
-    var found = answers.filter(ans => {
-      return ans.value !== correctAnswerValue;
-    });
-    return found ? found.get('firstObject.value') : 'False'; //TODO, is this a data problem?
+    return answers[0].value;
   }),
 
   /**
-   * Returns the 'true' answer value
+   * Returns the first answer object
    */
-  trueAnswerId: Ember.computed('question.answers', function() {
+  firstAnswerObject: Ember.computed('question.answers', function() {
     const answers = this.get('question.answers');
-    const correctAnswerValue = this.get('question.correctAnswer')[0].value;
-    const found = answers.filterBy('value', correctAnswerValue);
-    return found ? found.get('firstObject.value') : 'True'; //TODO, is this a data problem?
+    return answers[0];
+  }),
+
+  /**
+   * Returns the value of second answer option
+   */
+  secondAnswerId: Ember.computed('question.answers', function() {
+    const answers = this.get('question.answers');
+    return answers[1].value;
+  }),
+
+  /**
+   * Returns the second answer object
+   */
+  secondAnswerObject: Ember.computed('question.answers', function() {
+    const answers = this.get('question.answers');
+    return answers[1];
   })
 
   // -------------------------------------------------------------------------

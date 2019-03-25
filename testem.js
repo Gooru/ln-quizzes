@@ -2,6 +2,7 @@ module.exports = {
   framework: 'qunit',
   test_page: 'tests/index.html?hidepassed',
   reporter: 'tap',
+  tap_quiet_logs: false,
   xunit_intermediate_output: false,
   disable_watching: true,
   parallel: 4,

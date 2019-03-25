@@ -6,21 +6,21 @@
       <div class="radio {{if readOnly 'disabled'}}">
           {{#radio-button
             disabled=readOnly
-            value=trueAnswerId
+            value=firstAnswerId
             groupValue=userAnswer.firstObject.value
             changed="selectAnswerChoice"
             name="answer-choice-radio"}}
-            <span>({{answer-letter 0}})</span>{{t "qz-true-false.true"}}
+            <span>({{answer-letter 0}})</span>{{firstAnswerObject.text}}
           {{/radio-button}}
       </div>
       <div class="radio {{if readOnly 'disabled'}}">
           {{#radio-button
             disabled=readOnly
-            value=falseAnswerId
+            value=secondAnswerId
             groupValue=userAnswer.firstObject.value
             changed="selectAnswerChoice"
             name="answer-choice-radio"}}
-            <span>({{answer-letter 1}})</span>{{t "qz-true-false.false"}}
+            <span>({{answer-letter 1}})</span>{{secondAnswerObject.text}}
           {{/radio-button}}
       </div>
 </div>

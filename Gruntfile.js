@@ -4,6 +4,9 @@ module.exports = function(grunt) {
       run: {
         cmd: function(command) {
           return command;
+        },
+        options: {
+          maxBuffer: Infinity
         }
       },
       'ember-serve': 'QUIZZES_EMBEDDED=true ember serve',

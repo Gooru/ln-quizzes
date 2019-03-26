@@ -753,6 +753,9 @@ export default {
   'qz-viewer.not-iframe-url.header_1': 'এই সম্পদ Gooru মধ্যে দেখা যাবে না।',
   'qz-viewer.not-iframe-url.header_2':
     'একটি নতুন ট্যাবে সংস্থান খুলতে নিচের বাটনে ক্লিক করুন।',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'সম্পদ দেখুন',
   'qz-viewer.not-iframe-url.footer_1': 'কেন আমি এই ফাঁকা পাতা দেখতে পাচ্ছি?',
   'qz-viewer.not-iframe-url.footer_2':
@@ -761,6 +764,9 @@ export default {
     'তৈরি এবং তাদের কন্টেন্ট শেয়ার করুন। সম্পদ সহ বিভিন্ন সেটিংস আছে',
   'qz-viewer.not-iframe-url.footer_4':
     'বিষয়বস্তু দেখতে অন্য পৃষ্ঠায় আপনাকে নিতে প্রয়োজনীয়তা।',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'স্কোর',
   'gru-data-picker.completion': 'পরিপূরণ',
   'gru-data-picker.timeSpent': 'সময়',

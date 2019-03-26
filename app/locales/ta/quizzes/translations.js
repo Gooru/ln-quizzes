@@ -788,6 +788,9 @@ export default {
     'இந்த ஆதாரத்தை கோருவுக்குள் பார்க்க முடியாது.',
   'qz-viewer.not-iframe-url.header_2':
     'ஒரு புதிய தாவலில் வளத்தைத் திறக்க கீழே உள்ள பொத்தானைக் கிளிக் செய்க.',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'ஆதாரத்தைப் பார்வையிடவும்',
   'qz-viewer.not-iframe-url.footer_1':
     'ஏன் இந்த வெற்று பக்கத்தை நான் பார்க்கிறேன்?',
@@ -797,6 +800,9 @@ export default {
     'தங்கள் உள்ளடக்கத்தை உருவாக்கி பகிர்ந்து கொள்ளுங்கள். ஆதாரங்கள் பல்வேறு அமைப்புகளில் உள்ளன',
   'qz-viewer.not-iframe-url.footer_4':
     'உள்ளடக்கத்தை காண மற்றொரு பக்கம் உங்களை அழைத்துச்செல்லும் தேவைகள்.',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'மதிப்பெண்',
   'gru-data-picker.completion': 'நிறைவு',
   'gru-data-picker.timeSpent': 'நேரம்',

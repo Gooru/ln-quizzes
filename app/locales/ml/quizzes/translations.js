@@ -781,6 +781,9 @@ export default {
   'qz-viewer.not-iframe-url.header_1': 'gooru- ൽ ഈ ഉറവിടം കാണാൻ കഴിയില്ല.',
   'qz-viewer.not-iframe-url.header_2':
     'ഒരു പുതിയ ടാബിൽ റിസോഴ്സ് തുറക്കാൻ താഴെയുള്ള ബട്ടൺ ക്ലിക്കുചെയ്യുക.',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'വിഭവം കാണുക',
   'qz-viewer.not-iframe-url.footer_1':
     'ഞാൻ എന്തുകൊണ്ടാണ് ഈ ശൂന്യമായ പേജ് കാണുന്നത്?',
@@ -790,6 +793,9 @@ export default {
     'അവരുടെ ഉള്ളടക്കം സൃഷ്ടിക്കുകയും പങ്കിടുകയും ചെയ്യുക. ഉറവിടങ്ങൾ ഉൾപ്പെടെ വിവിധ ക്രമീകരണങ്ങൾ ഉണ്ട്',
   'qz-viewer.not-iframe-url.footer_4':
     'ഉള്ളടക്കം കാണുന്നതിനായി നിങ്ങളെ മറ്റൊരു പേജിലേക്ക് കൊണ്ടുപോകുന്ന ആവശ്യകതകൾ.',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'സ്കോർ',
   'gru-data-picker.completion': 'പൂർത്തീകരണം',
   'gru-data-picker.timeSpent': 'സമയം',

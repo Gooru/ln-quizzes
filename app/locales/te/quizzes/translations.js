@@ -766,6 +766,9 @@ export default {
   'qz-viewer.not-iframe-url.header_1': 'ఈ వనరు గోరులో వీక్షించబడదు.',
   'qz-viewer.not-iframe-url.header_2':
     'క్రొత్త ట్యాబ్లో వనరును తెరవడానికి దిగువ బటన్ను క్లిక్ చేయండి.',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'వనరును వీక్షించండి',
   'qz-viewer.not-iframe-url.footer_1':
     'నేను ఎందుకు ఈ ఖాళీ పేజీని చూస్తున్నాను?',
@@ -775,6 +778,9 @@ export default {
     'వారి కంటెంట్ను సృష్టించండి మరియు భాగస్వామ్యం చేయండి. వనరులు వివిధ రకాల అమర్పులను కలిగి ఉంటాయి',
   'qz-viewer.not-iframe-url.footer_4':
     'కంటెంట్ను వీక్షించడానికి మరొక పేజీకి మిమ్మల్ని తీసుకెళ్లే అవసరాలు.',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'స్కోరు',
   'gru-data-picker.completion': 'పూర్తి',
   'gru-data-picker.timeSpent': 'సమయం',

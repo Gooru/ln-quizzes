@@ -723,7 +723,7 @@ export default {
   'grade-dropdown.middle-school': 'মধ্য বিদ্যালয়',
   'grade-dropdown.high-school': 'উচ্চ বিদ্যালয়',
   'grade-dropdown.higher-ed': 'উচ্চ শিক্ষা',
-  'grade-dropdown.k': '	K',
+  'grade-dropdown.k': '\tK',
   'grade-dropdown.first': '1',
   'grade-dropdown.second': '2',
   'grade-dropdown.third': '3',
@@ -782,6 +782,9 @@ export default {
   'qz-viewer.not-iframe-url.header_1': 'এই সম্পদটো গৰোৰ ভিতৰত চাব নোৱাৰি।',
   'qz-viewer.not-iframe-url.header_2':
     'সম্পদটো এটা নতুন টেবত খুলিবলৈ তলত দিয়া বুটামটো ক্লিক কৰক।',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'সম্পদ চাওক',
   'qz-viewer.not-iframe-url.footer_1': 'মই এই খালি পৃষ্ঠাখন কিয় দেখিছোঁ?',
   'qz-viewer.not-iframe-url.footer_2':
@@ -790,6 +793,9 @@ export default {
     'বিষয়বস্তু সৃষ্টি কৰে আৰু শ্বেয়াৰ কৰে। সম্পদসমূহৰ বিভিন্ন চেটিং থাকে, লগতে',
   'qz-viewer.not-iframe-url.footer_4':
     'আপোনাক বিষয়বস্তু চাবৰ বাবে অন্য পৃষ্ঠালৈ লৈ যাবলৈ প্ৰয়োজনীয়তাসমূহো থাকে।',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'সংখ্যা',
   'gru-data-picker.completion': 'সম্পন্নতা',
   'gru-data-picker.timeSpent': 'সময়',
@@ -998,7 +1004,7 @@ export default {
   'qz-rubric-creation.qz-category.qz-scoring-levels.worst': 'নিকৃষ্টতম',
   'over-all-score.title': 'সম্পূৰ্ণ নম্বৰ আৰু মতামত',
   'over-all-score.total-points': 'সম্ভাৱনীয় সম্পূৰ্ণ বিন্দুসমূহ',
-  'over-all-score.points': '	pts',
+  'over-all-score.points': '\tpts',
   'over-all-score.feedback-guidance-placeholder':
     'প্ৰাক্তন। যেতিয়া আপুনি এই ৰচনাখন পুনিৰীক্ষণ কৰি থাকে, তেতিয়া আৰম্ভণিৰ পৰা শেষলৈ লেখকৰ অপৰিৱৰ্তনশীল অভিমতৰ ওপৰত মতামত দিব',
   'qz-player.resource-format.image_resource': 'চিত্ৰ',
@@ -1012,5 +1018,5 @@ export default {
   'qz-free-response-viewer.preview-submission': 'পূৰ্বদৰ্শন সমৰ্পণ',
   'qz-free-response-viewer.full-rubric': 'পূৰ্ণ নিৰ্দেশনাৱলী',
   'qz-free-response-viewer.total-score': 'সম্পৰ্ণ নম্বৰ',
-  'qz-free-response-viewer.points': '	pts'
+  'qz-free-response-viewer.points': '\tpts'
 };

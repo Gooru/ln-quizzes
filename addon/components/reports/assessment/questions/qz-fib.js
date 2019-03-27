@@ -42,7 +42,9 @@ export default Ember.Component.extend(QuestionMixin, {
       }
 
       correctAnswers = correctAnswers.map(function(correctAnswer) {
-        correctAnswer.normalizedValue = correctAnswer.value.toLowerCase();
+        correctAnswer.normalizedValue = correctAnswer.value
+          .trim()
+          .toLowerCase();
         return correctAnswer;
       });
 
@@ -50,17 +52,26 @@ export default Ember.Component.extend(QuestionMixin, {
         const userAnswer = userAnswers.findBy('value', answer.value);
         const correctAnswer = correctAnswers.findBy(
           'normalizedValue',
-          userAnswer.value.toLowerCase()
+          userAnswer.value.trim().toLowerCase()
         );
-        const correct =
-          correctAnswer &&
-          correctAnswers.indexOf(correctAnswer) ===
-            userAnswers.indexOf(userAnswer);
+
+        let correct = false;
+        if (!question.skipped && question.score === 100) {
+          correct = true;
+        } else {
+          correct =
+            correctAnswer &&
+            correctAnswers.indexOf(correctAnswer) ===
+              userAnswers.indexOf(userAnswer);
+        }
+
         const elementClass = anonymous
           ? 'anonymous'
-          : correct ? 'correct' : 'incorrect';
+          : correct
+            ? 'correct'
+            : 'incorrect';
         return {
-          text: userAnswer.value,
+          text: userAnswer.value.trim(),
           class: `answer ${elementClass}`
         };
       });

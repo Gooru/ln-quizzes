@@ -71,7 +71,7 @@ export default Ember.Component.extend(QuestionMixin, {
             ? 'correct'
             : 'incorrect';
         return {
-          text: userAnswer.value.trim(),
+          text: userAnswer.value,
           class: `answer ${elementClass}`
         };
       });

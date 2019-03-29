@@ -784,6 +784,9 @@ export default {
     'ଏହି ଉତ୍ସ Gooru ରେ ଦେଖାଯାଇ ପାରିବ ନାହିଁ ।',
   'qz-viewer.not-iframe-url.header_2':
     'ଏକ ନୂଆ ଟ୍ୟାବରେ ଉତ୍ସକୁ ଖୋଲିବା ପାଇଁ ନିମ୍ନ ବଟ୍ଟନକୁ କ୍ଲିକ୍ କରନ୍ତୁ ।',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'ଉତ୍ସକୁ ଦେଖନ୍ତୁ',
   'qz-viewer.not-iframe-url.footer_1': 'ମୁଁ କାହିଁକି ଏକି ଶୂନ୍ୟ ପୃଷ୍ଠା ଦେଖୁଛି ?',
   'qz-viewer.not-iframe-url.footer_2':
@@ -792,6 +795,9 @@ export default {
     'ସେମାନଙ୍କର ବିଷୟବସ୍ତୁ ପ୍ରସ୍ତୁତି କରି ଶେୟାର କରନ୍ତି । ଉତ୍ସଗୁଡ଼ିକର ଅନେକ ସେଟିଙ୍ଗ୍ ରହିଛି, ଯେଉଁଥିରେ',
   'qz-viewer.not-iframe-url.footer_4':
     'ବିଷୟବସ୍ତୁକୁ ଦେଖିବା ପାଇଁ ଆପଣଙ୍କୁ ଆଉ ଏକ ପୃଷ୍ଠାକୁ ନେବାକୁ ପଡ଼େ ।',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'ଅଙ୍କ (ସ୍କୋର୍)',
   'gru-data-picker.completion': 'ସମାପନ',
   'gru-data-picker.timeSpent': 'ସମୟ',

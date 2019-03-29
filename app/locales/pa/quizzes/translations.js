@@ -767,6 +767,9 @@ export default {
     'ਇਸ ਸਰੋਤ ਨੂੰ ਗੂਰੂ ਅੰਦਰ ਨਹੀਂ ਵੇਖਿਆ ਜਾ ਸਕਦਾ',
   'qz-viewer.not-iframe-url.header_2':
     'ਇੱਕ ਨਵੇਂ ਟੈਬ ਵਿੱਚ ਸਰੋਤ ਨੂੰ ਖੋਲਣ ਲਈ ਹੇਠਾਂ ਦਿੱਤੇ ਬਟਨ ਤੇ ਕਲਿਕ ਕਰੋ.',
+  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
+  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
+  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
   'qz-viewer.not-iframe-url.view-resource': 'ਸਰੋਤ ਵੇਖੋ',
   'qz-viewer.not-iframe-url.footer_1': 'ਮੈਂ ਇਹ ਖਾਲੀ ਪੇਜ ਕਿਉਂ ਦੇਖ ਰਿਹਾ ਹਾਂ?',
   'qz-viewer.not-iframe-url.footer_2':
@@ -775,6 +778,9 @@ export default {
     'ਉਨ੍ਹਾਂ ਦੀ ਸਮੱਗਰੀ ਬਣਾਉ ਅਤੇ ਸਾਂਝਾ ਕਰੋ. ਵਸੀਲਿਆਂ ਦੇ ਕਈ ਤਰ੍ਹਾਂ ਦੀਆਂ ਵਿਵਸਥਾਵਾਂ ਹਨ, ਸਮੇਤ',
   'qz-viewer.not-iframe-url.footer_4':
     'ਲੋੜਾਂ ਜੋ ਤੁਹਾਨੂੰ ਸਮੱਗਰੀ ਨੂੰ ਵੇਖਣ ਲਈ ਦੂਜੇ ਪੰਨੇ \'ਤੇ ਲੈ ਜਾਂਦੇ ਹਨ.',
+  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.linkout_desc':
+    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
   'gru-data-picker.score': 'ਸਕੋਰ',
   'gru-data-picker.completion': 'ਮੁਕੰਮਲ',
   'gru-data-picker.timeSpent': 'ਸਮਾਂ',

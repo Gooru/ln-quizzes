@@ -1,4 +1,4 @@
-<ul class="filters">
+<ul class="filters hidden">
   {{#each questionProperties as |property index|}}
     <li class="checkbox">
       <label>
@@ -12,12 +12,11 @@
     </li>
   {{/each}}
 </ul>
-
-{{gru-two-tier-header-table
+{{gru-two-tier-header-table-1
   firstTierHeaders=assessmentQuestions
   secondTierHeaders=questionProperties
   rowHeadersHeader=studentsHeader
   data=tableData
-  onSelectFirstTierHeader=(action 'selectQuestion')
-  onSelectRowHeader=(action 'selectStudent')
+onSelectFirstTierHeader=(action 'selectQuestion')
+onSelectRowHeader=(action 'selectStudent')
 }}

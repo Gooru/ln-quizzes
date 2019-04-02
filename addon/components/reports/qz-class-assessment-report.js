@@ -183,5 +183,12 @@ export default Ember.Component.extend(ModalMixin, {
   /**
    * @prop { boolean } isRealTime - if the report is a real time report
    */
-  showAttempts: false
+  showAttempts: false,
+
+  isCollectionType: Ember.computed('', function() {
+    const reportData = this.get('reportData');
+    const reportEvent = reportData.reportEvents[0];
+    let isCollection = reportEvent.collection.isCollection;
+    return isCollection;
+  })
 });

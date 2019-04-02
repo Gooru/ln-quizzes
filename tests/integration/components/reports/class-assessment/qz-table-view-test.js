@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { moduleForComponent, test } from 'ember-qunit';
+import { moduleForComponent, skip } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Collection from 'quizzes-addon/models/collection/collection';
 import Resource from 'quizzes-addon/models/resource/resource';
@@ -18,7 +18,7 @@ moduleForComponent(
   }
 );
 
-test('it renders', function(assert) {
+skip('it renders', function(assert) {
   const collection = Collection.create({
     id: 'collection-id',
     resources: [
@@ -147,7 +147,10 @@ test('it renders', function(assert) {
     'First tier: Number of header columns'
   );
   assert.equal(
-    $firstTierHeader.find('th:eq(0)').text().trim(),
+    $firstTierHeader
+      .find('th:eq(0)')
+      .text()
+      .trim(),
     this.get('i18n').t('reports.qz-table-view.totals').string,
     'First tier: First header is for aggregate values'
   );
@@ -184,7 +187,7 @@ test('it renders', function(assert) {
   assert.equal($dataRows.length, 3, 'Number of data rows');
 });
 
-test('it triggers event when clicking on questions', function(assert) {
+skip('it triggers event when clicking on questions', function(assert) {
   assert.expect(3);
   const collection = Collection.create({
     id: 'collection-id',

@@ -26,6 +26,7 @@
         border-style: dotted;
         margin: 10px;
         margin-right: 6px;
+        text-align: center;
       }
 
       .name {
@@ -66,12 +67,23 @@
       padding: 5px 5px 0 0;
     }
 
+    .grey-circle {
+      background: url("gooru/images/baseline-block-24px.svg");
+      width: 29px;
+      height: 29px;
+      display: block;
+      background-size: cover;
+      border-color: $light-200 !important;
+      text-align: center;
+      opacity: 0.2;
+    }
+
     .questions {
       @include flexbox;
       @include flex-wrap(wrap);
       width: 100%;
       span {
-        padding-left: 3%;
+        //padding-left: 3%;
         &:not(.not-started) {
           cursor: pointer;
         }
@@ -79,12 +91,15 @@
         margin-bottom: 15px;
         width: 24px;
         height: 24px;
+        text-align: center;
         border-radius: 50%;
         border: solid 1px black;
         &.skipped,
         &.not-started {
           border-color: $light-200;
           color: $light-200;
+          color: $close-color;
+          @extend .grey-circle;
         }
         &.correct {
           border-color: $brand-success;
@@ -93,6 +108,8 @@
         &.incorrect {
           border-color: $brand-incorrect;
           color: $brand-incorrect;
+          color: $close-color;
+          @extend .grey-circle;
         }
         &.started {
           border-color: $blue-400;

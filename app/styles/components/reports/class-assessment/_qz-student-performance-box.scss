@@ -84,15 +84,19 @@
         &.skipped,
         &.not-started {
           border-color: $light-200;
+          color: $light-200;
         }
         &.correct {
           border-color: $brand-success;
+          color: $brand-success;
         }
         &.incorrect {
           border-color: $brand-incorrect;
+          color: $brand-incorrect;
         }
         &.started {
           border-color: $blue-400;
+          color: $blue-400;
         }
       }
     }

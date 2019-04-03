@@ -1,21 +1,38 @@
 .reports.class-assessment.qz-student-performance-box {
-  width: 152px;
-  margin-right: 5px;
+  width: 225px;
+  margin-right: 10px;
+  margin-bottom: 6px;
   .panel {
     margin-bottom: 5px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+
     .panel-heading {
       padding: 5px;
+      border-radius: 4px 4px 0 0;
+
       cursor: pointer;
-      color: $white;
       line-height: $font-size-h6;
-      height: 26px;
       @include flexbox;
-      @include justify-content(space-between);
       @include align-items(center);
-      background-color: $dark-300;
+
+      background-color: $white;
+
+      .student-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: dotted 1px $sky-400;
+        border-style: dotted;
+        margin: 10px;
+        margin-right: 6px;
+      }
+
       .name {
-        max-width: 90px;
+        max-width: 61px;
         display: inline-block;
+        word-break: break-word;
+        text-transform: capitalize;
       }
       .material-icons {
         font-size: $in-progress-icon-size;
@@ -24,24 +41,29 @@
       &.anonymous {
         font-size: $font-size-anonymous;
         line-height: $font-size-anonymous;
-        height: 40px;
-        padding: 0;
         .name {
-          max-width: 100%;
+          max-width: 120px !important;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
       &.not-started {
         .name {
-          max-width: 100%;
+          max-width: 61px;
         }
       }
       .question-in-progress {
         padding-top: 2px;
       }
     }
-
+    hr {
+      margin: 0 15px;
+      border-top: 1px solid $nobel-gray;
+      margin-bottom: 10px;
+    }
     .panel-body {
-      padding: 5px 0 0;
+      padding: 5px 5px 0 0;
     }
 
     .questions {
@@ -49,26 +71,28 @@
       @include flex-wrap(wrap);
       width: 100%;
       span {
+        padding-left: 3%;
         &:not(.not-started) {
           cursor: pointer;
         }
-        width: 22px;
-        height: 22px;
-        margin-left: 7px;
-        margin-bottom: 5px;
-        border-radius: 4px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: solid 1px black;
         &.skipped,
         &.not-started {
-          background-color: $light-200;
+          border-color: $light-200;
         }
         &.correct {
-          background-color: $brand-success;
+          border-color: $brand-success;
         }
         &.incorrect {
-          background-color: $brand-incorrect;
+          border-color: $brand-incorrect;
         }
         &.started {
-          background-color: $blue-400;
+          border-color: $blue-400;
         }
       }
     }

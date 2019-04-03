@@ -2,7 +2,8 @@
   $chart-diameter: 82px;
   $small-chart-diameter: 4rem;
 
-  padding: 20px 0 10px 0;
+  padding: 20px 0 0px 0;
+  margin-right: 15px;
 
   .content {
     margin-bottom: 5px;
@@ -23,7 +24,7 @@
         width: 40%;
       }
       @media (min-width: $screen-lg-min) {
-        width: 35%;
+        width: 28%;
       }
       list-style: none;
       margin: 0 0 15px;
@@ -32,7 +33,7 @@
       border-right: 1px solid $gray-lighter;
 
       > li {
-        width: 33.3%;
+        width: 50%;
         height: 147px;
         text-align: center;
         display: inline-block;

@@ -108,8 +108,6 @@
         &.incorrect {
           border-color: $brand-incorrect;
           color: $brand-incorrect;
-          color: $close-color;
-          @extend .grey-circle;
         }
         &.started {
           border-color: $blue-400;

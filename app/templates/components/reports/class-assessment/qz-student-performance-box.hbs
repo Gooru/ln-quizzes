@@ -1,7 +1,11 @@
 <div class="panel panel-default">
   {{#if student.isAttemptStarted}}
     <div class="panel-heading {{ if anonymous 'anonymous'}}" {{!-- style={{startedStyle}} --}} {{action 'selectStudent'}}>
-      <div class='student-circle'> </div>
+      {{#if anonymous}}
+        <div class='student-circle'> </div>
+      {{else}}
+        <img class='student-circle' src={{studentAvatarUrl}} />
+      {{/if}}
       <span class="name">{{ if anonymous student.profileCode student.lastFirstName }}</span>
       {{#unless anonymous}}
         {{#unless student.isAttemptFinished}}
@@ -14,7 +18,7 @@
       {{#if anonymous}}
         <div class='student-circle'> </div>
       {{else}}
-        <img class='student-circle' src={{student.avatarUrl}} />
+        <img class='student-circle' src={{studentAvatarUrl}} />
       {{/if}}
       <span class="name">{{ if anonymous student.profileCode student.lastFirstName }}</span>
     </div>

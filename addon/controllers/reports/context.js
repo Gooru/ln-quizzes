@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import {
   REAL_TIME_CLIENT,
-  CONTEXT_EVENT_TYPES
+  CONTEXT_EVENT_TYPES,
+  VIEW_LAYOUT_PICKER_OPTIONS
 } from 'quizzes-addon/config/quizzes-config';
 import ConfigMixin from 'quizzes-addon/mixins/endpoint-config';
 import ReportDataEvent from 'quizzes-addon/models/result/report-data-event';
@@ -53,6 +54,11 @@ export default Ember.Controller.extend(ConfigMixin, {
    */
   quizzesAttemptService: Ember.inject.service('quizzes/attempt'),
 
+  /**
+   * Layout of the page / grid / list
+   */
+  layoutView: true,
+
   // -------------------------------------------------------------------------
   // Actions
 
@@ -64,6 +70,10 @@ export default Ember.Controller.extend(ConfigMixin, {
       this.send('navigateBack');
     },
 
+    changeView: function(layout) {
+      const thumbnails = layout === VIEW_LAYOUT_PICKER_OPTIONS.LIST;
+      this.set('layoutView', !thumbnails);
+    },
     /**
      * Launch report with anonymous codes
      */
@@ -73,8 +83,9 @@ export default Ember.Controller.extend(ConfigMixin, {
       window.open(
         `${url}${separator}anonymous=true`,
         'realTimeAnonymous',
-        `width=${window.screen.width}, height=${window.screen
-          .height}, left=0, top=0, scrollbars=1`,
+        `width=${window.screen.width}, height=${
+          window.screen.height
+        }, left=0, top=0, scrollbars=1`,
         true
       );
     }
@@ -112,7 +123,7 @@ export default Ember.Controller.extend(ConfigMixin, {
 
   /**
    * @property { Object } webSocketClient - web socket client for getting live
-  * data from the Real Time server
+   * data from the Real Time server
    */
   webSocketClient: null,
 
@@ -123,9 +134,9 @@ export default Ember.Controller.extend(ConfigMixin, {
   maxNumberOfRetry: 20,
 
   /**
-    * Number of attempts tried to reconnect web scoket
-    * @property {Number}
-    */
+   * Number of attempts tried to reconnect web scoket
+   * @property {Number}
+   */
   numberOfRetry: 0,
 
   /**
@@ -327,33 +338,31 @@ export default Ember.Controller.extend(ConfigMixin, {
             return reportData;
           })
           .then(reportData => {
-            Ember.RSVP
-              .hash({
-                reportData,
-                profiles: controller
-                  .get('quizzesProfileService')
-                  .readProfiles(
-                    reportData
-                      .get('reportEvents')
-                      .map(({ profileId }) => profileId)
-                  )
-              })
-              .then(({ reportData, profiles }) => {
-                reportData.get('reportEvents').forEach(function(reportEvent) {
-                  const profile = profiles[reportEvent.get('profileId')];
-                  reportEvent.setProfileProperties(profile);
-                });
-                reportData.setCollection(controller.get('collection'));
-
-                if (isTryToReconnect) {
-                  controller.set('reportData', reportData);
-                } else {
-                  controller.set(
-                    'reportData.reportEvents',
-                    reportData.get('reportEvents')
-                  );
-                }
+            Ember.RSVP.hash({
+              reportData,
+              profiles: controller
+                .get('quizzesProfileService')
+                .readProfiles(
+                  reportData
+                    .get('reportEvents')
+                    .map(({ profileId }) => profileId)
+                )
+            }).then(({ reportData, profiles }) => {
+              reportData.get('reportEvents').forEach(function(reportEvent) {
+                const profile = profiles[reportEvent.get('profileId')];
+                reportEvent.setProfileProperties(profile);
               });
+              reportData.setCollection(controller.get('collection'));
+
+              if (isTryToReconnect) {
+                controller.set('reportData', reportData);
+              } else {
+                controller.set(
+                  'reportData.reportEvents',
+                  reportData.get('reportEvents')
+                );
+              }
+            });
           });
       });
   }

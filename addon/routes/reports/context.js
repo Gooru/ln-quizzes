@@ -88,6 +88,7 @@ export default Ember.Route.extend({
                 profileId: student.get('id'),
                 profileName: student.get('fullName'),
                 lastFirstName: student.get('lastFirstName'),
+                avatarUrl: student.get('avatarUrl'),
                 isAttemptStarted: false,
                 isAttemptFinished: false
               })

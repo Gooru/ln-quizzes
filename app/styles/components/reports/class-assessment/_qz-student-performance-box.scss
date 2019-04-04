@@ -40,8 +40,8 @@
       }
 
       &.anonymous {
-        font-size: $font-size-anonymous;
-        line-height: $font-size-anonymous;
+        // font-size: $font-size-anonymous;
+        // line-height: $font-size-anonymous;
         .name {
           max-width: 120px !important;
           white-space: nowrap;
@@ -108,8 +108,6 @@
         &.incorrect {
           border-color: $brand-incorrect;
           color: $brand-incorrect;
-          color: $close-color;
-          @extend .grey-circle;
         }
         &.started {
           border-color: $blue-400;

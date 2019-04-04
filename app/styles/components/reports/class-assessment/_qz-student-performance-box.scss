@@ -40,8 +40,8 @@
       }
 
       &.anonymous {
-        font-size: $font-size-anonymous;
-        line-height: $font-size-anonymous;
+        // font-size: $font-size-anonymous;
+        // line-height: $font-size-anonymous;
         .name {
           max-width: 120px !important;
           white-space: nowrap;

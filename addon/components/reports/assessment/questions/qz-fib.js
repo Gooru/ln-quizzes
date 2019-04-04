@@ -48,21 +48,15 @@ export default Ember.Component.extend(QuestionMixin, {
         return correctAnswer;
       });
 
-      const answers = userAnswers.map(function(answer) {
-        const userAnswer = userAnswers.findBy('value', answer.value);
-        const correctAnswer = correctAnswers.findBy(
-          'normalizedValue',
-          userAnswer.value.trim().toLowerCase()
-        );
+      const answers = userAnswers.map(function(answer, index) {
+        const userAnswer = answer.value.trim().toLowerCase();
+        const correctAnswer = correctAnswers[index].normalizedValue;
 
         let correct = false;
         if (!question.skipped && question.score === 100) {
           correct = true;
         } else {
-          correct =
-            correctAnswer &&
-            correctAnswers.indexOf(correctAnswer) ===
-              userAnswers.indexOf(userAnswer);
+          correct = correctAnswer && correctAnswer === userAnswer;
         }
 
         const elementClass = anonymous
@@ -71,7 +65,7 @@ export default Ember.Component.extend(QuestionMixin, {
             ? 'correct'
             : 'incorrect';
         return {
-          text: userAnswer.value,
+          text: answer.value,
           class: `answer ${elementClass}`
         };
       });

@@ -6,6 +6,7 @@ import {
   getScoreString,
   getReactionIcon
 } from 'quizzes-addon/utils/utils';
+import { average } from 'quizzes-addon/utils/math';
 
 /**
  * Class assessment table view
@@ -153,6 +154,40 @@ export default Ember.Component.extend({
       );
     }
   ),
+
+  /**
+   * @prop { Object[] } scoresData - Array with all the scores in the assessment
+   *
+   * Each object corresponds to an assessment result by a student and will consist of:
+   * - score: number of questions answered correctly vs. total number of questions
+   * - completed: have all the questions in the assessment been answered?
+   */
+  scoresData: Ember.computed(
+    'reportData.reportEvents.@each.updated',
+    function() {
+      const reportEvents = this.get('reportData.reportEvents');
+
+      const results = [];
+      reportEvents.forEach(reportEvent => {
+        if (reportEvent.get('totalAnswered') > 0) {
+          results.push({
+            score: reportEvent.get('averageScore'),
+            completed: reportEvent.get('isAttemptFinished')
+          });
+        }
+      });
+      return results;
+    }
+  ),
+
+  /**
+   * @prop { number } averageScore - average score in the assessment
+   * for the entire group of students (per scoresData)
+   */
+  averageScore: Ember.computed('scoresData.@each.score', function() {
+    const scores = this.get('scoresData').map(result => result.score);
+    return scores.length ? Math.round(average(scores)) : 0;
+  }),
 
   /**
    * @prop { ReportData } reportData - Unordered 3D matrix of data to use as content for the table component

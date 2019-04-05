@@ -40,8 +40,6 @@
       }
 
       &.anonymous {
-        // font-size: $font-size-anonymous;
-        // line-height: $font-size-anonymous;
         .name {
           max-width: 120px !important;
           white-space: nowrap;
@@ -76,6 +74,8 @@
       border-color: $light-200 !important;
       text-align: center;
       opacity: 0.2;
+      margin-left: 11px;
+      margin-left: 10px;
     }
 
     .questions {

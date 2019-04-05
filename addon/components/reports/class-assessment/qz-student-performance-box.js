@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { getGradeColor } from 'quizzes-addon/utils/utils';
+import { DEFAULT_IMAGES } from 'quizzes-addon/config/quizzes-config';
 
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------
@@ -86,6 +87,25 @@ export default Ember.Component.extend({
    * @property {User} student
    */
   student: null,
+
+  studentAvatarUrl: Ember.computed('student.avatarUrl', function() {
+    let imageUrl;
+    if (
+      this.get('student.avatarUrl') &&
+      this.get('student.avatarUrl') !== 'undefined'
+    ) {
+      imageUrl = this.get('student.avatarUrl');
+    } else {
+      const appRootPath = this.get(
+        'configurationService.configuration.appRootPath'
+      )
+        ? this.get('configurationService.configuration.appRootPath')
+        : '/';
+      imageUrl = appRootPath + DEFAULT_IMAGES.USER_PROFILE;
+    }
+
+    return imageUrl;
+  }),
 
   // -------------------------------------------------------------------------
   // Methods

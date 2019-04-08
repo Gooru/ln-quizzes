@@ -88,6 +88,10 @@ export default Ember.Component.extend({
    */
   student: null,
 
+  /**
+   * Get students avatar url if present,
+   * if not returns the default profile img
+   */
   studentAvatarUrl: Ember.computed('student.avatarUrl', function() {
     let imageUrl;
     if (
@@ -105,6 +109,44 @@ export default Ember.Component.extend({
     }
 
     return imageUrl;
+  }),
+
+  /**
+   * returns split of lastFirstName of student
+   */
+  studentLastFirstName: Ember.computed('student.avatarUrl', function() {
+    let studentNameArray,
+      studentLastName = '',
+      studentFirstName = '',
+      studentLastFirstNameObject;
+    if (
+      this.get('student.lastFirstName') &&
+      this.get('student.lastFirstName') !== 'undefined'
+    ) {
+      studentNameArray = this.get('student.lastFirstName').split(',');
+      if (studentNameArray.length === 1) {
+        studentLastName = studentNameArray[0];
+        studentFirstName = '';
+      } else if (studentNameArray.length > 1) {
+        studentNameArray.map((curVal, curIndex) => {
+          if (curIndex === 0) {
+            studentLastName = curVal;
+          } else {
+            studentFirstName = studentFirstName + curVal;
+          }
+        });
+      } else {
+        studentLastName = '';
+        studentFirstName = '';
+      }
+      studentLastFirstNameObject = {
+        studentLastName: studentLastName,
+        studentFirstName: studentFirstName
+      };
+    }
+
+    //console.log('studentLastFirstNameObject', studentLastFirstNameObject); //eslint-disable-line
+    return studentLastFirstNameObject;
   }),
 
   // -------------------------------------------------------------------------

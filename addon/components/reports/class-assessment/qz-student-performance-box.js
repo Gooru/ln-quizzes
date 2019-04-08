@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getGradeColor } from 'quizzes-addon/utils/utils';
+import { getGradeColor, formatTime } from 'quizzes-addon/utils/utils';
 import { DEFAULT_IMAGES } from 'quizzes-addon/config/quizzes-config';
 
 export default Ember.Component.extend({
@@ -174,6 +174,7 @@ export default Ember.Component.extend({
     }
     return Ember.Object.create({
       status,
+      savedTime: formatTime(questionResult.savedTime),
       id: questionId
     });
   }

@@ -26,9 +26,25 @@
     </div>
   {{/if}}
   <hr>
-  <div class="panel-body questions">
-    {{#each questions as |question index|}}
-      <span class="{{question.status}}" {{action 'selectQuestion' question.id}}> {{ plus-one index}}</span>
-    {{/each}}
-  </div>
+  {{#if isCollectionType}}
+    <div class="panel-body time">
+      {{#each questions as |question index|}}
+        {{#if (eq question.status 'started') }}
+          <span class="resource-time">
+            {{question.savedTime}}
+          </span>
+        {{else}}
+          <span class="{{question.status}}">
+            {{ plus-one index }}
+          </span>
+        {{/if}}
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="panel-body questions">
+      {{#each questions as |question index|}}
+        <span class="{{question.status}}" {{action 'selectQuestion' question.id}}> {{ plus-one index}}</span>
+      {{/each}}
+    </div>
+  {{/if}}
 </div>

@@ -74,8 +74,9 @@
       border-color: $light-200 !important;
       text-align: center;
       opacity: 0.2;
-      margin-left: 11px;
+      margin-bottom: 10px;
       margin-left: 10px;
+      line-height: 27px;
     }
 
     .questions {
@@ -103,15 +104,18 @@
         }
         &.correct {
           border-color: $brand-success;
-          color: $brand-success;
+          background-color: $brand-success;
+          color: $white;
         }
         &.incorrect {
           border-color: $brand-incorrect;
-          color: $brand-incorrect;
+          background-color: $brand-incorrect;
+          color: $white;
         }
         &.started {
           border-color: $blue-400;
-          color: $blue-400;
+          background-color: $blue-400;
+          color: $white;
         }
       }
     }

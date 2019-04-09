@@ -1,5 +1,7 @@
 <div class="controller reports collection">
   <div class="header {{if anonymous 'anonymous'}}">
+    <span class='back'>{{gru-icon name='keyboard_arrow_left'}}
+    </span>
     <div class="title">
       <i class="on-air">{{t 'common.launch-on-air'}}</i>
       <span>{{reportData.collection.title}}</span>
@@ -8,7 +10,7 @@
     <div class='right'>
       {{#if anonymous}}
       {{else}}
-        <div {{action "goBack"}} class="back">
+        <div {{action "goBack"}} class="back hidden">
           <div class='close-txt'>{{t "common.back"}}</div>
           <div class='close-icon-1'>{{gru-icon name='close'}}</div>
         </div>

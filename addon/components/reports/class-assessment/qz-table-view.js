@@ -86,7 +86,7 @@ export default Ember.Component.extend({
    * Each question object will consist of:
    * - label: visual representation of the header
    * - value: internal header identifier
-   *
+   *- type : type represented by in column
    * The questions will be ordered in the array in ascending order per the order value
    */
   assessmentQuestions: Ember.computed(
@@ -101,7 +101,8 @@ export default Ember.Component.extend({
         .map(function(question, index) {
           return {
             value: question.get('id'),
-            label: labelPrefix + (index + 1)
+            label: labelPrefix + (index + 1),
+            type: question.get('type')
           };
         });
 
@@ -274,9 +275,14 @@ export default Ember.Component.extend({
               if (k === 0) {
                 value = status;
               }
+              let renderOut = !renderFunction ? value : renderFunction(value);
+              if (renderFunction.name === 'formatTime' && value === 0) {
+                renderOut = `<span class="ad score answer-not-started">${j}</span>`;
+              }
+
               data[i].content[j * questionPropertiesIdsLen + k] = {
                 value,
-                output: !renderFunction ? value : renderFunction(value)
+                output: renderOut
               };
               propertyValues[k].push(questionResult);
             }
@@ -291,11 +297,15 @@ export default Ember.Component.extend({
 
           // For displaying the aggregate value, use the question property's aggregateRenderFunction.
           // If there's no aggregateRenderFunction, use the property's renderFunction by default.
+          let aggregateOutput = aggregateRenderFunction
+            ? aggregateRenderFunction(value)
+            : questionProperties[k].renderFunction(value);
+          aggregateOutput =
+            aggregateOutput && aggregateOutput !== '' ? aggregateOutput : '-';
+
           data[i].content[k] = {
             value,
-            output: aggregateRenderFunction
-              ? aggregateRenderFunction(value)
-              : questionProperties[k].renderFunction(value)
+            output: aggregateOutput
           };
         }
       });

@@ -100,7 +100,7 @@ export default Ember.Component.extend({
           if (numColor) {
             results.push({
               color,
-              value: Math.round(numColor / scoreColorsLen * 100)
+              value: Math.round((numColor / scoreColorsLen) * 100)
             });
           }
         });
@@ -174,6 +174,11 @@ export default Ember.Component.extend({
                   ? 1
                   : 0;
               }
+            } else if (
+              questionResult.get('resource').isResource &&
+              questionResult.get('skipped') === false
+            ) {
+              questionCounter.correct += 1; //each attempted is marked as correct for collection resource
             }
           });
         });

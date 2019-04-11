@@ -3,10 +3,11 @@
     <div class="panel-heading {{ if anonymous 'anonymous'}}" {{!-- style={{startedStyle}} --}} {{action 'selectStudent'}}>
       {{#if anonymous}}
         <div class='student-circle'> </div>
+        <span class="name">{{ student.profileCode }}</span>
       {{else}}
         <img class='student-circle' src={{studentAvatarUrl}} />
+        <span class="name">{{ student.lastFirstName }}</span>
       {{/if}}
-      <span class="name">{{ if anonymous student.profileCode student.lastFirstName }}</span>
       {{#unless anonymous}}
         {{#unless student.isAttemptFinished}}
           <span class="question-in-progress">{{gru-icon name='av_timer'}}</span>
@@ -17,16 +18,33 @@
     <div class="panel-heading {{ if anonymous 'anonymous'}} not-started" {{action 'selectStudent'}}>
       {{#if anonymous}}
         <div class='student-circle'> </div>
+        <span class="name">{{ student.profileCode }}</span>
       {{else}}
         <img class='student-circle' src={{studentAvatarUrl}} />
+        <span class="name">{{ student.lastFirstName }}</span>
       {{/if}}
-      <span class="name">{{ if anonymous student.profileCode student.lastFirstName }}</span>
     </div>
   {{/if}}
   <hr>
-  <div class="panel-body questions">
-    {{#each questions as |question index|}}
-      <span class="{{question.status}}" {{action 'selectQuestion' question.id}}> {{ plus-one index}}</span>
-    {{/each}}
-  </div>
+  {{#if isCollectionType}}
+    <div class="panel-body time">
+      {{#each questions as |question index|}}
+        {{#if (eq question.status 'started') }}
+          <span class="resource-time">
+            {{question.savedTime}}
+          </span>
+        {{else}}
+          <span class="{{question.status}}">
+            {{ plus-one index }}
+          </span>
+        {{/if}}
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="panel-body questions">
+      {{#each questions as |question index|}}
+        <span class="{{question.status}}" {{action 'selectQuestion' question.id}}> {{ plus-one index}}</span>
+      {{/each}}
+    </div>
+  {{/if}}
 </div>

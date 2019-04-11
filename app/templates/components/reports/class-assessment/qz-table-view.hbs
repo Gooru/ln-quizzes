@@ -13,10 +13,12 @@
   {{/each}}
 </ul>
 {{gru-two-tier-header-table-1
+  anonymous=anonymous
   firstTierHeaders=assessmentQuestions
   secondTierHeaders=questionProperties
   rowHeadersHeader=studentsHeader
   averageScore=averageScore
+  isCollectionType=isCollectionType
   data=tableData
 onSelectFirstTierHeader=(action 'selectQuestion')
 onSelectRowHeader=(action 'selectStudent')

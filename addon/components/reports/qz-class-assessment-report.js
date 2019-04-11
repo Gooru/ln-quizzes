@@ -187,8 +187,16 @@ export default Ember.Component.extend(ModalMixin, {
 
   isCollectionType: Ember.computed('', function() {
     const reportData = this.get('reportData');
-    const reportEvent = reportData.reportEvents[0];
-    let isCollection = reportEvent.collection.isCollection;
+    const reportEvent =
+      reportData.reportEvents && reportData.reportEvents.length > 0
+        ? reportData.reportEvents[0]
+        : reportData;
+    let isCollection =
+      reportEvent &&
+      reportEvent.collection &&
+      reportEvent.collection.isCollection
+        ? reportEvent.collection.isCollection
+        : false;
     return isCollection;
   })
 });

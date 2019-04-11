@@ -15,7 +15,8 @@
     @include flexbox;
     @include flex-direction(column);
     @include flex-wrap(wrap);
-    @include align-content(flex-start) height: $question-height * $questions-per-column;
+    @include align-content(flex-start) height: $question-height *
+      $questions-per-column;
 
     li {
       height: $question-height;
@@ -23,6 +24,7 @@
       padding-left: 2em;
       display: table;
       flex-shrink: 0;
+      margin-right: 30px;
 
       > a {
         display: -ms-flexbox;

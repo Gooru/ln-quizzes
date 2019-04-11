@@ -145,7 +145,6 @@ export default Ember.Component.extend({
       };
     }
 
-    //console.log('studentLastFirstNameObject', studentLastFirstNameObject); //eslint-disable-line
     return studentLastFirstNameObject;
   }),
 

@@ -238,7 +238,6 @@ export default Ember.Component.extend({
       // Copy the table frame contents
       const data = this.get('tableFrame').slice(0);
       let propertyValues;
-
       reportDataEvents.forEach(function(reportEvent, i) {
         propertyValues = [];
         for (let k = 0; k < questionPropertiesIdsLen; k++) {
@@ -324,7 +323,12 @@ export default Ember.Component.extend({
     'students.@each.id',
     function() {
       const anonymous = this.get('anonymous');
+      const reportDataEvents = this.get('reportData.reportEvents');
       return this.get('students').map(function(student) {
+        let eventsStudent = reportDataEvents.findBy(
+          'profileId',
+          student.get('id')
+        );
         return {
           id: student.get('id'),
           header: anonymous
@@ -333,6 +337,7 @@ export default Ember.Component.extend({
           lastFirstName: anonymous
             ? student.get('code')
             : student.get('lastFirstName'),
+          avatarUrl: eventsStudent.avatarUrl,
           content: []
         };
       });

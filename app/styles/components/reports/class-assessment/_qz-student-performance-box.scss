@@ -119,5 +119,46 @@
         }
       }
     }
+
+    .time {
+      @include flexbox;
+      @include flex-wrap(wrap);
+      width: 100%;
+      span {
+        //padding-left: 3%;
+        &:not(.not-started) {
+        }
+        margin-left: 15px;
+        margin-bottom: 15px;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        border-radius: 50%;
+        border: solid 1px black;
+        &.skipped,
+        &.not-started {
+          border-color: $light-200;
+          color: $light-200;
+          color: $close-color;
+          @extend .grey-circle;
+        }
+        &.correct {
+          border-color: $brand-success;
+          color: $brand-success;
+        }
+        &.incorrect {
+          border-color: $brand-incorrect;
+          color: $brand-incorrect;
+        }
+        &.started {
+          border-color: $blue-400;
+          color: $blue-400;
+        }
+        &.resource-time {
+          border-radius: unset;
+          border: unset;
+        }
+      }
+    }
   }
 }

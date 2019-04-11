@@ -8,6 +8,7 @@
   {{#each sortedStudentPerformance as |studentPerformance|}}
     {{reports.class-assessment.qz-student-performance-box
         anonymous=anonymous
+        isCollectionType=isCollectionType
         student=studentPerformance.student
         reportData=studentPerformance.reportData
         onSelectQuestion=(action 'selectQuestion')

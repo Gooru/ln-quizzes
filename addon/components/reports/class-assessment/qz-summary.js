@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getGradeColor } from 'quizzes-addon/utils/utils';
+import { getGradeColor, formatTime } from 'quizzes-addon/utils/utils';
 import { GRADING_SCALE } from 'quizzes-addon/config/quizzes-config';
 import { average } from 'quizzes-addon/utils/math';
 
@@ -119,6 +119,16 @@ export default Ember.Component.extend({
   }),
 
   /**
+   * @prop { number } averageScore - average score in the assessment
+   * for the entire group of students (per scoresData)
+   */
+  averageTime: Ember.computed('scoresData.@each.score', function() {
+    const scores = this.get('scoresData').map(result => result.score);
+    let averageTime = scores.length ? Math.round(average(scores)) : 0;
+    averageTime = formatTime(averageTime);
+    return averageTime;
+  }),
+  /**
    * @prop { boolean } isFullScreen - Should the overview be visible or not?
    */
   isFullScreen: false,
@@ -205,12 +215,22 @@ export default Ember.Component.extend({
       const reportEvents = this.get('reportData.reportEvents');
 
       const results = [];
+      console.log('qz-summary-reportEvents', reportEvents); //eslint-disable-line
       reportEvents.forEach(reportEvent => {
-        if (reportEvent.get('totalAnswered') > 0) {
-          results.push({
-            score: reportEvent.get('averageScore'),
-            completed: reportEvent.get('isAttemptFinished')
-          });
+        if (this.get('isCollection')) {
+          if (reportEvent.get('totalTimeSpent') > 0) {
+            results.push({
+              score: reportEvent.get('totalTimeSpent'),
+              completed: reportEvent.get('isAttemptFinished')
+            });
+          }
+        } else {
+          if (reportEvent.get('totalAnswered') > 0) {
+            results.push({
+              score: reportEvent.get('averageScore'),
+              completed: reportEvent.get('isAttemptFinished')
+            });
+          }
         }
       });
       return results;

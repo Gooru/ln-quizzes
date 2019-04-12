@@ -69,6 +69,12 @@ export default Ember.Controller.extend(ConfigMixin, {
     goBack: function() {
       this.send('navigateBack');
     },
+    /**
+     * Close current anonymous window
+     */
+    closeWindow: function() {
+      window.close();
+    },
 
     changeView: function(layout) {
       const thumbnails = layout === VIEW_LAYOUT_PICKER_OPTIONS.LIST;

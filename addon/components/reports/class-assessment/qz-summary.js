@@ -215,7 +215,6 @@ export default Ember.Component.extend({
       const reportEvents = this.get('reportData.reportEvents');
 
       const results = [];
-      console.log('qz-summary-reportEvents', reportEvents); //eslint-disable-line
       reportEvents.forEach(reportEvent => {
         if (this.get('isCollection')) {
           if (reportEvent.get('totalTimeSpent') > 0) {

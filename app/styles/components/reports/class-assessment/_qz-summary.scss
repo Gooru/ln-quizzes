@@ -58,6 +58,16 @@
         }
       }
 
+      > li.average-time {
+        .gru-bubble-chart {
+          .bubble-circle {
+            span {
+              color: black;
+            }
+          }
+        }
+      }
+
       &.small {
         display: none;
       }

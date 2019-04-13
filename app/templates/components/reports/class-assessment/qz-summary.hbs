@@ -4,7 +4,7 @@
       {{charts.gru-pie-chart data=assignmentScores }}
       <span>{{t "common.classScores"}}</span>
     </li>
-    <li class="average-score col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <li class="average-score average-time col-xs-4 col-sm-4 col-md-4 col-lg-4">
       {{#if isCollection}}
         {{charts.gru-bubble-chart content=(concat averageTime) color=(grade-color averageTime)}}
         <span>{{t "common.averageScore"}}</span>

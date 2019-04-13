@@ -60,6 +60,7 @@ export default {
   'common.audience': 'பார்வையாளர்களை',
   'common.avatarFor': 'சின்னம்',
   'common.averageScore': 'சராசரி மதிப்பெண்',
+  'common.averageTime': 'Average Time',
   'common.back': 'மீண்டும்',
   'common.back-to-course-map': 'நிச்சயமாக வரைபடத்தில்',
   'common.back-to-data': 'மீண்டும் தரவு',

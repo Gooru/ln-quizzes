@@ -58,6 +58,7 @@ export default {
   'common.audience': 'الجمهور',
   'common.avatarFor': 'صورة رمزية لـ',
   'common.averageScore': 'متوسط العلامات',
+  'common.averageTime': 'Average Time',
   'common.back': 'عودة',
   'common.back-to-course-map': 'العودة إلى خريطة المساق الدراسي',
   'common.back-to-data': 'العودة إلى البيانات',

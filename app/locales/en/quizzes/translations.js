@@ -59,6 +59,7 @@ export default {
   'common.audience': 'Audience',
   'common.avatarFor': 'Avatar for',
   'common.averageScore': 'Average Score',
+  'common.averageTime': 'Average Time',
   'common.back': 'Back',
   'common.back-to-course-map': 'Back to Course Map',
   'common.back-to-data': 'Back to Data',

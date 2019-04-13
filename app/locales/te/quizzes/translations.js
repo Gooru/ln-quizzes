@@ -58,6 +58,7 @@ export default {
   'common.audience': 'ప్రేక్షకుల',
   'common.avatarFor': 'కోసం అవతార్',
   'common.averageScore': 'సగటు స్కోరు',
+  'common.averageTime': 'Average Time',
   'common.back': 'తిరిగి',
   'common.back-to-course-map': 'తిరిగి మ్యాప్ తిరిగి',
   'common.back-to-data': 'డేటాకు తిరిగి వెళ్ళు',

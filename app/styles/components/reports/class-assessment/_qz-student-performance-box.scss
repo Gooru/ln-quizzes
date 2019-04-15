@@ -144,11 +144,13 @@
         }
         &.correct {
           border-color: $brand-success;
-          color: $brand-success;
+          background-color: $brand-success;
+          color: $white;
         }
         &.incorrect {
           border-color: $brand-incorrect;
-          color: $brand-incorrect;
+          background-color: $brand-incorrect;
+          color: $white;
         }
         &.started {
           border-color: $blue-400;

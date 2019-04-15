@@ -107,7 +107,7 @@ test('Layout when all completed', function(assert) {
 });
 
 test('Layout having not started questions', function(assert) {
-  assert.expect(8);
+  assert.expect(7);
 
   const student = Ember.Object.create({
     profileId: '56983a9060a68052c1ed934c',
@@ -166,11 +166,6 @@ test('Layout having not started questions', function(assert) {
   const $header = $component.find('.panel .panel-heading');
   T.exists(assert, $header, 'Missing student box title');
   //T.exists(assert, $header.find('.score'), 'Missing student box score');
-  T.exists(
-    assert,
-    $header.find('.question-in-progress'),
-    'Missing in progress icon'
-  );
 
   const $questions = $component.find('.panel .questions');
   T.exists(assert, $questions, 'Missing questions area');

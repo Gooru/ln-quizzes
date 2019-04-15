@@ -6,7 +6,10 @@
         <span class="name">{{ student.profileCode }}</span>
       {{else}}
         <img class='student-circle' src={{studentAvatarUrl}} />
-        <span class="name">{{ student.lastFirstName }}</span>
+        <div>
+          <span class="name">{{ studentLastFirstName.studentLastName }}</span><br />
+          <span class="name">{{ studentLastFirstName.studentFirstName }}</span>
+        </div>
       {{/if}}
       {{!-- {{#unless anonymous}}
         {{#unless student.isAttemptFinished}}
@@ -21,7 +24,10 @@
         <span class="name">{{ student.profileCode }}</span>
       {{else}}
         <img class='student-circle' src={{studentAvatarUrl}} />
-        <span class="name">{{ student.lastFirstName }}</span>
+        <div>
+          <span class="name">{{ studentLastFirstName.studentLastName }}</span><br />
+          <span class="name">{{ studentLastFirstName.studentFirstName }}</span>
+        </div>
       {{/if}}
     </div>
   {{/if}}

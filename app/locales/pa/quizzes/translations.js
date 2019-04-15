@@ -59,6 +59,7 @@ export default {
   'common.audience': 'ਹਾਜ਼ਰੀਨ',
   'common.avatarFor': 'ਅਵਤਾਰ ਲਈ',
   'common.averageScore': 'ਔਸਤ ਸਕੋਰ',
+  'common.averageTime': 'Average Time',
   'common.back': 'ਵਾਪਸ',
   'common.back-to-course-map': 'ਵਾਪਸ ਕੋਰਸ ਦਾ ਨਕਸ਼ਾ',
   'common.back-to-data': 'ਵਾਪਸ ਡਾਟਾ ਤੇ',

@@ -30,7 +30,7 @@
       }
 
       .name {
-        max-width: 61px;
+        max-width: 100px;
         display: inline-block;
         word-break: break-word;
         text-transform: capitalize;
@@ -49,7 +49,7 @@
       }
       &.not-started {
         .name {
-          max-width: 61px;
+          max-width: 100px;
         }
       }
       .question-in-progress {

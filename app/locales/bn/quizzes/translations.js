@@ -58,6 +58,7 @@ export default {
   'common.audience': 'পাঠকবর্গ',
   'common.avatarFor': 'জন্য অবতার',
   'common.averageScore': 'গড় স্কোর',
+  'common.averageTime': 'Average Time',
   'common.back': 'পিছনে',
   'common.back-to-course-map': 'অবশ্যই মানচিত্র ফিরে',
   'common.back-to-data': 'তথ্য ফিরে',

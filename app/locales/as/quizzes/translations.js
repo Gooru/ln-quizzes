@@ -59,6 +59,7 @@ export default {
   'common.audience': 'শ্ৰোতা',
   'common.avatarFor': 'ইয়াৰ বাবে অৱতাৰ',
   'common.averageScore': 'মাধ্য স্কোৰ',
+  'common.averageTime': 'Average Time',
   'common.back': 'পাচলৈ যাওক',
   'common.back-to-course-map': 'কাৰ্যক্ৰমৰ নক্সালৈ ঘুৰি যাওক',
   'common.back-to-data': 'ডাটালৈ ঘুৰি যাওক',

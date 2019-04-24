@@ -8,11 +8,11 @@
         <img class='student-circle' src={{studentAvatarUrl}} />
         <span class="name">{{ student.lastFirstName }}</span>
       {{/if}}
-      {{#unless anonymous}}
+      {{!-- {{#unless anonymous}}
         {{#unless student.isAttemptFinished}}
           <span class="question-in-progress">{{gru-icon name='av_timer'}}</span>
         {{/unless}}
-      {{/unless}}
+      {{/unless}} --}}
     </div>
   {{else}}
     <div class="panel-heading {{ if anonymous 'anonymous'}} not-started" {{action 'selectStudent'}}>

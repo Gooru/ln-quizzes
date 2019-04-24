@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { getGradeColor } from 'quizzes-addon/utils/utils';
+import { getGradeColor, formatTime } from 'quizzes-addon/utils/utils';
 import { GRADING_SCALE } from 'quizzes-addon/config/quizzes-config';
 import { average } from 'quizzes-addon/utils/math';
 
@@ -100,7 +100,7 @@ export default Ember.Component.extend({
           if (numColor) {
             results.push({
               color,
-              value: Math.round(numColor / scoreColorsLen * 100)
+              value: Math.round((numColor / scoreColorsLen) * 100)
             });
           }
         });
@@ -118,6 +118,16 @@ export default Ember.Component.extend({
     return scores.length ? Math.round(average(scores)) : 0;
   }),
 
+  /**
+   * @prop { number } averageScore - average score in the assessment
+   * for the entire group of students (per scoresData)
+   */
+  averageTime: Ember.computed('scoresData.@each.score', function() {
+    const scores = this.get('scoresData').map(result => result.score);
+    let averageTime = scores.length ? Math.round(average(scores)) : 0;
+    averageTime = formatTime(averageTime);
+    return averageTime;
+  }),
   /**
    * @prop { boolean } isFullScreen - Should the overview be visible or not?
    */
@@ -174,6 +184,11 @@ export default Ember.Component.extend({
                   ? 1
                   : 0;
               }
+            } else if (
+              questionResult.get('resource').isResource &&
+              questionResult.get('skipped') === false
+            ) {
+              questionCounter.correct += 1; //each attempted is marked as correct for collection resource
             }
           });
         });
@@ -201,11 +216,20 @@ export default Ember.Component.extend({
 
       const results = [];
       reportEvents.forEach(reportEvent => {
-        if (reportEvent.get('totalAnswered') > 0) {
-          results.push({
-            score: reportEvent.get('averageScore'),
-            completed: reportEvent.get('isAttemptFinished')
-          });
+        if (this.get('isCollection')) {
+          if (reportEvent.get('totalTimeSpent') > 0) {
+            results.push({
+              score: reportEvent.get('totalTimeSpent'),
+              completed: reportEvent.get('isAttemptFinished')
+            });
+          }
+        } else {
+          if (reportEvent.get('totalAnswered') > 0) {
+            results.push({
+              score: reportEvent.get('averageScore'),
+              completed: reportEvent.get('isAttemptFinished')
+            });
+          }
         }
       });
       return results;

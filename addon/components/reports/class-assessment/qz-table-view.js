@@ -87,6 +87,7 @@ export default Ember.Component.extend({
    * - label: visual representation of the header
    * - value: internal header identifier
    *- type : type represented by in column
+   * - title : title of the resource or question to display on list header
    * The questions will be ordered in the array in ascending order per the order value
    */
   assessmentQuestions: Ember.computed(
@@ -102,7 +103,8 @@ export default Ember.Component.extend({
           return {
             value: question.get('id'),
             label: labelPrefix + (index + 1),
-            type: question.get('type')
+            type: question.get('type'),
+            title: question.get('title')
           };
         });
 

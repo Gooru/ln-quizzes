@@ -114,7 +114,7 @@ export default Ember.Component.extend({
   /**
    * returns split of lastFirstName of student
    */
-  studentLastFirstName: Ember.computed('student.avatarUrl', function() {
+  studentLastFirstName: Ember.computed('student.lastFirstName', function() {
     let studentNameArray,
       studentLastName = '',
       studentFirstName = '',

@@ -123,22 +123,26 @@ export default Ember.Component.extend({
           const dataObj = data[i];
           const questionObj = {
             id: dataObj.id,
+            title: dataObj.title,
             data: [
               {
                 color: failColor,
                 percentage: roundFloat(
-                  dataObj.incorrect / dataObj.total * 100,
+                  (dataObj.incorrect / dataObj.total) * 100,
                   1
                 )
               },
               {
                 color: correctColor,
-                percentage: roundFloat(dataObj.correct / dataObj.total * 100, 1)
+                percentage: roundFloat(
+                  (dataObj.correct / dataObj.total) * 100,
+                  1
+                )
               },
               {
                 color: OPEN_ENDED_COLOR,
                 percentage: roundFloat(
-                  dataObj.openEnded / dataObj.total * 100,
+                  (dataObj.openEnded / dataObj.total) * 100,
                   1
                 )
               }

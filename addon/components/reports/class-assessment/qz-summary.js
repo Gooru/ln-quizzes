@@ -164,7 +164,8 @@ export default Ember.Component.extend({
           correct: 0,
           incorrect: 0,
           openEnded: 0,
-          total: totalStudents
+          total: totalStudents,
+          title: ''
         };
         questions.push(questionCounter);
 
@@ -173,6 +174,7 @@ export default Ember.Component.extend({
             .get('resourceResults')
             .filter(result => result.resourceId === questionId);
           resourceResults.forEach(questionResult => {
+            questionCounter.title = questionResult.resource.get('title');
             if (questionResult.get('started')) {
               if (questionResult.get('isOpenEnded')) {
                 questionCounter.openEnded += 1;

@@ -175,6 +175,28 @@ export function getAnswerResultIcon(status) {
 }
 
 /**
+ * Get an icon depending on whether an answer was correct or not.
+ * @param {String} status - It has the status of answer
+ * @returns {String} - html string
+ */
+export function getAnswerResultIconWithValue(status, value) {
+  value = value ? value : '';
+  var html;
+  if (status === 'correct') {
+    html = `<span class="score answer-correct">${value}</span>`;
+  } else if (status === 'incorrect') {
+    html = `<span class="score answer-incorrect">${value}</span>`;
+  } else if (status === 'skipped') {
+    html = `<span class="score answer-skipped">${value}</span>`;
+  } else if (status === 'extended_text') {
+    html = `<span class="score answer-extended_text">${value}</span>`;
+  } else {
+    html = `<span class="score answer-not-started">${value}</span>`;
+  }
+  return html;
+}
+
+/**
  * Get an icon depending on a reaction value. If the reaction value is null,
  * a dash is returned. For any other falsy value, an empty string is returned.
  * @param {Number} reactionValue

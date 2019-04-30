@@ -174,7 +174,9 @@ export default Ember.Component.extend({
             .get('resourceResults')
             .filter(result => result.resourceId === questionId);
           resourceResults.forEach(questionResult => {
-            questionCounter.title = questionResult.resource.get('title');
+            questionCounter.title = questionResult.resource
+              ? questionResult.resource.get('title')
+              : '';
             if (questionResult.get('started')) {
               if (questionResult.get('isOpenEnded')) {
                 questionCounter.openEnded += 1;

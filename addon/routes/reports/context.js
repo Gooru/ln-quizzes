@@ -77,6 +77,24 @@ export default Ember.Route.extend({
       .get('quizzesAttemptService')
       .getReportData(contextId)
       .then(reportData => {
+        /* Setting avatarUrl for students which have event data */
+        students
+          .filter(student => {
+            let reportDataFilteredByProfilePresent = reportData
+              .get('reportEvents')
+              .findBy('profileId', student.id);
+            return reportDataFilteredByProfilePresent;
+          })
+          .forEach(student => {
+            let reportDataWithStudentData = reportData
+              .get('reportEvents')
+              .findBy('profileId', student.id);
+
+            if (reportDataWithStudentData) {
+              reportDataWithStudentData.avatarUrl = student.get('avatarUrl');
+            }
+          });
+
         students
           .filter(
             student =>

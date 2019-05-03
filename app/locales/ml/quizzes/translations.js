@@ -59,6 +59,7 @@ export default {
   'common.audience': 'പ്രേക്ഷകർ',
   'common.avatarFor': 'എന്നതിനായുള്ള അവതാർ',
   'common.averageScore': 'ശരാശരി സ്കോർ',
+  'common.averageTime': 'Average Time',
   'common.back': 'തിരികെ',
   'common.back-to-course-map': 'തിരികെ പോകാൻ മാപ്പ്',
   'common.back-to-data': 'തിരികെ ഡാറ്റയിലേക്ക്',

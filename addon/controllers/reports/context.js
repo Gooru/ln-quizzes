@@ -320,6 +320,23 @@ export default Ember.Controller.extend(ConfigMixin, {
           .get('quizzesAttemptService')
           .getReportData(contextId)
           .then(reportData => {
+            /* Setting avatarUrl for students which have event data */
+            students
+              .filter(student => {
+                let reportDataFilteredByProfilePresent = reportData
+                  .get('reportEvents')
+                  .findBy('profileId', student.id);
+                return reportDataFilteredByProfilePresent;
+              })
+              .forEach(student => {
+                let rptDataWthStudsData = reportData
+                  .get('reportEvents')
+                  .findBy('profileId', student.id);
+
+                if (rptDataWthStudsData) {
+                  rptDataWthStudsData.avatarUrl = student.get('avatarUrl');
+                }
+              });
             students
               .filter(
                 student =>
@@ -335,6 +352,7 @@ export default Ember.Controller.extend(ConfigMixin, {
                       profileId: student.get('id'),
                       profileName: student.get('fullName'),
                       lastFirstName: student.get('lastFirstName'),
+                      avatarUrl: student.get('avatarUrl'),
                       isAttemptStarted: false,
                       isAttemptFinished: false
                     }

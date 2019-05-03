@@ -58,6 +58,7 @@ export default {
   'common.audience': 'दर्शक',
   'common.avatarFor': 'के लिए अवतार',
   'common.averageScore': 'औसत अंक',
+  'common.averageTime': 'Average Time',
   'common.back': 'वापस',
   'common.back-to-course-map': 'पाठ्यक्रम मानचित्र पर वापस',
   'common.back-to-data': 'डेटा पर वापस',

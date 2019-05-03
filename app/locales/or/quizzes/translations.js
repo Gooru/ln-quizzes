@@ -60,6 +60,7 @@ export default {
   'common.audience': 'ଦର୍ଶକ',
   'common.avatarFor': 'ପାଇଁ ଅବତାର',
   'common.averageScore': 'ହାରାହାରି ଅଙ୍କ (ସ୍କୋର୍)',
+  'common.averageTime': 'Average Time',
   'common.back': 'ଫେରନ୍ତୁ',
   'common.back-to-course-map': 'ପାଠ୍ୟକ୍ରମ ମାନଚିତ୍ରକୁ ଫେରନ୍ତୁ',
   'common.back-to-data': 'ତଥ୍ୟକୁ ଫେରନ୍ତୁ',

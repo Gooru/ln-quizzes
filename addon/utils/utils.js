@@ -105,6 +105,42 @@ export function formatTime(timeInMillis) {
 }
 
 /**
+ * Format a certain number of milliseconds to a string of the rounded form
+ * '<hours>h or <min>m or <sec>s'. If the value is falsey, a string
+ * with the value '--' is returned
+ * @param timeInMillis - time value in milliseconds
+ * @returns {String}
+ */
+export function roundTimeToGreatestValue(timeInMillis) {
+  var result = '';
+  var secs;
+
+  if (timeInMillis) {
+    secs = timeInMillis / 1000;
+    const hours = secs / 3600;
+    secs = secs % 3600;
+    const mins = secs / 60;
+    secs = secs % 60;
+
+    if (hours >= 1) {
+      result = `${Math.round(hours)}h `;
+    } else {
+      if (mins >= 1) {
+        result = `${Math.round(mins)}m `;
+      } else {
+        if (secs >= 1) {
+          result += `${Math.round(secs)}s`;
+        }
+      }
+    }
+  } else {
+    result = '';
+  }
+
+  return result;
+}
+
+/**
  * Format a certain number of seconds to a string of the form
  * '<hours>h <min>m or <min>m <sec>s'. If the value is falsey, a string
  * with the value '--' is returned
@@ -139,6 +175,28 @@ export function getAnswerResultIcon(status) {
 }
 
 /**
+ * Get an icon depending on whether an answer was correct or not.
+ * @param {String} status - It has the status of answer
+ * @returns {String} - html string
+ */
+export function getAnswerResultIconWithValue(status, value) {
+  value = value ? value : '';
+  var html;
+  if (status === 'correct') {
+    html = `<span class="score answer-correct">${value}</span>`;
+  } else if (status === 'incorrect') {
+    html = `<span class="score answer-incorrect">${value}</span>`;
+  } else if (status === 'skipped') {
+    html = `<span class="score answer-skipped">${value}</span>`;
+  } else if (status === 'extended_text') {
+    html = `<span class="score answer-extended_text">${value}</span>`;
+  } else {
+    html = `<span class="score answer-not-started">${value}</span>`;
+  }
+  return html;
+}
+
+/**
  * Get an icon depending on a reaction value. If the reaction value is null,
  * a dash is returned. For any other falsy value, an empty string is returned.
  * @param {Number} reactionValue
@@ -154,7 +212,9 @@ export function getReactionIcon(reactionValue) {
     if (reaction && reaction.value && reaction.unicode) {
       html = `<div class="emotion emotion-${reaction.value}">`;
       html += '  <svg class="svg-sprite">';
-      html += `    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/quizzes-addon/emoji-one/emoji.svg#${reaction.unicode}"></use>`;
+      html += `    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/quizzes-addon/emoji-one/emoji.svg#${
+        reaction.unicode
+      }"></use>`;
       html += ' </svg>';
       html += '</div>';
     } else {
@@ -231,7 +291,7 @@ export function generateUUID() {
   var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(
     c
   ) {
-    var r = ((d + Math.random() * 16) % 16) | 0;
+    var r = (d + Math.random() * 16) % 16 | 0;
     d = Math.floor(d / 16);
     return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
   });

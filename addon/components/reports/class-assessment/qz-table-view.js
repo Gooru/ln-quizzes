@@ -3,10 +3,12 @@ import {
   alphabeticalStringSort,
   formatTime,
   getAnswerResultIcon,
+  getAnswerResultIconWithValue,
   getScoreString,
   getReactionIcon
 } from 'quizzes-addon/utils/utils';
 import { average } from 'quizzes-addon/utils/math';
+import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 
 /**
  * Class assessment table view
@@ -87,6 +89,7 @@ export default Ember.Component.extend({
    * - label: visual representation of the header
    * - value: internal header identifier
    *- type : type represented by in column
+   * - title : title of the resource or question to display on list header
    * The questions will be ordered in the array in ascending order per the order value
    */
   assessmentQuestions: Ember.computed(
@@ -102,7 +105,8 @@ export default Ember.Component.extend({
           return {
             value: question.get('id'),
             label: labelPrefix + (index + 1),
-            type: question.get('type')
+            type: question.get('type'),
+            title: question.get('title')
           };
         });
 
@@ -235,6 +239,7 @@ export default Ember.Component.extend({
         'sequence'
       );
 
+      const component = this;
       // Copy the table frame contents
       const data = this.get('tableFrame').slice(0);
       let propertyValues;
@@ -278,6 +283,11 @@ export default Ember.Component.extend({
               if (renderFunction.name === 'formatTime' && value === 0) {
                 renderOut = `<span class="ad score answer-not-started">${j}</span>`;
               }
+              let questionRenderOut = component.getOutPutForCollectionQuestion(
+                questionResult,
+                j
+              );
+              renderOut = questionRenderOut ? questionRenderOut : renderOut;
 
               data[i].content[j * questionPropertiesIdsLen + k] = {
                 value,
@@ -313,6 +323,28 @@ export default Ember.Component.extend({
     }
   ),
 
+  getOutPutForCollectionQuestion(questionResult, idx) {
+    const component = this;
+    const questionPropertiesIds = this.get('questionPropertiesIds');
+
+    let renderOut;
+    let value = questionResult.get(questionPropertiesIds[0]);
+    let status = 'not-started';
+    if (questionResult.get('skipped')) {
+      status = 'skipped';
+    } else if (questionResult.get('resource.type') === 'extended_text') {
+      status = 'extended_text';
+    } else if (questionResult.get('answer')) {
+      status = value ? 'correct' : 'incorrect';
+    }
+    let isQuestion = Object.values(QUESTION_TYPES).find(
+      x => x === questionResult.get('resource.type')
+    );
+    if (component.isCollectionType && isQuestion) {
+      renderOut = getAnswerResultIconWithValue(status, idx);
+    }
+    return renderOut;
+  },
   /**
    * @prop {Object[]} tableFrame - The table frame that encloses the table data
    * @return {Object[]}

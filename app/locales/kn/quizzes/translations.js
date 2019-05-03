@@ -59,6 +59,7 @@ export default {
   'common.audience': 'ಪ್ರೇಕ್ಷಕರು',
   'common.avatarFor': 'ಫಾರ್ ಅವತಾರ',
   'common.averageScore': 'ಸರಾಸರಿ ಸ್ಕೋರ್',
+  'common.averageTime': 'Average Time',
   'common.back': 'ಹಿಂದೆ',
   'common.back-to-course-map': 'ಕೋರ್ಸ್ ನಕ್ಷೆಗೆ ಮರಳಿ',
   'common.back-to-data': 'ಡೇಟಾಕ್ಕೆ ಹಿಂತಿರುಗಿ',

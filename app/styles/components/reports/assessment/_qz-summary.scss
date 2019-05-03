@@ -9,7 +9,7 @@
     object-fit: contain;
     background-color: $white;
     box-shadow: 0 6px 7px 0 rgba(0, 0, 0, 0.2);
-    grid-template-columns: auto 28% auto max-content auto;
+    grid-template-columns: auto 28% auto auto auto;
 
     .thumbnail {
       width: 100%;
@@ -240,7 +240,7 @@
     }
 
     .bubbles {
-      width: max-content;
+      width: auto;
       display: inline-block;
       overflow: auto;
 

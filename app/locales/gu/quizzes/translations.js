@@ -58,6 +58,7 @@ export default {
   'common.audience': 'પ્રેક્ષકો',
   'common.avatarFor': 'માટે અવતાર',
   'common.averageScore': 'સરેરાશ સ્કોર',
+  'common.averageTime': 'Average Time',
   'common.back': 'પાછા',
   'common.back-to-course-map': 'કોર્સ નકશા પર પાછા',
   'common.back-to-data': 'માહિતી પર પાછા',

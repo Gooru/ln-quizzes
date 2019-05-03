@@ -30,7 +30,7 @@
       }
 
       .name {
-        max-width: 61px;
+        max-width: 100px;
         display: inline-block;
         word-break: break-word;
         text-transform: capitalize;
@@ -49,7 +49,7 @@
       }
       &.not-started {
         .name {
-          max-width: 61px;
+          max-width: 100px;
         }
       }
       .question-in-progress {
@@ -144,11 +144,13 @@
         }
         &.correct {
           border-color: $brand-success;
-          color: $brand-success;
+          background-color: $brand-success;
+          color: $white;
         }
         &.incorrect {
           border-color: $brand-incorrect;
-          color: $brand-incorrect;
+          background-color: $brand-incorrect;
+          color: $white;
         }
         &.started {
           border-color: $blue-400;

@@ -11,7 +11,8 @@
         </a>
       {{else}}
         <a {{action 'selectQuestion' questionData.id}}>
-          <span class="index">{{plus-one index}}</span>
+          {{!-- changes for build --}}
+          <span title="{{questionData.title}}" data-toggle="tooltip" data-placement="top" class="index">{{plus-one index}}</span>
           {{charts.gru-x-bar-chart data=questionData.data}}
           <span class="ratio">
             <span>{{questionData.completed}}</span>/<span>{{questionData.total}}</span>

@@ -159,8 +159,9 @@ export default Ember.Component.extend({
    * @param {QuestionResult} questionResult
    */
   getQuestionStatus: function(questionResult) {
-    let status = 'not-started';
-    let questionId;
+    let status = 'not-started',
+      questionId = questionResult.get('resourceId'),
+      title;
     if (
       questionResult.get('isResource') === true &&
       questionResult.get('skipped') === false
@@ -174,10 +175,20 @@ export default Ember.Component.extend({
         questionId = questionResult.get('questionId');
       }
     }
+    title = this.getResourceTitle(questionId);
+
     return Ember.Object.create({
       status,
       savedTime: roundTimeToGreatestValue(questionResult.savedTime),
-      id: questionId
+      id: questionId,
+      title: title
     });
+  },
+
+  getResourceTitle(questionId) {
+    return this.get('student.collection.resources') &&
+      this.get('student.collection.resources').findBy('id', questionId)
+      ? this.get('student.collection.resources').findBy('id', questionId).title
+      : '';
   }
 });

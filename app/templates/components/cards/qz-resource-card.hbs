@@ -54,7 +54,7 @@
         <b class="publisher-name">{{resource.publisher}}</b>
       {{else}}
         <img class="img-responsive" src="{{ resource.owner.avatarUrl }}">
-        <span class="owner">{{#link-to 'profile.content.courses' resource.owner.id class="pointer"}}
+        <span class="owner">{{#link-to "library-search" (query-params type="my-content" profileId=resource.owner.id isBack=true)  class="pointer"}}
             {{resource.owner.username}}{{/link-to}}</span>
       {{/if}}
     </div>

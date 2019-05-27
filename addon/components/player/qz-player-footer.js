@@ -342,5 +342,33 @@ export default Ember.Component.extend({
   /**
   * @property {boolean} isNextEnabled check whether next button is enabled or not
   */
-  isNextEnabled: true
+  isNextEnabled: true,
+
+  /**
+   * @property {Boolean} isMilestoneContent
+   * Property to check whether the served content is from milestone or not
+   */
+  isMilestoneContent: Ember.computed.alias('lesson.isMilestoneLesson'),
+
+  /**
+   * @property {String} domainName
+   * Domain Name of the Lesson when it's tagged with milestone
+   */
+  domainName: Ember.computed.alias('lesson.domainName'),
+
+  /**
+   * @property {String} gradeName
+   * Grade Name of the Lesson when it's tagged with milestone
+   */
+  gradeName: Ember.computed.alias('lesson.gradeName'),
+
+  /**
+   * @property {String} gradeSubject
+   * Grade Subject of the Milestone
+   */
+  gradeSubject: Ember.computed(function() {
+    const component = this;
+    const courseTaxonomies = component.get('course.taxonomy');
+    return courseTaxonomies.length ? courseTaxonomies.objectAt(0).parentTitle : null;
+  })
 });

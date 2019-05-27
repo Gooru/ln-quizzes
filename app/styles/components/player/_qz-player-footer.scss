@@ -154,13 +154,14 @@
           color: $gray-submarine;
           font-weight: bold;
           height: 48px !important;
-          display: flex;
+          display: grid;
           padding-left: 15px;
           border-bottom: 1px solid $dark-100;
+          grid-template-columns: auto auto auto;
+          justify-content: left;
 
           .title-item {
             display: flex;
-            max-width: calc(100% / 3);
 
             span.title-fullname {
               margin-left: 3px;
@@ -178,6 +179,41 @@
 
             span > i {
               line-height: 2.1;
+            }
+          }
+        }
+
+        .milestone-breadcrumb {
+          display: grid;
+          grid-template-columns: auto 20px auto 20px auto;
+          height: 48px !important;
+          padding-left: 15px;
+          border-bottom: 1px solid $dark-100;
+          align-items: center;
+          column-gap: 5px;
+          justify-content: left;
+          .title-item {
+            font-size: 16px;
+            color: $gray-submarine;
+            font-weight: bold;
+          }
+          .lesson-info {
+            height: 48px;
+            display: grid;
+            grid-template-rows: 50% 40%;
+            align-items: center;
+            .domain-name {
+              align-self: center;
+              color: $gray-submarine;
+              font-size: 13px;
+              font-weight: bold;
+            }
+          }
+          .breadcrumb-separator {
+            height: 48px;
+            i {
+              line-height: 48px;
+              color: $gray-submarine;
             }
           }
         }

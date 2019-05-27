@@ -1,4 +1,14 @@
 .qz-player-footer {
+
+  //Make resource list width to screen size
+  .nav-player-container {
+    .player-container {
+      .list-resources {
+        left: 0;
+        width: 100%;
+      }
+    }
+  }
   /*mobile view portrait*/
   @media only screen and (max-width: $sm-width-max) {
     .nav-player-container {
@@ -59,10 +69,6 @@
           width: 50px;
           margin-right: 0;
           border-left: 1px solid $breadcrumb-color;
-        }
-
-        .list-resources {
-          width: 80%;
         }
       }
 

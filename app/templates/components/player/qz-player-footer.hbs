@@ -50,17 +50,32 @@
     {{/if}}
 
     <div class="list-resources">
-      <div class="breadcrumb-title">
-        {{#if unitTitle}}
-          <div class="title-item"><span>{{unitTitle.shortname}}:</span><span class="title-fullname ellipsis">{{unitTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
-        {{/if}}
-        {{#if lessonTitle}}
-          <div class="title-item"><span>{{lessonTitle.shortname}}:</span><span class="title-fullname ellipsis">{{lessonTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
-        {{/if}}
-        {{#if collectionTitle}}
-          <div class="title-item"><span>{{collectionTitle.shortname}}:</span><span class="title-fullname ellipsis">{{collectionTitle.fullname}}</span></div>
-        {{/if}}
-      </div>
+      {{#if isMilestoneContent}}
+        <div class="milestone-breadcrumb">
+          <div class="milestone-info title-item ellipsis">{{if gradeSubject (concat gradeSubject ' - ')}}{{gradeName}}</div>
+          <span class="breadcrumb-separator">{{gru-icon name="keyboard_arrow_right"}}</span>
+          <div class="lesson-info ellipsis">
+            <div class="domain-name ellipsis">{{domainName}}</div>
+            <div class="lesson-title title-item ellipsis">{{lessonTitle.fullname}}</div>
+          </div>
+          <span class="breadcrumb-separator">{{gru-icon name="keyboard_arrow_right"}}</span>
+          <div class="collection-info title-item ellipsis">
+            {{collectionTitle.shortname}}: {{collectionTitle.fullname}}
+          </div>
+        </div>
+      {{else}}
+        <div class="breadcrumb-title">
+          {{#if unitTitle}}
+            <div class="title-item ellipsis"><span>{{unitTitle.shortname}}:</span><span class="title-fullname ellipsis">{{unitTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
+          {{/if}}
+          {{#if lessonTitle}}
+            <div class="title-item ellipsis"><span>{{lessonTitle.shortname}}:</span><span class="title-fullname ellipsis">{{lessonTitle.fullname}}</span> <span>{{gru-icon name="keyboard_arrow_right"}} </span></div>
+          {{/if}}
+          {{#if collectionTitle}}
+            <div class="title-item ellipsis"><span>{{collectionTitle.shortname}}:</span><span class="title-fullname ellipsis">{{collectionTitle.fullname}}</span></div>
+          {{/if}}
+        </div>
+      {{/if}}
       <ul class="list-group resources {{if isNavigationDisabled 'disabled' }}">
         {{#each resourceItems as |item index|}}
           <li class="list-group-item {{if item.started 'started'}} {{if item.selected 'selected'}}" {{action 'selectItem' item}}>

@@ -1,4 +1,4 @@
-export default {
+window.qzi18n = {
   'common.a-collection': 'এটা সংকলন',
   'common.a-course': 'এটা কাৰ্যক্ৰম',
   'common.a-question': 'এটা প্ৰশ্ন',

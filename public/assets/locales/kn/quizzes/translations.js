@@ -1,4 +1,4 @@
-export default {
+window.qzi18n = {
   'common.a-collection': 'ಸಂಗ್ರಹ',
   'common.a-course': 'ಒಂದು ಕೋರ್ಸ್',
   'common.a-question': 'ಒಂದು ಪ್ರಶ್ನೆ',

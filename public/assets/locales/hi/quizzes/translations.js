@@ -1,4 +1,4 @@
-export default {
+window.qzi18n = {
   'common.a-collection': 'संग्रह',
   'common.a-course': 'एक पाठ्यक्रम',
   'common.a-question': 'एक प्रश्न',

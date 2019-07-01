@@ -489,3 +489,62 @@ export function toAbsolutePath(resourceUrl, cdnUrl) {
   }
   return resourceUrl;
 }
+
+/**
+ *
+ * @param {string} file token to load example 'en','gu'.. etc
+ * @param {bool} isQuizzes, if to load a quzzies translation file
+ */
+export function loadScript(script, isQuizzes) {
+  var defineHeaders = function() {
+    return {
+      Authorization: 'Token '
+    };
+  };
+  const localAssetMap = {
+    ar: 'assets/locales/ar/translations.js',
+    as: 'assets/locales/as/translations.js',
+    bn: 'assets/locales/bn/translations.js',
+    en: 'assets/locales/en/translations.js',
+    gu: 'assets/locales/gu/translations.js',
+    hi: 'assets/locales/hi/translations.js',
+    kn: 'assets/locales/kn/translations.js',
+    ml: 'assets/locales/ml/translations.js',
+    mr: 'assets/locales/mr/translations.js',
+    or: 'assets/locales/or/translations.js',
+    pa: 'assets/locales/pa/translations.js',
+    sp: 'assets/locales/sp/translations.js',
+    ta: 'assets/locales/ta/translations.js',
+    te: 'assets/locales/te/translations.js'
+  };
+
+  const localQuizzesAssetMap = {
+    ar: 'assets/quizzes-addon/locales/ar/quizzes/translations.js',
+    as: 'assets/quizzes-addon/locales/as/quizzes/translations.js',
+    bn: 'assets/quizzes-addon/locales/bn/quizzes/translations.js',
+    en: 'assets/quizzes-addon/locales/en/quizzes/translations.js',
+    gu: 'assets/quizzes-addon/locales/gu/quizzes/translations.js',
+    hi: 'assets/quizzes-addon/locales/hi/quizzes/translations.js',
+    kn: 'assets/quizzes-addon/locales/kn/quizzes/translations.js',
+    ml: 'assets/quizzes-addon/locales/ml/quizzes/translations.js',
+    mr: 'assets/quizzes-addon/locales/mr/quizzes/translations.js',
+    or: 'assets/quizzes-addon/locales/or/quizzes/translations.js',
+    pa: 'assets/quizzes-addon/locales/pa/quizzes/translations.js',
+    sp: 'assets/quizzes-addon/locales/sp/quizzes/translations.js',
+    ta: 'assets/quizzes-addon/locales/ta/quizzes/translations.js',
+    te: 'assets/quizzes-addon/locales/te/quizzes/translations.js'
+  };
+
+  let url = isQuizzes ? localQuizzesAssetMap[script] : localAssetMap[script];
+  let originLocation = `${window.location.origin}/`;
+  url = originLocation + url;
+
+  const options = {
+    cache: true,
+    type: 'GET',
+    headers: defineHeaders(),
+    url: url,
+    dataType: 'script'
+  };
+  return Ember.$.ajax(url, options);
+}

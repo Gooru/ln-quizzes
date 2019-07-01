@@ -394,3 +394,7 @@ test('Array into chunks', function(assert) {
     'Wrong split into chunks of size 5'
   );
 });
+
+// test('loadScriptFile', async function(assert) {
+//   await loadScript('en', true).then(s => assert.ok(s));
+// });

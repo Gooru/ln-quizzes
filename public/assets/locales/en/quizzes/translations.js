@@ -1,4 +1,4 @@
-export default {
+window.qzi18n = {
   'common.a-collection': 'a collection',
   'common.a-course': 'a course',
   'common.a-question': 'a question',
@@ -988,4 +988,3 @@ export default {
   'qz-free-response-viewer.total-score': 'Total Score',
   'qz-free-response-viewer.points': 'pts'
 };
-//export default window.qzi18n;

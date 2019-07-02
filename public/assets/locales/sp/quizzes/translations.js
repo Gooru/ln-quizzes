@@ -1,4 +1,4 @@
-export default {
+window.qzi18n = {
   'common.a-collection': 'a collection',
   'common.a-course': 'a course',
   'common.a-question': 'a question',
@@ -771,7 +771,6 @@ export default {
   'qz-viewer.not-iframe-url.launch': 'Launch !',
   'qz-viewer.not-iframe-url.linkout_desc':
     'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
-
   'gru-data-picker.score': 'Score',
   'gru-data-picker.completion': 'Completion',
   'gru-data-picker.timeSpent': 'Time',
@@ -988,4 +987,3 @@ export default {
   'qz-free-response-viewer.total-score': 'Total Score',
   'qz-free-response-viewer.points': 'pts'
 };
-//export default window.qzi18n;

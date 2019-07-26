@@ -1,6 +1,6 @@
 <div class="qz-content {{if resource.isQuestion 'question' 'resource'}}">
   {{#if resource.isQuestion}}
-    {{player.qz-question-viewer
+    {{player/qz-question-viewer
       buttonTextKey=buttonTextKey
       instructionsActionTextKey=instructionsActionTextKey
       collection=collection
@@ -13,14 +13,14 @@
     }}
   {{else}}
     {{#if isNotIframeUrl}}
-      {{player.qz-resource-viewer-linkout
+      {{player/qz-resource-viewer-linkout
       resource=resource
       sendEvents=false
       collection=collection
       isNotIframeUrl=isNotIframeUrl
     }}
     {{else}}
-      {{player.qz-resource-viewer
+      {{player/qz-resource-viewer
       resource=resource
       sendEvents=false
       collection=collection

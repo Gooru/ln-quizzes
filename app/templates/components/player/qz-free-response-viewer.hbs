@@ -9,7 +9,7 @@
           <span class="title">{{t 'qz-free-response-viewer.prompt'}}</span>
           {{gru-math-text text=questionText}}
           {{#if thumbnail}}
-            <img class="question-thumbnail" src="{{thumbnail}}"/>
+            <img class="question-thumbnail" src="{{thumbnail}}" />
           {{/if}}
         </div>
       </div>
@@ -19,7 +19,6 @@
         {{qz-rich-text-editor content=answer model=answer valuePath='description' didValidate=didValidate}}
       </div>
     </div>
-    
   </div>
 {{/unless}}
 {{#if showPanel}}
@@ -50,7 +49,7 @@
       </ul>
     </div>
     <div class="rubric-preview">
-      {{player.resources.qz-url-resource resource=question.rubric}}
+      {{player/resources/qz-url-resource resource=question.rubric}}
     </div>
   </div>
 {{/if}}

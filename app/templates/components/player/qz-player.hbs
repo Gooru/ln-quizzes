@@ -1,8 +1,8 @@
 {{#if showConfirmation}}
-  {{player.qz-player-confirmation attempts=attempts collection=collection context=context notCheckAttempts=notCheckAttempts onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection" collectionSource=collectionSource collectionSubType=collectionSubType source=source pathType=pathType}}
+  {{player/qz-player-confirmation attempts=attempts collection=collection context=context notCheckAttempts=notCheckAttempts onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection" collectionSource=collectionSource collectionSubType=collectionSubType source=source pathType=pathType}}
 {{else}}
   {{#if showPlayerHeader}}
-    {{player.qz-player-header
+    {{player/qz-player-header
         source=source
         collection=collection
         onRemixCollection="remixCollection"
@@ -12,13 +12,13 @@
       }}
   {{/if}}
   <div class="component player">
-    <div class="qz-main {{if showFinishConfirmation 'submission-confirm'}} {{if suggestedResources 'suggest-content'}}"  role="main">
+    <div class="qz-main {{if showFinishConfirmation 'submission-confirm'}} {{if suggestedResources 'suggest-content'}}" role="main">
       {{#if collection.hasResources }}
         {{#if showFinishConfirmation}}
-          {{player.qz-submit-confirmation onConfirmFinish='finishCollection' onCancelFinish='resumeCollection'}}
+          {{player/qz-submit-confirmation onConfirmFinish='finishCollection' onCancelFinish='resumeCollection'}}
         {{else}}
           {{#if resource}}
-            {{player.qz-viewer
+            {{player/qz-viewer
                 isNotIframeUrl=isNotIframeUrl
                 collection=collection
                 resource=resource
@@ -28,11 +28,11 @@
                 onSubmitQuestion="submitQuestion"
                 isNextEnabled="isNextEnabled"}}
             {{#if suggestedResources}}
-              {{player.related-content
+              {{player/related-content
                 suggestedResources=suggestedResources
                 classId=classId courseId=course.id}}
             {{/if}}
-            {{player.qz-player-footer
+            {{player/qz-player-footer
                   resource=resource
                   isNavigationDisabled=isNavigationDisabled
                   isTeacher=isTeacher

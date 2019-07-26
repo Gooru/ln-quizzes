@@ -41,6 +41,7 @@ export default Ember.Component.extend({
         }
         if (component.get('editor').composer) {
           component.get('editor').composer.commands.exec('insertHTML', html);
+          //content set may cause back track
           var editorElement = component.$(editorClass);
           component.set('content', editorElement.html());
           component.makeExpressionsReadOnly();
@@ -63,7 +64,10 @@ export default Ember.Component.extend({
         if (source && source.length && latex !== source.text()) {
           const html = katex.renderToString(latex);
           source.text(latex);
-          component.get('editingExpression').find('.katex').replaceWith(html);
+          component
+            .get('editingExpression')
+            .find('.katex')
+            .replaceWith(html);
           var editorElement = component.$(editorClass);
           component.set('content', editorElement.html());
           component.makeExpressionsReadOnly();
@@ -134,7 +138,10 @@ export default Ember.Component.extend({
       e.preventDefault();
       var expression = $(this).data('expression');
       if (component.get('mathField') && LATEX_EXPRESSIONS[expression]) {
-        component.get('mathField').write(LATEX_EXPRESSIONS[expression]).focus();
+        component
+          .get('mathField')
+          .write(LATEX_EXPRESSIONS[expression])
+          .focus();
       }
     });
     // Save cursor position
@@ -153,12 +160,18 @@ export default Ember.Component.extend({
     // Go to edit mode of existing expression
     component.$().on('click', mathExp, function(e) {
       e.preventDefault();
-      var sourceLatex = $(mathExp).find('.source').text();
+      var sourceLatex = $(mathExp)
+        .find('.source')
+        .text();
       if (sourceLatex && sourceLatex !== '') {
         component.set('editingExpression', $(mathExp).closest(mathExp));
         component.set('showExpressionsPanel', true);
         Ember.run.later(function() {
-          component.get('mathField').latex(sourceLatex).reflow().focus();
+          component
+            .get('mathField')
+            .latex(sourceLatex)
+            .reflow()
+            .focus();
         }, 100);
       }
     });
@@ -246,7 +259,7 @@ export default Ember.Component.extend({
   showMessage: Ember.computed('content', function() {
     var contentEditor = removeHtmlTags(this.get('content'));
     if ($.trim(contentEditor) === '') {
-      this.set('content', contentEditor);
+      //this.set('content', contentEditor);
       return true;
     }
     return false;

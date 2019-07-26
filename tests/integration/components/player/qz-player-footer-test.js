@@ -54,7 +54,7 @@ test('Player Footer Navigator', function(assert) {
   this.set('collection', collectionMock);
   this.set('resourceResults', resourceResults);
 
-  this.render(hbs`{{player.qz-player-footer collection=collection
+  this.render(hbs`{{player/qz-player-footer collection=collection
       resourceResults=resourceResults lessonTitle='E-Lesson1'
       selectedResourceId='1' onItemSelected='itemSelected'}}`);
 

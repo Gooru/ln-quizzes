@@ -1,4 +1,6 @@
 import QuestionComponent from 'quizzes-addon/components/player/questions/qz-question';
+import { generateUUID } from 'quizzes-addon/utils/utils';
+
 /**
  * Single Choice Question
  *
@@ -54,10 +56,13 @@ export default QuestionComponent.extend({
         true
       );
     }
-  }
+  },
 
   // -------------------------------------------------------------------------
   // Properties
+  useGroup: function() {
+    return this.get('userAnswer.firstObject.value') || generateUUID();
+  }.property()
 
   // -------------------------------------------------------------------------
   // Observers

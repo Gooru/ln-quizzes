@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import QuestionComponent from 'quizzes-addon/components/player/questions/qz-question';
+import { generateUUID } from 'quizzes-addon/utils/utils';
 
 /**
  * True or false Question
@@ -58,7 +59,9 @@ export default QuestionComponent.extend({
 
   // -------------------------------------------------------------------------
   // Properties
-
+  useGroup: function() {
+    return this.get('userAnswer.firstObject.value') || generateUUID();
+  }.property(),
   /**
    * Returns the answer value of first answer option
    */

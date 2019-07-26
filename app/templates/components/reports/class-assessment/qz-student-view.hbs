@@ -6,7 +6,7 @@
 </div>
 <div class="student-performance-list">
   {{#each sortedStudentPerformance as |studentPerformance|}}
-    {{reports.class-assessment.qz-student-performance-box
+    {{reports/class-assessment/qz-student-performance-box
         anonymous=anonymous
         isCollectionType=isCollectionType
         student=studentPerformance.student

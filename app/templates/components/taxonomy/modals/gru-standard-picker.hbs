@@ -2,8 +2,7 @@
   <h4 class="modal-title">{{if model.fromSearch (t "common.search-standards") (t "common.add-standards")}}</h4>
 </div>
 <div class="modal-body">
-
-  {{taxonomy.gru-taxonomy-picker
+  {{taxonomy/gru-taxonomy-picker
     browseSelectorText=(t "taxonomy.modals.gru-standard-picker.browseSelectorText")
     onSave=(action 'updateSelectedTags')
     onSearchPath=(action 'loadTaxonomyData')
@@ -14,5 +13,4 @@
     shortcuts=model.shortcuts
     shortcutText=(t "taxonomy.modals.gru-standard-picker.shortcutText")
     subject=model.subject }}
-
 </div>

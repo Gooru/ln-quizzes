@@ -12,17 +12,17 @@ window.qzi18n = {
   'common.add-collection': 'नया संग्रह बनाएं',
   'common.add-collection-item': 'संसाधन या प्रश्न बनाएँ',
   'common.add-content-prompt':
-    'आपने अभी तक [1] {{type}} [2] नहीं बनाया है। चलो, बोल्ड हो।',
+    'आपने अभी तक <span> {{type}} </span> नहीं बनाया है। चलो, साहसी  हो।',
   'common.add-course': 'नया कोर्स बनाएं',
   'common.add-domains-to-unit': 'इकाई में डोमेन जोड़ें',
   'common.add-url': 'यू आर एल जोड़िये',
   'common.add-from-url': 'यूआरएल से जोड़ें',
-  'common.add-lessons': 'सबक जोड़ें',
-  'common.add-new-lesson': 'नया सबक बनाएं',
+  'common.add-lessons': 'पाठ  जोड़ें',
+  'common.add-new-lesson': 'नया पाठ  बनाएं',
   'common.add-new-unit': 'नई इकाई बनाएं',
   'common.add-new-resource': 'नया संसाधन बनाएं',
-  'common.add-new-question': 'एक नया सवाल बनाएं',
-  'common.add-question': 'सवाल बनाएं',
+  'common.add-new-question': 'एक नया प्रश्न  बनाएं',
+  'common.add-question': 'प्रश्न  बनाएं',
   'common.add-question-image': 'प्रश्न छवि जोड़ें',
   'common.add-standard': 'मानक जोड़ें',
   'common.add-standards': 'मानकों को जोड़ें',
@@ -38,13 +38,13 @@ window.qzi18n = {
   'common.advanced-editing': 'उन्नत संपादन',
   'common.anonymous_mode': 'अज्ञात मोड',
   'common.answer': 'आपका उत्तर',
-  'common.answer-correct': 'तुम सही हो!',
-  'common.answer-incorrect': 'तुम गलत हो',
+  'common.answer-correct': 'आप  सही हैं!',
+  'common.answer-incorrect': 'आप सही नही हैं ',
   'common.answer-key-was-hidden': 'नोट: आपके शिक्षक ने उत्तर कुंजी छिपा दी है।',
   'common.approved': 'मंजूर की',
   'common.assessment': 'मूल्यांकन',
   'common.assessment-disabled': 'आप इस आकलन का प्रयास नहीं कर सकते हैं',
-  'common.assessment-external': 'मूल्यांकन-बाहरी',
+  'common.assessment-external': 'अन्य मूल्यांकन',
   'common.assessment-pl.one': 'मूल्यांकन',
   'common.assessment-pl.other': 'आकलन',
   'common.assessment-task': 'मूल्यांकन कार्य',
@@ -58,7 +58,7 @@ window.qzi18n = {
   'common.audience': 'दर्शक',
   'common.avatarFor': 'के लिए अवतार',
   'common.averageScore': 'औसत अंक',
-  'common.averageTime': 'Average Time',
+  'common.averageTime': 'औसत समय',
   'common.back': 'वापस',
   'common.back-to-course-map': 'पाठ्यक्रम मानचित्र पर वापस',
   'common.back-to-data': 'डेटा पर वापस',
@@ -96,7 +96,7 @@ window.qzi18n = {
   'common.course': 'कोर्स',
   'common.course-title': 'पाठ्यक्रम का विषय',
   'common.courses': 'पाठ्यक्रम',
-  'common.create': 'सर्जन करना',
+  'common.create': 'सृजन करना',
   'common.create-class': '+ कक्षा बनाएँ',
   'common.created-by': 'के द्वारा बनाई गई',
   'common.current-attempt': 'वर्तमान प्रयास',
@@ -104,13 +104,13 @@ window.qzi18n = {
   'common.delete-instructions.links-inaccessible':
     'सभी शेयर लिंक पहुंच योग्य नहीं होंगे',
   'common.delete-instructions.content-inaccessible':
-    'सभी सामग्री इसके साथ बंधे कक्षाओं के लिए पहुंच योग्य नहीं होगी',
+    'सभी सामग्री इसके साथ संलग्न कक्षाओं के लिए पहुंच योग्य नहीं होगी',
   'common.depth-of-knowledge': 'ज्ञान की गहराई',
   'common.description': 'विवरण',
   'common.district': 'जिला',
   'common.domain': 'डोमेन',
   'common.domains': 'डोमेन',
-  'common.drag-drop-suggestions': 'या सुझाव खींचें और छोड़ें ...',
+  'common.drag-drop-suggestions': 'या  खींचें और सुझाव छोड़ें ...',
   'common.download-report': 'रिपोर्ट डाउनलोड करें',
   'common.edit': 'संपादित करें',
   'common.edit-assessment': 'मूल्यांकन संपादित करें',
@@ -125,7 +125,7 @@ window.qzi18n = {
   'common.emotions.emotion-3': 'मेह ...',
   'common.emotions.emotion-4': 'मै समझता हुँ',
   'common.emotions.emotion-5': 'में समझा सकता हूँ',
-  'common.enter-url': 'यू आर एल दर्ज करो',
+  'common.enter-url': 'यू आर एल दर्ज करे',
   'common.errors.join-class-code': 'कृपया कक्षा कोड दर्ज करें।',
   'common.errors.answer-has-no-image': 'कृपया एक उत्तर छवि अपलोड करें।',
   'common.errors.add-username': 'कृपया उपयोगकर्तानाम डालें।',
@@ -142,7 +142,7 @@ window.qzi18n = {
   'common.errors.can-not-join-class':
     'उफ़! कक्षा में शामिल होने में असमर्थ कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.assessment-not-added-to':
-    'उफ़! अभी पाठ को मूल्यांकन जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+    'उफ़! अभी पाठ को मूल्यांकन से जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.assessment-not-copied':
     'उफ़! अभी मूल्यांकन की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.assessment-not-created':
@@ -170,7 +170,7 @@ window.qzi18n = {
     'उफ़! अभी कोर्स बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.course-not-updated':
     'उफ़! अभी पाठ्यक्रम अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.due-date-error': 'देय तिथि उपलब्ध तारीख से अधिक होनी चाहिए',
+  'common.errors.due-date-error': 'देय तिथि वर्तमान तारीख से अधिक होनी चाहिए',
   'common.errors.due-date-presence-error': 'आपको देय तिथि पूरी करनी होगी',
   'common.errors.highlight-text-not-selected': 'कृपया सही उत्तर इंगित करें।',
   'common.errors.highlight-text-wrong-format': 'गलत सवाल प्रारूप।',
@@ -183,9 +183,9 @@ window.qzi18n = {
   'common.errors.lesson-not-copied':
     'उफ़! अभी सबक कॉपी करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.lesson-not-created':
-    'उफ़! अभी सबक बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+    'उफ़! अभी पाठ बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.lesson-not-loaded':
-    'उफ़! अभी सबक लोड करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+    'उफ़! अभी पाठ लोड करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.lesson-title-required': 'कृपया पाठ शीर्षक दर्ज करें।',
   'common.errors.password-confirm': 'कृपया अपने पासवर्ड की पुष्टि करें।',
   'common.errors.password-length': 'पासवर्ड 5 और 14 वर्णों के बीच होना चाहिए।',
@@ -209,7 +209,7 @@ window.qzi18n = {
     'आपका ईमेल लॉगिन Google खाते के साथ बनाया गया था और हम एक Google पासवर्ड रीसेट नहीं कर सकते हैं। अगर आप अपना Google पासवर्ड भूल गए हैं, तो आपको इसे अपने Google ऐप्स के माध्यम से रीसेट करना होगा।',
   'common.errors.resource-description-length':
     'वर्णन 500 वर्णों से अधिक नहीं हो सकता है।',
-  'common.errors.resource-invalid-url': 'अवैध यूआरएल।',
+  'common.errors.resource-invalid-url': 'अमान्य यूआरएल।',
   'common.errors.resource-missing-title': 'कृपया एक संसाधन शीर्षक दर्ज करें।',
   'common.errors.resource-missing-type': 'कृपया एक संसाधन प्रकार का चयन करें।',
   'common.errors.resource-missing-url': 'कृपया एक मान्य यूआरएल दर्ज कीजिए।',
@@ -240,7 +240,7 @@ window.qzi18n = {
   'common.errors.sign-up-name-only-letters': 'कृपया केवल अक्षर दर्ज करें।',
   'common.errors.sign-up-valid-email': 'कृपया एक वैध ई - मेल एड्रेस डालें।',
   'common.errors.special-characters':
-    'आप विशेष पात्रों या रिक्त स्थान का उपयोग नहीं कर सकते हैं।',
+    'आप विशेष चिन्हो या रिक्त स्थान का उपयोग नहीं कर सकते हैं।',
   'common.errors.unit-not-copied':
     'उफ़! अभी यूनिट कॉपी करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.unit-not-created':
@@ -292,11 +292,11 @@ window.qzi18n = {
   'common.license': 'लाइसेंस',
   'common.link-out': 'लिंक आउट',
   'common.link-out-message':
-    '* यदि आपका संसाधन उपरोक्त पूर्वावलोकन में प्रतिपादन नहीं कर रहा है, तो उसे \\\'लिंक-आउट\\\' की आवश्यकता हो सकती है और इसे gooru प्लेयर के भीतर नहीं देखा जा सकता है।',
+    '* यदि आपका संसाधन उपरोक्त पूर्वावलोकन में प्रतिपादन नहीं कर रहा है, तो उसे \'लिंक-आउट\' की आवश्यकता हो सकती है और इसे gooru प्लेयर के भीतर नहीं देखा जा सकता है।',
   'common.loading': 'लोड हो रहा है ...',
   'common.login': 'लॉग इन करें',
   'common.logout': 'लोग आउट',
-  'common.mastery': 'प्रभुत्व',
+  'common.mastery': 'महारत',
   'common.menu': 'मेन्यू',
   'common.more-details': 'अधिक जानकारी',
   'common.modify-settings': 'मूल्यांकन सेटिंग्स संशोधित करें',
@@ -313,18 +313,19 @@ window.qzi18n = {
   'common.no': 'नहीं',
   'common.no-content': 'कोई सामग्री उपलब्ध नहीं है',
   'common.no-assessments-to-display':
-    'प्रदर्शित करने के लिए [1] आकलन [2] नहीं।',
+    'प्रदर्शित करने के लिए <span> आकलन </span> नहीं।',
   'common.no-collections-to-display':
-    'प्रदर्शित करने के लिए कोई [1] संग्रह [2]।',
+    'प्रदर्शित करने के लिए कोई <span> संग्रह </span>।',
   'common.no-courses-to-display':
-    'प्रदर्शित करने के लिए कोई [1] पाठ्यक्रम [2]।',
+    'प्रदर्शित करने के लिए कोई <span> पाठ्यक्रम </span>।',
   'common.no-questions-to-display':
-    'प्रदर्शित करने के लिए [1] प्रश्न [2] नहीं।',
-  'common.no-resources-to-display': 'प्रदर्शित करने के लिए कोई [1] संसाधन [2]।',
+    'प्रदर्शित करने के लिए <span> प्रश्न </span> नहीं।',
+  'common.no-resources-to-display':
+    'प्रदर्शित करने के लिए कोई <span> संसाधन </span>।',
   'common.no-followers': 'आपके पास अभी तक अनुयायी नहीं हैं।',
   'common.no-results': 'कोई परिणाम नहीं मिला',
   'common.no-results-message':
-    'अपनी वर्तनी की जाँच करें। हम सभी गलतियां करते हैं! [1] व्यापक हो जाएं और कुछ फ़िल्टर हटा दें। [2] या इसके बजाय एक समान शब्द खोजने की कोशिश करें।',
+    'अपनी वर्तनी की जाँच करें। हम सभी गलतियां करते हैं! <br/> व्यापक हो जाएं और कुछ फ़िल्टर हटा दें। <br/> या इसके बजाय एक समान शब्द खोजने की कोशिश करें।',
   'common.no-more-attempts': 'कोई और प्रयास नहीं',
   'common.notScored': 'स्कोर नहीं किया गया',
   'common.notStarted': 'शुरू नही हुआ',
@@ -349,7 +350,7 @@ window.qzi18n = {
   'common.profile': 'प्रोफ़ाइल',
   'common.prompt': 'शीघ्र',
   'common.publish-to':
-    ' इसे मेरे प्रोफाइल लाइब्रेरी पर दूसरों के लिए दृश्यमान बनाएं',
+    ' इसे मेरे प्रोफाइल लाइब्रेरी पर दूसरों के लिए दृश्यमान बनाएं',
   'common.published-by': 'द्वारा प्रकाशित',
   'common.published-tooltip': 'बैज सामग्री',
   'common.publisher': 'प्रकाशक',
@@ -401,7 +402,7 @@ window.qzi18n = {
   'common.remix-unit-success': 'आपने एक इकाई {{unittitle}} को रीमिक्स किया है।',
   'common.remixed-by': 'द्वारा remixed',
   'common.remix-warning':
-    'सचेत! इस कोर्स में बहुत सी भयानक सामग्री है और एक प्रतिलिपि बनाने में समय लगेगा। पुष्टि करें कि आप प्रक्रिया शुरू करना चाहते हैं और 15 मिनट में आपको इस पाठ्यक्रम की अपनी प्रति अपनी [1] प्रोफ़ाइल पर मिल जाएगी। [2]',
+    'सावधान! इस कोर्स में बहुत सी असमान्य सामग्री है और एक प्रतिलिपि बनाने में समय लगेगा। पुष्टि करें कि आप प्रक्रिया शुरू करना चाहते हैं और 15 मिनट में आपको इस पाठ्यक्रम की अपनी प्रति अपनी <b> प्रोफ़ाइल पर मिल जाएगी। </b>',
   'common.remove': 'हटाना',
   'common.report-in-progress': 'रिपोर्ट प्रगति पर है',
   'common.request-to': 'बैज के लिए समीक्षा करने का अनुरोध',
@@ -467,7 +468,7 @@ window.qzi18n = {
   'common.teacher': 'अध्यापक',
   'common.timeSpent': 'समय बिताया',
   'common.toggle-dropdown': 'टॉगल ड्रॉपडाउन',
-  'common.true': 'सच',
+  'common.true': 'सही',
   'common.type': 'प्रकार',
   'common.unexpectedError':
     'एक अनपेक्षित त्रुटि आई है और इसकी सूचना दी गई है। असुविधा के लिए हमें खेद है!',
@@ -495,7 +496,7 @@ window.qzi18n = {
   'common.yes': 'हाँ',
   'content.questions.edit.add-to': 'में जोड़े',
   'content.questions.edit.best-practices':
-    '[1] एक प्रश्न एक संसाधन है जिसके लिए छात्र से एक उत्तर की आवश्यकता होती है, और हम आपके छात्रों को एसबीएसी, पीआरसीसी और अन्य आकलनों पर किस तरह के प्रश्नों का समर्थन करने के लिए विभिन्न प्रकार के प्रश्न प्रदान करते हैं। [2] [3] वैकल्पिक पर विचार करें छात्रों के इन प्रश्नों के संपर्क में आने के लिए और ज्ञान का प्रदर्शन करने के लिए कई प्रारूप प्रदान करने के लिए आपके द्वारा उपयोग किए जाने वाले प्रश्नों के प्रकार। [4] [5] अपने प्रश्नों को मानकों, सूक्ष्म मानकों और वेब की ज्ञान की गहराई में टैग करें। आप देख सकते हैं कि आपके छात्र शिक्षक डैशबोर्ड के माध्यम से प्रश्नों के साथ कैसे बातचीत कर रहे हैं। [6]',
+    '<p> एक प्रश्न एक संसाधन है जिसके लिए छात्र से एक उत्तर की आवश्यकता होती है, और हम आपके छात्रों को एसबीएसी, पीआरसीसी और अन्य आकलनों पर किस तरह के प्रश्नों का समर्थन करने के लिए विभिन्न प्रकार के प्रश्न प्रदान करते हैं। </p> <p> वैकल्पिक पर विचार करें छात्रों के इन प्रश्नों के संपर्क में आने के लिए और ज्ञान का प्रदर्शन करने के लिए कई प्रारूप प्रदान करने के लिए आपके द्वारा उपयोग किए जाने वाले प्रश्नों के प्रकार। </p> <p> अपने प्रश्नों को मानकों, सूक्ष्म मानकों और वेब की ज्ञान की गहराई में टैग करें। आप देख सकते हैं कि आपके छात्र शिक्षक डैशबोर्ड के माध्यम से प्रश्नों के साथ कैसे बातचीत कर रहे हैं। </p>',
   'content.questions.edit.information.question-title': 'प्रश्न शीर्षक',
   'content.questions.edit.information.question-type': 'प्रश्न प्रकार',
   'content.questions.edit.builder.add-answer-choice': '+ उत्तर पसंद जोड़ें',
@@ -523,7 +524,7 @@ window.qzi18n = {
   'content.questions.edit.builder.answer-instructions.true_false':
     'सही उत्तर का चयन करें।',
   'content.questions.edit.builder.question-instructions.FIB':
-    'जैसे ही आप सवाल लिखते हैं, अपने रिक्त-इन-द-रिक्त उत्तरों के लिए ब्रैकेट का उपयोग करें। उदाहरण के लिए: \\\'बड़ा बुरा [भेड़िया] [घर] नीचे उड़ा दिया।\\\' आप एक छवि भी जोड़ सकते हैं।',
+    'जैसे ही आप सवाल लिखते हैं, अपने रिक्त-इन-द-रिक्त उत्तरों के लिए ब्रैकेट का उपयोग करें। उदाहरण के लिए: \'बड़ा बुरा [भेड़िया] [घर] नीचे उड़ा दिया।\' आप एक छवि भी जोड़ सकते हैं।',
   'content.questions.edit.builder.question-instructions.HS_TXT':
     'अपना प्रश्न लिखें',
   'content.questions.edit.builder.question-instructions.HS_IMG':
@@ -541,11 +542,11 @@ window.qzi18n = {
   'content.questions.edit.builder.question-instructions.true_false':
     'अपना प्रश्न लिखें',
   'content.resources.edit.best-practices':
-    '[1] संसाधन विभिन्न प्रकार के प्रारूपों जैसे वीडियो, इंटरैक्टिव, वेबसाइट्स, इमेजेस, गूगल डॉक्स आदि में मल्टीमीडिया सामग्री हैं। रचनात्मक बनें और अपने संसाधनों का उपयोग करें या \\\'संसाधन\\\' प्राप्त करें और gooru में हमारी पर्याप्त आपूर्ति खोजें। [2] [3] अपने छात्रों को शामिल करने के लिए विभिन्न संसाधन प्रकारों का उपयोग करें और विवरण शामिल करें ताकि आप संसाधन के माध्यम से अपने छात्रों को मार्गदर्शन करने में सहायता कर सकें। [4] [5] हम प्रत्येक प्रश्न को मानकों, सूक्ष्म मानकों और 21 वीं शताब्दी के कौशल में टैग करने की सलाह देते हैं। आप देख सकते हैं कि आपके छात्र शिक्षक डैशबोर्ड के माध्यम से संसाधनों के साथ कैसे बातचीत कर रहे हैं। [6]',
+    '<p> संसाधन विभिन्न प्रकार के प्रारूपों जैसे वीडियो, इंटरैक्टिव, वेबसाइट्स, इमेजेस, गूगल डॉक्स आदि में मल्टीमीडिया सामग्री हैं। रचनात्मक बनें और अपने संसाधनों का उपयोग करें या \'संसाधन\' प्राप्त करें और gooru में हमारी पर्याप्त आपूर्ति खोजें। </p> <p> अपने छात्रों को शामिल करने के लिए विभिन्न संसाधन प्रकारों का उपयोग करें और विवरण शामिल करें ताकि आप संसाधन के माध्यम से अपने छात्रों को मार्गदर्शन करने में सहायता कर सकें। </p> <p> हम प्रत्येक प्रश्न को मानकों, सूक्ष्म मानकों और 21 वीं शताब्दी के कौशल में टैग करने की सलाह देते हैं। आप देख सकते हैं कि आपके छात्र शिक्षक डैशबोर्ड के माध्यम से संसाधनों के साथ कैसे बातचीत कर रहे हैं। </p>',
   'content.resources.edit.placeholder-message':
-    'इसे [1] पूर्वावलोकन में संसाधन जोड़ें। [2]',
+    'इसे <span> पूर्वावलोकन में संसाधन जोड़ें। </span>',
   'content.resources.edit.not-implemented':
-    'संसाधन प्रारूप पूर्वावलोकन [1] अभी तक लागू नहीं किया गया है। [2]',
+    'संसाधन प्रारूप पूर्वावलोकन <span> अभी तक लागू नहीं किया गया है। </span>',
   'content.resources.edit.information.im-publisher': 'मैं प्रकाशक हूँ',
   'content.resources.edit.information.select-a-license':
     'कृपया एक लाइसेंस का चयन करें',
@@ -562,9 +563,9 @@ window.qzi18n = {
   'gru-add-to.add-to-assessment-lead':
     'वह मूल्यांकन चुनें जिसे आप {{contenttitle}} जोड़ना चाहते हैं',
   'gru-add-to.assessments-info':
-    'यहां सूचीबद्ध मूल्यांकन [1] नहीं [2] एक और सबक या पाठ्यक्रम से संबंधित हैं',
+    'यहां सूचीबद्ध मूल्यांकन <b> नहीं </b> एक और सबक या पाठ्यक्रम से संबंधित हैं',
   'gru-add-to.collections-info':
-    'यहां सूचीबद्ध संग्रह [1] नहीं [2] एक और सबक या पाठ्यक्रम से संबंधित हैं',
+    'यहां सूचीबद्ध संग्रह <b> नहीं </b> एक और सबक या पाठ्यक्रम से संबंधित हैं',
   'qz-assessment-confirmation.title': 'आप एक मूल्यांकन शुरू करने वाले हैं ...',
   'qz-assessment-confirmation.description': 'इस मूल्यांकन में, {{model.title}}',
   'qz-assessment-confirmation.setting-forward':
@@ -572,8 +573,8 @@ window.qzi18n = {
   'qz-assessment-confirmation.setting-forward-backward':
     'आप सवालों के जवाब देने के लिए आगे और पीछे नेविगेट कर सकते हैं',
   'qz-assessment-confirmation.forward-backward':
-    'Navigate forward and backwards to answer questions',
-  'qz-assessment-confirmation.forward': 'Navigate forward only',
+    'सवालों के जवाब देने के लिए आगे या पीछे जाइये',
+  'qz-assessment-confirmation.forward': 'सिर्फ आगे जा सकता है',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'आपके पास असीमित प्रयास हैं',
   'qz-assessment-confirmation.attempts-left.one': 'आपके पास 1 प्रयास शेष है',
@@ -586,7 +587,7 @@ window.qzi18n = {
   'qz-assessment-confirmation.continue': 'जारी रहना',
   'qz-assessment-confirmation.start': 'प्रारंभ!',
   'qz-assessment-confirmation.no-content-info-message':
-    'This {{collectionType}} is under development. Please check back again later.',
+    'यह {{collectionType}} विकसित हो रहा है. कृपया कुछ देर में पुनः जाँच कीजिये',
   'gru-submit-confirmation.title': 'क्या आप वाकई सब जमा करना चाहते हैं?',
   'gru-submit-confirmation.description':
     'आप इस प्रयास को समाप्त करने वाले हैं और सभी प्रतिक्रियाएं जमा कर रहे हैं। किसी भी छोड़े गए प्रश्न गलत के रूप में गिना जाएगा।',
@@ -728,38 +729,38 @@ window.qzi18n = {
     'छवि 5 जीबी से कम एक jpg, gif या png फ़ाइल होना चाहिए।',
   'gru-image-picker.submit': 'छवि का प्रयोग करें',
   'qz-fib.instructions':
-    'कृपया दिए गए खाली (ओं) में अपना उत्तर टाइप करें, और \\\'{{action}}\\\' पर क्लिक करें।',
+    'कृपया दिए गए खाली (ओं) में अपना उत्तर टाइप करें, और \'{{action}}\' पर क्लिक करें।',
   'qz-hs-image.instructions':
-    'कृपया सही छवि का चयन करें, और \\\'{{action}}\\\' पर क्लिक करें।',
+    'कृपया सही छवि का चयन करें, और \'{{action}}\' पर क्लिक करें।',
   'qz-hs-text.instructions':
-    'कृपया सही उत्तर चुनें, और \\\'{{action}}\\\' पर क्लिक करें।',
+    'कृपया सही उत्तर चुनें, और \'{{action}}\' पर क्लिक करें।',
   'qz-hot-text.instructions':
-    'कृपया सही उत्तर का चयन करें, और \\\'{{action}}\\\' पर क्लिक करें।',
+    'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
   'qz-multiple-answer.instructions':
-    'कृपया सही उत्तर का चयन करें, और \\\'{{action}}\\\' पर क्लिक करें।',
+    'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
   'qz-single-choice.instructions':
-    'कृपया सही उत्तर का चयन करें, और \\\'{{action}}\\\' पर क्लिक करें।',
+    'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
   'qz-open-ended.instructions':
-    'कृपया नीचे दिए गए क्षेत्र में अपना उत्तर टाइप करें, और जब आप पूरा कर लें तो अपनी प्रतिक्रिया को सहेजने के लिए \\\'{{action}}\\\' बटन पर क्लिक करें।',
+    'कृपया नीचे दिए गए क्षेत्र में अपना उत्तर टाइप करें, और जब आप पूरा कर लें तो अपनी प्रतिक्रिया को सहेजने के लिए \'{{action}}\' बटन पर क्लिक करें।',
   'qz-open-ended.characterLimit': 'चरित्र सीमा',
   'qz-question-viewer.answer': 'उत्तर',
   'qz-question-viewer.previous': 'पिछला',
   'qz-question-viewer.question': 'सवाल',
   'qz-true-false.instructions':
-    'कृपया सही उत्तर का चयन करें, और \\\'{{action}}\\\' पर क्लिक करें।',
+    'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
   'qz-true-false.true': 'सच',
   'qz-true-false.false': 'असत्य',
   'qz-reorder.instructions':
-    'कृपया सही क्रम में उत्तरों को पुन: व्यवस्थित करें, और \\\'{{action}}\\\' पर क्लिक करें।',
+    'कृपया सही क्रम में उत्तरों को पुन: व्यवस्थित करें, और \'{{action}}\' पर क्लिक करें।',
   'qz-navigation.view-report': 'रिपोर्ट देखें',
   'qz-player-footer.usage-report': 'उपयोग रिपोर्ट',
   'qz-viewer.not-iframe-url.header_1':
     'यह संसाधन gooru के भीतर नहीं देखा जा सकता है।',
   'qz-viewer.not-iframe-url.header_2':
     'संसाधन को एक नए टैब में खोलने के लिए नीचे दिए गए बटन पर क्लिक करें।',
-  'qz-viewer.not-iframe-url.header_3': 'You\'re about to',
-  'qz-viewer.not-iframe-url.header_4': 'study an external resource',
-  'qz-viewer.not-iframe-url.header_5': 'See you soon!',
+  'qz-viewer.not-iframe-url.header_3': 'ऑप करने जा रहे है',
+  'qz-viewer.not-iframe-url.header_4': 'बाहरी संसाधन का अध्ययन करें',
+  'qz-viewer.not-iframe-url.header_5': 'जल्दी फिर मिलेंगे!',
   'qz-viewer.not-iframe-url.view-resource': 'संसाधन देखें',
   'qz-viewer.not-iframe-url.footer_1': 'मैं यह खाली पृष्ठ क्यों देख रहा हूं?',
   'qz-viewer.not-iframe-url.footer_2':
@@ -768,9 +769,9 @@ window.qzi18n = {
     'अपनी सामग्री बनाएं और साझा करें। संसाधनों सहित विभिन्न प्रकार की सेटिंग्स हैं',
   'qz-viewer.not-iframe-url.footer_4':
     'आवश्यकताएं जो सामग्री को देखने के लिए आपको दूसरे पृष्ठ पर ले जाती हैं।',
-  'qz-viewer.not-iframe-url.launch': 'Launch !',
+  'qz-viewer.not-iframe-url.launch': 'शुरू करे!',
   'qz-viewer.not-iframe-url.linkout_desc':
-    'You would be taking this assessment on an external site. When you complete \n the assessment there come back and enter your score.',
+    'आपको यह मूल्यांकन बाहरी साईट पर करना होगा. वहाँ पर मूल्यांकन पूर्ण करने के बाद वापिस यहाँ आइये और अपणा स्कोर प्रविष्ट कीजिये',
   'gru-data-picker.score': 'स्कोर',
   'gru-data-picker.completion': 'समापन',
   'gru-data-picker.timeSpent': 'पहर',
@@ -882,13 +883,13 @@ window.qzi18n = {
     'जब आप कक्षा में हों, तो अपने छात्रों को दी गई किसी भी पाठ्यक्रम की सामग्री को संपादित करने के लिए यहां क्लिक करें।',
   'gru-tour.overview.stepSix.title': 'वास्तविक समय में प्रगति की निगरानी!',
   'gru-tour.overview.stepSix.description':
-    'वास्तविक समय में मूल्यांकन पर कक्षा प्रगति की निगरानी के लिए रीयल-टाइम डैशबोर्ड का उपयोग करें। [1] [2] छात्रों के लिए वास्तविक समय निर्धारण लॉन्च करने के लिए प्रत्येक मूल्यांकन के बाईं ओर \\\'लाइव लाइव\\\' आइकन पर क्लिक करें। [3] [4] <i class = \\\'real-time-icon\\\'>',
+    'वास्तविक समय में मूल्यांकन पर कक्षा प्रगति की निगरानी के लिए रीयल-टाइम डैशबोर्ड का उपयोग करें। <br> <br> छात्रों के लिए वास्तविक समय निर्धारण लॉन्च करने के लिए प्रत्येक मूल्यांकन के बाईं ओर \'लाइव लाइव\' आइकन पर क्लिक करें। <br> <br> <i class = \'real-time-icon\'>',
   'gru-tour.quick-start.stepOne.title': 'अपने कक्षाओं नेविगेटिंग',
   'gru-tour.quick-start.stepOne.description':
-    'यह नव निर्मित कक्षा का एक दृश्य है। किसी भी समय कक्षा में वापस जाने के लिए, \\\'कक्षाओं\\\' पर क्लिक करें और उस कक्षा का चयन करने के लिए ड्रॉप डाउन मेनू का उपयोग करें, जिसे आप दर्ज करना चाहते हैं।',
+    'यह नव निर्मित कक्षा का एक दृश्य है। किसी भी समय कक्षा में वापस जाने के लिए, \'कक्षाओं\' पर क्लिक करें और उस कक्षा का चयन करने के लिए ड्रॉप डाउन मेनू का उपयोग करें, जिसे आप दर्ज करना चाहते हैं।',
   'gru-tour.quick-start.stepTwo.title': 'शुरू करना? एक मूल्यांकन बनाएँ!',
   'gru-tour.quick-start.stepTwo.description':
-    'हम गोरू के साथ शुरू करने और अपनी कक्षा में छात्र समझ के वर्तमान स्तर का आकलन करने के तरीके के रूप में मूल्यांकन बनाने का सुझाव देते हैं।',
+    'हम गुरू के साथ शुरू करने और अपनी कक्षा में छात्र समझ के वर्तमान स्तर का आकलन करने के तरीके के रूप में मूल्यांकन बनाने का सुझाव देते हैं।',
   'gru-tour.home.stepOne.title': 'आपका मुखपृष्ठ',
   'gru-tour.home.stepOne.description':
     'अपने gooru होमपेज में आपका स्वागत है! यहां आप gooru में बनाए गए कक्षाओं की एक सूची पा सकते हैं। कक्षाएं आपको सीधे छात्रों के साथ सामग्री साझा करने की अनुमति देती हैं। आप gooru आइकन पर क्लिक करके हमेशा अपने होमपेज पर वापस आ सकते हैं।',
@@ -904,7 +905,7 @@ window.qzi18n = {
     'नया कक्षा बनाने के लिए यहां क्लिक करें। एक बार जब आप छात्रों के साथ साझा करने के लिए सामग्री रखते हैं, तो आप उन्हें कक्षा के माध्यम से असाइन करेंगे।',
   'gru-tour.home.stepFive.title': 'आपकी रूपरेखा',
   'gru-tour.home.stepFive.description':
-    'यह तुम्हारी प्रोफाइल है। gooru में आपके द्वारा बनाई गई सामग्री या रीमिक्स तक पहुंचने के लिए किसी भी समय अपनी प्रोफ़ाइल पर क्लिक करें।',
+    'यह आपकी प्रोफाइल है। gooru में आपके द्वारा बनाई गई सामग्री या रीमिक्स तक पहुंचने के लिए किसी भी समय अपनी प्रोफ़ाइल पर क्लिक करें।',
   'assign-students.assessment-settings': 'आकलन सेटिंग्स',
   'assign-students.assign-assessment-modal-title':
     'छात्रों को मूल्यांकन असाइन करें',
@@ -931,8 +932,8 @@ window.qzi18n = {
   'assignment-details.answer-key': 'उत्तर कुंजी',
   'assignment-details.attempts': 'प्रयास',
   'assignment-details.attempts-left':
-    '[1] बाएं प्रयास: [2] {{count}} {{count}}}',
-  'assignment-details.lastAttempt': '[1] अंतिम प्रयास: [2]',
+    '<b> बाएं प्रयास: </b> {{count}} {{count}}}',
+  'assignment-details.lastAttempt': '<b> अंतिम प्रयास: </b>',
   'assignment-details.launch': 'प्रक्षेपण',
   'assignment-details.learningObjective': 'सीखने का उद्देश्य',
   'assignment-details.navigation': 'पथ प्रदर्शन',

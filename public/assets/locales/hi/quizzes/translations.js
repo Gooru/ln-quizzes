@@ -11,8 +11,7 @@ window.qzi18n = {
   'common.add-collaborator': 'सहयोगी जोड़ें',
   'common.add-collection': 'नया संग्रह बनाएं',
   'common.add-collection-item': 'संसाधन या प्रश्न बनाएँ',
-  'common.add-content-prompt':
-    'आपने अभी तक <span> {{type}} </span> नहीं बनाया है। चलो, साहसी  हो।',
+  'common.add-content-prompt': 'आपने अभी तक <span> {{type}} </span> नहीं बनाया है। चलो, साहसी  हो।',
   'common.add-course': 'नया कोर्स बनाएं',
   'common.add-domains-to-unit': 'इकाई में डोमेन जोड़ें',
   'common.add-url': 'यू आर एल जोड़िये',
@@ -28,10 +27,8 @@ window.qzi18n = {
   'common.add-standards': 'मानकों को जोड़ें',
   'common.add-standards-to-collection': 'संग्रह में मानकों को जोड़ें',
   'common.add-to': 'में जोड़े',
-  'common.add-to-collection-success':
-    'आपने {{contenttitle}} को {{collectiontitle}} में जोड़ा है। क्या आप उस {{collectiontype}} को संपादित करना चाहते हैं?',
-  'common.add-to-lesson-success':
-    'आपने {{collectiontitle}} को {{lessontitle}} में जोड़ा है। क्या आप उस {{collectiontype}} को संपादित करना चाहते हैं?',
+  'common.add-to-collection-success': 'आपने {{contenttitle}} को {{collectiontitle}} में जोड़ा है। क्या आप उस {{collectiontype}} को संपादित करना चाहते हैं?',
+  'common.add-to-lesson-success': 'आपने {{collectiontitle}} को {{lessontitle}} में जोड़ा है। क्या आप उस {{collectiontype}} को संपादित करना चाहते हैं?',
   'common.add-type-question': 'आप किस प्रकार का प्रश्न जोड़ना चाहते हैं?',
   'common.add-type-resource': 'यह किस प्रकार का संसाधन है?',
   'common.add-units': 'इकाइयों को जोड़ें',
@@ -101,10 +98,8 @@ window.qzi18n = {
   'common.created-by': 'के द्वारा बनाई गई',
   'common.current-attempt': 'वर्तमान प्रयास',
   'common.delete': 'हटाना',
-  'common.delete-instructions.links-inaccessible':
-    'सभी शेयर लिंक पहुंच योग्य नहीं होंगे',
-  'common.delete-instructions.content-inaccessible':
-    'सभी सामग्री इसके साथ संलग्न कक्षाओं के लिए पहुंच योग्य नहीं होगी',
+  'common.delete-instructions.links-inaccessible': 'सभी शेयर लिंक पहुंच योग्य नहीं होंगे',
+  'common.delete-instructions.content-inaccessible': 'सभी सामग्री इसके साथ संलग्न कक्षाओं के लिए पहुंच योग्य नहीं होगी',
   'common.depth-of-knowledge': 'ज्ञान की गहराई',
   'common.description': 'विवरण',
   'common.district': 'जिला',
@@ -130,129 +125,81 @@ window.qzi18n = {
   'common.errors.answer-has-no-image': 'कृपया एक उत्तर छवि अपलोड करें।',
   'common.errors.add-username': 'कृपया उपयोगकर्तानाम डालें।',
   'common.errors.add-course-title': 'कृपया पाठ्यक्रम का शीर्षक दर्ज करें।',
-  'common.errors.add-question-answer-text':
-    'कृपया उत्तर पसंद टेक्स्ट दर्ज करें।',
+  'common.errors.add-question-answer-text': 'कृपया उत्तर पसंद टेक्स्ट दर्ज करें।',
   'common.errors.add-question-description': 'कृपया प्रश्न दर्ज करें।',
   'common.errors.add-question-title': 'कृपया प्रश्न शीर्षक दर्ज करें।',
-  'common.errors.assessment-title-presence':
-    'कृपया मूल्यांकन शीर्षक दर्ज करें।',
-  'common.errors.assignees-error':
-    'आपको असाइनमेंट बनाने के लिए कम से कम एक छात्र का चयन करना होगा।',
+  'common.errors.assessment-title-presence': 'कृपया मूल्यांकन शीर्षक दर्ज करें।',
+  'common.errors.assignees-error': 'आपको असाइनमेंट बनाने के लिए कम से कम एक छात्र का चयन करना होगा।',
   'common.errors.available-date-error': 'आपको उपलब्ध तारीख को पूरा करना होगा',
-  'common.errors.can-not-join-class':
-    'उफ़! कक्षा में शामिल होने में असमर्थ कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.assessment-not-added-to':
-    'उफ़! अभी पाठ को मूल्यांकन से जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.assessment-not-copied':
-    'उफ़! अभी मूल्यांकन की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.assessment-not-created':
-    'उफ़! अभी मूल्यांकन करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.assessment-not-updated':
-    'उफ़! अभी मूल्यांकन को अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.class-min-score':
-    'न्यूनतम स्कोर 1 और 100 के बीच एक संख्या होना चाहिए',
-  'common.errors.class-not-created':
-    'उफ़! अभी कक्षा बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.can-not-join-class': 'उफ़! कक्षा में शामिल होने में असमर्थ कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.assessment-not-added-to': 'उफ़! अभी पाठ को मूल्यांकन से जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.assessment-not-copied': 'उफ़! अभी मूल्यांकन की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.assessment-not-created': 'उफ़! अभी मूल्यांकन करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.assessment-not-updated': 'उफ़! अभी मूल्यांकन को अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.class-min-score': 'न्यूनतम स्कोर 1 और 100 के बीच एक संख्या होना चाहिए',
+  'common.errors.class-not-created': 'उफ़! अभी कक्षा बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.class-title-presence': 'कृपया अपने कक्षा को एक नाम दें।',
-  'common.errors.collection-not-added-to':
-    'उफ़! अभी पाठ में संग्रह जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.collection-not-copied':
-    'उफ़! अभी संग्रह की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.collection-not-created':
-    'उफ़! अभी संग्रह बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.collection-not-updated':
-    'उफ़! अभी संग्रह को अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.collection-not-added-to': 'उफ़! अभी पाठ में संग्रह जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.collection-not-copied': 'उफ़! अभी संग्रह की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.collection-not-created': 'उफ़! अभी संग्रह बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.collection-not-updated': 'उफ़! अभी संग्रह को अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.collection-title-presence': 'कृपया संग्रह शीर्षक दर्ज करें।',
   'common.errors.correct-answer-presence': 'कृपया सही उत्तर इंगित करें।',
-  'common.errors.course-not-copied':
-    'उफ़! अभी पाठ्यक्रम की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.course-not-created':
-    'उफ़! अभी कोर्स बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.course-not-updated':
-    'उफ़! अभी पाठ्यक्रम अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.course-not-copied': 'उफ़! अभी पाठ्यक्रम की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.course-not-created': 'उफ़! अभी कोर्स बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.course-not-updated': 'उफ़! अभी पाठ्यक्रम अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.due-date-error': 'देय तिथि वर्तमान तारीख से अधिक होनी चाहिए',
   'common.errors.due-date-presence-error': 'आपको देय तिथि पूरी करनी होगी',
   'common.errors.highlight-text-not-selected': 'कृपया सही उत्तर इंगित करें।',
   'common.errors.highlight-text-wrong-format': 'गलत सवाल प्रारूप।',
-  'common.errors.hotspot-text-max-choices':
-    'आप उत्तर विकल्पों की सीमा तक पहुंच गए हैं।',
-  'common.errors.file-max-size':
-    'केवल 5 एमबी से छोटे आकार की फाइलें समर्थित हैं',
-  'common.errors.file-upload-missing':
-    'कृपया निम्न में से किसी भी एक्सटेंशन के साथ एक फ़ाइल का चयन करें: {{extension}}',
-  'common.errors.lesson-not-copied':
-    'उफ़! अभी सबक कॉपी करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.lesson-not-created':
-    'उफ़! अभी पाठ बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.lesson-not-loaded':
-    'उफ़! अभी पाठ लोड करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.hotspot-text-max-choices': 'आप उत्तर विकल्पों की सीमा तक पहुंच गए हैं।',
+  'common.errors.file-max-size': 'केवल 5 एमबी से छोटे आकार की फाइलें समर्थित हैं',
+  'common.errors.file-upload-missing': 'कृपया निम्न में से किसी भी एक्सटेंशन के साथ एक फ़ाइल का चयन करें: {{extension}}',
+  'common.errors.lesson-not-copied': 'उफ़! अभी सबक कॉपी करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.lesson-not-created': 'उफ़! अभी पाठ बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.lesson-not-loaded': 'उफ़! अभी पाठ लोड करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.lesson-title-required': 'कृपया पाठ शीर्षक दर्ज करें।',
   'common.errors.password-confirm': 'कृपया अपने पासवर्ड की पुष्टि करें।',
   'common.errors.password-length': 'पासवर्ड 5 और 14 वर्णों के बीच होना चाहिए।',
   'common.errors.password-not-match': 'पासवर्ड मेल नहीं खाते।',
   'common.errors.password-required': 'कृपया पासवर्ड दर्ज करें।',
-  'common.errors.password-special-characters':
-    'कृपया विशेष पात्रों का उपयोग न करें।',
-  'common.errors.profile-not-updated':
-    'उफ़! अभी प्रोफ़ाइल अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.question-not-added-to':
-    'उफ़! अभी {{collectiontype}} पर प्रश्न जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.question-not-copied':
-    'उफ़! अभी प्रश्न की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.question-not-created':
-    'उफ़! अभी सवाल बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.question-not-updated':
-    'उफ़! अभी प्रश्न को अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.reset-password-error':
-    'उह ओह! कुछ ठीक नहीं है। पासवर्ड रीसेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.reset-google-account-exists':
-    'आपका ईमेल लॉगिन Google खाते के साथ बनाया गया था और हम एक Google पासवर्ड रीसेट नहीं कर सकते हैं। अगर आप अपना Google पासवर्ड भूल गए हैं, तो आपको इसे अपने Google ऐप्स के माध्यम से रीसेट करना होगा।',
-  'common.errors.resource-description-length':
-    'वर्णन 500 वर्णों से अधिक नहीं हो सकता है।',
+  'common.errors.password-special-characters': 'कृपया विशेष पात्रों का उपयोग न करें।',
+  'common.errors.profile-not-updated': 'उफ़! अभी प्रोफ़ाइल अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.question-not-added-to': 'उफ़! अभी {{collectiontype}} पर प्रश्न जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.question-not-copied': 'उफ़! अभी प्रश्न की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.question-not-created': 'उफ़! अभी सवाल बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.question-not-updated': 'उफ़! अभी प्रश्न को अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.reset-password-error': 'उह ओह! कुछ ठीक नहीं है। पासवर्ड रीसेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.reset-google-account-exists': 'आपका ईमेल लॉगिन Google खाते के साथ बनाया गया था और हम एक Google पासवर्ड रीसेट नहीं कर सकते हैं। अगर आप अपना Google पासवर्ड भूल गए हैं, तो आपको इसे अपने Google ऐप्स के माध्यम से रीसेट करना होगा।',
+  'common.errors.resource-description-length': 'वर्णन 500 वर्णों से अधिक नहीं हो सकता है।',
   'common.errors.resource-invalid-url': 'अमान्य यूआरएल।',
   'common.errors.resource-missing-title': 'कृपया एक संसाधन शीर्षक दर्ज करें।',
   'common.errors.resource-missing-type': 'कृपया एक संसाधन प्रकार का चयन करें।',
   'common.errors.resource-missing-url': 'कृपया एक मान्य यूआरएल दर्ज कीजिए।',
-  'common.errors.resource-not-added-to-collection':
-    'उफ़! अभी संग्रह में संसाधन जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.resource-not-copied':
-    'उफ़! अभी संसाधन की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.resource-not-created':
-    'उफ़! अभी संसाधन बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.resource-not-updated':
-    'उफ़! अभी संसाधन को अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.resource-not-added-to-collection': 'उफ़! अभी संग्रह में संसाधन जोड़ने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.resource-not-copied': 'उफ़! अभी संसाधन की प्रतिलिपि बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.resource-not-created': 'उफ़! अभी संसाधन बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.resource-not-updated': 'उफ़! अभी संसाधन को अपडेट करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.resource-same-host-url': 'संसाधन gooru urls नहीं हो सकता है।',
-  'common.errors.resource-title-length':
-    'शीर्षक 50 वर्णों से अधिक नहीं हो सकता है।',
+  'common.errors.resource-title-length': 'शीर्षक 50 वर्णों से अधिक नहीं हो सकता है।',
   'common.errors.select-correct-answer': 'कृपया सही उत्तर का चयन करें।',
-  'common.errors.search-collections-length':
-    'कृपया कम से कम 3 अक्षर दर्ज करें।',
-  'common.errors.sign-in-credentials-not-valid':
-    'उह ओह! कुछ ठीक नहीं है। कृपया अपना उपयोगकर्ता नाम और पासवर्ड दोबारा जांचें और पुनः प्रयास करें।',
-  'common.errors.sign-in-google-account-exists':
-    'कृपया Google साइनइन का उपयोग करें। हम आपका पासवर्ड रीसेट नहीं कर सकते हैं।',
-  'common.errors.sign-up-error':
-    'उफ़! अभी साइन अप करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.search-collections-length': 'कृपया कम से कम 3 अक्षर दर्ज करें।',
+  'common.errors.sign-in-credentials-not-valid': 'उह ओह! कुछ ठीक नहीं है। कृपया अपना उपयोगकर्ता नाम और पासवर्ड दोबारा जांचें और पुनः प्रयास करें।',
+  'common.errors.sign-in-google-account-exists': 'कृपया Google साइनइन का उपयोग करें। हम आपका पासवर्ड रीसेट नहीं कर सकते हैं।',
+  'common.errors.sign-up-error': 'उफ़! अभी साइन अप करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.sign-up-first-name': 'कृपया अपना प्रथम नाम प्रविष्ट करें।',
   'common.errors.sign-up-last-name': 'कृपया अपना अंतिम नाम दर्ज करें।',
-  'common.errors.sign-up-name-length':
-    'अंतिम नाम में कम से कम 2 अक्षर होना चाहिए।',
+  'common.errors.sign-up-name-length': 'अंतिम नाम में कम से कम 2 अक्षर होना चाहिए।',
   'common.errors.sign-up-name-only-letters': 'कृपया केवल अक्षर दर्ज करें।',
   'common.errors.sign-up-valid-email': 'कृपया एक वैध ई - मेल एड्रेस डालें।',
-  'common.errors.special-characters':
-    'आप विशेष चिन्हो या रिक्त स्थान का उपयोग नहीं कर सकते हैं।',
-  'common.errors.unit-not-copied':
-    'उफ़! अभी यूनिट कॉपी करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.unit-not-created':
-    'उफ़! अभी इकाई बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
-  'common.errors.unit-not-loaded':
-    'उफ़! अभी इकाई लोड करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.special-characters': 'आप विशेष चिन्हो या रिक्त स्थान का उपयोग नहीं कर सकते हैं।',
+  'common.errors.unit-not-copied': 'उफ़! अभी यूनिट कॉपी करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.unit-not-created': 'उफ़! अभी इकाई बनाने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
+  'common.errors.unit-not-loaded': 'उफ़! अभी इकाई लोड करने में असमर्थ। कृपया जल्द ही पुनः प्रयास करें।',
   'common.errors.unit-title-required': 'कृपया यूनिट शीर्षक दर्ज करें।',
   'common.errors.user-email-presence': 'कृपया अपना मान्य ईमेल लिखें।',
-  'common.errors.username-length':
-    'उपयोगकर्ता नाम 4 और 16 वर्णों के बीच होना चाहिए।',
-  'common.errors.forgot-password-gmail':
-    'कृपया Google साइनइन का उपयोग करें। हम आपका पासवर्ड रीसेट नहीं कर सकते हैं।',
+  'common.errors.username-length': 'उपयोगकर्ता नाम 4 और 16 वर्णों के बीच होना चाहिए।',
+  'common.errors.forgot-password-gmail': 'कृपया Google साइनइन का उपयोग करें। हम आपका पासवर्ड रीसेट नहीं कर सकते हैं।',
   'common.essential-questions': 'आवश्यक प्रश्न',
   'common.explanation': 'व्याख्या',
   'common.false': 'असत्य',
@@ -278,7 +225,7 @@ window.qzi18n = {
   'common.last-updated': 'आखरी अपडेट',
   'common.latest-attempt': 'नवीनतम प्रयास',
   'common.launch-anonymous': 'अज्ञात लॉन्च करें',
-  'common.launch-on-air': 'जाओ जियो',
+  'common.launch-on-air': 'लाइव देखें',
   'common.learning-objective': 'सीखने का उद्देश्य',
   'common.learning-objectives': 'सीखने के मकसद',
   'common.learning-target': 'सूक्ष्म मानक',
@@ -291,12 +238,11 @@ window.qzi18n = {
   'common.libraries': 'पुस्तकालयों',
   'common.license': 'लाइसेंस',
   'common.link-out': 'लिंक आउट',
-  'common.link-out-message':
-    '* यदि आपका संसाधन उपरोक्त पूर्वावलोकन में प्रतिपादन नहीं कर रहा है, तो उसे \'लिंक-आउट\' की आवश्यकता हो सकती है और इसे gooru प्लेयर के भीतर नहीं देखा जा सकता है।',
+  'common.link-out-message': '* यदि आपका संसाधन उपरोक्त पूर्वावलोकन में प्रतिपादन नहीं कर रहा है, तो उसे \'लिंक-आउट\' की आवश्यकता हो सकती है और इसे gooru प्लेयर के भीतर नहीं देखा जा सकता है।',
   'common.loading': 'लोड हो रहा है ...',
   'common.login': 'लॉग इन करें',
   'common.logout': 'लोग आउट',
-  'common.mastery': 'महारत',
+  'common.mastery': 'महारत' ,
   'common.menu': 'मेन्यू',
   'common.more-details': 'अधिक जानकारी',
   'common.modify-settings': 'मूल्यांकन सेटिंग्स संशोधित करें',
@@ -312,20 +258,14 @@ window.qzi18n = {
   'common.next': 'आगामी',
   'common.no': 'नहीं',
   'common.no-content': 'कोई सामग्री उपलब्ध नहीं है',
-  'common.no-assessments-to-display':
-    'प्रदर्शित करने के लिए <span> आकलन </span> नहीं।',
-  'common.no-collections-to-display':
-    'प्रदर्शित करने के लिए कोई <span> संग्रह </span>।',
-  'common.no-courses-to-display':
-    'प्रदर्शित करने के लिए कोई <span> पाठ्यक्रम </span>।',
-  'common.no-questions-to-display':
-    'प्रदर्शित करने के लिए <span> प्रश्न </span> नहीं।',
-  'common.no-resources-to-display':
-    'प्रदर्शित करने के लिए कोई <span> संसाधन </span>।',
+  'common.no-assessments-to-display': 'प्रदर्शित करने के लिए <span> आकलन </span> नहीं।',
+  'common.no-collections-to-display': 'प्रदर्शित करने के लिए कोई <span> संग्रह </span>।',
+  'common.no-courses-to-display': 'प्रदर्शित करने के लिए कोई <span> पाठ्यक्रम </span>।',
+  'common.no-questions-to-display': 'प्रदर्शित करने के लिए <span> प्रश्न </span> नहीं।',
+  'common.no-resources-to-display': 'प्रदर्शित करने के लिए कोई <span> संसाधन </span>।',
   'common.no-followers': 'आपके पास अभी तक अनुयायी नहीं हैं।',
   'common.no-results': 'कोई परिणाम नहीं मिला',
-  'common.no-results-message':
-    'अपनी वर्तनी की जाँच करें। हम सभी गलतियां करते हैं! <br/> व्यापक हो जाएं और कुछ फ़िल्टर हटा दें। <br/> या इसके बजाय एक समान शब्द खोजने की कोशिश करें।',
+  'common.no-results-message': 'अपनी वर्तनी की जाँच करें। हम सभी गलतियां करते हैं! <br/> व्यापक हो जाएं और कुछ फ़िल्टर हटा दें। <br/> या इसके बजाय एक समान शब्द खोजने की कोशिश करें।',
   'common.no-more-attempts': 'कोई और प्रयास नहीं',
   'common.notScored': 'स्कोर नहीं किया गया',
   'common.notStarted': 'शुरू नही हुआ',
@@ -349,8 +289,7 @@ window.qzi18n = {
   'common.preview': 'पूर्वावलोकन',
   'common.profile': 'प्रोफ़ाइल',
   'common.prompt': 'शीघ्र',
-  'common.publish-to':
-    ' इसे मेरे प्रोफाइल लाइब्रेरी पर दूसरों के लिए दृश्यमान बनाएं',
+  'common.publish-to': ' इसे मेरे प्रोफाइल लाइब्रेरी पर दूसरों के लिए दृश्यमान बनाएं',
   'common.published-by': 'द्वारा प्रकाशित',
   'common.published-tooltip': 'बैज सामग्री',
   'common.publisher': 'प्रकाशक',
@@ -376,33 +315,27 @@ window.qzi18n = {
   'common.remix': 'रीमिक्स',
   'common.remix-assessment': 'रीमिक्स मूल्यांकन',
   'common.remix-assessment-lead': 'आप एक मूल्यांकन रीमिक्स करने वाले हैं।',
-  'common.remix-assessment-success':
-    'आपने {{मूल्यांकन शीर्षक}} एक मूल्यांकन रीमिक्स किया है। क्या आप उस मूल्यांकन को संपादित करना चाहते हैं?',
+  'common.remix-assessment-success': 'आपने {{मूल्यांकन शीर्षक}} एक मूल्यांकन रीमिक्स किया है। क्या आप उस मूल्यांकन को संपादित करना चाहते हैं?',
   'common.remix-collection': 'रीमिक्स संग्रह',
   'common.remix-collection-lead': 'आप एक संग्रह रीमिक्स करने जा रहे हैं।',
-  'common.remix-collection-success':
-    'आपने {{collectiontitle}} संग्रह को रीमिक्स किया है। क्या आप उस संग्रह को संपादित करना चाहते हैं?',
+  'common.remix-collection-success': 'आपने {{collectiontitle}} संग्रह को रीमिक्स किया है। क्या आप उस संग्रह को संपादित करना चाहते हैं?',
   'common.remix-course': 'रीमिक्स कोर्स',
   'common.remix-course-lead': 'आप एक कोर्स रीमिक्स करने जा रहे हैं।',
-  'common.remix-course-success':
-    'आपने {{coursetitle}} एक कोर्स रीमिक्स किया है। क्या आप उस कोर्स को संपादित करना चाहते हैं?',
+  'common.remix-course-success': 'आपने {{coursetitle}} एक कोर्स रीमिक्स किया है। क्या आप उस कोर्स को संपादित करना चाहते हैं?',
   'common.remix-lesson': 'रीमिक्स सबक',
   'common.remix-lesson-lead': 'आप एक सबक रीमिक्स करने जा रहे हैं।',
   'common.remix-lesson-success': 'आपने एक सबक {{lessontitle}} रीमिक्स किया है।',
   'common.remix-question': 'रीमिक्स सवाल',
   'common.remix-question-lead': 'आप एक प्रश्न रीमिक्स करने जा रहे हैं।',
-  'common.remix-question-success':
-    'आपने एक प्रश्न {{questiontitle}} रीमिक्स किया है। क्या आप उस सवाल को संपादित करना चाहते हैं?',
+  'common.remix-question-success': 'आपने एक प्रश्न {{questiontitle}} रीमिक्स किया है। क्या आप उस सवाल को संपादित करना चाहते हैं?',
   'common.remix-resource': 'रीमिक्स संसाधन',
   'common.remix-resource-lead': 'आप संसाधन को रीमिक्स करने जा रहे हैं।',
-  'common.remix-resource-success':
-    'आपने संसाधन {{resourcetitle}} को रीमिक्स किया है। क्या आप उस संसाधन को संपादित करना चाहते हैं?',
+  'common.remix-resource-success': 'आपने संसाधन {{resourcetitle}} को रीमिक्स किया है। क्या आप उस संसाधन को संपादित करना चाहते हैं?',
   'common.remix-unit': 'रीमिक्स इकाई',
   'common.remix-unit-lead': 'आप एक इकाई रीमिक्स करने जा रहे हैं।',
   'common.remix-unit-success': 'आपने एक इकाई {{unittitle}} को रीमिक्स किया है।',
   'common.remixed-by': 'द्वारा remixed',
-  'common.remix-warning':
-    'सावधान! इस कोर्स में बहुत सी असमान्य सामग्री है और एक प्रतिलिपि बनाने में समय लगेगा। पुष्टि करें कि आप प्रक्रिया शुरू करना चाहते हैं और 15 मिनट में आपको इस पाठ्यक्रम की अपनी प्रति अपनी <b> प्रोफ़ाइल पर मिल जाएगी। </b>',
+  'common.remix-warning': 'सावधान! इस कोर्स में बहुत सी असमान्य सामग्री है और एक प्रतिलिपि बनाने में समय लगेगा। पुष्टि करें कि आप प्रक्रिया शुरू करना चाहते हैं और 15 मिनट में आपको इस पाठ्यक्रम की अपनी प्रति अपनी <b> प्रोफ़ाइल पर मिल जाएगी। </b>',
   'common.remove': 'हटाना',
   'common.report-in-progress': 'रिपोर्ट प्रगति पर है',
   'common.request-to': 'बैज के लिए समीक्षा करने का अनुरोध',
@@ -431,14 +364,12 @@ window.qzi18n = {
   'common.school-info': 'स्कूल की जानकारी',
   'common.score': 'स्कोर',
   'common.select': 'चुनते हैं',
-  'common.select-a-framework':
-    'कृपया पहले उपरोक्त पाठ्यक्रम सूचना अनुभाग में मानकों के ढांचे का चयन करें।',
+  'common.select-a-framework': 'कृपया पहले उपरोक्त पाठ्यक्रम सूचना अनुभाग में मानकों के ढांचे का चयन करें।',
   'common.sentence': 'वाक्य',
   'common.settings': 'सेटिंग्स',
   'common.search': 'खोज',
   'common.search-placeholder': 'खोज...',
-  'common.search-error-message':
-    'खोज शब्द कम से कम 3 अक्षर होने की आवश्यकता है।',
+  'common.search-error-message': 'खोज शब्द कम से कम 3 अक्षर होने की आवश्यकता है।',
   'common.search-400-error-message': 'कृपया वैध खोज शब्द दर्ज करें',
   'common.search-standards': 'खोज मानकों',
   'common.select-question-type': 'प्रश्न प्रकार का चयन करें',
@@ -470,8 +401,7 @@ window.qzi18n = {
   'common.toggle-dropdown': 'टॉगल ड्रॉपडाउन',
   'common.true': 'सही',
   'common.type': 'प्रकार',
-  'common.unexpectedError':
-    'एक अनपेक्षित त्रुटि आई है और इसकी सूचना दी गई है। असुविधा के लिए हमें खेद है!',
+  'common.unexpectedError': 'एक अनपेक्षित त्रुटि आई है और इसकी सूचना दी गई है। असुविधा के लिए हमें खेद है!',
   'common.unfollow': 'अनुसरण न करें',
   'common.unit': 'इकाई',
   'common.unit-title': 'यूनिट शीर्षक',
@@ -489,108 +419,69 @@ window.qzi18n = {
   'common.valid-extensions': 'मान्य फ़ाइल एक्सटेंशन हैं: {{extension}}',
   'common.verified': 'सत्यापित',
   'common.visibility-tooltip': 'दूसरों के लिए दृश्यमान नहीं है',
-  'common.warnings.on-air-connection-lost':
-    'लाइव लाइव डैशबोर्ड कनेक्शन खो गया है और स्वचालित रूप से पुनः प्रयास कर रहा है। यह आकर्षक है, लेकिन कृपया अपनी स्क्रीन रीफ्रेश न करें!',
+  'common.warnings.on-air-connection-lost': 'लाइव लाइव डैशबोर्ड कनेक्शन खो गया है और स्वचालित रूप से पुनः प्रयास कर रहा है। यह आकर्षक है, लेकिन कृपया अपनी स्क्रीन रीफ्रेश न करें!',
   'common.warnings.character-limit': 'आप चरित्र सीमा तक पहुंच गए हैं।',
   'common.word': 'शब्द',
   'common.yes': 'हाँ',
   'content.questions.edit.add-to': 'में जोड़े',
-  'content.questions.edit.best-practices':
-    '<p> एक प्रश्न एक संसाधन है जिसके लिए छात्र से एक उत्तर की आवश्यकता होती है, और हम आपके छात्रों को एसबीएसी, पीआरसीसी और अन्य आकलनों पर किस तरह के प्रश्नों का समर्थन करने के लिए विभिन्न प्रकार के प्रश्न प्रदान करते हैं। </p> <p> वैकल्पिक पर विचार करें छात्रों के इन प्रश्नों के संपर्क में आने के लिए और ज्ञान का प्रदर्शन करने के लिए कई प्रारूप प्रदान करने के लिए आपके द्वारा उपयोग किए जाने वाले प्रश्नों के प्रकार। </p> <p> अपने प्रश्नों को मानकों, सूक्ष्म मानकों और वेब की ज्ञान की गहराई में टैग करें। आप देख सकते हैं कि आपके छात्र शिक्षक डैशबोर्ड के माध्यम से प्रश्नों के साथ कैसे बातचीत कर रहे हैं। </p>',
+  'content.questions.edit.best-practices': '<p> एक प्रश्न एक संसाधन है जिसके लिए छात्र से एक उत्तर की आवश्यकता होती है, और हम आपके छात्रों को एसबीएसी, पीआरसीसी और अन्य आकलनों पर किस तरह के प्रश्नों का समर्थन करने के लिए विभिन्न प्रकार के प्रश्न प्रदान करते हैं। </p> <p> वैकल्पिक पर विचार करें छात्रों के इन प्रश्नों के संपर्क में आने के लिए और ज्ञान का प्रदर्शन करने के लिए कई प्रारूप प्रदान करने के लिए आपके द्वारा उपयोग किए जाने वाले प्रश्नों के प्रकार। </p> <p> अपने प्रश्नों को मानकों, सूक्ष्म मानकों और वेब की ज्ञान की गहराई में टैग करें। आप देख सकते हैं कि आपके छात्र शिक्षक डैशबोर्ड के माध्यम से प्रश्नों के साथ कैसे बातचीत कर रहे हैं। </p>',
   'content.questions.edit.information.question-title': 'प्रश्न शीर्षक',
   'content.questions.edit.information.question-type': 'प्रश्न प्रकार',
   'content.questions.edit.builder.add-answer-choice': '+ उत्तर पसंद जोड़ें',
   'content.questions.edit.builder.add-hint': 'संकेत जोड़ें',
   'content.questions.edit.builder.add-explanation': 'स्पष्टीकरण जोड़ें',
   'content.questions.edit.builder.answer': 'उत्तर',
-  'content.questions.edit.builder.answer-instructions.FIB':
-    'उत्तर और एक स्पष्टीकरण के लिए 5 संकेत जोड़ें।',
-  'content.questions.edit.builder.answer-instructions.HS_IMG':
-    'आप दस उत्तर छवियों को जोड़ सकते हैं और एक या अधिक सही उत्तरों का चयन कर सकते हैं।',
-  'content.questions.edit.builder.answer-instructions.HS_TXT':
-    'आप दस उत्तर विकल्प जोड़ सकते हैं और एक या अधिक सही उत्तरों का चयन कर सकते हैं।',
-  'content.questions.edit.builder.answer-instructions.HT_HL_ST':
-    'जैसा कि आप सवाल लिखते हैं, हाइलाइट किए गए वाक्यों को इंगित करने के लिए ब्रैकेट का उपयोग करें। एक ब्रैकेट में ब्रैकेट के अंदर की अवधि का उपयोग करके, एक समय में केवल एक वाक्य हो सकती है। उदाहरण के लिए, पहले छोटे सुअर ने अपने घर के भूसे का निर्माण किया। [बड़े बुरे भेड़िये ने घर को उड़ा दिया।] दूसरी सुअर ने लकड़ी के अपने घर का निर्माण किया। चरित्र सीमा: 5000।',
-  'content.questions.edit.builder.answer-instructions.HT_HL_WD':
-    'जैसा कि आप सवाल लिखते हैं, हाइलाइट किए गए शब्दों के लिए ब्रैकेट का उपयोग करें। एक ब्रैकेट में एक समय में केवल एक शब्द हो सकता है। उदाहरण के लिए, [बड़ा] बुरा भेड़िया घर से नीचे उड़ा दिया। चरित्र सीमा: 5000।',
-  'content.questions.edit.builder.answer-instructions.HT_RO':
-    'आप सही क्रम में दस उत्तर विकल्प जोड़ सकते हैं। आदेश छात्रों के लिए scrambled जाएगा।',
-  'content.questions.edit.builder.answer-instructions.MA':
-    'आप दस उत्तरों, एक छवि, एक स्पष्टीकरण, और पांच संकेत तक जोड़ सकते हैं।',
-  'content.questions.edit.builder.answer-instructions.single_choice':
-    'आप दस उत्तर विकल्प जोड़ सकते हैं और एक सही उत्तर इंगित कर सकते हैं। चरित्र सीमा: 200।',
-  'content.questions.edit.builder.answer-instructions.OE':
-    'सही प्रतिक्रिया लिखें। चरित्र सीमा: 5000।',
-  'content.questions.edit.builder.answer-instructions.true_false':
-    'सही उत्तर का चयन करें।',
-  'content.questions.edit.builder.question-instructions.FIB':
-    'जैसे ही आप सवाल लिखते हैं, अपने रिक्त-इन-द-रिक्त उत्तरों के लिए ब्रैकेट का उपयोग करें। उदाहरण के लिए: \'बड़ा बुरा [भेड़िया] [घर] नीचे उड़ा दिया।\' आप एक छवि भी जोड़ सकते हैं।',
-  'content.questions.edit.builder.question-instructions.HS_TXT':
-    'अपना प्रश्न लिखें',
-  'content.questions.edit.builder.question-instructions.HS_IMG':
-    'अपना प्रश्न लिखें',
-  'content.questions.edit.builder.question-instructions.HT_RO':
-    'अपना प्रश्न लिखें',
-  'content.questions.edit.builder.question-instructions.HT_HL':
-    'अपना प्रश्न संकेत लिखें।',
-  'content.questions.edit.builder.question-instructions.single_choice':
-    'अपना प्रश्न लिखें',
-  'content.questions.edit.builder.question-instructions.MA':
-    'अपना प्रश्न लिखें',
-  'content.questions.edit.builder.question-instructions.OE':
-    'अपना प्रश्न लिखें',
-  'content.questions.edit.builder.question-instructions.true_false':
-    'अपना प्रश्न लिखें',
-  'content.resources.edit.best-practices':
-    '<p> संसाधन विभिन्न प्रकार के प्रारूपों जैसे वीडियो, इंटरैक्टिव, वेबसाइट्स, इमेजेस, गूगल डॉक्स आदि में मल्टीमीडिया सामग्री हैं। रचनात्मक बनें और अपने संसाधनों का उपयोग करें या \'संसाधन\' प्राप्त करें और gooru में हमारी पर्याप्त आपूर्ति खोजें। </p> <p> अपने छात्रों को शामिल करने के लिए विभिन्न संसाधन प्रकारों का उपयोग करें और विवरण शामिल करें ताकि आप संसाधन के माध्यम से अपने छात्रों को मार्गदर्शन करने में सहायता कर सकें। </p> <p> हम प्रत्येक प्रश्न को मानकों, सूक्ष्म मानकों और 21 वीं शताब्दी के कौशल में टैग करने की सलाह देते हैं। आप देख सकते हैं कि आपके छात्र शिक्षक डैशबोर्ड के माध्यम से संसाधनों के साथ कैसे बातचीत कर रहे हैं। </p>',
-  'content.resources.edit.placeholder-message':
-    'इसे <span> पूर्वावलोकन में संसाधन जोड़ें। </span>',
-  'content.resources.edit.not-implemented':
-    'संसाधन प्रारूप पूर्वावलोकन <span> अभी तक लागू नहीं किया गया है। </span>',
+  'content.questions.edit.builder.answer-instructions.FIB': 'उत्तर और एक स्पष्टीकरण के लिए 5 संकेत जोड़ें।',
+  'content.questions.edit.builder.answer-instructions.HS_IMG': 'आप दस उत्तर छवियों को जोड़ सकते हैं और एक या अधिक सही उत्तरों का चयन कर सकते हैं।',
+  'content.questions.edit.builder.answer-instructions.HS_TXT': 'आप दस उत्तर विकल्प जोड़ सकते हैं और एक या अधिक सही उत्तरों का चयन कर सकते हैं।',
+  'content.questions.edit.builder.answer-instructions.HT_HL_ST': 'जैसा कि आप सवाल लिखते हैं, हाइलाइट किए गए वाक्यों को इंगित करने के लिए ब्रैकेट का उपयोग करें। एक ब्रैकेट में ब्रैकेट के अंदर की अवधि का उपयोग करके, एक समय में केवल एक वाक्य हो सकती है। उदाहरण के लिए, पहले छोटे सुअर ने अपने घर के भूसे का निर्माण किया। [बड़े बुरे भेड़िये ने घर को उड़ा दिया।] दूसरी सुअर ने लकड़ी के अपने घर का निर्माण किया। चरित्र सीमा: 5000।',
+  'content.questions.edit.builder.answer-instructions.HT_HL_WD': 'जैसा कि आप सवाल लिखते हैं, हाइलाइट किए गए शब्दों के लिए ब्रैकेट का उपयोग करें। एक ब्रैकेट में एक समय में केवल एक शब्द हो सकता है। उदाहरण के लिए, [बड़ा] बुरा भेड़िया घर से नीचे उड़ा दिया। चरित्र सीमा: 5000।',
+  'content.questions.edit.builder.answer-instructions.HT_RO': 'आप सही क्रम में दस उत्तर विकल्प जोड़ सकते हैं। आदेश छात्रों के लिए scrambled जाएगा।',
+  'content.questions.edit.builder.answer-instructions.MA': 'आप दस उत्तरों, एक छवि, एक स्पष्टीकरण, और पांच संकेत तक जोड़ सकते हैं।',
+  'content.questions.edit.builder.answer-instructions.single_choice': 'आप दस उत्तर विकल्प जोड़ सकते हैं और एक सही उत्तर इंगित कर सकते हैं। चरित्र सीमा: 200।',
+  'content.questions.edit.builder.answer-instructions.OE': 'सही प्रतिक्रिया लिखें। चरित्र सीमा: 5000।',
+  'content.questions.edit.builder.answer-instructions.true_false': 'सही उत्तर का चयन करें।',
+  'content.questions.edit.builder.question-instructions.FIB': 'जैसे ही आप सवाल लिखते हैं, अपने रिक्त-इन-द-रिक्त उत्तरों के लिए ब्रैकेट का उपयोग करें। उदाहरण के लिए: \'बड़ा बुरा [भेड़िया] [घर] नीचे उड़ा दिया।\' आप एक छवि भी जोड़ सकते हैं।',
+  'content.questions.edit.builder.question-instructions.HS_TXT': 'अपना प्रश्न लिखें',
+  'content.questions.edit.builder.question-instructions.HS_IMG': 'अपना प्रश्न लिखें',
+  'content.questions.edit.builder.question-instructions.HT_RO': 'अपना प्रश्न लिखें',
+  'content.questions.edit.builder.question-instructions.HT_HL': 'अपना प्रश्न संकेत लिखें।',
+  'content.questions.edit.builder.question-instructions.single_choice': 'अपना प्रश्न लिखें',
+  'content.questions.edit.builder.question-instructions.MA': 'अपना प्रश्न लिखें',
+  'content.questions.edit.builder.question-instructions.OE': 'अपना प्रश्न लिखें',
+  'content.questions.edit.builder.question-instructions.true_false': 'अपना प्रश्न लिखें',
+  'content.resources.edit.best-practices': '<p> संसाधन विभिन्न प्रकार के प्रारूपों जैसे वीडियो, इंटरैक्टिव, वेबसाइट्स, इमेजेस, गूगल डॉक्स आदि में मल्टीमीडिया सामग्री हैं। रचनात्मक बनें और अपने संसाधनों का उपयोग करें या \'संसाधन\' प्राप्त करें और gooru में हमारी पर्याप्त आपूर्ति खोजें। </p> <p> अपने छात्रों को शामिल करने के लिए विभिन्न संसाधन प्रकारों का उपयोग करें और विवरण शामिल करें ताकि आप संसाधन के माध्यम से अपने छात्रों को मार्गदर्शन करने में सहायता कर सकें। </p> <p> हम प्रत्येक प्रश्न को मानकों, सूक्ष्म मानकों और 21 वीं शताब्दी के कौशल में टैग करने की सलाह देते हैं। आप देख सकते हैं कि आपके छात्र शिक्षक डैशबोर्ड के माध्यम से संसाधनों के साथ कैसे बातचीत कर रहे हैं। </p>',
+  'content.resources.edit.placeholder-message': 'इसे <span> पूर्वावलोकन में संसाधन जोड़ें। </span>',
+  'content.resources.edit.not-implemented': 'संसाधन प्रारूप पूर्वावलोकन <span> अभी तक लागू नहीं किया गया है। </span>',
   'content.resources.edit.information.im-publisher': 'मैं प्रकाशक हूँ',
-  'content.resources.edit.information.select-a-license':
-    'कृपया एक लाइसेंस का चयन करें',
+  'content.resources.edit.information.select-a-license': 'कृपया एक लाइसेंस का चयन करें',
   'gru-add-to.add-assessment-to-lesson': 'मेरे आकलन से जोड़ें',
-  'gru-add-to.add-assessment-to-lesson-lead':
-    'इस पाठ में जोड़ने के लिए एक मूल्यांकन का चयन करें।',
+  'gru-add-to.add-assessment-to-lesson-lead': 'इस पाठ में जोड़ने के लिए एक मूल्यांकन का चयन करें।',
   'gru-add-to.add-collection-to-lesson': 'मेरे संग्रह से जोड़ें',
-  'gru-add-to.add-collection-to-lesson-lead':
-    'इस पाठ में जोड़ने के लिए एक संग्रह का चयन करें।',
+  'gru-add-to.add-collection-to-lesson-lead': 'इस पाठ में जोड़ने के लिए एक संग्रह का चयन करें।',
   'gru-add-to.add-to-collection': 'संग्रह में जोड़े',
-  'gru-add-to.add-to-collection-lead':
-    'वह संग्रह चुनें जिसे आप {{contenttitle}} जोड़ना चाहते हैं',
+  'gru-add-to.add-to-collection-lead': 'वह संग्रह चुनें जिसे आप {{contenttitle}} जोड़ना चाहते हैं',
   'gru-add-to.add-to-assessment': 'मूल्यांकन या संग्रह में जोड़ें',
-  'gru-add-to.add-to-assessment-lead':
-    'वह मूल्यांकन चुनें जिसे आप {{contenttitle}} जोड़ना चाहते हैं',
-  'gru-add-to.assessments-info':
-    'यहां सूचीबद्ध मूल्यांकन <b> नहीं </b> एक और सबक या पाठ्यक्रम से संबंधित हैं',
-  'gru-add-to.collections-info':
-    'यहां सूचीबद्ध संग्रह <b> नहीं </b> एक और सबक या पाठ्यक्रम से संबंधित हैं',
+  'gru-add-to.add-to-assessment-lead': 'वह मूल्यांकन चुनें जिसे आप {{contenttitle}} जोड़ना चाहते हैं',
+  'gru-add-to.assessments-info': 'यहां सूचीबद्ध मूल्यांकन <b> नहीं </b> एक और सबक या पाठ्यक्रम से संबंधित हैं',
+  'gru-add-to.collections-info': 'यहां सूचीबद्ध संग्रह <b> नहीं </b> एक और सबक या पाठ्यक्रम से संबंधित हैं',
   'qz-assessment-confirmation.title': 'आप एक मूल्यांकन शुरू करने वाले हैं ...',
   'qz-assessment-confirmation.description': 'इस मूल्यांकन में, {{model.title}}',
-  'qz-assessment-confirmation.setting-forward':
-    'आप केवल आगे नेविगेट कर सकते हैं',
-  'qz-assessment-confirmation.setting-forward-backward':
-    'आप सवालों के जवाब देने के लिए आगे और पीछे नेविगेट कर सकते हैं',
-  'qz-assessment-confirmation.forward-backward':
-    'सवालों के जवाब देने के लिए आगे या पीछे जाइये',
+  'qz-assessment-confirmation.setting-forward': 'आप केवल आगे नेविगेट कर सकते हैं',
+  'qz-assessment-confirmation.setting-forward-backward': 'आप सवालों के जवाब देने के लिए आगे और पीछे नेविगेट कर सकते हैं',
+  'qz-assessment-confirmation.forward-backward': 'सवालों के जवाब देने के लिए आगे या पीछे जाइये',
   'qz-assessment-confirmation.forward': 'सिर्फ आगे जा सकता है',
-  'qz-assessment-confirmation.unlimited-attempts-left':
-    'आपके पास असीमित प्रयास हैं',
+  'qz-assessment-confirmation.unlimited-attempts-left': 'आपके पास असीमित प्रयास हैं',
   'qz-assessment-confirmation.attempts-left.one': 'आपके पास 1 प्रयास शेष है',
-  'qz-assessment-confirmation.attempts-left.other':
-    'आपके पास {{count}} प्रयास हैं',
-  'qz-assessment-confirmation.attempts-left.no-attempts':
-    'आपके पास कोई प्रयास नहीं है',
+  'qz-assessment-confirmation.attempts-left.other': 'आपके पास {{count}} प्रयास हैं',
+  'qz-assessment-confirmation.attempts-left.no-attempts': 'आपके पास कोई प्रयास नहीं है',
   'qz-assessment-confirmation.unlimited-attempts': 'आपके पास असीमित प्रयास हैं',
   'qz-assessment-confirmation.cancel': 'रद्द करना',
   'qz-assessment-confirmation.continue': 'जारी रहना',
   'qz-assessment-confirmation.start': 'प्रारंभ!',
-  'qz-assessment-confirmation.no-content-info-message':
-    'यह {{collectionType}} विकसित हो रहा है. कृपया कुछ देर में पुनः जाँच कीजिये',
+  'qz-assessment-confirmation.no-content-info-message': 'यह {{collectionType}} विकसित हो रहा है. कृपया कुछ देर में पुनः जाँच कीजिये',
   'gru-submit-confirmation.title': 'क्या आप वाकई सब जमा करना चाहते हैं?',
-  'gru-submit-confirmation.description':
-    'आप इस प्रयास को समाप्त करने वाले हैं और सभी प्रतिक्रियाएं जमा कर रहे हैं। किसी भी छोड़े गए प्रश्न गलत के रूप में गिना जाएगा।',
+  'gru-submit-confirmation.description': 'आप इस प्रयास को समाप्त करने वाले हैं और सभी प्रतिक्रियाएं जमा कर रहे हैं। किसी भी छोड़े गए प्रश्न गलत के रूप में गिना जाएगा।',
   'gru-submit-confirmation.cancel': 'रद्द करना',
   'gru-submit-confirmation.confirm': 'सब प्रस्तुत करें',
   'gru-quick-course-search.add-from-course': 'मौजूदा पाठ्यक्रम से जोड़ें',
@@ -606,21 +497,17 @@ window.qzi18n = {
   'gru-share-pop-over.share-assessment': 'लिंक के साथ अपना मूल्यांकन साझा करें',
   'gru-share-pop-over.share-collection': 'लिंक के साथ अपने संग्रह साझा करें',
   'gru-category-panel.teacher.title': 'शिक्षकों के लिए',
-  'gru-category-panel.teacher.body':
-    'मानकों-संरेखित सामग्री की खोज करें, सामग्री को कस्टमाइज़ करें, और डेटा एनालिटिक्स के माध्यम से छात्र प्रगति को ट्रैक करें।',
+  'gru-category-panel.teacher.body': 'मानकों-संरेखित सामग्री की खोज करें, सामग्री को कस्टमाइज़ करें, और डेटा एनालिटिक्स के माध्यम से छात्र प्रगति को ट्रैक करें।',
   'gru-category-panel.teacher.cta': 'कहानियां देखें',
   'gru-category-panel.student.title': 'छात्रों के लिए',
-  'gru-category-panel.student.body':
-    'सीखने की सामग्री के माध्यम से प्रगति, निर्माण, और प्रगति की निगरानी करें।',
+  'gru-category-panel.student.body': 'सीखने की सामग्री के माध्यम से प्रगति, निर्माण, और प्रगति की निगरानी करें।',
   'gru-category-panel.student.cta': 'दर्ज',
   'gru-category-panel.student.text-placeholder': 'कक्षा कोड दर्ज करें',
   'gru-category-panel.district.title': 'जिलों के लिए',
-  'gru-category-panel.district.body':
-    'वैयक्तिकृत शिक्षा को मुक्त करने और जिला-vetted पाठ्यक्रम साझा करने के लिए gooru के साथ सहयोग करें।',
+  'gru-category-panel.district.body': 'वैयक्तिकृत शिक्षा को मुक्त करने और जिला-vetted पाठ्यक्रम साझा करने के लिए gooru के साथ सहयोग करें।',
   'gru-category-panel.district.cta': 'हमारे प्रभाव देखें',
   'gru-category-panel.partner.title': 'भागीदारों के लिए',
-  'gru-category-panel.partner.body':
-    'शिक्षा पारिस्थितिकी तंत्र पर हमारे सामूहिक प्रभाव को बढ़ाने के लिए मिशन-गठबंधन भागीदारों के साथ सहयोग करें।',
+  'gru-category-panel.partner.body': 'शिक्षा पारिस्थितिकी तंत्र पर हमारे सामूहिक प्रभाव को बढ़ाने के लिए मिशन-गठबंधन भागीदारों के साथ सहयोग करें।',
   'gru-category-panel.partner.cta': 'और अधिक जानें',
   'class.gru-class-navigation.active': 'सक्रिय:',
   'class.gru-class-navigation.members': 'सदस्यों',
@@ -630,14 +517,12 @@ window.qzi18n = {
   'class.gru-class-navigation.teams': 'टीमों',
   'class.gru-class-navigation.information': 'कक्षा की जानकारी',
   'sign-up.step-1-title': 'नमस्कार!',
-  'sign-up.step-1-description':
-    'हमें खुशी है कि आपने हमसे जुड़ने का फैसला किया है।',
+  'sign-up.step-1-description': 'हमें खुशी है कि आपने हमसे जुड़ने का फैसला किया है।',
   'sign-up.step-child-title': 'इतना शीघ्र नही!',
   'sign-up.step-child-subtitle': 'हम आपका पंजीकरण पूरा नहीं कर सकते हैं।',
   'sign-up.step-child-description-1': 'हमारे कारण gooru आपका खाता नहीं बना सका',
   'sign-up.step-child-age-requirements': 'नियम एवं शर्तें',
-  'sign-up.step-child-description-2':
-    '। सीखते रहें और आपको कुछ सालों में देखें!',
+  'sign-up.step-child-description-2': '। सीखते रहें और आपको कुछ सालों में देखें!',
   'sign-up.step-2-title': 'बुनियादी जानकारी',
   'sign-up.step-2-description': 'आप बुनियादी नहीं हैं, लेकिन यह जानकारी है।',
   'sign-up.log-in': 'लॉग इन करें',
@@ -666,16 +551,13 @@ window.qzi18n = {
   'sign-up.rePassword': 'पासवर्ड की पुष्टि कीजिये',
   'sign-up.state': 'राज्य या क्षेत्र',
   'sign-up.district': 'जिला या चार्टर संगठन',
-  'sign-up.error-username-taken':
-    'ओह, यह उपयोगकर्ता नाम लिया गया है। कोई दूसरा आज़माएं।',
+  'sign-up.error-username-taken': 'ओह, यह उपयोगकर्ता नाम लिया गया है। कोई दूसरा आज़माएं।',
   'sign-up.error-email-taken': 'यह ईमेल लिया गया है। कोई दूसरा आज़माएं।',
   'sign-up.error-role-message': 'कृपया एक भूमिका का चयन करें।',
   'sign-up.error-country-message': 'कृपया अपना देश चुनें।',
   'sign-up.error-state-message': 'कृपया अपना राज्य या क्षेत्र चुनें।',
-  'sign-up.error-district-message':
-    'कृपया सूची से अपना जिला  चार्टर चुनें या इसे \'अन्य\' में प्रदान करें।',
-  'footer.footerDescription':
-    'gooru अपने प्लेटफार्म ओपन-सोर्स और सामुदायिक निर्मित सामग्री सीसी 0 रखने के लिए प्रतिबद्ध है।',
+  'sign-up.error-district-message': 'कृपया सूची से अपना जिला  चार्टर चुनें या इसे \'अन्य\' में प्रदान करें।',
+  'footer.footerDescription': 'gooru अपने प्लेटफार्म ओपन-सोर्स और सामुदायिक निर्मित सामग्री सीसी 0 रखने के लिए प्रतिबद्ध है।',
   'footer.company': 'कंपनी',
   'footer.community': 'समुदाय',
   'footer.legal': 'कानूनी',
@@ -723,55 +605,38 @@ window.qzi18n = {
   'resource.audio': 'ऑडियो',
   'resource.oer': 'के बारे में',
   'gru-image-picker.chooseFile': 'एक फाइल चुनें ...',
-  'gru-image-picker.instruction':
-    'अपने कंप्यूटर पर एक फ़ाइल से एक छवि अपलोड करें।',
-  'gru-image-picker.restriction':
-    'छवि 5 जीबी से कम एक jpg, gif या png फ़ाइल होना चाहिए।',
+  'gru-image-picker.instruction': 'अपने कंप्यूटर पर एक फ़ाइल से एक छवि अपलोड करें।',
+  'gru-image-picker.restriction': 'छवि 5 जीबी से कम एक jpg, gif या png फ़ाइल होना चाहिए।',
   'gru-image-picker.submit': 'छवि का प्रयोग करें',
-  'qz-fib.instructions':
-    'कृपया दिए गए खाली (ओं) में अपना उत्तर टाइप करें, और \'{{action}}\' पर क्लिक करें।',
-  'qz-hs-image.instructions':
-    'कृपया सही छवि का चयन करें, और \'{{action}}\' पर क्लिक करें।',
-  'qz-hs-text.instructions':
-    'कृपया सही उत्तर चुनें, और \'{{action}}\' पर क्लिक करें।',
-  'qz-hot-text.instructions':
-    'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
-  'qz-multiple-answer.instructions':
-    'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
-  'qz-single-choice.instructions':
-    'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
-  'qz-open-ended.instructions':
-    'कृपया नीचे दिए गए क्षेत्र में अपना उत्तर टाइप करें, और जब आप पूरा कर लें तो अपनी प्रतिक्रिया को सहेजने के लिए \'{{action}}\' बटन पर क्लिक करें।',
+  'qz-fib.instructions': 'कृपया दिए गए खाली (ओं) में अपना उत्तर टाइप करें, और \'{{action}}\' पर क्लिक करें।',
+  'qz-hs-image.instructions': 'कृपया सही छवि का चयन करें, और \'{{action}}\' पर क्लिक करें।',
+  'qz-hs-text.instructions': 'कृपया सही उत्तर चुनें, और \'{{action}}\' पर क्लिक करें।',
+  'qz-hot-text.instructions': 'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
+  'qz-multiple-answer.instructions': 'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
+  'qz-single-choice.instructions': 'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
+  'qz-open-ended.instructions': 'कृपया नीचे दिए गए क्षेत्र में अपना उत्तर टाइप करें, और जब आप पूरा कर लें तो अपनी प्रतिक्रिया को सहेजने के लिए \'{{action}}\' बटन पर क्लिक करें।',
   'qz-open-ended.characterLimit': 'चरित्र सीमा',
   'qz-question-viewer.answer': 'उत्तर',
   'qz-question-viewer.previous': 'पिछला',
   'qz-question-viewer.question': 'सवाल',
-  'qz-true-false.instructions':
-    'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
+  'qz-true-false.instructions': 'कृपया सही उत्तर का चयन करें, और \'{{action}}\' पर क्लिक करें।',
   'qz-true-false.true': 'सच',
   'qz-true-false.false': 'असत्य',
-  'qz-reorder.instructions':
-    'कृपया सही क्रम में उत्तरों को पुन: व्यवस्थित करें, और \'{{action}}\' पर क्लिक करें।',
+  'qz-reorder.instructions': 'कृपया सही क्रम में उत्तरों को पुन: व्यवस्थित करें, और \'{{action}}\' पर क्लिक करें।',
   'qz-navigation.view-report': 'रिपोर्ट देखें',
   'qz-player-footer.usage-report': 'उपयोग रिपोर्ट',
-  'qz-viewer.not-iframe-url.header_1':
-    'यह संसाधन gooru के भीतर नहीं देखा जा सकता है।',
-  'qz-viewer.not-iframe-url.header_2':
-    'संसाधन को एक नए टैब में खोलने के लिए नीचे दिए गए बटन पर क्लिक करें।',
+  'qz-viewer.not-iframe-url.header_1': 'यह संसाधन gooru के भीतर नहीं देखा जा सकता है।',
+  'qz-viewer.not-iframe-url.header_2': 'संसाधन को एक नए टैब में खोलने के लिए नीचे दिए गए बटन पर क्लिक करें।',
   'qz-viewer.not-iframe-url.header_3': 'ऑप करने जा रहे है',
   'qz-viewer.not-iframe-url.header_4': 'बाहरी संसाधन का अध्ययन करें',
   'qz-viewer.not-iframe-url.header_5': 'जल्दी फिर मिलेंगे!',
   'qz-viewer.not-iframe-url.view-resource': 'संसाधन देखें',
   'qz-viewer.not-iframe-url.footer_1': 'मैं यह खाली पृष्ठ क्यों देख रहा हूं?',
-  'qz-viewer.not-iframe-url.footer_2':
-    'gooru में जोड़े गए संसाधन हजारों विभिन्न प्रकाशकों से आते हैं',
-  'qz-viewer.not-iframe-url.footer_3':
-    'अपनी सामग्री बनाएं और साझा करें। संसाधनों सहित विभिन्न प्रकार की सेटिंग्स हैं',
-  'qz-viewer.not-iframe-url.footer_4':
-    'आवश्यकताएं जो सामग्री को देखने के लिए आपको दूसरे पृष्ठ पर ले जाती हैं।',
+  'qz-viewer.not-iframe-url.footer_2': 'gooru में जोड़े गए संसाधन हजारों विभिन्न प्रकाशकों से आते हैं',
+  'qz-viewer.not-iframe-url.footer_3': 'अपनी सामग्री बनाएं और साझा करें। संसाधनों सहित विभिन्न प्रकार की सेटिंग्स हैं',
+  'qz-viewer.not-iframe-url.footer_4': 'आवश्यकताएं जो सामग्री को देखने के लिए आपको दूसरे पृष्ठ पर ले जाती हैं।',
   'qz-viewer.not-iframe-url.launch': 'शुरू करे!',
-  'qz-viewer.not-iframe-url.linkout_desc':
-    'आपको यह मूल्यांकन बाहरी साईट पर करना होगा. वहाँ पर मूल्यांकन पूर्ण करने के बाद वापिस यहाँ आइये और अपणा स्कोर प्रविष्ट कीजिये',
+  'qz-viewer.not-iframe-url.linkout_desc': 'आपको यह मूल्यांकन बाहरी साईट पर करना होगा. वहाँ पर मूल्यांकन पूर्ण करने के बाद वापिस यहाँ आइये और अपणा स्कोर प्रविष्ट कीजिये',
   'gru-data-picker.score': 'स्कोर',
   'gru-data-picker.completion': 'समापन',
   'gru-data-picker.timeSpent': 'पहर',
@@ -799,8 +664,7 @@ window.qzi18n = {
   'qz-assessment-report.questions': 'प्रशन',
   'qz-assessment-report.resources': 'साधन',
   'qz-assessment-report.qz-summary.total-time-spent': 'कुल समय बिताया',
-  'qz-assessment-report.hidden-report':
-    'आपके शिक्षक ने इस मूल्यांकन के लिए अपनी सारांश रिपोर्ट छिपाने के लिए चुना है।',
+  'qz-assessment-report.hidden-report': 'आपके शिक्षक ने इस मूल्यांकन के लिए अपनी सारांश रिपोर्ट छिपाने के लिए चुना है।',
   'cards.gru-resource-card.add': 'में जोड़े',
   'cards.gru-resource-result-card.skipped': 'को छोड़ दिया',
   'reports.qz-table-view.first-tier-header-prefix': 'क्ष',
@@ -815,25 +679,16 @@ window.qzi18n = {
   'qz-emotion-picker.react-to-resource': 'इस संसाधन पर प्रतिक्रिया दें',
   'taxonomy.gru-taxonomy-selector.add-secondary': 'माध्यमिक जोड़ें',
   'taxonomy.gru-taxonomy-selector.choose-subject': 'विषय चुनें',
-  'taxonomy.gru-taxonomy-selector.primary-subject-and-course':
-    'मानक ढांचे और पाठ्यक्रम',
-  'validations.unsavedChanges':
-    'आपके परिवर्तन अभी तक सहेजे नहीं गए हैं। क्या आप इस पेज को छोड़ना चाहेंगे?',
-  'taxonomy.modals.gru-domain-picker.browseSelectorText':
-    'इस इकाई में कौन से डोमेन शामिल होंगे?',
-  'taxonomy.modals.gru-domain-picker.selectedText.one':
-    '{{count}} डोमेन चयनित है',
-  'taxonomy.modals.gru-domain-picker.selectedText.other':
-    '{{count}} डोमेन चुने गए',
+  'taxonomy.gru-taxonomy-selector.primary-subject-and-course': 'मानक ढांचे और पाठ्यक्रम',
+  'validations.unsavedChanges': 'आपके परिवर्तन अभी तक सहेजे नहीं गए हैं। क्या आप इस पेज को छोड़ना चाहेंगे?',
+  'taxonomy.modals.gru-domain-picker.browseSelectorText': 'इस इकाई में कौन से डोमेन शामिल होंगे?',
+  'taxonomy.modals.gru-domain-picker.selectedText.one': '{{count}} डोमेन चयनित है',
+  'taxonomy.modals.gru-domain-picker.selectedText.other': '{{count}} डोमेन चुने गए',
   'taxonomy.modals.gru-domain-picker.shortcutText': 'पाठ्यक्रम में है',
-  'taxonomy.modals.gru-standard-picker.browseSelectorText':
-    'क्या मानकों को कवर किया जाएगा?',
-  'taxonomy.modals.gru-standard-picker.selectedText.one':
-    '{{count}} मानक चुना गया',
-  'taxonomy.modals.gru-standard-picker.selectedText.other':
-    '{{count}} मानकों का चयन किया गया',
-  'taxonomy.modals.gru-standard-picker.shortcutText':
-    'यूनिट को टैग किया गया है',
+  'taxonomy.modals.gru-standard-picker.browseSelectorText': 'क्या मानकों को कवर किया जाएगा?',
+  'taxonomy.modals.gru-standard-picker.selectedText.one': '{{count}} मानक चुना गया',
+  'taxonomy.modals.gru-standard-picker.selectedText.other': '{{count}} मानकों का चयन किया गया',
+  'taxonomy.modals.gru-standard-picker.shortcutText': 'यूनिट को टैग किया गया है',
   'qz-rich-text-editor.bold': 'साहसिक',
   'qz-rich-text-editor.expression': 'अभिव्यक्ति',
   'qz-rich-text-editor.italic': 'तिरछा',
@@ -854,61 +709,43 @@ window.qzi18n = {
   'gru-settings-edit.answer-key': 'छात्र अंत में उत्तर कुंजी देख सकते हैं',
   'gru-settings-edit.attempts': 'प्रयास',
   'gru-settings-edit.attempts-unlimited': 'असीमित',
-  'gru-settings-edit.backwards':
-    'छात्र पीछे की ओर नेविगेट कर सकते हैं और प्रतिक्रिया बदल सकते हैं',
+  'gru-settings-edit.backwards': 'छात्र पीछे की ओर नेविगेट कर सकते हैं और प्रतिक्रिया बदल सकते हैं',
   'gru-settings-edit.feedback': 'छात्र देखते हैं कि वे सही  गलत हैं या नहीं',
   'gru-settings-edit.feedback-immediate': 'प्रति सवाल और अंत में',
   'gru-settings-edit.feedback-never': 'कभी नहीँ',
   'gru-settings-edit.feedback-summary': 'अतं मै',
   'gru-settings-edit.navigation-scoring': 'नेविगेशन और स्कोरिंग',
-  'gru-settings-edit.disable-heading':
-    'पाठ्यक्रम मानचित्र में मूल्यांकन सक्रिय करें',
-  'gru-settings-edit.disable-legend':
-    'छात्र अपने पाठ्यक्रम मानचित्र से मूल्यांकन खेल सकते हैं',
+  'gru-settings-edit.disable-heading': 'पाठ्यक्रम मानचित्र में मूल्यांकन सक्रिय करें',
+  'gru-settings-edit.disable-legend': 'छात्र अपने पाठ्यक्रम मानचित्र से मूल्यांकन खेल सकते हैं',
   'gru-settings-edit.performance': 'छात्र अपना प्रदर्शन देखते हैं',
   'gru-tour.overview.stepOne.title': 'पाठ्यक्रम मानचित्र',
-  'gru-tour.overview.stepOne.description':
-    'कोर्स मैप आपके छात्रों को आपके द्वारा आवंटित सभी आकलन और संग्रह तक पहुंच प्रदान करता है।',
+  'gru-tour.overview.stepOne.description': 'कोर्स मैप आपके छात्रों को आपके द्वारा आवंटित सभी आकलन और संग्रह तक पहुंच प्रदान करता है।',
   'gru-tour.overview.stepTwo.title': 'कक्षा का कोड',
-  'gru-tour.overview.stepTwo.description':
-    'आपके द्वारा बनाए गए प्रत्येक कक्षा में एक अद्वितीय वर्ग कोड होता है। आप इस कोड को छात्रों को देंगे जब आप उनके कक्षा में शामिल होने और अपनी सामग्री तक पहुंचने के लिए तैयार हों।',
+  'gru-tour.overview.stepTwo.description': 'आपके द्वारा बनाए गए प्रत्येक कक्षा में एक अद्वितीय वर्ग कोड होता है। आप इस कोड को छात्रों को देंगे जब आप उनके कक्षा में शामिल होने और अपनी सामग्री तक पहुंचने के लिए तैयार हों।',
   'gru-tour.overview.stepThree.title': 'छात्र और कक्षा डेटा की निगरानी करें',
-  'gru-tour.overview.stepThree.description':
-    'यह आपको कक्षा और व्यक्तिगत छात्र मूल्यांकन डेटा देखने की अनुमति देता है जब छात्र पाठ्यक्रम का हिस्सा हैं जो आकलन पूरा करते हैं।',
+  'gru-tour.overview.stepThree.description': 'यह आपको कक्षा और व्यक्तिगत छात्र मूल्यांकन डेटा देखने की अनुमति देता है जब छात्र पाठ्यक्रम का हिस्सा हैं जो आकलन पूरा करते हैं।',
   'gru-tour.overview.stepFour.title': 'कक्षा की जानकारी',
-  'gru-tour.overview.stepFour.description':
-    'यहां आप अपने कक्षा के नाम को संपादित कर सकते हैं, अपने छात्रों के लिए घोषणाएं पोस्ट कर सकते हैं, अपनी कक्षा में नामांकित छात्रों के नाम देख सकते हैं, और अपना कक्षा हटा सकते हैं।',
+  'gru-tour.overview.stepFour.description': 'यहां आप अपने कक्षा के नाम को संपादित कर सकते हैं, अपने छात्रों के लिए घोषणाएं पोस्ट कर सकते हैं, अपनी कक्षा में नामांकित छात्रों के नाम देख सकते हैं, और अपना कक्षा हटा सकते हैं।',
   'gru-tour.overview.stepFive.title': 'अपनी पाठ्यक्रम सामग्री को संपादित करना',
-  'gru-tour.overview.stepFive.description':
-    'जब आप कक्षा में हों, तो अपने छात्रों को दी गई किसी भी पाठ्यक्रम की सामग्री को संपादित करने के लिए यहां क्लिक करें।',
+  'gru-tour.overview.stepFive.description': 'जब आप कक्षा में हों, तो अपने छात्रों को दी गई किसी भी पाठ्यक्रम की सामग्री को संपादित करने के लिए यहां क्लिक करें।',
   'gru-tour.overview.stepSix.title': 'वास्तविक समय में प्रगति की निगरानी!',
-  'gru-tour.overview.stepSix.description':
-    'वास्तविक समय में मूल्यांकन पर कक्षा प्रगति की निगरानी के लिए रीयल-टाइम डैशबोर्ड का उपयोग करें। <br> <br> छात्रों के लिए वास्तविक समय निर्धारण लॉन्च करने के लिए प्रत्येक मूल्यांकन के बाईं ओर \'लाइव लाइव\' आइकन पर क्लिक करें। <br> <br> <i class = \'real-time-icon\'>',
+  'gru-tour.overview.stepSix.description': 'वास्तविक समय में मूल्यांकन पर कक्षा प्रगति की निगरानी के लिए रीयल-टाइम डैशबोर्ड का उपयोग करें। <br> <br> छात्रों के लिए वास्तविक समय निर्धारण लॉन्च करने के लिए प्रत्येक मूल्यांकन के बाईं ओर \'लाइव लाइव\' आइकन पर क्लिक करें। <br> <br> <i class = \'real-time-icon\'>',
   'gru-tour.quick-start.stepOne.title': 'अपने कक्षाओं नेविगेटिंग',
-  'gru-tour.quick-start.stepOne.description':
-    'यह नव निर्मित कक्षा का एक दृश्य है। किसी भी समय कक्षा में वापस जाने के लिए, \'कक्षाओं\' पर क्लिक करें और उस कक्षा का चयन करने के लिए ड्रॉप डाउन मेनू का उपयोग करें, जिसे आप दर्ज करना चाहते हैं।',
+  'gru-tour.quick-start.stepOne.description': 'यह नव निर्मित कक्षा का एक दृश्य है। किसी भी समय कक्षा में वापस जाने के लिए, \'कक्षाओं\' पर क्लिक करें और उस कक्षा का चयन करने के लिए ड्रॉप डाउन मेनू का उपयोग करें, जिसे आप दर्ज करना चाहते हैं।',
   'gru-tour.quick-start.stepTwo.title': 'शुरू करना? एक मूल्यांकन बनाएँ!',
-  'gru-tour.quick-start.stepTwo.description':
-    'हम गुरू के साथ शुरू करने और अपनी कक्षा में छात्र समझ के वर्तमान स्तर का आकलन करने के तरीके के रूप में मूल्यांकन बनाने का सुझाव देते हैं।',
+  'gru-tour.quick-start.stepTwo.description': 'हम गुरू के साथ शुरू करने और अपनी कक्षा में छात्र समझ के वर्तमान स्तर का आकलन करने के तरीके के रूप में मूल्यांकन बनाने का सुझाव देते हैं।',
   'gru-tour.home.stepOne.title': 'आपका मुखपृष्ठ',
-  'gru-tour.home.stepOne.description':
-    'अपने gooru होमपेज में आपका स्वागत है! यहां आप gooru में बनाए गए कक्षाओं की एक सूची पा सकते हैं। कक्षाएं आपको सीधे छात्रों के साथ सामग्री साझा करने की अनुमति देती हैं। आप gooru आइकन पर क्लिक करके हमेशा अपने होमपेज पर वापस आ सकते हैं।',
-  'gru-tour.home.stepTwo.title':
-    'कक्षाएं जिन्हें आप पढ़ते हैं या शामिल होते हैं',
-  'gru-tour.home.stepTwo.description':
-    'इस विद्यालय वर्ष में पढ़ाने या शामिल होने वाले किसी भी कक्षा में सक्रिय कक्षाओं के अंतर्गत यहां दिखाई देगा।',
+  'gru-tour.home.stepOne.description': 'अपने gooru होमपेज में आपका स्वागत है! यहां आप gooru में बनाए गए कक्षाओं की एक सूची पा सकते हैं। कक्षाएं आपको सीधे छात्रों के साथ सामग्री साझा करने की अनुमति देती हैं। आप gooru आइकन पर क्लिक करके हमेशा अपने होमपेज पर वापस आ सकते हैं।',
+  'gru-tour.home.stepTwo.title': 'कक्षाएं जिन्हें आप पढ़ते हैं या शामिल होते हैं',
+  'gru-tour.home.stepTwo.description': 'इस विद्यालय वर्ष में पढ़ाने या शामिल होने वाले किसी भी कक्षा में सक्रिय कक्षाओं के अंतर्गत यहां दिखाई देगा।',
   'gru-tour.home.stepThree.title': 'पिछली कक्षाएं',
-  'gru-tour.home.stepThree.description':
-    'पिछले स्कूल वर्षों में आपके द्वारा बनाए गए या जोड़े गए किसी भी कक्षा में संग्रहीत कक्षाओं में पाया जा सकता है। इन कक्षाओं में उपयोग की जाने वाली सामग्री आपकी प्रोफ़ाइल में पाई जा सकती है, और इसे इस स्कूल वर्ष के लिए नए कक्षाओं में फिर से सौंपा जा सकता है।',
+  'gru-tour.home.stepThree.description': 'पिछले स्कूल वर्षों में आपके द्वारा बनाए गए या जोड़े गए किसी भी कक्षा में संग्रहीत कक्षाओं में पाया जा सकता है। इन कक्षाओं में उपयोग की जाने वाली सामग्री आपकी प्रोफ़ाइल में पाई जा सकती है, और इसे इस स्कूल वर्ष के लिए नए कक्षाओं में फिर से सौंपा जा सकता है।',
   'gru-tour.home.stepFour.title': 'कक्षा बनाओ',
-  'gru-tour.home.stepFour.description':
-    'नया कक्षा बनाने के लिए यहां क्लिक करें। एक बार जब आप छात्रों के साथ साझा करने के लिए सामग्री रखते हैं, तो आप उन्हें कक्षा के माध्यम से असाइन करेंगे।',
+  'gru-tour.home.stepFour.description': 'नया कक्षा बनाने के लिए यहां क्लिक करें। एक बार जब आप छात्रों के साथ साझा करने के लिए सामग्री रखते हैं, तो आप उन्हें कक्षा के माध्यम से असाइन करेंगे।',
   'gru-tour.home.stepFive.title': 'आपकी रूपरेखा',
-  'gru-tour.home.stepFive.description':
-    'यह आपकी प्रोफाइल है। gooru में आपके द्वारा बनाई गई सामग्री या रीमिक्स तक पहुंचने के लिए किसी भी समय अपनी प्रोफ़ाइल पर क्लिक करें।',
+  'gru-tour.home.stepFive.description': 'यह आपकी प्रोफाइल है। gooru में आपके द्वारा बनाई गई सामग्री या रीमिक्स तक पहुंचने के लिए किसी भी समय अपनी प्रोफ़ाइल पर क्लिक करें।',
   'assign-students.assessment-settings': 'आकलन सेटिंग्स',
-  'assign-students.assign-assessment-modal-title':
-    'छात्रों को मूल्यांकन असाइन करें',
+  'assign-students.assign-assessment-modal-title': 'छात्रों को मूल्यांकन असाइन करें',
   'assign-students.available-from': 'से उपलब्ध:',
   'assign-students.date': 'तारीख',
   'assign-students.due-date': 'नियत तारीख:',
@@ -931,8 +768,7 @@ window.qzi18n = {
   'assignment-details.assign': 'सौंपना',
   'assignment-details.answer-key': 'उत्तर कुंजी',
   'assignment-details.attempts': 'प्रयास',
-  'assignment-details.attempts-left':
-    '<b> बाएं प्रयास: </b> {{count}} {{count}}}',
+  'assignment-details.attempts-left': '<b> बाएं प्रयास: </b> {{count}} {{count}}}',
   'assignment-details.lastAttempt': '<b> अंतिम प्रयास: </b>',
   'assignment-details.launch': 'प्रक्षेपण',
   'assignment-details.learningObjective': 'सीखने का उद्देश्य',
@@ -941,7 +777,7 @@ window.qzi18n = {
   'assignment-details.off': 'बंद',
   'assignment-details.on': 'पर',
   'assignment-details.preview': 'पूर्वावलोकन',
-  'assignment-details.questions': 'प्रशन',
+  'assignment-details.questions': 'प्रश्न',
   'assignment-details.redo': 'तैयार',
   'assignment-details.show-score': 'स्कोर दिखाओ',
   'assignment-details.view-report': 'रिपोर्ट देखें',
@@ -952,32 +788,25 @@ window.qzi18n = {
   'qz-rubric-creation.url': 'यूआरएल',
   'qz-rubric-creation.qz-preview-url.add': 'ऊपर एक रूब्रिक जोड़ें',
   'qz-rubric-creation.qz-category.feedback-guidance': 'प्रतिक्रिया मार्गदर्शन',
-  'qz-rubric-creation.qz-category.feedback-guidance-placeholder':
-    'पूर्व। चूंकि आप इस श्रेणी की समीक्षा कर रहे हैं, लेखक के उद्देश्य पर सावधानीपूर्वक ध्यान दें',
+  'qz-rubric-creation.qz-category.feedback-guidance-placeholder': 'पूर्व। चूंकि आप इस श्रेणी की समीक्षा कर रहे हैं, लेखक के उद्देश्य पर सावधानीपूर्वक ध्यान दें',
   'qz-rubric-creation.qz-category.required-feedback': 'आवश्यक प्रतिक्रिया',
   'qz-rubric-creation.qz-category.scoring': 'स्कोरिंग',
   'qz-rubric-creation.qz-category.title': 'श्रेणी शीर्षक',
-  'qz-rubric-creation.qz-category.title-placeholder':
-    'पूर्व। व्याकरण, विचार, थीसिस',
+  'qz-rubric-creation.qz-category.title-placeholder': 'पूर्व। व्याकरण, विचार, थीसिस',
   'qz-rubric-creation.qz-category.new-category': 'नई श्रेणी जोड़ें',
   'qz-rubric-creation.qz-category.qz-scoring-levels.basic': 'पूर्व। बुनियादी',
-  'qz-rubric-creation.qz-category.qz-scoring-levels.below-basic':
-    'पूर्व। मूल से नीचे',
+  'qz-rubric-creation.qz-category.qz-scoring-levels.below-basic': 'पूर्व। मूल से नीचे',
   'qz-rubric-creation.qz-category.qz-scoring-levels.best': 'श्रेष्ठ',
-  'qz-rubric-creation.qz-category.qz-scoring-levels.exemplary':
-    'पूर्व। अनुकरणीय',
+  'qz-rubric-creation.qz-category.qz-scoring-levels.exemplary': 'पूर्व। अनुकरणीय',
   'qz-rubric-creation.qz-category.qz-scoring-levels.levels': 'स्तरों',
-  'qz-rubric-creation.qz-category.qz-scoring-levels.new-level':
-    'नया स्तर जोड़ें',
+  'qz-rubric-creation.qz-category.qz-scoring-levels.new-level': 'नया स्तर जोड़ें',
   'qz-rubric-creation.qz-category.qz-scoring-levels.points': 'अंक',
-  'qz-rubric-creation.qz-category.qz-scoring-levels.proficient':
-    'पूर्व। प्रवीण',
+  'qz-rubric-creation.qz-category.qz-scoring-levels.proficient': 'पूर्व। प्रवीण',
   'qz-rubric-creation.qz-category.qz-scoring-levels.worst': 'सबसे खराब',
   'over-all-score.title': 'कुल स्कोर और प्रतिक्रिया',
   'over-all-score.total-points': 'कुल अंक संभव है',
   'over-all-score.points': 'अंक',
-  'over-all-score.feedback-guidance-placeholder':
-    'पूर्व। चूंकि आप पूरी तरह से इस निबंध की समीक्षा कर रहे हैं, शुरुआत से अंत तक लेखक की आवाज़ की स्थिरता पर प्रतिक्रिया दें',
+  'over-all-score.feedback-guidance-placeholder': 'पूर्व। चूंकि आप पूरी तरह से इस निबंध की समीक्षा कर रहे हैं, शुरुआत से अंत तक लेखक की आवाज़ की स्थिरता पर प्रतिक्रिया दें',
   'qz-player.resource-format.image_resource': 'छवि',
   'qz-player.resource-format.text_resource': 'टेक्स्ट',
   'qz-player.resource-format.video_resource': 'वीडियो',

@@ -4,7 +4,7 @@
       {{#if isCollection}}
         <a class="cursor-default">
           <span title="{{questionData.title}}" data-toggle="tooltip" data-placement="top" data-html="true" class="index">{{plus-one index}}</span>
-          {{charts.gru-x-bar-chart data=questionData.data}}
+          {{charts/gru-x-bar-chart data=questionData.data}}
           <span class="ratio">
             <span>{{questionData.completed}}</span>/<span>{{questionData.total}}</span>
           </span>
@@ -12,7 +12,7 @@
       {{else}}
         <a {{action 'selectQuestion' questionData.id}}>
           <span title="{{questionData.title}}" data-toggle="tooltip" data-placement="top" data-html="true" class="index">{{plus-one index}}</span>
-          {{charts.gru-x-bar-chart data=questionData.data}}
+          {{charts/gru-x-bar-chart data=questionData.data}}
           <span class="ratio">
             <span>{{questionData.completed}}</span>/<span>{{questionData.total}}</span>
           </span>

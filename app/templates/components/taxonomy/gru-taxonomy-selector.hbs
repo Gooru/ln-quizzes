@@ -1,30 +1,30 @@
 {{#if showCategories}}
-<div class="category">
-  <span class="label required">{{t "common.category"}}</span>
-  {{#if isEditing}}
-    <div class="btn-group categories">
-      {{#each categories as |category|}}
-        {{#if (eq category.value selectedCategory)}}
-          <button type="button" class="btn btn-sm btn-primary" {{action 'setCategory' category.value}}>
-            {{t category.label}}
-          </button>
-        {{else}}
-          <button type="button" class="btn btn-sm btn-info" {{action 'setCategory' category.value}}>
-            {{t category.label}}
-          </button>
-        {{/if}}
-      {{/each}}
-    </div>
-  {{else}}
-    <div class="categories">
-      {{#each categories as |category|}}
-        {{#if (eq category.value selectedCategory)}}
-          <div class="btn-empty btn btn-sm category">{{t category.label}}</div>
-        {{/if}}
-      {{/each}}
-    </div>
-  {{/if}}
-</div>
+  <div class="category">
+    <span class="label required">{{t "common.category"}}</span>
+    {{#if isEditing}}
+      <div class="btn-group categories">
+        {{#each categories as |category|}}
+          {{#if (eq category.value selectedCategory)}}
+            <button type="button" class="btn btn-sm btn-primary" {{action 'setCategory' category.value}}>
+              {{t category.label}}
+            </button>
+          {{else}}
+            <button type="button" class="btn btn-sm btn-info" {{action 'setCategory' category.value}}>
+              {{t category.label}}
+            </button>
+          {{/if}}
+        {{/each}}
+      </div>
+    {{else}}
+      <div class="categories">
+        {{#each categories as |category|}}
+          {{#if (eq category.value selectedCategory)}}
+            <div class="btn-empty btn btn-sm category">{{t category.label}}</div>
+          {{/if}}
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
 {{/if}}
 <div class="subject clearfix">
   <label>
@@ -32,7 +32,7 @@
   </label>
   {{#if isEditing}}
     {{#if subjects.length}}
-      {{taxonomy.gru-subject-picker
+      {{taxonomy/gru-subject-picker
         subjects=subjects
         onlySubjectsWithStandards=onlySubjectsWithStandards
         selectedSubject=selectedSubject
@@ -40,7 +40,7 @@
       }}
     {{/if}}
     {{#if (and showCourses selectedSubject subjectCourses)}}
-      {{taxonomy.gru-subject-course-picker
+      {{taxonomy/gru-subject-course-picker
         selectedSubject=selectedSubject
         courses=subjectCourses
         selectedTaxonomy=selectedTaxonomy
@@ -48,7 +48,7 @@
       }}
       {{#if editableTags}}
         <div class="tags">
-          {{taxonomy.gru-taxonomy-tag-list tags=editableTags onRemove=(action 'removeTag')}}
+          {{taxonomy/gru-taxonomy-tag-list tags=editableTags onRemove=(action 'removeTag')}}
         </div>
       {{/if}}
     {{/if}}
@@ -56,7 +56,7 @@
     {{#if showCourses}}
       {{#if tags}}
         <div class="tags">
-          {{taxonomy.gru-taxonomy-tag-list tags=tags}}
+          {{taxonomy/gru-taxonomy-tag-list tags=tags}}
         </div>
       {{/if}}
     {{/if}}

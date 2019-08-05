@@ -67,6 +67,7 @@ test('loadedAnswer', function(assert) {
   const answer = 'answer';
   component.set('questionResult', questionResult);
   component.send('loadedAnswer', question, answer);
+  //return wait().then(function() {
   assert.deepEqual(
     component.question,
     question,
@@ -78,6 +79,7 @@ test('loadedAnswer', function(assert) {
     'Question result answer should be updated'
   );
   assert.notOk(component.answerCompleted, 'answerCompleted should be updated');
+  // });
 });
 
 test('showExplanation', function(assert) {

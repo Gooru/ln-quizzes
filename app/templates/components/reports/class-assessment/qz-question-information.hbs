@@ -7,13 +7,12 @@
   </div>
 {{/if}}
 --}}
-
 <div class="panel panel-default question">
   <div class="panel-body">
     {{#if question.isResource}}
       <h3>{{t "common.resource" }} </h3>
       <div class='resource-view'>
-        {{player.qz-resource-viewer resource=question sendEvents=false showNarration=false collection=null}}
+        {{player/qz-resource-viewer resource=question sendEvents=false showNarration=false collection=null}}
       </div>
     {{else}}
       <h3>{{t "common.question" }} </h3>

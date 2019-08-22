@@ -24,7 +24,7 @@ test('Layout and clear functionality', function(assert) {
     })
   );
   this.render(
-    hbs`{{validation.gru-input model=model valuePath='term' hasClearButton=true}}`
+    hbs`{{validation/gru-input model=model valuePath='term' hasClearButton=true}}`
   ); // render the component
   var $component = this.$(); // component dom element
   var $input = $component.find('input[type=text]');

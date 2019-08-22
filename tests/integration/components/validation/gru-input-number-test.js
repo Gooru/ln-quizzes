@@ -37,7 +37,7 @@ test('number input invalid', function(assert) {
     })
   );
   this.render(
-    hbs`{{validation.gru-input-number model=model valuePath='minScore' min=1 max=100 step=1}}`
+    hbs`{{validation/gru-input-number model=model valuePath='minScore' min=1 max=100 step=1}}`
   ); // render the component
   var $component = this.$(); // component dom element
   var $input = $component.find('input[type=number]');
@@ -85,7 +85,7 @@ test('number input range', function(assert) {
     })
   );
   this.render(
-    hbs`{{validation.gru-input-number model=model valuePath='minScore' min=1 max=100 step=1}}`
+    hbs`{{validation/gru-input-number model=model valuePath='minScore' min=1 max=100 step=1}}`
   ); // render the component
   var $component = this.$(); // component dom element
   var $input = $component.find('input[type=number]');

@@ -1,0 +1,14 @@
+<div class="hidden panel panel-primary">
+    {{#if model.thumbnail}}
+        <img src='{{model.thumbnail}}' />
+    {{/if}}
+</div>
+<div class="panel panel-primary">
+    <div class="header">
+        <div class="panel-body">
+            {{#if model.thumbnail}}
+                <img src='{{model.thumbnail}}' {{action 'closeModal'}} style="width:88vw" />
+            {{/if}}
+        </div>
+    </div>
+</div>

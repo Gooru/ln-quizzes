@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
+import ModalMixin from 'quizzes-addon/mixins/modal';
 import {
   KEY_CODES,
   ASSESSMENT_SHOW_VALUES,
@@ -18,7 +19,7 @@ import {
  * @see controllers/player.js
  * @augments ember/Component
  */
-export default Ember.Component.extend({
+export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -128,6 +129,17 @@ export default Ember.Component.extend({
      */
     submitQuestion: function() {
       this.submitQuestion();
+    },
+
+    showImageModal: function(thumbnail) {
+      this.actions.showModal.call(
+        this,
+        'player.qz-image-modal',
+        { thumbnail: thumbnail, width: '100vw' },
+        null,
+        null,
+        true
+      );
     }
   },
   // -------------------------------------------------------------------------

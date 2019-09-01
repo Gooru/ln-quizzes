@@ -135,7 +135,7 @@ export default Ember.Component.extend(ModalMixin, {
       this.actions.showModal.call(
         this,
         'player.qz-image-modal',
-        { thumbnail: thumbnail, width: '100vw' },
+        { thumbnail: thumbnail, width: '90vw' },
         null,
         null,
         true

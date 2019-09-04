@@ -59,6 +59,17 @@ export default HSTextComponent.extend(ModalMixin, {
   mouseUp: function() {
     Ember.run.cancel(this.get('pressed'));
   },
+
+  contextMenu: function(evt) {
+    let parentEl = $(evt.target).parent(),
+      parentEl$ = $(parentEl[0]),
+      hoverCtx = parentEl$.find('.img-hover');
+    hoverCtx.toggleClass('img-hover-none');
+    hoverCtx.toggleClass('img-hover-flexed');
+    evt.preventDefault();
+    evt.stopPropagation();
+    return false;
+  },
   /**
    * @typedef answers
    * @property {String} value - answer value

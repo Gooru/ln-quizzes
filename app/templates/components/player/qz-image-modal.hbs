@@ -5,9 +5,9 @@
 </div>
 <div class="panel panel-primary">
     <div class="header">
-        <div class="panel-body">
+        <div class="panel-body" style="display: flex">
             {{#if model.thumbnail}}
-                <img src='{{model.thumbnail}}' {{action 'closeModal'}} style="width:88vw" />
+                <img src='{{model.thumbnail}}' {{action 'closeModal'}} style="padding: 0 2px; flex:1;" />
             {{/if}}
         </div>
     </div>

@@ -1,9 +1,10 @@
 import Ember from 'ember';
-import { moduleForComponent, skip } from 'ember-qunit';
+import { moduleForComponent, test, skip } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
 import AnswerModel from 'quizzes-addon/utils/question/answer-object';
 import ResourceModel from 'quizzes-addon/models/resource/resource';
+//import ModalMixin from 'quizzes-addon/mixins/modal';
 
 const configurationServiceStub = Ember.Service.extend({
   configuration: {

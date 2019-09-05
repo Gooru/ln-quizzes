@@ -103,7 +103,7 @@ export default HSTextComponent.extend(ModalMixin, {
         {
           thumbnail: thumbnail,
           width: '90vw',
-          height: '90vw',
+          height: '90vh',
           overflow: 'auto'
         },
         null,

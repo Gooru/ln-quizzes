@@ -1,14 +1,20 @@
 <div class="hidden panel panel-primary">
-    {{#if model.thumbnail}}
-        <img src='{{model.thumbnail}}' />
-    {{/if}}
+    <div class="panel-body" style="display:flex;">
+        <i class='pin' {{ action 'zoomPlus'  }} style="border: 4px solid black;height: 40px;width: 40px;">+</i>
+        <i class='bookmark' {{ action 'zoomMinus'  }} style="border: 4px solid black;height: 40px;width: 40px;">-</i>
+    </div>
 </div>
 <div class="panel panel-primary">
-    <div class="header">
-        <div class="panel-body" style="display:flex; overflow:scroll;">
-            {{#if model.thumbnail}}
-                <img src='{{model.thumbnail}}' {{action 'closeModal'}} style="padding: 0 2px; flex:1;" />
-            {{/if}}
-        </div>
+    <div class="" style="display:flex;">
+        <i class='pin' {{ action 'zoomPlus'  }} style="border: 4px solid black;height: 40px;width: 40px;">+</i>
+        <i class='bookmark' {{ action 'zoomMinus'  }} style="border: 4px solid black;height: 40px;width: 40px;">-</i>
+    </div>
+    <div class="panel-body" style="display:block; overflow:auto;height:90vh;">
+        {{#if model.thumbnail}}
+            <img src='{{model.thumbnail}}' {{action 'closeModal'}} style="padding: 0 2px;touch-action:pan-x pan-y pinch-zoom; 
+            transform-origin: top left;
+            transform: scale({{zoomImg}})" />
+            {{!-- /*flex:1*/; --}}
+        {{/if}}
     </div>
 </div>

@@ -1,0 +1,14 @@
+<div class="hidden panel panel-primary">
+    {{#if model.thumbnail}}
+        <img src='{{model.thumbnail}}' />
+    {{/if}}
+</div>
+<div class="panel panel-primary">
+    <div class="header">
+        <div class="panel-body" style="display:flex; overflow:scroll;">
+            {{#if model.thumbnail}}
+                <img src='{{model.thumbnail}}' {{action 'closeModal'}} style="padding: 0 2px; flex:1;" />
+            {{/if}}
+        </div>
+    </div>
+</div>

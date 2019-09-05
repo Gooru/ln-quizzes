@@ -100,7 +100,12 @@ export default HSTextComponent.extend(ModalMixin, {
       this.actions.showModal.call(
         this,
         'player.qz-image-modal',
-        { thumbnail: thumbnail, width: '90vw' },
+        {
+          thumbnail: thumbnail,
+          width: '90vw',
+          height: '90vw',
+          overflow: 'auto'
+        },
         null,
         null,
         true
@@ -130,7 +135,9 @@ export default HSTextComponent.extend(ModalMixin, {
         const answerId = $this.data('id');
         if (
           el.target.className === 'bookmark' ||
-          el.target.className === 'img-thumbnail'
+          el.target.className === 'img-thumbnail' ||
+          el.target.className ===
+            'gru-icon check_circle material-icons ember-view'
         ) {
           var selected = component.get('selectedAnswers');
           const answer = selected.findBy('value', answerId);

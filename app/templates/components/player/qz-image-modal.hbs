@@ -1,20 +1,11 @@
-<div class="hidden panel panel-primary">
-    <div class="panel-body" style="display:flex;">
-        <i class='pin' {{ action 'zoomPlus'  }} style="border: 4px solid black;height: 40px;width: 40px;">+</i>
-        <i class='bookmark' {{ action 'zoomMinus'  }} style="border: 4px solid black;height: 40px;width: 40px;">-</i>
-    </div>
-</div>
 <div class="panel panel-primary">
-    <div class="" style="display:flex;">
-        <i class='pin' {{ action 'zoomPlus'  }} style="border: 4px solid black;height: 40px;width: 40px;">+</i>
-        <i class='bookmark' {{ action 'zoomMinus'  }} style="border: 4px solid black;height: 40px;width: 40px;">-</i>
+    <div class="zoomMenu hidden">
+        <span class="icon zoomPlus" aria-hidden="true" {{ action 'zoomPlus'  }}>{{gru-icon name='zoom_out'}}</span>
+        <span class="icon zoomMinus" aria-hidden="true" {{ action 'zoomMinus'  }}>{{gru-icon name='zoom_in'}}</span>
     </div>
-    <div class="panel-body" style="display:block; overflow:auto;height:90vh;">
+    <div class="panel-body">
         {{#if model.thumbnail}}
-            <img src='{{model.thumbnail}}' {{action 'closeModal'}} style="padding: 0 2px;touch-action:pan-x pan-y pinch-zoom; 
-            transform-origin: top left;
-            transform: scale({{zoomImg}})" />
-            {{!-- /*flex:1*/; --}}
+            <img src='{{model.thumbnail}}' {{action 'closeModal'}} style="transform: scale({{zoomImg}})" />
         {{/if}}
     </div>
 </div>

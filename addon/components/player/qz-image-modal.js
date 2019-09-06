@@ -16,12 +16,12 @@ export default Ember.Component.extend(ModalMixin, {
   actions: {
     zoomPlus: function() {
       let zoomImg = this.get('zoomImg');
-      zoomImg = zoomImg + 0.1;
+      zoomImg = zoomImg - 0.1;
       Ember.set(this, 'zoomImg', zoomImg);
     },
     zoomMinus: function() {
       let zoomImg = this.get('zoomImg');
-      zoomImg = zoomImg - 0.1;
+      zoomImg = zoomImg + 0.1;
       Ember.set(this, 'zoomImg', zoomImg);
     },
     closeModal: function() {

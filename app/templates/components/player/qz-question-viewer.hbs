@@ -16,7 +16,7 @@
         <div class="question">
           <span class="text">{{gru-math-text text=questionBody}}</span>
           {{#if thumbnail}}
-            <img src="{{thumbnail}}" />
+            <img src="{{thumbnail}}" {{ action 'showImageModal' thumbnail }} />
           {{/if}}
         </div>
         <div>

@@ -10,9 +10,20 @@ export default Ember.Component.extend(ModalMixin, {
 
   thumbnail: Ember.computed.alias('model.thumbnail'),
 
+  zoomImg: 1,
   // -------------------------------------------------------------------------
   // Actions
   actions: {
+    zoomPlus: function() {
+      let zoomImg = this.get('zoomImg');
+      zoomImg = zoomImg - 0.1;
+      Ember.set(this, 'zoomImg', zoomImg);
+    },
+    zoomMinus: function() {
+      let zoomImg = this.get('zoomImg');
+      zoomImg = zoomImg + 0.1;
+      Ember.set(this, 'zoomImg', zoomImg);
+    },
     closeModal: function() {
       this.set('modal.isVisible', false);
     }

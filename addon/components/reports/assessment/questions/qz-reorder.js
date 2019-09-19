@@ -15,6 +15,7 @@ export default Ember.Component.extend(QuestionMixin, {
   // Attributes
 
   classNames: ['reports', 'assessment', 'questions', 'qz-reorder'],
+  showCorrect: false,
 
   // -------------------------------------------------------------------------
   // Properties
@@ -25,6 +26,7 @@ export default Ember.Component.extend(QuestionMixin, {
   answers: Ember.computed(
     'question',
     'userAnswer',
+    'showCorrect',
     'question.answers.@each.text',
     'question.answers.@each.value',
     function() {
@@ -32,11 +34,18 @@ export default Ember.Component.extend(QuestionMixin, {
       const question = component.get('question');
       let userAnswers = component.get('userAnswer') || [];
       const correctAnswers = question.get('question.correctAnswer');
-      if (component.get('showCorrect')) {
-        userAnswers = correctAnswers;
-      }
+
       const answers = question.get('question.answers');
-      return answers.map(function(answer) {
+
+      let userAnswersWithText = userAnswers.map(function(userAns) {
+        let userAnsText = answers.findBy('value', userAns.value).text;
+        return {
+          value: userAns.value,
+          userAnsText: userAnsText
+        };
+      });
+
+      return answers.map(function(answer, inx) {
         const userAnswer = userAnswers.findBy('value', answer.value) || {};
         const correctAnswer = correctAnswers.findBy('value', userAnswer.value);
         const correct =
@@ -44,6 +53,8 @@ export default Ember.Component.extend(QuestionMixin, {
           correctAnswers.indexOf(correctAnswer) ===
             userAnswers.indexOf(userAnswer);
         return {
+          showCorrect: component.get('showCorrect'),
+          selectedOrderText: userAnswersWithText[inx].userAnsText,
           selectedOrder: userAnswers.indexOf(userAnswer) + 1,
           text: answer.get('text'),
           correct

@@ -54,7 +54,10 @@ export default Ember.Component.extend(QuestionMixin, {
             userAnswers.indexOf(userAnswer);
         return {
           showCorrect: component.get('showCorrect'),
-          selectedOrderText: userAnswersWithText[inx].userAnsText,
+          selectedOrderText:
+            userAnswersWithText &&
+            userAnswersWithText.length > 0 &&
+            userAnswersWithText[inx].userAnsText,
           selectedOrder: userAnswers.indexOf(userAnswer) + 1,
           text: answer.get('text'),
           correct

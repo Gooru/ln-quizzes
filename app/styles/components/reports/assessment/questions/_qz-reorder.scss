@@ -5,6 +5,11 @@
     li {
       list-style: none;
       position: relative;
+      display: flex;
+      min-width: 300px;
+      span {
+        flex: 1;
+      }
 
       span.correct {
         color: $brand-success;

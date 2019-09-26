@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { QUESTION_TYPES } from 'quizzes-addon/config/quizzes-question';
+import ModalMixin from 'quizzes-addon/mixins/modal';
 import {
   KEY_CODES,
   ASSESSMENT_SHOW_VALUES,
@@ -18,7 +19,7 @@ import {
  * @see controllers/player.js
  * @augments ember/Component
  */
-export default Ember.Component.extend({
+export default Ember.Component.extend(ModalMixin, {
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -93,12 +94,14 @@ export default Ember.Component.extend({
      */
     loadedAnswer: function(question, answer) {
       if (!this.get('submitted')) {
+        //Ember.run.later(() => {
         const questionResult = this.get('questionResult');
         questionResult.set('answer', answer);
 
         this.set('question', question);
         this.set('answerCompleted', false);
         this.enableNextButton();
+        //});
       }
     },
 
@@ -109,8 +112,8 @@ export default Ember.Component.extend({
       this.set('isExplanationShown', true);
     },
     /**
-    * Action triggered when the user see a hint
-    */
+     * Action triggered when the user see a hint
+     */
     showHint: function() {
       var actualHint = this.get('actualHint');
 
@@ -126,6 +129,17 @@ export default Ember.Component.extend({
      */
     submitQuestion: function() {
       this.submitQuestion();
+    },
+
+    showImageModal: function(thumbnail) {
+      this.actions.showModal.call(
+        this,
+        'player.qz-image-modal',
+        { thumbnail: thumbnail, width: '90vw', height: '90vh' },
+        null,
+        null,
+        true
+      );
     }
   },
   // -------------------------------------------------------------------------

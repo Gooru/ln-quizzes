@@ -26,7 +26,9 @@ export default Ember.Mixin.create({
         model: componentModel,
         activeChannel: activeChannel,
         'component-class': componentClass,
-        width: componentModel.width || '600px'
+        width: componentModel.width || '600px',
+        height: componentModel.height,
+        overflow: componentModel.overflow
       });
     }
   },
@@ -48,7 +50,9 @@ export default Ember.Mixin.create({
       context.$().on('keyup', '.modal-body', function(e) {
         var keyCode = event.keyCode ? event.keyCode : event.which;
         if (keyCode === 13) {
-          $(e.target).blur().focus();
+          $(e.target)
+            .blur()
+            .focus();
         }
       });
     }

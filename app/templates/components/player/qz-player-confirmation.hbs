@@ -18,7 +18,7 @@
           </div>
           <div class="taxonomy">
             {{#if tags.length}}
-              {{taxonomy.gru-taxonomy-tag-list tags=tags tagsVisible=1 isInCard=true showDescription=true}}
+              {{taxonomy/gru-taxonomy-tag-list tags=tags tagsVisible=1 isInCard=true showDescription=true}}
             {{/if}}
           </div>
         </div>
@@ -28,7 +28,8 @@
       <div class="suggestion-badge">
         <div class="suggestion-icon">
           {{#if (eq pathType 'system')}}
-            {{gru-icon name="explore" class="system_suggestions icon"}} {{else if (eq pathType 'teacher')}}
+            {{gru-icon name="explore" class="system_suggestions icon"}}
+          {{else if (eq pathType 'teacher')}}
             <span class="teacher_suggestions icon"></span>
           {{/if}}
         </div>
@@ -91,12 +92,11 @@
       {{/unless}}
     {{/if}}
   </div>
-
   <div class="footer">
     <div class="cancel {{if noMoreAttempts "back" "cancel"}}" {{action 'cancel'}}>{{if noMoreAttempts (t 'common.back') (t 'common.cancel')}}</div>
     {{#if hasCollectionItems}}
       {{#unless noMoreAttempts}}
-        <div class="start" {{action 'start'}} disabled= {{disableStart}}>
+        <div class="start" {{action 'start'}} disabled={{disableStart}}>
           {{t 'qz-assessment-confirmation.continue'}}
         </div>
       {{/unless}}

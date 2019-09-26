@@ -1,5 +1,5 @@
 {{#if freeResponse}}
-  {{player.qz-free-response-viewer question=question questionText=questionBody
+  {{player/qz-free-response-viewer question=question questionText=questionBody
   isSubmitDisabled=isSubmitDisabled
   buttonTextKey=buttonTextKey
   userAnswer=questionResult.answer
@@ -16,7 +16,7 @@
         <div class="question">
           <span class="text">{{gru-math-text text=questionBody}}</span>
           {{#if thumbnail}}
-            <img src="{{thumbnail}}"/>
+            <img src="{{thumbnail}}" {{ action 'showImageModal' thumbnail }} />
           {{/if}}
         </div>
         <div>
@@ -55,12 +55,10 @@
       </div>
     {{/if}}
   </div>
-
   <div class="answers-panel">
     <div class="panel panel-default">
       <div class="panel-body">
         <h2>{{t "qz-question-viewer.answer"}}</h2>
-
         <form {{action "submitQuestion" on="submit"}}>
           {{component (qz-question-config question.type 'component.player')
           instructionsActionTextKey=instructionsActionTextKey
@@ -75,5 +73,4 @@
       </div>
     </div>
   </div>
-
 {{/if}}

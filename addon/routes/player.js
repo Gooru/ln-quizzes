@@ -170,32 +170,30 @@ export default Ember.Route.extend({
       return route
         .get('quizzesContextService')
         .getAssignedContextById(contextId)
-        .then(
-          context =>
-            !context
-              ? null
-              : route
-                .get('quizzesCollectionService')
-                .readCollection(context.collectionId, type)
-                .then(
-                  collection =>
-                    !collection
-                      ? null
-                      : route
-                        .get('quizzesAttemptService')
-                        .getAttemptIds(contextId, profileId)
-                        .then(attempts =>
-                          Ember.RSVP.hash(
-                            Object.assign(model, {
-                              attempts,
-                              collection,
-                              context,
-                              startContextFunction: () =>
-                                route.startContext(context.id, eventContext)
-                            })
-                          )
-                        )
-                )
+        .then(context =>
+          !context
+            ? null
+            : route
+              .get('quizzesCollectionService')
+              .readCollection(context.collectionId, type)
+              .then(collection =>
+                !collection
+                  ? null
+                  : route
+                    .get('quizzesAttemptService')
+                    .getAttemptIds(contextId, profileId)
+                    .then(attempts =>
+                      Ember.RSVP.hash(
+                        Object.assign(model, {
+                          attempts,
+                          collection,
+                          context,
+                          startContextFunction: () =>
+                            route.startContext(context.id, eventContext)
+                        })
+                      )
+                    )
+              )
         );
     }
   },

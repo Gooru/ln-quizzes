@@ -25,13 +25,16 @@ export default Ember.Component.extend({
 
   actions: {
     /**
-    * Action triggered when the user closes the content player
-    */
+     * Action triggered when the user closes the content player
+     */
     closePlayer: function() {
       let component = this;
+      let isIframeMode = component.get('isIframeMode');
       let isEventFromRGO = component.get('isEventFromRGO');
       if (isEventFromRGO) {
         window.close();
+      } else if (isIframeMode) {
+        window.parent.postMessage('PUllUP_CLOSE', '*');
       } else {
         this.sendAction('onClosePlayer');
       }

@@ -106,7 +106,8 @@ export default Ember.Route.extend({
       pathId,
       pathType,
       notCheckAttempts,
-      isStudyPlayer
+      isStudyPlayer,
+      isIframeMode
     } = params;
     let type =
       params.type ||
@@ -150,7 +151,8 @@ export default Ember.Route.extend({
       role,
       eventContext,
       notCheckAttempts,
-      isStudyPlayer
+      isStudyPlayer,
+      isIframeMode
     };
     if (isAnonymous || isTeacher || !isStudyPlayer) {
       return route
@@ -170,42 +172,42 @@ export default Ember.Route.extend({
       return route
         .get('quizzesContextService')
         .getAssignedContextById(contextId)
-        .then(
-          context =>
-            !context
-              ? null
-              : route
-                .get('quizzesCollectionService')
-                .readCollection(context.collectionId, type)
-                .then(
-                  collection =>
-                    !collection
-                      ? null
-                      : route
-                        .get('quizzesAttemptService')
-                        .getAttemptIds(contextId, profileId)
-                        .then(attempts =>
-                          Ember.RSVP.hash(
-                            Object.assign(model, {
-                              attempts,
-                              collection,
-                              context,
-                              startContextFunction: () =>
-                                route.startContext(context.id, eventContext)
-                            })
-                          )
-                        )
-                )
+        .then(context =>
+          !context
+            ? null
+            : route
+              .get('quizzesCollectionService')
+              .readCollection(context.collectionId, type)
+              .then(collection =>
+                !collection
+                  ? null
+                  : route
+                    .get('quizzesAttemptService')
+                    .getAttemptIds(contextId, profileId)
+                    .then(attempts =>
+                      Ember.RSVP.hash(
+                        Object.assign(model, {
+                          attempts,
+                          collection,
+                          context,
+                          startContextFunction: () =>
+                            route.startContext(context.id, eventContext)
+                        })
+                      )
+                    )
+              )
         );
     }
   },
 
   setupController(controller, model) {
+    window.parent.postMessage('LOADING_COMPLETED', '*');
     const collection = model.collection;
     const isAnonymous = model.isAnonymous;
     const isTeacher = model.role === 'teacher';
     const notCheckAttempts = model.notCheckAttempts;
     const isStudyPlayer = model.isStudyPlayer;
+    const isIframeMode = model.isIframeMode;
     let contextResult = ContextResult.create();
     if (model.resourceId) {
       contextResult.set('currentResourceId', model.resourceId);
@@ -234,6 +236,7 @@ export default Ember.Route.extend({
     controller.set('suggestedResources', model.suggestedResources);
     controller.set('pathType', model.eventContext.pathType);
     controller.set('isStudyPlayer', isStudyPlayer);
+    controller.set('isIframeMode', isIframeMode);
   },
 
   /**

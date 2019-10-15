@@ -98,3 +98,13 @@
     }
   }
 }
+
+.hide-report-header {
+  .gru-header {
+    display: none;
+  }
+
+  .app-container {
+    padding-top: 0px;
+  }
+}

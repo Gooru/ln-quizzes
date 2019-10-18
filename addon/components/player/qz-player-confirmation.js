@@ -42,7 +42,12 @@ export default Ember.Component.extend({
     cancel() {
       let component = this;
       let transitionTo = this.get('source');
-      component.sendAction('onClosePlayer', transitionTo);
+      let isIframeMode = component.get('isIframeMode');
+      if (isIframeMode) {
+        window.parent.postMessage('PUllUP_CLOSE', '*');
+      } else {
+        component.sendAction('onClosePlayer', transitionTo);
+      }
     }
   },
 

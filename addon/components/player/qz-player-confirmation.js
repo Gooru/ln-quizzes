@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import TaxonomyTag from 'quizzes-addon/models/taxonomy/taxonomy-tag';
 import TaxonomyTagData from 'quizzes-addon/models/taxonomy/taxonomy-tag-data';
+import { PLAYER_EVENT_MESSAGE } from 'quizzes-addon/config/quizzes-config';
+
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------
   // Attributes
@@ -42,7 +44,12 @@ export default Ember.Component.extend({
     cancel() {
       let component = this;
       let transitionTo = this.get('source');
-      component.sendAction('onClosePlayer', transitionTo);
+      let isIframeMode = component.get('isIframeMode');
+      if (isIframeMode) {
+        window.parent.postMessage(PLAYER_EVENT_MESSAGE.GRU_PUllUP_CLOSE, '*');
+      } else {
+        component.sendAction('onClosePlayer', transitionTo);
+      }
     }
   },
 

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import ContextResult from 'quizzes-addon/models/result/context';
 import EventContext from 'quizzes-addon/models/context/event-context';
+import { PLAYER_EVENT_MESSAGE } from 'quizzes-addon/config/quizzes-config';
 
 /**
  * @typedef { Ember.Route } PlayerRoute
@@ -201,7 +202,7 @@ export default Ember.Route.extend({
   },
 
   setupController(controller, model) {
-    window.parent.postMessage('LOADING_COMPLETED', '*');
+    window.parent.postMessage(PLAYER_EVENT_MESSAGE.GRU_LOADING_COMPLETED, '*');
     const collection = model.collection;
     const isAnonymous = model.isAnonymous;
     const isTeacher = model.role === 'teacher';

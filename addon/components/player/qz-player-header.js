@@ -1,5 +1,8 @@
 import Ember from 'ember';
-import { PLAYER_EVENT_SOURCE } from 'quizzes-addon/config/quizzes-config';
+import {
+  PLAYER_EVENT_SOURCE,
+  PLAYER_EVENT_MESSAGE
+} from 'quizzes-addon/config/quizzes-config';
 
 /**
  * Default Player header
@@ -34,7 +37,7 @@ export default Ember.Component.extend({
       if (isEventFromRGO) {
         window.close();
       } else if (isIframeMode) {
-        window.parent.postMessage('PUllUP_CLOSE', '*');
+        window.parent.postMessage(PLAYER_EVENT_MESSAGE.GRU_PUllUP_CLOSE, '*');
       } else {
         this.sendAction('onClosePlayer');
       }

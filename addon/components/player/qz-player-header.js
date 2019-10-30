@@ -34,10 +34,10 @@ export default Ember.Component.extend({
       let component = this;
       let isIframeMode = component.get('isIframeMode');
       let isEventFromRGO = component.get('isEventFromRGO');
-      if (isEventFromRGO) {
-        window.close();
-      } else if (isIframeMode) {
+      if (isIframeMode) {
         window.parent.postMessage(PLAYER_EVENT_MESSAGE.GRU_PUllUP_CLOSE, '*');
+      } else if (isEventFromRGO) {
+        window.close();
       } else {
         this.sendAction('onClosePlayer');
       }

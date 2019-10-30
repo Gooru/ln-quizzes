@@ -59,6 +59,7 @@
 
   .qz-assessment-summary {
     background: $white;
+    margin-top: 65px;
 
     .reports-owner {
       height: 24px;
@@ -67,6 +68,9 @@
       span {
         margin-left: 14px;
       }
+    }
+    &.iframe-report {
+      margin-top: 0px;
     }
   }
   /* Small devices (tablets, 768px and up) */
@@ -86,6 +90,14 @@
       @include flex();
       text-align: center;
       font-size: $font-size-large;
+    }
+  }
+}
+
+.iframe-panel {
+  .reports.qz-assessment-report {
+    .qz-assessment-summary {
+      margin-top: 0px;
     }
   }
 }

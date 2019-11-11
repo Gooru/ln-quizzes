@@ -31,7 +31,9 @@
             {{#if suggestedResources}}
               {{player/related-content
                 suggestedResources=suggestedResources
-                classId=classId courseId=course.id}}
+                classId=classId courseId=course.id
+                isIframeMode=isIframeMode
+              }}
             {{/if}}
             {{player/qz-player-footer
                   resource=resource

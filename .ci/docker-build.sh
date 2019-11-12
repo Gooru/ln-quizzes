@@ -13,7 +13,7 @@ GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD | sed 's/\//-/')
 VERSION=${GIT_BRANCH}-${GIT_COMMIT_HASH}
 
 info "Installing npm dependencies..."
-silent yarn install --ignore-engines
+silent yarn install
 
 info "Installing bower dependencies..."
 silent bower install

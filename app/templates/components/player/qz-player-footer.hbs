@@ -13,42 +13,31 @@
 
   <div class="player-container">
     <div class="player-info">
-      <div class="current-resource-info">
+      <div class="current-resource-info" {{action "onToggleResourceNav"}}>
         <div class="resource-sequence">
           <span>{{resource.sequence}}</span>
         </div>
         <div class="resource-question">
           <i class="{{resource.format}} resource-icon"></i>
         </div>
-        <div class="resource-title" {{action "onToggleResourceNav"}}>
+        <div class="resource-title">
           <span>{{no-tags text=resource.title}}</span>
         </div>
+        {{#if isNavigatorOpen}}
+          <div class="list-resource-nav">
+            {{gru-icon name="ic_keyboard_arrow_down"}}
+          </div>
+        {{else}}
+          <div class="list-resource-nav">
+            {{gru-icon name="ic_keyboard_arrow_up"}}
+          </div>
+        {{/if}}
       </div>
     </div>
     <div class="reaction-bar">
       {{qz-emotion-picker startEmotion=ratingScore onChangeEmotion="changeEmotion" readOnly=submitted}}
     </div>
-
-    {{#if isStudyPlayer}}
-      <div class="toggle-screen" {{action 'onToggleScreen'}}>
-        {{#if isFullScreen}}
-          {{gru-icon name="fullscreen_exit"}}
-        {{else}}
-          {{gru-icon name="fullscreen"}}
-        {{/if}}
-      </div>
-    {{/if}}
-
-    {{#if isNavigatorOpen}}
-      <div class="list-resource-nav" {{action 'onCloseNavigator'}}>
-        {{gru-icon name="ic_keyboard_arrow_down"}}
-      </div>
-    {{else}}
-      <div class="list-resource-nav" {{action 'onOpenNavigator'}}>
-        {{gru-icon name="ic_keyboard_arrow_up"}}
-      </div>
-    {{/if}}
-
+    
     <div class="list-resources">
       {{#if isMilestoneContent}}
         <div class="milestone-breadcrumb">

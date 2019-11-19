@@ -23,9 +23,9 @@ export default Ember.Component.extend({
 
   showRelatedContent: false,
   /**
-  *Back drop for the related content
-  */
-  isShowBackdrop:false,
+   *Back drop for the related content
+   */
+  isShowBackdrop: false,
 
   /**
    * @property {Array} list of suggested resources of a collection
@@ -71,6 +71,10 @@ export default Ember.Component.extend({
       let classId = this.get('classId');
       if (classId) {
         queryParams.classId = classId;
+      }
+      let isIframeMode = this.get('isIframeMode');
+      if (isIframeMode) {
+        queryParams.isIframeMode = isIframeMode;
       }
       this.get('router').transitionTo(
         'resource-player',

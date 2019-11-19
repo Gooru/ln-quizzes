@@ -98,3 +98,22 @@
     }
   }
 }
+
+.iframe-panel {
+  overflow-y: hidden;
+  .app-container {
+    padding-top: 0px;
+  }
+}
+
+.student_class_class-activities.iframe-panel {
+  .app-container {
+    padding-top: 50px;
+  }
+}
+
+.reports_student-collection.iframe-panel {
+  .gru-header {
+    display: none;
+  }
+}

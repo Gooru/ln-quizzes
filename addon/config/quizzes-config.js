@@ -227,3 +227,8 @@ export const FIB_REGEX = /\[](?!{)/;
 export const PLAYER_EVENT_SOURCE = {
   RGO: 'rgo'
 };
+
+export const PLAYER_EVENT_MESSAGE = {
+  GRU_PUllUP_CLOSE: 'gru_pullup_close',
+  GRU_LOADING_COMPLETED: 'gru_loading_completed'
+};

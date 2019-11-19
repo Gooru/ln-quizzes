@@ -1,6 +1,6 @@
 {
   "name": "quizzes-addon",
-  "version": "4.9.7",
+  "version": "4.9.13",
   "description": "Small description for quizzes goes here.",
   "directories": {
     "doc": "doc",
@@ -73,7 +73,9 @@
     "husky": "^0.14.3",
     "lint-staged": "^4.0.1",
     "loader.js": "^4.0.10",
-    "prettier": "^1.5.3"
+    "prettier": "^1.5.3",
+    "detect-indent": "5.0.0",
+    "sort-package-json": "1.22.1"
   },
   "keywords": [
     "ember-addon"

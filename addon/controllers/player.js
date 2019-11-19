@@ -4,7 +4,14 @@ export default Ember.Controller.extend({
   // -------------------------------------------------------------------------
   // Attributes
 
-  queryParams: ['resourceId', 'sourceId', 'source', 'isStudyPlayer'],
+  queryParams: [
+    'resourceId',
+    'sourceId',
+    'source',
+    'isStudyPlayer',
+    'pathId',
+    'pathType'
+  ],
 
   // -------------------------------------------------------------------------
   // Properties

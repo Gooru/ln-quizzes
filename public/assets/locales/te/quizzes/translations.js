@@ -580,6 +580,8 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'ప్రశ్నలకు సమాధానం ఇవ్వడానికి ముందుకు మరియు వెనుకకు నావిగేట్ చేయండి',
   'qz-assessment-confirmation.forward': 'మాత్రమే ముందుకు నావిగేట్',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'మీకు అపరిమిత ప్రయత్నాలు ఉన్నాయి',
   'qz-assessment-confirmation.attempts-left.one': 'మీకు 1 ప్రయత్నం మిగిలి ఉంది',

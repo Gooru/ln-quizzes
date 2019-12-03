@@ -591,6 +591,8 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകാൻ മുന്നോട്ടു പിന്നോട്ട് നാവിഗേറ്റുചെയ്യുക',
   'qz-assessment-confirmation.forward': 'മുന്നോട്ട് നാവിഗേറ്റുചെയ്യുക',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'നിങ്ങൾക്ക് പരിമിതികളില്ലാത്ത ശ്രമങ്ങളുണ്ട്',
   'qz-assessment-confirmation.attempts-left.one':

@@ -574,6 +574,8 @@ export default {
   'qz-assessment-confirmation.forward-backward':
     'Navigate forward and backwards to answer questions',
   'qz-assessment-confirmation.forward': 'Navigate forward only',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'You have unlimited attempts',
   'qz-assessment-confirmation.attempts-left.one': 'You have 1 attempt left',

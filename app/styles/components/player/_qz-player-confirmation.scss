@@ -1,23 +1,13 @@
-@media screen and (min-width: $screen-1024) and (min-height: $screen-sm) and (orientation: landscape) {
-  .app-container {
-    .show-confirmation {
-      background-position: top;
-    }
-  }
-}
-@media screen and (min-width: $screen-1024) and (min-height: $screen-1366) {
-  .app-container {
-    .show-confirmation {
-      background-position: left;
-    }
-  }
-}
 .show-confirmation {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;
-  background-position: inherit;
+  background-position: center;
+
+  @media screen and (max-width: $screen-1024) {
+    background-position: inherit;
+  }
 
   .qz-player {
     &.confirmation {
@@ -35,285 +25,288 @@
 }
 
 .qz-player-confirmation {
-  left: 75px;
-  top: 168px;
-  position: fixed;
-
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: auto;
   .confirmation-panel {
-    width: 499px;
-    border-radius: 4px;
     background-color: $white;
-    box-shadow: 0 2px 13px 6px $heathered-gray;
-    opacity: 0.9;
-    padding: 26px 30px 10px 31px;
-    color: $dark-500;
-    min-height: 245px;
-
-    .header {
-      max-height: 125px;
-      display: flex;
-
-      .title-info {
-        width: calc(100% - 110px);
-
-        .collection-info {
-          .title {
-            $font-size: 34px;
-            $line-height: 1.09;
-            $lines-to-show: 2;
-            @include ellipsis(
-              $font-size: $font-size,
-              $line-height: $line-height,
-              $lines-to-show: $lines-to-show
-            );
-          }
-
-          .content-info {
-            display: flex;
-            padding: 15px 0;
-
-            .icon {
-              height: 17px;
-              width: 17px;
-              display: block;
-              background-size: cover;
-              background-repeat: no-repeat;
-              margin-right: 9px;
-            }
-
-            .question,
-            .resource {
-              display: flex;
-              line-height: 17px;
-              margin-bottom: 5px;
-            }
-
-            .resource {
-              margin-right: 10px;
-            }
-
-            .question .icon {
-              background-image: url("gooru/images/add_question.svg");
-            }
-
-            .resource .icon {
-              background-image: url("gooru/images/add_resource_icon.svg");
-            }
-          }
-
-          .taxonomy {
-            margin: -1px 0 0 5px;
-
-            .gru-taxonomy-tag-list {
-              .gru-taxonomy-tag {
-                background-color: $charcoal-grey;
-
-                .tag-label {
-                  color: $white;
-                  font-size: 12px;
-                  font-weight: bold;
-                }
-
-                .tag-caption {
-                  display: none;
-                }
-              }
-
-              .non-visible-tags {
-                padding: 0;
-              }
-            }
-          }
-        }
-      }
-
-      .thumbnail {
-        width: 247px;
-        height: 161px;
-        object-fit: contain;
-        background-color: transparent;
-        background-size: cover;
-        background-repeat: no-repeat;
-        float: $tab-float-dir;
-      }
-
-      .suggestion-badge {
-        position: absolute;
-        right: 15px;
-
-        .suggestion-icon {
-          width: 100px;
-
-          i {
-            font-size: 95px;
-            background-color: #101316;
-            border-radius: 50%;
-            color: $orange-400;
-            border: 1px solid $charcoal-grey-two;
-          }
-
-          .teacher_suggestions {
-            background-image: url("gooru/images/account-cirlce-orange.svg");
-            width: 100px;
-            height: 100px;
-            background-size: 100px;
-            color: $orange-400;
-            display: block;
-            border-radius: 50%;
-            background-color: $dark;
-          }
-        }
-      }
-    }
-
-    .body {
-      .description {
-        color: $charcoal-grey-two;
-        $font-size: 13px;
-        $line-height: 1.6;
-        $lines-to-show: 6;
-        @include ellipsis(
-          $font-size: $font-size,
-          $line-height: $line-height,
-          $lines-to-show: $lines-to-show
-        );
-        padding-bottom: 23px;
-        min-height: 69px;
-      }
-
-      .properties {
-        display: flex;
-        padding-bottom: 23px;
-
-        .navigation {
-          padding: 0;
-        }
-
-        .attempts {
-          .attempt {
-            font-size: 29px;
-          }
-        }
-
-        .answers,
-        .attempts,
-        .navigation {
-          width: calc(100% / 3);
-        }
-
-        .answers,
-        .attempts,
-        .navigation {
-          padding: 0 15px;
-          font-size: 10px;
-          line-height: 1.5;
-          text-align: center;
-          width: calc(100% / 2);
-
-          i {
-            font-size: 39px;
-          }
-        }
-
-        .answers,
-        .attempts,
-        .navigation {
-          width: 100%;
-        }
-      }
-    }
-
-    .footer {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-
-      .cancel,
-      .start {
-        width: 76px;
-        height: 36px;
-        border-radius: 3px;
-        text-align: center;
-        line-height: 36px;
-        cursor: pointer;
-        margin-left: 10px;
-        margin-right: 10px;
-      }
-
-      .cancel {
-        background-color: $light-200;
-        color: $elephant-dark;
-      }
-
-      .start {
-        background-color: $blue-400;
-        color: $white;
-      }
-    }
-
+    width: 45%;
+    border: 1px solid #868585;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
     &.suggested-content {
-      background-color: $charcoal-grey-two;
-      color: $pale-grey-two;
-      opacity: 0.9;
-
-      .header {
-        .title-info {
-          .collection-info {
-            .title {
-              color: $white;
+      box-shadow: 0 2px 13px 6px #463423;
+    }
+    &::-webkit-scrollbar {
+      height: 6px;
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $gray-light;
+      border: 1px solid $gray-light;
+      border-radius: 5px;
+    }
+    .confirmation-container {
+      display: grid;
+      grid-template-rows: 150px auto;
+      color: $white;
+      text-transform: capitalize;
+      .header-panel {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        &:after {
+          display: block;
+          z-index: 9;
+          margin-top: -100px;
+          height: 100%;
+          width: 100%;
+          content: "";
+          background-image: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0) 0,
+            $kbd-bg 100%
+          );
+        }
+        .header-content {
+          display: grid;
+          grid-template-columns: auto 70px;
+          height: 100%;
+          .title {
+            font-size: 20px;
+            align-items: center;
+            display: flex;
+            font-weight: 600;
+            padding: 10px;
+          }
+          .suggestion-badge {
+            text-align: right;
+            padding: 5px;
+            .suggestion-icon {
+              i {
+                font-size: 50px;
+                background-color: #f7f8f9;
+                border-radius: 50%;
+                color: $orange-400;
+                border: 1px solid #eeeff1;
+              }
+              .teacher_suggestions {
+                background-image: url("gooru/images/account-cirlce-orange.svg");
+                width: 50px;
+                height: 50px;
+                background-size: 50px;
+                color: $orange-400;
+                display: block;
+                border-radius: 50%;
+                background-color: $dark;
+                margin: auto;
+              }
             }
-
-            .content-info {
+          }
+        }
+      }
+      .body-panel {
+        height: 100%;
+        background-color: $white;
+        .body-content {
+          display: grid;
+          grid-template-rows: auto;
+          .description-panel {
+            display: grid;
+            grid-template-rows: auto 50px auto;
+            padding: 10px 15px;
+            .description p {
+              color: #576ca2;
+              font-size: 15px;
+              margin-bottom: 10px;
+              line-height: 1.6;
+            }
+            .details {
+              display: grid;
+              grid-template-columns: auto 60px 50px 100px;
+              .taxonomy {
+                .gru-taxonomy-tag-list {
+                  .gru-taxonomy-tag {
+                    background-color: $charcoal-grey;
+                    padding: 5px;
+                    .tag-label {
+                      color: $white;
+                      font-size: 12px;
+                      font-weight: bold;
+                    }
+                    .tag-caption {
+                      color: $pre-bg;
+                    }
+                  }
+                }
+              }
+              .icon {
+                height: 22px;
+                width: 22px;
+                display: block;
+                background-size: cover;
+                background-repeat: no-repeat;
+                margin-right: 5px;
+              }
+              .question,
+              .resource {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                span {
+                  color: #6e6e6e;
+                  font-size: 17px;
+                }
+              }
               .question .icon {
-                background-image: url("gooru/images/question-white.svg");
+                background-image: url("gooru/images/add_question.svg");
               }
-
               .resource .icon {
-                background-image: url("gooru/images/resource-white.svg");
+                background-image: url("gooru/images/add_resource_icon.svg");
+              }
+              .start-button {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                .start {
+                  background-color: #00c451;
+                  padding: 7px 5px;
+                  text-align: center;
+                  font-size: 16px;
+                  width: 100%;
+                  float: right;
+                  text-transform: uppercase;
+                  font-weight: 500;
+                  cursor: pointer;
+                }
+              }
+            }
+            .properties {
+              display: flex;
+              .attempts {
+                .attempt {
+                  font-size: 25px;
+                  color: #29333c;
+                }
+              }
+              .answers,
+              .attempts,
+              .navigation {
+                font-size: 10px;
+                line-height: 1.5;
+                text-align: center;
+                width: 100%;
+                padding: 5px;
+                i {
+                  font-size: 35px;
+                  color: #29333c;
+                }
+                .info {
+                  color: #646b71;
+                }
+              }
+            }
+            @media screen and (max-width: $screen-380) {
+              grid-template-rows: auto auto auto;
+              .details {
+                grid-auto-rows: 50px;
+                grid-template-columns: auto 60px 50px;
+                .start-button {
+                  grid-row-start: 2;
+                  display: grid;
+                  grid-column-start: 1;
+                  grid-column-end: 4;
+                }
               }
             }
           }
-        }
 
-        .taxonomy {
-          .gru-taxonomy-tag-list {
-            .gru-taxonomy-tag {
-              background-color: $pale-grey-two !important;
-
-              .tag-label {
-                color: $dark !important;
+          .content-panel {
+            background-color: #e2eaf9;
+            padding-top: 5px;
+            li {
+              list-style: none;
+              border-bottom: 1px solid #eaeffa;
+            }
+            .content-title {
+              display: grid;
+              grid-template-columns: 50px auto 50px;
+              span {
+                padding: 5px;
+                font-size: 20px;
                 font-weight: bold;
+                background-color: #dde5f6;
+                color: #91a1c8;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+              .title {
+                font-size: 15px;
+                padding: 5px 10px;
+                align-items: center;
+                font-weight: 500;
+                display: flex;
+                color: #6f81af;
+                background-color: #fff;
+                line-height: 1.2;
+              }
+              .image {
+                background-color: #fff;
+                display: flex;
+                i {
+                  width: 25px;
+                  height: 23px;
+                  background-size: cover;
+                  background-repeat: no-repeat;
+                  display: block;
+                  margin: auto;
+                  opacity: 0.7;
+                  &.resource.interactive_resource {
+                    background-image: url("gooru/images/interactive-resource-dark.svg");
+                  }
+                  &.resource.video_resource {
+                    background-image: url("gooru/images/video-resource-dark.svg");
+                  }
+                  &.resource.webpage_resource {
+                    height: 25px;
+                    background-image: url("gooru/images/website-resource-dark.svg");
+                  }
+                  &.resource.image_resource {
+                    background-image: url("gooru/images/image-resource-dark.svg");
+                  }
+                  &.resource.audio_resource {
+                    background-image: url("gooru/images/audio-resource-dark.svg");
+                  }
+                  &.resource.text_resource {
+                    height: 25px;
+                    background-image: url("gooru/images/text-resource-dark.svg");
+                  }
+                  &.question {
+                    height: 25px;
+                    background-image: url("gooru/images/add_question.svg");
+                  }
+                }
               }
             }
           }
-        }
-      }
-
-      .body {
-        .description {
-          color: $white;
-        }
-
-        .properties {
-          i {
-            color: $pale-grey-two;
-          }
-        }
-      }
-
-      .footer {
-        .start {
-          background-color: $orange-400;
         }
       }
     }
   }
-
-  .no-content-info-message {
-    font-size: 18px;
-    padding-bottom: 20px;
-    line-height: 1.3;
-    text-align: center;
+  @media screen and (max-width: $screen-1024) and (min-width: $screen-sm) {
+    justify-content: center;
+    .confirmation-panel {
+      width: 75%;
+    }
+  }
+  @media screen and (max-width: $screen-sm - 1) {
+    justify-content: center;
+    .confirmation-panel {
+      width: 100%;
+    }
   }
 }

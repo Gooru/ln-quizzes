@@ -1,105 +1,57 @@
 <div class="confirmation-panel {{unless isCollectionConfirmation 'assessment'}} {{if isSuggestedContent 'suggested-content'}}">
-  <div class="header">
-    <div class="title-info">
-      <div class="collection-info">
-        <div class="title">
-          {{confirmationInfo.title}}
-        </div>
-        <div class="content-info">
-          {{#if isCollectionConfirmation}}
-            <div class="resource">
-              <span class="icon" data-toggle="tooltip" title="{{t 'common.resource'}}"></span>
-              <span>{{confirmationInfo.resourceCount}}</span>
-            </div>
-          {{/if}}
-          <div class="question">
-            <span class="icon" data-toggle="tooltip" title="{{t 'common.question'}}"></span>
-            <span>{{confirmationInfo.questionCount}}</span>
-          </div>
-          <div class="taxonomy">
-            {{#if tags.length}}
-              {{taxonomy/gru-taxonomy-tag-list tags=tags tagsVisible=1 isInCard=true showDescription=true}}
-            {{/if}}
-          </div>
-        </div>
+  <div class="confirmation-container">
+    <div class="header-panel" style="background-image: url({{confirmationInfo.thumbnailUrl}})">
+      <div class="header-content">
+        <div class="title">{{safe-html confirmationInfo.title}}</div>
       </div>
     </div>
-    {{#if isSuggestedContent}}
-      <div class="suggestion-badge">
-        <div class="suggestion-icon">
-          {{#if (eq pathType 'system')}}
-            {{gru-icon name="explore" class="system_suggestions icon"}}
-          {{else if (eq pathType 'teacher')}}
-            <span class="teacher_suggestions icon"></span>
-          {{/if}}
-        </div>
-      </div>
-    {{/if}}
-  </div>
-  <div class="body">
-    <div class="description">
-      {{confirmationInfo.learningObjectives}}
-    </div>
-    {{#if hasCollectionItems}}
-      {{#unless isCollectionConfirmation}}
-        <div class="properties">
-          {{#unless noMoreAttempts}}
-            <div class="navigation">
-              <div class="direction">
-                {{#if collection.bidirectional}}
-                  {{gru-icon name='swap_horiz'}}
-                  <div class="info bidirectional">
-                    {{t "qz-assessment-confirmation.forward-backward"}}
-                  </div>
-                {{else}}
-                  {{gru-icon name='trending_flat'}}
-                  <div class="info not-bidirectional">
-                    {{t "qz-assessment-confirmation.forward"}}
-                  </div>
-                {{/if}}
-              </div>
-            </div>
-          {{/unless}}
-          {{#if (eq collection.showFeedback 'immediate')}}
-            <div class="answers">
-              {{gru-icon name='visibility'}}
-              <div class="info">
-                See correct answers within the assessment
-              </div>
-            </div>
-          {{/if}}
-          {{#unless notCheckAttempts}}
-            <div class="attempts">
-              {{#if unlimited}}
-                {{gru-icon name='cached'}}
-                <div class="info unlimited">{{t "qz-assessment-confirmation.unlimited-attempts-left"}}</div>
-              {{else}}
-                {{#if noMoreAttempts}}
-                  {{gru-icon name='highlight_off'}}
-                  <div class="info no-more">{{t "qz-assessment-confirmation.attempts-left.no-attempts"}}</div>
-                {{else}}
-                  <div class="attempt">{{attemptsLeft}}</div>
-                  <div class="info">{{t "qz-assessment-confirmation.attempts-left" count=attemptsLeft}}</div>
-                {{/if}}
+    <div class="body-panel">
+      <div class="body-content">
+        <div class="description-panel">
+          <div class="description"><p>{{safe-html confirmationInfo.learningObjectives}}</p></div>
+          <div class="details">
+            <div class="taxonomy">
+              {{#if tags.length}}
+                {{taxonomy/gru-taxonomy-tag-list tags=tags tagsVisible=1 isInCard=true showDescription=true}}
               {{/if}}
             </div>
-          {{/unless}}
+            <div class="resource">
+              {{#if (and isCollectionConfirmation (gt confirmationInfo.resourceCount 0)) }}
+                <span class="icon" data-toggle="tooltip" title="{{t 'common.resource'}}"></span>
+                <span>{{confirmationInfo.resourceCount}}</span>
+              {{/if}}
+            </div>
+            <div class="question">
+              {{#if (gt confirmationInfo.questionCount 0)}}
+                <span class="icon" data-toggle="tooltip" title="{{t 'common.question'}}"></span>
+                <span>{{confirmationInfo.questionCount}}</span>
+              {{/if}}
+            </div>
+            <div class="start-button">
+              {{#if hasCollectionItems}}
+                {{#unless noMoreAttempts}}
+                  <div class="start" {{action 'start'}} disabled={{disableStart}}>
+                    {{t 'qz-assessment-confirmation.continue'}}
+                  </div>
+                {{/unless}}
+              {{/if}}
+            </div>
+          </div>
         </div>
-      {{/unless}}
-    {{else}}
-      {{#unless isLoading}}
-        <p class="no-content-info-message">{{t 'qz-assessment-confirmation.no-content-info-message' collectionType=(if isCollectionConfirmation 'collection' 'assessment')}}</p>
-      {{/unless}}
-    {{/if}}
-  </div>
-  <div class="footer">
-    <div class="cancel {{if noMoreAttempts "back" "cancel"}}" {{action 'cancel'}}>{{if noMoreAttempts (t 'common.back') (t 'common.cancel')}}</div>
-    {{#if hasCollectionItems}}
-      {{#unless noMoreAttempts}}
-        <div class="start" {{action 'start'}} disabled={{disableStart}}>
-          {{t 'qz-assessment-confirmation.continue'}}
+        <div class="content-panel">
+          {{#each confirmationInfo.content as |item index|}}
+            <li>
+              <div class="content-title">
+                <span>{{plus-one index}}</span>
+                <div class="title">{{item.title}}</div>
+                <div class="image">
+                  <i class="{{item.content_format }} {{item.content_subformat}}"></i>
+                </div>
+              </div>
+            </li>
+          {{/each}}
         </div>
-      {{/unless}}
-    {{/if}}
+      </div>
+    </div>
   </div>
 </div>

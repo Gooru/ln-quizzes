@@ -1,13 +1,5 @@
 .qz-player-confirmation {
   @media screen and (max-width: $sm-width-max) {
-    left: auto;
-    right: auto;
-
-    .confirmation-panel {
-      padding: 23px 23px 6px 9px;
-      width: 300px;
-    }
-
     .confirmation-panel {
       .header {
         .title-info {

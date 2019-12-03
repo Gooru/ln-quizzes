@@ -37,6 +37,9 @@
     border: 1px solid #868585;
     max-height: calc(100vh - 100px);
     overflow-y: auto;
+    &.suggested-content {
+      box-shadow: 0 2px 13px 6px #463423;
+    }
     &::-webkit-scrollbar {
       height: 6px;
       width: 8px;
@@ -70,6 +73,7 @@
         }
         .header-content {
           display: grid;
+          grid-template-columns: auto 70px;
           height: 100%;
           .title {
             font-size: 20px;
@@ -77,6 +81,30 @@
             display: flex;
             font-weight: 600;
             padding: 10px;
+          }
+          .suggestion-badge {
+            text-align: right;
+            padding: 5px;
+            .suggestion-icon {
+              i {
+                font-size: 50px;
+                background-color: #f7f8f9;
+                border-radius: 50%;
+                color: $orange-400;
+                border: 1px solid #eeeff1;
+              }
+              .teacher_suggestions {
+                background-image: url("gooru/images/account-cirlce-orange.svg");
+                width: 50px;
+                height: 50px;
+                background-size: 50px;
+                color: $orange-400;
+                display: block;
+                border-radius: 50%;
+                background-color: $dark;
+                margin: auto;
+              }
+            }
           }
         }
       }
@@ -88,8 +116,8 @@
           grid-template-rows: auto;
           .description-panel {
             display: grid;
-            grid-template-rows: auto 50px;
-            padding: 15px;
+            grid-template-rows: auto 50px auto;
+            padding: 10px 15px;
             .description p {
               color: #576ca2;
               font-size: 15px;
@@ -116,8 +144,8 @@
                 }
               }
               .icon {
-                height: 25px;
-                width: 25px;
+                height: 22px;
+                width: 22px;
                 display: block;
                 background-size: cover;
                 background-repeat: no-repeat;
@@ -130,7 +158,7 @@
                 justify-content: center;
                 span {
                   color: #6e6e6e;
-                  font-size: 20px;
+                  font-size: 17px;
                 }
               }
               .question .icon {
@@ -156,8 +184,33 @@
                 }
               }
             }
+            .properties {
+              display: flex;
+              .attempts {
+                .attempt {
+                  font-size: 25px;
+                  color: #29333c;
+                }
+              }
+              .answers,
+              .attempts,
+              .navigation {
+                font-size: 10px;
+                line-height: 1.5;
+                text-align: center;
+                width: 100%;
+                padding: 5px;
+                i {
+                  font-size: 35px;
+                  color: #29333c;
+                }
+                .info {
+                  color: #646b71;
+                }
+              }
+            }
             @media screen and (max-width: $screen-380) {
-              grid-template-rows: auto auto;
+              grid-template-rows: auto auto auto;
               .details {
                 grid-auto-rows: 50px;
                 grid-template-columns: auto 60px 50px;

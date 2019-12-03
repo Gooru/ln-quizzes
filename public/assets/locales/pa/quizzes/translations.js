@@ -580,6 +580,8 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'ਪ੍ਰਸ਼ਨਾਂ ਦੇ ਉੱਤਰ ਦੇਣ ਲਈ ਅੱਗੇ ਅਤੇ ਪਿਛਲੀ ਨੈਵੀਗੇਟ ਕਰੋ',
   'qz-assessment-confirmation.forward': 'ਸਿਰਫ ਅੱਗੇ ਜਾਣ',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'ਤੁਹਾਡੇ ਕੋਲ ਬੇਅੰਤ ਕੋਸ਼ਿਸ਼ਾਂ ਹਨ',
   'qz-assessment-confirmation.attempts-left.one':

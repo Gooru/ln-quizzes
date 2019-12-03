@@ -555,6 +555,8 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'Navigate forward and backwards to answer questions',
   'qz-assessment-confirmation.forward': 'Navigate forward only',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'لديك عدد غير محدد من المحاولات',
   'qz-assessment-confirmation.attempts-left.one': 'تبقى لديك محاولة واحدة فقط',

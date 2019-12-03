@@ -570,6 +570,8 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'প্রশ্নের উত্তর দিতে এগিয়ে এবং পিছনে নেভিগেট',
   'qz-assessment-confirmation.forward': 'শুধুমাত্র এগিয়ে নেভিগেট',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'আপনি সীমাহীন প্রচেষ্টা আছে',
   'qz-assessment-confirmation.attempts-left.one': 'আপনি 1 প্রচেষ্টা বাকি আছে',

@@ -579,6 +579,8 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'પ્રશ્નોના જવાબો આગળ અને પાછળ નેવિગેટ કરો',
   'qz-assessment-confirmation.forward': 'માત્ર આગળ નેવિગેટ કરો',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'તમારી પાસે અમર્યાદિત પ્રયત્નો છે',
   'qz-assessment-confirmation.attempts-left.one':

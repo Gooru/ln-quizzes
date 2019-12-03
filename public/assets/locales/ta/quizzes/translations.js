@@ -593,6 +593,8 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'கேள்விகளுக்கு பதிலளிக்க முன்னோக்கி மற்றும் பின்னோக்கி செல்லவும்',
   'qz-assessment-confirmation.forward': 'முன்னோக்கி செல்லவும்',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'உங்களுக்கு வரம்பற்ற முயற்சிகள் உள்ளன',
   'qz-assessment-confirmation.attempts-left.one': 'உங்களுக்கு 1 முயற்சி உள்ளது',

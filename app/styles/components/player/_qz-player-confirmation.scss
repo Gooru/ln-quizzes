@@ -33,10 +33,11 @@
   overflow: auto;
   .confirmation-panel {
     background-color: $white;
-    width: 45%;
+    width: 33%;
     border: 1px solid #868585;
-    max-height: calc(100vh - 100px);
+    max-height: calc(100vh - 80px);
     overflow-y: auto;
+    margin-left: 7%;
     &.suggested-content {
       box-shadow: 0 2px 13px 6px #463423;
     }
@@ -68,16 +69,17 @@
           background-image: linear-gradient(
             to bottom,
             rgba(255, 255, 255, 0) 0,
-            $kbd-bg 100%
+            #111 100%
           );
         }
         .header-content {
           display: grid;
           grid-template-columns: auto 70px;
           height: 100%;
+          position: relative;
           .title {
-            font-size: 20px;
-            align-items: center;
+            font-size: 18px;
+            align-items: flex-end;
             display: flex;
             font-weight: 600;
             padding: 10px;
@@ -120,14 +122,16 @@
             padding: 10px 15px;
             .description p {
               color: #576ca2;
-              font-size: 15px;
+              font-size: 13px;
               margin-bottom: 10px;
-              line-height: 1.6;
+              line-height: 1.2;
             }
             .details {
               display: grid;
               grid-template-columns: auto 60px 50px 100px;
               .taxonomy {
+                align-items: center;
+                margin-top: 1px;
                 .gru-taxonomy-tag-list {
                   .gru-taxonomy-tag {
                     background-color: $charcoal-grey;
@@ -158,7 +162,7 @@
                 justify-content: center;
                 span {
                   color: #6e6e6e;
-                  font-size: 17px;
+                  font-size: 14px;
                 }
               }
               .question .icon {
@@ -175,12 +179,13 @@
                   background-color: #00c451;
                   padding: 7px 5px;
                   text-align: center;
-                  font-size: 16px;
+                  font-size: 14px;
                   width: 100%;
                   float: right;
                   text-transform: uppercase;
                   font-weight: 500;
                   cursor: pointer;
+                  line-height: 32px;
                 }
               }
             }

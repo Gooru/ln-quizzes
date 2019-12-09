@@ -54,7 +54,6 @@
       display: grid;
       grid-template-rows: 150px auto;
       color: $white;
-      text-transform: capitalize;
       .header-panel {
         background-repeat: no-repeat;
         background-size: cover;
@@ -83,6 +82,7 @@
             display: flex;
             font-weight: 600;
             padding: 10px;
+            line-height: 1.2;
           }
           .suggestion-badge {
             text-align: right;
@@ -118,17 +118,27 @@
           grid-template-rows: auto;
           .description-panel {
             display: grid;
-            grid-template-rows: auto 50px auto;
-            padding: 10px 15px;
-            .description p {
-              color: #576ca2;
-              font-size: 13px;
-              margin-bottom: 10px;
-              line-height: 1.2;
+            grid-template-rows: auto 60px auto;
+            .description {
+              padding: 10px;
+              border-bottom: 1px solid #ccc;
+              p {
+                color: #576ca2;
+                margin-bottom: 0px;
+                $font-size: 13px;
+                $line-height: 1.2;
+                $lines-to-show: 3;
+                @include ellipsis(
+                  $font-size: $font-size,
+                  $line-height: $line-height,
+                  $lines-to-show: $lines-to-show
+                );
+              }
             }
             .details {
               display: grid;
               grid-template-columns: auto 60px 50px 100px;
+              padding: 5px 10px;
               .taxonomy {
                 align-items: center;
                 margin-top: 1px;
@@ -186,6 +196,7 @@
                   font-weight: 500;
                   cursor: pointer;
                   line-height: 32px;
+                  border-radius: 3px;
                 }
               }
             }

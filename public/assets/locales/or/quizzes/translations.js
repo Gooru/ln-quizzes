@@ -602,7 +602,7 @@ window.qzi18n = {
   'qz-assessment-confirmation.attempts-left.other':
     'ଆପଣଙ୍କର {{count}} ଟି ପ୍ରୟାସ ଅଛି',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'ଆପଣଙ୍କର କୌଣସି ପ୍ରୟାସ ବାକି ନାହିଁ',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'ଆପଣଙ୍କର ଅସୀମିତ ପ୍ରୟାସ ରହିଛି',
   'qz-assessment-confirmation.cancel': 'ବାତିଲ କରନ୍ତୁ',

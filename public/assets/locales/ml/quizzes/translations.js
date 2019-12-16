@@ -599,7 +599,7 @@ window.qzi18n = {
     'നിങ്ങൾക്ക് 1 ശ്രമം ശേഷിക്കുന്നു',
   'qz-assessment-confirmation.attempts-left.other': 'നിങ്ങൾക്ക് ശ്രമങ്ങൾ ഉണ്ട്',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'നിങ്ങൾക്ക് ശ്രമങ്ങളൊന്നും ശേഷിക്കുന്നില്ല',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'നിങ്ങൾക്ക് പരിമിതികളില്ലാത്ത ശ്രമങ്ങളുണ്ട്',
   'qz-assessment-confirmation.cancel': 'റദ്ദാക്കുക',

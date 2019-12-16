@@ -586,7 +586,7 @@
   'qz-assessment-confirmation.attempts-left.other':
     'आपण {{count}} प्रयत्न केले आहेत',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'आपल्याकडे काहीही प्रयत्न शिल्लक नाहीत',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'आपल्याकडे अमर्यादित प्रयत्न आहेत',
   'qz-assessment-confirmation.cancel': 'रद्द करा',

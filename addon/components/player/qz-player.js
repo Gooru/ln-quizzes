@@ -119,6 +119,10 @@ export default Ember.Component.extend(ModalMixin, {
       });
     },
 
+    onPlayNext: function() {
+      this.sendAction('onPlayNext');
+    },
+
     /**
      * Handle onPreviousResource event from qz-player-footer
      * @see components/player/qz-player-footer.js

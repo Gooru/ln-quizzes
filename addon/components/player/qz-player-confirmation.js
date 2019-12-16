@@ -18,6 +18,11 @@ export default Ember.Component.extend({
    */
   collectionService: Ember.inject.service('quizzes/collection'),
 
+  collectionObserver: Ember.observer('collection', function() {
+    const component = this;
+    component.fetchConfirmationInfo();
+  }),
+
   // -------------------------------------------------------------------------
   // Events
   didInsertElement() {
@@ -38,6 +43,10 @@ export default Ember.Component.extend({
     //Action triggered when click on the start
     start() {
       this.sendAction('onStartPlayer');
+    },
+
+    playNext() {
+      this.sendAction('onPlayNext');
     },
 
     //Action triggered when click on the cancel

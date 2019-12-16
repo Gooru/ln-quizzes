@@ -582,7 +582,7 @@ window.qzi18n = {
   'qz-assessment-confirmation.attempts-left.other':
     'You have {{count}} attempts',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'You have no attempts left',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'You have unlimited attempts',
   'qz-assessment-confirmation.cancel': 'Cancel',

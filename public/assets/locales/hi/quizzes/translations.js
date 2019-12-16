@@ -583,7 +583,7 @@ window.qzi18n = {
   'qz-assessment-confirmation.attempts-left.other':
     'आपके पास {{count}} प्रयास हैं',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'आपके पास कोई प्रयास नहीं है',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts': 'आपके पास असीमित प्रयास हैं',
   'qz-assessment-confirmation.cancel': 'रद्द करना',
   'qz-assessment-confirmation.continue': 'जारी रहना',

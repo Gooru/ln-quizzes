@@ -563,7 +563,7 @@ window.qzi18n = {
   'qz-assessment-confirmation.attempts-left.other':
     'لديك {{count}} من المحاولات',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'لم يتبق لديك أي محاولة',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'لديك عدد غير محدد من المحاولات',
   'qz-assessment-confirmation.cancel': 'إلغاء',

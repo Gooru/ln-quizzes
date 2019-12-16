@@ -601,7 +601,7 @@ window.qzi18n = {
   'qz-assessment-confirmation.attempts-left.other':
     'நீங்கள் {{count}} முயற்சிகள்',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'உங்களிடம் எந்த முயற்சியும் இல்லை',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'உங்களுக்கு வரம்பற்ற முயற்சிகள் உள்ளன',
   'qz-assessment-confirmation.cancel': 'ரத்து',

@@ -600,7 +600,7 @@
   'qz-assessment-confirmation.attempts-left.other':
     'ನಿಮ್ಮಲ್ಲಿ {{count}} ಪ್ರಯತ್ನಗಳಿವೆ',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'ನಿಮ್ಮಲ್ಲಿ ಯಾವುದೇ ಪ್ರಯತ್ನವಿಲ್ಲ',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts': 'ನಿಮಗೆ ಅಪರಿಮಿತ ಪ್ರಯತ್ನಗಳಿವೆ',
   'qz-assessment-confirmation.cancel': 'ರದ್ದುಮಾಡಿ',
   'qz-assessment-confirmation.continue': 'ಮುಂದುವರೆಯಿರಿ',

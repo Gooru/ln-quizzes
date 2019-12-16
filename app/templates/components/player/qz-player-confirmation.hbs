@@ -22,11 +22,13 @@
     <div class="body-panel">
       <div class="body-content">
         <div class="description-panel">
-          <div class="description"><p>{{safe-html confirmationInfo.learningObjectives}}</p></div>
+          <div class="description {{if confirmationInfo.learningObjectives 'show' 'hidden'}}"><p>{{safe-html confirmationInfo.learningObjectives}}</p></div>
           <div class="details">
             <div class="taxonomy">
               {{#if tags.length}}
                 {{taxonomy/gru-taxonomy-tag-list tags=tags tagsVisible=1 isInCard=true showDescription=true}}
+              {{else}}
+                <div class="no-competency"  data-toggle="tooltip" data-html="true" data-placement="bottom" title="{{t 'common.no-competency'}}" > -- </div>
               {{/if}}
             </div>
             <div class="resource">
@@ -43,11 +45,15 @@
             </div>
             <div class="start-button">
               {{#if hasCollectionItems}}
-                {{#unless noMoreAttempts}}
+                {{#if noMoreAttempts}}
+                  <div class="start" {{action 'playNext'}} disabled={{disableStart}}>
+                    {{t 'common.next'}}
+                  </div>
+                {{else}}
                   <div class="start" {{action 'start'}} disabled={{disableStart}}>
                     {{t 'qz-assessment-confirmation.continue'}}
                   </div>
-                {{/unless}}
+                {{/if}}
               {{/if}}
             </div>
           </div>
@@ -85,8 +91,10 @@
                       <div class="info unlimited">{{t "qz-assessment-confirmation.unlimited-attempts-left"}}</div>
                     {{else}}
                       {{#if noMoreAttempts}}
-                        {{gru-icon name='highlight_off'}}
-                        <div class="info no-more">{{t "qz-assessment-confirmation.attempts-left.no-attempts"}}</div>
+                        <div class="no-more-attempts">
+                          {{gru-icon name='warning'}}
+                          <div class="info no-more">{{t "qz-assessment-confirmation.attempts-left.no-attempts"}}</div>
+                        </div>
                       {{else}}
                         <div class="attempt">{{attemptsLeft}}</div>
                         <div class="info">{{t "qz-assessment-confirmation.attempts-left" count=attemptsLeft}}</div>

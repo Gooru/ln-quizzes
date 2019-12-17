@@ -18,7 +18,7 @@ export default Ember.Component.extend({
    */
   collectionService: Ember.inject.service('quizzes/collection'),
 
-  collectionObserver: Ember.observer('collection', function() {
+  collectionObserver: Ember.observer('context', function() {
     const component = this;
     component.fetchConfirmationInfo();
   }),

@@ -123,6 +123,14 @@ export default Ember.Component.extend(ModalMixin, {
       this.sendAction('onPlayNext');
     },
 
+    onAcceptSuggestion: function() {
+      this.sendAction('onAcceptSuggestion');
+    },
+
+    onIgnoreSuggestion: function() {
+      this.sendAction('onIgnoreSuggestion');
+    },
+
     /**
      * Handle onPreviousResource event from qz-player-footer
      * @see components/player/qz-player-footer.js
@@ -460,7 +468,6 @@ export default Ember.Component.extend(ModalMixin, {
     let resourceResult = component.get('resourceResult');
     const resourceId = resource.get('id');
     const collection = component.get('collection');
-
     component.getOwnerProfile(resource, collection).then(function() {
       if (resourceResult) {
         resourceResult.set('skipped', false);

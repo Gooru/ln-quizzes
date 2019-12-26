@@ -31,6 +31,12 @@
   display: flex;
   align-items: center;
   overflow: auto;
+  &.show-suggestion {
+    background-color: #37424b;
+    z-index: 888;
+    opacity: 0.4;
+    pointer-events: none;
+  }
   .confirmation-panel {
     background-color: $white;
     width: 33%;
@@ -155,6 +161,9 @@
                   .gru-taxonomy-tag {
                     background-color: $charcoal-grey;
                     padding: 5px;
+                    .standard-tag {
+                      width: 85px;
+                    }
                     .tag-label {
                       color: $white;
                       font-size: 12px;

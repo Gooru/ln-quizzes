@@ -555,13 +555,15 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'Navigate forward and backwards to answer questions',
   'qz-assessment-confirmation.forward': 'Navigate forward only',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'لديك عدد غير محدد من المحاولات',
   'qz-assessment-confirmation.attempts-left.one': 'تبقى لديك محاولة واحدة فقط',
   'qz-assessment-confirmation.attempts-left.other':
     'لديك {{count}} من المحاولات',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'لم يتبق لديك أي محاولة',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'لديك عدد غير محدد من المحاولات',
   'qz-assessment-confirmation.cancel': 'إلغاء',

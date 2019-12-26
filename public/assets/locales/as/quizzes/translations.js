@@ -596,13 +596,15 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'প্ৰশ্নৰ উত্তৰ দিবলৈ আগলৈ অথবা পাচলৈ নেভিগেট কৰক',
   'qz-assessment-confirmation.forward': 'কেৱল আগলৈ নেভিগেট কৰক',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'আপোনাৰ অসীমিত প্ৰয়াস আছে',
   'qz-assessment-confirmation.attempts-left.one': 'আপোনাৰ 1টা প্ৰয়াস বাকি আছে',
   'qz-assessment-confirmation.attempts-left.other':
     'আপোনাৰ {{count}}টা প্ৰয়াস আছে ',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'আপোনাৰ কোনো প্ৰয়াস বাকি নাই',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts': 'আপোনাৰ অসীমিত প্ৰয়াস আছে',
   'qz-assessment-confirmation.cancel': 'বাতিল কৰক',
   'qz-assessment-confirmation.continue': 'জাৰি ৰাখক',

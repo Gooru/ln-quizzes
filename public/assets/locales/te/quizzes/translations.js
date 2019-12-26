@@ -580,13 +580,15 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'ప్రశ్నలకు సమాధానం ఇవ్వడానికి ముందుకు మరియు వెనుకకు నావిగేట్ చేయండి',
   'qz-assessment-confirmation.forward': 'మాత్రమే ముందుకు నావిగేట్',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'మీకు అపరిమిత ప్రయత్నాలు ఉన్నాయి',
   'qz-assessment-confirmation.attempts-left.one': 'మీకు 1 ప్రయత్నం మిగిలి ఉంది',
   'qz-assessment-confirmation.attempts-left.other':
     'మీరు {{count}} ప్రయత్నాలను కలిగి ఉన్నారు',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'మీకు ఎటువంటి ప్రయత్నాలు లేవు',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'మీకు అపరిమిత ప్రయత్నాలు ఉన్నాయి',
   'qz-assessment-confirmation.cancel': 'రద్దు',

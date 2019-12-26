@@ -141,7 +141,8 @@ export default Ember.Object.extend({
         ? taxonomySerializer.normalizeTaxonomyObject(payload.taxonomy)
         : [],
       questionCount: payload.question ? payload.question.length : 0,
-      thumbnailUrl: thumbnailUrl
+      thumbnailUrl: thumbnailUrl,
+      content: payload.question
     });
   },
 

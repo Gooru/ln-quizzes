@@ -7,6 +7,10 @@ import CollectionAdapter from 'quizzes-addon/adapters/collection/collection';
  */
 export default Ember.Service.extend({
   /**
+   * @property {Profile} Profile service
+   */
+  profileService: Ember.inject.service('quizzes/profile'),
+  /**
    * @property {CollectionSerializer} collectionSerializer
    */
   collectionSerializer: null,
@@ -64,11 +68,16 @@ export default Ember.Service.extend({
         .get('collectionAdapter')
         .getCollection(collectionId)
         .then(function(responseData) {
-          resolve(
-            service
-              .get('collectionSerializer')
-              .normalizeGetCollection(responseData)
-          );
+          let collection = service
+            .get('collectionSerializer')
+            .normalizeGetCollection(responseData);
+          let profileService = service.get('profileService');
+          profileService
+            .readUserProfile(collection.get('ownerId'))
+            .then(function(profile) {
+              collection.set('owner', profile);
+              resolve(collection);
+            });
         }, reject);
     });
   },
@@ -87,11 +96,16 @@ export default Ember.Service.extend({
         .get('collectionAdapter')
         .getAssessment(collectionId)
         .then(function(responseData) {
-          resolve(
-            service
-              .get('collectionSerializer')
-              .normalizeGetAssessment(responseData)
-          );
+          let assessment = service
+            .get('collectionSerializer')
+            .normalizeGetAssessment(responseData);
+          let profileService = service.get('profileService');
+          profileService
+            .readUserProfile(assessment.get('ownerId'))
+            .then(function(profile) {
+              assessment.set('owner', profile);
+              resolve(assessment);
+            });
         }, reject);
     });
   },

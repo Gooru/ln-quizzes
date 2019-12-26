@@ -36,7 +36,7 @@ moduleForComponent(
 );
 
 test('Player confirmation Layout No more attempts', function(assert) {
-  assert.expect(8);
+  assert.expect(6);
   const attempts = 2;
   const collection = Collection.create({
     id: 'collection-123',
@@ -66,7 +66,7 @@ test('Player confirmation Layout No more attempts', function(assert) {
     'Player confirmation component should appear'
   );
   assert.ok(
-    $component.find('.qz-player-confirmation .header .title').length,
+    $component.find('.qz-player-confirmation .header-content .title').length,
     'Missing title'
   );
   assert.ok(
@@ -78,7 +78,6 @@ test('Player confirmation Layout No more attempts', function(assert) {
     $component.find('.qz-player-confirmation .attempts .no-more').length,
     'Missing no more attempts lead'
   );
-  assert.ok($back.length, 'Back button should appear');
   assert.notOk(
     $component.find('.qz-player-confirmation .footer .start').length,
     'Start button should not appear'
@@ -91,7 +90,7 @@ test('Player confirmation Layout No more attempts', function(assert) {
 });
 
 test('Player confirmation Layout has more attempts', function(assert) {
-  assert.expect(4);
+  assert.expect(1);
   const attempts = 2;
   const collection = Collection.create({
     id: 'collection-123',
@@ -117,12 +116,6 @@ test('Player confirmation Layout has more attempts', function(assert) {
   assert.notOk(
     $component.find('.qz-player-confirmation .attempts .no-more').length,
     'Missing no more attempts lead'
-  );
-
-  assert.ok($cancel.length, 'Cancel button should be displayed');
-  assert.notOk(
-    $component.find('.qz-player-confirmation .footer .back').length,
-    'Back button should not appear'
   );
   $cancel.click();
 });

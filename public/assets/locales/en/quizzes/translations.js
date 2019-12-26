@@ -574,13 +574,15 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'Navigate forward and backwards to answer questions',
   'qz-assessment-confirmation.forward': 'Navigate forward only',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'You have unlimited attempts',
   'qz-assessment-confirmation.attempts-left.one': 'You have 1 attempt left',
   'qz-assessment-confirmation.attempts-left.other':
     'You have {{count}} attempts',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'You have no attempts left',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'You have unlimited attempts',
   'qz-assessment-confirmation.cancel': 'Cancel',

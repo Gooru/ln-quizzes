@@ -593,13 +593,15 @@ window.qzi18n = {
   'qz-assessment-confirmation.forward-backward':
     'கேள்விகளுக்கு பதிலளிக்க முன்னோக்கி மற்றும் பின்னோக்கி செல்லவும்',
   'qz-assessment-confirmation.forward': 'முன்னோக்கி செல்லவும்',
+  'qz-assessment-confirmation.answers':
+    'See correct answers within the assessment',
   'qz-assessment-confirmation.unlimited-attempts-left':
     'உங்களுக்கு வரம்பற்ற முயற்சிகள் உள்ளன',
   'qz-assessment-confirmation.attempts-left.one': 'உங்களுக்கு 1 முயற்சி உள்ளது',
   'qz-assessment-confirmation.attempts-left.other':
     'நீங்கள் {{count}} முயற்சிகள்',
   'qz-assessment-confirmation.attempts-left.no-attempts':
-    'உங்களிடம் எந்த முயற்சியும் இல்லை',
+    'You have no attempts left. Please click Next to study the next collection or assessment or click X to close the study player.',
   'qz-assessment-confirmation.unlimited-attempts':
     'உங்களுக்கு வரம்பற்ற முயற்சிகள் உள்ளன',
   'qz-assessment-confirmation.cancel': 'ரத்து',

@@ -12,7 +12,7 @@ window.qzi18n = {
   'common.add-collection': 'নতুন সংকলন সৃষ্টি কৰক',
   'common.add-collection-item': 'সম্পদ অথবা প্ৰশ্ন সৃষ্টি কৰক',
   'common.add-content-prompt':
-    'আপুনি এতিয়ালৈকে  <span>{{type}}</span> সৃষ্টি কৰানাই। আগবাঢ়ক, সাহসী হওক।',
+    'আপুনি এতিয়ালৈকে  <span>{{type}}<span> সৃষ্টি কৰানাই। আগবাঢ়ক, সাহসী হওক।',
   'common.add-course': 'নতুন কাৰ্যক্ৰম সৃষ্টি কৰক',
   'common.add-domains-to-unit': 'অধ্যায়ত অনুক্ষেত্ৰ যোগ কৰক',
   'common.add-url': 'URL যোগ কৰক',
@@ -335,17 +335,16 @@ window.qzi18n = {
   'common.no': 'নাই',
   'common.no-content': 'কোনো তালিকা উপলভ্য় নহয়',
   'common.no-assessments-to-display':
-    'কোনো <span> মূল্য়ায়ন </span> দেখুওৱাবলৈ নাই',
+    'কোনো <span> মূল্য়ায়ন <span> দেখুওৱাবলৈ নাই',
   'common.no-collections-to-display':
-    'কোনো <span> সংগ্ৰহ </span> দেখুওৱাবলৈ নাই',
-  'common.no-courses-to-display':
-    'কোনো <span> পাঠ্য়ক্ৰম </span> দেখুওৱাবলৈ নাই',
-  'common.no-questions-to-display': 'কোনো <span> প্ৰশ্ন </span> দেখুওৱাবলৈ নাই',
-  'common.no-resources-to-display': 'কোনো <span> সমল </span> দেখুওৱাবলৈ নাই',
+    'কোনো <span> সংগ্ৰহ <span> দেখুওৱাবলৈ নাই',
+  'common.no-courses-to-display': 'কোনো <span> পাঠ্য়ক্ৰম <span> দেখুওৱাবলৈ নাই',
+  'common.no-questions-to-display': 'কোনো <span> প্ৰশ্ন <span> দেখুওৱাবলৈ নাই',
+  'common.no-resources-to-display': 'কোনো <span> সমল <span> দেখুওৱাবলৈ নাই',
   'common.no-followers': 'আপোনাৰ এতিয়ালৈকে কোনো অনুগামী নাই ।',
   'common.no-results': 'কোনো ফলাফল পোৱা নগ\'ল',
   'common.no-results-message':
-    'আপোনাৰ বানান পৰীক্ষা কৰক । আমি সকলোৱে ভূল কৰো ! <br/> বহলকৈ যাওক আৰু সকলো ফিল্টাৰ গুচাই দিয়ক । <br/> অথবা তাৰ সলনি এটা সমাৰ্থক শব্দ বিচাৰিবলৈ চেস্টা কৰক ।',
+    'আপোনাৰ বানান পৰীক্ষা কৰক । আমি সকলোৱে ভূল কৰো ! <br> বহলকৈ যাওক আৰু সকলো ফিল্টাৰ গুচাই দিয়ক । <br> অথবা তাৰ সলনি এটা সমাৰ্থক শব্দ বিচাৰিবলৈ চেস্টা কৰক ।',
   'common.no-more-attempts': 'আৰু প্ৰচেষ্ঠা নাই',
   'common.notScored': 'কোনো নম্বৰ নাই',
   'common.notStarted': 'আৰম্ভণি হোৱা নাই',
@@ -563,11 +562,11 @@ window.qzi18n = {
   'content.questions.edit.builder.question-instructions.true_false':
     'আপোনাৰ প্ৰশ্নটো লিখক',
   'content.resources.edit.best-practices':
-    '<p>সম্পদ হৈছে মাল্টিমিডিয়াৰ বিষয়বস্তু যিবোৰ বিভিন্ন ফৰ্মেট যেনে ভিডিঅ\', সংবাদাত্মক, ৱেবচাইট, ছবি, গুগল ডক্‌ আৰু ইত্যাদি। সৃষ্টিশীল হওক আৰু নিজৰ সম্পদ ব্যৱহাৰ কৰক অথবা "সম্পদশীল" হওক আৰু গৰোত আমি দিয়া অপাৰ সংখ্যকত সন্ধান কৰক।</p><p>ছাত্ৰ-ছাত্ৰীসকলৰ মনটো লগাই ৰাখিবলৈ বিভিন্ন প্ৰকাৰৰ সম্পদ ব্যৱহাৰ কৰক আৰু লগতে বৰ্ণনাও দিয়ক যাতে আপোনাৰ ছাত্ৰ-ছাত্ৰীসকলে সম্পদটোৰ সৈতে ভালদৰে চিনাকি হয়।</p><p>আমি প্ৰতিটো প্ৰশ্নক মানক, সূক্ষ্ম স্তৰৰ মানক আৰু 21 শতিকাৰ কৌশলসমূহৰ লগত টেগ কৰাৰ পৰামৰ্শ দিও। আপুনি দেখিছে আমাৰ ছাত্ৰ-ছাত্ৰীসকলে শিক্ষক ডেছব\'ৰ্ডৰ জৰিয়তে কেনেকৈ সংবেদাত্মক ব্যৱহাৰ দেখুৱাইছে।</p>',
+    '<p>সম্পদ হৈছে মাল্টিমিডিয়াৰ বিষয়বস্তু যিবোৰ বিভিন্ন ফৰ্মেট যেনে ভিডিঅ\', সংবাদাত্মক, ৱেবচাইট, ছবি, গুগল ডক্‌ আৰু ইত্যাদি। সৃষ্টিশীল হওক আৰু নিজৰ সম্পদ ব্যৱহাৰ কৰক অথবা "সম্পদশীল" হওক আৰু গৰোত আমি দিয়া অপাৰ সংখ্যকত সন্ধান কৰক।<p><p>ছাত্ৰ-ছাত্ৰীসকলৰ মনটো লগাই ৰাখিবলৈ বিভিন্ন প্ৰকাৰৰ সম্পদ ব্যৱহাৰ কৰক আৰু লগতে বৰ্ণনাও দিয়ক যাতে আপোনাৰ ছাত্ৰ-ছাত্ৰীসকলে সম্পদটোৰ সৈতে ভালদৰে চিনাকি হয়।<p><p>আমি প্ৰতিটো প্ৰশ্নক মানক, সূক্ষ্ম স্তৰৰ মানক আৰু 21 শতিকাৰ কৌশলসমূহৰ লগত টেগ কৰাৰ পৰামৰ্শ দিও। আপুনি দেখিছে আমাৰ ছাত্ৰ-ছাত্ৰীসকলে শিক্ষক ডেছব\'ৰ্ডৰ জৰিয়তে কেনেকৈ সংবেদাত্মক ব্যৱহাৰ দেখুৱাইছে।<p>',
   'content.resources.edit.placeholder-message':
-    '<span>পুৰ্ৱঅৱলোকন কৰিবলৈ</span> এটা সম্পদ ইয়াত যোগ কৰক।',
+    '<span>পুৰ্ৱঅৱলোকন কৰিবলৈ<span> এটা সম্পদ ইয়াত যোগ কৰক।',
   'content.resources.edit.not-implemented':
-    'সম্পদৰ ফৰ্মেটৰ পুৰ্ৱঅৱলোকন <span>এতিয়ালৈকে লাগু কৰা নাই</span>।',
+    'সম্পদৰ ফৰ্মেটৰ পুৰ্ৱঅৱলোকন <span>এতিয়ালৈকে লাগু কৰা নাই<span>।',
   'content.resources.edit.information.im-publisher': 'মইসম্পাদক',
   'content.resources.edit.information.select-a-license':
     'অনুগ্ৰহ কৰি এখন অনিজ্ঞা পত্ৰ নিৰ্বাচন কৰক',
@@ -584,9 +583,9 @@ window.qzi18n = {
   'gru-add-to.add-to-assessment-lead':
     'আপুনি {{contentTitle}}যোগ কৰিব বিচৰা এটা মূল্যায়ন নিৰ্বাচন কৰক',
   'gru-add-to.assessments-info':
-    'এই তালিকাৰ থকা মূল্যায়নসমূহ অন্য পাঠ অথবা কাৰ্যক্ৰমৰ <b>নহয়</b> ',
+    'এই তালিকাৰ থকা মূল্যায়নসমূহ অন্য পাঠ অথবা কাৰ্যক্ৰমৰ <b>নহয়<b> ',
   'gru-add-to.collections-info':
-    'এই তালিকাৰ থকা সংকলনসমূহ অন্য পাঠ অথবা কাৰ্যক্ৰমৰ <b>নহয়</b>',
+    'এই তালিকাৰ থকা সংকলনসমূহ অন্য পাঠ অথবা কাৰ্যক্ৰমৰ <b>নহয়<b>',
   'qz-assessment-confirmation.title': 'আপুনি এটা মূল্যায়ন আৰম্ভ কৰিবলৈ লৈছে...',
   'qz-assessment-confirmation.description': 'মূল্যায়নত, {{model.title}}',
   'qz-assessment-confirmation.setting-forward':
@@ -701,7 +700,7 @@ window.qzi18n = {
   'sign-up.error-country-message': 'অনুগ্ৰহ কৰি আপোনাৰ দেক্ষ নিৰ্বাচন কৰক।',
   'sign-up.error-state-message': 'অনুগ্ৰহ কৰি আপোনাৰ ৰাজ্য অথবা ক্ষেত্ৰ দিয়ক।',
   'sign-up.error-district-message':
-    'অনুগ্ৰহ কৰি তালিকাৰ পৰা আপোনাৰ জিলা/প্ৰাধিকাৰ নিৰ্বাচন কৰক অথবা তাক "অন্য\'ত দিয়ক।',
+    'অনুগ্ৰহ কৰি তালিকাৰ পৰা আপোনাৰ জিলাপ্ৰাধিকাৰ নিৰ্বাচন কৰক অথবা তাক "অন্য\'ত দিয়ক।',
   'footer.footerDescription':
     'গৰোৱে তাৰ প্লেটফৰ্ম অ\'পেন চ\'ৰ ৰাখিবলৈ আৰু সম্প্ৰদায়ে সৃষ্টি কৰা বিষয়বস্তু CC0 ৰাখিবলৈ প্ৰতিজ্ঞাবদ্ধ।',
   'footer.company': 'কোম্পানী',
@@ -815,7 +814,7 @@ window.qzi18n = {
   'gru-performance-summary.resume': 'পুনৰ আৰম্ভ কৰক',
   'gru-performance-summary.study': 'এতিয়া পঢ়ক',
   'gru-performance-summary.view-report': 'ৰিপ\'ৰ্ট চাওক',
-  'gru-performance-summary.not-applicable': 'N/A',
+  'gru-performance-summary.not-applicable': 'NA',
   'gru-performance-summary.not-started': 'এতিয়ালৈকে আৰম্ভ হোৱা নাই',
   'gru-performance.no-content': 'কোনো তালিকা উপলভ্য় নহয়',
   'gru-metrics-sub-header.student': 'শিক্ষাৰ্থী',
@@ -885,7 +884,7 @@ window.qzi18n = {
   'gru-settings-edit.attempts-unlimited': 'অসীমিত',
   'gru-settings-edit.backwards':
     'ছাত্ৰ-ছাত্ৰীসকল পাচলৈ নেভিগেট কৰি উত্তৰসমূহ সলাব পাৰে',
-  'gru-settings-edit.feedback': 'ছাত্ৰ-ছাত্ৰীসকল দেখে যদি তেওঁলোক শুদ্ধ/ভুল',
+  'gru-settings-edit.feedback': 'ছাত্ৰ-ছাত্ৰীসকল দেখে যদি তেওঁলোক শুদ্ধভুল',
   'gru-settings-edit.feedback-immediate':
     'প্ৰতিটো প্ৰশ্নব বাবে আৰু একেবাৰে শেষত',
   'gru-settings-edit.feedback-never': 'কেতিয়াও',
@@ -963,8 +962,8 @@ window.qzi18n = {
   'assignment-details.answer-key': 'উত্তৰ কী',
   'assignment-details.attempts': 'প্ৰয়াস',
   'assignment-details.attempts-left':
-    '<b>প্ৰয়াস বাকী আছে:</b> {{প্ৰয়াসসমূহ}} ৰ পৰা {{গণনা}}',
-  'assignment-details.lastAttempt': '<b>অন্তিম প্ৰয়াস:</b>',
+    '<b>প্ৰয়াস বাকী আছে:<b> {{প্ৰয়াসসমূহ}} ৰ পৰা {{গণনা}}',
+  'assignment-details.lastAttempt': '<b>অন্তিম প্ৰয়াস:<b>',
   'assignment-details.launch': 'সূচনা',
   'assignment-details.learningObjective': 'শিকন লক্ষ্য়',
   'assignment-details.navigation': 'গতিপথ',

@@ -770,7 +770,7 @@ window.qzi18n = {
   'gru-performance-summary.resume': 'ملخص',
   'gru-performance-summary.study': 'ادرس الآن',
   'gru-performance-summary.view-report': 'عرض التقرير.',
-  'gru-performance-summary.not-applicable': 'غ/م',
+  'gru-performance-summary.not-applicable': 'غم',
   'gru-performance-summary.not-started': 'لم تبدأ بعد',
   'gru-performance.no-content': 'لا يوجد محتوى.',
   'gru-metrics-sub-header.student': 'طالب',

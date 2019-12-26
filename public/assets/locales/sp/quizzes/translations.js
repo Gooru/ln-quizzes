@@ -12,7 +12,7 @@ window.qzi18n = {
   'common.add-collection': 'Create New Collection',
   'common.add-collection-item': 'Create Resource or Question',
   'common.add-content-prompt':
-    'You haven\'t created <span>{{type}}</span> yet. Go on, be bold.',
+    'You haven\'t created <span>{{type}}<span> yet. Go on, be bold.',
   'common.add-course': 'Create New Course',
   'common.add-domains-to-unit': 'Add Domains to Unit',
   'common.add-url': 'Add URL',
@@ -318,15 +318,15 @@ window.qzi18n = {
   'common.next': 'Next',
   'common.no': 'No',
   'common.no-content': 'No content available',
-  'common.no-assessments-to-display': 'No <span>assessments</span> to display.',
-  'common.no-collections-to-display': 'No <span>collections</span> to display.',
-  'common.no-courses-to-display': 'No <span>courses</span> to display.',
-  'common.no-questions-to-display': 'No <span>questions</span> to display.',
-  'common.no-resources-to-display': 'No <span>resources</span> to display.',
+  'common.no-assessments-to-display': 'No <span>assessments<span> to display.',
+  'common.no-collections-to-display': 'No <span>collections<span> to display.',
+  'common.no-courses-to-display': 'No <span>courses<span> to display.',
+  'common.no-questions-to-display': 'No <span>questions<span> to display.',
+  'common.no-resources-to-display': 'No <span>resources<span> to display.',
   'common.no-followers': 'You don\'t have followers yet.',
   'common.no-results': 'No results found',
   'common.no-results-message':
-    'Check your spelling. We all make mistakes!<br/>Go broader and remove some filters.<br/> Or try searching for a similar word instead.',
+    'Check your spelling. We all make mistakes!<br>Go broader and remove some filters.<br> Or try searching for a similar word instead.',
   'common.no-more-attempts': 'No more attempts',
   'common.notScored': 'Unscored',
   'common.notStarted': 'Not started',
@@ -402,7 +402,7 @@ window.qzi18n = {
   'common.remix-unit-success': 'You\'ve remixed a unit {{unitTitle}}.',
   'common.remixed-by': 'Remixed by',
   'common.remix-warning':
-    'Heads up! There’s a lot of awesome content in this course and making a copy will take time. Confirm you want to start the process and in 15 minutes you will find your copy of this course on your <b>Profile.</b>',
+    'Heads up! There’s a lot of awesome content in this course and making a copy will take time. Confirm you want to start the process and in 15 minutes you will find your copy of this course on your <b>Profile.<b>',
   'common.remove': 'Remove',
   'common.report-in-progress': 'Report in progress',
   'common.request-to': 'Request to be reviewed for a badge',
@@ -495,7 +495,7 @@ window.qzi18n = {
   'common.yes': 'Yes',
   'content.questions.edit.add-to': 'Add to',
   'content.questions.edit.best-practices':
-    '<p>A question is a resource that requires an answer from the student, and we offer a variety of question types to support the kinds of questions your students will see on SBAC, PARCC and other assessments.</p><p>Consider alternating the kinds of questions you use to offer students exposure to these question types and to provide multiple formats for demonstrating knowledge.</p><p>Tag your questions to standards, micro-standards, and Webb\'s Depth of Knowledge. You can see how your students are interacting with questions through the teacher dashboard.</p>',
+    '<p>A question is a resource that requires an answer from the student, and we offer a variety of question types to support the kinds of questions your students will see on SBAC, PARCC and other assessments.<p><p>Consider alternating the kinds of questions you use to offer students exposure to these question types and to provide multiple formats for demonstrating knowledge.<p><p>Tag your questions to standards, micro-standards, and Webb\'s Depth of Knowledge. You can see how your students are interacting with questions through the teacher dashboard.<p>',
   'content.questions.edit.information.question-title': 'Question Title',
   'content.questions.edit.information.question-type': 'Question Type',
   'content.questions.edit.builder.add-answer-choice': '+ Add Answer Choice',
@@ -541,11 +541,11 @@ window.qzi18n = {
   'content.questions.edit.builder.question-instructions.true_false':
     'Write your question.',
   'content.resources.edit.best-practices':
-    '<p>Resources are multimedia content in a variety of formats such as videos, interactives, websites, images, Google docs, and more. Get creative and use your own resources or get “resourceful” and search our ample supply in Gooru.</p><p>Use a variety of resource types to engage your students and include narration so you can help guide your students through the resource.</p><p>We recommend tagging each question to standards, micro-standards and 21st century skills. You can see how your students are interacting with resources through the teacher dashboard.</p>',
+    '<p>Resources are multimedia content in a variety of formats such as videos, interactives, websites, images, Google docs, and more. Get creative and use your own resources or get “resourceful” and search our ample supply in Gooru.<p><p>Use a variety of resource types to engage your students and include narration so you can help guide your students through the resource.<p><p>We recommend tagging each question to standards, micro-standards and 21st century skills. You can see how your students are interacting with resources through the teacher dashboard.<p>',
   'content.resources.edit.placeholder-message':
-    'Add a resource to <span>preview it here.</span>',
+    'Add a resource to <span>preview it here.<span>',
   'content.resources.edit.not-implemented':
-    'Resource format preview <span>not implemented yet.</span>',
+    'Resource format preview <span>not implemented yet.<span>',
   'content.resources.edit.information.im-publisher': 'I\'m the publisher',
   'content.resources.edit.information.select-a-license':
     'Please select a license',
@@ -562,9 +562,9 @@ window.qzi18n = {
   'gru-add-to.add-to-assessment-lead':
     'Choose an assessment you want to add {{contentTitle}} to',
   'gru-add-to.assessments-info':
-    'The assessments listed here <b>do not</b> belong to another lesson or course',
+    'The assessments listed here <b>do not<b> belong to another lesson or course',
   'gru-add-to.collections-info':
-    'The collections listed here <b>do not</b> belong to another lesson or course',
+    'The collections listed here <b>do not<b> belong to another lesson or course',
   'qz-assessment-confirmation.title': 'You are about to start an assessment...',
   'qz-assessment-confirmation.description':
     'In this assessment, {{model.title}}',
@@ -674,7 +674,7 @@ window.qzi18n = {
   'sign-up.error-country-message': 'Please select your country.',
   'sign-up.error-state-message': 'Please select your state or territory.',
   'sign-up.error-district-message':
-    'Please select your district/charter from the list or provide it in "Other".',
+    'Please select your districtcharter from the list or provide it in "Other".',
   'footer.footerDescription':
     'Gooru is committed to keeping its platform open-source and community created content CC0.',
   'footer.company': 'Company',
@@ -789,7 +789,7 @@ window.qzi18n = {
   'gru-performance-summary.resume': 'Resume',
   'gru-performance-summary.study': 'Study Now',
   'gru-performance-summary.view-report': 'View Report',
-  'gru-performance-summary.not-applicable': 'N/A',
+  'gru-performance-summary.not-applicable': 'NA',
   'gru-performance-summary.not-started': 'Not started yet',
   'gru-performance.no-content': 'No content available',
   'gru-metrics-sub-header.student': 'Student',
@@ -857,7 +857,7 @@ window.qzi18n = {
   'gru-settings-edit.attempts-unlimited': 'Unlimited',
   'gru-settings-edit.backwards':
     'Students can navigate backwards and change responses',
-  'gru-settings-edit.feedback': 'Students see if they are correct/incorrect',
+  'gru-settings-edit.feedback': 'Students see if they are correctincorrect',
   'gru-settings-edit.feedback-immediate': 'Per question & at the end',
   'gru-settings-edit.feedback-never': 'Never',
   'gru-settings-edit.feedback-summary': 'At the end',
@@ -932,8 +932,8 @@ window.qzi18n = {
   'assignment-details.answer-key': 'Answer Key',
   'assignment-details.attempts': 'Attempts',
   'assignment-details.attempts-left':
-    '<b>Attempts left:</b> {{attempts}} of {{count}}',
-  'assignment-details.lastAttempt': '<b>Last Attempt:</b>',
+    '<b>Attempts left:<b> {{attempts}} of {{count}}',
+  'assignment-details.lastAttempt': '<b>Last Attempt:<b>',
   'assignment-details.launch': 'Launch',
   'assignment-details.learningObjective': 'Learning Objective',
   'assignment-details.navigation': 'Navigation',

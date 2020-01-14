@@ -31,11 +31,17 @@
   display: flex;
   align-items: center;
   overflow: auto;
+  &.show-suggestion {
+    background-color: #37424b;
+    z-index: 888;
+    opacity: 0.4;
+    pointer-events: none;
+  }
   .confirmation-panel {
     background-color: $white;
     width: 33%;
     border: 1px solid #868585;
-    max-height: calc(100vh - 80px);
+    max-height: calc(100vh - 100px);
     overflow-y: auto;
     margin-left: 7%;
     &.suggested-content {
@@ -155,6 +161,9 @@
                   .gru-taxonomy-tag {
                     background-color: $charcoal-grey;
                     padding: 5px;
+                    .standard-tag {
+                      width: 85px;
+                    }
                     .tag-label {
                       color: $white;
                       font-size: 12px;

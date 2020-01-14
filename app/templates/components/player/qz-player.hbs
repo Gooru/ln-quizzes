@@ -1,5 +1,8 @@
 {{#if showConfirmation}}
-  {{player/qz-player-confirmation attempts=attempts collection=collection context=context notCheckAttempts=notCheckAttempts onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection" collectionSource=collectionSource collectionSubType=collectionSubType source=source pathType=pathType isIframeMode=isIframeMode onPlayNext="onPlayNext"}}
+  {{player/qz-player-confirmation attempts=attempts collection=collection context=context notCheckAttempts=notCheckAttempts onStartPlayer='openPlayer' onClosePlayer="closePlayer" onRemixCollection="remixCollection" collectionSource=collectionSource collectionSubType=collectionSubType source=source pathType=pathType isIframeMode=isIframeMode onPlayNext="onPlayNext" isShowSuggestion=isShowSuggestion}}
+  {{#if isShowSuggestion}}
+    {{content/modals/gru-content-suggestion mapLocation=mapLocation onAcceptSuggestion="onAcceptSuggestion" onIgnoreSuggestion="onIgnoreSuggestion"}}
+  {{/if}}
 {{else}}
   {{#if showPlayerHeader}}
     {{player/qz-player-header

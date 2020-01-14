@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   // Attributes
 
   classNames: ['qz-player-confirmation'],
+  classNameBindings: ['isShowSuggestion:show-suggestion'],
 
   // -------------------------------------------------------------------------
   // Service

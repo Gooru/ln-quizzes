@@ -46,9 +46,15 @@
             <div class="start-button">
               {{#if hasCollectionItems}}
                 {{#if noMoreAttempts}}
-                  <div class="start" {{action 'playNext'}} disabled={{disableStart}}>
-                    {{t 'common.next'}}
-                  </div>
+                  {{#if isStatusDone}}
+                    <div class="start" {{action 'onExit'}} disabled={{disableStart}}>
+                      {{t 'common.exit'}}
+                    </div>
+                  {{else}}
+                    <div class="start" {{action 'playNext'}} disabled={{disableStart}}>
+                      {{t 'common.next'}}
+                    </div>
+                  {{/if}}
                 {{else}}
                   <div class="start" {{action 'start'}} disabled={{disableStart}}>
                     {{t 'qz-assessment-confirmation.continue'}}

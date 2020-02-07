@@ -50,6 +50,10 @@ export default Ember.Component.extend({
       this.sendAction('onPlayNext');
     },
 
+    onExit() {
+      window.parent.postMessage(PLAYER_EVENT_MESSAGE.GRU_PUllUP_CLOSE, '*');
+    },
+
     //Action triggered when click on the cancel
     cancel() {
       let component = this;

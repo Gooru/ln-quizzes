@@ -38,5 +38,10 @@ export default Ember.Mixin.create({
   getRealTimeWebSocketUri: function() {
     const configuration = this.get('quizzesConfigurationService.configuration');
     return configuration.get('realTime.webSocketUri');
+  },
+
+  getFileMaxSizeInMB: function() {
+    const configuration = this.get('quizzesConfigurationService.configuration');
+    return configuration.get('FILE_UPLOAD.MAX_SIZE_IN_MB');
   }
 });

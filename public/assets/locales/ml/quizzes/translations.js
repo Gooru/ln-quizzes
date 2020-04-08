@@ -183,7 +183,7 @@ window.qzi18n = {
   'common.errors.hotspot-text-max-choices':
     'നിങ്ങൾ ഉത്തര ചോയ്സിന്റെ പരിധിയിൽ എത്തി.',
   'common.errors.file-max-size':
-    '5mb ൽ കുറഞ്ഞ വലിപ്പമുള്ള ഫയലുകൾ മാത്രമേ പിന്തുണയ്ക്കൂ',
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'താഴെക്കൊടുത്തിരിക്കുന്ന ഏതെങ്കിലും വിപുലീകരണങ്ങളുള്ള ഒരു ഫയൽ ദയവായി തിരഞ്ഞെടുക്കുക: {{extensions}}',
   'common.errors.lesson-not-copied':

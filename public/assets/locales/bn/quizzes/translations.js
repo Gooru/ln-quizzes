@@ -178,7 +178,8 @@ window.qzi18n = {
   'common.errors.highlight-text-not-selected': 'সঠিক উত্তর নির্দেশ করুন।',
   'common.errors.highlight-text-wrong-format': 'ভুল প্রশ্ন বিন্যাস।',
   'common.errors.hotspot-text-max-choices': 'আপনি উত্তর পছন্দ সীমা পৌঁছেছেন।',
-  'common.errors.file-max-size': '5mb এর চেয়ে কম আকারের ফাইলগুলি কেবল সমর্থিত',
+  'common.errors.file-max-size':
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'নিম্নলিখিত এক্সটেনশানগুলির মধ্যে একটি ফাইল নির্বাচন করুন: {{এক্সটেনশান}}',
   'common.errors.lesson-not-copied':

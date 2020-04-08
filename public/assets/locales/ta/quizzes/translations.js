@@ -181,7 +181,7 @@ window.qzi18n = {
   'common.errors.hotspot-text-max-choices':
     'பதில் தேர்வுகள் வரம்பை நீங்கள் அடைந்துவிட்டீர்கள்.',
   'common.errors.file-max-size':
-    '5Mb ஐ விட சிறிய அளவிலான கோப்புகள் மட்டுமே ஆதரிக்கப்படுகின்றன',
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'பின்வரும் நீட்டிப்புகளில் ஏதாவது ஒரு கோப்பைத் தேர்ந்தெடுக்கவும்: {{extensions}}',
   'common.errors.lesson-not-copied':

@@ -181,7 +181,7 @@ window.qzi18n = {
   'common.errors.hotspot-text-max-choices':
     'તમે જવાબ પસંદગીઓની મર્યાદા સુધી પહોંચી ગયા છો.',
   'common.errors.file-max-size':
-    '5 એમબી કરતાં નાના કદની ફાઇલોને સપોર્ટ કરવામાં આવે છે',
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'મહેરબાની કરીને નીચે આપેલા કોઈપણ એક્સ્ટેન્શન્સ સાથે ફાઇલ પસંદ કરો: {{extensions}}',
   'common.errors.lesson-not-copied':

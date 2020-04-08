@@ -182,7 +182,7 @@ window.qzi18n = {
   'common.errors.hotspot-text-max-choices':
     'You have reached the limit of answer choices.',
   'common.errors.file-max-size':
-    'Only files of size smaller than 5MB are supported',
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'Please select a file with any of the following extensions: {{extensions}}',
   'common.errors.lesson-not-copied':

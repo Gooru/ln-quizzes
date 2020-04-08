@@ -185,7 +185,7 @@ window.qzi18n = {
   'common.errors.hotspot-text-max-choices':
     'ଆପଣ ଉତ୍ତର ପସନ୍ଦଗୁଡ଼ିକର ଶେଷ ପର୍ଯ୍ୟନ୍ତ ପହଞ୍ଚିଛନ୍ତି ।',
   'common.errors.file-max-size':
-    'କେବଳ 5ଏମବି ରୁ କମ୍ ସାଇଜ୍ ବିଶିଷ୍ଟ ଫାଇଲ୍ ଗୁଡ଼ିକ ସମର୍ଥିତ ଅଟେ ।',
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'ଦୟାକରି ନିମ୍ନଲିଖିତ ପରିବର୍ଦ୍ଧନ ମଧ୍ୟରୁ କୌଣସି ଏକ ଫାଇଲ୍ କୁ ଚୟନ କରନ୍ତୁ: {{extensions}}',
   'common.errors.lesson-not-copied':

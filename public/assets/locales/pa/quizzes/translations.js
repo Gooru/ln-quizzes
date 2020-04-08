@@ -182,7 +182,8 @@ window.qzi18n = {
   'common.errors.highlight-text-wrong-format': 'ਗਲਤ ਸਵਾਲ ਫਾਰਮੈਟ',
   'common.errors.hotspot-text-max-choices':
     'ਤੁਸੀਂ ਉੱਤਰ ਦੀਆਂ ਚੋਣਾਂ ਦੀ ਸੀਮਾ ਤੱਕ ਪਹੁੰਚ ਗਏ ਹੋ',
-  'common.errors.file-max-size': 'ਸਿਰਫ 5MB ਤੋਂ ਛੋਟੇ ਆਕਾਰ ਦੀ ਫਾਈਲਾਂ ਸਮਰਥਿਤ ਹਨ',
+  'common.errors.file-max-size':
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਦਿੱਤੇ ਕਿਸੇ ਵੀ ਐਕਸਟੈਂਸ਼ਨ ਨਾਲ ਇੱਕ ਫਾਈਲ ਚੁਣੋ: {{extensions}}',
   'common.errors.lesson-not-copied':

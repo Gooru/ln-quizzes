@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import FilePicker from 'ember-cli-file-picker/components/file-picker';
 import { FILE_MAX_SIZE_IN_MB } from 'quizzes-addon/config/quizzes-config';
-import ConfigurationMixin from 'gooru-web/mixins/configuration';
+import ConfigMixin from 'quizzes-addon/mixins/endpoint-config';
 
-export default FilePicker.extend(ConfigurationMixin, {
+export default FilePicker.extend(ConfigMixin, {
+
   // -------------------------------------------------------------------------
   // Dependencies
 
@@ -35,9 +36,9 @@ export default FilePicker.extend(ConfigurationMixin, {
     // Clear any previous error messages
     this.get('errors').clear();
 
-    const fileMaxSize =
-      this.get('configuration.FILE_UPLOAD.MAX_SIZE_IN_MB') ||
-      FILE_MAX_SIZE_IN_MB;
+
+    //File size will be read from env config, if not default from config
+    const fileMaxSize = this.getFileMaxSizeInMB() || FILE_MAX_SIZE_IN_MB;
     const fileMaxSizeInBytes = parseInt(fileMaxSize) * 1024 * 1024;
     if (file.size > fileMaxSizeInBytes) {
       const errorMessage = this.get('i18n').t('common.errors.file-max-size', {

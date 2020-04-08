@@ -184,7 +184,7 @@ window.qzi18n = {
   'common.errors.hotspot-text-max-choices':
     'ನೀವು ಉತ್ತರ ಆಯ್ಕೆಗಳ ಮಿತಿಯನ್ನು ತಲುಪಿದ್ದೀರಿ.',
   'common.errors.file-max-size':
-    '5mb ಕ್ಕಿಂತ ಕಡಿಮೆ ಗಾತ್ರದ ಫೈಲ್ಗಳನ್ನು ಮಾತ್ರ ಬೆಂಬಲಿಸಲಾಗುತ್ತದೆ',
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'ದಯವಿಟ್ಟು ಕೆಳಗಿನ ಯಾವುದೇ ವಿಸ್ತರಣೆಗಳೊಂದಿಗೆ ಫೈಲ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿ: {{ವಿಸ್ತರಣೆಗಳು}}',
   'common.errors.lesson-not-copied':

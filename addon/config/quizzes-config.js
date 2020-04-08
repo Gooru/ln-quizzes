@@ -1,3 +1,6 @@
+// File max size in MB
+export const FILE_MAX_SIZE_IN_MB = 12;
+
 export const RESOURCE_COMPONENT_MAP = {
   'video/youtube': 'player.resources.qz-youtube-resource',
   'resource/url': 'qz-preview-url',

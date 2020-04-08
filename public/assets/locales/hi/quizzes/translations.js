@@ -176,7 +176,7 @@ window.qzi18n = {
   'common.errors.hotspot-text-max-choices':
     'आप उत्तर विकल्पों की सीमा तक पहुंच गए हैं।',
   'common.errors.file-max-size':
-    'केवल 5 एमबी से छोटे आकार की फाइलें समर्थित हैं',
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'कृपया निम्न में से किसी भी एक्सटेंशन के साथ एक फ़ाइल का चयन करें: {{extension}}',
   'common.errors.lesson-not-copied':

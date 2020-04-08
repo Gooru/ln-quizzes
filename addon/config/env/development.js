@@ -13,5 +13,9 @@ export default {
     webServiceUri: '/',
     webSocketUrl: 'https://qa.api.quizzes.edify.cr',
     webSocketUri: '/ws/quizzes-realtime'
+  },
+
+  FILE_UPLOAD: {
+    MAX_SIZE_IN_MB: 12
   }
 };

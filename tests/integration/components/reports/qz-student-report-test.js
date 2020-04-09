@@ -144,14 +144,6 @@ test('Layout when show key setting', function(assert) {
 
   const $component = this.$('.reports.qz-assessment-report');
   assert.ok($component.length, 'Component');
-  assert.notOk(
-    $component.find('.qz-questions .questions-header .performance').length,
-    'Performance button should not appear'
-  );
-  assert.notOk(
-    $component.find('.qz-questions .questions-header .correct-answer').length,
-    'Correct answer button should not appear'
-  );
 
   const collection2 = Collection.create({
     id: 'collection-id',

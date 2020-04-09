@@ -7,6 +7,10 @@
       position: relative;
       display: flex;
       min-width: 300px;
+      border: 1px solid #d5d5d5;
+      margin: 8px 0px;
+      padding: 5px;
+      border-radius: 8px;
       span {
         flex: 1;
       }

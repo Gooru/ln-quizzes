@@ -55,3 +55,38 @@
     {{/each}}
   </tbody>
 </table>
+<div class="resource-container">
+  <div class="resource-header-container">
+    <div class="resource-title-container">
+      <div class="resource-order">{{contentSeq}}.</div>
+      <div class="resource-type {{content.resource.type}}"></div>
+      <div class="title ellipsis">{{safe-html content.resource.title}}</div>
+    </div>
+    <div class="resource-performance-container {{if content.skipped 'skipped-resource'}}">
+      {{#if content.skipped }}
+        <div class="resoure-status" data-toggle="tooltip" title="Skipped">
+          {{gru-icon name="block"}}
+        </div>
+      {{/if}}
+      <div class="resource-reaction">
+        {{reaction-icon content.reaction }}
+      </div>
+      <div class="resource-timespent">
+        {{format-time content.savedTime}}
+      </div>
+    </div>
+  </div>
+  {{#if taxonomyTags.length}}
+    <div class="resource-taxonomies-container">
+      {{taxonomy/gru-taxonomy-tag-list tags=taxonomyTags tagsVisible=1 isInCard=true}}
+    </div>
+  {{/if}}
+  <div class="resource-description-container">
+    {{safe-html content.resource.description}}
+  </div>
+  {{#if content.resource.body}}
+    <div class="resource-url-container">
+      <span class="url-label">{{t 'gru-rubric-creation.url'}}: </span><span class="url-content"><a href="{{content.resource.body}}" target="_blank">{{content.resource.body}}</a></span>
+    </div>
+  {{/if}}
+</div>

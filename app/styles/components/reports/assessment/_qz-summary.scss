@@ -4,12 +4,12 @@
   .summary-container {
     display: grid;
     width: auto;
-    height: 106px;
-    padding: 0 0 0 13px;
     object-fit: contain;
     background-color: $white;
     box-shadow: 0 6px 7px 0 rgba(0, 0, 0, 0.2);
-    grid-template-columns: auto 28% auto auto auto;
+    grid-template-columns: 80px 24px 1fr;
+    column-gap: 16px;
+    align-items: center;
 
     .thumbnail {
       width: 100%;
@@ -29,6 +29,7 @@
       background-size: contain;
       text-align: center;
       color: $white;
+      display: none;
       @media (min-width: $screen-xs) {
         width: 112px;
         height: 106px;
@@ -37,7 +38,6 @@
         height: 106px;
         width: 112px;
       }
-
       span {
         &.title {
           display: block;
@@ -48,13 +48,11 @@
             padding-bottom: 9px;
           }
         }
-
         &.time-spent {
           span {
             font-size: 20px;
             line-height: $font-size-h4;
           }
-
           i {
             font-size: 20px;
             line-height: 19px;
@@ -66,10 +64,9 @@
     }
 
     .profile-image {
-      width: 115px;
-      height: 68px;
+      width: 80px;
+      height: 48px;
       padding: 0;
-      margin-top: 15px;
       -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
       flex: 0 1 auto;
@@ -81,14 +78,6 @@
       background-size: contain;
       text-align: center;
       color: $white;
-      @media (min-width: $screen-xs) {
-        height: 68px;
-        width: 115px;
-      }
-      @media (min-width: $screen-lg-min) {
-        height: 68px;
-      }
-
       .img-responsive {
         height: 100%;
         width: 100%;
@@ -109,6 +98,7 @@
       -ms-flex-item-align: auto;
       justify-self: center;
       align-self: auto;
+      display: none;
 
       &.only-oe {
         color: $light-200 !important;
@@ -152,13 +142,28 @@
       }
     }
 
+    .content-icon {
+      background-size: 24px 18px;
+      width: 24px;
+      height: 18px;
+      background-repeat: no-repeat;
+      display: block;
+
+      &.assessment {
+        background-image: url("gooru/images/add_assessment.svg");
+      }
+
+      &.collection {
+        background-image: url("gooru/images/add_collection.svg");
+      }
+    }
+
     .overview {
       -ms-flex: 1 1 auto;
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
       border-radius: 5px;
-      padding: 10px 0 15px 15px;
       margin: 0;
 
       h5 {
@@ -166,11 +171,10 @@
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
-        height: 20px;
         font-size: 16px;
         white-space: nowrap;
         line-height: 1.25;
-        color: #0072bc;
+        color: #545e66;
       }
 
       .information {
@@ -178,7 +182,7 @@
         height: 30px;
         font-size: $font-size-h6;
         display: inline-block;
-
+        display: none;
         i {
           vertical-align: middle;
           margin: 0 3px 0 0;
@@ -224,7 +228,7 @@
       text-align: center;
       margin-top: 18px;
       margin-right: 10px;
-
+      display: none;
       .reaction {
         .emotion {
           width: 55px;
@@ -243,6 +247,7 @@
       width: auto;
       display: inline-block;
       overflow: auto;
+      display: none;
 
       .gru-bubbles {
         .bubbles-list {

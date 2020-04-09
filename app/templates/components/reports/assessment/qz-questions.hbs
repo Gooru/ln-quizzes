@@ -101,4 +101,83 @@
       {{/each}}
     </tbody>
   </table>
+
+  <div class="question-container {{content.resource.type}} {{if isShowCorrectAnswer 'answer-visible'}}">
+    <div class="question-header-container">
+      <div class="question-title-container">
+        <div class="question-order">{{contentSeq}}.</div>
+        <div class="question-icon"></div>
+        <div class="title ellipsis">{{safe-html content.resource.title}}</div>
+      </div>
+      <div class="question-performance-container">
+          <div class="question-reaction">
+            {{reaction-icon content.reaction }}
+          </div>
+          {{#if showScore}}
+            {{#if (and content.started content.skipped)}}
+              <div class="question-status" data-toggle="tooltip" title="Skipped">
+                {{gru-icon name="block"}}
+              </div>
+            {{else}}
+              <div class="question-score">
+                <span class="{{if content.started (if content.correct 'correct' 'incorrect') 'not-started'}}">
+                    {{#if content.started}}
+                           <i class="icon"> </i>
+                     {{else}}
+                          {{gru-icon name='radio_button_checked'}}
+                   {{/if}}
+                </span>
+              </div>
+            {{/if}}
+          {{/if}}
+          <div class="question-timespent">
+            {{format-time content.savedTime}}
+          </div>
+        </div>
+    </div>
+    <div class="taxonomies-conatiner">
+      {{#if taxonomyTags.length}}
+        {{taxonomy/gru-taxonomy-tag-list tags=taxonomyTags tagsVisible=1 isInCard=true}}
+      {{/if}}
+    </div>
+    <div class="question-description">
+      {{{gru-math-text text=content.resource.description}}}
+    </div>
+    {{#if content.resource.hasMedia}}
+      <div class="question-thumbnail">
+        <img class="img-responsive" src="{{content.resource.mediaUrl}}" />
+      </div>
+    {{/if}}
+    <div class="answer-container">
+      {{#if content.started}}
+        <div class="user-answer answer-section">
+          <div class="answer-type-label type-label">
+            {{#if (not content.resource.userAnswer)}}
+              {{t 'gru-question-viewer.answer'}}
+            {{else}}
+              {{#if isStudent}}
+                {{t 'common.answer'}}
+              {{else}}
+                {{t 'common.student'}} {{t 'gru-question-viewer.answer'}}
+              {{/if}}
+            {{/if}}
+          </div>
+          <div class="answer-value-container">
+            {{#if content.started}}
+              {{{component (qz-question-config content.resource.type 'component.answer') question=content}}}
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
+      {{#unless showPerformance}}
+        <div class="correct-answer answer-section">
+          <div class="answer-type-label type-label">{{t 'common.correct-answer'}}</div>
+          <div class="answer-value-container">
+            {{{component (qz-question-config content.resource.type 'component.answer') question=content showCorrect=true}}}
+          </div>
+        </div>
+      {{/unless}}
+    </div>
+  </div>
+
 </div>

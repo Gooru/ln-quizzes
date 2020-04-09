@@ -1,7 +1,7 @@
 .reports.qz-assessment-report {
   width: 98%;
   background-color: $light-100;
-  margin-bottom: 30px;
+  margin-bottom: 55px;
 
   .standard-tags {
     padding: 15px 15px 0;
@@ -60,17 +60,181 @@
   .qz-assessment-summary {
     background: $white;
     margin-top: 65px;
-
-    .reports-owner {
-      height: 24px;
-      border-bottom: 1px solid $light-200;
-
-      span {
-        margin-left: 14px;
-      }
-    }
     &.iframe-report {
       margin-top: 0px;
+    }
+    .content-details-container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      height: 50px;
+      align-items: center;
+      .taxonomy-container {
+        height: 50px;
+        display: grid;
+        align-items: center;
+        padding-left: 15px;
+
+        .gru-taxonomy-tag-list {
+          .gru-taxonomy-tag {
+            min-width: 90px;
+            max-width: 100px;
+            height: 23px;
+            border-radius: 12px;
+            background-color: #2d2d2d;
+
+            .standard-tag {
+              text-align: center;
+              padding: 0;
+
+              .tag-label {
+                font-size: 14px;
+                font-weight: bold;
+                color: $white;
+                line-height: 21px;
+              }
+
+              .tag-caption {
+                display: none;
+              }
+            }
+          }
+
+          .non-visible-tags {
+            width: 81px;
+            height: 23px;
+            border-radius: 12px;
+            background-color: #2d2d2d;
+            color: $white;
+            padding: 0;
+
+            span {
+              font-weight: bold;
+              font-size: 14px;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+      .activity-performance-container {
+        display: grid;
+        grid-template-columns: 1fr 70px;
+        justify-items: right;
+        column-gap: 15px;
+        height: inherit;
+
+        &.collection-performance {
+          grid-template-columns: 1fr;
+          .timespent-container {
+            padding-right: 15px;
+          }
+        }
+        .timespent-container {
+          display: grid;
+          grid-template-columns: auto auto;
+          align-items: center;
+          column-gap: 5px;
+          .timespent-icon {
+            i.query_builder {
+              height: 50px;
+              line-height: 50px;
+              font-size: 30px;
+            }
+          }
+          .timespent-data {
+            .timespent-label {
+              font-size: 13px;
+            }
+            .timespent-value {
+              font-weight: bold;
+              font-size: 14px;
+            }
+          }
+        }
+        .grade {
+          color: $white;
+          font-size: 17px;
+          font-weight: bold;
+          width: 70px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+        }
+      }
+    }
+
+    .information {
+      font-size: $font-size-h6;
+      box-shadow: 0 2px 4px 0 rgba(102, 102, 102, 0.3);
+      padding: 10px 15px;
+      display: grid;
+      grid-template-columns: auto auto;
+      i {
+        vertical-align: middle;
+        margin: 0 3px 0 0;
+      }
+      span {
+        font-size: 13px;
+      }
+
+      .attempt-info {
+        .attempt {
+          margin: 0 13px 0 0;
+          .attempt-selector {
+            display: inline-block;
+            .current-attempt {
+              display: inline-block;
+              button {
+                line-height: 1;
+                .caret {
+                  margin-left: 10px;
+                }
+                color: $gray;
+              }
+            }
+          }
+        }
+        .date {
+          margin: 0 3px 0 0;
+        }
+      }
+      .answer-key {
+        justify-self: end;
+        .btn-group {
+          button {
+            margin: 0 2px 0 0;
+            border-radius: 10px;
+            @media (max-width: $screen-xs) {
+              padding: 6px 10px;
+            }
+          }
+        }
+
+        .summary-report-btn {
+          border: 1px solid #b8bfc4;
+          border-radius: 15px;
+          background: #b8bfc4;
+          display: flex;
+          width: min-content;
+          align-items: center;
+          justify-self: flex-end;
+          .performance {
+            color: black;
+            height: 20px;
+            line-height: 9px;
+            background-color: #b8bfc4;
+          }
+          .correct-answer {
+            color: black;
+            height: 20px;
+            line-height: 9px;
+            background-color: #b8bfc4;
+          }
+          .btn-primary {
+            background: #ffffff;
+            z-index: 0;
+          }
+        }
+      }
     }
   }
   /* Small devices (tablets, 768px and up) */

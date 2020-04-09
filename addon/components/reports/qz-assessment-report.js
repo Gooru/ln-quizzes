@@ -64,6 +64,16 @@ export default Ember.Component.extend({
 
     selectAttempt: function(attempt) {
       this.sendAction('onSelectAttempt', attempt);
+    },
+
+    /**
+     * Selects Performance Option or not
+     * @function actions:selectPerformanceOption
+     */
+    selectPerformanceOption: function(showPerformance) {
+      if (!this.get('isAnswerKeyHidden')) {
+        this.set('showPerformance', showPerformance);
+      }
     }
   },
 
@@ -84,6 +94,7 @@ export default Ember.Component.extend({
         this.set('profile', this.get('model').profile);
       }
     }
+    this.set('selectedAttempt', this.get('contextResult.totalAttempts'));
   }),
 
   // -------------------------------------------------------------------------
@@ -202,5 +213,69 @@ export default Ember.Component.extend({
       });
       return TaxonomyTag.getTaxonomyTags(standards);
     }
-  })
+  }),
+
+  /**
+   * @property {Collection}
+   */
+  collection: Ember.computed.alias('contextResult.collection'),
+
+  hasOnlyOEQuestion: Ember.computed(
+    'resultsQuestions',
+    'resultsResources',
+    'resultsOpenEnded',
+    function() {
+      return (
+        this.get('resultsOpenEnded.length') > 0 &&
+        this.get('resultsResources.length') === 0 &&
+        this.get('resultsQuestions.length') === 0
+      );
+    }
+  ),
+
+  hasQuestionScore: Ember.computed(
+    'contextResult.reportEvent.totalAnswered',
+    function() {
+      return this.get('contextResult.reportEvent.totalAnswered') > 0;
+    }
+  ),
+
+  /**
+   * @property {number} selected attempt
+   */
+  selectedAttempt: null,
+
+  /**
+   * @property {[]}
+   */
+  attempts: Ember.computed('contextResult.totalAttempts', function() {
+    return this.getAttemptList();
+  }),
+
+  /**
+   * Indicate if the table show the performance columns
+   *
+   * @property {Boolean}
+   */
+  showPerformance: true,
+
+  // -------------------------------------------------------------------------
+  // Methods
+
+  /**
+   * Create list of attempts to show on the UI
+   * @returns {Array}
+   */
+  getAttemptList: function() {
+    const attempts = [];
+    let totalAttempts = this.get('contextResult.totalAttempts');
+
+    for (; totalAttempts > 0; totalAttempts--) {
+      attempts.push({
+        label: totalAttempts,
+        value: totalAttempts
+      });
+    }
+    return attempts;
+  }
 });

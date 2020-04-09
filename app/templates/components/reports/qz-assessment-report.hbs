@@ -1,11 +1,4 @@
 <div class="qz-assessment-summary {{if isIframeMode 'iframe-report'}}">
-  <div class="reports-owner">
-    {{#if profile.fullName }}
-      <span> {{profile.fullName}} </span>
-    {{else}}
-      <span>{{profile.username}}</span>
-    {{/if}}
-  </div>
   {{reports/assessment/qz-summary
   contextResult=contextResult
   areQuestionLinksHidden=areAnswersHidden
@@ -18,36 +11,112 @@
   resourceCount=resultsResources.length
   oeQuestionCount=resultsOpenEnded.length
   }}
-  {{#if tags.length}}
-    <div class="standard-tags">
-      {{taxonomy/gru-taxonomy-tag-list tags=tags tagsVisible=4  showDescription=true }}
+  <div class="content-details-container">
+
+    <div class="taxonomy-container">
+      {{#if tags.length}}
+        {{taxonomy/gru-taxonomy-tag-list tags=tags tagsVisible=1 isInCard=true}}
+      {{/if}}
     </div>
-  {{/if}}
+    <div class="activity-performance-container {{unless collection.isAssessment 'collection-performance'}}">
+      <div class="timespent-container">
+        <div class="timespent-icon">
+          {{gru-icon name="query_builder"}}
+        </div>
+        <div class="timespent-data">
+          <div class="timespent-label">{{t "qz-assessment-report.qz-summary.total-time-spent"}}</div>
+          <div class="timespent-value">
+            {{#if contextResult.totalTimeSpent}}
+              {{format-time contextResult.totalTimeSpent}}
+            {{else}}
+              --
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      {{#if collection.isAssessment}}
+        <div class="grade {{if hasOnlyOEQuestion 'only-oe' ''}}" style= {{safe-html (concat "background-color:" (grade-color contextResult.correctPercentage))}}>
+          {{#unless hasOnlyOEQuestion}}
+            <span class="percentage">{{round-number contextResult.correctPercentage}}%</span>
+          {{else}}
+            <span class="percentage">--</span>
+          {{/unless}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  <div class="information">
+    <div class="attempt-info">
+      {{#if collection.isAssessment}}
+        <span class="attempt">
+          {{#if showAttempts}}
+            <span class="title">{{t "common.attempt"}}</span>
+            <span class="attempt-selector">
+              <span class="dropdown current-attempt">
+                <button class="btn btn-default dro`pdown-toggle" type="button" data-toggle="dropdown">{{selectedAttempt}}<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  {{#each attempts as |attempt|}}
+                    <li><a {{action 'selectAttempt' attempt.value}}>{{attempt.label}}</a></li>
+                  {{/each}}
+                </ul>
+              </span>
+              <span>{{t "common.of"}}</span>
+              <span class="total-attempts">{{contextResult.totalAttempts}}</span>
+            </span>
+          {{else}}
+            {{#if isRealTime}}
+              <span class="title current">{{t "common.current-attempt"}}</span>
+            {{else}}
+              <span class="title latest">{{t "common.latest-attempt"}}</span>
+            {{/if}}
+          {{/if}}
+        </span>
+      {{/if}}
+      {{#if contextResult.submittedAt}}
+        <span class="date">
+          {{gru-icon name='event'}}<span>{{format-date contextResult.submittedAt 'h:mm a MMM. Do, YYYY'}}</span>
+        </span>
+      {{/if}}
+    </div>
+    <div class="answer-key">
+      {{#if isAnswerKeyHidden}}
+        <em>{{t "common.answer-key-was-hidden"}}</em>
+      {{else}}
+        <div class="btn-group summary-report-btn" role="group">
+          <button type="button" {{action 'selectPerformanceOption' true}} class="performance btn {{if showPerformance 'btn-primary' ' '}}">{{t "common.performance"}}</button>
+          <button type="button" {{action 'selectPerformanceOption' false}} class="correct-answer btn {{unless showPerformance 'btn-primary' '' }}">{{t "common.show-correct-answer"}}</button>
+        </div>
+      {{/if}}
+    </div>
+  </div>
   {{#if areAnswersHidden}}
     <div class="hidden-report">
       <span>{{t "qz-assessment-report.hidden-report"}}</span>
     </div>
   {{else}}
-    {{#if resultsQuestions.length}}
-      {{reports/assessment/qz-questions
-      title=(t "qz-assessment-report.questions")
-      isAnswerKeyHidden=isAnswerKeyHidden
-      results=resultsQuestions}}
-    {{/if}}
-    {{#if resultsOpenEnded.length}}
-      {{reports/assessment/qz-questions
-      title=(t "qz-assessment-report.open-ended")
-      isAnswerKeyHidden=isAnswerKeyHidden
-      results=resultsOpenEnded
-      showScore=false
-      viewMode='open-ended'}}
-    {{/if}}
-    {{#if resultsResources.length}}
-      {{reports/assessment/qz-resources
-      title=(t "qz-assessment-report.resources")
-      isAnswerKeyHidden=isAnswerKeyHidden
-      results=resultsResources
-      showReactionBar=true}}
-    {{/if}}
+    {{#each orderedQuestions as |content seq|}}
+      {{#if content.resource.isResource}}
+        {{reports/assessment/qz-resources
+        showPerformance=showPerformance
+        contentSeq = (plus-one seq)
+        content=content
+        showReactionBar=true}}
+      {{else}}
+        {{#if content.resource.isOpenEnded}}
+          {{reports/assessment/qz-questions
+          showPerformance=showPerformance
+          showScore=false
+          contentSeq = (plus-one seq)
+          content=content
+          viewMode='open-ended'}}
+        {{else}}
+          {{reports/assessment/qz-questions
+          showPerformance=showPerformance
+          contentSeq = (plus-one seq)
+          content=content
+        }}
+        {{/if}}
+      {{/if}}
+    {{/each}}
   {{/if}}
 </div>

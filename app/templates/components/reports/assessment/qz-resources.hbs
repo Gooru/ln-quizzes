@@ -3,58 +3,7 @@
     <h4>{{t "common.resources"}}</h4>
   </div>
 </div>
-<table>
-  <thead>
-    <tr>
-      <th class="header number">
-        {{t "common.number"}}
-      </th>
-      <th class="header resource-type">
-      </th>
-      <th class="header resource top-left">
-        <span class="title">{{t "common.resource"}}</span>
-        <i class="icon resource"></i>
-      </th>
-      <th class="header timeSpent">
-        <span class="title">{{t "common.timeSpent"}}</span>
-        <span class="icon">{{gru-icon name='av_timer'}}</span>
-      </th>
-      {{#if showReactionBar}}
-        <th class="header reaction">
-          <span class="title">{{t "common.reaction"}}</span>
-          <span class="icon">{{gru-icon name='mood'}}</span>
-        </th>
-      {{/if}}
-    </tr>
-  </thead>
-  <tbody>
-    {{#each results as |result|}}
-      <tr class="tr-number-{{result.resource.sequence}}" id="resource-{{result.resource.order}}">
-        <td class="number-resource top-left">
-          {{result.resource.sequence}}
-        </td>
-        <td class="resource-type-icon">
-          <div class="image">
-            <i class="{{result.resource.format}}-icon"></i>
-          </div>
-        </td>
-        <td class="resource-text top-left">
-          <div class="title-content">
-            <span>{{result.resource.title}}</span>
-          </div>
-        </td>
-        <td class="time-spent">
-          {{format-time result.timeSpent}}
-        </td>
-        {{#if showReactionBar}}
-          <td class="reaction">
-            {{qz-reaction-icon result.reaction}}
-          </td>
-        {{/if}}
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+
 <div class="resource-container">
   <div class="resource-header-container">
     <div class="resource-title-container">

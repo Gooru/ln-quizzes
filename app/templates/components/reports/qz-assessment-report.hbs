@@ -78,16 +78,18 @@
         </span>
       {{/if}}
     </div>
-    <div class="answer-key">
-      {{#if isAnswerKeyHidden}}
-        <em>{{t "common.answer-key-was-hidden"}}</em>
-      {{else}}
-        <div class="btn-group summary-report-btn" role="group">
-          <button type="button" {{action 'selectPerformanceOption' true}} class="performance btn {{if showPerformance 'btn-primary' ' '}}">{{t "common.performance"}}</button>
-          <button type="button" {{action 'selectPerformanceOption' false}} class="correct-answer btn {{unless showPerformance 'btn-primary' '' }}">{{t "common.show-correct-answer"}}</button>
-        </div>
-      {{/if}}
-    </div>
+    {{#if (gt resultsQuestions.length 0)}}
+      <div class="answer-key testing">
+        {{#if isAnswerKeyHidden}}
+          <em>{{t "common.answer-key-was-hidden"}}</em>
+        {{else}}
+          <div class="btn-group summary-report-btn" role="group">
+            <button type="button" {{action 'selectPerformanceOption' true}} class="performance btn {{if showPerformance 'btn-primary' ' '}}">{{t "common.performance"}}</button>
+            <button type="button" {{action 'selectPerformanceOption' false}} class="correct-answer btn {{unless showPerformance 'btn-primary' '' }}">{{t "common.show-correct-answer"}}</button>
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
   </div>
   {{#if areAnswersHidden}}
     <div class="hidden-report">

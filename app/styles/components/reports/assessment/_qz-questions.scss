@@ -360,7 +360,7 @@
         height: 20px;
       }
       //Hotspot Image answer
-      .gru-hs-image {
+      .qz-hs-image {
         .instructions {
           display: none;
         }
@@ -421,7 +421,7 @@
         }
       }
       //FIB answer
-      .gru-fib {
+      .qz-fib {
         max-width: 100%;
 
         .instructions {
@@ -462,7 +462,7 @@
         }
       }
       //Hot-text highlight answer
-      .gru-hot-text-highlight {
+      .qz-hot-text-highlight {
         .instructions {
           display: none;
         }
@@ -481,7 +481,7 @@
         }
       }
       //Multiple choice answer
-      .gru-multiple-choice {
+      .qz-single-choice {
         width: 100%;
         .instructions {
           display: none;
@@ -518,7 +518,7 @@
           }
         }
 
-        .multiple-choices {
+        ul.single-choices {
           width: 100%;
 
           li {
@@ -599,7 +599,7 @@
         }
       }
       //Multiple Answer
-      .gru-multiple-answer {
+      .qz-multiple-answer {
         width: 100%;
 
         .instructions {
@@ -697,6 +697,7 @@
             }
 
             .answer-text {
+              display: inline;
               .answer-letter {
                 display: none;
               }
@@ -712,7 +713,7 @@
         }
       }
       //True or False
-      .gru-true-false {
+      .qz-true-false {
         width: 100%;
         .instructions {
           display: none;
@@ -781,7 +782,7 @@
         }
       }
       //Hotspot text
-      .gru-hs-text {
+      .qz-hs-text {
         .instructions {
           display: none;
         }
@@ -862,7 +863,7 @@
         }
       }
       //Re-Order question
-      .gru-reorder {
+      .qz-reorder {
         .instructions {
           display: none;
         }
@@ -921,6 +922,7 @@
             grid-template-columns: auto 1fr;
             grid-template-rows: 1fr;
             align-items: center;
+            padding: 5px 10px;
 
             .correct {
               justify-self: center;

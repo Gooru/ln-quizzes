@@ -3,20 +3,6 @@ import TaxonomyTag from 'quizzes-addon/models/taxonomy/taxonomy-tag';
 import TaxonomyTagData from 'quizzes-addon/models/taxonomy/taxonomy-tag-data';
 export default Ember.Component.extend({
   // -------------------------------------------------------------------------
-  // Actions
-
-  actions: {
-    /**
-     * Selects Performance Option or not
-     * @function actions:selectPerformanceOption
-     */
-    selectPerformanceOption: function(showPerformance) {
-      if (!this.get('isAnswerKeyHidden')) {
-        this.set('showPerformance', showPerformance);
-      }
-    }
-  },
-  // -------------------------------------------------------------------------
   // Dependencies
 
   /**

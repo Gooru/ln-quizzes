@@ -151,6 +151,7 @@
     .resource-header-container {
       display: grid;
       grid-template-columns: 90% auto;
+      column-gap: 10px;
       .resource-title-container {
         display: grid;
         grid-template-columns: 16px 20px 1fr;

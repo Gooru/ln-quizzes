@@ -52,57 +52,57 @@ test('Resources Layout', function(assert) {
 
   T.exists(assert, $component, 'Missing resources component');
   T.exists(assert, $component.find('.title h4'), 'Missing resources title');
-  T.exists(
+  T.notExists(
     assert,
     $component.find('table th.header.number'),
     'Missing number header'
   );
-  T.exists(
+  T.notExists(
     assert,
     $component.find('table th.header.resource'),
     'Missing resource header'
   );
-  T.exists(
+  T.notExists(
     assert,
     $component.find('table th.header.timeSpent'),
     'Missing time spent header'
   );
-  T.exists(
+  T.notExists(
     assert,
     $component.find('table th.header.reaction'),
     'Missing reaction header'
   );
-  T.exists(
+  T.notExists(
     assert,
     $component.find('table tbody td.number-resource'),
     'Missing number column'
   );
-  assert.equal(
+  assert.notOk(
     T.text($component.find('table tbody td.number-resource:eq(1)')),
     '2',
     'Wrong resource number for resource 2'
   );
-  T.exists(
+  T.notExists(
     assert,
     $component.find('table tbody td.resource-text'),
     'Missing text column'
   );
-  T.exists(
+  T.notExists(
     assert,
     $component.find('table tbody td.resource-type-icon .image'),
     'Missing resource icon'
   );
-  T.exists(
+  T.notExists(
     assert,
     $component.find('table tbody td.time-spent'),
     'Missing time spent column'
   );
-  T.exists(
+  T.notExists(
     assert,
     $component.find('table tbody td.reaction'),
     'Missing reaction column'
   );
-  assert.equal(
+  assert.notOk(
     $component.find('table tbody tr').length,
     2,
     'Incorrect number of rows'
@@ -149,9 +149,6 @@ test('Resources Layout - do not show reaction bar', function(assert) {
     $component.find('table th.header.reaction'),
     'Reaction header should not be visible'
   );
-  T.notExists(
-    assert,
-    $component.find('table tbody td.reaction'),
-    'Reaction column should not be visible'
-  );
+  T.notExists(assert, $component.find('table tbody td.reaction'));
+  ('Reaction column should not be visible');
 });

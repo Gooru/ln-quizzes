@@ -14,93 +14,6 @@
       {{/if}}
     {{/unless}}
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th class="header number">
-          {{t "common.number"}}
-        </th>
-        <th class="header question top-left">
-          <span class="title">{{t "common.question"}}</span>
-          <i class="icon question"></i>
-        </th>
-        <th class="header answer top-left">
-          <span class="title">{{t "common.answer"}}</span>
-          <span class="icon">{{gru-icon name='subject'}}</span>
-        </th>
-        {{#if showScore}}
-          <th class="header score {{if showPerformance 'visible' 'hide'}}">
-            <span class="title">{{t "common.score"}}</span>
-            <span class="icon">{{gru-icon name='done_all'}}</span>
-          </th>
-        {{/if}}
-        <th class="header time-spent {{if showPerformance 'visible' 'hide'}}">
-          <span class="title">{{t "common.timeSpent"}}</span>
-          <span class="icon">{{gru-icon name='av_timer'}}</span>
-        </th>
-        <th class="header reaction {{if showPerformance 'visible' 'hide'}}">
-          <span class="title">{{t "common.reaction"}}</span>
-          <span class="icon">{{gru-icon name='mood'}}</span>
-        </th>
-        {{#unless isAnswerKeyHidden}}
-          <th class="header correct-answer top-left {{if showPerformance 'hide' 'visible'}}">
-            <span class="title">{{t "common.correct-answer"}}</span>
-            <span class="icon">{{gru-icon name='done_all'}}</span>
-          </th>
-        {{/unless}}
-      </tr>
-    </thead>
-    <tbody>
-      {{#each results as |result|}}
-        <tr class="tr-number-{{result.question.sequence}}">
-          <td class="number-question top-left">
-            {{result.question.sequence}}
-          </td>
-          <td class="question-text top-left">
-            <div class="text">
-              {{gru-math-text text=result.question.description}}
-              {{#if result.question.hasMedia}}
-                <img class="img-responsive" src="{{result.question.mediaUrl}}" />
-              {{/if}}
-            </div>
-          </td>
-          <td class="question-answer top-left">
-            {{#if result.started}}
-              {{{component (qz-question-config result.question.type 'component.answer') question=result}}}
-            {{/if}}
-          </td>
-          {{#if showScore}}
-            <td class="question-score {{if showPerformance 'visible' 'hide'}}">
-              {{#if (and result.started result.skipped)}}
-                <span class="skipped">
-                      {{gru-icon name='ic_block'}}
-                  </span>
-              {{else}}
-                <span class="{{if result.started (if result.correct 'correct' 'incorrect') 'not-started'}}">
-                      {{#if result.started}}
-                             <i class="icon"> </i>
-                       {{else}}
-                            {{gru-icon name='radio_button_checked'}}
-                     {{/if}}
-                  </span>
-              {{/if}}
-            </td>
-          {{/if}}
-          <td class="question-time {{if showPerformance 'visible' 'hide'}}">
-            {{format-time result.timeSpent}}
-          </td>
-          <td class="question-reaction {{if showPerformance 'visible' 'hide'}}">
-            {{qz-reaction-icon result.reaction}}
-          </td>
-          {{#unless isAnswerKeyHidden}}
-            <td class="correct-answer top-left {{if showPerformance 'hide' 'visible'}}">
-              {{{component (qz-question-config result.question.type 'component.answer') question=result showCorrect=true}}}
-            </td>
-          {{/unless}}
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
 
   <div class="question-container {{content.resource.type}} {{if isShowCorrectAnswer 'answer-visible'}}">
     <div class="question-header-container">
@@ -124,7 +37,7 @@
                     {{#if content.started}}
                            <i class="icon"> </i>
                      {{else}}
-                          {{gru-icon name='radio_button_checked'}}
+                          {{gru-icon name="block"}}
                    {{/if}}
                 </span>
               </div>

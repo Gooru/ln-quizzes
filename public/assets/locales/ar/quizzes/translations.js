@@ -176,7 +176,7 @@ window.qzi18n = {
   'common.errors.hotspot-text-max-choices':
     'لقد وصلت إلى الحد الأقصى من خيارات الإجابة',
   'common.errors.file-max-size':
-    'يتم دعم الملفات التي يقل حجمها عن 5 ميغابايت فقط',
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'يرجى اختيار ملف بأي من الامتدادت التالية: {{extensiones}}',
   'common.errors.lesson-not-copied':

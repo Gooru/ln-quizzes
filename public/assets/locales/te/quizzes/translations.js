@@ -180,7 +180,7 @@ window.qzi18n = {
   'common.errors.hotspot-text-max-choices':
     'మీరు సమాధానం ఎంపికల పరిమితిని చేరుకున్నారు.',
   'common.errors.file-max-size':
-    '5mb కన్నా తక్కువ పరిమాణం గల ఫైల్స్ మాత్రమే మద్దతిస్తాయి',
+    'Only files of size smaller than {{fileMaxSize}}MB are supported',
   'common.errors.file-upload-missing':
     'దయచేసి క్రింది పొడిగింపులతో ఏదైనా ఒక ఫైల్ను ఎంచుకోండి: {{extensions}}',
   'common.errors.lesson-not-copied':
